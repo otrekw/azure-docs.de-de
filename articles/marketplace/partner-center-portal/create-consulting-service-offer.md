@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994355"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700956"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
@@ -126,32 +126,11 @@ Geben Sie eine kurze Beschreibung Ihres Angebots an. Sie kann bis zu 100 Zeichen
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Schließen Sie eine oder mehrere der folgenden Informationen in die Beschreibung ein:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Den Nutzen und die wichtigsten Vorteile Ihres Angebots
-- Zuordnungen zu Kategorien oder Branchen oder beidem
-- Möglichkeit zu In-App-Käufen
-- Alle erforderlichen Bekanntmachungen
-
-Hier einige Tipps zum Verfassen Ihrer Beschreibung:
-
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich den Nutzen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
-  - Beschreibung des Angebots.
-  - Typ von Benutzern, die von dem Produkt profitieren.
-  - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-- Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
-- Verwenden Sie möglichst branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
-
-Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
-
-![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
-
-| <center>Ändern des Textformats | <center>Hinzufügen von Aufzählungszeichen oder Nummerierungen | <center>Hinzufügen oder Entfernen von Texteinzügen |
-| --- | --- | --- |
-| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="keywords"></a>Keywords
 

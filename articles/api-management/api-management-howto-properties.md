@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260920"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649196"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -27,8 +27,8 @@ Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren
 
 | attribute      | type            | BESCHREIBUNG                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | string          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
-| `Value`        | string          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                        |
+| `Display name` | Zeichenfolge          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
+| `Value`        | Zeichenfolge          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                        |
 | `Secret`       | boolean         | Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.                                                               |
 | `Tags`         | Array von Zeichenfolgen | Wird zum Filtern der Liste der benannten Werte verwendet. Bis zu 32 Tags.                                                                                    |
 
@@ -36,9 +36,9 @@ Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren
 
 Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions) enthalten. Der Wert von `Expression` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Der benannte Wert `Credential` ist als Geheimnis markiert, sodass er standardmäßig nicht angezeigt wird.
 
-| Name       | value                      | `Secret` | `Tags`          |
+| Name       | Wert                      | `Secret` | `Tags`          |
 | ---------- | -------------------------- | ------ | ------------- |
-| value      | 42                         | False  | vital-numbers |
+| Wert      | 42                         | False  | vital-numbers |
 | Anmeldeinformationen | ••••••••••••••••••••••     | True   | security      |
 | Ausdruck | @(DateTime.Now.ToString()) | False  |               |
 
@@ -59,16 +59,12 @@ Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/a
 
 Sobald der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen des benannten Werts ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
 
-Informationen zum Bearbeiten eines benannten Werts mithilfe der REST-API finden Sie unter [Bearbeiten eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-12-01/property?patch).
-
 ## <a name="to-delete-a-named-value"></a>So löschen Sie einen benannten Wert
 
 Wenn Sie einen benannten Wert löschen möchten, klicken Sie neben dem zu löschenden benannten Wert auf **Löschen**.
 
 > [!IMPORTANT]
 > Wenn Richtlinien auf den benannten Wert verweisen, können Sie ihn erst erfolgreich löschen, nachdem Sie den benannten Wert aus allen Richtlinien entfernt haben, die ihn verwenden.
-
-Informationen zum Löschen eines benannten Werts mithilfe der REST-API finden Sie unter [Löschen eines benannten Werts mit der REST-API](/rest/api/apimanagement/2019-12-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>So suchen und filtern Sie benannte Werte
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592779"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714320"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -195,10 +195,8 @@ Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutra
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück.
 
@@ -223,15 +221,11 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
 |                         | `style="empathetic"`      | Drückt ein Gefühl von Anteilnahme und Verständnis aus               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | Ruhiger Ton               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
 |                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | Ruhiger Ton               |  
-|                         | `style="sad"`       | Unzufriedener und verärgerter Ton    |
-|                         | `style="serious"`         | Ernster und strenger Ton        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  | 
 
 **Beispiel**
 

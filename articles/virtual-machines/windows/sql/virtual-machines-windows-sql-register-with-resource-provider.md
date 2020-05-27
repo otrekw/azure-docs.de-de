@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 60c07fbf0f68897c0936cab13ebbe1505bc84079
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682579"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -51,11 +51,6 @@ Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das 
    ---
 
 Wenn Sie den SQL-VM-Ressourcenanbieter verwenden möchten, müssen Sie zunächst [Ihr Abonnement beim Ressourcenanbieter registrieren](#register-subscription-with-rp). Dadurch erhält der Ressourcenanbieter die Möglichkeit, Ressourcen innerhalb dieses jeweiligen Abonnements zu erstellen.
-
-Um mehr über die Vorteile zu erfahren, die sich aus der Verwendung des SQL-VM-Ressourcenanbieters ergeben, sehen Sie sich dieses [channel9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner)-Video an: 
-
-<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Benefit from SQL VM Resource Provider when self-installing SQL Server on Azure - Microsoft Channel 9 Video (Vorteil durch den SQL VM-Ressourcenanbieter bei der Eigeninstallation von SQL Server in Azure – Microsoft Channel 9-Video)"></iframe>
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

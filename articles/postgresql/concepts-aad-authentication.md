@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74769913"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660188"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
 
 Microsoft Azure AD-Authentifizierung (Azure Active Directory) ist ein Mechanismus zum Herstellen einer Verbindung mit Azure Database for PostgreSQL unter Verwendung der in Azure AD definierten Identitäten.
 Mit Azure AD-Authentifizierung können Sie Datenbankbenutzeridentitäten und andere Microsoft-Dienste an einem zentralen Ort verwalten, wodurch die Berechtigungsverwaltung vereinfacht wird.
-
-> [!IMPORTANT]
-> Azure AD-Authentifizierung für Azure Database for PostgreSQL befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Beispiele für die Vorteile der Verwendung von Azure AD:
 
