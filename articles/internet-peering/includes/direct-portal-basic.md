@@ -3,17 +3,17 @@ title: include file
 titleSuffix: Azure
 description: include file
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: include
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 00c24212706555667ad4680c086ece24f15ca59a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678574"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846135"
 ---
 1. Wählen Sie **Ressource erstellen** > **Alle anzeigen** aus.
 

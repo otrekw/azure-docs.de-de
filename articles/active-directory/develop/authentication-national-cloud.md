@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230706"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845184"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -60,8 +60,8 @@ Die folgende Tabelle enthält die Basis-URLs für die Azure AD-Endpunkte, die zu
 
 Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mit der entsprechenden regionsspezifischen Basis-URL generiert werden. Z.B. für Azure Deutschland:
 
-  - Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/authorize`.
-  - Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/token`.
+  - Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`.
+  - Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/v2.0/token`.
 
 Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. z. B. `https://login.microsoftonline.de/contoso.com`.
 

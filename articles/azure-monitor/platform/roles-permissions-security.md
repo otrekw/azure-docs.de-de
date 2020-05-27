@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658981"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836378"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
@@ -28,7 +28,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 
 * Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
 * Anzeigen von in [Azure-Warnungen](alerts-overview.md) definierten Warnungsregeln
-* Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](powershell-quickstart-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](cli-samples.md).
+* Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](powershell-quickstart-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](../samples/cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
 * Anzeigen der [Diagnoseeinstellungen](diagnostic-settings.md) für eine Ressource.
 * Anzeigen des [Protokollprofils](activity-log-export.md) für ein Abonnement.

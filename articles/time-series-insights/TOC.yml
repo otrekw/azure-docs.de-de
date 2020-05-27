@@ -15,7 +15,7 @@
       items:
         - name: Erkunden von Time Series Insights (Vorschauversion)
           href: time-series-insights-update-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Azure Time Series Insights (allgemein verfügbar)
       items:
@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI-Integration
               href: concepts-power-bi.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Gewähren des Datenzugriffs
       href: time-series-insights-data-access.md
@@ -166,12 +166,12 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN-Forum
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: Feedback und Foren
       items:
-        - name: MSDN-Forum
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: Produktanforderungen und -vorschläge
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure-Videos

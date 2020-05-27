@@ -6,7 +6,7 @@
       href: overview.md
     - name: Unterstützte Datenspeicher
       href: supported-data-stores.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Freigeben von Daten
@@ -27,7 +27,7 @@
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure Powershell
       href: samples-powershell.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Überwachen
       href: how-to-monitor.md
@@ -53,8 +53,8 @@
       href: /rest/api/datashare
 - name: Ressourcen
   items:
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog

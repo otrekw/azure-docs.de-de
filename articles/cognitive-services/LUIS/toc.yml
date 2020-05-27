@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: Migrieren
       items:
+        - name: Übersicht
+          href: migration.md
         - name: Migrieren von einer zusammengesetzten Entität
           href: migrate-from-composite-entity.md
         - name: Migrieren zur Dokumenterstellungsressource
