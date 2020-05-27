@@ -3,19 +3,19 @@ title: Aktivieren der dienstgestützten Subnetzkonfiguration für verwaltete Azu
 description: Aktivieren der dienstgestützten Subnetzkonfiguration für verwaltete Azure SQL-Datenbank-Instanzen
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f22c713af700225ffe6954460c36217abdea5eea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533265"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770158"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Aktivieren der dienstgestützten Subnetzkonfiguration für verwaltete Azure SQL-Datenbank-Instanzen
 Die dienstgestützte Subnetzkonfiguration bietet eine automatisierte Netzwerkkonfigurationsverwaltung für Subnetze, in denen verwaltete Instanzen gehostet werden. Mit der dienstgestützten Subnetzkonfiguration behält der Benutzer die vollständige Kontrolle über den Datenzugriff (TDS-Datenverkehrsflüsse), während die verwaltete Instanz den ununterbrochenen Fluss des Verwaltungsdatenverkehrs sicherstellt, um die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) zu erfüllen.

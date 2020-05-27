@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596589"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745938"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -57,7 +57,7 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 
 4. Geben Sie auf der Registerkarte **Headers** (Header) einen Wert für den Schlüssel `Content-Type` an. Da es sich bei dem Zeichnungspaket um einen gezippten Ordner handelt, verwenden Sie den Wert `application/octet-stream`. Wählen Sie auf der Registerkarte **Body** (Textkörper) die Option **binary** (Binär) aus. Klicken Sie auf **Select File** (Datei auswählen), und wählen Sie ein Zeichnungspaket aus.
 
-     ![data-management](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![data-management](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. Klicken Sie auf die blaue Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
@@ -215,7 +215,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. Der Antworttext wird im GeoJSON-Format zurückgegeben und enthält alle Sammlungen im Dataset. Der Einfachheit halber enthält das hier gezeigte Beispiel nur die Sammlung `unit`. Ein Beispiel mit allen Sammlungen finden Sie unter [WFS-API für Sammlungsbeschreibungen](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview). Wenn Sie weitere Informationen zu einer Sammlung benötigen, können Sie auf eine der URLs im Element `link` klicken.
+3. Der Antworttext wird im GeoJSON-Format zurückgegeben und enthält alle Sammlungen im Dataset. Der Einfachheit halber enthält das hier gezeigte Beispiel nur die Sammlung `unit`. Ein Beispiel mit allen Sammlungen finden Sie unter [WFS-API für Sammlungsbeschreibungen](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Wenn Sie weitere Informationen zu einer Sammlung benötigen, können Sie auf eine der URLs im Element `link` klicken.
 
     ```json
     {
@@ -285,7 +285,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 
 1. Wählen Sie in der Postman-Anwendung **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
 
-2. Senden Sie eine Anforderung vom Typ **POST** an die [API zum Erstellen von Zustandssets](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview). Verwenden Sie die Dataset-ID (`datasetId`) des Datasets mit dem Zustand, den Sie ändern möchten. Die Anforderung sollte wie die folgende URL aussehen:
+2. Senden Sie eine Anforderung vom Typ **POST** an die [API zum Erstellen von Zustandssets](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview). Verwenden Sie die Dataset-ID (`datasetId`) des Datasets mit dem Zustand, den Sie ändern möchten. Die Anforderung sollte wie die folgende URL aussehen:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

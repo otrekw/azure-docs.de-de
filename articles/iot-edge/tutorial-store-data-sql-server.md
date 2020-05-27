@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c239c16103dc0c1f847c5d4354aed89a143a28c6
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745511"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -41,7 +41,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein [Linux-Gerät (AMD64), auf dem Azure IoT Edge ausgeführt wird](quickstart-linux.md)
-  * Auf ARM-Geräten (etwa Raspberry Pi) kann SQL Server nicht ausgeführt werden. Wenn Sie SQL auf einem ARM-Gerät verwenden möchten, können Sie sich zum Testen der Vorschauversion von [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) registrieren.
+  * Auf ARM-Geräten (etwa Raspberry Pi) kann SQL Server nicht ausgeführt werden. Wenn Sie SQL auf einem ARM-Gerät verwenden möchten, können Sie sich zum Testen der Vorschauversion von [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) registrieren.
 * Eine Containerregistrierung wie [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio Code](https://code.visualstudio.com/), der mit den [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) konfiguriert wurde.
 * [Docker CE](https://docs.docker.com/install/), das zur Ausführung von Linux-Containern konfiguriert wurde.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186487"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757618"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -37,8 +37,8 @@ Bei der Kommunikation mit Azure AD B2C werden folgende Token verwendet:
 
 Eine [registrierte Anwendung](tutorial-register-applications.md) empfängt Token und kommuniziert mit Azure AD B2C, indem sie Anforderungen an folgende Endpunkte sendet:
 
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
 Sicherheitstoken, die Ihre Anwendung von Azure AD B2C empfängt, können von den Endpunkten `/authorize` oder `/token` stammen. Wenn ID-Token vom Endpunkt `/authorize` bezogen werden, kommt der [implizite Fluss](implicit-flow-single-page-application.md) zur Anwendung. Dieser wird häufig für Benutzer verwendet, die sich bei JavaScript-basierten Webanwendungen anmelden. Wenn ID-Token vom Endpunkt `/token` bezogen werden, kommt der [Autorisierungscodefluss](openid-connect.md#get-a-token) zur Anwendung, bei dem das Token dem Browser verborgen bleibt.
 
@@ -53,7 +53,7 @@ Die folgende Tabelle enthält die Ansprüche, die in von Azure AD B2C ausgeste
 | Name | Anspruch | Beispielwert | BESCHREIBUNG |
 | ---- | ----- | ------------- | ----------- |
 | Zielgruppe | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifiziert den vorgesehenen Empfänger des Tokens. Für Azure AD B2C ist die Zielgruppe die Anwendungs-ID. Ihre Anwendung muss diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. Die Zielgruppe ist synonym mit der Ressource. |
-| Issuer (Aussteller) | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre Anwendung muss den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom passenden Endpunkt stammt. |
+| Issuer (Aussteller) | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre Anwendung muss den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom passenden Endpunkt stammt. |
 | Ausgestellt um | `iat` | `1438535543` | Die Zeit, zu der das Token ausgestellt wurde (dargestellt als Epochenzeit) |
 | Ablaufzeit | `exp` | `1438539443` | Die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit). Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Nicht vor | `nbf` | `1438535543` | Die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Diese Zeit entspricht in der Regel dem Ausstellungszeitpunkt des Tokens. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. |
@@ -124,14 +124,14 @@ Der Wert des Anspruchs **alg** ist der Algorithmus, mit dem das Token signiert w
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt. Über diesen Endpunkt können Anwendungen zur Laufzeit Informationen zu Azure AD B2C anfordern. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Ihr Azure AD B2C-Mandant enthält ein JSON-Metadatendokument für jede Richtlinie. Beim Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, Die Metadaten enthalten **jwks_uri**, um den Ort anzugeben, an dem sich die Gruppe von öffentlichen Schlüsseln zum Signieren von Token befinden. Dieser Ort ist hier angegeben. Es wird jedoch empfohlen, ihn dynamisch mithilfe des Metadatendokuments abzurufen und dabei **jwks_uri** zu analysieren:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
 ```
 Das JSON-Dokument unter dieser URL enthält alle Informationen zu den zu einem bestimmten Zeitpunkt verwendeten öffentlichen Schlüsseln. Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel im JSON-Dokument zum Signieren eines bestimmten Tokens verwendet wird. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
 
 Das Metadatendokument für die Richtlinie `B2C_1_signupsignin1` im Mandaten `contoso.onmicrosoft.com` befindet sich hier:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
 Sie haben zwei Optionen, um zu ermitteln, welche Richtlinie zum Signieren eines Tokens verwendet wurde (und wo die Metadaten angefordert werden können). Zunächst einmal ist der Richtlinienname im `acr` -Anspruch im Token enthalten. Sie können Ansprüche aus dem Hauptteil des JWT analysieren, indem Sie eine Base64-Decodierung auf den Hauptteil anwenden und die sich ergebende JSON-Zeichenfolge deserialisieren. Der Anspruch `acr` ist der Name der Richtlinie, die zum Ausstellen des Tokens verwendet wurde. Die andere Option besteht darin, die Richtlinie beim Übermitteln der Anforderung im Wert des Parameters `state` zu codieren und später zu decodieren, um die verwendete Richtlinie zu bestimmen. Beide Methoden sind gültig.

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747695"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop-Dienstverbindungen
 
@@ -42,36 +42,6 @@ Get-AzRoleAssignment -SignInName <userupn>
 Vergewissern Sie sich, dass sich der Benutzer mit den richtigen Anmeldeinformationen anmeldet.
 
 Wenn der Webclient verwendet wird, vergewissern Sie sich, dass keine Probleme mit zwischengespeicherten Anmeldeinformationen vorliegen.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Virtuelle Computer mit mehreren Sitzungen unter Windows 10 Enterprise antworten nicht
-
-Wenn ein virtueller Computer nicht reagiert und Sie nicht über RDP darauf zugreifen können, müssen Sie mit der Diagnosefunktion eine Problembehandlung durchführen, indem Sie den Hoststatus überprüfen.
-
-Führen Sie dieses Cmdlet aus, um den Hoststatus zu überprüfen:
-
-```powershell
-Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
-```
-
-Wenn der Hoststatus `NoHeartBeat` ist, bedeutet dies, dass der virtuelle Computer nicht antwortet und der Agent nicht mit dem Windows Virtual Desktop-Dienst kommunizieren kann.
-
-```powershell
-Name            : 0301HP/win10pd-0.contoso.com 
-LastHeartBeat   : 4/8/2020 1:48:35 AM 
-AllowNewSession : True 
-Status          : Available 
-
-Name            : 0301HP/win10pd-1.contoso.com 
-LastHeartBeat   : 4/8/2020 1:45:44 AM 
-AllowNewSession : True 
-Status          : NoHeartBeat
-```
-
-Es gibt einige Möglichkeiten, um den NoHeartBeat-Status zu beseitigen.
-
-### <a name="update-fslogix"></a>Aktualisieren von FSLogix
-
-Wenn FSLogix nicht auf dem neuesten Stand ist, insbesondere bei der Version 2.9.7205.27375 von frxdrvvt.sys, kann dies zu einem Deadlock führen. Sie müssen dann [FSLogix auf die aktuelle Version aktualisieren](https://go.microsoft.com/fwlink/?linkid=2084562).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

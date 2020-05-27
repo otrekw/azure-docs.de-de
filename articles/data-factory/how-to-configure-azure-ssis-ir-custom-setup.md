@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606218"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747518"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -123,7 +123,7 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
      * Wenn Sie die Komponente **HEDDA.IO von oh22** auswählen, können Sie die [HEDDA.IO](https://hedda.io/ssis-component/)-Datenqualitäts-/Bereinigungskomponente von oh22 in Ihrer Azure-SSIS IR installieren, nachdem Sie den entsprechenden Dienst erworben haben. Die aktuelle integrierte Version ist **1.0.13**.
 
-     * Wenn Sie die Komponente **SQLPhonetics.NET von oh22** auswählen, können Sie die [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/)-Datenqualitäts-/Zuordnungskomponente von oh22 in Ihrer Azure-SSIS IR installieren, indem Sie im Feld **Lizenzschlüssel** den erworbenen Produktlizenzschlüssel eingeben. Die aktuelle integrierte Version ist **1.0.43**.
+     * Wenn Sie die Komponente **SQLPhonetics.NET von oh22** auswählen, können Sie die [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis)-Datenqualitäts-/Zuordnungskomponente von oh22 in Ihrer Azure-SSIS IR installieren, indem Sie im Feld **Lizenzschlüssel** den erworbenen Produktlizenzschlüssel eingeben. Die aktuelle integrierte Version ist **1.0.43**.
 
      * Wenn Sie die Komponente **KingswaySoft's SSIS Integration Toolkit** auswählen, können Sie die Connector-Sammlung [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) für Apps für CRM/ERP/Marketing/Zusammenarbeit, z. B. Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud usw., von KingswaySoft in Ihrer Azure-SSIS Integration Runtime installieren, indem Sie den erworbenen Produktlizenzschlüssel im Feld **Lizenzschlüssel** eingeben. Die aktuelle integrierte Version ist **2019.2**.
 

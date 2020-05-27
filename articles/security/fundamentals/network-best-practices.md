@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548305"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757822"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -74,7 +74,7 @@ Netzwerke müssen sich von traditionellen Schutzmaßnahmen weiterentwickeln, da 
 Bewährte Methoden:
 
 **Bewährte Methode**: Gewähren Sie bedingten Zugriff auf Ressourcen basierend auf Gerät, Identität, Assurance, Netzwerkadresse und anderen.  
-**Detail**: Mit [bedingtem Zugriff mit Azure AD](/azure/active-directory/conditional-access/overview) können Sie die passende Zugriffssteuerung anwenden, indem Sie automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung anhand der erforderlichen Bedingungen implementieren. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../../role-based-access-control/conditional-access-azure-management.md).
+**Detail**: Mit [bedingtem Zugriff mit Azure AD](../../active-directory/conditional-access/overview.md) können Sie die passende Zugriffssteuerung anwenden, indem Sie automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung anhand der erforderlichen Bedingungen implementieren. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **Bewährte Methode**: Aktivieren Sie den Portzugriff erst nach Genehmigung des Workflows.  
 **Detail**: Sie können [Just-In-Time-VM-Zugriff in Azure Security Center](../../security-center/security-center-just-in-time.md) verwenden, um eingehenden Datenverkehr auf den Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einen einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.

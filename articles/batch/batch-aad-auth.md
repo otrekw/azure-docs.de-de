@@ -1,15 +1,15 @@
 ---
 title: Authentifizieren von Azure Batch-Diensten mit Azure Active Directory
 description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Dienst aus. Erfahren Sie, wie Sie sich auf eine von zwei Arten authentifizieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608471"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757584"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -413,7 +413,7 @@ Verwenden Sie die Dienstprinzipal-Anmeldeinformationen, um ein **BatchServiceCli
 ```python
     batch_client = BatchServiceClient(
     credentials,
-    base_url=BATCH_ACCOUNT_URL
+    batch_url=BATCH_ACCOUNT_URL
 )
 ```
 
