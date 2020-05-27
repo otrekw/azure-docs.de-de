@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74109935"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584925"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Informationen zur API für Audioeingabestreams des Speech SDK
 
@@ -25,14 +25,14 @@ Bei der Verwendung von Audioeingabestreams sind die folgenden Schritte erforderl
 
 - Ermitteln Sie das Format des Audiodatenstroms. Das Format muss vom Speech SDK und dem Speech-Dienst unterstützt werden. Derzeit wird die nur folgende Konfiguration unterstützt:
 
-  Audiobeispiele im PCM-Format, ein Kanal, 16.000 Abtastvorgänge pro Sekunde, 32.000 Byte pro Sekunde, Ausrichtung zweier Blöcke (16 Bit mit Innenabstand für einen Abtastvorgang), 16 Bit pro Abtastvorgang
+  Audiobeispiele im PCM-Format, ein Kanal, 16 Bit pro Abtastvorgang, 8.000 oder 16.000 Abtastvorgänge pro Sekunde (16.000 oder 32.000 Byte pro Sekunde), Ausrichtung zweier Blöcke (16 Bit mit Innenabstand für einen Abtastvorgang)
 
   Der entsprechende Code im SDK zum Erstellen des Audioformats sieht folgendermaßen aus:
 
   ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 

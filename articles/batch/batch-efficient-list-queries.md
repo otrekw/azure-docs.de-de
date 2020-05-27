@@ -1,15 +1,15 @@
 ---
 title: Entwerfen effizienter Listenabfragen
 description: Steigern Sie durch Filtern von Abfragen die Leistung beim Anfordern von Informationen zu Batch-Ressourcen wie Pools, Aufträgen, Aufgaben und Computeknoten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fea8efd4e4946b67754bad98589b728e8d696425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 987a31f9506dcd1b13b04d544465c7529f23122d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116110"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726705"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Erstellen von Abfragen zum effizienten Auflisten von Batch-Ressourcen
 

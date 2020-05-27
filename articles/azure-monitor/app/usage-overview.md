@@ -3,12 +3,12 @@ title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
 description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283955"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797794"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
@@ -175,5 +175,5 @@ Alle neuen TelemetryClients-Elemente fügen automatisch den von Ihnen angegebene
    - [Trichter](usage-funnels.md)
    - [Vermerkdauer](usage-retention.md)
    - [Benutzerabläufe](usage-flows.md)
-   - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+   - [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
    - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)

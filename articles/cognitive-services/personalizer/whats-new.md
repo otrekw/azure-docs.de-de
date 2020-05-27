@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591759"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800628"
 ---
 # <a name="whats-new-in-personalizer"></a>Neuerungen in der Personalisierung
 
@@ -48,7 +48,7 @@ Die folgenden Previewfunktionen wurden bei der Build 2019-Konferenz veröffentli
 
 ### <a name="2019-build-videos"></a>Build 2019 – Videos
 
-* [Mit Cognitive Services Personalizer die richtigen Erfahrungen und Inhalte liefern, etwa für Xbox](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [Mit Cognitive Services Personalizer die richtigen Erfahrungen und Inhalte liefern, etwa für Xbox](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>Dienstupdates
 

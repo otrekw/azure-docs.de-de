@@ -11,15 +11,15 @@
   items:
     - name: Anzeigen des Zugriffs für einen Benutzer
       href: check-access.md
+    - name: ARM-Vorlage
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: Tutorials
   items:
     - name: 'Gewähren des Zugriffs für einen Benutzer: Portal'
       href: quickstart-assign-role-user-portal.md
     - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
       href: tutorial-role-assignments-user-powershell.md
-    - name: 'Gewähren des Zugriffs für einen Benutzer: Resource Manager-Vorlage'
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
       href: tutorial-role-assignments-group-powershell.md
     - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
@@ -67,7 +67,8 @@
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
-        - name: Vorlage
+        - name: ARM-Vorlage
+          displayName: Resource Manager
           href: role-assignments-template.md
     - name: Auflisten von Ablehnungszuweisungen
       items:
@@ -113,8 +114,8 @@
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST-API
       href: /rest/api/authorization/
-    - name: Resource Manager-Vorlagen
-      displayName: ARM
+    - name: ARM-Vorlagen
+      displayName: Resource Manager
       items:
         - name: Rollenzuweisungen
           href: /azure/templates/microsoft.authorization/roleassignments

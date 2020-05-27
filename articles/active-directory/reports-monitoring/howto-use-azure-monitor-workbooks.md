@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690626"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799370"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
@@ -42,13 +42,13 @@ Möchten Sie:
 
 - Gewinnen Sie tiefere Einblicke in Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben.
 
-- Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
+- Damit Sie diese Fragen beantworten können, stellt Azure Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
 
 
 
 Dieser Artikel:
 
-- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) vertraut sind.
+- Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) vertraut sind.
 
 - Erläutert die Verwendung von Monitor-Arbeitsmappen, um die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, Anmeldefehler beheben und Legacyauthentifizierungen identifizieren zu können.
  
@@ -302,4 +302,4 @@ Damit Sie Probleme mit Anmeldungen beheben können, bietet Azure Monitor Ihnen e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).

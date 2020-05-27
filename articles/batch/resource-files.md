@@ -2,13 +2,13 @@
 title: Erstellen und Verwenden von Ressourcendateien
 description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
 ms.date: 03/18/2020
-ms.topic: article
-ms.openlocfilehash: c9a2e581d0cada467e89e3da731fac7f78b22992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117181"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723458"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 

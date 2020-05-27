@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201753"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641099"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der den Microsoft Identity Platform-Endpunkt verwendet
 
@@ -235,8 +235,8 @@ Visual Studio veröffentlicht das Projekt und öffnet die Projekt-URL automatisc
 1. Wechseln Sie zurück zum [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung **dotnet-web-daemon-v2** aus.
-1. Aktualisieren Sie auf der Seite **Authentifizierung** für Ihre Anwendung die Felder vom Typ **Abmelde-URL** mit der Adresse Ihres Diensts. Verwenden Sie beispielsweise [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
-1. Aktualisieren Sie im Menü **Branding** die **URL der Startseite** auf die Adresse Ihres Diensts. Verwenden Sie beispielsweise [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
+1. Aktualisieren Sie auf der Seite **Authentifizierung** für Ihre Anwendung die Felder vom Typ **Abmelde-URL** mit der Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
+1. Aktualisieren Sie im Menü **Branding** die **URL der Startseite** auf die Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
 1. Speichern Sie die Konfiguration.
 1. Fügen Sie die gleiche URL der Werteliste unter **Authentifizierung** > **Umleitungs-URIs** hinzu. Falls Sie über mehrere Umleitungs-URLs verfügen, muss für jede ein neuer Eintrag mit dem URI des App-Diensts vorhanden sein.
 

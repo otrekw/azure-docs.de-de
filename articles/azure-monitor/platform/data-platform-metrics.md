@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a02b3df02d455db8a7dfd21f63d659f75a66e446
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457313"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799970"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
@@ -32,7 +32,7 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Met
 |  |  |
 |:---|:---|
 | Analysieren | Verwenden Sie den [Metrik-Explorer](metrics-charts.md) zum Analysieren von erfassten Metriken in einem Diagramm und Vergleichen von Metriken verschiedener Ressourcen. |
-| Visualisieren | Heften Sie ein Diagramm aus dem Metrik-Explorer an ein [Azure-Dashboard](../learn/tutorial-app-dashboards.md) an.<br>Erstellen Sie eine [Arbeitsmappe](../app/usage-workbooks.md) zum Kombinieren mehrerer Datasets in einem interaktiven Bericht. Exportieren Sie die Ergebnisse einer Abfrage für [Grafana](grafana-plugin.md), um die Dashboardfunktionen zu nutzen und die Daten mit anderen Datenquellen zu kombinieren. |
+| Visualisieren | Heften Sie ein Diagramm aus dem Metrik-Explorer an ein [Azure-Dashboard](../learn/tutorial-app-dashboards.md) an.<br>Erstellen Sie eine [Arbeitsmappe](../platform/workbooks-overview.md) zum Kombinieren mehrerer Datasets in einem interaktiven Bericht. Exportieren Sie die Ergebnisse einer Abfrage für [Grafana](grafana-plugin.md), um die Dashboardfunktionen zu nutzen und die Daten mit anderen Datenquellen zu kombinieren. |
 | Warnung | Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet. |
 | Automatisieren |  Verwenden von [Autoskalierung](autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einem Metrikwert über- oder unterschritten wird, herauf- oder herabzusetzen. |
 | Exportieren | [Weiterleiten von Metriken an Protokolle](resource-logs-collect-storage.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |

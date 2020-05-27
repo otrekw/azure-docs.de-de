@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606480"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800083"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Transformation für bedingtes Teilen im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bei der Transformation für bedingtes Teilen werden Datenzeilen basierend auf Übereinstimmungsbedingungen an verschiedene Streams geleitet. Die Transformation für bedingtes Teilen ist mit einer CASE-Entscheidungsstruktur in einer Programmiersprache vergleichbar. Die Transformation wertet Ausdrücke aus und leitet dann die Datenzeile basierend auf den Ergebnissen an den angegebenen Datenstrom weiter.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4wKCX]
 
 ## <a name="configuration"></a>Konfiguration
 

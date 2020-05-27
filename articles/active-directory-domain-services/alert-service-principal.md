@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 175bfe63176b78c5aeafc7147c46dd5ab1110325
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71257960"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845966"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen für Dienstprinzipale in Azure Active Directory Domain Services
 
@@ -102,7 +102,7 @@ Zum erneuten Erstellen der Azure AD-Anwendung, die für die Synchronisierung von
     $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
     Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
-    Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
+    Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
 Nachdem Sie beide Anwendungen gelöscht haben, erstellt die Azure-Plattform diese automatisch neu und versucht, die Kennwortsynchronisierung fortzusetzen. Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
