@@ -60,6 +60,32 @@
           href: learn/tutorial-app-dashboards.md
 - name: Beispiele
   items:
+    - name: Resource Manager-Vorlagen
+      items:
+        - name: Übersicht
+          href: samples/resource-manager-samples.md
+        - name: Agents
+          href: samples/resource-manager-agent.md
+        - name: Alerts
+          items:
+            - name: Protokollwarnungsregeln
+              href: samples/resource-manager-alerts-log.md
+            - name: Metrikwarnungsregeln
+              href: samples/resource-manager-alerts-metric.md
+            - name: Aktionsgruppen
+              href: samples/resource-manager-action-groups.md
+        - name: Diagnoseeinstellungen
+          href: samples/resource-manager-diagnostic-settings.md
+        - name: Log Analytics-Arbeitsbereiche
+          href: samples/resource-manager-workspace.md
+        - name: Protokollabfragen
+          href: samples/resource-manager-log-queries.md
+        - name: Arbeitsmappen
+          href: samples/resource-manager-workbooks.md
+        - name: Azure Monitor für Container
+          href: samples/resource-manager-container-insights.md
+        - name: Azure Monitor für VMs
+          href: samples/resource-manager-vminsights.md
     - name: Azure CLI
       href: samples/cli-samples.md
     - name: Azure PowerShell

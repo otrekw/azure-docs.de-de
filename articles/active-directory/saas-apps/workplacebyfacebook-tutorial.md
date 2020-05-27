@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79136379"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799254"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -206,7 +206,7 @@ In diesem Abschnitt wird in Workplace by Facebook ein Benutzer mit dem Namen B.�
 F체r Sie steht in diesem Abschnitt keine Aktion an. Falls ein Benutzer in Workplace by Facebook nicht vorhanden ist, wird ein neuer Benutzer erstellt, wenn Sie versuchen, auf Workplace by Facebook zuzugreifen.
 
 >[!Note]
->Wenden Sie sich an das [Supportteam f체r den Workplace by Facebook-Client](https://workplace.fb.com/faq/), wenn Sie einen Benutzer manuell erstellen m체ssen.
+>Wenden Sie sich an das [Supportteam f체r den Workplace by Facebook-Client](https://www.workplace.com/help/work/), wenn Sie einen Benutzer manuell erstellen m체ssen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -162,5 +162,5 @@
       href: cache-faq.md
     - name: Videos
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'

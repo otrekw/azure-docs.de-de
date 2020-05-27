@@ -9,12 +9,12 @@ ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: b99077223581c4960c838b54b6b8885309f7d999
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bdd36a2c58bddce5bea0ba43e5d21da9ef89a14d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125127"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699458"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten VM-Images mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe mit einem benutzerdefinierten VM-Image als Quelle für die VM-Instanzen.
@@ -44,5 +44,3 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
-
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

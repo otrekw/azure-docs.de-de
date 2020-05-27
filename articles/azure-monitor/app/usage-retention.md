@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892409"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797730"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 
@@ -63,7 +63,7 @@ Oder im ASP.NET-Servercode:
     - [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
     - [Trichter](usage-funnels.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
 
 

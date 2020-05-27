@@ -1,14 +1,14 @@
 ---
 title: Senden einer großen Anzahl von Aufgaben
 description: Effizientes Übermitteln einer sehr großen Anzahl von Aufgaben in einem einzigen Azure Batch-Auftrag
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 0be30e1a413a224d566db535d369a0b285b1f668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117402"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778951"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 
@@ -41,7 +41,7 @@ Die maximale Größe der Aufgabensammlung, die Sie in einem einzigen Aufruf hinz
 
 Das Hinzufügen einer großen Sammlung von Aufgaben zu einem Auftrag kann einige Zeit in Anspruch nehmen: Beispielsweise kann es bis zu einer Minute dauern, 20.000 Aufgaben über die .NET-API hinzuzufügen. Je nach Batch-API und Workload können Sie den Aufgabendurchsatz verbessern, indem Sie einen oder mehrere der folgenden Werte ändern:
 
-* **Aufgabengröße**: Das Hinzufügen großer Aufgaben dauert länger als das Hinzufügen kleinerer Aufgaben. Um die Aufgaben in einer Sammlung zu verkleinern, können Sie die Befehlszeile für die Aufgabe vereinfachen, die Anzahl von Umgebungsvariablen reduzieren oder Anforderungen für die Aufgabenausführung effizienter verarbeiten. Anstatt beispielsweise eine große Anzahl von Ressourcendateien zu verwenden, installieren Sie Aufgabenabhängigkeiten mit einer [Startaufgabe](batch-api-basics.md#start-task) im Pool, oder verwenden Sie ein [Anwendungspaket](batch-application-packages.md) oder einen [Docker-Container](batch-docker-container-workloads.md).
+* **Aufgabengröße**: Das Hinzufügen großer Aufgaben dauert länger als das Hinzufügen kleinerer Aufgaben. Um die Aufgaben in einer Sammlung zu verkleinern, können Sie die Befehlszeile für die Aufgabe vereinfachen, die Anzahl von Umgebungsvariablen reduzieren oder Anforderungen für die Aufgabenausführung effizienter verarbeiten. Anstatt beispielsweise eine große Anzahl von Ressourcendateien zu verwenden, installieren Sie Aufgabenabhängigkeiten mit einer [Startaufgabe](jobs-and-tasks.md#start-task) im Pool, oder verwenden Sie ein [Anwendungspaket](batch-application-packages.md) oder einen [Docker-Container](batch-docker-container-workloads.md).
 
 * **Anzahl von parallelen Vorgängen**: Je nach Batch-API können Sie den Durchsatz verbessern, indem Sie die Maximalzahl von Vorgängen erhöhen, die vom Batch-Client gleichzeitig durchgeführt werden. Konfigurieren Sie diese Einstellung mithilfe der Eigenschaft [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) in der .NET API oder mit dem `threads`-Parameter in Methoden wie z.B. [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) in der Batch Python SDK-Erweiterung. (Diese Eigenschaft ist im nativen Batch Python SDK nicht verfügbar.) Standardmäßig ist diese Eigenschaft auf 1 festgelegt, Sie können diesen Wert jedoch erhöhen, um den Durchsatz von Vorgängen zu verbessern. Der Nachteil des erhöhten Durchsatzes ist der höhere Verbrauch an Netzwerkbandbreite und CPU-Leistung. Der Aufgabendurchsatz erhöht sich um das bis zu Hundertfache des `MaxDegreeOfParallelism`- oder des `threads`-Werts. In der Praxis sollten Sie die Anzahl gleichzeitiger Vorgänge auf einen Wert unter 100 festlegen. 
  

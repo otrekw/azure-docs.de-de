@@ -1,15 +1,14 @@
 ---
 title: Verwenden rechenintensiver Azure-VMs mit Batch
 description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batch-Pools. Hier finden Sie Informationen zu Betriebssystemabhängigkeiten und erhalten einige Szenariobeispiele.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: labrenne
-ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115957"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779742"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -80,7 +79,7 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 
 * Erstellen Sie ein [benutzerdefiniertes Windows- oder Linux-VM-Image](batch-sig-images.md), auf dem Sie Treiber, Software oder andere erforderliche Einstellungen für die Größe des virtuellen Computers installiert haben. 
 
-* Erstellen Sie ein Batch-[Anwendungspaket](batch-application-packages.md) aus einem gezippten Treiber oder Anwendungsinstallationsprogramm, und konfigurieren Sie Azure Batch für die Bereitstellung des Pakets auf Poolknoten und für die Installation nach der Erstellung der einzelnen Knoten. Wenn das Anwendungspaket beispielsweise ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die [Startaufgabe](batch-api-basics.md#start-task), mit der die App auf allen Poolknoten im Hintergrund installiert wird. Ziehen Sie die Verwendung eines Anwendungspakets und einer Poolstartaufgabe in Betracht, wenn Ihre Workload von einer bestimmten Treiberversion abhängig ist.
+* Erstellen Sie ein Batch-[Anwendungspaket](batch-application-packages.md) aus einem gezippten Treiber oder Anwendungsinstallationsprogramm, und konfigurieren Sie Azure Batch für die Bereitstellung des Pakets auf Poolknoten und für die Installation nach der Erstellung der einzelnen Knoten. Wenn das Anwendungspaket beispielsweise ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die [Startaufgabe](jobs-and-tasks.md#start-task), mit der die App auf allen Poolknoten im Hintergrund installiert wird. Ziehen Sie die Verwendung eines Anwendungspakets und einer Poolstartaufgabe in Betracht, wenn Ihre Workload von einer bestimmten Treiberversion abhängig ist.
 
   > [!NOTE] 
   > Die Startaufgabe muss mit erhöhten Rechten (Administrator) ausgeführt werden und die erfolgreiche Ausführung abwarten. Bei lang andauernden Aufgaben erhöht sich die zum Bereitstellen eines Batch-Pools benötigte Zeit.

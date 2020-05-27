@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: a28f1a63a4096c536f4c1f7f6c50d538821f236d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d20258e90c819c5d1f6b90be3303878c405e1f2d
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135119"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806527"
 ---
 Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vision SDK mit Python und unterstützt Sie beim Erstellen eines Bildklassifizierungsmodells. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Python-Anwendung. Falls Sie den Prozess zur Erstellung und Verwendung eines Klassifizierungsmodells _ohne_ Code durchlaufen möchten, sehen Sie sich stattdessen die [browserbasierte Anleitung](../../getting-started-build-a-classifier.md) an.
 
@@ -38,11 +38,12 @@ Erstellen Sie in Ihrem bevorzugten Projektverzeichnis eine neue Datei namens *sa
 
 Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Service-Projekt zu erstellen. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen ein. Ermitteln Sie außerdem Ihre Endpunkt-URL über die Seite „Einstellungen“ der Custom Vision-Website.
 
-Informationen zur Angabe weiterer Optionen bei der Erstellung Ihres Projekts finden Sie im Artikel zur Methode [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ). Informationen zur Projekterstellung finden Sie unter [Schnellstart: Erstellen einer Klassifizierung mit Custom Vision](../../getting-started-build-a-classifier.md).  
+Informationen zur Angabe weiterer Optionen bei der Erstellung Ihres Projekts finden Sie im Artikel zur Methode [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-). Informationen zur Projekterstellung finden Sie unter [Schnellstart: Erstellen einer Klassifizierung mit Custom Vision](../../getting-started-build-a-classifier.md).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
+from msrest.authentication import ApiKeyCredentials
 
 ENDPOINT = "<your API endpoint>"
 
@@ -53,7 +54,8 @@ prediction_resource_id = "<your prediction resource id>"
 
 publish_iteration_name = "classifyModel"
 
-trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
+credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
+trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
 
 # Create a new project
 print ("Creating project...")
@@ -127,9 +129,11 @@ Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, f�
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
+from msrest.authentication import ApiKeyCredentials
 
 # Now there is a trained endpoint that can be used to make a prediction
-predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
+prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
+predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 
 with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
     results = predictor.classify_image(

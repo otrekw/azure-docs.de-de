@@ -185,8 +185,8 @@
       href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
     - name: Feedback über UserVoice
       href: 'https://feedback.azure.com/forums/327234-data-lake'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-storage.html'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/data-lake-store/'
     - name: Preisrechner

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067679"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798675"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -53,7 +53,7 @@ Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den S
 
 ## <a name="use-built-in-workbooks"></a>Verwenden integrierter Arbeitsmappen<a name="dashboards"></a>
 
-Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Arbeitsmappen umfassen Azure AD-Daten, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle). Die Arbeitsmappen basieren auf Azure Monitor-Arbeitsmappen, um Ihnen erweiterte Anpassungsmöglichkeiten und Flexibilität beim Entwerfen Ihrer eigenen Arbeitsmappe zu bieten. Weitere Informationen finden Sie unter [Arbeitsmappen](../azure-monitor/app/usage-workbooks.md).
+Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Arbeitsmappen umfassen Azure AD-Daten, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle). Die Arbeitsmappen basieren auf Azure Monitor-Arbeitsmappen, um Ihnen erweiterte Anpassungsmöglichkeiten und Flexibilität beim Entwerfen Ihrer eigenen Arbeitsmappe zu bieten. Weitere Informationen finden Sie unter [Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
 
 1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
 2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 

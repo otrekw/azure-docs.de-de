@@ -3,14 +3,14 @@ title: 'Schnellstart: Erstellen einer PHP-App unter Linux'
 description: Führen Sie erste Schritte mit Linux-Apps in Azure App Service aus, indem Sie Ihre erste PHP-App in einem Linux-Container in App Service bereitstellen.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 05/25/2020
 ms.custom: mvc, cli-validatem seodec18
-ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f0307088d274c9afee8fb8816b41a6357b4ce9f2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046053"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848083"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Erstellen einer PHP-App in App Service unter Linux
 
@@ -73,7 +73,7 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 Browsen Sie zur Website, um Ihre neu erstellte App mit integriertem Image anzuzeigen. Ersetzen Sie _&lt;app name>_ durch Ihren App-Namen.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Ihre neue App sollte nun wie folgt aussehen:
@@ -82,37 +82,35 @@ Ihre neue App sollte nun wie folgt aussehen:
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
-Counting objects: 2, done.
+<pre>
+Counting objects: 26, done.
 Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (26/26), 4.95 KiB | 0 bytes/s, done.
+Total 26 (delta 9), reused 0 (delta 0)
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '25f18051e9'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Handling Basic Web Site deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
-remote: Copying file: '.gitignore'
-remote: Copying file: 'LICENSE'
-remote: Copying file: 'README.md'
-remote: Copying file: 'index.php'
-remote: Ignoring: .git
-remote: Finished successfully.
-remote: Running post deployment command(s)...
+remote: Preparing deployment for commit id 'df425ea6ef'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+remote: .
+remote: .
+remote: .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
-   cc39b1e..25f1805  master -> master
-```
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/.../log'
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+ * [new branch]      master -> master
+</pre>
 
 ## <a name="browse-to-the-app"></a>Navigieren zur App
 
 Navigieren Sie in Ihrem Webbrowser zu der bereitgestellten Anwendung.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Der PHP-Beispielcode wird in App Service unter Linux mit integriertem Image ausgeführt.

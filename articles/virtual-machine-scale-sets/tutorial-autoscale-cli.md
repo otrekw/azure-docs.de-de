@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ba34976192d7e840f6077b13fd9aa165ed22b900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f51c4e50c3c5499c73e18ce40e55de6aeb54472
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195875"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700893"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit der Azure CLI
 
@@ -216,8 +216,3 @@ In diesem Tutorial wurde beschrieben, wie Sie mit der Azure CLI eine Skalierungs
 > * Erstellen und Verwenden von Regeln für die automatische Skalierung
 > * Durchführen eines Belastungstests für VM-Instanzen und Auslösen von Regeln für die automatische Skalierung
 > * Zurückfahren der automatischen Skalierung bei einer Reduzierung des Bedarfs
-
-Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure CLI-Beispielskripts:
-
-> [!div class="nextstepaction"]
-> [Azure CLI 2.0-Beispiele für VM-Skalierungsgruppen](cli-samples.md)

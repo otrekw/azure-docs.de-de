@@ -3,12 +3,12 @@ title: Häufige Diagnoseszenarien in Azure Service Fabric
 description: Erfahren Sie mehr über die Problembehandlung für häufig auftretende Überwachungs- und Diagnoseszenarien in Azure Service Fabric-Anwendungen.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906950"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697685"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
@@ -133,7 +133,7 @@ Nutzen Sie diese Links, um die vollständige Liste der Leistungsindikatoren für
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Suchen von häufigen Codepaket-Aktivierungsfehlern](./service-fabric-diagnostics-code-package-errors.md)
-* [Richten Sie Warnungen in AI ein](../azure-monitor/app/alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](/azure/azure-monitor/platform/alerts-log), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
 * Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
 * Für lokale Cluster bietet Azure Monitor-Protokolle ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Azure Monitor-Protokolle gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Azure Monitor-Protokolle über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).

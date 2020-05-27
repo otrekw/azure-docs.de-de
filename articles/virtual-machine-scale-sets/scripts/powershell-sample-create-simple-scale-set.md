@@ -9,12 +9,12 @@ ms.subservice: powershell
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6da415d3fc9e408a0676e2bd01cc725ffb262ea7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3d49212e6d35e2a348a7e31ff7d2f0ad49eabfc2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197537"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699500"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Erstellen einer einfachen VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016. Nach dem Ausführen des Skripts können Sie per RDP auf die VM-Instanzen zugreifen.
@@ -45,5 +45,3 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
-
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

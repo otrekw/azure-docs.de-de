@@ -1,14 +1,14 @@
 ---
 title: 'Azure Batch: Taskabschlussereignis'
 description: Referenz zum Batch-Ereignis zum Abschluss eines Tasks. Dieses Ereignis wird unabhängig vom Exitcode beim Abschluss eines Tasks einmal ausgegeben.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 9e11eac04009def2bce4476ba2d77c798f25ca15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e3959a34b96ef4cebdbedadf736418d08cb2746
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116501"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726365"
 ---
 # <a name="task-complete-event"></a>Ereignis zum Abschluss eines Tasks
 
