@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309782"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639623"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Benutzerspezifisches Aktivieren von Azure Multi-Factor Authentication zum Schutz von Anmeldeereignissen
 
@@ -185,4 +185,4 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Wie Sie zusätzliche Einstellungen für Azure Multi-Factor Authentication wie vertrauenswürdige IP-Adressen, benutzerdefinierte Sprachnachrichten und Betrugswarnungen konfigurieren, erfahren Sie unter [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md). Informationen zum Verwalten von Benutzereinstellungen für die Azure Multi-Factor Authentication finden Sie unter [Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 
-Um zu verstehen, warum ein Benutzer zur Ausführung von MFA aufgefordert bzw. nicht aufgefordert wurde, finden Sie unter [Azure Multi-Factor Authentication-Berichte](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Um zu verstehen, warum ein Benutzer zur Ausführung von MFA aufgefordert bzw. nicht aufgefordert wurde, finden Sie unter [Azure Multi-Factor Authentication-Berichte](howto-mfa-reporting.md).

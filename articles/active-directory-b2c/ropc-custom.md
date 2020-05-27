@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529158"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638580"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -246,9 +246,9 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, die die User J
 
 Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihre Richtlinie zu debuggen. Erstellen Sie einen Aufruf wie das folgende Beispiel, und verwenden Sie die folgenden Informationen als Hauptteil der POST-Anforderung:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
+- Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
 | Key | value |
@@ -268,8 +268,8 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 Die tatsächliche POST-Anforderung sieht wie im folgenden Beispiel aus:
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,9 +291,9 @@ Eine erfolgreiche Antwort mit Offlinezugriff ähnelt dem folgenden Beispiel:
 
 Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die Informationen aus der folgenden Tabelle als Hauptteil der Anforderung:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
+- Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
 | Key | value |
