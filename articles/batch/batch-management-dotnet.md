@@ -1,15 +1,15 @@
 ---
 title: Verwalten von Kontoressourcen mit der Batch Management .NET-Bibliothek
 description: Erstellen, löschen und ändern Sie Azure-Batch-Kontoressourcen mit der Batch Management .NET-Bibliothek.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 05bc0c8a377517c4ab883e08a5a4848eb0042dcb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201636"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726535"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Verwalten von Batch-Konten und -Kontingenten mit der Batch Management-Clientbibliothek für .NET
 

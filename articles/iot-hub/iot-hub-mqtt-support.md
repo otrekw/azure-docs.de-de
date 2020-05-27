@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732315"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726110"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -121,7 +121,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
   Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT-Hub-Sicherheitstoken](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) im Abschnitt zu Geräten.
 
-  Beim Testen können Sie auch die plattformübergreifenden [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder den CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
+  Beim Testen können Sie auch die plattformübergreifenden [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) oder den CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
 
 ### <a name="for-azure-iot-tools"></a>Für Azure IoT Tools
 

@@ -3,12 +3,12 @@ title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: Häufig gestellte Fragen in Application Insights
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536861"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701940"
 ---
 # <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
@@ -16,7 +16,7 @@ ms.locfileid: "81536861"
 Richten Sie einen [Webtest zur Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)ein.
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-Mail, wenn meine Website überlastet ist
-Richten Sie eine [Warnung](../../azure-monitor/app/alerts.md) zur **Serverantwortzeit**ein. Geeignet ist in der Regel ein Schwellenwert zwischen 1 und 2 Sekunden.
+Richten Sie eine [Warnung](../../azure-monitor/platform/alerts-log.md) zur **Serverantwortzeit**ein. Geeignet ist in der Regel ein Schwellenwert zwischen 1 und 2 Sekunden.
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Wenn Sie eine Warnung für **Serverausnahmen**einrichten möchten, müssen Sie m
 
 ### <a name="email-on-exceptions"></a>E-Mail für Ausnahmen
 1. [Einrichten der Ausnahmeüberwachung](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Einrichten einer Warnung](../../azure-monitor/app/alerts.md) für die Metrik der Anzahl von Ausnahmen
+2. [Einrichten einer Warnung](../../azure-monitor/platform/alerts-log.md) für die Metrik der Anzahl von Ausnahmen
 
 ### <a name="email-on-an-event-in-my-app"></a>E-Mail über ein Ereignis in meiner App
-Angenommen, Sie möchten eine E-Mail erhalten, wenn ein bestimmtes Ereignis eintritt. Diese Funktion ist in Application Insights nicht in dieser Form verfügbar, aber es kann [eine Warnung gesendet werden, wenn eine Metrik einen Schwellenwert überschreitet](../../azure-monitor/app/alerts.md).
+Angenommen, Sie möchten eine E-Mail erhalten, wenn ein bestimmtes Ereignis eintritt. Diese Funktion ist in Application Insights nicht in dieser Form verfügbar, aber es kann [eine Warnung gesendet werden, wenn eine Metrik einen Schwellenwert überschreitet](../../azure-monitor/platform/alerts-log.md).
 
 Warnungen können für [benutzerdefinierte Metriken](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), jedoch nicht für benutzerdefinierte Ereignisse eingerichtet werden. Mithilfe von Code können Sie eine Metrik erhöhen, wenn das Ereignis eintritt:
 
@@ -65,11 +65,11 @@ Zu berücksichtigende Punkte:
 * Da sowohl für den Zustand "Warnung" als auch für den Zustand "Fehlerfrei" E-Mails gesendet werden, sollten Sie das einmalige Ereignis als Vorfall mit zwei Zuständen betrachten. Beispiel: Statt eines Ereignisses mit dem Status "Abgeschlossen" verwenden Sie den Zustand "In Bearbeitung" und erhalten E-Mails am Anfang und Ende des betreffenden Auftrags.
 
 ### <a name="set-up-alerts-automatically"></a>Automatisches Einrichten von Warnungen
-[Erstellen neuer Warnungen mithilfe von PowerShell](../../azure-monitor/app/alerts.md#automation)
+[Erstellen neuer Warnungen mithilfe von PowerShell](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Verwalten von Application Insights mithilfe von PowerShell
 * [Erstellen neuer Ressourcen](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Erstellen neuer Warnungen](../../azure-monitor/app/alerts.md#automation)
+* [Erstellen neuer Warnungen](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Trennen der Telemetriedaten von verschiedenen Versionen
 

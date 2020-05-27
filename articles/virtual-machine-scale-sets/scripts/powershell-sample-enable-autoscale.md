@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.custom: avverma
-ms.openlocfilehash: 4e9c050c82a08572042f75e7979fc338b8133d0f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 759ebb58afcceade8d52305c6a6a41a782ed4df6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125059"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701998"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016 und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.
@@ -49,4 +49,3 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
 
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

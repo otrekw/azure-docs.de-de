@@ -3,18 +3,18 @@ title: Einrichten von Warnungen in Application Insights mithilfe von PowerShell 
 description: Automatisieren Sie die Konfiguration von Application Insights so, dass Sie bei Metrikänderungen E-Mails erhalten.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669844"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701837"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Sie können die Konfiguration von [Warnungen](../../azure-monitor/app/alerts.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatisieren.
+Sie können die Konfiguration von [Warnungen](../../azure-monitor/platform/alerts-log.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatisieren.
 
 Darüber hinaus können Sie [Webhooks zum Automatisieren Ihrer Reaktion auf eine Warnung festlegen](../../azure-monitor/platform/alerts-webhooks.md).
 

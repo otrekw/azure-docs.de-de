@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 3edd29703f74c7671537fbcf08159dd830e5453c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411496"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726225"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -59,7 +59,7 @@ Sie können die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](http
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Weitere Informationen zu Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräteerstellung und die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
+Weitere Informationen zu Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräteerstellung und die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
 
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
@@ -109,7 +109,7 @@ Sie können die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](http
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Weitere Informationen zu den Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräte- und Zertifikaterstellung sowie die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
+Weitere Informationen zu den Befehlen für die Azure-Befehlszeilenschnittstelle für die Geräte- und Zertifikaterstellung sowie die Verwaltung von über-und untergeordneten Geräten finden Sie in der Referenz zu den [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
 
@@ -152,7 +152,7 @@ Sie können die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](http
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Weitere Informationen finden Sie in der Azure-Befehlszeilenschnittstellen-Referenz zu [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
+Weitere Informationen finden Sie in der Azure-Befehlszeilenschnittstellen-Referenz zu [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest)-Befehlen.
 
 Als Nächstes müssen Sie [die Verbindungszeichenfolge abrufen und ändern](#retrieve-and-modify-connection-string), damit Ihr Gerät weiß, dass es eine Verbindung über sein Gateway herstellen soll.
 

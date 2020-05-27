@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: fb86b1c5ec3be5a423dc2abd295aa8beb8f23f47
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 56db3562efdc0406e745fd38b73df0a473d0ecd5
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265094"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724597"
 ---
 # <a name="common-sas-uri-issues-and-fixes"></a>Häufige SAS-URI-Probleme und ihre Behebung
-
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal in das Partner Center. Befolgen Sie für die Verwaltung Ihrer Angebote bis zur erfolgten Migration die Anweisungen unter [Häufige SAS-URI-Probleme und ihre Behebung](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues) für das Cloud-Partnerportal.
 
 Unten sind einige häufige Probleme im Zusammenhang mit der Verwendung von Shared Access Signatures sowie Lösungsvorschläge aufgeführt. Shared Access Signatures dienen zur Identifizierung und gemeinsamen Verwendung der hochgeladenen VHDs für Ihre Lösung.
 

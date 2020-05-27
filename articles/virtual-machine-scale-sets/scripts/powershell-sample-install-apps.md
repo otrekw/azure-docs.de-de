@@ -9,12 +9,12 @@ ms.subservice: powershell
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ba1410034abcfb95923fd2ccb3fdcbc9939ec4b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 63487cc09ab6635967dcee79e7c0ab0041f33dde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195865"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701981"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>Installieren von Anwendungen in einer VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016 und installiert eine einfache Webanwendung unter Verwendung der benutzerdefinierten Skripterweiterung. Nach dem Ausführen des Skripts können Sie über einen Webbrowser auf die Web-App zugreifen.
@@ -48,5 +48,3 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
-
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

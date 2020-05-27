@@ -2,15 +2,15 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c07f587b8b200a6f9d686c77e5ffefa399c6e179
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199925"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714796"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -98,7 +98,7 @@ Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie dasjenige aus, d
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464758"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701893"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -73,5 +73,5 @@ Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Richten Sie Warnungen in AI ein](../azure-monitor/app/alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](/azure/azure-monitor/platform/alerts-log), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an Application Insights gesendeten Telemetriedaten durch, um Sie vor potenziellen Leistungsproblemen zu warnen.

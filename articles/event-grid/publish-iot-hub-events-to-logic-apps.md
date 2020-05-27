@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201736"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722557"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps
 
@@ -240,7 +240,7 @@ Testen Sie Ihre Logik-App, indem Sie ein neues Gerät erstellen, um eine E-Mail-
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-Anstelle des Azure-Portals können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity).
+Anstelle des Azure-Portals können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

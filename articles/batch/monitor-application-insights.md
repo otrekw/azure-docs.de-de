@@ -1,14 +1,14 @@
 ---
 title: Überwachen von Azure Batch mit Azure Application Insights
 description: Erfahren Sie, wie Sie eine Azure Batch-.NET-Anwendung mithilfe der Azure Application Insights-Bibliothek instrumentieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115464"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723611"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 

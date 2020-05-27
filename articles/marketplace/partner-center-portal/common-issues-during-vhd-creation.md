@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: a47bece4df7263dbc29ec19510c3ea422bb3f4cf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265102"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724716"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Allgemeine Probleme bei der VHD-Erstellung
-
-> [!NOTE]
-> Wir verlagern die Verwaltung Ihrer Azure-VM-Angebote vom Cloud-Partnerportal ins Partner Center. Befolgen Sie bis zum Abschluss der Migration Ihrer Angebote die Anweisungen zur Angebotsverwaltung im Cloud-Partnerportal unter [Allgemeine Probleme bei der VHD-Erstellung (FAQ)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues).
 
 In diesem Artikel mit häufig gestellten Fragen (FAQs) erhalten Sie Informationen zu Problemen, die auftreten können, wenn Sie eine virtuelle Festplatte (VHD) für Ihr Angebot für virtuelle Azure-Computer erstellen.
 

@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954252"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726195"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -334,7 +334,7 @@ Sie können die Ergebnisse der ausgeführten gespeicherten Prozedur in Ihrem Cos
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-Anstelle des [Azure-Portals](https://portal.azure.com) können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
+Anstelle des [Azure-Portals](https://portal.azure.com) können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

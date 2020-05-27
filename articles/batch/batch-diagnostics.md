@@ -1,15 +1,15 @@
 ---
 title: Metriken, Warnungen und Diagnoseprotokolle
 description: Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoressourcen wie Pools und Tasks auf, und analysieren Sie sie.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a33f71cd185a327bfe6852b9acd7d7317b94c2c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117300"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726739"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
