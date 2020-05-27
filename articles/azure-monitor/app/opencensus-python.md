@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537107"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815722"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -254,13 +254,13 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie modifizieren können, bevor 
 
 Standardmäßig sendet das Tool zum Exportieren von Metriken eine Gruppe von Standardmetriken an Azure Monitor. Sie können dies deaktivieren, indem Sie das Flag `enable_standard_metrics` im Konstruktor des Tools zum Exportieren von Metriken auf `False` festlegen.
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 Es folgt eine Liste von Standardmetriken, die derzeit gesendet werden:
 
 - Verfügbarer Arbeitsspeicher (Bytes)
@@ -338,8 +338,8 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie modifizieren können, bevor 
 
 4. Das Exportprogramm sendet Protokolldaten an Azure Monitor. Sie finden die Daten unter `traces`. 
 
-> [!NOTE]
-> `traces` in diesem Kontext ist nicht identisch mit `Tracing`. `traces` bezieht sich auf den Typ der Telemetrie, der bei der Verwendung von `AzureLogHandler` in Azure Monitor angezeigt wird. `Tracing` bezieht sich auf ein Konzept in OpenCensus und betrifft die [verteilte Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+    > [!NOTE]
+    > `traces` in diesem Kontext ist nicht identisch mit `Tracing`. `traces` bezieht sich auf den Typ der Telemetrie, der bei der Verwendung von `AzureLogHandler` in Azure Monitor angezeigt wird. `Tracing` bezieht sich auf ein Konzept in OpenCensus und betrifft die [verteilte Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Zum Formatieren der Protokollmeldungen können Sie `formatters` in der integrierten Python-[Protokollierungs-API](https://docs.python.org/3/library/logging.html#formatter-objects) verwenden.
 
@@ -371,8 +371,8 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie modifizieren können, bevor 
     ```
 
 6. Sie können Ihren Protokollnachrichten auch benutzerdefinierte Eigenschaften im Schlüsselwortargument *extra* hinzufügen, indem Sie das Feld „custom_dimensions“ verwenden. Diese werden als Schlüssel-Wert-Paare in `customDimensions` in Azure Monitor angezeigt.
-> [!NOTE]
-> Damit dieses Feature funktioniert, müssen Sie im Feld „custom_dimensions“ ein Wörterbuch übergeben. Wenn Sie Argumente eines anderen Typs übergeben, werden diese von der Protokollierung ignoriert.
+    > [!NOTE]
+    > Damit dieses Feature funktioniert, müssen Sie im Feld „custom_dimensions“ ein Wörterbuch übergeben. Wenn Sie Argumente eines anderen Typs übergeben, werden diese von der Protokollierung ignoriert.
 
     ```python
     import logging
@@ -395,25 +395,25 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie modifizieren können, bevor 
 
 Telemetriedaten vom Typ `exception` werden von OpenCensus Python nicht automatisch nachverfolgt und gesendet. Sie werden per `AzureLogHandler` unter Verwendung von Ausnahmen über die Python-Protokollierungsbibliothek gesendet. Genau wie bei der normalen Protokollierung können benutzerdefinierte Eigenschaften hinzugefügt werden.
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 Da Ausnahmen explizit protokolliert werden müssen, kann der Benutzer entscheiden, wie nicht behandelte Ausnahmen protokolliert werden sollen. Diese Entscheidung wird durch OpenCensus nicht eingeschränkt, solange eine explizite Protokollierung von Ausnahmetelemetriedaten erfolgt.
 
 #### <a name="sampling"></a>Stichproben
@@ -461,4 +461,4 @@ Ausführlichere Informationen zur Verwendung von Abfragen und Protokollen finden
 
 * [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md): Erstellen Sie Tests, um sicherzustellen, dass Ihre Website im Web sichtbar ist.
 * [Intelligente Diagnose](../../azure-monitor/app/proactive-diagnostics.md): Diese Tests werden automatisch ausgeführt, sodass Sie keinerlei Einrichtungsschritte ausführen müssen. Sie werden darüber benachrichtigt, ob für Ihre App eine ungewöhnlich hohe Zahl von Anforderungen mit Fehlern vorliegt.
-* [Metrikwarnungen](../../azure-monitor/app/alerts.md): Richten Sie Warnungen ein, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.
+* [Metrikwarnungen](../../azure-monitor/platform/alerts-log.md): Richten Sie Warnungen ein, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.

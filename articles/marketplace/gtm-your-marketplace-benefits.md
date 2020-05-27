@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190332"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800512"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -36,7 +36,7 @@ Die Mindestanforderung für die Veröffentlichung in den Storefronts ist eine MP
 
 Sie erhalten Unterstützung beim Verständnis der für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig lesen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) können.
 
-Ausführliche Beschreibungen aller Programmvorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Ausführliche Beschreibungen aller Programmvorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
 Die Schritte für den Einstieg sind einfach:
 
@@ -56,7 +56,7 @@ Die Schritte für den Einstieg sind einfach:
 2. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
 
 >[!Note]
->Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. <br> <br> Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://partner.microsoft.com/support/v2/?stage=1) ein Supportticket erstellen.
+>Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. <br> <br> Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote auf dem Markt. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.
 
@@ -68,7 +68,7 @@ In der folgenden Tabelle sind die Berechtigungsvoraussetzungen für List- und Tr
 
 ![Vorteile bei der Markteinführung](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-Vorteile für Transact-Partner
 
@@ -89,7 +89,7 @@ Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten E
 
 \* Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2020 abgeschlossen sein.
 
-Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
 Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dynamics-Angeboten, die bei Microsoft AppSource veröffentlicht werden, über [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) weitere Programmbereiche zur Verfügung. Diese umfassen Support bei Technik, Marketing und Vertrieb, der auf die Anforderungen von Geschäftsanwendungspartnern spezialisiert ist.
 
@@ -97,7 +97,7 @@ Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dyn
 
 ### <a name="publisher-agreement"></a>Herausgebervereinbarung
 
-Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Marketplace-Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
+Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) abgedeckt und fallen unter die Ergänzung zum kommerziellen Prämien-Programm.
 
 ### <a name="cancellation-policy"></a>Kündigung
 
@@ -122,6 +122,6 @@ Wenn Sie Ihr Angebot in [Partner Center](https://partner.microsoft.com/dashboard
 
 Sehen Sie sich [die für Sie verfügbaren Self-Service-Ressourcen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) an.
 
-Registrieren Sie sich für das [Communityforum zu Microsoft AppSource und Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222), und informieren Sie sich über relevante Themen, oder nehmen Sie an der Diskussion teil.
+Registrieren Sie sich für das [Communityforum zu Microsoft AppSource und Azure Marketplace](https://aka.ms/MarketplaceCommunity), und informieren Sie sich über relevante Themen, oder nehmen Sie an der Diskussion teil.
 
 ---

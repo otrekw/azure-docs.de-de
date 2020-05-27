@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660869"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797442"
 ---
 # <a name="metric-chart-examples"></a>Beispiele für Metrikdiagramme 
 
@@ -52,5 +52,5 @@ Bei der Metrikauswahl geben Sie Ihr Speicherkonto und die Metrik **Transaktionen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu Azure Monitor-[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
+* Informationen zu Azure Monitor-[Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
 * Weitere Informationen zum [Metrik-Explorer](metrics-charts.md)

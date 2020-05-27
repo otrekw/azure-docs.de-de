@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837327"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800930"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kundenleads aus Ihrem Angebot im kommerziellen Marketplace
 
@@ -96,7 +96,7 @@ Die Informationen des Kunden werden über mehrere Felder gesendet. Im folgenden 
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?
 
-Führen Sie die Schritte im Abschnitt [Verbinden mit Ihrem CRM-System](#connect-to-your-crm-system) aus, oder übermitteln Sie ein Supportticket über die [Partner Center-Hilfe](https://partner.microsoft.com/support/v2/?stage=1). Klicken Sie dann auf **Offer creation** (Angebotserstellung) > **Your type of offer** (Ihr Angebotstyp) > **Lead management configuration** (Konfiguration der Leadverwaltung).
+Führen Sie die Schritte im Abschnitt [Verbinden mit Ihrem CRM-System](#connect-to-your-crm-system) aus, oder übermitteln Sie ein Supportticket über die [Partner Center-Hilfe](https://aka.ms/marketplacepublishersupport). Klicken Sie dann auf **Offer creation** (Angebotserstellung) > **Your type of offer** (Ihr Angebotstyp) > **Lead management configuration** (Konfiguration der Leadverwaltung).
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Muss ich ein Leadziel konfigurieren, um ein Angebot im kommerziellen Marketplace zu veröffentlichen?
 
@@ -133,7 +133,7 @@ Azure Blob Storage wird nicht mehr als Leadziel unterstützt. Alle Kundenleads, 
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ich habe eine E-Mail vom Marketplace erhalten. Warum kann ich den Lead in meinem CRM-System nicht finden?
 
-Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine privaten personenbezogenen Informationen aus der Domäne „.edu“ weiter. Senden Sie ein Supportticket über die [Partner Center-Hilfe](https://partner.microsoft.com/support/v2/?stage=1).
+Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine privaten personenbezogenen Informationen aus der Domäne „.edu“ weiter. Senden Sie ein Supportticket über die [Partner Center-Hilfe](https://aka.ms/marketplacepublishersupport).
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ich habe eine Azure-Tabelle als Leadziel konfiguriert. Wie kann ich mir die Leads anzeigen lassen?
 

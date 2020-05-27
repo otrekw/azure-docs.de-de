@@ -324,13 +324,13 @@
               href: ./partner-center-portal/create-azure-container-technical-assets.md
             - name: Erstellen eines Azure-Containerangebots
               href: ./partner-center-portal/create-azure-container-offer.md
-        - name: Angebot für virtuelle Computer
+        - name: VM-Angebot
           items:
             - name: Erstellen eines Angebots für virtuelle Azure-Computer
               href: ./partner-center-portal/azure-vm-create-offer.md
-            - name: Erstellen technischer Ressourcen für virtuelle Azure-Computer
+            - name: Erstellen einer technischen Azure-VM-Ressource
               items:
-                - name: Erstellen technischer Ressourcen für virtuelle Azure-Computer
+                - name: Erstellen einer technischen Azure-VM-Ressource
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Häufig gestellte Fragen zu technischen Ressourcen für virtuelle Azure-Computer
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md

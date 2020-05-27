@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743528"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800398"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Migrieren Ihres Kontos vom Cloud-Partnerportal zu Partner Center
 
@@ -85,7 +85,7 @@ Spezifische Informationen dazu, was Sie bis zum **15. Oktober 2019** für Ihre D
 
 Greifen Sie auf der Seite zu [Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0) auf Blogs, Webinare, Videos, Ereignisse und mehr zu, um Hilfe von Experten oder anderen Mitgliedern der Community zu erhalten.
 
-Wenn Sie Hilfe bei der Veröffentlichung, Zertifizierung oder Verwaltung Ihrer Marketplace-Angebote benötigen, [senden Sie ein Supportticket](https://partner.microsoft.com/support/v2/?stage=1).
+Wenn Sie Hilfe bei der Veröffentlichung, Zertifizierung oder Verwaltung Ihrer Marketplace-Angebote benötigen, [senden Sie ein Supportticket](https://aka.ms/MarketplacePublisherSupport).
 
 ## <a name="next-step"></a>Nächster Schritt
 

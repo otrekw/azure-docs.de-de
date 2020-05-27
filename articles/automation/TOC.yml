@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: Konfigurieren der Authentifizierung mit Amazon Web Services
           href: automation-config-aws-account.md
+        - name: Konfigurieren der Authentifizierung mit Azure AD
+          href: automation-use-azure-ad.md
         - name: Verwalten eines ausführenden Automation-Kontos
           href: manage-runas-account.md
         - name: Verwalten von Berechtigungen und Sicherheit für Rollen

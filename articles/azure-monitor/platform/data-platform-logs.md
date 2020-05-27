@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0b288bf6d987b9db682c8d1439879cf6b499f213
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457330"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799972"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Pro
 |  |  |
 |:---|:---|
 | Analysieren | Verwenden von [Log Analytics](../log-query/get-started-portal.md) im Azure-Portal zum Schreiben von [Protokollabfragen](../log-query/log-query-overview.md) und interaktives Analysieren von Protokolldaten mithilfe der leistungsstarken Daten-Explorer-Analyse-Engine.<br>Verwenden der [Application Insights Analytics-Konsole](../app/analytics.md) im Azure-Portal zum Schreiben von Protokollabfragen und interaktives Analysieren von Protokolldaten aus Application Insights. |
-| Visualisieren | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](../app/usage-workbooks.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](grafana-plugin.md), um dessen Dashboards zu nutzen und sie mit anderen Quellen zu kombinieren.|
+| Visualisieren | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](../platform/workbooks-overview.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](grafana-plugin.md), um dessen Dashboards zu nutzen und sie mit anderen Quellen zu kombinieren.|
 | Warnung | Konfigurieren einer [Protokollwarnungsregel](alerts-log.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen.<br>Konfigurieren einer [Metrikwarnungsregel](alerts-metric-logs.md) für bestimmte Protokolldaten, die als Metriken extrahiert werden. |
 | Gerätehandle | Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine benutzerdefinierte Anwendung mit der [REST-API](https://dev.loganalytics.io/). |
 | Exportieren | Erstellen eines Workflows zum Abrufen von Protokolldaten und kopieren der Daten an einen externen Speicherort mithilfe von [Logic Apps](~/articles/logic-apps/index.yml). |

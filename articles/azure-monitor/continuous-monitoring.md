@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667192"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797601"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -74,7 +74,7 @@ Ein kritischer Aspekt der Überwachung ist die proaktive Benachrichtigung von Ad
 Die Sicherstellung, dass Entwicklung und Betrieb Zugriff auf dieselbe Telemetrie und dieselben Tools haben, ermöglicht es ihnen, Muster in der gesamten Umgebung anzuzeigen und die mittlere Zeit bis zur Erkennung (MTTD) und die mittlere Zeit bis zur Wiederherstellung (MTTR) zu minimieren.
 
 - Bereiten Sie [benutzerdefinierte Dashboards](../azure-monitor/learn/tutorial-app-dashboards.md) auf der Grundlage gemeinsamer Metriken und Protokolle für die verschiedenen Rollen in Ihrem Unternehmen vor. Dashboards können Daten aus allen Azure-Ressourcen kombinieren.
-- Bereiten Sie [Arbeitsmappen](../azure-monitor/app/usage-workbooks.md) vor, um den Wissensaustausch zwischen Entwicklung und Betrieb sicherzustellen. Diese können als dynamische Berichte mit Metrikdiagrammen und Protokollabfragen oder auch als Leitfäden zur Problembehandlung von Entwicklern erstellt werden, die dem Kundensupport oder dem operativen Betrieb bei der Lösung grundlegender Probleme helfen.
+- Bereiten Sie [Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) vor, um den Wissensaustausch zwischen Entwicklung und Betrieb sicherzustellen. Diese können als dynamische Berichte mit Metrikdiagrammen und Protokollabfragen oder auch als Leitfäden zur Problembehandlung von Entwicklern erstellt werden, die dem Kundensupport oder dem operativen Betrieb bei der Lösung grundlegender Probleme helfen.
 
 ## <a name="continuously-optimize"></a>Kontinuierliche Optimierung
  Die Überwachung ist einer der grundlegenden Aspekte der beliebten Erstellen-Messen-Lernen-Philosophie, die empfiehlt, Ihre KPIs und Benutzerverhaltensmetriken kontinuierlich zu verfolgen und dann durch Planungsiterationen zu optimieren. Azure Monitor hilft Ihnen, Metriken und Protokolle zu sammeln, die für Ihr Unternehmen relevant sind, und bei Bedarf neue Datenpunkte bei der nächsten Bereitstellung hinzuzufügen.

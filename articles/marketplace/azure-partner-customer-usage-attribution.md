@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4dd42c6eabf02bc7a4eb956b9cd5ab2aec28176b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186202"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800793"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -37,10 +37,10 @@ Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden
 
 ## <a name="create-guids"></a>Erstellen von GUIDs
 
-Eine GUID ist eine eindeutige Verweis-ID mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
+Eine GUID ist eine eindeutige Verweis-ID mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://aka.ms/StoragePartners) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
 
 > [!NOTE]
-> Es wird dringend empfohlen, das [GUID-Generatorformular von Azure Storage](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) zu verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
+> Es wird dringend empfohlen, das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) zu verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
 
 Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll.
 
@@ -61,7 +61,7 @@ Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die 
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
 
-1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://aka.ms/JoinMarketplace).
 
    * Partner müssen [über ein Profil im Partner Center verfügen](https://docs.microsoft.com/azure/marketplace/become-publisher). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
    * Partner können mehrere GUIDs registrieren.
@@ -286,7 +286,7 @@ Sie können sich von einem technischen Berater eines Microsoft-Partners zudem zu
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>So fragen Sie technische Beratung an
 
-1. Besuchen Sie [Partner Technical Services](https://partner.microsoft.com/training/partner-technical-services).
+1. Besuchen Sie [Partner Technical Services](https://aka.ms/TechnicalJourney).
 1. Klicken Sie auf „Cloudinfrastruktur und -management“. Daraufhin wird eine neue Seite geöffnet, auf der der technische Workflow dargestellt wird.
 1. Klicken Sie unter „Bereitstellungsdienste“ auf „Anforderung übermitteln“.
 1. Melden Sie sich mit Ihrem verwalteten Dienstkonto (MPN-Konto) oder Ihrem Azure Active Directory-Konto (Partnerdashboard-Konto) an. Je nach Konto wird ein entsprechendes Anforderungsformular geöffnet:
@@ -295,7 +295,7 @@ Sie können sich von einem technischen Berater eines Microsoft-Partners zudem zu
     * Geben Sie einen Titel und eine Beschreibung (so detailliert wie möglich) für das Problem ein.
 1. Klicken Sie auf „Senden“.
 
-Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von technischen Presales- und Bereitstellungsdiensten](https://support.microsoft.com/help/3121537/using-technical-presales-and-deployment-services#request%20a%20technical%20consultation).
+Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von technischen Presales- und Bereitstellungsdiensten](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>Nächste Schritte
 

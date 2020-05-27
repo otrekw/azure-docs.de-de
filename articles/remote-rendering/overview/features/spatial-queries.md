@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678996"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758842"
 ---
 # <a name="spatial-queries"></a>Räumliche Abfragen
 
@@ -32,7 +32,7 @@ Räumliche Abfragen werden durch die [Havok](https://www.havok.com/products/havo
 
 Bei einem *Raycast* handelt es sich um eine räumliche Abfrage, bei der die Runtime überprüft, welche Objekte von einem Strahl geschnitten werden, der an einer angegebenen Position beginnt und in eine bestimmte Richtung weist. Als Optimierung wird auch eine maximale Strahlendistanz angegeben, damit nicht nach Objekten gesucht wird, die zu weit entfernt sind.
 
-````c#
+```cs
 async void CastRay(AzureSession session)
 {
     // trace a line from the origin into the +z direction, over 10 units of distance.
@@ -45,14 +45,46 @@ async void CastRay(AzureSession session)
 
     if (hits.Length > 0)
     {
-        var hitObject = hits[0].HitEntity;
+        var hitObject = hits[0].HitObject;
         var hitPosition = hits[0].HitPosition;
         var hitNormal = hits[0].HitNormal;
 
         // do something with the hit information
     }
 }
-````
+```
+
+```cpp
+void CastRay(ApiHandle<AzureSession> session)
+{
+    // trace a line from the origin into the +z direction, over 10 units of distance.
+    RayCast rayCast;
+    rayCast.StartPos = { 0, 0, 0 };
+    rayCast.EndPos = { 0, 0, 1 };
+    rayCast.MaxHits = 10;
+
+    // only return the closest hit
+    rayCast.HitCollection = HitCollectionPolicy::ClosestHit;
+
+    ApiHandle<RaycastQueryAsync> castQuery = *session->Actions()->RayCastQueryAsync(rayCast);
+
+    castQuery->Completed([](const ApiHandle<RaycastQueryAsync>& async)
+    {
+        std::vector<RayCastHit> hits = *async->Result();
+
+        if (hits.size() > 0)
+        {
+            auto hitObject = hits[0].HitObject;
+            auto hitPosition = hits[0].HitPosition;
+            auto hitNormal = hits[0].HitNormal;
+
+            // do something with the hit information
+        }
+    });
+
+}
+```
+
 
 Es gibt drei Treffererfassungsmodi:
 
@@ -63,7 +95,7 @@ Es gibt drei Treffererfassungsmodi:
 Mit der Komponente [HierarchicalStateOverrideComponent](override-hierarchical-state.md) können Sie Objekte selektiv aus der Berücksichtigung in Raycasts ausschließen.
 
 <!--
-The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
+The CollisionMask allows the query to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has bit L set.
 It is useful in case you want to ignore objects, for instance when setting an object transparent, and trying to select another object behind it.
 TODO : Add an API to make that possible.
 -->

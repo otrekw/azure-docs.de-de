@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789843"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798590"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Leadverwaltung für kommerziellen Marketplace
 
@@ -86,7 +86,7 @@ Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleic
 
 **Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?** 
 
-Eine Dokumentation finden Sie unter [Generieren von Kundenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md), oder senden Sie ein Supportticket unter [Hilfe und Support](https://partner.microsoft.com/support/v2/?stage=1). Wählen Sie Angebotstyp und Leadverwaltung aus. 
+Eine Dokumentation finden Sie unter [Generieren von Kundenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md), oder senden Sie ein Supportticket unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport). Wählen Sie Angebotstyp und Leadverwaltung aus. 
 
 **Muss ich ein Leadziel konfigurieren, um ein Angebot im Marketplace zu veröffentlichen?**
 
@@ -183,7 +183,7 @@ Der Lead wird nur geschrieben, wenn Sie Azure Blob Storage als Leadziel auswähl
 
 **Ich habe eine E-Mail vom Marketplace erhalten. Warum kann ich den Lead in meinem CRM nicht finden?**  
 
-Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine personenbezogenen Informationen von EDU-Domänen weiter. Senden Sie ein Supportticket unter [Hilfe und Support](https://partner.microsoft.com/support/v2/?stage=1).
+Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ aufweist. Aus Datenschutzgründen geben wir keine personenbezogenen Informationen von EDU-Domänen weiter. Senden Sie ein Supportticket unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport).
 
 **Ich habe Azure-Tabelle/Azure BLOB als Leadziel konfiguriert. Wie kann ich die Leads anzeigen?** 
 
@@ -193,7 +193,7 @@ Sie können auf das Blob oder die Tabelle über das Azure-Portal zugreifen, oder
 
 Ja, befolgen Sie [hier](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) die Anweisungen zur Einrichtung der Azure-Tabelle und -Funktion für die Dokumentation. 
 
-**Ich habe Salesforce als Leadziel konfiguriert. Warum kann ich die Leads nicht finden?** 
+**Ich habe Salesforce als Leadziel konfiguriert. Warum kann ich die Leads nicht finden?**
 
 Überprüfen Sie, ob das Web-to-Lead-Formular ein Pflichtfeld auf Grundlage einer Auswahlliste ist. Ändern Sie das Feld in diesem Fall in ein nicht obligatorisches Textfeld.  
  

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685745"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800287"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -38,7 +38,7 @@ Führen Sie vor dem Einchecken von Code [Code Reviews](https://docs.microsoft.co
 
 ### <a name="perform-static-code-analysis"></a>Ausführen statischer Codeanalysen
 
-[Statische Codeanalysen](https://www.owasp.org/index.php/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse*) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
+[Statische Codeanalysen](https://owasp.org/www-community/controls/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse*) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
 
 Azure Marketplace bietet [Entwicklertools](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review), die statische Codeanalyse ausführen und bei Code Reviews helfen.
 
@@ -97,7 +97,7 @@ Falls die Anwendung Kennwörter automatisch generieren muss, stellen Sie sicher,
 
 ### <a name="validate-file-uploads"></a>Überprüfen von Dateiuploads
 
-Wenn Ihre Anwendung [Dateiuploads](https://www.owasp.org/index.php/Unrestricted_File_Upload) zulässt, erwägen Sie Vorsichtsmaßnahmen, die Sie für diese riskante Aktivität ergreifen können. Bei vielen Angriffen besteht der erste Schritt darin, bösartigen Code in ein System einzuschleusen, das angegriffen wird. Die Verwendung eines Dateiuploads hilft dem Angreifer, dies zu erreichen. OWASP bietet Lösungen zum Überprüfen einer Datei, um sicherzustellen, dass die Datei, die Sie hochladen, sicher ist.
+Wenn Ihre Anwendung [Dateiuploads](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload) zulässt, erwägen Sie Vorsichtsmaßnahmen, die Sie für diese riskante Aktivität ergreifen können. Bei vielen Angriffen besteht der erste Schritt darin, bösartigen Code in ein System einzuschleusen, das angegriffen wird. Die Verwendung eines Dateiuploads hilft dem Angreifer, dies zu erreichen. OWASP bietet Lösungen zum Überprüfen einer Datei, um sicherzustellen, dass die Datei, die Sie hochladen, sicher ist.
 
 Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](../fundamentals/antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) installieren.
 

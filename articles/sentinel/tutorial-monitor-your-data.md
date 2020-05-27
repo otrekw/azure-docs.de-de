@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739159"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798534"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Tutorial: Visualisieren und Überwachen Ihrer Daten
 
 
 
-Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md)  haben, können Sie die Daten mithilfe der Azure Sentinel-Einführung von Azure Monitor-Arbeitsmappen visualisieren und überwachen, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/app/usage-workbooks.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
+Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md)  haben, können Sie die Daten mithilfe der Azure Sentinel-Einführung von Azure Monitor-Arbeitsmappen visualisieren und überwachen, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/platform/workbooks-overview.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
 
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisieren.
@@ -52,7 +52,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
    > Dadurch wird eine Azure-Ressource basierend auf der relevanten Vorlage erstellt, und die JSON-Vorlagendatei selbst und nicht die Daten werden gespeichert.
 
 
-1. Wählen Sie **View workbook** (Arbeitsmappe anzeigen) aus. Klicken Sie dann oben auf **Edit** (Bearbeiten). Sie können die Arbeitsmappe jetzt bearbeiten und entsprechend Ihren Anforderungen anpassen. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/app/usage-workbooks.md).
+1. Wählen Sie **View workbook** (Arbeitsmappe anzeigen) aus. Klicken Sie dann oben auf **Edit** (Bearbeiten). Sie können die Arbeitsmappe jetzt bearbeiten und entsprechend Ihren Anforderungen anpassen. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
 ![View workbooks](./media/tutorial-monitor-data/workbook-graph.png) (Arbeitsmappen anzeigen)
 1. Nachdem Sie die Änderungen vorgenommen haben, können Sie die Arbeitsmappe speichern. 
 
@@ -64,7 +64,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisie
 1. Klicken Sie auf **Workbooks** (Arbeitsmappen), und wählen Sie dann **Add workbook** (Arbeitsmappe hinzufügen), um eine komplett neue Arbeitsmappe zu erstellen.
   ![Go to workbooks](./media/tutorial-monitor-data/create-workbook.png) (Zu Arbeitsmappen wechseln)
 
-1. Um die Arbeitsmappe zu bearbeiten, wählen Sie **Edit** (Bearbeiten) aus, und fügen Sie dann nach Bedarf Text, Abfragen und Parameter hinzu. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/app/usage-workbooks.md). 
+1. Um die Arbeitsmappe zu bearbeiten, wählen Sie **Edit** (Bearbeiten) aus, und fügen Sie dann nach Bedarf Text, Abfragen und Parameter hinzu. Weitere Informationen zum Anpassen der Arbeitsmappe finden Sie unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md). 
 
 1. Stellen Sie bei der Erstellung einer Abfrage sicher, dass **Data source** (Datenquelle) auf **Logs** (Protokolle) und der **Resource type** (Ressourcentyp) auf **Log Analytics** (Protokollanalyse) festgelegt ist, und wählen Sie dann die relevanten Arbeitsbereiche aus. 
 

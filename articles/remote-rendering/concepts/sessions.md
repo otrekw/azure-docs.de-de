@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679352"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758859"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-Sitzungen
 
@@ -82,7 +82,7 @@ Für eine aktive Sitzung können Sie die [Leasedauer verlängern](../how-tos/ses
 
 Im Code unten ist eine einfache Implementierung eines Sitzungsstarts veranschaulicht. Es wird auf den Zustand *Bereit* gewartet, und dann wird die Verbindung hergestellt. Anschließend folgen die Trennung und das Herunterfahren.
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 
