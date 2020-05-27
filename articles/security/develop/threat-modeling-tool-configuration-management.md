@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 811feb26e492efeb505f43202bee484d3edfb8a5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204252"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658604"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -212,7 +212,7 @@ Hinweis: Das Anforderungsüberprüfungsfeature wird nicht unterstützt und ist n
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [IE8 Security Part V: Comprehensive Protection](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx) (IE8-Sicherheit Teil V: Umfassender Schutz), [MIME-Typ](https://en.wikipedia.org/wiki/Mime_type) |
+| **Referenzen**              | [IE8 Security Part V: Comprehensive Protection](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection) (IE8-Sicherheit Teil V: Umfassender Schutz), [MIME-Typ](https://en.wikipedia.org/wiki/Mime_type) |
 | **Schritte** | Der Header „X-Content-Type-Options“ ist ein HTTP-Header, mit dem Entwickler festlegen, dass für ihre Inhalte keine MIME-Ermittlung erfolgen soll. Dieser Header dient zur Minderung von MIME-Ermittlungsangriffen. Für jede Seite, die möglicherweise von Benutzern steuerbare Inhalte enthält, muss der HTTP-Header „X-Content-Type-Options:nosniff“ verwendet werden. Verwenden Sie eines der folgenden Verfahren, um den erforderlichen Header global für alle Seiten in der Anwendung zu aktivieren:|
 
 ### <a name="example"></a>Beispiel

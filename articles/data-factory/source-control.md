@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629322"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674594"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -181,7 +181,7 @@ Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollabora
 
 ### <a name="configure-publishing-settings"></a>Konfigurieren von Veröffentlichungseinstellungen
 
-Standardmäßig generiert Data Factory die Resource Manager-Vorlagen der veröffentlichten Factory und speichert sie in einem Branch mit dem Namen `adf_public`. Um einen benutzerdefinierten Veröffentlichungsbranch zu konfigurieren, fügen Sie dem Stammordner im Kollaborationsbranch die Datei `publish_config.json` hinzu. Beim Veröffentlichen liest ADF diese Datei, sucht nach dem Feld `publishBranch` und speichert alle Resource Manager-Vorlagen am angegebenen Speicherort. Wenn der Branch nicht vorhanden ist, wird er von Data Factory automatisch erstellt. Das nachstehende Beispiel zeigt, wie diese Datei aussieht:
+Standardmäßig generiert Data Factory die Resource Manager-Vorlagen der veröffentlichten Factory und speichert sie in einem Branch mit dem Namen `adf_publish`. Um einen benutzerdefinierten Veröffentlichungsbranch zu konfigurieren, fügen Sie dem Stammordner im Kollaborationsbranch die Datei `publish_config.json` hinzu. Beim Veröffentlichen liest ADF diese Datei, sucht nach dem Feld `publishBranch` und speichert alle Resource Manager-Vorlagen am angegebenen Speicherort. Wenn der Branch nicht vorhanden ist, wird er von Data Factory automatisch erstellt. Das nachstehende Beispiel zeigt, wie diese Datei aussieht:
 
 ```json
 {

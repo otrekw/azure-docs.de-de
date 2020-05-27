@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117206"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660583"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Failoverprozedur für die Notfallwiederherstellung
 
@@ -39,7 +39,7 @@ Um die letzte replizierte Speichermomentaufnahme wiederherzustellen, befolgen Si
 Wenn Sie für mehrere SAP HANA-Instanzen ein Failover ausführen möchten, führen Sie den Befehl azure_hana_dr_failover mehrfach aus. Geben Sie bei entsprechender Aufforderung die SAP HANA-SID ein, für die Sie das Failover und die Wiederherstellung ausführen möchten. 
 
 
-Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Um ein Testfailover auszuführen, befolgen Sie die Schritte unter „Perform a test DR failover – azure_hana_test_dr_failover“ (Ausführen eines Testfailovers für die Notfallwiederherstellung – azure_hana_test_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Um ein Testfailover auszuführen, befolgen Sie die Schritte unter „Perform a test DR failover – azure_hana_test_dr_failover“ (Ausführen eines Testfailovers für die Notfallwiederherstellung – azure_hana_test_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 >[!IMPORTANT]
 >Führen Sie auf der Instanz, die Sie am Standort der Notfallwiederherstellung beim *Testen eines Failovers* erstellt haben, **keine** Produktionstransaktionen durch. Der Befehl azure_hana_test_dr_failover erstellt einen Satz von Volumes, die keine Beziehung zum primären Standort haben. Eine Synchronisierung zurück an den primären Standort ist daher *nicht* möglich. 
@@ -117,7 +117,7 @@ Folgen Sie diesen Schritten:
 
 Um den Status der Speicherreplikation zu überwachen, führen Sie das Skript `azure_hana_replication_status` aus. Dieser Befehl muss über eine Einheit ausgeführt werden, die am Standort für die Notfallwiederherstellung ausgeführt wird, damit es erwartungsgemäß funktioniert. Der Befehl funktioniert unabhängig davon, ob die Replikation aktiv ist. Der Befehl kann für jede HANA-Einheit (große Instanzen) Ihres Mandanten am Standort für die Notfallwiederherstellung ausgeführt werden. Er kann nicht zum Abrufen von Details über das Startvolume verwendet werden. 
 
-Weitere Informationen zu dem Befehl und seiner Ausgabe finden Sie unter „Get DR replication status – azure_hana_replication_status“ (Abrufen des Status der Notfallwiederherstellungsreplikation – azure_hana_replication_status) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Weitere Informationen zu dem Befehl und seiner Ausgabe finden Sie unter „Get DR replication status – azure_hana_replication_status“ (Abrufen des Status der Notfallwiederherstellungsreplikation – azure_hana_replication_status) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
