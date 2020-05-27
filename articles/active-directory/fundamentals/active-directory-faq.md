@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 8f77304beb598094e8dbbc51ebf624acd71b554b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875791"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681727"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -153,7 +153,7 @@ Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets 
 
 **A:** Für Azure AD stehen über 2.600 vorab integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen einmaliges Anmelden (Single Sign-On, SSO). Mit SSO können Sie unter Verwendung der Anmeldeinformationen Ihres Unternehmens auf Ihre Apps zugreifen. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.
 
-Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active Directory-Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active Directory-Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ---
 **F: Was kann ich tun, wenn die Anwendung, die ich benötige, nicht im Azure AD-Marketplace verfügbar ist?**

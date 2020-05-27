@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605065"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684658"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -359,7 +360,7 @@ Der Speicherdienst berechnet die Metrik **AverageE2ELatency** nur für erfolgrei
 #### <a name="investigating-client-performance-issues"></a>Untersuchung von Clientleistungsproblemen
 Mögliche Gründe für eine langsame Clientreaktion sind z. B. eine begrenzte Anzahl verfügbarer Verbindungen oder Threads oder begrenzte Ressourcen wie CPU, Arbeitsspeicher oder Netzwerkbandbreite. Möglicherweise können Sie das Problem lösen, indem Sie den Clientcode zugunsten einer höheren Effizienz ändern (z. B. durch Verwendung von asynchronen Aufrufen an den Speicherdienst) oder indem Sie einen größeren virtuellen Computer (mit mehr Kernen und mehr Arbeitsspeicher) verwenden.
 
-Für den Tabellen- und Warteschlangendienst kann der Nagle-Algorithmus auch höhere **AverageE2ELatency**-Werte verglichen mit **AverageServerLatency** verursachen: Weitere Informationen finden Sie im Beitrag [Nagle's Algorithm is Not Friendly towards Small Requests](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx) (Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um). Sie können den Nagle-Algorithmus im Code deaktivieren, indem Sie die Klasse **ServicePointManager** im **System.Net**-Namespace verwenden. Sie sollten dies tun, bevor Sie Aufrufe an die Tabellen- oder Warteschlangendienste in Ihrer Anwendung senden, da dies keinen Einfluss auf die bereits offenen Verbindungen hat. Das folgende Beispiel stammt aus der Methode **Application_Start** in einer Workerrolle.
+Für den Tabellen- und Warteschlangendienst kann der Nagle-Algorithmus auch höhere **AverageE2ELatency**-Werte verglichen mit **AverageServerLatency** verursachen: Weitere Informationen finden Sie im Beitrag [Nagle's Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests) (Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um). Sie können den Nagle-Algorithmus im Code deaktivieren, indem Sie die Klasse **ServicePointManager** im **System.Net**-Namespace verwenden. Sie sollten dies tun, bevor Sie Aufrufe an die Tabellen- oder Warteschlangendienste in Ihrer Anwendung senden, da dies keinen Einfluss auf die bereits offenen Verbindungen hat. Das folgende Beispiel stammt aus der Methode **Application_Start** in einer Workerrolle.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);

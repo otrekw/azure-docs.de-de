@@ -1,23 +1,23 @@
 ---
-title: 'Azure PowerShell-Beispiele: Anfügen und Verwenden von Datenträgern'
-description: Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe, fügt mit PowerShell Datenträger an und bereitet sie vor.
+title: Azure PowerShell-Beispiele – Skalierungsgruppe mit nur einer Zone
+description: Mit diesem Skript wird eine VM-Skalierungsgruppe erstellt, in der Windows Server 2016 in einer einzelnen Verfügbarkeitszone ausgeführt wird.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
-ms.subservice: disks
-ms.date: 03/27/2018
+ms.subservice: availability
+ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 39c1c534a930dae2967d982f7c175fadb3222e83
+ms.openlocfilehash: 222b45e455f42264a5324f138c55b822d9d8e7a1
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700910"
+ms.locfileid: "83698614"
 ---
-# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Anfügen und Verwenden von Datenträgern mit einer VM-Skalierungsgruppe mit PowerShell
-Dieses Skript erstellt eine VM-Skalierungsgruppe, fügt Datenträger an und bereitet sie vor.
+# <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe mit nur einer Zone mit PowerShell
+Mit diesem Skript wird eine VM-Skalierungsgruppe erstellt, in der Windows Server 2016 in einer einzelnen Verfügbarkeitszone ausgeführt wird. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,7 +25,7 @@ Dieses Skript erstellt eine VM-Skalierungsgruppe, fügt Datenträger an und bere
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine-scale-sets/use-data-disks/use-data-disks.ps1 "Create a virtual machine scale set with data disks")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.ps1 "Create single-zone scale set")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, die Skalierungsgruppe und alle dazugehörigen Ressourcen zu entfernen.
@@ -43,7 +43,9 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Ruft Informationen zu einer VM-Skalierungsgruppe ab. |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) | Fügt eine VM-Erweiterung für das benutzerdefinierte Skript hinzu, um eine einfache Webanwendung zu installieren. |
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss) | Aktualisiert das Modell der VM-Skalierungsgruppe, um die VM-Erweiterung anzuwenden. |
+| [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) | Ruft Informationen zur zugewiesenen öffentlichen IP-Adresse ab, die vom Load Balancer verwendet wird. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+

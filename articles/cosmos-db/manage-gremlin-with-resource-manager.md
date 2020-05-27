@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager-Vorlagen zum Erstellen und Kon
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeec2317f47e9d79245cbde0ef81c8a3543bfb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791237"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684811"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Gremlin-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
@@ -31,9 +31,7 @@ Wenn Sie eine der unten aufgeführten Azure Cosmos DB-Ressourcen erstellen möc
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-autoscale-provisioned-throughput"></a>Azure Cosmos DB-Konto für Gremlin mit über Autoskalierung bereitgestelltem Durchsatz
 
-Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Gremlin-API mit einer Datenbank und einem Graphen mit automatisch skaliertem Durchsatz erstellt.
-
-Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
+Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Gremlin-API mit einer Datenbank und einem Graphen mit automatisch skaliertem Durchsatz erstellt. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
 [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
 
@@ -43,9 +41,7 @@ Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog de
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-standard-provisioned-throughput"></a>Azure Cosmos DB-Konto für Gremlin mit standardmäßig bereitgestelltem Durchsatz
 
-Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Gremlin-API mit einer Datenbank und einem Graphen mit (manuell bereitgestelltem) Standarddurchsatz erstellt.
-
-Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
+Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Gremlin-API mit einer Datenbank und einem Graphen mit (manuell bereitgestelltem) Standarddurchsatz erstellt. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
 [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
 

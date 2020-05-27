@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201365"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700834"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -255,8 +255,3 @@ In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Az
 > * Erstellen und Verwenden von Regeln für die automatische Skalierung
 > * Durchführen eines Belastungstests für VM-Instanzen und Auslösen von Regeln für die automatische Skalierung
 > * Zurückfahren der automatischen Skalierung bei einer Reduzierung des Bedarfs
-
-Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure PowerShell-Beispielskripts:
-
-> [!div class="nextstepaction"]
-> [Skalierungsgruppen-Skriptbeispiele für Azure PowerShell](powershell-samples.md)

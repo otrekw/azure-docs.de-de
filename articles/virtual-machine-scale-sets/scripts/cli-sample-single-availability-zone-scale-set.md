@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: dc98085ca017f7249e225e8c1c009b3d255f1719
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8883bd099b684b5086554feded88e133764e614f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195787"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701608"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Erstellen einer VM-Skalierungsgruppe mit nur einer Zone mithilfe der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu in einer einzelnen Verfügbarkeitszone. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
@@ -44,5 +44,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).

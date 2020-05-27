@@ -3,18 +3,18 @@ title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-
 description: Automatisieren Sie die Erstellung und Verwaltung von Ressourcen, Warnungen und Verfügbarkeitstests in PowerShell mithilfe einer Azure Resource Manager-Vorlage.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780486"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697927"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](../../azure-monitor/app/app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) erstellen, [Warnungen](../../azure-monitor/app/alerts.md) einrichten, das [Preisschema](pricing.md) festlegen und andere Azure-Ressourcen erstellen.
+Dieser Artikel beschreibt, wie Sie die Erstellung und Aktualisierung von [Application Insights](../../azure-monitor/app/app-insights-overview.md)-Ressourcen mit der Azure-Ressourcenverwaltung automatisieren können. Dies kann z. B. als Teil eines Buildvorgangs erfolgen. Zusammen mit der grundlegenden Application Insights-Ressource können Sie [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) erstellen, [Warnungen](../../azure-monitor/platform/alerts-log.md) einrichten, das [Preisschema](pricing.md) festlegen und andere Azure-Ressourcen erstellen.
 
 Im Wesentlichen werden diese Ressourcen mit JSON-Vorlagen für den [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md) erstellt. Die grundlegende Vorgehensweise ist wie folgt: Sie laden die JSON-Definitionen vorhandener Ressourcen herunter, parametrisieren bestimmte Werte, z. B. Namen, und führen dann die Vorlage immer aus, wenn Sie eine neue Ressource erstellen möchten. Sie können mehrere Ressourcen zusammenfassen und in einem Durchgang erstellen, z. B. einen App-Monitor mit Verfügbarkeitstests, Warnungen und Speicher für fortlaufenden Export. Einige Parametrisierungen weisen Besonderheiten auf, die hier erläutert werden.
 

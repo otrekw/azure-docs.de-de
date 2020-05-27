@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256517"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682703"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -49,7 +49,7 @@ Es enthält auch **Machine Learning- und KI-Tools** wie xgboost, mxnet und Vowpa
 
 Die Data Science-VM ist derzeit für die Betriebssysteme **Windows** und **Linux CentOS** verfügbar. Wählen Sie die Größe Ihrer Data Science-VM (Anzahl von CPU-Kernen und Größe des Arbeitsspeichers) abhängig von den Anforderungen der Data Science-Projekte aus, die Sie damit ausführen möchten. 
 
-Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) (Data Science-VM für Linux (CentOS)).
+Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) (Data Science-VM für Linux (CentOS)).
 
 Informationen zur effizienten Ausführung einiger gängiger Data Science-Aufgaben auf der Data Science-VM finden Sie unter [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](../data-science-virtual-machine/vm-do-ten-things.md).
 

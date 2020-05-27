@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782591"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681444"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,7 +62,7 @@ Ihr Arbeitsbereich enthält einen Ordner mit **Beispielen** von Notebooks, die I
 
 Ein Beispiel finden Sie unter [Tutorial: Erstellen Ihres ersten ML-Experiments](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal"> Verwenden von Dateien aus Git und Versionsverwaltung für meine Dateien
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Verwenden von Dateien aus Git und Versionsverwaltung für meine Dateien
 
 Sie können auf alle Git-Operationen über ein Terminalfenster zugreifen. Alle Git-Dateien und -Ordner werden in Ihrem Arbeitsbereichsdateisystem gespeichert.
 

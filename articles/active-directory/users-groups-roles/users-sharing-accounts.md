@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37935d229f62028e074f92bb6f8b70b9eebd87dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565501"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685202"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 
@@ -62,13 +62,13 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende F
 * [Dashboard für Anwendungsnutzung/Berichte](../active-directory-passwords-get-insights.md)
 * Zugriffsportale für Endbenutzer
 * [Anwendungsproxy](../manage-apps/application-proxy.md)
-* [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>Gemeinsames Nutzen eines Kontos
 
 Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu verwenden:
 
-* Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+* Hinzufügen einer Anwendung aus dem [App-Katalog](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) oder einer [benutzerdefinierten Anwendung](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
 * Verwenden einer [gruppenbasierten Zuweisung](groups-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
 

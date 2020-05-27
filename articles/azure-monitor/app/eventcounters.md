@@ -3,12 +3,12 @@ title: EventCounters in Application Insights | Microsoft-Dokumentation
 description: Überwachen Sie systemeigene und benutzerdefinierte .NET/.NET Core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187094"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700432"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
 
@@ -124,7 +124,7 @@ customMetrics
 Wie für andere Telemetriedaten ist auch in der Tabelle **customMetrics** eine `cloud_RoleInstance`-Spalte enthalten, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Die obige Abfrage zeigt den Indikatorwert pro Instanz und kann zum Vergleichen der Leistung verschiedener Serverinstanzen verwendet werden.
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung einrichten](../../azure-monitor/app/alerts.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung einrichten](../../azure-monitor/platform/alerts-log.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

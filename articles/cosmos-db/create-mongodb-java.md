@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5036b433da39359ef61e87d9ec083056cf50a7ea
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77061705"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701669"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Schnellstart: Erstellen einer Konsolen-App mit Java und der MongoDB-API in Azure Cosmos DB
 
@@ -24,7 +24,7 @@ ms.locfileid: "77061705"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB für MongoDB-API-Konto im Azure-Portal und fügen Daten mithilfe einer über GitHub geklonten Java SDK-App hinzu. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
@@ -43,7 +43,7 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB 
 
 Geben Sie Ihrer neuen Datenbank den Namen **db** und der neuen Sammlung den Namen **coll**.
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 

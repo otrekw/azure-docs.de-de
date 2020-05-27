@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596659"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681955"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
 
-Die Schnellansicht für Zeichnungsfehler ist eine eigenständige Webanwendung zum Anzeigen von [Warnungen und Fehlern im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md), die im Zuge des Konvertierungsprozesses erkannt wurden. Bei der Webanwendung für die Fehlerschnellansicht handelt es sich um eine statische Seite, die ohne Internetverbindung verwendet werden kann.  Die Fehlerschnellansicht kann zur Behebung von Fehlern und Warnungen verwendet werden, um die [Anforderungen für Zeichnungspakete](drawing-requirements.md) zu erfüllen. Im Falle eines erkannten Fehlers wird von der [Azure Maps-Konvertierungs-API](https://docs.microsoft.com/rest/api/maps/data/conversion) lediglich eine Antwort mit einem Link zur Fehlerschnellansicht zurückgegeben.
+Die Schnellansicht für Zeichnungsfehler ist eine eigenständige Webanwendung zum Anzeigen von [Warnungen und Fehlern im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md), die im Zuge des Konvertierungsprozesses erkannt wurden. Bei der Webanwendung für die Fehlerschnellansicht handelt es sich um eine statische Seite, die ohne Internetverbindung verwendet werden kann.  Die Fehlerschnellansicht kann zur Behebung von Fehlern und Warnungen verwendet werden, um die [Anforderungen für Zeichnungspakete](drawing-requirements.md) zu erfüllen. Im Falle eines erkannten Fehlers wird von der [Azure Maps-Konvertierungs-API](https://docs.microsoft.com/rest/api/maps/conversion) lediglich eine Antwort mit einem Link zur Fehlerschnellansicht zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -90,7 +90,7 @@ Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Li
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr [Zeichnungspaket den Anforderungen entspricht](drawing-requirements.md), können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](https://docs.microsoft.com/rest/api/maps/data/conversion) in ein Dataset konvertieren. Anschließend können Sie das Webmodul für Gebäudepläne verwenden, um Ihre Anwendung zu entwickeln. Weitere Informationen finden Sie in den folgenden Artikeln:
+Wenn Ihr [Zeichnungspaket den Anforderungen entspricht](drawing-requirements.md), können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](https://docs.microsoft.com/rest/api/maps/conversion) in ein Dataset konvertieren. Anschließend können Sie das Webmodul für Gebäudepläne verwenden, um Ihre Anwendung zu entwickeln. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
 > [Fehler und Warnungen bei der Zeichnungskonvertierung](drawing-conversion-error-codes.md)

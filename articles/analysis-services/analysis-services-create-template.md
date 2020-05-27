@@ -8,12 +8,12 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: d292500c5e26d3c07ff2402964166b3928cc7e44
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384102"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697451"
 ---
 # <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Schnellstart: Erstellen eines Servers – Azure Resource Manager-Vorlage
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung wird erläutert, wie eine Analysis Services-Serv
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
 In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers)-Ressource mit einer Firewallregel definiert. 
 
@@ -40,7 +40,7 @@ In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](https://do
 
 1. Wählen Sie den folgenden „Bereitstellung in Azure“-Link aus, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage wird zum Erstellen einer Analysis Services-Serverressource und Festlegen der erforderlichen und optionalen Eigenschaften verwendet.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json"><img src="./media/analysis-services-create-template/deploy-azure.png" alt="deploy to azure"/></a>
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
@@ -67,7 +67,7 @@ In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](https://do
 
 Überprüfen Sie über das Azure-Portal oder über Azure PowerShell, ob die Ressourcengruppe und die Serverressource erstellt wurden.
 
-#### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -97,6 +97,8 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

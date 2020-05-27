@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477169"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682717"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technischer Leitfaden für die Lösungsvorlage für Predictive Maintenance für Luft- und Raumfahrt
 
@@ -159,7 +159,7 @@ Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle 
 
 Hinweis: 
 1.    Nach dem Bereitstellen Ihrer Lösung wird alle drei Stunden eine Vorhersage in der Datenbank angezeigt. Die PBIX-Datei, die Teil des Downloads für den Generator ist, enthält einige Seedingdaten, sodass Sie das Power BI-Dashboard sofort erstellen können. 
-2.    Die Voraussetzung für diesen Schritt ist das Herunterladen und Installieren der kostenlosen Software [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
+2.    Die Voraussetzung für diesen Schritt ist das Herunterladen und Installieren der kostenlosen Software [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop).
 
 In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Datenbank verbinden, die beim Bereitstellen der Lösung in Betrieb genommen wurde und die die Daten (z. B. Vorhersageergebnisse) für die Visualisierung enthält.
 

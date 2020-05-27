@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596779"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682004"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fehler und Warnungen bei der Zeichnungskonvertierung
 
-Mit dem [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/data/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. Zeichnungspakete müssen die [Anforderungen für Zeichnungspakete](drawing-requirements.md) erfüllen. Bei nicht erfüllten Anforderungen werden vom Konvertierungsdienst entsprechende Fehler oder Warnungen zurückgegeben. Dieser Artikel enthält die Fehler- und Warnungscodes im Zusammenhang mit der Konvertierung sowie Empfehlungen zur Behebung. Darüber hinaus finden Sie hier einige Beispiele für Zeichnungen, die zur Rückgabe dieser Codes durch den Konvertierungsdienst führen können.
+Mit dem [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. Zeichnungspakete müssen die [Anforderungen für Zeichnungspakete](drawing-requirements.md) erfüllen. Bei nicht erfüllten Anforderungen werden vom Konvertierungsdienst entsprechende Fehler oder Warnungen zurückgegeben. Dieser Artikel enthält die Fehler- und Warnungscodes im Zusammenhang mit der Konvertierung sowie Empfehlungen zur Behebung. Darüber hinaus finden Sie hier einige Beispiele für Zeichnungen, die zur Rückgabe dieser Codes durch den Konvertierungsdienst führen können.
 
 Die Konvertierung ist erfolgreich, auch wenn Konvertierungswarnungen vorhanden sind. Es empfiehlt sich jedoch, alle Warnungen zu überprüfen und zu beheben. Im Falle einer Warnung wurde ein Teil der Konvertierung ignoriert oder automatisch korrigiert. Wird die Warnung nicht behoben, kann dies Fehler in späteren Prozessen zur Folge haben.
 
@@ -73,7 +73,7 @@ Die Warnung **unsupportedFeatureRepresentation** tritt auf, wenn die Zeichnung e
 
 Das folgende Bild zeigt einen nicht unterstützten Entitätstyp als mehrzeiliges Textobjekt in einer Bezeichnungsschicht:
   
-![Beispiel für ein mehrzeiliges Textobjekt in einer Bezeichnungsschicht](./media/drawing-conversion-error-codes/multiline.png)
+![Beispiel für ein mehrzeiliges Textobjekt in einer Bezeichnungsschicht](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*Beheben von „unsupportedFeatureRepresentation“*
 
@@ -494,7 +494,7 @@ Das folgende Bild zeigt einen Bereich mit einer vertikalen Durchdringung ohne en
 
 Das folgende Bild zeigt einen Bereich mit einer vertikalen Durchdringung, der sich mit mehreren Bereichen mit vertikaler Durchdringung auf benachbarten Ebenen überschneidet:
 
-![Beispiel für eine vertikale Durchdringung 2](./media/drawing-conversion-error-codes/vrt.png)
+![Beispiel für eine vertikale Durchdringung 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>Beheben von „verticalPenetrationError“
 

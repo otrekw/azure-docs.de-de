@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 57dfbb7ebdb2ca8d323dadfca570360211a16484
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0c97206d4e2f0c0484cfd89138dde7e2b0d0c625
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197521"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698635"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>Erstellen einer zonenredundanten VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016, die sich über mehrere Verfügbarkeitszonen erstreckt. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
@@ -49,5 +49,3 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
-
-Weitere PowerShell-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../powershell-samples.md).

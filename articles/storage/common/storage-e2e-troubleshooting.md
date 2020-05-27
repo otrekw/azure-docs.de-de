@@ -9,12 +9,13 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: monitoring
+ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610971"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680371"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 
@@ -85,7 +86,7 @@ In diesem Lernprogramm verwenden wir Message Analyzer, um mit drei verschiedenen
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurieren der serverseitigen Protokollierung und Metriken
 
-Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von Dienstseite zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [Azure-Portal](https://portal.azure.com), mithilfe von PowerShell oder programmgesteuert. Ausführliche Informationen zum Konfigurieren von Protokollierung und Metriken finden Sie unter [Aktivieren von Metriken](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) und [Aktivieren der Protokollierung](storage-analytics-logging.md#enable-storage-logging).
+Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von Dienstseite zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [Azure-Portal](https://portal.azure.com), mithilfe von PowerShell oder programmgesteuert. Ausführliche Informationen zum Konfigurieren von Protokollierung und Metriken finden Sie unter [Aktivieren von Metriken](storage-analytics-metrics.md#enable-metrics-by-using-the-azure-portal) und [Aktivieren der Protokollierung](storage-analytics-logging.md#enable-storage-logging).
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurieren der clientseitigen .NET-Protokollierung
 

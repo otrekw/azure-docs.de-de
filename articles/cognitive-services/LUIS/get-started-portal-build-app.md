@@ -2,13 +2,13 @@
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Komponenten einer App sowie Absichten und Entitäten. Außerdem verwenden Sie zu Testzwecken eine Beispieläußerung im LUIS-Portal.
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585211"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697269"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
@@ -137,7 +137,7 @@ Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clien
 
 1. Überprüfen Sie, ob die Entität in der Absicht **FindForm** gefunden wird, indem Sie im linken Menü **Intents** (Absichten) auswählen. Wählen Sie dann die Absicht **FindForm** aus.
 
-   Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt. Falls Sie anstelle des Entitätsnamens den ursprünglichen Text anzeigen möchten, schalten Sie über die Symbolleiste die **Entities View** (Entitätsansicht) um.
+   Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt.
 
    > [!div class="mx-imgBorder"]
    > [![Screenshot: Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d050efe1224e2783cdad52a12c842f7abe44b7af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595069"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682426"
 ---
 # <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
 
-Die Herausgeberüberprüfung (Vorschauversion) unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Anders ausgedrückt: Handelt es sich beim Herausgeber um eine bekannte Quelle oder einen Risikoteilnehmer, der sich als bekannter Herausgeber tarnt? Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines [Microsoft Partner Network](https://partner.microsoft.com/membership)-Kontos überprüft hat, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat. 
+Die Herausgeberüberprüfung (Vorschauversion) unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines [Microsoft Partner Network](https://partner.microsoft.com/membership)-Kontos überprüft hat, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat. 
 
 In der Azure AD-Zustimmungsaufforderung und auf anderen Bildschirmen wird ein blauer Überprüfungsbadge angezeigt: ![Zustimmungsaufforderung](./media/publisher-verification-overview/consent-prompt.png)
 

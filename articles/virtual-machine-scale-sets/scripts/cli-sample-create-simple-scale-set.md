@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ad21a816aba5bd8f8de1c541cc4bc34243956d35
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7f80515a0a441f910a2133a36d62a09062c3840f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200985"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699795"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebssystem und den dazugehörigen Netzwerkressourcen (einschließlich eines Lastenausgleichs). Nach dem Ausführen des Skripts können Sie über SSH auf die VM-Instanzen zugreifen.
@@ -44,5 +44,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).

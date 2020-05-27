@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481176"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680140"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -30,7 +30,7 @@ Zur Lösung dieses Problems bietet Azure Active Directory (Azure AD) ein Feature
 
 Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten angeben, für die ihre Benutzer zugriffsberechtigt sind. Azure AD gewährt daraufhin nur Zugriff auf die zugelassenen Mandanten.
 
-In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Office 365, das Feature sollte aber auch für jede andere SaaS-Cloud-App verwendet werden können, die moderne Authentifizierungsprotokolle mit Azure AD für einmaliges Anmelden verwendet. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Office 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind. Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Office 365, das Feature sollte aber auch für jede andere SaaS-Cloud-App verwendet werden können, die moderne Authentifizierungsprotokolle mit Azure AD für einmaliges Anmelden verwendet. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Office 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind. Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Funktionsweise
 

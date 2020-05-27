@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257146"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682483"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
@@ -29,7 +29,7 @@ In dieser exemplarischen Vorgehensweise analysieren wir das [spambase](https://a
 Bevor Sie eine Linux DSVM verwenden können, müssen die folgenden Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/), um ein Azure-Abonnement zu erhalten.
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informationen zur Bereitstellung des virtuellen Computers finden Sie unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md).
+* [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informationen zur Bereitstellung des virtuellen Computers finden Sie unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md).
 * [**X2Go**](https://wiki.x2go.org/doku.php)-Installation auf dem Computer mit einer geöffneten XFCE-Sitzung. Weitere Informationen finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#x2go).
 * Um reibungsloser scrollen zu können, schalten Sie im Firefox-Webbrowser von DSVM das Flag `gfx.xrender.enabled` in `about:config` um. [Weitere Informationen](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Sie sollten außerdem `mousewheel.enable_pixel_scrolling` auf `False` festlegen. [Weitere Informationen](https://support.mozilla.org/questions/981140)
 * **Azure Machine Learning-Konto**. Wenn Sie noch nicht über ein Konto verfügen, registrieren Sie sich auf der [Azure Machine Learning-Homepage](https://azure.microsoft.com/free/services/machine-learning//) für ein neues Konto.

@@ -4,12 +4,12 @@ description: Application Insights führt eine intelligente Analyse Ihrer App-Tel
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687694"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697179"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -70,12 +70,12 @@ Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanom
 * *Kann ich meine eigenen Erkennungsregeln für Anomalien erstellen oder vorhandene Regeln anpassen?*
 
   * Das ist leider noch nicht möglich. Jedoch ist Folgendes möglich:
-    * [Einrichten von Warnungen](../../azure-monitor/app/alerts.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
+    * [Einrichten von Warnungen](/azure/azure-monitor/platform/alerts-log), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
     * [Exportieren von Telemetriedaten](../../azure-monitor/app/export-telemetry.md) in eine [Datenbank](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) oder [in Power BI](../../azure-monitor/app/export-power-bi.md ), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse ausgeführt?*
 
   * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt (ganzer Tag in Zeitzone UTC).
-* *Ersetzt dies also die [Metrikwarnungen](../../azure-monitor/app/alerts.md)?*
+* *Ersetzt dies also die [Metrikwarnungen](/azure/azure-monitor/platform/alerts-log)?*
   * Nein.  Wir können nicht gewährleisten, dass jedes Verhalten erkannt wird, das Sie möglicherweise als ungewöhnlich erachten.
 
 
@@ -180,5 +180,5 @@ Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen
 
 Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../../azure-monitor/app/alerts.md)
+* [Einrichten von Warnungen in Application Insights](/azure/azure-monitor/platform/alerts-log)
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)

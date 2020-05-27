@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 0b934e327a4c1ed18c682f909b2d82e85d61125f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3502fda1b924aa5351e7edab8e8b712fd0e6bf2c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008419"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701229"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.
@@ -45,5 +45,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Weitere Azure CLI-Skriptbeispiele für VM-Skalierungsgruppen finden Sie in der [Dokumentation zu Azure-VM-Skalierungsgruppen](../cli-samples.md).

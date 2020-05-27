@@ -3,12 +3,12 @@ title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536793"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700838"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
  Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
@@ -59,6 +59,6 @@ Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen
 
 Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../../azure-monitor/app/alerts.md)
+* [Einrichten von Warnungen in Application Insights](../../azure-monitor/platform/alerts-log.md)
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) 
 
