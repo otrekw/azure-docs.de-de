@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229662"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679251"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -69,7 +69,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | [Impliziter OAuth2-Fluss](implicit-flow-single-page-application.md) |  |  | X |  |
 | [Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST- und Umleitungsbindungen |
+| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | POST- und Umleitungsbindungen |
 | OAuth1 |  |  |  | Wird nicht unterstützt. |
 | WSFED | X |  |  |  |
 

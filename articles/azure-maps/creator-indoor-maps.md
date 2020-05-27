@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596059"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677802"
 ---
 # <a name="creator-for-indoor-maps"></a>Creator für Gebäudepläne
 
@@ -35,7 +35,7 @@ Verwenden Sie die [Datenupload-API von Azure Maps](https://docs.microsoft.com/re
 
 ## <a name="convert-a-drawing-package"></a>Konvertieren eines Zeichnungspakets
 
-Das hochgeladene Zeichnungspaket wird vom [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/data/conversion) in Gebäudeplandaten konvertiert. Der Konvertierungsdienst überprüft auch das Paket. Validierungsprobleme werden in zwei Typen unterteilt: Fehler und Warnungen. Wenn Fehler erkannt werden, tritt beim Konvertierungsvorgang ein Fehler auf. Wenn Warnungen erkannt werden, ist die Konvertierung dennoch erfolgreich. Es empfiehlt sich jedoch, alle Warnungen zu überprüfen und zu beheben. Im Falle einer Warnung wurde ein Teil der Konvertierung ignoriert oder automatisch korrigiert. Wird die Warnung nicht behoben, kann dies Fehler in späteren Prozessen zur Folge haben. Weitere Informationen finden Sie unter [Warnungen und Fehler im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md).
+Das hochgeladene Zeichnungspaket wird vom [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/conversion) in Gebäudeplandaten konvertiert. Der Konvertierungsdienst überprüft auch das Paket. Validierungsprobleme werden in zwei Typen unterteilt: Fehler und Warnungen. Wenn Fehler erkannt werden, tritt beim Konvertierungsvorgang ein Fehler auf. Wenn Warnungen erkannt werden, ist die Konvertierung dennoch erfolgreich. Es empfiehlt sich jedoch, alle Warnungen zu überprüfen und zu beheben. Im Falle einer Warnung wurde ein Teil der Konvertierung ignoriert oder automatisch korrigiert. Wird die Warnung nicht behoben, kann dies Fehler in späteren Prozessen zur Folge haben. Weitere Informationen finden Sie unter [Warnungen und Fehler im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md).
 
 Wenn ein Fehler auftritt, stellt der Konvertierungsdienst einen Link zur eigenständigen Webanwendung [Azure Maps-Schnellansicht für Zeichnungsfehler](drawing-error-visualizer.md) bereit. Mithilfe der Schnellansicht für Zeichnungsfehler können Sie [Warnungen und Fehler im Zusammenhang mit Zeichnungspaketen](drawing-conversion-error-codes.md) überprüfen, die während des Konvertierungsvorgangs aufgetreten sind. Nachdem Sie die Fehler korrigiert haben, können Sie versuchen, das Paket hochzuladen und zu konvertieren.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090570"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Tutorial: Azure Active Directory-Integration mit Skillport
 
@@ -139,7 +139,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 ### <a name="configure-skillport-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Skillport
 
-Um einmaliges Anmelden auf der **Skillport**-Seite zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Skillport](https://www.skillsoft.com/contact.asp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um einmaliges Anmelden auf der **Skillport**-Seite zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Skillport](https://www.skillsoft.com/about/contact-us) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -194,7 +194,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-skillport-test-user"></a>Erstellen eines Testbenutzers für Skillport
 
-Um den Testbenutzer für Skillport zu erstellen, müssen Sie das [Skillport-Supportteam](https://www.skillsoft.com/contact.asp) kontaktieren, da gemäß den Anforderungen von Endbenutzern mehrere Geschäftsszenarien unterstützt werden. Nach Besprechung mit den Benutzern wird das entsprechende Szenario konfiguriert.
+Um den Testbenutzer für Skillport zu erstellen, müssen Sie das [Skillport-Supportteam](https://www.skillsoft.com/about/contact-us) kontaktieren, da gemäß den Anforderungen von Endbenutzern mehrere Geschäftsszenarien unterstützt werden. Nach Besprechung mit den Benutzern wird das entsprechende Szenario konfiguriert.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
