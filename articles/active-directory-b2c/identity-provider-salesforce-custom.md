@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 183fe1604cc363a9121d5eef3737751c54e9bdf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45878ea947803b04cd5cd6e471f701c21f2c26fa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229713"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826348"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -209,7 +209,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
-    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **ID** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `LinkedIn-OAUTH`.
+    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **ID** des technischen Profils, das Sie zuvor erstellt haben. Zum Beispiel: `salesforce` oder `LinkedIn-OAUTH`.
 
 3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
 

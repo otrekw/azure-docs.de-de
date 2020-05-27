@@ -2,21 +2,21 @@
 title: Bereinigen von Tags und Manifesten
 description: Verwenden Sie einen Bereinigungsbefehl zum Löschen mehrerer Tags und Manifeste aus einer Azure-Containerregistrierung, basierend auf dem Alter und einem Tagfilter, und planen Sie optional Bereinigungsvorgänge.
 ms.topic: article
-ms.date: 08/14/2019
-ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/14/2020
+ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087327"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652640"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung
 
 Wenn Sie eine Azure-Containerregistrierung als Teil eines Entwicklungsworkflows verwenden, kann die Registrierung schnell mit Bildern oder anderen Artefakten aufgefüllt werden, die nach kurzer Zeit nicht mehr benötigt werden. Sie können alle Tags löschen, die älter als eine bestimmte Dauer sind oder einem angegebenen Namensfilter entsprechen. Zum schnellen Löschen mehrerer Artefakte wird in diesem Artikel der Befehl `acr purge` eingeführt, den Sie als bedarfsgesteuerte oder [geplante](container-registry-tasks-scheduled.md) ACR-Aufgabe ausführen können. 
 
-Der Befehl `acr purge` wird zurzeit in einem öffentlichen Containerimage (`mcr.microsoft.com/acr/acr-cli:0.1`) verteilt, das aus Quellcode im Repository [acr-cli](https://github.com/Azure/acr-cli) auf GitHub erstellt wurde.
+Der Befehl `acr purge` wird zurzeit in einem öffentlichen Containerimage (`mcr.microsoft.com/acr/acr-cli:0.2`) verteilt, das aus Quellcode im Repository [acr-cli](https://github.com/Azure/acr-cli) auf GitHub erstellt wurde.
 
-Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die ACR-Aufgabenbeispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.69 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install]. 
+Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die ACR-Aufgabenbeispiele in diesem Artikel auszuführen. Für die lokale Verwendung ist mindestens Version 2.0.76 erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install]. 
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.

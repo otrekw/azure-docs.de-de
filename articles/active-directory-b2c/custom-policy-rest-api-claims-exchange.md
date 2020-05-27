@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330720"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636095"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -77,7 +77,7 @@ Ein Anspruch bietet eine temporäre Speicherung von Daten während der Ausführu
 
 ## <a name="configure-the-restful-api-technical-profile"></a>Konfigurieren des technischen Profils für die RESTful-API 
 
-Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstützung bei der Anbindung an Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer `InputClaims`-Sammlung und erhält Daten in einer `OutputClaims`-Sammlung zurück. Suchen Sie das Element **ClaimsProviders** in Ihrer Datei <em>**`TrustFrameworkExtensions.xml`**</em>, und fügen Sie wie folgt einen neuen Anspruchsanbieter hinzu:
+Ein [technisches RESTful-Profil](restful-technical-profile.md) bietet Unterstützung bei der Anbindung an Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer `InputClaims`-Sammlung und erhält Daten in einer `OutputClaims`-Sammlung zurück. Suchen Sie das Element **ClaimsProviders** in Ihrer Datei <em> **`TrustFrameworkExtensions.xml`**</em>, und fügen Sie wie folgt einen neuen Anspruchsanbieter hinzu:
 
 ```xml
 <ClaimsProvider>
@@ -209,9 +209,6 @@ Speichern Sie die Dateien, die Sie geändert haben: *TrustFrameworkBase.xml*, *T
   ...
 }
 ```
-
-## <a name="next-steps"></a>Nächste Schritte
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

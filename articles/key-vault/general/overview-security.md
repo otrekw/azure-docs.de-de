@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: dbe13b2d1291f212af7da9d1176bc3d90997978b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426750"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834377"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -42,7 +42,7 @@ Das Modell eines einzelnen Mechanismus für die Authentifizierung für beide Ebe
 
 - Organisationen können den Zugriff auf alle Schlüsseltresore zentral steuern.
 - Wenn ein Benutzer aus der Organisation ausscheidet, verliert er umgehend den Zugriff auf sämtliche Schlüsseltresore in der Organisation.
-- Organisationen können die Authentifizierung über die Optionen in Azure AD anpassen und so beispielsweise die mehrstufige Authentifizierung aktivieren, um die Sicherheit zu verbessern.
+- Organisationen können die Authentifizierung über die Optionen in Azure AD anpassen und so beispielsweise die mehrstufige Authentifizierung aktivieren, um die Sicherheit zu verbessern.
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Verwalten des Administratorzugriffs auf Key Vault
 

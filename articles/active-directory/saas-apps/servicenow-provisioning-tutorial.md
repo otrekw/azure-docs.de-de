@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78205100"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780509"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -141,7 +141,6 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * **InvalidLookupReference:** Bei der Bereitstellung bestimmter Attribute wie „Abteilung“ und „Standort“ in ServiceNow müssen die Werte bereits in einer Referenztabelle in ServiceNow vorhanden sein. Beispiel: Die Tabelle **Tabellenname einfügen** in ServiceNow muss zwei Standorte (Seattle, Los Angeles) und drei Abteilungen (Vertrieb, Finanzen, Marketing) enthalten. Wenn Sie versuchen, einen Benutzer bereitzustellen, der zur Abteilung „Vertrieb“ am Standort „Seattle“ gehört, wird dieser erfolgreich bereitstellt. Wenn Sie versuchen, einen Benutzer bereitzustellen, der zur Abteilung „Vertrieb“ am Standort „LA“ gehört, wird dieser nicht bereitstellt. Entweder muss der Standort „LA“ der Referenztabelle in ServiceNow hinzugefügt werden, oder das Benutzerattribut in Azure AD muss so aktualisiert werden, dass es dem Format in ServiceNow entspricht. 
 * **EntryJoiningPropertyValueIsMissing:** Überprüfen Sie Ihre [Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), um das übereinstimmende Attribut zu identifizieren. Dieser Wert muss bei dem bereitzustellenden Benutzer bzw. der Gruppe vorhanden sein. 
 * Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z.B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
-* Bei einigen ServiceNow-Bereitstellungen sind zulässige IP-Bereiche für den Azure AD-Bereitstellungsdienst erforderlich. Die für den Azure AD-Bereitstellungsdienst reservierten IP-Adressbereiche finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519) unter „AzureActiveDirectoryDomainServices“.
 * Bereitstellungsanforderungen werden standardmäßig an https://{Ihren-Instanznamen}.service-now.com/{Tabellenname} gesendet. Wenn Sie eine benutzerdefinierte Mandanten-URL benötigen, können Sie die gesamte URL im Feld „Instanzname“ angeben.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

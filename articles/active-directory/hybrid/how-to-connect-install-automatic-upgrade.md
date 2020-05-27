@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926475"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680215"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
 Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](reference-connect-version-history.md#111050) eingeführt.  Dieses Feature wurde in [Build 1.1.561](reference-connect-version-history.md#115610) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
@@ -92,7 +92,7 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedAdfsSignInMethod | Sie haben AD FS als Anmeldemethode ausgewählt. |
 | UpgradeNotSupportedCustomizedSyncRules |Sie haben der Konfiguration eigene benutzerdefinierte Regeln hinzugefügt. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Sie haben das Feature [Geräterückschreiben](how-to-connect-device-writeback.md) aktiviert. |
-| UpgradeNotSupportedGroupWritebackEnabled |Sie haben das Feature [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback) aktiviert. |
+| UpgradeNotSupportedGroupWritebackEnabled |Sie haben das Feature „Gruppenrückschreiben“ aktiviert. |
 | UpgradeNotSupportedInvalidPersistedState |Die Installation ist keine Express-Einstellung und kein DirSync-Upgrade. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Es sind mehr als 100.000 Objekte im Metaverse enthalten. |
 | UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |

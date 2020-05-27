@@ -8,22 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 38c98a65ac0b0f95a9a6e111a79b5dede04912c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229747"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696948"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
 In diesem Artikel erfahren Sie, wie Sie Azure Active Directory B2C (Azure AD B2C) so konfigurieren, dass der Dienst als SAML-Identitätsanbieter (Security Assertion Markup Language) für Ihre Anwendungen fungiert.
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
@@ -115,7 +113,7 @@ Laden Sie nun die SAML-Assertion und das Antwortsignaturzertifikat in Azure AD B
 
 Fügen Sie nun mithilfe der technischen Profile [SAML-Tokenaussteller](saml-issuer-technical-profile.md) und [SAML-Sitzungsanbieter](custom-policy-reference-sso.md#samlssosessionprovider) die Funktion zum Ausstellen von SAML-Token für Ihren Mandanten hinzu.
 
-Öffnen Sie `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** im Starter Pack für benutzerdefinierte Richtlinien.
+Öffnen Sie `SocialAndLocalAccounts\`**`TrustFrameworkExtensions.xml`** im Starter Pack für benutzerdefinierte Richtlinien.
 
 Suchen Sie den Abschnitt `<ClaimsProviders>`, und fügen Sie den folgenden XML-Codeausschnitt hinzu.
 
@@ -371,7 +369,6 @@ Die folgenden SAML-Szenarien der vertrauenden Seite (Relying Party, RP) werden �
 * Mehrere Abmelde-URLs oder POST-Bindung für die Abmelde-URL im Anwendungs-/Dienstprinzipalobjekt.
 * Angeben eines Signaturschlüssels zum Überprüfen von RP-Anforderungen im Anwendungs-/Dienstprinzipalobjekt.
 * Angeben eines Tokenverschlüsselungsschlüssels im Anwendungs-/Dienstprinzipalobjekt.
-* Von einem Identitätsanbieter initiierte Anmeldungen werden im Vorschaurelease derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

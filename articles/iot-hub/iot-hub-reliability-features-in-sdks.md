@@ -10,12 +10,12 @@ ms.service: iot-hub
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6b8981f9a0b372c6c2d5b24236bb4f55dcf8a9d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c9371b76d8bd7b4afd3f54e30dcf652b8b33d4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656802"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 
@@ -93,7 +93,7 @@ Die SDKs umfassen drei Wiederholungsrichtlinien:
    |  C/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **Standard:** [IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Benutzerdefiniert:** Verfügbare [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies) verwenden<BR>**Keine Wiederholung:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/iOS-Implementierung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
    | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Standard:** [ExponentialBackoffWithJitter-Klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Benutzerdefiniert:** [RetryPolicy-Schnittstelle](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-Implementierung](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
    | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Standard:** [ExponentialBackoff-Klasse](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Benutzerdefiniert:** [IRetryPolicy-Schnittstelle](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#-Implementierung](https://github.com/Azure/azure-iot-sdk-csharp) | |
-   | Node| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Standard:** [ExponentialBackoffWithJitter-Klasse](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Benutzerdefiniert:** [RetryPolicy-Schnittstelle](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Node-Implementierung](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   | Node| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Standard:** [ExponentialBackoffWithJitter-Klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java) | [Node-Implementierung](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
    | Python| Derzeit nicht unterstützt | Derzeit nicht unterstützt | Derzeit nicht unterstützt |
 
 Die folgenden Codebeispiele veranschaulichen diesen Ablauf:

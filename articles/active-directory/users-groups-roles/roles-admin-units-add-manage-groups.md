@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2547a0fdbfbcc143ff822de333b41198f469375c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649324"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Hinzufügen und Verwalten von Gruppen in Verwaltungseinheiten in Azure Active Directory
 
@@ -75,7 +75,7 @@ Beispiel:
 
 Wechseln Sie im Portal zu **Azure AD > Verwaltungseinheiten**. Wählen Sie die Verwaltungseinheit aus, deren Benutzer Sie auflisten möchten. Standardmäßig ist im linken Bereich bereits **Alle Benutzer** ausgewählt. Wählen Sie **Alle Gruppen** aus. Auf der rechten Seite finden Sie eine Liste der Gruppen, die Mitglieder der ausgewählten Verwaltungseinheit sind.
 
-![Auswählen einer zu löschenden Verwaltungseinheit](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Auflisten von Gruppen in einer Verwaltungseinheit](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

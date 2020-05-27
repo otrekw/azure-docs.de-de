@@ -1,15 +1,14 @@
 ---
-title: Einbinden eines virtuellen Dateisystems in einen Pool – Azure Batch | Microsoft-Dokumentation
+title: Einbinden eines virtuellen Dateisystems in einen Pool
 description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Pool einbinden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: labrenne
-ms.openlocfilehash: 703b65f0a1571659d7be479776dd8fdf02d86731
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117028"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816028"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -65,10 +64,10 @@ new PoolAddParameter
         {
             AzureFileShareConfiguration = new AzureFileShareConfiguration
             {
-                AccountName = "AccountName",
-                AzureFileUrl = "AzureFileShareUrl",
-                AccountKey = "StorageAccountKey",
-                RelativeMountPath = "RelativeMountPath",
+                AccountName = "{storage-account-name}",
+                AzureFileUrl = "https://{storage-account-name}.file.core.windows.net/{file-share-name}",
+                AccountKey = "{storage-account-key}",
+                RelativeMountPath = "S",
                 MountOptions = "-o vers=3.0,dir_mode=0777,file_mode=0777,sec=ntlmssp"
             },
         }

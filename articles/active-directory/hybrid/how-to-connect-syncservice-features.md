@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983074"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682234"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 
@@ -62,7 +62,7 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | Kennworthashsynchronisierung |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](how-to-connect-password-hash-synchronization.md) |
 |Passthrough-Authentifizierung|[Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |Gruppenrückschreiben|
 | UserWriteback |Derzeit nicht unterstützt. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Resilienz bei doppelten Attributen

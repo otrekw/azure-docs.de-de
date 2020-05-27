@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72598327"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836429"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community  
 
@@ -48,7 +48,7 @@ Die folgenden Foren können zum Stellen von Fragen zu aktuellen Produkten und Fe
 
 Derzeit ist MSDN das primäre Communityforum des Media Services-Teams.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-services“ gekennzeichnet werden.
 

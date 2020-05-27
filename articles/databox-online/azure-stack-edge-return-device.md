@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568619"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743641"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Zurückgeben oder Ersetzen Ihres Azure Stack Edge-Geräts
 
@@ -74,7 +74,7 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 5. Bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.
 6. Planen Sie eine Abholung mit Ihrem regionalen Paketdienst. Bei Rückgabe des Geräts in den USA ist dies UPS oder FedEx. So planen Sie eine Abholung durch UPS
 
-    1. Rufen Sie Ihre lokale UPS-Versandstelle an (landesspezifische kostenfreie Telefonnummer).
+    1. Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
     2. Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie auf dem gedruckten Etikett finden.
     3. Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
 

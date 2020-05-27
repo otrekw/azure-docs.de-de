@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aa59a37f3a4413c92a483746ed4a08c363ab8457
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793818"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736074"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -1070,9 +1070,9 @@ Die API Management-Features zur Sicherung und Wiederherstellung von Diensten ent
 
 * [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
 
-* [Aufrufen des API Management-Sicherungsvorgangs](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+* [Aufrufen des API Management-Sicherungsvorgangs](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-* [Aufrufen des API Management-Wiederherstellungsvorgangs](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [Aufrufen des API Management-Wiederherstellungsvorgangs](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1096,7 +1096,7 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 **Leitfaden**: Überprüfen Sie die Sicherungen, indem Sie testweise eine Wiederherstellung des Diensts und der Zertifikate aus Sicherungskopien durchführen.
 
-* [Aufrufen des API Management-Wiederherstellungsvorgangs](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [Aufrufen des API Management-Wiederherstellungsvorgangs](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 * [Wiederherstellen von Azure Key Vault-Zertifikaten](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
@@ -1196,7 +1196,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1: Durchführen regelmäßiger Penetrationstests ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnisse innerhalb von 60 Tagen
 

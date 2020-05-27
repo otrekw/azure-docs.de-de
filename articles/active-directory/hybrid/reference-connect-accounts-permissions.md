@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect-Konten und -Berechtigungen | Microsoft-Dokumentation
+title: 'Azure AD Connect: Konten und Berechtigungen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt die verwendeten und erstellten Konten sowie die erforderlichen Berechtigungen.
 services: active-directory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227866"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681751"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -133,7 +133,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 >[!IMPORTANT]
 >Mit Build **1.1.880.0** (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens „ADSyncConfig.psm1“ eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihr Azure AD DS-Connector-Konto helfen sollen.
 >
->Weitere Informationen finden Sie unter [Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen](how-to-connect-configure-ad-ds-connector-account.md).
+>Weitere Informationen hierzu finden Sie unter [Azure AD Connect: Konfigurieren der Azure AD DS-Connector-Kontoberechtigung](how-to-connect-configure-ad-ds-connector-account.md)
 
 Das Konto, das Sie auf der Seite **Verzeichnisse verbinden** angeben, muss vor der Installation bereits in Active Directory vorhanden sein.  In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assistent das **AD DS Connector-Konto** erstellen, das zum Herstellen der Verbindung mit Active Directory verwendet wird.  
 
@@ -149,7 +149,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](how-to-connect-device-writeback.md)beschrieben |
-| Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Office 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback).|
+| Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Office 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.|
 
 ## <a name="upgrade"></a>Aktualisieren
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
@@ -162,7 +162,7 @@ Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie
 | --- | --- | --- |
 | Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |Aktualisieren von Binärdateien. |
 | Benutzer, der den Installations-Assistenten ausführt |Mitglied von ADSyncAdmins |Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen. |
-| Benutzer, der den Installations-Assistenten ausführt |Bei Verwendung einer SQL Server-Instanz mit vollem Funktionsumfang: DBO (oder ähnlich) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
+| Benutzer, der den Installations-Assistenten ausführt |Wenn Sie einen vollständigen SQL-Server verwenden: DBO (oder ähnliches) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
 
 ## <a name="more-about-the-created-accounts"></a>Weitere Informationen zu den erstellten Konten
 ### <a name="ad-ds-connector-account"></a>AD DS Connector-Konto

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084276"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652517"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -35,13 +35,13 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnah
 * [HB-Serie](../hb-series.md)
 * [HC-Serie](../hc-series.md)
 * [Ls-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) und [Lsv2-Serie](../lsv2-series.md)
-* [Mv2-Serie](../mv2-series.md)
+* [M-Serie](../m-series.md)
+* [Mv2-Serie](../mv2-series.md)<sup>1</sup>
 * [NCv2-Serie](../ncv2-series.md) und [NCv3-Serie](../ncv3-series.md)
 * [ND-Serie](../nd-series.md)
 * [NVv3-Serie](../nvv3-series.md)
 
-> [!NOTE]
-> Die Verwendung von VM-Images der Generation 2 für VMs der Mv2-Serie ist allgemein verfügbar, da die Mv2-Serie ausschließlich mit VM-Images der Generation 2 arbeitet. VM-Images der Generation 1 werden auf VMs der Mv2-Serie nicht unterstützt. 
+<sup>1</sup> Die Mv2-Serie unterstützt keine VM-Images der Generation 1 und nur eine Teilmenge von Images der Generation 2. Ausführliche Informationen finden Sie in der [Dokumentation zur Mv2-Serie](https://docs.microsoft.com/azure/virtual-machines/mv2-series).
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-Images der Generation 2 in Azure Marketplace
 
@@ -122,12 +122,6 @@ Verwenden Sie beispielsweise das folgende PowerShell-Cmdlet, um eine Liste der S
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-Alternativ können Sie über die Azure-Befehlszeilenschnittstelle alle verfügbaren Images der Generation 2 anzeigen, die von **Publisher** aufgelistet werden.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
-```
-
 Wenn Sie einen virtuellen Computer mit Windows Server 2012 als Betriebssystem erstellen, wählen Sie entweder die VM-SKU der Generation 1 (BIOS) oder der Generation 2 (UEFI) aus, die wie folgt aussieht:
 
 ```powershell
@@ -136,6 +130,14 @@ Wenn Sie einen virtuellen Computer mit Windows Server 2012 als Betriebssystem er
 ```
 
 Im Abschnitt [Features und Funktionen](#features-and-capabilities) finden Sie eine aktuelle Liste der unterstützten Marketplace-Images.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Alternativ können Sie über die Azure-Befehlszeilenschnittstelle alle verfügbaren Images der Generation 2 anzeigen, die von **Publisher** aufgelistet werden.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Verwaltetes Image oder verwalteter Datenträger
 
