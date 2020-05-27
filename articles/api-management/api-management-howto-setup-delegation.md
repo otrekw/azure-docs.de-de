@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259101"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649189"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -74,7 +74,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt**einrichten. Dieser Endpunk
    * [Fordern Sie ein Token für die einmalige Anmeldung an (SSO)] ; verwenden Sie hierzu die REST-API von API Management
    * Hängen Sie einen returnUrl-Abfrageparameter an die SSO-URL an, die Sie aus dem obigen API-Aufruf erhalten haben:
      
-     > Beispiel: https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > Beispiel: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * Leiten Sie den Benutzer an die oben generierte URL um.

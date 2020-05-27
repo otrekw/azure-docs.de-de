@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77192091"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648062"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
@@ -21,7 +21,7 @@ Sie können Azure Arc für Server (Vorschauversion) mithilfe mehrerer flexibler 
 
 Die Methoden zum Installieren und Konfigurieren des Connected Machine-Agents erfordern, dass die von Ihnen verwendete automatisierte Methode über Administratorberechtigungen auf den Computern verfügt. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie Mitglied der Gruppe „Lokale Administratoren“ sein.
 
-Bevor Sie beginnen, sollten Sie die [Voraussetzungen](overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen.
+Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

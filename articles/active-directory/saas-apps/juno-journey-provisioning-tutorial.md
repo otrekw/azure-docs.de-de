@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81642575"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647743"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Juno Journey für die automatische Benutzerbereitstellung
 
@@ -40,7 +40,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 * [Azure AD-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
-*  [Juno Journey-Mandant](https://www.junojourney.com/getstartedwithjuno).
+*  [Juno Journey-Mandant](https://www.junojourney.com/blank).
 *  Ein Benutzerkonto in Juno Journey mit Administratorberechtigungen.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung

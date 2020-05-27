@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792172"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652994"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI
 
@@ -92,7 +92,7 @@ Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkt
 
 Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
-Erstellen Sie eine Imagedefinition im Katalog mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
+Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) eine Imagedefinition im Katalog. 
 
 In diesem Beispiel heißt die Imagedefinition *myImageDefinition* und ist für ein [spezialisiertes](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux-Betriebssystemimage gedacht. 
 
@@ -112,13 +112,13 @@ Kopieren Sie die ID der Imagedefinition in der Ausgabe zur späteren Verwendung.
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) eine Imageversion des virtuellen Computers.  
+Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) eine Imageversion der VM.  
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
 In diesem Beispiel wird ein Image der Version *1.0.0* verwendet, und es werden unter Verwendung bon zonenredundantem Speicher zwei Replikate in der Region *USA, Westen-Mitte*, ein Replikat in der Region *USA, Süden-Mitte* und ein Replikat in der Region *USA, Osten 2* erstellt. Die Replikationsregionen müssen die Region beinhalten, in der sich der virtuelle Quellcomputer befindet.
 
-Ersetzen Sie den Wert `--managed-image` in diesem Beispiel durch die ID Ihres virtuellen Computers aus dem vorherigen Schritt.
+Ersetzen Sie den Wert `--managed-image` in diesem Beispiel durch die ID Ihrer VM aus dem vorherigen Schritt.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -142,7 +142,7 @@ az sig image-version create \
 
 Erstellen Sie den virtuellen Computer mithilfe von [az vm create](/cli/azure/vm#az-vm-create) und unter Verwendung des Parameters „--specialized“, um anzugeben, dass es sich um ein spezialisiertes Image handelt. 
 
-Verwenden Sie die Imagedefinitions-ID für `--image`, um den virtuellen Computer auf der Grundlage der neuesten verfügbaren Imageversion zu erstellen. Sie können den virtuellen Computer auch auf der Grundlage einer bestimmten Version erstellen, indem Sie die Imageversions-ID für `--image` verwenden. 
+Verwenden Sie die Imagedefinitions-ID für `--image`, um die VM auf der Grundlage der neuesten verfügbaren Imageversion zu erstellen. Sie können die VM auch auf der Grundlage einer bestimmten Version erstellen, indem Sie die Imageversions-ID für `--image` angeben. 
 
 In diesem Beispiel erstellen Sie einen virtuellen Computer auf der Grundlage der aktuellen Version des Images *myImageDefinition*.
 
@@ -196,5 +196,5 @@ In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Comp
 Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
 
 > [!div class="nextstepaction"]
-> [Erstellen von hoch verfügbaren virtuellen Computern](tutorial-availability-sets.md)
+> [Erstellen eines hoch verfügbaren virtuellen Computers](tutorial-availability-sets.md)
 

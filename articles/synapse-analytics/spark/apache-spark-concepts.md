@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6276d198e547efec3d2e3cb88816da5e2b593aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096281"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644685"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Grundlegende Konzepte für Apache Spark in Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ Da im Zusammenhang mit der Erstellung von Spark-Pools keine Gebühren oder Resso
 
 Eine bewährte Methode besteht darin, kleinere Spark-Pools für die Entwicklung und das Debugging und anschließend größere Spark-Pools für die Ausführung von Produktionsworkloads zu erstellen.
 
-Informationen zum Erstellen eines Spark-Pools sowie alle verfügbaren Eigenschaften finden Sie unter [Erstellen eines Apache Spark-Pools](../quickstart-create-apache-spark-pool.md).
+Informationen zum Erstellen eines Spark-Pools sowie alle verfügbaren Eigenschaften finden Sie unter [Erstellen eines Apache Spark-Pools](../quickstart-create-apache-spark-pool-portal.md).
 
 ## <a name="spark-instances"></a>Spark-Instanzen
 

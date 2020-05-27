@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548541"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648225"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -80,7 +80,7 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     3. Aktualisieren Sie Ihren Block „dependencies“, und fügen Sie eine neue Implementierungsabhängigkeitszeile für das neueste Android SDK von Azure Maps hinzu:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
     4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie dann auf **Projekt mit Gradle-Dateien synchronisieren**.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e199b0d6cf2be7dc956267843f4dabe521d87428
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897810"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647627"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AwardSpring
 
@@ -157,7 +157,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **AwardSpring** müssen
 In diesem Abschnitt wird in AwardSpring ein Benutzer mit dem Namen B. Simon erstellt. AwardSpring unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in AwardSpring vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
-> Setzen Sie sich mit dem [AwardSpring-Supportteam](maito:support@awardspring.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Setzen Sie sich mit dem [AwardSpring-Supportteam](mailto:support@awardspring.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6214c7f0d7728d39e36a7b555f503e130b405e81
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743268"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653057"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadverwaltung mit Ressourcenklassen in Azure Synapse Analytics
 
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Analytics](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität des gruppierten Columnstore-Index verbessern können, finden Sie unter [Arbeitsspeicheroptimierung für Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Schützen einer Datenbank in Azure Synapse](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität des gruppierten Columnstore-Index verbessern können, finden Sie unter [Arbeitsspeicheroptimierung für Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).

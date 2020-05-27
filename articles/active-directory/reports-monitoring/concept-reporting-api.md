@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399325"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647394"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -47,7 +47,7 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 
 ## <a name="api-endpoints"></a>API-Endpunkte 
 
-Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/beta/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) und in der [Referenz zur Anmelde-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
+Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/v1.0/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) und in der [Referenz zur Anmelde-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn).
 
 Darüber hinaus können Sie die [API für Identity Protection-Risikoerkennungen](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
   

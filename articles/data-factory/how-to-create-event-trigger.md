@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: d697fb8afe3e92dfe54eb5d89a2ef59425cb0cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56d80571253d95d28c839ed81b6e1ce6dda9dc46
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414929"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652403"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,11 +69,11 @@ In diesem Abschnitt wird gezeigt, wie Sie über die Benutzeroberfläche von Azur
 
 1. Sie können eine Pipeline an diesen Trigger anfügen, indem Sie zum Bereich „Pipeline“ navigieren und erst auf **Trigger hinzufügen** und dann auf **New/Edit** (Neu/Bearbeiten) klicken. Wenn die Seitennavigationsleiste angezeigt wird, klicken Sie auf die Dropdownliste **Choose trigger...** (Trigger auswählen...), und wählen Sie den von Ihnen erstellten Trigger aus. Klicken Sie auf **Weiter: Datenvorschau**, um zu überprüfen, ob die Konfiguration stimmt, und klicken Sie anschließend auf **Weiter**, um die Datenvorschau zu überprüfen.
 
-1. Wenn Ihre Pipeline über Parameter verfügt, können Sie diese auf der Seitennavigationsleiste „Trigger run parameter“ (Parameter für die Triggerausführung) angeben. Der Trigger erfasst den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@triggerBody().folderPath` und `@triggerBody().fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline().parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen. Wenn Sie fertig sind, klicken Sie auf **Fertig stellen**.
+1. Wenn Ihre Pipeline über Parameter verfügt, können Sie diese auf der Seitennavigationsleiste „Trigger run parameter“ (Parameter für die Triggerausführung) angeben. Der Trigger erfasst den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@trigger().outputs.body.folderPath` und `@trigger().outputs.body.fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline().parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen. Wenn Sie fertig sind, klicken Sie auf **Fertig stellen**.
 
     ![Zuordnung von Eigenschaften zu Pipelineparametern](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Im vorherigen Beispiel wurde der Trigger so konfiguriert, dass er ausgelöst wird, wenn im Container „sample-data“ (Beispieldaten) ein Blobpfad mit der Erweiterung „.csv“ im Ordner „event-testing“ (Ereignistest) erstellt wird. Die Eigenschaften **folderPath** and **fileName** erfassen den Speicherort des neuen Blobs. Wenn z. B. „MoviesDB.csv“ zum Pad „sample-data/event-testing“ (Beispieldaten/Ereignistest) hinzugefügt wird, hat `@triggerBody().folderPath` den Wert `sample-data/event-testing` und `@triggerBody().fileName` den Wert `moviesDB.csv`. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet, die in der gesamten Pipeline jeweils als `@pipeline().parameters.sourceFolder` bzw. `@pipeline().parameters.sourceFile` verwendet werden können.
+Im vorherigen Beispiel wurde der Trigger so konfiguriert, dass er ausgelöst wird, wenn im Container „sample-data“ (Beispieldaten) ein Blobpfad mit der Erweiterung „.csv“ im Ordner „event-testing“ (Ereignistest) erstellt wird. Die Eigenschaften **folderPath** and **fileName** erfassen den Speicherort des neuen Blobs. Wenn z. B. „MoviesDB.csv“ zum Pad „sample-data/event-testing“ (Beispieldaten/Ereignistest) hinzugefügt wird, hat `@trigger().outputs.body.folderPath` den Wert `sample-data/event-testing` und `@trigger().outputs.body.fileName` den Wert `moviesDB.csv`. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet, die in der gesamten Pipeline jeweils als `@pipeline().parameters.sourceFolder` bzw. `@pipeline().parameters.sourceFile` verwendet werden können.
 
 ## <a name="json-schema"></a>JSON-Schema
 

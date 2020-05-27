@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058423"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647437"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cornerstone OnDemand für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ Das in diesem Tutorial beschriebene Szenario setzt voraus, dass Sie über folgen
 * Ein Benutzerkonto in Cornerstone OnDemand mit Administratorrechten.
 
 > [!NOTE]
-> Die Azure AD-Bereitstellungsintegration basiert auf dem [Cornerstone OnDemand-Webdienst](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf). Dieser Dienst ist für Cornerstone OnDemand-Teams verfügbar.
+> Die Azure AD-Bereitstellungsintegration basiert auf dem [Cornerstone OnDemand-Webdienst](https://www.cornerstoneondemand.com/). Dieser Dienst ist für Cornerstone OnDemand-Teams verfügbar.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Hinzufügen von Cornerstone OnDemand aus dem Azure Marketplace
 

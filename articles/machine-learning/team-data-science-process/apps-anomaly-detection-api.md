@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656541"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 
@@ -24,7 +24,7 @@ ms.locfileid: "76721879"
 > Dieses Element wird zurzeit gewartet. Wir empfehlen Ihnen, den [API-Dienst zur Anomalieerkennung](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) zu verwenden, der von einem Katalog von Machine Learning-Algorithmen unter Azure Cognitive Services unterstützt wird, um Anomalien in Unternehmens-, operative und IoT-Metriken zu erkennen.
 
 ## <a name="overview"></a>Übersicht
-Die [Anomaly Detection-API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
+Die [Anomaly Detection-API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
 
 Diese API kann die folgenden Arten anomaler Muster in Zeitreihendaten erkennen:
 
@@ -39,20 +39,20 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 * Mit der [Webanwendung](https://anomalydetection-aml.azurewebsites.net/) können Sie die Ergebnisse von Anomaly Detection-APIs für Ihre Daten auswerten und visualisieren.
 
 > [!NOTE]
-> Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
+> Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API-Bereitstellung
-Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies über den [Azure KI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei (klassische) Azure Machine Learning Studio-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs auf der Seite [ (klassische) Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies über den [Azure KI-Katalog](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei (klassische) Azure Machine Learning Studio-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs auf der Seite [ (klassische) Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](/azure/machine-learning/studio/manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalieren der API
 Standardmäßig enthält der kostenlose Dev/Test-Abrechnungsplan Ihrer Bereitstellung 1.000 Transaktionen/Monat und zwei Computestunden/Monat.  Sie können nach Ihren Bedürfnissen auf einen anderen Plan aktualisieren.  Informationen zu den Preisen verschiedener Pläne finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/) unter „Produktions-Web-API-Preise“.
 
 ## <a name="managing-aml-plans"></a>Verwalten von AML-Plänen
-Sie können Ihren Abrechnungsplan [hier](https://services.azureml.net/plans/) verwalten.  Der Name des Plans basiert auf dem Namen der Ressourcengruppe, die Sie bei Bereitstellung der API ausgewählt haben, plus einer Zeichenfolge, die für Ihr Abonnement eindeutig ist.  Anweisungen zum Aktualisieren Ihres Plans stehen [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) im Abschnitt „Managing billing plans“ (Verwalten von Abrechnungsplänen) zur Verfügung.
+Sie können Ihren Abrechnungsplan [hier](https://services.azureml.net/plans/) verwalten.  Der Name des Plans basiert auf dem Namen der Ressourcengruppe, die Sie bei Bereitstellung der API ausgewählt haben, plus einer Zeichenfolge, die für Ihr Abonnement eindeutig ist.  Anweisungen zum Aktualisieren Ihres Plans stehen [hier](/azure/machine-learning/studio/manage-new-webservice) im Abschnitt „Managing billing plans“ (Verwalten von Abrechnungsplänen) zur Verfügung.
 
 ## <a name="api-definition"></a>API-Definition
 Der Webdienst stellt eine REST-basierte API über HTTPS bereit, die auf unterschiedliche Weise genutzt werden kann, beispielsweise durch eine Web- oder mobile Anwendung, R, Python, Excel usw.  Sie senden Zeitreihendaten über einen REST-API-Aufruf an diesen Dienst, und dann wird eine Kombination der unten beschriebenen drei Anomaliearten ausgeführt.

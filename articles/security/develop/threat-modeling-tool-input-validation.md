@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 712a0707826f97f29b015a2c5892f8d20577e41b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 8e597fb9208430b8da447768608c48edef049d83
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653113"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Sicherheitsrahmen: Eingabeüberprüfung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -71,7 +71,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [IE8-Sicherheit Teil V – Umfassender Schutz](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
+| **Referenzen**              | [IE8-Sicherheit Teil V – Umfassender Schutz](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
 | **Schritte** | <p>Für jede Seite, die von Benutzern steuerbare Inhalte enthalten könnte, müssen Sie den HTTP-Header `X-Content-Type-Options:nosniff` verwenden. Um diese Anforderung zu erfüllen, können Sie die erforderlichen Header seitenweise nur für die Seiten festlegen, die von Benutzern steuerbare Inhalte enthalten können, oder Sie können sie global für alle Seiten in der Anwendung festlegen.</p><p>Jeder von einem Webserver übermittelten Datei ist ein [MIME-Typ](https://en.wikipedia.org/wiki/Mime_type) (auch *Inhaltstyp* genannt) zugeordnet, der die Art des Inhalts beschreibt (d.h. Bild, Text, Anwendung usw.)</p><p>Der Header „X-Content-Type-Options“ ist ein HTTP-Header, mit dem Entwickler festlegen, dass für ihre Inhalte keine MIME-Ermittlung erfolgen soll. Dieser Header dient zur Minderung von MIME-Ermittlungsangriffen. Dieser Header wurde in Internet Explorer 8 (IE8) hinzugefügt.</p><p>Nur Benutzer von Internet Explorer 8 (IE8) können von „X-Content-Type-Options“ profitieren. Vorherige Versionen von Internet Explorer unterstützen den X-Content-Type-Options-Header derzeit nicht.</p><p>Internet Explorer 8 (und höher) ist der einzige Browser, in dem ein Feature zum Deaktivieren der MIME-Ermittlung implementiert werden kann. Wenn andere gängige Browser (Firefox, Safari, Chrome) ähnliche Funktionen implementieren, wird diese Empfehlung um eine MDX-Syntax für diese Browser ergänzt.</p>|
 
 ### <a name="example"></a>Beispiel
@@ -213,7 +213,7 @@ Beachten Sie, dass in MSXML6 für „ProhibitDTD“ standardmäßig „true“ (
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Unbeschränkter Dateiupload](https://www.owasp.org/index.php/Unrestricted_File_Upload), [Dateisignaturtabelle](https://www.garykessler.net/library/file_sigs.html) |
+| **Referenzen**              | [Unbeschränkter Dateiupload](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), [Dateisignaturtabelle](https://www.garykessler.net/library/file_sigs.html) |
 | **Schritte** | <p>Hochgeladene Dateien stellen ein erhebliches Risiko für Anwendungen dar.</p><p>Bei vielen Angriffen besteht der erste Schritt daran, Code des Systems abzugreifen, das angegriffen werden soll. Anschließend muss der Angreifer nur eine Gelegenheit finden, den Code auszuführen. Ein Dateiupload hilft dem Angreifer beim ersten Schritt. Die Folgen des uneingeschränkten Dateiuploads reichen von der Übernahme des vollständigen Systems, Überlastung des Dateisystems oder der Datenbank über die Weiterleitung der Angriffe auf Back-End-Systeme bis zur einfachen Verunstaltung.</p><p>Das Ausmaß hängt davon ab, was die Anwendung mit der hochgeladenen Datei macht und insbesondere, wo sie gespeichert ist. Die Validierung des Dateiuploads auf dem Server fehlt. Folgende Sicherheitsmaßnahmen sollte für Dateiuploads implementiert werden:</p><ul><li>Überprüfung der Dateierweiterung (nur zulässigen Dateitypen sollten akzeptiert werden)</li><li>Maximale Dateigröße</li><li>Datei sollte nicht in Webroot hochgeladen werden; der Speicherort sollte ein Verzeichnis sein, das sich nicht in einem-Systemlaufwerks befindet.</li><li>Benennungskonvention muss befolgt werden, der Name der hochgeladenen Datei sollte einen Zufallsfaktor enthalten, damit keine Dateien überschrieben werden</li><li>Dateien sollten vor dem Schreiben auf den Datenträger durch Antiviruslösungen geprüft werden</li><li>Sicherstellen, dass der Dateiname und beliebige Metadaten (z. B. Dateipfad) auf schädliche Zeichen überprüft werden</li><li>Überprüfen des Format der Dateisignatur, und um zu verhindern, dass ein Benutzer eine maskierte Datei hochlädt (z. B. Hochladen einer exe-Datei durch Ändern der Erweiterung in txt)</li></ul>| 
 
 ### <a name="example"></a>Beispiel

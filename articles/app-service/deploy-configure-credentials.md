@@ -5,19 +5,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231654"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649119"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
 
-* **Anmeldeinformationen auf Benutzerebene**: ein Satz von Anmeldeinformationen für das gesamte Azure-Konto. Hiermit können Sie App Service für alle Apps in allen Abonnements bereitstellen, für die das Azure-Konto über Zugriffsberechtigungen verfügt. Dies ist der Standardsatz, der auf der Benutzeroberfläche des Portals angezeigt wird (z.B. **Übersicht** und **Eigenschaften** auf der [Ressourcenseite](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) der App). Wenn ein Benutzer App-Zugriff über rollenbasierte Zugriffssteuerung (RBAC) oder Co-Administrator-Berechtigungen erhält, kann er die eigenen Anmeldeinformationen auf Benutzerebene verwenden, bis der Zugriff widerrufen wird. Teilen Sie diese Anmeldeinformationen nicht mit anderen Azure-Benutzern.
-
-* **Anmeldeinformationen auf App-Ebene**: ein Satz von Anmeldeinformationen für jede App. Er kann nur verwendet werden, um diese App bereitzustellen. Die Anmeldeinformationen für eine App werden bei der Erstellung jeder App automatisch generiert. Sie können nicht manuell konfiguriert, jedoch jederzeit zurückgesetzt werden. Damit ein Benutzer Zugriff auf Anmeldeinformationen auf App-Ebene über die rollenbasierte Zugriffssteuerung (RBAC) erhalten kann, muss er in der App mindestens ein Mitwirkender sein (einschließlich der integrierten Rolle „Websitemitwirkender“). Benutzer mit Leseberechtigung dürfen nicht veröffentlichen und haben keinen Zugriff auf diese Anmeldeinformationen.
+[!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 ## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Konfigurieren von Anmeldeinformationen auf Benutzerebene
 

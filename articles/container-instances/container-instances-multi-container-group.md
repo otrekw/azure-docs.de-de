@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie eine Containergruppe mit m
 ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
-ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b08a974cbbdc9e4bdf1594672f82748bfabe88b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533622"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653519"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage
 
@@ -111,11 +111,11 @@ Diese Resource Manager-Vorlage definiert eine Containergruppe mit zwei Container
           "ports": [
             {
               "protocol": "tcp",
-              "port": "80"
+              "port": 80
             },
             {
                 "protocol": "tcp",
-                "port": "8080"
+                "port": 8080
             }
           ]
         }

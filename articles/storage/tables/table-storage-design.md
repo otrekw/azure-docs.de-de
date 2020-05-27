@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228290"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656906"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Erstellen skalierbarer und leistungsfähiger Tabellen
 
@@ -132,7 +132,7 @@ Kontoname, Tabellenname und **PartitionKey** bestimmen zusammen die Partition in
 
 Im Tabellenspeicherdienst bedient ein einzelner Knoten eine oder mehrere komplette Partitionen und skaliert durch dynamischen Lastenausgleich Partitionen über Knoten hinweg. Wenn ein Knoten ausgelastet ist, kann der Tabellenspeicherdienst den Partitionsbereich *teilen*, der von diesem Knoten aus andere Knoten bedient. Wenn der Datenverkehr abnimmt, kann der Dienst die Partitionsbereiche von nicht ausgelasteten Knoten wieder auf einem einzelnen Knoten *zusammenführen*.  
 
-Weitere Informationen über die internen Details des Tabellenspeicherdiensts und insbesondere zur Verwaltung der Partitionen durch den Dienst finden Sie im Dokument [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)(in englischer Sprache).  
+Weitere Informationen über die internen Details des Tabellenspeicherdiensts und insbesondere zur Verwaltung der Partitionen durch den Dienst finden Sie im Dokument [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)(in englischer Sprache).  
 
 ## <a name="entity-group-transactions"></a>Entitätsgruppentransaktionen
 Im Tabellenspeicherdienst sind Entitätsgruppentransaktionen (EGTs) der einzige integrierte Mechanismus, mit dem atomische Aktualisierungen für mehrere Entitäten durchgeführt werden können. EGTs werden manchmal auch als *Batchtransaktionen* bezeichnet. EGTs können nur für Entitäten ausgeführt werden, die in derselben Partition gespeichert sind (d. h., sie teilen sich den gleichen Partitionsschlüssel in einer bestimmten Tabelle). Jedes Mal, wenn Sie ein atomisches Transaktionsverhalten über mehrere Entitäten hinweg benötigen, müssen Sie daher sicherstellen, dass sich diese Entitäten in derselben Partition befinden. Dies ist häufig der Grund, dass mehrere Entitätstypen in derselben Tabelle (und Partition) gehalten werden und nicht mehrere Tabellen für verschiedene Entitätstypen verwendet werden. Eine einzelne EGT kann mit höchstens 100 Entitäten verwendet werden.  Wenn Sie gleichzeitig mehrere EGTs zur Verarbeitung übermitteln, müssen Sie sicherstellen, dass diese EGTs nicht für EGT-übergreifende Entitäten verwendet werden, da andernfalls die Verarbeitung verzögert werden kann.

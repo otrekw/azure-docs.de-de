@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76512962"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647272"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Nächste Schritte
 Nachdem Sie die Anforderungen definiert und alle Optionen für Ihre Lösung zur Verwaltung mobiler Geräte (Mobile Device Management, MDM) untersucht haben, können Sie die nächsten Schritte zur Bereitstellung der unterstützenden Infrastruktur ausführen, die für Sie und Ihr Unternehmen geeignet ist.
@@ -37,8 +37,8 @@ Informationen zur konzeptuellen und verfahrensorientierten Planung, Bereitstellu
 Indem Sie die folgenden Ressourcen im Auge behalten, erhalten Sie aktuelle Neuigkeiten und Updates zu Lösungen für die Verwaltung mobiler Geräte:
 
 * [Microsoft Enterprise Mobility-Blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Microsoft In The Cloud-Blog](https://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune-Blog](https://blogs.technet.com/b/microsoftintune/)
+* [Microsoft In The Cloud-Blog](https://cloudblogs.microsoft.com/)
+* [Microsoft Intune-Blog](https://techcommunity.microsoft.com/t5/intune-customer-success/welcome-to-the-new-intune-customer-success-blog/ba-p/281367)
 * [Microsoft Endpoint Configuration Manager-Blog](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>Weitere Informationen

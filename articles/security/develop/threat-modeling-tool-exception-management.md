@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b8fad566b54ab645660011ad3188394b6f8190b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728077"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650088"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -223,7 +223,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Sicherer Ausfall](https://www.owasp.org/index.php/Fail_securely) |
+| **Referenzen**              | [Sicherer Ausfall](https://owasp.org/www-community/Fail_securely) |
 | **Schritte** | Anwendungen sollten sicher ausfallen. Jede Methode, die einen booleschen Wert zurückgibt, der auf der getroffen Entscheidung basiert, sollte über einen sorgfältig erstellten Ausnahmeblock verfügen. Es gibt viele logische Fehler, die zu Sicherheitsproblemen führen können, wenn der Ausnahmeblock nicht sorgfältig geschrieben ist.|
 
 ### <a name="example"></a>Beispiel

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596339"
+ms.locfileid: "83654425"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Vertiefendes Lernen (Vorschau) mit Azure Machine Learning
 
@@ -49,7 +49,7 @@ Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihn
  - Ihr eigener Jupyter Notebook-Server
 
     - Installieren Sie das [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-    - Installieren Sie das [Azure Machine Learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug): `pip install --upgrade azureml-contrib-reinforcementlearning`.
+    - Installieren Sie das [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`.
     - Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
     - Führen Sie das [Setup-Notebook](https://aka.ms/azure-rl-env-setup) für virtuelle Netzwerke aus, um die Netzwerkports zu öffnen, die für das verteilte vertiefende Lernen verwendet werden.
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für vertiefendes Lernen
 
-In diesem Abschnitt erfahren Sie, wie Sie mit dem [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) einen Trainingsauftrag an Azure Machine Learning übermitteln.
+In diesem Abschnitt erfahren Sie, wie Sie mit dem [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) einen Trainingsauftrag an Azure Machine Learning übermitteln.
 
 Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie auf einfache Weise festlegen, wie eine Skriptausführung konfiguriert werden soll. Weitere Informationen zum Azure Machine Learning-Schätzmuster finden Sie unter [Trainieren von Modellen mit einem Estimator](how-to-train-ml-models.md).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981463"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653624"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
@@ -268,7 +268,7 @@ Erkennungsmodule für SQL-Datenbank-Bedrohungen verwenden eine der folgenden Met
 
 ### <a name="application-gateway-web-application-firewall"></a>Web Application Firewall für Application Gateway
 
-[Web Application Firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) ist ein Feature von [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md), das Schutz für Webanwendungen bietet, die ein Anwendungsgateway für ADC-Standardfunktionen ([Application Delivery Control](https://kemptechnologies.com/in/application-delivery-controllers), Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt vor den [zehn häufigsten Websicherheitsrisiken, die im Open Web Application Security Project (OWASP) angegeben sind](https://www.owasp.org/index.php/Top_10_2010-Main).
+[Web Application Firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) ist ein Feature von [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md), das Schutz für Webanwendungen bietet, die ein Anwendungsgateway für ADC-Standardfunktionen ([Application Delivery Control](https://kemptechnologies.com/in/application-delivery-controllers), Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt vor den [zehn häufigsten Websicherheitsrisiken, die im Open Web Application Security Project (OWASP) angegeben sind](https://owasp.org/www-project-top-ten/).
 
 ![Web Application Firewall für Application Gateway – Diagramm](./media/threat-detection/azure-threat-detection-fig13.png)
 

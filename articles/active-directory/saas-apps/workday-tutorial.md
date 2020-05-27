@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046602"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday
 
@@ -247,7 +247,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-workday-test-user"></a>Erstellen eines Workday-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Workday einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Supportteam für den Workday-Client](https://www.workday.com/partners-services/services/support.html) zusammen, um die Benutzer zur Workday-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Workday einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) zusammen, um die Benutzer zur Workday-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

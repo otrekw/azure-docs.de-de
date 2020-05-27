@@ -3,12 +3,12 @@ title: Verbessern der Wissensdatenbank – QnA Maker
 description: Nutzen Sie aktives Lernen, um die Qualität Ihrer Wissensdatenbank zu verbessern. Sie können Einträge überprüfen, annehmen oder ablehnen und hinzufügen, ohne vorhandene Fragen zu entfernen oder zu ändern.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756747"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650762"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
@@ -329,11 +329,6 @@ Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizi
     }
 ]
 ```
-
-Sie können auch die API zum Herunterladen von Änderungen verwenden, um diese Änderungen mithilfe von REST oder eines der sprachbasierten SDKs zu überprüfen:
-* [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Informationen und empfiehlt Vorschläge für Ihre Wissensdatenbank.
 

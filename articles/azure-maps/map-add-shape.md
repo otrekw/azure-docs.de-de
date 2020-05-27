@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124039"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648527"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene zur Karte
 
@@ -57,6 +57,8 @@ Nachfolgend finden Sie ein vollständiges und ausführbares Beispiel des oben ge
 ## <a name="use-a-polygon-and-line-layer-together"></a>Verwenden von Polygon- und Linienebene
 
 Eine Linienebene wird verwendet, um die Kontur von Polygonen zu rendern. Das folgende Codebeispiel rendert ebenso wie das vorherige Beispiel ein Polygon, fügt aber eine Linienebene hinzu. Diese Linienebene ist eine zweite Ebene, die mit der Datenquelle verbunden ist.  
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Polygon- und Linienebene zum Hinzufügen eines Polygons' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon- und Linienebene zum Hinzufügen eines Polygons</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>

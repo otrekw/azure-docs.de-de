@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb2fbcda7f30db24b876a66df22071f14df74814
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475502"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653255"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Definieren einer Aufgabe für maschinelles Lernen 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,5 +77,5 @@ Sie können den Aufgabentyp festlegen, wenn Sie im Azure Machine Learning-Studio
 + Erfahren Sie mehr über [automatisiertes Machine Learning](concept-automated-ml.md) in Azure Machine Learning.
 + Erfahren Sie mehr über [Automatisches Trainieren eines Modells für die Zeitreihenprognose](how-to-auto-train-forecast.md) in Azure Machine Learning.
 + Arbeiten Sie das Tutorial [Automated Machine Learning Classification](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) durch.
-+ Arbeiten Sie das Tutorial [Automated Machine Learning Regression](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) durch.
++ Arbeiten Sie das Tutorial [Automated Machine Learning Regression](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb) durch.
 
