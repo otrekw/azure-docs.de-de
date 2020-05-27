@@ -265,8 +265,8 @@
       href: 'https://github.com/Azure/Batch'
     - name: Batch-Feedback
       href: 'https://feedback.azure.com/forums/269742-batch'
-    - name: Batch-Forum
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten): Batch"
+      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog

@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: Löschen eines Tresors
               href: delete-vault.md
+    - name: Site Recovery Unterstützung für Näherungsplatzierungsgruppen
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: Notfallwiederherstellung für Apps
       items:
         - name: Informationen zur Notfallwiederherstellung für lokale Apps
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: Lernpfad
       href: /learn/azure/
     - name: Preise

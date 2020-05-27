@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226394"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826909"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 
@@ -26,7 +26,7 @@ Sie können den Webhook-URI im [Azure-Portal](https://portal.azure.com/) unter *
 
 ![Hinzufügen eines Warnungsregelbereichs](./media/alerts-webhooks/Alertwebhook.png)
 
-Sie können auch [Azure PowerShell-Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../../azure-monitor/platform/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
+Sie können auch [Azure PowerShell-Cmdlets](../samples/powershell-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../samples/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
 
 ## <a name="authenticate-the-webhook"></a>Authentifizieren des Webhooks
 Die Authentifizierung des Webhooks kann mithilfe der tokenbasierten Autorisierung erfolgen. Der Webhook-URI wird mit einer Token-ID gespeichert. Beispiel: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

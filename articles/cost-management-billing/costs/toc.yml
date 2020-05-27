@@ -10,7 +10,7 @@
       items:
         - name: Beginn der Kostenanalyse
           href: quick-acm-cost-analysis.md
-        - name: Erstellen eines Budgets mithilfe einer Vorlage
+        - name: 'Erstellen eines Budgets: ARM-Vorlage'
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: Tutorials
