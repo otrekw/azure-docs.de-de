@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: 'Startbereichsermittlung (Home Realm Discovery, HDR)'
               href: configure-authentication-for-federated-users-portal.md
+        - name: "Automatisieren von SAML-basiertem einmaligem Anmelden mithilfe von MS\_Graph-APIs"
+          href: application-saml-sso-configure-api.md
         - name: Migrieren von Apps zu Azure AD
           items:
             - name: Migrationsressourcen

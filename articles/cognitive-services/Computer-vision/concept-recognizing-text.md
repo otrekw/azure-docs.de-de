@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690813"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589855"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 
@@ -26,10 +26,9 @@ Maschinelles Sehen bietet einige Dienste, die auf Bildern erscheinenden gedruckt
 
 Die Lese-API erkennt mithilfe unserer neuesten Erkennungsmodelle Textinhalt auf einem Bild und konvertiert den erkannten Text in eine computerlesbare Zeichendatenfolge. Sie wurde für textlastige Bilder (wie digital eingescannte Dokumente) und für Bilder mit starkem Bildrauschen optimiert. Sie bestimmt, welches Erkennungsmodell für die einzelnen Textzeilen verwendet werden soll und unterstützt Bilder mit gedrucktem und handschriftlichem Text. Die Lese-API wird asynchron ausgeführt, da es bei größeren Dokumenten mehrere Minuten dauern kann, bis ein Ergebnis zurückgegeben wird.
 
-Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten Wörter in der Ausgabe beibehalten. Zu jeder Zeile werden die Koordinaten des umgebenden Felds übertragen, und jedes Wort innerhalb der Zeile verfügt über seine eigenen Koordinaten. Wenn ein Wort mit geringer Zuverlässigkeit erkannt wurde, wird diese Information ebenfalls vermittelt. Weitere Informationen finden Sie unter [Referenzdokumentation zur Lese-API 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) oder [Referenzdokumentation zur Lese-API 3.0 (Vorschau)](https://go.microsoft.com/fwlink/?linkid=2118322).
+Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten Wörter in der Ausgabe beibehalten. Zu jeder Zeile werden die Koordinaten des umgebenden Felds übertragen, und jedes Wort innerhalb der Zeile verfügt über seine eigenen Koordinaten. Wenn ein Wort mit geringer Zuverlässigkeit erkannt wurde, wird diese Information ebenfalls vermittelt. Weitere Informationen finden Sie in der [Referenzdokumentation zur Lese-API 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) oder in der [Referenzdokumentation zur Lese-API 3.0](https://aka.ms/computer-vision-v3-ref).
 
-> [!NOTE]
-> Dieses Feature steht nur für englisch- und spanischsprachigen Text (Vorschauversion 3.0) zur Verfügung.
+Der Lesevorgang kann Text in englischer, spanischer, deutscher, französischer, italienischer, portugiesischer und niederländischer Sprache erkennen.
 
 ### <a name="image-requirements"></a>Bildanforderungen
 

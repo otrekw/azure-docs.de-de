@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: Verwalten über die lokale Webbenutzeroberfläche
               href: data-box-local-web-ui-admin.md
+            - name: Verwenden des selbst verwalteten Versands
+              href: data-box-portal-customer-managed-shipping.md
             - name: Kundenseitig verwaltete Schlüssel aktivieren
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Verschieben von Daten in einen Blobtarif
@@ -117,6 +119,8 @@
           items:
             - name: Verwalten über das Azure-Portal
               href: data-box-portal-ui-admin.md
+            - name: Verwenden des selbst verwalteten Versands
+              href: data-box-disk-portal-customer-managed-shipping.md
             - name: Problembehandlung
               items:
                 - name: Probleme beim Entsperren

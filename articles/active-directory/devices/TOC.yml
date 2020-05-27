@@ -6,7 +6,7 @@
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: false
   items:
     - name: Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen
@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Mit Azure verwaltete Arbeitsstationen
       href: concept-azure-managed-workstation.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: false
   items:
     - name: Planen der Implementierung Ihrer Azure AD-Einbindung
@@ -81,8 +81,8 @@
   items:
     - name: Azure-Feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Dienstupdates

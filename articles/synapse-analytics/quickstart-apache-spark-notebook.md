@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Apache Spark-Notebooks'
+title: 'Schnellstart: Erstellen eines Notebooks mit Apache Spark für Azure Synapse Analytics'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Webtools einen Apache Spark-Pool (Vorschauversion) in Azure Synapse Analytics erstellen und eine Spark SQL-Abfrage ausführen.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786667"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592949"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Azure Synapse Analytics mithilfe von Webtools
 

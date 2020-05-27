@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 65f6c6627093358f8cbc66055bb9b16561f7c610
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420954"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587873"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Was ist Azure Synapse Analytics (Vorschau für Arbeitsbereiche)?
 
@@ -24,11 +24,11 @@ Analysen im Unternehmensbereich stellen heutzutage immense Anforderungen an die 
 
 Solche Lösungen sind schwer zu erstellen, zu konfigurieren, zu schützen und zu pflegen, was die schnelle Extraktion hilfreicher Erkenntnisse verzögert.
 
-**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen in beliebigem Umfang und aus beliebigen Daten in Data Warehouses und Big Data-Analysesystemen. Er kombiniert die Vorteile der in Enterprise Data Warehousing genutzten **SQL**-Technologien mit **Spark**-Technologien aus der Big Data-Analyse sowie mit **Pipelines** zur Orchestrierung von Aktivitäten und Datenverschiebung. 
+**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen in beliebigem Umfang und aus beliebigen Daten in Data Warehouses und Big Data-Analysesystemen. Er kombiniert die Vorteile der in Enterprise Data Warehousing genutzten **SQL**-Technologien mit **Spark**-Technologien aus der Big Data-Analyse sowie mit **Pipelines** zur Orchestrierung von Aktivitäten und Datenverschiebung.
 
 Azure Synapse verfügt über eine webbasierte **Studio**-Benutzeroberfläche, die eine einzelne Umgebung und ein einzelnes Modell für die Verwaltung, Überwachung, Programmierung und Sicherheit bietet.
 
-Mit Azure Synapse können Unternehmen besonders schnell und einfach Erkenntnisse zu Daten beliebiger Größe gewinnen und dabei die Analysen verwenden, mit denen sie am besten vertraut sind. Die Lösung ist tief in **Power BI** integriert, was Dateningenieuren die Erstellung von End-to-End-Analyselösungen ermöglicht, um Business Intelligence bereitzustellen. 
+Mit Azure Synapse können Unternehmen besonders schnell und einfach Erkenntnisse zu Daten beliebiger Größe gewinnen und dabei die Analysen verwenden, mit denen sie am besten vertraut sind. Die Lösung ist tief in **Power BI** integriert, was Dateningenieuren die Erstellung von End-to-End-Analyselösungen ermöglicht, um Business Intelligence bereitzustellen.
 
 Darüber hinaus vereinfacht Azure Synapse das Erstellen von Vorhersagemodellen und erweiterten Analysen mit Machine Learning dank der integrierten Unterstützung von **AzureML**.
 
@@ -44,14 +44,14 @@ Darüber hinaus vereinfacht Azure Synapse das Erstellen von Vorhersagemodellen u
 
 ### <a name="industry-standard-apache-spark"></a>Branchenübliches Apache Spark
 
-**Synapse Spark** bietet eine tiefe und nahtlose Integration von Apache Spark – der beliebtesten Open-Source-basierten Big Data-Engine für Datenaufbereitung, Datentechnik, ETL und maschinelles Lernen.
+**Apache Spark für Azure Synapse** bietet eine tiefe und nahtlose Integration von Apache Spark – der beliebtesten Open-Source-basierten Big Data-Engine für Datenaufbereitung, Datentechnik, ETL und maschinelles Lernen.
 
 * ML-Modelle mit SparkML-Algorithmen und AzureML-Integration für Apache Spark 2.4 mit integrierter Unterstützung von Linux Foundation Delta Lake
 * Vereinfachtes Ressourcenmodell, bei dem Sie sich nicht mehr mit der Verwaltung von Clustern auseinandersetzen müssen
 * Schneller Spark-Start und aggressive automatische Skalierung
 * Nutzung Ihrer C#-Kenntnisse und Wiederverwendung von bereits vorhandenem .NET-Code in einer Spark-Anwendung dank integrierter Unterstützung von .NET für Spark
 
-### <a name="interop-of-sql-and-spark-on-your-data-lake"></a>Interoperabilität von SQL und Spark für Ihren Data Lake
+### <a name="interop-of-sql-and-apache-spark-on-your-data-lake"></a>Interoperabilität von SQL und Apache Spark für Ihren Data Lake
 
 Azure Synapse beseitigt die herkömmlichen Technologiebarrieren bei der gemeinsamen Verwendung von SQL und Spark. Beide Lösungen können nach Bedarf und Kenntnisstand miteinander kombiniert werden.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: dba6a4c07691f3d7ec88d8b889e68d6ac7116f07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1823d9df8824c9a0bf1ee30a9900ca118625fd9e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223467"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589430"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie ein Labkonto erstellen. 
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
@@ -30,7 +30,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Erstellen eines Lab-Kontos
 > * Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-lab-account"></a>Erstellen eines Lab-Kontos
 Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein Lab-Konto in Azure Lab Services zu erstellen. 
@@ -75,7 +75,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie ein Lab-Konto erstellt. Im nächsten Tutorial erfahren Sie, wie Sie als Professor ein Classroom-Lab erstellen:
+In diesem Tutorial haben Sie ein Lab-Konto erstellt. Im nächsten Tutorial erfahren Sie, wie Sie als Lehrkraft ein Classroom-Lab erstellen:
 
 > [!div class="nextstepaction"]
 > [Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md)

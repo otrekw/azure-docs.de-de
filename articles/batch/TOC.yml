@@ -53,12 +53,26 @@
       items:
         - name: Sicherheitsbaseline
           href: security-baseline.md
-    - name: Entwicklerfunktionen
-      href: batch-api-basics.md
+    - name: Workflow und Ressourcen des Batch-Diensts
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch-Konten
+          displayName: storage account
+          href: accounts.md
+        - name: Knoten und Pools
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: Aufträge und Aufgaben
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: Dateien und Verzeichnisse
+          displayName: Batch file
+          href: files-and-directories.md
     - name: APIs und Tools
       href: batch-apis-tools.md
-    - name: Erkennen und Behandeln von Batch-Dienstfehlern
-      href: batch-retry-after-errors.md
+    - name: Fehlerbehandlung und -erkennung
+      href: error-handling.md
     - name: Bewährte Methoden
       href: best-practices.md
     - name: Kontingente und Grenzwerte
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: Sicherer Zugriff auf Key Vault mit Batch
           href: credential-access-key-vault.md
+        - name: Verwenden von Zertifikaten mit Batch
+          href: batch-certificates.md
+    - name: Verwenden von Anwendungspaketen
+      href: batch-application-packages.md
     - name: Kopieren von Dateien und Anwendungen auf Poolknoten
       items:
         - name: Kopieren von Anwendungen und Daten auf Poolknoten
