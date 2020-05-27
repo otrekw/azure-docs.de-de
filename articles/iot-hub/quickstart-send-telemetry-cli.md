@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b8a057890d20fc233eae6f1636d83e73855305b7
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78851421"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727045"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI
 
@@ -92,7 +92,7 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen einer Ressourcengr
 In diesem Abschnitt erstellen Sie in der ersten CLI-Sitzung ein simuliertes Gerät. Mit dem simulierten Gerät werden Gerätetelemetriedaten an Ihren IoT-Hub gesendet. In der zweiten CLI-Sitzung überwachen Sie Ereignisse und Telemetriedaten und senden eine C2D-Nachricht an das simulierte Gerät.
 
 Erstellen und starten Sie ein simuliertes Gerät wie folgt:
-1. Führen Sie in der ersten CLI-Sitzung den Befehl [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) aus. Die Identität des simulierten Geräts wird erstellt. 
+1. Führen Sie in der ersten CLI-Sitzung den Befehl [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) aus. Die Identität des simulierten Geräts wird erstellt. 
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. 
 
@@ -102,7 +102,7 @@ Erstellen und starten Sie ein simuliertes Gerät wie folgt:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Führen Sie in der ersten CLI-Sitzung den Befehl [az iot device simulate](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-simulate) aus.  Das simulierte Gerät wird gestartet. Das Gerät sendet Telemetriedaten an Ihren IoT-Hub und empfängt im Gegenzug Nachrichten.  
+1. Führen Sie in der ersten CLI-Sitzung den Befehl [az iot device simulate](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) aus.  Das simulierte Gerät wird gestartet. Das Gerät sendet Telemetriedaten an Ihren IoT-Hub und empfängt im Gegenzug Nachrichten.  
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. 
 
@@ -111,7 +111,7 @@ Erstellen und starten Sie ein simuliertes Gerät wie folgt:
     ```
 
 Überwachen Sie ein Gerät wie folgt:
-1. Führen Sie in der zweiten CLI-Sitzung den Befehl [az iot hub monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) aus. Die Überwachung des simulierten Geräts wird gestartet. Die Ausgabe enthält Telemetriedaten, die vom simulierten Gerät an den IoT-Hub gesendet werden.
+1. Führen Sie in der zweiten CLI-Sitzung den Befehl [az iot hub monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) aus. Die Überwachung des simulierten Geräts wird gestartet. Die Ausgabe enthält Telemetriedaten, die vom simulierten Gerät an den IoT-Hub gesendet werden.
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. 
 
@@ -134,7 +134,7 @@ In diesem Abschnitt verwenden Sie die zweite CLI-Sitzung, um eine Nachricht an d
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. Führen Sie in der zweiten CLI-Sitzung den Befehl [az iot device c2d-message send](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device/c2d-message?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-c2d-message-send) aus. Hiermit wird von Ihrem IoT-Hub aus eine C2D-Nachricht an das simulierte Gerät gesendet. Die Nachricht enthält eine Zeichenfolge und zwei Schlüssel-Wert-Paare.  
+1. Führen Sie in der zweiten CLI-Sitzung den Befehl [az iot device c2d-message send](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) aus. Hiermit wird von Ihrem IoT-Hub aus eine C2D-Nachricht an das simulierte Gerät gesendet. Die Nachricht enthält eine Zeichenfolge und zwei Schlüssel-Wert-Paare.  
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. 
 

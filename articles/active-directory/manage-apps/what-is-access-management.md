@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739824"
 ---
 # <a name="managing-access-to-apps"></a>Verwalten des Zugriffs auf Apps
 
@@ -78,7 +78,7 @@ Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges 
 
 In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über den Microsoft Zugriffsbereich für Anwendungen, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
 
-Administratoren können den [bedingten Zugriff von Azure AD](../active-directory-conditional-access-azure-portal.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
+Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
 
 ## <a name="access-to-microsoft-applications"></a>Zugriff auf Microsoft-Anwendungen
 
@@ -97,5 +97,5 @@ Benutzer können über ihre Office 365-Portale auf Office 365-Anwendungen zugrei
 Wie bei Unternehmens-Apps können Sie bestimmten Microsoft-Anwendungen über das Azure-Portal oder mit PowerShell (wenn die Portaloption nicht verfügbar ist) [Benutzer zuweisen](assign-user-or-group-access-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Schützen von Apps durch bedingten Zugriff](../active-directory-conditional-access-azure-portal.md)
+* [Schützen von Apps durch bedingten Zugriff](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Self-Service-Gruppenverwaltung/SSAA](../users-groups-roles/groups-self-service-management.md)

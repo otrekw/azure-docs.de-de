@@ -16,12 +16,12 @@ ms.date: 04/24/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab2974cf95726f44641b4ac220c7ee871890ca56
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144500"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736840"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -32,7 +32,7 @@ Im Idealfall unterliegen alle Benutzer den Zugriffsrichtlinien, um den Zugriff a
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Welche Gründe gibt es, Benutzer von Richtlinien auszuschließen?
 
-Nehmen wir beispielsweise an, dass Sie als Administrator den [bedingten Zugriff von Azure AD](../conditional-access/overview.md) verwenden möchten, um Multi-Factor Authentication (MFA) anzufordern und die Authentifizierungsanforderungen auf bestimmte Netzwerke oder Geräte zu beschränken. Bei der Planung der Bereitstellung stellen Sie fest, dass nicht alle Benutzer diese Anforderungen erfüllen können. Beispielsweise kann es Benutzer geben, die in Außenstellen arbeiten und nicht zu Ihrem internen Netzwerk gehören. Sie müssen möglicherweise auch Benutzer berücksichtigen, die über nicht unterstützte Geräte eine Verbindung herstellen, während sie auf den Austausch dieser Geräte warten. Kurz gesagt, für die Geschäftstätigkeit ist es erforderlich, dass sich diese Benutzer anmelden und ihre Arbeit erledigen können. Daher schließen Sie sie aus den Richtlinien für bedingten Zugriff aus.
+Nehmen wir beispielsweise an, dass Sie als Administrator den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-policy-common.md) verwenden möchten, um Multi-Factor Authentication (MFA) anzufordern und die Authentifizierungsanforderungen auf bestimmte Netzwerke oder Geräte zu beschränken. Bei der Planung der Bereitstellung stellen Sie fest, dass nicht alle Benutzer diese Anforderungen erfüllen können. Beispielsweise kann es Benutzer geben, die in Außenstellen arbeiten und nicht zu Ihrem internen Netzwerk gehören. Sie müssen möglicherweise auch Benutzer berücksichtigen, die über nicht unterstützte Geräte eine Verbindung herstellen, während sie auf den Austausch dieser Geräte warten. Kurz gesagt, für die Geschäftstätigkeit ist es erforderlich, dass sich diese Benutzer anmelden und ihre Arbeit erledigen können. Daher schließen Sie sie aus den Richtlinien für bedingten Zugriff aus.
 
 Ein weiteres Beispiel: Unter Umständen nutzen Sie im Rahmen des bedingten Zugriffs [benannte Orte](../conditional-access/location-condition.md), um eine Reihe von Ländern und Regionen zu konfigurieren, aus denen Benutzer nicht auf Ihren Mandanten zugreifen sollen.
 

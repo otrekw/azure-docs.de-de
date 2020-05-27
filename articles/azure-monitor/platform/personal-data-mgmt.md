@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226322"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740449"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -101,7 +101,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 #### <a name="log-data"></a>Protokolldaten
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
+* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
 * GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
     ```

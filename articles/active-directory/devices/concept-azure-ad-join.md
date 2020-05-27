@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672681"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737026"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
@@ -43,7 +43,7 @@ Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud
 |   | Self-Service-Kennwortzurücksetzung und Windows Hello-PIN-Zurücksetzung auf dem Sperrbildschirm |
 |   | Geräteübergreifendes Enterprise State Roaming |
 
-Die Anmeldung bei in Azure AD eingebundenen Geräten erfolgt über ein Azure AD-Organisationskonto. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf [Richtlinien für den bedingten Zugriff](../conditional-access/overview.md), die auf die Geräteidentität angewandt werden, weiter eingeschränkt werden.
+Die Anmeldung bei in Azure AD eingebundenen Geräten erfolgt über ein Azure AD-Organisationskonto. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf [Richtlinien für den bedingten Zugriff](../conditional-access/howto-conditional-access-policy-compliant-device.md), die auf die Geräteidentität angewandt werden, weiter eingeschränkt werden.
 
 Administratoren können in Azure AD eingebundene Geräte mithilfe von MDM-Tools (mobile Geräteverwaltung) wie Microsoft Intune oder in Szenarien für die Co-Verwaltung mithilfe von Microsoft Endpoint Configuration Manager schützen und weiter steuern. Diese Tools bieten eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität, Softwareinstallationen und Softwareupdates. Administratoren können Organisationsanwendungen unter Verwendung von Configuration Manager zum [Verwalten von Apps aus dem Microsoft Store für Unternehmen und Bildungseinrichtungen](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business) für in Azure AD eingebundene Geräte zur Verfügung stellen.
 
