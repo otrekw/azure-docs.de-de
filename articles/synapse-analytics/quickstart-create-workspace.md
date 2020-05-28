@@ -2,19 +2,19 @@
 title: 'Schnellstart: Erstellen eines Arbeitsbereichs'
 description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen Azure Synapse Analytics-Arbeitsbereich.
 services: synapse-analytics
-author: malvenko
+author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: josels
+ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: df7753983cea2ca2cc285f04cd32da6ed065f415
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792206"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656121"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Schnellstart: Erstellen eines Azure Synapse Analytics-Arbeitsbereichs (Vorschauversion)
 
@@ -26,6 +26,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - [Azure Data Lake Storage Gen2-Speicherkonto](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
+## <a name="register-azure-synapse-resource-provider"></a>Registrieren eines Azure Synapse-Ressourcenanbieters
+Registrieren Sie den Azure Synapse-Ressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Informationen zum Registrieren eines Azure Synapse-Ressourcenanbieters finden Sie unter [Azure-Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Synapse* aus, wenn Sie die Registrierung durchführen.
+
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
@@ -33,9 +36,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal
 
 1. Geben Sie im Suchbereich von Microsoft Azure den Suchbegriff **Synapse-Arbeitsbereiche** ein, und wählen Sie dann diesen Dienst aus.
-![Suchleiste im Azure-Portal mit der Eingabe „Azure Synapse-Arbeitsbereiche“](media/quickstart-create-synapse-workspace/workspace-search.png)
+![Suchleiste im Azure-Portal mit der Eingabe „Azure Synapse-Arbeitsbereiche“.](media/quickstart-create-synapse-workspace/workspace-search.png)
 2. Klicken Sie auf der Seite **Synapse workspaces** (Synapse-Arbeitsbereiche) auf **+ Hinzufügen**.
-![Hervorgehobener Befehl zum Erstellen eines neuen Azure Synapse-Arbeitsbereichs](media/quickstart-create-synapse-workspace/create-workspace-02.png)
+![Hervorgehobener Befehl zum Erstellen eines neuen Azure Synapse-Arbeitsbereichs.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. Füllen Sie das Formular für den **Azure Synapse-Arbeitsbereich** mit den folgenden Informationen aus:
 
     | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
@@ -47,7 +50,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
     | **Data Lake Storage Gen2** | Konto: `storage account name` </br> Dateisystem: `root file system to use` | Gibt den Namen des ADLS Gen2-Speicherkontos, das als primärer Speicher verwendet werden soll, sowie das zu verwendende Dateisystem an.|
     ||||
 
-    ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte „Grundeinstellungen“](media/quickstart-create-synapse-workspace/create-workspace-03.png)erforderlich.
+    ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte „Grundeinstellungen“](media/quickstart-create-synapse-workspace/create-workspace-03.png)
 
     Das Speicherkonto kann wie folgt angegeben werden:
     - Über eine Liste der ADLS Gen2-Konten, die in Ihrem Abonnement verfügbar sind
@@ -60,8 +63,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 4. (Optional) Ändern Sie ggf. die Standardeinstellungen auf der Registerkarte **Sicherheit + Netzwerkbetrieb**:
 5. (Optional) Fügen Sie Tags auf der Registerkarte **Tags** hinzu.
-6. Auf der Registerkarte **Zusammenfassung** werden die erforderlichen Überprüfungen ausgeführt, um sicherzustellen, dass der Arbeitsbereich erfolgreich erstellt werden kann. Klicken Sie nach der Überprüfung auf **Erstellen**. ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte zur Bestätigung](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Wenn die Ressourcenerstellung erfolgreich abgeschlossen wurde, wird in der Liste der Synapse-Arbeitsbereiche ein Eintrag für den erstellten Arbeitsbereich angezeigt. ![Liste der Synapse-Arbeitsbereiche mit dem neu bereitgestellten Arbeitsbereich](media/quickstart-create-synapse-workspace/create-workspace-07.png)erforderlich.
+6. Auf der Registerkarte **Zusammenfassung** werden die erforderlichen Überprüfungen ausgeführt, um sicherzustellen, dass der Arbeitsbereich erfolgreich erstellt werden kann. Klicken Sie nach der Überprüfung auf **Erstellen**. ![Flow für die Arbeitsbereichsbereitstellung: Registerkarte zur Bestätigung.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
+7. Wenn die Ressourcenerstellung erfolgreich abgeschlossen wurde, wird in der Liste der Synapse-Arbeitsbereiche ein Eintrag für den erstellten Arbeitsbereich angezeigt. ![Liste der Synapse-Arbeitsbereiche mit dem neu bereitgestellten Arbeitsbereich](media/quickstart-create-synapse-workspace/create-workspace-07.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -82,4 +85,4 @@ Führen Sie die folgenden Schritte aus, wenn Sie den Azure Synapse-Arbeitsberei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als Nächstes können Sie [SQL-Pools](quickstart-create-sql-pool.md) oder [Apache Spark-Pools](quickstart-create-apache-spark-pool.md) erstellen, um mit der Analyse und Untersuchung Ihrer Daten zu beginnen.
+Als Nächstes können Sie [SQL-Pools](quickstart-create-sql-pool-studio.md) oder [Apache Spark-Pools](quickstart-create-apache-spark-pool-studio.md) erstellen, um mit der Analyse und Untersuchung Ihrer Daten zu beginnen.

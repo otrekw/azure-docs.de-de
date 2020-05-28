@@ -4,12 +4,12 @@ description: Informationen zum Ausführen von Wiederherstellungen auf Dateiebene
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171736"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653268"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 
@@ -23,7 +23,7 @@ Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten R
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -117,6 +117,9 @@ Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführu
 ## <a name="restore-file-to-your-vm"></a>Wiederherstellen der Datei auf Ihrem virtuellen Computer
 
 Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden ist, können Sie eine Verbindung mit dem Wiederherstellungspunkt herstellen und Dateien wiederherstellen.
+
+>[!NOTE]
+> [Hier](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) können Sie überprüfen, ob Sie das Skript auf Ihrem virtuellen Computer ausführen können, bevor Sie den Vorgang fortsetzen.
 
 1. Stellen Sie die Verbindung mit Ihrem virtuellen Computer mit SSH her. Ersetzen Sie *publicIpAddress* wie folgt durch die öffentliche IP-Adresse Ihres virtuellen Computers:
 

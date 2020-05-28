@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482196"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652707"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -192,15 +192,15 @@ Der Funktionsprojektcode wird direkt aus dem öffentlichen Beispielrepository be
 
 Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an einen bestimmten Endpunkt gesendet werden sollen. In diesem Fall wird der Endpunkt durch Ihre Funktion zur Verfügung gestellt. Führen Sie die folgenden Schritte durch, um ein Ereignisabonnement zu erstellen, dass Benachrichtigungen an Ihre Funktion im Azure-Portal sendet:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü **Alle Dienste** und anschließend **Funktions-Apps** aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) oben auf der Seite nach `Function App`, wählen Sie dies aus, und wählen Sie die soeben von Ihnen erstellte Funktions-App aus. Wählen Sie **Funktionen** und dann die Funktion **Miniaturansicht** aus.
 
-    ![Navigieren zu Funktions-Apps im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="Auswählen der Miniaturansichtsfunktion im Portal":::
 
-2. Erweitern Sie Ihre Funktions-App, wählen Sie die Funktion **Vorschauminiatur** aus, und wählen Sie dann **Event Grid-Abonnement hinzufügen** aus.
+1.  Wählen Sie **Integration auswählen** aus, wählen Sie dann den **Event Grid-Trigger** aus, und wählen Sie **Event Grid-Abonnement erstellen** aus.
 
-    ![Navigieren zu „Event Grid-Abonnement hinzufügen“ im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigieren zu „Event Grid-Abonnement hinzufügen“ im Azure-Portal" :::
 
-3. Verwenden Sie die in der Tabelle angegebenen Einstellungen für das Ereignisabonnement.
+1. Verwenden Sie die in der Tabelle angegebenen Einstellungen für das Ereignisabonnement.
     
     ![Erstellen eines Ereignisabonnements aus der Funktion im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -215,13 +215,13 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | **Endpunkttyp** | Automatisch generiert | Vordefiniert als **Azure-Funktion** |
     | **Endpunkt** | Automatisch generiert | Name der Funktion. In diesem Fall: **Thumbnail**. |
 
-4. Wechseln Sie zur Registerkarte **Filter**, und führen Sie die folgenden Aktionen durch:
+1. Wechseln Sie zur Registerkarte **Filter**, und führen Sie die folgenden Aktionen durch:
     1. Wählen Sie die Option **Betrefffilter aktivieren** aus.
     2. Geben Sie für **Betreff beginnt mit** den folgenden Wert ein: **/blobServices/default/containers/images/blobs/** .
 
         ![Festlegen eines Filters für das Ereignisabonnement](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Wählen Sie **Erstellen** aus, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das die Funktion `Thumbnail` auslöst, wenn dem Container `images` ein Blob hinzugefügt wird. Die Funktion ändert die Größe der Bilder und fügt sie dem Container `thumbnails` hinzu.
+1. Wählen Sie **Erstellen** aus, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das die Funktion `Thumbnail` auslöst, wenn dem Container `images` ein Blob hinzugefügt wird. Die Funktion ändert die Größe der Bilder und fügt sie dem Container `thumbnails` hinzu.
 
 Nachdem die Back-End-Dienste konfiguriert wurden, testen Sie die Funktion für die Größenänderung von Bildern in der Beispiel-Web-App.
 

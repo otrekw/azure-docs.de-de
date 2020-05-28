@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332548"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739098"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Ein Benutzer mit einem Consumerkonto kann sich mit mehreren Identitäten anmelde
 
 ![Identitäten von Consumerkonten](media/technical-overview/identities.png)<br/>*Abbildung: Ein einzelnes Consumerkonto mit mehreren Identitäten in Azure AD B2C*
 
-Mit Azure AD B2C können Sie allgemeine Attribute von Consumerkontoprofilen wie Anzeigename, Nachname, Vorname und Stadt verwalten. Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Beispiele: Land oder Wohnsitz, bevorzugte Sprache und Voreinstellungen, z. B. ob Sie einen Newsletter abonnieren oder die mehrstufige Authentifizierung aktivieren möchten.
+Mit Azure AD B2C können Sie allgemeine Attribute von Consumerkontoprofilen wie Anzeigename, Nachname, Vorname und Stadt verwalten. Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Beispiele: Land/Region oder Wohnsitz, bevorzugte Sprache und Voreinstellungen, z. B. ob Sie einen Newsletter abonnieren oder die mehrstufige Authentifizierung aktivieren möchten.
 
 Weitere Informationen zu den Benutzerkontotypen in Azure AD B2C finden Sie unter [Übersicht über Benutzerkonten in Azure Active Directory B2C](user-overview.md).
 
@@ -100,7 +100,7 @@ Um Ihnen die schnelle Einrichtung der gängigsten Identitätsaufgaben zu erleich
 Sie können Benutzerfloweinstellungen wie die folgenden konfigurieren, um das Verhalten von Identitäten in Ihren Anwendungen zu steuern:
 
 * Kontotypen für die Anmeldung, z. B. Konten für soziale Netzwerke wie Facebook oder lokale Konten, die eine E-Mail-Adresse und ein Kennwort für die Anmeldung verwenden
-* Attribute, die vom Consumer abgefragt werden, z. B. Vorname, Postleitzahl oder Land des Wohnsitzes
+* Attribute, die vom Consumer abgefragt werden, z. B. Vorname, Postleitzahl oder Land/Region des Wohnsitzes
 * Azure Multi-Factor Authentication (MFA)
 * Anpassung der Benutzeroberfläche
 * Eine Reihe von Ansprüchen in einem Token, die Ihre Anwendung empfängt, nachdem der Benutzer den Benutzerflow abgeschlossen hat

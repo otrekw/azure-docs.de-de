@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c9e594af96fd43bc03f67caa06f585ab57b4b6e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591776"
+ms.locfileid: "83643466"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -70,6 +70,9 @@ In diesem Schritt erstellen Sie ein Lab für Ihre Klasse in Azure.
     1. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder RDP (sofern RDP aktiviert ist) hergestellt werden soll.
     3. Installieren und konfigurieren Sie die für Ihre Klasse erforderliche Software auf dem virtuellen Vorlagencomputer. 
     4. **Beenden** Sie den virtuellen Vorlagencomputer.  
+
+    > [!NOTE]
+    > Bei Vorlagen-VMs entstehen **Kosten**, wenn sie ausgeführt werden. Stellen Sie daher sicher, dass die Vorlagen-VM heruntergefahren wird, wenn sie nicht ausgeführt werden muss. 
 
 ## <a name="publish-the-template-vm"></a>Veröffentlichen der Vorlage für virtuelle Computer
 In diesem Schritt veröffentlichen Sie den virtuellen Vorlagencomputer. Wenn Sie den virtuellen Vorlagencomputer veröffentlichen, erstellt Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage.

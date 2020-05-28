@@ -1,5 +1,5 @@
 ---
-title: 'Ausführen von Python-Skripts per Data Factory: Azure Batch Python'
+title: Ausführen von Python-Skripts per Data Factory
 description: 'Tutorial: Es wird beschrieben, wie Sie Python-Skripts als Teil einer Pipeline per Azure Data Factory mit Azure Batch ausführen.'
 author: mammask
 ms.devlang: python
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773184"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Tutorial: Ausführen von Python-Skripts per Azure Data Factory mit Azure Batch
 
@@ -34,6 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Eine installierte [Python](https://www.python.org/downloads/)-Distribution für lokale Tests.
 * Das [Azure](https://pypi.org/project/azure/) `pip`-Paket.
+* Das [iris.csv-DataSet](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Weitere Informationen zum Erstellen und Verknüpfen von Batch-Konten mit Speicherkonten finden Sie unter [Erstellen eines Batch-Kontos](quick-create-portal.md#create-a-batch-account).
 * Ein Azure Data Factory-Konto. Weitere Informationen zum Erstellen einer Data Factory-Instanz über das Azure-Portal finden Sie unter [Erstellen einer Data Factory](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -66,7 +67,7 @@ Hier erstellen Sie Blobcontainer, in denen die Eingabe- und Ausgabedateien für 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei Storage-Explorer an.
 1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
     * In diesem Beispiel hat der Eingabecontainer den Namen `input`, und der Ausgabecontainer heißt `output`.
-1. Laden Sie `main.py` und `iris.csv` per Storage-Explorer in Ihren Eingabecontainer `input` hoch, indem Sie die Schritte unter [Verwalten von Blobs in einem Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) ausführen.
+1. Laden Sie `main.py` und [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) per Storage-Explorer in Ihren Eingabecontainer `input` hoch, indem Sie die Schritte unter [Verwalten von Blobs in einem Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) ausführen.
 
 
 ## <a name="develop-a-script-in-python"></a>Entwickeln eines Skripts in Python

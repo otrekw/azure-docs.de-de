@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425799"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828082"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung
 
@@ -61,4 +61,4 @@ Wenn Sie MSI verwenden, müssen Sie auch die MSI-Identität aktualisieren, da si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie die [Azure Key Vault-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault), wenn Sie Fragen zu Azure Key Vault haben.
+Besuchen Sie die [Microsoft-Seite mit häufig gestellten Fragen zu Azure Key Vault](https://docs.microsoft.com/answers/topics/azure-key-vault.html), wenn Sie Fragen zu Azure Key Vault haben.

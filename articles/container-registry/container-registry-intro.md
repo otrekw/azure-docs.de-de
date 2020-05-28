@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40a1d75ff90efafff14cd27ab439df8ab3729c50
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77132026"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674303"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -36,7 +36,7 @@ Azure bietet für die Verwaltung Ihrer Azure-Containerregistrierungen verschiede
 
 ## <a name="key-features"></a>Wichtige Features
 
-* **Registrierungs-SKUs**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Registrierungen sind in drei SKUs verfügbar: [Basic, Standard und Premium](container-registry-skus.md). Diese unterstützen jeweils die Webhook-Integration, die Registrierungsauthentifizierung mit Azure Active Directory sowie Löschfunktionen. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen. Verwenden der [Georeplikation](container-registry-geo-replication.md) von Premium-Registrierungen für erweiterte Replikations- und Containerimageverteilung-Szenarien. 
+* **Registrierungsdienstebenen**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Registrierungen sind in drei Ebenen verfügbar: [Basic, Standard und Premium](container-registry-skus.md). Diese unterstützen jeweils die Webhook-Integration, die Registrierungsauthentifizierung mit Azure Active Directory sowie Löschfunktionen. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen. Verwenden der [Georeplikation](container-registry-geo-replication.md) von Premium-Registrierungen für erweiterte Replikations- und Containerimageverteilung-Szenarien. 
 
 * **Sicherheit und Zugriff**: Melden Sie sich mithilfe der Azure-Befehlszeilenschnittstelle oder mit dem Standardbefehl `docker login` bei der Registrierung an. Azure Container Registry überträgt Containerimages über HTTPS und unterstützt TLS zum Sichern von Clientverbindungen. 
 
@@ -45,7 +45,7 @@ Azure bietet für die Verwaltung Ihrer Azure-Containerregistrierungen verschiede
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einer Azure-Identität, einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um Benutzern oder Systemen differenzierte Berechtigungen für eine Registrierung zuzuweisen.
 
-  Zu den Sicherheitsfeatures der Premium-SKU zählen [Inhaltsvertrauen](container-registry-content-trust.md) für das Signieren von Imagetags und [Firewalls und virtuelle Netzwerke (Vorschau)](container-registry-vnet.md), um den Zugriff auf die Registrierung einzuschränken. Azure Security Center wird optional in Azure Container Registry integriert, um [Images zu überprüfen](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json), wenn ein Image in eine Registrierung gepusht wird.
+  Zu den Sicherheitsfeatures der Premium-Dienstebene zählen [Inhaltsvertrauen](container-registry-content-trust.md) für das Signieren von Imagetags und [Firewalls und virtuelle Netzwerke (Vorschau)](container-registry-vnet.md), um den Zugriff auf die Registrierung einzuschränken. Azure Security Center wird optional in Azure Container Registry integriert, um [Images zu überprüfen](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json), wenn ein Image in eine Registrierung gepusht wird.
 
 * **Unterstützte Images und Artefakte**: Jedes Image wird in einem Repository gruppiert und ist eine schreibgeschützte Momentaufnahme eines mit Docker kompatiblen Containers. Azure-Containerregistrierungen können sowohl Windows- als auch Linux-Images enthalten. Sie steuern Imagenamen für alle Containerbereitstellungen. Verwenden Sie [Docker-Standardbefehle](https://docs.docker.com/engine/reference/commandline/), um Images in ein Repository zu übertragen (Push) oder ein Image aus einem Repository abzurufen (Pull). Zusätzlich zu den Dockercontainerimages speichert die Azure Container Registry [zugehörige Inhaltsformate](container-registry-image-formats.md) wie [Helm-Diagramme](container-registry-helm-repos.md) und Images, die nach der [Bildformatspezifikation Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) erstellt wurden.
 

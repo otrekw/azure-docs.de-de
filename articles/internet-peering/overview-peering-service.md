@@ -3,17 +3,17 @@ title: Internetpeering und Peering Service
 titleSuffix: Azure
 description: Internetpeering und Peering Service
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75772807"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849381"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetpeering und Peering Service
 
@@ -38,7 +38,7 @@ In der obigen Abbildung ist jede Zweigstelle eines globalen Unternehmens über d
 
 **Kundenvorteile von Peering Service:**
 * Bestes öffentliches Routing über das Internet zu Microsoft Cloud Services für optimale Leistung und Zuverlässigkeit
-* Möglichkeit, den bevorzugten Dienstanbieter für die Verbindung mit Microsoft Cloud auszuwählen
+* Möglichkeit, den bevorzugten Dienstanbieter für die Verbindung mit Microsoft Cloud auszuwählen.
 * Datenverkehrsbezogene Informationen wie Wartezeitberichte und Präfixüberwachung
 * Optimale Netzwerkhops (AS-Hops) von Microsoft Cloud
 * Routenanalyse und -statistik: Ereignisse für BGP-Routenanomalien ([Border Gateway Protocol](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) (Leck-/Hijacking-Erkennung) und suboptimales Routing

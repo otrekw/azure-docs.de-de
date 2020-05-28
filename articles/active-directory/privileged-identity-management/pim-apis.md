@@ -14,23 +14,21 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75638662"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714133"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph-APIs für Privileged Identity Management (Vorschauversion)
 
-Sämtliche Privileged Identity Management-Aufgaben können mithilfe der [Microsoft Graph-APIs](https://developer.microsoft.com/graph/docs/concepts/overview) für Azure Active Directory ausgeführt werden. In diesem Artikel werden wichtige Konzepte für die Verwendung der Microsoft Graph-APIs für Privileged Identity Management beschrieben.
+Privileged Identity Management-Aufgaben können mithilfe der [Microsoft Graph-APIs](https://developer.microsoft.com/graph/docs/concepts/overview) für Azure Active Directory ausgeführt werden. In diesem Artikel werden wichtige Konzepte für die Verwendung der Microsoft Graph-APIs für Privileged Identity Management beschrieben.
 
 Weitere Informationen zu den Microsoft Graph-APIs finden Sie in der [Referenz zur Azure AD Privileged Identity Management-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > APIs in der Betaversion in Microsoft Graph befinden sich in der Vorschauphase und ändern sich möglicherweise noch. Die Verwendung dieser APIs in Produktionsanwendungen wird nicht unterstützt.
->
-> Obwohl alle PIM-Vorgänge durch unsere Graph-API-Befehle unterstützt werden, verwenden wir ein anderes System, um Aktivierungsanforderungen zu genehmigen. Die Graph-API für die Genehmigung wird derzeit entwickelt und in den nächsten Monaten veröffentlicht.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 

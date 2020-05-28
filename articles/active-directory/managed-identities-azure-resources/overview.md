@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/18/2020
+ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81682592"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770923"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -54,9 +54,6 @@ Intern sind verwaltete Identitäten eine Sonderform von Dienstprinzipalen, die n
 Außerdem gilt: Wenn eine benutzerseitig oder systemseitig zugewiesenen Identität erstellt wird, gibt der Ressourcenanbieter der verwalteten Identität (Managed Identity Resource Provider, MSRP) intern ein Zertifikat für diese Identität aus. 
 
 Ihr Code kann eine verwaltete Identität zum Anfordern von Zugriffstokens für Dienste verwenden, die die Azure AD-Authentifizierung unterstützen. Azure übernimmt die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen. 
-
-## <a name="credential-rotation"></a>Rotation von Anmeldeinformationen
-Die Rotation von Anmeldeinformationen wird durch den Ressourcenanbieter gesteuert, von dem die Azure-Ressource gehostet wird. Standardmäßig werden die Anmeldeinformationen alle 46 Tage rotiert. Da die Anforderung neuer Anmeldeinformationen vom Ressourcenanbieter abhängt, kann es auch länger als 46 Tage dauern.
 
 Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Azure-Computern funktionieren:
 
@@ -107,6 +104,9 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 
 6. Mit einem an Azure AD gerichteten Aufruf wird ein Zugriffstoken angefordert (siehe Schritt 5). Dabei werden die Client-ID und das Zertifikat verwendet, die in Schritt 3 konfiguriert wurden. Azure AD gibt ein JWT-Zugriffstoken (JSON Web Token) zurück.
 7. Der Code sendet das Zugriffstoken in einem Aufruf eines Diensts, der die Azure AD-Authentifizierung unterstützt.
+
+## <a name="credential-rotation"></a>Rotation von Anmeldeinformationen
+Die Rotation von Anmeldeinformationen wird durch den Ressourcenanbieter gesteuert, von dem die Azure-Ressource gehostet wird. Standardmäßig werden die Anmeldeinformationen alle 46 Tage rotiert. Da die Anforderung neuer Anmeldeinformationen vom Ressourcenanbieter abhängt, kann es auch länger als 46 Tage dauern.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Wie kann ich verwaltete Identitäten für Azure-Ressourcen verwenden?
 

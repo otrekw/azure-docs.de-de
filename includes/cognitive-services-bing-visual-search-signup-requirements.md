@@ -3,26 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/17/2019
-ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/19/2020
+ms.openlocfilehash: 0f692588fe539e28cdf6612994b352d25662fc29
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75379493"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870341"
 ---
 ## <a name="create-an-azure-resource"></a>Erstellen einer Azure-Ressource
 
-Beginnen Sie mit der Verwendung der API für die visuelle Bing-Suche, indem Sie eine der unten aufgeführten Azure-Ressourcen erstellen.
+Beginnen Sie mit der Verwendung der API für die visuelle Bing-Suche, indem Sie eine der folgenden Azure-Ressourcen erstellen:
 
-* [Erstellen einer Testressource:](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-    * Kein Azure-Abonnement erforderlich.
-    * Kostenlos und sieben Tage lang gültig. Nach der Registrierung stehen ein Testschlüssel und ein Endpunkt auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
+[Testressource](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+   * Es ist kein Azure-Abonnement erforderlich.
+   * Kostenlos und sieben Tage lang gültig. Nach der Registrierung stehen Ihnen ein Testschlüssel und ein Endpunkt auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
 
-* [Erstellen einer Ressource für Bing-Suche v7:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
-    * Wählen Sie den `S9`-Tarif aus.
+[Ressource für Bing-Suche v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
+   * Wählen Sie den `S9`-Tarif aus.
 
-* [Erstellen einer Ressource für mehrere Dienste:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
-    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.
+[Ressource für mehrere Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
+   * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.

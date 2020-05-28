@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: f36a76187538d93b57d2d3f5973408f141271f67
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1dfac9a56e3bc299fbb0651ae1cd5644eba83267
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420164"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645813"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>IP-Firewallregeln in Azure Synapse Analytics (Vorschau)
 
@@ -42,7 +42,7 @@ Stellen Sie sicher, dass die Firewall in Ihrem Netzwerk und auf Ihrem lokalen Co
 
 Sie müssen auch die ausgehende Kommunikation über den UDP-Port 53 für Synapse Studio zulassen. Um eine Verbindung mithilfe von Tools wie SSMS oder Power BI herzustellen, müssen Sie die ausgehende Kommunikation über den TCP-Port 1433 zulassen.
 
-Wenn Sie die standardmäßige Richtlinieneinstellung für die Umleitung von Verbindungen verwenden, müssen Sie möglicherweise die ausgehende Kommunikation über weitere Ports zulassen. Mehr über Verbindungsrichtlinien erfahren Sie hier.
+Wenn Sie die standardmäßige Richtlinieneinstellung für die Umleitung von Verbindungen verwenden, müssen Sie möglicherweise die ausgehende Kommunikation über weitere Ports zulassen. Mehr über Verbindungsrichtlinien erfahren Sie [hier](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

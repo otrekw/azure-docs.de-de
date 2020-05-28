@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76986732"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648458"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Tableau Server
 
@@ -158,7 +158,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     h. Klicken Sie unten auf der Seite auf **Speichern**.
 
     > [!NOTE]
-    > Kunden müssen ein Zertifikat in die Tableau Server SAML-SSO-Konfiguration hochladen, das im SSO-Fluss ignoriert wird. Wenn Sie Hilfe bei der Konfiguration von SAML für Tableau Server benötigen, finden Sie weitere Informationen im Artikel [Konfigurieren von SAML](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm).
+    > Der Kunde muss eine PEM-codierte x.509-Zertifikatdatei mit der Erweiterung CRT und eine Private RSA- oder DSA-Schlüsseldatei mit der Erweiterung KEY als Zertifikatschlüsseldatei hochladen. Weitere Informationen zur Zertifikatdatei und zur Zertifikatschlüsseldatei finden Sie in [diesem](https://help.tableau.com/current/server/en-us/saml_requ.htm) Dokument. Wenn Sie Hilfe bei der Konfiguration von SAML für Tableau Server benötigen, finden Sie weitere Informationen im Artikel [Konfigurieren von serverweitem SAML](https://help.tableau.com/current/server/en-us/config_saml.htm).
 
 ### <a name="create-tableau-server-test-user"></a>Erstellen eines Tableau Server-Testbenutzers
 
