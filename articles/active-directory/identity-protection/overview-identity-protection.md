@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79497676"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647355"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -85,6 +85,8 @@ Benutzer müssen über die Rolle „Benutzer mit Leseberechtigung für Sicherhei
 | Sicherheitsadministrator | Vollzugriff auf Identity Protection | Zurücksetzen des Kennworts für einen Benutzer |
 | Sicherheitsoperator | Anzeigen aller Identity Protection-Berichte und des Blatts „Übersicht“ <br><br> Ignorieren des Benutzerrisikos, Bestätigen der sicheren Anmeldung, Bestätigen der Kompromittierung | Konfigurieren oder Ändern von Richtlinien <br><br> Zurücksetzen des Kennworts für einen Benutzer <br><br> Konfigurieren von Warnungen |
 | Sicherheitsleseberechtigter | Anzeigen aller Identity Protection-Berichte und des Blatts „Übersicht“ | Konfigurieren oder Ändern von Richtlinien <br><br> Zurücksetzen des Kennworts für einen Benutzer <br><br> Konfigurieren von Warnungen <br><br> Bereitstellen von Feedback zu Erkennungen |
+
+Derzeit kann die Rolle „Sicherheitsoperator“ nicht auf den Bericht „Riskante Anmeldungen“ zugreifen.
 
 Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei denen das Risiko als Bedingung berücksichtigt wird. Weitere Informationen hierzu finden Sie im Artikel [Bedingter Zugriff: Bedingungen](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 

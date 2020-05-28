@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062573"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738641"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Einrichten einer Authentifikator-App als Methode für die zweistufige Überprüfung
 
@@ -29,7 +29,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Einrichten der Microsoft Authenticator-App zum Senden von Benachrichtigungen
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Mobile App** im Bereich **Schritt 1: Auf welchem Weg sollen wir Sie kontaktieren?** aus.
+1. Wählen Sie auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) die Option **Mobile App** im Bereich **Schritt 1: Auf welchem Weg sollen wir Sie kontaktieren?** aus.
 
 2. Wählen Sie im Bereich **Wie möchten Sie die mobile App verwenden?** die Option **Benachrichtigungen zur Überprüfung empfangen** und anschließend **Einrichten** aus.
 
@@ -58,7 +58,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
 
     Wir empfehlen dringend, die Telefonnummer Ihres Mobilgeräts als Alternative hinzuzufügen, falls Sie aus irgendeinem Grund nicht auf die mobile App zugreifen oder diese nicht nutzen können.
 
-8. Kopieren Sie im Bereich **Schritt 4: Verwenden Sie vorhandene Anwendungen weiterhin** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
+8. Kopieren Sie im Bereich **Schritt 4: Vorhandene Anwendungen weiterhin verwenden** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
 
     ![Bereich für App-Kennwörter der Seite „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -100,7 +100,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
 
     Wir empfehlen dringend, die Telefonnummer Ihres Mobilgeräts als Alternative hinzuzufügen, falls Sie aus irgendeinem Grund nicht auf die mobile App zugreifen oder diese nicht nutzen können.
 
-8. Kopieren Sie im Bereich **Schritt 4: Verwenden Sie vorhandene Anwendungen weiterhin** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
+8. Kopieren Sie im Bereich **Schritt 4: Vorhandene Anwendungen weiterhin verwenden** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
 
     ![Bereich für App-Kennwörter der Seite „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

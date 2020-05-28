@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5bd20f98b10989da0a66acbf45b99d724664cf5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ed68c18cc7845d45bebffc31842879353f2c2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208124"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846935"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service für Linux
 
@@ -314,6 +314,10 @@ dotnet ef migrations add AddProperty
 dotnet ef database update
 ```
 
+> [!NOTE]
+> Wenn Sie ein neues Terminalfenster öffnen, müssen Sie die Verbindungszeichenfolge auf die Produktionsdatenbank im Terminal festlegen, wie Sie dies in [Ausführen von Datenbankmigrationen zur Produktionsdatenbank](#run-database-migrations-to-the-production-database) getan haben.
+>
+
 ### <a name="use-the-new-property"></a>Verwenden der neuen Eigenschaft
 
 Nehmen Sie einige Änderungen an Ihrem Code vor, um die `Done`-Eigenschaft zu verwenden. Der Einfachheit halber ändern Sie in diesem Lernprogramm nur Ansichten `Index` und `Create`, um die Eigenschaft in Aktion zu sehen.
@@ -367,6 +371,10 @@ Führen Sie die App lokal aus.
 ```bash
 dotnet run
 ```
+
+> [!NOTE]
+> Wenn Sie ein neues Terminalfenster öffnen, müssen Sie die Verbindungszeichenfolge auf die Produktionsdatenbank im Terminal festlegen, wie Sie dies in [Ausführen von Datenbankmigrationen zur Produktionsdatenbank](#run-database-migrations-to-the-production-database) getan haben.
+>
 
 Navigieren Sie in Ihrem Browser zu `http://localhost:5000/`. Sie können jetzt eine Aufgabe hinzufügen und die Option **Fertig** aktivieren. Die Aufgabe sollte dann auf der Startseite als erledigt angezeigt werden. Beachten Sie, dass in der Ansicht `Edit` das Feld `Done` nicht angezeigt wird, da Sie die Ansicht `Edit` nicht geändert haben.
 

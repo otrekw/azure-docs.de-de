@@ -1,17 +1,16 @@
 ---
 title: 'Schnellstart: Sichern eines virtuellen Computers über das Azure-Portal'
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, den Schutz für einen virtuellen Azure-Computer aktivieren und den virtuellen Computer über das Azure-Portal sichern.
-ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215328"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656939"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 
@@ -70,7 +69,7 @@ Wenn Sie mit einem Backup-Tutorial fortfahren möchten, in dem die Wiederherstel
 
 1. Wählen Sie die Option **Backup** (Sichern) für Ihre VM.
 
-2. Wählen Sie **...Mehr**, um weitere Optionen anzuzeigen, und dann die Option **Sicherung beenden**.
+2. Wählen Sie **Sicherung beenden** aus.
 
     ![Beenden der VM-Sicherung über das Azure-Portal](./media/quick-backup-vm-portal/stop-backup.png)
 

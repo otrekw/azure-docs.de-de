@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: contperfq4
+ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79215988"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798239"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -47,7 +48,7 @@ Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug
    - Richtlinien können auf bestimmte Benutzer und Gruppen ausgerichtet werden, sodass Administratoren eine differenzierte Kontrolle über den Zugriff haben.
 - IP-Standortinformationen
    - Organisationen können vertrauenswürdige IP-Adressbereiche erstellen, die beim Treffen von Richtlinienentscheidungen verwendet werden können. 
-   - Administratoren können IP-Bereiche ganzer Länder angeben, um den Datenverkehr zu blockieren oder zuzulassen.
+   - Administratoren können IP-Bereiche ganzer Länder/Regionen angeben, um den Datenverkehr zu blockieren oder zuzulassen.
 - Sicherungsmedium
    - Benutzer mit Geräten bestimmter Plattformen oder mit einer Kennzeichnung zu einem bestimmten Zustand können beim Erzwingen von Richtlinien für den bedingten Zugriff verwendet werden.
 - Application
@@ -71,7 +72,7 @@ Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug
 
 ## <a name="commonly-applied-policies"></a>Häufig verwendete Richtlinien
 
-Viele Organisationen haben allgemeine Bedenken in Bezug auf den Zugriff, bei denen Richtlinien für den bedingten Zugriff wie etwa die folgenden hilfreich sein können:
+Viele Organisationen haben [allgemeine Bedenken in Bezug auf den Zugriff, bei denen Richtlinien für den bedingten Zugriff wie etwa die folgenden hilfreich sein können](concept-conditional-access-policy-common.md):
 
 - Erzwingen der mehrstufigen Authentifizierung für Benutzer mit Administratorrollen
 - Erzwingen der mehrstufigen Authentifizierung für Azure-Verwaltungsaufgaben
@@ -96,12 +97,8 @@ Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/micr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen einer Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md)
-
-Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md) erfahren Sie, wie Sie bedingten Zugriff in Ihrer Umgebung implementieren.
-
-[Informationen zu Identity Protection](../identity-protection/overview-v2.md)
-
-[Informationen zu Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
-
-[Informationen zu Microsoft Intune](/intune/index)
+- [Erstellen einer Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md)
+- [Planen der Bereitstellung für bedingten Zugriff](plan-conditional-access.md)
+- [Informationen zu Identity Protection](../identity-protection/overview-v2.md)
+- [Informationen zu Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- [Informationen zu Microsoft Intune](/intune/index)

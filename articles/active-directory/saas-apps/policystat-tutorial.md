@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68943440"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Azure Active Directory-Integration in PolicyStat
 
@@ -80,10 +80,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei PolicyStat
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für PolicyStat](#configure-policystat-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines PolicyStat-Testbenutzers](#create-policystat-test-user)** , um ein Pendant von Britta Simon in PolicyStat zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+3. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Erstellen eines PolicyStat-Testbenutzers](#create-policystat-test-user)** , um ein Pendant von Britta Simon in PolicyStat zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -164,25 +163,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PolicySt
    
     ![Administratormenü](./media/policystat-tutorial/ic808633.png "Administratormenü")
 
-3. Wählen Sie im Abschnitt **Einrichtung** die Option **Integration des einmaligen Anmeldens aktivieren** aus.
-   
-    ![SSO-Konfiguration](./media/policystat-tutorial/ic808634.png "Einmaliges Anmelden – Konfiguration")
-
-4. Klicken Sie auf **Attribute konfigurieren**, und führen Sie anschließend im Abschnitt **Attribute konfigurieren** die folgenden Schritte aus:
-   
-    ![SSO-Konfiguration](./media/policystat-tutorial/ic808635.png "Einmaliges Anmelden – Konfiguration")
-   
-    a. Geben Sie im Textfeld **Benutzernamen-Attribut** die Zeichenfolge **uid** ein.
-
-    b. Geben Sie im Textfeld **Vornamen-Attribut** den **Vornamen** des Benutzer (**Britta**) ein.
-
-    c. Geben Sie im Textfeld **Nachnamen-Attribut** den **Nachnamen** des Benutzer (**Simon**) ein.
-
-    d. Geben Sie im Textfeld **Email Attribute** (E-Mail-Attribut) die **E-Mail-Adresse** des Benutzers (`BrittaSimon@contoso.com`) ein.
-
-    e. Klicken Sie auf **Änderungen speichern**.
-
-5. Klicken Sie auf **Ihre IDP-Metadaten**, und führen Sie anschließend im Abschnitt **Ihre IDP-Metadaten** die folgenden Schritte aus:
+3. Klicken Sie auf **Ihre IDP-Metadaten**, und führen Sie anschließend im Abschnitt **Ihre IDP-Metadaten** die folgenden Schritte aus:
    
     ![SSO-Konfiguration](./media/policystat-tutorial/ic808636.png "Einmaliges Anmelden – Konfiguration")
    
@@ -190,33 +171,26 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PolicySt
 
     b. Klicken Sie auf **Änderungen speichern**.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+4. Klicken Sie auf **Attribute konfigurieren**, und führen Sie anschließend im Abschnitt **Attribute konfigurieren** die folgenden Schritte aus:
+   
+    a. Geben Sie im Textfeld **Benutzernamen-Attribut** die Zeichenfolge **uid** ein.
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+    b. Geben Sie im Textfeld **Vornamen-Attribut** den Namen Ihres Vornamen-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
+    c. Geben Sie im Textfeld **Nachnamen-Attribut** den Namen Ihres Nachnamen-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
+    d. Geben Sie im Textfeld **E-Mail-Attribut** den Namen Ihres E-Mail-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+    e. Klicken Sie auf **Änderungen speichern**.
 
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
+5. Wählen Sie im Abschnitt **Einrichtung** die Option **Integration des einmaligen Anmeldens aktivieren** aus.
+   
+    ![SSO-Konfiguration](./media/policystat-tutorial/ic808634.png "Einmaliges Anmelden – Konfiguration")
 
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** den Namen brittasimon@yourcompanydomain.extension ein. Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf PolicyStat gewähren.
+In diesem Abschnitt ermöglichen Sie Ihrem eigenen Konto die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf PolicyStat gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **PolicyStat** aus.
 
@@ -234,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ Ihr Konto aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 
 6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
@@ -260,4 +234,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „PolicyStat“ klicken, sollten Sie
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

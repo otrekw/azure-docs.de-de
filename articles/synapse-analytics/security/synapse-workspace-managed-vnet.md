@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419484"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645232"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk (Vorschauversion)
 
@@ -40,6 +40,8 @@ SQL-Pool und SQL On-Demand sind mehrinstanzenfähig und befinden sich daher au�
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Erstellen eines Azure Synapse-Arbeitsbereichs mit einem verwalteten Arbeitsbereichs-VNET
 
+Registrieren Sie den Netzwerkressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Network* aus, wenn Sie die [Registrierung durchführen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+
 Wenn Sie einen Azure Synapse-Arbeitsbereich mit verknüpftem verwaltetem Arbeitsbereichs-VNET erstellen möchten, wählen Sie im Azure-Portal die Registerkarte **Sicherheit + Netzwerkbetrieb** aus, und aktivieren Sie das Kontrollkästchen **Verwaltetes VNET aktivieren**.
 
 Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem VNET verknüpft.
@@ -50,7 +52,7 @@ Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem V
 ![Aktivieren des verwalteten Arbeitsbereichs-VNET](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Der gesamte ausgehende Datenverkehr aus dem verwalteten Arbeitsbereichs-VNET wird in Zukunft blockiert. Es empfiehlt sich, Verbindungen mit allen Ihren Datenquellen unter Verwendung von verwalteten privaten Endpunkten herzustellen.
+>Der gesamte ausgehende Datenverkehr aus dem verwalteten Arbeitsbereichs-VNet wird in Zukunft, mit Ausnahme von Datenverkehr durch verwaltete private Endpunkte, blockiert. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
 
 Wenn Sie überprüfen möchten, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten Arbeitsbereichs-VNET verknüpft ist, wählen Sie im Azure-Portal die Option **Übersicht** aus.
 
