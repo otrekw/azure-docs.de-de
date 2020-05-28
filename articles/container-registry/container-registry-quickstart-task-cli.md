@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen und Ausführen eines Containerimages'
 description: Führen Sie mit Azure Container Registry schnell Aufgaben aus, um bei Bedarf ein Docker-Containerimage in der Cloud zu erstellen und auszuführen.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76986273"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680615"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Schnellstart: Erstellen und Ausführen eines Containerimages mithilfe von Azure Container Registry Tasks
 
@@ -40,7 +40,7 @@ Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine Container
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
+In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Container Registry-Dienstebenen][container-registry-skus].
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Erstellen eines Images auf der Grundlage eines Dockerfile
 

@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501456"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747229"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -32,6 +32,11 @@ Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schrit
   * Für MDC sollte der Schlüssel auf den SQL-Port von **NAMESERVER** verweisen. Für SDC sollte er auf den SQL-Port von **INDEXSERVER** verweisen.
   * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
 * Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System für die Sicherung vorbereitet. Weitere Informationen zum Vorregistrierungsskript finden Sie unter [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does).
+
+>[!NOTE]
+>Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.
+>
+>Ändern Sie die Richtlinie nach Bedarf manuell.
 
 ## <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 

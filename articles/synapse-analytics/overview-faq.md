@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770722"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744076"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (Vorschau für Arbeitsbereiche): Häufig gestellte Fragen
 
@@ -35,9 +35,7 @@ A: Azure Synapse ist eine integrierte Datenplattform für BI, KI und Continuous 
 
 ### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>F: Wie beginne ich mit der Nutzung von Azure Synapse Analytics?
 
-A: Um mit der Verwendung von Azure Synapse Analytics zu beginnen, erstellen Sie einen (kostenlosen) [Synapse-Arbeitsbereich](https://portal.azure.com) und die Ressourcen, die Sie in diesem Arbeitsbereich verwenden möchten. Hierzu können Sie anhand eines unserer Schnellstarttutorials (beispielsweise [Schnellstart: Erstellen eines Synapse SQL-Pools](quickstart-create-sql-pool.md) oder [Schnellstart: Erstellen eines Azure Synapse Analytics-Arbeitsbereichs (Vorschauversion)](quickstart-create-workspace.md)) einen einfachen Anwendungsfall ansehen. 
-
-In unserem [Repository](https://github.com/Azure/azure-synapse-analytics/tree/master/samples) stehen außerdem Beispielnotebooks und SQL-Skripts zur Verfügung. Wenn Sie eine Verbindung mit einem öffentlichen Dataset herstellen müssen, erstellen Sie einen neuen verknüpften Dienst mit folgenden Attributen:
+A: Um mit der Verwendung von Azure Synapse Analytics zu beginnen, [registrieren Sie den Azure Synapse-Ressourcenanbieter](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types), indem Sie in der Liste der Ressourcenanbieter *Microsoft.Synapse* auswählen. Erstellen Sie dann einen (kostenlosen) [Synapse-Arbeitsbereich](https://portal.azure.com) sowie die Ressourcen, die Sie in diesem Arbeitsbereich verwenden möchten. Hierzu können Sie anhand eines unserer Schnellstarttutorials (beispielsweise [Schnellstart: Erstellen eines Synapse SQL-Pools](quickstart-create-sql-pool-portal.md) oder [Schnellstart: Erstellen eines Azure Synapse Analytics-Arbeitsbereichs (Vorschauversion)](quickstart-create-workspace.md)) einen einfachen Anwendungsfall ansehen. In unserem [Repository](https://github.com/Azure-Samples/Synapse) stehen außerdem Beispielnotebooks und SQL-Skripts zur Verfügung. Wenn Sie eine Verbindung mit einem öffentlichen Dataset herstellen müssen, erstellen Sie einen neuen verknüpften Dienst mit folgenden Attributen:
 
 - azure_storage_account_name = "azureopendatastorage"
 - azure_storage_sas_token = "" (write **""** )
@@ -94,7 +92,7 @@ A: Mit einem Datenfluss können Dateningenieure grafische Datentransformationslo
 
 A: Der End-to-End-Prozess für einmaliges Anmelden ist ein wichtiger Authentifizierungsprozess in der Synapse Analytics. Das Verwalten und Übergeben der Identität über eine vollständige AAD-Integration ist erforderlich.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>F: Wie kann ich auf Dateien und Ordner in ADLS Gen2 zugreifen?
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>F: Wie kann ich auf Dateien und Ordner in ADLS Gen2 zugreifen?
 
 A: Der Zugriff auf Dateien und Ordner wird aktuell über ADLS Gen2 verwaltet. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -106,6 +104,6 @@ A: Ja. Sie können Geschäftsanwendungen von Drittanbietern wie Tableau und Powe
 
 - [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
 - [Verwenden von Synapse Studio](quickstart-synapse-studio.md)
-- [Erstellen eines SQL-Pools](quickstart-create-sql-pool.md)
+- [Erstellen eines SQL-Pools](quickstart-create-sql-pool-portal.md)
 - [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)
-- [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool.md) 
+- [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md) 

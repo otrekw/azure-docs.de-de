@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640187"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -58,6 +58,10 @@ Damit Sie das SSPR-Rückschreiben ordnungsgemäß verwenden können, müssen fü
    * Der Benutzerorganisationseinheiten, für die SSPR möglich sein soll
 
 Wenn Sie diese Berechtigungen nicht zuweisen, ist das Rückschreiben scheinbar ordnungsgemäß konfiguriert, Benutzer erhalten jedoch Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten. Berechtigungen müssen für **Dieses und alle untergeordneten Objekte** angewendet werden, damit „Abgelaufenes Kennwort wiederherstellen“ angezeigt wird.  
+
+> [!TIP]
+>
+> Wenn Kennwörter für einige Benutzerkonten nicht in das lokale Verzeichnis zurückgeschrieben werden, stellen Sie sicher, dass die Vererbung für das Konto in der lokalen AD DS-Umgebung nicht deaktiviert ist. Schreibberechtigungen für Kennwörter müssen auf Nachfolgerobjekte angewendet werden, damit die Funktion ordnungsgemäß funktioniert.
 
 Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichten, führen Sie die folgenden Schritte aus:
 

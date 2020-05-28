@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985550"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Slack
 
@@ -39,6 +39,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Slack-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
@@ -47,9 +50,6 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Slack unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 * Slack unterstützt die [**automatisierte** Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial).
 * Nach dem Konfigurieren von Slack können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-> [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-slack-from-the-gallery"></a>Hinzufügen von Slack aus dem Katalog
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.slack.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://< DOMAIN NAME>.slack.com/sso/saml/start`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://slack.com`.
 
@@ -104,6 +104,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | -----|---------|
     | emailaddress | user.userprincipalname |
     | | |
+
+> [!NOTE]
+    > Um die Konfiguration des Dienstanbieters einzurichten, müssen Sie auf der Seite mit der SAML-Konfiguration auf **Erweitern** neben **Erweiterte Optionen** klicken. Geben Sie im Feld **Aussteller des Dienstanbieters** die Arbeitsbereichs-URL ein. Der Standardwert ist „slack.com“. 
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -149,15 +152,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Microsoft Azure AD** und dann zu **Teameinstellungen**.
 
-     ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial_slack_001.png)
+     ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-001.png)
 
 3. Klicken Sie im Abschnitt **Teameinstellungen** auf die Registerkarte **Authentifizierung**, und klicken Sie dann auf **Einstellungen ändern**.
 
-    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial_slack_002.png)
+    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-002.png)
 
 4. Führen Sie im Dialogfeld **SAML-Authentifizierungseinstellungen** die folgenden Schritte aus:
 
-    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial_slack_003.png)
+    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-003.png)
 
     a.  Fügen Sie in das Textfeld **SAML 2.0-Endpunkt (HTTP)** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -167,7 +170,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     d. Konfigurieren Sie die oben genannten drei Einstellungen gemäß den Anforderungen Ihres Slack-Teams. Weitere Informationen zu den Einstellungen finden Sie hier im **SSO-Konfigurationshandbuch für Slack**. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    e.  Klicken Sie auf **Konfiguration speichern**.
+    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-004.png)
+
+    e. Klicken Sie auf **Erweitern**, und geben Sie `https://slack.com` in das Textfeld **Aussteller des Identitätsanbieters** ein.
+
+    f.  Klicken Sie auf **Konfiguration speichern**.
 
 ### <a name="create-slack-test-user"></a>Erstellen eines Slack-Testbenutzers
 

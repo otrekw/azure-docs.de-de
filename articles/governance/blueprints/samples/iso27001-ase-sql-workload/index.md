@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“.'
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 834096ec529673bae1728877310ba7153ae94cb3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ab6a1b7e5569be39cc3b2934ec9891d5aa5712ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460578"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012992"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -33,7 +33,7 @@ Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung 
 - Ein virtuelles Netzwerk, in dem nur ein Subnetz enthalten ist und das über ein Peering mit einer bereits vorhandenen Umgebung für [gemeinsam genutzte Dienste](../iso27001-shared/index.md) verfügt, sodass für den gesamten Datenverkehr der Weg durch die Firewall der [gemeinsam genutzten Dienste](../iso27001-shared/index.md) erzwungen wird Im virtuellen Netzwerk werden die folgenden Ressourcen gehostet:
   - Eine [Azure App Service-Umgebung](../../../../app-service/environment/intro.md), die zum Hosten von einer oder mehreren Webanwendungen, Web-APIs oder Funktionen genutzt wird
   - Eine [Azure Key Vault](../../../../key-vault/general/overview.md)-Instanz mit Nutzung eines VNET-Dienstendpunkts zum Speichern von Geheimnissen, die von in der Workloadumgebung ausgeführten Anwendungen verwendet werden
-  - Eine [Azure SQL-Datenbank](../../../../sql-database/sql-database-technical-overview.md)-Serverinstanz mit einem VNET-Dienstendpunkt zum Hosten von Datenbanken, die für Anwendungen in der Workloadumgebung verwendet werden
+  - Eine [Azure SQL-Datenbank](../../../../azure-sql/database/sql-database-paas-overview.md)-Serverinstanz mit einem VNET-Dienstendpunkt zum Hosten von Datenbanken, die für Anwendungen in der Workloadumgebung verwendet werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 

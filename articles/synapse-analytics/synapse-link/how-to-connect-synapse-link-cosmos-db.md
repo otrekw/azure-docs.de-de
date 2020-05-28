@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Azure Synapse Link für Azure Cosmos DB
+title: Herstellen einer Verbindung mit Azure Synapse Link (Vorschau) für Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Synapse Link eine Azure Cosmos DB-Instanz mit einem Synapse-Arbeitsbereich verbinden.
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d72d1feda4c267dfa3d5c0dea6928f1b7541b26d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599010"
+ms.locfileid: "83658827"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Synapse Link für Azure Cosmos DB
+# <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Synapse Link (Vorschau) für Azure Cosmos DB
 
 In diesem Artikel wird beschrieben, wie Sie über Azure Synapse Analytics Studio mit Azure Synapse Link auf eine Azure Cosmos DB-Datenbank zugreifen.
 

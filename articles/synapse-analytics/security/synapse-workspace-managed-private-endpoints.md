@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dc748260c6e71eaaa469defb227d5cc2748a1345
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419554"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645324"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Verwaltete private Endpunkte in Synapse (Vorschau)
 
@@ -30,8 +30,9 @@ Der private Endpunkt verwendet eine private IP-Adresse in Ihrem VNET, um den Die
 
 >[!IMPORTANT]
 >Verwaltete private Endpunkte werden nur in Azure Synapse-Arbeitsbereichen mit dem verwalteten VNET eines Arbeitsbereichs unterstützt.
+
 >[!NOTE]
->Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen. Der gesamte ausgehende Datenverkehr aus dem verwalteten VNET eines Arbeitsbereichs wird in Zukunft blockiert.
+>Der gesamte ausgehende Datenverkehr aus dem verwalteten Arbeitsbereichs-VNet wird in Zukunft, mit Ausnahme von Datenverkehr durch verwaltete private Endpunkte, blockiert. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
 
 Wenn Sie einen verwalteten privaten Endpunkt in Azure Synapse erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird ausgelöst. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
 

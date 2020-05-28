@@ -6,37 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c1951c772dcd2f49f4f7c09021f69193af0a87e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420834"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701064"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Parquet-basierten Tabellen zwischen Apache Spark-Pools (Vorschauversion), der SQL On-Demand-Engine (Vorschauversion) und SQL-Pools.
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Parquet-basierten Tabellen zwischen Apache Spark-Pools (Vorschauversion) und der SQL On-Demand-Engine (Vorschauversion).
 
 Nach der Erstellung einer Datenbank durch einen Spark-Auftrag können darin Tabellen mit Spark erstellt werden, die Parquet als Speicherformat verwenden. Diese Tabellen stehen umgehend für Abfragen von beliebigen Spark-Pools des Azure Synapse-Arbeitsbereichs zur Verfügung. Darüber hinaus können sie von einem beliebigen Spark-Auftrag verwendet werden (entsprechende Berechtigungen vorausgesetzt).
 
-Die von Spark erstellten, verwalteten und externen Tabellen werden auch als externe Tabellen mit dem gleichen Namen in der entsprechenden synchronisierten Datenbank in SQL On-Demand und in den entsprechenden, mit dem Präfix `$` versehenen Schemas in den SQL-Pools mit aktivierter Metadatensynchronisierung verfügbar gemacht. Unter [Verfügbarmachen einer Spark-Tabelle in SQL](#exposing-a-spark-table-in-sql) finden Sie weitere Details zur Tabellensynchronisierung.
+Die von Spark erstellten, verwalteten und externen Tabellen werden auch als externe Tabellen mit demselben Namen in der entsprechenden synchronisierten Datenbank in SQL On-Demand verfügbar gemacht. Unter [Verfügbarmachen einer Spark-Tabelle in SQL](#exposing-a-spark-table-in-sql) finden Sie weitere Details zur Tabellensynchronisierung.
 
-Da die Tabellen asynchron mit SQL On-Demand und den SQL-Pools synchronisiert werden, kommt es zu einer Verzögerung bei der Anzeige.
-
-Tabellen werden externen Tabellen, Datenquellen und Dateiformaten zugeordnet.
+Da die Tabellen asynchron mit SQL On-Demand synchronisiert werden, kommt es zu einer Verzögerung bei der Anzeige.
 
 ## <a name="manage-a-spark-created-table"></a>Verwalten einer von Spark erstellten Tabelle
 
 Verwalten Sie von Spark erstellte Datenbanken mithilfe von Spark. Löschen Sie sie beispielsweise über einen Spark-Poolauftrag, und erstellen Sie Tabellen in der Datenbank über Spark.
 
 Wenn Sie Objekte in einer solchen Datenbank über SQL On-Demand erstellen oder versuchen, die Datenbank zu löschen, ist der Vorgang zwar erfolgreich, die ursprüngliche Spark-Datenbank wird jedoch nicht geändert.
-
-Wenn Sie versuchen, das synchronisierte Schema in einem SQL-Pool zu löschen oder eine Tabelle darin zu erstellen, wird von Azure ein Fehler zurückgegeben.
 
 ## <a name="exposing-a-spark-table-in-sql"></a>Verfügbarmachen einer Spark-Tabelle in SQL
 
@@ -56,7 +52,7 @@ Azure Synapse gibt aktuell nur verwaltete und externe Spark-Tabellen mit im Parq
 
 ### <a name="how-are-spark-tables-shared"></a>Wie werden Spark-Tabellen gemeinsam genutzt?
 
-Die gemeinsam nutzbaren verwalteten und externen Spark-Tabellen werden in den SQL-Engines als externe Tabellen mit folgenden Eigenschaften verfügbar gemacht:
+Die gemeinsam nutzbaren verwalteten und externen Spark-Tabellen werden in der SQL-Engine als externe Tabellen mit folgenden Eigenschaften verfügbar gemacht:
 
 - Die Datenquelle der externen SQL-Tabelle ist die Datenquelle, die den Ordner des Spark-Tabellenspeicherorts darstellt.
 - Die externe SQL-Tabelle hat das Parquet-Dateiformat.
@@ -88,11 +84,11 @@ Spark-Tabellen bieten andere Datentypen als die SQL-Engines von Synapse. In der 
 
 ## <a name="security-model"></a>Sicherheitsmodell
 
-Die Spark-Datenbanken und -Tabellen sowie deren synchronisierte Darstellungen in den SQL-Engines werden auf der zugrunde liegenden Speicherebene geschützt. Da sie derzeit nicht über Berechtigungen für die eigentlichen Objekte verfügen, können die Objekte im Objekt-Explorer angezeigt werden.
+Die Spark-Datenbanken und -Tabellen sowie deren synchronisierte Darstellungen in der SQL-Engine werden auf der zugrunde liegenden Speicherebene geschützt. Da sie derzeit nicht über Berechtigungen für die eigentlichen Objekte verfügen, können die Objekte im Objekt-Explorer angezeigt werden.
 
 Der Sicherheitsprinzipal, von dem eine verwaltete Tabelle erstellt wird, gilt als Besitzer der Tabelle und verfügt über alle Rechte für die Tabelle sowie für die zugrunde liegenden Ordner und Dateien. Der Besitzer der Datenbank wird zudem automatisch zum Mitbesitzer der Tabelle.
 
-Wenn Sie eine externe Spark- oder SQL-Tabelle mit Pass-Through-Authentifizierung erstellen, werden die Daten nur auf der Ordner- und Dateiebene geschützt. Bei einer Abfrage für diese externe Tabelle wird die Sicherheitsidentität des Abfrageübermittlers an das Dateisystem übergeben und auf Zugriffsrechte überprüft.
+Wenn Sie eine externe Spark- oder SQL-Tabelle mit Passthrough-Authentifizierung erstellen, werden die Daten nur auf der Ordner- und Dateiebene geschützt. Bei einer Abfrage für diese externe Tabelle wird die Sicherheitsidentität des Abfrageübermittlers an das Dateisystem übergeben und auf Zugriffsrechte überprüft.
 
 Weitere Informationen zum Festlegen von Berechtigungen für die Ordner und Dateien finden Sie unter [Azure Synapse Analytics: Gemeinsam genutzte Datenbank](database.md).
 
@@ -193,27 +189,6 @@ id | name | birthdate
 ---+-------+-----------
 1 | Alice | 2010-01-01
 ```
-
-### <a name="querying-spark-tables-in-a-sql-pool"></a>Abfragen von Spark-Tabellen in einem SQL-Pool
-
-Nachdem Sie die Tabellen in den vorherigen Beispielen erstellt haben, können Sie in Ihrem Arbeitsbereich einen SQL-Pool mit dem Namen `mysqlpool` erstellen, der die Metadatensynchronisierung ermöglicht (oder den bereits erstellten Pool aus [Verfügbarmachen einer Spark-Datenbank in einem SQL-Pool](database.md#exposing-a-spark-database-in-a-sql-pool) verwenden).
-
-Führen Sie die folgende Anweisung für den SQL-Pool `mysqlpool` aus:
-
-```sql
-SELECT * FROM sys.tables;
-```
-
-Vergewissern Sie sich, dass die Tabellen `myParquetTable` und `myExternalParquetTable` im Schema `$mytestdb` angezeigt werden.
-
-Nun können die Daten wie folgt über SQL On-Demand gelesen werden:
-
-```sql
-SELECT * FROM [$mytestdb].myParquetTable WHERE name = 'Alice';
-SELECT * FROM [$mytestdb].myExternalParquetTable WHERE name = 'Alice';
-```
-
-Dabei sollten die gleichen Ergebnisse zurückgegeben werden wie zuvor mit SQL On-Demand.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

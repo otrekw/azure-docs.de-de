@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68496565"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773015"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Tutorial: Integrieren von Amazon Business in Azure Active Directory
 
@@ -87,24 +87,22 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     
        | | |
        |-|-|
-       | `https://www.amazon.com`|
-       | `https://www.amazon.co.jp`|
-       | `https://www.amazon.de`|
+       | `https://www.amazon.com`| Nordamerika |
+       | `https://www.amazon.co.jp`| Asien, Osten |
+       | `https://www.amazon.de`| Europa |
 
     1. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
     
        | | |
        |-|-|
-       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Nordamerika |
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Asien, Osten |
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Europa |
 
        > [!NOTE]
        > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Den Wert `<idpid>` finden Sie im SSO-Konfigurationsabschnitt von Amazon Business (wird später in diesem Tutorial erläutert). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://www.amazon.com/`.
+1. Wenn Sie die Anwendung im **Dienstanbieter**-initiierten Modus konfigurieren möchten, müssen Sie die vollständige URL, die in der Amazon Business-Konfiguration bereitgestellt wird der **Anmelde-URL** im Abschnitt **Zusätzliche URLs festlegen** hinzufügen.
 
 1. Der folgende Screenshot zeigt die Liste der Standardattribute. Bearbeiten Sie die Attribute, indem Sie im Abschnitt **Benutzerattribute und Ansprüche** auf das Symbol **Bearbeiten** klicken.
 
@@ -153,6 +151,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Wählen Sie im **Einrichtungs-Assistenten** für einmaliges Anmelden den Anbieter gemäß den Anforderungen Ihrer Organisation aus, und klicken Sie auf **Next** (Weiter).
 
     ![Standardgruppe](media/amazon-business-tutorial/default-group1.png)
+    
+    > [!NOTE]
+    > Obwohl es sich bei Microsoft ADFS um eine aufgelistete Option handelt, funktioniert es nicht mit Azure AD SSO.
 
 1. Wählen Sie **im** Assistenten für neue Benutzerkonten Standard die **Standardgruppe** aus, und **wählen Sie dann** standardmäßige Kauf Rolle gemäß der Benutzerrolle in Ihrer Organisation aus, und klicken Sie auf **Als**nächstes.
 
@@ -197,7 +198,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Schließlich wird im **Abschnitt SSO-** Verbindungsdetails **der** Status als **aktiv**angezeigt.
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection5.png)
-
+    
+    > [!NOTE]
+    > Wenn Sie die Anwendung im **Dienstanbieter**-initiierten Modus konfigurieren möchten, führen Sie den folgenden Schritt aus, und fügen Sie die Anmelde-URL aus dem obigen Screenshot in das Textfeld **Anmelde-URL** im Abschnitt **Zusätzliche URLs festlegen** des Azure-Portals ein. Verwenden Sie das folgende Format:
+    >
+    > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
+    
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
