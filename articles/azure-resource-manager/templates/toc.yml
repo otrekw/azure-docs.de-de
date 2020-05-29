@@ -156,6 +156,8 @@
       href: templates-cloud-consistency.md
     - name: Bereitstellungsmodi
       href: deployment-modes.md
+    - name: Löschung des Bereitstellungsverlaufs
+      href: deployment-history-deletions.md
     - name: Löschung des vollständigen Modus
       href: complete-mode-deletion.md
     - name: Bereitstellungs-Manager

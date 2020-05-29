@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: 'Erstellen von Notification Hubs: Azure-Befehlszeilenschnittstelle'
       href: create-notification-hub-azure-cli.md
-    - name: "Erstellen von Notification Hubs: Azure\_Resource\_Manager-Vorlage"
+    - name: 'Erstellen von Notification Hubs: ARM-Vorlage'
       href: create-notification-hub-template.md
     - name: Konfigurieren eines Notification Hubs
       href: configure-notification-hub-portal-pns-settings.md

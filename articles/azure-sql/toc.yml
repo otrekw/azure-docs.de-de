@@ -1,0 +1,1143 @@
+- name: "Azure\_SQL-Dokumentation"
+  href: index.yml
+- name: "Was ist Azure\_SQL?"
+  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: "Dokumentation zu freigegebenen SQL-Datenbank- und SQL\_MI-Instanzen"
+  items:
+    - name: Kaufmodelle
+      items:
+        - name: Übersicht
+          href: database/purchasing-models.md
+        - name: Übersicht über das V-Kern-Modell
+          href: database/service-tiers-vcore.md
+        - name: Azure-Hybridvorteil
+          href: azure-hybrid-benefit.md
+        - name: Reservierte Kapazität
+          href: database/reserved-capacity-overview.md
+    - name: Compute und Speicher
+      items:
+        - name: Übersicht
+          href: database/service-tiers-general-purpose-business-critical.md
+          displayName: provisioned compute tier
+        - name: Universell/Standard
+          href: database/service-tier-general-purpose.md
+        - name: Unternehmenskritisch/Premium
+          href: database/service-tier-business-critical.md
+    - name: Freigegebene Konzepte
+      itemS:
+        - name: Funktionsvergleiche
+          href: database/features-comparison.md
+        - name: Funktionen mit mehreren Modellen
+          href: multi-model-features.md
+        - name: In-Memory-OLTP
+          href: in-memory-oltp-overview.md
+        - name: Temporale Tabellen
+          href: temporal-tables.md
+        - name: Hoch-/Herunterskalieren
+          href: database/scale-resources.md
+        - name: Sicherheit
+          items:
+            - name: Übersicht
+              href: database/security-overview.md
+              displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+            - name: Bewährte Methoden
+              href: database/security-best-practice.md
+            - name: Sicherheitsbaseline
+              href: database/security-baseline.md
+            - name: Sicherheitsattribute
+              href: database/security-controls.md
+            - name: Advanced Data Security
+              href: database/advanced-data-security.md
+            - name: Erweiterter Schutz vor Bedrohungen
+              href: database/threat-detection-overview.md
+            - name: Dynamische Datenmaskierung
+              href: database/dynamic-data-masking-overview.md
+            - name: SQL-Sicherheitsrisikobewertung
+              href: database/sql-vulnerability-assessment.md
+            - name: 'Anmeldungen, Benutzerkonten, Rollen und Berechtigungen'
+              href: database/logins-create-manage.md
+            - name: Azure AD-Authentifizierung
+              href: database/authentication-aad-overview.md
+              items:
+                - name: Konfigurieren der Azure AD-Authentifizierung
+                  href: database/authentication-aad-configure.md
+                - name: Mehrstufige AAD-Authentifizierung
+                  href: database/authentication-mfa-ssms-overview.md
+                - name: Konfigurieren der mehrstufigen Authentifizierung
+                  href: database/authentication-mfa-ssms-configure.md
+                - name: Bedingter Zugriff
+                  href: database/conditional-access-configure.md
+            - name: TDE (Transparent Data Encryption)
+              items:
+                - name: Übersicht
+                  href: database/transparent-data-encryption-tde-overview.md
+                - name: Bring Your Own Key (BYOK)
+                  href: database/transparent-data-encryption-byok-overview.md
+                - name: Datenermittlung und -klassifizierung
+                  href: database/data-discovery-and-classification-overview.md
+        - name: Geschäftskontinuität
+          displayName: 'Backup, back up, restore, recovery'
+          items:
+            - name: Übersicht
+              href: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+            - name: Hochverfügbarkeit
+              href: database/high-availability-sla.md
+            - name: Autofailover-Gruppen
+              href: database/auto-failover-group-overview.md
+            - name: Sicherung und Wiederherstellung
+              items:
+                - name: Automatisierte Sicherungen
+                  href: database/automated-backups-overview.md
+                - name: Verbesserte Wiederherstellung von Datenbanken
+                  href: accelerated-database-recovery.md
+                - name: Wiederherstellung mithilfe von Sicherungen
+                  href: database/recovery-using-backups.md
+                - name: Langfristiges Aufbewahren von Sicherungen
+                  href: database/long-term-retention-overview.md
+        - name: Überwachen und Optimieren
+          items:
+            - name: Dokumentation
+              href: database/monitoring-tuning-index.yml
+            - name: Übersicht
+              href: database/monitor-tune-overview.md
+            - name: Intelligent Insights
+              href: database/intelligent-insights-overview.md
+            - name: Azure SQL-Analyse
+              href: /azure/log-analytics/log-analytics-azure-sql?toc=/azure/azure-sql/toc.json
+            - name: Automatische Optimierung
+              href: database/automatic-tuning-overview.md
+            - name: In-Memory-OLTP
+              href: in-memory-oltp-overview.md
+            - name: Erweiterte Ereignisse
+              items:
+                - name: Erweiterte Ereignisse
+                  href: database/xevent-db-diff-from-svr.md
+                - name: Erweiterte Ereignisse – Ereignisdatei
+                  href: database/xevent-code-event-file.md
+                - name: Erweiterte Ereignisse – Ringpuffer
+                  href: database/xevent-code-ring-buffer.md
+    - name: Freigegebene Anleitungen
+      items:
+        - name: Anfordern der Kontingenterhöhung
+          href: database/quota-increase-request.md
+        - name: Auftragsautomatisierung
+          href: database/job-automation-overview.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Konfigurieren einer Failovergruppe
+              href: database/auto-failover-group-configure.md
+            - name: Konfigurieren einer temporalen Aufbewahrungsrichtlinie
+              href: database/temporal-tables-retention-policy.md
+            - name: Konfigurieren der Sicherungsaufbewahrung mit Azure Blob Storage
+              href: database/long-term-backup-retention-configure.md
+        - name: Sicherheit
+          items:
+            - name: Konfigurieren von TDE mit BYOK
+              href: database/transparent-data-encryption-byok-configure.md
+            - name: Speichern von Sicherheitsrisikoüberprüfungen im Speicher
+              href: database/sql-database-vulnerability-assessment-storage.md
+            - name: Always Encrypted
+              items:
+                - name: Verwenden von Azure Key Vault
+                  href: database/always-encrypted-azure-key-vault-configure.md
+                - name: Verwenden des Zertifikatspeichers
+                  href: database/always-encrypted-certificate-store-configure.md
+        - name: Überwachen & optimieren
+          items:
+            - name: Identifizieren von Problemen aufgrund von beeinträchtigter Abfrageleistung
+              href: identify-query-performance-issues.md
+            - name: Batchverarbeitung zur Verbesserung der Leistung
+              href: performance-improve-use-batching.md
+            - name: Laden von Daten mit BCP
+              href: load-from-csv-with-bcp.md
+            - name: Leitfaden zur Anwendungs- und Datenbankoptimierung
+              href: database/performance-guidance.md
+            - name: Überwachen der Leistung mithilfe von DMVs
+              href: database/monitoring-with-dmvs.md
+            - name: Protokollieren der Diagnosetelemetrie
+              href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+            - name: In-Memory-OLTP
+              items:
+                - name: Konfigurieren von In-Memory-OLTP
+                  href: in-memory-oltp-configure.md
+                - name: Ausprobieren von In-Memory-Features
+                  href: in-memory-sample.md
+                - name: Überwachen des In-Memory-OLTP-Speicherplatzes
+                  href: in-memory-oltp-monitor-space.md
+        - name: Laden und Verschieben von Daten
+          items:
+            - name: Importieren einer Datenbank aus einer BACPAC-Datei
+              href: database/database-import.md
+            - name: Exportieren einer Datenbank in eine BACPAC-Datei
+              href: database/database-export.md
+            - name: Verschieben von Ressourcen in eine neue Region
+              href: database/move-resources-across-regions.md
+            - name: Laden von Daten mit ADF
+              href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
+        - name: Entwickeln von Datenanwendungen
+          items:
+            - name: Übersicht
+              href: database/develop-overview.md
+            - name: Arbeiten mit JSON-Daten
+              href: database/json-features.md
+            - name: Verwenden des Spark-Connectors
+              href: database/spark-connector.md
+            - name: Verwenden von ASP.NET App Service
+              href: /azure/app-service/app-service-web-tutorial-dotnet-sqldatabase?toc=/azure/azure-sql/toc.json
+            - name: Verwenden von Azure Functions
+              href: /azure/azure-functions/functions-scenario-database-table-cleanup?toc=/azure/azure-sql/toc.json
+            - name: Verwenden von Azure Logic Apps
+              href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/azure-sql/toc.json
+            - name: Indizieren mit Azure Cognitive Search
+              href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/azure-sql/toc.json
+            - name: Serverseitige CLR-/.NET-Integration
+              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
+            - name: Java
+              items:
+                - name: Verwenden von Spring Data-JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                - name: Verwenden von Spring Data-JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+- name: SQL-Datenbank (SQL-DB)
+  items:
+    - name: Dokumentation
+      href: database/index.yml
+    - name: Übersicht
+      items:
+        - name: Was ist SQL Database?
+          href: database/sql-database-paas-overview.md
+        - name: Einzeldatenbanken
+          href: database/single-database-overview.md
+        - name: Pools für elastische Datenbanken
+          href: database/elastic-pool-overview.md
+        - name: Logische SQL-Server
+          href: database/logical-servers.md
+        - name: Versionshinweise
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
+        - name: Dienstebenen
+          items:
+            - name: Serverlos
+              href: database/serverless-tier-overview.md
+            - name: Übersicht über das DTU-Modell
+              href: database/service-tiers-dtu.md
+            - name: Hyperscale
+              href: database/service-tier-hyperscale.md
+            - name: Häufig gestellte Fragen zu Hyperscale
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+            - name: "Migrieren von Premium\_RS"
+              href: database/service-tiers-prs.md
+    - name: Schnellstarts
+      href: database/quickstart-content-reference-guide.md
+      items:
+        - name: Erstellen einer Datenbank
+          items:
+            - name: Azure-Portal
+              href: database/single-database-create-quickstart.md
+            - name: ARM-Vorlage
+              displayName: Resource Manager
+              href: database/single-database-create-arm-template-quickstart.md
+        - name: Konfigurieren
+          items:
+            - name: IP-Firewallregeln auf Serverebene
+              href: database/firewall-create-server-level-portal-quickstart.md
+    - name: Tutorials
+      items:
+        - name: Erstellen einer Datenbank
+          items:
+            - name: Entwerfen einer Datenbank mithilfe von SSMS
+              href: database/design-first-database-tutorial.md
+            - name: Entwerfen einer Datenbank mithilfe von .NET
+              href: database/design-first-database-csharp-tutorial.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Hinzufügen einer Datenbank zur Failovergruppe
+              href: database/failover-group-add-single-database-tutorial.md
+            - name: Hinzufügen eines Pools zur Failovergruppe
+              href: database/failover-group-add-elastic-pool-tutorial.md
+            - name: Konfigurieren der Sicherheit für Replikate
+              href: database/active-geo-replication-security-configure.md
+            - name: Geografisch verteilte Anwendung
+              href: database/geo-distributed-application-configure-tutorial.md
+            - name: Aktive Georeplikation
+              href: database/active-geo-replication-configure-portal.md
+        - name: Sicherheit
+          items:
+            - name: Konfigurieren der Sicherheit
+              href: database/secure-database-tutorial.md
+            - name: Rotieren von TDE-BYOK-Schlüsseln
+              href: database/transparent-data-encryption-byok-key-rotation.md
+            - name: Entfernen einer TDE-Schutzvorrichtung
+              href: database/transparent-data-encryption-byok-remove-tde-protector.md
+        - name: Verschieben von Daten
+          items:
+            - name: Migrieren mithilfe von DMS
+              href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/azure-sql/toc.json
+            - name: Einrichten der SQL-Datensynchronisierung
+              href: database/sql-data-sync-sql-server-configure.md
+            - name: Migrieren von SQLite zu serverlosen Ressourcen
+              href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Konzepte
+      items:
+        - name: Verbindungsarchitektur
+          href: database/connectivity-architecture.md
+        - name: Konnektivitätseinstellungen
+          href: database/connectivity-settings.md
+        - name: Horizontale Leseskalierung
+          href: database/read-scale-out.md
+        - name: T-SQL-Unterschiede
+          href: database/transact-sql-tsql-differences-sql-server.md
+        - name: Azure-Automatisierung
+          href: database/automation-manage.md
+        - name: Elastische Abfragen
+          href: database/elastic-query-overview.md
+        - name: Elastische Transaktionen
+          href: database/elastic-transactions-overview.md
+        - name: Ressourcenverwaltung
+          items:
+            - name: Einzeldatenbankressourcen
+              items:
+                - name: V-Kern-Ressourcenlimits
+                  href: database/resource-limits-vcore-single-databases.md
+                - name: DTU-Ressourcenlimits
+                  href: database/resource-limits-dtu-single-databases.md
+            - name: Ressourcen von Pools für elastische Datenbanken
+              items:
+                - name: V-Kern-Ressourcenlimits
+                  href: database/resource-limits-vcore-elastic-pools.md
+                - name: DTU-Ressourcenlimits
+                  href: database/resource-limits-dtu-elastic-pools.md
+            - name: "Ressourcen einer logischen SQL\_Server-Instanz"
+              items:
+                - name: Ressourceneinschränkungen für Datenbanken
+                  href: database/resource-limits-logical-server.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Aktive Georeplikation
+              href: database/active-geo-replication-overview.md
+            - name: Anleitungen zur Wiederherstellung nach Ausfällen
+              href: database/disaster-recovery-guidance.md
+            - name: Übungen zur Wiederherstellung
+              href: database/disaster-recovery-drills.md
+        - name: SQL-Datensynchronisierung
+          items:
+            - name: Übersicht
+              href: database/sql-data-sync-data-sql-server-sql-database.md
+            - name: Datensynchronisierungs-Agent
+              href: database/sql-data-sync-agent-overview.md
+            - name: Bewährte Methoden für die Datensynchronisierung
+              href: database/sql-data-sync-best-practices.md
+            - name: Problembehandlung für die Datensynchronisierung
+              href: database/sql-data-sync-troubleshoot.md
+        - name: Sicherheit
+          items:
+            - name: "Azure\_SQL-Überwachung"
+              href: database/auditing-overview.md
+            - name: Format der Überwachungsprotokolle
+              href: database/audit-log-format.md
+            - name: Kontrolle des Netzwerkzugriffs
+              href: database/network-access-controls-overview.md
+            - name: DNS-Aliase
+              href: database/dns-alias-overview.md
+            - name: VNET-Endpunkte
+              href: database/vnet-service-endpoint-rule-overview.md
+            - name: Private Link
+              href: database/private-endpoint-overview.md
+        - name: Machine Learning Services
+          items:
+            - name: Übersicht
+              href: database/machine-learning-services-overview.md
+            - name: Wesentliche Unterschiede
+              href: database/machine-learning-services-differences.md
+            - name: Schnellstarts
+              items:
+                - name: Erstellen von R-Skripts
+                  href: database/r-script-create-quickstart.md
+                - name: Trainieren und Bewerten eines Modells
+                  href: database/r-train-score-model-create-quickstart.md
+            - name: Tutorials
+              items:
+                - name: Erstellen eines Vorhersagemodells in R
+                  items:
+                    - name: 1. Vorbereiten der Daten
+                      href: database/predictive-model-prepare-data-tutorial.md
+                    - name: 2. Erstellen des Modells
+                      href: database/predictive-model-build-compare-tutorial.md
+                    - name: 3. Bereitstellen des Modells
+                      href: database/predictive-model-deploy-tutorial.md
+                - name: Erstellen eines Clusteringmodells in R
+                  items:
+                    - name: 1. Vorbereiten der Daten
+                      href: database/clustering-model-prepare-data-tutorial.md
+                    - name: 2. Erstellen des Modells
+                      href: database/clustering-model-build-tutorial.md
+                    - name: 3. Bereitstellen des Modells
+                      href: database/clustering-model-deploy-tutorial.md
+            - name: Anleitung
+              items:
+                - name: Schreiben von erweiterten R-Funktionen
+                  href: database/machine-learning-services-functions.md
+                - name: Arbeiten mit R- und SQL-Daten
+                  href: database/machine-learning-services-data-issues.md
+                - name: Hinzufügen von R-Paketen
+                  href: database/machine-learning-services-add-r-packages.md
+        - name: Datenbank-Sharding
+          items:
+            - name: Datenbank-Sharding
+              href: database/elastic-scale-introduction.md
+            - name: Glossar
+              href: database/elastic-scale-glossary.md
+            - name: Elastische Clientbibliothek
+              href: database/elastic-database-client-library.md
+            - name: Shardzuordnungen
+              href: database/elastic-scale-shard-map-management.md
+            - name: Abfragerouting
+              href: database/elastic-scale-data-dependent-routing.md
+            - name: Verwalten von Anmeldeinformationen
+              href: database/elastic-scale-manage-credentials.md
+            - name: Verschieben von Sharddaten
+              href: database/elastic-scale-overview-split-and-merge.md
+            - name: Elastische Tools – häufig gestellte Fragen
+              href: database/elastic-scale-faq.md
+    - name: Anleitung
+      href: database/how-to-content-reference-guide.md
+      items:
+        - name: Herstellen einer Verbindung und Ausführen von Abfragen
+          href: database/connect-query-content-reference-guide.md
+          items:
+            - name: Verbinden und Ausführen von Ad-hoc-Abfragen
+              items:
+                - name: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
+                - name: SSMS
+                  href: database/connect-query-ssms.md
+                - name: Azure-Portal
+                  href: database/connect-query-portal.md
+                - name: VS-Code
+                  href: database/connect-query-vscode.md
+            - name: Verbinden und Abfragen über Apps
+              items:
+                - name: .NET mit Visual Studio
+                  href: database/connect-query-dotnet-visual-studio.md
+                - name: .NET Core
+                  href: database/connect-query-dotnet-core.md
+                - name: .NET mit MFA von Active Directory
+                  href: database/active-directory-interactive-connect-azure-sql-db.md
+                - name: Go
+                  href: database/connect-query-go.md
+                - name: Java
+                  href: database/connect-query-java.md
+                - name: Node.js
+                  href: database/connect-query-nodejs.md
+                - name: PHP
+                  href: database/connect-query-php.md
+                - name: Python
+                  href: database/connect-query-python.md
+                - name: Ruby
+                  href: database/connect-query-ruby.md
+                - name: R
+                  href: database/connect-query-r.md
+        - name: Verwalten
+          items:
+            - name: Referenz zur Verwaltungs-API
+              href: database/single-database-manage.md
+            - name: DNS-Alias – PowerShell
+              href: database/dns-alias-powershell-create.md
+            - name: Verwalten von Dateispeicherplatz
+              href: database/file-space-manage.md
+            - name: Verwenden von Resource Health bei Konnektivitätsproblemen
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: Migrieren von DTU zu einem virtuellen Kern
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: Skalieren von Datenbankressourcen
+              href: database/single-database-scale.md
+            - name: Skalieren von Poolressourcen
+              href: database/elastic-pool-scale.md
+            - name: Verwalten von Poolressourcen
+              href: database/elastic-pool-manage.md
+            - name: Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken
+              href: database/elastic-pool-resource-management.md
+            - name: Hyperscale-Leistungsdiagnose
+              href: database/hyperscale-performance-diagnostics.md
+        - name: Sicher
+          items:
+            - name: Überwachen in einem Speicherkonto hinter einem VNET oder einer Firewall
+              href: database/audit-write-storage-account-behind-vnet-firewall.md
+            - name: Konfigurieren der Bedrohungserkennung
+              href: database/threat-detection-configure.md
+            - name: Konfigurieren der dynamischen Datenmaskierung
+              href: database/dynamic-data-masking-configure-portal.md
+            - name: IP-basierte Firewall
+              href: database/firewall-configure.md
+            - name: 'VNET-Endpunkte: PowerShell'
+              href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Konfigurieren der Sicherungsaufbewahrung mit Azure Blob Storage
+              href: database/long-term-backup-retention-configure.md
+            - name: 'Konfigurieren der Georeplikation: Portal'
+              href: database/active-geo-replication-configure-portal.md
+            - name: Konfigurieren der Sicherheit für geografische Replikate
+              href: database/active-geo-replication-security-configure.md
+        - name: Leistung
+          items:
+            - name: Verwenden von Query Performance Insight
+              href: database/query-performance-insight-use.md
+            - name: Aktivieren der automatischen Optimierung
+              href: database/automatic-tuning-enable.md
+            - name: Aktivieren von E-Mail-Benachrichtigungen zur automatischen Optimierung
+              href: database/automatic-tuning-email-notifications-configure.md
+            - name: Anwendung von Empfehlungen zur Leistung
+              href: database/database-advisor-find-recommendations-portal.md
+            - name: Erstellen von Warnungen
+              href: database/alerts-insights-configure-portal.md
+            - name: Implementieren von Database Advisor-Empfehlungen
+              href: database/database-advisor-implement-performance-recommendations.md
+            - name: "Streamen von Daten mit Stream\_Analytics"
+              href: database/stream-data-stream-analytics-integration.md
+        - name: Laden und Verschieben von Daten
+          items:
+            - name: Migrieren zu SQL-Datenbank
+              href: database/migrate-to-database-from-sql-server.md
+            - name: Verwalten von SQL-Datenbank nach der Migration
+              href: database/manage-data-after-migrating-to-database.md
+            - name: Importieren/Exportieren (deaktivierte Option zum Zulassen von Azure-Diensten)
+              href: database/database-import-export-azure-services-off.md
+            - name: Importieren einer Datenbank aus einer BACPAC-Datei
+              href: database/database-import.md
+            - name: Kopieren einer Datenbank innerhalb von Azure
+              href: database/database-copy.md
+            - name: Replizieren in SQL-Datenbank
+              href: database/replication-to-sql-database.md
+            - name: SQL-Datensynchronisierung
+              items:
+                - name: Replizieren von Schemaänderungen
+                  href: database/sql-data-sync-update-sync-schema.md
+                - name: Überwachen mit OMS
+                  href: database/sql-data-sync-monitor-sync.md
+        - name: Datenbank-Sharding
+          items:
+            - name: Aktualisieren der Clientbibliothek
+              href: database/elastic-scale-upgrade-client-library.md
+            - name: Erstellen einer App mit Sharding
+              href: database/elastic-scale-get-started.md
+            - name: Abfragen horizontal partitionierter Daten
+              href: database/elastic-query-getting-started.md
+            - name: Multishardabfragen
+              href: database/elastic-scale-multishard-querying.md
+            - name: Verschieben von Sharddaten
+              href: database/elastic-scale-configure-deploy-split-and-merge.md
+            - name: Sicherheitskonfiguration
+              href: database/elastic-scale-split-merge-security-configuration.md
+            - name: Hinzufügen eines Shards
+              href: database/elastic-scale-add-a-shard.md
+            - name: Beheben von Problemen bei der Shardzuordnung
+              href: database/elastic-database-recovery-manager.md
+            - name: Migrieren von Sharddatenbanken
+              href: database/elastic-convert-to-use-elastic-tools.md
+            - name: Erstellen von Leistungsindikatoren
+              href: database/elastic-database-perf-counters.md
+            - name: Verwenden von Entity Framework
+              href: database/elastic-scale-use-entity-framework-applications-visual-studio.md
+            - name: Verwenden des Dapper-Frameworks
+              href: database/elastic-scale-working-with-dapper.md
+        - name: Abfragen verteilter Daten
+          items:
+            - name: Abfragen vertikal partitionierter Daten
+              href: database/elastic-query-getting-started-vertical.md
+            - name: Erstellen übergreifender Berichte für die horizontal hochskalierte Datenschicht
+              href: database/elastic-query-horizontal-partitioning.md
+            - name: Durchführen tabellenübergreifender Abfragen mit unterschiedlichen Schemas
+              href: database/elastic-query-vertical-partitioning.md
+        - name: Elastische Aufträge
+          items:
+            - name: Konfigurieren von Aufträgen
+              href: database/elastic-jobs-overview.md
+            - name: Erstellen und Verwalten (PowerShell)
+              href: database/elastic-jobs-powershell-create.md
+            - name: Erstellen und Verwalten (T-SQL)
+              href: database/elastic-jobs-tsql-create-manage.md
+            - name: Migrieren (aus alten elastischen Aufträgen)
+              href: database/elastic-jobs-migrate.md
+        - name: Entwerfen von Datenanwendungen
+          items:
+            - name: Authentifizieren der App
+              href: database/application-authentication-get-client-id-keys.md
+            - name: Entwurf für die Notfallwiederherstellung
+              href: database/designing-cloud-solutions-for-disaster-recovery.md
+            - name: Entwurf für Pools für elastische Datenbanken
+              href: database/disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Entwurf für App-Upgrades
+              href: database/manage-application-rolling-upgrade.md
+            - name: C und C ++
+              href: database/develop-cplusplus-simple.md
+            - name: Excel
+              href: database/connect-excel.md
+            - name: Ports – ADO.NET
+              href: database/adonet-v12-develop-direct-route-ports.md
+            - name: Mehrinstanzenfähige SaaS
+              items:
+                - name: SaaS-Entwurfsmuster
+                  href: database/saas-tenancy-app-design-patterns.md
+                - name: SaaS-Video Indexer
+                  href: database/saas-tenancy-video-index-wingtip-brk3120-20171011.md
+                - name: SaaS-App-Sicherheit
+                  href: database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+                - name: Mehrinstanzenfähige SaaS-Beispielanwendung
+                  items:
+                    - name: Wingtip Tickets-Beispiel
+                      href: database/saas-tenancy-welcome-wingtip-tickets-app.md
+                    - name: Allgemeine Hinweise
+                      href: database/saas-tenancy-wingtip-app-guidance-tips.md
+                    - name: Einzelne Anwendung
+                      items:
+                        - name: Bereitstellen der Beispiel-App
+                          href: database/saas-standaloneapp-get-started-deploy.md
+                        - name: Bereitstellen von Mandanten
+                          href: database/saas-standaloneapp-provision-and-catalog.md
+                    - name: Datenbank pro Mandant
+                      items:
+                        - name: Tutorialeinführung
+                          href: database/saas-dbpertenant-wingtip-app-overview.md
+                        - name: Bereitstellen der Beispiel-App
+                          href: database/saas-dbpertenant-get-started-deploy.md
+                        - name: Bereitstellen von Mandanten
+                          href: database/saas-dbpertenant-provision-and-catalog.md
+                        - name: Überwachen der Datenbankleistung
+                          href: database/saas-dbpertenant-performance-monitoring.md
+                        - name: Überwachen mit Azure Monitor-Protokollen
+                          href: database/saas-dbpertenant-log-analytics.md
+                        - name: Wiederherstellen eines Mandanten
+                          href: database/saas-dbpertenant-restore-single-tenant.md
+                        - name: Verwalten des Mandantenschemas
+                          href: database/saas-tenancy-schema-management.md
+                        - name: Mandantenübergreifende Berichte
+                          href: database/saas-tenancy-cross-tenant-reporting.md
+                        - name: Mandantenanalysen
+                          items:
+                            - name: Mit SQL-Datenbank
+                              href: database/saas-tenancy-tenant-analytics.md
+                            - name: Mit SQL Data Warehouse
+                              href: database/saas-tenancy-tenant-analytics-adf.md
+                    - name: Notfallwiederherstellung mithilfe der Geowiederherstellung
+                      href: database/saas-dbpertenant-dr-geo-restore.md
+                    - name: Notfallwiederherstellung mithilfe der Datenbankgeoreplikation
+                      href: database/saas-dbpertenant-dr-geo-replication.md
+                - name: Mehrinstanzenfähige Datenbank
+                  items:
+                    - name: Bereitstellen der Beispiel-App
+                      href: database/saas-multitenantdb-get-started-deploy.md
+                    - name: Bereitstellen von Mandanten
+                      href: database/saas-multitenantdb-provision-and-catalog.md
+                    - name: Überwachen der Datenbankleistung
+                      href: database/saas-multitenantdb-performance-monitoring.md
+                    - name: Ausführen von Ad-hoc-Abfragen
+                      href: database/saas-multitenantdb-adhoc-reporting.md
+                    - name: Verwalten des Mandantenschemas
+                      href: database/saas-multitenantdb-schema-management.md
+                    - name: ETL für Analysen
+                      href: database/saas-multitenantdb-tenant-analytics.md
+    - name: Beispiele
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=single-database
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=single-database
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Codebeispiele
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: SQL Managed Instance (SQL MI)
+  items:
+    - name: Dokumentation
+      href: managed-instance/index.yml
+    - name: Übersicht
+      items:
+        - name: Worum handelt es sich bei SQL Managed Instance?
+          href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Instanzenpools
+          href: managed-instance/instance-pools-overview.md
+        - name: Häufig gestellte Fragen
+          displayName: faq
+          href: managed-instance/frequently-asked-questions-faq.md
+        - name: Versionshinweise
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
+    - name: Schnellstarts
+      href: managed-instance/quickstart-content-reference-guide.md
+      items:
+        - name: Erstellen
+          items:
+            - name: Verwenden des Azure-Portals
+              href: managed-instance/instance-create-quickstart.md
+            - name: PowerShell
+              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: Erstellen von Instanzenpools
+              href: managed-instance/instance-pools-configure.md
+        - name: Konfigurieren
+          items:
+            - name: Dienstgestützte Subnetzkonfiguration
+              href: managed-instance/subnet-service-aided-configuration-enable.md
+            - name: Öffentlicher Endpunkt
+              href: managed-instance/public-endpoint-configure.md
+            - name: TLS-Mindestversion
+              href: managed-instance/minimal-tls-version-configure.md
+            - name: Client-VM-Verbindung
+              href: managed-instance/connect-vm-instance-configure.md
+            - name: Point-to-Site-Verbindung
+              href: managed-instance/point-to-site-p2s-configure.md
+            - name: Langfristiges Aufbewahren von Sicherungen
+              href: managed-instance/long-term-backup-retention-configure.md
+        - name: Laden der Daten
+          items:
+            - name: Wiederherstellen einer Beispieldatenbank
+              href: managed-instance/restore-sample-database-quickstart.md
+    - name: Tutorials
+      items:
+        - name: Migrieren mithilfe von DMS
+          href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/azure-sql/toc.json
+        - name: Konfigurieren der Sicherheit
+          href: managed-instance/aad-security-configure-tutorial.md
+        - name: Hinzufügen einer Instanz zur Failovergruppe
+          href: managed-instance/failover-group-add-instance-tutorial.md
+        - name: Migrieren lokaler Benutzer und Gruppen
+          href: managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md
+        - name: Transaktionsreplikation
+          items:
+            - name: MI pub zu MI sub
+              href: managed-instance/replication-between-two-instances-configure-tutorial.md
+            - name: 'MI pub, MI dist, SQL sub'
+              href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Konzepte
+      items:
+        - name: Transaktionsreplikation
+          href: managed-instance/replication-transactional-overview.md
+        - name: Referenz zur Verwaltungs-API
+          href: managed-instance/api-references-create-manage-instance.md
+        - name: Ressourceneinschränkungen
+          href: managed-instance/resource-limits.md
+        - name: Verbindungsarchitektur
+          href: managed-instance/connectivity-architecture-overview.md
+        - name: T-SQL-Unterschiede
+          href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: Machine Learning Services
+          items:
+            - name: Übersicht
+              href: managed-instance/machine-learning-services-overview.md
+            - name: Wesentliche Unterschiede
+              href: managed-instance/machine-learning-services-differences.md
+            - name: Schnellstarts
+              items:
+                - name: Python
+                  items:
+                    - name: Ausführen von Python-Skripts
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Datenstrukturen und -objekte
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Python-Funktionen
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Trainieren und Bewerten eines Modells
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Ausführen von R-Skripts
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Datentypen und Objekte
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: R-Funktionen
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Trainieren und Bewerten eines Modells
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: Tutorials
+              items:
+                - name: Python
+                  items:
+                    - name: Skiverleih (lineare Regression)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Vorbereiten von Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '3: Trainieren des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Bereitstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Kategorisierung von Kunden (K-Means-Clustering)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Vorbereiten der Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '3: Erstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Bereitstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Skiverleih (Entscheidungsstruktur)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Vorbereiten von Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '3: Trainieren des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Bereitstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Kategorisierung von Kunden (K-Means-Clustering)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Vorbereiten der Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '3: Erstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Bereitstellen des Modells'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: Verwalten von Python- und R-Paketen
+              items:
+                - name: Python
+                  items:
+                    - name: Abrufen von Paketinformationen für Python
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Installieren mit sqlmlutils
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Abrufen von Paketinformationen für R
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Installieren mit sqlmlutils
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Erstellen eines miniCRAN-Repositorys
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Tipps für die Verwendung von R-Paketen
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+        - name: Features
+          items:
+            - name: Verbindungsserver
+              href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
+            - name: Service Broker
+              href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
+            - name: Datenbank-E-Mail
+              href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
+        - name: Sicherheit
+          items:
+            - name: Schützen öffentlicher Endpunkte
+              href: managed-instance/public-endpoint-overview.md
+            - name: Überwachung
+              href: managed-instance/auditing-configure.md
+    - name: Anleitung
+      items:
+        - name: Übersicht
+          href: managed-instance/how-to-content-reference-guide.md
+        - name: Migrieren zu SQL Managed Instance
+          href: managed-instance/migrate-to-instance-from-sql-server.md
+        - name: Anpassen der Zeitzone
+          href: managed-instance/timezones-overview.md
+        - name: Konfigurieren von Verbindungstypen
+          href: managed-instance/connection-types-overview.md
+        - name: Migrieren eines TDE-Zertifikats
+          href: managed-instance/tde-certificate-migrate.md
+        - name: Wiederherstellen eines bestimmten Zeitpunkts
+          href: managed-instance/point-in-time-restore.md
+        - name: Bestimmen der Größe des Subnetzes für verwaltete Instanzen
+          href: managed-instance/vnet-subnet-determine-size.md
+        - name: Erstellen eines neuen VNET und Subnetzes für die verwaltete Instanz
+          href: managed-instance/virtual-network-subnet-create-arm-template.md
+        - name: Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz
+          href: managed-instance/vnet-existing-add-subnet.md
+        - name: Löschen eines Subnetzes nach dem Löschen der verwalteten Instanz
+          href: managed-instance/virtual-cluster-delete.md
+        - name: Konfigurieren von benutzerdefiniertem DNS
+          href: managed-instance/custom-dns-configure.md
+        - name: Synchronisieren der Netzwerkkonfiguration
+          href: managed-instance/azure-app-sync-network-configuration.md
+        - name: Ermitteln der IP-Adresse des Verwaltungsendpunkts
+          href: managed-instance/management-endpoint-find-ip-address.md
+        - name: Überprüfen des integrierten Firewallschutzes
+          href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: Konfigurieren der Bedrohungserkennung
+          href: managed-instance/threat-detection-configure.md
+        - name: Herstellen einer Verbindung mit Anwendungen
+          href: managed-instance/connect-application-instance.md
+        - name: Erstellen von Warnungen
+          href: managed-instance/alerts-create.md
+    - name: Beispiele
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=managed-instance
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Codebeispiele
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: SQL Server auf Azure-VMs
+  items:
+    - name: Dokumentation
+      href: virtual-machines/index.yml
+    - name: Windows
+      items:
+        - name: Übersicht
+          items:
+            - name: Was ist eine SQL Server-VM?
+              href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+            - name: Änderungen an der Dokumentation
+              href: virtual-machines/windows/doc-changes-updates-release-notes.md
+        - name: Schnellstarts
+          items:
+            - name: Erstellen eines virtuellen SQL-Computers – Portal
+              href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+            - name: Erstellen eines virtuellen SQL-Computers – PowerShell
+              href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+        - name: Konzepte
+          items:
+            - name: Bewährte Methoden
+              items:
+                - name: Bewährte Methoden für Leistung
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Sicherheitshinweise
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Anwendungsmuster
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
+            - name: Geschäftskontinuität
+              items:
+                - name: Optionen für Hochverfügbarkeit
+                  href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                - name: AlwaysOn-Verfügbarkeitsgruppe
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Sichern und Wiederherstellen
+                  href: virtual-machines/windows/backup-restore.md
+                - name: Automatisierte Sicherung für SQL Server 2014
+                  href: virtual-machines/windows/automated-backup-sql-2014.md
+                - name: Automatisierte Sicherung für SQL Server 2016+
+                  href: virtual-machines/windows/automated-backup.md
+            - name: Verwaltung
+              items:
+                - name: Dedicated Host
+                  href: virtual-machines/windows/dedicated-host.md
+                - name: Über das Azure-Portal
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: Erweitern der Unterstützung für SQL 2008 und R2
+                  href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
+                - name: Herstellen einer Verbindung mit einem virtuellen Computer
+                  href: virtual-machines/windows/ways-to-connect-to-sql.md
+                - name: Konfigurieren des Speichers
+                  href: virtual-machines/windows/storage-configuration.md
+                - name: Automatisieren von Verwaltungsaufgaben
+                  items:
+                    - name: Verwenden der Erweiterung für SQL Server-IaaS-Agent
+                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+                    - name: Automatisiertes Patchen
+                      href: virtual-machines/windows/automated-patching.md
+                    - name: Konfigurieren der Integration von Azure Key Vault
+                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
+        - name: Anleitungen
+          items:
+            - name: Erstellen einer SQL-VM
+              items:
+                - name: Verwenden des Portals
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Mithilfe von Azure PowerShell
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: Registrieren bei SQL-VM-RP
+              displayName: 'resource provider, registration'
+              items:
+                - name: Einzelne VM
+                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                - name: Durchführen der Massenregistrierung für mehrere VMs
+                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+            - name: Verwalten
+              items:
+                - name: Lizenzierungsmodell
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Edition
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Azure Storage für Sicherung und Wiederherstellung
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+            - name: Migrieren
+              items:
+                - name: SQL Server-Datenbank zu VM
+                  href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+                - name: Virtueller Computer für eine neue Region
+                  href: virtual-machines/windows/move-sql-vm-different-region.md
+            - name: Konfigurieren von Hochverfügbarkeit
+              items:
+                - name: AlwaysOn-Verfügbarkeitsgruppe
+                  items:
+                    - name: Befehlszeilenschnittstelle für virtuelle Azure SQL-Computer
+                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: Vorlage im Azure-Portal
+                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
+                    - name: Azure-Schnellstartvorlagen
+                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                    - name: Mehrere Regionen
+                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                    - name: Domänenunabhängig (Arbeitsgruppe)
+                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                    - name: Manuelles Konfigurieren
+                      items:
+                        - name: Voraussetzungen
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                        - name: Lernprogramm
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                        - name: Load Balancer – Azure-Portal
+                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                        - name: Load Balancer – Azure PowerShell
+                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                - name: Failoverclusterinstanz
+                  items:
+                    - name: Mit direkten Speicherplätzen
+                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                    - name: Mit Premium-Dateifreigabe
+                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+        - name: Verweis
+          items:
+            - name: Azure PowerShell
+              href: /powershell/azure/overview
+            - name: Azure CLI
+              href: /cli/azure/
+            - name: T-SQL
+              href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+            - name: SQL Server-Treiber
+              href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
+            - name: REST
+              href: /rest/api/
+        - name: Ressourcen
+          items:
+            - name: Häufig gestellte Fragen
+              href: virtual-machines/windows/frequently-asked-questions-faq.md
+            - name: Preise
+              href: virtual-machines/windows/pricing-guidance.md
+            - name: SQL Server Data Tools (SSDT)
+              href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: SQL Server Management Studio (SSMS)
+              href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
+            - name: SQL Server-Tools
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Azure-Roadmap
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: MSDN-Forum
+              href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Linux
+      items:
+        - name: Übersicht
+          items:
+            - name: Informationen zu SQL Server-VMs unter Linux
+              href: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+        - name: Schnellstarts
+          items:
+            - name: Erstellen eines virtuellen SQL-Computers – Portal
+              href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: Tutorials
+          items:
+            - name: "Einrichten einer Azure\_RHEL-VM-Verfügbarkeitsgruppe mit STONITH"
+              href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
+            - name: "Konfigurieren von Verfügbarkeitsgruppenlistenern für SQL\_Server auf virtuellen RHEL-Computern in Azure"
+              href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+        - name: Ressourcen
+          items:
+            - name: Häufig gestellte Fragen
+              href: virtual-machines/linux/frequently-asked-questions-faq.md
+            - name: SQL Server unter Linux – Dokumentation
+              href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+            - name: SQL Server Data Tools (SSDT)
+              href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: SQL Server-Tools
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Azure-Roadmap
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+- name: Verweis
+  items:
+    - name: Referenz zur T-SQL-Sprache
+      href: /sql/t-sql/language-reference
+    - name: Azure CLI
+      href: /cli/azure/sql
+    - name: Azure PowerShell
+      href: /powershell/module/az.sql
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.sql.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.sql
+    - name: REST
+      href: /rest/api/sql/
+    - name: Resource Manager-Vorlagen für SQL
+      displayName: ARM
+      href: /azure/templates/microsoft.sql/allversions
+    - name: SQL-Tools
+      href: /sql/tools/overview-sql-tools
+    - name: SQL Server Management Studio (SSMS)
+      href: /sql/ssms/download-sql-server-management-studio-ssms
+    - name: SQL Server Data Tools (SSDT)
+      href: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - name: BCP
+      href: /sql/tools/bcp-utility
+    - name: SQLCMD
+      href: /sql/tools/sqlcmd-utility
+    - name: SqlPackage
+      href: 'https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/azure-sql/toc.json'
+    - name: Paket mit der SQL-Datenbank-Verwaltungsbibliothek
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
+    - name: SQL-Verbindungstreiber
+      href: /sql/connect/sql-connection-libraries
+    - name: SQL Server-Treiber
+      href: /sql/connect/sql-server-drivers
+      items:
+        - name: ADO.NET
+          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+        - name: JDBC
+          href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
+        - name: Node.js
+          href: /sql/connect/node-js/node-js-driver-for-sql-server
+        - name: ODBC
+          href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
+        - name: PHP
+          href: /sql/connect/php/microsoft-php-driver-for-sql-server
+        - name: Python
+          href: /sql/connect/python/python-driver-for-sql-server
+        - name: Ruby
+          href: /sql/connect/ruby/ruby-driver-for-sql-server
+- name: Ressourcen
+  items:
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-sql-database
+    - name: SQL Server-Blog
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Microsoft Azure-Blog
+      href: 'https://azure.microsoft.com/blog/'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Öffentliche Datasets
+      href: public-data-sets.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Problembehandlung
+      items:
+        - name: Verbindungsfehler
+          href: database/troubleshoot-common-errors-issues.md
+        - name: Allgemeine Verbindungsprobleme
+          href: database/troubleshoot-common-connectivity-issues.md
+        - name: Keine Reaktion des Import/Export-Diensts
+          href: database/database-import-export-hang.md
+    - name: Dienstupdates
+      items:
+        - name: Gateway-IP-Adressupdates
+          href: database/gateway-migration.md
+        - name: Regelmäßige Wartungsereignisse
+          href: database/planned-maintenance.md
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: Architekturcenter
+      href: /azure/architecture/
+    - name: Kundenstimmen
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

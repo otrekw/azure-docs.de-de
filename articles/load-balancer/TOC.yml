@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 'Interner Lastenausgleich: PowerShell'
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: Problembehandlung
-      items:
-        - name: Beheben von Problemen mit Azure Load Balancer
-          href: load-balancer-troubleshoot.md
-        - name: Beheben von häufigen Bereitstellungsfehlern
-          href: load-balancer-common-deployment-errors.md
+- name: Problembehandlung
+  items:
+    - name: Beheben von Problemen mit Azure Load Balancer
+      href: load-balancer-troubleshoot.md
+    - name: Beheben von häufigen Bereitstellungsfehlern
+      href: load-balancer-common-deployment-errors.md
+    - name: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
+      href: troubleshoot-outbound-connection.md
 - name: Verweis
   items:
     - name: Codebeispiele

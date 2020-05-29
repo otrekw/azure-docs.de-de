@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: Importierte Inhaltstypen
           href: Concepts/content-types.md
-        - name: Frage-Antwort-Sätze
+        - name: Frage-Antwort-Paare
           href: Concepts/question-answer-set.md
     - name: Lebenszyklus einer Knowledge Base
       items:

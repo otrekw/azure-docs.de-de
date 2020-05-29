@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: Definieren von ML-Aufgaben
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: Automatisches Trainieren eines Vorhersagemodells
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Featurisierung in automatisiertem ML (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: Verwenden von automatisiertem ML in ML-Pipelines (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
@@ -449,8 +452,6 @@
     - name: Designermodulverweis
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: Skalierbare ML-Instanz
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: Überwachen von Datenverweisen
       href: monitor-resource-reference.md
     - name: Machine Learning-Pipeline (YAML-Referenz)

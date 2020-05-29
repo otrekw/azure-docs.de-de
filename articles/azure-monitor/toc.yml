@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: Konfiguration für die Systemüberwachung
           href: insights/container-insights-health-monitors-config.md
+        - name: Verwalten von Kosten und Nutzung
+          href: insights/container-insights-cost.md
         - name: Deaktivieren der Überwachung
           items:
             - name: Deaktivieren der Überwachung von AKS
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: Netzwerke
           href: insights/network-insights-overview.md
         - name: Storage

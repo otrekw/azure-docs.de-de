@@ -128,6 +128,8 @@
       href: how-to-migrate.md
     - name: Migrieren von virtuellen VMware-Computern zu virtuellen Azure-Computern mit SSE- und CMK-Verschlüsselung
       href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: "Vorbereiten von Windows\_2003-Servern für die Migration"
+      href: prepare-windows-server-2003-migration.md
     - name: Vorbereiten von Computern für die Migration
       href: prepare-for-migration.md
     - name: "Löschen eines Azure\_Migrate-Projekts"

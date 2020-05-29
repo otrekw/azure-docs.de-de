@@ -355,6 +355,8 @@
               href: soft-delete-virtual-machines.md
             - name: Für SQL Server und SAP HANA auf virtuellen Azure-Computern
               href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: Löschen des Schutzes für Azure-Dateifreigaben
+          href: soft-delete-azure-file-share.md
         - name: Sicherheit für Hybrid-Sicherungen
           href: backup-azure-security-feature.md
         - name: Private Endpunkte
