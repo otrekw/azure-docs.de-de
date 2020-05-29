@@ -30,7 +30,7 @@
           href: quickstarts/go.md
         - name: Verwenden von Ruby
           href: quickstarts/ruby.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -54,7 +54,9 @@
       href: concepts/text-offsets.md
     - name: Datengrenzwerte
       href: concepts/data-limits.md
-- name: Gewusst-wie-Anleitungen
+    - name: Versionsverwaltung der Modelle
+      href: concepts/model-versioning.md
+- name: Anleitungen
   items:
     - name: Aufrufen der Textanalyse-API
       href: How-tos/text-analytics-how-to-call-api.md
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Verwenden von Kubernetes Service (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: Migrieren zu Version 3 der API
+      href: migration-guide.md
 - name: Verweis
   items:
     - name: Referenz zur Befehlszeilenschnittstelle
