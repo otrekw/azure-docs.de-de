@@ -7,12 +7,15 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Erstellen eines Databricks-Arbeitsbereichs: Portal'
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: 'Erstellen eines Databricks-Arbeitsbereichs: Resource Manager-Vorlage'
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: 'Erstellen eines Databricks-Arbeitsbereichs: virtuelles Netzwerk'
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: Erstellen eines Arbeitsbereichs
+      items:
+        - name: Portal
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: Virtuelles Netzwerk
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Tutorials
   items:
     - name: 'Abfragen einer SQL Server-Instanz, die in einem Docker-Container ausgeführt wird'
