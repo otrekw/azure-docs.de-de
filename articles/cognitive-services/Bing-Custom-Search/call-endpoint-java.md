@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80238894"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873241"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit Java
 
-Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnissen von Ihrer Instanz der benutzerdefinierten Bing-Suche zu beginnen. Diese Anwendung ist zwar in Java geschrieben, aber die API für die benutzerdefinierte Bing-Suche ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+Verwenden Sie diese Schnellstartanleitung, um zu lernen, wie Sie Suchergebnisse von Ihrer Instanz der benutzerdefinierten Bing-Suche anfordern. Diese Anwendung ist zwar in Java geschrieben, aber die API für die benutzerdefinierte Bing-Suche ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine Instanz der benutzerdefinierten Bing-Suche. Weitere Informationen finden Sie unter [Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
+- Eine Instanz der benutzerdefinierten Bing-Suche. Weitere Informationen finden Sie unter [Quickstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 
-- Das neueste [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- Das neueste [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-- Die [Gson-Bibliothek](https://github.com/google/gson)
+- Die [Gson-Bibliothek](https://github.com/google/gson).
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken:
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie eine Klasse namens `CustomSrchJava`, und erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt für die benutzerdefinierte Suche und die benutzerdefinierte Konfigurations-ID Ihrer Suchinstanz. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie eine Klasse namens `CustomSrchJava`, und erstellen Sie dann Variablen für Ihren Abonnementschlüssel, den Endpunkt für die benutzerdefinierte Suche und die benutzerdefinierte Konfigurations-ID der Suchinstanz. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -63,8 +63,8 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 
 3. Erstellen Sie eine weitere Klasse namens `SearchResults`, die die Antwort von Ihrer Instanz der benutzerdefinierten Bing-Suche enthalten soll.
 
-    ```csharp
-    class SearchResults{
+    ```java
+    class SearchResults {
         HashMap<String, String> relevantHeaders;
         String jsonResponse;
         SearchResults(HashMap<String, String> headers, String json) {
@@ -120,7 +120,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
         }
     ```
 
-3. Rufen Sie in der Main-Methode Ihrer Anwendung `SearchWeb()` mit dem Suchbegriff auf. 
+3. Geben Sie die JSON-Antwort aus.
 
     ```java
     System.out.println("\nJSON Response:\n");
