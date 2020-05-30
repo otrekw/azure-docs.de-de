@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a9009121c2dab0701d08f40de7c8f26777bc3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e3226ef8d739df6902a96cff336762ce4425c5de
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189970"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EasySSO for Jira
 
@@ -57,7 +57,6 @@ Zum Konfigurieren der Integration von EasySSO for Jira in Azure AD müssen Sie 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **EasySSO for Jira** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **EasySSO for Jira** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-jira"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für EasySSO for Jira
 
@@ -144,13 +143,50 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-easysso-for-jira-sso"></a>Konfigurieren des einmaligen Anmeldens für EasySSO for Jira
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EasySSO for Jira** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EasySSO for Jira](mailto:support@techtime.co.nz) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Melden Sie sich bei Ihrer Atlassian JIRA-Instanz mit Administratorrechten an, und navigieren Sie zum Abschnitt **Apps verwalten**.
+
+    ![Apps verwalten](./media/easysso-for-jira-tutorial/jira-admin-1.png)
+
+1. Klicken Sie auf **EasySSO**.
+
+    ![Einfaches einmaliges Anmelden (SSO)](./media/easysso-for-jira-tutorial/jira-admin-2.png)
+
+1. Wählen Sie die Option **SAML** aus. Hierdurch gelangen Sie zum Abschnitt „SAML-Konfiguration“.
+
+    ![SAML](./media/easysso-for-jira-tutorial/jira-admin-3.png)
+
+1. Wählen Sie oben die Registerkarte **Zertifikate** aus, und Ihnen wird der folgende Bildschirm angezeigt, wo Sie **Zertifikat (Base64)** oder **Metadatendatei** suchen, die Sie in den vorherigen Schritten der Konfiguration von **einmaliges Anmelden (SSO) für Azure AD** gespeichert haben. Folgende Möglichkeiten, um fortzufahren, stehen zur Verfügung:
+
+    ![Metadaten-URL](./media/easysso-for-jira-tutorial/jira-admin-4.png)
+
+    a. Verwenden Sie die **Metadatendatei** des App-Verbunds, die Sie als lokale Datei auf Ihren Computer heruntergeladen haben. Aktivieren Sie das Optionsfeld **Hochladen**, und befolgen Sie das Dialogfeld „Datei hochladen“, das für Ihr Betriebssystem zutrifft.
+
+    **OR**
+
+    b. Öffnen Sie die **Metadatendatei** des App-Verbunds, um den Inhalt der Datei (in einem beliebigen Text-Editor) anzuzeigen und in die Zwischenablage zu kopieren. Wählen Sie die Option **Eingabe** aus, und fügen Sie den Inhalt der Zwischenablage in das Textfeld ein.
+
+    **OR**
+
+    c. Vollständig manuelle Konfiguration. Öffnen Sie das **Zertifikat (Base64)** des App-Verbunds, um den Inhalt der Datei (in einem beliebigen Text-Editor) anzuzeigen und in die Zwischenablage zu kopieren. Fügen Sie ihn in das Textfeld **IdP-Tokensignaturzertifikate** ein. Navigieren Sie dann zur Registerkarte **Allgemein**, und füllen Sie die Felder **POST-Bindungs-URL** und **Entitäts-ID** mit den entsprechenden Werten für **Anmelde-URL** und **Azure AD-Bezeichner**, die Sie zuvor gespeichert haben, aus.
+
+1. Klicken Sie unten auf der Seite auf die Schaltfläche **Speichern**. Sie sehen dann, wie der Inhalt der Metadaten- oder Zertifikatsdatei in die Konfigurationsfelder analysiert wird. Die Jira-Konfiguration von EasySSO ist abgeschlossen.
+
+1. Für eine optimale Testerfahrung navigieren Sie zur Registerkarte **Aussehen und Verhalten**, und aktivieren Sie die Option **SAML-Anmeldeschaltfläche**. Dadurch wird eine separate Schaltfläche auf dem Jira-Anmeldebildschirm aktiviert,die speziell dem End-to-End-Testen Ihrer Azure AD SAML-Integration dient. Sie können diese Schaltfläche aktiviert lassen und außerdem ihre Platzierung, Farbe und Übersetzung für den Produktionsmodus konfigurieren.
+
+    ![Aussehen und Verhalten](./media/easysso-for-jira-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > Sollten Probleme auftreten, wenden Sie sich an das [EasySSO-Supportteam](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-jira-test-user"></a>Erstellen eines EasySSO for Jira-Testbenutzers
 
-In diesem Abschnitt wird in EasySSO for Jira ein Benutzer mit dem Namen Britta Simon erstellt. EasySSO for Jira unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in EasySSO for Jira vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Jira eine Benutzerin namens B. Simon erstellt. EasySSO für Jira unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig **deaktiviert**). Um die Benutzerbereitstellung zu aktivieren, müssen Sie die Option **Benutzer bei erfolgreicher Anmeldung erstellen** im Abschnitt „Allgemein“ der EasySSO-Plug-In-Konfiguration explizit aktivieren. Ist ein Benutzer noch nicht in Jira vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+Wenn Sie die automatische Benutzerbereitstellung bei der ersten Benutzeranmeldung jedoch nicht aktivieren möchten, müssen Benutzer in Back-End-Benutzerverzeichnissen vorhanden sein, die von der Jira-Instanz verwendet werden, wie z. B. „LDAP“ oder „Atlassian Crowd“.
+
+![Benutzerbereitstellung](./media/easysso-for-jira-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -169,4 +205,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „EasySSO for Jira“ klicken, sollt
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
