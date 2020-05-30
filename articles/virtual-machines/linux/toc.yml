@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Erstellen einer VM
                   items:
+                    - name: Spezialisiert
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Generalisiert
                       href: ../vm-generalized-image-version-cli.md
                 - name: Aktualisieren von Imageressourcen

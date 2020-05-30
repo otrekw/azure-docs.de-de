@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: Konfigurieren von Regeln
           href: howto-configure-rules.md
-        - name: Integrieren in andere Dienste mithilfe von Workflows
-          href: howto-configure-rules-advanced.md
         - name: Analysieren von Gerätedaten
           href: howto-create-analytics.md
         - name: Hinzufügen von Kacheln zu Ihrem Dashboard
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: Erstellen von Webhooks für Regeln
           href: howto-create-webhooks.md
+        - name: Integrieren in andere Dienste mithilfe von Workflows
+          href: howto-configure-rules-advanced.md
         - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln
           href: howto-use-action-groups.md
         - name: Benutzerdefinierte Regeln erstellen
