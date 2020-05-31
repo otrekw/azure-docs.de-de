@@ -11,261 +11,232 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 05/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 276a1acb5735e3490f331000799d57c329e7fca0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160651"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848525"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Admin Console
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mimecast Admin Console
 
-In diesem Tutorial erfahren Sie, wie Sie Mimecast Admin Console in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Mimecast Admin Console in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Mimecast Admin Console in Azure Active Directory (Azure AD) integrieren. Die Integration von Mimecast Admin Console in Azure AD ermöglicht Folgendes:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Mimecast Admin Console hat.
-* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Mimecast Admin Console angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Mimecast Admin Console anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Mimecast Admin Console konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Mimecast Admin Console-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Mimecast Admin Console-Abonnement, für das das einmalige Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Mimecast Admin Console unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Mimecast Admin Console unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+* Nach dem Konfigurieren von Mimecast Admin Console können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>Hinzufügen von Mimecast Admin Console aus dem Katalog
 
 Zum Konfigurieren der Integration von Mimecast Admin Console in Azure AD müssen Sie Mimecast Admin Console über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Mimecast Admin Console aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Mimecast Admin Console** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Mimecast Admin Console** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Mimecast Admin Console
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Mimecast Admin Console mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mimecast Admin Console eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Mimecast Admin Console die folgenden Schritte aus:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console](#configure-mimecast-admin-console-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Mimecast Admin Console-Testbenutzers](#create-mimecast-admin-console-test-user)** , um eine Entsprechung von B.Simon in Mimecast Admin Console zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld **Mimecast Admin Console** ein, wählen Sie im Ergebnisbereich **Mimecast Admin Console** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Mimecast Admin Console** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-     ![Mimecast Admin Console in der Ergebnisliste](common/search-new-app.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IDP-initiierten Modus konfigurieren möchten:
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Mimecast Admin Console mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mimecast Admin Console eingerichtet werden.
+    a. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Mimecast Admin Console müssen die folgenden Schritte ausgeführt werden:
+    | Region  |  Wert | 
+    | --------------- | --------------- |
+    | Europa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
+    | USA   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | Südafrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Australien       | `https://au-api.mimecast.com/sso/<accountcode>`|
+    | Offshore        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console](#configure-mimecast-admin-console-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Mimecast Admin Console-Testbenutzers](#create-mimecast-admin-console-test-user)** , um eine Entsprechung von Britta Simon in Mimecast Admin Console zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+    > [!NOTE]
+    > Sie finden den `accountcode`-Wert in Mimecast Admin Console unter **Konto** > **Einstellungen** > **Kontocode**. Fügen Sie den `accountcode` an den Bezeichner an.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein: 
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
+    | Region  |  Wert | 
+    | --------------- | --------------- | 
+    | Europa          | `https://eu-api.mimecast.com/login/saml`|
+    | USA   | `https://us-api.mimecast.com/login/saml`|
+    | Südafrika    | `https://za-api.mimecast.com/login/saml`|
+    | Australien       | `https://au-api.mimecast.com/login/saml`|
+    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Mimecast Admin Console die folgenden Schritte aus:
+1. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Mimecast Admin Console** die Option **Einmaliges Anmelden**.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: 
 
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
+    | Region  |  Wert | 
+    | --------------- | --------------- | 
+    | Europa          | `https://login-eu.mimecast.com/administration/app/#/administration-dashboard`|
+    | USA   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|
+    | Südafrika    | `https://login-za.mimecast.com/administration/app/#/administration-dashboard`|
+    | Australien       | `https://login-au.mimecast.com/administration/app/#/administration-dashboard`|
+    | Offshore        | `https://login-jer.mimecast.com/administration/app/#/administration-dashboard`|
 
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
+1. Klicken Sie auf **Speichern**.
 
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Mimecast Admin Console](common/sp-signonurl.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** diese URL ein:
-    
-    | |
-    | -- |
-    | `https://webmail-uk.mimecast.com`|
-    | `https://webmail-us.mimecast.com`|
-
-    > [!NOTE] 
-    > Die Anmelde-URL ist regionsspezifisch.
-
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
-
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
-
-6. Kopieren Sie im Abschnitt **Mimecast Admin Console einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
-
-### <a name="configure-mimecast-admin-console-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console
-
-1. Melden Sie sich in einem anderen Webbrowserfenster bei Mimecast Admin Console als Administrator an.
-
-2. Wechseln Sie zu **Dienste \> Anwendung**.
-
-    ![Dienste](./media/mimecast-admin-console-tutorial/ic794998.png "Dienste")
-
-3. Klicken Sie auf **Authentifizierungsprofile**.
-
-    ![Authentication Profiles (Authentifizierungsprofile)](./media/mimecast-admin-console-tutorial/ic794999.png "Authentifizierungsprofile")
-    
-4. Klicken Sie auf **Neues Authentifizierungsprofil**.
-
-    ![New Authentication Profile (Neues Authentifizierungsprofil)](./media/mimecast-admin-console-tutorial/ic795000.png "Neue Authentifizierungsprofile")
-
-5. Führen Sie im Abschnitt **Authentifizierungsprofil** die folgenden Schritte aus:
-
-    ![Authentication Profile (Authentifizierungsprofil)](./media/mimecast-admin-console-tutorial/ic795015.png "Authentifizierungsprofil")
-    
-    a. Geben Sie im Textfeld **Beschreibung** einen Namen für die Konfiguration ein.
-    
-    b. Wählen Sie **SAML-Authentifizierung für Mimecast Admin Console aktivieren**aus.
-    
-    c. Wählen Sie für **Anbieter** die Option **Azure Active Directory** aus.
-    
-    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Aussteller-URL** ein.
-    
-    e. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
-
-    f. Fügen Sie in das Textfeld **Logout URL** (Abmelde-URL) die **Abmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
-    
-    >[!NOTE]
-    >Die Werte für Anmelde-URL und Abmelde-URL sind bei Mimecast Admin Console gleich.
-    
-    g. Öffnen Sie das Base64-Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die erste Zeile ( *--* ) und die letzte Zeile ( *--* ), und kopieren Sie den übrigen Inhalt in die Zwischenablage. Fügen Sie ihn anschließend in das Textfeld **Identity Provider Certificate (Metadata)** (Identitätsanbieterzertifikat (Metadaten)) ein.
-    
-    h. Wählen Sie **Einmaliges Anmelden zulassen**aus.
-    
-    i. Klicken Sie auf **Speichern**.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mimecast Admin Console gewähren.
+In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mimecast Admin Console gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Mimecast Admin Console**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Mimecast Admin Console** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-2. Geben Sie in der Anwendungsliste **Mimecast Admin Console** ein, und wählen Sie den Eintrag aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Mimecast Admin Console-Link in der Anwendungsliste](common/all-applications.png)
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+## <a name="configure-mimecast-admin-console-sso"></a>Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Mimecast Administration Console an.
 
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+1. Navigieren Sie zu **Verwaltung** > **Dienste** > **Anwendungen**.
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/services.png)
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+1. Klicken Sie auf die Registerkarte **Authentifizierungsprofile**.
+    
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Klicken Sie auf die Registerkarte **Neues Authentifizierungsprofil**.
+
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+
+1. Geben Sie im Textfeld **Beschreibung** eine gültige Beschreibung ein, und wählen Sie **SAML-Authentifizierung für Admin Console erzwingen** aus.
+
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+
+1. Führen Sie auf der Seite **SAML-Konfiguration für Admin Console** die folgenden Schritte aus:
+
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/sso-settings.png)
+
+    a. Wählen Sie als **Anbieter** in der Dropdownliste **Azure Active Directory** aus.
+
+    b. Fügen Sie im Textfeld **Metadaten-URL** den Wert der **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    c. Klicken Sie auf **Importieren**. Nachdem Sie die Metadaten-URL importiert haben, werden die Felder automatisch aufgefüllt, sodass keine Aktion für diese Felder ausgeführt werden muss.
+
+    d. Deaktivieren Sie die Kontrollkästchen **Kennwortgeschützten Kontext verwenden** und **Integrierten Authentifizierungskontext verwenden**.
+
+    e. Klicken Sie auf **Speichern**.
 
 ### <a name="create-mimecast-admin-console-test-user"></a>Erstellen eines Mimecast Admin Console-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Mimecast Admin Console anmelden können, müssen Sie in Mimecast Personal Portal bereitgestellt werden. Im Fall von Mimecast Admin Console ist die Bereitstellung eine manuelle Aufgabe.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Mimecast Administration Console an.
 
-* Sie müssen eine Domäne registrieren, bevor Sie Benutzer erstellen können.
+1. Navigieren Sie zu **Verwaltung** > **Verzeichnisse** > **Interne Verzeichnisse**.
 
-**Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
-1. Melden Sie sich bei **Mimecast Admin Console** als Administrator an.
+1. Wählen Sie Ihre Domäne aus, wenn sie unten angegeben ist, und erstellen Sie andernfalls eine neue Domäne, indem Sie auf **Neue Domäne** klicken.
 
-2. Wechseln Sie zu **Verzeichnisse \> Intern**.
-   
-    ![Verzeichnisse](./media/mimecast-admin-console-tutorial/ic795003.png "Verzeichnisse")
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/domain-name.png)
 
-3. Klicken Sie auf **Neue Domäne registrieren**.
-   
-    ![Register New Domain (Neue Domäne registrieren)](./media/mimecast-admin-console-tutorial/ic795004.png "Neue Domäne registrieren")
+1. Klicken Sie auf die Registerkarte **Neue Adresse**.
 
-4. Nachdem die neue Domäne erstellt wurde, klicken Sie auf **Neue Adresse**.
-   
-    ![New Address (Neue Adresse)](./media/mimecast-admin-console-tutorial/ic795005.png "Neue Adresse")
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/new-address.png)
 
-5. Führen Sie im Dialogfeld „Neue Adresse“ die folgenden Schritte aus:
-   
-    ![Speichern](./media/mimecast-admin-console-tutorial/ic795006.png "Speichern")
-   
-    a. Geben Sie die Attribute **E-Mail-Adresse**, **Globaler Name**, **Kennwort** und **Kennwort bestätigen** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+1. Geben Sie auf der folgenden Seite die erforderlichen Benutzerinformationen an:
 
-    b. Klicken Sie auf **Speichern**.
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/user-information.png)
 
->[!NOTE]
->Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Mimecast Admin Console-Benutzerkonten oder mithilfe der von Mimecast Admin Console bereitgestellten APIs erstellen. 
+    a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z. B. `B.Simon@yourdomainname.com`.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+    b. Geben Sie im Textfeld **Globaler Name** den **Vollständigen Namen** des Benutzers ein.
+
+    c. Geben Sie in den Textfeldern **Kennwort** und **Kennwort bestätigen** das Kennwort des Benutzers ein.
+
+    d. Aktivieren Sie das Kontrollkästchen **Änderung bei Anmeldung erzwingen**.
+
+    e. Klicken Sie auf **Speichern**.
+
+    f. Um dem Benutzer Rollen zuzuweisen, klicken Sie auf **Rollenbearbeitung**, und weisen Sie dem Benutzer die erforderliche Rolle gemäß den Anforderungen Ihrer Organisation zu.
+
+    ![Mimecast Admin Console-Konfiguration](./media/mimecast-admin-console-tutorial/assign-role.png)
+
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Mimecast Admin Console“ klicken, sollten Sie automatisch bei Ihrer Mimecast Admin Console-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Testen von Mimecast Admin Console mit Azure AD](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Schützen von Mimecast Admin Console mit erweiterter Sichtbarkeit und komplexeren Kontrollen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
