@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735112"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869803"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Java
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache Java-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. Diese Anwendung ist in Java geschrieben, die API ist jedoch ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache Java-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. 
+
+Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +33,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-and-initialize-an-application"></a>Erstellen und Initialisieren einer Anwendung
 
-1. Erstellen Sie ein neues Java-Projekt in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor mit einem Klassennamen Ihrer Wahl, und importieren Sie die folgenden Pakete.
+1. Erstellen Sie ein neues Java-Projekt in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor mit einem Klassennamen Ihrer Wahl, und importieren Sie die folgenden Pakete:
 
     ```java
     import java.io.*;
@@ -40,7 +42,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Erstellen Sie Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts. Erstellen Sie anschließend Variablen für Ihren Markt, für den Text, für den die Rechtschreibprüfung ausgeführt werden soll, und für eine Zeichenfolge für den Rechtschreibprüfungsmodus. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts. Erstellen Sie anschließend Variablen für Ihren Markt, für den Text, für den die Rechtschreibprüfung ausgeführt werden soll, und für eine Zeichenfolge für den Rechtschreibprüfungsmodus. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +57,11 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-and-send-an-api-request"></a>Erstellen und Senden einer API-Anforderung
 
-1. Erstellen Sie eine Funktion namens `check()`, um die API-Anforderung zu erstellen und zu senden. Führen Sie darin die folgenden Schritte aus: Erstellen Sie eine Zeichenfolge für die Anforderungsparameter. Fügen Sie den Parameter `?mkt=` an die Marktzeichenfolge und den Parameter `&mode=` an den Rechtschreibprüfungsmodus an.  
+1. Erstellen Sie eine Funktion namens `check()`, um die API-Anforderung zu erstellen und zu senden. Fügen Sie in dieser Funktion den in den nächsten Schritten angegebenen Code hinzu. Erstellen Sie eine Zeichenfolge für die Anforderungsparameter:
+
+   a. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. 
+
+   b. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. 
 
    ```java
    public static void check () throws Exception {
@@ -71,7 +77,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Öffnen Sie die URL. Legt die Anforderungsmethode auf `POST` fest. Fügen Sie Ihre Anforderungsparameter hinzu. Achten Sie darauf, dass Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzufügen.
+3. Öffnen Sie die URL. Legen Sie die Anforderungsmethode auf `POST` fest, und fügen Sie Ihre Anforderungsparameter hinzu. Achten Sie darauf, dass Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzufügen.
 
     ```java
     connection.setRequestMethod("POST");
@@ -91,7 +97,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="format-and-read-the-api-response"></a>Formatieren und Lesen der API-Antwort
 
-1. Fügen Sie diese Methode Ihrer Klasse hinzu. Sie formatiert den JSON-Code für eine besser lesbare Ausgabe.
+1. Fügen Sie Ihrer Klasse die `prettify()`-Methode hinzu, die den JSON-Code für eine besser lesbare Ausgabe formatiert.
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +123,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="call-the-api"></a>Aufrufen der API
 
-Rufen Sie in der „main“-Funktion Ihrer Anwendung die oben erstellte „check()“-Methode auf.
+Rufen Sie in der „main“-Funktion Ihrer Anwendung die zuvor erstellte `check()`-Methode auf.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +137,19 @@ Rufen Sie in der „main“-Funktion Ihrer Anwendung die oben erstellte „check
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Erstellen Sie Ihr Projekt, und führen Sie es aus.
+Erstellen Sie Ihr Projekt, und führen Sie es aus. Geben Sie bei Verwenden der Befehlszeile die folgenden Befehle an, um die Anwendung zu erstellen und auszuführen:
 
-Geben Sie bei Verwenden der Befehlszeile die folgenden Befehle an, um die Anwendung zu erstellen und auszuführen.
+1. Erstellen Sie die Anwendung:
 
-**Zum Erstellen:**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**Zum Ausführen:**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. Führen Sie die Anwendung aus.
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

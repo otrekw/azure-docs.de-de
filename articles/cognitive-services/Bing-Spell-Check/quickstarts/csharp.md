@@ -8,33 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb126dc31620515c54a653ef595bfc017aaac73
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382948"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869592"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und C#
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache C#-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache C#-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. 
+
+Die Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine beliebige Edition von [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/).
-* So installieren Sie `Newtonsoft.Json` als NuGet-Paket in Visual Studio
-    1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappendatei.
-    1. Klicken Sie auf **NuGet-Pakete für Projektmappe verwalten**.
-    1. Suchen Sie nach `Newtonsoft.Json`, und installieren Sie das Paket.
-* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
+* Das NuGet-Paket „Newtonsoft.Json“. 
+     
+   So installieren Sie das Paket in Visual Studio:
+
+     1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappendatei.
+     1. Klicken Sie auf **NuGet-Pakete für Projektmappe verwalten**.
+     1. Suchen Sie nach *Newtonsoft.Json*, und installieren Sie das Paket.
+
+* Unter Linux/macOS können Sie diese Anwendung mit [Mono](https://www.mono-project.com/) ausführen.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio mit der Bezeichnung `SpellCheckSample`. Fügen Sie dann die folgenden Namespaces in die Hauptcodedatei ein.
+1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio mit der Bezeichnung „SpellCheckSample“. Fügen Sie dann die folgenden Namespaces in die Hauptcodedatei ein:
     
     ```csharp
     using System;
@@ -46,7 +52,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     using Newtonsoft.Json;
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und den Text, für den die Rechtschreibprüfung durchgeführt werden soll. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und den Text, für den die Rechtschreibprüfung durchgeführt werden soll. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +68,11 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     }
     ```
 
-3. Erstellen Sie eine Variable für Ihre Suchparameter. Fügen Sie Ihren Marktcode nach `mkt=` an. Der Marktcode ist das Land, aus dem Sie die Anforderung stellen. Fügen Sie außerdem Ihren Modus für die Rechtschreibprüfung nach `&mode=` an. Der Modus ist entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreib-, aber nicht so viele Grammatikfehler ab).
+3. Erstellen Sie eine Zeichenfolge für Ihre Suchparameter: 
+
+   a. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. Der Marktcode ist der Code Lands bzw. der Region, aus dem/der Sie die Anforderung stellen. 
+
+   b. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. Der Modus kann entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreibfehler, aber nicht so viele Grammatikfehler ab) sein.
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +80,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-and-send-a-spell-check-request"></a>Erstellen und Senden einer Rechtschreibprüfungsanforderung
 
-1. Erstellen Sie eine asynchrone Funktion mit dem Namen `SpellCheck()`, um eine Anforderung an die API zu senden. Erstellen Sie ein `HttpClient`-Objekt, und fügen Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzu. Führen Sie anschließend in der Funktion die folgenden Schritte aus.
+1. Erstellen Sie eine asynchrone Funktion mit dem Namen `SpellCheck()`, um eine Anforderung an die API zu senden. Erstellen Sie ein `HttpClient`-Objekt, und fügen Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzu. Führen Sie in der-Funktion die nächsten Schritte aus.
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +137,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>Aufrufen der Funktion für die Rechtschreibprüfung
 
-Rufen Sie in der Main-Funktion Ihres Projekts `SpellCheck()` auf.
+Rufen Sie in der `SpellCheck()`-Funktion Ihres Projekts `Main()` auf.
 
 ```csharp
 static void Main(string[] args)

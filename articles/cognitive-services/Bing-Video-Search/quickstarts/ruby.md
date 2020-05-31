@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448383"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849568"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Ruby
 
-Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufrufen und ein Suchergebnis in der JSON-Antwort anzeigen. Diese einfache Ruby-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die Antwort an. Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Videosuche-API zum ersten Mal aufzurufen. Diese einfache Ruby-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel. 
+
+Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,7 +31,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Importieren Sie die folgenden Pakete in Ihre Codedatei.
+1. Importieren Sie die folgenden Pakete in Ihre Codedatei:
 
     ```ruby
     require 'net/https'
@@ -37,7 +39,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, den Videosuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff. `uri` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für den API-Endpunkt, den Videosuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff. Für den `url`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -61,7 +63,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. Senden Sie die Anforderung, und speichern Sie die Antwort.
+3. Senden Sie die Anforderung, und speichern Sie dann die Antwort.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,11 +73,11 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
 
 ## <a name="process-and-view-the-response"></a>Verarbeiten und Anzeigen der Antwort
 
-1. Nach Empfang der Antwort können Sie die JSON-Antwort ausgeben.
+Nach Empfang der Antwort geben Sie die JSON-Antwort aus.
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>JSON-Antwort
 
@@ -191,7 +193,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Single-Page-Webanwendung](../tutorial-bing-video-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

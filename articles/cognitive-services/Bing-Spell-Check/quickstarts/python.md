@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7f1da47d913b76edb42aab82f588a2b218eac854
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448455"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869334"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Python
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache Python-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache Python-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. 
+
+Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,14 +31,14 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="initialize-the-application"></a>Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und fügen Sie die folgende Importanweisung hinzu.
+1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und fügen Sie die folgenden Importanweisungen hinzu:
 
    ```python
    import requests
    import json
    ```
 
-2. Erstellen Sie Variablen für den Text, für den eine Rechtschreibprüfung ausgeführt werden soll, sowie für Ihren Abonnementschlüssel und Ihren Endpunkt für die Bing-Rechtschreibprüfung. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für den Text, für den eine Rechtschreibprüfung ausgeführt werden soll, sowie für Ihren Abonnementschlüssel und Ihren Endpunkt für die Bing-Rechtschreibprüfung. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -52,8 +54,12 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     data = {'text': example_text}
     ```
 
-2. Fügen Sie die Parameter für Ihre Anforderung hinzu. Fügen Sie Ihren Marktcode nach `mkt=` an. Der Marktcode ist das Land, aus dem Sie die Anforderung stellen. Fügen Sie außerdem Ihren Modus für die Rechtschreibprüfung nach `&mode=` an. Der Modus ist entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreib-, aber nicht so viele Grammatikfehler ab).
+2. Fügen Sie die Parameter für Ihre Anforderung hinzu: 
 
+   a. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. Der Marktcode ist der Code Lands bzw. der Region, aus dem/der Sie die Anforderung stellen. 
+
+   b. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. Der Modus kann entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreibfehler, aber nicht so viele Grammatikfehler ab) sein. 
+ 
     ```python
     params = {
         'mkt':'en-us',
@@ -88,7 +94,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Geben Sie bei Verwenden der Befehlszeile den folgenden Befehl an, um die Anwendung auszuführen.
+Geben Sie bei Verwenden der Befehlszeile den folgenden Befehl an, um die Anwendung auszuführen:
 
 ```bash
 python <FILE_NAME>.py
@@ -139,7 +145,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Web-App mit einer einzelnen Seite](../tutorials/spellcheck.md)
+> [Erstellen einer Single-Page-Web-App](../tutorials/spellcheck.md)
 
 - [Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?](../overview.md)
 - [Referenz zur Bing-Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382683"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849585"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Python
 
-Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufrufen und ein Suchergebnis in der JSON-Antwort anzeigen. Diese einfache Python-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die Antwort an. Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Videosuche-API zum ersten Mal aufzurufen. Diese einfache Python-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel. 
 
-Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge klicken: 
+Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) mit zusätzlichen Fehlerbehandlungen und Codehinweisen verfügbar.
+
+Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie das Badge zum **Starten von Binder** auswählen: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -40,7 +42,7 @@ Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.
     import requests
     from IPython.display import HTML
     ```
-2.  Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und einen Suchbegriff. `search_url` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2.  Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Suchendpunkt und den Suchbegriff. Für den `search_url`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```python
     subscription_key = None
@@ -57,7 +59,7 @@ Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.
 
 ## <a name="send-your-request"></a>Senden Ihrer Anforderung
 
-1. Erstellen Sie ein Wörterbuch namens `params`, um die Parameter Ihrer Anforderung hinzuzufügen. Fügen Sie dem Parameter `q` Ihren Suchbegriff, 5 für die Videoanzahl, `free` für den Preis der zurückgegebenen Videos und `short` für die Videolänge hinzu.
+1. Erstellen Sie ein Wörterbuch namens `params`, um die Parameter Ihrer Anforderung hinzuzufügen. Fügen Sie dem Parameter `q` Ihre Suchbegriffe hinzu: 5 für die Videoanzahl, `free` für den Preis der zurückgegebenen Videos und `short` für die Videolänge.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
