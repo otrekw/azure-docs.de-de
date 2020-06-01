@@ -1,14 +1,14 @@
 ---
 title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75980898"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828146"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 
@@ -18,7 +18,7 @@ Governance in Azure ist ein Aspekt der Azure-Verwaltung. Dieser Artikel behandel
 
 Das folgende Diagramm veranschaulicht die verschiedenen Bereiche der Verwaltung, die zum Warten einer Anwendung oder Ressource erforderlich sind. Diese unterschiedlichen Bereiche können als ein Lebenszyklus betrachtet werden. Jeder Bereich wird während der gesamten Lebensdauer einer Ressource in kontinuierlicher Folge benötigt. Dieser Ressourcenlebenszyklus beginnt mit der anfänglichen Bereitstellung, anschließend erfolgt der fortgesetzte Betrieb und zuletzt die Außerkraftsetzung.
 
-![Verwaltungsdisziplinen in Azure](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Verwaltungsdisziplinen in Azure" border="false":::
 
 Kein einzelner Azure-Dienst erfüllt die Anforderungen eines bestimmten Verwaltungsbereichs vollständig. Stattdessen wird jeder Bereich von mehreren Diensten umgesetzt, die zusammenarbeiten. Einige Dienste (z.B. Application Insights) bieten gezielte Überwachungsfunktionen für Webanwendungen. Andere (wie Azure Monitor-Protokolle) speichern die Verwaltungsdaten für andere Dienste. Diese Funktion ermöglicht es Ihnen, Daten verschiedener Typen zu analysieren, die von verschiedenen Diensten erfasst werden.
 
@@ -36,7 +36,9 @@ Die Automatisierung dieser Aufgaben ermöglicht Ihnen das Beseitigen von Redunda
 ## <a name="govern"></a>Steuern
 
 Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit. Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.
-Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen. Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards. [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) ermöglicht es Ihnen, die Cloudnutzung und Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter nachzuverfolgen.
+Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen.
+Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards.
+[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) ermöglicht es Ihnen, die Cloudnutzung und Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter nachzuverfolgen.
 
 ## <a name="secure"></a>Sicher
 

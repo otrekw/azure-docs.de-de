@@ -3,63 +3,62 @@ title: Einführung in die integrierte Unterstützung von Jupyter-Notebooks in Az
 description: Es wird beschrieben, wie Sie die integrierte Unterstützung für Jupyter-Notebooks in Azure Cosmos DB nutzen können, um Abfragen interaktiv auszuführen.
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/22/2019
-author: markjbrown
-ms.author: mjbrown
-ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/19/2020
+author: deborahc
+ms.author: dech
+ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76760282"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657361"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrierte Unterstützung von Jupyter-Notebooks in Azure Cosmos DB (Vorschauversion)
 
-Jupyter Notebook ist eine Open-Source-Webanwendung, mit der Sie Dokumente erstellen und freigeben können, die Livecode, Gleichungen, Visualisierungen und beschreibenden Text enthalten. Azure Cosmos DB unterstützt integrierte Jupyter Notebooks für alle APIs wie Cassandra, MongoDB, SQL, Gremlin und Tabellen. Die integrierte Unterstützung für Notebooks für alle Azure Cosmos DB-APIs und -Datenmodelle ermöglichen Ihnen die Ausführung interaktiver Abfragen. Die Jupyter-Notebooks werden unter den Azure Cosmos-Konten ausgeführt und ermöglichen Entwicklern die Durchführung von Datenuntersuchungen, Datenbereinigungen, Datentransformationen, numerischen Simulationen, statistischer Modellierung, Datenvisualisierung und maschinellem Lernen.
+Jupyter Notebook ist eine Open-Source-Webanwendung, mit der Sie Dokumente erstellen und freigeben können, die Livecode, Gleichungen, Visualisierungen und beschreibenden Text enthalten. 
+
+In Azure Cosmos DB integrierte Jupyter-Notebooks sind direkt in das Azure-Portal und in Ihre Azure Cosmos DB-Konten integriert, sodass Sie bequem und einfach verwendet werden können. Entwickler, Datenanalysten, Techniker und Analysten können die vertraute Oberfläche der Jupyter-Notebooks für Datenuntersuchungen, Datenbereinigungen, Datentransformationen, numerische Simulationen, statistische Modellierung, Datenvisualisierung und maschinelles Lernen verwenden.
 
 ![Jupyter-Notebook-Visualisierungen in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
-Die Jupyter-Notebooks unterstützen Magic-Befehle, die die Funktionen des Kernels um zusätzliche Befehle erweitern. Mit einem Magic-Befehl von Cosmos können die Funktionen des Python-Kernels im Jupyter-Notebook so erweitert werden, dass Sie Azure Cosmos-SQL-API-Abfragen zusätzlich zu Apache Spark ausführen können. Sie können Python- und SQL-API-Abfragen leicht kombinieren, um Daten abzufragen und zu visualisieren, indem Sie umfassende Visualisierungsbibliotheken verwenden, die in Renderbefehle integriert sind.
-Im Azure-Portal ist die Benutzeroberfläche für Jupyter-Notebooks nativ in Azure Cosmos-Konten integriert. Dies ist in der folgenden Abbildung dargestellt:
+Azure Cosmos DB unterstützt sowohl C#- als auch Python-Notebooks für alle APIs einschließlich der Core- (SQL), Cassandra-, Gremlin-, Tabellen-API und der API für MongoDB. Im Notebook können Sie integrierte Befehle und Funktionen nutzen, die das Erstellen von Azure Cosmos DB-Ressourcen, das Hochladen von Daten sowie das Abfragen und Visualisieren Ihrer Daten in Azure Cosmos DB erleichtern. 
 
 ![Unterstützung von Jupyter Notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Vorteile von Jupyter-Notebooks
 
-Jupyter-Notebooks wurden ursprünglich für Data Science-Anwendungen entwickelt, die in Python/R geschrieben wurden. Sie können aber auf verschiedene Weise auch für andere Arten von Projekten verwendet werden, z. B.:
+Jupyter-Notebooks wurden ursprünglich für Data Science-Anwendungen entwickelt, die in Python und R geschrieben wurden. Sie können jedoch auf verschiedene Weise für andere Arten von Projekten verwendet werden, einschließlich:
 
-* ***Datenvisualisierungen:** Mit Jupyter-Notebooks können Sie Daten in Form eines gemeinsam verwendeten Notebooks visualisieren, mit dem ein Dataset als Grafik gerendert wird. Ein Jupyter-Notebook ermöglicht Ihnen das Verfassen und Freigeben von Visualisierungen und das Vornehmen von interaktiven Änderungen am freigegebenen Code und Dataset.
+**Datenvisualisierung:** Mit Jupyter-Notebooks können Sie Daten in Form eines freigegebenen Notebooks visualisieren, mit dem ein Dataset als Grafik gerendert wird. Sie können Visualisierungen erstellen, interaktive Änderungen am freigegebenen Code und Dataset vornehmen und die Ergebnisse freigeben.
 
-* **Codefreigabe:** Dienste wie GitHub verfügen über Möglichkeiten zum Freigeben von Code, aber sie sind größtenteils nicht interaktiv. Mit einem Jupyter-Notebook können Sie Code anzeigen und ausführen und die Ergebnisse direkt im Azure-Portal darstellen.
+**Codefreigabe:** Dienste wie GitHub bieten Möglichkeiten zum Freigeben von Code, sind aber größtenteils nicht interaktiv. Mit einem Jupyter-Notebook können Sie Code anzeigen und ausführen und die Ergebnisse direkt im Azure-Portal darstellen.
 
-* **Liveinteraktionen mit Code:** Jupyter-Notebook-Code ist dynamisch. Er kann bearbeitet und in Echtzeit inkrementell erneut ausgeführt werden. Mit Notebooks können auch Benutzersteuerelemente (z. B. Schieberegler oder Texteingabefelder) eingebettet werden, die als Eingabequellen für Code, Demos oder Proof of Concepts (POCs) genutzt werden können.
+**Liveinteraktionen mit Code:** Der Code in einem Jupyter-Notebook ist dynamisch. Sie können ihn bearbeiten und die Aktualisierungen inkrementell in Echtzeit ausführen. Sie können auch Benutzersteuerelemente (z. B. Schieberegler oder Texteingabefelder) einbetten, die als Eingabequellen für Code, Demos oder Proof of Concepts (POCs) verwendet werden.
 
-* **Dokumentation zu Codebeispielen und Ergebnisse von Datenuntersuchungen:** Wenn Sie über ein Codeelement verfügen, dessen Funktionsweise Sie in Azure Cosmos DB mit Echtzeitausgabe Zeile für Zeile erläutern möchten, können Sie es in ein Jupyter-Notebook einbetten. Der Code bleibt voll funktionsfähig. Sie können mit der Interaktivität gleichzeitig die Dokumentation hinzufügen.
+**Dokumentation zu Codebeispielen und Ergebnisse von Datenuntersuchungen:** Wenn Sie über einen Codeabschnitt verfügen und die Funktionsweise zeilenweise erläutern möchten, können Sie ihn in ein Jupyter-Notebook einbetten. Sie können mit der Interaktivität gleichzeitig die Dokumentation hinzufügen.
 
-* **Magic-Befehle von Cosmos:** In Jupyter-Notebooks können Sie benutzerdefinierte Magic-Befehle für Azure Cosmos DB verwenden, um das interaktive Computing zu vereinfachen. Ein Beispiel hierfür ist der Magic-Befehl „%%sql“, der Ihnen das Abfragen eines Cosmos-Containers per SQL-API direkt in einem Notebook ermöglicht.
+**Integrierte Befehle für Azure Cosmos DB:** Die integrierten Magic-Befehle von Azure Cosmos DB ermöglichen eine einfache Interaktion mit Ihrem Konto. Sie können Befehle wie „%%upload“ und „%%sql“ verwenden, um Daten in einen Container hochzuladen und mithilfe der [SQL-API-Syntax](sql-query-getting-started.md) abzufragen. Sie müssen keinen zusätzlichen benutzerdefinierten Code schreiben.
 
-* **Umgebung vom Typ „Alles an einem Ort“:** Bei Jupyter-Notebooks werden Code, Rich Text, Bilder, Videos, Animationen, mathematische Gleichungen, Plots, Karten, interaktive Werte, Widgets und grafische Benutzeroberflächen zu einem Dokument kombiniert.
+**Umgebung vom Typ „Alles an einem Ort“:** Bei Jupyter-Notebooks werden Code, Rich Text, Bilder, Videos, Animationen, mathematische Gleichungen, Plots, Karten, interaktive Werte, Widgets und grafische Benutzeroberflächen zu einem Dokument kombiniert.
 
 ## <a name="components-of-a-jupyter-notebook"></a>Komponenten eines Jupyter-Notebooks
 
-Jupyter-Notebooks können mehrere Arten von Komponenten enthalten, die jeweils als diskrete Blöcke organisiert sind:
+Jupyter-Notebooks können mehrere Typen von Komponenten enthalten, die jeweils in diskreten Blöcken oder Zellen organisiert sind:
 
-* **Text und HTML:** Nur-Text oder in der Markdownsyntax kommentierter Text zum Generieren von HTML-Code kann jederzeit in das Dokument eingefügt werden. CSS-Stile können auch inline eingefügt oder der Vorlage hinzugefügt werden, die zum Generieren des Notebooks verwendet wird.
+**Text und HTML:** Nur-Text oder in der Markdownsyntax kommentierter Text zum Generieren von HTML-Code kann jederzeit in das Dokument eingefügt werden. CSS-Stile können auch inline eingefügt oder der Vorlage hinzugefügt werden, die zum Generieren des Notebooks verwendet wird.
 
-* **Code und Ausgabe:** Jupyter-Notebooks unterstützen Python-Code. Die Ergebnisse des ausgeführten Codes werden direkt nach den Codeblöcken angezeigt, und die Codeblöcke können mehrfach in beliebiger Reihenfolge ausgeführt werden.
+**Code und Ausgabe:** Jupyter-Notebooks unterstützen Python- und C#-Code. Die Ergebnisse des ausgeführten Codes werden direkt nach den Codeblöcken angezeigt, und die Codeblöcke können mehrfach in beliebiger Reihenfolge ausgeführt werden.
 
-* **Visualisierungen:** Grafiken und Diagramme können aus dem Code generiert werden, indem Module wie Matplotlib, Plotly oder Bokeh genutzt werden. Ähnlich wie bei der Ausgabe werden diese Visualisierungen inline neben dem Code angezeigt, mit dem sie generiert werden.
+**Visualisierungen:** Mit Modulen wie z. B. Matplotlib, Plotly und Bokeh können Sie Grafiken und Diagramme aus dem Code generieren. Ähnlich wie bei der Ausgabe werden diese Visualisierungen inline neben dem Code angezeigt, mit dem sie generiert werden. Ähnlich wie bei der Ausgabe werden diese Visualisierungen inline neben dem Code angezeigt, mit dem sie generiert werden.
 
-* **Multimedia:** Da das Jupyter-Notebook auf Webtechnologie basiert, können alle Arten von Multimediaelementen angezeigt werden, die auf einer Webseite unterstützt werden. Sie können sie als HTML-Elemente in ein Notebook einbetten oder mit dem `IPython.display`-Modul programmgesteuert generieren.
+**Multimedia:** Da Jupyter-Notebooks auf Webtechnologien basieren, können alle Multimediatypen angezeigt werden, die von einer Webseite unterstützt werden. Sie können sie als HTML-Elemente in ein Notebook einbetten oder mit dem `IPython.display`-Modul programmgesteuert generieren.
 
-* **Daten:** Daten aus Azure Cosmos-Containern und die Ergebnisse der Abfragen können programmgesteuert in ein Jupyter-Notebook importiert werden. Ein Beispiel hierfür ist das Einfügen von Code in das Notebook zum Abfragen der Daten, indem eine der Cosmos DB-APIs oder nativ integriertes Apache Spark verwendet wird.
+**Daten:** Sie können die Daten aus Azure Cosmos-Containern oder die Ergebnisse von Abfragen programmgesteuert in ein Jupyter-Notebook importieren. Verwenden Sie integrierte Magic-Befehle, um Daten in Azure Cosmos DB hochzuladen oder abzufragen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu den ersten Schritten mit integrierten Jupyter-Notebooks in Azure Cosmos DB finden Sie in den folgenden Artikeln:
+Informationen zu den ersten Schritten mit integrierten Jupyter-Notebooks in Azure Cosmos DB finden Sie in den folgenden Artikeln:
 
 * [Enable notebooks in an Azure Cosmos account](enable-notebooks.md) (Aktivieren von Notebooks in einem Azure Cosmos-Konto)
-* [Use notebook features and commands](use-notebook-features-and-commands.md) (Verwenden von Notebookfeatures und -befehlen)
-
-
-
+* [Verwenden von Python-Notebookfunktionen und -befehlen](use-python-notebook-features-and-commands.md)
+* [Verwenden von C#-Notebookfunktionen und -befehlen](use-csharp-notebook-features-and-commands.md)

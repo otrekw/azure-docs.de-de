@@ -1,14 +1,14 @@
 ---
 title: 'Muster: Parameter in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung von Parametern in einer Richtliniendefinition.
-ms.date: 01/31/2020
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170178"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696722"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy-Muster: Parameter
 
@@ -16,7 +16,10 @@ Eine Richtliniendefinition kann mithilfe von [Parametern](../concepts/definition
 
 ## <a name="sample-1-string-parameters"></a>Beispiel 1: Zeichenfolgenparameter
 
-In dieser Richtliniendefinition werden zwei Parameter (**tagName** und **tagValue**) verwendet, um festzulegen, wonach die Richtlinienzuweisung in Ressourcen suchen soll. Mit diesem Format kann die Richtlinie für eine beliebige Kombination aus Tagname und Tagwert verwendet werden, ohne mehrere Richtliniendefinitionen verwalten zu müssen.
+In dieser Richtliniendefinition werden zwei Parameter (**tagName** und **tagValue**) verwendet, um festzulegen, wonach die Richtlinienzuweisung in Ressourcen suchen soll. Mit diesem Format kann die Richtliniendefinition für beliebig viele Kombinationen aus Tagname und Tagwert verwendet werden, ohne mehrere Richtliniendefinitionen verwalten zu müssen.
+
+> [!NOTE]
+> Ein Tagbeispiel, in dem **mode** auf _All_ festgelegt ist und eine Ressourcengruppe verwendet wird, finden Sie unter [Muster: Tags –Beispiel 1](./pattern-tags.md#sample-1-parameterize-tags).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -47,6 +50,22 @@ verwendet werden.
 In diesem Beispiel wird der Alias **serviceProvider.bandwidthInMbps** als einer der definierten Werte für den Abgleich verwendet.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
+
+## <a name="sample-3-parameterized-effect"></a>Beispiel 3: Parametrisierte Auswirkung
+
+Eine gängige Methode, Richtliniendefinitionen wiederverwendbar zu machen, besteht darin, die Auswirkung selbst zu parametrisieren. In diesem Beispiel wird ein einziger Parameter (**effect**) verwendet. Durch Parametrisieren der Auswirkung kann dieselbe Definition verschiedenen Bereichen mit unterschiedlichen Auswirkungen zugewiesen werden.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>Beispiel 3: Erklärung
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+In diesem Teil der Richtliniendefinition wird der Parameter **effect** als Zeichenfolge (_string_) definiert. Die Richtliniendefinition legt den Standardwert für eine Zuweisung auf _Audit_ fest und schränkt die anderen Optionen auf _Disabled_ und _Deny_ ein.
+
+Der Parameter wird dann im Block **policyRule.then** für die Auswirkung (_effect_) verwendet.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

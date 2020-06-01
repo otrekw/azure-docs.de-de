@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Ihre erste Portalabfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers aus.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74406797"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872083"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
@@ -36,11 +36,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Aktualisieren Sie die Abfrage, sodass die Sortierung `order by` nach der Eigenschaft **Name** gilt: `Resources | project name, type | limit 5 | order by name asc`. Wählen Sie anschließend **Abfrage ausführen** aus.
 
    > [!NOTE]
-   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Dies beschränkt zunächst die Ergebnisse der Abfrage und sortiert sie dann.
+   > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Durch diese Befehlsreihenfolge werden die Abfrageergebnisse zuerst eingeschränkt und dann sortiert.
 
 1. Aktualisieren Sie die Abfrage, sodass zuerst die Sortierung `order by` nach der Eigenschaft **Name** vorgenommen wird, und begrenzen Sie die Ergebnisse mithilfe von `limit` auf die fünf relevantesten Ergebnisse: `Resources | project name, type | order by name asc | limit 5`. Wählen Sie anschließend **Abfrage ausführen** aus.
 
-Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Ergebnisse – vorausgesetzt, dass sich in Ihrer Umgebung nichts ändert – konsistent und wie erwartet: sortiert nach der Eigenschaft **Name**, aber immer noch auf die fünf relevantesten Ergebnisse begrenzt.
+Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.
 
 ### <a name="schema-browser"></a>Schemabrowser
 
@@ -97,7 +97,7 @@ Sehen Sie sich diese Beispieldashboards an, um Beispiele von Resource Graph-Abfr
   [![Beispielbild für Beispieldashboard 2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
-> Die Zahlen und Diagramme in den obigen Screenshots von Beispieldashboards variieren in Abhängigkeit von Ihrer Azure-Umgebung.
+> Die Zahlen und Diagramme in den obigen Screenshots der Beispieldashboards variieren abhängig von Ihrer Azure-Umgebung.
 
 1. Wählen Sie das Beispieldashboard aus, das Sie auswerten möchten, und laden Sie es herunter.
 
@@ -119,7 +119,7 @@ Wenn Sie die Resource Graph-Beispieldashboards aus der Azure-Portalumgebung entf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie den Azure Resource Graph-Explorer verwendet, um Ihre erste Abfrage auszuführen, und sich auf Resource Graph basierende Dashboardbeispiele angesehen. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
+In dieser Schnellstartanleitung haben Sie den Azure Resource Graph-Explorer verwendet, um Ihre erste Abfrage auszuführen, und sich auf Resource Graph basierende Dashboardbeispiele angesehen. Wenn Sie mehr über die Resource Graph-Sprache erfahren möchten, fahren Sie mit der Seite mit den Details zur Abfragesprache fort.
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).
