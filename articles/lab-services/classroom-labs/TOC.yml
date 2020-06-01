@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: Grundlagen der Architektur von Classroom-Labs
       href: classroom-labs-fundamentals.md
+    - name: Kapazitätsgrenzen
+      href: capacity-limits.md
     - name: Szenarien
       items:
         - name: Verwenden von Labs für das Abhalten von Kursen

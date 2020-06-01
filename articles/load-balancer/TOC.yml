@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: Ausgehende Verbindungen
       href: load-balancer-outbound-connections.md
-    - name: Regeln für ausgehenden Datenverkehr
-      href: load-balancer-outbound-rules-overview.md
     - name: TCP-Zurücksetzung bei Leerlauftimeout
       href: load-balancer-tcp-reset.md
     - name: Load Balancer Standard und Verfügbarkeitszonen
