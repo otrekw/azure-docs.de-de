@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d0bd9dfa8dc115ae10831d997dccc8000a1ae25
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978797"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873933"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Go
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Websuche-API erstmals aufrufen und die JSON-Antwort empfangen. Diese Go-Anwendung sendet eine Suchanforderung an die API und zeigt die Antwort an. Diese Anwendung ist zwar in Go geschrieben, die API ist aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen. Diese Go-Anwendung sendet eine Suchanforderung an die API und zeigt die JSON-Antwort an. Die Anwendung ist zwar in Go geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+
+ Für die Codebeispiele in dieser Schnellstartanleitung werden nur Kernbibliotheken benötigt, da keine externen Abhängigkeiten vorhanden sind.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
 * [Go-Binärdateien](https://golang.org/dl/)
 * Abonnementschlüssel
-
-In dieser Schnellstartanleitung werden nur **Kernbibliotheken** benötigt, da keine externen Abhängigkeiten vorhanden sind.  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
@@ -111,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarieren der main-Funktion und Definieren der Variablen  
 
-Dieser Code dient zum Deklarieren der main-Funktion und Festlegen der erforderlichen Variablen. `endpoint` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können die Suchabfrage auch anpassen, indem Sie den Wert für `searchTerm` ersetzen.
+Dieser Code dient zum Deklarieren der main-Funktion und Festlegen der erforderlichen Variablen: 
+
+1. Für den `endpoint`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird. 
+
+2. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. 
+ 
+3. Optional können Sie die Suchabfrage auch anpassen, indem Sie den Wert für `searchTerm` ersetzen.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -170,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Verarbeiten der Antwort
 
-Erinnern Sie sich an die Struktur, die wir zuvor erstellt haben? Wir verwenden sie, um die Antwort zu formatieren und die Suchergebnisse auszugeben.
+Verwenden Sie die zuvor erstellte Struktur, um die Antwort zu formatieren und die Suchergebnisse auszudrucken.
 
 ```go
 // Create a new answer.  
@@ -187,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung! Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
+Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung. Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
 
 ```go
 package main
@@ -305,7 +311,7 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>Beispiel für eine Antwort  
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde mit der Struktur `BingAnswer` formatiert und zeigt die Elemente `result.Name` und `result.URL` an.
 
@@ -324,6 +330,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Einseitige Web-App für die Bing-Websuche](../tutorial-bing-web-search-single-page-app.md)
+> [Tutorial: Einzelseiten-App für die Bing-Websuche-API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

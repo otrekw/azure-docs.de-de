@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667418"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901349"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Behandeln von Problemen bei der Replikation während der Notfallwiederherstellung von Azure-VMs
 
@@ -41,7 +41,7 @@ Wenn Sie das Ereignis auswählen, sehen Sie die genauen Datenträgerinformatione
 
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen Eingabe-Ausgabe-Kombinationen (E/A) für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren.
 
-Es gibt zwei Einschränkungen zu berücksichtigen: die Datenänderungen pro Datenträger und die Datenänderung pro virtuellem Computer. Als Beispiel betrachten wir den Premium-P20-Datenträger in der folgenden Tabelle. Für einen einzelnen virtuellen Computer kann Site Recovery eine Änderungsrate von 5 MB/s pro Datenträger bei maximal fünf Datenträgern bewältigen. Site Recovery unterstützt eine maximale Gesamtänderungsrate pro virtuellem Computer von 25 MB/s.
+Es gibt zwei Einschränkungen zu berücksichtigen: die Datenänderungen pro Datenträger und die Datenänderung pro virtuellem Computer. Als Beispiel betrachten wir den Premium-P20-Datenträger in der folgenden Tabelle. Für einen einzelnen virtuellen Computer kann Site Recovery eine Änderungsrate von 5 MB/s pro Datenträger bei maximal fünf Datenträgern bewältigen. Site Recovery unterstützt eine maximale Gesamtänderungsrate pro virtuellem Computer von 54 MB/s.
 
 **Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate pro Tag der Quelldatenträger**
 ---|---|---|---

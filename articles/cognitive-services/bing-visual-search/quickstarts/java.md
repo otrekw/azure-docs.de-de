@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52a58e3e890ff3baff31322096038d06a1bee6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446634"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872585"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Java
 
-Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen und die Ergebnisse anzuzeigen. Diese Java-Anwendung lädt ein Bild in die API hoch und zeigt die zurückgegebenen Informationen an. Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
+Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen. Diese Java-Anwendung lädt ein Bild in die API hoch und zeigt die zurückgegebenen Informationen an. Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +52,7 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Pfad zu Ihrem Bild. `endpoint` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
+2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Pfad zu Ihrem Bild. Für den `endpoint`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -61,7 +61,7 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
     ```
 
     
-    Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
+3. Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Legen Sie den Parameter `name` auf „image“ und den Parameter `filename` auf den Dateinamen des Bilds fest. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
     
     ```
     --boundary_1234-abcd
@@ -74,7 +74,7 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
 
 ## <a name="create-the-json-parser"></a>Erstellen des JSON-Parsers
 
-Erstellen Sie eine Methode, um die JSON-Antwort der API mithilfe von `JsonParser` besser lesbar zu machen:
+Erstellen Sie eine Methode, um die JSON-Antwort der API mithilfe von `JsonParser` besser lesbar zu machen.
 
 ```java
 public static String prettify(String json_text) {
@@ -87,13 +87,13 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-the-search-request-and-query"></a>Erstellen der Suchanforderung und -abfrage
 
-1. Erstellen Sie in der Main-Methode Ihrer Anwendung einen HTTP-Client mit `HttpClientBuilder.create().build();`:
+1. Erstellen Sie in der main-Methode Ihrer Anwendung einen HTTP-Client mit `HttpClientBuilder.create().build();`.
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Erstellen Sie ein Objekt vom Typ `HttpEntity`, um Ihr Bild in die API hochzuladen:
+2. Erstellen Sie ein Objekt vom Typ `HttpEntity`, um Ihr Bild in die API hochzuladen.
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -102,7 +102,7 @@ public static String prettify(String json_text) {
         .build();
     ```
 
-3. Erstellen Sie ein Objekt vom Typ `httpPost` mit Ihrem Endpunkt, und legen Sie den Header für die Verwendung Ihres Abonnementschlüssels fest:
+3. Erstellen Sie ein Objekt vom Typ `httpPost` mit Ihrem Endpunkt, und legen Sie den Header für die Verwendung Ihres Abonnementschlüssels fest.
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -112,14 +112,14 @@ public static String prettify(String json_text) {
 
 ## <a name="receive-and-process-the-json-response"></a>Empfangen und Verarbeiten der JSON-Antwort
 
-1. Verwenden Sie die Methode `HttpClient.execute()`, um eine Anforderung an die API zu senden, und speichern Sie die Antwort in einem Objekt vom Typ `InputStream`:
+1. Verwenden Sie die Methode `HttpClient.execute()`, um eine Anforderung an die API zu senden, und speichern Sie die Antwort in einem Objekt vom Typ `InputStream`.
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Speichern Sie die JSON-Zeichenfolge, und geben Sie die Antwort aus:
+2. Speichern Sie die JSON-Zeichenfolge, und geben Sie die Antwort aus.
 
     ```java
     String json = new Scanner(stream).useDelimiter("\\A").next();

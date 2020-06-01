@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446671"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872763"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und C#
 
@@ -41,7 +41,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Bild an die API für d
     using System.Collections.Generic;
     ```
 
-2. Fügen Sie Variablen für Ihren Abonnementschlüssel, für den Endpunkt und für den Pfad des hochzuladenden Bilds hinzu. `uriBase` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
+2. Fügen Sie Variablen für Ihren Abonnementschlüssel, für den Endpunkt und für den Pfad des hochzuladenden Bilds hinzu. Für den `uriBase`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Bild an die API für d
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Erstellen Sie eine Methode namens `GetImageFileName()`, um den Pfad für Ihr Bild abzurufen:
+3. Erstellen Sie eine Methode namens `GetImageFileName()`, um den Pfad für Ihr Bild abzurufen.
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Bild an die API für d
             }
     ```
 
-4. Erstellen Sie eine Methode, um die Binärdaten des Bilds abzurufen:
+4. Erstellen Sie eine Methode, um die Binärdaten des Bilds abzurufen.
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Bild an die API für d
 
 ## <a name="build-the-form-data"></a>Erstellen der Formulardaten
 
-Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formulardaten für die Übermittlung an die API erstellen. Die Formulardaten müssen den Header `Content-Disposition` enthalten, dessen Parameter `name` muss auf „image“ festgelegt sein, und der Parameter `filename` kann auf eine beliebige Zeichenfolge festgelegt werden. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
+1. Wenn Sie ein lokales Bild hochladen möchten, erstellen Sie zunächst die Formulardaten für die Übermittlung an die API. Die Formulardaten enthalten den `Content-Disposition`-Header, den `name`-Parameter, der auf „image“ festgelegt ist, und den `filename`-Parameter, der auf den Dateinamen des Bilds festgelegt ist. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
     --boundary_1234-abcd--
     ```
 
-1. Fügen Sie Begrenzungszeichenfolgen hinzu, um die POST-Formulardaten zu formatieren. Begrenzungszeichenfolgen dienen zum Definieren der Start-, End- und Zeilenumbruch-Zeichen für die Daten:
+2. Fügen Sie Begrenzungszeichenfolgen hinzu, um die POST-Formulardaten zu formatieren. Begrenzungszeichenfolgen dienen zum Definieren der Start-, End- und Zeilenumbruch-Zeichen für die Daten.
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +90,14 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. Verwenden Sie die folgenden Variablen, um den Formulardaten Parameter hinzuzufügen:
+3. Verwenden Sie die folgenden Variablen, um den Formulardaten Parameter hinzuzufügen:
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Erstellen Sie eine Funktion namens `BuildFormDataStart()`, um den Beginn der Formulardaten zu erstellen. Verwenden Sie dabei die Begrenzungszeichenfolgen und den Bildpfad:
+4. Erstellen Sie eine Funktion namens `BuildFormDataStart()`, um den Beginn der Formulardaten zu erstellen. Verwenden Sie dabei die Begrenzungszeichenfolgen und den Bildpfad.
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
         }
     ```
 
-4. Erstellen Sie eine Funktion namens `BuildFormDataEnd()`, um das Ende der Formulardaten zu erstellen. Verwenden Sie dabei die Begrenzungszeichenfolgen:
+5. Erstellen Sie eine Funktion namens `BuildFormDataEnd()`, um das Ende der Formulardaten zu erstellen. Verwenden Sie dabei die Begrenzungszeichenfolgen.
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -126,7 +126,7 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
 
 2. Verwenden Sie ein `WebRequest`-Objekt zum Speichern von URI, ContentType-Wert und Headern.  
 
-3. Verwenden Sie `request.GetRequestStream()`, um Ihre Formular- und Bilddaten zu schreiben, und rufen Sie anschließend die Antwort ab. Ihre Funktion sollte in etwa wie folgt aussehen:
+3. Verwenden Sie `request.GetRequestStream()`, um Ihre Formular- und Bilddaten zu schreiben, und rufen Sie anschließend die Antwort ab. Ihre Funktion sollte in etwa wie der folgende Code aussehen:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -158,14 +158,14 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
 
 ## <a name="create-the-main-method"></a>Erstellen der Methode „Main“
 
-1. Rufen Sie in der Methode `Main` Ihrer Anwendung den Dateinamen und die Binärdaten Ihres Bilds ab:
+1. Rufen Sie in der Methode `Main()` Ihrer Anwendung den Dateinamen und die Binärdaten Ihres Bilds ab.
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Richten Sie den POST-Text ein, indem Sie die entsprechende Begrenzung formatieren. Rufen Sie dann `startFormData()` und `endFormData` auf, um die Formulardaten zu erstellen:
+2. Richten Sie den POST-Text ein, indem Sie seine Begrenzung formatieren. Rufen Sie dann `BuildFormDataStart()` und `BuildFormDataEnd()` auf, um die Formulardaten zu erstellen.
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Erstellen Sie den Wert vom Typ `ContentType`, indem Sie `CONTENT_TYPE_HEADER_PARAMS` und die Begrenzung für Formulardaten formatieren:
+3. Erstellen Sie den Wert vom Typ `ContentType`, indem Sie `CONTENT_TYPE_HEADER_PARAMS` und die Begrenzung für Formulardaten formatieren.
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. Rufen Sie `BingImageSearch()` auf, um die API-Antwort abzurufen, und geben Sie die Antwort aus:
+4. Rufen Sie `BingImageSearch()` auf, um die API-Antwort abzurufen, und geben Sie dann die Antwort aus.
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,81 +191,81 @@ Wenn Sie ein lokales Bild hochladen möchten, müssen Sie zunächst die Formular
 
 ## <a name="using-httpclient"></a>Verwenden von HTTPClient
 
-Bei Verwendung von `HttpClient` können die Formulardaten mithilfe der Klasse `MultipartFormDataContent` erstellt werden. Verwenden Sie einfach die folgenden Codeabschnitte, um die entsprechenden Methoden aus dem vorherigen Beispiel zu ersetzen.
+Bei Verwendung von `HttpClient` können die Formulardaten mithilfe der Klasse `MultipartFormDataContent` erstellt werden. Verwenden Sie die folgenden Codeabschnitte, um die entsprechenden Methoden aus dem vorherigen Beispiel zu ersetzen:
 
-Ersetzen Sie die Methode `Main` durch folgenden Code:
+1. Ersetzen Sie die `Main()`-Methode durch den folgenden Code:
 
-```csharp
-        static void Main()
-        {
-            try
-            {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+   ```csharp
+           static void Main()
+           {
+               try
+               {
+                   Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
+                   if (accessKey.Length == 32)
+                   {
+                       if (IsImagePathSet(imagePath))
+                       {
+                           var filename = GetImageFileName(imagePath);
+                           Console.WriteLine("Getting image insights for image: " + filename);
+                           var imageBinary = GetImageBinary(imagePath);
 
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
+                           var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+                           var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
 
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
+                           Console.WriteLine("\nJSON Response:\n");
+                           Console.WriteLine(JsonPrettyPrint(json));
+                       }
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid Bing Visual Search API subscription key!");
+                       Console.WriteLine("Please paste yours into the source code.");
+                   }
 
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-```
+                   Console.Write("\nPress Enter to exit ");
+                   Console.ReadLine();
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e.Message);
+               }
+           }
+   ```
 
-Ersetzen Sie die Methode `BingImageSearch` durch folgenden Code:
+2. Ersetzen Sie die `BingImageSearch()`-Methode durch den folgenden Code:
 
-```csharp
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
-        static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
-        {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
+   ```csharp
+           /// <summary>
+           /// Calls the Bing visual search endpoint and returns the JSON response.
+           /// </summary>
+           static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
+           {
+               var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+               requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
 
-            var content = new MultipartFormDataContent(boundary);
-            content.Add(new ByteArrayContent(image), "image", "myimage");
-            requestMessage.Content = content;
+               var content = new MultipartFormDataContent(boundary);
+               content.Add(new ByteArrayContent(image), "image", "myimage");
+               requestMessage.Content = content;
 
-            var httpClient = new HttpClient();
+               var httpClient = new HttpClient();
 
-            Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-            HttpResponseMessage httpResponse = httpRequest.Result;
-            HttpStatusCode statusCode = httpResponse.StatusCode;
-            HttpContent responseContent = httpResponse.Content;
+               Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+               HttpResponseMessage httpResponse = httpRequest.Result;
+               HttpStatusCode statusCode = httpResponse.StatusCode;
+               HttpContent responseContent = httpResponse.Content;
 
-            string json = null;
+               string json = null;
 
-            if (responseContent != null)
-            {
-                Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
-                json = stringContentsTask.Result;
-            }
+               if (responseContent != null)
+               {
+                   Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
+                   json = stringContentsTask.Result;
+               }
 
-            return json;
-        }
-```
+               return json;
+           }
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,7 +2,7 @@
 title: Anpassen der Tasks der Microsoft-Sicherheitscodeanalyse
 titleSuffix: Azure
 description: In diesem Artikel wird beschrieben, wie die Tasks in der Erweiterung „Microsoft-Sicherheitscodeanalyse“ angepasst werden.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499984"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871899"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -91,7 +91,8 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
 ![Konfigurieren des Credential Scanner-Buildtasks](./media/security-tools/3-taskdetails.png)
 
 Folgende Optionen sind verfügbar:
-
+  - **Anzeigename**: Name des Azure DevOps-Tasks. Der Standardwert ist „Credential Scanner ausführen“.
+  - **Hauptversion des Tools**: Verfügbare Werte sind **CredScan V2**, **CredScan V1**. Wir empfehlen Kunden, die Version **CredScan V2** zu verwenden.
   - **Output Format** (Ausgabeformat): Zu den verfügbaren Werten gehören **TSV**, **CSV**, **SARIF** und **PREfast**.
   - **Tool Version** (Toolversion): Es wird empfohlen, **Latest** (Neueste) auszuwählen.
   - **Scan Folder** (Überprüfungsordner): Der zu überprüfende Repositoryordner.
