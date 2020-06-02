@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: Benutzerdefinierte Befehle (Vorschau)
       items:
-        - name: Was ist eine App für benutzerdefinierte Befehle?
+        - name: Was sind benutzerdefinierte Befehle?
           href: custom-commands.md
         - name: Schnellstarts
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Benutzerdefinierte Schlüsselworterkennung
           href: speech-devices-sdk-create-kws.md
+- name: Sprechererkennung
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Sprechererkennung?
+          href: speaker-recognition-overview.md
+    - name: Verweis
+      items:
+        - name: REST-APIs
+          items:
+            - name: REST-API für die Spracherkennung
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Dokumentation zum Hosting

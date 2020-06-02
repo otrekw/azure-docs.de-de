@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: VM-Bereitstellungsleitfaden
   items:
+    - name: Aktualisieren auf SLES 15 SP1
+      href: linux-upgrade-suse-15sp1.md
     - name: Neue VM-Bereitstellungen
       items:
         - name: Linux

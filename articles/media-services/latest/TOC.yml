@@ -1,5 +1,7 @@
 - name: Dokumentation zu Media Services
   href: ./index.yml
+- name: Zur Dokumentation zu Live Video Analytics in IoT Edge wechseln
+  href: ../live-video-analytics-edge/overview.md
 - name: Übersicht
   items:
     - name: Informationen zu Media Services
@@ -358,7 +360,7 @@
       displayName: schema
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/media/'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -369,7 +371,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-Vorlage
@@ -389,7 +391,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
