@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart:  Maschinelles Sehen 2.0 und 2.1: Extrahieren von gedrucktem und handschriftlichem Text – REST, Python'
+title: 'Schnellstart:  Maschinelles Sehen 2.1 und 3.0: Extrahieren von gedrucktem und handschriftlichem Text – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und Python.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 29944311c2215ebcc46ff3752004092bdeb9a9c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae83978994eb421e21ed73514a5c8fa697875349
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404395"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684108"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen-REST-API und Python
 

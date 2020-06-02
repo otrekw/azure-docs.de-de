@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Prognostizieren von Automobilpreisen mit dem Designer'
+title: 'Tutorial: Vorhersagen von Autopreisen mit dem Designer'
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie ein Machine Learning-Modell mit einer Drag & Drop-Benutzeroberfläche trainieren, bewerten und bereitstellen. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
@@ -8,13 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 05/12/2020
+ms.custom: designer
+ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389425"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656586"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -76,7 +77,7 @@ Sie können ein **Standardcomputeziel** für die gesamte Pipeline festlegen, wod
     Falls Sie bereits über ein verfügbares Computeziel verfügen, können Sie es auswählen, um diese Pipeline auszuführen.
 
     > [!NOTE]
-    > Im Designer können nur Experimente für Azure Machine Learning Compute-Ziele ausgeführt werden. Andere Computeziele werden nicht angezeigt.
+    > Der Designer kann nur Trainingsexperimente in Azure Machine Learning Compute und auf Azure Machine Learning-Compute-Instanzzielen ausführen. Andere Computeziele werden nicht angezeigt.
 
 1. Geben Sie einen Namen für die Computeressource ein.
 

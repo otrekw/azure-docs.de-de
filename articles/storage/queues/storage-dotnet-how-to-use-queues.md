@@ -3,27 +3,23 @@ title: 'Erste Schritte mit Azure Queue Storage mit .NET: Azure Storage'
 description: Azure-Warteschlangen ermöglichen zuverlässiges, asynchrones Messaging zwischen Anwendungskomponenten. Das Cloud-Messaging ermöglicht Ihren Anwendungskomponenten die unabhängige Skalierung.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afdd9b1b063d0a82c8cdb27ef01b412daaa9f1df
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75968301"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198902"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
 
-[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
-
-[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
-
 ## <a name="overview"></a>Übersicht
 
-Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
+Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, damit sie unabhängig skaliert werden können. Queue Storage bietet asynchrones Messaging zwischen Anwendungskomponenten unabhängig davon, ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder auf einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
 ### <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 
@@ -33,11 +29,11 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [Azure Storage Queue-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
-* [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* Ein [Azure Storage-Konto](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
+- [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+- [Azure Storage Queue-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+- [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
+- Ein [Azure Storage-Konto](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -64,18 +60,38 @@ Sie können die Azure Storage-Clientbibliotheken in jeder Art von .NET-Anwendung
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
 
-Sie müssen in Ihrem Projekt auf die folgenden drei Pakete verweisen, um dieses Tutorial abzuschließen:
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-* [Allgemeine Microsoft Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
-* [Microsoft Azure Storage Queue-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Diese Clientbibliothek ermöglicht das Arbeiten mit dem Microsoft Azure Queue Storage-Dienst zum Speichern von Nachrichten, auf die ein Client möglicherweise zugreift.
-* [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+Sie müssen in Ihrem Projekt auf die folgenden vier Pakete verweisen, um dieses Tutorial abzuschließen:
+
+- [Azure Core-Bibliothek für .NET](https://www.nuget.org/packages/Azure.Core/): Dieses Paket bietet freigegebene primitive Typen, Abstraktionen und Hilfsprogramme für moderne .NET Azure SDK-Clientbibliotheken.
+- [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Common/): Dieses Paket stellt die Infrastruktur bereit, die von anderen Azure Storage-Clientbibliotheken gemeinsam genutzt wird.
+- [Azure Storage Queue-Bibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Queues/): Dieses Paket ermöglicht das Arbeiten mit dem Azure Queue Storage-Dienst zum Speichern von Nachrichten, auf die ein Client möglicherweise zugreift.
+- [Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Dieses Paket bietet Zugriff auf Konfigurationsdateien für Clientanwendungen.
 
 Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
-2. Wählen Sie **Durchsuchen**.
-3. Suchen Sie online nach „Microsoft.Azure.Storage.Queue“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und dazugehörigen Abhängigkeiten zu installieren. Dabei wird auch die Bibliothek „Microsoft.Azure.Storage.Common“ installiert, die eine Abhängigkeit der Warteschlangenbibliothek ist.
-4. Suchen Sie online nach „Microsoft.Azure.ConfigurationManager“, und wählen Sie **Installieren** aus, um Azure Configuration Manager zu installieren.
+1. Wählen Sie **Durchsuchen**.
+1. Suchen Sie online nach „Azure.Storage.Queues“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und die zugehörigen Abhängigkeiten zu installieren. Dadurch werden auch die Bibliotheken Azure.Storage.Common und Azure.Core installiert, die Abhängigkeiten der Warteschlangenbibliothek sind.
+1. Suchen Sie online nach „System.Configuration.ConfigurationManager“, und wählen Sie **Installieren** aus, um Configuration Manager zu installieren.
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Sie müssen in Ihrem Projekt auf die folgenden drei Pakete verweisen, um dieses Tutorial abzuschließen:
+
+- [Allgemeine Microsoft Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
+- [Microsoft Azure Storage Queue-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Diese Clientbibliothek ermöglicht das Arbeiten mit dem Microsoft Azure Queue Storage-Dienst zum Speichern von Nachrichten, auf die ein Client möglicherweise zugreift.
+- [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+
+Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
+1. Wählen Sie **Durchsuchen**.
+1. Suchen Sie online nach „Microsoft.Azure.Storage.Queue“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und dazugehörigen Abhängigkeiten zu installieren. Dabei wird auch die Bibliothek „Microsoft.Azure.Storage.Common“ installiert, die eine Abhängigkeit der Warteschlangenbibliothek ist.
+1. Suchen Sie online nach „Microsoft.Azure.ConfigurationManager“, und wählen Sie **Installieren** aus, um Azure Configuration Manager zu installieren.
+
+---
 
 > [!NOTE]
 > Das Storage-Clientbibliothekspakete sind auch im [Azure SDK für .NET](https://azure.microsoft.com/downloads/) enthalten. Wir empfehlen Ihnen jedoch die Installation der Storage-Clientbibliotheken über NuGet, um sicherzustellen, dass Sie stets über die aktuellen Versionen verfügen.
@@ -86,57 +102,15 @@ Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
 Es gibt für die Ausführung der Beispiele in diesem Leitfaden zwei Umgebungsoptionen:
 
-* Sie können den Code über ein Azure Storage-Konto in der Cloud ausführen.
-* Sie können den Code über den Azure-Speicheremulator ausführen. Der Speicheremulator ist eine lokale Umgebung, in der ein Azure Storage-Konto in der Cloud emuliert wird. Der Emulator ist eine kostenlose Option zum Testen und Debuggen von Code, während sich Ihre Anwendung in der Entwicklung befindet. Für den Emulator wird ein bekanntes Konto mit Schlüssel verwendet. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../common/storage-use-emulator.md).
-
-Wenn Sie ein Speicherkonto in der Cloud verwenden möchten, müssen Sie den primären Zugriffsschlüssel für Ihr Speicherkonto aus dem Azure-Portal kopieren. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../common/storage-account-keys-manage.md).
+- Sie können den Code über ein Azure Storage-Konto in der Cloud ausführen.
+- Sie können den Code über den Azurite-Speicheremulator ausführen. Azurite ist eine lokale Umgebung, in der ein Azure Storage-Konto in der Cloud emuliert wird. Azurite ist eine kostenlose Option zum Testen und Debuggen von Code, während sich Ihre Anwendung in der Entwicklung befindet. Für den Emulator wird ein bekanntes Konto mit Schlüssel verwendet. Weitere Informationen finden Sie unter [Verwenden des Azurite-Emulators für lokale Azure Storage-Entwicklung und -Tests](../common/storage-use-azurite.md).
 
 > [!NOTE]
 > Sie können den Speicheremulator als Ziel festlegen, um jegliche Kosten im Zusammenhang mit Azure Storage zu vermeiden. Wenn jedoch ein Azure-Speicherkonto in der Cloud das Ziel sein soll, sind die Kosten für das Ausführen dieses Lernprogramms vernachlässigbar.
 
-### <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
+## <a name="get-your-storage-connection-string"></a>Abrufen der Speicherverbindungszeichenfolge
 
-Die Azure Storage-Clientbibliotheken für .NET unterstützen die Verwendung einer Speicherverbindungszeichenfolge zum Konfigurieren von Endpunkten und Anmeldeinformationen für den Zugriff auf Speicherdienste. Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten.
-
-Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Verbindungszeichenfolgen für Azure Storage](../common/storage-configure-connection-string.md).
-
-> [!NOTE]
-> Ihr Speicherkontoschlüssel ähnelt dem Stammkennwort für das Speicherkonto. Achten Sie darauf, den Speicherkontoschlüssel immer gut zu schützen. Geben Sie ihn nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie ihn nicht in einer Klartextdatei, auf die andere Benutzer zugreifen können. Generieren Sie Ihren Schlüssel mithilfe des Azure-Portals neu, wenn Sie der Meinung sind, dass er nicht mehr sicher ist.
-
-Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei **app.config**. Fügen Sie den Inhalt des Elements **\<appSettings\>** (wie nachstehend gezeigt) hinzu. Ersetzen Sie *account-name* durch den Namen Ihres Speicherkonto und *account-key* durch Ihren Kontozugriffsschlüssel:
-
-```xml
-<configuration>
-    <startup>
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
-    </startup>
-    <appSettings>
-        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
-    </appSettings>
-</configuration>
-```
-
-Ihre Konfigurationseinstellung kann beispielsweise wie folgt lauten:
-
-```xml
-<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==" />
-```
-
-Wenn Sie den Speicheremulator verwenden möchten, können Sie eine Verknüpfung nutzen, mit der eine Zuordnung zum bekannten Kontonamen und dem Schlüssel hergestellt wird. In diesem Fall lautet die Verbindungszeichenfolge wie folgt:
-
-```xml
-<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
-```
-
-### <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
-
-Fügen Sie am Anfang der Datei `Program.cs` die folgende `using`-Anweisung hinzu:
-
-```csharp
-using Microsoft.Azure; // Namespace for CloudConfigurationManager
-using Microsoft.Azure.Storage; // Namespace for CloudStorageAccount
-using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
-```
+Die Azure Storage-Clientbibliotheken für .NET unterstützen die Verwendung einer Speicherverbindungszeichenfolge zum Konfigurieren von Endpunkten und Anmeldeinformationen für den Zugriff auf Speicherdienste. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../common/storage-account-keys-manage.md).
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieren Ihrer Anmeldeinformationen aus dem Azure-Portal
 
@@ -149,65 +123,151 @@ Der Beispielcode muss den Zugriff auf Ihr Speicherkonto autorisieren. Zur Autori
 
     ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
-### <a name="parse-the-connection-string"></a>Analysieren der Verbindungszeichenfolge
+Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Verbindungszeichenfolgen für Azure Storage](../common/storage-configure-connection-string.md).
 
-[!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
+> [!NOTE]
+> Ihr Speicherkontoschlüssel ähnelt dem Stammkennwort für das Speicherkonto. Achten Sie darauf, den Speicherkontoschlüssel immer gut zu schützen. Geben Sie ihn nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie ihn nicht in einer Klartextdatei, auf die andere Benutzer zugreifen können. Generieren Sie Ihren Schlüssel mithilfe des Azure-Portals neu, wenn Sie der Meinung sind, dass er nicht mehr sicher ist.
+
+Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten. Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei *app.config*. Fügen Sie den Inhalt des `\<appSettings\>` -Elements hinzu (wie unten dargestellt). Ersetzen Sie *connection-string* durch den Wert, den Sie aus Ihrem Speicherkonto im Portal kopiert haben:
+
+```xml
+<configuration>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+    <appSettings>
+        <add key="StorageConnectionString" value="connection-string" />
+    </appSettings>
+</configuration>
+```
+
+Ihre Konfigurationseinstellung kann beispielsweise wie folgt lauten:
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==EndpointSuffix=core.windows.net" />
+```
+
+Wenn Sie den Azurite-Speicheremulator verwenden möchten, können Sie eine Verknüpfung nutzen, mit der eine Zuordnung zum bekannten Kontonamen und dem Schlüssel hergestellt wird. In diesem Fall lautet die Verbindungszeichenfolge wie folgt:
+
+```xml
+<add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+```
+
+### <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
+
+Fügen Sie am Anfang der Datei `Program.cs` die folgende `using`-Anweisung hinzu:
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UsingStatements":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+```csharp
+using System; // Namespace for Console output
+using Microsoft.Azure; // Namespace for CloudConfigurationManager
+using Microsoft.Azure.Storage; // Namespace for CloudStorageAccount
+using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
+```
+
+---
 
 ### <a name="create-the-queue-service-client"></a>Erstellen des Warteschlangendienstclients
 
-Mit der [CloudQueueClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet) -Klasse können Sie im Warteschlangenspeicher gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Mit der [QueueClient](/dotnet/api/azure.storage.queues.queueclient)-Klasse können Sie in Queue Storage gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateClient":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Mit der [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy) -Klasse können Sie im Warteschlangenspeicher gespeicherte Warteschlangen abrufen. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
 ```csharp
+// Retrieve storage account from connection string
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+// Create the queue client
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 ```
+
+---
 
 Jetzt können Sie Code schreiben, der Daten aus dem Warteschlangenspeicher liest und Daten in den Warteschlangenspeicher schreibt.
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Dieses Beispiel zeigt, wie Sie eine Warteschlange erstellen, falls sie nicht bereits vorhanden ist:
+In diesem Beispiel wird die Erstellung einer Warteschlange gezeigt:
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateQueue":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
-// Retrieve storage account from connection string.
+// Retrieve storage account from connection string
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the queue client.
+// Create the queue client
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-// Retrieve a reference to a container.
+// Retrieve a reference to a queue
 CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
 // Create the queue if it doesn't already exist
 queue.CreateIfNotExists();
 ```
 
+---
+
 ## <a name="insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
 
-Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet)-Objekt. Anschließend rufen Sie die [AddMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet) -Methode auf. Eine **CloudQueueMessage** kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem **Bytearray** erstellt werden. Dieser Code erstellte eine Warteschlange (wenn sie noch nicht vorhanden ist) und fügt die Nachricht "Hello, World" ein:
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Um eine Nachricht in eine vorhandene Warteschlange einzufügen, rufen Sie die [SendMessage](/dotnet/api/azure.storage.queues.queueclient.sendmessage)-Methode auf. Eine Nachricht kann entweder ein `string`-Element (im UTF-8-Format) oder ein `byte`-Array sein. Mit dem folgenden Code wird eine Warteschlange erstellt (falls diese nicht vorhanden ist), und es wird eine Nachricht eingefügt:
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_InsertMessage":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy)-Objekt. Anschließend rufen Sie die [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy) -Methode auf. Eine `CloudQueueMessage` kann entweder aus einem `string`-Element (im UTF-8-Format) oder einem `byte`-Array erstellt werden. Dieser Code erstellte eine Warteschlange (falls noch nicht vorhanden) und fügt die Nachricht „Hello, World“ ein:
 
 ```csharp
-// Retrieve storage account from connection string.
+// Retrieve storage account from connection string
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the queue client.
+// Create the queue client
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference to a queue
 CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-// Create the queue if it doesn't already exist.
+// Create the queue if it doesn't already exist
 queue.CreateIfNotExists();
 
-// Create a message and add it to the queue.
+// Create a message and add it to the queue
 CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 queue.AddMessage(message);
 ```
 
+---
+
 ## <a name="peek-at-the-next-message"></a>Einsehen der nächsten Nachricht
 
-Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode [PeekMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet) aufrufen.
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Sie können einen Blick auf die Nachrichten in der Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode [PeekMessages](/dotnet/api/azure.storage.queues.queueclient.peekmessages) aufrufen. Wenn Sie keinen Wert für den Parameter *maxMessages* übergeben, wird standardmäßig eine Nachricht angezeigt.
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_PeekMessage":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy) aufrufen.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -227,9 +287,17 @@ CloudQueueMessage peekedMessage = queue.PeekMessage();
 Console.WriteLine(peekedMessage.AsString);
 ```
 
+---
+
 ## <a name="change-the-contents-of-a-queued-message"></a>Ändern des Inhalts von Nachrichten in der Warteschlange
 
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Mit dem folgenden Code wird die Warteschlangennachricht mit neuem Inhalt aktualisiert und das Sichtbarkeits-Zeitlimit um weitere 60 Sekunden verlängert. Dadurch wird der mit der Nachricht verknüpfte Arbeitsstatus gespeichert, und der Client erhält eine weitere Minute zur Bearbeitung der Nachricht. Sie können diese Technik verwenden, um Workflows mit mehreren Schritten in Warteschlangennachrichten zu verfolgen, ohne von vorn beginnen zu müssen, wenn ein Verarbeitungsschritt aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In der Regel behalten Sie auch die Anzahl der Wiederholungen bei, und wenn die Nachricht mehr als *n* Mal wiederholt wurde, wird sie gelöscht. Dies verhindert, dass eine Nachricht bei jeder Verarbeitung einen Anwendungsfehler auslöst.
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UpdateMessage":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -250,9 +318,19 @@ queue.UpdateMessage(message,
     MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 ```
 
+---
+
 ## <a name="de-queue-the-next-message"></a>Entfernen der nächsten Nachricht aus der Warteschlange
 
-Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie [GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet)aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **GetMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet)aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der Code ruft **DeleteMessage** direkt nach der Verarbeitung der Nachricht auf.
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Sie können eine Nachricht in zwei Schritten aus einer Warteschlange entfernen. Wenn Sie [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages)aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `ReceiveMessages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [DeleteMessage](/dotnet/api/azure.storage.queues.queueclient.deletemessage)aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessage":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy)aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `GetMessage` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy)aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -272,9 +350,17 @@ CloudQueueMessage retrievedMessage = queue.GetMessage();
 queue.DeleteMessage(retrievedMessage);
 ```
 
+---
+
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Verwenden des Async-Await-Musters mit allgemeinen Warteschlangenspeicher-APIs
 
 In diesem Beispiel wird veranschaulicht, wie das Async-Await-Muster mit allgemeinen Warteschlangenspeicher-APIs verwendet wird. Im Beispiel werden jeweils die asynchronen Versionen der angegebenen Methoden aufgerufen, wie am Suffix *Async* der einzelnen Methoden erkennbar. Wenn eine asynchrone Methode verwendet wird, hält das Async-Await-Muster die lokale Ausführung an, bis der Aufruf abgeschlossen ist. Durch dieses Verhalten kann der aktuelle Thread eine andere Aktion ausführen, wodurch Leistungsengpässe vermieden werden und die allgemeine Reaktionsfähigkeit der Anwendung verbessert wird. Weitere Informationen zur Verwendung des Async-Await-Musters in .NET finden Sie unter [Async und Await (C# und Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_AsyncQueue":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 // Create the queue if it doesn't already exist
@@ -303,9 +389,21 @@ await queue.DeleteMessageAsync(retrievedMessage);
 Console.WriteLine("Deleted message");
 ```
 
+---
+
 ## <a name="leverage-additional-options-for-de-queuing-messages"></a>Nutzen zusätzlicher Optionen für das Entfernen von Nachrichten aus der Warteschlange
 
-Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt. Im folgenden Codebeispiel wird [GetMessages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet) verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer **foreach** -Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von **GetMessages**alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
+Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt.
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Im folgenden Codebeispiel wird die [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages)-Methode verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `foreach`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von `ReceiveMessages` alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessages":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Im folgenden Codebeispiel wird [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy) verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `foreach`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von `GetMessages` alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -325,9 +423,19 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 }
 ```
 
+---
+
 ## <a name="get-the-queue-length"></a>Abrufen der Warteschlangenlänge
 
-Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode [FetchAttributes](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) fordert den Warteschlangendienst auf, die Warteschlangenattribute einschließlich der Nachrichtenanzahl abzurufen. Die [ApproximateMessageCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet)-Eigenschaft gibt den letzten von der **FetchAttributes**-Methode abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode [GetProperties](/dotnet/api/azure.storage.queues.queueclient.getproperties) fordert den Warteschlangendienst auf, die Warteschlangeneigenschaften einschließlich der Nachrichtenanzahl abzurufen. Die [ApproximateMessagesCount](/dotnet/api/azure.storage.queues.models.queueproperties.approximatemessagescount)-Eigenschaft enthält die ungefähre Anzahl der Nachrichten in der Warteschlange. Diese Anzahl ist nicht niedriger ist als die tatsächliche Anzahl der Nachrichten in der Warteschlange, sie kann jedoch höher sein.
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_GetQueueLength":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy) fordert den Warteschlangendienst auf, die Warteschlangenattribute einschließlich der Nachrichtenanzahl abzurufen. Die [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy)-Eigenschaft gibt den letzten von der `FetchAttributes`-Methode abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -344,15 +452,25 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 queue.FetchAttributes();
 
 // Retrieve the cached approximate message count.
-int? cachedMessageCount = queue.ApproximateMessageCount;
+int cachedMessageCount = queue.ApproximateMessageCount;
 
 // Display number of messages.
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
+---
+
 ## <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [Delete](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) für das Warteschlangenobjekt auf.
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [Delete](/dotnet/api/azure.storage.queues.queueclient.delete) für das Warteschlangenobjekt auf.
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DeleteQueue":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy) für das Warteschlangenobjekt auf.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -369,18 +487,20 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 queue.Delete();
 ```
 
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Vollständige Informationen zu verfügbaren APIs finden Sie in der Warteschlangendienst-Referenzdokumentation:
-  * [Referenz zur Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  * [REST-API-Referenz](https://msdn.microsoft.com/library/azure/dd179355)
-* Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)den geschriebenen Code so vereinfachen, dass er mit Azure Storage funktioniert.
-* Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
-  * [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) zum Speichern strukturierter Daten
-  * [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten
-  * Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von .NET (C#)](../../sql-database/sql-database-connect-query-dotnet-core.md).
+- Vollständige Informationen zu verfügbaren APIs finden Sie in der Warteschlangendienst-Referenzdokumentation:
+  - [Referenz zur Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+  - [REST-API-Referenz](https://msdn.microsoft.com/library/azure/dd179355)
+- Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)den geschriebenen Code so vereinfachen, dass er mit Azure Storage funktioniert.
+- Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
+  - [Erste Schritte mit Azure Table Storage mit .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) zum Speichern strukturierter Daten
+  - [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten
+  - Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von .NET (C#)](../../sql-database/sql-database-connect-query-dotnet-core.md).
 
 [Download and install the Azure SDK for .NET]: /develop/net/
 [.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409

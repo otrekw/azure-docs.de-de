@@ -4,22 +4,22 @@ description: Erfahren Sie mehr über die SQL-Syntax, und untersuchen Sie ein Bei
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587684"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005873"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM-Klausel in Azure Cosmos DB
 
 Die FROM-Klausel (`FROM <from_specification>`) ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Eine Abfrage wie `SELECT * FROM Families` erstellt eine Auflistung für den gesamten `Families`-Container. Sie können auch den Sonderbezeichner „ROOT“ für den Container anstelle des Containernamens verwenden.
 
-Die FROM-Klausel erzwingt die folgenden Regeln pro Abfrage:
+Die `FROM`-Klausel erzwingt die folgenden Regeln pro Abfrage:
 
-* Der Container kann Aliase enthalten, z.B. `SELECT f.id FROM Families AS f` oder einfach `SELECT f.id FROM Families f`. Hier ist `f` der Alias für `Families`. AS ist ein optionales Schlüsselwort, das als [Alias](sql-query-aliasing.md) für den Bezeichner fungiert.  
+* Der Container kann Aliase enthalten, z.B. `SELECT f.id FROM Families AS f` oder einfach `SELECT f.id FROM Families f`. Hier ist `f` der Alias für `Families`. AS ist ein optionales Schlüsselwort, das als [Alias](sql-query-working-with-json.md#aliasing) für den Bezeichner fungiert.  
 
 * Nach der Aliasverwendung kann der ursprüngliche Name der Quelle nicht mehr gebunden werden. `SELECT Families.id FROM Families f` ist beispielsweise syntaktisch ungültig, da der Bezeichner `Families` durch einen Alias ersetzt wurde und nicht mehr aufgelöst werden kann.  
 
@@ -30,15 +30,15 @@ Die FROM-Klausel erzwingt die folgenden Regeln pro Abfrage:
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -51,9 +51,9 @@ FROM <from_specification>
   
   Gibt eine Datenquelle mit oder ohne Alias an. Wenn der Alias nicht angegeben wird, wird er mithilfe der folgenden Regeln aus dem `<container_expression>` abgeleitet:  
   
-  -  Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
+-  Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
   
-  -  Wenn der Ausdruck `<container_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
+-  Wenn der Ausdruck `<container_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
   
 - AS `input_alias`  
   
@@ -99,9 +99,9 @@ Wenn ein Containerausdruck auf Eigenschaften oder Arrayelemente zugreift, und de
   
 Ein Containerausdruck kann container- oder dokumentbezogen sein:  
   
--   Ein Ausdruck ist containerbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks entweder „ROOT“ oder `container_name` lautet. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die direkt aus dem Container abgerufen werden, und ist nicht von der Verarbeitung anderer Containerausdrücke abhängig.  
+- Ein Ausdruck ist containerbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks entweder „ROOT“ oder `container_name` lautet. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die direkt aus dem Container abgerufen werden, und ist nicht von der Verarbeitung anderer Containerausdrücke abhängig.  
   
--   Ein Ausdruck ist dokumentbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks `input_alias` ist und zuvor in der Abfrage eingeführt wurde. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die durch das Auswerten des Containerausdrucks in den einzelnen Dokumenten gewonnen werden, die zu dem Satz gehören, der dem Aliascontainer zugeordnet ist.  Das Resultset ist eine Vereinigung von Sätzen, die durch die Auswertung des Containerausdrucks in jedem Dokument im zugrunde liegenden Satz gewonnen werden. 
+- Ein Ausdruck ist dokumentbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks `input_alias` ist und zuvor in der Abfrage eingeführt wurde. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die durch das Auswerten des Containerausdrucks in den einzelnen Dokumenten gewonnen werden, die zu dem Satz gehören, der dem Aliascontainer zugeordnet ist. Das Resultset ist eine Vereinigung von Sätzen, die durch die Auswertung des Containerausdrucks in jedem Dokument im zugrunde liegenden Satz gewonnen werden.
 
 ## <a name="examples"></a>Beispiele
 

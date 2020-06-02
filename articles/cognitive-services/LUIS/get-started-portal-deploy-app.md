@@ -3,12 +3,12 @@ title: 'Schnellstart: Bereitstellen einer App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine App bereitstellen, indem Sie eine Vorhersageendpunktressource erstellen, die Ressource zuweisen, ein Training durchführen und die App veröffentlichen.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585069"
+ms.locfileid: "83653230"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -40,7 +40,8 @@ Jedes Mal, wenn Sie eine neue Dokumenterstellungs- oder Vorhersageabfrageressour
 
 1. Wählen Sie Ihren Mandanten, Ihr Abonnement und den Namen Ihrer Ressource aus. Wählen Sie **Ressource zuweisen** aus.
 
-   ![Zuweisen einer Ressource zu Ihrer App](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![Zuweisen einer Ressource zu Ihrer App](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Führen Sie die gleichen Schritte aus, um Ihrer App den Erstellungsschlüssel hinzuzufügen.
 
@@ -51,11 +52,11 @@ Jedes Mal, wenn Sie eine neue Dokumenterstellungs- oder Vorhersageabfrageressour
 
 ## <a name="train-the-app"></a>Trainieren der App
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+Wenn Sie die App seit dem letzten Training geändert haben, [trainieren](get-started-portal-build-app.md) Sie die App.
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>Veröffentlichen der App für den Vorhersageendpunkt
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Anforderung für Vorhersageendpunkt
 

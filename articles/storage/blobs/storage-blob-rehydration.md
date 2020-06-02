@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684101"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402664"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Aktivieren von Blobdaten aus der Archivzugriffsebene
 
@@ -34,6 +34,9 @@ Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline
 Wenn Sie das Archivblob nicht aktivieren möchten, können Sie einen Vorgang vom Typ [Blob kopieren](https://docs.microsoft.com/rest/api/storageservices/copy-blob) ausführen. Das ursprüngliche Blob bleibt unverändert im Archiv, während ein neues Blobs auf der heißen oder kalten Onlineebene erstellt wird, mit dem Sie arbeiten können. Beim Vorgang „Blob kopieren“ können Sie auch die optionale Eigenschaft *x-ms-rehydrate-priority* auf „Standard“ oder „Hoch“ festlegen, um die Priorität anzugeben, mit der die Blobkopie erstellt werden soll.
 
 Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungspriorität mehrere Stunden dauern. Im Hintergrund liest der Vorgang **Blob kopieren** das Archivblob, um ein neues Onlineblob auf der ausgewählten Zielebene zu erstellen. Das neue Blob ist beim Auflisten von Blobs möglicherweise sichtbar, aber die Daten sind erst verfügbar, wenn der Lesevorgang aus dem Quellarchivblob abgeschlossen ist und Daten in das neue Onlinezielblob geschrieben werden. Das neue Blob ist eine unabhängige Kopie, und jegliche Änderungen oder Löschungen wirken sich nicht auf das Quellarchivblob aus.
+
+> [!IMPORTANT]
+> Löschen Sie das Quellblob erst, nachdem der Kopiervorgang am Ziel erfolgreich abgeschlossen wurde. Wenn das Quellblob gelöscht wird, wird das Kopieren des Zielblobs möglicherweise nicht beendet, und das Blob ist leer. Sie können den *x-ms-copy-status* überprüfen, um den Status des Kopiervorgangs zu bestimmen.
 
 Archivblobs können nur auf Onlinezielebenen innerhalb desselben Speicherkontos kopiert werden. Das Kopieren eines Archivblobs in ein anderes Archivblob wird nicht unterstützt. In der folgenden Tabelle sind die Funktionen von CopyBlob angegeben.
 

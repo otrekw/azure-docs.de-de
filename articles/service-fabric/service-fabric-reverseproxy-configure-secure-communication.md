@@ -1,23 +1,21 @@
 ---
 title: 'Azure Service Fabric-Reverseproxy: sichere Kommunikation'
 description: Konfigurieren eines Reverseproxys für eine sichere End-to-End-Kommunikation in einer Azure Service Fabric-Anwendung.
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617107"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858524"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
 In diesem Artikel wird erläutert, wie eine sichere Verbindung zwischen dem Reverseproxy und Diensten hergestellt und so ein sicherer End-to-End-Kanal ermöglicht wird. Weitere Informationen zum Reverseproxy finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md).
 
-Die Herstellung einer Verbindung mit sicheren Diensten wird nur unterstützt, wenn der Reverseproxy für das Lauschen von HTTPS konfiguriert ist. In diesem Artikel wird davon ausgegangen, dass dies der Fall ist.
-Informationen zum Konfigurieren des Reverseproxys in Service Fabric finden Sie unter [Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md) (Reverseproxy-Setup in Azure Service Fabric).
+> [!IMPORTANT]
+> Die Herstellung einer Verbindung mit sicheren Diensten wird nur unterstützt, wenn der Reverseproxy für das Lauschen von HTTPS konfiguriert ist. In diesem Artikel wird davon ausgegangen, dass dies der Fall ist. Informationen zum Konfigurieren des Reverseproxys in Service Fabric finden Sie unter [Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md) (Reverseproxy-Setup in Azure Service Fabric).
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Herstellung einer sicheren Verbindung zwischen dem Reverseproxy und Diensten 
 
@@ -183,7 +181,7 @@ Dann leitet er die Daten des Clientzertifikats in einem benutzerdefinierten HTTP
 Wenn der Client kein Zertifikat bereitstellt, leitet der Reverseproxy einen leeren Header weiter. Die weitere Verarbeitung erfolgt durch den Dienst.
 
 > [!NOTE]
-> Der Reverseproxy führt lediglich die Weiterleitung durch. Er führt keine Überprüfung des Clientzertifikats durch.
+> Der Reverseproxy fungiert nur als Weiterleitungsdienst. Er führt keine Überprüfung des Clientzertifikats durch.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79296726"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115029"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
@@ -61,6 +61,10 @@ Sie können ein Lab in Azure Lab Services einrichten, um eine Einführungsklasse
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln der Entwicklung mobiler Anwendungen mit Android Studio](class-type-mobile-dev-android-studio.md).
 
+## <a name="big-data-analytics"></a>Big Data-Analyse
+Sie können für einen Big Data-Analysekurs ein Lab einrichten. Bei dieser Art von Kurs lernen die Kursteilnehmer, mit großen Datenmengen umzugehen und maschinelle und statistische Lernalgorithmen anzuwenden, um Erkenntnisse aus Daten zu gewinnen. Ein wichtiges Ziel für Kursteilnehmer ist es, den Umgang mit Datenanalysetools zu erlernen, z. B. mit dem Open-Source-Softwarepaket von Apache Hadoop, das Tools für die Speicherung, Verwaltung und Verarbeitung von Big Data bereitstellt. 
+
+Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs für Big Data-Analysen mithilfe der Docker-Bereitstellung von Hortonworks Data Platform](class-type-big-data-analytics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372002"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871262"
 ---
 Verwenden Sie die LUIS-Erstellungsclientbibliothek (Language Understanding) für Python für Folgendes:
 
@@ -28,53 +28,12 @@ Verwenden Sie die LUIS-Erstellungsclientbibliothek (Language Understanding) für
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Konto für das LUIS-Portal (Language Understanding): [Erstellen Sie ein kostenloses Konto.](https://www.luis.ai)
-* [Python 3.x](https://www.python.org/)
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Die aktuelle Version von [Python 3.x](https://www.python.org/).
+* Sobald Sie über Ihr Azure-Abonnement verfügen, [erstellen Sie eine Language Understanding-Erstellungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) im Azure-Portal, um an Ihren Schlüssel und Ihren Endpunkt zu gelangen. Warten Sie ihre Bereitstellung ab, und klicken Sie auf die Schaltfläche **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen [erstellten](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) Ressource, um Ihre Anwendung mit der Language Understanding-Erstellung zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren.
 
 ## <a name="setting-up"></a>Einrichten
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>Abrufen Ihres LUIS-Startschlüssels (Language Understanding)
-
-Sie rufen Ihren [Startschlüssel](../luis-how-to-azure-subscription.md#starter-key) ab, indem Sie eine LUIS-Erstellungsressource erstellen. Bewahren Sie den Schlüssel und die Region des Schlüssels für den nächsten Schritt auf.
-
-### <a name="create-an-environment-variable"></a>Erstellen einer Umgebungsvariablen
-
-Erstellen Sie unter Verwendung des Schlüssels und der Region für den Schlüssel zwei Umgebungsvariablen für die Authentifizierung:
-
-* `LUIS_AUTHORING_KEY`: Der Ressourcenschlüssel zum Authentifizieren Ihrer Anforderungen.
-* `LUIS_REGION`: Region, die Ihrem Schlüssel zugeordnet ist. Beispiel: `westus`.
-
-Führen Sie die Schritte für Ihr Betriebssystem aus:
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-Starten Sie das Konsolenfenster neu, nachdem Sie die Umgebungsvariable hinzugefügt haben.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Bearbeiten Sie `.bash_profile`, und fügen Sie die Umgebungsvariable hinzu:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source .bash_profile` aus, damit die Änderungen wirksam werden.
-***
 
 ### <a name="install-the-python-library-for-luis"></a>Installieren der Python-Bibliothek für LUIS
 

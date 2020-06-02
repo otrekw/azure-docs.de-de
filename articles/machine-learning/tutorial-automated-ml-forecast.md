@@ -1,5 +1,5 @@
 ---
-title: Vorhersagen der Bike-Sharing-Nachfrage mithilfe eines Experiments mit automatisiertem maschinellem Lernen
+title: 'Tutorial: Bedarfsvorhersage und AutoML'
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie ein Nachfragevorhersagemodell mit automatisiertem maschinellen Lernen in Azure Machine Learning Studio trainieren und bereitstellen.
 services: machine-learning
@@ -9,24 +9,27 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77088324"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656572"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Tutorial: Vorhersagen der Bike-Sharing-Nachfrage mit automatisiertem maschinellem Lernen
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In diesem Tutorial wird automatisiertes maschinelles Lernen (automatisiertes ML) in Azure Machine Learning Studio verwendet, um ein Zeitreihenvorhersagemodell zur Vorhersage der Mietnachfrage für einen Bike-Sharing-Dienst zu erstellen.
+
+Ein Beispiel für ein Klassifizierungsmodell finden Sie in [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen und Laden eines Datasets
 > * Konfigurieren und Ausführen eines Experiments mit automatisiertem maschinellem Lernen
+> * Angeben der Vorhersageeinstellungen
 > * Untersuchen der Ergebnisse des Experiments
 > * Bereitstellen des besten Modells
 
@@ -129,7 +132,7 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
 
 1. Wählen Sie **date** als **Zeitspalte** aus, und lassen Sie **Group by column(s)** (Nach Spalte(n) gruppieren) leer. 
 
-    1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
+    1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern und Einstellungen für die Vorhersage angeben. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
   
         Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
@@ -138,7 +141,7 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
         Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
         „Explain best model (preview)“ (Bestes Modell erläutern (Vorschau))| Zeigt automatisch die Erklärbarkeit für das beste Modell an, das durch automatisiertes ML erstellt wurde.| Aktivieren
         Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| „Extreme Random Trees“ (Extreme Zufallsstrukturen)
-        Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Forecast horizon**_ (Vorhersagehorizont): Zeitspanne für die Zukunftsprognose <br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_ : Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen |Vorhersagehorizont: 14 <br> Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
+        Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Forecast horizon**_ (Vorhersagehorizont): Zeitspanne für die Zukunftsprognose <br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_: Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen |Vorhersagehorizont: 14 <br> Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
         Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 3 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
         Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 5
         Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 6
@@ -224,6 +227,10 @@ Im folgenden Artikel erfahren Sie, wie Sie ein von Power BI unterstütztes Sche
 > [!div class="nextstepaction"]
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
++ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).
++ Weitere Informationen zur [Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization)
++ Weitere Informationen zur [Datenprofilerstellung](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]
 > Dieses Bike-Sharing-Dataset wurde für das Tutorial angepasst. Dieses Dataset wurde im Rahmen eines [Kaggle-Wettbewerbs](https://www.kaggle.com/c/bike-sharing-demand/data) zur Verfügung gestellt und war ursprünglich über [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) verfügbar. Es ist auch in der [Machine Learning-Datenbank von UCI](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset) enthalten.<br><br>

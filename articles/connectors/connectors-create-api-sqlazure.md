@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit SQL Server oder einer Azure SQL-Datenbank
 description: Automatisieren von Aufgaben für SQL-Datenbanken lokal oder in der Cloud mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789193"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402598"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für SQL Server oder Azure SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -129,6 +129,20 @@ Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Co
   * [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT - ORDER BY-Klausel](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Behandeln dynamischer Massendaten
+
+Wenn Sie eine gespeicherte Prozedur im SQL Server-Connector aufzurufen, ist die zurückgegebene Ausgabe manchmal dynamisch. Führen Sie in diesem Szenario die folgenden Schritte aus:
+
+1. Öffnen Sie den **Logik-App-Designer**.
+1. Führen Sie einen Testlauf Ihrer Logik-App aus, um das Ausgabeformat anzuzeigen. Kopieren Sie die Beispielausgabe.
+1. Wählen Sie im Designer unter der Aktion, in der die gespeicherte Prozedur aufgerufen wird, **Neuer Schritt** aus.
+1. Suchen Sie unter **Aktion auswählen** nach der Aktion [**JSON analysieren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), und wählen Sie sie aus.
+1. Wählen Sie in der Aktion **Parse JSON** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden**.
+1. Fügen Sie im Fenster **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
+1. Wenn Sie eine Fehlermeldung erhalten, dass Logic Apps kein Schema generieren kann, überprüfen Sie, ob die Syntax der Beispielausgabe richtig formatiert ist. Wenn Sie das Schema noch immer nicht generieren können, geben Sie es manuell in das Feld **Schema** ein.
+1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+1. Wenn Sie auf die JSON-Inhaltseigenschaften zugreifen möchten, verwenden Sie die Datentoken, die in der Liste mit den dynamischen Inhalten unter der [Aktion **JSON analysieren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) angezeigt werden.
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

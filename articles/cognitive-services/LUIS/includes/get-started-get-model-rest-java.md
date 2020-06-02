@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 7d1915025c31a0c201da87b1d4bde9b52659e5e3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368457"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655484"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure Language Understanding: Ressourcenschlüssel mit 32 Zeichen und Endpunkt-URL für die Erstellung. Führen Sie die Erstellung mit dem [Azure-Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder der [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) durch.
-* Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
-* Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
+* Importieren Sie die [Pizza](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json)-App aus dem GitHub-Repository `Azure-Samples/cognitive-services-sample-data-files`.
+* Die LUIS-Anwendungs-ID für die importierte Pizza-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
+* Die Versions-ID der Anwendung, die die Äußerungen empfängt.
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) oder Ihre bevorzugte IDE
 
@@ -30,7 +30,9 @@ ms.locfileid: "77368457"
 
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
 
-1. Erstellen Sie ein Unterverzeichnis mit dem Namen `lib`, und kopieren Sie die folgenden Java-Bibliotheken hinein:
+1. Erstellen Sie einen neuen Ordner für die Aufnahme Ihrer Java-Projekte, z. B. `java-model-with-rest`.
+
+1. Erstellen Sie ein Unterverzeichnis mit dem Namen `lib`, und kopieren Sie die folgenden Java-Bibliotheken in das `lib`-Unterverzeichnis:
 
     * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
     * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
@@ -38,121 +40,204 @@ ms.locfileid: "77368457"
 
 1. Erstellen Sie eine neue Datei mit dem Namen `Model.java`. Fügen Sie den folgenden Code hinzu:
 
+```java
+import java.io.*;
+import java.net.URI;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
-    ```java
-    import java.io.*;
-    import java.net.URI;
-    import org.apache.http.HttpEntity;
-    import org.apache.http.HttpResponse;
-    import org.apache.http.client.HttpClient;
-    import org.apache.http.client.methods.HttpGet;
-    import org.apache.http.client.methods.HttpPost;
-    import org.apache.http.client.utils.URIBuilder;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
+// To compile, execute this command at the console:
+//      Windows: javac -cp ";lib/*" Model.java
+//      macOs: javac -cp ":lib/*" Model.java
+//      Linux: javac -cp ":lib/*" Model.java
 
-    //javac -cp ":lib/*" Model.java
-    //java -cp ":lib/*" Model
+// To run, execute this command at the console:
+//      Windows: java -cp ";lib/*" Model
+//      macOs: java -cp ":lib/*" Model
+//      Linux: java -cp ":lib/*" Model
 
-    public class Model {
-
-        public static void main(String[] args)
+public class Model
+{
+    public static void main(String[] args)
+    {
+        try
         {
-            try
+            //////////
+            // Values to modify.
+
+            // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
+            String AppId = "YOUR-APP-ID";
+
+            // YOUR-AUTHORING-KEY: Your LUIS authoring key, 32 character value.
+            String Key = "YOUR-AUTHORING-KEY";
+
+            // YOUR-AUTHORING-ENDPOINT: Replace this with your authoring key endpoint.
+            // For example, "https://your-resource-name.api.cognitive.microsoft.com/"
+            String Endpoint = "YOUR-AUTHORING-ENDPOINT";
+
+            // NOTE: Replace this your version number. The Pizza app uses a version number of "0.1".
+            String Version = "0.1";
+            //////////
+
+            // The list of utterances to add, in JSON format.
+            String Utterances = "[{'text': 'order a pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 12}]}, {'text': 'order a large pepperoni pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'PizzaType', 'startCharIndex': 14, 'endCharIndex': 28}, {'entityName': 'Size', 'startCharIndex': 8, 'endCharIndex': 12}]}, {'text': 'I want two large pepperoni pizzas on thin crust', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'PizzaType', 'startCharIndex': 17, 'endCharIndex': 32}, {'entityName': 'Size', 'startCharIndex': 11, 'endCharIndex': 15}, {'entityName': 'Quantity', 'startCharIndex': 7, 'endCharIndex': 9}, {'entityName': 'Crust', 'startCharIndex': 37, 'endCharIndex': 46}]}]";
+
+            // Create the URLs for uploading example utterances and for training.
+            URIBuilder addUtteranceURL = new URIBuilder(Endpoint + "luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/examples");
+            URIBuilder trainURL = new URIBuilder(Endpoint + "luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/train");
+            URI addUtterancesURI = addUtteranceURL.build();
+            URI trainURI = trainURL.build();
+
+
+            // Add the utterances.
+
+            // Create the request.
+            HttpClient addUtterancesClient = HttpClients.createDefault();
+            HttpPost addUtterancesRequest = new HttpPost(addUtterancesURI);
+
+            // Add the headers.
+            addUtterancesRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
+            addUtterancesRequest.setHeader("Content-type","application/json");
+
+            // Add the body.
+            StringEntity stringEntity = new StringEntity(Utterances);
+            addUtterancesRequest.setEntity(stringEntity);
+
+            // Execute the request and obtain the response.
+            HttpResponse addUtterancesResponse = addUtterancesClient.execute(addUtterancesRequest);
+            HttpEntity addUtterancesEntity = addUtterancesResponse.getEntity();
+
+            // Print the response on the console.
+            if (addUtterancesEntity != null)
             {
-
-                // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
-                String AppId = "YOUR-APP-ID";
-
-                // Add your endpoint key
-                String Key = "YOUR-KEY";
-
-                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
-                String Endpoint = "YOUR-ENDPOINT";
-
-                String Utterance = "[{'text': 'go to Seattle today','intentName': 'BookFlight','entityLabels': [{'entityName': 'Location::LocationTo',"
-                    + "'startCharIndex': 6,'endCharIndex': 12}]},{'text': 'a barking dog is annoying','intentName': 'None','entityLabels': []}]";
-
-                String Version = "1.0";
-
-                // Begin endpoint URL string building
-                URIBuilder addUtteranceURL = new URIBuilder("https://" + Endpoint + "/luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/examples");
-                URIBuilder trainURL = new URIBuilder("https://" + Endpoint + "/luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/train");
-
-                // create URL from string
-                URI addUtterancesURI = addUtteranceURL.build();
-                URI trainURI = trainURL.build();
-
-                // add utterances POST
-                HttpClient addUtterancesClient = HttpClients.createDefault();
-                HttpPost addutterancesRequest = new HttpPost(addUtterancesURI);
-                addutterancesRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                addutterancesRequest.setHeader("Content-type","application/json");
-                HttpResponse addutterancesResponse = addUtterancesClient.execute(addutterancesRequest);
-                HttpEntity addutterancesEntity = addutterancesResponse.getEntity();
-                if (addutterancesEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(addutterancesEntity));
-                }
-
-                // train POST
-                HttpClient trainClient = HttpClients.createDefault();
-                HttpPost trainRequest = new HttpPost(trainURI);
-                trainRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                trainRequest.setHeader("Content-type","application/json");
-                HttpResponse trainResponse = trainClient.execute(trainRequest);
-                HttpEntity trainEntity = trainResponse.getEntity();
-                if (trainEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(trainEntity));
-                }
-
-                // training status GET
-                HttpClient trainStatusClient = HttpClients.createDefault();
-                HttpGet trainStatusRequest = new HttpGet(trainURI);
-                trainStatusRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                trainStatusRequest.setHeader("Content-type","application/json");
-                HttpResponse trainStatusResponse = trainStatusClient.execute(trainStatusRequest);
-                HttpEntity trainStatusEntity = trainStatusResponse.getEntity();
-                if (trainStatusEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(trainStatusEntity));
-                }
+                System.out.println(EntityUtils.toString(addUtterancesEntity));
             }
 
-            catch (Exception e)
+
+            // Train the model.
+
+            // Create the request.
+            HttpClient trainClient = HttpClients.createDefault();
+            HttpPost trainRequest = new HttpPost(trainURI);
+
+            // Add the headers.
+            trainRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
+            trainRequest.setHeader("Content-type","application/json");
+
+            // Execute the request and obtain the response.
+            HttpResponse trainResponse = trainClient.execute(trainRequest);
+            HttpEntity trainEntity = trainResponse.getEntity();
+
+            // Print the response on the console.
+            if (trainEntity != null)
             {
-                System.out.println(e.getMessage());
+                System.out.println(EntityUtils.toString(trainEntity));
+            }
+
+
+            // Get the training status.
+
+
+            // Create the request.
+            HttpClient trainStatusClient = HttpClients.createDefault();
+            HttpGet trainStatusRequest = new HttpGet(trainURI);
+
+            // Add the headers.
+            trainStatusRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
+            trainStatusRequest.setHeader("Content-type","application/json");
+
+            // Execute the request and obtain the response.
+            HttpResponse trainStatusResponse = trainStatusClient.execute(trainStatusRequest);
+            HttpEntity trainStatusEntity = trainStatusResponse.getEntity();
+
+            // Print the response on the console.
+            if (trainStatusEntity != null)
+            {
+                System.out.println(EntityUtils.toString(trainStatusEntity));
             }
         }
+
+        // Display errors if they occur.
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
-    ```
+}
+```
 
 1. Ersetzen Sie die Werte, die mit `YOUR-` beginnen, durch Ihre eigenen Werte.
 
     |Information|Zweck|
     |--|--|
-    |`YOUR-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
-    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
     |`YOUR-APP-ID`| Ihre LUIS-App-ID. |
+    |`YOUR-AUTHORING-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
+    |`YOUR-AUTHORING-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
 
     Zugewiesene Schlüssel und Ressourcen werden im LUIS-Portal auf der Seite **Azure-Ressourcen** im Abschnitt „Verwalten“ angezeigt. Die App-ID wird auf der Seite **Anwendungseinstellungen** ebenfalls im Abschnitt „Verwalten“ angezeigt.
 
-1. Geben Sie im Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Java-Datei zu kompilieren:
+1. Geben Sie im Verzeichnis, in dem Sie die `Model.java`-Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Java-Datei zu kompilieren:
+
+    ::: zone pivot="client-operating-system-linux"
 
     ```console
     javac -cp ":lib/*" Model.java
     ```
 
+    ::: zone-end
+
+    ::: zone pivot="client-operating-system-macos"
+
+    ```console
+    javac -cp ":lib/*" Model.java
+    ```
+
+    ::: zone-end
+
+    ::: zone pivot="client-operating-system-windows"
+
+    ```console
+    javac -cp ";lib/*" Model.java
+    ```
+
+    ::: zone-end
+
 1. Führen Sie die Java-Anwendung über die Befehlszeile aus, indem Sie den folgenden Text an der Eingabeaufforderung eingeben:
+
+    ::: zone pivot="client-operating-system-linux"
 
     ```console
     java -cp ":lib/*" Model
     ```
 
+    ::: zone-end
+
+    ::: zone pivot="client-operating-system-macos"
+
+    ```console
+    java -cp ":lib/*" Model
+    ```
+
+    ::: zone-end
+
+    ::: zone pivot="client-operating-system-windows"
+
+    ```console
+    java -cp ";lib/*" Model
+    ```
+
+    ::: zone-end
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
+Löschen Sie den Projektordner aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

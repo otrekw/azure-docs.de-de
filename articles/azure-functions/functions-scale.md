@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985880"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125790"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -109,7 +109,7 @@ Auch bei aktiviertem Always On wird das Ausführungstimeout für einzelne Funkti
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Ermitteln des Hostingplans einer vorhandenen Anwendung
 
-Wenn Sie den von Ihrer Funktions-App verwendeten Hostingplan ermitteln möchten, sehen Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte **Übersicht** für die Funktions-App unter **App Service-Plan/-Tarif** nach. Bei App Service-Plänen ist auch der Tarif angegeben.
+Wenn Sie den von Ihrer Funktions-App verwendeten Hostingplan ermitteln möchten, sehen Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte **Übersicht** für die Funktions-App unter **App Service-Plan** nach. Um den Tarif anzuzeigen, wählen Sie den Namen des **App Service-Plans** aus, und wählen Sie dann **Eigenschaften** im linken Bereich aus.
 
 ![Anzeigen des Skalierungsplans im Portal](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Wenn die Ausgabe dieses Befehls `dynamic` lautet, ist Ihre Funktions-App im Verb
 
 ## <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 
-Bei jedem Plan erfordert eine Funktions-App ein allgemeines Azure Storage-Konto, das Azure-Blob-, Warteschlangen-, Datei- und Tabellenspeicher unterstützt. Der Grund dafür ist, dass Functions bei Vorgängen wie dem Verwalten von Triggern und Protokollieren von Funktionsausführungen auf Azure Storage basiert, einige Speicherkonten jedoch keine Warteschlangen und Tabellen unterstützen. Diese Konten, zu denen reine Blobspeicherkonten (einschließlich Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation gehören, werden aus den vorhandenen Auswahlmöglichkeiten für **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
+Bei jedem Plan erfordert eine Funktions-App ein allgemeines Azure Storage-Konto, das Azure-Blob-, Warteschlangen-, Datei- und Tabellenspeicher unterstützt. Der Grund dafür ist, dass Azure Functions bei Vorgängen wie dem Verwalten von Triggern und Protokollieren von Funktionsausführungen auf Azure Storage basiert, einige Speicherkonten jedoch keine Warteschlangen und Tabellen unterstützen. Diese Konten, zu denen reine Blobspeicherkonten (einschließlich Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation gehören, werden aus den vorhandenen Auswahlmöglichkeiten für **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
 
 Dasselbe Speicherkonto, das von ihrer Funktions-App verwendet wird, kann auch von Ihren Triggern und Bindungen verwendet werden, um Ihre Anwendungsdaten zu speichern. Für speicherintensive Vorgänge sollten Sie jedoch ein gesondertes Speicherkonto verwenden.  
 

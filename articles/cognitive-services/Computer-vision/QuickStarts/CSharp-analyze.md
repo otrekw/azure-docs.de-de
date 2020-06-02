@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d8002530120eee4a3613f2310c4a59cc18612cad
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ed003e83d8343d2da0f1b11c6d82581b76d3168d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405162"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679883"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und C#
 
@@ -33,13 +33,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie die folgenden Schritte durch, um das Beispiel in Visual Studio zu erstellen:
 
-1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage (.NET Framework) eine neue Visual Studio-Projektmappe in Visual Studio.
+1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage (.NET Core Framework) eine neue Visual Studio-Projektmappe/ein neues Visual Studio-Projekt in Visual Studio.
 1. Installieren Sie das NuGet-Paket „Newtonsoft.Json“.
     1. Klicken Sie im Menü auf **Werkzeuge**, wählen Sie **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten** aus.
-    1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Newtonsoft.Json“ in das Feld **Suchen** ein.
-    1. Wählen Sie **Newtonsoft.Json** aus, wenn das Paket angezeigt wird, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
+    1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Newtonsoft.Json“ in das Feld **Suchen** ein (sollte es nicht bereits angezeigt werden).
+    1. Wählen Sie **Newtonsoft.Json** aus, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
+1. Kopieren Sie den Beispielcode, und fügen Sie ihn in die Datei „Program.cs“ ein. Passen Sie den Namen des Namespace an, wenn er von dem abweicht, den Sie erstellt haben.
+1. Fügen Sie Ihrem Ordner „bin/debug/netcoreappX.X“ ein Bild Ihr Wahl hinzu, und fügen Sie dann den Namen des Bilds (mit Erweiterung) der Variablen ‚imageFilePath‘ hinzu.
 1. Führen Sie das Programm aus.
-1. Geben Sie an der Eingabeaufforderung den Pfad zu einem lokalen Bild ein.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,26 +60,18 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Analyze method endpoint
-        static string uriBase = endpoint + "vision/v2.1/analyze";
+        static string uriBase = endpoint + "vision/v3.0/analyze";
 
-        static async Task Main()
+        // Image you want analyzed (add to your bin/debug/netcoreappX.X folder)
+        // For sample images, download one from here (png or jpg):
+        // https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
+        static string imageFilePath = @"my-sample-image";
+
+        public static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Analyze an image:");
-            Console.Write(
-                "Enter the path to the image you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
+            // Call the API
+            MakeAnalysisRequest(imageFilePath).Wait();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait for the results to appear.\n");
-                await MakeAnalysisRequest(imageFilePath);
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }
@@ -167,7 +160,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwendung analysiert eine Antwort und zeigt diese bei erfolgreicher Ausführung im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
+In JSON wird (basierend auf Ihrem eigenen verwendeten Bild) im Konsolenfenster eine Erfolgsmeldung ausgegeben, ähnlich wie im folgenden Beispiel:
 
 ```json
 {

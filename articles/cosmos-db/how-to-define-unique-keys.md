@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74872110"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871006"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
 
@@ -39,7 +39,9 @@ In diesem Artikel sind die verschiedenen Methoden zum Definieren von [eindeutige
 
 Informationen zum Erstellen eines Containers mit eindeutigen Schlüsseln finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit einer Richtlinie für einen eindeutigen Schlüssel und mit einer Gültigkeitsdauer](manage-with-powershell.md#create-container-unique-key-ttl).
 
-## <a name="use-the-net-sdk-v2"></a>Verwenden des .NET SDK v2
+## <a name="use-the-net-sdk"></a>Verwenden des .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 Wenn ein neuer Container mit dem [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) erstellt wird, kann ein `UniqueKeyPolicy`-Objekt verwendet werden, um Einschränkungen für eindeutige Schlüssel zu definieren.
 
@@ -59,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>Verwenden des .NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 Wenn Sie einen neuen Container mit dem [.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) erstellen, bietet die Fluent-API des SDK eine präzise und nachvollziehbare Möglichkeit zum Deklarieren eindeutiger Schlüssel.
 
@@ -75,6 +77,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Verwenden des Java SDK
 

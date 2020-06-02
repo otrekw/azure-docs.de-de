@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233929"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869915"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -371,7 +371,9 @@ Informationen zum Erstellen eines Containers mit einer benutzerdefinierten Index
 
 Informationen zum Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie finden Sie im Thema zum [Erstellen eines Containers mit einer benutzerdefinierten Indexrichtlinie mithilfe von PowerShell](manage-with-powershell.md#create-container-custom-index).
 
-## <a name="use-the-net-sdk-v2"></a>Verwenden des .NET SDK v2
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> Verwenden des .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 Das `DocumentCollection`-Objekt aus dem [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) macht eine `IndexingPolicy`-Eigenschaft verfügbar, mit der Sie `IndexingMode` ändern sowie `IncludedPaths` und `ExcludedPaths` hinzufügen oder entfernen können.
 
@@ -401,7 +403,7 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>Verwenden des .NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 Das `ContainerProperties`-Objekt aus dem [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-dotnet.md)) macht eine `IndexingPolicy`-Eigenschaft verfügbar, mit der Sie `IndexingMode` ändern sowie `IncludedPaths` und `ExcludedPaths` hinzufügen oder entfernen können.
 
@@ -457,6 +459,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Verwenden des Java SDK
 
@@ -610,7 +613,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>Verwenden des Python SDK Version 3
+## <a name="use-the-python-sdk"></a>Verwenden des Python SDK
+
+# <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
 
 Bei Verwendung des [Python SDK V3](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-python.md)) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
 
@@ -674,7 +679,7 @@ Aktualisieren des Containers mit Änderungen
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>Verwenden des Python SDK Version 4
+# <a name="python-sdk-v4"></a>[Python SDK V4](#tab/pythonv4)
 
 Bei Verwendung des [Python SDK V4](https://pypi.org/project/azure-cosmos/) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
 
@@ -739,6 +744,7 @@ Aktualisieren des Containers mit Änderungen
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Fehlerreferenz für Integritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289140"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978313"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -58,7 +58,7 @@ Dieser Fehler weist darauf hin, dass das DNS für den angegebenen Registrierungs
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Dieser Fehler weist darauf hin, dass der Abfrageendpunkt für die angegebene Registrierung mit dem HTTP-Status 403 Forbidden geantwortet hat. Dieser Fehler weist darauf hin, dass Benutzer keinen Zugriff auf die Registrierung besitzen, wahrscheinlich aufgrund der Konfiguration eines virtuellen Netzwerks. Führen Sie `az acr show --query networkRuleSet --name <registry>` aus, um die zurzeit konfigurierten Firewallregeln anzuzeigen.
+Dieser Fehler weist darauf hin, dass der Abfrageendpunkt für die angegebene Registrierung mit dem HTTP-Status 403 Forbidden geantwortet hat. Dieser Fehler weist darauf hin, dass Benutzer keinen Zugriff auf die Registrierung besitzen, wahrscheinlich aufgrund der Konfiguration eines virtuellen Netzwerks oder weil der Zugriff auf den öffentlichen Endpunkt der Registrierung unzulässig ist. Führen Sie `az acr show --query networkRuleSet --name <registry>` aus, um die zurzeit konfigurierten Firewallregeln anzuzeigen.
 
 *Mögliche Lösungen*: Entfernen Sie Regeln für virtuelle Netzwerke, oder fügen Sie die aktuelle IP-Clientadresse der Zulassungsliste hinzu.
 

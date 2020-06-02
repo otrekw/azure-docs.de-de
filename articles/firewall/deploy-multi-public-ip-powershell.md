@@ -5,23 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 21f645e64c9944ed102f538710ea6facc26c7e83
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 178daba47acaf8ad161a0634c16b046ec330abb6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314032"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864426"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Bereitstellen einer Azure Firewall mit mehreren öffentlichen IP-Adressen mithilfe von Azure PowerShell
 
 Diese Funktion ermöglicht die folgenden Szenarios:
 
 - **DNAT:** Sie können mehrere Standardportinstanzen auf Ihre Back-End-Server übersetzen. Wenn Sie beispielsweise über zwei öffentliche IP-Adressen verfügen, können Sie den TCP-Port 3389 (RDP) für beide IP-Adressen übersetzen.
-- **SNAT:** Für ausgehende SNAT-Verbindungen stehen zusätzliche Ports zur Verfügung, was die Gefahr einer Überlastung des SNAT-Ports verringert. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind.
+- **SNAT:** Für ausgehende SNAT-Verbindungen stehen zusätzliche Ports zur Verfügung, was die Gefahr einer Überlastung des SNAT-Ports verringert. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind. Verwenden Sie ggf. ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md), um diese Konfiguration zu vereinfachen.
  
-Azure Firewall mit mehreren öffentlichen IP-Adressen ist über das Azure-Portal, Azure PowerShell, die Azure CLI, REST und Vorlagen verfügbar. Sie können eine Azure Firewall mit bis zu 100 öffentlichen IP-Adressen bereitstellen.
+Azure Firewall mit mehreren öffentlichen IP-Adressen ist über das Azure-Portal, Azure PowerShell, die Azure CLI, REST und Vorlagen verfügbar. Sie können eine Azure Firewall mit bis zu 250 öffentlichen IP-Adressen bereitstellen.
 
 Die folgenden Azure PowerShell-Beispiele zeigen, wie Sie öffentliche IP-Adressen für Azure Firewall konfigurieren, hinzufügen und entfernen können.
 

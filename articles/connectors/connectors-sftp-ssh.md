@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393630"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927444"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -34,7 +34,7 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 * SFTP-SSH-Aktionen, die [Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md) unterstützen, können Dateien bis zu einer Größe von 1 GB verarbeiten, während SFTP-SSH-Aktionen, die keine Blockerstellung unterstützen, Dateien bis zu einer Größe von 50 MB verarbeiten können. Obgleich die Standardblockgröße 15 MB beträgt, kann sich diese Größe dynamisch ändern, beginnend mit 5 MB und allmählich ansteigend auf den Maximalwert von 50 MB, basierend auf Faktoren wie Netzwerkwartezeiten, Serverreaktionszeiten usw.
 
   > [!NOTE]
-  > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+  > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erfordert die mit ISE bezeichnete Version dieses Connectors Chunking, um stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) zu verwenden.
 
   Sie können dieses adaptive Verhalten außer Kraft setzen, indem Sie eine [konstante Blockgröße angeben](#change-chunk-size), die stattdessen verwendet werden soll. Diese Größe kann zwischen 5 MB und 50 MB liegen. Nehmen Sie beispielsweise an, Sie verfügen über eine 45 MB große Datei und ein Netzwerk, das diese Dateigröße ohne Latenzen unterstützt. Die adaptive Segmentierung führt zu mehreren Aufrufen anstelle von einem Aufruf. Um die Anzahl der Aufrufe zu reduzieren, können Sie versuchen, die Blockgröße auf 50 MB festzulegen. Wenn in einem anderen Szenario mit einer Blockgröße von beispielsweise 15 MB ein Timeout bei Ihrer Logik-App auftritt, können Sie versuchen, die Größe auf 5 MB zu reduzieren.
 
@@ -248,7 +248,7 @@ Wenn Sie das Verschieden der Datei nicht vermeiden oder verzögern können, kön
 Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/sftpwithssh/).
 
 > [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erfordert die mit ISE bezeichnete Version dieses Connectors Chunking, um stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

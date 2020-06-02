@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203640"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759182"
 ---
-# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
+# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts (Vorschau) für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieses Tutorial zeigt Ihnen, wie Sie den Prozess der Beschriftung (auch als Tagging bezeichnet) von Bildern verwalten, die als Daten für die Erstellung von Machine Learning-Modellen verwendet werden sollen. Die Datenbeschriftung in Azure Machine Learning ist in der Public Preview-Phase.
@@ -77,7 +77,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 ### <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
 
-Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten haben, die Sie beschriften lassen möchten, erstellen Sie Ihr Beschriftungsprojekt.
+Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, erstellen Sie Ihr Beschriftungsprojekt.
 
 1. Wählen Sie oben auf der Seite **Projekte** aus.
 

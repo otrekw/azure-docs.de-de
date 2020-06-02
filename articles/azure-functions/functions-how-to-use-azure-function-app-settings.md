@@ -3,14 +3,14 @@ title: Konfigurieren der Einstellungen einer Funktions-App in Azure
 description: Hier erhalten Sie Informationen zum Konfigurieren von Azure Funktionen-App-Einstellungen.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234998"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122295"
 ---
 # <a name="manage-your-function-app"></a>Verwalten Ihrer Funktions-App 
 
@@ -27,9 +27,11 @@ In diesem Thema erfahren Sie, wie Sie Ihre Funktions-Apps konfigurieren und verw
 
 ## <a name="get-started-in-the-azure-portal"></a>Erste Schritte im Azure-Portal
 
-Wechseln Sie zunächst zum [Azure portal], und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
+1. Wechseln Sie zunächst zum [Azure portal], und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktions-App ein, und wählen Sie sie in der Liste aus. 
 
-![„Übersicht“ für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. Wählen Sie im linken Bereich unter **Einstellungen** die Option **Konfiguration** aus.
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Übersicht über Funktions-Apps im Azure-Portal":::
 
 Auf der Übersichtsseite können Sie zu allen Punkten navigieren, die Sie zur Verwaltung Ihrer Funktions-App benötigen, insbesondere zu den **[Anwendungseinstellungen](#settings)** und **[Plattformfeatures](#platform-features)** .
 
@@ -43,7 +45,7 @@ Wählen Sie zum Hinzufügen einer Einstellung im Portal **Neue Anwendungseinstel
 
 ![Einstellungen der Funktions-App im Azure-Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Der Befehl [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) gibt die vorhandenen Anwendungseinstellungen zurück, wie im folgenden Beispiel zu sehen:
 
@@ -69,9 +71,7 @@ Wenn Sie eine Funktions-App lokal entwickeln, müssen Sie lokale Kopien dieser W
 
 ## <a name="platform-features"></a>Plattformfeatures
 
-![Registerkarte „Plattformfeatures“ für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-Funktionen-Apps werden auf der Azure App Service-Plattform ausgeführt und verwaltet. So haben die Funktionen-Apps Zugriff auf die meisten Features der Azure-Kernplattform für das Webhosting. Auf der Registerkarte **Plattformfeatures** greifen Sie auf die vielen Features der App Service-Plattform zu, die Sie in Ihren Funktionen-Apps verwenden können. 
+Funktions-Apps werden auf der Azure App Service-Plattform ausgeführt und verwaltet. So haben die Funktionen-Apps Zugriff auf die meisten Features der Azure-Kernplattform für das Webhosting. Im linken Bereich greifen Sie auf die vielen Features der App Service-Plattform zu, die Sie in Ihren Funktions-Apps verwenden können. 
 
 > [!NOTE]
 > Nicht alle App Service-Features sind verfügbar, wenn eine Funktionen-App nach dem verbrauchsbasierten Hostingplan ausgeführt wird.

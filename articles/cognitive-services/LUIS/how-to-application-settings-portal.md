@@ -2,13 +2,13 @@
 title: Anwendungseinstellungen
 description: Konfigurieren Sie Ihre Anwendungs- und Versionseinstellungen (etwa für Äußerungsnormalisierung und App-Datenschutz) im LUIS-Portal.
 ms.topic: quickstart
-ms.date: 05/04/2020
-ms.openlocfilehash: 4f0703973a4ef15f1d9b6582bd4789cd825dfe9f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: c1d5572c3eeb71ec0631a03444d08da46d0a0106
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599272"
+ms.locfileid: "83653167"
 ---
 # <a name="application-and-version-settings"></a>Anwendungs- und Versionseinstellungen
 
@@ -21,21 +21,25 @@ Sie können Name und Beschreibung Ihrer Anwendung bearbeiten. Sie können Ihre A
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an.
 1. Wählen Sie in der Liste **Meine Apps** eine App aus.
 erforderlich.
-1. Wählen Sie auf der oberen Navigationsleiste **Verwalten** und dann auf der linken Navigationsleiste **Anwendungseinstellungen** aus.
+1. Wählen Sie auf der oberen Navigationsleiste **Verwalten** und dann auf der linken Navigationsleiste **Einstellungen** aus.
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot: LUIS-Portal > Abschnitt „Verwalten“ > Seite „Anwendungseinstellungen“](media/app-settings/luis-portal-manage-section-application-settings.png)
 
 
-## <a name="change-training-and-endpoint-settings"></a>Ändern von Schulungs- und Endpunkteinstellungen
+## <a name="change-application-settings"></a>Ändern der Anwendungseinstellungen
 
 Wählen Sie zum Ändern einer Einstellung die Umschaltfläche auf der Seite aus.
 
-[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+[!INCLUDE [App settings](includes/app-settings.md)]
 
+## <a name="change-version-settings"></a>Ändern von Versionseinstellungen
 
-In der [Referenz zu App- und Versionseinstellungen](luis-reference-application-settings.md) finden Sie Informationen dazu, welche Textformen ignoriert werden.
+Wählen Sie zum Ändern einer Einstellung die Umschaltfläche auf der Seite aus.
+
+[!INCLUDE [Version settings](includes/app-version-settings.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Zusammenarbeiten](luis-how-to-collaborate.md) mit anderen Autoren
+* [Veröffentlichungseinstellungen](luis-how-to-publish-app.md#configuring-publish-settings)

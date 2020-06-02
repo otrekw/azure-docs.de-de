@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 924532318fc6638059bbe9eef0065349463523ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7947c468f5d35869b9185062b8dc479234297486
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400875"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673236"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Python installieren. Führen Sie `pip install azure-cognitiveservices-speech` aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
@@ -40,7 +40,7 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - Führen Sie unter RHEL/CentOS 8 die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
+  - Führen Sie unter RHEL/CentOS die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
         ```sh
         sudo yum update
@@ -48,7 +48,8 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-
         ```
 
 > [!NOTE]
-> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> - Befolgen Sie in RHEL/CentOS 7 die Anweisungen zum [Konfigurieren von RHEL/CentOS 7 für das Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 - Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform. Beachten Sie, dass Sie bei der erstmaligen Installation vielleicht einen Windows-Neustart ausführen müssen, bevor Sie mit diesem Handbuch fortfahren.
 - Und schließlich benötigen Sie [Python 3.5 bis 3.8](https://www.python.org/downloads/). Um die Installation zu überprüfen, öffnen Sie eine Eingabeaufforderung, geben den Befehl `python --version` ein und überprüfen das Ergebnis. Bei ordnungsgemäßer Installation erhalten Sie die Antwort „Python 3.5.1“ oder ähnliches.

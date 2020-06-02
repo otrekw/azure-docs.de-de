@@ -2,13 +2,13 @@
 title: Unterstützte Clusterversionen in Azure Service Fabric
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
-ms.date: 04/20/2020
-ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.date: 05/06/2020
+ms.openlocfilehash: dd5844fb88234a5bdf5470a484f26cb08f719107
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732877"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890840"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -40,6 +40,7 @@ Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige
 | 7.0.466.* | 6.4.664.* |Alle Versionen bis einschließlich Version 4.0|1\. August 2020  |
 | 7.0.466.* | 6.5.* |Alle Versionen bis einschließlich Version 4.0|1\. August 2020 |
 | 7.0.470.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |1\. August 2020  |
+| 7.0.472.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |1\. August 2020  |
 | 7.1.409.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |Aktuelle Version, daher kein Enddatum |
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
@@ -55,6 +56,7 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für die unters
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 18.04 | 7.1 |
 
 ## <a name="supported-version-names"></a>Unterstützte Versionsnamen
 
@@ -107,4 +109,5 @@ In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zuge
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

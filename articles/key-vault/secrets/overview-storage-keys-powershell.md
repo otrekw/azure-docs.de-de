@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426386"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121115"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
 
@@ -84,14 +84,18 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> Verwenden Sie für ein klassisches Speicherkonto „primary“ und „secondary“ für $storageAccountKey. <br>
+> Verwenden Sie „Get-AzResource -Name "ClassicStorageAccountName" -ResourceGroupName $resourceGroupName“ anstelle von „Get-AzStorageAccount“ für ein klassisches Speicherkonto.
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Gewähren von Zugriff auf Ihr Speicherkonto für Key Vault
 
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Aktivieren der erneuten Schlüsselgenerierung
 
-Wenn die Speicherkontoschlüssel in regelmäßigen Abständen von Key Vault neu generiert werden sollen, können Sie das Azure PowerShell-Cmdlet [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) verwenden, um einen Regenerierungszeitraum festzulegen. In diesem Beispiel wird der Zeitraum auf drei Tage festgelegt. Nach drei Tagen generiert Key Vault „key2“ neu und wechselt beim aktiven Schlüssel von „key2“ zu „key1“.
+Wenn die Speicherkontoschlüssel in regelmäßigen Abständen von Key Vault neu generiert werden sollen, können Sie das Azure PowerShell-Cmdlet [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) verwenden, um einen Regenerierungszeitraum festzulegen. In diesem Beispiel wird der Zeitraum auf drei Tage festgelegt. Nach drei Tagen wird „key2“ von Key Vault neu generiert, und der aktive Schlüssel „key2“ mit „key1“ ausgetauscht (durch „primär“ und „sekundär“ für klassische Speicherkonten ersetzen).
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -205,7 +209,7 @@ Außerdem verwenden wir das Azure PowerShell-Cmdlets [New-AzStorageContext](/pow
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>Erstellen eines SAS-Tokens

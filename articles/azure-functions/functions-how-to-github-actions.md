@@ -3,14 +3,14 @@ title: Verwenden von GitHub Actions zum Vornehmen von Codeaktualisierungen in Az
 description: Erfahren Sie, wie Sie mit GitHub Actions einen Workflow zum Erstellen und Bereitstellen von Azure Functions-Projekten in GitHub definieren.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878203"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122329"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
@@ -33,7 +33,7 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Sie können mit dem Befehl [az ad sp create-for-rbac](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) in der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) einen [Dienstprinzipal](/cli/azure/) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
+Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -46,17 +46,19 @@ Ersetzen Sie in diesem Beispiel die Platzhalter in der Ressource durch Ihre Abon
 
 ## <a name="download-the-publishing-profile"></a>Herunterladen des Veröffentlichungsprofils
 
-Sie können das Veröffentlichungsprofil Ihrer Funktions-App herunterladen, indem Sie auf der Seite **Übersicht** Ihrer App auf **Veröffentlichungsprofil abrufen** klicken.
+So laden Sie das Veröffentlichungs Profil Ihrer Funktions-App herunter:
 
-   ![Veröffentlichungsprofil herunterladen](media/functions-how-to-github-actions/get-publish-profile.png)
+1. Wählen Sie die Seite **Übersicht** der Funktions-App aus, und wählen Sie dann **Veröffentlichungsprofil abrufen** aus.
 
-Kopieren Sie den Inhalt der Datei.
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Herunterladen des Veröffentlichungsprofils":::
+
+1. Speichern und kopieren Sie den Inhalt der Datei mit den Veröffentlichungseinstellungen.
 
 ## <a name="configure-the-github-secret"></a>Konfigurieren des GitHub-Geheimnisses
 
 1. Navigieren Sie in [GitHub](https://github.com) zu Ihrem Repository, und wählen Sie **Einstellungen** > **Geheimnisse** > **Neues Geheimnis hinzufügen** aus.
 
-   ![Hinzufügen des Geheimnisses](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Hinzufügen des Geheimnisses":::
 
 1. Fügen Sie ein neues Geheimnis hinzu.
 
@@ -217,7 +219,7 @@ Im folgenden Beispiel wird Version 1 von `functions-action` verwendet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit [ im Namen im ](https://aka.ms/functions-actions-samples)Repository mit Workflowbeispielen für Azure GitHub Actions `functionapp`. Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
+Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit `functionapp` im Namen im [Repository mit Workflowbeispielen für Azure GitHub Actions ](https://aka.ms/functions-actions-samples). Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu GitHub Actions](https://help.github.com/en/articles/about-github-actions)

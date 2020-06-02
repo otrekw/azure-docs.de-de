@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537677"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858585"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
 
@@ -26,8 +26,9 @@ Wenn Sie große Dateifreigaben in Ihrem Speicherkonto aktivieren, können Ihre D
 
 ## <a name="restrictions"></a>Beschränkungen
 
-Derzeit können Sie nur lokal redundanten Speicher (LRS) oder zonenredundanten Speicher (ZRS) für Konten mit aktivierter großer Dateifreigabe verwenden. Sie können keinen geozonenredundanten Speicher (GZRS), georedundanten Speicher (GRS) oder georedundanten Speicher mit Lesezugriff (RA-GRS) verwenden.
-Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig gemacht werden. Danach kann Ihr Konto nicht mehr für GZRS, GRS oder RA-GRS konvertiert werden.
+Derzeit können Sie nur lokal redundanten Speicher (LRS) oder zonenredundanten Speicher (ZRS) für Konten mit aktivierter großer Dateifreigabe verwenden. Sie können keinen geozonenredundanten Speicher (GZRS), georedundanten Speicher (GRS), georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS) verwenden.
+
+Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig gemacht werden. Danach kann Ihr Konto nicht mehr in GZRS, GRS, RA-GRS oder RA-GZRS konvertiert werden.
 
 ## <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
 
@@ -68,7 +69,7 @@ Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig ge
 Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>` und `<yourDesiredRegion>` durch Ihre Angaben.
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>` und `<yourDesiredRegion>` durch Ihre Angaben.
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Aktivieren großer Dateifreigaben für ein vorhandenes Konto
 
-Sie können große Dateifreigaben auch für Ihre vorhandenen Konten aktivieren. Nach dem Aktivieren großer Dateifreigaben kann keine Konvertierung mehr in GZRS, GRS oder RA-GRS durchgeführt werden. Die Aktivierung großer Dateifreigaben für dieses Speicherkonto kann nicht rückgängig gemacht werden.
+Sie können große Dateifreigaben auch für Ihre vorhandenen Konten aktivieren. Nach dem Aktivieren großer Dateifreigaben kann keine Konvertierung mehr in GZRS, GRS, RA-GRS oder RA-GZRS durchgeführt werden. Die Aktivierung großer Dateifreigaben für dieses Speicherkonto kann nicht rückgängig gemacht werden.
 
 ### <a name="portal"></a>Portal
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74786910"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004612"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Planen und Ausführen von Aufgaben für zusammenhängende Daten unter Verwendung des Triggers „Gleitendes Fenster“ in Azure Logic Apps
 
@@ -19,9 +19,9 @@ Um regelmäßig Aufgaben, Prozesse oder Aufträge auszuführen, die Daten in zus
 
 Im Folgenden finden Sie einige der Muster, die von diesem Trigger unterstützt werden:
 
-* Sofortige Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten oder Stunden.
+* Sofortige Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten, Stunden, Tagen, Wochen oder Monaten.
 
-* Start an einem bestimmten Datum zu einer bestimmten Uhrzeit und anschließende Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten oder Stunden. Mit diesem Trigger können Sie eine Startzeit in der Vergangenheit angeben, wodurch alle Wiederholungen der Vergangenheit ausgeführt werden.
+* Start an einem bestimmten Datum zu einer bestimmten Uhrzeit und anschließende Ausführung und Wiederholung jeweils nach *n* Sekunden, Minuten, Stunden, Tagen, Wochen oder Monaten. Mit diesem Trigger können Sie eine Startzeit in der Vergangenheit angeben, wodurch alle Wiederholungen der Vergangenheit ausgeführt werden.
 
 * Geben Sie für jede Wiederholung eine Verzögerung für eine bestimmte Zeitspanne vor der Ausführung an.
 
@@ -40,7 +40,7 @@ Die Unterschiede zwischen diesem Trigger und dem Serientrigger sowie weitere Inf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
-1. Wenn der Designer für Logik-Apps angezeigt wird, geben Sie im Suchfeld „Gleitendes Fenster“ als Filter ein. Wählen Sie aus der Triggerliste den folgenden Trigger als ersten Schritt Ihres Logik-App-Workflows aus: **Gleitendes Fenster**
+1. Wenn der Designer für Logik-Apps angezeigt wird, geben Sie im Suchfeld `sliding window` als Filter ein. Wählen Sie aus der Triggerliste den Trigger **Gleitendes Fenster** als ersten Schritt Ihres Logik-App-Workflows aus.
 
    ![Auswählen des Triggers „Gleitendes Fenster“](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -48,16 +48,15 @@ Die Unterschiede zwischen diesem Trigger und dem Serientrigger sowie weitere Inf
 
    ![Festlegen von Intervall und Häufigkeit](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Eigenschaft | Erforderlich | JSON-Name | type | BESCHREIBUNG |
+   | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|----------|-----------|------|-------------|
-   | **Intervall** | Ja | interval | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall beispielsweise auf „6“ und die Häufigkeit auf „Stunde“ festgelegt ist, erfolgt die Wiederholung alle sechs Stunden. |
-   | **Frequency** | Ja | frequency | String | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute** oder **Stunde**. |
+   | **Intervall** | `interval` | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate <br>– Woche: 1–71 Wochen <br>– Tag: 1–500 Tage <br>– Stunde: 1–12.000 Stunden <br>– Minute: 1–72.000 Minuten <br>- Sekunde: 1–9.999.999 Sekunden <p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
+   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute**, **Stunde**, **Tag**, **Woche** oder **Monat** |
    ||||||
 
    ![Erweiterte Wiederholungsoptionen](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   Um weitere Optionen für die Wiederholung zu erhalten, öffnen Sie die Liste **Neuen Parameter hinzufügen**. 
-   Alle von Ihnen ausgewählten Optionen werden nach der Auswahl im Trigger angezeigt.
+   Um weitere Optionen für die Wiederholung zu erhalten, öffnen Sie die Liste **Neuen Parameter hinzufügen**. Alle von Ihnen ausgewählten Optionen werden nach der Auswahl im Trigger angezeigt.
 
    | Eigenschaft | Erforderlich | JSON-Name | type | BESCHREIBUNG |
    |----------|----------|-----------|------|-------------|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538679"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118429"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Einrichten eines Labs zum Lehren von Big Data-Analysen mithilfe der Docker-Bereitstellung von HortonWorks Data Platform
 
@@ -102,7 +102,7 @@ In diesem Abschnitt stellen Sie HDP Sandbox bereit und greifen anschließend im 
 1. Sobald die Docker-Container für HDP Sandbox bereitgestellt sind und ausgeführt werden, können Sie auf die Umgebung zugreifen. Starten Sie dazu Ihren Browser, und befolgen Sie die Anweisungen von Cloudera zum Öffnen der [Begrüßungsseite der Sandbox](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) und zum Starten des HDP-Dashboards.
 
     > [!NOTE] 
-    > Diese Anweisungen gehen davon aus, dass Sie zuerst die lokale IP-Adresse der Sandboxumgebung zu sandbox-hdp.hortonworks.com in der Hostdatei auf Ihrer Vorlagen-VM zugeordnet haben.  Wenn Sie diese Zuordnung **nicht** vornehmen, können Sie auf die Sandbox-Begrüßungsseite zugreifen, indem Sie zu [http://localhost:8080](http://localhost:8080) navigieren.
+    > Diese Anweisungen gehen davon aus, dass Sie zuerst die lokale IP-Adresse der Sandboxumgebung zu sandbox-hdp.hortonworks.com in der Hostdatei auf Ihrer Vorlagen-VM zugeordnet haben.  Wenn Sie diese Zuordnung **nicht** vornehmen, können Sie auf die Sandbox-Begrüßungsseite zugreifen, indem Sie zu `http://localhost:8080` navigieren.
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>Automatisches Starten von Docker-Containern, wenn sich Kursteilnehmer anmelden
 

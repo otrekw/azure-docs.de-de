@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d859d04b9fee9af52c2d63004ba9c84665fe9edf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 05941081580295ddcf396a9ec2c12826d2cc2136
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404454"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712739"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und Python
 
@@ -42,7 +42,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
 1. Kopieren Sie den folgenden Code in einen Text-Editor.
-1. Ersetzen Sie optional den Wert von `image_path` durch den Pfad und den Dateinamen eines anderen Bilds, das Sie analysieren möchten.
+1. Ersetzen Sie den Wert von `image_path` durch den Pfad und den Dateinamen eines anderen Bilds, das Sie analysieren möchten.
 1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `analyze-local-image.py`.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python analyze-local-image.py`.
@@ -67,9 +67,11 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = endpoint + "vision/v2.1/analyze"
+analyze_url = endpoint + "vision/v3.0/analyze"
 
 # Set image_path to the local path of an image that you want to analyze.
+# Sample images are here, if needed:
+# https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
 image_path = "C:/Documents/ImageToAnalyze.jpg"
 
 # Read the image into a byte array
@@ -92,6 +94,7 @@ image = Image.open(BytesIO(image_data))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort

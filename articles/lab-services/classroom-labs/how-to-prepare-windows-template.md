@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521191"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119296"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Leitfaden zum Einrichten eines Windows-Vorlagencomputers in Azure Lab Services
 
@@ -211,7 +211,7 @@ Wenn Sie zusätzliche Sprachen auf dem virtuellen Computer installieren müssen,
 2. Suchen Sie nach „Language Pack“ (Sprachpaket).
 3. Wählen Sie die zu installierende Sprache aus.
 
-Wenn Sie bereits bei der Vorlagen-VM angemeldet sind, verwenden Sie die Verknüpfung [„Sprachpaket installieren“](ms-settings:regionlanguage?activationSource=SMC-IA-4027670), um direkt zur entsprechenden Einstellungsseite zu gelangen.
+Wenn Sie bereits bei der Vorlagen-VM angemeldet sind, verwenden Sie die Verknüpfung „Sprachpaket installieren“ (`ms-settings:regionlanguage?activationSource=SMC-IA-4027670`), um direkt zur entsprechenden Einstellungsseite zu gelangen.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Entfernen nicht benötigter integrierter Apps
 

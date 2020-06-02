@@ -6,47 +6,101 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
-ms.author: vaidyas
-author: vaidya-s
-ms.date: 01/15/2020
-ms.custom: Ignite2019
-ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracychms
+ms.date: 04/15/2020
+ms.custom: Build2020
+ms.openlocfilehash: 058cdaa77a38dcb45164e01a54e73218b469940b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79477186"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860952"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning asynchron und parallel große Datenmengen verarbeiten. Die hier beschriebene Funktion ParallelRunStep befindet sich in der Public Preview-Phase. Sie ermöglicht die Generierung von Rückschlüssen sowie die Verarbeitung von Daten mit hoher Leistung und hohem Durchsatz. Darüber hinaus bietet sie vorgefertigte asynchrone Funktionen.
+Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning Batchrückschlüsse für große Datenmengen asynchron und parallel ausführen. Der ParallelRunStep stellt Parallelitätsfunktionen ohne Konfiguration zur Verfügung.
 
-Mithilfe von ParallelRunStep lassen sich Offlinerückschlüsse für mehrere Terabytes an Produktionsdaten ganz einfach auf umfangreiche Computercluster skalieren, was zu Produktivitätssteigerungen und Kostenoptimierungen führt.
+Mithilfe von ParallelRunStep lassen sich Offlinerückschlüsse für mehrere Terabytes an strukturierten oder unstrukturierten Daten ganz einfach auf umfangreiche Computercluster skalieren, mit gesteigerter Produktivität und optimierten Kosten.
 
 In diesem Artikel lernen Sie Folgendes:
 
-> * Erstellen einer Remotecomputeressource
-> * Schreiben eines benutzerdefinierten Rückschlussskripts
-> * Erstellen einer [Machine Learning-Pipeline](concept-ml-pipelines.md), um ein vortrainiertes Bildklassifizierungsmodell basierend auf dem Dataset [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) zu registrieren 
-> * Verwenden des Modells, um Batchrückschlüsse für Beispielbilder aus Ihrem Azure Blob Storage-Konto auszuführen 
+> * Einrichten von Machine Learning-Ressourcen.
+> * Konfigurieren von Dateneingaben und -ausgaben für Batchrückschlüsse.
+> * Vorbereiten des vortrainierten Bildklassifizierungsmodells, das auf dem [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-Dataset basiert. 
+> * Schreiben Ihres Rückschlussskripts.
+> * Erstellen einer [Machine Learning-Pipeline](concept-ml-pipelines.md), die ParallelRunStep enthält, und Ausführen von Batchrückschluss für MNIST-Testbilder. 
+> * Erneutes Übermitteln einer Batchrückschluss-Ausführung mit neuer Dateneingabe und neuen Parametern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
-* Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder über einen virtuellen Notebook-Computer verfügen. 
+* Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich verfügen. 
 
-* Informationen zur Verwaltung Ihrer eigenen Umgebung und Abhängigkeiten finden Sie in der [Schrittanleitung](how-to-configure-environment.md) zum Konfigurieren Ihrer eigenen Umgebung. Führen Sie `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` in Ihrer Umgebung aus, um die erforderlichen Abhängigkeiten herunterzuladen.
+* Informationen zur Verwaltung Ihrer eigenen Umgebung und Abhängigkeiten finden Sie in der [Schrittanleitung](how-to-configure-environment.md) zum Konfigurieren Ihrer eigenen lokalen Umgebung.
 
 ## <a name="set-up-machine-learning-resources"></a>Einrichten von Machine Learning-Ressourcen
 
-Die folgenden Aktionen dienen zum Einrichten der Ressourcen, die zum Ausführen einer Batch-Rückschlusspipeline benötigt werden:
+Die folgenden Aktionen dienen zum Einrichten der Machine Learning-Ressourcen, die zum Ausführen einer Batch-Rückschlusspipeline benötigt werden:
 
-- Erstellen Sie einen Datenspeicher, der auf einen Blobcontainer mit Bildern für Rückschlüsse verweist.
-- Richten Sie Datenverweise als Ein- und Ausgaben für den Batchrückschluss-Pipelineschritt ein.
-- Richten Sie einen Computecluster für die Ausführung des Batchrückschlussschritts ein.
+- Herstellen einer Verbindung mit einem Arbeitsbereich.
+- Erstellen oder Anfügen einer vorhandenen Computeressource.
+
+### <a name="configure-workspace"></a>Konfigurieren des Arbeitsbereichs
+
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. `Workspace.from_config()` liest die config.json-Datei und lädt die Details in ein Objekt mit dem Namen „ws“.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+> [!IMPORTANT]
+> In diesem Codeausschnitt wird davon ausgegangen, dass die Arbeitsbereichskonfiguration im aktuellen Verzeichnis oder in dessen übergeordnetem Verzeichnis gespeichert wird. Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen](how-to-manage-workspace.md). Weitere Informationen zum Speichern der Konfiguration in einer Datei finden Sie unter [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](how-to-configure-environment.md#workspace).
+
+### <a name="create-a-compute-target"></a>Erstellen eines Computeziels
+
+In Azure Machine Learning bezieht sich *Compute* (oder *Computeziel*) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen. Führen Sie den folgenden Code aus, um ein CPU-basiertes Ziel vom Typ [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen:
+
+```python
+from azureml.core.compute import AmlCompute, ComputeTarget
+from azureml.core.compute_target import ComputeTargetException
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
+
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
+
+    # create the cluster
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
+```
+
+## <a name="configure-inputs-and-output"></a>Konfigurieren von Eingaben und -ausgaben
 
 ### <a name="create-a-datastore-with-sample-images"></a>Erstellen eines Datenspeichers mit Beispielbildern
 
@@ -76,25 +130,13 @@ Wenn Sie Ihren Arbeitsbereich erstellen, werden standardmäßig [Azure Files](ht
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-inputs-and-outputs"></a>Konfigurieren von Dateneingaben und -ausgaben
+### <a name="create-the-data-inputs"></a>Erstellen der Dateneingaben
 
-Als Nächstes müssen Dateneingaben und -ausgaben konfiguriert werden. Hierzu zählen:
+Die Eingaben für Batchrückschluss sind die Daten, die Sie für die Parallelverarbeitung partitionieren möchten. Eine Pipeline für Batchrückschluss akzeptiert Dateneingaben durch [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py).
 
-- Das Verzeichnis, das die Eingabebilder enthält
-- Das Verzeichnis, in dem das vortrainierte Modell gespeichert ist
-- Das Verzeichnis, das die Bezeichnungen enthält
-- Das Verzeichnis für die Ausgabe
-
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) ist eine Klasse für die Untersuchung, Transformierung und Verwaltung von Daten in Azure Machine Learning. Diese Klasse verfügt über zwei Typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) und [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In diesem Beispiel wird `FileDataset` als Eingabe für den Batchrückschluss-Pipelineschritt verwendet. 
-
-> [!NOTE] 
-> Die Unterstützung von `FileDataset` in Batchrückschlüssen ist vorerst auf Azure Blob Storage beschränkt. 
-
-In Ihrem benutzerdefinierten Rückschlussskript können Sie auch auf andere Datasets verweisen. So können Sie damit beispielsweise auf Bezeichnungen in Ihrem Skript zugreifen, um Bilder mithilfe von `Dataset.register` und `Dataset.get_by_name` mit Bezeichnungen zu versehen.
+`Dataset` dient der Untersuchung, Transformation und Verwaltung von Daten in Azure Machine Learning. Es gibt zwei Typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) und [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In diesem Beispiel verwenden Sie `FileDataset` als Eingaben. `FileDataset` gibt Ihnen die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Unterklassen-Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
 
 Weitere Informationen zu Azure Machine Learning-Datasets finden Sie unter [Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
-
-Objekte vom Typ [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dienen zur Übertragung von Zwischendaten zwischen Pipelineschritten. In diesem Beispiel wird es für Rückschlussausgaben verwendet.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -103,50 +145,28 @@ mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
-named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
+```
+
+Um beim Ausführen der Batch-Rückschlusspipeline dynamische Dateneingaben zu verwenden, können Sie das Eingabe-`Dataset` als [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) definieren. Sie können das Eingabedataset bei jeder erneuten Übermittlung einer Ausführung der Batch-Rückschlusspipeline angeben.
+
+```python
+from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="mnist_param", default_value=input_mnist_ds)
+input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pipeline_param).as_mount()
+```
+
+### <a name="create-the-output"></a>Erstellen der Ausgabe
+
+Objekte vom Typ [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dienen zur Übertragung von Zwischendaten zwischen Pipelineschritten. In diesem Beispiel wird es für Rückschlussausgaben verwendet.
+
+```python
+from azureml.pipeline.core import Pipeline, PipelineData
 
 output_dir = PipelineData(name="inferences", 
                           datastore=def_data_store, 
                           output_path_on_compute="mnist/results")
-```
-
-### <a name="set-up-a-compute-target"></a>Einrichten von Computezielen
-
-In Azure Machine Learning bezieht sich *Compute* (oder *Computeziel*) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen. Führen Sie den folgenden Code aus, um ein CPU-basiertes Ziel vom Typ [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen:
-
-```python
-from azureml.core.compute import AmlCompute, ComputeTarget
-from azureml.core.compute_target import ComputeTargetException
-
-# choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
-compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
-
-# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
-
-
-if compute_name in ws.compute_targets:
-    compute_target = ws.compute_targets[compute_name]
-    if compute_target and type(compute_target) is AmlCompute:
-        print('found compute target. just use it. ' + compute_name)
-else:
-    print('creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
-                                                                min_nodes = compute_min_nodes, 
-                                                                max_nodes = compute_max_nodes)
-
-    # create the cluster
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
-    
-    # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
-    
-     # For a more detailed view of current AmlCompute status, use get_status()
-    print(compute_target.get_status().serialize())
 ```
 
 ## <a name="prepare-the-model"></a>Vorbereiten des Modells
@@ -168,7 +188,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-Registrieren Sie das Modell anschließend bei Ihrem Arbeitsbereich, damit es für Ihre Remotecomputeressource verfügbar ist.
+Registrieren Sie das Modell anschließend bei Ihrem Arbeitsbereich, damit es für Ihre Computeressource verfügbar ist.
 
 ```python
 from azureml.core.model import Model
@@ -189,8 +209,8 @@ model = Model.register(model_path="models/",
 Das Skript *muss zwei Funktionen enthalten*:
 - `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
-    -  `mini_batch`: Der Schritt zur parallelen Ausführung ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen als Argument an die Methode. Jeder Eintrag in „min_batch“ ist entweder ein Dateipfad (bei Eingaben vom Typ „FileDataset“) oder ein Pandas-Datenrahmen (bei Eingaben vom Typ „TabularDataset“).
-    -  `response`: Die Run-Methode muss einen Pandas-Datenrahmen oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Sie müssen sicherstellen, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen Eingabe und Ausführungsergebnis enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
+    -  `mini_batch`: ParallelRunStep ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen als Argument an die Methode. Jeder Eintrag in „mini_batch“ ist entweder ein Dateipfad (bei Eingaben vom Typ „FileDataset“) oder ein Pandas-Datenrahmen (bei Eingaben vom Typ „TabularDataset“).
+    -  `response`: Die Run-Methode muss einen Pandas-Datenrahmen oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Sie müssen sicherstellen, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
 
 ```python
 # Snippets from a sample script.
@@ -237,9 +257,7 @@ def run(mini_batch):
     return resultList
 ```
 
-### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>Zugreifen auf andere Dateien im Quellverzeichnis in „entry_script“
-
-Wenn das Verzeichnis mit Ihrem Eingabeskript noch andere Dateien oder Ordner enthält, können Sie einen Verweis darauf erstellen, indem Sie das aktuelle Arbeitsverzeichnis ermitteln.
+Wenn das Verzeichnis mit Ihrem Rückschlussskript noch andere Dateien oder Ordner enthält, können Sie einen Verweis darauf erstellen, indem Sie das aktuelle Arbeitsverzeichnis ermitteln.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
@@ -248,90 +266,93 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>Erstellen und Ausführen der Pipeline mit ParallelRunStep
 
-Sie verfügen nun über alles, was Sie zum Erstellen der Pipeline benötigen.
+Jetzt haben Sie alles, was Sie brauchen: die Dateneingaben, das Modell, die Ausgabe und Ihr Rückschlussskript. Erstellen wir also die Batch-Rückschlusspipeline, die ParallelRunStep enthält.
 
-### <a name="prepare-the-run-environment"></a>Vorbereiten der Ausführungsumgebung
+### <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 
-Geben Sie zunächst die Abhängigkeiten für Ihr Skript an. Dieses Objekt wird später bei der Erstellung des Pipelineschritts verwendet.
+Geben Sie zunächst die Abhängigkeiten für Ihr Skript an. Diese ermöglicht es Ihnen, sowohl PIP-Pakete zu installieren als auch die Umgebung zu konfigurieren. Schließen Sie immer die Pakete **azureml-core** und **azureml-dataprep[pandas, fuse]** mit ein.
+
+Wenn Sie ein benutzerdefiniertes Docker-Image verwenden (user_managed_dependencies=True), sollte auf Ihrem System außerdem Conda installiert sein.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
+                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
 batch_env.docker.base_image = DEFAULT_GPU_IMAGE
-batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Angeben der Parameter für Ihren Batchrückschluss-Pipelineschritt
+### <a name="specify-the-parameters-using-parallelrunconfig"></a>Angeben der Parameter mithilfe von ParallelRunConfig
 
-`ParallelRunConfig` ist die Hauptkonfiguration für die neu eingeführte Batchrückschlussinstanz vom Typ `ParallelRunStep` innerhalb der Azure Machine Learning-Pipeline. Sie wird verwendet, um Ihr Skript zu umschließen und die erforderlichen Parameter zu konfigurieren:
+`ParallelRunConfig` ist die Hauptkonfiguration für die `ParallelRunStep`-Instanz innerhalb der Azure Machine Learning-Pipeline. Sie wird verwendet, um Ihr Skript zu umschließen und die erforderlichen Parameter zu konfigurieren:
 - `entry_script`: Ein Benutzerskript als lokaler Dateipfad, das parallel auf mehreren Knoten ausgeführt wird. Ist `source_directory` vorhanden, verwenden Sie einen relativen Pfad. Verwenden Sie andernfalls einen beliebigen Pfad, auf den auf dem Computer zugegriffen werden kann.
 - `mini_batch_size`: Die Größe des Minibatchs, der an einen einzelnen Aufruf von `run()` übergeben wird (Optional. Der Standardwert ist `10` Dateien für FileDataset und `1MB` für TabularDataset.)
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
     - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Der Minibatch auf der Grundlage von `TabularDataset` geht nie über Dateigrenzen hinaus. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
-- `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag abgebrochen. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für einzelne Minibatches, die an die Methode `run()` gesendet werden. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
+- `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag abgebrochen. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für den einzelnen Minibatch, der an die Methode `run()` gesendet wird. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
 - `output_action`: Gibt an, wie die Ausgabe strukturiert werden soll:
     - `summary_only`: Das Benutzerskript speichert die Ausgabe. `ParallelRunStep` verwendet die Ausgabe nur zur Berechnung des Fehlerschwellenwerts.
-    - `append_row`: Für alle Eingabedateien wird lediglich eine einzelne Datei im Ausgabeordner erstellt, in der alle Ausgaben angefügt werden (getrennt durch eine Zeile). Der Dateiname lautet `parallel_run_step.txt`.
+    - `append_row`: Für alle Eingaben wird lediglich eine einzelne Datei im Ausgabeordner erstellt, in der alle Ausgaben angefügt werden (getrennt durch eine Zeile).
+- `append_row_file_name`: Zum Anpassen des Namens der Ausgabedatei für append_row output_action (optional; der Standardwert ist `parallel_run_step.txt`).
 - `source_directory`: Pfade zu Ordnern mit allen Dateien, die am Computeziel ausgeführt werden sollen (optional).
 - `compute_target`: Nur `AmlCompute` wird unterstützt.
 - `node_count`: Die Anzahl von Computeknoten, die zum Ausführen des Benutzerskripts verwendet werden sollen.
-- `process_count_per_node`: Die Anzahl von Prozessen pro Knoten.
-- `environment`: Die Python-Umgebungsdefinition. Sie kann für die Verwendung einer vorhandenen Python-Umgebung oder für die Einrichtung einer temporären Umgebung für das Experiment konfiguriert werden. Die Definition kann auch zum Festlegen der erforderlichen Anwendungsabhängigkeiten verwendet werden (optional).
+- `process_count_per_node`: Die Anzahl von Prozessen pro Knoten. Die bewährte Methode besteht im Festlegen auf die Anzahl der GPUs oder CPUs pro Knoten (optional; der Standardwert ist `1`).
+- `environment`: Die Python-Umgebungsdefinition. Sie kann für die Verwendung einer vorhandenen Python-Umgebung oder für die Einrichtung einer temporären Umgebung konfiguriert werden. Die Definition kann auch zum Festlegen der erforderlichen Anwendungsabhängigkeiten verwendet werden (optional).
 - `logging_level`: Die Ausführlichkeit des Protokolls. Mögliche Werte (mit zunehmender Ausführlichkeit): `WARNING`, `INFO`, `DEBUG`. (optional; Standardwert: `INFO`)
 - `run_invocation_timeout`: Das Timeout für den Aufruf der Methode `run()` in Sekunden. (optional; Standardwert `60`)
+- `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`). 
+
+Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden eines Pipelinelaufs optimieren können. In diesem Beispiel verwenden Sie PipelineParameter für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut einen Lauf senden. 
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.core import PipelineParameter
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     source_directory=scripts_folder,
     entry_script="digit_identification.py",
-    mini_batch_size="5",
+    mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
     output_action="append_row",
+    append_row_file_name="mnist_outputs.txt",
     environment=batch_env,
     compute_target=compute_target,
-    node_count=4)
+    process_count_per_node=PipelineParameter(name="process_count_param", default_value=2),
+    node_count=2)
 ```
 
-### <a name="create-the-pipeline-step"></a>Erstellen des Pipelineschritts
+### <a name="create-the-parallelrunstep"></a>Erstellen von ParallelRunStep
 
-Erstellen Sie den Pipelineschritt mithilfe des Skripts, der Umgebungskonfiguration und der Parameter. Geben Sie das Computeziel an, das Sie bereits als Ausführungsziel für das Skript an Ihren Arbeitsbereich angefügt haben. Verwenden Sie `ParallelRunStep`, um den Batchrückschluss-Pipelineschritt mit folgenden Parametern zu erstellen:
+Erstellen Sie ParallelRunStep mithilfe von Skript, Umgebungskonfiguration und Parametern. Geben Sie das Computeziel an, das Sie bereits als Ausführungsziel für Ihr Rückschlussskript an Ihren Arbeitsbereich angefügt haben. Verwenden Sie `ParallelRunStep`, um den Batchrückschluss-Pipelineschritt mit folgenden Parametern zu erstellen:
 - `name`: Der Name des Schritts. Benennungseinschränkungen: eindeutig, 3–32 Zeichen und regulärer Ausdruck ^\[a-z\]([-a-z0-9]*[a-z0-9])?$.
-- `models`: Null oder mehr Modellnamen, die bereits in der Azure Machine Learning-Modellregistrierung registriert sind.
 - `parallel_run_config`: Ein Objekt vom Typ `ParallelRunConfig`, wie zuvor definiert.
-- `inputs`: Mindestens ein Azure Machine Learning-Datasets eines einzelnen Typs.
+- `inputs`: Mindestens ein Azure Machine Learning-Dataset mit einem einzelnen Typ, das für die Parallelverarbeitung partitioniert werden soll.
+- `side_inputs`: Verweisdaten oder Datasets, die als Seiteneingabe verwendet werden und für die keine Partitionierung erforderlich ist.
 - `output`: Ein Objekt vom Typ `PipelineData`, das dem Ausgabeverzeichnis entspricht.
-- `arguments`: Eine Liste von Argumenten, die an das Benutzerskript übergeben werden (optional).
+- `arguments`: Eine Liste mit Argumenten, die an das Benutzerskript übergeben werden. Verwenden Sie „unknown_args“, um sie in Ihrem Einstiegsskript zu nutzen (optional).
 - `allow_reuse`: Angabe, ob bei dem Schritt vorherige Ergebnisse wiederverwendet werden sollen, wenn er mit den gleichen Einstellungen/Eingaben ausgeführt wird. Ist der Parameter auf `False` festgelegt, wird für diesen Schritt bei der Pipelineausführung immer eine neue Ausführung generiert. (optional; Standardwert `True`)
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
 
 parallelrun_step = ParallelRunStep(
-    name="batch-mnist",
-    models=[model],
+    name="predict-digits-mnist",
     parallel_run_config=parallel_run_config,
-    inputs=[named_mnist_ds],
+    inputs=[input_mnist_ds_consumption],
     output=output_dir,
-    arguments=[],
     allow_reuse=True
 )
 ```
+### <a name="create-and-run-the-pipeline"></a>Erstellen und Ausführen der Pipeline
 
->[!Note]
-> Der obige Schritt hängt von `azureml-contrib-pipeline-steps` ab, wie in den [Voraussetzungen](#prerequisites) beschrieben. 
-
-### <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
-
-Führen Sie die Pipeline nun aus. Erstellen Sie zunächst ein Objekt vom Typ [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) mit einem Verweis auf Ihren Arbeitsbereich sowie mit dem erstellten Pipelineschritt. Der Parameter `steps` ist ein Array mit Schritten. In diesem Fall ist allerdings nur ein Schritt für die Batchbewertung vorhanden. Wenn Sie Pipelines mit mehreren Schritten erstellen möchten, müssen Sie die Schritte in der gewünschten Reihenfolge in diesem Array platzieren.
+Führen Sie die Pipeline nun aus. Erstellen Sie zunächst ein Objekt vom Typ [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) mit einem Verweis auf Ihren Arbeitsbereich sowie mit dem erstellten Pipelineschritt. Der Parameter `steps` ist ein Array mit Schritten. In diesem Fall ist nur ein Schritt für den Batchrückschluss vorhanden. Wenn Sie Pipelines mit mehreren Schritten erstellen möchten, müssen Sie die Schritte in der gewünschten Reihenfolge in diesem Array platzieren.
 
 Verwenden Sie als Nächstes die Funktion `Experiment.submit()`, um die Pipeline für die Ausführung zu übermitteln.
 
@@ -340,12 +361,13 @@ from azureml.pipeline.core import Pipeline
 from azureml.core.experiment import Experiment
 
 pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
-pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+experiment = Experiment(ws, 'digit_identification')
+pipeline_run = experiment.submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>Überwachen des Auftrags für die parallele Ausführung
+## <a name="monitor-the-batch-inference-job"></a>Überwachen des Batchrückschlussauftrags
 
-Ein Batchrückschlussauftrag kann sehr lange dauern. In diesem Beispiel wird der Fortschritt mithilfe eines Jupyter-Widgets überwacht. Weitere Möglichkeiten zu Verwaltung des Auftragsfortschritts:
+Ein Batchrückschlussauftrag kann sehr lange dauern. In diesem Beispiel wird der Fortschritt mithilfe eines Jupyter-Widgets überwacht. Weitere Möglichkeiten zum Überwachen des Auftragsstatus:
 
 * Azure Machine Learning Studio 
 * Konsolenausgabe des Objekts [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)
@@ -355,6 +377,24 @@ from azureml.widgets import RunDetails
 RunDetails(pipeline_run).show()
 
 pipeline_run.wait_for_completion(show_output=True)
+```
+
+## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>Erneutes Senden eines Laufs mit neuen Dateneingaben und Parametern
+
+Da Sie die Eingaben und mehrere Konfigurationen als `PipelineParameter` vorgenommen haben, können Sie einen Batch-Rückschlusslauf mit einer anderen Dataseteingabe erneut einreichen und dabei die Parameter optimieren, ohne eine ganz neue Pipeline erstellen zu müssen. Sie verwenden denselben Datenspeicher, aber nur ein einzelnes Bild als Dateneingabe.
+
+```python
+path_on_datastore = mnist_data.path('mnist/0.png')
+single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+single_image_ds._ensure_saved(ws)
+
+pipeline_run_2 = experiment.submit(pipeline, 
+                                   pipeline_parameters={"mnist_param": single_image_ds, 
+                                                        "batch_size_param": "1",
+                                                        "process_count_param": 1}
+)
+
+pipeline_run_2.wait_for_completion(show_output=True)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

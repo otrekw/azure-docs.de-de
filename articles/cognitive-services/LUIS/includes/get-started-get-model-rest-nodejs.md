@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 19f72dbb62fc2084bf0c9609fb3782e083c911af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368417"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655477"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure Language Understanding: Ressourcenschlüssel mit 32 Zeichen und Endpunkt-URL für die Erstellung. Führen Sie die Erstellung mit dem [Azure-Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder der [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) durch.
-* Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
-* Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
+* Importieren Sie die [Pizza](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json)-App aus dem GitHub-Repository `Azure-Samples/cognitive-services-sample-data-files`.
+* Die LUIS-Anwendungs-ID für die importierte Pizza-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
+* Die Versions-ID der Anwendung, die die Äußerungen empfängt.
 * Programmiersprache [Node.js](https://nodejs.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,53 +28,138 @@ ms.locfileid: "77368417"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-the-nodejs-project"></a>Erstellen des Node.js-Projekts
+
+1. Erstellen Sie einen neuen Ordner zur Aufnahme Ihres Node.js-Projekts, beispielsweise `node-model-with-rest`.
+
+1. Öffnen Sie eine neue Eingabeaufforderung, navigieren Sie zu dem erstellten Ordner, und führen Sie den folgenden Befehl aus:
+
+    ```console
+    npm init
+    ```
+
+    Drücken Sie an jeder Eingabeaufforderung die EINGABETASTE, um die Standardeinstellungen zu übernehmen.
+
+1. Installieren Sie das Request-Promise-Modul, indem Sie den folgenden Befehl eingeben:
+
+    ```console
+    npm install --save request-promise
+    ```
 
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
 
 1. Erstellen Sie eine neue Datei mit dem Namen `model.js`. Fügen Sie den folgenden Code hinzu:
 
     ```javascript
-    var request = require('request');
-    var requestpromise = require('request-promise');
+    var request = require('request-promise');
 
-    // 32 character key value
-    const LUIS_authoringKey = "YOUR-KEY";
+    //////////
+    // Values to modify.
 
-    // endpoint example: your-resource-name.api.cognitive.microsoft.com
-    const LUIS_endpoint = "YOUR-ENDPOINT";
+    // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
     const LUIS_appId = "YOUR-APP-ID";
+
+    // YOUR-AUTHORING-KEY: Your LUIS authoring key, 32 character value.
+    const LUIS_authoringKey = "YOUR-AUTHORING-KEY";
+
+    // YOUR-AUTHORING-ENDPOINT: Replace this with your authoring key endpoint.
+    // For example, "https://your-resource-name.api.cognitive.microsoft.com/"
+    const LUIS_endpoint = "YOUR-AUTHORING-ENDPOINT";
+
+    // NOTE: Replace this your version number. The Pizza app uses a version number of "0.1".
     const LUIS_versionId = "0.1";
-    const addUtterancesURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
-    const addTrainURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
+    //////////
+
+    const addUtterancesURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
+    const addTrainURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
 
     const utterances = [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
+        {
+            'text': 'order a pizza',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
                 {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
+                    'entityName': 'Order',
+                    'startCharIndex': 6,
+                    'endCharIndex': 12
                 }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ];
+            ]
+        },
+        {
+            'text': 'order a large pepperoni pizza',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
+                {
+                    'entityName': 'Order',
+                    'startCharIndex': 6,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'FullPizzaWithModifiers',
+                    'startCharIndex': 6,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'PizzaType',
+                    'startCharIndex': 14,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'Size',
+                    'startCharIndex': 8,
+                    'endCharIndex': 12
+                }
+            ]
+        },
+        {
+            'text': 'I want two large pepperoni pizzas on thin crust',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
+                {
+                    'entityName': 'Order',
+                    'startCharIndex': 7,
+                    'endCharIndex': 46
+                },
+                {
+                    'entityName': 'FullPizzaWithModifiers',
+                    'startCharIndex': 7,
+                    'endCharIndex': 46
+                },
+                {
+                    'entityName': 'PizzaType',
+                    'startCharIndex': 17,
+                    'endCharIndex': 32
+                },
+                {
+                    'entityName': 'Size',
+                    'startCharIndex': 11,
+                    'endCharIndex': 15
+                },
+                {
+                    'entityName': 'Quantity',
+                    'startCharIndex': 7,
+                    'endCharIndex': 9
+                },
+                {
+                    'entityName': 'Crust',
+                    'startCharIndex': 37,
+                    'endCharIndex': 46
+                }
+            ]
+        }
+    ];
 
+    // Main function.
     const main = async() =>{
 
-
-        await addUtterance();
+        await addUtterances(utterances);
         await train("POST");
-        await trainStatus("GET");
+        await train("GET");
 
     }
-    const addUtterance = async () => {
+
+    // Adds the utterances to the model.
+    const addUtterances = async (utterances) => {
 
         const options = {
             uri: addUtterancesURI,
@@ -86,9 +171,12 @@ ms.locfileid: "77368417"
             body: utterances
         };
 
-        const response = await requestpromise(options)
-        console.log(response.body);
+        const response = await request(options)
+        console.log("addUtterance:\n" + JSON.stringify(response, null, 2));
     }
+
+    // With verb === "POST", sends a training request.
+    // With verb === "GET", obtains the training status.
     const train = async (verb) => {
 
         const options = {
@@ -101,25 +189,25 @@ ms.locfileid: "77368417"
             body: null // The body can be empty for a training request
         };
 
-        const response = await requestpromise(options)
-        console.log(response.body);
+        const response = await request(options)
+        console.log("train " + verb + ":\n" + JSON.stringify(response, null, 2));
     }
 
     // MAIN
-    main().then(() => console.log("done")).catch((err)=> console.log(err returned));
+    main().then(() => console.log("done")).catch((err)=> console.log(err));
     ```
 
 1. Ersetzen Sie die Werte, die mit `YOUR-` beginnen, durch Ihre eigenen Werte.
 
     |Information|Zweck|
     |--|--|
-    |`YOUR-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
-    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
     |`YOUR-APP-ID`| Ihre LUIS-App-ID. |
+    |`YOUR-AUTHORING-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
+    |`YOUR-AUTHORING-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
 
     Zugewiesene Schlüssel und Ressourcen werden im LUIS-Portal auf der Seite **Azure-Ressourcen** im Abschnitt „Verwalten“ angezeigt. Die App-ID wird auf der Seite **Anwendungseinstellungen** ebenfalls im Abschnitt „Verwalten“ angezeigt.
 
-1. Geben Sie in dem Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Datei auszuführen:
+1. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um das Projekt auszuführen:
 
     ```console
     node model.js
@@ -127,7 +215,7 @@ ms.locfileid: "77368417"
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
+Löschen Sie den Projektordner aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
