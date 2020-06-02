@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77168647"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747007"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
 
@@ -25,6 +25,15 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 |**Erste Schritte**|[Lokale Entwicklung mit dem Azure Cosmos-Emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2110"></a>2.11.0
+
+- In dieser Version wird die Unterstützung für den per Autoskalierung bereitgestellten Durchsatz eingeführt. Mit diesen neuen Features können Sie benutzerdefiniert und in Form von Anforderungseinheiten (RU/s) die Stufe für den maximal bereitgestellten Durchsatz festlegen, die automatische Skalierung für vorhandene Datenbanken und Container aktivieren und die programmgesteuerte Unterstützung durch Azure Cosmos DB SDKs nutzen.
+- Behoben wurde ein Problem bei der Abfrage umfangreicher Dokumente (mehr als 1 GB), bei der ein Emulatorfehler mit dem internen Fehlerstatuscode 500 auftrat.
+
+### <a name="292"></a>2.9.2
+
+- In dieser Version wurde ein Fehler beim Aktivieren des Supports für die MongoDB-Endpunktversion 3.2 behoben. Hinzugefügt wurde außerdem Unterstützung für das Erstellen von ETL-Ablaufverfolgungen für die Problembehandlung mit WPR anstelle von LOGMAN.
 
 ### <a name="291"></a>2.9.1
 

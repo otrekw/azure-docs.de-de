@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74280971"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005493"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index
 
 In diesem Artikel erfahren Sie, wie Sie angereicherte Eingabefelder Ausgabefeldern in einem durchsuchbaren Index zuordnen. Nachdem Sie ein [Skillset definiert](cognitive-search-defining-skillset.md) haben, müssen Sie die Ausgabefelder aller Skills zuordnen, die Werte direkt für ein bestimmtes Feld in Ihrem Suchindex bereitstellen. 
 
 Ausgabefeldzuordnungen sind für das Verschieben von Inhalt aus angereicherten Dokumenten in den Index erforderlich.  Das angereicherte Dokument ist eine Informationsstruktur, und selbst wenn der Support für komplexe Typen im Index verfügbar ist, sollten Sie die Informationen von der angereicherten Struktur in einen einfacheren Typ (z. B. ein Array von Zeichenfolgen) transformieren. Mithilfe von Ausgabefeldzuordnungen können Sie Datenformtransformationen ausführen, indem Sie Informationen vereinfachen.
+
+> [!NOTE]
+> Vor kurzem haben wir die Funktionalität von Zuordnungsfunktionen für Ausgabefeldzuordnungen aktiviert. Weitere Informationen zu Zuordnungsfunktionen finden Sie unter [Feldzuordnungsfunktionen](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions).
 
 ## <a name="use-outputfieldmappings"></a>Verwenden von „outputFieldMappings“
 Um Felder zuzuordnen, fügen Sie `outputFieldMappings` zu Ihrer Indexerdefinition hinzu, wie unten gezeigt:
@@ -50,7 +53,10 @@ Der Text der Anforderung ist wie folgt strukturiert:
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

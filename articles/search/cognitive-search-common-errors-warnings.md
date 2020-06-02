@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b5e18fcc5dc23bdbd9027de62a5bee0fb7d4ceff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086609"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125093"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -75,6 +75,11 @@ Der Indexer hat das Dokument aus der Datenquelle gelesen, aber es gab ein Proble
 | Dokumentschlüssel ist ungültig | Der Dokumentschlüssel darf nicht länger als 1024 Zeichen sein | Ändern Sie den Dokumentschlüssel so, dass er die Überprüfungsanforderungen erfüllt. |
 | Feldzuordnung konnte nicht auf ein Feld angewendet werden | Die Zuordnungsfunktion `'functionName'` konnte nicht auf das Feld `'fieldName'` angewendet werden. Das Array darf nicht NULL sein. Parametername: Bytes | Überprüfen Sie die [Feldzuordnungen](search-indexer-field-mappings.md), die im Indexer definiert sind, und vergleichen Sie sie mit den Daten des angegebenen Felds des fehlerhaften Dokuments. Es kann erforderlich sein, die Feldzuordnungen oder die Dokumentdaten zu ändern. |
 | Feldwert konnte nicht gelesen werden | Der Wert der Spalte `'fieldName'` bei Index `'fieldIndex'` konnte nicht gelesen werden. Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: TCP-Anbieter, Fehler: 0 – Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen.) | Diese Fehler sind in der Regel auf unerwartete Konnektivitätsprobleme beim zugrunde liegenden Dienst der Datenquelle zurückzuführen. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
+
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>Error: Das Ausgabefeld „`xyz`“ konnte aufgrund eines Deserialisierungsproblems beim Anwenden der Zuordnungsfunktion „`abc`“ nicht dem Suchindex zugeordnet werden.
+Bei der Ausgabezuordnung ist möglicherweise ein Fehler aufgetreten, da die Ausgabedaten für die von Ihnen verwendete Zuordnungsfunktion das falsche Format aufweisen. Wenn Sie z. B. die Base64Encode-Zuordnungsfunktion auf binäre Daten anwenden, wird dieser Fehler generiert. Um das Problem zu beheben, führen Sie den Indexer erneut aus, ohne die Zuordnungsfunktion anzugeben, oder stellen Sie sicher, dass die Zuordnungsfunktion mit dem Datentyp des Ausgabefelds kompatibel ist. Weitere Informationen finden Sie unter [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md).
 
 <a name="could-not-execute-skill"/>
 
@@ -311,7 +316,12 @@ Weitere Informationen finden Sie unter [Indexergrenzwerte](search-limits-quotas-
 <a name="could-not-map-output-field-x-to-search-index"/>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>Warnung: Das Ausgabefeld „X“ konnte dem Suchindex nicht zugeordnet werden.
-Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest.
+Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest. Weitere Informationen finden Sie unter [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md).
+
+| `Reason` | Details/Beispiel | Lösung |
+| --- | --- | --- |
+| Durchlaufen des Nichtarrays nicht möglich | „Durchlaufen des Nichtarrays `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“ | Dieser Fehler tritt auf, wenn die Ausgabe kein Array ist. Wenn Sie der Ansicht sind, dass die Ausgabe ein Array sein sollte, überprüfen Sie den Pfad des angegebenen Ausgabequellfelds. Es könnte beispielsweise ein `*` im Namen des Quellfelds fehlen oder zu viel sein. Es ist auch möglich, dass die Eingabe für diese Qualifikation NULL ist, was zu einem leeren Array führt. Ähnliche Details finden Sie im Abschnitt [Die Qualifikationseingabe war ungültig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid).    |
+| Auswählen von `0` im Nichtarray nicht möglich | „Auswählen von `0` im Nichtarray `/document/pages` nicht möglich.“ | Dies kann vorkommen, wenn die Qualifikationsausgabe kein Array erzeugt und der Name des Ausgabequellfelds einen Arrayindex oder `*` im Pfad aufweist. Überprüfen Sie die in den Feldnamen der Ausgabequelle angegebenen Pfade und den Feldwert für den angegebenen Feldnamen. Ähnliche Details finden Sie im Abschnitt [Die Qualifikationseingabe war ungültig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid).  |
 
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
 

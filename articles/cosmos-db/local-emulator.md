@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618749"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849007"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -40,6 +40,7 @@ Da der Azure Cosmos-Emulator eine emulierte Umgebung bereitstellt, die auf einer
 * Der Azure Cosmos-Emulator bietet keine [Replikation in mehreren Regionen](distribute-data-globally.md).
 * Unter Umständen ist Ihre Kopie des Azure Cosmos-Emulators nicht auf dem neuesten Stand der Änderungen im Azure Cosmos DB-Dienst. Verwenden Sie daher den [Azure Cosmos DB-Kapazitätsplaner](https://www.documentdb.com/capacityplanner), um den erforderlichen Produktionsdurchsatz (RUs, Request Units = Anforderungseinheiten) für Ihre Anwendung richtig einzuschätzen.
 * Wenn Sie den Azure Cosmos-Emulator verwenden, können Sie standardmäßig bis zu 25 Container mit fester Größe (nur unterstützt durch Azure Cosmos DB SDKs) oder 5 Container mit dem Azure Cosmos-Emulator erstellen. Weitere Informationen zum Ändern dieses Werts finden Sie unter [Festlegen des PartitionCount-Werts](#set-partitioncount).
+* Der Emulator unterstützt für die ID-Eigenschaft eine maximale Größe von 254 Zeichen.
 
 ## <a name="system-requirements"></a>Systemanforderungen
 

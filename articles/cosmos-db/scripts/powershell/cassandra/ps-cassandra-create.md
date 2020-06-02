@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: c81c2962ef7868394f70bc3ca5f3a147bb4f268b
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: fd9b1c7da5a4fbfa2bbe94bf8cceca39392ab5af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653079"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659761"
 ---
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>Erstellen eines Keyspace und einer Tabelle für Azure Cosmos DB: Cassandra-API
 
@@ -39,12 +39,12 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein neues Cosmos DB-Konto. |
-| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | Erstellt oder aktualisiert einen Cosmos DB-Cassandra-API-Keyspace. |
-| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Erstellt einen neuen CosmosDB-Cassandra-Clusterschlüssel. |
-| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Erstellt eine neue CosmosDB-Cassandra-Spalte. |
-| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Erstellt ein neues CosmosDB-Cassandra-Schema. |
-| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | Erstellt oder aktualisiert eine Cosmos DB-Cassandra-API-Tabelle. |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein Cosmos DB-Konto. |
+| [New-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandrakeyspace) | Erstellt einen Cosmos DB-Cassandra-API-Keyspace. |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Erstellt einen Cosmos DB-Cassandra-API-Clusterschlüssel. |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Erstellt eine Cosmos DB-Cassandra-API-Spalte. |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Erstellt ein Cosmos DB-Cassandra-API-Schema. |
+| [New-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandratable) | Erstellt eine Cosmos DB-Cassandra-API-Tabelle. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

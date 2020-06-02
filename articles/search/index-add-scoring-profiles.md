@@ -3,34 +3,29 @@ title: Verstärken der Suchrangbewertungen mithilfe von Bewertungsprofilen
 titleSuffix: Azure Cognitive Search
 description: Verstärken Sie Suchrangbewertungen für Ergebnisse der kognitiven Azure-Suche durch Hinzufügen von Bewertungsprofilen.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231100"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890178"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Index für die kognitive Azure-Suche
 
 Bei der *Bewertung* wird eine Suchbewertung für jedes Element in einem nach Rangfolge sortierten Resultset berechnet. Jedes Element in einem Resultset wird einer Suchbewertung zugeordnet und anschließend wird eine absteigende Rangfolge zugewiesen.
 
  Die kognitive Azure-Suche verwendet die Standardbewertung zum Berechnen eines Ursprungswerts. Sie können die Berechnung jedoch über ein *Bewertungsprofil* anpassen. Bewertungsprofile bieten Ihnen mehr Kontrolle über die Rangfolge der Elemente in Suchergebnissen. Sie können beispielsweise Elemente auf Basis ihres Umsatzpotentials optimieren, neuere Elemente hochstufen oder auch Elemente fördern, die sich bereits zu lange im Lager befinden.  
+
+ Das folgende Videosegment bietet eine schnelle Übersicht über die Funktionsweise von Bewertungsprofilen in Azure Cognitive Search.
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>Bewertungsprofildefinitionen
 
  Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Feldern, Funktionen und Parametern.  
 
@@ -169,7 +164,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 |||  
 |-|-|  
 |**Gewichtungen**|Geben Sie Name/Wert-Paare an, die einem Feld eine relative Gewichtung zuweisen. In diesem [Beispiel](#bkmk_ex) werden die Felder „albumTitle“, „genre“ und „artistName“ entsprechend um 1,5, 5 und 2 verstärkt. Warum wird "genre" so viel stärker als die anderen Felder erhöht? Wenn die Suche in relativ homogenen Daten durchgeführt wird (wie bei „genre“ in `musicstoreindex`), ist bei den relativen Gewichtungen möglicherweise eine größere Varianz erforderlich. In `musicstoreindex` wird „rock“ z. B. sowohl für „genre“ als auch für identisch formulierte Genrebeschreibungen angezeigt. Wenn "genre" schwerer wiegen soll als die Genrebeschreibung, dann benötigt das Feld "genre" eine viel höhere relative Gewichtung.|  
-|**Funktionen**|Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnungen erforderlich sind. Gültige Werte sind `freshness`, `magnitude`, `distance` und `tag`. Jede Funktion verfügt über Parameter, die für sie eindeutig sind.<br /><br /> -   `freshness` sollte verwendet werden, wenn Sie Elemente in Abhängigkeit davon verstärken möchten, wie neu oder alt diese sind. Diese Funktion kann nur mit `datetime`-Feldern verwendet werden (edm.DataTimeOffset). Beachten Sie, dass das Attribut `boostingDuration` nur mit der Funktion `freshness` verwendet wird.<br />-   `magnitude` sollte verwendet werden, wenn die Verstärkung basierend auf der Höhe eines numerischen Werts erfolgen soll. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl.  Diese Funktion kann nur mit Double- und Integer-Feldern verwendet werden.<br />     Für die `magnitude`-Funktion können Sie den Bereich (absteigend) umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Elemente eine höhere Relevanz zuzuordnen als teureren Elementen). Legen Sie bei einer Preisspanne zwischen 100 € und 1 € `boostingRangeStart` auf 100 und `boostingRangeEnd` auf 1 fest, um preiswertere Artikeln zu fördern.<br />-   `distance` sollte verwendet werden, wenn die Verstärkung entsprechend der Nähe oder geografischen Lage erfolgen soll. Diese Funktion kann nur mit `Edm.GeographyPoint` -Feldern verwendet werden.<br />-   `tag` sollte verwendet werden, wenn die Verstärkung nach gemeinsamen Tags in Dokumenten und Suchabfragen erfolgen soll. Diese Funktion kann nur mit `Edm.String`- und `Collection(Edm.String)`-Feldern verwendet werden.<br /><br /> **Regeln für die Verwendung von Funktionen**<br /><br /> `tag` für den Funktionstyp (`freshness`, `magnitude`, `distance`,) muss in Kleinbuchstaben angegeben werden.<br /><br /> Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.<br /><br /> Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index).<br /><br /> Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.|  
+|**Funktionen**|Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnungen erforderlich sind. Gültige Werte sind `freshness`, `magnitude`, `distance` und `tag`. Jede Funktion verfügt über Parameter, die für sie eindeutig sind.<br /><br /> -   `freshness` sollte verwendet werden, wenn Sie Elemente in Abhängigkeit davon verstärken möchten, wie neu oder alt diese sind. Diese Funktion kann nur mit `datetime`-Feldern verwendet werden (edm.DataTimeOffset). Beachten Sie, dass das Attribut `boostingDuration` nur mit der Funktion `freshness` verwendet wird.<br />-   `magnitude` sollte verwendet werden, wenn die Verstärkung basierend auf der Höhe eines numerischen Werts erfolgen soll. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl. Diese Funktion kann nur mit Double- und Integer-Feldern verwendet werden.<br />     Für die `magnitude`-Funktion können Sie den Bereich (absteigend) umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Elemente eine höhere Relevanz zuzuordnen als teureren Elementen). Legen Sie bei einer Preisspanne zwischen 100 € und 1 € `boostingRangeStart` auf 100 und `boostingRangeEnd` auf 1 fest, um preiswertere Artikeln zu fördern.<br />-   `distance` sollte verwendet werden, wenn die Verstärkung entsprechend der Nähe oder geografischen Lage erfolgen soll. Diese Funktion kann nur mit `Edm.GeographyPoint` -Feldern verwendet werden.<br />-   `tag` sollte verwendet werden, wenn die Verstärkung nach gemeinsamen Tags in Dokumenten und Suchabfragen erfolgen soll. Diese Funktion kann nur mit `Edm.String`- und `Collection(Edm.String)`-Feldern verwendet werden.<br /><br /> **Regeln für die Verwendung von Funktionen**<br /><br /> `tag` für den Funktionstyp (`freshness`, `magnitude`, `distance`,) muss in Kleinbuchstaben angegeben werden.<br /><br /> Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.<br /><br /> Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index).<br /><br /> Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.|  
 
  Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) und [Hinzufügen, Aktualisieren oder Löschen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.  
 
@@ -246,7 +241,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 |`magnitude` &#124; `boostingRangeStart`|Legt den Anfangswert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 1. Für Gewinnspannen von über 50 % wäre dies die 50.|  
 |`magnitude` &#124; `boostingRangeEnd`|Legt den Endwert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 4.|  
 |`magnitude` &#124; `constantBoostBeyondRange`|Gültige Werte sind "true" oder "false" (Standard). Bei "true" wird die vollständige Verstärkung weiterhin auf Dokumente angewendet, die einen Wert für das Zielfeld aufweisen, der über dem oberen Ende des Bereichs liegt. Bei "false" wird die Verstärkung dieser Funktion nicht auf Dokumente angewendet, die einen Wert für das Zielfeld aufweisen, der außerhalb des Bereichs liegt.|  
-|`freshness`|Die Bewertungsfunktion für die Aktualität wird dazu verwendet, um Rangfolgebewertungen für Elemente auf Basis von Werten in `DateTimeOffset`-Feldern zu ändern. Ein Element mit einem aktuelleren Datum kann z. B. höher als ältere Elemente eingestuft werden. <br /><br /> Elemente wie z. B. Kalenderereignisse können mit in der Zukunft liegenden Daten so eingestuft werden, dass Ereignisse mit geringerem Abstand zur Gegenwart höher als Ereignisse eingestuft werden, die weiter in der Zukunft liegen.<br /><br /> Im aktuellen Service Release wird ein Ende des Bereichs auf die aktuelle Zeit festgelegt. Das andere Ende ist ein Zeitpunkt in der Vergangenheit, der auf `boostingDuration` basiert. Um einen Bereich von Zeitpunkten in der Zukunft zu verstärken, verwenden Sie einen negativen Wert für `boostingDuration`.<br /><br /> Die Rate, mit der die Verstärkung von einem maximalen und minimalen Bereich wechselt, wird durch die Interpolation bestimmt, die auf das Bewertungsprofil angewendet wird (siehe folgende Abbildung). Wählen Sie zum Umkehren des angewendeten Verstärkungsfaktors einen Verstärkungsfaktor, der kleiner ist als 1.|  
+|`freshness`|Die Bewertungsfunktion für die Aktualität wird dazu verwendet, um Rangfolgebewertungen für Elemente auf Basis von Werten in `DateTimeOffset`-Feldern zu ändern. Ein Element mit einem aktuelleren Datum kann z. B. höher als ältere Elemente eingestuft werden.<br /><br /> Elemente wie z. B. Kalenderereignisse können mit in der Zukunft liegenden Daten so eingestuft werden, dass Ereignisse mit geringerem Abstand zur Gegenwart höher als Ereignisse eingestuft werden, die weiter in der Zukunft liegen.<br /><br /> Im aktuellen Service Release wird ein Ende des Bereichs auf die aktuelle Zeit festgelegt. Das andere Ende ist ein Zeitpunkt in der Vergangenheit, der auf `boostingDuration` basiert. Um einen Bereich von Zeitpunkten in der Zukunft zu verstärken, verwenden Sie einen negativen Wert für `boostingDuration`.<br /><br /> Die Rate, mit der die Verstärkung von einem maximalen und minimalen Bereich wechselt, wird durch die Interpolation bestimmt, die auf das Bewertungsprofil angewendet wird (siehe folgende Abbildung). Wählen Sie zum Umkehren des angewendeten Verstärkungsfaktors einen Verstärkungsfaktor, der kleiner ist als 1.|  
 |`freshness` &#124; `boostingDuration`|Legt eine Ablaufdauer fest, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Informationen zur Syntax und Beispiele finden Sie im folgenden Abschnitt unter [Festlegen von boostingDuration](#bkmk_boostdur).|  
 |`distance`|Die Bewertungsfunktion für den Abstand wird dazu verwendet, um auf Basis des Abstands relativ zu einem geografischen Standort Einfluss auf die Bewertung von Dokumenten zu nehmen. Der Referenzstandort wird als Teil der Abfrage in einem Parameter (mithilfe der Zeichenfolgeoption `scoringParameterquery`) als „lon,lat“-Argument (Längengrad, Breitengrad) angegeben.|  
 |`distance` &#124; `referencePointParameter`|Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. `scoringParameter` ist ein Abfrageparameter. Beschreibungen von Abfrageparametern finden Sie unter [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).|  

@@ -7,20 +7,25 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270029"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858819"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
 > [!IMPORTANT] 
 > „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen. In diesem kurzen Video unten wird veranschaulicht, wie Sie Ihre Umgebung mit Ihren Daten unter Verwendung von Azure Cognitive Search in Kombination mit Power BI anreichern können.
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
+
+
 
 + Führen Sie die Schritte aus, die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) bzw. [Erstellen eines Azure Cognitive Search-Wissensspeichers mithilfe von REST](knowledge-store-create-rest.md) beschrieben sind, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird. Sie benötigen außerdem den Namen des Azure Storage-Kontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
 
@@ -28,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power B
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Power BI-Beispielvorlage (nur Azure-Portal)
 
-Beim [Erstellen eines Wissensspeichers über das Azure-Portal](knowledge-store-create-portal.md) können Sie auf der zweiten Seite des Assistenten [Daten importieren](https://github.com/Azure-Samples/cognitive-search-templates) eine **Power BI-Vorlage** herunterladen. Die Vorlage bietet mehrere Visualisierungen für textbasierte Inhalte (beispielweise WordCloud und Network Navigator). 
+Beim [Erstellen eines Wissensspeichers über das Azure-Portal](knowledge-store-create-portal.md) können Sie auf der zweiten Seite des Assistenten **Daten importieren** eine [Power BI-Vorlage](https://github.com/Azure-Samples/cognitive-search-templates) herunterladen. Die Vorlage bietet mehrere Visualisierungen für textbasierte Inhalte (beispielweise WordCloud und Network Navigator). 
 
 Klicken Sie auf der Seite **Kognitive Qualifikationen hinzufügen (Optional)** auf **Power BI-Vorlage abrufen**, um die Vorlage aus dem öffentlichen GitHub-Speicherort abzurufen und herunterzuladen. Der Assistent passt die Vorlage an die Form Ihrer Daten an (gemäß der Erfassung in den im Assistenten angegebenen Wissensspeicherprojektionen). Aus diesem Grund variiert die heruntergeladene Vorlage bei jeder Ausführung des Assistenten, wenn sich die Dateneingaben und die ausgewählten Qualifikationen unterscheiden.
 
