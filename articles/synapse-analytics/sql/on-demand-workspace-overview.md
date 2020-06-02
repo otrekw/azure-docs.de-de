@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421304"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702042"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL On-Demand (Vorschauversion) in Azure Synapse Analytics 
 
@@ -28,7 +28,7 @@ SQL On-Demand ist ein verteiltes Datenverarbeitungssystem, das für große Date
 
 Da es sich bei SQL On-Demand um eine serverlose Lösung handelt, müssen Sie weder eine Infrastruktur einrichten noch Cluster verwalten. In jedem Azure Synapse-Arbeitsbereich wird ein Standardendpunkt für diesen Dienst bereitgestellt, sodass Sie direkt nach der Erstellung des Arbeitsbereichs mit dem Abfragen von Daten beginnen können. Es fallen keine Gebühren für reservierte Ressourcen an. Ihnen werden lediglich die Daten in Rechnung gestellt, die im Rahmen Ihrer Abfragen überprüft werden. Somit handelt es sich hierbei um ein Modell mit echter nutzungsbasierter Bezahlung.  
 
-Wenn Sie Spark in Ihrer Datenpipeline verwenden, können Sie zur Datenvorbereitung, -bereinigung oder -anreicherung [beliebige, im Rahmen des Prozesses erstellte Spark-Tabellen direkt über SQL On-Demand abfragen](develop-storage-files-spark-tables.md). Verwenden Sie [Private Link](../security/how-to-connect-to-workspace-with-private-links.md), um Ihren SQL On-Demand-Endpunkt in das [verwaltete VNET Ihres Arbeitsbereichs](../security/synapse-workspace-managed-vnet.md) zu integrieren.  
+Wenn Sie Apache Spark für Azure Synapse in Ihrer Datenpipeline verwenden, können Sie zur Datenvorbereitung, -bereinigung oder -anreicherung [im Rahmen des Prozesses erstellte externe Spark-Tabellen direkt über SQL On-Demand abfragen](develop-storage-files-spark-tables.md). Verwenden Sie [Private Link](../security/how-to-connect-to-workspace-with-private-links.md), um Ihren SQL On-Demand-Endpunkt in das [verwaltete VNET Ihres Arbeitsbereichs](../security/synapse-workspace-managed-vnet.md) zu integrieren.  
 
 ## <a name="who-is-sql-on-demand-for"></a>Zielgruppe von SQL On-Demand
 
@@ -42,7 +42,7 @@ Verschiedene professionelle Rollen können von SQL On-Demand profitieren:
 
 - Dateningenieure können den Data Lake erkunden, Daten mithilfe dieses Diensts transformieren und vorbereiten und ihre Datentransformationspipelines vereinfachen. Weitere Informationen finden Sie in [diesem Tutorial](tutorial-data-analyst.md).
 - Dank Features wie OPENROWSET und automatischem Schemarückschluss können Data Scientists schnell den Inhalt und die Struktur der Daten im Data Lake analysieren.
-- Datenanalysten können mithilfe der vertrauten T-SQL-Sprache oder mit den von ihnen bevorzugten Tools, die eine Verbindung mit SQL On-Demand herstellen können, [Daten und Spark-Tabellen erkunden](develop-storage-files-spark-tables.md), die von Data Scientists und Dateningenieuren erstellt wurden.
+- Datenanalysten können mithilfe der vertrauten T-SQL-Sprache oder mit den von ihnen bevorzugten Tools, die eine Verbindung mit SQL On-Demand herstellen können, [Daten und externe Spark-Tabellen erkunden](develop-storage-files-spark-tables.md), die von Data Scientists und Dateningenieuren erstellt wurden.
 - BI-Experten können schnell [Power BI-Berichte auf der Grundlage von Daten im Data Lake](tutorial-connect-power-bi-desktop.md) sowie Spark-Tabellen erstellen.
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>Vorbereitungsschritte
@@ -110,7 +110,7 @@ SQL On-Demand bietet Mechanismen, um den Zugriff auf Ihre Daten zu schützen.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-Integration und Multi-Factor Authentication
 
-SQL On-Demand ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten über die [Azure Active Directory-Integration](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory (Azure AD) unterstützt die [mehrstufige Authentifizierung](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (Multi-Factor Authentication, MFA), um die Daten- und Anwendungssicherheit zu erhöhen, sowie einmaliges Anmelden.
+SQL On-Demand ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten über die [Azure Active Directory-Integration](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory (Azure AD) unterstützt die [mehrstufige Authentifizierung](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (Multi-Factor Authentication, MFA), um die Daten- und Anwendungssicherheit zu erhöhen, sowie einmaliges Anmelden.
 
 #### <a name="authentication"></a>Authentifizierung
 
@@ -124,7 +124,7 @@ Die SQL On-Demand-Authentifizierung bezieht sich darauf, auf welche Weise Benut
 
   Bei dieser Authentifizierungsmethode werden von Azure Active Directory verwaltete Identitäten verwendet. Für Azure AD-Benutzer kann die mehrstufige Authentifizierung aktiviert werden. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-#### <a name="authorization"></a>Autorisierung
+#### <a name="authorization"></a>Authorization
 
 Autorisierung bezieht sich darauf, welche Aufgaben ein Benutzer innerhalb einer SQL On-Demand-Datenbank ausführen kann. Dies wird durch datenbankbezogene Rollenmitgliedschaften und Objektebenenberechtigungen Ihres Benutzerkontos gesteuert.
 

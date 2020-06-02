@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 204fd1b1a0a2984886684bbabf33dc7e73c1b45c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691876"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653543"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Abfragen von Speicherdateien mithilfe von SQL On-Demand-Ressourcen (Vorschau) innerhalb von Synapse SQL
 
@@ -90,7 +90,7 @@ Die folgenden zusätzlichen Parameter wurden für die Arbeit mit CSV-Dateien (du
 ```
 
 - ESCAPE_CHAR = 'char': Dient zum Angeben des Zeichens in der Datei, das als Escapezeichen für sich selbst und für alle Trennzeichenwerte in der Datei fungiert. Wenn auf das Escapezeichen ein Wert folgt, bei dem es sich nicht um das Escapezeichen selbst oder um einen der Trennzeichenwerte handelt, wird das Escapezeichen beim Lesen des Werts verworfen.
-Der ESCAPE_CHAR-Parameter wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Anführungszeichen. Das Anführungszeichen wird in Übereinstimmung mit dem CSV-Verhalten von Excel mit doppelten Anführungszeichen als Escapezeichen versehen.
+Der Parameter „ESCAPE_CHAR“ wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen wird in Übereinstimmung mit dem CSV-Verhalten von Excel mit doppelten Anführungszeichen als Escapezeichen versehen.
 - FIELDTERMINATOR ='field_terminator': Dient zum Angeben des zu verwendenden Feldabschlusszeichens. Das Standard-Feldabschlusszeichen ist das Komma ( **,** ).
 - ROWTERMINATOR ='row_terminator': Dient zum Angeben des zu verwendenden Zeilenabschlusszeichens. Das Standard-Zeilenabschlusszeichen ist das Zeilenvorschubzeichen:  **\r\n**.
 

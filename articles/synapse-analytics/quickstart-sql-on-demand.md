@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692171"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836803"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Schnellstart: Verwenden von SQL On-Demand
+# <a name="quickstart-use-sql-on-demand"></a>Schnellstart: Verwenden von SQL On-Demand
 
-Synapse SQL On-Demand (Vorschauversion) ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SQL On-Demand verschiedene Dateitypen abfragen.
+Synapse SQL On-Demand (Vorschauversion) ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SQL On-Demand verschiedene Dateitypen abfragen. Unterstützte Formate sind in [OPENROWSET](sql/develop-openrowset.md) aufgeführt.
 
-Die folgenden Dateitypen werden unterstützt: JSON, CSV, Apache Parquet
+In dieser Schnellstartanleitung sehen Sie, wie Abfragen folgender Dateiformate ausgeführt werden: CSV-, Apache Parquet- und JSON-Dateien.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +30,7 @@ Wählen Sie einen SQL-Client aus, der zum Ausgeben von Abfragen verwendet werden
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) ist ein Clienttool, mit dem Sie SQL-Abfragen und Notebooks für Ihre On-Demand-Datenbank ausführen können.
 - [SQL Server Management Studio](sql/get-started-ssms.md) ist ein Clienttool, mit dem Sie SQL-Abfragen für Ihre On-Demand-Datenbank ausführen können.
 
-Parameter für den Schnellstart:
+Parameter für diesen Schnellstart:
 
 | Parameter                                 | BESCHREIBUNG                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -60,36 +60,24 @@ Verwenden Sie die folgende Abfrage, und ändern Sie `mydbname` in einen Namen Ih
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Erstellen von Anmeldeinformationen
+### <a name="create-data-source"></a>Erstellen der Datenquelle
 
-Erstellen Sie Anmeldeinformationen, mit denen SQL On-Demand auf Dateien im Speicher zugreifen kann, um Abfragen mit SQL On-Demand zu ermöglichen.
-
-> [!NOTE]
-> Zur erfolgreichen Ausführung der Beispiele in diesem Abschnitt muss ein SAS-Token verwendet werden.
->
-> Für die Verwendung von SAS-Token muss die Benutzeridentität gelöscht werden, wie in [diesem Artikel](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through) erläutert.
->
-> Von SQL On-Demand wird standardmäßig immer AAD-Pass-Through verwendet.
-
-Weitere Informationen zum Verwalten der Speicherzugriffssteuerung finden Sie im Artikel [Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau) in Azure Synapse Analytics](sql/develop-storage-files-storage-access-control.md).
-
-Führen Sie den folgenden Codeausschnitt aus, um die in den Beispielen in diesem Abschnitt verwendeten Anmeldeinformationen zu erstellen:
+Wenn Sie Abfragen mithilfe von SQL On-Demand ausführen möchten, erstellen Sie eine Datenquelle, über die SQL On-Demand auf Dateien im Speicher zugreifen kann.
+Führen Sie den folgenden Codeausschnitt aus, um die in den Beispielen in diesem Abschnitt verwendete Datenquelle zu erstellen:
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
-## <a name="querying-csv-files"></a>Abfragen von CSV-Dateien
+## <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
 Die folgende Abbildung zeigt eine Vorschau der abzufragenden Datei:
 
@@ -101,8 +89,9 @@ Die folgende Abfrage zeigt, wie eine CSV-Datei ohne Kopfzeile gelesen wird, die 
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -118,7 +107,7 @@ WHERE
 Das Schema kann zum Zeitpunkt der Abfragekompilierung angegeben werden.
 Weitere Beispiele finden Sie unter [Abfragen von CSV-Datei](sql/query-single-csv-file.md).
 
-## <a name="querying-parquet-files"></a>Abfragen von Parquet-Dateien
+## <a name="query-parquet-files"></a>Abfragen von Parquet-Dateien
 
 Im folgenden Beispiel werden die Funktionen des automatischen Schemarückschlusses beim Abfragen von Parquet-Dateien gezeigt. Hierzu wird die Anzahl von Zeilen im September 2017 ohne Angabe eines Schemas zurückgegeben.
 
@@ -129,14 +118,15 @@ Im folgenden Beispiel werden die Funktionen des automatischen Schemarückschluss
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
 Weitere Informationen zum Abfragen von Parquet-Dateien finden Sie [hier](sql/query-parquet-files.md).
 
-## <a name="querying-json-files"></a>Abfragen von JSON-Daten
+## <a name="query-json-files"></a>Abfragen von JSON-Dateien
 
 ### <a name="json-sample-file"></a>JSON-Beispieldatei
 
@@ -158,7 +148,7 @@ Die Dateien sind im Container *json* im Ordner *books* gespeichert und enthalten
 }
 ```
 
-### <a name="querying-json-files"></a>Abfragen von JSON-Daten
+### <a name="query-json-files"></a>Abfragen von JSON-Dateien
 
 Die folgende Abfrage zeigt, wie Sie mithilfe von [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) skalare Werte (Titel, Verleger) aus einem Buch mit dem Titel *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* abrufen:
 
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'

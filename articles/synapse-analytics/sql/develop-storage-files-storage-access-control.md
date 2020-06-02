@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589277"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835834"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -26,11 +26,7 @@ In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie ve
 
 ## <a name="supported-storage-authorization-types"></a>Unterstützte Autorisierungstypen für den Speicherzugriff
 
-Ein bei einer SQL On-Demand-Ressource angemeldeter Benutzer muss für den Zugriff auf und die Abfrage von Dateien in Azure Storage autorisiert sein, wenn die Dateien nicht öffentlich verfügbar sind. Drei Autorisierungstypen werden unterstützt:
-
-- [Shared Access Signature (SAS)](?tabs=shared-access-signature)
-- [Benutzeridentität](?tabs=user-identity)
-- [Verwaltete Identität](?tabs=managed-identity)
+Ein bei einer SQL On-Demand-Ressource angemeldeter Benutzer muss für den Zugriff auf und die Abfrage von Dateien in Azure Storage autorisiert sein, wenn die Dateien nicht öffentlich verfügbar sind. Sie können drei Autorisierungstypen für den Zugriff auf nicht öffentlichen Speicher verwenden: [Benutzeridentität](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) und [Verwaltete Identität](?tabs=managed-identity).
 
 > [!NOTE]
 > [Azure AD-Pass-Through](#force-azure-ad-pass-through) ist das Standardverhalten, wenn Sie einen Arbeitsbereich erstellen. In diesem Fall müssen Sie nicht für jedes Speicherkonto, auf das über Azure AD-Anmeldungen zugegriffen wird, eigene Anmeldeinformationen erstellen. Sie können [dieses Verhalten deaktivieren](#disable-forcing-azure-ad-pass-through).
@@ -99,7 +95,7 @@ Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator der verwalte
 
 ### <a name="anonymous-access"></a>[Anonymer Zugriff](#tab/public-access)
 
-Sie können auf öffentlich verfügbare Dateien in Azure-Speicherkonten zugreifen, die [anonymen Zugriff zulassen](/azure/storage/blobs/storage-manage-access-to-resources.md).
+Sie können auf öffentlich verfügbare Dateien in Azure-Speicherkonten zugreifen, die [anonymen Zugriff zulassen](/azure/storage/blobs/storage-manage-access-to-resources).
 
 ---
 

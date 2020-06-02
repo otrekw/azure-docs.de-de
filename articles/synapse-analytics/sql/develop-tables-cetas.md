@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420044"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696826"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS mit Synapse SQL
 
@@ -78,6 +78,9 @@ SELECT <select_criteria>
 
 Füllt die neue Tabelle mit den Ergebnissen einer SELECT-Anweisung auf. *Select_criteria* ist der Hauptteil der SELECT-Anweisung, der bestimmt, welche Daten in die neue Tabelle kopiert werden sollen. Informationen zu SELECT-Anweisungen finden Sie unter [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
+> [!NOTE]
+> Die ORDER BY-Klausel im SELECT-Teil von CETAS wird nicht unterstützt.
+
 ## <a name="permissions"></a>Berechtigungen
 
 Damit CETAS funktioniert, benötigen Sie Berechtigungen zum Auflisten des Ordnerinhalts und zum Schreiben in den mit LOCATION angegebenen Ordner.
@@ -86,7 +89,9 @@ Damit CETAS funktioniert, benötigen Sie Berechtigungen zum Auflisten des Ordner
 
 Diese Beispiele verwenden CETAS, um eine nach Jahr und Staat aggregierte Gesamtbevölkerungszahl in den Ordner „aggregated_data“ zu speichern, der sich in der Datenquelle „population_ds“ befindet.
 
-Dieses Beispiel verwendet die zuvor erstellten Parameter für Anmeldeinformationen, Datenquelle und externes Dateiformat. Informationen dazu finden Sie im Dokument [Externe Tabellen](develop-tables-external-tables.md). Um Abfrageergebnisse in einem anderen Ordner in derselben Datenquelle zu speichern, ändern Sie das LOCATION-Argument. Um Ergebnisse in einem anderen Speicherkonto zu speichern, erstellen und verwenden Sie eine andere Datenquelle für das DATA_SOURCE-Argument.
+Dieses Beispiel verwendet die zuvor erstellten Parameter für Anmeldeinformationen, Datenquelle und externes Dateiformat. Informationen dazu finden Sie im Dokument [Externe Tabellen](develop-tables-external-tables.md). Um Abfrageergebnisse in einem anderen Ordner in derselben Datenquelle zu speichern, ändern Sie das LOCATION-Argument. 
+
+Um Ergebnisse in einem anderen Speicherkonto zu speichern, erstellen und verwenden Sie eine andere Datenquelle für das DATA_SOURCE-Argument.
 
 > [!NOTE]
 > Die folgenden Beispiele verwenden ein öffentliches Azure Open Data-Speicherkonto. Dieses ist schreibgeschützt. Um diese Abfragen auszuführen, müssen Sie die Datenquelle angeben, für die Sie Schreibberechtigungen besitzen.
@@ -111,7 +116,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Das folgende Beispiel verwendet eine externe Tabelle als Quelle für CETAS. Es nutzt die zuvor erstellten Parameter für Anmeldeinformationen, Datenquelle, externes Dateiformat und externe Tabelle. Informationen dazu finden Sie im Dokument [Externe Tabellen](develop-tables-external-tables.md).
+Im folgenden Beispiel wird eine externe Tabelle als Quelle für CETAS verwendet. Es nutzt die zuvor erstellten Parameter für Anmeldeinformationen, Datenquelle, externes Dateiformat und externe Tabelle. Informationen dazu finden Sie im Dokument [Externe Tabellen](develop-tables-external-tables.md).
 
 ```sql
 -- use CETAS with select from external table
@@ -152,9 +157,10 @@ CETAS kann zum Speichern von Resultsets mit den folgenden SQL-Datentypen verwend
 - TINYINT
 - bit
 
-LOBs können nicht mit CETAS verwendet werden.
+> [!NOTE]
+> LOBs können nicht mit CETAS verwendet werden.
 
-Folgende Datentypen können im SELECT-Teil von CETAS nicht verwendet werden:
+Die folgenden Datentypen können im SELECT-Teil von CETAS nicht verwendet werden:
 
 - NCHAR
 - NVARCHAR
@@ -167,4 +173,4 @@ Folgende Datentypen können im SELECT-Teil von CETAS nicht verwendet werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können versuchen, [Spark-Tabellen](develop-storage-files-spark-tables.md) abzufragen.
+Sie können versuchen, [Apache Spark für externe Azure Synapse-Tabellen](develop-storage-files-spark-tables.md) abzufragen.

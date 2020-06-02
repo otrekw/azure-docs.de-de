@@ -11,25 +11,25 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f0aabf4bd18f82c247a43931e02e4b6890b2ef4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207801"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650691"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Schnellstart: Konfigurieren der Workloadisolation mithilfe von T-SQL
 
-In dieser Schnellstartanleitung erstellen Sie schnell eine Arbeitsauslastungsgruppe und einen Klassifizierer zum Reservieren von Ressourcen für das Laden von Daten. Die Arbeitsauslastungsgruppe weist Datenladevorgängen 20 % der Systemressourcen zu.  Der Workloadklassifizierer weist der Arbeitsauslastungsgruppe für Datenladevorgänge Anforderungen zu.  Bei einer Isolation von 20 % für Datenladevorgänge sind Ressourcen zum Einhalten von SLAs garantiert.
+In dieser Schnellstartanleitung erstellen Sie schnell eine Arbeitsauslastungsgruppe und einen Klassifizierer zum Reservieren von Ressourcen für das Laden von Daten. Die Arbeitsauslastungsgruppe weist den Datenladevorgängen 20 % der Systemressourcen zu.  Der Workloadklassifizierer weist der Arbeitsauslastungsgruppe für Datenladevorgänge Anforderungen zu.  Bei einer Isolation von 20 % für Datenladevorgänge sind Ressourcen zum Einhalten von SLAs garantiert.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Das Erstellen einer SQL-Analyse-Instanz in Azure Synapse Analytics führt möglicherweise zu einem neuen abrechenbaren Dienst.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Das Erstellen einer Synapse SQL-Instanz in Azure Synapse Analytics führt möglicherweise zu einem neuen abrechenbaren Dienst.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits über eine SQL-Analyse-Instanz in Azure Synapse und über CONTROL DATABASE-Berechtigungen verfügen. Wenn Sie ein Data Warehouse erstellen müssen, verwenden Sie die Anweisungen unter [Erstellen und Verbinden – Portal](create-data-warehouse-portal.md), um ein Data Warehouse namens **mySampleDataWarehouse** zu erstellen.
+In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits über eine Synapse SQL-Instanz in Azure Synapse und über CONTROL DATABASE-Berechtigungen verfügen. Wenn Sie ein Data Warehouse erstellen müssen, verwenden Sie die Anweisungen unter [Erstellen und Verbinden – Portal](create-data-warehouse-portal.md), um ein Data Warehouse namens **mySampleDataWarehouse** zu erstellen.
 
 ## <a name="create-login-for-dataloads"></a>Erstellen einer Anmeldung für „DataLoads“
 

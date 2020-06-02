@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: c40aa9b0a94940f48a8edbd046a744678f02cbd2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76775342"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827234"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Support- und Hilfeoptionen für Azure IoT
 
@@ -53,11 +53,11 @@ Diskutieren Sie über Azure-Technologien und -Dienste zur Erstellung von IoT-Lö
 
 Sollten Sie über die Suche keine Lösung für Ihr Problem finden, können Sie im entsprechenden Forum eine neue Frage an MSDN übermitteln:
 
-- [Azure Digital Twins](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredigitaltwins)
-- [Azure IoT Hub](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azureiothub)
-- [Azure IoT Edge](https://social.msdn.microsoft.com/Forums/en-US/home?forum=iotedge)
-- [Azure Maps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelbs)
-- [Azure Time Series Insights](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights)
+- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Übermitteln von Azure-Feedback
 
