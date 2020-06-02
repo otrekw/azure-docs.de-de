@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: Tutorials
   items:
-    - name: Importieren von HSM-geschützten Schlüsseln
+    - name: Importieren von durch HSM geschützten Schlüsseln (Übersicht)
       href: hsm-protected-keys.md
-    - name: Importieren von HSM-geschützten Schlüsseln (Vorschau)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: Importieren von HSM-geschützten Schlüsseln (Legacy)
-      href: hsm-protected-keys-legacy.md
+    - name: Importieren von durch HSM geschützten Schlüsseln (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: Importieren von durch HSM geschützten Schlüsseln (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: Beispiele
   items:
     - name: Azure Policy-Integrationen
@@ -47,6 +47,8 @@
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Bring Your Own Key-Spezifikation
+      href: byok-specification.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

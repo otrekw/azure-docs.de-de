@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Erstellen einer VM
                   items:
+                    - name: Spezialisiert
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Generalisiert
                       href: ../vm-generalized-image-version-cli.md
                 - name: Aktualisieren von Imageressourcen
@@ -664,7 +666,7 @@
                       items:
                         - name: Virtual Machine
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM-Skalierungsgruppe
+                        - name: Skalierungsgruppe
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Senden an Event Hubs
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

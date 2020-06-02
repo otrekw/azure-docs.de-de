@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: Anzeigen effektiver Routen eines virtuellen Hubs
           href: effective-routes-virtual-hub.md
+        - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
+          href: path-selection-multiple-links.md
     - name: Sicherheit
       items:
         - name: "Installieren einer Azure\_Firewall-Instanz in einem Hub"

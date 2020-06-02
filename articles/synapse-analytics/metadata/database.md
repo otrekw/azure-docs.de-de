@@ -41,7 +41,7 @@ Im Falle eines Namenskonflikts zwischen einer Spark-Datenbank und einer vorhande
 Wenn also beispielsweise im Azure Synapse-Arbeitsbereich `myws` eine Spark-Datenbank mit dem Namen `mydb` erstellt wird und bereits eine SQL On-Demand-Datenbank mit dem gleichen Namen vorhanden ist, muss auf die Spark-Datenbank in SQL On-Demand mithilfe des Namens `mydb_myws-ondemand-DefaultSparkConnector` verwiesen werden.
 
 > [!CAUTION]
-> Vorsicht: Es sollte keine Abhängigkeit von diesem Verhalten bestehen.
+> Vorsicht: Dieses Verhalten kann sich ggf. ändern. Verlassen Sie sich daher nicht darauf.
 
 ## <a name="security-model"></a>Sicherheitsmodell
 

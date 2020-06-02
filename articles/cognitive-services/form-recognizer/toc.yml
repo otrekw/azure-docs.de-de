@@ -42,6 +42,8 @@
   items:
     - name: Verwenden der Formularerkennung mit Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: Verwenden der Formularerkennung mit Cognitive Search
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets

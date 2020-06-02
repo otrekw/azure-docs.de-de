@@ -177,6 +177,8 @@
       items:
         - name: "Überwachen von IoT\_Edge-Bereitstellungen"
           href: how-to-monitor-iot-edge-deployments.md
+        - name: Überwachen von Modulzwillingen
+          href: how-to-monitor-module-twins.md
         - name: Direkte Edge-Agent-Methoden
           href: how-to-edgeagent-direct-method.md
     - name: Verwenden von IoT Edge-Geräten als Gateways

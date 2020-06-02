@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: Grundlegendes zu Metriken in Azure Spring Cloud
       href: spring-cloud-concept-metrics.md
+    - name: Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Sicherheitskontrollen für den Azure Spring Cloud-Dienst
       href: spring-cloud-concept-security-controls.md
     - name: Grundlegendes zum App-Status in Azure Spring Cloud
