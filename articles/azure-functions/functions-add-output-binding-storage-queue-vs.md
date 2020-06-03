@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Ihre
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74849206"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235369"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 
@@ -23,7 +23,7 @@ Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die F
 
 Bevor Sie mit diesem Artikel beginnen, sind folgende Schritte erforderlich: 
 
- - Absolvieren Sie [Teil 1 der Visual Studio-Schnellstartanleitung](./functions-create-first-function-vs-code.md). 
+ - Absolvieren Sie [Teil 1 der Visual Studio-Schnellstartanleitung](./functions-create-your-first-function-visual-studio.md). 
 
 - Melden Sie sich über Visual Studio bei Ihrem Azure-Abonnement an.
 

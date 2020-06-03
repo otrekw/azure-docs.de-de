@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737894"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266660"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure
 
@@ -149,11 +149,11 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>Konfigurieren von Diagnoseeinstellungen mithilfe der REST-API
+## <a name="configure-diagnostic-settings-using-rest-api"></a>Konfigurieren von Diagnoseeinstellungen mithilfe der REST-API
 
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe der [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/) finden Sie unter [Diagnoseeinstellungen](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Konfigurieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage
+## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Konfigurieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage
 
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mit einer Resource Manager-Vorlage finden Sie unter [Erstellen von Diagnoseeinstellungen in Azure Monitor mithilfe einer Resource Manager-Vorlage](diagnostic-settings-template.md).
 

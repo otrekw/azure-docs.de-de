@@ -3,19 +3,19 @@ title: Verstehen von automatisierten ML-Ergebnissen
 titleSuffix: Azure Machine Learning
 description: Es wird beschrieben, wie Sie Diagramme und Metriken für Ihre verschiedenen automatisierten Machine Learning-Ausführungen anzeigen und sich damit vertraut machen.
 services: machine-learning
-author: RachelKellam
-ms.author: rakellam
-ms.reviewer: sgilley
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7827349166ce55b1604f949f1d78a1ddce7c5e0
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237002"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116020"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Grundlagen von Ergebnissen des automatisierten maschinellen Lernens
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
