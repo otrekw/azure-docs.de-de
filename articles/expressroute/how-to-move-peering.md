@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436842"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019450"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -33,7 +33,7 @@ Um eine Verbindung mit Microsoft-Peering herstellen zu können, müssen Sie die 
 
 Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) über die Einschränkungen des asymmetrischen Routings, bevor Sie das Microsoft-Peering konfigurieren.
 
-* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
+* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
 * Führen Sie die Schritte in diesem Artikel in der angegebenen Reihenfolge aus, damit es bei der Umstellung auf Microsoft-Peering zu keinen Ausfällen kommt.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Erstellen von Microsoft-Peering

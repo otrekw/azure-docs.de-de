@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658879"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190414"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -19,7 +19,7 @@ Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Pro
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
 
 Log Analytics in Azure Monitor kann außerdem von Dienstanbietern verwendet werden, die Kundenressourcen über die Funktion der delegierten Azure-Ressourcenverwaltung in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwalten.
 

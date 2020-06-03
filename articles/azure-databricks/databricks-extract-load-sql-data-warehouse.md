@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382739"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018717"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -370,7 +370,7 @@ Der Azure Synapse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage 
    > [!NOTE]
    > Dieses Beispiel verwendet das Flag `forward_spark_azure_storage_credentials`, das bewirkt, dass Azure Synapse über einen Zugriffsschlüssel auf Daten im Blobspeicher zugreift. Dies ist die einzige unterstützte Authentifizierungsmethode.
    >
-   > Wenn Ihr Azure Blob Storage auf ausgewählte virtuelle Netzwerke beschränkt ist, benötigt Azure Synapse eine [verwaltete Dienstidentität anstelle von Zugriffsschlüsseln](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dies führt zum Fehler „Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen“.
+   > Wenn Ihr Azure Blob Storage auf ausgewählte virtuelle Netzwerke beschränkt ist, benötigt Azure Synapse eine [verwaltete Dienstidentität anstelle von Zugriffsschlüsseln](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dies führt zum Fehler „Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen“.
 
 6. Stellen Sie eine Verbindung mit der SQL-Datenbank her, und vergewissern Sie sich, dass eine Datenbank namens **SampleTable** vorhanden ist.
 

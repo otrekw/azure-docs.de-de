@@ -4,12 +4,12 @@ description: Erläuterung der unterstützten Dienste und Ereignisschemas für Az
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7b51417814e74cc7e3559029c9af8c35cbf6f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128470"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016354"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle
 
@@ -76,7 +76,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Recovery Services | [Datenmodell für Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus-Protokolle](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL-Datenbank | [Azure SQL-Datenbank-Protokollierung](../../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL-Datenbank | [Azure SQL-Datenbank-Protokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Auftragsprotokolle](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager-Protokollschema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuelle Netzwerke | Schema nicht verfügbar. |
@@ -84,7 +84,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 
-Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Dies ist eine Liste aller Kategorien, die in irgendeiner Form verfügbar sind.  Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../sql-database/sql-database-metrics-diag-logging.md). 
+Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Dies ist eine Liste aller Kategorien, die in irgendeiner Form verfügbar sind.  Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 |Ressourcentyp|Category|Anzeigename der Kategorie|
 |---|---|---|

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68950248"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021601"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
 
@@ -39,7 +39,7 @@ Um Data Catalog einzurichten, müssen Sie Besitzer oder Mitbesitzer eines Azure-
 
 ### <a name="register-a-data-source"></a>Registrieren einer Datenquelle
 
-Sie registrieren Datenassets (Tabellen) über ein [Azure SQL-Datenbank-Beispiel](../sql-database/sql-database-single-database-get-started.md). Sie können aber auch jede unterstützte Datenquelle nutzen, falls Sie es vorziehen, mit Daten zu arbeiten, die vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
+Sie registrieren Datenassets (Tabellen) über ein [Azure SQL-Datenbank-Beispiel](../azure-sql/database/single-database-create-quickstart.md). Sie können aber auch jede unterstützte Datenquelle nutzen, falls Sie es vorziehen, mit Daten zu arbeiten, die vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
 
 In diesem Tutorial verwenden wir als Name für die Azure SQL-Datenbank *RLSTest*.
 

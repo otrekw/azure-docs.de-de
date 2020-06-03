@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454644"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012975"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -28,7 +28,7 @@ Dieser Artikel bietet eine Übersicht über die Verwendung der Verschlüsselung 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 
-Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) und Azure Data Lake.
+Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) und Azure Data Lake.
 
 Die Verschlüsselung ruhender Daten ist für Dienste in allen Software-as-a-Service- (SaaS), Platform-as-a-Service- (PaaS) und Infrastructure-as-a-Service-Cloudmodellen (IaaS) verfügbar. In diesem Artikel werden Ressourcen zusammenfassend beschrieben und bereitgestellt, mit denen Sie die Verschlüsselungsoptionen von Azure nutzen können.
 
@@ -85,11 +85,11 @@ Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwe
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Verschlüsselung ruhender Daten mit Azure SQL-Datenbank
 
-[Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) ist ein relationaler Datenbankdienst in Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank unterstützt die serverseitige Verschlüsselung über das TDE-Feature (Transparent Data Encryption) sowie die clientseitige Verschlüsselung über das Always Encrypted-Feature.
+[Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) ist ein relationaler Datenbankdienst in Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank unterstützt die serverseitige Verschlüsselung über das TDE-Feature (Transparent Data Encryption) sowie die clientseitige Verschlüsselung über das Always Encrypted-Feature.
 
 #### <a name="transparent-data-encryption"></a>Transparente Datenverschlüsselung
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
 
 TDE schützt die Daten- und Protokolldateien über die Verschlüsselungsalgorithmen AES und Triple Data Encryption Standard (3DES). Die Verschlüsselung der Datenbankdatei erfolgt auf Seitenebene. Die Seiten in einer verschlüsselten Datenbank werden verschlüsselt, bevor sie auf den Datenträger geschrieben werden, und entschlüsselt, bevor sie in den Arbeitsspeicher eingelesen werden. TDE ist jetzt bei neu erstellten Azure SQL-Datenbanken standardmäßig aktiviert.
 
