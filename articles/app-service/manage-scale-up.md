@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75659898"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020165"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Hochskalieren einer App in Azure App Service
 
@@ -62,7 +62,7 @@ Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenb
    
     ![Navigieren zur Seite „Ressourcengruppe“, um Ihre Azure-App hochzuskalieren](./media/web-sites-scale/ResourceGroup.png)
 
-    Informationen zum Hochskalieren der betreffenden Ressource finden Sie in der Dokumentation zum jeweiligen Ressourcentyp. Informationen zum Hochskalieren einer einzelnen SQL-Datenbank finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](../sql-database/sql-database-single-database-scale.md). Informationen zum Hochskalieren einer Azure Database for MySQL-Ressource finden Sie unter [Skalieren von MySQL-Ressourcen](../mysql/concepts-pricing-tiers.md#scale-resources).
+    Informationen zum Hochskalieren der betreffenden Ressource finden Sie in der Dokumentation zum jeweiligen Ressourcentyp. Informationen zum Hochskalieren einer einzelnen SQL-Datenbank finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](../azure-sql/database/single-database-scale.md). Informationen zum Hochskalieren einer Azure Database for MySQL-Ressource finden Sie unter [Skalieren von MySQL-Ressourcen](../mysql/concepts-pricing-tiers.md#scale-resources).
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf25c74f0190bc67e7da703e242d5d4bb3e299f5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256962"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020641"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit SQL Server auf einer Azure-VM
 
@@ -52,7 +52,7 @@ Bei der kognitiven Azure-Suche ist für alle Indexeranforderungen über eine öf
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurieren der SQL Server-Konnektivität in der VM
 Nachdem Sie die für die kognitive Azure-Suche erforderliche verschlüsselte Verbindung eingerichtet haben, müssen noch weitere Konfigurationsschritte für SQL Server auf Azure-VMs ausgeführt werden. Falls dies noch nicht erfolgt ist, ist der nächste Schritt das Abschließen der Konfiguration mit einem dieser Artikel:
 
-* Informationen für eine **Resource Manager** -VM finden unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* Informationen für eine **Resource Manager** -VM finden unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md). 
 * Informationen für eine **klassische** VM finden unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)](../virtual-machines/windows/classic/sql-connect.md).
 
 Sehen Sie sich in den Artikeln vor allem jeweils den Abschnitt zum „Verbinden über das Internet“ an.

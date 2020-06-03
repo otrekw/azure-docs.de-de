@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75933436"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170085"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualisieren von Geräten der StorSimple 8000-Serie
 > [!NOTE]
@@ -84,22 +84,22 @@ Wenn Sie Wartungsmodus-Updates anwenden müssen, erhalten Sie über das klassisc
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole <a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole <a name="step1"></a>
 Verwenden Sie eine Anwendung wie PuTTY, um auf die serielle Konsole zuzugreifen. Die folgende Vorgehensweise erläutert, wie Sie PuTTY für die Verbindung mit der seriellen Konsole verwenden.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Schritt 2: Wechseln in den Wartungsmodus <a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>Schritt 2: Wechseln in den Wartungsmodus <a name="step2"></a>
 Nachdem Sie eine Verbindung mit der Konsole hergestellt haben, bestimmen Sie, ob Updates installiert werden müssen. Wechseln Sie dann in den Wartungsmodus, um sie zu installieren.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>Schritt 3: Installieren der Updates <a name="step3">
+### <a name="step-3-install-your-updates"></a>Schritt 3: Installieren der Updates <a name="step3"></a>
 Installieren Sie anschließend die Updates.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Schritt 4: Beenden des Wartungsmodus <a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>Schritt 4: Beenden des Wartungsmodus <a name="step4"></a>
 Beenden Sie zum Schluss den Wartungsmodus.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

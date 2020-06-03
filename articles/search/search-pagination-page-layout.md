@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801772"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167858"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -126,8 +126,6 @@ Für das neue Verhalten gilt:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   Beachten Sie, dass für *bowl of chips* keine Markierung erfolgt, weil keine Entsprechung mit dem vollständigen Ausdruck vorliegt.
-  
-* Außerdem kann die Fragmentgröße angegeben werden, die für die Markierung zurückgegeben wird. Die Fragmentgröße wird als Anzahl von Zeichen (maximal 1.000 Zeichen) angegeben.
 
 Berücksichtigen Sie diese Änderung, wenn Sie Clientcode mit einer Treffermarkierungsimplementierung schreiben. Beachten Sie, dass dies nur dann für Sie relevant ist, wenn Sie einen vollständig neuen Suchdienst erstellen.
 

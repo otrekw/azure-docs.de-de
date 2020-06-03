@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732080"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171271"
 ---
 Verwenden Sie die LUIS-Runtime-Clientbibliothek (Language Understanding) für Node.js für Folgendes:
 
@@ -69,7 +69,7 @@ In den bereitgestellten Codeausschnitten wird veranschaulicht, wie Sie die folge
 
 Öffnen Sie über das Projektverzeichnis die Datei `luis_prediction.js` in Ihrem bevorzugten Editor oder in Ihrer bevorzugten IDE. Fügen Sie die folgenden Abhängigkeiten hinzu:
 
-[!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Dependencies)]
+[!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
@@ -79,16 +79,16 @@ In den bereitgestellten Codeausschnitten wird veranschaulicht, wie Sie die folge
 
     Erstellen Sie eine Variable zum Speichern Ihres Ressourcennamens `LUIS_RUNTIME_ENDPOINT`.
 
-    [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Variables)]
+    [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
 1. Erstellen Sie eine Variable für die App-ID als Umgebungsvariable mit dem Namen `LUIS_APP_ID`. Legen Sie die Umgebungsvariable auf die öffentliche IoT-App fest ( **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** ). Erstellen Sie eine Variable, um den veröffentlichten Slot `production` festzulegen.
 
-    [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=OtherVariables)]
+    [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 
 
 1. Erstellen Sie ein Objekt vom Typ „msRest.ApiKeyCredentials“ mit Ihrem Schlüssel, und verwenden Sie es mit Ihrem Endpunkt, um ein Objekt vom Typ [LUIS.LUISRuntimeClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) zu erstellen.
 
-    [!code-javascript [LUIS Runtime client is required to access predictions for LUIS apps](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=AuthoringCreateClient)]
+    [!code-javascript [LUIS Runtime client is required to access predictions for LUIS apps](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=AuthoringCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>Abrufen der Vorhersage aus der Laufzeit
 
@@ -98,13 +98,13 @@ Die Benutzeräußerung ist Teil des Objekts [predictionRequest](https://docs.mic
 
 Die Methode **[luisRuntimeClient.prediction.getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** benötigt mehrere Parameter, um die Anforderung erfüllen zu können. Hierzu zählen beispielsweise die App-ID, der Slotname und das Vorhersageanforderungsobjekt. Die anderen Optionen, wie z. B. „Ausführlich“, „Alle Absichten anzeigen“ und „Protokollieren“, sind optional.
 
-[!code-javascript [LUIS prediction request and response in Node.js NPM SDK](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=predict)]
+[!code-javascript [LUIS prediction request and response in Node.js NPM SDK](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=predict)]
 
 ## <a name="main-code-for-the-prediction"></a>Hauptcode für die Vorhersage
 
 Verwenden Sie die folgende Hauptmethode, um die Variablen und Methoden zu verknüpfen, um die Vorhersage zu erhalten.
 
-[!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Main)]
+[!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Main)]
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
