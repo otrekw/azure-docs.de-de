@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098067"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233355"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Erstellen und Verwalten von Windows-VMs in Azure mithilfe von Python
 
@@ -164,7 +164,7 @@ Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager
     input('Availability set created. Press enter to continue...')
     ```
 
-Eine öffentliche [IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
+Eine öffentliche [IP-Adresse](../../virtual-network/public-ip-addresses.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
 
 1. Um eine öffentliche IP-Adresse für den virtuellen Computer zu erstellen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 

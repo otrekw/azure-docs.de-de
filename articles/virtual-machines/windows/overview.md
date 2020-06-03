@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930436"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234958"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -97,7 +97,7 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 | [Ressourcengruppe](../../azure-resource-manager/management/overview.md) |Ja |Der virtuelle Computer muss sich in einer Ressourcengruppe befinden. |
 | [Speicherkonto](../../storage/common/storage-create-storage-account.md) |Ja |Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten. |
 | [Virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) |Ja |Der virtuelle Computer muss einem virtuellen Netzwerk angehören. |
-| [Öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden. |
+| [Öffentliche IP-Adresse](../../virtual-network/public-ip-addresses.md) |Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden. |
 | [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |Ja |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
 | [Datenträger](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen. |
 

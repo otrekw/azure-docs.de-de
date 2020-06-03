@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: f1f1a66bd6e0fbd28be59b0211a1ac17f030022e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744938"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298617"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -90,9 +90,6 @@ Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfol
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
 >- Das Feature der bereichsübergreifenden Wiederherstellung (CRR) ist nun in allen öffentlichen Azure-Regionen in der Vorschau verfügbar.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
->- Verwenden Sie den folgenden Befehl, um das Onboarding Ihres Abonnements für diese Funktion durchzuführen:<br>
->  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- Wenn das Onboarding für dieses Feature im Rahmen der eingeschränkten Public Preview-Phase erfolgt, enthält die Bestätigungs-E-Mail Details zur Preisrichtlinie.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
 >- Momentan wird CRR nur für virtuelle Azure-Computer mit dem Sicherungsverwaltungstyp „ARM“ unterstützt. (Klassische virtuelle Azure-Computer werden nicht unterstützt.)  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
 

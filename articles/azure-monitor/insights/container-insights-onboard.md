@@ -2,13 +2,13 @@
 title: Aktivieren von Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktivieren und konfigurieren, damit Sie erfahren, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185930"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147901"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Aktivieren von Azure Monitor für Container
 
@@ -66,7 +66,6 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *.monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -76,7 +75,6 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | Datenerfassung |
 | *.oms.opinsights.azure.cn | 443 | OMS-Onboarding |
-| microsoft.com | 80 | Wird für Netzwerkkonnektivität verwendet. Dies ist nur erforderlich, wenn es sich bei der Version des Agent-Images um ciprod09262019 oder eine frühere Version handelt. |
 | dc.services.visualstudio.com | 443 | Für Agent-Telemetrie mithilfe von Application Insights in der öffentlichen Azure-Cloud. |
 
 In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformationen für Azure US Government aufgelistet.
@@ -85,7 +83,6 @@ In der folgenden Tabelle sind die Proxy- und Firewall-Konfigurationsinformatione
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | Datenerfassung |
 | *.oms.opinsights.azure.us | 443 | OMS-Onboarding |
-| microsoft.com | 80 | Wird für Netzwerkkonnektivität verwendet. Dies ist nur erforderlich, wenn es sich bei der Version des Agent-Images um ciprod09262019 oder eine frühere Version handelt. |
 | dc.services.visualstudio.com | 443 | Für Agent-Telemetrie mithilfe von Application Insights in der öffentlichen Azure-Cloud. |
 
 ## <a name="components"></a>Komponenten

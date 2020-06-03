@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701557"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248854"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Verwenden des Trennschalterdashboards mit Azure Spring Cloud
 [Spring Cloud Netflix Turbine](https://github.com/Netflix/Turbine) wird häufig verwendet, um mehrere [Hystrix](https://github.com/Netflix/Hystrix)-Metrikdatenströme zu aggregieren, sodass die Datenströme mit dem Hystrix-Dashboard in einer einzelnen Ansicht überwacht werden können. In diesem Tutorial wird veranschaulicht, wie sie in Azure Spring Cloud verwendet werden.
@@ -59,7 +59,7 @@ Nachdem alle Apps ausgeführt werden und erkennbar sind, greifen Sie mit Ihrem B
 Führen Sie die Überprüfung mit öffentlichen Endpunkten oder privaten Testendpunkten durch.
 
 ### <a name="using-public-endpoints"></a>Verwenden öffentlicher Endpunkte
-Greifen Sie mit Ihrem Browser über den Pfad `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` auf „hystrix-turbine“ zu.  In der folgenden Abbildung ist das Hystrix-Dashboard in dieser App dargestellt.
+Greifen Sie mit Ihrem Browser über den Pfad `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` auf „hystrix-turbine“ zu.  In der folgenden Abbildung ist das Hystrix-Dashboard in dieser App dargestellt.
 
 ![Hystrix-Dashboard](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

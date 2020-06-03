@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671874"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993852"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -48,7 +48,7 @@ Mit der App-Steuerung für bedingten Zugriff können Benutzerzugriffe auf Apps u
 
 Weitere Informationen finden Sie im Artikel [Bereitstellen der App-Steuerung für bedingten Zugriff für ausgewählte Apps](/cloud-app-security/proxy-deployment-aad).
 
-## <a name="sign-in-frequency-preview"></a>Anmeldehäufigkeit (Vorschau)
+## <a name="sign-in-frequency"></a>Anmeldehäufigkeit
 
 Die Anmeldehäufigkeit bezeichnet den Zeitraum, bevor ein Benutzer beim Zugriff auf eine Ressource aufgefordert wird, sich erneut anzumelden.
 
@@ -66,7 +66,7 @@ Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardko
 
 Weitere Informationen finden Sie im Artikel [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](howto-conditional-access-session-lifetime.md#user-sign-in-frequency).
 
-## <a name="persistent-browser-session-preview"></a>Persistente Browsersitzung (Vorschau)
+## <a name="persistent-browser-session"></a>Persistente Browsersitzung
 
 Bei einer persistenten Browsersitzung können Benutzer angemeldet bleiben, nachdem sie ihr Browserfenster geschlossen und erneut geöffnet haben.
 

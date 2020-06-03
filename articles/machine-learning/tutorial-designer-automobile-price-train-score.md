@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656586"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119033"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
 1. Wählen Sie **Regression** > **Linear Regression** (Lineare Regression) aus, und ziehen Sie sie auf die Pipelinecanvas.
 
-1. Verbinden Sie die Ausgabe des Moduls **Linear Regression** (Lineare Regression) mit der linken Eingabe des Moduls **Train Model** (Modell trainieren).
-
 1. Erweitern Sie in der Modulpalette den Abschnitt **Module training** (Modultraining), und ziehen Sie das Modul **Train Model** (Modell trainieren) auf die Canvas.
 
-1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus, und ziehen Sie es auf die Pipelinecanvas.
+1. Verbinden Sie die Ausgabe des Moduls **Linear Regression** (Lineare Regression) mit der linken Eingabe des Moduls **Train Model** (Modell trainieren).
 
 1. Verbinden Sie die Trainingsdatenausgabe (linker Port) des Moduls **Split Data** (Daten aufteilen) mit der rechten Eingabe des Moduls **Train Model** (Modell trainieren).
     

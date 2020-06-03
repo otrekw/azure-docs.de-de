@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 62972be5b363c0a22a24a9056b6f3f8b11829566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cac67e85383f36aee0a1535d69fa075f92bd6dbf
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182904"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267714"
 ---
-# <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
+# <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
 Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md). Absolvieren Sie als Nächstes das Tutorial [Filtern von Netzwerkdatenverkehr](tutorial-filter-network-traffic.md), um sich mit Netzwerksicherheitsgruppen vertraut zu machen.
 
@@ -358,7 +358,7 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 | Aktion                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Netzwerksicherheitsgruppe abrufen                                          |
-| Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                              |
+| Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                             |
 | Microsoft.Network/networkSecurityGroups/delete                |   Netzwerksicherheitsgruppe löschen                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   Netzwerksicherheitsgruppe einem Subnetz oder einer Netzwerkschnittstelle zuordnen 
 
@@ -366,9 +366,9 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 
 | Aktion                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/networkSecurityGroups/rules/read            |   Regel abrufen                                                            |
-| Microsoft.Network/networkSecurityGroups/rules/write           |   Regel erstellen oder aktualisieren                                               |
-| Microsoft.Network/networkSecurityGroups/rules/delete          |   Regel löschen                                                         |
+| Microsoft.Network/networkSecurityGroups/securityRules/read            |   Regel abrufen                                                            |
+| Microsoft.Network/networkSecurityGroups/securityRules/write           |   Regel erstellen oder aktualisieren                                               |
+| Microsoft.Network/networkSecurityGroups/securityRules/delete          |   Regel löschen                                                         |
 
 ### <a name="application-security-group"></a>Anwendungssicherheitsgruppe
 

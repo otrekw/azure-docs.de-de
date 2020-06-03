@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3fd308ede17f510b3e9188f2bebc93a08a61181
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169873"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263179"
 ---
 # <a name="get-face-detection-data"></a>Abrufen von Gesichtserkennungsdaten
 
@@ -145,7 +145,6 @@ Weitere Informationen zu den einzelnen Attributen finden Sie im Leitfaden [Face 
 In diesem Leitfaden haben Sie erfahren, wie die verschiedenen Funktionen der Gesichtserkennung verwendet werden. Als Nächstes integrieren Sie diese Features in Ihre App, indem Sie die Schritte eines ausführlichen Tutorials ausführen.
 
 - [Tutorial: Erstellen einer WPF-App zum Anzeigen von Gesichtserkennungsdaten in einem Bild](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Verwandte Themen
 

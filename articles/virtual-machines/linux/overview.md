@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9921db093cc111917d50acfccc10165c0eab6b0f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930742"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232998"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -108,7 +108,7 @@ Azure unterstützt [cloud-init](https://cloud-init.io/) für die meisten Linux-D
 
 ## <a name="networking"></a>Netzwerk
 * [Virtuelle Netzwerke im Überblick](../../virtual-network/virtual-networks-overview.md)
-* [IP-Adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP-Adressen in Azure](../../virtual-network/public-ip-addresses.md)
 * [Öffnen von Ports für eine Linux-VM in Azure](nsg-quickstart.md)
 * [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](portal-create-fqdn.md)
 

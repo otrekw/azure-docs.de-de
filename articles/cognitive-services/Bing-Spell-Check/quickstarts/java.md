@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869803"
+ms.locfileid: "83995972"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Java
 
@@ -59,9 +59,9 @@ Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful
 
 1. Erstellen Sie eine Funktion namens `check()`, um die API-Anforderung zu erstellen und zu senden. Fügen Sie in dieser Funktion den in den nächsten Schritten angegebenen Code hinzu. Erstellen Sie eine Zeichenfolge für die Anforderungsparameter:
 
-   a. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. 
+   1. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. 
 
-   b. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. 
+   1. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. 
 
    ```java
    public static void check () throws Exception {

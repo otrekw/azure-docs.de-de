@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ded8aa0587ecb6bb756f3faa07cc816b7d46b561
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228342"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259574"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -78,11 +78,13 @@ Die folgende Liste von Datenträgern wird für die Verwendung mit dem Azure Impo
 |Festplattenlaufwerk     |  2,5"<br>3,5"       |SATA II, SATA III         |
 
 Die folgenden Datenträgertypen werden nicht unterstützt:
+
 - USB-Datenträger
 - Externe Festplattenlaufwerke mit integriertem USB-Adapter
 - Datenträger im Gehäuse eines externen Festplattenlaufwerks
 
 Eine einzelner Import-/Export-Auftrag kann über Folgendes verfügen:
+
 - Maximal 10 Festplattenlaufwerke/SSDs
 - Eine Mischung aus Festplattenlaufwerken/SSDs beliebiger Größe
 
@@ -90,9 +92,6 @@ Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, 
 
 Bei der Vorbereitung von Festplatten und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie externe USB-Adapter verwenden. Hierbei sollten die meisten Standardadapter mit der Version USB 3.0 oder höher funktionieren.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-* [Azure Import/Export-REST-API-Beispiel](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
