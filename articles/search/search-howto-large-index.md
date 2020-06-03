@@ -2,43 +2,94 @@
 title: Indizieren großer Datasets mithilfe integrierter Indexer
 titleSuffix: Azure Cognitive Search
 description: Strategien für die Indizierung umfangreicher Daten oder rechenintensive Indizierung über den Batchmodus, Ressourcenerstellung und Techniken für die geplante, parallele und verteilte Indizierung.
-manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+manager: liamca
+author: dereklegenzoff
+ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190961"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925982"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
+
+Von Azure Cognitive Search werden [zwei grundlegende Ansätze](search-what-is-data-import.md) für das Importieren von Daten in einen Suchindex unterstützt: Sie können die Daten programmgesteuert an den Index *pushen* oder einen [Azure Cognitive Search-Indexer](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten zu *pullen*.
 
 Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass einfache oder standardmäßige Indizierungsstrategien nicht ausreichend sind. Für die kognitive Azure-Suche gibt es verschiedene Ansätze für die Aufnahme von größeren Datasets, angefangen bei der Art, wie Sie eine Uploadanforderung strukturieren, bis zur Verwendung eines quellenspezifischen Indexers für geplante und verteilte Workloads.
 
 Die Techniken gelten auch für lang andauernde Prozesse. Insbesondere die unter [Parallelindizierung](#parallel-indexing) beschriebenen Schritte sind hilfreich für die Ausführung rechenintensiver Indizierung, z. B. Bildanalyse oder Verarbeitung natürlicher Sprache in einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md).
 
-In den folgenden Abschnitten werden drei Techniken zum Indizieren großer Datenmengen erläutert.
+In den folgenden Abschnitten werden Techniken zum Indizieren großer Datenmengen unter Verwendung der Push-API und mithilfe von Indexern erläutert.
 
-## <a name="option-1-pass-multiple-documents"></a>Option 1: Übergeben mehrerer Dokumente
+## <a name="push-api"></a>Push-API
 
-Eines der einfachsten Verfahren für die Indizierung eines größeren Datasets ist das Senden mehrerer Dokumente oder Datensätze in einer einzelnen Anforderung. Solange die gesamte Nutzlast kleiner als 16MB ist, kann eine Anforderung bis zu 1.000 Dokumente in einem Uploadmassenvorgang verarbeiten. Diese Grenzwerte gelten unabhängig davon, ob Sie die [REST-API „Dokumente hinzufügen“](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder die [index-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) im .NET SDK verwenden. Für beide APIs würden Sie 1000 Dokumente im Text der einzelnen Anforderungen verpacken.
+Beim Pushen von Daten an einen Index gibt es einige wichtige Aspekte, die sich auf die Indizierungsgeschwindigkeit für die Push-API auswirken. Diese Aspekte werden im folgenden Abschnitt beschrieben. 
 
-Die Batchindizierung wird für einzelne Anforderungen mit REST oder .NET oder über Indexer implementiert. Ein paar Indexer werden unter verschiedenen Einschränkungen eingesetzt. Insbesondere wird bei der Azure-Blobindizierung eine Batchgröße von 10 Dokumenten hinsichtlich der größeren durchschnittlichen Dokumentgröße festgelegt. Für Indexer basierend auf der [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) können Sie das `BatchSize`-Argument zum Anpassen dieser Einstellung festlegen, damit die Eigenschaften besser Ihren Daten entsprechen. 
+Zusätzlich zu den Informationen in diesem Artikel können Sie auch die Codebeispiele im [Tutorial zur Optimierung der Indizierungsgeschwindigkeiten](tutorial-optimize-indexing-push-api.md) nutzen, um mehr zu erfahren.
+
+### <a name="service-tier-and-number-of-partitionsreplicas"></a>Dienstebene und Anzahl der Partitionen/Replikate
+
+Die Indizierungsgeschwindigkeiten können sowohl durch Hinzufügen von Partitionen als auch durch Erhöhen der Ebene Ihres Suchdiensts verbessert werden.
+
+Auch durch Hinzufügen zusätzlicher Replikate können die Indizierungsgeschwindigkeiten erhöht werden. Auf der anderen Seite erhöhen zusätzliche Replikate das Abfragevolumen, das von Ihrem Suchdienst verarbeitet werden kann. Replikate sind auch eine Schlüsselkomponente für den Erhalt einer [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+
+Bevor Sie eine Partition/Replikate hinzufügen oder ein Upgrade auf eine höhere Dienstebene durchführen, berücksichtigen Sie Kosten und Zuweisungszeit. Das Hinzufügen von Partitionen kann die Indizierungsgeschwindigkeit erheblich erhöhen. Das Hinzufügen/Entfernen von Partitionen kann jedoch zwischen 15 Minuten und mehreren Stunden dauern. Weitere Informationen finden Sie in der Dokumentation unter [Anpassen der Kapazität](search-capacity-planning.md).
+
+### <a name="index-schema"></a>Indexschema
+
+Das Schema Ihres Indexes spielt eine wichtige Rolle bei der Indizierung von Daten. Zusätzlich hinzugefügte Felder und Feldeigenschaften (wie etwa *searchable*, *facetable* oder *filterable*) tragen zur Verlangsamung der Indizierung bei.
+
+Im Allgemeinen wird empfohlen, Feldern nur dann zusätzliche Eigenschaften hinzuzufügen, wenn Sie diese verwenden möchten.
 
 > [!NOTE]
 > Um die Dokumentgröße niedrig zu halten, vermeiden Sie es, dem Index nicht abfragbare Daten hinzuzufügen. Bilder und andere binäre Daten können nicht direkt durchsucht werden und sollten nicht im Index gespeichert werden. Um nicht abfragbare Daten in Suchergebnisse zu integrieren, sollten Sie ein nicht durchsuchbares Feld definieren, in dem ein URL-Verweis auf die Ressource gespeichert wird.
 
-## <a name="option-2-add-resources"></a>Option 2: Hinzufügen von Ressourcen
+### <a name="batch-size"></a>Batchgröße
 
-Bei Diensten, die zu einem der [Standardtarife](search-sku-tier.md) bereitgestellt werden, ist die Kapazität für Speicherung und Workloads (Abfragen oder Indizierung) oft nicht ausgelastet, sodass [die Erhöhung der Partitions- und Replikateanzahl](search-capacity-planning.md) eine nahe liegende Lösung für die Unterbringung größerer Datasets ist. Für optimale Ergebnisse benötigen Sie beide Ressourcen: Partitionen zur Speicherung und Replikate für die Datenerfassung.
+Eines der einfachsten Verfahren für die Indizierung eines größeren Datasets ist das Senden mehrerer Dokumente oder Datensätze in einer einzelnen Anforderung. Solange die gesamte Nutzlast kleiner als 16MB ist, kann eine Anforderung bis zu 1.000 Dokumente in einem Uploadmassenvorgang verarbeiten. Diese Grenzwerte gelten unabhängig davon, ob Sie die [REST-API „Dokumente hinzufügen“](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder die [index-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) im .NET SDK verwenden. Für beide APIs würden Sie 1000 Dokumente im Text der einzelnen Anforderungen verpacken.
 
-Replikate und Partitionen sind zunehmend abzurechnende Ereignisse, die Ihre Kosten erhöhen, doch wenn Sie nicht ständig unter maximaler Auslastung indizieren, können Sie Skalierung für die Dauer des Indizierungsprozesses hinzufügen und dann nach Abschluss der Indizierung Ressourcenebenen wieder nach unten anpassen.
+Wenn Sie Dokumente in Batches indizieren, verbessert sich die Indizierungsleistung erheblich. Die Bestimmung der optimalen Batchgröße für Ihre Daten ist ein wichtiger Faktor bei der Optimierung der Indizierungsgeschwindigkeit. Die optimale Batchgröße wird hauptsächlich durch die beiden folgenden Faktoren beeinflusst:
++ Indexschema
++ Datengröße
 
-## <a name="option-3-use-indexers"></a>Option 3: Verwenden von Indexern
+Da die optimale Batchgröße von Ihrem Index und von Ihren Daten abhängt, empfiehlt es sich, durch Testen verschiedener Batchgrößen zu ermitteln, bei welcher Größe die Indizierung für Ihr Szenario am schnellsten ist. Dieses [Tutorial](tutorial-optimize-indexing-push-api.md) enthält Beispielcode zum Testen von Batchgrößen mithilfe des .NET-SDKs. 
+
+### <a name="number-of-threadsworkers"></a>Anzahl von Threads/Workern
+
+Zur bestmöglichen Nutzung der Indizierungsgeschwindigkeit von Azure Cognitive Search müssen wahrscheinlich mehrere Threads verwendet werden, um Batchindizierungsanforderungen parallel an den Dienst zu senden.  
+
+Die optimale Anzahl von Threads wird durch Folgendes bestimmt:
+
++ Ebene Ihres Suchdiensts
++ Anzahl der Partitionen
++ Größe Ihrer Batches
++ Schema Ihres Indexes
+
+Sie können dieses Beispiel ändern und mit einer anderen Threadanzahl testen, um die optimale Threadanzahl für Ihr Szenario zu ermitteln. Solange Sie jedoch mehrere parallel ausgeführte Threads verwenden, sollten von einem Großteil der Effizienzsteigerungen profitieren. 
+
+> [!NOTE]
+> Wenn Sie die Ebene des Suchdiensts erhöhen oder die Partitionen vergrößern, sollten Sie auch die Anzahl der gleichzeitigen Threads erhöhen.
+
+Im Zuge der Erhöhung der Anforderungen für den Suchdienst werden möglicherweise [HTTP-Statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) mit dem Hinweis zurückgegeben, dass die Anforderung nicht vollständig erfolgreich war. Zwei gängige HTTP-Statuscodes im Zusammenhang mit der Indizierung sind:
+
++ **503 Dienst nicht verfügbar**: Dieser Fehler bedeutet, dass die Auslastung des Systems sehr hoch ist und Ihre Anforderungen aktuell nicht verarbeitet werden können.
++ **207 Multi-Status**: Dieser Fehler bedeutet, dass der Vorgang für einige Dokumente erfolgreich war, bei mindestens einem Dokument aber ein Fehler aufgetreten ist.
+
+### <a name="retry-strategy"></a>Wiederholungsstrategie 
+
+Im Falle eines Fehlers sollten Anforderungen unter Verwendung einer [Wiederholungsstrategie mit exponentiellem Backoff](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff) wiederholt werden.
+
+Anforderungen mit 503-Fehlern und anderen Fehlern werden vom .NET SDK von Azure Cognitive Search automatisch wiederholt. Für die Wiederholung bei 207-Fehlern muss allerdings eine eigene Logik implementiert werden. Eine Wiederholungsstrategie kann auch mithilfe von Open-Source-Tools wie [Polly](https://github.com/App-vNext/Polly) implementiert werden.
+
+### <a name="network-data-transfer-speeds"></a>Datenübertragungsgeschwindigkeit im Netzwerk
+
+Die Datenübertragungsgeschwindigkeit im Netzwerk kann ein limitierender Faktor beim Indizieren von Daten sein. Das Indizieren von Daten in ihrer Azure-Umgebung ist eine einfache Möglichkeit zum Beschleunigen der Indizierung.
+
+## <a name="indexers"></a>Indexer
 
 Mit [Indexern](search-indexer-overview.md) werden unterstützte Azure-Datenquellen nach durchsuchbaren Inhalten durchforstet. Mehrere Indexerfunktionen sind zwar nicht speziell für die Indizierung in großem Rahmen vorgesehen, jedoch besonders nützlich zur Aufnahme größerer Datasets:
 
@@ -48,6 +99,12 @@ Mit [Indexern](search-indexer-overview.md) werden unterstützte Azure-Datenquell
 
 > [!NOTE]
 > Indexer sind datenquellenspezifisch, also eignet sich ein Indexeransatz nur für ausgewählte Datenquellen in Azure: [SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blobspeicher](search-howto-indexing-azure-blob-storage.md), [Tabellenspeicher](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+### <a name="batch-size"></a>Batchgröße
+
+Wie die Push-API ermöglichen auch Indexer, die Anzahl von Elementen pro Batch zu konfigurieren. Für Indexer basierend auf der [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) können Sie das `batchSize`-Argument zum Anpassen dieser Einstellung festlegen, damit die Eigenschaften besser Ihren Daten entsprechen. 
+
+Die Standardbatchgrößen sind datenquellenspezifisch. Azure SQL-Datenbank und Azure Cosmos DB verfügen über eine Standardbatchgröße von 1000. Im Gegensatz dazu wird bei der Azure-Blobindizierung eine Batchgröße von 10 Dokumenten unter Berücksichtigung der größeren durchschnittlichen Dokumentgröße festgelegt. 
 
 ### <a name="scheduled-indexing"></a>Geplante Indizierung
 
