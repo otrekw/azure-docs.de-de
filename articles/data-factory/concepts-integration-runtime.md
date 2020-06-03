@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418380"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890735"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory 
 
@@ -128,6 +128,10 @@ Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinst
 
 ### <a name="azure-ir-location"></a>Azure-Integrationslaufzeit: Standort
 
+Wenn Sie für eine Azure-Integrationslaufzeit einen bestimmten Standort festlegen, erfolgt die Aktivitätsausführung oder -verteilung in der entsprechenden Region.
+
+Bei Verwendung der Azure-Integrationslaufzeit mit automatischer Auflösung (Standardeinstellung) gilt Folgendes:
+
 - Bei der Kopieraktivität versucht ADF, den Standort Ihres Senkendatenspeichers automatisch zu erkennen, und verwendet dann die Integrationslaufzeit entweder in derselben Region (falls verfügbar) oder in der nächstgelegenen Region im selben geografischen Gebiet. Wenn die Region des Senkendatenspeichers nicht erkannt werden kann, wird alternativ die Integrationslaufzeit in der Data Factory-Region verwendet.
 
   Beispiel: Sie haben Ihre Factory in „USA, Osten“ erstellt. 
@@ -135,7 +139,8 @@ Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinst
   - Wenn ADF beim Kopieren von Daten in ein Azure-Blob in „USA, Westen“ erfolgreich erkannt hat, dass sich das Blob in „USA, Westen“ befindet, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Westen“ ausgeführt. Schlägt die Regionserkennung fehl, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
   - Wenn beim Kopieren von Daten in Salesforce die Region nicht erkannt werden kann, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
 
-- Bei einer Kopieraktivität versucht ADF, den Senken- und Quelldatenspeicher automatisch zu erkennen und den bestmöglichen Speicherort auszuwählen – entweder in der gleichen Region (sofern verfügbar) oder in der nächstgelegenen Region in der gleichen Geografie. Ist keine Erkennung möglich, wird alternativ die Data Factory-Region verwendet.
+  >[!TIP] 
+  >Wenn Ihre Daten strengen Complianceanforderungen unterliegen und ein bestimmtes geografisches Gebiet nicht verlassen dürfen, können Sie explizit eine Azure-Integrationslaufzeit in einer bestimmten Region erstellen und den verknüpften Dienst mithilfe der ConnectVia-Eigenschaft auf diese Integrationslaufzeit verweisen. Ein Beispiel: Angenommen, Sie möchten Daten aus einem Blob in der Region „Vereinigtes Königreich, Süden“ in SQL Data Warehouse in der Region „Vereinigtes Königreich, Süden“ kopieren und dabei sicherstellen, dass die Daten das Vereinigte Königreich nicht verlassen. In diesem Fall können Sie eine Azure-Integrationslaufzeit in der Region „Vereinigtes Königreich, Süden“ erstellen und beide verknüpften Dienste mit dieser Integrationslaufzeit verknüpfen.
 
 - Für Vorgänge zur Ausführung von Lookup-/GetMetadata-/Delete-Aktivitäten (auch als Pipelineaktivitäten bezeichnet), zur Verteilung von Transformationsaktivitäten (auch als externe Aktivitäten bezeichnet) und zur Erstellung (Verbindung testen, Ordner- und Tabellenliste durchsuchen, Daten als Vorschau anzeigen) verwendet ADF die IR in der Data Factory-Region.
 

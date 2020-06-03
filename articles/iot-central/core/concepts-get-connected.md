@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509515"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930487"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -95,6 +95,14 @@ Zum Massenverbinden von Geräten mithilfe von X.509-Zertifikaten registrieren Si
 
 Generieren Sie X.509-Blattzertifikate für Ihre Geräte mit dem hochgeladenen Stamm- oder Zwischenzertifikat. Verwenden Sie die **Geräte-ID** als `CNAME`-Wert in den Blattzertifikaten. Für den Gerätecode werden der Wert **ID-Bereich** für Ihre Anwendung, die **Geräte-ID** und das entsprechende Gerätezertifikat benötigt.
 
+#### <a name="sample-device-code"></a>Beispiel für Gerätecode
+
+Das folgende Beispiel aus dem [Azure IoT Node.JS-SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) zeigt, wie sich ein Node.js-Geräteclient mithilfe eines X.509-Blattzertifikats und von DPS bei einer IoT Central-Anwendung registriert:
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+Ein entsprechendes Beispiel für „C“ finden Sie im [Azure IoT C Provisioning Device Client-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)unter [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c).
+
 ### <a name="for-testing-purposes-only"></a>Nur für Testzwecke
 
 Mit den folgenden Hilfsprogrammen können Sie ausschließlich zu Testzwecken Stamm-, Zwischen- und Gerätezertifikate generieren:
@@ -106,11 +114,6 @@ Mit den folgenden Hilfsprogrammen können Sie ausschließlich zu Testzwecken Sta
   - Speichern Sie die Zertifikate als CER-Dateien zum Hochladen in Ihre IoT Central-Anwendung.
   - Verwenden Sie den Überprüfungscode aus der IoT Central-Anwendung, um das Verifizierungszertifikat zu generieren.
   - Erstellen Sie untergeordnete Zertifikate für Ihre Geräte unter Verwendung Ihrer Geräte-IDs als Parameter für das Tool.
-
-### <a name="further-reference"></a>Weitere Referenz
-
-- [Beispielimplementierung für Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Verbinden ohne Registrierung der Geräte
 
@@ -143,11 +146,11 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Verbinden von Geräten, die X.509-Zertifikate verwenden, ohne Registrierung
 
-1. [Fügen Sie Ihrer IoT Central-Anwendung ein X.509-Stamm- oder -Zwischenzertifikat hinzu](#connect-devices-using-x509-certificates).(#connect-devices-using-x509-certificates)
+1. [Fügen Sie ein X.509-Stamm- oder Zwischenzertifikat zu Ihrer IoT Central-Anwendung hinzu, und überprüfen Sie es](#connect-devices-using-x509-certificates).
 
 1. Generieren Sie die untergeordneten Zertifikate für Ihre Geräte, indem Sie das Stamm- bzw. Zwischenzertifikat verwenden, das Sie Ihrer IoT Central-Anwendung hinzugefügt haben. Verwenden Sie in den Blattzertifikaten Geräte-IDs in Kleinbuchstaben als `CNAME`.
 
-1. Der OEM schreibt für jedes Gerät eine Geräte-ID, eine generiertes übriges X.509-Zertifikat und den Wert **ID-Bereich** der Anwendung in den Flashspeicher.
+1. Der OEM schreibt für jedes Gerät eine Geräte-ID, ein generiertes X.509-Blattzertifikat und den Wert **ID-Bereich** der Anwendung in den Flashspeicher.
 
 1. Wenn Sie ein Gerät einschalten, stellt es zuerst eine Verbindung mit DPS her, um seine IoT Central-Registrierungsinformationen abzurufen.
 

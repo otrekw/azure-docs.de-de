@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758842"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021295"
 ---
 # <a name="spatial-queries"></a>Räumliche Abfragen
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 Es gibt drei Treffererfassungsmodi:
 
-* **Nächstgelegen:** In diesem Modus wird nur der nächste Treffer gemeldet.
-* **Beliebig:** Diesen Modus sollten Sie bevorzugen, wenn Sie nur wissen möchten, *ob* ein Strahl etwas treffen würde, aber das genaue getroffene Objekt nicht relevant ist. Diese Abfrage kann erheblich einfacher ausgewertet werden, hat aber auch nur wenige Anwendungsfälle.
-* **Alle:** In diesem Modus werden alle Treffer entlang des Strahls gemeldet, sortiert nach Entfernung. Verwenden Sie diesen Modus nur, wenn Sie wirklich mehr als den ersten Treffer benötigen. Begrenzen Sie die Anzahl der gemeldeten Treffer mit der Option `MaxHits`.
+* **`Closest`:** In diesem Modus wird nur der nächste Treffer gemeldet.
+* **`Any`:** Diesen Modus sollten Sie bevorzugen, wenn Sie nur wissen möchten, *ob* ein Strahl etwas treffen würde, aber das genaue getroffene Objekt nicht relevant ist. Diese Abfrage kann erheblich einfacher ausgewertet werden, hat aber auch nur wenige Anwendungsfälle.
+* **`All`:** In diesem Modus werden alle Treffer entlang des Strahls gemeldet, sortiert nach Entfernung. Verwenden Sie diesen Modus nur, wenn Sie wirklich mehr als den ersten Treffer benötigen. Begrenzen Sie die Anzahl der gemeldeten Treffer mit der Option `MaxHits`.
 
 Mit der Komponente [HierarchicalStateOverrideComponent](override-hierarchical-state.md) können Sie Objekte selektiv aus der Berücksichtigung in Raycasts ausschließen.
 
@@ -106,11 +106,11 @@ Das Ergebnis einer Raycastabfrage ist ein Array von Treffern. Das Array ist leer
 
 Ein Treffer weist folgende Eigenschaften auf:
 
-* **HitEntity:** Die getroffene [Entität](../../concepts/entities.md).
-* **SubPartId:** Das getroffene *Untergittermodell* in einer [MeshComponent](../../concepts/meshes.md). Kann für eine Indizierung in `MeshComponent.UsedMaterials` und zum Suchen des [Materials](../../concepts/materials.md) an diesem Punkt verwendet werden.
-* **HitPosition:** Die Raumposition, an der der Strahl das Objekt schneidet.
-* **HitNormal:** Die Raumoberflächen-Normale des Gittermodells an der Schnittposition.
-* **DistanceToHit:** Der Abstand von der Anfangsposition des Strahls zum Treffer.
+* **`HitEntity`:** Die getroffene [Entität](../../concepts/entities.md).
+* **`SubPartId`:** Das getroffene *Untergittermodell* in einer [MeshComponent](../../concepts/meshes.md). Kann für eine Indizierung in `MeshComponent.UsedMaterials` und zum Suchen des [Materials](../../concepts/materials.md) an diesem Punkt verwendet werden.
+* **`HitPosition`:** Die Raumposition, an der der Strahl das Objekt schneidet.
+* **`HitNormal`:** Die Raumoberflächen-Normale des Gittermodells an der Schnittposition.
+* **`DistanceToHit`:** Der Abstand von der Anfangsposition des Strahls zum Treffer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

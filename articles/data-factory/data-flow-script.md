@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
-ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/06/2020
+ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413449"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890870"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -177,6 +177,21 @@ Verwenden Sie diesen Code in Ihrem Datenflussskript, um eine neue abgeleitete Sp
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+Sie können das Skript unten auch zum Generieren eines Zeilenhashs mithilfe aller im Stream vorhandenen Spalten verwenden, ohne jede einzelne Spalte benennen zu müssen:
+
+```
+derive(DWhash = sha1(columns()))
+```
+
+### <a name="string_agg-equivalent"></a>String_agg equivalent
+Dieser Code verhält sich wie die T-SQL-Funktion ```string_agg()``` und aggregiert Zeichenfolgenwerte in ein Array. Dieses Array können Sie dann in eine Zeichenfolge zur Verwendung bei SQL-Zielen umwandeln.
+
+```
+source1 aggregate(groupBy(year),
+    string_agg = collect(title)) ~> Aggregate1
+Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

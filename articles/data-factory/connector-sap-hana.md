@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/22/2020
+ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417235"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890615"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopieren von Daten aus SAP HANA mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -46,7 +46,7 @@ Dieser SAP HANA-Connector unterstützt insbesondere Folgendes:
 - Paralleles Kopieren von einer SAP HANA-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).
 
 > [!TIP]
-> Verwenden Sie zum Kopieren von Daten **in** SAP HANA-Datenspeicher einen generischen ODBC-Connector. Einzelheiten finden Sie unter [SAP HANA-Senke](connector-odbc.md#sap-hana-sink). Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
+> Verwenden Sie zum Kopieren von Daten **in** SAP HANA-Datenspeicher einen generischen ODBC-Connector. Ausführliche Informationen hierzu finden Sie im Abschnitt [SAP HANA-Senke](#sap-hana-sink). Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -298,6 +298,34 @@ Beim Kopieren von Daten aus SAP HANA werden die folgenden Zuordnungen von SAP HA
 | VARCHAR            | String                         |
 | timestamp          | Datetime                       |
 | VARBINARY          | Byte[]                         |
+
+### <a name="sap-hana-sink"></a>SAP HANA-Senke
+
+Der SAP HANA-Connector wird zurzeit nicht als Senke unterstützt, aber Sie können den generischen ODBC-Connector mit dem SAP HANA-Treiber verwenden, um Daten in SAP HANA zu schreiben. 
+
+Beachten Sie die [Voraussetzungen](#prerequisites), um zuerst die selbstgehostete Integration Runtime einzurichten und den SAP HANA ODBC-Treiber zu installieren. Erstellen Sie einen verknüpften ODBC-Dienst, um eine Verbindung mit Ihrem SAP HANA-Datenspeicher herzustellen, wie im folgenden Beispiel gezeigt wird. Erstellen Sie dann entsprechend die Senke für die DataSet- und Kopieraktivität mit dem ODBC-Typ. Weitere Informationen finden Sie im Artikel [ODBC-Connector](connector-odbc.md).
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

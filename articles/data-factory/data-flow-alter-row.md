@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.date: 05/06/2020
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729138"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982648"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Zeilenänderungstransformation im Zuordnungsdatenfluss
 
@@ -24,6 +24,8 @@ Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktuali
 ![Zeilenänderungseinstellungen](media/data-flow/alter-row1.png "Zeilenänderungseinstellungen")
 
 Zeilenänderungstransformationen können nur für Datenbanksenken oder Cosmos DB-Senken in Ihrem Datenfluss verwendet werden. Die Aktionen, die Sie Zeilen zuweisen (Einfügen, Aktualisieren, Löschen, Upsert), werden während Debugsitzungen nicht ausgeführt. Führen Sie eine Aktivität des Typs „Datenfluss ausführen“ in einer Pipeline aus, um die Richtlinien für Zeilenänderungen auf Ihre Datenbanktabellen anzuwenden.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>Angeben einer Standardzeilenrichtlinie
 
@@ -54,6 +56,20 @@ Das Standardverhalten besteht darin, dass nur Einfügevorgänge zugelassen werde
 > Falls das Schema der Zieltabelle in der Senke durch Ihre Einfüge-, Aktualisierungs- oder Upsertvorgänge geändert wurde, schlägt der Datenfluss fehl. Um das Zielschema in Ihrer Datenbank zu ändern, wählen Sie **Tabelle neu erstellen** als Tabellenaktion aus. Dadurch wird Ihre Tabelle verworfen und mit der neuen Schemadefinition neu erstellt.
 
 Für die Senkentransformation ist entweder ein einzelner Schlüssel oder eine Reihe von Schlüsseln zur eindeutigen Zeilenidentifizierung in Ihrer Zieldatenbank erforderlich. Legen Sie für SQL-Senken die Schlüssel auf der Registerkarte „Senkeneinstellungen“ fest. Legen Sie für CosmosDB den Partitionsschlüssel in den Einstellungen und außerdem das CosmosDB-Systemfeld „ID“ in Ihrer Senkenzuordnung fest. Bei CosmosDB ist es zwingend erforderlich, die Systemspalte „ID“ für Update-, Upsert- und Löschvorgänge mit einzubeziehen.
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Merge- und Upsertvorgänge mit Azure SQL-Datenbank und Synapse
+
+ADF-Datenflüsse unterstützen Mergevorgänge für Azure SQL-Datenbank und Synapse-Datenbankpool (Data Warehouse) mit der Option „upsert“.
+
+Es kann jedoch zu Szenarien kommen, in denen Ihr Schema der Zieldatenbank die IDENTITY-Eigenschaft von Schlüsselspalten verwendet hat. ADF erfordert es, dass Sie die Schlüssel identifizieren, mit denen Sie die Zeilenwerte für Update- und Upsertvorgänge abgleichen werden. Wenn aber für die Zielspalte die IDENTITY-Eigenschaft festgelegt wurde und Sie die Upsertrichtlinie verwenden, können Sie in der Zieldatenbank nicht in die Spalte schreiben. Möglicherweise treten auch Fehler auf, wenn Sie versuchen, einen Upsert-Vorgang für die Verteilungsspalte einer verteilten Tabelle durchzuführen.
+
+Hier sind die Möglichkeiten zur Behebung dieses Problems:
+
+1. Wechseln Sie zu den Einstellungen für die Senkentransformation, und legen Sie „Skip writing key columns“ (Schreiben von Schlüsselspalten überspringen) fest. Dadurch wird ADF angewiesen, nicht in die Spalte zu schreiben, die Sie als Schlüsselwert für Ihre Zuordnung ausgewählt haben.
+
+2. Wenn diese Schlüsselspalte nicht diejenige Spalte ist, die das Problem bei Identitätsspalten verursacht, können Sie die SQL-Option für die Vorbearbeitung von Senkentransformationen verwenden: ```SET IDENTITY_INSERT tbl_content ON```. Deaktivieren Sie die Option dann mit der SQL-Eigenschaft für Nachverarbeitung: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Sowohl bei der Identitäts- als auch der Verteilungsspalte können Sie Ihre Logik vom Upsert auf die Verwendung einer separaten Updatebedingung und einer separaten Einfügebedingung mithilfe einer Transformation für bedingtes Teilen umstellen. Auf diese Weise können Sie die Zuordnung für den Updatepfad so festlegen, dass die Schlüsselspaltenzuordnung ignoriert wird.
 
 ## <a name="data-flow-script"></a>Datenflussskript
 

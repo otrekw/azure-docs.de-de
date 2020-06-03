@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113461"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856736"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installieren der Azure IoT Edge-Runtime unter Windows
 
@@ -193,17 +193,21 @@ Untersuchen Sie die Dienstprotokolle der letzten fünf Minuten. Wenn Sie die Ins
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Führen Sie eine automatisierte Überprüfung auf die häufigsten Konfigurations- und Netzwerkfehler durch.
+Führen Sie das [Tool zur Problembehandlung](troubleshoot.md#run-the-check-command) aus, um nach den häufigsten Konfigurations-und Netzwerkfehlern zu suchen.
 
 ```powershell
 iotedge check
 ```
 
-Führen Sie ausgeführte Module auf. Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie [IoT Edge-Module](how-to-deploy-modules-portal.md) zum ersten Mal bereitgestellt haben, wird das andere Systemmodul namens **edgeHub** ebenfalls auf dem Gerät gestartet.
+Das Systemmodul **$edgeHub** wird erst auf dem Gerät bereitgestellt, wenn Sie Ihr erstes Modul in IoT Edge auf dem Gerät bereitstellen. Infolgedessen wird bei der automatisierten Überprüfung ein Fehler für die Konnektivitätsprüfung `Edge Hub can bind to ports on host` zurückgegeben. Dieser Fehler kann ignoriert werden – es sei denn, er tritt nach der Bereitstellung eines Moduls auf dem Gerät auf.
+
+Listen Sie abschließend die derzeit ausgeführten Module auf:
 
 ```powershell
 iotedge list
 ```
+
+Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie [IoT Edge-Module](how-to-deploy-modules-portal.md) zum ersten Mal bereitgestellt haben, wird das andere Systemmodul namens **edgeHub** ebenfalls auf dem Gerät gestartet.
 
 ## <a name="manage-module-containers"></a>Verwalten von Modulcontainern
 

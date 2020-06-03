@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409071"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927393"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Aktualisieren von Modellen für Azure Machine Learning (Classic) mithilfe der Ressourcenaktualisierungsaktivität
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
+Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory – Integration von Azure Machine Learning Studio (Classic): [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
 
 ## <a name="overview"></a>Übersicht
-Im Rahmen der Operationalisierung von Azure Machine Learning-Modellen wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
+Im Rahmen der Operationalisierung von Modellen für Azure Machine Learning Studio (Classic) wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
 
-Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. Unter [Erneutes Trainieren eines Machine Learning-Modells](../machine-learning/machine-learning-retrain-machine-learning-model.md) finden Sie weitere Informationen, wie Sie ein Modell in Azure Machine Learning erneut trainieren können.
+Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. 
 
 Das erneute Training kann häufig durchgeführt werden. Mithilfe der Batchausführungs- und Ressourcenaktualisierungsaktivität können Sie das Azure Machine Learning-Modell erneut trainieren und den Vorhersagewebdienst mithilfe von Data Factory aktualisieren.
 
@@ -35,9 +35,9 @@ Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Vorhersageweb
 
 ![WEB SERVICES](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning-Ressourcenaktualisierungsaktivität
+## <a name="ml-studio-classic-update-resource-activity"></a>Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic)
 
-Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausführungsaktivität.
+Der folgende JSON-Codeausschnitt definiert eine Batchausführungsaktivität für Azure Machine Learning Studio (Classic).
 
 ```json
 {
@@ -199,7 +199,7 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline weist zwei Aktivitäten auf: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts.
+Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts.
 
 ```JSON
 {
