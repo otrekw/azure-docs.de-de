@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626956"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015980"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -127,6 +127,6 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 - Weitere Informationen zu Reservierungen für Diensttarife:
     - [Virtuelle Computer mit Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB-Ressourcen mit reservierter Azure Cosmos DB-Kapazität](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../sql-database/sql-database-reserved-capacity.md). Erfahren Sie mehr über Reservierungen für Softwarepläne:
+    - [SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../azure-sql/database/reserved-capacity-overview.md). Erfahren Sie mehr über Reservierungen für Softwarepläne:
     - [Red Hat-Softwarepläne aus Azure-Reservierungen](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [SUSE-Softwarepläne aus Azure-Reservierungen](../../virtual-machines/linux/prepay-suse-software-charges.md)

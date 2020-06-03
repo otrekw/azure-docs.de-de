@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68950216"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171224"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Erstellen von Datenprofilen von Datenquellen in Azure Data Catalog
 
@@ -45,7 +45,7 @@ Das Einschließen von Datenprofilen beim Registrieren von Datenassets dient Benu
 > Sie können einem Asset auch Dokumentation hinzufügen, um zu beschreiben, wie Daten in eine Anwendung integriert werden können. Weitere Informationen finden Sie unter [Dokumentieren von Datenquellen](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Einschließen eines Datenprofils beim Registrieren einer Datenquelle
 
