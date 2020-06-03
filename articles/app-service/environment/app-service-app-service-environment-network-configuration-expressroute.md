@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804434"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013396"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details zur Netzwerkkonfiguration für App Service-Umgebungen für PowerApps mit Microsoft Azure ExpressRoute
 
@@ -35,7 +35,7 @@ Eine App Service-Umgebung erfordert für eine ordnungsgemäße Funktionsweise di
 
 * Ausgehende Netzwerkverbindungen mit dem Azure Files-Dienst an Port 445.
 
-* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbank-Endpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbank-Endpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md).
 
 * Ausgehende Netzwerkkonnektivität zu den Azure-Endpunkten der Verwaltungsebene (klassisches Azure-Bereitstellungsmodell und Azure Resource Manager-Endpunkte). Die Konnektivität zu diesen Endpunkten beinhaltet die Domänen management.core.windows.net und management.azure.com. 
 

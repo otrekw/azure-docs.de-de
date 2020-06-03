@@ -9,12 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099647"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232825"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
@@ -225,7 +225,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 Weitere Informationen zu Endpunkten und Netzwerksicherheitsgruppen finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Erstellen einer öffentlichen IP-Adresse und einer NIC
-Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
+Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/public-ip-addresses.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
 1. Erstellen Sie die öffentliche IP-Adresse. In diesem Beispiel ist der Name der öffentlichen IP-Adresse auf **myIP** festgelegt.
    

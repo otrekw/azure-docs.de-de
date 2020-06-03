@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098440"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233361"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Häufige PowerShell-Befehle für virtuelle Azure-Netzwerke
 
@@ -31,7 +31,7 @@ Einige Variablen könnten hilfreich sein, wenn Sie mehr als einen der Befehle au
 | ---- | ------- |
 | Erstellen von Subnetzkonfigurationen |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>Ein typisches Netzwerk kann über ein Subnetz für einen [Load Balancer mit Internetzugriff](../../load-balancer/load-balancer-internet-overview.md) und ein separates Subnetz für einen [internen Load Balancer](../../load-balancer/load-balancer-internal-overview.md) verfügen. |
 | Erstellen eines virtuellen Netzwerks |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
-| Überprüfen auf einen eindeutigen Domänennamen |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>Sie können einen DNS-Domänennamen für eine [öffentliche IP-Ressource](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) angeben. Dadurch erstellen Sie für domainname.location.cloudapp.azure.com eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das erste und letzte Zeichen muss jeweils ein Buchstabe oder eine Zahl sein, und der Domänenname muss für den Azure-Standort eindeutig sein. Wenn **TRUE** zurückgegeben wird, ist der vorgeschlagene Name global eindeutig. |
+| Überprüfen auf einen eindeutigen Domänennamen |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>Sie können einen DNS-Domänennamen für eine [öffentliche IP-Ressource](../../virtual-network/public-ip-addresses.md) angeben. Dadurch erstellen Sie für domainname.location.cloudapp.azure.com eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das erste und letzte Zeichen muss jeweils ein Buchstabe oder eine Zahl sein, und der Domänenname muss für den Azure-Standort eindeutig sein. Wenn **TRUE** zurückgegeben wird, ist der vorgeschlagene Name global eindeutig. |
 | Erstellen einer öffentlichen IP-Adresse |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp" -ResourceGroupName $myResourceGroup -DomainNameLabel "myDNS" -Location $location -AllocationMethod Dynamic<BR><BR>Für die öffentliche IP-Adresse wird der zuvor getestete Domänenname verwendet. Sie wird bei der Front-End-Konfiguration des Load Balancers genutzt. |
 | Erstellen einer Front-End-IP-Konfiguration |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP" -PublicIpAddress $pip<BR><BR>Die Front-End-Konfiguration enthält die öffentliche IP-Adresse, die Sie zuvor für eingehenden Netzwerk-Datenverkehr erstellt haben. |
 | Erstellen eines Back-End-Adresspools |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>Stellt interne Adressen für das Back-End des Load Balancers bereit, auf die über eine Netzwerkschnittstelle zugegriffen wird. |

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403428"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263991"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Java
 
@@ -248,7 +248,7 @@ Kompilieren Sie den Code, und führen Sie ihn aus. Bei einer erfolgreichen Antwo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine einfache Java-Konsolenanwendung erstellt, die REST-Aufrufe für die Azure-Gesichtserkennungs-API verwendet, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Als Nächstes erfahren Sie, welche weiteren Möglichkeiten diese Funktion in einer Android-Anwendung bietet.
+In dieser Schnellstartanleitung haben Sie eine einfache Java-Konsolenanwendung erstellt, die REST-Aufrufe für die Azure-Gesichtserkennungs-API verwendet, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr über die unterstützten Szenarien zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

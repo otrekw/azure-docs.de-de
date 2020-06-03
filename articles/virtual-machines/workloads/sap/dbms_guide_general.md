@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101361"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232650"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -280,7 +280,7 @@ Diese bewährten Methoden sind das Ergebnis von Hunderten von Kundenbereitstellu
 
 - Die virtuellen Netzwerke, in denen die SAP-Anwendung bereitgestellt wird, haben keinen Zugriff auf das Internet.
 - Die Datenbank-VMs werden im selben virtuellen Netzwerk ausgeführt wie die Anwendungsschicht.
-- Die VMs im virtuellen Netzwerk haben eine statische Zuteilung der privaten IP-Adresse. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
+- Die VMs im virtuellen Netzwerk haben eine statische Zuteilung der privaten IP-Adresse. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../../../virtual-network/public-ip-addresses.md).
 - Routingeinschränkungen in und aus DBMS-VMs werden *nicht* mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) definiert.
 - Weisen Sie der VM verschiedene NICs zu, um den Datenverkehr zu den DBMS-VMs zu trennen und zu isolieren. Jede NIC erhält eine andere IP-Adresse und ist einem anderen Subnetz des virtuellen Netzwerks zugeordnet. Für jedes Subnetz gelten verschiedene NSG-Regeln. Die Isolation oder die Trennung des Netzwerkverkehrs ist eine Routingmaßnahme. Sie wird nicht zum Festlegen von Kontingenten zur Steigerung des Netzwerkdurchsatzes verwendet.
 

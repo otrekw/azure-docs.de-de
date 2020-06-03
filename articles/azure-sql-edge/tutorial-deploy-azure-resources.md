@@ -2,19 +2,19 @@
 title: Einrichten von Ressourcen für die Bereitstellung eines ML-Modells in Azure SQL Edge
 description: Im ersten Teil dieses dreiteiligen Azure SQL Edge-Tutorials zum Vorhersagen von Eisenerzverunreinigungen installieren Sie die erforderliche Software und richten erforderliche Azure-Ressourcen für die Bereitstellung eines Machine Learning-Modells in Azure SQL Edge ein.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 30c024aafc1cf8f479de77107b7f0aaaa262d47c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772827"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235074"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Installieren von Software und Einrichten von Ressourcen für das Tutorial
 

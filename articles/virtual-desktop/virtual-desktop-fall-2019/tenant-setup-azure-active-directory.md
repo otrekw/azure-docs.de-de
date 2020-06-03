@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613926"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234120"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop
 
@@ -152,7 +152,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie Ihren Mandanten erstellt haben, müssen Sie in Azure Active Directory einen Dienstprinzipal erstellen und ihm innerhalb von Windows Virtual Desktop eine Rolle zuweisen. Der Dienstprinzipal ermöglicht die erfolgreiche Bereitstellung des Azure Marketplace-Angebots für Windows Virtual Desktop zur Erstellung eines Hostpools. Weitere Informationen zu Hostpools finden Sie im Tutorial zum Erstellen eines Hostpools in Windows Virtual Desktop.
 
 > [!div class="nextstepaction"]

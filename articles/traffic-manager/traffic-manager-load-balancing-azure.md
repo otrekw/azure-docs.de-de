@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757192"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020794"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -154,7 +154,7 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
 In diesem Szenario verteilt Load Balancer Verbindungen von der Webebene zu den Datenbanken innerhalb eines Clusters mit hoher Verfügbarkeit.
 
-Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md).
+Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md).
 
 Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
