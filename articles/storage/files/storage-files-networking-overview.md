@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067148"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296526"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -51,7 +51,7 @@ Azure Files unterstützt folgende Mechanismen, um Datenverkehr zwischen Ihren lo
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das verwendet wird, um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem anderen Standort (beispielsweise einer lokalen Umgebung) über das Internet zu senden. Azure VPN Gateway ist eine Azure-Ressource, die neben einem Speicherkonto oder anderen Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden kann. VPN-Gateways machen zwei Arten von Verbindungen verfügbar:
     - [Point-to-Site-VPN](../../vpn-gateway/point-to-site-about.md)-Gatewayverbindungen (P2S-VPN) sind VPN-Verbindungen zwischen Azure und einem einzelnen Client. Diese Lösung ist primär für Geräte nützlich, die nicht zum lokalen Netzwerk Ihrer Organisation gehören, z. B. im Fall von Telearbeitern, die ihre Azure-Dateifreigabe von Zuhause, im Café oder im Hotel einbinden möchten. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Informationen zur Vereinfachung der Bereitstellung einer P2S-VPN-Verbindung finden Sie unter [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md) bzw. unter [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md).
-    - [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)-Verbindungen (S2S-VPN) sind VPN-Verbindungen zwischen Azure und dem Netzwerk Ihrer Organisation. Mit dieser Lösung können Sie einmalig eine VPN-Verbindung für einen VPN-Server oder ein im Netzwerk Ihrer Organisation gehostetes Gerät konfigurieren und müssen diese Einrichtung nicht für jedes Clientgerät wiederholen, das auf Ihre Azure-Dateifreigabe zugreifen muss. Informationen zur Vereinfachung der Bereitstellung einer S2S-VPN-Verbindung finden Sie unter [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
+    - [Site-to-Site-VPN](../../vpn-gateway/design.md#s2smulti)-Verbindungen (S2S-VPN) sind VPN-Verbindungen zwischen Azure und dem Netzwerk Ihrer Organisation. Mit dieser Lösung können Sie einmalig eine VPN-Verbindung für einen VPN-Server oder ein im Netzwerk Ihrer Organisation gehostetes Gerät konfigurieren und müssen diese Einrichtung nicht für jedes Clientgerät wiederholen, das auf Ihre Azure-Dateifreigabe zugreifen muss. Informationen zur Vereinfachung der Bereitstellung einer S2S-VPN-Verbindung finden Sie unter [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
 - [ExpressRoute](../../expressroute/expressroute-introduction.md) ermöglicht die Erstellung einer definierten Route zwischen Azure und Ihrem lokalen Netzwerk, die nicht über das Internet läuft. Da ExpressRoute einen dedizierten Pfad zwischen Ihrem lokalen Rechenzentrum und Azure bereitstellt, ist dieser Dienst sehr nützlich, wenn die Netzwerkleistung ein wichtiger Aspekt ist. ExpressRoute ist auch dann eine gute Option, wenn die Richtlinie Ihrer Organisation oder gesetzliche Vorschriften einen deterministischen Pfad zu den Ressourcen in der Cloud erfordern.
 
 Unabhängig von der Tunnelingmethode, die Sie für den Zugriff auf Ihre Azure-Dateifreigaben verwenden, benötigen Sie einen Mechanismus, der sicherstellt, dass der für Ihr Speicherkonto bestimmte Datenverkehr über den Tunnel und nicht über Ihre reguläre Internetverbindung geleitet wird. Es ist zwar technisch möglich, Datenverkehr an den öffentlichen Endpunkt des Speicherkontos weiterzuleiten, dies erfordert jedoch die Hartcodierung aller IP-Adressen für die Azure-Speichercluster in einer Region, da Speicherkonten jederzeit zwischen Speicherclustern verschoben werden können. Darüber hinaus müssen in diesem Fall ständig die IP-Adresszuordnungen aktualisiert werden, da immer wieder neue Cluster hinzukommen.

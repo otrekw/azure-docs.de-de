@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0605249ea0602b33e144fce8d0a77439c2077a2f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272473"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170748"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurieren von PHP in Azure App Service
 
@@ -132,7 +132,7 @@ Anstelle der PHP-Standardlaufzeit kann App Service auch eine PHP-Laufzeit verwen
 10. Klicken Sie ganz unten auf **Update**, um das Hinzufügen der Handlerzuordnung fertig zu stellen.
 11. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-<a name="composer" />
+<a name="composer"></a>
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>Gewusst wie: Aktivieren der Composer-Automatisierung in Azure
 
