@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370473"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195244"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -25,7 +25,7 @@ Sie können einem Blob-Dienstendpunkt oder einem Endpunkt einer [statischen Webs
 > [!NOTE] 
 > Diese Zuordnung funktioniert nur für Unterdomänen (z. B. `www.contoso.com`). Wenn Ihr Webendpunkt für die Stammdomäne (z. B. `contoso.com`) verfügbar sein soll, müssen Sie Azure CDN verwenden. Eine entsprechende Anleitung finden Sie im Abschnitt [Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS](#enable-https) in diesem Artikel. Weil Sie in diesem Abschnitt dieses Artikels die Stammdomäne Ihrer benutzerdefinierten Domäne aktivieren, ist der Schritt innerhalb dieses Abschnitts zum Aktivieren von HTTPS optional. 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>Zuordnen einer benutzerdefinierten Domäne nur mit aktiviertem HTTP
 
@@ -33,7 +33,7 @@ Dieser Ansatz ist einfacher, dabei wird jedoch nur HTTP-Zugriff aktiviert. Wenn 
 
 Informationen zum Aktivieren des HTTPS-Zugriffs finden Sie im Abschnitt [Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS](#enable-https) in diesem Artikel. 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>Zuordnen einer benutzerdefinierten Domäne
 
@@ -50,7 +50,7 @@ Wenn es keine Rolle spielt, dass die Domäne für Ihre Benutzer kurzzeitig nicht
 
 :heavy_check_mark: Schritt 4: Testen Sie Ihre benutzerdefinierte Domäne.
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Schritt 1: Abrufen des Hostnamens Ihres Speicherendpunkts 
 
@@ -71,7 +71,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
   
    Sie können diesen Wert später festlegen.
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>Schritt 2: Erstellen eines kanonischen Namenseintrags (CNAME-Eintrags) bei Ihrem Domänenanbieter
 
@@ -91,7 +91,7 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
       
    - Den Hostnamen, den Sie weiter oben in diesem Artikel im Abschnitt [Abrufen des Hostnamens Ihres Speicherendpunkts](#endpoint) erhalten haben. 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>Schritt 3: Registrieren Ihrer benutzerdefinierten Domäne bei Azure
 
@@ -117,7 +117,7 @@ Um zu bestätigen, dass Ihre benutzerdefinierte Domäne dem Endpunkt Ihres Blobd
 
 Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular im Container *myforms* in der benutzerdefinierten Unterdomäne *photos.contoso.com* zuzugreifen: `http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Zuordnen einer benutzerdefinierten Domäne ohne Ausfallzeit
 
@@ -136,7 +136,7 @@ Wenn Ihre Domäne aktuell eine Anwendung mit einer Vereinbarung zum Service Leve
 
 :heavy_check_mark: Schritt 5: Testen Sie Ihre benutzerdefinierte Domäne.
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Schritt 1: Abrufen des Hostnamens Ihres Speicherendpunkts 
 
@@ -295,7 +295,7 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzStorageAccount](/powershell/module/az
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS
 

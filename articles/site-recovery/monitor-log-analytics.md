@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131188"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300789"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Einrichten von Warnungen – Beispiele
 
-Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal). 
+Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal). 
 
 > [!NOTE]
 > In einigen Beispielen wird **replicationProviderName_s** auf **A2A** festgelegt. Hierdurch werden Warnungen für Azure-VMs eingerichtet, die in eine sekundäre Azure-Region repliziert werden. In diesen Beispielen können Sie **A2A** durch **InMageAzureV2** ersetzen, wenn Sie Warnungen für lokale VMware-VMs oder physische Server einrichten möchten, die nach Azure repliziert werden.

@@ -3,15 +3,15 @@ title: Verwalten von Datenbankkonten in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Azure Cosmos DB Ressourcen mit dem Azure-Portal, PowerShell, der CLI und Azure Resource Manager-Vorlagen verwalten.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745023"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116706"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 

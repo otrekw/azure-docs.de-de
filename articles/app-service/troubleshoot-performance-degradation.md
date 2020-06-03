@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688316"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170765"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
@@ -39,7 +39,7 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 
 [App Service](overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Beobachten und Überwachen des Anwendungsverhaltens
 #### <a name="track-service-health"></a>Nachverfolgen der Dienstintegrität
@@ -84,7 +84,7 @@ Jede App Service-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie
 
 Ebenfalls zur Verfügung steht [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../azure-monitor/app/web-monitor-performance.md).
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. Sammeln von Daten
 App Service bietet Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Die Informationen sind logisch in Webserverdiagnose und Anwendungsdiagnose unterteilt.
@@ -139,7 +139,7 @@ Eine weitere nützliche Funktion von Kudu ist die Möglichkeit, mithilfe von Kud
 
 Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [Tools für Azure DevOps, die Sie kennen sollten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. Minimieren der Auswirkungen des Problems
 #### <a name="scale-the-app"></a>Skalieren der App
