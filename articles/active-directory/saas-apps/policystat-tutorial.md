@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848752"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Azure Active Directory-Integration in PolicyStat
 
@@ -175,11 +175,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PolicySt
    
     a. Geben Sie im Textfeld **Benutzernamen-Attribut** die Zeichenfolge **uid** ein.
 
-    b. Geben Sie im Textfeld **Vornamen-Attribut** den Namen Ihres Vornamen-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    b. Geben Sie im Textfeld **Vornamen-Attribut** den Namen Ihres Vornamen-Attributanspruchs aus Azure ein **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    c. Geben Sie im Textfeld **Nachnamen-Attribut** den Namen Ihres Nachnamen-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    c. Geben Sie im Textfeld **Nachnamen-Attribut** den Namen Ihres Nachnamen-Attributanspruchs aus Azure ein **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .
 
-    d. Geben Sie im Textfeld **E-Mail-Attribut** den Namen Ihres E-Mail-Attributanspruchs aus Azure ein **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    d. Geben Sie im Textfeld **E-Mail-Attribut** den Namen Ihres E-Mail-Attributanspruchs aus Azure ein **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
     e. Klicken Sie auf **Änderungen speichern**.
 

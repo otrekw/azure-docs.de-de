@@ -3,12 +3,13 @@ title: Anzeigen von Metriken in Echtzeit mit Azure Monitor für Container | Micr
 description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwendung von kubectl mit Azure Monitor für Container beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216589"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196149"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 

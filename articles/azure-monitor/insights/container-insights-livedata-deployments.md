@@ -3,12 +3,13 @@ title: Anzeigen von Bereitstellungen in Azure Monitor für Container (Vorschau) 
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Bereitstellungen in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 98901ba8622404c03f3456b4ca404715d7016d9c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75404774"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194995"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Anzeigen von Bereitstellungen (Vorschau) in Echtzeit
 
