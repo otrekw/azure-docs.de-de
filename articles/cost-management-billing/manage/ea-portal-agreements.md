@@ -3,16 +3,16 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648187"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298141"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -43,7 +43,7 @@ Eine Registrierung weist einen der folgenden Statuswerte auf. Jeder Wert bestimm
 
 **Abgelaufen**: Die EA-Registrierung läuft ab, wenn das Enddatum für das Enterprise Agreement erreicht ist. Der EA-Kunde hat keine Option für eine Laufzeitverlängerung mehr und alle seine Dienste werden deaktiviert.
 
-Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-EA-Portal](https://portal.azure.com). Alternativ kann Ihr Partner unter https://www.explore.ms eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
+Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-Portal](https://portal.azure.com). Alternativ kann Ihr Partner unter https://www.explore.ms eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
 
 **Übertragen**: Der Status „Übertragen“ gilt für Registrierungen, deren zugeordnete Konten und Dienste in eine neue Registrierung übertragen werden. Registrierungen werden nicht automatisch übertragen, wenn während der Verlängerung eine neue Registrierungsnummer generiert wird. Die vorherige Registrierungsnummer muss in die Verlängerungsanforderung des Kunden aufgenommen werden, damit eine automatische Übertragung erfolgt.
 
