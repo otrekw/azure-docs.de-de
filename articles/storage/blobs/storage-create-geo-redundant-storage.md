@@ -1,30 +1,30 @@
 ---
 title: 'Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage'
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie georedundanten Speicher mit Lesezugriff verwenden, um Ihre Anwendungsdaten hochverfügbar zu machen.
+description: Hier erfahren Sie, wie Sie geozonenredundanten Speicher mit Lesezugriff (RA-GZRS) verwenden, um Ihre Anwendungsdaten hochverfügbar zu machen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606030"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856130"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
 Dieses Tutorial ist der erste Teil einer Serie. In diesem Teil erfahren Sie, wie Sie Hochverfügbarkeit für Ihre Anwendungsdaten in Azure herstellen.
 
-Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GRS-Speicherkonto ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md)) hochlädt und aus diesem abruft.
+Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GZRS-Speicherkonto ([geozonenredundanter Speicher mit Lesezugriff](../common/storage-redundancy.md)) hochlädt und aus diesem abruft.
 
-Georedundanter Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beruht auf der Replikation von Transaktionen von einer primären in eine sekundäre Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Die Anwendung ermittelt mithilfe des [Circuit-Breaker](/azure/architecture/patterns/circuit-breaker)-Musters, mit welchem Endpunkt eine Verbindung hergestellt werden soll, und wechselt automatisch zwischen Endpunkten, wenn Fehler und Wiederherstellungen simuliert werden.
+Georedundanz in Azure Storage repliziert Transaktionen asynchron von einer primären Region in eine sekundäre Region, die Hunderte von Kilometern entfernt ist. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Die Konsolenanwendung ermittelt mithilfe des Musters [Trennschalter](/azure/architecture/patterns/circuit-breaker), mit welchem Endpunkt eine Verbindung hergestellt werden soll, und wechselt automatisch zwischen Endpunkten, wenn Fehler und Wiederherstellungen simuliert werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -64,25 +64,24 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Ein Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff auf diese Objekte bereit.
 
-Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit Lesezugriff zu erstellen:
+Führen Sie die folgenden Schritte aus, um ein geozonenredundantes Speicherkonto mit Lesezugriff (RA-GZRS) zu erstellen:
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
-2. Klicken Sie auf der Seite **Neu** auf **Storage**.
-3. Wählen Sie unter **Ausgewählte** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
+1. Wählen Sie im Azure-Portal die Schaltfläche **Ressource erstellen** aus.
+2. Wählen Sie auf der Seite **Neu** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.
 
-   | Einstellung       | Vorgeschlagener Wert | Beschreibung |
+   | Einstellung       | Beispielwert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
-   | **Bereitstellungsmodell** | Ressourcen-Manager  | Azure Resource Manager enthält die neuesten Funktionen.|
-   | **Kontoart** | StorageV2 | Weitere Informationen zu den unterschiedlichen Kontoarten finden Sie unter [Speicherkontentypen](../common/storage-introduction.md#types-of-storage-accounts). |
-   | **Leistung** | Standard | Der Wert „Standard“ ist für das Beispielszenario ausreichend. |
-   | **Replikation**| Georedundanter Speicher mit Lesezugriff (RA-GRS) | Diese Angabe ist erforderlich, damit das Beispiel funktioniert. |
-   |**Abonnement** | Ihr Abonnement |Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |
-   |**ResourceGroup** | myResourceGroup |Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
-   |**Location** | East US | Wählen Sie einen Standort aus. |
+   | **Abonnement** | *Mein Abonnement* | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |
+   | **ResourceGroup** | *myResourceGroup* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
+   | **Name** | *mystorageaccount* | Ein eindeutiger Name für Ihr Speicherkonto |
+   | **Location** | *USA, Osten* | Wählen Sie einen Standort aus. |
+   | **Leistung** | *Standard* | Die Standardleistung ist eine gute Option für das Beispielszenario. |
+   | **Kontoart** | *StorageV2* | Es wird die Verwendung eines Speicherkontos vom Typ „Universell v2“ empfohlen. Weitere Informationen zu den Azure Storage-Kontotypen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md). |
+   | **Replikation**| *Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)* | Die primäre Region ist zonenredundant und wird in einer sekundären Region repliziert. Lesezugriff auf die sekundäre Region ist dabei aktiviert. |
+   | **Zugriffsebene**| *Heiße Ebene* | Verwenden Sie die heiße Ebene für häufig verwendete Daten. |
 
-![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -173,7 +172,7 @@ Installieren Sie die erforderlichen Abhängigkeiten. Öffnen Sie hierzu eine Ein
 
 Drücken Sie in Visual Studio **F5**, oder wählen Sie **Starten** aus, um mit dem Debuggen der Anwendung zu beginnen. Visual Studio stellt fehlende NuGet-Pakete bei entsprechender Konfiguration automatisch wieder her. Weitere Informationen finden Sie unter [Installieren und Neuinstallieren von Paketen mit der Paketwiederherstellung](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview).
 
-Ein Konsolenfenster wird geöffnet, und die Anwendung wird ausgeführt. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild repliziert wurde und sich am sekundären RA-GRS-Endpunkt befindet. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
+Ein Konsolenfenster wird geöffnet, und die Anwendung wird ausgeführt. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild im sekundären RA-GZRS-Endpunkt repliziert wurde. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
 
 ![Konsolenanwendung wird ausgeführt](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ Im Beispielcode wird die Aufgabe `RunCircuitBreakerAsync` in der Datei `Program.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Eingabeaufforderung zum Verzeichnis **circuitbreaker.py**, und geben Sie `python circuitbreaker.py` ein. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild repliziert wurde und sich am sekundären RA-GRS-Endpunkt befindet. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
+Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Eingabeaufforderung zum Verzeichnis **circuitbreaker.py**, und geben Sie `python circuitbreaker.py` ein. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild im sekundären RA-GZRS-Endpunkt repliziert wurde. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
 
 ![Konsolenanwendung wird ausgeführt](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im ersten Teil dieser Reihe haben Sie erfahren, wie Sie mit RA-GRS-Speicherkonten Hochverfügbarkeit für eine Anwendung herstellen.
+Im ersten Teil dieser Reihe haben Sie erfahren, wie Sie mit RA-GZRS-Speicherkonten Hochverfügbarkeit für eine Anwendung herstellen.
 
-Im zweiten Teil der Reihe erfahren Sie, wie Sie einen Fehler simulieren, durch den Ihre Anwendung auf den sekundären RA-GRS-Endpunkt ausweichen muss.
+Im zweiten Teil der Reihe erfahren Sie, wie Sie einen Fehler simulieren, durch den Ihre Anwendung auf den sekundären RA-GZRS-Endpunkt ausweichen muss.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff](storage-simulate-failure-ragrs-account-app.md)
+> [Tutorial: Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff](simulate-primary-region-failure.md)

@@ -1,24 +1,20 @@
 ---
-title: Azure Automation – Übersicht
-description: Es wird beschrieben, wie Sie Azure Automation zum Automatisieren des Lebenszyklus für die Infrastruktur und Anwendungen verwenden.
+title: Einführung in Azure Automation
+description: In diesem Artikel wird erläutert, was Azure Automation ist und wie es verwendet wird, um den Lebenszyklus von Infrastruktur und Anwendungen zu automatisieren.
 services: automation
 ms.subservice: process-automation
 keywords: Azure Automation, DSC, PowerShell, State Configuration, Updateverwaltung, Änderungsnachverfolgung, DSC, Bestand, Runbooks, Python, grafisch
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010238"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835273"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
-
-Dieser Artikel enthält eine kurze Übersicht über Azure Automation und Antworten auf einige häufig gestellte Fragen. Weitere Informationen zu den verschiedenen Funktionen finden Sie unter den Links, die in dieser Übersicht angegeben sind.
-
-## <a name="about-azure-automation"></a>Grundlegendes zu Azure Automation
 
 Mit Azure Automation wird ein cloudbasierter Automatisierungs- und Konfigurationsdienst bereitgestellt, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Der Dienst umfasst sowohl die Prozessautomatisierung, Konfigurationsverwaltung und Updateverwaltung als auch gemeinsam genutzte Funktionen und Features für heterogene Umgebungen. Mit Azure Automation haben Sie die volle Kontrolle über Bereitstellung, Ausführung und Außerbetriebnahme von Workloads und Ressourcen.
 
@@ -32,13 +28,22 @@ Die Prozessautomatisierung unterstützt die Integration von Azure-Diensten und a
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 
-Azure Automation [State Configuration](automation-dsc-overview.md) ist eine cloudbasierte PowerShell DSC-Lösung (Desired State Configuration), mit der Dienste für Unternehmensumgebungen bereitgestellt werden. Unter Verwendung dieser Funktion können Sie Ihre DSC-Ressourcen in Azure Automation verwalten und Konfigurationen auf virtuelle oder physische Computer anwenden. Dabei werden die Konfigurationen von einem DSC-Pullserver in der Azure-Cloud abgerufen. Sie können die Computerkonfiguration überwachen und automatisch aktualisieren. Dies gilt sowohl für physische als auch für virtuelle Computer unter Windows oder Linux, die sich in der Cloud oder in lokalen Umgebungen befinden. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren.
- 
-Der Azure Automation State Configuration-Dienst bietet umfassende Berichterstellungs- und Suchfunktionen. Sie können diese Funktionen für die Suche nach detaillierten Informationen zu den konfigurierten Elementen innerhalb eines Betriebssystems verwenden. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Eine wichtige Funktion in diesem Zusammenhang ist die Berichterstellung für wichtige Ereignisse, z. B. für Ereignisse, die ausgelöst werden, wenn Knoten von ihren zugewiesenen Konfigurationen abweichen. 
+Die Konfigurationsverwaltung in Azure Automation ermöglicht den Zugriff auf zwei Features:
+
+* Änderungsnachverfolgung und Bestand
+* Azure Automation State Configuration
+
+### <a name="change-tracking-and-inventory"></a>Änderungsnachverfolgung und Bestand
+
+„Änderungsnachverfolgung und Bestand“ kombiniert Änderungsnachverfolgungs- und Bestandsfunktionen, mit denen Sie Änderungen an virtuellen Computern und Serverinfrastrukturen nachverfolgen können. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren. Weitere Informationen zu diesem Feature finden Sie unter [Änderungsnachverfolgung und Bestand](change-tracking.md).
+
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+
+[Azure Automation State Configuration](automation-dsc-overview.md) ist ein cloudbasiertes PowerShell DSC-Feature (Desired State Configuration), mit dem Dienste für Unternehmensumgebungen bereitgestellt werden. Unter Verwendung dieser Funktion können Sie Ihre DSC-Ressourcen in Azure Automation verwalten und Konfigurationen auf virtuelle oder physische Computer anwenden. Dabei werden die Konfigurationen von einem DSC-Pullserver in der Azure-Cloud abgerufen. 
 
 ## <a name="update-management"></a>Updateverwaltung
 
-Azure Automation umfasst eine [Updateverwaltungslösung](automation-update-management.md) für Windows- und Linux-Systeme in Hybridumgebungen. Mit dieser Lösung erhalten Sie einen Einblick in die Konformität von Updates für Azure, andere Clouds und die lokale Umgebung. Mit der Updateverwaltung können Sie geplante Bereitstellungen erstellen, um die Installation von Updates in einem definierten Wartungsfenster zu orchestrieren. Wenn ein Update nicht auf einem Computer installiert werden soll, können Sie es mithilfe der Funktionen zur Updateverwaltung von einer Bereitstellung ausschließen.
+Azure Automation umfasst ein Feature zur [Updateverwaltung](automation-update-management.md) für Windows- und Linux-Systeme in Hybridumgebungen. Mithilfe der Updateverwaltung erhalten Sie einen Einblick in die Konformität von Updates für Azure, andere Clouds und die lokale Umgebung. Mit diesem Feature können Sie geplante Bereitstellungen erstellen, um die Installation von Updates in einem definierten Wartungsfenster zu orchestrieren. Wenn ein Update nicht auf einem Computer installiert werden soll, können Sie es mithilfe der Funktionen zur Updateverwaltung von einer Bereitstellung ausschließen.
 
 ## <a name="shared-capabilities"></a>Gemeinsam genutzte Funktionen
 
@@ -63,7 +68,7 @@ Azure Automation unterstützt die rollenbasierte Zugriffssteuerung (Role-Based A
 
 ### <a name="source-control-integration"></a>Integration der Quellcodeverwaltung
 
-Azure Automation ermöglicht eine [Integration in die Quellcodeverwaltung](source-control-integration.md). Diese Funktion ermöglicht die Konfiguration in Form von Code, sodass Runbooks oder Konfigurationen in ein Quellcodeverwaltungssystem eingecheckt werden können.
+Azure Automation unterstützt eine [Integration in die Quellcodeverwaltung](source-control-integration.md). Diese Funktion ermöglicht die Konfiguration in Form von Code, sodass Runbooks oder Konfigurationen in ein Quellcodeverwaltungssystem eingecheckt werden können.
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>Unterstützung heterogener Systeme (Windows und Linux)
 
@@ -85,7 +90,7 @@ Azure Automation unterstützt die Verwaltung des gesamten Lebenszyklus Ihrer Inf
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Preise für Automation
+## <a name="pricing-for-azure-automation"></a>Preise für Azure Automation
 
 Informationen zur Preisgestaltung bei Azure Automation finden Sie auf der entsprechenden Seite mit den [Preisen](https://azure.microsoft.com/pricing/details/automation/).
 
@@ -93,4 +98,3 @@ Informationen zur Preisgestaltung bei Azure Automation finden Sie auf der entspr
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Automation-Kontos](automation-quickstart-create-account.md)
-

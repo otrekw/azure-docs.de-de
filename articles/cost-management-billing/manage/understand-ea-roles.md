@@ -5,16 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: banders
-ms.openlocfilehash: b8c523acabd02dc30e9b13f7f83a4a44554cbd4d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690924"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660352"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure
+# <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
 
 Azure-Kunden mit einem Enterprise Agreement (EA) können zur Verwaltung ihrer Organisation und ihrer Ausgaben fünf verschiedene Administratorrollen zuweisen:
 
@@ -62,6 +62,19 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 - <sup>4</sup> Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen zum Azure Enterprise Agreement.
 - <sup>5</sup> Die Aufgabe ist auf Konten in Ihrer Abteilung beschränkt.
 
+## <a name="add-a-new-enterprise-administrator"></a>Hinzufügen eines neuen Unternehmensadministrators
+
+Unternehmensadministratoren haben die meisten Berechtigungen bei der Verwaltung einer Azure EA-Registrierung. Der erste Azure EA-Administrator wurde erstellt, als die EA-Vereinbarung eingerichtet wurde. Sie können jedoch jederzeit neue Administratoren hinzufügen oder entfernen. Neue Administratoren werden nur von vorhandenen Administratoren hinzugefügt. Weitere Informationen zum Hinzufügen zusätzlicher Unternehmensadministratoren finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-get-started.md#create-another-enterprise-administrator). Weitere Informationen zu Rollen und Aufgaben für ein Abrechnungsprofil finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](understand-mca-roles.md#billing-profile-roles-and-tasks).
+
+## <a name="update-account-owner-state-from-pending-to-active"></a>Aktualisieren des Kontobesitzerstatus von „Ausstehend“ in „Aktiv“
+
+Wenn neue Kontobesitzer (Account Owners, AO) erstmals zu einer Azure EA-Registrierung hinzugefügt werden, wird ihr Status als _Ausstehend_ angezeigt. Wenn ein neuer Kontobesitzer die Begrüßungs-E-Mail für die Aktivierung erhält, kann er sich anmelden, um sein Konto zu aktivieren. Nach Aktivierung des Kontos wird der Kontostatus von _Ausstehend_ in _Aktiv_ geändert. Der Kontobesitzer muss die Warnmeldung lesen und die Option **Weiter** auswählen. Neue Benutzer werden möglicherweise aufgefordert, ihren Vor- und Nachnamen einzugeben, um ein Commerce-Konto zu erstellen. In dem Fall müssen die erforderlichen Informationen hinzugefügt werden, damit der Vorgang fortgesetzt und das Konto aktiviert werden kann.
+
+## <a name="add-a-department-admin"></a>Hinzufügen eines Abteilungsadministrators
+
+Nachdem ein Azure EA-Administrator eine Abteilung erstellt hat, kann der Azure-Unternehmensadministrator Abteilungsadministratoren hinzufügen und diese einer Abteilung zuordnen. Ein Abteilungsadministrator kann neue Konten erstellen. Neue Konten sind erforderlich, damit Azure EA-Abonnements erstellt werden können.
+
+Weitere Informationen zum Hinzufügen eines Abteilungsadministrators finden Sie unter [Erstellen eines Azure EA-Abteilungsadministrators](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="usage-and-costs-access-by-role"></a>Zugriff auf Nutzung und Kosten nach Rolle
 
@@ -77,8 +90,7 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 - <sup>6</sup> Erfordert die Aktivierung der Richtlinie **DA-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Abteilungsadministrator kann dann Kostendetails für die Abteilung einsehen.
 - <sup>7</sup> Erfordert die Aktivierung der Richtlinie **AO-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Kontobesitzer kann dann Kostendetails für das Konto einsehen.
 
-
-## <a name="pricing-in-azure-portal"></a>Preise im Azure-Portal
+## <a name="see-pricing-for-different-user-roles"></a>Anzeige von Preisen für verschiedene Benutzerrollen
 
 Möglicherweise werden Ihnen im Azure-Portal abhängig von Ihrer administrativen Rolle und der Festlegung der Richtlinien zum Anzeigen von Gebühren durch den Unternehmensadministrator unterschiedliche Gebühren angezeigt. Die beiden folgenden Richtlinien im Enterprise-Portal haben Auswirkungen auf die im Azure-Portal angezeigten Preise:
 
@@ -98,6 +110,8 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 |Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
 
 Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die RBAC-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

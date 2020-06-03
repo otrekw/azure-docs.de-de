@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147772"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343445"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -55,11 +55,14 @@ Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die
 
 ### <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
 
-Die [serverseitige Verschlüsselung von Azure](../articles/virtual-machines/windows/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
+Die [serverseitige Verschlüsselung von Azure](../articles/virtual-machines/windows/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. (Temporäre Datenträger werden von der Speicherdienstverschlüsselung dagegen nicht verschlüsselt. Siehe [Datenträgerrollen: Temporäre Datenträger](#temporary-disk).)
+
+Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
+
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Mit Azure Disk Encryption können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Diese Verschlüsselung umfasst verwaltete Datenträger. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Dieser Verschlüsselungsvorgang ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können. Weitere Informationen finden Sie unter [Azure Disk Encryption für virtuelle IaaS-Computer](../articles/security/azure-security-disk-encryption-overview.md).
+Mit Azure Disk Encryption können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Diese Verschlüsselung umfasst verwaltete Datenträger. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Dieser Verschlüsselungsvorgang ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können. Weitere Informationen finden Sie unter [Azure Disk Encryption für Linux-VMs](../articles/virtual-machines/linux/disk-encryption-overview.md) und [Azure Disk Encryption für virtuelle Windows-Computer](../articles/virtual-machines/windows/disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Datenträgerrollen
 
@@ -79,7 +82,9 @@ Dieser Datenträger weist eine maximale Kapazität von 2.048 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“ und bei Windows-VMs ist der temporäre Datenträger standardmäßig „D:“. Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.
+Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.  
+
+Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird von der serverseitigen Verschlüsselung nicht verschlüsselt (siehe [Verschlüsselung](#encryption)).
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen eines verwalteten Datenträgers
 

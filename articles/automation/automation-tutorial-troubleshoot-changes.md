@@ -1,28 +1,28 @@
 ---
-title: Durchführen der Problembehandlung für Änderungen auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
-description: Verwenden Sie die Änderungsnachverfolgung, um die Problembehandlung für Änderungen auf einem virtuellen Azure-Computer durchzuführen.
+title: Problembehandlung bei Änderungen auf einem virtuellen Azure-Computer in Azure Automation | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Probleme bei Änderungen auf einem virtuellen Azure-Computer beheben.
 services: automation
 ms.subservice: change-inventory-management
-keywords: Änderung, Nachverfolgung, Automatisierung
+keywords: Änderung, Nachverfolgung, Änderungsnachverfolgung, Bestand, Automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604696"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743687"
 ---
-# <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
+# <a name="troubleshoot-changes-on-an-azure-vm"></a>Problembehandlung bei Änderungen auf einem virtuellen Azure-Computer
 
-In diesem Tutorial wird beschrieben, wie Sie die Problembehandlung für Änderungen auf einem virtuellen Azure-Computer durchführen. Indem Sie die Änderungsnachverfolgung aktivieren, können Sie Änderungen für Software, Dateien, Linux-Daemons, Windows-Dienste und Windows-Registrierungsschlüssel auf Ihren Computern nachverfolgen.
+In diesem Tutorial wird beschrieben, wie Sie die Problembehandlung für Änderungen auf einem virtuellen Azure-Computer durchführen. Indem Sie die Änderungsnachverfolgung und den Bestand aktivieren, können Sie Änderungen für Software, Dateien, Linux-Daemons, Windows-Dienste und Windows-Registrierungsschlüssel auf Ihren Computern nachverfolgen.
 Die Identifizierung dieser Konfigurationsänderungen ermöglicht die Erkennung von betriebsbezogenen Problemen in Ihrer Umgebung.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Integrieren einer VM für die Änderungsnachverfolgung und den Bestand
+> * Aktivieren der Lösung für Änderungsnachverfolgung und Bestand für einen virtuellen Computer
 > * Durchsuchen von Änderungsprotokollen nach beendeten Diensten
 > * Konfigurieren der Änderungsnachverfolgung
 > * Aktivieren der Aktivitätsprotokollverbindung
@@ -36,40 +36,43 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
 * Ein [Automation-Konto](automation-offering-get-started.md) für die Watcher- und Aktionsrunbooks und den Watchertask.
-* Einen [virtuellen Computer](../virtual-machines/windows/quick-create-portal.md), der integriert werden soll.
+* Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md) zur Aktivierung für das Feature.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
-## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Änderungsnachverfolgung und Bestandsfunktion
+## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion für Ihre VM aktivieren. Dieser Schritt ist nicht erforderlich, falls Sie zuvor eine andere Automatisierungslösung für eine VM aktiviert haben.
+In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion aktivieren. Wenn Sie das Feature bereits aktiviert haben, ist dieser Schritt nicht erforderlich.
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**, und wählen Sie in der Liste eine VM aus.
-1. Wählen Sie im Menü auf der linken Seite unter **Vorgänge** die Option **Bestand** aus. Die Seite „Bestand“ wird geöffnet.
+>[!NOTE]
+>Wenn die Felder abgeblendet sind, ist ein anderes Automation-Feature für die VM aktiviert, und Sie müssen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden.
 
-![Änderung aktivieren](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+1. Wählen Sie die Option **Virtuelle Computer** und dann in der Liste einen virtuellen Computer (VM) aus.
+2. Wählen Sie im Menü auf der linken Seite unter **Vorgänge** die Option **Bestand** aus. Die Seite „Bestand“ wird geöffnet.
 
-Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
+    ![Änderung aktivieren](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
-Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
+3. Wählen Sie den Arbeitsbereich [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) aus. Dieser Arbeitsbereich sammelt Daten, die durch Features wie „Änderungsnachverfolgung“ und „Bestand“ generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
-Während des Onboardings wird der virtuelle Computer mit dem Log Analytics-Agent für Windows und einem Hybrid Runbook Worker bereitgestellt.
-Der Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zur installierten Software abzurufen.
+    [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
-Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Azure Monitor-Protokollen angezeigt.
+4. Wählen Sie das Automation-Konto aus, das Sie verwenden möchten.
+
+5. Konfigurieren Sie den Speicherort für die Bereitstellung.
+
+5. Klicken Sie auf **Aktivieren**, um das Feature für Ihre VM bereitzustellen. 
+
+Während des Setups wird der virtuelle Computer mit dem Log Analytics-Agent für Windows und einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) bereitgestellt. Das Aktivieren der Änderungsnachverfolgung und des Bestands kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
+
+Nachdem das Feature aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Azure Monitor-Protokollen angezeigt.
 Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="use-change-tracking-and-inventory-in-azure-monitor-logs"></a>Verwenden von Änderungsnachverfolgung und Bestand in Azure Monitor-Protokollen
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Verwendung der Änderungsnachverfolgung in Azure Monitor-Protokollen
+Bei Änderungsnachverfolgung und Bestand werden Protokolldaten generiert, die an Azure Monitor-Protokolle gesendet werden. Um die Protokolle per Ausführung von Abfragen zu durchsuchen, wählen Sie oben auf der Seite „Änderungsnachverfolgung“ die Option **Log Analytics** aus. Die Daten der Änderungsnachverfolgung werden unter dem Typ `ConfigurationChange` gespeichert.
 
-Bei der Änderungsnachverfolgung werden Protokolldaten generiert, die an Azure Monitor-Protokolle gesendet werden.
-Um die Protokolle per Ausführung von Abfragen zu durchsuchen, wählen Sie oben auf der Seite „Änderungsnachverfolgung“ die Option **Log Analytics** aus.
-Die Daten der Änderungsnachverfolgung werden unter dem Typ `ConfigurationChange` gespeichert.
 Mit der folgenden Log Analytics-Beispielabfrage werden alle Windows-Dienste zurückgegeben, die beendet wurden.
 
 ```loganalytics
@@ -81,14 +84,10 @@ Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Proto
 
 ## <a name="configure-change-tracking"></a>Konfigurieren der Änderungsnachverfolgung
 
-Die Änderungsnachverfolgung ermöglicht Ihnen das Nachverfolgen von Konfigurationsänderungen auf Ihrer VM. In den folgenden Schritten wird veranschaulicht, wie Sie die Nachverfolgung von Registrierungsschlüsseln und Dateien konfigurieren.
-
-Wählen Sie oben auf der Seite „Änderungsnachverfolgung“ die Option **Einstellungen bearbeiten**, um anzugeben, welche Dateien und Registrierungsschlüssel erfasst und nachverfolgt werden sollen.
+Bei der Änderungsnachverfolgung wählen Sie die zu sammelnden und nachzuverfolgenden Dateien und Registrierungsschlüssel mit **Einstellungen bearbeiten** oben auf der Seite „Änderungsnachverfolgung“ Ihrer VM aus. Sie können Windows-Registrierungsschlüssel, Windows-Dateien oder Linux-Dateien zur Nachverfolgung auf der Seite „Arbeitsbereichskonfiguration“ hinzufügen.
 
 > [!NOTE]
-> Für die Bestandsfunktion und die Änderungsnachverfolgung werden die gleichen Sammlungseinstellungen verwendet, und die Einstellungen werden auf einer Arbeitsbereichsebene konfiguriert.
-
-Fügen Sie auf der Seite „Arbeitsbereichskonfiguration“ wie in den nächsten drei Abschnitten erläutert die Windows-Registrierungsschlüssel und die Windows- oder Linux-Dateien hinzu, die nachverfolgt werden sollen.
+> Für die Bestandsfunktion und Änderungsnachverfolgung werden dieselben Sammlungseinstellungen verwendet, und die Einstellungen werden auf einer Arbeitsbereichsebene konfiguriert.
 
 ### <a name="add-a-windows-registry-key"></a>Hinzufügen eines Windows-Registrierungsschlüssels
 
@@ -96,12 +95,12 @@ Fügen Sie auf der Seite „Arbeitsbereichskonfiguration“ wie in den nächsten
 
 1. Geben Sie auf der Seite „Windows-Registrierung für Änderungsnachverfolgung hinzufügen“ die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
-|---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+    |Eigenschaft  |BESCHREIBUNG  |
+    |---------|---------|
+    |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+    |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+    |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+    |Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="add-a-windows-file"></a>Hinzufügen einer Windows-Datei
 
@@ -109,14 +108,14 @@ Fügen Sie auf der Seite „Arbeitsbereichskonfiguration“ wie in den nächsten
 
 1. Geben Sie auf der Seite „Windows-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
-|---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.         |
-|Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
+    |Eigenschaft  |BESCHREIBUNG  |
+    |---------|---------|
+    |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+    |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+    |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+    |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.         |
+    |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
+    |Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
 ### <a name="add-a-linux-file"></a>Hinzufügen einer Linux-Datei
 
@@ -124,98 +123,111 @@ Fügen Sie auf der Seite „Arbeitsbereichskonfiguration“ wie in den nächsten
 
 1. Geben Sie auf der Seite „Linux-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
-|---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
-|Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
-|Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
-|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: „True“ oder „False“.|
+    |Eigenschaft  |BESCHREIBUNG  |
+    |---------|---------|
+    |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+    |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+    |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+    |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
+    |Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
+    |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
+    |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
+    |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
+    |Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: „True“ oder „False“.|
 
    > [!NOTE]
-   > Die Option **Links verwalten** wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
+   > Der Wert **Manage** wird für die **Links**-Eigenschaft nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
 
 ## <a name="enable-activity-log-connection"></a>Aktivieren der Aktivitätsprotokollverbindung
 
-Wählen Sie auf Ihrer VM auf der Seite „Änderungsnachverfolgung“ die Option **Aktivitätsprotokollverbindung verwalten** aus. Mit diesem Vorgang wird die Seite „Azure-Aktivitätsprotokoll“ geöffnet. Klicken Sie auf **Verbinden**, um die Änderungsnachverfolgung mit der Azure-Aktivität für Ihre VM zu verbinden.
+1. Wählen Sie auf Ihrer VM auf der Seite „Änderungsnachverfolgung“ die Option **Aktivitätsprotokollverbindung verwalten** aus. 
 
-Navigieren Sie bei aktivierter Einstellung auf die Seite „Übersicht“ Ihrer VM, und wählen Sie **Beenden**, um die VM zu beenden. Wählen Sie nach der entsprechenden Aufforderung **Ja**, um die VM zu beenden. Wählen Sie nach der Aufhebung der Zuordnung die Option **Starten**, um die VM neu zu starten.
+2. Klicken Sie auf der Azure Activity-Protokollseite auf **Verbinden**, um Änderungsnachverfolgung und Bestand mit dem Azure Activity-Protokoll für Ihre VM zu verbinden.
 
-Beim Beenden und Starten einer VM wird im Aktivitätsprotokoll dazu ein Ereignis protokolliert. Navigieren Sie zurück zur Seite „Änderungsnachverfolgung“. Wählen Sie unten auf der Seite die Registerkarte **Ereignisse**. Nach kurzer Wartezeit werden die Ereignisse im Diagramm und in der Tabelle angezeigt. Wie im vorherigen Schritt auch, können Sie jedes Ereignis auswählen, um ausführliche Informationen dazu anzuzeigen.
+3. Navigieren Sie auf die Seite „Übersicht“ Ihrer VM, und wählen Sie **Beenden** aus, um die VM zu beenden. 
 
-![Anzeigen von Details zu den Änderungen im Portal](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
+4. Wählen Sie nach der entsprechenden Aufforderung **Ja**, um die VM zu beenden. 
+
+5. Wenn die Zuordnung des virtuellen Computers aufgehoben ist, wählen Sie **Starten** aus, um ihn neu zu starten. Beim Beenden und Starten einer VM wird im Aktivitätsprotokoll dazu ein Ereignis protokolliert. 
 
 ## <a name="view-changes"></a>Anzeigen von Änderungen
 
-Nachdem die Lösung für die Änderungsnachverfolgung und den Bestand aktiviert wurde, können Sie die Ergebnisse auf der Seite „Änderungsnachverfolgung“ anzeigen.
+1. Navigieren Sie zurück zum Bereich „Änderungsnachverfolgung“, und wählen Sie unten im Bereich die Registerkarte **Ereignisse** aus. 
 
-Wählen Sie auf Ihrer VM unter **VORGÄNGE** die Option **Änderungsnachverfolgung**.
+2. Nach einer Weile werden Ereignisse der Änderungsnachverfolgung im Diagramm und in der Tabelle angezeigt. Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wurden. Im Liniendiagramm oben werden Ereignisse des Azure Activity-Protokolls angezeigt. Jede Zeile mit Balkendiagrammen steht für einen eigenen Änderungstyp, der nachverfolgt werden kann. Diese Typen sind Linux-Daemons, Dateien, Windows-Registrierungsschlüssel, Software und Windows-Dienste. Die Registerkarte „Änderung“ zeigt die Details für die angezeigten Änderungen, wobei die neueste Änderung zuerst angezeigt wird.
 
-![Screenshot mit der Liste der Änderungen an der VM](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+    ![Anzeigen von Ereignissen im Portal](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
-Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wurden.
-Nachdem Sie eine Aktivitätsprotokollverbindung hinzugefügt haben, werden oben im Liniendiagramm Azure-Aktivitätsprotokollereignisse angezeigt.
-Jede Zeile mit Balkendiagrammen steht für einen eigenen Änderungstyp, der nachverfolgt werden kann.
-Diese Typen sind Linux-Daemons, Dateien, Windows-Registrierungsschlüssel, Software und Windows-Dienste.
-Auf der Registerkarte mit den Änderungen werden die Details für die angezeigten Änderungen der Visualisierung in absteigender Reihenfolge ihres Auftretens aufgeführt (neueste zuerst).
-Auf der Registerkarte **Ereignisse** werden in der Tabelle die verbundenen Activity Log-Ereignisse und die dazugehörigen Details angezeigt (neueste zuerst).
+3. Beachten Sie, dass es mehrere Änderungen am System gegeben hat, einschließlich Änderungen an Diensten und Software. Sie können die Filter oben auf der Seite nutzen, um die Ergebnisse nach **Änderungstyp** oder Zeitraum zu filtern.
 
-Sie können in den Ergebnissen ablesen, dass mehrere Änderungen am System vorgenommen wurden, z.B. an den Diensten und der Software. Sie können die Filter oben auf der Seite nutzen, um die Ergebnisse nach **Änderungstyp** oder Zeitraum zu filtern.
+    ![Liste der Änderungen an der VM](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
-Wählen Sie eine **WindowsServer**-Änderung aus. Durch diese Auswahl wird das Fenster „Änderungsdetails“ geöffnet, das Details zur Änderung und die Werte vor und nach der Änderung anzeigt. Für diese Instanz wurde der Dienst „Software Protection“ beendet.
+4. Wählen Sie eine **WindowsServer**-Änderung aus. Durch diese Auswahl wird das Fenster „Änderungsdetails“ geöffnet, das Details zur Änderung und die Werte vor und nach der Änderung anzeigt. Für diese Instanz wurde der Dienst „Software Protection“ beendet.
 
-![Anzeigen von Details zu den Änderungen im Portal](./media/automation-tutorial-troubleshoot-changes/change-details.png)
+    ![Anzeigen von Details zu den Änderungen im Portal](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
 
-Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch nützlicher, über Änderungen (etwa einen beendeten Dienst) informiert zu werden.
+Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch nützlicher, über Änderungen (etwa einen beendeten Dienst) informiert zu werden. Lassen Sie uns eine Warnung für einen beendeten Dienst hinzufügen. 
 
-Wechseln Sie im Azure-Portal zu **Überwachen**, um eine Warnung für einen beendeten Dienst zu erhalten. Wählen Sie dann unter **Gemeinsame Dienste** die Option **Warnungen** aus, und klicken Sie auf **+ Neue Warnungsregel**.
+1. Wechseln Sie im Azure-Portal zu **Monitor**. 
 
-Klicken Sie auf **Auswählen**, um eine Ressource auszuwählen. Wählen Sie auf der Seite „Ressource auswählen“ im Dropdownmenü **Nach Ressourcentyp filtern** die Option **Log Analytics** aus. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
+2. Wählen Sie **Warnungen** unter **Gemeinsame Dienste** aus, und klicken Sie auf **+ Neue Warnungsregel**.
 
-![Auswählen einer Ressource](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+3. Klicken Sie auf **Auswählen**, um eine Ressource auszuwählen. 
 
-Klicken Sie auf **Bedingung hinzufügen**, und wählen Sie in der Tabelle auf der Seite „Signallogik konfigurieren“ die Option **Benutzerdefinierte Protokollsuche** aus. Geben Sie im Textfeld „Suchabfrage“ die folgende Abfrage ein:
+4. Wählen Sie auf der Seite „Ressource auswählen“ im Dropdownmenü **Nach Ressourcentyp filtern** die Option **Log Analytics** aus. 
 
-```loganalytics
-ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
-```
+5. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
 
-Diese Abfrage gibt die Computer zurück, auf denen der W3SVC-Dienst im angegebenen Zeitraum beendet wurde.
+    ![Auswählen einer Ressource](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **0** ein. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+6. Klicken Sie auf **Bedingung hinzufügen**.
 
-![Konfigurieren der Signallogik](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+7. Wählen Sie in der Tabelle auf der Seite „Signallogik konfigurieren“ die Option **Benutzerdefinierte Protokollsuche** aus. 
 
-Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
+8. Geben Sie im Textfeld „Suchabfrage“ die folgende Abfrage ein:
 
-Geben Sie unter **Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** , **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
+    ```loganalytics
+    ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+    ```
 
-Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+    Diese Abfrage gibt die Computer zurück, auf denen der W3SVC-Dienst im angegebenen Zeitraum beendet wurde.
 
-Geben Sie unter **Aktionen** einen Namen für die Aktion ein, beispielsweise **E-Mail-Administratoren**. Wählen Sie unter **AKTIONSTYP** die Option **E-Mail/SMS/Push/Sprachanruf** aus. Wählen Sie unter **DETAILS** die Option **Details bearbeiten**.
+9. Geben Sie für **Schwellenwert** unter **Warnungslogik** den Wert **0** ein. Klicken Sie abschließend auf **Fertig**.
 
-![Hinzufügen einer Aktionsgruppe](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    ![Konfigurieren der Signallogik](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-Geben Sie auf der Seite „E-Mail/SMS/Push/Sprachanruf“ einen Namen ein. Aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie eine gültige E-Mail-Adresse ein. Klicken Sie im Bereich auf **OK**, und klicken Sie dann auf der Seite „Aktionsgruppe hinzufügen“ auf **OK**.
+10. Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
-Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, klicken Sie unter **Regel erstellen** und **Aktionen anpassen** auf **E-Mail-Betreff**. Klicken Sie abschließend auf **Warnungsregel erstellen**. Die Warnung informiert Sie, wenn die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der durchgeführten Updatebereitstellung waren.
+11. Geben Sie unter **Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. 
 
-Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
+12. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** , **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
 
-![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+13. Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+
+14. Geben Sie für **Aktionen** einen Namen für die Aktion ein, z. B. **E-Mail-Administratoren**. 
+
+15. Wählen Sie unter **AKTIONSTYP** die Option **E-Mail/SMS/Push/Sprachanruf** aus. 
+
+16. Wählen Sie unter **DETAILS** die Option **Details bearbeiten** aus.
+
+    ![Hinzufügen einer Aktionsgruppe](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+17. Geben Sie im Bereich „E-Mail/SMS/Push/Sprachanruf“ einen Namen ein, aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie dann eine gültige E-Mail-Adresse ein. Wenn Sie fertig sind, klicken Sie im Bereich auf **OK**, und klicken Sie dann auf der Seite „Aktionsgruppe hinzufügen“ auf **OK**.
+
+18. Wählen Sie **Aktionen anpassen** aus, um den Betreff der Warnungs-E-Mail anzupassen. 
+
+19. Wählen Sie für **Regel erstellen** die Option **E-Mail-Betreff** aus, und wählen Sie dann **Warnungsregel erstellen**. Die Warnung informiert Sie, wenn die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der durchgeführten Updatebereitstellung waren. Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
+
+    ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Integrieren einer VM für die Änderungsnachverfolgung und den Bestand
+> * Aktivieren der Lösung für Änderungsnachverfolgung und Bestand für einen virtuellen Computer
 > * Durchsuchen von Änderungsprotokollen nach beendeten Diensten
 > * Konfigurieren der Änderungsnachverfolgung
 > * Aktivieren der Aktivitätsprotokollverbindung
@@ -223,8 +235,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Anzeigen von Änderungen
 > * Konfigurieren von Warnungen
 
-Fahren Sie mit der Übersicht über die Lösung für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
+Fahren Sie mit der Übersicht über das Feature für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Lösung für die Änderungsnachverfolgung und den Bestand](automation-change-tracking.md)
-
+> [Übersicht über Änderungsnachverfolgung und Bestand](automation-change-tracking.md)

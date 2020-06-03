@@ -1,26 +1,25 @@
 ---
-title: SaaS Fulfillment APIs | Azure Marketplace
-description: Vorgestellt werden die Versionen der Fulfillment-APIs, mit denen Sie Ihre SaaS-Angebote in den Azure Marketplace integrieren können.
+title: SaaS-Fulfillment-APIs im kommerziellen Microsoft-Marketplace
+description: Hier finden Sie eine Einführung in die Fulfillment-APIs, mit denen Sie Ihre SaaS-Angebote in Microsoft AppSource und in den Azure Marketplace integrieren können.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 92b1c52457fa92709381124480c05a5f636167f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275729"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858090"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS-Fulfillment-APIs
+# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-Fulfillment-APIs im kommerziellen Microsoft-Marketplace
 
-Mit den SaaS-Fulfillment-APIs können unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in den Azure Marketplace integrieren. Mit diesen APIs können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Sie sind eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
+Mit den SaaS-Fulfillment-APIs können unabhängige Softwarehersteller (Independent Software Vendors, ISVs) ihre SaaS-Anwendungen in Microsoft AppSource und in den Azure Marketplace integrieren. Mit diesen APIs können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb. Sie sind erforderlich, um transaktionsfähige SaaS-Angebote in Microsoft AppSource und im Azure Marketplace listen zu können.
 
 > [!WARNING]
 > Die aktuelle Version dieser API ist Version 2, die für alle neuen SaaS-Angebote verwendet werden sollte.  Version 1 der API ist veraltet und wird zur Unterstützung vorhandener Angebote noch gepflegt.
-
 
 ## <a name="business-model-support"></a>Geschäftsmodellunterstützung
 

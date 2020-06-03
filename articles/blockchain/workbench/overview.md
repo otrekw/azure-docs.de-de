@@ -1,15 +1,15 @@
 ---
 title: Übersicht über die Vorschauversion von Azure Blockchain Workbench
 description: Enthält eine Übersicht über die Vorschauversion von Azure Blockchain Workbench und die zugehörigen Funktionen.
-ms.date: 09/05/2019
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f2eafb892be4134d4fb178235249e5640544459
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79203643"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850027"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Was ist Azure Blockchain Workbench?
 
@@ -49,13 +49,13 @@ Azure Blockchain Workbench vereinfacht das Analysieren von Blockchain-Ereignisse
 
 Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microsoft.com/blog/topics/blockchain/) bleiben Sie in Bezug auf Blockchain-Dienstangebote und Informationen vom Azure Blockchain-Technikteam immer auf dem Laufenden.
 
-Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder für Ideen abstimmen.
+Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder über Ideen abstimmen.
 
 ### <a name="community-support"></a>Communityunterstützung
 
 Diskutieren Sie mit Microsoft-Technikern und Azure Blockchain-Communityexperten.
 
-* [Azure Blockchain-MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Blockchain Workbench](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

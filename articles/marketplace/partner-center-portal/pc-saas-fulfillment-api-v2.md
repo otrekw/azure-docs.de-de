@@ -1,22 +1,22 @@
 ---
-title: SaaS-Fulfillment-API v2 | Azure Marketplace
-description: In diesem Artikel wird erläutert, wie Sie ein SaaS-Angebot im Azure Marketplace und in AppSource mit den zugehörigen Fulfillment-APIs der Version 2 erstellen und verwalten.
+title: SaaS-Fulfillment-APIs V2 im kommerziellen Microsoft-Marketplace
+description: Hier erfahren Sie, wie Sie ein SaaS-Angebot in Microsoft AppSource und im Azure Marketplace mithilfe der Fulfillment-APIs der Version 2 erstellen und verwalten.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275763"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854193"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Microsoft-Marketplace
 
-In diesem Artikel werden die APIs ausführlich beschrieben, mit der Partner ihre SaaS-Anwendungen im AppSource-Marketplace und im Azure Marketplace verkaufen können. Diese APIs stellen eine Voraussetzung für transaktionsfähige SaaS-Angebote in AppSource und im Azure Marketplace dar.
+In diesem Artikel werden die Fulfillment-APIs ausführlich beschrieben, mit denen Partner ihre SaaS-Anwendungen in Microsoft AppSource und im Azure Marketplace verkaufen können. Diese APIs sind für transaktionsfähige SaaS-Angebote erforderlich.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Verwalten des Lebenszyklus von SaaS-Abonnements
 

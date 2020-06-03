@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415719"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758995"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Schnellstart: Bereitstellen des Unity-Beispiels für den Desktop
 
@@ -46,7 +46,7 @@ Derzeit werden nur flache Desktop-Apps auf dem Desktop unterstützt. Die VR-Unte
 ## <a name="build-the-sample-project"></a>Erstellen des Beispielprojekts
 
 1. Öffnen Sie *File > Build Settings* (Datei > Buildeinstellungen).
-1. Ändern Sie *Platform* (Plattform) in **Universal Windows Platform** (Universelle Windows-Plattform).
+1. Ändern Sie *Plattform* in **Universelle Windows-Plattform** (**Eigenständige PC** wird ebenfalls unterstützt, aber hier nicht verwendet).
 1. Legen Sie *Target Device* (Zielgerät) auf **PC** fest.
 1. Legen Sie *Architecture* (Architektur) auf **x86** fest.
 1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.

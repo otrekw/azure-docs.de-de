@@ -2,15 +2,15 @@
 title: Verfügbarmachen Ihrer Funktionen mit OpenAPI unter Verwendung von Azure API Management
 description: Erstellen Sie eine OpenAPI-Definition, die anderen Apps und Diensten das Aufrufen Ihrer Funktion in Azure ermöglicht.
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d63d5ea17184ffa6e456877079da0821a75d59e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77210207"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121419"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
 
@@ -39,17 +39,19 @@ In diesem Tutorial wird eine per HTTP ausgelöste Funktion verwendet, die zwei P
 * Die geschätzte Zeit für die Durchführung einer Turbinenreparatur in Stunden.
 * Die Kapazität der Turbine in Kilowatt. 
 
-Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der in einem Zeitraum von 24 Stunden von der Turbine generiert werden könnte. So erstellen Sie die per HTTP ausgelöste Funktion über das [Azure-Portal](https://portal.azure.com):
+Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der in einem Zeitraum von 24 Stunden von der Turbine generiert werden könnte. So erstellen Sie die per HTTP ausgelöste Funktion über das [Azure-Portal](https://portal.azure.com):
 
-1. Erweitern Sie die Funktionen-App, und wählen Sie die Schaltfläche **+** neben **Functions** aus. Wählen Sie **Im Portal** > **Weiter** aus.
+1. Wählen Sie im linken Menü Ihrer Funktions-App die Option **Funktionen** und anschließend im oberen Menü die Option **Hinzufügen** aus.
 
-1. Wählen Sie **Weitere Vorlagen...** und dann **Vorlagen fertigstellen und anzeigen** aus.
+1. Wählen Sie im Fenster **Neue Funktion** die Option **HTTP-Trigger** aus.
 
-1. Zum Auswählen des HTTP-Triggers geben Sie `TurbineRepair` als **Namen** der Funktion ein, wählen Sie `Function` als **[Authentifizierungsebene](functions-bindings-http-webhook-trigger.md#http-auth)** aus, und wählen Sie dann **Erstellen** aus.  
+1. Geben Sie unter **Neue Funktion** Folgendes ein: `TurbineRepair`. 
 
-    ![Erstellen der HTTP-Funktion für OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
+1. Wählen Sie in der Dropdownliste **[Autorisierungsstufe](functions-bindings-http-webhook-trigger.md#http-auth)** die Option **Funktion** und anschließend **Funktion erstellen** aus.
 
-1. Ersetzen Sie den Inhalt der C#-Skriptdatei „run.csx“ durch den folgenden Code, und wählen Sie dann **Speichern** aus:
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Erstellen einer HTTP-Funktion für OpenAPI":::
+
+1. Wählen Sie **Programmieren und testen** und anschließend in der Dropdownliste die Option **run.csx** aus. Ersetzen Sie den Inhalt der C#-Skriptdatei „run.csx“ durch den folgenden Code, und wählen Sie dann **Speichern** aus:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -102,9 +104,9 @@ Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der
     }
     ```
 
-    Dieser Funktionscode gibt Folgendes zurück: eine Meldung `Yes` oder `No`, um anzugeben, ob eine Notfallreparatur kosteneffizient ist, den möglichen Umsatzerlös der Turbine und die Kosten für die Reparatur der Turbine.
+    Von diesem Funktionscode wird durch Rückgabe von `Yes` oder `No` angegeben, ob eine Notfallreparatur kosteneffizient ist. Darüber hinaus werden der mögliche Umsatzerlös der Turbine und die Kosten für die Reparatur zurückgegeben.
 
-1. Klicken Sie zum Testen der Funktion ganz rechts auf **Testen**, um die Registerkarte „Testen“ zu erweitern. Geben Sie den folgenden Wert für **Anforderungstext** ein, und klicken Sie dann auf **Ausführen**.
+1. Wählen Sie zum Testen der Funktion **Testen** aus, wählen Sie die Registerkarte **Eingabe** aus, geben Sie für den **Hauptteil** Folgendes ein, und wählen Sie anschließend **Ausführen** aus:
 
     ```json
     {
@@ -113,9 +115,9 @@ Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der
     }
     ```
 
-    ![Testen der Funktion im Azure-Portal](media/functions-openapi-definition/test-function.png)
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Testen der Funktion im Azure-Portal":::
 
-    Im Text der Antwort wird der folgende Wert zurückgegeben.
+    Auf der Registerkarte **Ausgabe** wird die folgende Ausgabe zurückgegeben:
 
     ```json
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
@@ -125,15 +127,14 @@ Sie haben jetzt eine Funktion, die die Kosteneffizienz von Notfallreparaturen er
 
 ## <a name="generate-the-openapi-definition"></a>Generieren der OpenAPI-Definition
 
-Jetzt können Sie die OpenAPI-Definition generieren.
+So generieren Sie die OpenAPI-Definition:
 
-1. Wählen Sie die Funktions-App aus. Wählen Sie dann unter **Plattformfeatures** die Option **API Management** und anschließend unter **API Management** die Option **Neu erstellen** aus.
+1. Wählen Sie die Funktions-App aus. Wählen Sie dann im linken Menü die Option **API Management** und anschließend unter **API Management** die Option **Neu erstellen** aus.
 
-    ![Auswählen von „API Management“ unter „Plattformfeatures“](media/functions-openapi-definition/select-all-settings-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Auswählen von „API Management“":::
 
-1. Verwenden Sie die API Management-Einstellungen, die in der Tabelle unter der Abbildung angegeben sind.
 
-    ![Erstellen eines neuen API Management-Diensts](media/functions-openapi-definition/new-apim-service-openapi.png)
+1. Verwenden Sie die API Management-Einstellungen aus der folgenden Tabelle:
 
     | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -143,11 +144,13 @@ Jetzt können Sie die OpenAPI-Definition generieren.
     | **Location** | USA (Westen) | Wählen Sie den Standort „USA, Westen“ aus. |
     | **Name der Organisation** | Contoso | Der Name der Organisation, der im Entwicklerportal und für E-Mail-Benachrichtigungen verwendet wird. |
     | **Administrator-E-Mail** | Ihre E-Mail-Adresse | Die E-Mail-Adresse, die Benachrichtigungen des Systems von API Management erhält. |
-    | **Preisstufe** | Verbrauch (Vorschau) | Der Tarif „Consumption“ befindet sich in der Vorschauphase und ist nicht in allen Regionen verfügbar. Vollständige Preisinformationen finden Sie auf der [API Management-Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Preisstufe** | Nutzung | Der Tarif „Consumption“ ist nicht in allen Regionen verfügbar. Vollständige Preisinformationen finden Sie auf der [API Management-Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/api-management/) |
+
+    ![Erstellen eines neuen API Management-Diensts](media/functions-openapi-definition/new-apim-service-openapi.png)
 
 1. Wählen Sie **Erstellen** aus, um die API Management-Instanz zu erstellen, was ein paar Minuten dauern kann.
 
-1. Wählen Sie **Application Insights aktivieren** aus, um Protokolle an den gleichen Ort wie die Funktionsanwendung zu senden, übernehmen Sie dann die verbleibenden Standardeinstellungen, und wählen Sie **API verknüpfen** aus.
+1. Nach Erstellung der Instanz durch Azure wird die Option **Application Insights aktivieren** auf der Seite verfügbar. Wählen Sie sie aus, um Protokolle an den gleichen Ort zu senden wie die Funktionsanwendung, und wählen Sie anschließend **API verknüpfen** aus.
 
 1. **Azure-Funktionen importieren** wird mit hervorgehobener Funktion **Turbinenreparatur** geöffnet. Wählen Sie **Auswählen** aus, um fortzufahren.
 
@@ -155,17 +158,17 @@ Jetzt können Sie die OpenAPI-Definition generieren.
 
 1. Übernehmen Sie auf der Seite **Aus Funktions-App erstellen** die Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
-    ![Aus Funktions-App erstellen](media/functions-openapi-definition/create-function-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Erstellen auf der Grundlage der Funktions-App":::
 
-Jetzt wird die API für die Funktion erstellt.
+    Von Azure wird die API für die Funktion erstellt.
 
 ## <a name="test-the-api"></a>Testen der API
 
 Vor der Verwendung der OpenAPI-Definition sollten Sie sich vergewissern, dass die API funktioniert.
 
-1. Wählen Sie auf der Registerkarte **Test** Ihrer Funktion den Vorgang **POST** aus.
+1. Wählen Sie auf der Seite der Funktions-App **API Management** > Registerkarte **Test** > **POST TurbineRepair** aus. 
 
-1. Geben Sie Werte für **Stunden** und **Kapazität** ein.
+1. Geben Sie unter **Anforderungstext** den folgenden Code ein:
 
     ```json
     {
@@ -174,9 +177,9 @@ Vor der Verwendung der OpenAPI-Definition sollten Sie sich vergewissern, dass di
     }
     ```
 
-1. Klicken Sie auf **Senden**, und sehen Sie sich die HTTP-Antwort an.
+1. Wählen Sie **Senden** aus, und sehen Sie sich die **HTTP-Antwort** an.
 
-    ![Testen der Funktions-API](media/functions-openapi-definition/test-function-api-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Testen der Funktions-API":::
 
 ## <a name="download-the-openapi-definition"></a>Herunterladen der OpenAPI-Definition
 
@@ -186,7 +189,7 @@ Wenn Ihre API wie erwartet funktioniert, können Sie die OpenAPI-Definition heru
    
    ![Herunterladen der OpenAPI-Definition](media/functions-openapi-definition/download-definition.png)
 
-2. Öffnen Sie die heruntergeladene JSON-Datei, und überprüfen Sie die Definition.
+2. Speichern Sie die heruntergeladene JSON-Datei, und öffnen Sie sie. Überprüfen Sie die Definition.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 

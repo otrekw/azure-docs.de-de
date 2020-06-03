@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133183"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745547"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
 
@@ -63,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um die Cookie-Einstellungen Ihres Browse
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Das Kreditkartenformular akzeptiert meine Rechnungsadresse nicht.
 
-Ihre Rechnungsadresse muss sich in dem Land befinden, das Sie im Abschnitt **Informationen zu Ihrer Person** ausgewählt haben. Stellen Sie sicher, dass Sie das richtige Land auswählen.
+Ihre Rechnungsadresse muss sich in dem Land oder der Region befinden, das bzw. die Sie im Abschnitt **Informationen zu Ihrer Person** ausgewählt haben. Stellen Sie sicher, dass Sie das richtige Land bzw. die richtige Region auswählen.
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Keine SMS oder Anrufe während der Kontoüberprüfung für die Registrierung
 
@@ -72,7 +72,7 @@ Der Prozess ist zwar in der Regel schnell, es kann aber bis zu vier Minuten daue
 Hier sind einige zusätzlichen Tipps:
 
 - Für den Überprüfungsvorgang per Telefon kann keine VoIP-Telefonnummer (Voice-over-IP) verwendet werden.
-- Überprüfen Sie im Dropdownmenü die eingegebene Telefonnummer einschließlich Landesvorwahl.
+- Überprüfen Sie im Dropdownmenü die eingegebene Telefonnummer einschließlich der Landes-/Ortsvorwahl.
 - Wenn Ihr Telefon keine Textnachrichten (SMS) empfängt, versuchen Sie es mit der Option **Mich anrufen**.
 - Stellen Sie sicher, dass Ihr Telefon Anrufe oder SMS-Nachrichten von einer Telefonnummer aus den USA empfangen kann.
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199516"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715884"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements in ein anderes Angebot
 
@@ -51,10 +51,10 @@ Sie können ein einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung
 1. **Wählen Sie das gewünschte Angebot** aus der Liste der Angebote aus, auf die Ihr Abonnement umgestellt werden kann. Diese Liste variiert je nach den Mitgliedschaften, denen Ihr Konto zugeordnet ist. Ist kein Angebot verfügbar, sehen Sie sich die [Liste mit verfügbaren Angeboten an, auf die Sie umstellen können](#whats-supported), und vergewissern Sie sich, dass Sie über die richtigen Mitgliedschaften verfügen.
 
    ![Wählen Sie ein Angebot, zu dem Sie wechseln möchten.](./media/switch-azure-offer/selectoffer.png)
-1. Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Auswirkungen dieses Wechsels angezeigt. Lesen Sie diese Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren.
+1. Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Auswirkungen dieses Wechsels angezeigt. Lesen Sie die Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren.
 
    ![Lesen Sie die Hinweise.](./media/switch-azure-offer/thingstonote.png)
-1. Sie können Ihr Abonnement umbenennen. Standardmäßig wird er auf den Namen des neuen Angebots festgelegt. Klicken Sie auf **Angebot wechseln** , um den Vorgang abzuschließen.
+1. Sie können Ihr Abonnement umbenennen. Es wird nicht standardmäßig der Name des neuen Angebots verwendet. Klicken Sie auf **Angebot wechseln** , um den Vorgang abzuschließen.
 
    ![Klicken Sie auf die grüne Schaltfläche.](./media/switch-azure-offer/confirmpage.png)
 1. Erfolg! Ihr Abonnement wird jetzt auf das neue Angebot umgestellt.
@@ -96,11 +96,11 @@ Beim Wechseln von Angeboten werden alle [Grenzwerte oder Kontingenterhöhungen o
 
 #### <a name="billing"></a>Abrechnung
 
-An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühren eine Rechnung generiert. Anschließend wird Ihr Abonnement gemäß den Preisinformationen für das neue Angebot abgerechnet. Der Stichtag Ihrer Abonnementabrechnung wird in das Datum geändert, an dem Sie das Angebot gewechselt haben. Die Nutzungs- und Abrechnungsdaten von vor der Angebotsänderung werden nicht beibehalten. Daher empfiehlt es sich, vor dem Wechsel eine Kopie davon herunterzuladen.
+An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühren eine Rechnung generiert. Anschließend wird Ihr Abonnement gemäß den Preisinformationen für das neue Angebot abgerechnet. Der Stichtag Ihrer Abonnementabrechnung wird in das Datum geändert, an dem Sie das Angebot gewechselt haben. Die Nutzungs- und Abrechnungsdaten vor der Angebotsänderung werden nicht aufbewahrt. Daher empfiehlt es sich, vor dem Wechsel eine Kopie davon herunterzuladen.
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kann ich von einem Abonnement mit Preisen für nutzungsbasierte Bezahlung zu Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Enterprise Agreement (EA) migrieren?
 
-* Informationen zum Migrieren zu CSP finden Sie unter [Migrieren von Azure-Abonnements von nutzungsbasierter Bezahlung zu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* Informationen zum Migrieren zu CSP finden Sie unter [Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs](transfer-subscriptions-subscribers-csp.md).
 * Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Zuordnen eines vorhandenen Kontos) im EA-Portal.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kann ich Daten und Dienste in ein neues Abonnement migrieren?
@@ -113,4 +113,4 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Beginn der Kostenanalyse](../costs/quick-acm-cost-analysis.md)
+- [Kostenanalyse beginnen](../costs/quick-acm-cost-analysis.md)

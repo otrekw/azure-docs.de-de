@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77919667"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996961"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek für Ruby
 
@@ -31,7 +31,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 > [!NOTE]
 > Diese Schnellstartanleitung gilt nur für die Version 2.1 der Textanalyse. Für Ruby steht derzeit keine V3-Clientbibliothek zur Verfügung.
 
-[Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [Paket (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [Paket (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokumen
 
 ## <a name="code-examples"></a>Codebeispiele
 
-Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Python durchgeführt werden:
+Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Ruby durchgeführt werden:
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Standpunktanalyse](#sentiment-analysis)

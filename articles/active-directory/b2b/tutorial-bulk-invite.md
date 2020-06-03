@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/13/2020
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81603404"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926914"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
 
@@ -29,6 +29,27 @@ Wenn Sie Azure Active Directory (Azure AD) für die B2B-Zusammenarbeit mit exter
 
 Sollten Sie keine Azure Active Directory-Instanz haben, erstellen Sie zunächst ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
+
+Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie aus, um mehrere Azure AD-Gastbenutzer gleichzeitig einzuladen. Die heruntergeladene CSV-Vorlage ähnelt etwa dem folgenden Beispiel:
+
+![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](media/tutorial-bulk-invite/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
+
+Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
+
+- **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
+- **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Email address to invite [inviteeEmail] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
+- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+
+### <a name="additional-guidance"></a>Zusätzliche Anleitungen
+
+- Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
+- Die erforderlichen Spalten werden zuerst aufgelistet.
+- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen senden können. Die Konten müssen sich außerhalb Ihrer Organisation befinden. Sie können jede Art von Konto verwenden, einschließlich Konten bei sozialen Netzwerken wie „gmail.com“- oder „outlook.com“-Adressen.
@@ -38,11 +59,11 @@ Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen se
 1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 3. Wählen Sie unter **Verwalten** die Optionen **Benutzer** > **Masseneinladung** aus.
-4. Wählen Sie auf der Seite **Massenbenutzereinladung** die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Einladungseigenschaften zu erhalten.
+4. Wählen Sie auf der Seite **Massenbenutzereinladung** die Option **Herunterladen** aus, um eine gültige CSV-Vorlage mit Einladungseigenschaften zu erhalten.
 
     ![Downloadschaltfläche für Masseneinladungen](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Gastbenutzer hinzu. Erforderliche Werte:
+5. Öffnen Sie die CSV-Vorlage, und fügen Sie eine Zeile für jeden Gastbenutzer hinzu. Erforderliche Werte:
 
    * **E-Mail-Adresse für Einladung**: Der Benutzer, der eine Einladung erhält
 

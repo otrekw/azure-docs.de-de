@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314359"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747769"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall für Azure Application Gateway
 
@@ -72,7 +72,7 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 - Konfigurierbare Einschränkungen der Anforderungsgröße mit Unter- und Obergrenzen.
 - Mit Ausschlusslisten können Sie bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für Authentifizierungs- oder Kennwortfelder verwendet werden.
 - Erstellen Sie benutzerdefinierte Regeln, um die spezifischen Anforderungen Ihrer Anwendungen zu erfüllen.
-- Führen Sie für Ihren Datenverkehr eine Geofilterung durch, um für bestimmte Länder den Zugriff auf Ihre Anwendungen zuzulassen bzw. zu blockieren. (Vorschauversion)
+- Führen Sie für Ihren Datenverkehr eine Geofilterung durch, um für bestimmte Länder/Regionen den Zugriff auf Ihre Anwendungen zuzulassen bzw. zu blockieren. (Vorschauversion)
 - Schützen Sie Ihre Anwendungen vor Bots, indem Sie den Regelsatz für die Risikominderung für Bots verwenden. (Vorschauversion)
 
 ## <a name="waf-policy"></a>WAF-Richtlinie

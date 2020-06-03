@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593697"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870693"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -99,8 +99,8 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Klicken Sie auf **Ressource erstellen**.
-1. Suchen Sie nach **Statische Web-Apps**.
-1. Klicken Sie auf **Statische Web-Apps (Vorschau)** .
+1. Suchen Sie nach **Static Web Apps**.
+1. Klicken Sie auf **Static Web Apps (Vorschau)** .
 1. Klicken Sie auf **Erstellen**
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
@@ -131,15 +131,13 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozess zum Erstellen der App verwendet werden. Mit den folgenden Einstellungen wird die GitHub Actions-Workflowdatei konfiguriert.
 
-1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten
+1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten.
 
-1. Legen Sie _App-Speicherort_ auf **/** fest.
+1. Legen Sie _App-Speicherort_ auf **öffentlich** fest.
 
-1. Legen Sie _Speicherort für App-Artefakte_ auf **Öffentlich** fest.
+1. Lassen Sie den _Speicherort für App-Artefakte_ leer.
 
    Ein Wert für _API-Speicherort_ ist nicht erforderlich, da Sie hier keine API bereitstellen.
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="Buildeinstellungen":::
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
@@ -155,12 +153,12 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Öffnen Sie die Hugo-App in einem Text-Editor, und öffnen Sie anschließend die Datei _.github/workflows/azure-pages-<WORKFLOWNAME>.yml_.
 
-1. Ersetzen Sie die Zeile `- uses: actions/checkout@v1` (Zeile 18) durch Folgendes, um die Hugo-Anwendung zu erstellen:
+1. Ersetzen Sie die Zeile `- uses: actions/checkout@v2` (Zeile 18) durch Folgendes, um die Hugo-Anwendung zu erstellen:
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

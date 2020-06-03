@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409384"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745525"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung
 
@@ -20,9 +20,9 @@ Unter Umständen tritt ein Problem oder Fehler auf, wobei im Microsoft Azure-Por
 
 Wählen Sie zum Beheben des Problems unten den Artikel aus, in dem der aufgetretene Fehler am ehesten beschrieben wird.
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Der Anbieter der Kreditkarte wird für Ihr Land nicht akzeptiert
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>Der Anbieter der Kreditkarte wird für Ihr Land bzw. Ihre Region nicht akzeptiert
 
-Beim Auswählen einer Karte zeigt Azure jeweils nur die Kartenoptionen an, die für das ausgewählte Land gültig sind. Wenden Sie sich an Ihre Bank oder den Kartenaussteller, um sicherzustellen, dass Ihre Kreditkarte für internationale Transaktionen aktiviert ist. Weitere Informationen zu unterstützten Ländern und Währungen finden Sie in den [häufig gestellten Fragen zu Azure Purchase](https://azure.microsoft.com/pricing/faq/).
+Beim Auswählen einer Karte zeigt Azure jeweils nur die Kartenoptionen an, die für das ausgewählte Land bzw. die ausgewählte Region gültig sind. Wenden Sie sich an Ihre Bank oder den Kartenaussteller, um sicherzustellen, dass Ihre Kreditkarte für internationale Transaktionen aktiviert ist. Weitere Informationen zu unterstützten Ländern/Regionen und Währungen finden Sie in den [häufig gestellten Fragen zu Azure Purchase](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >American Express-Kreditkarten werden in Indien derzeit nicht als Zahlungsinstrument unterstützt. Es gibt keinen Zeitrahmen, ab wann sie ggf. als akzeptierte Form der Zahlung eingeführt werden.

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727597"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698313"
 ---
 # <a name="changelog"></a>Änderungsprotokoll #
 
@@ -577,8 +577,8 @@ ms.locfileid: "81727597"
 - [Fehlerbehebung][AzureHtml5JS] Livewiedergabe ist bei MPD-Updates eingefroren, wenn der Zeitstempel kleinere Ungenauigkeiten aufgewiesen hat
 - [Fehlerbehebung][AzureHtml5JS] Behebung mehrerer Probleme mit der Livewiedergabe
 - [Fehlerbehebung][AzureHtml5JS] Leeren der Puffer, wenn Heuristik für Fenstergröße aktiviert ist, und Wechseln zu einem Bildschirm mit höherer Auflösung
-- [Fehlerbehebung][AzureHtml5JS] In Chrome wird das Ereignis für das Ende jetzt richtig angezeigt. Verknüpft mit vorherigem bekanntem Problem „*Chrome sendet Ereignis „â&euro;œendedâ&euro;“ nicht richtig, wenn „AzureHtml5JS“ verwendet wird. Es besteht ein Problem im zugrunde liegenden Browser.*
-- [Fehlerbehebung][AzureHtml5JS] Safari für diese Technologie deaktiviert, um das folgende Problem zu beheben: *Wiedergabeproblem bei OSX Yosemite mit der Technologie „AzureHtml5JS tech“. Es bestehen Probleme bei der MSE-Implementierung. Vorübergehende Lösung: Erzwingen von „â&euro;œflashSSâ&euro;, â&euro;œsilverlightSSâ&euro;“ als Technologiereihenfolge für diese User-Agents*.
+- [Fehlerbehebung][AzureHtml5JS] In Chrome wird das Ereignis für das Ende jetzt richtig angezeigt. Verknüpft mit vorherigem bekanntem Problem *Chrome sendet das beendete Ereignis nicht richtig, wenn „AzureHtml5JS“ verwendet wird. Es besteht ein Problem im zugrunde liegenden Browser.*
+- [Fehlerbehebung][AzureHtml5JS] Safari für diese Technologie deaktiviert, um das folgende Problem zu beheben: *Wiedergabeproblem bei OSX Yosemite mit der Technologie „AzureHtml5JS tech“. Es bestehen Probleme bei der MSE-Implementierung. Vorübergehende Lösung: Erzwingen von „flashSS“, „silverlightSS“ als Technologiereihenfolge für diese User-Agents*
 - [Fehlerbehebung][FlashSS] „loadstart“ wird nach Auftreten eines Fehlers ausgelöst
 
 ## <a name="020-beta"></a>0.2.0 (Beta) ##

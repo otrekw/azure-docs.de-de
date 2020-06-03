@@ -4,15 +4,15 @@ description: Informationen zum Erstellen, Veröffentlichen und Skalieren von App
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586136"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125807"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 
@@ -122,15 +122,22 @@ Die SCM-URL wird verwendet, um auf die Kudu-Konsole zuzugreifen oder Ihre App pe
 
 ### <a name="dns-configuration"></a>DNS-Konfiguration 
 
-Wenn Sie eine externe ASE verwenden, werden in ihrer ASE erstellte Apps bei Azure DNS registriert. In einer ILB-ASE müssen Sie Ihr eigenes DNS verwalten. 
+Wenn Sie eine externe ASE verwenden, werden in ihrer ASE erstellte Apps bei Azure DNS registriert. Damit Ihre Apps öffentlich verfügbar sind, sind keine zusätzlichen Schritte in einer externen ASE erforderlich. In einer ILB-ASE müssen Sie Ihr eigenes DNS verwalten. Sie können dies entweder in Ihrem eigenen DNS-Server oder mit privaten Azure DNS-Zonen erzielen.
 
-So konfigurieren Sie DNS mit Ihrer ILB-ASE
+So konfigurieren Sie DNS in Ihrem eigenen Server mit Ihrer ILB-ASE
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. Erstellen Sie eine Zone für <ASE name>.appserviceenvironment.net.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie eine Zone namens „scm“ in <ASE name>.appserviceenvironment.net.
+1. Erstellen Sie einen A-Eintrag in der Zone „scm“, der * auf die ILB-IP-Adresse verweist.
+
+So konfigurieren Sie DNS in privaten Azure DNS-Zonen
+
+1. Erstellen Sie eine private Azure DNS-Zone namens <ASE name>.appserviceenvironment.net.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die ILB-IP-Adresse verweist.
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ILB-ASE festlegen. Wenn Sie dann eine Zone namens *contoso.net* erstellen möchten, können Sie dies tun und die Zone auf die ILB-IP-Adresse verweisen lassen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* verfügbar. 
 
@@ -156,7 +163,7 @@ Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Dom
 
 ## <a name="storage"></a>Storage
 
-Eine ASE verfügt für alle Apps in der ASE über Speicher mit einer Größe von 1 TB. Ein App Service-Plan in der SKU mit dem Tarif „Isoliert“ verfügt standardmäßig über ein Limit von 250 GB. Bei fünf oder mehr App Service-Plänen sollten Sie darauf achten, dass Sie das Limit der ASE von 1 TB nicht überschreiten. Falls Sie für einen App Service-Plan mehr als 250 GB benötigen, können Sie sich an den Support wenden, um das Limit für den App Service-Plan auf maximal 1 TB erhöhen zu lassen. Nachdem das Limit für den Plan angepasst wurde, gilt weiterhin die gemeinsame Obergrenze von 1 TB für alle App Service-Pläne der ASE.
+Eine ASE verfügt für alle Apps in der ASE über Speicher mit einer Größe von 1 TB. Ein App Service-Plan in der SKU mit dem Tarif „Isoliert“ verfügt über ein Limit von 250 GB. In einer ASE werden 250 GB Speicherplatz pro App Service-Plan bis zu einem Limit von 1 TB hinzugefügt. Sie können mehr App Service-Pläne als nur vier haben, aber es wird kein über den Grenzwert von 1 TB hinausgehender Speicherplatz hinzugefügt.
 
 ## <a name="logging"></a>Protokollierung
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 505670e719e86086dbf7721b4298ec913220f928
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 849777ac3ec11915c602861fea0c42a49fb08bcb
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76694470"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006442"
 ---
 ## <a name="provide-frames-to-the-session"></a>Bereitstellen von Rahmen für die Sitzung
 

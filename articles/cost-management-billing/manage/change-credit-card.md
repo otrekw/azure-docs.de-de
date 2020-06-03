@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99b6d86a65ec05a1299abfffae779113e573310c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199856"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834967"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure
 
@@ -29,9 +29,9 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, sind Ihre Zahlungsme
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Verwalten von Kreditkarten für ein Azure-Abonnement
 
-Die folgenden Abschnitte gelten für Kunden, die über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Wenn es sich bei Ihrem Abrechnungskonto um ein Konto vom Typ „Microsoft Online Services-Programm“ handelt, sind Zahlungsmethoden mit einzelnen Azure-Abonnements verknüpft.
+Die folgenden Abschnitte gelten für Kunden, die über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Wenn es sich bei Ihrem Abrechnungskonto um ein Konto vom Typ „Microsoft Online Services-Programm“ handelt, sind Zahlungsmethoden mit einzelnen Azure-Abonnements verknüpft. Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
-### <a name="change-credit-card-for-a-subscription"></a>Ändern der Kreditkarte für ein Abonnement
+### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Ändern der Kreditkarte für ein Abonnement durch Hinzufügen einer neuen Kreditkarte
 
 Sie können die Standardkreditkarte Ihres Azure-Abonnements im Azure-Portal auf eine neue oder zuvor gespeicherte Kreditkarte festlegen. Sie müssen der Kontoadministrator sein, um die Kreditkarte ändern zu können. Falls mehr als eines Ihrer Abonnements über die gleiche aktive Zahlungsmethode verfügt, wird durch die Änderung der aktiven Zahlungsmethode für eines dieser Abonnements auch die aktive Zahlungsmethode für die anderen Abonnements aktualisiert.
 
@@ -57,7 +57,7 @@ Wenn Sie die Standardkreditkarte Ihres Abonnements auf eine neue Kreditkarte fes
 
 1. Wählen Sie **Weiter** aus.
 
-Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
+### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Ändern der Kreditkarte für ein Abonnement in eine zuvor gespeicherte Kreditkarte
 
 Die Standardkreditkarte Ihres Abonnements kann auch in eine Kreditkarte geändert werden, die bereits in Ihrem Konto gespeichert ist:
 
@@ -116,6 +116,7 @@ Wenn Ihre Kreditkarte die aktive Zahlungsmethode für eines Ihrer Microsoft-Abon
 Die folgenden Abschnitte gelten für Kunden, die über eine Microsoft-Kundenvereinbarung verfügen und sich online mit einer Kreditkarte für Azure registriert haben. Informationen zum Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung finden Sie [hier](#check-the-type-of-your-account).
 
 ### <a name="change-default-credit-card"></a>Ändern der Standardkreditkarte
+
 Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, ist Ihre Zahlungsmethoden mit einem Abrechnungsprofil verknüpft. Die Zahlungsmethode für ein Abrechnungsprofil kann nur von der Person geändert werden, die sich für Azure registriert und das Abrechnungskonto erstellt hat.
 
 Wenn Sie die Standardzahlungsmethode Ihres Abrechnungsprofils in „Scheck/Überweisung“ ändern möchten, lesen Sie [Zahlen für Ihr Azure-Abonnement auf Rechnung](pay-by-invoice.md).
@@ -159,9 +160,11 @@ Gehen Sie zum Bearbeiten oder Löschen einer Kreditkarte wie folgt vor:
 1. Wenn Sie Ihre Kreditkarte löschen möchten, wählen Sie im Kontextmenü **Löschen** aus.
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
 Virtuelle Karten oder Prepaidkarten werden nicht unterstützt. Wenn beim Hinzufügen oder Aktualisieren einer gültigen Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
 In den folgenden Abschnitten werden häufig gestellte Fragen zum Ändern der Kreditkarteninformationen beantwortet.
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Das Abonnement ist deaktiviert. Warum kann ich jetzt meine Kreditkarte nicht entfernen?
@@ -189,6 +192,7 @@ Wenn Sie [auf Rechnung zahlen](pay-by-invoice.md), senden Sie Ihre Zahlung an de
 Aktualisieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer Ihr Profil im [Azure-Kontocenter](https://account.azure.com/Profile), und wählen Sie anschließend die Option **Steuereintrag**. Diese Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
 
 ## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
+
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
@@ -196,4 +200,5 @@ Aktualisieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer Ihr Profil
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Informieren Sie sich über [Azure-Reservierungen](../reservations/save-compute-costs-reservations.md), um zu ermitteln, ob Sie damit Kosten sparen können.

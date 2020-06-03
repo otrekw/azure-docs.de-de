@@ -1,6 +1,6 @@
 ---
-title: Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen? | Microsoft-Dokumentation
-description: Verschaffen Sie sich einen Überblick über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen. Verwenden Sie Rollenzuweisungen, um den Zugriff auf Azure-Ressourcen zu steuern.
+title: Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?
+description: Hier finden Sie eine Übersicht über die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC). Verwenden Sie Rollenzuweisungen, um den Zugriff auf Azure-Ressourcen zu steuern.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686487"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996489"
 ---
-# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?
+# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?
 
-Die Zugriffsverwaltung für Cloudressourcen ist eine wichtige Funktion für jede Organisation, die die Cloud nutzt. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
+Die Zugriffsverwaltung für Cloudressourcen ist eine wichtige Funktion für jede Organisation, die die Cloud nutzt. Mit der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen die Benutzer für diese Ressourcen ausführen können und auf welche Bereiche die Benutzer zugreifen können.
 
-RBAC ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
+Azure RBAC ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 
-## <a name="what-can-i-do-with-rbac"></a>Welche Möglichkeiten bietet RBAC?
+## <a name="what-can-i-do-with-azure-rbac"></a>Wofür kann ich Azure RBAC verwenden?
 
-Hier sind einige Beispiele für die Verwendungsmöglichkeiten von RBAC:
+Hier sind einige Beispiele für die Verwendungsmöglichkeiten von Azure RBAC:
 
 - Ein Benutzer kann virtuelle Computer in einem Abonnement verwalten, während ein anderer Benutzer virtuelle Netzwerke verwalten kann
 - Eine DBA-Gruppe kann SQL-Datenbanken in einem Abonnement verwalten
 - Ein Benutzer kann sämtliche Ressourcen in einer Ressourcengruppe verwalten, wie z.B. virtuelle Computer, Websites und Subnetze
 - Eine Anwendung kann auf sämtliche Ressourcen in einer Ressourcengruppe zugreifen
 
-## <a name="how-rbac-works"></a>Funktionsweise von RBAC
+## <a name="how-azure-rbac-works"></a>Funktionsweise von Azure RBAC
 
-Sie können den Zugriff auf Ressourcen mit RBAC steuern, indem Sie Rollenzuweisungen erstellen. Dies ist ein wesentliches Konzept, das zur Durchsetzung von Berechtigungen verwendet wird. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
+Sie können den Zugriff auf Ressourcen mit Azure RBAC steuern, indem Sie Rollenzuweisungen erstellen. Dies ist ein wesentliches Konzept, das zur Durchsetzung von Berechtigungen verwendet wird. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 ### <a name="security-principal"></a>Sicherheitsprinzipal
 
@@ -64,7 +64,7 @@ Azure umfasst mehrere [integrierte Rollen](built-in-roles.md), die Sie verwenden
 - [Leser](built-in-roles.md#reader) können vorhandene Azure-Ressourcen anzeigen.
 - Mit einem [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) können Sie den Benutzerzugriff auf Azure-Ressourcen verwalten.
 
-Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sollten die integrierten Rollen den individuellen Ansprüchen Ihrer Organisation nicht genügen, können Sie Ihre eigenen [benutzerdefinierten Rollen für Azure-Ressourcen](custom-roles.md) erstellen.
+Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) erstellen.
 
 Mit Datenvorgängen in Azure können Sie Zugriff auf Daten in einem Objekt erteilen. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen. Weitere Informationen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md).
 
@@ -90,21 +90,21 @@ Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Be
 
 ![Rollenzuweisung zum Steuern des Zugriffs](./media/overview/rbac-overview.png)
 
-Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen und **500** Rollenzuweisungen in jeder Verwaltungsgruppe festlegen. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
+Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Jede Verwaltungsgruppe kann bis zu **500** Rollenzuweisungen enthalten. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
 
 ## <a name="multiple-role-assignments"></a>Mehrere Rollenzuweisungen
 
-Was geschieht bei mehreren überlappenden Rollenzuweisungen? RBAC ist ein additives Modell. Die hinzugefügten Rollenzuweisungen stellen daher die Summe Ihrer effektiven Berechtigungen dar. Sehen Sie sich das folgende Beispiel an, in dem einem Benutzer die Rolle „Mitwirkender“ im Abonnementbereich und die Rolle „Leser“ für eine Ressourcengruppe zugewiesen wird. Die Summe der Berechtigungen vom Typ „Mitwirkender“ und der Berechtigungen vom Typ „Leser“ entspricht praktisch der Rolle „Mitwirkender“ für die Ressourcengruppe. Daher hat die Zuweisung der Rolle „Leser“ in diesem Fall keine Auswirkung.
+Was geschieht bei mehreren überlappenden Rollenzuweisungen? Azure RBAC ist ein additives Modell. Die hinzugefügten Rollenzuweisungen stellen daher die Summe Ihrer effektiven Berechtigungen dar. Sehen Sie sich das folgende Beispiel an, in dem einem Benutzer die Rolle „Mitwirkender“ im Abonnementbereich und die Rolle „Leser“ für eine Ressourcengruppe zugewiesen wird. Die Summe der Berechtigungen vom Typ „Mitwirkender“ und der Berechtigungen vom Typ „Leser“ entspricht praktisch der Rolle „Mitwirkender“ für die Ressourcengruppe. Daher hat die Zuweisung der Rolle „Leser“ in diesem Fall keine Auswirkung.
 
 ![Mehrere Rollenzuweisungen](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Ablehnungszuweisungen
 
-Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen. Weitere Informationen finden Sie unter [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md).
+Früher war Azure RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt Azure RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen. Weitere Informationen finden Sie unter [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md).
 
-## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Ermitteln des Benutzerzugriffs auf eine Ressource durch RBAC
+## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>Ermitteln des Benutzerzugriffs auf eine Ressource durch Azure RBAC
 
-Im Folgenden finden Sie die allgemeinen Schritte, über die RBAC ermittelt, ob Sie Zugriff auf eine Ressource auf der Verwaltungsebene haben. Es ist hilfreich, dies zu verstehen, wenn Sie versuchen, ein Zugriffsproblem zu behandeln.
+Im Folgenden finden Sie die allgemeinen Schritte, über die Azure RBAC ermittelt, ob Sie Zugriff auf eine Ressource auf der Verwaltungsebene haben. Es ist hilfreich, dies zu verstehen, wenn Sie versuchen, ein Zugriffsproblem zu behandeln.
 
 1. Ein Benutzer (oder Dienstprinzipal) erhält ein Token für Azure Resource Manager.
 
@@ -128,7 +128,7 @@ Im Folgenden finden Sie die allgemeinen Schritte, über die RBAC ermittelt, ob S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](check-access.md)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
-- [Grundlegendes zu den verschiedenen Rollen in Azure](rbac-and-directory-admin-roles.md)
+- [Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat](check-access.md)
+- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](role-assignments-portal.md)
+- [Grundlegendes zu den verschiedenen Rollen](rbac-and-directory-admin-roles.md)
 - [Cloud Adoption Framework: Ressourcenzugriffsverwaltung in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

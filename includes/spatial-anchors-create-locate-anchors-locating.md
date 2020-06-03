@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b5fec8bbc0db78454b080a411702014bd96f7db9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76887539"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006427"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>Lokalisieren eines cloudbasierten Raumankers
 
@@ -12,6 +12,9 @@ Die Möglichkeit, einen zuvor gespeicherten cloudbasierten Raumanker zu lokalisi
 - Lokalisieren von Ankern anhand des Bezeichners
 - Lokalisieren von Ankern, die mit einem zuvor lokalisierten Anker verbunden sind. Informationen zu Ankerbeziehungen finden Sie [hier](/azure/spatial-anchors/concepts/anchor-relationships-way-finding/).
 - Lokalisieren eines Ankers unter Verwendung der [ungefähren Standortbestimmung](/azure/spatial-anchors/concepts/coarse-reloc/)
+
+> [!NOTE]
+> Bei jeder Lokalisierung eines Ankers wird von Azure Spatial Anchors versucht, die erfassten Umgebungsdaten zu verwenden, um die visuellen Informationen des Ankers zu erweitern. Falls Sie beim Lokalisieren eines Ankers Probleme haben, kann es hilfreich sein, einen Anker zu erstellen und diesen dann mehrfach aus unterschiedlichen Winkeln und bei unterschiedlichen Lichtverhältnissen zu lokalisieren.
 
 Wenn Sie cloudbasierte Raumanker anhand des Bezeichners lokalisieren, sollten Sie den Bezeichner des cloudbasierten Raumankers im Back-End-Dienst Ihrer Anwendung speichern und für alle Geräte verfügbar machen, die sich ordnungsgemäß authentifizieren können. Ein entsprechendes Beispiel finden Sie unter [Tutorial: Freigeben von Raumankern für Geräte](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
 

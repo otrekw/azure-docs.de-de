@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81112867"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82096058"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -77,7 +77,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Ausgangsregeln pro Lastenausgleichsmodul        | 600                           |
 | [TCP-Leerlauftimeout](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 Minuten/30 Minuten          |
 
-<sup>1</sup>Das Limit liegt bei bis zu 150 Ressourcen in jeder Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und VM-Skalierungsgruppenressourcen.
+<sup>1</sup>Der Grenzwert liegt bei bis zu 150 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und Platzierungsgruppen für Skalierungsgruppen.
 
 **Load Balancer Basic**
 

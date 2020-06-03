@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790965"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644858"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Tutorial: Erstellen von Apache Spark-Anwendungen für Spark-Pools (Vorschauversion) mit dem Azure-Toolkit für IntelliJ
 
@@ -62,6 +62,7 @@ In diesem Tutorial lernen Sie Folgendes:
     |Project&nbsp;location (Projektspeicherort)| Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|
     |Project SDK (Projekt-SDK)| Dieses Feld ist bei der erstmaligen Verwendung von IDEA möglicherweise leer. Wählen Sie **New...** (Neu...) aus, und navigieren Sie zu Ihrem JDK.|
     |Spark-Version|Der Erstellungs-Assistent integriert die passende Version für das Spark-SDK und das Scala-SDK. Synapse unterstützt nur **Spark 2.4.0**.|
+    |||
 
     ![Auswählen des Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
 
@@ -141,9 +142,9 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie sie remote ausführ
     |Spark-Pools|Wählen Sie die Spark-Pools aus, in denen Sie Ihre Anwendung ausführen möchten.|
     |Select an Artifact to submit (Auswahl eines zu übermittelnden Artefakts)|Behalten Sie die Standardeinstellung bei.|
     |„Main class name“ (Name der Hauptklasse)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können die Klasse ändern, indem Sie die Schaltfläche mit den Auslassungspunkten ( **…** ) und anschließend eine andere Klasse auswählen.|
-    |Job configurations (Auftragskonfigurationen)|Sie können die Standardschlüssel und -werte ändern. Weitere Informationen finden Sie unter [Apache Livy-REST-API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
+    |Job configurations (Auftragskonfigurationen)|Sie können die Standardschlüssel und -werte ändern. Weitere Informationen finden Sie unter [Apache Livy-REST-API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Befehlszeilenargumente|Sie können bei Bedarf durch Leerzeichen getrennte Argumente für die Hauptklasse eingeben.|
-    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen 2-Cluster unterstützt. Weitere Informationen finden Sie unter: [Apache Spark-Konfiguration](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) und [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen2-Cluster unterstützt. Weitere Informationen finden Sie unter: [Apache Spark-Konfiguration](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) und [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Job Upload Storage (Speicher für Auftragsupload)|Erweitern Sie die Option, um zusätzliche Optionen anzuzeigen.|
     |Speichertyp|Wählen Sie **Use Azure Blob to upload** (Azure-Blob für Upload verwenden) aus der Dropdownliste aus.|
     |Speicherkonto|Geben Sie Ihr Speicherkonto ein.|
@@ -176,7 +177,7 @@ Im Anschluss erfahren Sie, wie Sie das lokale Ausführen und Debuggen für Ihren
 
     ![Intellij – Konfigurationen debuggen/ausführen – lokale Ausführung](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. Nach Abschluss der lokalen Ausführung können Sie die Ausgabedatei unter **data** >  **__default__** überprüfen, sofern das Skript eine Ausgabe enthält.
+3. Nach Abschluss der lokalen Ausführung können Sie die Ausgabedatei unter **data** > **__default__** überprüfen, sofern das Skript eine Ausgabe enthält.
 
     ![Intellij – Ergebnis der lokalen Ausführung des Projekts](./media/intellij-tool-synapse/spark-local-run-result.png)
 
@@ -270,4 +271,4 @@ Sie können das Skriptergebnis vorhersagen, indem Sie einfach Code an die lokale
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Erstellen eines neuen Apache Spark-Pools für einen Azure Synapse Analytics-Arbeitsbereich](../../synapse-analytics/quickstart-create-apache-spark-pool.md)
+- [Erstellen eines neuen Apache Spark-Pools für einen Azure Synapse Analytics-Arbeitsbereich](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

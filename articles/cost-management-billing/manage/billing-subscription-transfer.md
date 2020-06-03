@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238158"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745848"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -144,8 +144,8 @@ Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher 
 
 Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden zum neuen Konto übertragen. Wenn Sie jedoch ein Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen, werden [Administratorrollen](add-change-subscription-administrator.md) sowie Zuweisungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/role-assignments-portal.md) für das Abonnement [nicht übertragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Auch [App-Registrierungen](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) und andere mandantenspezifische Dienste werden nicht mit dem Abonnement übertragen.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Kann ich den Besitz an ein Konto in einem anderen Land übertragen?
-Länderübergreifende Übertragungen können leider nicht über das Azure-Portal abgewickelt werden. Zum Übertragen Ihres Abonnements in ein anderes Land [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Kann ich den Besitz an ein Konto in einem anderen Land bzw. in einer anderen Region übertragen?
+Länder- bzw. regionsübergreifende Übertragungen können leider nicht über das Azure-Portal abgewickelt werden. Zum Übertragen Ihres Abonnements in ein anderes Land oder in eine andere Region [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Ich bin Administrator bei zwei Konten. Kann ich ein Abonnement von einem Konto auf das andere übertragen?
 Ja. Sie können Abonnements zwischen Ihren Konten übertragen. Vom Konzept her werden Ihre Konten als Konten von zwei verschiedenen Benutzern betrachtet. Daher können Sie mit den oben genannten Schritten Abonnements zwischen Ihren Konten übertragen.

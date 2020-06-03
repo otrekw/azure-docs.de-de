@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231219"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007544"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -138,8 +138,6 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 
 Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um die Beschriftung zu beschleunigen. Zu Beginn Ihres Beschriftungsprojekts werden die Bilder in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Bilder um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. Dieses Training beinhaltet kein aktives Lernen.
 
-Dieses Feature steht für die Bildklassifizierung (mehrere Klassen oder mehrere Beschriftungen) zur Verfügung.  
-
 Wählen Sie *ML-gestützte Beschriftung aktivieren* aus, und geben Sie eine GPU an, um die Beschriftungsunterstützung zu aktivieren. Diese umfasst zwei Phasen:
 * Clustering
 * Vorabbeschriftung
@@ -150,13 +148,15 @@ Da die abschließenden Beschriftungen weiterhin von den Eingaben des Beschriftun
 
 ### <a name="clustering"></a>Clustering
 
-Nachdem eine gewisse Anzahl von Beschriftungen übermittelt wurde, beginnt das Machine Learning-Modell damit, ähnliche Bilder zu gruppieren.  Diese ähnlichen Bilder werden den Beschriftungserstellern im gleichen Bildschirm angezeigt, um das manuelle Taggen zu beschleunigen. Das Clustering ist besonders hilfreich, wenn der Beschriftungsersteller ein Raster mit vier, sechs oder neun Bildern verwendet. 
+Nachdem eine bestimmte Anzahl von Beschriftungen übermittelt wurde, beginnt das Machine Learning-Modell für die Bildklassifizierung damit, ähnliche Bilder zu gruppieren.  Diese ähnlichen Bilder werden den Beschriftungserstellern im gleichen Bildschirm angezeigt, um das manuelle Taggen zu beschleunigen. Das Clustering ist besonders hilfreich, wenn der Beschriftungsersteller ein Raster mit vier, sechs oder neun Bildern verwendet. 
 
 Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten trainiert wurde, wird das Modell auf die letzte vollständig verbundene Ebene gekürzt. Nicht beschriftete Bilder durchlaufen dann das gekürzte Modell in einem Prozess, der in der Regel als Einbettung oder Merkmalserstellung bezeichnet wird. Dadurch werden die einzelnen Bilder jeweils in einen hochdimensionalen, durch diese Modellebene definierten Raum eingebettet. Bilder mit Pixelwiederholung in dem Raum werden für Clusteringaufgaben verwendet. 
 
+Die Clusteringphase wird für Objekterkennungsmodelle nicht angezeigt.
+
 ### <a name="prelabeling"></a>Vorabbeschriftung
 
-Nach der Übermittlung weiterer Bildbeschriftungen wird ein Klassifizierungsmodell verwendet, um Bildtags vorherzusagen.  Dem Beschriftungsersteller werden nun Seiten angezeigt, auf denen bereits vorhergesagte Beschriftungen für die einzelnen Bilder vorhanden sind.  Diese Bezeichnungen müssen überprüft und falsch beschriftete Bilder korrigiert werden, bevor die Seite übermittelt wird.  
+Nachdem genügend Bildbeschriftungen übermittelt wurden, wird ein Klassifizierungsmodell verwendet, um Bildtags vorherzusagen. Oder es wird ein Objekterkennungsmodell verwendet, um Begrenzungsrahmen vorherzusagen. Dem Beschriftungsersteller werden nun Seiten angezeigt, auf denen bereits vorhergesagte Beschriftungen für die einzelnen Bilder vorhanden sind. Bei der Objekterkennung werden auch vorhergesagte Rahmen angezeigt. Diese Vorhersagen müssen dann überprüft und falsch beschriftete Bilder korrigiert werden, bevor die Seite übermittelt wird.  
 
 Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten trainiert wurde, wird es anhand eines Testsatzes manuell beschrifteter Bilder ausgewertet, um seine Genauigkeit mit verschiedensten Zuverlässigkeitsschwellenwerten zu bestimmen. Diese Auswertung dient zur Ermittlung eines Zuverlässigkeitsschwellenwerts, über dem das Modell genau genug ist, um Vorabbeschriftungen anzuzeigen. Anschließend wird das Modell anhand von nicht beschrifteten Daten ausgewertet. Bilder, bei denen die Vorhersagezuverlässigkeit über dem Schwellenwert liegt, werden für die Vorabbeschriftung verwendet.
 

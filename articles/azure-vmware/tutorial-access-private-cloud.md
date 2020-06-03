@@ -3,12 +3,12 @@ title: 'Tutorial: Zugreifen auf Ihre private Cloud'
 description: Hier erfahren Sie, wie Sie auf eine private AVS-Cloud (Azure VMware Solution, Azure-VMware-Lösung) zugreifen.
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: fcee332818c89d9c8b00795dca9e74f68260eefd
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739585"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873601"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Tutorial: Hier erfahren Sie, wie Sie auf eine private AVS-Cloud (Azure VMware Solution, Azure-VMware-Lösung) zugreifen.
 

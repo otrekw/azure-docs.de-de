@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192262"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773278"
 ---
 # <a name="confidential-computing-on-azure"></a>Confidential Computing unter Azure
 
@@ -42,13 +42,13 @@ Mit Microsoft Azure können Sie Ihre Angriffsfläche verkleinern, um einen höhe
 
 ## <a name="introduction-to-confidential-computing"></a>Einführung in Confidential Computing <a id="intro to acc"></a>
 
-Confidential Computing ist ein branchenüblicher Begriff, der vom [Confidential Computing Consortium](https://confidentialcomputing.io/) (CCC) definiert wurde. Diese Vereinigung hat es sich zur Aufgabe gemacht, Definitionen für die Einführung des Confidential Computing festzulegen und die Nutzung zu fördern. Bei Confidential Computing geht es um den Schutz von in Gebrauch befindlichen Daten, während Rechenvorgänge durchgeführt werden. Die Rechenvorgänge erfolgen in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE).
+Confidential Computing ist ein branchenüblicher Begriff, der vom [Confidential Computing Consortium](https://confidentialcomputing.io/) (CCC) definiert wurde. Diese Vereinigung hat es sich zur Aufgabe gemacht, Definitionen für die Einführung des Confidential Computing festzulegen und die Nutzung zu fördern. Das CCC definiert Confidential Computing als den Schutz der verwendeten Daten durch die Durchführung von Berechnungen in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE).
 
 Eine TEE ist eine Umgebung, mit der die ausschließliche Ausführung von autorisiertem Code erzwungen wird. Für alle Daten in der TEE ist es nicht möglich, dass sie mit Code, der sich außerhalb dieser Umgebung befindet, gelesen oder manipuliert werden.
 
-### <a name="enclaves-and-trusted-execution-environments"></a>Enklaven und Trusted Execution Environments
+### <a name="enclaves"></a>Enclaves
 
-Im Rahmen des Confidential Computing werden TEEs üblicherweise als *Enklaven* oder auch *sichere Enklaven* bezeichnet. Enklaven sind geschützte Bereiche des Prozessors und Arbeitsspeichers von Hardware. Es gibt keine Möglichkeit, Daten oder Code innerhalb der Enklave anzuzeigen – auch nicht mit einem Debugger. Wenn mit nicht vertrauenswürdigem Code versucht wird, den Inhalt im Arbeitsspeicher der Enklave zu ändern, wird die Umgebung deaktiviert und die Durchführung der Vorgänge verweigert.
+Enklaven sind geschützte Bereiche des Prozessors und Arbeitsspeichers von Hardware. Es gibt keine Möglichkeit, Daten oder Code innerhalb der Enklave anzuzeigen – auch nicht mit einem Debugger. Wenn mit nicht vertrauenswürdigem Code versucht wird, den Inhalt im Arbeitsspeicher der Enklave zu ändern, wird die Umgebung deaktiviert und die Durchführung der Vorgänge verweigert.
 
 Beim Entwickeln von Anwendungen können Sie [Softwaretools](#oe-sdk) verwenden, um Teile Ihres Codes und Ihrer Daten in der Enklave abzuschirmen. Mit diesen Tools können Sie sicherstellen, dass Ihr Code und Ihre Daten von Personen außerhalb der vertrauenswürdigen Umgebung nicht angezeigt oder geändert werden können. 
 
@@ -96,11 +96,11 @@ Eine für Enklaven erstellte Anwendung wird auf zwei Arten partitioniert:
 1. In eine „nicht vertrauenswürdige“ Komponente (Host)
 1. In eine „vertrauenswürdige“ Komponente (Enklave)
 
-Der **Host** ist Ihre Enklavenanwendung, die in einer nicht vertrauenswürdigen Umgebung ausgeführt wird. Mit dem Code auf dem Host kann nicht auf den Code zugegriffen werden, der in die Enklave geladen wird. 
+**Der Host** ist eine nicht vertrauenswürdige Umgebung, in der Ihre Enklavenanwendung ausgeführt wird. Auf den auf dem Host bereitgestellten Enklavencode kann der Host nicht zugreifen. 
 
-In der **Enklave** werden der Code und die Daten innerhalb der TEE-Implementierung ausgeführt. Rechenvorgänge mit hohen Sicherheitsanforderungen sollten in der Enklave durchgeführt werden, um dafür zu sorgen, dass Geheimnisse und vertrauliche Daten geschützt bleiben. 
+**Die Enklave** ist der Ort, an dem der Anwendungscode und seine zwischengespeicherten Daten bzw. der Arbeitsspeicher ausgeführt werden. Rechenvorgänge mit hohen Sicherheitsanforderungen sollten in der Enklave durchgeführt werden, um dafür zu sorgen, dass Geheimnisse und vertrauliche Daten geschützt bleiben. 
 
-Wenn Sie damit beginnen, eine Enklavenanwendung zu entwickeln, müssen Sie zunächst ermitteln, welche Code- und Datenelemente geschützt werden sollen. Der Code, den Sie in der vertrauenswürdigen Komponente anordnen, wird vom restlichen Teil Ihrer Anwendung isoliert. Nachdem die Enklave initialisiert und der Code in den Arbeitsspeicher geladen wurde, kann der Code von außerhalb der Umgebung nicht mehr gelesen oder geändert werden.
+Während des Anwendungsentwurfs ist es wichtig, zu identifizieren und zu bestimmen, welcher Teil der Anwendung in den Enklaven ausgeführt werden muss. Der Code, den Sie in der vertrauenswürdigen Komponente anordnen, wird vom restlichen Teil Ihrer Anwendung isoliert. Nachdem die Enklave initialisiert und der Code in den Arbeitsspeicher geladen wurde, kann dieser Code nicht mehr von den nicht vertrauenswürdigen Komponenten gelesen oder geändert werden. 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave Software Development Kit (OE SDK) <a id="oe-sdk"></a>
 

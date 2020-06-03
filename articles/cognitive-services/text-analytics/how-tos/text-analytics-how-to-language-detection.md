@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70387788"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745571"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
 
@@ -155,9 +155,9 @@ Das positive Ergebnis 1,0 steht für die höchstmögliche Zuverlässigkeit der A
 
 ### <a name="ambiguous-content"></a>Mehrdeutige Inhalte
 
-In einigen Fällen ist es unter Umständen schwierig, die Sprachen basierend auf den Eingaben eindeutig zu bestimmen. Mithilfe des Parameters `countryHint` können Sie einen zweistelligen Ländercode angeben. Die API verwendet standardmäßig „US“ als Wert für „countryHint“. Wenn Sie dieses Verhalten entfernen möchten, können Sie diesen Parameter zurücksetzen, indem Sie seinen Wert auf eine leere Zeichenfolge (`countryHint = ""`) festlegen.
+In einigen Fällen ist es unter Umständen schwierig, die Sprachen basierend auf den Eingaben eindeutig zu bestimmen. Mithilfe des Parameters `countryHint` können Sie einen zweistelligen Länder-/Regionscode angeben. Die API verwendet standardmäßig „US“ als Wert für „countryHint“. Wenn Sie dieses Verhalten entfernen möchten, können Sie diesen Parameter zurücksetzen, indem Sie seinen Wert auf eine leere Zeichenfolge (`countryHint = ""`) festlegen.
 
-„Impossible“ ist beispielsweise sowohl im Englischen als auch im Französischen gebräuchlich, und bei unzureichendem Kontext basiert die Antwort auf dem Länderhinweis „US“. Sollte bekannt sein, dass der Text aus Frankreich stammt, kann ein entsprechender Hinweis angegeben werden.
+„Impossible“ ist beispielsweise sowohl im Englischen als auch im Französischen gebräuchlich, und bei unzureichendem Kontext basiert die Antwort auf dem Länder-/Regionshinweis „US“. Sollte bekannt sein, dass der Text aus Frankreich stammt, kann ein entsprechender Hinweis angegeben werden.
 
 **Input** (Eingabe)
 

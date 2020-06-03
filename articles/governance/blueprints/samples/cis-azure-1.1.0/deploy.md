@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“, einschließlich Details zum Blaupausenartefakt-Parameter.
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544522"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864469"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -93,8 +93,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|\[Vorschau\]: CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der Regionen, in denen Network Watcher aktiviert werden soll|Eine durch Semikolons getrennte Liste von Regionen. Verwenden Sie Get-AzLocation, um eine vollständige Liste der Regionen abzurufen. Beispiel: eastus; eastus2|
-|\[Vorschau\]: CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der zur Verwendung genehmigten VM-Erweiterungen|Eine durch Semikolons getrennte Liste von Erweiterungen. Verwenden Sie Get-AzVMExtensionImage, um eine vollständige Liste der VM-Erweiterungen anzuzeigen. Beispiel: AzureDiskEncryption; IaaSAntimalware|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der Regionen, in denen Network Watcher aktiviert werden soll|Eine durch Semikolons getrennte Liste von Regionen. Verwenden Sie Get-AzLocation, um eine vollständige Liste der Regionen abzurufen. Beispiel: eastus; eastus2|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der zur Verwendung genehmigten VM-Erweiterungen|Eine durch Semikolons getrennte Liste von Erweiterungen. Verwenden Sie „Get-AzVMExtensionImage“, um eine vollständige Liste der VM-Erweiterungen anzuzeigen. Beispiel: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

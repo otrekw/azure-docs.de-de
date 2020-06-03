@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632188"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856056"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -101,18 +101,18 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
    Sie können eine benutzerdefinierte Route erstellen, um Datenverkehr an 0.0.0.0/0 direkt an das Internet zu übermitteln. 
 
-  **Szenario 3:** Benutzerdefinierte Route für Azure Kubernetes Service-Kubenet
+  **Szenario 3:** Benutzerdefinierte Route für Azure Kubernetes Service mit kubenet
 
-  Wenn Sie Kubenet mit Azure Kubernetes Service (AKS) und dem Application Gateway-Eingangscontroller (AGIC, Application Gateway Ingress Controller) verwenden, müssen Sie eine Routingtabelle einrichten, um die Weiterleitung des Datenverkehrs an die Pods an den richtigen Knoten zu erlauben. Dies ist nicht erforderlich, wenn Sie Azure CNI verwenden. 
+  Wenn Sie kubenet mit Azure Kubernetes Service (AKS) und dem Application Gateway-Eingangscontroller (AGIC, Application Gateway Ingress Controller) verwenden, benötigen Sie eine Routingtabelle, die die Weiterleitung des von Application Gateway an die Pods gesendeten Datenverkehrs an den richtigen Knoten erlaubt. Dies ist nicht erforderlich, wenn Sie Azure CNI verwenden. 
 
-   Führen Sie die folgenden Schritte aus, um die Routingtabelle einzurichten, damit Kubenet funktioniert:
+  Führen Sie die folgenden Schritte aus, um die Routingtabelle einzurichten, damit kubenet funktioniert:
 
-  1. Erstellen Sie eine Routingtabelleressource in Azure. 
-  2. Rufen Sie nach der Erstellung die Seite **Routen** auf. 
-  3. Fügen Sie eine neue Route hinzu:
+  1. Wechseln Sie zu der Ressourcengruppe, die von AKS erstellt wurde (der Name der Ressourcengruppe sollte mit „MC_“ beginnen).
+  2. Suchen Sie von AKS in dieser Ressourcengruppe erstellte Routentabelle. Die Routingtabelle sollte mit den folgenden Informationen aufgefüllt sein:
      - Das Adresspräfix sollte dem IP-Adressbereich der Pods entsprechen, die Sie in AKS erreichen möchten. 
-     - Der Typ des nächsten Hops sollte **virtuelles Gerät** sein. 
-     - Die Adresse des nächsten Hops sollte der IP-Adresse des Knotens entsprechen, der die Pods im IP-Adressbereich hostet, der im Feld für das Adresspräfix definiert wurde. 
+     - Der Typ des nächsten Hops sollte „Virtuelles Gerät“ sein. 
+     - Die Adresse des nächsten Hops sollte der IP-Adresse des Knotens entsprechen, der die Pods hostet.
+  3. Ordnen Sie diese Routingtabelle dem Subnetz des Application Gateways zu. 
     
   **Nicht unterstützte v2-Szenarios**
 

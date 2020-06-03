@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599131"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714235"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App
 
@@ -81,7 +81,7 @@ Konfigurieren Sie zunächst Ihre neue App, und verknüpfen Sie sie mit einem Git
 - Wählen Sie Ihr _Azure-Abonnement_ aus.
 - Wählen Sie eine neue _Ressourcengruppe_ aus, oder erstellen Sie sie.
 - Geben Sie der App den Namen **my-first-static-web-app**.
-  - Gültige Zeichen sind `a-z` (Groß-/Kleinschreibung nicht beachtet), `0-9` und `_`.
+  - Gültige Zeichen sind `a-z` (Groß-/Kleinschreibung nicht beachtet), `0-9` und `-`.
 - Wählen Sie eine _Region_ aus, die in Ihrer Nähe liegt.
 - Wählen Sie für _SKU_ die Option **Free** aus.
 - Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**, und führen Sie die Authentifizierung mit GitHub durch.
@@ -130,6 +130,8 @@ Fügen Sie als Nächstes die Konfigurationsdetails Ihrem bevorzugten Front-End-F
 Klicken Sie auf die Schaltfläche **Bewerten + erstellen**.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="Schaltfläche „Bewerten + erstellen“":::
+
+Um diese Werte nach der Erstellung der App zu ändern, können Sie die [Workflowdatei](github-actions-workflow.md) bearbeiten.
 
 ### <a name="review--create"></a>Bewerten + erstellen
 

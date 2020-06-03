@@ -1,14 +1,14 @@
 ---
 title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116348"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779565"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -74,7 +74,7 @@ Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargeste
 
 Bedenken Sie, dass dies nur eine Möglichkeit zur Verwendung von Batch ist und dass in diesem Szenario nur einige Features beschrieben werden. Beispielsweise können Sie auf jedem Computeknoten [mehrere Aufgaben parallel](batch-parallel-node-tasks.md) ausführen. Oder verwenden Sie [Aufgaben für die Vorbereitung und den Abschluss von Aufträgen](batch-job-prep-release.md), um die Knoten für Ihre Aufträge vorzubereiten, und führen Sie anschließend die Bereinigung durch. 
 
-Unter [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) finden Sie ausführliche Informationen zu Pools, Knoten, Aufträgen und Aufgaben sowie zu den zahlreichen API-Funktionen, die beim Erstellen der Batch-Anwendung verwendet werden können. Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
+Eine Übersicht über Features wie Pools, Knoten, Aufträge und Aufgaben finden Sie unter [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

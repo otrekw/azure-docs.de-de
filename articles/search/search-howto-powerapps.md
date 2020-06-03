@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184421"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901401"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -82,7 +82,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Aus Beispiel importieren" border="true":::
 
-1. Klicken Sie auf **Importieren**, um die Anforderung automatisch auszufüllen. Klicken Sie auf das Symbol **...** neben den einzelnen Parametern, um das Festlegen der Parametermetadaten abzuschließen. Klicken Sie nach jeder Parameteraktualisierung auf **Zurück**, um zur Seite „Anforderung“ zurückzukehren.
+1. Klicken Sie auf **Importieren**, um die Anforderung automatisch auszufüllen. Klicken Sie neben den einzelnen Parametern auf das Symbol **...** , um die Parametermetadaten abschließend festzulegen. Klicken Sie nach jeder Parameteraktualisierung auf **Zurück**, um zur Seite „Anforderung“ zurückzukehren.
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Dialogfeld „Aus Beispiel importieren“" border="true":::
 

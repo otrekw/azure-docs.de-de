@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204559"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006452"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -49,7 +49,7 @@ Es gibt zwei Optionen zum Hinzufügen von DNS-Servern für die P2S-Clients.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Für Benutzer-VPN (Point-to-Site): Wie viele Clients werden unterstützt?
 
-Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen und für Skalierungseinheit 13-20 werden bis zu 10.000 Verbindungen unterstützt. Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Sie erhalten pro Gateway 2 x 500 Verbindungen, aber Sie planen für diese Skalierungseinheit trotzdem nicht 1.000 Verbindungen ein, sondern nur 500. Der Grund ist, dass die Instanzen ggf. gewartet werden müssen und während dieses Zeitraums die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, falls Sie die empfohlene Verbindungsanzahl überschreiten.
+Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen und für Skalierungseinheit 13-20 werden bis zu 10.000 Verbindungen unterstützt. Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Sie erhalten pro Gateway 2 x 500 Verbindungen, aber Sie planen für diese Skalierungseinheit trotzdem nicht 1.000 Verbindungen ein, sondern nur 500. Der Grund ist, dass die Instanzen ggf. gewartet werden müssen und während dieses Zeitraums die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, falls Sie die empfohlene Verbindungsanzahl überschreiten. Planen Sie darüber hinaus auch Ausfallzeit ein, falls Sie für die Skalierungseinheit das Hoch- oder Herunterskalieren durchführen oder die Point-to-Site-Konfiguration auf dem VPN-Gateway ändern möchten.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Worin besteht der Unterschied zwischen einem virtuellen Azure-Netzwerkgateway (VPN-Gateway) und einem Azure Virtual WAN-VPN-Gateway?
 
@@ -190,8 +190,8 @@ Der VPN-Gesamtdurchsatz eines Hubs beträgt basierend auf der ausgewählten Skal
 Navigieren Sie im Portal zum VPN-Gateway innerhalb eines Hubs, und klicken Sie auf die Skalierungseinheit, um die entsprechende Einstellung festzulegen.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Lässt Virtual WAN für das lokale Gerät die parallele Nutzung mehrerer ISPs zu, oder wird immer nur ein VPN-Tunnel verwendet?
+Bei Lösungen für lokale Geräte können Datenverkehrsrichtlinien angewendet werden, um Datenverkehr über mehrere Tunnel an Azure zu leiten.
 
-Eine eingehende Verbindung in ein Virtual WAN-VPN ist immer ein Aktiv/Aktiv-Tunnel (zur Erzielung von Resilienz innerhalb desselben Hubs oder derselben Region), für den eine im Branch verfügbare Verbindung verwendet wird. Bei dieser Verbindung kann es sich um eine ISP-Verbindung im lokalen Branch handeln. Beim Virtual WAN „VPNSite“ können Sie dem Standort Verbindungsinformationen hinzufügen. Falls Sie im Branch über mehrere ISPs verfügen, und jeder ISP eine Verbindung bereitgestellt hat, können diese Informationen in Azure in den VPN-Standortinformationen eingerichtet werden. Die übergreifende Verwaltung von Failovers für die ISPs des Branchs ist ein rein branchzentrierter Routingvorgang.
 
 ### <a name="what-is-global-transit-architecture"></a>Was ist die Architektur für globale Übertragungen?
 

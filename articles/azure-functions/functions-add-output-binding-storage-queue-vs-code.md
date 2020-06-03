@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Functions mit einer Azure Storage-Warte
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673450"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125838"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studio Code
 
@@ -56,7 +56,7 @@ Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführ
 
 Ihr Projekt wurde für die Verwendung von [Erweiterungsbündeln](functions-bindings-register.md#extension-bundles) konfiguriert, wodurch automatisch ein vordefinierter Satz von Erweiterungspaketen installiert wird. 
 
-Erweiterungspakete sind in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht etwa wie folgt aus:
+Die Nutzung von Erweiterungspaketen ist in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht wie folgt aus:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -200,7 +200,7 @@ Nun ist es an der Zeit, die aktualisierte Funktions-App erneut in Azure zu verö
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-*Ressourcen* bezieht sich im Zusammenhang mit Azure auf Funktions-Apps, Funktionen, Speicherkonten und Ähnliches. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch Löschen der Gruppe gelöscht werden.
+In Azure wird die Bezeichnung *Ressourcen* für Funktions-Apps, Funktionen, Speicherkonten usw. verwendet. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch das Löschen der Gruppe gelöscht werden.
 
 Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. Nicht mehr benötigte Ressourcen können wie folgt gelöscht werden:
 

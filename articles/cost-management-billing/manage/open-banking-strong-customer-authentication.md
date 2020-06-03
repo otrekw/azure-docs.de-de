@@ -8,16 +8,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 847e9b692ddbd7880c37d1068d61447dcccb9c80
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200587"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747148"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) und strenge Kundenauthentifizierung (SCA) für Azure-Kunden
 
-Ab dem 14. September 2019 müssen Banken in den 31 Ländern des [Europäischen Wirtschaftsraums](https://en.wikipedia.org/wiki/European_Economic_Area) die Identität der Person, die einen Onlinekauf tätigt, überprüfen, bevor die Zahlung verarbeitet wird. Für diese Überprüfung ist eine mehrstufige Authentifizierung erforderlich, um sicherzustellen, dass Ihre Onlinekäufe sicher und geschützt sind. Diese Überprüfungsanforderung gilt in einigen Ländern erst später. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
+Seit dem 14. September 2019 müssen Banken in den 31 Ländern/Regionen des [Europäischen Wirtschaftsraums](https://en.wikipedia.org/wiki/European_Economic_Area) die Identität der Person, die einen Onlinekauf tätigt, überprüfen, bevor die Zahlung verarbeitet wird. Für diese Überprüfung ist eine mehrstufige Authentifizierung erforderlich, um sicherzustellen, dass Ihre Onlinekäufe sicher und geschützt sind. Diese Überprüfungsanforderung gilt in einigen Ländern/Regionen erst später. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Was bedeutet PSD2 für Azure-Kunden?
 

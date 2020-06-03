@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691335"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871380"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -143,6 +143,7 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
     > * Beschriften Sie Werte so, wie sie im Formular vorkommen. Versuchen Sie nicht, einen Wert mit zwei unterschiedlichen Tags in zwei Teile zu unterteilen. Ein Adressfeld sollte beispielsweise auch dann nur mit einem Tag beschriftet werden, wenn es über mehrere Zeilen verläuft.
     > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
     > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
+    > * Wählen Sie zum Löschen eines angewandten Tags das Rechteck in der Dokumentansicht aus, und drücken Sie die ENTF-TASTE.
 
 ![Haupt-Editor-Fenster des Tools für die Beschriftung von Beispielen](../media/label-tool/main-editor.png)
 
@@ -164,6 +165,27 @@ Derzeit werden die folgenden Werttypen und Variationen unterstützt:
     * Standardwert, `dmy`, `mdy`, `ymd`
 * `time`
 * `integer`
+
+> [!NOTE]
+> Siehe diese Regeln für die Datumsformatierung:
+> 
+> Die folgenden Zeichen können als DMY-Datumstrennzeichen (TMJ) verwendet werden: `, - / . \`. Leerzeichen können nicht als Trennzeichen verwendet werden. Beispiel:
+> * 01.01.2020
+> * 01-01-2020
+> * 01/01/2020
+>
+> Tag und Monat können jeweils ein- oder zweistellig, die Jahreszahl zwei- oder vierstellig angegeben werden:
+> * 1-1-2020
+> * 1-01-20
+>
+> Wenn eine DMY-Datumszeichenfolge acht Ziffern hat, ist das Trennzeichen optional:
+> * 01012020
+> * 01 01 2020
+>
+> Der Monat kann auch als vollständiger oder Kurzname angegeben werden. Wenn der Name verwendet wird, sind Trennzeichen optional:
+> * 01/Jan/2020
+> * 01Jan2020
+> * 01 Jan 2020
 
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 

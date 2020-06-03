@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234093"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005198"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
@@ -48,13 +48,13 @@ Dieser Artikel beschreibt die Funktionen für die integrierten Zeitplantrigger u
 
 ## <a name="schedule-triggers"></a>Zeitplantrigger
 
-Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleitendes Fenster“ starten, was mit keinem bestimmten Dienst oder System wie etwa Office 365 Outlook oder SQL Server verknüpft ist. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z.B. die Anzahl von Sekunden, Minuten und Stunden für beide Trigger oder die Anzahl von Tagen, Wochen oder Monaten für den Serientrigger. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
+Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleitendes Fenster“ starten, was mit keinem bestimmten Dienst oder System verknüpft ist. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z. B. die Anzahl von Sekunden, Minuten, Stunden, Tagen oder Monaten. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
 
 Im Folgenden finden Sie die Unterschiede zwischen den beiden Triggern:
 
 * **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
 
-* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger bietet keine Optionen zum Angeben von Tagen, Wochen, Monaten, Wochentagen oder der genauen Uhrzeit in Stunden und Minuten. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
+* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger unterstützt keine erweiterten Zeitpläne, z. B. genaue Uhrzeiten in Stunden und Minuten oder bestimmte Tage der Woche. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 

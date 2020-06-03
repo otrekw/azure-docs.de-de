@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844886"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004468"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -49,6 +49,10 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 
 **A:** Anker liegen jeweils nach Azure-Konto isoliert vor. Nur Apps, denen Sie Zugriff auf Ihr Konto gewähren, können im Konto auf Anker zugreifen.
 
+**F: Wie speichert Azure Spatial Anchors Daten?**
+
+**A:** Alle Daten werden mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel verschlüsselt gespeichert.
+
 **F: Welche Informationen zu einer Umgebung werden bei Verwendung von Azure Spatial Anchors für den Dienst übertragen und gespeichert? Werden Bilder der Umgebung übertragen und gespeichert?**
 
 **A:** Beim Erstellen oder Suchen nach Ankern werden Bilder der Umgebung auf dem Gerät in einem abgeleiteten Format verarbeitet. Dieses abgeleitete Format wird an den Dienst übertragen und darunter gespeichert.
@@ -59,7 +63,6 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 
 ![Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten](./media/sparse-point-cloud.png)
 *Abbildung 1: Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten*
-
 
 **F: Gibt es eine Möglichkeit zum Senden von Diagnoseinformationen an Microsoft?**
 

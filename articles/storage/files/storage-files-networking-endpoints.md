@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4695164e7bcbc63b852f2f4364cdccbc8ea7d8c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594201"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849313"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurieren von Azure Files-Netzwerkendpunkten
 Azure Files verfügt über zwei Arten von Endpunkten für den Zugriff auf Azure-Dateifreigaben: 
@@ -400,7 +400,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Falls alles gut funktioniert hat, sollte die folgende Ausgabe angezeigt werden, wobei `192.168.0.5` die private IP-Adresse des privaten Endpunkts in Ihrem virtuellen Netzwerk ist:
+Falls alles gut funktioniert hat, sollte die folgende Ausgabe angezeigt werden, wobei `192.168.0.5` die private IP-Adresse des privaten Endpunkts in Ihrem virtuellen Netzwerk ist. Beachten Sie, dass Sie dennoch „storageaccount.file.core.windows.net“ verwenden sollten, um zu Ihrer Dateifreigabe im privatelink-Pfad zu zählen.
 
 ```Output
 Server:         127.0.0.53
@@ -418,7 +418,7 @@ Address: 192.168.0.5
 Sie können den Zugriff auf den öffentlichen Endpunkt mit den Firewalleinstellungen für das Speicherkonto einschränken. Im Allgemeinen beschränken die meisten Firewallrichtlinien für Speicherkonten den Netzwerkzugriff auf ein virtuelles Netzwerk (oder auf mehrere). Der Speicherkontozugriff kann auf zwei Arten auf ein virtuelles Netzwerk beschränkt werden:
 
 - [Erstellen eines oder mehrerer privater Endpunkte für das Speicherkonto](#create-a-private-endpoint) und Beschränken des gesamten Zugriffs auf den öffentlichen Endpunkt. Dadurch wird sichergestellt, dass nur von Datenverkehr aus den gewünschten virtuellen Netzwerken auf die Azure-Dateifreigaben im Speicherkonto zugegriffen werden kann.
-- Beschränken des öffentlichen Endpunkts auf ein einzelnes virtuelles Netzwerk (oder auf mehrere). Hierzu werden sogenannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Wenn Sie den Datenverkehr für ein Speicherkonto über einen Dienstendpunkt beschränken, erfolgt der Zugriff auf das Speicherkonto weiterhin über die öffentliche IP-Adresse.
+- Beschränken des öffentlichen Endpunkts auf ein einzelnes virtuelles Netzwerk (oder auf mehrere): Hierzu werden sogenannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Wenn Sie den Datenverkehr für ein Speicherkonto über einen Dienstendpunkt beschränken, erfolgt der Zugriff auf das Speicherkonto weiterhin über die öffentliche IP-Adresse.
 
 ### <a name="restrict-all-access-to-the-public-endpoint"></a>Einschränken des gesamten Zugriffs auf den öffentlichen Endpunkt
 Wenn der gesamte Zugriff auf den öffentlichen Endpunkt eingeschränkt ist, kann auf das Speicherkonto über die privaten Endpunkte weiterhin zugegriffen werden. Andernfalls werden gültige Anforderungen, die an den öffentlichen Endpunkt des Speicherkontos gesendet werden, abgelehnt. 
@@ -459,7 +459,7 @@ az storage account update \
 ---
 
 ### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Einschränken des Zugriffs auf den öffentlichen Endpunkt auf bestimmte virtuelle Netzwerke
-Wenn Sie das Speicherkonto auf bestimmte virtuelle Netzwerke einschränken, lassen Sie Anforderungen an den öffentlichen Endpunkt aus den angegebenen virtuellen Netzwerken zu. Hierfür werden so genannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Die Nutzung ist mit oder ohne private Endpunkte möglich.
+Wenn Sie das Speicherkonto auf bestimmte virtuelle Netzwerke einschränken, lassen Sie Anforderungen an den öffentlichen Endpunkt aus den angegebenen virtuellen Netzwerken zu. Hierzu werden sogenannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Die Nutzung ist mit oder ohne private Endpunkte möglich.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Navigieren Sie zu dem Speicherkonto, für das Sie den öffentlichen Endpunkt auf bestimmte virtuelle Netzwerke einschränken möchten. Wählen Sie im Inhaltsverzeichnis des Speicherkontos den Eintrag **Firewalls und virtuelle Netzwerke** aus. 
