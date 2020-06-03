@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584066"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021210"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -323,7 +323,7 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 
 ## <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
 
-Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](../../sql-database/sql-database-vcore-resource-limits-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Singletons), [SQL Database resource limits for elastic pools and pooled databases](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](../../sql-database/sql-database-managed-instance-resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
+Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](../../azure-sql/database/resource-limits-vcore-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Singletons), [SQL Database resource limits for elastic pools and pooled databases](../../azure-sql/database/resource-limits-vcore-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](../../azure-sql/managed-instance/resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
 
 ## <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 

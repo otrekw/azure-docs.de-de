@@ -7,12 +7,12 @@ ms.reviewer: yashesvi
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 2dadcac3c776feed5ee521284f6b244a050e83e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237937"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019995"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -168,7 +168,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 
 Kaufen eines Serviceplans:
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../sql-database/sql-database-reserved-capacity.md)
+- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../azure-sql/database/reserved-capacity-overview.md)
 - [Vorauszahlen für Azure Cosmos DB-Ressourcen mit reservierter Azure Cosmos DB-Kapazität](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 Kaufen eines Softwareplans:

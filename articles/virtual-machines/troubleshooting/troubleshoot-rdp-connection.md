@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: cbca8e631da8b99aa0ea4bdc6d099f3dbd2ed9b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c65161b6c0ffb0623260a9d896b10bf99eeeced2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77916607"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235575"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
@@ -46,7 +46,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
 Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen benötigen. Vergewissern Sie sich, dass lokale Netzwerkgeräte wie Router und Firewalls den ausgehenden TCP-Port 3389 nicht blockieren (siehe den Hinweis unter [Detaillierte RDP Problembehandlungsszenarien](detailed-troubleshoot-rdp.md)).
 
 > [!TIP]
-> Falls die Schaltfläche **Verbinden** für Ihren virtuellen Computer im Portal abgeblendet ist und keine [ExpressRoute](../../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, um RDP verwenden zu können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+> Falls die Schaltfläche **Verbinden** für Ihren virtuellen Computer im Portal abgeblendet ist und keine [ExpressRoute](../../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, um RDP verwenden zu können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../../virtual-network/public-ip-addresses.md).
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Behandlungsmöglichkeiten für RDP-Probleme

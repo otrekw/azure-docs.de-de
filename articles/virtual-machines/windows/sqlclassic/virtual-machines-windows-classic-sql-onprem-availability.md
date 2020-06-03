@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978047"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017578"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
 AlwaysOn-Verfügbarkeitsgruppen bieten Hochverfügbarkeit für Datenbankgruppen durch Hinzufügen sekundärer Replikate. Diese Replikate ermöglichen den Failover von Datenbanken bei Ausfällen. Darüber hinaus können Sie für das Auslagern von Lesearbeitslasten oder Sicherungsaufgaben verwendet werden.
@@ -90,7 +90,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
 Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Clientverbindungen mit den Replikaten erstellen. Listener leiten eingehende Verbindungen entweder an das primäre oder an ein schreibgeschütztes sekundäres Replikat weiter. Weitere Informationen zu Listenern finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Über die Verwendung des **Assistenten zum Hinzufügen von Azure-Replikaten** zum Erweitern Ihrer AlwaysOn-Verfügbarkeitsgruppe in Azure hinaus können Sie auch einen Teil Ihrer SQL Server-Workloads vollständig nach Azure auslagern. Informationen zum Einstieg finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+Über die Verwendung des **Assistenten zum Hinzufügen von Azure-Replikaten** zum Erweitern Ihrer AlwaysOn-Verfügbarkeitsgruppe in Azure hinaus können Sie auch einen Teil Ihrer SQL Server-Workloads vollständig nach Azure auslagern. Informationen zum Einstieg finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

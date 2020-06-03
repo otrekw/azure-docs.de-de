@@ -2,19 +2,19 @@
 title: Bereitstellen von ONNX und Treffen von Vorhersagen damit in Azure SQL Edge (Vorschau)
 description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, in Azure SQL Edge (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONNX-Modells PREDICT (nativ) für Daten ausführen.
 keywords: SQL Edge bereitstellen
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: f0b64dd9f752a2d574a04022c84eae05d9ff6445
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66e2fb663d14ed2590af9c0cc62e6dad119d086f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594659"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233261"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Bereitstellen eines ONNX-Modells und Treffen von Vorhersagen damit in Azure SQL Edge (Vorschau)
 
@@ -384,7 +384,7 @@ AS (
     )
 SELECT predict_input.id
     , p.variable1 AS MEDV
-FROM PREDICT(MODEL = @model, DATA = predict_input) WITH (variable1 FLOAT) AS p
+FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1 FLOAT) AS p
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
