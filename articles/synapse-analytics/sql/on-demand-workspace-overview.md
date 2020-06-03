@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 55ef72b23f804ce7fcdb339ba4c66bcefe39db46
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702042"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020811"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL On-Demand (Vorschauversion) in Azure Synapse Analytics 
 
@@ -110,7 +110,7 @@ SQL On-Demand bietet Mechanismen, um den Zugriff auf Ihre Daten zu schützen.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-Integration und Multi-Factor Authentication
 
-SQL On-Demand ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten über die [Azure Active Directory-Integration](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory (Azure AD) unterstützt die [mehrstufige Authentifizierung](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (Multi-Factor Authentication, MFA), um die Daten- und Anwendungssicherheit zu erhöhen, sowie einmaliges Anmelden.
+SQL On-Demand ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten über die [Azure Active Directory-Integration](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory (Azure AD) unterstützt die [mehrstufige Authentifizierung](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (Multi-Factor Authentication, MFA), um die Daten- und Anwendungssicherheit zu erhöhen, sowie einmaliges Anmelden.
 
 #### <a name="authentication"></a>Authentifizierung
 
