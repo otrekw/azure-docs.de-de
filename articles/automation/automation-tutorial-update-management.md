@@ -1,38 +1,28 @@
 ---
-title: Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
-description: Dieser Artikel enthält eine Übersicht über die Verwendung der Updateverwaltung von Azure Automation zum Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer und virtuellen Nicht-Azure-Computer.
+title: Verwalten von Updates und Patches für Ihre Azure-VMs in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung verwenden können, um Updates und Patches für Ihre Azure-VMs zu verwalten.
 services: automation
 ms.subservice: update-management
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604672"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829153"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
-Sie können die Updateverwaltungslösung verwenden, um Updates und Patches für Ihre virtuellen Computer zu verwalten. In diesem Tutorial wird beschrieben, wie Sie den Status der verfügbaren Updates schnell bewerten, die Installation der erforderlichen Updates planen, die Bereitstellungsergebnisse prüfen und eine Warnung erstellen, um sich zu vergewissern, dass die Updates erfolgreich angewendet werden.
+In diesem Artikel wird beschrieben, wie Sie das Azure Automation-Feature [Updateverwaltung](automation-update-management.md) verwenden können, um Updates und Patches für Ihre Azure-VMs zu verwalten. 
 
 Informationen zu den Preisen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/) unter „Updateverwaltung“.
 
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Anzeigen einer Updatebewertung
-> * Konfigurieren von Warnungen
-> * Planen einer Updatebereitstellung
-> * Anzeigen der Ergebnisse einer Bereitstellung
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
-
-* Aktivierte Lösung [Updateverwaltung](automation-update-management.md) für eine oder mehrere Ihrer VMs.
-* Einen [virtuellen Computer](../virtual-machines/windows/quick-create-portal.md), der integriert werden soll.
+* Aktiviertes Feature [Updateverwaltung](automation-update-management.md) für eine oder mehrere Ihrer VMs. 
+* Ein für die Updateverwaltung aktivierter [virtuellen Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -95,7 +85,7 @@ Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, wählen Sie unter **
 
 ## <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
 
-Planen Sie als Nächstes eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht, um Updates zu installieren. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
+Planen Sie eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht, um Updates zu installieren. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
 
 >[!NOTE]
 >Bei der Planung einer Updatebereitstellung wird eine [Zeitplanressource](shared-resources/schedules.md) erstellt. Diese wird mit dem Runbook **Patch-MicrosoftOMSComputers** verknüpft, das die Updatebereitstellung auf den Zielcomputern verarbeitet. Wenn Sie die Zeitplanressource nach der Bereitstellungserstellung über das Azure-Portal oder mithilfe von PowerShell löschen, wird die geplante Updatebereitstellung unterbrochen, und es wird ein Fehler angezeigt, wenn Sie versuchen, die Konfiguration der Zeitplanressource über das Portal zu ändern. Sie können die Zeitplanressource nur löschen, indem Sie den entsprechenden Bereitstellungszeitplan löschen.  
@@ -112,16 +102,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Wenn Sie **Computer** auswählen, wird die Bereitschaft des jeweiligen Computers in der Spalte **Update-Agent-Bereitschaft** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
 
-* **Updateklassifizierung**: Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen für alle Produkte ausgewählt.
-
-  Es gibt die folgenden Klassifizierungstypen:
-
-   |OS  |type  |
-   |---------|---------|
-   |Windows     | Kritische Updates</br>Sicherheitsupdates</br>Updaterollups</br>Feature Packs</br>Service Packs</br>Definitionsupdates</br>Tools</br>Aktualisierungen<br>Treiber        |
-   |Linux     | Kritische Updates und Sicherheitsupdates</br>Andere Updates       |
-
-   Beschreibungen der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-view-update-assessments.md#update-classifications).
+* **Updateklassifizierung**: Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen. Beschreibungen der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-view-update-assessments.md#work-with-update-classifications).
 
 * **Einzuschließende/auszuschließende Updates**: Öffnet die Seite „Einschließen/ausschließen“. Ein- bzw. auszuschließende Updates werden auf separaten Registerkarten anhand der jeweiligen KB-Artikel-ID angegeben. Wenn Sie eine oder mehrere ID-Nummern angeben, müssen Sie alle Klassifizierungen mit der Updatebereitstellung entfernen oder deaktivieren. Dadurch wird sichergestellt, dass bei der Angabe von Update-IDs keine anderen Updates in Ihrem Updatepaket enthalten sind.
 
@@ -131,7 +112,6 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 > [!NOTE]
 > Sie können keine Updates angeben, die für die Aufnahme in die Updatebereitstellung ersetzt wurden.
 >
-
 * **Zeitplaneinstellungen**: Der Bereich „Zeitplaneinstellungen“ wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie unter **Wiederholung** die Option **Einmal**. Übernehmen Sie den Standardwert „1 Tag“, und klicken Sie auf **OK**. Durch diese Einträge wird eine Zeitplanserie eingerichtet.
@@ -196,16 +176,4 @@ War Ihre Updatebereitstellung erfolgreich, erhalten Sie eine Bestätigungs-E-Mai
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Integrieren eines virtuellen Computers für die Updateverwaltung
-> * Anzeigen einer Updatebewertung
-> * Konfigurieren von Warnungen
-> * Planen einer Updatebereitstellung
-> * Anzeigen der Ergebnisse einer Bereitstellung
-
-Fahren Sie mit der Übersicht über die Lösung für die Updateverwaltung fort.
-
-> [!div class="nextstepaction"]
-> [Lösung für die Updateverwaltung](automation-update-management.md)
+* Weitere Informationen zur Updateverwaltung finden Sie unter [Übersicht über die Updateverwaltung](automation-update-management.md).

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371458"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747497"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrieren von Webdiensten aus Google Maps
 
@@ -56,7 +56,7 @@ Bei der Geocodierung wird eine Adresse in eine Koordinate konvertiert. Die Adres
 Azure Maps bietet mehrere Methoden zur Geocodierung von Adressen:
 
 - [**Freiform-Geocodierung von Adressen:** ](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) Geben Sie eine einzelne Adresszeichenfolge an, und verarbeiten Sie die Anforderung sofort. Ein Beispiel für eine einzelne Adresszeichenfolge wäre etwa „1 Microsoft Way, Redmond, WA“. Diese API wird zur schnellen Geocodierung einzelner Adressen empfohlen.
-- [**Strukturierte Geocodierung von Adressen:** ](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured) Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Diese API wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
+- [**Strukturierte Geocodierung von Adressen:** ](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured) Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land bzw. die Region und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Diese API wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
 - [**Batch-Geocodierung von Adressen:** ](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview) Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Adressen werden auf dem Server parallel geocodiert. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden. Dies wird für die Geocodierung großer Datasets empfohlen.
 - [**Fuzzysuche:** ](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) Diese API kombiniert die Geocodierung von Adressen mit der Suche nach Points of Interest (POI). Diese API akzeptiert eine Freiform-Zeichenfolge. Bei dieser Zeichenfolge kann es sich um eine Adresse, einen Ort, einen Orientierungspunkt, einen Point of Interest oder eine POI-Kategorie handeln. Die Anforderung wird von der API nahezu in Echtzeit verarbeitet. Diese API wird für Anwendungen empfohlen, in denen Benutzer für die Suche nach Adressen oder Points of Interest das gleiche Textfeld verwenden.
 - [**Batchfuzzysuche:** ](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview) Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, Orten, Orientierungspunkten oder Points of Interest, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
@@ -67,7 +67,7 @@ In der folgenden Tabelle werden die Parameter der Google Maps-API den vergleichb
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` und `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`: Stadt/Ort<br/>`municipalitySubdivision`: Umgebung, Vorort/Metropolenregion<br/>`countrySubdivision`: Bundesland oder Kanton<br/>`countrySecondarySubdivision`: Landkreis<br/>`countryTertiarySubdivision`: Verwaltungsbezirk<br/>`countryCode`: zweibuchstabiger Ländercode |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`: Stadt/Ort<br/>`municipalitySubdivision`: Umgebung, Vorort/Metropolenregion<br/>`countrySubdivision`: Bundesland oder Kanton<br/>`countrySecondarySubdivision`: Landkreis<br/>`countryTertiarySubdivision`: Verwaltungsbezirk<br/>`countryCode`: Länder-/Regionscode (zwei Ziffern) |
 | `key`                       | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](azure-maps-authentication.md). |
 | `language`                  | `language`: Lesen Sie auch die Dokumentation zu den [unterstützten Sprachen](supported-languages.md).  |
 | `region`                    | `countrySet`                       |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77914081"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747562"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrieren einer Web-App aus Google Maps
 
@@ -194,7 +194,7 @@ Eine ausführliche Dokumentation zum Einrichten und Verwenden des Azure Maps-Ka
 
 ### <a name="localizing-the-map"></a>Lokalisieren der Karte
 
-Wenn sich Ihre Zielgruppe über mehrere Länder erstreckt oder verschiedene Sprachen spricht, ist Lokalisierung ein wichtiger Punkt.
+Wenn sich Ihre Zielgruppe über mehrere Länder/Regionen erstreckt oder verschiedene Sprachen spricht, ist Lokalisierung ein wichtiger Punkt.
 
 **Vorher: Google Maps**
 
