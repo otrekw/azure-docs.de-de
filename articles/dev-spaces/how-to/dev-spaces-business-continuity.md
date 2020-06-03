@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces und Azure Kubernetes Services verwenden, um Geschäftskontinuität bereitzustellen und die Notfallwiederherstellung vorzubereiten.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295826"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996923"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Geschäftskontinuität und Notfallwiederherstellung in Azure Dev Spaces
 
@@ -26,14 +26,6 @@ Azure Dev Spaces ist ein Feature von Azure Kubernetes Service (AKS). Sie sollten
 Durch das Aktivieren von Dev Spaces für AKS-Cluster in verschiedenen Regionen können Sie Dev Spaces sofort nach dem Ausfall einer Azure-Region fortsetzen.
 
 Allgemeine Informationen zur Bereitstellung von AKS in mehreren Regionen finden Sie unter [Planen der Bereitstellung in mehreren Regionen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment).
-
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Aktivieren von Dev Spaces über das Azure-Portal
-
-Wählen Sie im Azure-Portal unterhalb der Einstellungen für die einzelnen Cluster die Menüoption **Dev Spaces** aus. Wählen Sie dann die Option zum Aktivieren von Dev Spaces aus, und speichern Sie.
-
-![Aktivieren von Dev Spaces über das Azure-Portal](../media/common/enable-dev-spaces.jpg)
-
-Wiederholen Sie diesen Vorgang für jeden Cluster.
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Aktivieren von Dev Spaces über die Azure CLI
 

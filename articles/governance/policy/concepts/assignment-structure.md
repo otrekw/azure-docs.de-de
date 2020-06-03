@@ -3,12 +3,12 @@ title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683215"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205040"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -75,7 +75,7 @@ Der **scope** der Zuweisung umfasst alle untergeordneten Ressourcencontainer und
 ## <a name="policy-definition-id"></a>Richtliniendefinitions-ID
 
 Dieses Feld muss der vollständige Pfadname einer Richtlinien- oder einer Initiativendefinition sein.
-`policyDefinitionId` ist eine Zeichenfolge und kein Array. Es wird empfohlen, stattdessen eine [Initiative](./definition-structure.md#initiatives) zu verwenden, wenn häufig mehrere Richtlinien gleichzeitig zugewiesen werden.
+`policyDefinitionId` ist eine Zeichenfolge und kein Array. Es wird empfohlen, stattdessen eine [Initiative](./initiative-definition-structure.md) zu verwenden, wenn häufig mehrere Richtlinien gleichzeitig zugewiesen werden.
 
 ## <a name="parameters"></a>Parameter
 
