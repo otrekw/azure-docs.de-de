@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120128"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853129"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 
@@ -50,12 +50,11 @@ Konfigurieren Sie die E-Mail-Adresse der gefährdeten Benutzers im **Azure-Porta
 Die wöchentliche Übersichts-E-Mail enthält eine Zusammenfassung der neuen Risikoerkennungen.  
 Sie hat folgenden Inhalt:
 
-- Gefährdete Benutzer
-- Verdächtige Aktivitäten
-- Erkannte Sicherheitsrisiken
+- Neue Benutzer mit Risiko erkannt
+- Neue Risikoanmeldungen erkannt (in Echtzeit)
 - Links zu verwandten Berichten in Identity Protection
 
-![Wöchentliche E-Mail mit Übersicht](./media/howto-identity-protection-configure-notifications/400.png)
+![Wöchentliche E-Mail mit Übersicht](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 Standardmäßig umfassen die Empfänger alle globalen Administratoren. Globale Administratoren können außerdem weitere globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte hinzufügen.
 

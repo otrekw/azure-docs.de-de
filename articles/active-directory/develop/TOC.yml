@@ -548,6 +548,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: Verhalten der Eingabeaufforderung
               href: msal-js-prompt-behavior.md
+            - name: Migrieren einer SPA von der impliziten Genehmigung zum Autorisierungscodeflow
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: MSAL für iOS und macOS
           items:
             - name: Unterschiede zwischen MSAL für iOS und macOS

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 04a900c98311f4e7dcccbfca93ea41e212308759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882096"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900310"
 ---
 # <a name="single-page-application-move-to-production"></a>Single-Page-Webanwendung: Überführen in die Produktion
 
@@ -40,7 +40,7 @@ Ausführliche Behandlung des Schnellstartbeispiels, wobei der Code zum Anmelden 
 Ein Beispiel, in dem veranschaulicht wird, wie Sie mit MSAL.js Token für Ihre eigene Back-End-Web-API abrufen können:
 
 > [!div class="nextstepaction"]
-> [SPA mit einem ASP.NET-Back-End](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+> [SPA mit einem ASP.NET-Back-End](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
 Beispiel für die Verwendung von MSAL.js zum Anmelden von Benutzern bei einer App, die bei Azure Active Directory B2C (Azure AD B2C) registriert ist:
 

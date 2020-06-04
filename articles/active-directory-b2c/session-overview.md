@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230792"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927036"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C-Sitzung
 
@@ -99,22 +99,20 @@ Auf die Abmeldeanforderung reagiert Azure AD B2C wie folgt:
    - SAML, wenn die Metadaten des Identitätsanbieters die `SingleLogoutService`-Adresse enthalten.
 1. Optional nimmt Azure AD B2C die Abmeldung bei anderen Anwendungen vor. Weitere Informationen finden Sie im Abschnitt [Einmaliges Abmelden](#single-sign-out).
 
-> [!NOTE]
-> Bei der Abmeldung wird zwar der SSO-Status des Benutzers bei Azure AD B2C gelöscht, der Benutzer wird möglicherweise jedoch nicht von seiner Sitzung beim Social Media-Identitätsanbieter abgemeldet. Wenn der Benutzer bei einer nachfolgenden Anmeldung den gleichen Identitätsanbieter auswählt, kann er sich möglicherweise ohne Eingabe seiner Anmeldeinformationen erneut authentifizieren. Wenn sich ein Benutzer von der Anwendung abmelden möchte, bedeutet dies nicht unbedingt, dass er sich auch vollständig von seinem Facebook-Konto abmelden möchte. Wenn jedoch lokale Konten verwendet werden, wird die Sitzung des Benutzers ordnungsgemäß beendet.
+Bei der Abmeldung wird zwar der SSO-Status des Benutzers bei Azure AD B2C gelöscht, der Benutzer wird möglicherweise jedoch nicht von seiner Sitzung beim Social Media-Identitätsanbieter abgemeldet. Wenn der Benutzer bei einer nachfolgenden Anmeldung den gleichen Identitätsanbieter auswählt, kann er sich möglicherweise ohne Eingabe seiner Anmeldeinformationen erneut authentifizieren. Wenn sich ein Benutzer von der Anwendung abmelden möchte, bedeutet dies nicht unbedingt, dass er sich auch vollständig von seinem Facebook-Konto abmelden möchte. Wenn jedoch lokale Konten verwendet werden, wird die Sitzung des Benutzers ordnungsgemäß beendet.
 
-### <a name="single-sign-out"></a>Einmaliges Abmelden
+### <a name="single-sign-out"></a>Einmaliges Abmelden 
+
+
+> [!NOTE]
+> Diese Funktion ist auf [benutzerdefinierte Richtlinien](custom-policy-overview.md) beschränkt.
 
 Wenn Sie den Benutzer zum Azure AD B2C-Abmeldeendpunkt (für OAuth2- und SAML-Protokolle) umleiten, löscht Azure AD B2C die Sitzung des Benutzers im Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD B2C für die Authentifizierung verwenden. Damit der Benutzer gleichzeitig auch bei diesen Anwendungen abgemeldet werden kann, sendet Azure AD B2C eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer aktuell angemeldet ist.
 
-Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine `LogoutUrl` im Code Ihrer Anwendung implementieren. Sie können die `LogoutUrl` im Azure-Portal festlegen:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie Ihre Azure AD B2C-Instanz aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken.
-1. Wählen Sie im linken Navigationsbereich **Azure AD B2C** > **App-Registrierungen** und dann Ihre Anwendung aus.
-1. Wählen Sie **Einstellungen** > **Eigenschaften** aus, und suchen Sie das Textfeld **Abmelde-URL**. 
-
+Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine `LogoutUrl` im Code Ihrer Anwendung implementieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum [Konfigurieren des Sitzungsverhaltens in Benutzerflows](session-behavior.md).
-- Informationen zum [Konfigurieren des Sitzungsverhaltens in benutzerdefinierten Richtlinien](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso).
+- Informationen zum [Konfigurieren des Sitzungsverhaltens in benutzerdefinierten Richtlinien](session-behavior-custom-policy.md).

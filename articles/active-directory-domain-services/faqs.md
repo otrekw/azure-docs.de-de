@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655349"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926968"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 
@@ -91,6 +91,7 @@ Ja. Jede verwaltete Azure AD Domain Services-Domäne enthält zwei Domänencont
 * [Kann ich DNS-Einträge in meiner verwalteten Domäne ändern oder hinzufügen?](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [Was ist die Richtlinie für die Kennwortgültigkeitsdauer in einer verwalteten Domäne?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Bietet Azure AD Domain Services Schutz durch Sperrung von AD-Konten?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Kann ich in Azure AD Domain Services ein verteiltes Dateisystem (Distributed File System, DFS) und Replikation konfigurieren?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Kann ich über Remotedesktop eine Verbindung zum Domänencontroller für meine verwaltete Domäne herstellen?
 Nein. Sie besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Mitglieder der *Administratorengruppe für Azure AD-Domänencontroller* können die verwaltete Domäne mithilfe von AD-Verwaltungstools wie dem Active Directory-Verwaltungscenter (Active Directory-Administration Center, ADAC) oder AD-PowerShell verwalten. Diese Tools werden mithilfe der *Remoteserver-Verwaltungstools* auf einem Windows-Server installiert, der der verwalteten Domäne beigetreten ist. Weitere Informationen finden Sie unter [Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure AD Domain Services-Domäne](tutorial-create-management-vm.md).
@@ -118,6 +119,9 @@ Die Standardlebensdauer von Kennwörtern in einer verwalteten Azure AD Domain Se
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Bietet Azure AD Domain Services Schutz durch Sperrung von AD-Konten?
 Ja. Wenn innerhalb von 2 Minuten fünf erfolglose Kennworteingaben in der verwalteten Domäne vorgenommen werden, wird das Benutzerkonto für 30 Minuten gesperrt. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt. Ungültige Kennworteingaben in der verwalteten Domäne sperren das Benutzerkonto in Azure AD nicht. Das Benutzerkonto wird nur in Ihrer verwalteten Azure AD Domain Services-Domäne gesperrt. Weitere Informationen finden Sie unter [Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen](password-policy.md).
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Kann ich in Azure AD Domain Services ein verteiltes Dateisystem (Distributed File System, DFS) und Replikation konfigurieren?
+Nein. Ein verteiltes Dateisystem (DFS) und die Replikation sind bei Verwendung von Azure AD Domain Services nicht verfügbar.
 
 ## <a name="billing-and-availability"></a>Abrechnung und Verfügbarkeit
 

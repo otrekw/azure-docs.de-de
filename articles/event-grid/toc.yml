@@ -194,6 +194,8 @@
           href: metrics.md
 - name: Anleitungen
   items:
+    - name: 'Erstellen, Anzeigen und Verwalten von Systemthemen'
+      href: create-view-manage-system-topics.md
     - name: Posten eines Beitrags in einem benutzerdefinierten Thema
       href: post-to-custom-topic.md
     - name: Abonnieren von Auth0-Ereignissen

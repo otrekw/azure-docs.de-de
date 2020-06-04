@@ -69,6 +69,8 @@
       items:
         - name: Startdiagnose
           href: boot-diagnostics.md
+        - name: 'Startfehler: Fehler beim Lesen des Datenträgers'
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker-Fehler
           href: troubleshoot-bitlocker-boot-error.md
         - name: Bluescreen-Fehler

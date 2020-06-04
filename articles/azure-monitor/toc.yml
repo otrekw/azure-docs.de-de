@@ -464,6 +464,8 @@
               href: platform/alerts-metric-logs.md
             - name: Verwenden der Resource Manager-Vorlage
               href: platform/alerts-metric-create-templates.md
+            - name: Behandeln von Problemen mit Metrikwarnungen
+              href: platform/alerts-troubleshoot-metric.md
         - name: Protokollwarnungsregeln
           items:
             - name: Konfigurieren von Warnungen für Analyseabfragen
@@ -992,10 +994,10 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Key Vault
-          href: insights/key-vaults-insights-overview.md
         - name: Netzwerke
           href: insights/network-insights-overview.md
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: Storage
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md
@@ -1096,6 +1098,7 @@
     - name: Arbeitsmappen
       items:
         - name: Übersicht
+          displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Visualisierungen
           href: platform/workbooks-visualizations.md

@@ -87,11 +87,11 @@
         - name: Registrieren eines SAML-Dienstanbieters
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Registrieren einer Graph-Anwendung
+        - name: "Registrieren einer Microsoft\_Graph-Anwendung"
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Hinzufügen einer Web-API-Anwendung
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Hinzufügen einer nativen Clientanwendung
           href: add-native-application.md
         - name: iOS ObjC mit App-Authentifizierung
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: Verweis
   items:
+    - name: App-Registrierungen
+      href: app-registrations-training-guide.md
     - name: Abrechnungsmodell
       href: billing.md
     - name: Codebeispiele

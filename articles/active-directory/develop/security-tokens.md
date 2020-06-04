@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584158"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115794"
 ---
 # <a name="security-tokens"></a>Sicherheitstoken
 
@@ -29,6 +29,9 @@ Ein **Zugriffstoken** ist ein Sicherheitstoken, das von einem [Autorisierungsser
 Zugriffstoken sind nur für kurze Zeit gültig, sodass Autorisierungsserver manchmal gleichzeitig mit dem Zugriffstoken auch ein **Aktualisierungstoken** ausstellen. Die Clientanwendung kann dann dieses Aktualisierungstoken bei Bedarf gegen ein neues Zugriffstoken austauschen. Weitere Informationen dazu, wie Microsoft Identity Platform Aktualisierungstoken zum Widerrufen von Berechtigungen verwendet, finden Sie unter [Widerrufen von Token](access-tokens.md#token-revocation).
 
 **ID-Token** werden als Teil eines [OpenID Connect](v2-protocols-oidc.md)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet. Weitere Informationen darüber, wie Microsoft Identity Platform ID-Token ausstellt, finden Sie unter [ID-Token](id-tokens.md).
+
+> [!NOTE]
+> In diesem Artikel werden Sicherheitstoken erläutert, die von den OAuth2- und OpenID Connect-Protokollen verwendet werden. Viele Unternehmensanwendungen verwenden SAML zum Authentifizieren von Benutzern. Weitere Informationen zu SAML-Assertionen finden Sie unter [Azure AD-SAML-Tokenreferenz](reference-saml-tokens.md).
 
 ## <a name="validating-security-tokens"></a>Überprüfen von Sicherheitstoken
 
@@ -43,9 +46,9 @@ Zugriffstoken werden als Bearertoken im `Authorization`-Header an eine Web-API �
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON Web Token (JWTs) und Ansprüche
 
-Microsoft Identity Platform implementiert Sicherheitstoken als **JSON Web Token (JWTs)** , die **Ansprüche** enthalten.
+Microsoft Identity Platform implementiert Sicherheitstoken als **JSON Web Token (JWTs)** , die **Ansprüche** enthalten. Da JWT-Token als Sicherheitstoken verwendet werden, wird diese Art der Authentifizierung manchmal auch als **JWT-Authentifizierung** bezeichnet.
 
-Ein [Anspruch](developer-glossary.md#claim) stellt Assertionen zu einer Entität (z. B. Clientanwendung oder [Ressourcenbesitzer](developer-glossary.md#resource-owner)) für eine andere Entität (z. B. Ressourcenserver) bereit.
+Ein [Anspruch](developer-glossary.md#claim) stellt Assertionen zu einer Entität (z. B. Clientanwendung oder [Ressourcenbesitzer](developer-glossary.md#resource-owner)) für eine andere Entität (z. B. Ressourcenserver) bereit. Ein Anspruch kann auch als JWT-Anspruch bzw. JSON-Web-Token-Anspruch bezeichnet werden.
 
 Ansprüche sind Name-Wert-Paare zur Weitergabe von Informationen zum Tokenantragsteller. Ein Anspruch kann beispielsweise Informationen zum Sicherheitsprinzipal enthalten, der vom Autorisierungsserver authentifiziert wurde. Welche Ansprüche in einem Token enthalten sind, hängt von verschiedenen Dingen ab. Hierzu zählen unter anderem die Art des Tokens, die Art der Anmeldeinformationen für die Authentifizierung des Antragstellers und die Anwendungskonfiguration.
 

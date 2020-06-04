@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74380011"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981772"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff? 
 
 Mit Richtlinien für bedingten Zugriff können Sie Zugriffsanforderungen für Websites und Dienste angeben. Ihre Zugriffsanforderungen können beispielsweise die Multi-Factor Authentication (MFA) oder [verwaltete Geräte](require-managed-devices.md) umfassen. 
 
-Wenn Sie direkt auf eine Site oder einen Dienst zugreifen, kann die Auswirkung einer zugehörigen Richtlinie normalerweise leicht bewertet werden. Falls Sie beispielsweise über eine Richtlinie verfügen, für die eine MFA-Konfiguration für SharePoint Online benötigt wird, wird MFA für jede Anmeldung am SharePoint-Webportal erzwungen. Es ist aber nicht immer einfach, die Auswirkung einer Richtlinie zu bewerten, weil Cloud-Apps mit Abhängigkeiten von anderen Cloud-Apps vorhanden sind. Beispielsweise kann Microsoft Teams den Zugriff auf Ressourcen in SharePoint Online ermöglichen. Wenn Sie in Ihrem aktuellen Szenario also auf Microsoft Teams zugreifen, unterliegen Sie auch der SharePoint-MFA-Richtlinie.   
+Wenn Sie direkt auf eine Site oder einen Dienst zugreifen, kann die Auswirkung einer zugehörigen Richtlinie normalerweise leicht bewertet werden. Wenn Sie beispielsweise über eine Richtlinie verfügen, die eine Multi-Factor Authentication für SharePoint Online erfordert, wird MFA bei jeder Anmeldung am SharePoint-Webportal erzwungen. Es ist aber nicht immer einfach, die Auswirkung einer Richtlinie zu bewerten, weil Cloud-Apps mit Abhängigkeiten von anderen Cloud-Apps vorhanden sind. Beispielsweise kann Microsoft Teams den Zugriff auf Ressourcen in SharePoint Online ermöglichen. Wenn Sie in Ihrem aktuellen Szenario also auf Microsoft Teams zugreifen, unterliegen Sie auch der SharePoint-MFA-Richtlinie. 
+
+> [!TIP]
+> Mithilfe der App [Office 365 (Vorschau)](concept-conditional-access-cloud-apps.md#office-365-preview) werden alle Office-Apps als Ziel verwendet, um Probleme mit Dienstabhängigkeiten im Office-Stack zu vermeiden.
 
 ## <a name="policy-enforcement"></a>Durchsetzung von Richtlinien 
 
@@ -36,6 +39,8 @@ In der Abbildung unten sind MS Teams-Dienstabhängigkeiten dargestellt. Durchgeh
 ![MS Teams-Dienstabhängigkeiten](./media/service-dependencies/01.png)
 
 Die bewährte Methode besteht darin, für alle zugehörigen Apps und Dienste nach Möglichkeit immer gemeinsame Richtlinien festzulegen. Ein einheitlicher Sicherheitsstatus sorgt für die bestmögliche Benutzererfahrung. Wenn Sie beispielsweise eine gemeinsame Richtlinie für Exchange Online, SharePoint Online, Microsoft Teams und Skype for Business festlegen, werden unerwartete Eingabeaufforderungen, die sich aus der Anwendung unterschiedlicher Richtlinien auf Downstreamdienste ergeben können, deutlich reduziert. 
+
+Eine gute Möglichkeit, dies mit Anwendungen im Office-Stack zu erreichen, besteht darin, anstelle einzelner Anwendungen [Office 365 (Vorschau)](concept-conditional-access-cloud-apps.md#office-365-preview) zu verwenden.
 
 In der Tabelle unten sind die zusätzlichen Dienstabhängigkeiten aufgeführt, die von den Client-Apps erfüllt werden müssen.  
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535960"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871540"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
@@ -37,13 +37,31 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den Änderungen, die in der Produktionsumgebung bestehen oder eingeführt werden.
 
+## <a name="may-2020"></a>Mai 2020
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Government-Endpunkte werden geändert
+
+**Gültigkeitsdatum:** 5. Mai (Fertigstellung Juni 2020) 
+
+**Betroffene Endpunkte:** All
+
+**Betroffenes Protokoll:** Alle Flows
+
+Am 1. Juni 2018 hat sich die offizielle Azure Active Directory (AAD)-Autorität für Azure Government von `https://login-us.microsoftonline.com` in `https://login.microsoftonline.us` geändert. Diese Änderung gilt auch für Microsoft 365 GCC High und DoD, die ebenfalls von Azure Government AAD bedient werden. Wenn Sie eine Anwendung in einem US Government-Mandanten besitzen, müssen Sie Ihre Anwendung aktualisieren, damit die Benutzer am `.us`-Endpunkt angemeldet werden.  
+
+Ab dem 5. Mai wird in Azure AD mit der Durchsetzung der Endpunktänderung begonnen. Government-Benutzer werden daran gehindert, sich mit dem öffentlichen Endpunkt (`microsoftonline.com`) bei in US Government-Mandanten gehosteten Apps anzumelden.  Bei betroffenen Apps wird der Fehler `AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` angezeigt. Dieser Fehler weist darauf hin, dass die App versucht, einen US Government-Benutzer beim öffentlichen Cloudendpunkt anzumelden. Wenn sich Ihre App in einem Mandanten in der öffentlichen Cloud befindet und US Government-Benutzer unterstützen soll, müssen Sie [Ihre App zur expliziten Unterstützung aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Dies setzt möglicherweise das Erstellen einer neuen App-Registrierung in der US Government-Cloud voraus. 
+
+Die Erzwingung dieser Änderung erfolgt über einen schrittweisen Rollout, der sich danach richtet, wie oft sich Benutzer der US Government-Cloud bei der Anwendung anmelden. Bei Apps, die US Government-Benutzer eher selten anmelden, erfolgt die Durchsetzung zuerst. Apps, die US Government-Benutzer sehr häufig anmelden, sind zuletzt von der Durchsetzung betroffen. Wir gehen davon aus, dass die Erzwingung für alle Apps im Juni 2020 abgeschlossen ist. 
+
+Weitere Einzelheiten finden Sie im [Azure Government-Blogbeitrag zu dieser Migration](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/). 
+
 ## <a name="march-2020"></a>März 2020
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Benutzerkennwörter werden auf 256 Zeichen beschränkt.
 
 **Gültigkeitsdatum:** 13. März 2020
 
-**Betroffene Endpunkte:** v1.0 und v2.0
+**Betroffene Endpunkte:** All
 
 **Betroffenes Protokoll:** Alle Benutzerflows
 
