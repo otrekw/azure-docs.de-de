@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372083"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198670"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Speech-Diensts
 
@@ -22,7 +22,7 @@ Mit dem Speech-Dienst werden Ihre Daten beim Speichern in der Cloud automatisch 
 
 ## <a name="about-cognitive-services-encryption"></a>Informationen zur Cognitive Services-Verschlüsselung
 
-Daten werden mittels [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2)-konformer [256-Bit-AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)-Verschlüsselung ver- und entschlüsselt. Verschlüsselung und Entschlüsselung sind transparent, was bedeutet, dass die Verschlüsselung und der Zugriff für Sie verwaltet werden. Ihre Daten werden standardmäßig geschützt, und Sie müssen weder Code noch Anwendungen ändern, um die Verschlüsselung nutzen zu können.
+Daten werden mittels [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2)-konformer [256-Bit-AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)-Verschlüsselung ver- und entschlüsselt. Verschlüsselung und Entschlüsselung sind transparent, was bedeutet, dass die Verschlüsselung und der Zugriff für Sie verwaltet werden. Ihre Daten werden standardmäßig geschützt, und Sie müssen weder Code noch Anwendungen ändern, um die Verschlüsselung nutzen zu können.
 
 ## <a name="about-encryption-key-management"></a>Informationen zur Verwaltung von Verschlüsselungsschlüsseln
 
@@ -42,13 +42,10 @@ Um Zugriff auf Bring Your Own Storage anzufordern, füllen Sie das  [Formular 
 > [!IMPORTANT]
 > Wenn Sie vom System zugewiesene verwaltete Identitäten deaktivieren, wird der Zugriff auf das Speicherkonto entfernt. Dies führt dazu, dass die Teile des Speech-Diensts nicht mehr funktionieren, die Zugriff auf das Speicherkonto benötigen.  
 
-## <a name="regional-availability"></a>Regionale Verfügbarkeit
+Der Sprachdienst unterstützt zurzeit keine Kunden-Lockbox. Kundendaten können jedoch mithilfe von BYOS gespeichert werden, sodass Sie eine ähnliche Datenkontrolle wie bei [Kunden-Lockbox](../../security/fundamentals/customer-lockbox-overview.md) erreichen können. Bedenken Sie, dass Daten des Sprachdiensts in der Region verarbeitet werden und verbleiben, in der die Speech-Ressource erstellt wurde. Dies betrifft alle Daten, sowohl ruhende Daten als auch übertragene Daten. Bei der Verwendung von Anpassungsfunktionen wie Custom Speech und Custom Voice werden alle Kundendaten in der gleichen Region übertragen, gespeichert und verarbeitet, in der Ihr BYOS (sofern verwendet) und die Sprachdienstressource gespeichert sind.
 
-BYOS ist derzeit in den folgenden Regionen verfügbar:
-
-* USA, Süden-Mitte
-* USA, Westen 2
-* East US
+> [!IMPORTANT]
+> Microsoft verwendet **keine** Kundendaten zur Verbesserung seiner Sprachmodelle. Wenn darüber hinaus die Endpunktprotokollierung deaktiviert ist und keine Anpassungen verwendet werden, werden keine Kundendaten gespeichert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

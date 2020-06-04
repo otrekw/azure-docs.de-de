@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: dd5748cf8afe19a49e5ea406aea9b558432eeaf3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82802135"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202045"
 ---
 # <a name="what-is-a-keyword"></a>Was ist ein Schlüsselwort?
 
@@ -31,26 +31,15 @@ Mit den Features für Anpassung, Leistung und Integration von Custom Keyword kö
 | Schlüsselwortüberprüfung | Wenn ein hohes Vertrauen dahingehend besteht, dass das Schlüsselwort lokal erkannt wurde, werden Audiodaten zur weiteren Überprüfung, ob ein Benutzer das Schlüsselwort gesagt hat, in die Cloud gesendet. Die Schlüsselwortüberprüfung bietet eine zusätzliche Sicherheitsebene, indem sie die Auswirkungen einer fehlerhaften lokalen Erkennung reduziert und die Privatsphäre der Benutzer schützt.
 | Integration von Sprach-Assistent und Speech SDK | Über Custom Keyword in Speech Studio generierte Schlüsselwörter können einfach über das Speech SDK in Ihr Gerät oder Ihre Anwendung integriert werden. Verweisen Sie einfach das SDK auf das von Speech Studio bereitgestellte Schlüsselwortmodell, und Ihr Produkt wird per Sprache aktiviert, unterstützt durch eine Schlüsselwortüberprüfung. Sie können die Spracherlebnisse Ihres Produkts vervollständigen, indem Sie Ihren eigenen [Sprach-Assistenten](voice-assistants.md) erstellen.
 
-## <a name="sample-code"></a>Beispielcode
+## <a name="get-started-with-custom-keywords"></a>Erste Schritte mit benutzerdefinierten Schlüsselwörtern
 
-Beispielcode für die Integration eines Schlüsselwortmodells ist auf GitHub verfügbar. Diese Beispiele decken die Clientanwendung für die Integration Ihres Schlüsselworts in mehrere gängige Programmiersprachen ab.
-
-* [Tutorial: Sprachaktivierung für Ihr Produkt mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples)
-
-## <a name="tutorial"></a>Lernprogramm
-
-* Informationen zum [Erstellen eines benutzerdefinierten Schlüsselworts mithilfe von Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws).
-* Informationen zur [Sprachaktivierung Ihres Produkts mit dem Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md).
-
-## <a name="reference-docs"></a>Referenz
-
-* [Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-kws-guidelines)
-* [Speech SDK](speech-sdk-reference.md)
+* Tutorial: Informationen zum [Erstellen eines benutzerdefinierten Schlüsselworts mithilfe von Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws).
+* Tutorial: Gewusst wie: [Sprachaktivierung für Ihr Produkt mit dem Speech SDK und C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* Schnellstart: [Erkennen von Schlüsselwörtern mit dem Speech SDK auf der Universellen Windows-Plattform mithilfe von C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* Schnellstart: [Erkennen von Schlüsselwörtern mit dem Speech SDK unter Android mithilfe von Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Speech-Diensts](get-started.md)
-* [Erstellen eines benutzerdefinierten Schlüsselworts](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
 * [Abrufen des Speech SDK](speech-sdk.md)
 * [Weitere Informationen zu Sprach-Assistenten](voice-assistants.md)

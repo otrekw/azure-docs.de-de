@@ -190,6 +190,18 @@
               href: storage-blob-reserved-capacity.md
             - name: Planen und Verwalten von Kosten
               href: ../common/storage-plan-manage-costs.md
+            - name: Skalierbarkeits- und Leistungsziele
+              items:
+                - name: Blob Storage
+                  href: scalability-targets.md
+                - name: Standardspeicherkonten
+                  href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Blockblobspeicher mit Premium-Leistung
+                  href: scalability-targets-premium-block-blobs.md
+                - name: Seitenblobspeicher mit Premium-Leistung
+                  href: scalability-targets-premium-page-blobs.md
+                - name: Speicherressourcenanbieter
+                  href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Parallelität
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Finden, Suchen und Verstehen von Blobdaten'
@@ -473,60 +485,8 @@
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Verweis
       items:
-        - name: Skalierbarkeits- und Leistungsziele
-          items:
-            - name: Blob Storage
-              href: scalability-targets.md
-            - name: Standardspeicherkonten
-              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Blockblobspeicher mit Premium-Leistung
-              href: scalability-targets-premium-block-blobs.md
-            - name: Seitenblobspeicher mit Premium-Leistung
-              href: scalability-targets-premium-page-blobs.md
-            - name: Speicherressourcenanbieter
-              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure PowerShell
-          href: /powershell/module/az.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
-        - name: .NET
-          items:
-            - name: Blobs (Version 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Datenverschiebung
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Speicherressourcenanbieter
-              href: /dotnet/api/overview/azure/storage/management
-        - name: Java
-          items:
-            - name: Blobs (Version 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Blobs (Version 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Speicherressourcenanbieter
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (Version 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (Version 12.x)
-          href: /python/api/azure-storage-blob/
-        - name: REST
-          items:
-            - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
-              href: /rest/api/storageservices
-            - name: Speicherressourcenanbieter
-              href: /rest/api/storagerp
-            - name: Importieren/Exportieren
-              href: /rest/api/storageimportexport
-        - name: C++
-          href: 'https://azure.github.io/azure-storage-cpp'
-        - name: Ruby
-          href: 'https://azure.github.io/azure-storage-ruby'
-        - name: PHP
-          href: 'https://azure.github.io/azure-storage-php/'
-        - name: iOS
-          href: 'https://azure.github.io/azure-storage-ios/'
-        - name: Android
-          href: 'https://azure.github.io/azure-storage-android'
+        - name: Azure Blob Storage-Referenz
+          href: ../blobs/reference.md
         - name: AzCopy v10
           items:
             - name: azcopy

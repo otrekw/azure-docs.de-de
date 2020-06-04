@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 020c25dfb17f733359e596100cfd24cfa3f68036
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839163"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648562"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -195,21 +195,19 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>Suchen der Website-URL über das Azure-Portal
+<a id="portal-find-url" />
+
+## <a name="find-the-website-url"></a>Suchen der Website-URL
 
 Mit der öffentlichen URL der Website können Sie die Seiten Ihrer Website in einem Browser anzeigen.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 Wählen Sie in dem Bereich, der neben der Übersichtsseite für Ihr Speicherkonto angezeigt wird, die Option **Statische Website** aus. Die URL Ihrer Website wird im Feld **Primärer Endpunkt** angezeigt.
 
 ![Metriken von statischen Websites in Azure Storage: Metrik](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-<a id="cli-find-url" />
 
 Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befehl:
 
@@ -222,8 +220,6 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befehl:
 

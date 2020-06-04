@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
-ms.openlocfilehash: afa197c83b4f66f12863de4185ef7763447f3ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf1b79c1b5d7b9dfd93b354c6b6ff5a512bb74a5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75453365"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858235"
 ---
 # <a name="how-to-add-a-confirmation-to-a-custom-command-preview"></a>Anleitung: Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl (Vorschau)
 
@@ -24,98 +24,103 @@ In diesem Artikel erfahren Sie, wie Sie einem Befehl eine Bestätigung hinzufüg
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie müssen die Schritte in den folgenden Artikeln durchgeführt haben:
-
-- [Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)](./quickstart-custom-speech-commands-create-new.md)
-- [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class="checklist"]
+> *  [Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)](./quickstart-custom-speech-commands-create-new.md)
+> * [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-setalarm-command"></a>Erstellen eines SetAlarm-Befehls
 
-Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem der Benutzer einen Alarm festlegen kann.
+Um Bestätigungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem der Benutzer einen Alarm festlegen kann.
 
 1. Öffnen Sie Ihre zuvor erstellte Anwendung für benutzerdefinierte Befehle in [Speech Studio](https://speech.microsoft.com/).
-1. Erstellen eines neuen Befehls vom Typ **SetAlarm**
-1. Hinzufügen eines Parameters mit dem Namen „DateTime“
+1. Erstellen Sie einen neuen Befehl `SetAlarm`.
+1. Fügen Sie einen Parameter mit der Bezeichnung `DateTime` und der folgenden Konfiguration hinzu.
 
-   | Einstellung           | Vorgeschlagener Wert                                          | BESCHREIBUNG                                                                                      |
-   | ----------------- | ---------------------------------------------------------| ------------------------------------------------------------------------------------------------ |
-   | Name              | Datetime                                                 | Ein aussagekräftiger Name für Ihren Befehlsparameter.                                                    |
-   | Erforderlich          | true                                                     | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist. |
-   | Antwortvorlage | "- What time?" (Welche Uhrzeit)                                           | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                              |
-   | type              | Datetime                                                 | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                      |
-   | Datumsstandardwerte     | If date is missing use today (Bei fehlendem Datum heutiges Datum verwenden)                             |                                                                                                  |
-   | Uhrzeitstandardwerte     | If time is missing use start of day (Bei fehlender Uhrzeit Tagesbeginn verwenden)                      |                                                                                                  | 
+   | Einstellung                           | Vorgeschlagener Wert                     |  BESCHREIBUNG                 |
+   | --------------------------------- | -----------------------------------------------------| ------------|
+   | Name                              | Datetime                                | Ein aussagekräftiger Name für den Parameter                                |
+   | Erforderlich                          | Aktiviert                                 | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist. |
+   | Antwort auf erforderlichen Parameter   | Einfacher Editor > Welche Uhrzeit?                              | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist. |
+   | type                              | Datetime                                | Der Typ des Parameters, z. B. Zahl, Zeichenfolge, Datum/Uhrzeit oder Geografie.   |
+   | Datumsstandardwerte                     | If date is missing use today (Bei fehlendem Datum heutiges Datum verwenden)            | Der Standardwert der zu verwendenden Variablen, falls nicht vom Benutzer angegeben.  |  
+   | Uhrzeitstandardwerte                     | If time is missing use start of day (Bei fehlender Uhrzeit Tagesbeginn verwenden)     |  Der Standardwert der zu verwendenden Variablen, falls nicht vom Benutzer angegeben.|
 
-1. Hinzufügen einiger Beispielsätze
+1. Fügen Sie einige Beispielsätze hinzu.
    
-   ```
+    ```
     set an alarm for {DateTime}
     set alarm {DateTime}
     alarm for {DateTime}
    ```
 
-1. Hinzufügen einer Vervollständigungsregel zur Bestätigung des Ergebnisses
+1. Fügen Sie eine Vervollständigungsregel hinzu, um das Ergebnis zu bestätigen.
 
-   | Einstellung    | Vorgeschlagener Wert                                         | BESCHREIBUNG                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Regelname  | Set alarm (Alarm festlegen)                                               | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Aktionen    | SpeechResponse - "- Ok, alarm set for {DateTime}" (SpeechResponse: "- OK, Alarm festgelegt für {DateTime}")       | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+   | Einstellung    | Vorgeschlagener Wert                               |BESCHREIBUNG                                     |
+   | ---------- | ------------------------------------------------------- |-----|
+   | Regelname  | Set alarm (Alarm festlegen)                                               |    Ein Name, der den Zweck der Regel beschreibt. |
+   | Aktionen    | Sprachantwort senden: „OK, Alarm festgelegt auf {DateTime}“    |Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true).
 
 ## <a name="try-it-out"></a>Ausprobieren
 
-Wählen Sie den Testbereich aus, und testen Sie einige Interaktionen.
+1. Wählen Sie das `Train`-Symbol aus, das oben im rechten Bereich angezeigt wird.
 
-- Eingabe: Set alarm for tomorrow at noon (Alarm für morgen Mittag festlegen)
-- Ausgabe: „Ok, alarm set for 12/06/2019 12:00:00“ (OK, Alarm für 06.12.2019 12 Uhr festgelegt)
-
-- Eingabe: Set an alarm (Alarm festlegen)
-- Ausgabe: "What time?" (Welche Uhrzeit)
-- Eingabe: 5pm (17 Uhr)
-- Ausgabe: "Ok, alarm set for 12/05/2019 17:00:00" (OK, Alarm für 05.12.2019 17 Uhr festgelegt)
+1. Nachdem das Training abgeschlossen ist, wählen Sie `Test` aus.
+    - Eingabe: Set alarm for tomorrow at noon (Alarm für morgen Mittag festlegen)
+    - Ausgabe: „Ok, alarm set for 2020-05-02 12:00:00“ (OK, Alarm für 02.05.2020 12 Uhr festgelegt)
+    - Eingabe: Set an alarm (Alarm festlegen)
+    - Ausgabe: „What time?“ (Welche Uhrzeit)
+    - Eingabe: 5pm (17 Uhr)
+    - Ausgabe: „Ok, alarm set for 2020-05-01 17:00:00“ (OK, Alarm für 01.05.2020 17 Uhr festgelegt)
 
 ## <a name="add-the-advanced-rules-for-confirmation"></a>Hinzufügen der erweiterten Regeln für die Bestätigung
 
-1. Fügen Sie eine erweiterte Regeln für die Bestätigung hinzu. 
+Bestätigungen werden durch das Hinzufügen von Interaktionsregeln erreicht.
 
-    Diese Regel fordert den Benutzer dazu auf, das Datum und die Uhrzeit des Alarms zu bestätigen, und erwartet beim nächsten Turn eine Bestätigung (ja/nein).
+1. Fügen Sie dem vorhandenen Befehl `SetAlarm` eine **Interaktionsregel** hinzu, indem Sie das `+Add`-Symbol im mittleren Bereich und dann **Interaktionsregeln** -> **Befehl bestätigen** auswählen.
+
+    Diese Regel fordert den Benutzer dazu auf, das Datum und die Uhrzeit des Alarms zu bestätigen, und erwartet im nächsten Durchgang eine Bestätigung (ja/nein).
 
    | Einstellung               | Vorgeschlagener Wert                                                                  | BESCHREIBUNG                                        |
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
    | Regelname             | Confirm date time (Datum und Uhrzeit bestätigen)                                                                | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Bedingungen            | Required Parameter - DateTime (Erforderlicher Parameter: DateTime)                                                    | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
-   | Aktionen               | SpeechResponse - "- Are you sure you want to set an alarm for {DateTime}?" (SpeechResponse: "- Möchten Sie einen Alarm für {DateTime} festlegen?")       | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
-   | Status nach der Ausführung | Warten auf Eingabe                                                                   | Status für den Benutzer nach dem Turn                  |
-   | Erwartungen          | Bestätigung                                                                     | Erwartung für den nächsten Turn                      |
+   | Bedingungen            | Required Parameter > DateTime (Erforderlicher Parameter > DateTime)                                                    | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
+   | Aktionen               | Sprachantwort senden > „Are you sure you want to set an alarm for {DateTime}?“ (Möchten Sie einen Alarm für {DateTime} festlegen?)     | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+   | Erwartungen          | Erwartete Bestätigung vom Benutzer                                                 | Erwartung für den nächsten Turn                      |
+   | Status nach der Ausführung  | Auf Benutzereingabe warten                                                            | Status für den Benutzer nach dem Turn                  |
+  
+      > [!div class="mx-imgBorder"]
+      > ![Antwort für erforderlichen Parameter erstellen](media/custom-speech-commands/add-validation-set-temperature.png)
 
-1. Fügen Sie eine erweiterte Regel hinzu, um eine erfolgreiche Bestätigung (Benutzer hat mit „ja“ reagiert) zu verarbeiten
+1. Fügen Sie eine weitere Interaktionsregel hinzu, um eine erfolgreiche Bestätigung (Benutzer hat mit „Ja“ reagiert) zu verarbeiten
 
    | Einstellung               | Vorgeschlagener Wert                                                                  | BESCHREIBUNG                                        |
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
    | Regelname             | Accepted confirmation (Akzeptierte Bestätigung)                                                            | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Bedingungen            | SuccessfulConfirmation & Required Parameter - DateTime (SuccessfulConfirmation und erforderlicher Parameter: DateTime)                           | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
-   | Status nach der Ausführung | Ready for Completion (Zum Abschluss bereit)                                                             | Status des Benutzers nach dem Turn                   |
+   | Bedingungen            | Die Bestätigung war erfolgreich und erforderlicher Parameter > DateTime                      | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
+   | Status nach der Ausführung | Fügen Sie Vervollständigungsregeln aus                                                          | Status des Benutzers nach dem Turn                   |
 
 1. Fügen Sie eine erweiterte Regel hinzu, um eine abgelehnte Bestätigung (Benutzer hat mit „nein“ reagiert) zu verarbeiten
 
    | Einstellung               | Vorgeschlagener Wert                                                                  | BESCHREIBUNG                                        |
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
-   | Regelname             | Denied confirm (Abgelehnte Bestätigung)                                                                   | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Bedingungen            | DeniedConfirmation & Required Parameter - DateTime (DeniedConfirmation und erforderlicher Parameter: DateTime)                               | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
-   | Aktionen               | ClearParameter - DateTime & SpeechResponse - "- No problem, what time then?" (ClearParameter: DateTime und SpeechResponse: "- Kein Problem, welche Uhrzeit?")     | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+   | Regelname             | Bestätigung abgelehnt                                                                   | Ein Name, der den Zweck der Regel beschreibt.          |
+   | Bedingungen            | Die Bestätigung wurde abgelehnt und erforderlicher Parameter > DateTime                               | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |   
+   | Aktionen               | Parameterwert löschen > DateTime und Sprachantwort senden > „Kein Problem, welche Zeit stattdessen?“  | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
    | Status nach der Ausführung | Warten auf Eingabe                                                                   | Status des Benutzers nach dem Turn                   |
-   | Erwartungen          | ElicitParameters - DateTime                                                      | Erwartung für den nächsten Turn                      |
+   | Erwartungen          | Es werden Parametereingaben vom Benutzer erwartet > DateTime                           | Erwartung für den nächsten Turn                      |
 
-## <a name="try-it-out"></a>Ausprobieren
+## <a name="try-out-the-changes"></a>Testen der Änderungen
 
-Wählen Sie den Testbereich aus, und testen Sie einige Interaktionen.
+Wählen Sie `Train` aus, warten Sie auf den Abschluss des Trainings, und wählen Sie `Test` aus.
 
 - Eingabe: Set alarm for tomorrow at noon (Alarm für morgen Mittag festlegen)
-- Ausgabe: "Are you sure you want to set an alarm for 12/07/2019 12:00:00?" (Möchten Sie einen Alarm für 07.12.2019 12 Uhr festlegen?)
+- Ausgabe: „Are you sure you want to set an alarm for 2020-05-02 12:00:00?“ (Möchten Sie einen Alarm für 02.05.2020 12 Uhr festlegen?)
 - Eingabe: Nein
-- Ausgabe: "No problem, what time then?" (Kein Problem, welche Uhrzeit?)
+- Ausgabe: „No problem, what time then?“ (Kein Problem, welche Zeit stattdessen?)
 - Eingabe: 5pm (17 Uhr)
-- Ausgabe: "Are you sure you want to set an alarm for 12/06/2019 17:00:00?" (Möchten Sie einen Alarm für 06.12.2019 17 Uhr festlegen?)
+- Ausgabe: „Are you sure you want to set an alarm for 2020-05-01 17:00:00?“ (Möchten Sie einen Alarm für den 01.05.2020 17 Uhr festlegen?)
 - Eingabe: Ja
-- Ausgabe: "Ok, alarm set for 12/06/2019 17:00:00" (OK, Alarm für 06.12.2019 17 Uhr festgelegt)
+- Ausgabe: „Ok, alarm set for 2020-05-01 17:00:00“ (OK, Alarm für 01.05.2020 17 Uhr festgelegt)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

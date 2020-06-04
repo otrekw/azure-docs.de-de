@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8896aba104a99d323b3c39cfaeab6043d1c12f9d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537694"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832009"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -20,7 +20,7 @@ ms.locfileid: "81537694"
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung der Azure-Dateisynchronisierung mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
 1. Im Abschnitt „Kommentare“ dieses Artikels.
-2. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+2. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 
 4. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 
@@ -68,7 +68,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="redundancy-options"></a>
   **Welche Speicherredundanzoptionen werden von Azure Files unterstützt?**  
-    Azure Files unterstützt derzeit lokal redundanten Speicher (LRS), zonenredundanten Speicher (ZRS), georedundanten Speicher (GRS) und geozonenredundanten Speicher (GZRS) (Vorschau). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
+    Azure Files unterstützt derzeit lokal redundanten Speicher (LRS), zonenredundanten Speicher (ZRS), georedundanten Speicher (GRS) und geozonenredundanten Speicher (GZRS). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
 
 * <a id="tier-options"></a>
   **Welche Speicherebenen werden in Azure Files unterstützt?**  
@@ -170,7 +170,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     - Sie können Shared Access Signatures (SAS) zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Sie können beispielsweise ein Token mit Lesezugriff auf eine bestimmte Datei generieren, das nach zehn Minuten abläuft. Jeder Benutzer, der während des Gültigkeitszeitraums über das Token verfügt, hat für einen Zeitraum von zehn Minuten Lesezugriff auf die Datei. SAS-Schlüssel (Shared Access Signature) werden nur per REST-API oder in Clientbibliotheken unterstützt. Sie müssen die Azure-Dateifreigabe per SMB einbinden, indem Sie die Speicherkontoschlüssel verwenden.
 
-    - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. Da Windows Server bereits bei Active Directory authentifiziert werden kann, stellt die Azure-Dateisynchronisierung eine ausgezeichnete Überbrückungsmaßnahme dar, bis die volle Unterstützung für eine Active Directory-basierte Authentifizierung und ACL-Unterstützung bereitgestellt wird.
+    - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. 
     
     Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 

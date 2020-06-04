@@ -3,13 +3,13 @@ author: erhopf
 ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/23/2019
-ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: ddc61a0d0cb5a630282a9ba0589cef6fda29c4b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262266"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343462"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 
@@ -101,3 +101,19 @@ In diesem Beispiel wird ein Kennwort für die Authentifizierung des Dienstprinzi
    ```
 
 Alternativ dazu kann der Dienstprinzipal auch mit einem Zertifikat authentifiziert werden. Neben dem Dienstprinzipal wird auch der Benutzerprinzipal unterstützt, indem Berechtigungen durch eine andere AAD-Anwendung delegiert werden. In diesem Fall verwenden Benutzer keine Kennwörter oder Zertifikate, sondern werden beim Abrufen des Tokens zur zweistufigen Authentifizierung aufgefordert.
+
+## <a name="authorize-access-to-managed-identities"></a>Autorisieren des Zugriffs auf verwaltete Identitäten
+ 
+Cognitive Services unterstützen die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Cognitive Services-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.  
+
+### <a name="enable-managed-identities-on-a-vm"></a>Aktivieren von verwalteten Identitäten auf einem virtuellen Computer
+
+Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Cognitive Services-Ressourcen über Ihren virtuellen Computer verwenden können, müssen Sie verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktivieren. Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen finden Sie unter:
+
+- [Azure portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Azure Resource Manager-Clientbibliotheken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+
+Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

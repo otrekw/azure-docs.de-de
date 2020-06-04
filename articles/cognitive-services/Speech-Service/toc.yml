@@ -24,7 +24,7 @@
           href: batch-transcription.md
         - name: Grundlegendes zur Spracherkennung
           href: speech-to-text-basics.md
-    - name: Schnellstart
+    - name: Schnellstarts
       items:
         - name: Erkennen von Sprache mit Mikrofoneingabe
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Erkennen von Sprache aus einem Blobspeicher
           href: quickstarts/from-blob.md
+        - name: Testen eines Modells mithilfe von Audiodateien in Speech Studio
+          href: quickstarts/speech-studio-test-model.md
     - name: Anleitungen
       items:
         - name: Auswählen eines Spracherkennungsmodus

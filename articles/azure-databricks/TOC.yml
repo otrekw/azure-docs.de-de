@@ -1188,6 +1188,8 @@
             - name: Benutzerdefinierte Routeneinstellungen
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL-IP-Adressen
+              href: mysql-ip-address.md
     - name: Problembehandlung
       items:
         - name: Häufig gestellte Fragen

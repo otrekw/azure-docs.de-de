@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156776"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872492"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Sprach-SDK (Vorschau)
 
@@ -24,19 +24,20 @@ Nachdem Sie eine gehostete Anwendung für benutzerdefinierte Befehle erstellt ha
 In diesem Artikel führen Sie Folgendes durch:
 
 - Veröffentlichen einer Anwendung für benutzerdefinierte Befehle und Erhalten eines Anwendungsbezeichners (App-ID)
-- Erstellen einer Client-App mit dem Sprach-SDK, damit Sie mit Ihrer Anwendung für benutzerdefinierte Befehle kommunizieren können
+- Erstellen einer UWP-Client-App (Universelle Windows-Plattform) mit dem Sprach-SDK, damit Sie mit Ihrer Anwendung für benutzerdefinierte Befehle kommunizieren können
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Eine Anwendung für benutzerdefinierte Befehle ist erforderlich, um diesen Artikel durchzuarbeiten. Wenn Sie noch keine Anwendung für benutzerdefinierte Befehle erstellt haben, können Sie dies mit den vorherigen Schnellstarts tun:
-
-- [Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)](./quickstart-custom-speech-commands-create-new.md)
-- [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)](./quickstart-custom-speech-commands-create-new.md)
+> * [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
 
 Außerdem benötigen Sie:
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
+> * [Aktivieren Ihres Geräts für die Entwicklung](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>Optional: Schneller Einstieg
 
@@ -44,12 +45,13 @@ In dieser Schnellstartanleitung erfahren Sie Schritt für Schritt, wie Sie eine 
 
 ## <a name="step-1-publish-custom-commands-application"></a>Schritt 1: Veröffentlichen der Anwendung für benutzerdefinierte Befehle
 
-1. Öffnen Sie Ihre [zuvor erstellte Anwendung für benutzerdefinierte Befehle](./quickstart-custom-speech-commands-create-new.md), und wählen Sie **Veröffentlichen** aus.
+1. Öffnen Sie Ihre [zuvor erstellte Anwendung für benutzerdefinierte Befehle (Vorschau)](./quickstart-custom-speech-commands-create-new.md), und wählen Sie **Veröffentlichen** aus.
 
    > [!div class="mx-imgBorder"]
    > ![Veröffentlichen der Anwendung](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Kopieren der App-ID aus der Veröffentlichungsbenachrichtigung zur späteren Verwendung
+1. Kopieren Sie den Sprachressourcenschlüssel zur späteren Verwendung
 
 ## <a name="step-2-create-a-visual-studio-project"></a>Schritt 2: Erstellen eines Visual Studio-Projekts
 
@@ -129,7 +131,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 
 1. Öffnen Sie im **Projektmappen-Explorer** die CodeBehind-Quelldatei `MainPage.xaml.cs` (gruppiert unter `MainPage.xaml`).
 
-1. Ersetzen Sie den Inhalt der Datei durch folgenden Code:
+1. Ersetzen Sie den Inhalt der Datei durch folgenden Code: 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
        }
    }
    ```
+    > [!NOTE]
+    > Wenn Sie diesen Fehler sehen: „The type ‚Object‘ is defined in an assembly that is not referenced“ (Der Typ „Objekt“ ist in einer Assembly definiert, auf die nicht verwiesen wird)
+    > 1. Klicken Sie mit der rechten Maustaste auf Ihre Projektmappe.
+    > 1. Wählen Sie **Verwalten von NuGet-Paketen für die Projektmappe** und dann **Updates** aus. 
+    > 1. Wenn **Microsoft.NETCore.UniversalWindowsPlatform** in der Updateliste angezeigt wird, aktualisieren Sie **Microsoft.NETCore.UniversalWindowsPlatform** auf die neueste Version.
 
 1. Fügen Sie dem Methodenkörper von `InitializeDialogServiceConnector` folgenden Code hinzu.
 
@@ -419,3 +426,6 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 > [!div class="nextstepaction"]
 > [Vorgehensweise: Ausführen der Befehle auf dem Client mit dem Sprach-SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [Vorgehensweise: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>Beispielquellcode
+Sehen Sie sich unsere Clientbeispielcodes unter [GitHub-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant) an.

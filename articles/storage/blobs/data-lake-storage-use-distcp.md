@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228410"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698645"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen2 mit DistCp
 
@@ -23,11 +23,11 @@ DistCp bietet eine Vielzahl von Befehlszeilenparametern. Wir empfehlen Ihnen dri
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein vorhandenes Azure Storage-Konto ohne aktivierte Data Lake Storage Gen2-Funktionen (hierarchischer Namespace)** .
-* **Ein Azure Storage-Konto mit aktiviertem Feature Azure Data Lake Storage Gen2**. Anweisungen zum Erstellen eines solchen Speicherkontos finden Sie unter [Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md).
-* **Ein Dateisystem**, das im Speicherkonto mit aktiviertem hierarchischen Namespace erstellt wird.
-* **Azure HDInsight-Cluster** mit Zugriff auf ein Speicherkonto mit aktiviertem Data Lake Storage Gen2. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein vorhandenes Azure Storage-Konto ohne aktivierte Data Lake Storage Gen2-Funktionen (hierarchischer Namespace).
+* Ein Azure Storage-Konto mit aktivierten Data Lake Storage Gen2-Funktionen (hierarchischer Namespace). Anleitungen zum Erstellen eines Kontos finden Sie unter [Erstellen eines Azure Storage-Kontos](../common/storage-account-create.md).
+* Ein Container, der im Speicherkonto mit aktiviertem hierarchischen Namespace erstellt wurde.
+* Ein Azure HDInsight-Cluster mit Zugriff auf ein Speicherkonto mit aktivierter Funktion „hierarchischer Namespace“. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Verwenden von DistCp in einem HDInsight-Linux-Cluster
 
@@ -37,25 +37,25 @@ Ein HDInsight-Cluster bietet das Hilfsprogramm DistCp, das zum Kopieren von Date
 
 2. Überprüfen Sie, ob Sie auf Ihr vorhandenes Konto des Typs „Universell V2“ (ohne aktivierten hierarchischen Namespace) zugreifen können.
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    Die Ausgabe sollte eine Liste der Inhalte im Container zeigen.
+   Die Ausgabe sollte eine Liste der Inhalte im Container zeigen.
 
 3. Überprüfen Sie zudem, ob Sie vom Cluster aus auf das Speicherkonto mit aktiviertem hierarchischen Namespace zugreifen können. Führen Sie den folgenden Befehl aus:
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
     Die Ausgabe sollte eine Liste der Dateien bzw. Ordner im Data Lake Storage-Konto bereitstellen.
 
 4. Verwenden Sie DistCp zum Kopieren von Daten aus WASB in ein Data Lake Storage-Konto.
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     Der Befehl kopiert den Inhalt des Ordners **/example/data/gutenberg/** im Blob-Speicher in den Ordner **/myfolder** im Data Lake Storage-Konto.
 
 5. Verwenden Sie DistCp ebenso zum Kopieren von Daten aus einem Data Lake Storage-Konto in Blob Storage (WASB).
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     Der Befehl kopiert den Inhalt des Ordners **/myfolder** im Data Lake Store-Konto in den Ordner **/example/data/gutenberg/** in WASB.
 
@@ -65,7 +65,7 @@ Da die kleinste Granularitätseinheit von DistCp eine einzelne Datei ist, ist di
 
 **Beispiel**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Wie bestimme ich die Anzahl der zu verwendenden Zuordnungen?
 
@@ -79,7 +79,7 @@ Hier sind einige hilfreiche Informationen zur Vorgehensweise angegeben.
 
 **Beispiel**
 
-Angenommen, Sie verfügen über einen Cluster mit vier D14v2s-Knoten und möchten 10 TB Daten aus zehn Ordnern übertragen. Jeder Ordner enthält unterschiedliche Datenmengen, und auch die Dateigrößen in den einzelnen Ordnern sind unterschiedlich.
+Angenommen, Sie verfügen über einen Cluster mit vier D14v2s-Knoten und möchten 10 TB Daten aus 10 verschiedenen Ordnern übertragen. Jeder Ordner enthält unterschiedliche Datenmengen, und auch die Dateigrößen in den einzelnen Ordnern sind unterschiedlich.
 
 * **Gesamter YARN-Arbeitsspeicher**: Im Ambari-Portal ermitteln Sie, dass der YARN-Arbeitsspeicher für einen D14-Knoten 96 GB beträgt. Für einen Cluster mit vier Knoten beträgt der YARN-Gesamtarbeitsspeicher demnach: 
 

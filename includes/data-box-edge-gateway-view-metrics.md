@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ac7966538102273b91d6b7f15b90e18ceedd421
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67178542"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779931"
 ---
 Sie können auch die Metriken zur Überwachung der Leistung des Geräts und in einigen Fällen zur Problembehandlung bei Geräteproblemen anzeigen.
 
@@ -27,25 +27,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Diagramm für aus
 
     ![Auswählen einer anderen Ressource](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. Wählen Sie aus der Dropdownliste eine Metrik aus, um Ihr Gerät zu überwachen. Die Metriken können **Kapazitätsmetriken** oder **Transaktionsmetriken** sein. Die Kapazitätsmetriken beziehen sich auf die Kapazität des Geräts. Die Transaktionsmetriken beziehen sich auf die Lese- und Schreibvorgänge in Azure Storage.
-
-    |Kapazitätsmetriken                     |BESCHREIBUNG  |
-    |-------------------------------------|-------------|
-    |**Verfügbare Kapazität**               | Bezieht sich auf die Menge der Daten, die auf das Gerät geschrieben werden können. Das bedeutet, dass dies die Kapazität ist, die auf dem Gerät zur Verfügung gestellt werden kann. <br></br>Sie können die Gerätekapazität freigeben, indem Sie die lokale Kopie von Dateien löschen, die sowohl auf dem Gerät als auch in der Cloud über eine Kopie verfügen.        |
-    |**Gesamtkapazität**                   | Bezieht sich auf die Gesamtzahl der Bytes auf dem Gerät, auf das Daten geschrieben werden sollen. Dies wird auch als Gesamtgröße des lokalen Caches bezeichnet. <br></br> Sie können jetzt die Kapazität eines vorhandenen virtuellen Geräts erhöhen, indem Sie einen Datenträger hinzufügen. Fügen Sie einen Datenträger über die Hypervisor-Verwaltung für den virtuellen Computer hinzu, und starten Sie den virtuellen Computer neu. Der lokale Speicherpool des Gatewaygeräts wird erweitert, um den neu hinzugefügten Datenträger aufzunehmen. <br></br>Weitere Informationen finden Sie unter [Hinzufügen einer Festplatte für virtuelle Hyper-V-Computer](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
-    
-    |Transaktionsmetriken              | BESCHREIBUNG         |
-    |-------------------------------------|---------|
-    |**Hochgeladene Cloudbytes (Gerät)**    | Summe aller Bytes, die über alle Freigaben auf Ihrem Gerät hochgeladen wurden        |
-    |**Hochgeladene Cloudbytes (Freigabe)**     | Hochgeladene Bytes pro Freigabe Infrage kommt: <br></br> Avg, d. h. (Summe aller hochgeladenen Bytes pro Freigabe/Anzahl der Freigaben)  <br></br>Max, d. h. die maximale Anzahl von Bytes, die von einer Freigabe hochgeladen wurden <br></br>Min, d. h. die minimale Anzahl von Bytes, die von einer Freigabe hochgeladen wurden      |
-    |**Clouddownloaddurchsatz (Freigabe)**| Heruntergeladene Bytes pro Freigabe Infrage kommt: <br></br> Avg, d. h. (Summe aller von einer Freigabe gelesenen oder heruntergeladenen Bytes/Anzahl der Freigaben) <br></br> Max, d. h. die maximale Anzahl von Bytes, die von einer Freigabe heruntergeladen wurden<br></br> Min, d. h. die minimale Anzahl von Bytes, die von einer Freigabe heruntergeladen wurden  |
-    |**Cloudlesedurchsatz**            | Summe aller Bytes, die über alle Freigaben auf Ihrem Gerät aus der Cloud gelesen wurden     |
-    |**Clouduploaddurchsatz**          | Summe aller Bytes, die über alle Freigaben auf Ihrem Gerät in die Cloud geschrieben wurden     |
-    |**Clouduploaddurchsatz (Freigabe)**  | Summe aller Bytes, die von einer Freigabe in die Cloud geschrieben wurden/Anzahl der Freigaben ist durchschnittlich, maximal und minimal pro Freigabe      |
-    |**Lesedurchsatz (Netzwerk)**           | Enthält den Systemnetzwerkdurchsatz für alle aus der Cloud gelesenen Bytes Diese Ansicht kann Daten enthalten, die nicht auf Freigaben beschränkt sind. <br></br>Die Aufteilung zeigt den Datenverkehr über alle Netzwerkadapter auf dem Gerät an. Dazu gehören auch Adapter, die nicht verbunden oder aktiviert sind.      |
-    |**Schreibdurchsatz (Netzwerk)**       | Enthält den Systemnetzwerkdurchsatz für alle in die Cloud geschriebenen Bytes Diese Ansicht kann Daten enthalten, die nicht auf Freigaben beschränkt sind. <br></br>Die Aufteilung zeigt den Datenverkehr über alle Netzwerkadapter auf dem Gerät an. Dazu gehören auch Adapter, die nicht verbunden oder aktiviert sind.          |
-    |**Edgecomputing – Arbeitsspeichernutzung**      | Diese Metrik gilt nicht für das Data Box Gateway und ist daher nicht aufgefüllt.          |
-    |**Edgecomputing – CPU in Prozent**    | Diese Metrik gilt nicht für das Data Box Gateway und ist daher nicht aufgefüllt.         |
+3. Wählen Sie aus der Dropdownliste eine Metrik aus, um Ihr Gerät zu überwachen. Eine vollständige Liste dieser Metriken finden Sie unter [Metriken auf Ihrem Gerät](#metrics-on-your-device).
 
 4. Wenn eine Metrik aus der Dropdownliste ausgewählt wird, kann auch eine Aggregation definiert werden. „Aggregation“ bezeichnet den tatsächlichen Wert, der über einen bestimmten Zeitraum aggregiert wird. Die aggregierten Werte können durchschnittlich, minimal oder maximal sein. Wählen Sie die Aggregation aus „Avg“, „Max“ oder „Min“ aus.
 

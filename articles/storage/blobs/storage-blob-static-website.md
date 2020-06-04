@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779976"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648507"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -50,13 +50,14 @@ Inhalte können mit einem der folgenden Tools in den Container **$web** hochgela
 
 ## <a name="viewing-content"></a>Anzeigen von Inhalten
 
-Benutzer können Websiteinhalte in einem Browser unter der öffentlichen URL der Website anzeigen. Die URL können Sie im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe von PowerShell ermitteln. Verwenden Sie diese Tabelle als Richtlinie.
+Benutzer können Websiteinhalte in einem Browser unter der öffentlichen URL der Website anzeigen. Die URL können Sie im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe von PowerShell ermitteln. Siehe [Suchen der Website-URL](storage-blob-static-website-how-to.md#portal-find-url).
 
-|Tool| Anleitungen |
-|----|----|
-|**Azure portal** | [Find the website URL by using the Azure portal](storage-blob-static-website-how-to.md#portal-find-url) (Ermitteln der Website-URL über das Azure-Portal) |
-|**Azure-Befehlszeilenschnittstelle** | [Find the website URL by using the Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) (Ermitteln der Website-URL mithilfe der Azure-Befehlszeilenschnittstelle) |
-|**Azure PowerShell-Modul** | [Find the website URL by using PowerShell](storage-blob-static-website-how-to.md#powershell-find-url) (Ermitteln der Website-URL mithilfe von PowerShell) |
+Wenn der Server einen 404-Fehler zurückgibt und Sie beim Aktivieren der Website kein Fehlerdokument angegeben haben, wird an den Benutzer eine 404-Standardseite zurückgegeben.
+
+> [!NOTE]
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wird für die statische Website nicht unterstützt.
+
+### <a name="regional-codes"></a>Regionscodes
 
 Die URL Ihrer Website enthält einen Regionscode. Die URL `https://contosoblobaccount.z22.web.core.windows.net/` enthält beispielsweise den Regionscode `z22`.
 
@@ -64,10 +65,9 @@ Dieser Code muss zwar in der URL verbleiben, wird jedoch nur intern genutzt und 
 
 Das Indexdokument, das Sie beim Aktivieren des Hostens von statischen Websites angeben, wird angezeigt, wenn Benutzer beim Aufrufen der Website keine bestimmte Datei angeben (Beispiel: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
-Wenn der Server einen 404-Fehler zurückgibt und Sie beim Aktivieren der Website kein Fehlerdokument angegeben haben, wird an den Benutzer eine 404-Standardseite zurückgegeben.
+### <a name="secondary-endpoints"></a>Sekundäre Endpunkte
 
-> [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wird für die statische Website nicht unterstützt.
+Wenn Sie [Redundanz in einer sekundären Region](../common/storage-redundancy.md#redundancy-in-a-secondary-region) einrichten, können Sie auch über einen sekundären Endpunkt auf Websiteinhalte zugreifen. Da Daten asynchron in sekundäre Regionen repliziert werden, sind die am sekundären Endpunkt verfügbaren Dateien nicht immer mit den Dateien synchron, die auf dem primären Endpunkt verfügbar sind. 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Auswirkungen der Einstellung der öffentlichen Zugriffsebene des Webcontainers
 
@@ -104,7 +104,7 @@ Wenn Sie Header zum Steuern der Zwischenspeicherung verwenden möchten, finden S
 
 Die Aktivierung des Hostings statischer Websites ist kostenlos. Ihnen werden lediglich der von Ihrer Website genutzte Blobspeicher sowie die Betriebskosten in Rechnung gestellt. Weitere Informationen zu Preisen für Azure Blob Storage finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Sie können Metriken für Seiten der statischen Website aktivieren. Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien im Container **$web** im Dashboard für Metriken gemeldet.
 

@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Restore
           items:
+            - name: Informationen zur Wiederherstellung von Azure-VMs
+              href: about-azure-vm-restore.md
             - name: Wiederherstellen virtueller Azure-Computer im Portal
               href: backup-azure-arm-restore-vms.md
             - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
