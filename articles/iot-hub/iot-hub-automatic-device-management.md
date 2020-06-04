@@ -26,11 +26,11 @@ Bei der automatischen Geräteverwaltung werden mehrere Geräte- oder Modulzwilli
 
 * Die **Zielbedingung** definiert den Umfang der zu aktualisierenden Geräte- oder Modulzwillinge. Die Zielbedingung wird als Abfrage für Zwillingstags und/oder gemeldete Eigenschaften angegeben.
 
-* Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder Zielmodulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
+* Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder -modulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
 * Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl der Zwillinge, die erfolgreich aktualisiert wurden.
 
-Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal ausgeführt, wenn die automatische Konfiguration ausgeführt wird.
+Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden bei jeder Ausführung der automatischen Konfiguration ausgeführt.
 
 ## <a name="implement-twins"></a>Implementieren von Zwillingen
 
@@ -208,7 +208,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Konfiguration vorzunehmen:
    * Zielbedingung 
    * Bezeichnungen 
    * Priority 
-   * metrics
+   * Metriken
 
 4. Wählen Sie **Speichern** aus.
 

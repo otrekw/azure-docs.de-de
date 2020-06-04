@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im 
 
 ## <a name="default-settings"></a>Standardeinstellungen
 
-Wenn Sie die Remoteüberwachungslösung zum ersten Mal bereitstellen, stehen zwei Rollen zur Verfügung: **Administrator** und **Lesezugriff**.
+Wenn Sie die Lösung für die Remoteüberwachung zum ersten Mal bereitstellen, stehen zwei Rollen zur Verfügung: **Administrator** und **Schreibgeschützt**.
 
 Benutzer mit der Rolle **Administrator** verfügen über Vollzugriff auf die Lösung, einschließlich der nachfolgend aufgeführten Berechtigungen. Benutzer mit der Rolle **Lesezugriff** verfügen lediglich über den Zugriff zum Anzeigen der Lösung.
 

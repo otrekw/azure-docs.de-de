@@ -251,7 +251,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 - Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -296,7 +296,7 @@ Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die I
 - Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

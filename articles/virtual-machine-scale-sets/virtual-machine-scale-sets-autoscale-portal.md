@@ -23,7 +23,7 @@ In diesem Artikel wird veranschaulicht, wie Sie im Azure-Portal Regeln für die 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](quick-create-portal.md), mit [Azure PowerShell](quick-create-powershell.md) oder der [Azure CLI](quick-create-cli.md) erstellen.
+Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](quick-create-portal.md), mit [Azure PowerShell](quick-create-cli.md) oder der [Azure CLI](quick-create-powershell.md) erstellen.
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Erstellen einer Regel für das automatische Aufskalieren
@@ -41,7 +41,7 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
 
     Geben Sie für Ihre Regel die folgenden Einstellungen an:
     
-    | Parameter              | Erklärung                                                                                                         | value          |
+    | Parameter              | Erklärung                                                                                                         | Wert          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
     | *Zeitaggregation*     | Definiert, wie die gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                                                | Average        |
     | *Metrikname*          | Die Leistungsmetrik zum Überwachen und Anwenden von Skalierungsgruppenaktionen.                                                   | CPU in Prozent |
@@ -68,7 +68,7 @@ Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende 
 
     Verwenden Sie die gleiche Vorgehensweise wie bei der vorherigen Regel. Passen Sie die folgenden Einstellungen für Ihre Regel an:
     
-    | Parameter              | Erklärung                                                                                                          | value          |
+    | Parameter              | Erklärung                                                                                                          | Wert          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                      | Kleiner als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 30             |
@@ -111,7 +111,7 @@ In den vorherigen Beispielen wurde eine Skalierungsgruppe anhand von einfachen H
 4. Wenn die Anzahl der Instanzen hochskaliert werden sollen, geben Sie *10* als Anzahl der Instanzen ein.
 5. Wählen Sie **An bestimmten Tagen wiederholen** als Typ für **Zeitplan** aus.
 6. Wählen Sie alle Geschäftstage, Montag bis Freitag, aus.
-7. Wählen Sie die entsprechende Zeitzone aus, und geben Sie dann **09:00 Uhr** als *Startzeit* ein.
+7. Wählen Sie die entsprechende Zeitzone aus, und geben Sie dann *09:00 Uhr* als **Startzeit** ein.
 8. Klicken Sie nochmals auf **Skalierungsbedingung hinzufügen**. Wiederholen Sie den Vorgang zum Erstellen eines Zeitplans mit dem Namen *Abends abskalieren*, der eine Skalierung auf *3* Instanzen vorsieht, sich jeden Wochentag wiederholt und um *18:00* beginnt.
 9. Klicken Sie auf **Speichern**, um Ihre zeitplanbasierten Regeln für die automatische Skalierung anzuwenden.
 

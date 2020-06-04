@@ -29,9 +29,9 @@ Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto z
 > [!Note]
 > Für die Sicherheitsinformation werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im richtigen Format (+1 4255551234X12345) werden Nebenstellen vor dem Anruf entfernt.
 >
-> Wenn keine Telefonoption angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option für die Überprüfung nicht zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+> Wird keine Telefonoption angezeigt, lässt Ihre Organisation unter Umständen die Nutzung dieser Option für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
 
 Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
 
@@ -102,11 +102,11 @@ Wenn Sie Telefonanrufe als Standardmethode für das Anmelden bei Ihrem Geschäft
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – ( *_Ihre_Telefonnummer_* ) anrufen** aus, und klicken Sie dann auf **Bestätigen**.
+2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – (*_Ihre_Telefonnummer_*) anrufen** aus, und klicken Sie dann auf **Bestätigen**.
 
     ![Standardmäßige Anmeldemethode auswählen](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – ( *_Ihre_Telefonnummer_* ) anrufen**.
+    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – (*_Ihre_Telefonnummer_*) anrufen**.
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 

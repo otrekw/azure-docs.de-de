@@ -92,7 +92,7 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 
 Weitere Informationen sowie die Beispieldatei *cloud-init.txt* finden Sie unter [Anpassen einer Linux-VM in Azure mit cloud-init](../virtual-machines/linux/using-cloud-init.md).
 
-Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Verwenden einer cloud-init-Datei dem Befehl `--custom-data`az vmss create[ den Parameter ](/cli/azure/vmss) hinzu, und geben Sie den Namen einer cloud-init-Datei an. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* in *myResourceGroup* erstellt, und VM-Instanzen werden mit einer Datei mit dem Namen *cloud-init.txt* konfiguriert. Geben Sie Ihre eigenen Namen wie folgt ein:
+Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Verwenden einer cloud-init-Datei dem Befehl [az vmss create](/cli/azure/vmss) den Parameter `--custom-data` hinzu, und geben Sie den Namen einer cloud-init-Datei an. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* in *myResourceGroup* erstellt, und VM-Instanzen werden mit einer Datei mit dem Namen *cloud-init.txt* konfiguriert. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss create \

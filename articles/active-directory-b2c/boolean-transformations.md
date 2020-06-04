@@ -34,7 +34,7 @@ Führt einen And-Vorgang für zwei boolesche Eingabeansprüche aus und legt den 
 | InputClaim | inputClaim2  | boolean | Der zweite auszuwertende Anspruchstyp |
 |OutputClaim | outputClaim | boolean | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde (TRUE oder FALSE). |
 
-Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang für zwei boolesche Anspruchstypen (`isEmailNotExist` und `isSocialAccount`) durchführen. `presentEmailSelfAsserted` wird für den Ausgabeanspruch `true` festgelegt, wenn beide Eingabeansprüche den Wert `true` aufweisen. In einem Orchestrierungsschritt können Sie eine Vorbedingung nur verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn eine E-Mail-Adresse eines Social Media-Kontos leer ist.
+Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang für zwei boolesche Anspruchstypen (`isEmailNotExist` und `isSocialAccount`) durchführen. `true` wird für den Ausgabeanspruch `presentEmailSelfAsserted` festgelegt, wenn beide Eingabeansprüche den Wert `true` aufweisen. In einem Orchestrierungsschritt können Sie eine Vorbedingung nur verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn eine E-Mail-Adresse eines Social Media-Kontos leer ist.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -112,7 +112,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 - Eingabeansprüche:
     - **inputClaim**: FALSE
     - **valueToCompareTo**: TRUE
-- Ergebnis: Fehler wird ausgelöst
+- Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 

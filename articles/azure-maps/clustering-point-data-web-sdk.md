@@ -95,9 +95,9 @@ Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthä
 | Eigenschaftenname             | type    | BESCHREIBUNG   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
-| `cluster_id`              | string  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |
+| `cluster_id`              | Zeichenfolge  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |
 | `point_count`             | number  | Die Anzahl der Punkte, die der Cluster enthält.  |
-| `point_count_abbreviated` | string  | Eine Zeichenfolge, die den `point_count`-Wert abkürzt, falls er zu lang ist. (Beispiel: 4.000 wird zu 4K)  |
+| `point_count_abbreviated` | Zeichenfolge  | Eine Zeichenfolge, die den `point_count`-Wert abkürzt, falls er zu lang ist. (Beispiel: 4.000 wird zu 4K)  |
 
 Dieses Beispiel nutzt eine Blasenebene, die Clusterpunkte rendert und ein Klickereignis hinzufügt. Wenn das Klickereignis ausgelöst wird, berechnet der Code die Karte und zoomt Sie auf die nächste Zoomstufe, bei der der Cluster aufgelöst wird. Diese Funktion wird mit der `getClusterExpansionZoom`-Methode der `DataSource`-Klasse und der `cluster_id`-Eigenschaft des angeklickten geclusterten Datenpunkts implementiert.
 

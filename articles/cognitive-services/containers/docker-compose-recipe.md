@@ -29,7 +29,7 @@ Es kann hilfreich sein, mehrere Containerimages auf nur einem Hostcomputer zu or
 
 Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt werden:
 
-* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * [Docker-Engine](https://www.docker.com/products/docker-engine). Vergewissern Sie sich, dass die Docker-CLI in einem Konsolenfenster funktioniert.
 * Eine Azure-Ressource mit dem korrekten Tarif. Für diesen Container können nur die folgenden Tarife genutzt werden:
   * Ressource **Maschinelles Sehen** nur mit F0- oder Standard-Tarif.

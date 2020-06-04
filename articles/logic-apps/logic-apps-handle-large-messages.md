@@ -113,7 +113,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
 1. Ihre Logik-App sendet eine erste HTTP-POST- oder -PUT-Anforderung mit einem leeren Nachrichtentext. Die Anforderungsheader enthält diese Informationen zu dem Inhalt, den Ihre Logik-App in Blöcken hochladen möchte:
 
-   | Logic Apps-Feld für Anforderungsheader | value | type | BESCHREIBUNG |
+   | Logic Apps-Feld für Anforderungsheader | Wert | type | BESCHREIBUNG |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | String | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
    | **x-ms-content-length** | <*Inhaltslänge*> | Integer | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
@@ -133,7 +133,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
    * Im Header sind diese Details zu dem Inhaltsblock enthalten, der in der jeweiligen PATCH-Nachricht gesendet wurde:
 
-     | Logic Apps-Feld für Anforderungsheader | value | type | BESCHREIBUNG |
+     | Logic Apps-Feld für Anforderungsheader | Wert | type | BESCHREIBUNG |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*Bereich*> | String | Der Bytebereich für den aktuellen Inhaltsblock, einschließlich des Anfangswerts, des Endwerts und der Gesamtgröße des Inhalts, zum Beispiel: „bytes=0-1023/10100“ |
      | **Content-Type** | <*Inhaltstyp*> | String | Der Typ des segmentierten (in Blöcke aufgeteilten) Inhalts |

@@ -41,12 +41,12 @@ Microsoft Identity Platform: Für die Berechnung der Assertion können Sie eine 
 
 | Parameter |  Bemerkungen |
 | --- | --- |
-| `aud` | Zielgruppe: Muss **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten. |
+| `aud` | Audience: Sollte **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten |
 | `exp` | Ablaufdatum: Datum, an dem das Token abläuft. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
 | `iss` | Aussteller: Muss die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
 | `jti` | GUID: Die JWT-ID. |
 | `nbf` | Nicht vor: Datum, vor dem das Token nicht verwendet werden kann. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) (UTC) bis zur Zeit der Ausstellung des Tokens dargestellt. |
-| `sub` | Antragsteller: Muss wie bei `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
+| `sub` | Antragsteller: Muss für `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein |
 
 ### <a name="signature"></a>Signatur
 
@@ -130,4 +130,4 @@ In der Azure-App-Registrierung für die Clientanwendung:
 > [!NOTE]
 > Sie müssen den X5T-Header berechnen, indem Sie ihn mit der Hashfunktion des Zertifikats in eine Base64-Zeichenfolge umwandeln. Der Code zum Ausführen dieser Umwandlung lautet in C# `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-Das Codebeispiel unter [.NET Core-Daemon-Konsolenanwendung mit Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem [-PowerShell-Befehl ein ](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)selbstsigniertes Zertifikat erstellen`New-SelfSignedCertificate` können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.
+Das Codebeispiel unter [.NET Core-Daemon-Konsolenanwendung mit Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.

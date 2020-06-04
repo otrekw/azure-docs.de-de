@@ -115,7 +115,7 @@ e.AddProperty("customProperty", "value");
 
 ### <a name="prerequisites"></a>Voraussetzungen
 * Visual Studio 2019 mit der Workload „Azure-Entwicklung“. Mit der [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) können Sie kostenlos beginnen.
-* ein Azure-Abonnement Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos-Datenbankkonto ohne Azure-Abonnement erstellen.
+* Ein Azure-Abonnement. Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos-Datenbankkonto ohne Azure-Abonnement erstellen.
 * Eine Gremlin-API-Datenbank von Azure Cosmos DB mit einer **unbegrenzten Sammlung**. Diese Anleitung zeigt die ersten Schritte mit [der Gremlin-API von Azure Cosmos DB in .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. Weitere Informationen finden Sie auf der [Git-Downloadseite](https://git-scm.com/downloads).
 

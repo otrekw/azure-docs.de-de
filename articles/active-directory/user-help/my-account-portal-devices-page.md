@@ -31,7 +31,7 @@ Auf der Seite **Geräte** im Portal **Mein Konto** können Sie die mit Ihrem Ges
 
 ## <a name="view-your-connected-devices"></a>Anzeigen Ihrer verbundenen Geräte
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myaccount.microsoft.com/).
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie zur Seite **Mein Konto** (https://myaccount.microsoft.com/).
 
 2. Wählen Sie im Navigationsbereich auf der linken Seite **Geräte** aus, oder klicken Sie auf den Link **Geräte verwalten** im Block **Geräte**.
 

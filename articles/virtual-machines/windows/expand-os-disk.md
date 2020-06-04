@@ -201,11 +201,11 @@ Nachdem Sie den Datenträger für die VM erweitert haben, müssen Sie in das Bet
 
 2.  Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
 
-2.  Geben Sie **an der Eingabeaufforderung von**DISKPART`list volume` ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
+2.  Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
 
-3.  Geben Sie **an der Eingabeaufforderung von**DISKPART`select volume <volumenumber>` ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
+3.  Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
 
-4.  Geben Sie **an der Eingabeaufforderung von**DISKPART`extend [size=<size>]` ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
+4.  Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

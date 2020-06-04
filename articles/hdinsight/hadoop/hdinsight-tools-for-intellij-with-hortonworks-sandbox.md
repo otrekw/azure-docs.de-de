@@ -52,8 +52,8 @@ In diesem Abschnitt erstellen Sie mit IntelliJ IDEA ein Scala-Beispielprojekt. I
    1. Wählen Sie **HDInsight** > **Spark auf HDInsight (Scala)** aus.
    2. Wählen Sie in der Liste **Build-Tool** basierend auf Ihrem Szenario einen der folgenden Einträge aus:
 
-      * **Maven** für die Unterstützung des Scala-Projekterstellungs-Assistenten.
-      * **SBT** zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
+      * **Maven**: für die Unterstützung des Scala-Projekterstellungs-Assistenten.
+      * **SBT**: zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
 
    ![Intellij – Neues Scala-Projekt erstellen](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 

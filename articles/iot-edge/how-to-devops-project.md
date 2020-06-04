@@ -80,7 +80,7 @@ Von DevOps Projects wurde ein Git-Repository für Ihr Projekt in Azure Repos ers
 
    ![Öffnen der module.json-Datei in Azure Repos](./media/how-to-devops-project/open-module-json.png)
 
-4. Beachten Sie, dass diese Datei im Parameter [version](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)**Azure DevOps-Buildvariablen** verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird.
+4. Beachten Sie, dass diese Datei im Parameter **version**[Azure DevOps-Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird.
 
 ## <a name="examine-the-cicd-pipeline"></a>Überprüfen der CI/CD-Pipeline
 

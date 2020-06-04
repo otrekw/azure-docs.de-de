@@ -89,11 +89,11 @@ Wenn Sie die SMS-Option als Standardmethode für das Anmelden bei Ihrem Geschäf
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – SMS ( *_Ihre_Telefonnummer_* )** aus, und klicken Sie dann auf **Bestätigen**.
+2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – SMS (*_Ihre_Telefonnummer_*)** aus, und klicken Sie dann auf **Bestätigen**.
 
     ![Standardmäßige Anmeldemethode auswählen](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – SMS ( *_Ihre_Telefonnummer_* )** .
+    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – SMS (*_Ihre_Telefonnummer_*)** .
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 

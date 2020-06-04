@@ -39,7 +39,7 @@ Die Überladungen dieser Methoden bieten zusätzliche Optionen zum Steuern, wie 
 
 ### <a name="manage-how-many-results-are-returned"></a>Festlegen der Anzahl der zurückgegebenen Ergebnisse
 
-Standardmäßig werden durch einen einzelnen Auflistungsvorgang bis zu 5.000 Ergebnisse zurückgegeben. Wenn ein kleinerer Ergebnissatz zurückgegeben werden soll, geben Sie beim Aufrufen einer der `maxresults`ListBlobs **-Methoden einen Wert ungleich NULL für den Parameter**  an.
+Standardmäßig werden durch einen einzelnen Auflistungsvorgang bis zu 5.000 Ergebnisse zurückgegeben. Wenn ein kleinerer Ergebnissatz zurückgegeben werden soll, geben Sie beim Aufrufen einer der **ListBlobs**-Methoden einen Wert ungleich NULL für den Parameter `maxresults` an.
 
 Wenn ein Auflistungsvorgang mehr als 5.000 Blobs zurückgibt oder wenn Sie einen Wert für `maxresults` angegeben haben, aufgrund dessen dieser Vorgang eine Teilmenge der Container im Speicherkonto zurückgibt, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
 
@@ -51,7 +51,7 @@ Um die Liste der Container zu filtern, geben Sie für den `prefix`-Parameter ein
 
 ### <a name="return-metadata"></a>Zurückgeben von Metadaten
 
-Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie für die Enumeration **BlobListingDetails** den Wert [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 
