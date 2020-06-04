@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202412"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757754"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -21,7 +21,10 @@ Da die erforderliche Instrumentierung von Application Insights in Azure Function
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights – Preise und Limits
 
-Sie können die Application Insights-Integration in Funktionen-Apps kostenlos testen. Für die Menge der Daten, die täglich kostenlos verarbeitet werden können, gibt es einen Grenzwert. Beim Testen können Sie an diesen Grenzwert stoßen. In Azure erhalten Sie Benachrichtigungen im Portal und per E-Mail, wenn Ihr Tageslimit beinahe erreicht ist. Wenn Sie diese Benachrichtigungen ignorieren und das Limit erreichen, werden neue Protokolle nicht in Application Insights-Abfragen angezeigt. Seien Sie sich des Grenzwerts bewusst, um unnötigen Zeitaufwand für die Problembehandlung zu vermeiden. Weitere Informationen finden Sie unter [Verwalten von Preisen und Datenvolumen in Application Insights](../azure-monitor/app/pricing.md).
+Sie können die Application Insights-Integration in Azure Functions kostenlos testen. Für die Menge der Daten, die täglich kostenlos verarbeitet werden können, gibt es einen Grenzwert. Beim Testen können Sie an diesen Grenzwert stoßen. In Azure erhalten Sie Benachrichtigungen im Portal und per E-Mail, wenn Ihr Tageslimit beinahe erreicht ist. Wenn Sie diese Benachrichtigungen ignorieren und das Limit erreichen, werden neue Protokolle nicht in Application Insights-Abfragen angezeigt. Seien Sie sich des Grenzwerts bewusst, um unnötigen Zeitaufwand für die Problembehandlung zu vermeiden. Weitere Informationen finden Sie unter [Verwalten von Preisen und Datenvolumen in Application Insights](../azure-monitor/app/pricing.md).
+
+> [!IMPORTANT]
+> Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Sampling ist standardmäßig aktiviert. Wenn Ihnen Daten zu fehlen scheinen, müssen Sie möglicherweise nur die Sampling-Einstellungen an Ihr spezielles Überwachungsszenario anpassen. Weitere Informationen finden Sie unter [Konfigurieren des Samplings](#configure-sampling).
 
 Die vollständige Liste der Application Insights-Features, die für Ihre Funktions-App verfügbar sind, finden Sie unter [Unterstützte Features in Application Insights für Azure Functions](../azure-monitor/app/azure-functions-supported-features.md).
 
@@ -29,7 +32,7 @@ Die vollständige Liste der Application Insights-Features, die für Ihre Funkti
 
 Bei [aktivierter Application Insights-Integration](#enable-application-insights-integration) können Sie Telemetriedaten auf der Registerkarte **Überwachung** einsehen.
 
-1. Wählen Sie auf der Seite der Funktions-App eine Funktion aus, die nach der Konfiguration von Application Insights mindestens einmal ausgeführt wurde. Wählen Sie dann die Registerkarte **Überwachen** aus. Wählen Sie wiederholt die Option **Aktualisieren** aus, bis die Liste der Funktionsaufrufe angezeigt wird.
+1. Wählen Sie auf der Seite der Funktions-App eine Funktion aus, die nach der Konfiguration von Application Insights mindestens einmal ausgeführt wurde. Wählen Sie dann im linken Bereich **Überwachen** aus. Wählen Sie wiederholt die Option **Aktualisieren** aus, bis die Liste der Funktionsaufrufe angezeigt wird.
 
    ![Liste der Funktionsaufrufe](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +43,9 @@ Bei [aktivierter Application Insights-Integration](#enable-application-insights-
 
    ![Aufrufdetails](media/functions-monitoring/invocation-details-ai.png)
 
-1. Klicken Sie auf den Link **In Application Insights ausführen**, um sich die Abfragequelle anzeigen zu lassen, die die Azure Monitor-Protokolldaten aus dem Azure-Protokoll abruft. Wenn Sie Azure Log Analytics hierfür zum ersten Mal in Ihrem Abonnement verwenden, werden Sie um eine Aktivierung gebeten.
+1. Wählen Sie **In Application Insights ausführen** aus, um die Quelle der Abfrage anzuzeigen, mit der die Azure Monitor-Protokolldaten in das Azure-Protokoll abgerufen werden. Wenn Sie Azure Log Analytics zum ersten Mal in Ihrem Abonnement verwenden, werden Sie aufgefordert, es zu aktivieren.
 
-1. Wenn Sie auf diesen Link klicken und Log Analytics aktivieren, wird die folgende Abfrage angezeigt. Sie können erkennen, dass die Abfrageergebnisse auf die letzten 30 Tage beschränkt sind (`where timestamp > ago(30d)`). Außerdem werden in den Ergebnissen nicht mehr als 20 Zeilen angezeigt (`take 20`). Im Gegensatz dazu, zeigt die Liste der Aufrufdetails für Ihre Funktion die letzten 30 Tage ohne Beschränkung an.
+1. Nachdem Sie Log Analytics aktiviert haben, wird folgende Abfrage angezeigt. Sie können erkennen, dass die Abfrageergebnisse auf die letzten 30 Tage beschränkt sind (`where timestamp > ago(30d)`). Außerdem werden in den Ergebnissen nicht mehr als 20 Zeilen angezeigt (`take 20`). Im Gegensatz dazu, zeigt die Liste der Aufrufdetails für Ihre Funktion die letzten 30 Tage ohne Beschränkung an.
 
    ![Application Insights Analytics-Aufrufliste](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,7 +53,7 @@ Weitere Informationen finden Sie weiter unten in diesem Artikel unter [Abfragen 
 
 ## <a name="view-telemetry-in-application-insights"></a>Anzeigen von Telemetriedaten in Application Insights
 
-Um Application Insights aus einer Funktions-App im Azure-Portal zu öffnen, wechseln Sie zur Seite **Übersicht** der Funktions-App. Wählen Sie unter **Konfigurierte Features** **Application Insights** aus.
+Um Application Insights aus einer Funktions-App im Azure-Portal zu öffnen, wählen auf der linken Seite unter **Einstellungen** die Option **Application Insights** aus. Wenn Sie Application Insights zum ersten Mal mit Ihrem Abonnement verwenden, werden Sie aufgefordert, es zu aktivieren: Wählen Sie zuerst **Application Insights aktivieren** und dann auf der nächsten Seite **Anwenden** aus.
 
 ![Öffnen von Application Insights auf der Seite „Übersicht“ von Funktions-Apps](media/functions-monitoring/ai-link.png)
 
@@ -271,9 +274,6 @@ Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azu
   }
 }
 ```
-
-> [!NOTE]
-> Das [Sampling](../azure-monitor/app/sampling.md) ist standardmäßig aktiviert. Wenn Ihnen Daten zu fehlen scheinen, müssen Sie möglicherweise nur die Sampling-Einstellungen an Ihr spezielles Überwachungsszenario anpassen.
 
 ## <a name="write-logs-in-c-functions"></a>Schreiben von Protokollen in C#-Funktionen
 
@@ -610,7 +610,7 @@ Wenn Sie auf **Erstellen** klicken, wird eine Application Insights-Ressource mit
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Ergänzen einer vorhandenen Funktions-App 
 
-Beim Erstellen einer Funktions-App mit der [Visual Studio](functions-create-your-first-function-visual-studio.md) müssen Sie die Application Insights-Ressource erstellen. Sie können dann den Instrumentierungsschlüssel dieser Ressource Ihrer Funktions-App als Anwendungseinstellung hinzufügen.
+Beim Erstellen einer Funktions-App mit der [Visual Studio](functions-create-your-first-function-visual-studio.md) müssen Sie die Application Insights-Ressource erstellen. Sie können dann den Instrumentierungsschlüssel dieser Ressource Ihrer Funktions-App als [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) hinzufügen.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/18/2019
-ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/01/2020
+ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234238"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196232"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardeigenschaften in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../log-query/logs-structure.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutige Menge an Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
+
+> [!IMPORTANT]
+> Wenn Sie APM 2.1 verwenden, werden Application Insights-Anwendungen in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Die Tabellen wurden umbenannt und neu strukturiert, verfügen aber über dieselben Informationen wie die Tabellen in der Application Insights-Anwendung. Diese neuen Tabellen haben dieselben Standardeigenschaften wie andere Tabellen im Log Analytics-Arbeitsbereich.
 
 > [!NOTE]
 > Einige der Standardeigenschaften werden nicht in der Schemaansicht oder in IntelliSense in Log Analytics angezeigt und auch nicht in Abfrageergebnissen aufgeführt, sofern die Eigenschaft nicht explizit in der Ausgabe angegeben wird.
@@ -60,7 +63,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Type und itemType
-Die Eigenschaften **Type** (Log Analytics-Arbeitsbereich) und **itemType** (Application Insights-Anwendung) enthalten den Namen der Tabelle, aus der der Datensatz abgerufen wurde, der auch als Datensatztyp betrachtet werden kann. Diese Eigenschaft ist bei Abfragen hilfreich, die Datensätze aus mehreren Tabellen kombinieren, z. B. Abfragen mit dem Operator `search`, um zwischen Datensätzen verschiedener Typen zu unterscheiden. An einigen Stellen kann **$table** anstelle von **Type** verwendet werden.
+Die Eigenschaften **Type** (Log Analytics-Arbeitsbereich) und **itemType** (Application Insights-Anwendung) enthalten den Namen der Tabelle, aus der der Datensatz abgerufen wurde, der auch als Datensatztyp betrachtet werden kann. Diese Eigenschaft ist bei Abfragen hilfreich, die Datensätze aus mehreren Tabellen kombinieren, z. B. Abfragen mit dem Operator `search`, um zwischen Datensätzen verschiedener Typen zu unterscheiden. An einigen Stellen kann **$table** anstelle von **Type** verwendet werden.
 
 ### <a name="examples"></a>Beispiele
 Die folgende Abfrage gibt die Anzahl der Datensätze nach Typ zurück, die in der letzten Stunde gesammelt wurden.
@@ -122,7 +125,7 @@ union withsource = tt *
 Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind.
 
 ## <a name="_isbillable"></a>\_IsBillable
-Die **\_IsBillable**-Eigenschaft gibt an, ob erfasste Daten gebührenpflichtig sind. Daten, für die **\_IsBillable** gleich _false_ ist, werden kostenlos gesammelt und Ihrem Azure-Konto nicht in Rechnung gestellt.
+Die **\_IsBillable**-Eigenschaft gibt an, ob erfasste Daten gebührenpflichtig sind. Daten, für die **\_IsBillable** gleich `false` ist, werden kostenlos gesammelt und Ihrem Azure-Konto nicht in Rechnung gestellt.
 
 ### <a name="examples"></a>Beispiele
 Um eine Liste von Computern abzurufen, die kostenpflichtige Datentypen senden, führen Sie die folgende Abfrage aus:

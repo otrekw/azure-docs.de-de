@@ -1,6 +1,6 @@
 ---
 title: Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation | Microsoft-Dokumentation
-description: In diesem Artikel werden einige der Informationen beschrieben, die Sie zusammenstellen sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage zu Azure Automation erstellen.
+description: In diesem Artikel werden die Informationen beschrieben, die Sie zusammenstellen müssen, bevor Sie beim Microsoft Azure-Support einen Fall zu Azure Automation öffnen.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679404"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684850"
 ---
-# <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation
 
 In diesem Artikel werden einige der Informationen beschrieben, die Sie zusammenstellen sollten, bevor Sie beim Microsoft Azure-Support eine Anfrage zu Azure Automation erstellen. Diese Informationen sind nicht erforderlich, um eine Anfrage zu öffnen. Sie können Microsoft aber dabei helfen, Ihr Problem schneller zu lösen. Darüber hinaus besteht die Möglichkeit, dass der Supportmitarbeiter Sie nach dem Öffnen der Anfrage um diese Daten bittet.
 

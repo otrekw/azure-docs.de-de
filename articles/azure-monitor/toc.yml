@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: Filter
               href: platform/view-designer-filters.md
-        - name: Benutzerdefinierte Lösungen
-          items:
-            - name: Entwerfen und Erstellen
-              href: insights/solutions-creating.md
-            - name: Projektmappendatei
-              href: insights/solutions-solution-file.md
-            - name: Automation-Ressourcen
-              href: insights/solutions-resources-automation.md
-            - name: Protokollsuchen und -warnungen
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Sichten
-              href: insights/solutions-resources-views.md
-            - name: Bewährte Methoden
-              href: insights/solutions-best-practices.md
     - name: Arbeitsmappen
       items:
         - name: Übersicht

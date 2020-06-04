@@ -3,12 +3,12 @@ title: Registrierung – bewährte Methoden
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225806"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682683"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
@@ -59,7 +59,7 @@ Ausführliche Informationen zur Azure Container Registry-Authentifizierung finde
 
 ## <a name="manage-registry-size"></a>Verwalten von Registrierungsgrößen
 
-Die Speichereinschränkungen jeder [SKU der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
+Die Speichereinschränkungen jedes [Tarifs der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
 
 Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um die aktuelle Größe Ihrer Registrierung anzuzeigen:
 
@@ -86,7 +86,7 @@ Weitere Informationen zum Löschen von Imagedaten aus Ihrer Registrierung, einsc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Container Registry ist in mehrere Tarifen (SKUs) verfügbar, die jeweils verschiedene Funktionen bereitstellen. Ausführliche Informationen zu verfügbaren SKUs finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md).
+Azure Container Registry ist in mehrere Tarifen (auch als SKUs bezeichnet) verfügbar, die jeweils verschiedene Funktionen bereitstellen. Ausführliche Informationen zu den verfügbaren Tarifen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

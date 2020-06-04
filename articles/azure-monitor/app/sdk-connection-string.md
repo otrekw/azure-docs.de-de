@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410608"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125705"
 ---
 # <a name="connection-strings"></a>Verbindungszeichenfolgen
 
@@ -64,10 +64,10 @@ Die Verbindungszeichenfolge besteht aus einer Liste von Einstellungen, die als S
 - `EndpointSuffix` (Beispiel: applicationinsights.azure.cn) Das Festlegen des Endpunktsuffixes weist das SDK an, mit welcher Azure-Cloud eine Verbindung hergestellt werden soll. Das SDK stellt den Rest des Endpunkts für die einzelnen Dienste zusammen.
 - Explizite Endpunkte.
   Jeder Dienst kann in der Verbindungszeichenfolge explizit überschrieben werden.
-   - `IngestionEndpoint` (Beispiel: https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint` (Beispiel: https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint` (Beispiel: https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint` (Beispiel: https://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint` (Beispiel: `https://dc.applicationinsights.azure.com`)
+   - `LiveEndpoint` (Beispiel: `https://live.applicationinsights.azure.com`)
+   - `ProfilerEndpoint` (Beispiel: `https://profiler.applicationinsights.azure.com`)
+   - `SnapshotEndpoint` (Beispiel: `https://snapshot.applicationinsights.azure.com`)
 
 #### <a name="endpoint-schema"></a>Endpunktschema
 
@@ -106,10 +106,10 @@ In diesem Beispiel wurde nur der Instrumentierungsschlüssel festgelegt.
 - Das Autorisierungsschema ist standardmäßig „ikey“. 
 - Instrumentierungsschlüssel: 00000000-0000-0000-0000-000000000000
 - Die regionalen Dienst-URIs basieren auf den [SDK-Standardwerten](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) und bieten eine Verbindung mit der öffentlichen globalen Azure-Cloud:
-   - Erfassung: https://dc.services.visualstudio.com/
-   - Livemetriken: https://rt.services.visualstudio.com/
-   - Profiler: https://agent.azureserviceprofiler.net/
-   - Debugger: https://agent.azureserviceprofiler.net/  
+   - Erfassung: `https://dc.services.visualstudio.com/`
+   - Livemetriken: `https://rt.services.visualstudio.com/`
+   - Profiler: `https://agent.azureserviceprofiler.net/`
+   - Debugger: `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ In diesem Beispiel gibt diese Verbindungszeichenfolge das Endpunktsuffix an, und
 - Das Autorisierungsschema ist standardmäßig „ikey“. 
 - Instrumentierungsschlüssel: 00000000-0000-0000-0000-000000000000
 - Die regionalen Dienst-URIs basieren auf dem bereitgestellten Endpunktsuffix: 
-   - Erfassung: https://dc.ai.contoso.com
-   - Livemetriken: https://live.ai.contoso.com
-   - Profiler: https://profiler.ai.contoso.com 
-   - Debugger: https://snapshot.ai.contoso.com   
+   - Erfassung: `https://dc.ai.contoso.com`
+   - Livemetriken: `https://live.ai.contoso.com`
+   - Profiler: `https://profiler.ai.contoso.com`
+   - Debugger: `https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ In diesem Beispiel gibt diese Verbindungszeichenfolge explizite Überschreibunge
 - Das Autorisierungsschema ist standardmäßig „ikey“. 
 - Instrumentierungsschlüssel: 00000000-0000-0000-0000-000000000000
 - Die regionalen Dienst-URIs basieren auf den expliziten Überschreibungswerten: 
-   - Erfassung: https:\//custom.com:111/
-   - Livemetriken: https:\//custom.com:222/
-   - Profiler: https:\//custom.com:333/ 
-   - Debugger: https:\//custom.com:444/   
+   - Erfassung: `https://custom.com:111/`
+   - Livemetriken: `https://custom.com:222/`
+   - Profiler: `https://custom.com:333/`
+   - Debugger: `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Festlegen einer Verbindungszeichenfolge

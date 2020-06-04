@@ -3,12 +3,12 @@ title: Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container | Micr
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216545"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872116"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
@@ -42,7 +42,7 @@ Mithilfe der Option **Scrollen** können Sie den automatischen Bildlauf unterbre
 >Es wird empfohlen, den automatischen Bildlauf bei der Problembehandlung nur für kurze Zeit anzuhalten. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken. 
 
 >[!IMPORTANT]
->Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten (Vorschau) puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung (müssen hier genauer sein; was ist angemessen?). 
+>Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten (Vorschau) puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung.
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 

@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79365218"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929212"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
+
+>[!IMPORTANT]
+>Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
+>
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn Sie die Nutzung in Ihrem Hostpool erhöhen, müssen Sie den vorhandenen Pool möglicherweise um neue Sitzungshosts erweitern, um die neue Last zu verarbeiten.
 
@@ -25,103 +31,48 @@ In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Hostpool um neue S
 
 Bevor Sie beginnen, stellen Sie sicher, dass der Hostpool und die Sitzungshost-VMs mit einer der folgenden Methoden erstellt wurden:
 
-- [Angebot im Azure Marketplace](./create-host-pools-azure-marketplace.md)
-- [Azure Resource Manager-Vorlage in GitHub](./create-host-pools-arm-template.md)
+- [Azure portal](./create-host-pools-azure-marketplace.md)
 - [Erstellen eines Hostpools mit PowerShell](./create-host-pools-powershell.md)
 
 Sie benötigen außerdem folgende Informationen aus dem Vorgang der ersten Erstellung des Hostpools und der Sitzungshost-VMs:
 
 - Größe, Image und Namenspräfix der VM
-- Informationen zum Domänenbeitritt und Anmeldeinformationen für den Windows Virtual Desktop-Mandantenadministrator
+- Administratoranmeldeinformationen des Domänenbeitritts
 - Name des virtuellen Netzwerks und des Subnetzes
 
-In den nächsten Abschnitten werden die drei Methoden beschrieben, die Sie zum Erweitern des Hostpools verwenden können. Sie können jede dieser Methoden mit dem von Ihnen bevorzugten Bereitstellungstool verwenden.
+## <a name="add-virtual-machines-with-the-azure-portal"></a>Hinzufügen von virtuellen Computern mit dem Azure-Portal
 
->[!NOTE]
->Während der Bereitstellungsphase werden Fehlermeldungen für Ressourcen der vorherigen Sitzungshost-VMs angezeigt, wenn diese derzeit herunterfahren sind. Diese Fehler treten auf, weil Azure die PowerShell-DSC-Erweiterung nicht ausführen kann, um zu überprüfen, ob die Sitzungshost-VMs ordnungsgemäß bei Ihrem vorhandenen Hostpool registriert sind. Sie können diese Fehler getrost ignorieren. Wenn Sie die Fehler vermeiden möchten, starten Sie alle Sitzungshost-VMs im vorhandenen Hostpool, bevor Sie den Bereitstellungsprozess starten.
+So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
-## <a name="redeploy-from-azure"></a>Erneutes Bereitstellen aus Azure
+1. Melden Sie sich beim Azure-Portal an.
 
-Wenn Sie bereits mithilfe des [Angebots im Azure Marketplace](./create-host-pools-azure-marketplace.md) oder der [Azure Resource Manager-Vorlage in GitHub](./create-host-pools-arm-template.md) einen Hostpool und Sitzungshost-VMs erstellt haben, können Sie dieselbe Vorlage aus dem Azure-Portal erneut bereitstellen. Bei einer erneuten Bereitstellung der Vorlage werden alle von Ihnen in der ursprünglichen Vorlage angegebenen Informationen erneut eingegeben, mit Ausnahme von Kennwörtern.
+2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
 
-So stellen Sie die Azure Resource Manager-Vorlage erneut bereit, um einen Hostpool zu erweitern:
+3. Wählen Sie im Menü auf der linken Seite des Bildschirms **Hostpools**aus, und wählen Sie dann den Namen des Hostpools aus, dem Sie virtuelle Computer hinzufügen möchten.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Suchen Sie in der Suchleiste oben im Azure-Portal nach **Ressourcengruppen**, und wählen Sie das Element unter **Dienste** aus.
-3. Suchen Sie die Ressourcengruppe, die Sie beim Erstellen des Hostpools erstellt haben, und wählen Sie diese aus.
-4. Wählen Sie im linken Bereich des Browsers die Option **Bereitstellungen** aus.
-5. Wählen Sie die geeignete Bereitstellung für die Erstellung Ihres Hostpools aus:
-     - Wenn Sie den ursprünglichen Hostpool mithilfe des Azure Marketplace-Angebots erstellt haben, wählen Sie die Bereitstellung aus, die mit **rds.wvd-provision-host-pool** beginnt.
-     - Wenn Sie den ursprünglichen Hostpool mithilfe der Azure Resource Manager-Vorlage in GitHub erstellt haben, wählen Sie die Bereitstellung namens **Microsoft.Template** aus.
-6. Wählen Sie **Erneut bereitstellen** aus.
-     
-     >[!NOTE]
-     >Wenn die Vorlage bei Auswahl von **Erneut bereitstellen** nicht automatisch erneut bereitgestellt wird, klicken Sie im linken Bereich Ihres Browsers auf **Vorlage** und wählen **Bereitstellen** aus.
+4. Wählen Sie im Menü auf der linken Seite des Bildschirms die Option **Virtuelle Computer** aus.
 
-7. Wählen Sie die Ressourcengruppe aus, die die aktuellen Sitzungshost-VMs im vorhandenen Hostpool enthält.
-     
-     >[!NOTE]
-     >Wenn Sie in einer Fehlermeldung aufgefordert werden, eine andere Ressourcengruppe auszuwählen, obwohl die von Ihnen eingegebene Gruppe richtig ist, wählen Sie zunächst eine andere Ressourcengruppe und danach die ursprüngliche Ressourcengruppe aus.
+5. Wählen Sie **+Hinzufügen** aus, um mit dem Erstellen des Hostpools zu beginnen.
 
-8. Geben Sie für *_artifactsLocation* folgende URL ein: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
-9. Geben Sie unter *Remotedesktop-Sitzungshosts – Anzahl von Instanzen* die gewünschte neue Gesamtzahl von Sitzungshosts ein. Ein Beispiel: Wenn Sie Ihren Hostpool von fünf auf acht Sitzungshosts erweitern möchten, geben Sie **8** ein.
-10. Geben Sie dasselbe vorhandene Domänenkennwort ein, dass Sie für den vorhandenen Benutzerprinzipalnamen in der Domäne verwendet haben. Ändern Sie den Benutzernamen nicht, da dies beim Ausführen der Vorlage zu einem Fehler führt.
-11. Geben Sie dasselbe Kennwort für den Mandantenadministrator ein, das Sie für den Benutzernamen oder die Anwendungs-ID verwendet haben, den/die Sie unter *Mandantenadministrator-UPN oder Anwendungs-ID* eingegeben haben. Denken Sie daran: Ändern Sie den Benutzernamen nicht.
-12. Schließen Sie die Übermittlung ab, um Ihren Hostpool zu erweitern.
+6. Ignorieren Sie die Registerkarte mit den Grundeinstellungen, und wählen Sie stattdessen die Registerkarte **VM-Details** aus. Hier können Sie die Details des virtuellen Computers (VM) anzeigen und bearbeiten, den Sie dem Hostpool hinzufügen möchten.
 
-## <a name="run-the-azure-marketplace-offering"></a>Ausführen des Azure Marketplace-Angebots
-
-Befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit dem Azure Marketplace](./create-host-pools-azure-marketplace.md), bis Sie zu [Ausführen des Azure Marketplace-Angebots zum Bereitstellen eines neuen Hostpools](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool) gelangen. Dort müssen Sie auf den jeweiligen Registerkarten folgende Informationen eingeben:
-
-### <a name="basics"></a>Grundlagen
-
-Alle Werte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben, mit Ausnahme von *Standarddesktopbenutzer*:
-
-1.    Wählen Sie unter *Abonnement* das Abonnement aus, in dem Sie den Hostpool anfänglich erstellt haben.
-2.    Wählen Sie als *Ressourcengruppe* die Ressourcengruppe aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-3.    Wählen Sie unter *Region* die Region aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-4.    Geben Sie unter *Hostpoolname* den Namen des vorhandenen Hostpools ein.
-5.    Wählen Sie als *Desktoptyp* den Typ aus, der mit dem vorhandenen Hostpool übereinstimmt.
-6.    Geben Sie für *Standarddesktopbenutzer* eine mit Trennzeichen getrennte Liste mit allen zusätzlichen Benutzern ein, denen Sie erlauben möchten, sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anzumelden und auf einen Desktop zuzugreifen. Geben Sie also beispielsweise „user3@contoso.com,user4@contoso.com“ ein, um user3@contoso.com und user4@contoso.com Zugriff zu gewähren.
-7.    Wählen Sie **Weiter: Virtuellen Computer konfigurieren** aus.
-
->[!NOTE]
->Mit Ausnahme von *Standarddesktopbenutzer* müssen alle Felder exakt mit den Informationen übereinstimmen, die im vorhandenen Hostpool konfiguriert sind. Jegliche Abweichung führt zur Erstellung eines neuen Hostpools.
-
-### <a name="configure-virtual-machines"></a>Konfigurieren virtueller Computer
-
-Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben, mit Ausnahme der Gesamtzahl von VMs. Die Anzahl von VMs, die Sie hier eingeben, entspricht der Anzahl von VMs in Ihrem erweiterten Hostpool:
-
-1. Wählen Sie die VM-Größe aus, die den vorhandenen Sitzungshost-VMs entspricht.
-    
+7. Wählen Sie die Ressourcengruppe aus, unter der Sie die VMs erstellen möchten, und wählen Sie dann die Region aus. Sie können die aktuelle Region auswählen, die Sie verwenden, oder eine neue Region.
+   
+8. Geben Sie die Anzahl der Sitzungshosts, die Sie zu Ihrem Hostpool hinzufügen möchten, in **Anzahl von VMs** ein. Wenn Sie z. B. Ihren Hostpool um fünf Hosts erweitern möchten, geben Sie **5** ein.
+   
     >[!NOTE]
-    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+    >Sie können die Größe oder das Image der VMs nicht bearbeiten, da es wichtig ist, sicherzustellen, dass alle VMs im Hostpool die gleiche Größe besitzen.
+    
+9. Wählen Sie als **Informationen zum virtuellen Netzwerk** das virtuelle Netzwerk und das Subnetz aus, mit dem die virtuellen Computer verknüpft werden sollen. Sie können dasselbe virtuelle Netzwerk auswählen, das zurzeit bereits von Ihren vorhandenen Computern verwendet wird, oder ein anderes virtuelles Netzwerk auswählen, das besser für die Region geeignet ist, die Sie in Schritt 7 ausgewählt haben.
 
-2. Passen Sie die Parameter *Nutzungsprofil*, *Gesamtanzahl Benutzer* und *Anzahl von virtuellen Computern* an, um die Gesamtzahl von Sitzungshosts auszuwählen, die in Ihrem Hostpool enthalten sein sollen. Ein Beispiel: Wenn Sie Ihren Hostpool von fünf auf acht Sitzungshosts erweitern, konfigurieren Sie diese Optionen so, dass Sie acht virtuelle Computer erhalten.
-3. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise „prefix“ eingeben, heißen die virtuellen Computer „prefix-0“, „prefix-1“ usw.
-4. Wählen Sie **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
+10. Geben Sie als **Administratorkonto** den Active Directory-Domänenbenutzernamen und das Kennwort ein, der bzw. das dem ausgewählten virtuellen Netzwerk zugeordnet ist. Diese Anmeldeinformationen werden verwendet, um die virtuellen Computer mit dem virtuellen Netzwerk zu verknüpfen.
 
-### <a name="virtual-machine-settings"></a>Einstellungen des virtuellen Computers
+      >[!NOTE]
+      >Stellen Sie sicher, dass Ihre Administratornamen den hier angegebenen Informationen entsprechen. Vergewissern Sie sich außerdem, dass keine mehrstufige Authentifizierung (MFA) für das Konto aktiviert ist.
 
-Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben:
+11. Wählen Sie die Registerkarte **Tag** aus, wenn Sie über Tags verfügen, mit denen Sie die virtuellen Computer gruppieren möchten. Überspringen Sie diese Registerkarte andernfalls. 
 
-1. Geben Sie für *Imagequelle* und *Betriebssystemversion des Images* dieselben Informationen ein, die Sie beim ersten Erstellen des Hostpools angegeben haben.
-2. Geben Sie für *UPN für AD-Domänenbeitritt* und die zugehörigen Kennwörter dieselben Informationen ein, die Sie beim ersten Erstellen des Hostpools angegeben haben, um die VMs in die Active Directory-Domäne einzubinden. Mit diesen Anmeldeinformationen wird ein lokales Konto auf Ihren virtuellen Computern erstellt. Sie können diese lokalen Konten später zurücksetzen, um die Anmeldeinformationen zu ändern.
-3. Wählen Sie dasselbe virtuelle Netzwerk und Subnetz aus, in dem sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-4. Wählen Sie **Weiter: Informationen zu Windows Virtual Desktop konfigurieren** aus.
-
-### <a name="windows-virtual-desktop-information"></a>Informationen zu Windows Virtual Desktop
-
-Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben:
-
-1. Geben Sie in *Name der Windows Virtual Desktop-Mandantengruppe* den Namen für die Mandantengruppe ein, die Ihren Mandanten enthält. Lassen Sie den Standardnamen, es sei denn, Ihnen wurde ein spezieller Mandantengruppenname bereitgestellt.
-2. Geben Sie für *Name des Windows Virtual Desktop-Mandanten* den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
-3. Geben Sie dieselben Anmeldeinformationen an, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs verwendet haben. Wenn Sie einen Dienstprinzipal verwenden, geben Sie die ID der Azure Active Directory-Instanz ein, in der sich der Dienstprinzipal befindet.
-4. Wählen Sie **Weiter: Überprüfen + erstellen**.
-
-## <a name="run-the-github-azure-resource-manager-template"></a>Ausführen der Azure Resource Manager-Vorlage aus GitHub
-
-Befolgen Sie die Anweisungen unter [Ausführen der Azure Resource Manager-Vorlage zum Bereitstellen eines neuen Hostpools](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool), und geben Sie überall dieselben Parameterwerte an, mit Ausnahme von *Remotedesktop-Sitzungshosts – Anzahl von Instanzen*. Geben Sie die Anzahl von Sitzungshost-VMs an, die nach Ausführung der Vorlage im Hostpool vorhanden sein sollen. Ein Beispiel: Wenn Sie Ihren Hostpool von fünf auf acht Sitzungshosts erweitern möchten, geben Sie **8** ein.
+12. Wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Überprüfen Sie Ihre Auswahl, und wählen Sie **Erstellen** aus, wenn alles in Ordnung ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

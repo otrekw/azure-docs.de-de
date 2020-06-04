@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738081"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196289"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
 
 ## <a name="overview"></a>Übersicht
 Daten in Azure Monitor-Protokollen werden entweder in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert. Beide basieren auf [Azure Data Explorer](/azure/data-explorer/) und verwenden daher dessen leistungsstarke Daten-Engine und Abfragesprache.
+
+> [!IMPORTANT]
+> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Die Tabellen wurden umbenannt und neu strukturiert, verfügen aber über dieselben Informationen wie die Tabellen in der Application Insights-Anwendung.
 
 Daten in Arbeitsbereichen und Anwendungen sind jeweils in Tabellen organisiert, von denen jede unterschiedliche Arten von Daten speichert und über mehrere eindeutige Eigenschaften verfügt. Die meisten [Datenquellen](../platform/data-sources.md) schreiben in ihre eigenen Tabellen in einem Log Analytics-Arbeitsbereich, während Application Insights in eine Reihe von vordefinierten Tabellen in einer Application Insights-Anwendung schreibt. Protokollabfragen sind sehr flexibel und ermöglichen Ihnen das einfache Kombinieren von Daten aus mehreren Tabellen, das Verwenden einer ressourcenübergreifenden Abfrage zum Kombinieren von Daten aus Tabellen in mehreren Arbeitsbereichen und das Schreiben von Abfragen, die Arbeitsbereiche und Anwendungsdaten kombinieren.
 
@@ -48,23 +51,26 @@ Weitere Details zu den Tabellen, die erstellt werden, finden Sie in der Dokument
 Weitere Informationen zur Zugriffssteuerungsstrategie und Empfehlungen für das Gewähren von Zugriff auf Daten in einem Arbeitsbereich finden Sie unter [Entwerfen einer Azure Monitor-Protokollbereitstellung](../platform/design-logs-deployment.md). Zusätzlich zum Erteilen des Zugriffs auf den Arbeitsbereich selbst können Sie mithilfe von [RBAC auf Tabellenebene](../platform/manage-access.md#table-level-rbac) den Zugriff auf einzelne Tabellen beschränken.
 
 ## <a name="application-insights-application"></a>Application Insights-Anwendung
+
+> [!IMPORTANT]
+> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Die Tabellen wurden umbenannt und neu strukturiert, verfügen aber über dieselben Informationen wie die Tabellen in einer klassischen Application Insights-Ressource.
+
 Wenn Sie eine Anwendung in Application Insights erstellen, wird in Azure Monitor-Protokollen automatisch eine entsprechende Anwendung erstellt. Für das Sammeln von Daten ist keine Konfiguration erforderlich, und die Anwendung schreibt automatisch Überwachungsdaten wie Seitenansichten, Anforderungen und Ausnahmen.
 
 Im Gegensatz zu einem Log Analytics-Arbeitsbereich verwendet eine Application Insights-Anwendung eine festgelegte Gruppe von Tabellen. Sie können andere Datenquellen nicht so konfigurieren, dass diese in die Anwendung schreiben, damit keine weiteren Tabellen erstellt werden können. 
 
 | Tabelle | BESCHREIBUNG | 
 |:---|:---|
-| availabilityResults   | Zusammenfassungsdaten aus Verfügbarkeitstests.
-| browserTimings      |     Daten über die Leistung des Clients, z. B. die angefallene Zeit zum Verarbeiten der eingehenden Daten.
-| customEvents        | Benutzerdefinierte Ereignisse, die von Ihrer Anwendung erstellt werden.
-| customMetrics       | Benutzerdefinierte Metriken, die von Ihrer Anwendung erstellt werden.
-| dependencies        | Aufrufe von der Anwendung an andere Komponenten (einschließlich externer Komponenten), die über TrackDependency() aufgezeichnet werden – z. B. Aufrufe der REST-API, der Datenbank oder eines Dateisystems. 
-| Ausnahmen            | Ausnahmen, die von der Anwendungslaufzeit ausgelöst werden, erfassen sowohl server- als auch clientseitige (Browser) Ausnahmen.
-| pageViews           | Daten über jede Websiteansicht mit Browserinformationen.
-| performanceCounters   | Leistungsmessungen der Computeressourcen, die die Anwendung unterstützen, z. B. Windows-Leistungsindikatoren.
-| requests            | Von Ihrer Anwendung empfangene Anforderungen. Beispielsweise wird für jede HTTP-Anforderung, die Ihre Web-App empfängt, ein separater Anforderungsdatensatz protokolliert. 
-| traces                | Ausführliche Protokolle (Ablaufverfolgungen), die über Anwendungscode-/Protokollierungsframeworks ausgegeben und mithilfe von TrackTrace() aufgezeichnet werden.
-
+| availabilityResults | Zusammenfassungsdaten aus Verfügbarkeitstests. |
+| browserTimings      | Daten über die Leistung des Clients, z. B. die angefallene Zeit zum Verarbeiten der eingehenden Daten. |
+| customEvents        | Benutzerdefinierte Ereignisse, die von Ihrer Anwendung erstellt werden. |
+| customMetrics       | Benutzerdefinierte Metriken, die von Ihrer Anwendung erstellt werden. |
+| dependencies        | Aufrufe von der Anwendung an andere Komponenten (einschließlich externer Komponenten), die über TrackDependency() aufgezeichnet werden – z. B. Aufrufe der REST-API, der Datenbank oder eines Dateisystems. |
+| Ausnahmen          | Ausnahmen, die von der Anwendungslaufzeit ausgelöst werden, erfassen sowohl server- als auch clientseitige (Browser) Ausnahmen.|
+| pageViews           | Daten über jede Websiteansicht mit Browserinformationen. |
+| performanceCounters | Leistungsmessungen der Computeressourcen, die die Anwendung unterstützen, z. B. Windows-Leistungsindikatoren. |
+| requests            | Von Ihrer Anwendung empfangene Anforderungen. Beispielsweise wird für jede HTTP-Anforderung, die Ihre Web-App empfängt, ein separater Anforderungsdatensatz protokolliert.  |
+| traces              | Ausführliche Protokolle (Ablaufverfolgungen), die über Anwendungscode-/Protokollierungsframeworks ausgegeben und mithilfe von TrackTrace() aufgezeichnet werden. |
 
 Sie können das Schema für jede Tabelle auf der Registerkarte **Schema** in Log Analytics für die Anwendung anzeigen lassen.
 

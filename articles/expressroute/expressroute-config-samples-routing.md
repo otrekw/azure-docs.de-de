@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024811"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651988"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
 Auf dieser Seite finden Sie Schnittstellen- und Routingkonfigurationsbeispiele für Cisco IOS XE-Router und Juniper-Router der MX-Serie, wenn Sie mit Azure ExpressRoute arbeiten.
@@ -175,8 +175,8 @@ Konfigurieren Sie Ihren Router anhand des folgenden Beispiels so, dass Microsoft
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter 
-    <Prefix_to_be_advertised/Subnet_Mask> exact;
+                route-filter; 
+                <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -186,7 +186,7 @@ Konfigurieren Sie Ihren Router anhand des folgenden Beispiels so, dass Microsoft
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
+                export <Policy_Name>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -205,7 +205,7 @@ Sie können Routenzuordnungen und Präfixlisten verwenden, um Präfixe zu filter
         policy-statement <MS_Prefixes_Inbound> {
             term 1 {
                 from {
-                prefix-list MS_Prefixes;
+                    prefix-list MS_Prefixes;
                 }
                 then {
                     accept;
@@ -216,8 +216,8 @@ Sie können Routenzuordnungen und Präfixlisten verwenden, um Präfixe zu filter
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
-                import <MS_Prefixes_Inbound>
+                export <Policy_Name>;
+                import <MS_Prefixes_Inbound>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -240,6 +240,26 @@ Konfigurieren Sie BFD nur unter dem Abschnitt „protocols“ > „bgp“.
         }                                   
     }
 
+### <a name="configure-macsec"></a>Konfigurieren von MACsec
+Bei der MACSec-Konfiguration müssen der Konnektivitätszuordnungsschlüssel (Key Association Key, CAK) und der Konnektivitätszuordnungsschlüssel-Name (Connectivity Association Key Name, CKN) mit über PowerShell-Befehle konfigurierten Werten übereinstimmen.
+
+    security {
+        macsec {
+            connectivity-association <Connectivity_Association_Name> {
+                cipher-suite gcm-aes-xpn-128;
+                security-mode static-cak;
+                pre-shared-key {
+                    ckn <Connectivity_Association_Key_Name>;
+                    cak <Connectivity_Association_Key>; ## SECRET-DATA
+                }
+            }
+            interfaces {
+                <Interface_Number> {
+                    connectivity-association <Connectivity_Association_Name>;
+                }
+            }
+        }
+    }
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .

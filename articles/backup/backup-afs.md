@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101289"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978011"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Sichern von Azure-Dateifreigaben in einem Recovery Services-Tresor
 
@@ -50,35 +50,70 @@ So ändern Sie den Speicherreplikationstyp
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Ermitteln der Dateifreigaben und Konfigurieren der Sicherung
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Recovery Services-Tresor, mit dem Sie die Dateifreigaben sichern möchten.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung für die Dateifreigabe verwenden möchten.
 
-1. Wählen Sie **+Sichern** im Dashboard des **Recovery Services-Tresors** aus.
+1. Wählen Sie im Bereich **Recovery Services-Tresor** im Menü oben die Option **+Sicherung** aus.
 
    ![Recovery Services-Tresor](./media/backup-afs/recovery-services-vault.png)
 
-    a. Legen Sie unter **Sicherungsziel** die Einstellung **Wo wird die Workload ausgeführt?** auf **Azure** fest.
+    1. Legen Sie im Bereich **Sicherungsziel** die Option **Wo wird Ihre Workload ausgeführt?** auf **Azure** fest, indem Sie in der Dropdownliste **Azure** auswählen.
 
-    ![Auswählen einer Azure-Dateifreigabe als Sicherungsziel](./media/backup-afs/backup-goal.png)
+          ![Azure als Workload wählen](./media/backup-afs/backup-goal.png)
 
-    b.  Wählen Sie unter **Was möchten Sie sichern?** aus der Dropdownliste die Option **Azure-Dateifreigabe** aus.
+    2. Wählen Sie unter **Was möchten Sie sichern?** aus der Dropdownliste die Option **Azure-Dateifreigabe** aus.
 
-    c.  Wählen Sie **Sicherung** aus, um die Azure-Dateifreigabeerweiterung im Tresor zu registrieren.
+          ![Azure-Dateifreigabe auswählen](./media/backup-afs/select-azure-file-share.png)
 
-    ![Wählen Sie „Sicherung“ aus, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen.](./media/backup-afs/register-extension.png)
+    3. Wählen Sie **Sicherung** aus, um die Azure-Dateifreigabeerweiterung im Tresor zu registrieren.
 
-1. Wenn Sie **Sicherung** ausgewählt haben, wird der Bereich **Sicherung** geöffnet, und Sie werden aufgefordert, ein Speicherkonto aus einer Liste der ermittelten unterstützten Speicherkonten auszuwählen. Sie sind entweder diesem Tresor zugeordnet oder befinden sich in derselben Region wie der Tresor, sind aber noch keinem Recovery Services-Tresor zugeordnet.
+          ![Wählen Sie „Sicherung“ aus, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen.](./media/backup-afs/register-extension.png)
 
-1. Wählen Sie aus der Liste der ermittelten Speicherkonten ein Speicherkonto und dann **OK** aus. Azure durchsucht das Speicherkonto nach Dateifreigaben, die gesichert werden können. Falls Sie die Dateifreigaben erst kürzlich hinzugefügt haben und diese nicht in der Liste angezeigt werden, warten Sie einen Moment, bis die Dateifreigaben angezeigt werden.
+1. Nachdem Sie **Sicherung** ausgewählt haben, wird der Bereich **Sicherung** geöffnet. Um das Speicherkonto auszuwählen, das die zu schützende Dateifreigabe hostet, klicken Sie unter dem Textfeld **Speicherkonto** auf den Linktext **Auswählen**.
 
-    ![Ermitteln von Dateifreigaben](./media/backup-afs/discovering-file-shares.png)
+   ![Klicken auf den Link „Auswählen“](./media/backup-afs/choose-select-link.png)
 
-1. Wählen Sie in der Liste **Dateifreigaben** mindestens eine zu sichernde Dateifreigabe aus. Klicken Sie auf **OK**.
+1. Der Bereich **Speicherkonto auswählen**  wird auf der rechten Seite geöffnet, in dem eine Reihe erkannter unterstützter Speicherkonten aufgeführt ist. Sie sind entweder diesem Tresor zugeordnet oder befinden sich in derselben Region wie der Tresor, sind aber noch keinem Recovery Services-Tresor zugeordnet.
+
+1. Wählen Sie aus der Liste der ermittelten Speicherkonten ein Speicherkonto und dann **OK** aus.
+
+   ![In den erkannten Speicherkonten eine Wahl treffen](./media/backup-afs/select-discovered-storage-account.png)
+
+1. Der nächste Schritt ist das Auswählen der zu sichernden Dateifreigaben. Klicken Sie im Abschnitt **Dateifreigaben für die Sicherung** auf die Schaltfläche **Hinzufügen**.
+
+   ![Auswählen der zu sichernden Dateifreigaben](./media/backup-afs/select-file-shares-to-back-up.png)
+
+1. Der Kontextbereich **Dateifreigaben auswählen** wird auf der rechten Seite geöffnet. Azure durchsucht das Speicherkonto nach Dateifreigaben, die gesichert werden können. Falls Sie die Dateifreigaben erst kürzlich hinzugefügt haben und diese nicht in der Liste angezeigt werden, warten Sie einen Moment, bis die Dateifreigaben angezeigt werden.
+
+1. Wählen Sie in der Liste **Dateifreigaben auswählen** mindestens eine zu sichernde Dateifreigabe aus. Klicken Sie auf **OK**.
 
    ![Auswählen der Dateifreigaben](./media/backup-afs/select-file-shares.png)
 
-1. Nachdem Sie Ihre Dateifreigaben ausgewählt haben, wechselt das Menü **Sicherung** zu **Sicherheitsrichtlinie**. Wählen Sie in diesem Menü entweder eine vorhandene Sicherheitsrichtlinie aus, oder erstellen Sie eine neue. Wählen Sie dann **Sicherung aktivieren** aus.
+1. Für die Auswahl einer Sicherungsrichtlinie für Ihre Dateifreigabe gibt es drei Optionen:
 
-    ![Auswählen der Sicherungsrichtlinie](./media/backup-afs/select-backup-policy.png)
+   * Die Standardrichtlinie wählen.<br>
+   Diese Option ermöglicht Ihnen, eine tägliche Sicherung mit einer Aufbewahrung von 30 Tagen zu aktivieren. Wenn keine Sicherungsrichtlinie im Tresor vorhanden ist, wird der Sicherungsbereich mit den Standardrichtlinieneinstellungen geöffnet. Wenn Sie die Standardeinstellungen wählen möchten, können Sie direkt auf  **Sicherung aktivieren** klicken.
+
+   * Erstellen einer neuen Richtlinie <br>
+
+      1. Um eine neue Sicherungsrichtlinie für Ihre Dateifreigabe zu erstellen, klicken Sie im Abschnitt **Sicherungsrichtlinie** auf den Linktext unter der Dropdownliste.<br>
+
+         ![Eine neue Richtlinie erstellen.](./media/backup-afs/create-new-policy.png)
+
+      1. Der Kontextbereich **Sicherungsrichtlinie** wird auf der rechten Seite geöffnet. Geben Sie einen Richtliniennamen in das Textfeld ein, und wählen Sie den Aufbewahrungszeitraum entsprechend Ihren Anforderungen. Nur die Aufbewahrungsoption „Täglich“ ist standardmäßig aktiviert. Wenn Sie eine wöchentliche, monatliche oder jährliche Aufbewahrung wünschen, aktivieren Sie das entsprechende Kontrollkästchen, und geben Sie die gewünschte Aufbewahrungsdauer an.
+
+      1. Klicken Sie auf „OK“, nachdem Sie die Aufbewahrungsdauer und einen gültigen Richtliniennamen angegeben haben.<br>
+
+         ![Richtliniennamen und Aufbewahrungsdauer angeben](./media/backup-afs/policy-name.png)
+
+   * Eine der vorhandenen Sicherungsrichtlinien wählen <br>
+
+   Um eine der vorhandenen Sicherungsrichtlinien für die Konfiguration des Schutzes zu wählen, wählen Sie die gewünschte Richtlinie in der Dropdownliste **Sicherungsrichtlinie** aus.<br>
+
+   ![Vorhandene Richtlinie wählen](./media/backup-afs/choose-existing-policy.png)
+
+1. Klicken Sie auf **Sicherung aktivieren**, um den Schutz der Dateifreigabe zu aktivieren.
+
+   ![„Sicherung aktivieren“ wählen](./media/backup-afs/enable-backup.png)
 
 Nachdem Sie eine Sicherungsrichtlinie festgelegt haben, wird zum geplanten Zeitpunkt eine Momentaufnahme der Dateifreigaben erstellt. Der Wiederherstellungspunkt wird ebenfalls für den gewählten Zeitraum beibehalten.
 

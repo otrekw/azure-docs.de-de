@@ -2,20 +2,20 @@
 title: Sicherer Zugriff auf einen Schlüsseltresor – Azure Key Vault | Microsoft-Dokumentation
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
-author: amitbapat
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ambapat
-ms.openlocfilehash: 0ae1b26bb2e01d388f3f91d94134bb9723a5a305
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427690"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827513"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -135,7 +135,7 @@ Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugrif
 
 Weitere Informationen zum programmgesteuerten Bereitstellen von Zertifikaten, Zugriffsschlüsseln und Geheimnissen finden Sie in diesen Ressourcen:
 - Weitere Informationen finden Sie unter [Bereitstellen von Zertifikaten für VMs über einen vom Kunden verwalteten Schlüsseltresor](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (Blogbeitrag).
-- Laden Sie sich die [Azure Key Vault-Clientbeispiele](https://www.microsoft.com/download/details.aspx?id=45343) herunter. Der Inhalt veranschaulicht, wie ein Bootstrapzertifikat zur Authentifizierung bei Azure AD für den Zugriff auf einen Schlüsseltresor verwendet wird.
+- Sehen Sie sich die [Azure Key Vault-Clientbeispiele](https://docs.microsoft.com/samples/browse/?term=Key%20Vault) an. Der Inhalt veranschaulicht, wie ein Bootstrapzertifikat zur Authentifizierung bei Azure AD für den Zugriff auf einen Schlüsseltresor verwendet wird.
 
 Sie können die meisten Zugriffsberechtigungen über das Azure-Portal erteilen. Um detaillierte Berechtigungen zu vergeben, können Sie Azure PowerShell oder die Azure CLI verwenden.
 
@@ -233,4 +233,4 @@ Weitere Informationen zur Verwendungsprotokollierung für Key Vault finden Sie u
 
 Weitere Informationen zur Verwendung von Schlüsseln und Geheimnissen mit dem Azure Key Vault finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://msdn.microsoft.com/library/azure/dn903623.aspx).
 
-Sollten Sie Fragen zu Key Vault haben, besuchen Sie die [Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Besuchen Sie die [Microsoft-Seite mit häufig gestellten Fragen](https://docs.microsoft.com/answers/topics/azure-key-vault.html), wenn Sie Fragen zu Key Vault haben.
