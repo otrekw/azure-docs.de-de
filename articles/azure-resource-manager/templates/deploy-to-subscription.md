@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 60f77d7bb29af8bcd1a0932a9ac93f5fe4b8e3ac
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653348"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299246"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -386,7 +386,7 @@ New-AzSubscriptionDeployment `
 
 Sie können eine Blaupausendefinition aus einer Vorlage [erstellen](../../governance/blueprints/tutorials/create-from-sample.md).
 
-:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/subscription-deployments/blueprints-new-blueprint/azuredeploy.json":::
 
 Mit dem folgenden CLI-Befehl können Sie die Blaupausendefinition in Ihrem Abonnement erstellen:
 
@@ -394,7 +394,7 @@ Mit dem folgenden CLI-Befehl können Sie die Blaupausendefinition in Ihrem Abonn
 az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -403,17 +403,17 @@ Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
 New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Vorlagenbeispiele
 
-* [Erstellen Sie eine Ressourcengruppe, sperren Sie sie, und gewähren Sie die Berechtigungen dafür](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Erstellen Sie eine Ressourcengruppe, sperren Sie sie, und gewähren Sie die Berechtigungen dafür](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 * [Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
-* Ähnliche Beispielvorlagen sind auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) verfügbar.
+* Ähnliche Beispielvorlagen sind auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) verfügbar.
 * Sie können Vorlagen auch auf [Verwaltungsgruppenebene](deploy-to-management-group.md) und [Mandantenebene](deploy-to-tenant.md) bereitstellen.
