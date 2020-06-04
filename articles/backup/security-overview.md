@@ -3,12 +3,12 @@ title: Übersicht über Sicherheitsfeatures
 description: Erfahren Sie mehr über die Sicherheitsfunktionen in Azure Backup, die Ihnen helfen, Ihre Sicherungsdaten zu schützen und die Sicherheitsanforderungen Ihres Unternehmens zu erfüllen.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743655"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653787"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Übersicht über Sicherheitsfeatures in Azure Backup
 
@@ -40,8 +40,7 @@ Die Sicherung von virtuellen Azure-Computern erfordert das Verschieben von Daten
 
 Sie können nun [private Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) verwenden, um Ihre Daten von Servern in einem virtuellen Netzwerk sicher in Ihrem Recovery Services-Tresor zu sichern. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor, sodass Sie die virtuellen Netzwerke nicht für öffentliche IP-Adressen verfügbar machen müssen. Private Endpunkte können zum Sichern und Wiederherstellen von SQL- und SAP HANA-Datenbanken verwendet werden, die auf Ihren virtuellen Azure-Computern ausgeführt werden. Sie können auch für lokale Server mit dem MARS-Agent verwendet werden.
 
->[!NOTE]
-> Dieses Feature ist zurzeit in nur eingeschränkt verfügbar. Füllen Sie [diese Umfrage](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUQk5EQ1QxRzVOWDNDS1Y1Q0xLTkdLQ0U0RC4u) aus, und senden Sie uns eine [E-Mail](mailto:azbackupnetsec@microsoft.com), wenn Sie an der Verwendung privater Endpunkte für Azure Backup interessiert sind. Die Möglichkeit zur Verwendung dieses Features unterliegt der Genehmigung des Azure Backup-Diensts.
+Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](https://docs.microsoft.com/azure/backup/private-endpoints).
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>Verschlüsselung von Daten während der Übertragung und im Ruhezustand
 

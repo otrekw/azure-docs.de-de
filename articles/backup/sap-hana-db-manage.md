@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480061"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701107"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -68,13 +68,21 @@ Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgest
 
 ### <a name="hana-native-client-integration"></a>Integration von nativen HANA-Clients
 
-Jetzt werden bedarfsgesteuerte vollständige Sicherungen, die von einem der nativen HANA-Clients ausgelöst werden, auf der Seite **Sicherungselemente** als vollständige Sicherungen angezeigt.
+#### <a name="backup"></a>Backup
+
+Von einem der nativen HANA-Clients (an **Backint**) ausgelöste bedarfsgesteuerte Sicherungen werden auf der Seite **Sicherungselemente** in der Liste der Sicherungen angezeigt.
 
 ![Zuletzt durchgeführte Sicherungen](./media/sap-hana-db-manage/last-backups.png)
 
-Diese vollständigen Ad-hoc-Sicherungen werden auch in der Liste der Wiederherstellungspunkte für die Wiederherstellung angezeigt.
+Sie können [diese Sicherungen auch von der Seite **Sicherungsaufträge** aus überwachen](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal).
+
+Diese bedarfsgesteuerten Sicherungen werden auch in der Liste der Wiederherstellungspunkte für die Wiederherstellung angezeigt.
 
 ![Liste der Wiederherstellungspunkte](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>Restore
+
+Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen auf denselben Computer können von der Seite **Sicherungsaufträge** aus [überwacht](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) werden.
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Ausführen einer Sicherung des nativen SAP HANA-Clients für eine Datenbank, für die Azure Backup aktiviert ist
 
@@ -200,13 +208,13 @@ So setzen Sie den Schutz für eine SAP HANA-Datenbank fort:
 
 * Wählen Sie im Menü **Sicherungsrichtlinie** eine Richtlinie aus, und klicken Sie dann auf **Speichern**.
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>Upgrade von SAP HANA 1.0 auf 2.0
+### <a name="upgrading-from-sdc-to-mdc"></a>Aktualisieren von SDC auf MDC
 
-Erfahren Sie, wie Sie nach einem [Upgrade von SAP Hana 1.0 auf 2.0](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20) die Sicherung für eine SAP HANA-Datenbank fortsetzen.
+Erfahren Sie, wie Sie nach einem [Upgrade von SDC auf MDC](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) die Sicherung für eine SAP HANA-Datenbank fortsetzen.
 
-### <a name="upgrading-without-a-sid-change"></a>Upgrade ohne SID-Änderung
+### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>Aktualisieren von SDC auf MDC ohne SID-Änderung
 
-Erfahren Sie, wie Sie die Sicherung einer SAP HANA-Datenbank fortsetzen, deren [SID sich nach dem Upgrade nicht geändert hat](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change).
+Erfahren Sie, wie Sie die Sicherung einer SAP HANA-Datenbank fortsetzen, deren [SID sich nach dem Upgrade von SDC auf MDC nicht geändert hat](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid).
 
 ### <a name="unregister-an-sap-hana-instance"></a>Aufheben der Registrierung einer SAP HANA-Instanz
 

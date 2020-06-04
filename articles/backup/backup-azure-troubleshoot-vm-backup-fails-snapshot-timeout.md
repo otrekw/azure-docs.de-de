@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677406"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864401"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -44,6 +44,8 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **Ursache 4: [Konfigurationsoptionen für den VM-Agent sind nicht festgelegt (für virtuelle Linux-Computer)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+**Ursache 5: [Die Anwendungssteuerungslösung blockiert „iaasbcdrextension.exe“](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: Der virtuelle Computer befindet sich im Zustand „Fehler bei der Bereitstellung“
 
@@ -200,8 +202,16 @@ Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung 
 
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Konfigurationsoptionen für den VM-Agent sind nicht festgelegt (für virtuelle Linux-Computer)
 
-Eine Konfigurationsdatei (/etc/waagent.conf) steuert die Aktionen von waagent. Die Konfigurationsdateioptionen **Extensions.Enable** und **Provisioning.Agent** müssen auf **y** festgelegt werden, damit die Sicherung funktioniert.
+Eine Konfigurationsdatei (/etc/waagent.conf) steuert die Aktionen von waagent. Die Konfigurationsdateioption **Extensions.Enable** muss auf **y** und die Option **Provisioning.Agent** auf **auto** festgelegt sein, damit die Sicherung funktioniert.
 Eine vollständige Liste der Optionen für die VM-Agent-Konfigurationsdatei finden Sie unter <https://github.com/Azure/WALinuxAgent#configuration-file-options>.
+
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Die Anwendungssteuerungslösung blockiert „iaasbcdrextension.exe“
+
+Wenn Sie [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (oder eine andere Anwendungssteuerungslösung) ausführen und die Regeln auf dem Herausgeber oder Pfad basieren, blockieren sie ggf. das Ausführen der ausführbaren Datei **IaaSBcdrExtension.exe**.
+
+#### <a name="solution"></a>Lösung
+
+Schließen Sie den Pfad `/var/lib` oder die ausführbare Datei **IaaSBcdrExtension.exe** von AppLocker (oder anderer Anwendungssteuerungssoftware) aus.
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden
 
