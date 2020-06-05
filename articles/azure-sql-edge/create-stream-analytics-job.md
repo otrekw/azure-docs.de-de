@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595389"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685177"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Erstellen eines Stream Analytics-Auftrags in Azure SQL Edge (Vorschau) 
 
@@ -22,6 +22,9 @@ In diesem Artikel wird das Erstellen eines T-SQL-Streamingauftrags in Azure SQL 
 
 1. Erstellen der externen Streameingabe- und -ausgabeobjekte
 2. Definieren der Streamingauftragsabfrage im Rahmen der Erstellung des Streamingauftrags
+
+> [!NOTE]
+> Um das T-SQL-Streaming in Azure SQL Edge zu aktivieren, legen Sie „TF 11515“ als Startoption fest, oder verwenden Sie den Befehl [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql). Weitere Informationen zum Aktivieren von Ablaufverfolgungsflags mithilfe der Datei „mssql.conf“ finden Sie unter [Konfigurieren mithilfe der Datei „mssql.conf“](configure.md#configure-using-mssqlconf-file). Diese Anforderung wird in zukünftigen Updates von Azure SQL Edge (Vorschau) entfernt.
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Konfigurieren eines externen Streameingabe- und -ausgabeobjekts
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625529"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832820"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -58,7 +58,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     |    SAM/LSA            |    445       |    UDP           |
     |    w32time            |    123       |    UDP           |
 
-* Die Standorttopologie für die Ziel-Active Directory Domain Services muss den bewährten Methoden entsprechen. Dies gilt insbesondere für das Azure-VNET, in dem Azure NetApp Files bereitgestellt wird.  
+* Die Standorttopologie für die Ziel-Active Directory Domain Services muss den Richtlinien entsprechen. Dies gilt insbesondere für das Azure-VNET, in dem Azure NetApp Files bereitgestellt wird.  
 
     Der Adressraum für das virtuelle Netzwerk, in dem Azure NetApp Files bereitgestellt wird, muss einem neuen oder vorhandenen Active Directory-Standort hinzugefügt werden (in dem sich ein Domänencontroller befindet, der über Azure NetApp Files erreichbar ist). 
 
@@ -79,7 +79,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
     For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
 
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
@@ -98,7 +98,7 @@ Sie können den Bereich Ihrer bevorzugten [Active Directory-Standorte und -Diens
 
 Um bei Verwendung von ADDS den Standortnamen zu ermitteln, können Sie sich an die administrative Gruppe Ihrer Organisation wenden, die für Active Directory Domain Services zuständig ist. Im folgenden Beispiel wird das Plug-In „Active Directory-Standorte und -Dienste“ gezeigt, in dem der Standortname angezeigt wird: 
 
-![Active Directory-Standorte und -Dienste](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+![Active Directory-Standorte und -Dienste](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
 Wenn Sie eine AD-Verbindung für Azure NetApp Files konfigurieren, geben Sie den Standortnamen im Bereich für das Feld **Active Directory-Standortname** an.
 
@@ -152,11 +152,20 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
 
         Der Dienst erstellt dann bei Bedarf zusätzliche Computerkonten in Active Directory.
 
+        > [!IMPORTANT] 
+        > Das Umbenennen des SMB-Serverpräfixes nach dem Erstellen der Active Directory-Verbindung sorgt für Unterbrechungen. Sie müssen vorhandene SMB-Freigaben nach dem Umbenennen des SMB-Serverpräfixes erneut einbinden.
+
     * **Pfad der Organisationseinheit**  
         Dies ist der LDAP-Pfad für die Organisationseinheit, in der Computerkonten für SMB-Server erstellt werden. Das bedeutet, Organisationseinheit = zweite Ebene, Organisationseinheit = erste Ebene. 
 
         Bei Verwendung von Azure NetApp Files mit Azure Active Directory Domain Services lautet der Pfad der Organisationseinheit `OU=AADDC Computers`, wenn Sie Active Directory für Ihr NetApp-Konto konfigurieren.
-        
+
+     * **Sicherungsrichtlinienbenutzer**  
+        Sie können weitere Konten einschließen, die erhöhte Rechte für das für Azure NetApp Files erstellte Computerkonto erfordern. Die angegebenen Konten dürfen die NTFS-Berechtigungen auf Datei- oder Ordnerebene ändern. Beispielsweise können Sie ein nicht privilegiertes Dienstkonto angeben, das zum Migrieren von Daten zu einer SMB-Dateifreigabe in Azure NetApp Files verwendet wird.  
+
+        > [!IMPORTANT] 
+        > Für das Sicherungsrichtlinien-Benutzerfeature ist eine Whitelist erforderlich. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an anffeedback@microsoft.com, um dieses Feature anzufordern. 
+
     * Anmeldeinformationen, einschließlich **Benutzername** und **Kennwort**
 
     ![Beitreten zu Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)

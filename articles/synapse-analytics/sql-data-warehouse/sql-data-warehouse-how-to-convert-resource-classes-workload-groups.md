@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f0cc0cd7233d0c16cae8389fcddd50a16cf96bd2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383624"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683643"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen
 
@@ -38,7 +38,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 > [!NOTE]
 > Arbeitsauslastungsgruppen werden basierend auf dem Prozentsatz der Gesamtsystemressourcen ausgeführt.  
 
-Da Arbeitsauslastungsgruppen basierend auf dem Prozentsatz der Gesamtsystemressourcen ausgeführt werden, ändert sich beim Hoch- und Herunterskalieren der Prozentsatz der Ressourcen, die statischen Ressourcenklassen zugeordnet sind, im Verhältnis zu den Gesamtsystemressourcen.  Beispielsweise werden mit „staticrc40“ bei DW1000c 9,6 % der Gesamtsystemressourcen zugewiesen.  Bei DW2000c werden 19,2 % zugewiesen.  Dieses Modell funktioniert ähnlich, wenn Sie für Parallelität hochskalieren möchten, anstatt mehr Ressourcen pro Anforderung zuzuweisen.
+Da Arbeitsauslastungsgruppen basierend auf dem Prozentsatz der Gesamtsystemressourcen ausgeführt werden, ändert sich beim Hoch- und Herunterskalieren der Prozentsatz der Ressourcen, die statischen Ressourcenklassen zugeordnet sind, im Verhältnis zu den Gesamtsystemressourcen.  Beispielsweise werden mit „staticrc40“ bei DW1000c 19,2 % der Gesamtsystemressourcen zugewiesen.  Bei DW2000c werden 9,6 % zugewiesen.  Dieses Modell funktioniert ähnlich, wenn Sie für Parallelität hochskalieren möchten, anstatt mehr Ressourcen pro Anforderung zuzuweisen.
 
 ## <a name="create-workload-group"></a>Erstellen einer Arbeitsauslastungsgruppe
 

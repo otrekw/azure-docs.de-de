@@ -1,18 +1,18 @@
 ---
 title: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcenverwaltung integrieren, sodass Sie von Ihrem eigenen Mandanten aus auf dessen Ressourcen zugreifen und sie verwalten können.
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: a6cdfea7e0520aa704e70a12784f7a7ba5d6aa6d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161107"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871124"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
-In diesem Artikel wird erläutert, wie Sie als Dienstanbieter einen Kunden in die delegierte Azure-Ressourcenverwaltung integrieren können, sodass Sie über Ihren eigenen Azure Active Directory-Mandanten (Azure AD) auf deren delegierte Ressourcen (Abonnements und/oder Ressourcengruppen) zugreifen und sie verwalten können. Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
+In diesem Artikel wird erläutert, wie Sie als Dienstanbieter einen Kunden in die delegierte Azure-Ressourcenverwaltung integrieren können, sodass Sie über Ihren eigenen Azure Active Directory-Mandanten (Azure AD) auf deren delegierte Ressourcen (Abonnements und/oder Ressourcengruppen) zugreifen und sie verwalten können. Auch wenn wir uns hier auf Dienstanbieter und Kunden beziehen, können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), mithilfe desselben Verfahrens Azure Lighthouse einrichten und ihre Verwaltungsumgebung konsolidieren.
 
 Sie können diesen Vorgang wiederholen, wenn Sie Ressourcen für mehrere Kunden verwalten. Wenn sich dann ein autorisierter Benutzer bei Ihrem Mandanten anmeldet, kann dieser Benutzer über Kundenmandantenbereiche hinweg autorisiert werden, Verwaltungsvorgänge durchzuführen, ohne sich bei jedem einzelnen Kundenmandanten anmelden zu müssen.
 

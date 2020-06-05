@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408042"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650482"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Temporäre Tabellen in einem Synapse SQL-Pool
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. 
@@ -29,7 +29,7 @@ Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurd
 
 Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
 
-Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. Bei SQL Analytics sind temporäre Tabellen auf Sitzungsebene vorhanden.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
+Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In einem SQL-Pool befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Temporäre Tabellen im SQL-Pool
 
@@ -233,5 +233,5 @@ Darüber hinaus können Sichten nicht in temporären Tabellen erstellt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Entwickeln von Tabellen finden Sie im Artikel [Entwerfen von Tabellen mithilfe von SQL Analytics-Ressourcen](sql-data-warehouse-tables-overview.md).
+Weitere Informationen zum Entwickeln von Tabellen finden Sie im Artikel [Entwerfen von Tabellen mithilfe von Synapse SQL-Ressourcen](sql-data-warehouse-tables-overview.md).
 

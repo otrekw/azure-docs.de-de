@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259169"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649217"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -174,7 +174,7 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 >
 > * [Benutzer](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
 > * [Abonnements](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
-> * [Eigenschaft](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
+> * Benannte Werte
 > * Andere Entitäten des Entwicklerportals als Stile
 >
 

@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404263"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684069"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
-Verwenden Sie die computergestützte Bildmoderation und das [Tool für die Überprüfung mit menschlicher Beteiligung](Review-Tool-User-Guide/human-in-the-loop.md) von Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu moderieren. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
+Verwenden Sie die computergestützte Bildmoderation und das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) des Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu mäßigen. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Auswerten von nicht jugendfreien und freizügigen Inhalten
 
@@ -147,4 +147,4 @@ Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-G
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch den Abschnitt zur Bildmoderation im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) an.
+Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Weitere Informationen zur Einrichtung der Überprüfung durch Personen finden Sie auch unter [Überprüfungen, Workflows und Aufträge](./review-api.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548453"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758621"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -126,10 +126,10 @@ Benutzer können mithilfe einer Vielzahl von Geräten und Apps von überall aus 
 Um das Gleichgewicht zwischen Sicherheit und Produktivität zu bewahren, müssen Sie bei der Entscheidung über die Zugriffssteuerung berücksichtigen, auf welche Weise auf eine Ressource zugegriffen wird. Mit dem bedingten Zugriff von Azure AD können Sie diese Anforderung erfüllen. Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen für den Zugriff auf Ihre Cloud-Apps automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung treffen.
 
 **Bewährte Methode**: Verwalten und steuern Sie den Zugriff auf Unternehmensressourcen.  
-**Detail**: Konfigurieren Sie den [bedingten Zugriff](/azure/active-directory/active-directory-conditional-access-azure-portal) auf Azure AD basierend auf einer Gruppen-, Standort- und Anwendungsvertraulichkeit für SaaS-Apps und verbundene Azure AD-Apps.
+**Detail**: Konfigurieren Sie allgemeine [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) in Azure AD basierend auf der Gruppen-, Standort- und Anwendungsvertraulichkeit für SaaS-Apps und über Azure AD verbundene Apps.
 
 **Bewährte Methode**: Blockieren Sie ältere Authentifizierungsprotokolle.
-**Detail**: Angreifer nutzen tagtäglich Schwachstellen in älteren Protokollen aus, insbesondere für Kennwort-Spray-Angriffe. Konfigurieren Sie den bedingten Zugriff, um ältere Protokolle zu blockieren. Weitere Informationen hierzu erhalten Sie im Video [Azure AD: Do’s and Don’ts](https://www.youtube.com/watch?v=wGk0J4z90GI) (Azure AD: Empfehlungen und Warnungen).
+**Detail**: Angreifer nutzen tagtäglich Schwachstellen in älteren Protokollen aus, insbesondere für Kennwort-Spray-Angriffe. Konfigurieren Sie den bedingten Zugriff, um [ältere Protokolle zu blockieren](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
 
 ## <a name="plan-for-routine-security-improvements"></a>Planen routinemäßiger Sicherheitsverbesserungen
 
@@ -175,11 +175,11 @@ Diese Methode ist für alle Lizenzierungsstufen verfügbar, kann jedoch nicht mi
 Um zu bestimmen, wann Multi-Factor Authentication aktiviert werden muss, lesen Sie den Artikel [Welche Version von Azure MFA ist für meine Organisation die richtige?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
 **Option 3**: [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](/azure/active-directory/active-directory-conditional-access-azure-portal) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
+**Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
 
 Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Option 4**: Aktivieren Sie Multi-Factor Authentication mithilfe von Richtlinien für bedingten Zugriff durch die Auswertung von Benutzer und Anmelderisiko durch [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
+**Option 4**: Aktivieren Sie die Multi-Factor Authentication mit Richtlinien für den bedingten Zugriff durch Auswertung von [risikobasierten Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
 **Vorteil**: Diese Option ermöglicht Ihnen Folgendes:
 
 * Ermitteln potenzieller Sicherheitsrisiken für Identitäten Ihrer Organisation.

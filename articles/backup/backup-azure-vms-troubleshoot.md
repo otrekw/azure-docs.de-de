@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659505"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -97,6 +97,14 @@ Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen 
 
 * ```net stop serviceName```
 * ```net start serviceName```
+
+Ein weiteres Verfahren, das Ihnen helfen kann, besteht darin, den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten (als Administrator) auszuführen.
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+Das Hinzufügen dieses Registrierungsschlüssels bewirkt, dass die Threads nicht für BLOB-Momentaufnahmen erstellt werden und ein Timeout verhindert wird.
 
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
@@ -189,7 +197,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | **Fehlercode**: VmNotInDesirableState <br/> **Fehlermeldung**:  Der Zustand des virtuellen Computers lässt keine Sicherungen zu. |<ul><li>Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus. <li> Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.  |
 | Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. |Erfahren Sie mehr über die [VM-Agent-Installation und das Überprüfen der VM-Agent-Installation](#vm-agent). |
 | **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
-| **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
+| **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | <li> Navigieren Sie zu `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion`, und installieren Sie vcredist2013_x64.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen. <br><br><li> Überprüfen Sie das Ereignisprotokoll, auf Zugriffsprobleme. Beispiel: *Product: Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key: Software\Classes.  System error 5.  Verify that you have sufficient access to that key, or contact your support personnel.* (Produkt: Microsoft Visual C++ 2013 x64 Minimum Runtime, 12.0.21005, Fehler 1401. Schlüssel Software\Classes konnte nicht erstellt werden. Systemfehler 5. Überprüfen Sie, ob Sie ausreichende Zugriffsrechte für diesen Schlüssel besitzen, oder setzen Sie sich mit dem Support in Verbindung.) <br><br> Stellen Sie sicher, dass das Administrator- oder Benutzerkonto über ausreichende Berechtigungen zum Aktualisieren des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** verfügt. Erteilen Sie ausreichende Berechtigungen, und starten Sie den Windows Azure-Gast-Agent neu.<br><br> <li> Wenn Sie Antivirusprodukte eingerichtet haben, stellen Sie sicher, dass die richtigen Ausschlussregeln festgelegt wurden, um die Installation zu ermöglichen.    |
 | **Fehlercode**:  UserErrorRequestDisallowedByPolicy <BR> **Fehlermeldung**: Auf der VM wurde eine ungültige Richtlinie konfiguriert, die den Momentaufnahmevorgang verhindert. | Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in Ihrer Umgebung verwaltet wird](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), entweder die Änderung der Richtlinie von der [Auswirkung „Deny“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) in die [Auswirkung „Modify“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), oder erstellen Sie die Ressourcengruppe manuell gemäß des [für Azure Backup erforderlichen Benennungsschemas](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
 
 ## <a name="jobs"></a>Aufträge

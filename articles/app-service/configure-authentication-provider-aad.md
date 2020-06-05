@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609900"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860517"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
@@ -125,14 +125,39 @@ Sie können native Clients registrieren, um in Ihrer App gehosteten Web-APIs die
 1. Sobald die App-Registrierung erstellt wurde, kopieren Sie den Wert von **Anwendungs-ID (Client)** .
 1. Wählen Sie über die Option **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
 1. Wählen Sie die App-Registrierung aus, die Sie zuvor für Ihre App Service-App erstellt haben. Wenn die App-Registrierung nicht angezeigt wird, stellen Sie sicher, dass Sie den Bereich **user_impersonation** in [Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App](#register) hinzugefügt haben.
-1. Wählen Sie **user_impersonation** aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+1. Wählen Sie unter **Delegierte Berechtigungen** den Eintrag **user_impersonation** aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
 Sie haben nun eine native Clientanwendung konfiguriert, die im Auftrag eines Benutzers auf Ihre App Service-App zugreifen kann.
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Konfigurieren einer Daemon-Clientanwendung für Aufrufe zwischen Diensten
+
+Ihre Anwendung kann ein Token abrufen, um eine Web-API, die in Ihrer App Service- oder Funktions-App gehostet wird, in deren eigenen Namen (nicht im Namen eines Benutzers) aufzurufen. Dieses Szenario ist nützlich für nicht interaktive Daemon-Anwendungen, die Aufgaben ohne angemeldeten Benutzer ausführen. Es verwendet die Standardzuweisung für [Clientanmeldeinformationen](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) von OAuth 2.0.
+
+1. Wählen Sie im [Azure portal] nacheinander **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
+1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre Daemon-App-Registrierung ein.
+1. Für eine Daemon-Anwendung benötigen Sie keinen Umleitungs-URI, sodass Sie diesen Wert leer lassen können.
+1. Klicken Sie auf **Erstellen**.
+1. Sobald die App-Registrierung erstellt wurde, kopieren Sie den Wert von **Anwendungs-ID (Client)** .
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
+
+Sie können jetzt [ein Zugriffstoken mithilfe der Client-ID und des geheimen Clientschlüssels anfordern](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret), indem Sie den Parameter `resource` auf den **Anwendungs-ID-URI** der Ziel-App festlegen. Das resultierende Zugriffstoken kann dann der Ziel-App mithilfe des standardmäßigen [OAuth 2.0-Autorisierungsheaders](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource) angezeigt werden, woraufhin die App Service-Authentifizierung/-Autorisierung das Token überprüft und wie üblich verwendet, um jetzt anzuzeigen, dass der Aufrufer (in diesem Fall eine Anwendung, kein Benutzer) authentifiziert ist.
+
+Im Moment ermöglicht dies _jeder_ Clientanwendung in Ihrem Azure AD-Mandanten, ein Zugriffstoken anzufordern und sich bei der Ziel-App zu authentifizieren. Wenn Sie außerdem bei der _Autorisierung_ erzwingen möchten, dass nur bestimmte Clientanwendungen zugelassen werden, müssen Sie einige zusätzliche Konfigurationen vornehmen.
+
+1. [Definieren Sie eine App-Rolle](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) im Manifest der App-Registrierung, die die App Service- oder Funktions-App darstellt, die Sie schützen möchten.
+1. Wählen Sie in der App-Registrierung, die den Client darstellt, der autorisiert werden muss, **API-Berechtigungen** > **Berechtigung hinzufügen** > **Meine APIs** aus.
+1. Wählen Sie die App-Registrierung aus, die Sie zuvor erstellt haben. Wenn die App-Registrierung nicht angezeigt wird, stellen Sie sicher, dass Sie [eine App-Rolle hinzugefügt haben](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md).
+1. Wählen Sie unter **Anwendungsberechtigungen** die zuvor erstellte App-Rolle aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
+1. Stellen Sie sicher, dass Sie auf **Administratoreinwilligung erteilen**, um die Clientanwendung zum Anfordern der Berechtigung zu autorisieren.
+1. Ähnlich wie im vorherigen Szenario (vor dem Hinzufügen jeglicher Rollen) können Sie jetzt [ein Zugriffstoken anfordern](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) für dieselbe Ziel-`resource`, woraufhin das Zugriffstoken einen `roles`-Anspruch aufnimmt, der die App-Rollen enthält, die für die Clientanwendung autorisiert wurden.
+1. Im Code der App Service- oder Funktions-Ziel-App können Sie jetzt überprüfen, ob die erwarteten Rollen im Token vorhanden sind (dies wird nicht von der App Service-Authentifizierung/-Autorisierung durchgeführt). Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims).
+
+Sie haben nun eine Daemon-Clientanwendung konfiguriert, die unter Verwendung der eigenen Identität auf Ihre App Service-App zugreifen kann.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
+* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure portal]: https://portal.azure.com/

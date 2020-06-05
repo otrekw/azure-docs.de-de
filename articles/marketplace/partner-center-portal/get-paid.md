@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780496"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849024"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>Zahlungserhalt im kommerziellen Marketplace
+# <a name="getting-paid-in-the-commercial-marketplace"></a>Zahlungserhalt im kommerziellen Marketplace
 
 Nachstehend finden Sie einige wichtige Informationen zum Erhalten von Zahlungen für Ihre Angebote, Add-Ons und Werbeeinnahmen.
 
@@ -30,7 +30,7 @@ Die Store-Gebühr wird auf alle Angebotsverkäufe (einschließlich Add-Ons) ange
 
 ## <a name="price-tiers"></a>Preisstufen
 
-Durch die von Ihnen ausgewählte(n) Preisstufe(n) wird der Verkaufspreis in all den Ländern festgelegt, in denen Sie Ihr Angebot vertreiben möchten. Sie können auch zusätzliche Preisfeatures nutzen, wie z.B. die Auswahl unterschiedlicher Preise für verschiedene Märkte.
+Durch die ausgewählten Preisstufen wird der Verkaufspreis in allen Ländern/Regionen festgelegt, in denen Sie Ihr Angebot vertreiben möchten. Sie können auch zusätzliche Preisfeatures nutzen, wie z.B. die Auswahl unterschiedlicher Preise für verschiedene Märkte.
 
 Sie können Ihre App kostenlos anbieten oder einen Preis auswählen, den Kunden für den Erwerb Ihres Angebots bezahlen müssen. Die Preisstufen beginnen bei 0,99 USD und erhöhen sich dann in weiteren Schritten (1,09 USD, 1,19 USD usw.). Die Schrittweite zwischen den Preisstufen erhöht sich bei zunehmendem Preis.
 
@@ -43,17 +43,15 @@ Sie haben auch die Möglichkeit, einen Freiform-Preis Ihrer Wahl in der lokalen 
 
 Berücksichtigen Sie, dass der von Ihnen ausgewählte Preis möglicherweise Verkaufs- oder Mehrwertsteuer enthält, die Ihre Kunden bezahlen müssen. Ausführliche Informationen finden Sie unter [Steuerdetails für kostenpflichtige Angebote](tax-details-paid-transactions.md).
 
-
 ## <a name="payout-reporting"></a>Zahlungsberichte
 
 Sie können auf Details zu ihren Zahlungsinformationen zugreifen und in der **Zahlungsübersicht** im [Partner Center](https://partner.microsoft.com/dashboard) Berichte herunterladen. Weitere Einzelheiten zu den hier gezeigten Informationen und zur Kategorisierung des eingenommenen Betrags finden Sie unter [Übersicht über die Auszahlungszusammenfassung](payout-summary-overview.md).
 
-
 ## <a name="payout-time-frame"></a>Zeitrahmen für die Auszahlung
 
-Die Zahlungen erfolgen monatlich (sofern der entsprechende Zahlungsschwellenwert erreicht wurde und Sie Ihre Auszahlung nicht, wie unten beschrieben, zurückgehalten haben). In der Regel senden wir alle in einem Monat fälligen Zahlungen am 15. des Monats. Beachten Sie, dass es in der Regel weitere 3 bis 10 Werktage dauert, bis die Zahlung auf Ihrem Auszahlungskonto eingeht. Ausführliche Informationen finden Sie unter [Zahlungsschwellenwerte, -methoden und -zeitrahmen](payment-thresholds-methods-timeframes.md).
+Die Zahlungen erfolgen monatlich (sofern der entsprechende Zahlungsschwellenwert erreicht wurde und Sie Ihre Auszahlung nicht wie unten beschrieben zurückgehalten haben). In der Regel senden wir alle in einem Monat fälligen Zahlungen am 15. des Monats. Beachten Sie, dass es in der Regel weitere 3 bis 10 Werktage dauert, bis die Zahlung auf Ihrem Auszahlungskonto eingeht. Ausführliche Informationen finden Sie unter [Zahlungsschwellenwerte, -methoden und -zeitrahmen](payment-thresholds-methods-timeframes.md).
 
-##  <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
+## <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
 
 Standardmäßig senden wir Zahlungen monatlich (wie oben beschrieben). Allerdings haben Sie die Möglichkeit, Ihre Auszahlungen für ein Programm zurückzuhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben.
 

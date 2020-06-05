@@ -3,18 +3,20 @@ title: Richtlinie zur Aufbewahrung von nicht markierten Manifesten
 description: Hier erfahren Sie, wie Sie eine Aufbewahrungsrichtlinie in Ihrer Azure-Containerregistrierung aktivieren, um nicht markierte Manifeste nach einem definierten Zeitraum automatisch zu löschen.
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74454813"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683458"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Festlegen einer Aufbewahrungsrichtlinie für nicht markierte Manifeste
 
 In Azure Container Registry haben Sie die Möglichkeit, eine *Aufbewahrungsrichtlinie* für gespeicherte Imagemanifeste ohne zugeordnete Markierungen (*nicht markierte Manifeste*) festzulegen. Ist eine Aufbewahrungsrichtlinie aktiviert, werden nicht markierte Manifeste in der Registrierung nach einer von Ihnen festgelegten Anzahl von Tagen automatisch gelöscht. Mit dieser Funktion wird eine Überfüllung der Registrierung mit nicht mehr benötigten Artefakten vermieden, und Speicherkosten werden gespart. Wird das Attribut `delete-enabled` eines nicht markierten Manifests auf `false` festgelegt, kann das Manifest nicht gelöscht werden, und die Aufbewahrungsrichtlinie wird nicht angewendet.
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispielbefehle in diesem Artikel auszuführen. Für die lokale Verwendung ist Version 2.0.74 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispielbefehle in diesem Artikel auszuführen. Für die lokale Verwendung ist Version 2.0.74 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+
+Eine Aufbewahrungsrichtlinie ist ein Feature von Azure Container Registry **Premium**. Informationen zu den Tarifen von Container Registry finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -24,7 +26,6 @@ Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwen
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Nur im Tarif **Premium** kann die Containerregistrierung mit einer Aufbewahrungsrichtlinie konfiguriert werden. Informationen zu den Tarifen des Registrierungsdiensts finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md).
 * Eine Aufbewahrungsrichtlinie kann nur für nicht markierte Manifeste festgelegt werden.
 * Die Aufbewahrungsrichtlinie gilt zurzeit nur für Manifeste, die *nach* Aktivierung der Richtlinie nicht markiert sind. Vorhandene, nicht markierte Manifeste in der Registrierung unterliegen nicht der Richtlinie. Informationen zum Löschen vorhandener, nicht markierter Manifeste finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
 

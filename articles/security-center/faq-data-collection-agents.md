@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436194"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849041"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -49,6 +49,22 @@ Windows- oder Linux-IaaS-VMs kommen unter folgenden Voraussetzungen infrage:
 - Die VM wird ausgeführt.
 - Der [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) für Windows oder Linux ist installiert.
 - Die VM wird nicht als Appliance wie z.B. Webanwendungsfirewall oder Firewall der nächsten Generation verwendet.
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>Wo wird der standardmäßige Log Analytics-Arbeitsbereich erstellt?
+
+Der Speicherort des standardmäßigen Arbeitsbereichs hängt von Ihrer Azure-Region ab:
+
+- Bei virtuellen Computern in den USA und Brasilien befindet sich der Arbeitsbereich in den USA.
+- Bei virtuellen Computern in Kanada befindet sich der Arbeitsbereich in Kanada.
+- Bei virtuellen Computern in Europa befindet sich der Arbeitsbereich in Europa.
+- Bei virtuellen Computern in Großbritannien befindet sich der Arbeitsbereich in Großbritannien.
+- Bei virtuellen Computern in „Asien, Osten“ und „Asien, Südosten“ befindet sich der Arbeitsbereich in Asien.
+- Bei virtuellen Computern in Korea befindet sich der Arbeitsbereich in Korea.
+- Bei virtuellen Computern in Indien befindet sich der Arbeitsbereich in Indien.
+- Bei virtuellen Computern in Japan befindet sich der Arbeitsbereich in Japan.
+- Bei virtuellen Computern in China befindet sich der Arbeitsbereich in China.
+- Bei virtuellen Computern in Australien befindet sich der Arbeitsbereich in Australien.
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kann ich die von Security Center erstellten Standardarbeitsbereiche löschen?

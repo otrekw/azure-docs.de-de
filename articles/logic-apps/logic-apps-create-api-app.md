@@ -3,15 +3,15 @@ title: Erstellen von Web- und REST-APIs für Azure Logic Apps
 description: Erstellen von Web- und REST-APIs zum Aufrufen Ihrer APIs, Dienste oder Systeme für die Systemintegration in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233026"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834491"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -136,11 +136,13 @@ Richten Sie für dieses Muster zwei Endpunkte auf dem Controller ein: `subscribe
 
 ![Webhookaktionsmuster](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster eine [**Webhook**aktion](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [Workflow-Aktionen und -Trigger](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Um die Rückruf-URL zu übergeben, können Sie in jedem dieser vorherigen Felder nach Bedarf die `@listCallbackUrl()`-Workflowfunktion verwenden.
+Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster eine [**Webhook**aktion](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [Workflow-Aktionen und -Trigger](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggerbeispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggerbeispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Hier finden Sie weitere Tipps und Hinweise:
+
+* Um die Rückruf-URL zu übergeben, können Sie in jedem dieser vorherigen Felder nach Bedarf die `@listCallbackUrl()`-Workflowfunktion verwenden.
+
+* Wenn Sie sowohl die Logik-App als auch den abonnierten Dienst besitzen, müssen Sie den `unsubscribe`-Endpunkt nicht aufrufen, nachdem die Rückruf-URL aufgerufen wurde. Andernfalls muss die Logic Apps-Runtime den `unsubscribe`-Endpunkt aufrufen, um zu signalisieren, dass keine weiteren Aufrufe mehr erwartet werden, und die Ressourcenbereinigung auf der Serverseite zuzulassen.
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ Webhooktrigger fungieren ähnlich wie die zuvor in diesem Thema beschriebenen [W
 
 ![Webhooktriggermuster](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster einen [**Webhook**trigger](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [HTTPWebhook-Trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Um die Rückruf-URL zu übergeben, können Sie in jedem dieser vorherigen Felder nach Bedarf die `@listCallbackUrl()`-Workflowfunktion verwenden.
->
-> Um die mehrfache Verarbeitung der gleichen Daten zu verhindern, sollte Ihr Trigger Daten bereinigen, die bereits gelesen und an die Logik-App übergeben wurden.
+Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster einen [**Webhook**trigger](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [HTTPWebhook-Trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggercontroller-Beispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggercontroller-Beispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Hier finden Sie weitere Tipps und Hinweise:
+
+* Um die Rückruf-URL zu übergeben, können Sie in jedem dieser vorherigen Felder nach Bedarf die `@listCallbackUrl()`-Workflowfunktion verwenden.
+
+* Um die mehrfache Verarbeitung der gleichen Daten zu verhindern, sollte Ihr Trigger Daten bereinigen, die bereits gelesen und an die Logik-App übergeben wurden.
+
+* Wenn Sie sowohl die Logik-App als auch den abonnierten Dienst besitzen, müssen Sie den `unsubscribe`-Endpunkt nicht aufrufen, nachdem die Rückruf-URL aufgerufen wurde. Andernfalls muss die Logic Apps-Runtime den `unsubscribe`-Endpunkt aufrufen, um zu signalisieren, dass keine weiteren Aufrufe mehr erwartet werden, und die Ressourcenbereinigung auf der Serverseite zuzulassen.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Verbessern der Sicherheit für Aufrufe Ihrer APIs in Logik-Apps
 
@@ -224,7 +228,7 @@ Um Ihre benutzerdefinierten APIs allen Benutzern in Logic Apps, Power Automate u
 
 * Spezifische Hilfe zu benutzerdefinierten APIs finden Sie unter [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 
 * Zur Optimierung von Logic Apps können Sie auf der Website für [Benutzerfeedback zu Logic Apps](https://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen. 
 

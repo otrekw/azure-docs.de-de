@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261260"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747805"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -58,7 +58,7 @@ Der Prozentwert neben „Bestellungen insgesamt“ stellt den Zuwachs im ausgew�
 
 ### <a name="orders-by-geography"></a>Bestellungen nach Geographie
 
-Im Wärmebild **Aufträge nach Geografie** wird die Anzahl Ihrer Aufträge auf einer Weltkarte angezeigt. Außerdem werden die zugeordneten Arbeitsplätze basierend auf dem Land des Kunden angezeigt. Dieses Wärmebild funktioniert genauso wie das **[Wärmebild „Kunden nach Geografie“](./customer-dashboard.md#customer-by-geography)** .
+Im Wärmebild **Aufträge nach Geografie** wird die Anzahl Ihrer Aufträge auf einer Weltkarte angezeigt. Außerdem werden die zugeordneten Arbeitsplätze basierend auf dem Land/der Region des Kunden angezeigt. Dieses Wärmebild funktioniert genauso wie das **[Wärmebild „Kunden nach Geografie“](./customer-dashboard.md#customer-by-geography)** .
 
 ![Partner Center, Aufträge nach Geografie analysieren](./media/orders-by-geography.png)
 
@@ -103,7 +103,8 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1000 Top-Au
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine TSV-Datei extrahiert werden, wenn die Anzahl der Datensätze weniger als 1000 beträgt.
 - Liegt die Anzahl der Datensätze über 1000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
-- Sie können auf die **Tabelle „Auftragsdetails“** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land, Azure-Lizenztyp, Marketplace-Lizenztyp, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
+- Sie können auf die **Tabelle „Auftragsdetails“** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Azure-Lizenztyp, Marketplace-Lizenztyp, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Unternehmensname gefiltert werden.
+- Da für SaaS-Angebote, die über den Azure Marketplace oder AppSource erworben werden, kein Azure-Abonnement erforderlich ist, wird im Abschnitt **Daten zu detaillierten Aufträgen** als Marketplace-Abonnement-ID „00000000-0000-0000-0000-000000000000“ angezeigt.
 
 #### <a name="orders-page-filters"></a>Filter für die Seite „Bestellungen“
 

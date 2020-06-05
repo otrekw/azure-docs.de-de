@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbe0a0b7f22df20c8ce3d734738132b5056a36e4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589498"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697078"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Einrichten eines Labs zur Schulung in Shellskripts unter Linux
 Erfahren Sie, wie Sie unter Linux ein Lab für Schulungen zum Erstellen von Shellskripts einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können. 
@@ -39,12 +39,11 @@ Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab 
 | Lab-Einstellungen | Wert/Anweisungen | 
 | ------------ | ------------------ |
 | Größe des virtuellen Computers (VM) | Klein  |
-| VM-Image | Ubuntu Server 18.04 LTS |
-| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Lehrer/Dozenten und Kursteilnehmer mithilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services.](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm) </p>|
+| VM-Image | Ubuntu Server 18.04 LTS|
+| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Kursleiter und Kursteilnehmer mithilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services.](how-to-enable-remote-desktop-linux.md) </p>|
 
-
-## <a name="install-desktop-and-xrdp"></a>Desktop und xRDP installieren
-Auf dem „Ubuntu Server 18.04 LTS“-Abbild ist standardmäßig kein Remotedesktop-Server installiert. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Remotedesktop, um eine Verbindung zum Linux-VM in Azure herzustellen](../../virtual-machines/linux/use-remote-desktop.md), um die zum Herstellen einer Verbindung über das Remotedesktopprotokoll erforderlichen Pakete auf der Vorlage für virtuelle Maschinen zu installieren.
+## <a name="install-desktop-and-rdp"></a>Installieren von Desktop und RDP
+Im Image „Ubuntu Server 18.04 LTS“ ist standardmäßig kein RDP-Remotedesktopserver installiert. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md), um die auf dem Vorlagencomputer zum Herstellen einer Verbindung über das Remotedesktopprotokoll (RDP) erforderlichen Pakete zu installieren.
 
 ## <a name="install-ruby"></a>Installieren von Ruby
 Ruby ist eine dynamische Open Source-Programmiersprache, die mit Bash-Skripts kombiniert werden kann. In diesem Abschnitt wird gezeigt, wie Sie `apt-get` verwenden, um die neueste Version von [Ruby](https://www.ruby-lang.org/) zu installieren.

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229070"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744120"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -102,9 +102,14 @@ Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sicher
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
 Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) unterstützt.
 
-### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Wie kann ich TLS 1.2 auf allen lokalen Azure Site Recovery-Komponenten erzwingen?
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Verwendet Azure-zu-Azure-Site Recovery für die gesamte Kommunikation zwischen den verschiedenen Microservices von Azure TLS 1.2?
+Ja, das TLS 1.2-Protokoll wird standardmäßig für das Azure-zu-Azure-Site Recovery-Szenario erzwungen. 
+
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>Wie erzwinge ich TLS 1.2 in VMware-zu-Azure- und Physischer-Server-zu-Azure-Site Recovery-Szenarien?
 Auf den replizierten Elementen installierte Mobility-Agents kommunizieren ausschließlich über TLS 1.2 mit dem Prozessserver. Die Kommunikation zwischen dem Konfigurationsserver und Azure sowie zwischen dem Prozessserver und Azure kann jedoch über TLS 1.1 oder 1.0 erfolgen. Befolgen Sie die [Anweisungen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) zum Erzwingen von TLS 1.2 für alle von Ihnen eingerichteten Konfigurations- und Prozessserver.
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Wie kann ich TLS 1.2 für HyperV-zu-Azure-Site Recovery-Szenarien erzwingen?
+Die gesamte Kommunikation zwischen den Microservices von Azure Site Recovery erfolgt über das TLS 1.2-Protokoll. Site Recovery verwendet Sicherheitsanbieter, die im System (BS) konfiguriert sind, und verwendet das neueste verfügbare TLS-Protokoll. Sie müssen TLS 1.2 explizit in der Registrierung aktivieren, und dann wird Site Recovery mit der Verwendung von TLS 1.2 zur Kommunikation mit Diensten beginnen. 
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 

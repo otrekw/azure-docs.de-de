@@ -1,35 +1,38 @@
 ---
-title: Verwenden von Azure Resource Manager-Vorlagen für das Onboarding der Updateverwaltung | Microsoft-Dokumentation
-description: Sie können eine Azure Resource Manager-Vorlage verwenden, um das Onboarding der Azure Automation-Updateverwaltungslösung durchzuführen.
+title: Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Updateverwaltung mit einer Azure Resource Manager-Vorlage aktivieren.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/30/2020
-ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/24/2020
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411473"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830990"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Onboarding der Updateverwaltungslösung mithilfe einer Azure Resource Manager-Vorlage
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage
 
-Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) verwenden, um die Azure Automation-Updateverwaltungslösung in Ihrer Ressourcengruppe zu aktivieren. Dieser Artikel enthält eine Beispielvorlage, die Folgendes automatisiert:
+Sie können eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md) verwenden, um das Azure Automation-Feature Updateverwaltung in Ihrer Ressourcengruppe zu aktivieren. Dieser Artikel enthält eine Beispielvorlage, die Folgendes automatisiert:
 
 * Erstellen eines Azure Monitor Log Analytics-Arbeitsbereichs
 * Erstellen eines Azure Automation-Kontos.
-* Verknüpft das Automation-Konto mit dem Log Analytics-Arbeitsbereich, falls nicht bereits erfolgt.
-* Onboarding der Azure Automation-Updateverwaltungslösung
+* Verknüpfen des Automation-Kontos mit dem Log Analytics-Arbeitsbereich, falls nicht bereits erfolgt.
+* Aktivieren der Updateverwaltung.
 
-Die Vorlage automatisiert nicht das Onboarding von Azure- oder Nicht-Azure-VMs.
+Die Vorlage automatisiert nicht das Aktivieren von einem oder mehreren virtuellen Computern innerhalb oder außerhalb von Azure.
 
-Wenn Sie in Ihrem Abonnement bereits einen Log Analytics-Arbeitsbereich und ein Automation-Konto in einer unterstützten Region bereitgestellt haben, sind diese nicht verknüpft, und in dem Arbeitsbereich ist die Updateverwaltungslösung nicht bereits bereitgestellt. Durch die Verwendung dieser Vorlage wird die Verknüpfung erfolgreich erstellt und die Updateverwaltungslösung bereitgestellt. 
+Wenn Sie in Ihrem Abonnement bereits einen Log Analytics-Arbeitsbereich und ein Automation-Konto in einer unterstützten Region bereitgestellt haben, sind diese nicht verknüpft. Im Arbeitsbereich ist die Updateverwaltung nicht bereits aktiviert. Wenn Sie diese Vorlage verwenden, werden der Link erstellt und die Updateverwaltung für Ihre VMs bereitgestellt. 
+
+>[!NOTE]
+>Der Benutzer **nxautomation** wird bei Runbooks, die ausschließlich bei Linux-Ausführungen signiert wurden, als Teil der Updateverwaltung aktiviert.
 
 ## <a name="api-versions"></a>API-Versionen
 
-Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in diesem Beispiel verwendet werden.
+Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dieser Vorlage verwendet werden.
 
 | Resource | Ressourcentyp | API-Version |
 |:---|:---|:---|
@@ -39,16 +42,16 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 
 ## <a name="before-using-the-template"></a>Vor dem Verwenden der Vorlage
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei der Azure PowerShell verwendet die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) ausführen, um eine Verbindung mit Azure herzustellen. Bei der Azure PowerShell verwendet die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
 Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.1.0 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei der Azure CLI verwendet diese Bereitstellung [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 Die JSON-Vorlage ist so konfiguriert, dass Sie Folgendes von Ihnen anfordert:
 
 * Den Namen des Arbeitsbereichs.
-* Die Region, in der der den Arbeitsbereich erstellt werden soll.
+* Die Region, in der Sie den Arbeitsbereich erstellen möchten
 * Den Namen des Automation-Kontos.
-* Die Region, in der das Konto erstellt werden soll.
+* Die Region, in der Sie das Konto erstellen möchten
 
 Die JSON-Vorlage gibt einen Standardwerte für die anderen Parameter an, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie die Vorlage in einem Azure Storage-Konto speichern. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -62,8 +65,15 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
 >Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.
 >
 
->[!NOTE]
->Vor der Verwendung dieser Vorlage lesen Sie die [zusätzlichen Details](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace), die Optionen für die Arbeitsbereichskonfiguration vollständig zu verstehen, z. B. Zugriffssteuerungmodus, Tarif, Aufbewahrung und Kapazitätsreservierungsstufe. Wenn Sie noch keine Erfahrungen mit Azure Monitor-Protokollen noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die Anleitung zum [Arbeitsbereichsdesign](../azure-monitor/platform/design-logs-deployment.md) lesen, um Informationen zur Zugriffssteuerung zu erhalten und ein Verständnis für die Designimplementierungsstrategien zu erhalten, die wir für Ihre Organisation empfehlen.
+Die JSON-Vorlage gibt einen Standardwerte für die anderen Parameter an, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie die Vorlage in einem Azure Storage-Konto speichern. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md).
+
+Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollten Sie sich unbedingt mit den folgenden Konfigurationsdetails vertraut machen. Beim Versuch, einen Log Analytics Arbeitsbereich zu erstellen, zu konfigurieren und zu verwenden, der mit Ihrem neuen Automation-Konto verknüpft ist, können sonst Fehler auftreten.
+
+* Lesen Sie die [zusätzlichen Details](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace), um die Optionen für die Arbeitsbereichskonfiguration vollständig zu verstehen, z. B. Zugriffssteuerungsmodus, Tarif, Datenaufbewahrung und Kapazitätsreservierungsstufe.
+
+* Da nur bestimmte Regionen für das Verknüpfen eines Log Analytics Arbeitsbereichs und eines Automation-Kontos in Ihrem Abonnement unterstützt werden, überprüfen Sie die [Arbeitsbereichszuordnungen](how-to/region-mappings.md), um die unterstützten Regionen inline oder in einer Parameterdatei anzugeben.
+
+* Wenn Sie noch keine Erfahrungen mit Azure Monitor-Protokollen noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die Anleitung zum [Arbeitsbereichsdesign](../azure-monitor/platform/design-logs-deployment.md) lesen, um Informationen zur Zugriffssteuerung zu erhalten und ein Verständnis für die Designimplementierungsstrategien zu erhalten, die wir für Ihre Organisation empfehlen.
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
@@ -113,32 +123,6 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
         },
         "location": {
             "type": "string",
-            "allowedValues": [
-                "australiacentral",
-                "australiaeast",
-                "australiasoutheast",
-                "brazilsouth",
-                "canadacentral",
-                "centralindia",
-                "centralus",
-                "eastasia",
-                "eastus",
-                "eastus2",
-                "francecentral",
-                "japaneast",
-                "koreacentral",
-                "northcentralus",
-                "northeurope",
-                "southafricanorth",
-                "southcentralus",
-                "southeastasia",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westeurope",
-                "westus",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
@@ -235,7 +219,7 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
 
 2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Erstellen Sie ggf. eine [Resource Manager-Parameterdatei](../azure-resource-manager/templates/parameter-files.md), anstatt Parameter als Inlinewerte zu übergeben.
 
-3. Speichern Sie diese Datei unter dem Namen „deployUMSolutiontemplate.json“ in einem lokalen Ordner.
+3. Speichern Sie diese Datei unter dem Namen **deployUMSolutiontemplate.json**.
 
 4. Nun können Sie die Vorlage bereitstellen. Sie können dazu entweder PowerShell oder Azure CLI verwenden. Wenn Sie zur Eingabe des Namens eines Arbeitsbereichs oder Automation-Kontos aufgefordert werden, geben Sie einen Namen an, der in allen Azure-Abonnements global eindeutig ist.
 
@@ -257,10 +241,9 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt, da Sie die Updateverwaltungslösung bereitgestellt haben, können Sie VMs für die Verwaltung aktivieren, Updatebewertungen überprüfen und Updates bereitstellen, um sie in Übereinstimmung mit den Vorschriften zu bringen.
-
-- Aus Ihrem [Azure Automation-Konto](automation-onboard-solutions-from-automation-account.md) für einen oder mehrere Azure-Computer und manuell für Nicht-Azure-Computer.
-
-- Für einen einzelnen virtuellen Azure-Computer auf der Seite für virtuelle Computer im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) oder [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) zur Verfügung.
-
-- Für [mehrere virtuelle Azure-Computer](manage-update-multi.md), indem Sie sie auf der Seite **Virtuelle Computer** im Azure-Portal auswählen. 
+* Wie Sie die Updateverwaltung für VMs verwenden, erfahren Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).
+* Wenn Sie den Log Analytics-Arbeitsbereich nicht mehr benötigen, lesen Sie die Informationen unter [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto für die Updateverwaltung](automation-unlink-workspace-update-management.md).
+* Informationen zum Löschen von VMs aus der Updateverwaltung finden Sie unter [Entfernen virtueller Computer aus der Updateverwaltung](automation-remove-vms-from-update-management.md).
+* Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](troubleshoot/update-management.md).
+* Informationen zum Behandeln von Problemen mit dem Windows Update-Agent finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](troubleshoot/update-agent-issues.md).
+* Informationen zum Behandeln von Problemen mit dem Linux Update-Agent finden Sie unter [Beheben von Problemen mit dem Linux-Update-Agent](troubleshoot/update-agent-issues-linux.md).

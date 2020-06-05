@@ -1,17 +1,17 @@
 ---
-title: Wiederherstellen von Daten in Azure auf einem Windows Server
+title: Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten mit dem Microsoft Azure Recovery Services-Agent (MARS) auf einem Windows-Server oder Windows-Computer wiederherstellen.
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0494ce8016ff8b09265dd7ced8dc0926fd0c1a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652092"
 ---
-# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
+# <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 
 In diesem Artikel wird das Wiederherstellen von Daten aus einem Sicherungstresor erläutert. Zum Wiederherstellen von Daten verwenden Sie den Assistenten zum Wiederherstellen von Daten im Microsoft Azure Recovery Services-Agent (MARS). Ihre Möglichkeiten:
 

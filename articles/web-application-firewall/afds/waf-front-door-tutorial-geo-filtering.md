@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb97a2d848441a153db47b41644a6226e9d75782
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79135869"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747749"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Einrichten einer WAF-Richtlinie für Geofilterung für Ihre Front Door-Instanz
 
@@ -52,7 +52,7 @@ Gehen Sie zum Erstellen eines Front Door-Profils gemäß den Anweisungen unter 
 
 ## <a name="define-geo-filtering-match-condition"></a>Definieren der Übereinstimmungsbedingung für die Geofilterung
 
-Erstellen Sie eine exemplarische Übereinstimmungsbedingung, durch die Anforderungen ausgewählt werden, die nicht aus den USA stammen. Verwenden Sie dazu [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) in den Parametern, wenn Sie eine Übereinstimmungsbedingung erstellen. Zweistellige Ländercodes zur Länderzuordnung werden in [Was ist Geofilterung in einer Domäne für Azure Front Door?](waf-front-door-geo-filtering.md) bereitgestellt.
+Erstellen Sie eine exemplarische Übereinstimmungsbedingung, durch die Anforderungen ausgewählt werden, die nicht aus den USA stammen. Verwenden Sie dazu [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) in den Parametern, wenn Sie eine Übereinstimmungsbedingung erstellen. Zweistellige Länder-/Regionscodes zur Zuordnung von Ländern/Regionen werden in [Was ist Geofilterung in einer Domäne für Azure Front Door?](waf-front-door-geo-filtering.md) bereitgestellt.
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `

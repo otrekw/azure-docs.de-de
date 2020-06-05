@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 13e149c45c720a5da6b051b7ce9581d74c64fa35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745367"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834474"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Bewährte Methoden für die Entwicklung von Synapse-SQL-Pools
 
@@ -120,7 +120,7 @@ Siehe auch [Tabellenindizes](sql-data-warehouse-tables-index.md), [Beschreibung 
 
 Wenn Sie die benötigten Informationen in diesem Artikel nicht gefunden haben, können Sie links auf dieser Seite über die Option „Nach Dokumenten suchen“ alle Dokumente zu Azure Synapse durchsuchen.  
 
-Im [Azure Synapse-Forum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) können Sie anderen Benutzern und der Azure Synapse-Produktgruppe Fragen stellen.  Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  
+Auf der [Frageseite von Microsoft Q&A zu Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) können Sie anderen Benutzern und der Azure Synapse-Produktgruppe Fragen stellen.  Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  
 
 Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie auch das [Stack Overflow-Forum für Azure SQL Data Warehouse](https://stackoverflow.com/questions/tagged/azure-sqldw)verwenden.
 

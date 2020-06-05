@@ -3,12 +3,12 @@ title: App-Schemadefinition
 description: Die LUIS-App wird entweder in `.json` oder `.lu` dargestellt und beinhaltet alle Absichten, Entitäten, Beispieläußerungen, Features und Einstellungen.
 ms.topic: reference
 ms.date: 05/05/2020
-ms.openlocfilehash: 21b58f79ffd2baf553c6f8b07daa84473e620f77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599294"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684362"
 ---
 # <a name="app-schema-definition"></a>App-Schemadefinition
 
@@ -25,8 +25,8 @@ Wählen Sie beim Importieren und Exportieren der App entweder `.json` oder `.lu`
 
 ## <a name="version-7x"></a>Version 7.x
 
-* Nach der Umstellung auf die Version 7.x werden die Entitäten als geschachtelte, durch maschinelles Lernen erworbene Entitäten dargestellt.
-* Unterstützung der Erstellung geschachtelter, durch maschinelles Lernen erworbener Entitäten mit der Eigenschaft `enableNestedChildren` für die folgenden Erstellungs-APIs:
+* Nach der Umstellung auf Version 7.x werden die Entitäten als geschachtelte Machine Learning-Entitäten dargestellt.
+* Unterstützung für die Erstellung geschachtelter Machine Learning-Entitäten mit der Eigenschaft `enableNestedChildren` für die folgenden Erstellungs-APIs:
     * [Hinzufügen einer Bezeichnung](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
     * [Hinzufügen von Bezeichnungen als Batch](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09)
     * [Überprüfen von Bezeichnungen](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c0a)
@@ -64,7 +64,7 @@ Wählen Sie beim Importieren und Exportieren der App entweder `.json` oder `.lu`
 
 ## <a name="version-6x"></a>Version 6.x
 
-* Verwenden Sie nach der Umstellung auf die Version 6.x die neue [durch maschinelles Lernen erworbene Entität](reference-entity-machine-learned-entity.md), um Ihre Entitäten darzustellen.
+* Verwenden Sie nach der Umstellung auf Version 6.x die neue [Machine Learning-Entität](reference-entity-machine-learned-entity.md), um Ihre Entitäten darzustellen.
 
 ```json
 {

@@ -1,28 +1,28 @@
 ---
-title: Veröffentlichungskriterien für Marketplace-Angebote und -Dienste | Azure Marketplace
-description: Dieser Artikel beschreibt, wie Sie Herausgeber im Azure Marketplace werden.
+title: Anforderungen an Auflistungen von Azure Marketplace-Angeboten und -Diensten
+description: In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace erläutert.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: ca40e8e00cb72d6ecc3246ad7aef3b3bac4fbedd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 0c7352ce95edf7c6ec5fad9fe658e01a66d88573
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160476"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657919"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
-Dieses Dokument enthält Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace.
+In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace erläutert.
 
-Alle Angebote müssen die Anforderungen erfüllen, die im Abschnitt „Auflistungsanforderungen für alle Angebote“ aufgeführt sind.
+Alle Angebote müssen die Anforderungen erfüllen, die im Abschnitt [Auflistungsanforderungen für alle Angebote](#listing-requirements-for-all-offers) aufgeführt sind.
 
 Für bestimmte Auflistungstypen sind zusätzliche Anforderungen und Checklisten vorhanden. Dazu gehören: 
 * [Anforderungen für Testversionsangebote](#trial-offer-requirements)
-* [Anforderungen für SaaS-Apps](#saas-app-requirements)
+* [Anforderungen für SaaS-Anwendungen](#saas-application-requirements)
 * [Anforderungen für Containerangebote](#container-offer-requirements)
 * [Anforderungen für Beratungsangebote](#consulting-offer-requirements)
 
@@ -53,7 +53,7 @@ Für bestimmte Auflistungstypen sind zusätzliche Anforderungen und Checklisten 
 
 ---
 
-## <a name="saas-app-requirements"></a>Anforderungen für SaaS-Apps
+## <a name="saas-application-requirements"></a>Anforderungen für SaaS-Anwendungen
 
 |  | Auflistungselement | Grundlegende Anforderung | Optimale Anforderung | 
 |:--- |:--- |:--- |:--- |

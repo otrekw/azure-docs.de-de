@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509243"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683563"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -99,7 +99,7 @@ az aks update \
 Im oben stehenden Beispiel wird die automatische Clusterskalierung für den einzelnen Knotenpool in *myAKSCluster* auf mindestens *1* und höchstens *5* Knoten aktualisiert.
 
 > [!NOTE]
-> Sie können keine höhere Mindestanzahl von Knoten verwenden, als aktuell für den Knotenpool festgelegt ist. Wenn beispielsweise die Mindestanzahl von Knoten aktuell auf *1* festgelegt ist, können Sie die Mindestanzahl nicht auf *3* aktualisieren.
+Die automatische Clusterskalierung trifft ihre Skalierungsentscheidungen auf Basis der für die einzelnen Knotenpools festgelegten Mindest- und Höchstzahlen, erzwingt sie jedoch nicht. Beispielsweise wird der Pool bei Festlegung einer Mindestanzahl von 5 bei einer aktuellen Knotenanzahl von 3 nicht sofort auf 5 skaliert. Wenn Sie die minimale Anzahl für den Knotenpool auf einen höheren Wert als die aktuelle Anzahl von Knoten festlegen, wird dieser neue Grenzwert berücksichtigt, wenn genügend nicht planbare Pods vorhanden sind, die zwei neue zusätzliche Knoten erfordern und eine automatische Skalierung auslösen würden. Nachdem dies geschehen ist, wird die neue Mindestanzahl für die automatische Clusterskalierung berücksichtigt.
 
 Überwachen Sie die Leistung Ihrer Anwendungen und Dienste, und passen Sie die Anzahl von Knoten zur Autoskalierung für Cluster an die erforderliche Leistung an.
 

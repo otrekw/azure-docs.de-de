@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit Oracle Database
 description: Einfügen und Verwalten von Datensätzen mit Oracle Database-REST-APIs und Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147819"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836276"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -20,6 +20,13 @@ Mit dem Oracle-Datenbankconnector erstellen Sie Unternehmensworkflows, die auf D
 
 * Erstellen Sie Ihren Workflow, indem Sie einer Kundendatenbank einen neuen Kunden hinzufügen oder einen Auftrag in einer Auftragsdatenbank aktualisieren.
 * Verwenden Sie Aktionen, um eine Datenzeile abzurufen, eine neue Zeile einzufügen oder Löschvorgänge auszuführen. Wenn also etwa ein Datensatz in Dynamics CRM Online erstellt wird (Trigger), fügen Sie eine Zeile in eine Oracle-Datenbank ein (Aktion). 
+
+Dieser Connector unterstützt die folgenden Elemente nicht:
+
+* Sichten 
+* Tabellen mit zusammengesetzten Schlüsseln
+* Geschachtelte Objekttypen in Tabellen
+* Datenbankfunktionen mit nicht skalaren Werten
 
 In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer Logik-App verwenden.
 
@@ -108,12 +115,6 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 **Ursache:** Die Tabelle weist keinen Primärschlüssel auf.  
 
 **Lösung:** Der Oracle-Datenbankconnector erfordert, dass eine Tabelle mit einer Primärschlüsselspalte verwendet wird.
-
-#### <a name="currently-not-supported"></a>Wird derzeit nicht unterstützt.
-
-* Sichten 
-* Tabellen mit zusammengesetzten Schlüsseln
-* Geschachtelte Objekttypen in Tabellen
  
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 
@@ -121,7 +122,7 @@ Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Besch
 
 ## <a name="get-some-help"></a>Anfordern von Hilfe
 
-Das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ist ein hervorragender Ort, um Fragen zu stellen, Fragen zu beantworten und sich über die Aktivitäten anderer Logik-Apps-Benutzer zu informieren. 
+Die [Frageseite von Microsoft Q&A für Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) ist ein hervorragender Ort, um Fragen zu stellen und zu beantworten und sich über die Aktivitäten anderer Logic Apps-Benutzer zu informieren. 
 
 Sie können zur Verbesserung von Logik-Apps und Connectors beitragen, indem Sie unter [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) Ihre Ideen einreichen und über Ideen abstimmen. 
 

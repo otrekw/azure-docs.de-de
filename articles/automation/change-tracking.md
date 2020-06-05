@@ -1,18 +1,18 @@
 ---
-title: Übersicht über Änderungsnachverfolgung und Bestand in Azure Automation
-description: Mit der Lösung Änderungsnachverfolgung und Bestand können Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen.
+title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
+description: In diesem Artikel wird das Feature Änderungsnachverfolgung und Bestand beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787174"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835103"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>Übersicht über Änderungsnachverfolgung und Bestand
+# <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
 Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand in Azure Automation. Mit diesem Feature werden Änderungen an virtuellen Computern und der Serverinfrastruktur nachverfolgt, damit Sie Betriebs- und Umgebungsprobleme mit Software ermitteln können, die vom Paket-Manager der Distribution verwaltet wird. Folgende Elemente werden u. a. mit Änderungsnachverfolgung und Bestand nachverfolgt: 
 
@@ -195,6 +195,10 @@ Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Arbeiten mit Änderungsnachverfolgung und Bestand in Ihren Runbooks finden Sie unter [Verwalten von Änderungsnachverfolgung und Bestand](change-tracking-file-contents.md).
-* Informationen zum Beheben von Fehlern bei Änderungsnachverfolgung und Bestand finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](automation-tutorial-troubleshoot-changes.md).
-* Verwenden Sie [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md), um ausführliche Nachverfolgungsdaten anzuzeigen.
+* Ausführliche Informationen zum Arbeiten mit Änderungsnachverfolgung und Bestand finden Sie unter [Verwalten von Änderungsnachverfolgung und Bestand](change-tracking-file-contents.md).
+* Informationen zum Aktivieren des Features aus einem Runbook finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook](automation-enable-changes-from-runbook.md).
+* Informationen zum Aktivieren des Features über ein Automation-Konto finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto](automation-enable-changes-from-auto-acct.md).
+* Informationen zum Aktivieren des Features durch das Durchsuchen des Azure-Portals finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über das Azure-Portal](automation-onboard-solutions-from-browse.md).
+* Informationen zum Aktivieren des Features über eine Azure-VM finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer](automation-enable-changes-from-vm.md).
+* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md) weitere Informationen.
+* Informationen zum Behandeln von Problemen bei diesem Feature finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

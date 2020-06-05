@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614183"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657251"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifizieren und Diagnostizieren von Problemen
 
@@ -139,6 +139,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 
 |Numerischer Code|Fehlercode|Vorgeschlagene Lösung|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|Der Benutzer ist kein Mitglied von Azure Active Directory. Befolgen Sie die Anweisungen unter [Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center), um ihn hinzuzufügen.|
 |3|UnauthorizedAccess|Der Benutzer, der das administrative PowerShell-Cmdlet ausführen möchte, verfügt entweder nicht über die erforderlichen Berechtigungen oder hat seinen Benutzernamen falsch eingegeben.|
 |1000|TenantNotFound|Der von Ihnen eingegebene Mandantenname stimmt nicht mit vorhandenen Mandanten überein. Überprüfen Sie den Mandantennamen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Sie können einen Mandanten nicht löschen, solange er Objekte enthält. Löschen Sie zuerst die Sitzungshostpools, und wiederholen Sie dann den Vorgang.|
@@ -160,6 +161,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 
 |Numerischer Code|Fehlercode|Vorgeschlagene Lösung|
 |---|---|---|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|Der Benutzer ist kein Mitglied von Azure Active Directory. Befolgen Sie die Anweisungen unter [Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center), um ihn hinzuzufügen.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Der Sitzungshost ist nicht richtig in Active Directory eingebunden.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Bei der Verbindungsherstellung ist ein Fehler aufgetreten, weil der Sitzungshost nicht verfügbar ist. Überprüfen Sie die Integrität des Sitzungshosts.|
 |-2146233088|ConnectionFailedClientDisconnect|Wenn dieser Fehler häufig angezeigt wird, sollten Sie sicherstellen, dass der Computer des Benutzers mit dem Netzwerk verbunden ist.|

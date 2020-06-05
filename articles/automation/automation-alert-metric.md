@@ -1,17 +1,17 @@
 ---
 title: Überwachen von Azure Automation-Runbooks mit Metrikwarnungen
-description: In diesem Artikel erfahren Sie, wie Sie Azure Automation-Runbooks anhand von Metriken überwachen.
+description: In diesem Artikel erfahren Sie, wie Sie Runbooks basierend auf Metriken überwachen.
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310544"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828745"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Überwachen von Runbooks mit Metrikwarnungen
+# <a name="monitor-runbooks-with-metric-alerts"></a>Überwachen von Runbooks mit Metrikwarnungen
 
 In diesem Artikel erfahren Sie, wie Sie Warnungen basierend auf den Abschlussstatus von Runbooks erstellen.
 
@@ -67,7 +67,7 @@ Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto. Wählen Sie unter **Ü
 > [!NOTE]
 > Beim Hinzufügen einer E-Mail-Adresse zu einer Aktionsgruppe wird eine Benachrichtigungs-E-Mail gesendet, die angibt, dass die Adresse zu einer Aktionsgruppe hinzugefügt wurde.
 
-## <a name="notification"></a>Benachrichtigung
+## <a name="receive-notification"></a>Empfangen von Benachrichtigungen
 
 Wenn die Warnungskriterien erfüllt sind, führt die Aktionsgruppe die definierte Aktion aus. Im Beispiel dieses Artikels wird eine E-Mail verschickt. In der folgenden Abbildung sehen Sie ein Beispiel für eine E-Mail, die Sie nach dem Auslösen der Warnung empfangen:
 
@@ -77,7 +77,4 @@ Wenn die Metrik nicht mehr außerhalb des definierten Schwellenwerts liegt, wird
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit dem folgenden Artikel fort, um mehr über andere Möglichkeiten zu erfahren, wie Sie Benachrichtigungen in Ihr Automation-Konto integrieren können.
-
-> [!div class="nextstepaction"]
-> [Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks](automation-create-alert-triggered-runbook.md)
+* Weitere Informationen finden Sie unter [Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks](automation-create-alert-triggered-runbook.md).

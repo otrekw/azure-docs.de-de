@@ -1,16 +1,16 @@
 ---
 title: Kopieren von Anwendungen und Daten auf Poolknoten
 description: Erfahren Sie, wie Sie Anwendungen und Daten auf Poolknoten kopieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115583"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726824"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
 
 Azure Batch unterstützt verschiedene Möglichkeiten, um Daten und Anwendungen auf Computeknoten zu überführen, damit die Daten und Anwendungen für die Verwendung durch Aufgaben verfügbar sind. Möglicherweise sind die Daten und Anwendungen erforderlich, um den gesamten Auftrag auszuführen, sodass sie auf jedem Knoten installiert werden müssen. Einige sind möglicherweise nur für eine bestimmte Aufgabe erforderlich oder müssen für den Auftrag installiert werden, müssen jedoch nicht auf jedem Knoten installiert sein. Batch verfügt über Tools für jedes dieser Szenarien.
 

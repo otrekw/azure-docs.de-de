@@ -1,6 +1,6 @@
 ---
-title: Beheben von Problemen mit freigegebenen Ressourcen in Azure Automation
-description: Hier erfahren Sie, wie Sie Probleme mit freigegebenen Azure Automation-Ressourcen beheben.
+title: Behandeln von Problemen bei freigegebenen Azure Automation-Ressourcen
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit freigegebenen Azure Automation-Ressourcen beheben.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: e83c7074d252083329537e205666374705a31873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733571"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680883"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Beheben von Problemen mit freigegebenen Ressourcen in Azure Automation
+# <a name="troubleshoot-shared-resource-issues"></a>Behandeln von Problemen bei freigegebenen Ressourcen
 
-In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die bei Verwendung von [freigegebenen Ressourcen](../automation-intro.md#shared-resources) in Azure Automation auftreten können.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+In diesem Artikel werden Probleme beschrieben, die bei Verwendung von [freigegebenen Ressourcen](../automation-intro.md#shared-resources) in Azure Automation auftreten können.
 
 ## <a name="modules"></a>Module
 
@@ -28,7 +25,7 @@ In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die be
 
 #### <a name="issue"></a>Problem
 
-Ein Modul bleibt beim Importieren oder Aktualisieren von Azure Automation-Modulen im Zustand „Wird importiert“ hängen.
+Ein Modul bleibt beim Importieren oder Aktualisieren von Azure Automation-Modulen im Zustand *Wird importiert* hängen.
 
 #### <a name="cause"></a>Ursache
 
@@ -36,7 +33,7 @@ Da das Importieren von PowerShell-Modulen ein komplexer Prozess mit vielen Schri
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu beheben, müssen Sie das Modul, das im Zustand „Wird importiert“ hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
+Um dieses Problem zu beheben, müssen Sie das Modul, das hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -54,7 +51,7 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Ursache
 
-Beim Aktualisieren der AzureRM-Module in einem Automation-Konto tritt in Ressourcengruppen mit einem mit 0 beginnenden numerischen Namen ein bekanntes Problem auf.
+Es liegt ein bekanntes Problem mit dem Update der AzureRM-Module in einem Automation-Konto vor. Dieses Problem tritt genau gesagt dann auf, wenn sich die Module in einer Ressourcengruppe mit einem numerischen Namen befinden, der mit 0 (null) beginnt.
 
 #### <a name="resolution"></a>Lösung
 
@@ -77,7 +74,7 @@ Es folgen häufige Ursachen, warum ein Modul nicht erfolgreich in Azure Automati
 
 #### <a name="resolution"></a>Lösung
 
-Verwenden Sie eine der folgenden Lösungen, um das Problem zu beheben.
+Verwenden Sie eine der folgenden Lösungen, um das Problem zu beheben:
 
 * Stellen Sie sicher, dass das Modul das folgende Format aufweist: Modulname.zip -> Modulname oder Versionsnummer -> (Modulname.psm1, Modulname.psd1).
 * Öffnen Sie die **PSD1**-Datei, und prüfen Sie, ob für das Modul Abhängigkeiten bestehen. Wenn ja, laden Sie diese Module in das Automation-Konto hoch.
@@ -87,20 +84,20 @@ Verwenden Sie eine der folgenden Lösungen, um das Problem zu beheben.
 
 #### <a name="issue"></a>Problem
 
-Bei Verwendung des [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1)-Runbooks zum Aktualisieren Ihrer Azure-Module wird der Updateprozess angehalten.
+Bei Verwendung des Runbooks [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) zum Aktualisieren Ihrer Azure-Module wird der Updateprozess angehalten.
 
 #### <a name="cause"></a>Ursache
 
-Die Standardeinstellung zur Bestimmung, wie viele Module gleichzeitig aktualisiert werden, liegt bei Verwendung von **Update-AzureModule.ps1** bei 10. Der Updateprozess ist fehleranfällig, wenn zu viele Module gleichzeitig aktualisiert werden.
+Bei diesem Runbook lautet die Standardeinstellung „10“. Anhand dieses Werts wird festgelegt, wie viele Module gleichzeitig aktualisiert werden. Der Updateprozess ist fehleranfällig, wenn zu viele Module gleichzeitig aktualisiert werden.
 
 #### <a name="resolution"></a>Lösung
 
-Es ist keine allgemeine Anforderung, dass sich alle AzureRM- oder Az-Module im selben Automation-Konto befinden müssen. Es wird empfohlen, nur die spezifischen Module zu importieren, die Sie benötigen.
+Es ist keine allgemeine Anforderung, dass sich alle AzureRM- oder Az-Module im selben Automation-Konto befinden müssen. Sie sollten nur die spezifischen Module importieren, die Sie benötigen.
 
 > [!NOTE]
 > Vermeiden Sie den Import des gesamten `Az.Automation`- oder `AzureRM.Automation`-Moduls – dadurch werden alle enthaltenen Module importiert.
 
-Wenn der Updateprozess angehalten wird, fügen Sie den `SimultaneousModuleImportJobCount`-Parameter zum **Update-AzureModules.ps1**-Skript hinzu und geben einen niedrigeren Wert als den Standardwert 10 an. Wenn Sie diese Logik implementieren, empfiehlt es sich, mit dem Wert 3 oder 5 zu beginnen. `SimultaneousModuleImportJobCount` ist ein Parameter des **Update-AutomationAzureModulesForAccount**-Systemrunbooks, das zum Aktualisieren der Azure-Module verwendet wird. Wenn Sie diese Anpassung vornehmen, dauert der Updateprozess länger, aber die Wahrscheinlichkeit, dass er vollständig abgeschlossen wird, ist höher. Das folgende Beispiel zeigt den Parameter und seine Position im Runbook:
+Wenn der Updateprozess angehalten wird, fügen Sie den dem Skript **Update-AzureModules.ps1** den Parameter `SimultaneousModuleImportJobCount` hinzu und geben einen niedrigeren Wert als den Standardwert 10 an. Beginnen Sie beim Implementieren dieser Logik mit einem Wert von 3 oder 5. `SimultaneousModuleImportJobCount` ist ein Parameter des **Update-AutomationAzureModulesForAccount**-Systemrunbooks, das zum Aktualisieren der Azure-Module verwendet wird. Wenn Sie diese Anpassung vornehmen, dauert der Updateprozess länger, aber die Wahrscheinlichkeit, dass er vollständig abgeschlossen wird, ist höher. Das folgende Beispiel zeigt den Parameter und seine Position im Runbook:
 
  ```powershell
          $Body = @"
@@ -139,7 +136,7 @@ Sie haben keine Berechtigungen zum Erstellen oder Aktualisieren des ausführende
 
 Um ein ausführendes Konto zu erstellen oder zu aktualisieren, müssen Sie über geeignete [Berechtigungen](../manage-runas-account.md#permissions) für die verschiedenen Ressourcen verfügen, die vom ausführenden Konto verwendet werden. 
 
-Wenn das Problem durch eine Sperre verursacht wird, überprüfen Sie, ob die Sperre entfernt werden kann. Navigieren Sie im Azure-Portal zu der gesperrten Ressource, klicken Sie mit der rechten Maustaste auf das Schlosssymbol, und klicken Sie auf **Löschen**.
+Wenn das Problem durch eine Sperre verursacht wird, überprüfen Sie, ob die Sperre entfernt werden kann. Navigieren Sie im Azure-Portal zu der gesperrten Ressource, klicken Sie mit der rechten Maustaste auf das Schlosssymbol, und wählen Sie **Löschen** aus.
 
 ### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Szenario: Sie erhalten beim Ausführen eines Runbooks folgenden Fehler: Der Einstiegspunkt „GetPerAdapterInfo“ wurde nicht in der DLL „iplpapi.dll“ gefunden
 
@@ -167,8 +164,9 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Sie Ihr Problem nicht mit diesem Artikel lösen konnten, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
-* Erstellen Sie einen Azure-Supportfall. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+* Wenden Sie sich an [@AzureSupport](https://twitter.com/azuresupport) – Dies ist das offizielle Microsoft Azure-Konto, über das die Azure-Community Zugriff auf die richtigen Ressourcen erhält: Antworten, Support und Experten.
+* Erstellen Sie einen Azure-Supportfall. Wechseln Sie zur [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und wählen Sie **Support erhalten** aus.
+

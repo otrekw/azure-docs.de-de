@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008530"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868124"
 ---
 Freigegebene Azure-Datenträger (Vorschauversion) sind ein neues Feature für verwaltete Azure-Datenträger, die das gleichzeitige Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer (Virtual Machines, VMs) ermöglichen. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren.
 
@@ -51,6 +51,10 @@ Die folgende Liste enthält einige beliebte Anwendungen, die unter WSFC ausgefü
 
 Von Linux-Clustern können Cluster-Manager wie [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) verwendet werden. Pacemaker basiert auf [Corosync](http://corosync.github.io/corosync/) und ermöglicht die Clusterkommunikation für Anwendungen in hochverfügbaren Umgebungen. Beispiele für gängige Clusterdateisysteme wären etwa [ocfs2](https://oss.oracle.com/projects/ocfs2/) und [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Reservierungen und Registrierungen können mithilfe von Hilfsprogrammen wie [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) und [sg_persist](https://linux.die.net/man/8/sg_persist) beeinflusst werden.
 
+#### <a name="ubuntu"></a>Ubuntu
+
+Informationen zum Einrichten von Hochverfügbarkeit unter Ubuntu mit Corosync und Pacemaker auf freigegebenen Azure-Datenträgern finden Sie unter [Ubuntu Community-Diskurs](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874).
+
 ## <a name="persistent-reservation-flow"></a>Ablauf mit permanenter Reservierung
 
 Das folgende Diagramm zeigt eine exemplarische Clusterdatenbankanwendung mit zwei Knoten, die SCSI PR nutzt, um Failover von einem Knoten auf den anderen zu ermöglichen.
@@ -81,7 +85,7 @@ Der Ablauf ist wie folgt:
 
 Disk Ultra-Datenträger bieten eine zusätzliche Drosselung, sodass insgesamt zwei Drosselungen erfolgen. Aus diesem Grund kann der Ablauf mit Reservierung von Disk Ultra-Datenträgern wie im vorherigen Abschnitt beschrieben funktionieren, oder er kann die Leistung differenzierter drosseln und verteilen.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Abbildung einer Tabelle, die den schreibgeschützten Zugriff oder Lese-/Schreibzugriff für die Kategorien „Reservierungsinhaber“, „Registriert“ und „Andere“ darstellt":::
 
 ## <a name="ultra-disk-performance-throttles"></a>Leistungsdrosselungen für Disk Ultra-Datenträger
 
@@ -115,22 +119,16 @@ In den folgenden Beispielen werden einige Szenarios veranschaulicht, die zeigen,
 
 Es folgt ein Beispiel für einen WSFC mit zwei Knoten, der freigegebene Clustervolumes verwendet. Bei dieser Konfiguration haben beide virtuellen Computer gleichzeitigen Schreibzugriff auf den Datenträger, was dazu führt, dass die ReadWrite-Drosselung auf die beiden virtuellen Computer aufgeteilt wird und die ReadOnly-Drosselung nicht verwendet wird.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger":::
 
 #### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster mit zwei Knoten ohne freigegebene Clustervolumes
 
 Es folgt ein Beispiel für einen WSFC mit zwei Knoten, der keine freigegebenen Clustervolumes verwendet. Bei dieser Konfiguration hat nur ein virtueller Computer Schreibzugriff auf den Datenträger. Dies führt dazu, dass die ReadWrite-Drosselung ausschließlich für den primären virtuellen Computer und die ReadOnly-Drosselung nur für den sekundären virtuellen Computer verwendet wird.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger ohne CSV":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger ohne CSV":::
 
 #### <a name="four-node-linux-cluster"></a>Linux-Cluster mit vier Knoten
 
 Es folgt ein Beispiel für einen Linux-Cluster mit vier Knoten, einem einzelnen Writer und drei Lesern mit horizontaler Skalierung. Bei dieser Konfiguration hat nur ein virtueller Computer Schreibzugriff auf den Datenträger. Dies führt dazu, dass die ReadWrite-Drosselung ausschließlich für den primären virtuellen Computer verwendet und die ReadOnly-Drosselung auf die sekundären virtuellen Computer aufgeteilt wird.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Beispiel für vier Knoten und Ultradrosselung":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Beispiel für vier Knoten und Ultradrosselung":::

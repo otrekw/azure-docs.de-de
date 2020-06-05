@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e49e4d5debe63b99039bbafbc14f7788367314f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 159e15a6be59991fba574e72dcaf2ed740fb10c2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678864"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846137"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Konvertieren einer Legacyinstanz für direktes Peering in eine Azure-Ressource über das Azure-Portal
 
@@ -32,7 +32,28 @@ Sie können diese Anleitung auch mithilfe von [PowerShell](howto-legacy-direct-p
 
 ### <a name="convert-a-legacy-direct-peering"></a><a name=create></a> Konvertieren einer Legacyinstanz für direktes Peering
 
-Sie können Legacy-Peeringverbindungen mithilfe der **Peeringressource** konvertieren.
+Als Internetdienstanbieter können Sie ältere direkte Peeringverbindungen mithilfe von [Creating a Peering]( https://go.microsoft.com/fwlink/?linkid=2129593) (Erstellen eines Peerings) konvertieren.
+
+1. Füllen Sie auf der Seite **Create a Peering** (Peering erstellen) auf der Registerkarte **Grundlagen** die Felder wie hier gezeigt aus:
+
+    > [!div class="mx-imgBorder"] 
+    > ![Registrieren eines Peering Service](./media/setup-basics-tab.png)
+
+*    Wählen Sie Ihr Azure-Abonnement aus.
+
+* Als Ressourcengruppe können Sie in der Dropdownliste eine vorhandene Ressourcengruppe auswählen oder eine neue Gruppe erstellen, indem Sie „Neu erstellen“ auswählen. Im Rahmen dieses Beispiels erstellen Sie eine neue Ressourcengruppe.
+
+* Der Name entspricht dem Ressourcennamen und ist frei wählbar.
+
+* Die Region wird automatisch ausgewählt, wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben. Wenn Sie eine neue Ressourcengruppe erstellen möchten, müssen Sie auch die Azure-Region auswählen, in der sich die Ressource befinden soll.
+
+>[!NOTE]
+>Die Region, in der sich die Ressourcengruppe befindet, ist unabhängig vom Standort, an dem Sie das Peering mit Microsoft erstellen möchten. Es empfiehlt sich jedoch, Ihre Peeringressourcen innerhalb von Ressourcengruppen zu organisieren, die sich in nahegelegenen Azure-Regionen befinden. Beispiel: Für Peerings in Ashburn können Sie eine Ressourcengruppe in „USA, Osten“ oder in „USA, Osten 2“ erstellen.
+
+* Wählen Sie Ihre ASN im Feld **PeerASN** aus.
+
+>[!IMPORTANT] 
+>Sie können nur eine ASN mit dem ValidationState „Genehmigt“ auswählen, bevor Sie eine Peeringanforderung übermitteln. Wenn Sie Ihre PeerAsn-Anforderung gerade erst übermittelt haben, warten Sie ca. 12 Stunden, damit die ASN-Zuordnung genehmigt werden kann. Wenn die Genehmigung der von Ihnen ausgewählten ASN noch aussteht, wird eine Fehlermeldung angezeigt. Wenn die benötigte ASN nicht angezeigt wird, überprüfen Sie, ob Sie das richtige Abonnement ausgewählt haben. Ist dies der Fall, überprüfen Sie mithilfe von **[Zuordnen der Peer-ASN zum Azure-Abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)** , ob Sie bereits eine Peer-ASN erstellt haben.
 
 #### <a name="launch-the-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]

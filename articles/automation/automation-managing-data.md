@@ -1,23 +1,20 @@
 ---
-title: Verwalten von Azure Automation-Daten
-description: Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen "Datenaufbewahrung", "Sichern von Azure Automation" und "Notfallwiederherstellung in Azure Automation".
+title: Verwaltung von Azure Automation-Daten
+description: Dieser Artikel enthält Konzepte der Datenverwaltung in Azure Automation, einschließlich Datenaufbewahrung und -sicherung.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984656"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835205"
 ---
-# <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
+# <a name="management-of-azure-automation-data"></a>Verwaltung von Azure Automation-Daten
 
 Dieser Artikel enthält mehrere Themen zum Verwalten von Daten in einer Azure Automation-Umgebung.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
@@ -79,6 +76,5 @@ Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zug
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu sicheren Objekten in Azure Automation finden Sie unter [Verschlüsseln sicherer Objekte in Azure Automation](automation-secure-asset-encryption.md).
-
+* Weitere Informationen zu sicheren Objekten in Azure Automation finden Sie unter [Verschlüsseln sicherer Ressourcen in Azure Automation](automation-secure-asset-encryption.md).
 * Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

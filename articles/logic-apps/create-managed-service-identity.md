@@ -1,21 +1,21 @@
 ---
 title: Authentifizieren mit verwalteten Dienstidentitäten
-description: Zugreifen auf Ressourcen in anderen Azure Active Directory-Mandanten ohne Anmeldung mit Anmeldeinformationen oder Geheimnissen unter Verwendung einer verwalteten Identität
+description: Zugreifen auf Ressourcen, die von Azure Active Directory geschützt werden, ohne Anmeldung mit Anmeldeinformationen oder Geheimnissen unter Verwendung einer verwalteten Identität
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 82710a66cdf7874c745070e49b2c7aff7bc8816d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73f3e7561b97574c4603e480b972eaf2a9a1ed48
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77117420"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83708039"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
-Zum Zugreifen auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directory) und Authentifizieren Ihrer Identität ohne Anmeldung kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität, Managed Service Identity, MSI bezeichnet) erstellen, die anstelle von Anmeldeinformationen oder Geheimnissen verwendet wird. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen.
+Zum mühelosen Zugreifen auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, und Authentifizieren Ihrer Identität ohne Anmeldung kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität, Managed Service Identity, MSI bezeichnet) anstelle von Anmeldeinformationen oder Geheimnissen verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen.
 
 Azure Logic Apps unterstützt sowohl [*systemseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) als auch [*benutzerseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) verwaltete Identitäten. Ihre Logik-App kann entweder die vom System zugewiesene Identität oder eine *einzelne* vom Benutzer zugewiesene Identität (die Sie für eine Gruppe von Logik-Apps gemeinsam verwenden können) verwenden, aber nicht beide. Derzeit unterstützen nur [spezifische integrierte Trigger und Aktionen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) verwaltete Identitäten, nicht aber verwaltete Connectors oder Verbindungen, z. B.:
 
@@ -137,7 +137,7 @@ Um eine vom Benutzer zugewiesene verwaltete Identität für Ihre Logik-App einzu
 * Azure PowerShell
   * [Erstellen einer benutzerseitig zugewiesenen Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Hinzufügen der Rollenzuweisung](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
   * [Erstellen einer benutzerseitig zugewiesenen Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
   * [Hinzufügen der Rollenzuweisung](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 * Azure-REST-API
@@ -456,7 +456,7 @@ Wenn Sie die verwaltete Identität für die Logik-App nicht mehr verwenden möch
 * Azure PowerShell
   * [Entfernen von Rollenzuweisungen](../role-based-access-control/role-assignments-powershell.md)
   * [Löschen von benutzerseitig zugewiesenen Identitäten](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
   * [Entfernen von Rollenzuweisungen](../role-based-access-control/role-assignments-cli.md)
   * [Löschen von benutzerseitig zugewiesenen Identitäten](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 * Azure-REST-API

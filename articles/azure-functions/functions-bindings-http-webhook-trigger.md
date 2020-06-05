@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648921"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -747,32 +747,12 @@ Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service
 
 ---
 
-## <a name="authorization-keys"></a>Autorisierungsschlüssel
-
-Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTTP-Funktionsendpunkte während der Entwicklung erschwert wird.  Außer wenn die HTTP-Autorisierungsebene für eine HTTP-ausgelöste Funktion auf `anonymous` festgelegt ist, müssen Anforderungen einen API-Schlüssel in der Anforderung enthalten. 
+## <a name="function-access-keys"></a><a name="authorization-keys"></a>Funktionszugriffsschlüssel
 
 > [!IMPORTANT]
 > Schlüssel helfen zwar Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern, sie sind jedoch nicht als Möglichkeit zum Schützen eines HTTP-Triggers in einer Produktionsumgebung vorgesehen. Weitere Informationen hierzu finden Sie unter [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](#secure-an-http-endpoint-in-production).
 
-> [!NOTE]
-> In der Functions Laufzeit 1.x können Webhookanbieter Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird. Dieses Thema wird unter [Webhooks und Schlüssel](#webhooks-and-keys) behandelt. Die Functions-Runtime in Version 2.x und höheren Versionen beinhaltet keine integrierte Unterstützung für Webhookanbieter.
-
-#### <a name="authorization-scopes-function-level"></a>Autorisierungsbereiche (Funktionsebene)
-
-Es gibt zwei Autorisierungsbereiche für Schlüssel auf Funktionsebene:
-
-* **Funktion**: Diese Schlüssel gelten nur für die Funktionen, für die sie definiert sind. Bei Verwendung als API-Schlüssel ermöglichen diese nur Zugriff auf diese spezielle Funktion.
-
-* **Host**: Schlüssel mit einem Hostbereich können für den Zugriff auf alle Funktionen in der Funktions-App verwendet werden. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App. 
-
-Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Hostebene gibt es einen Standardschlüssel (mit dem Namen „default“). Funktionsschlüssel haben Vorrang vor Hostschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird immer der Funktionsschlüssel verwendet.
-
-#### <a name="master-key-admin-level"></a>Hauptschlüssel (Administratorebene) 
-
-Jede Funktions-App verfügt außerdem über einen Hostschlüssel auf Administratorebene mit dem Namen `_master`. Zusätzlich zur Bereitstellung des Zugriffs auf Hostebene auf alle Funktionen in der App bietet der Hauptschlüssel auch administrativen Zugriff auf die Laufzeit-REST-APIs. Dieser Schlüssel kann nicht widerrufen werden. Wenn Sie die Autorisierungsstufe `admin` festlegen, muss für Anforderungen der Hauptschlüssel verwendet werden. Alle anderen Schlüssel führen zu einem Autorisierungsfehler.
-
-> [!CAUTION]  
-> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in nativen Clientanwendungen verteilen. Gehen Sie umsichtig vor, wenn Sie die Autorisierungsstufe „Administrator“ auswählen.
+[!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>Abrufen von Schlüsseln
 
@@ -798,15 +778,13 @@ Sie können anonyme Anforderungen zulassen, die keine Schlüssel erfordern. Sie 
 
 ## <a name="secure-an-http-endpoint-in-production"></a>Schützen eines HTTP-Endpunkts in einer Produktionsumgebung
 
-Wenn Sie Ihre Funktionsendpunkte in einer Produktionsumgebung umfassend schützen möchten, sollten Sie eine der folgenden Sicherheitsoptionen auf Funktions-App-Ebene implementieren:
+Wenn Sie Ihre Funktionsendpunkte in einer Produktionsumgebung umfassend schützen möchten, sollten Sie eine der folgenden Sicherheitsoptionen auf Funktions-App-Ebene implementieren. Wenn Sie eine dieser Sicherheitsmethoden auf Funktions-App-Ebene verwenden, sollten Sie die Autorisierungsebene der über HTTP ausgelösten Funktion auf `anonymous` festlegen.
 
-* Aktivieren Sie für Ihre Funktions-App die App Service-Authentifizierung/Autorisierung. Die App Service-Plattform ermöglicht die Verwendung von Azure Active Directory (AAD) sowie von verschiedenen anderen Identitätsanbietern zum Authentifizieren von Clients. Sie können diese Strategie zum Implementieren von benutzerdefinierten Autorisierungsregeln für Ihre Funktionen sowie Benutzerinformationen aus Ihrem Funktionscode verwenden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/overview-authentication-authorization.md) und [Arbeiten mit Clientidentitäten](#working-with-client-identities).
+[!INCLUDE [functions-enable-auth](../../includes/functions-enable-auth.md)]
 
-* Verwenden Sie Azure API Management (APIM) zum Authentifizieren von Anforderungen. APIM stellt verschiedene API-Sicherheitsoptionen für eingehende Anforderungen bereit. Weitere Informationen hierzu finden Sie unter [API Management-Authentifizierungsrichtlinien](../api-management/api-management-authentication-policies.md). Wenn APIM vorhanden ist, können Sie Ihre Funktions-App so konfigurieren, dass Anforderungen nur von den IP-Adressen Ihrer APIM-Instanz angenommen werden. Weitere Informationen hierzu finden Sie unter [Einschränkungen für IP-Adressen](ip-addresses.md#ip-address-restrictions).
+#### <a name="deploy-your-function-app-in-isolation"></a>Isoliertes Bereitstellen Ihrer Funktions-App
 
-* Stellen Sie Ihre Funktions-App in einer Azure App Service-Umgebung (ASE, App Service Environment) bereit. ASE stellt eine spezielle Hostingumgebung bereit, in der Sie Ihre Funktionen ausführen können. Mit ASE können Sie ein Front-End-Gateway konfigurieren, das Sie zum Authentifizieren aller eingehenden Anforderungen verwenden können. Weitere Informationen hierzu finden Sie unter [Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
-
-Wenn Sie eine dieser Sicherheitsmethoden auf Funktions-App-Ebene verwenden, sollten Sie die Autorisierungsebene der über HTTP ausgelösten Funktion auf `anonymous` festlegen.
+[!INCLUDE [functions-deploy-isolation](../../includes/functions-deploy-isolation.md)]
 
 ## <a name="webhooks"></a>webhooks
 

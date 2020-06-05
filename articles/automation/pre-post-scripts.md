@@ -5,19 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855327"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835171"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
 Pre- und Post-Skripts sind Runbooks, die vor (Pre-Aufgaben) und nach (Post-Aufgaben) einer Updatebereitstellung in Ihrem Azure Automation-Konto ausgeführt werden. Pre- und Post-Skripts werden nicht lokal, sondern im Azure-Kontext ausgeführt. Pre-Skripts werden zu Beginn der Updatebereitstellung ausgeführt. Post-Skripts werden am Ende der Bereitstellung sowie nach allen konfigurierten Neustarts ausgeführt.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="pre-script-and-post-script-requirements"></a>Anforderungen an Pre- und Post-Skripts
 
@@ -94,7 +91,7 @@ Ein vollständiges Beispiel mit allen Eigenschaften finden Sie unter: [Abrufen d
 > [!NOTE]
 > Das `SoftwareUpdateConfigurationRunContext`-Objekt kann doppelte Einträge für Computer enthalten. Dies kann dazu führen, dass Pre- und Post-Skripts mehrmals auf dem gleichen Computer ausgeführt werden. Verwenden Sie zur Umgehung dieses Verhaltens `Sort-Object -Unique`, um nur eindeutige VM-Namen auszuwählen.
 
-## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>Verwenden eines Pre- oder Post-Skripts in einer Bereitstellung
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Verwenden eines Pre- oder Post-Skripts in einer Bereitstellung
 
 Wenn Sie ein Pre- oder Post-Skript in einer Updatebereitstellung verwenden möchten, müssen Sie zunächst eine Updatebereitstellung erstellen. Wählen Sie **Vor und nach dem Vorgang auszuführende Skripts** aus. Daraufhin wird die Seite **Vor und nach dem Vorgang auszuführende Skripts auswählen** angezeigt.
 
@@ -118,9 +115,9 @@ Wenn Sie die Ausführung der Updatebereitstellung auswählen, werden weitere Det
 
 ![Ergebnisse der Bereitstellungsausführung](./media/pre-post-scripts/deployment-run.png)
 
- 
+Speichern des Skripts
 
-## <a name="stopping-a-deployment"></a>Beenden einer Bereitstellung
+## <a name="stop-a-deployment"></a>Beenden einer Bereitstellung
 
 Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript beenden möchten, müssen Sie eine Ausnahme [auslösen](automation-runbook-execution.md#throw). Andernfalls werden die Bereitstellung und das Post-Skript trotzdem ausgeführt. Der folgende Codeausschnitt veranschaulicht das Auslösen einer Ausnahme:
 
@@ -137,9 +134,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-
-
-## <a name="interacting-with-machines"></a>Interaktion mit Computern
+## <a name="interact-with-machines"></a>Interagieren mit Computern
 
 Pre- und Post-Aufgaben werden nicht direkt auf den Computern in Ihrer Bereitstellung, sondern als Runbooks in Ihrem Automation-Konto ausgeführt. Pre- und Post-Aufgaben werden auch im Azure-Kontext ausgeführt und haben keinen Zugriff auf Azure-fremde Computer. In den folgenden Abschnitten erfahren Sie, wie Sie direkt mit den Computern interagieren. Dabei spielt es keine Rolle, ob es sich um virtuelle Azure-Computer oder um Azure-fremde Computer handelt.
 
@@ -163,7 +158,7 @@ Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugr
 
 Für die Interaktion mit Azure-fremden Computern wird ein übergeordnetes Runbook im Azure-Kontext ausgeführt. Dieses Runbook ruft mit dem Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) ein untergeordnetes Runbook auf. Sie müssen den `RunOn`-Parameter und den Namen des Hybrid Runbook Workers, auf dem das Skript ausgeführt werden soll, angeben. Weitere Informationen finden Sie im Runbookbeispiel [Update Management – run script locally](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44) (Updateverwaltung – Skript lokal ausführen).
 
-## <a name="aborting-patch-deployment"></a>Abbrechen der Patchbereitstellung
+## <a name="abort-patch-deployment"></a>Abbrechen der Bereitstellung von Patches
 
 Falls Ihr Pre-Skript einen Fehler zurückgibt, empfiehlt es sich ggf., die Bereitstellung abzubrechen. Dazu müssen Sie in Ihrem Skript für jegliche Logik, die einen Fehler zur Folge hätte, einen Fehler [auslösen](/powershell/module/microsoft.powershell.core/about/about_throw).
 
@@ -250,7 +245,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Tutorial erfahren Sie, wie Sie Updates für Ihre virtuellen Windows-Computer verwalten:
-
-> [!div class="nextstepaction"]
-> [Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer](automation-tutorial-update-management.md)
+* Einzelheiten zur Updateverwaltung finden Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).

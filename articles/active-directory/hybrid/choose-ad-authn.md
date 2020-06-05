@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206730"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758128"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -92,7 +92,7 @@ Informationen zu Entscheidungsfragen:
 
 * **Erweiterte Szenarien**: Wenn Organisationen sich dafür entscheiden, können sie Erkenntnisse aus Identitäten gewinnen, indem Azure AD Identity Protection-Berichte mit Azure AD Premium P2 verwendet werden. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen. Windows Hello for Business verfügt über [spezifische Anforderungen, wenn Sie die Kennworthashsynchronisierung verwenden](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) erfordern Kennworthashsynchronisierung, um Endbenutzern ihre Unternehmensanmeldeinformationen in der verwalteten Domäne bereitzustellen.
 
-    Organisationen, die eine mehrstufige Authentifizierung mit Kennworthashsynchronisierung benötigen, müssen die Multi-Factor Authentication von Azure AD oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](../../active-directory/conditional-access/controls.md#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, die von Drittanbietern oder lokal angeboten werden.
+    Organisationen, die eine mehrstufige Authentifizierung mit Kennworthashsynchronisierung erfordern, müssen die Azure Multi-Factor Authentication oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](../../active-directory/conditional-access/controls.md#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, die von Drittanbietern oder lokal angeboten werden.
 
 > [!NOTE]
 > Für den bedingten Azure AD-Zugriff werden Lizenzen vom Typ [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) benötigt.
@@ -177,7 +177,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Wo findet Authentifizierung statt?|In der Cloud|In der Cloud nach einem sicheren Kennwortüberprüfungsaustausch mit dem lokalen Authentifizierungs-Agent|Lokal|
 |Welche lokalen Serveranforderungen gibt es über das Bereitstellungssystem hinaus: Azure AD Connect?|Keine|Ein Server für jeden zusätzlichen Authentifizierungs-Agent|Mindestens zwei AD FS-Server<br><br>Mindestens zwei WAP-Server im Umkreis-/DMZ-Netzwerk|
 |Welche lokalen Anforderungen hinsichtlich Internet und Netzwerk gibt es über das Bereitstellungssystem hinaus?|Keine|[Ausgehender Internetzugriff](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) von den Servern, auf denen Authentifizierung-Agents ausgeführt werden|[Eingehender Internetzugriff](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) auf WAP-Server im Umkreisnetzwerk<br><br>Eingehender Netzwerkzugriff auf AD FS-Server von WAP-Servern im Umkreisnetzwerk<br><br>Netzwerklastenausgleich|
-|Ist ein TLS/SSL-Zertifikat erforderlich?|Nein |Nein |Ja|
+|Ist ein TLS/SSL-Zertifikat erforderlich?|Nein|Nein|Ja|
 |Gibt es eine Systemüberwachungslösung?|Nicht erforderlich|Agent-Status, bereitgestellt von [Azure Active Directory Admin Center](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Erhalten Benutzer einmaliges Anmelden für Cloudressourcen über Geräte, die in die Domäne eingebunden sind und zum Unternehmensnetzwerk gehören?|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
 |Welche Anmeldetypen werden unterstützt?|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternative Anmelde-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|Benutzerprinzipalname + Kennwort<br><br>sAMAccountName + Kennwort<br><br>Integrierte Windows-Authentifizierung<br><br>[Zertifikat- und Smartcard-Authentifizierung](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternative Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|

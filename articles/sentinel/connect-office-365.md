@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252510"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758570"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Herstellen der Verbindung von Daten aus Office 365-Protokollen
 
@@ -36,6 +36,9 @@ Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/
 - Für Ihren Mandanten muss einheitliche Überwachung aktiviert sein. Für Mandanten mit Office 365 E3- oder E5-Lizenzen ist einheitliche Überwachung standardmäßig aktiviert. <br>Wenn Ihr Mandant nicht über eine dieser Lizenzen verfügt, müssen Sie einheitliche Überwachung auf Ihrem Mandanten mithilfe einer der folgenden Methoden aktivieren:
     - [Verwenden des Cmdlets „Set-AdminAuditLogConfig“](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) und Aktivieren des Parameters „UnifiedAuditLogIngestionEnabled“.
     - [Verwenden der Benutzeroberfläche von Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+   
+   > [!NOTE]
+   > Derzeit erfasst der O365-Datenconnector nur Exchange- und SharePoint-Aktivitäten automatisch, wie auf der Seite „Connector“ im Abschnitt „Datentypen“ erwähnt. Es wird empfohlen, [diesen Artikel](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) zu lesen, falls Sie Teams-Überwachungsdaten benötigen und Teams mithilfe von Sentinel schützen. 
 
 ## <a name="connect-to-office-365"></a>Herstellen einer Verbindung mit Office 365
 

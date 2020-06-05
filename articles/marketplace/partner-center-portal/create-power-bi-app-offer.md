@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839146"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849092"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Erstellen einer Power BI-App für Microsoft AppSource
 
@@ -62,7 +62,7 @@ Sie enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der G
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
-### <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentlichen, müssen Sie es mit Ihrem CRM-System (Customer Relationship Management) verbinden. Dadurch empfangen Sie Kontaktinformationen zum Kunden, sobald jemand sein Interesse an Ihrem Produkt bekundet oder es verwendet.
 
@@ -161,32 +161,11 @@ Geben Sie eine kurze Beschreibung Ihres Angebots an. Sie kann bis zu 100 Zeichen
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Schließen Sie eine oder mehrere der folgenden Informationen in die Beschreibung ein:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Den Nutzen und die wichtigsten Vorteile Ihres Angebots
-- Zuordnungen zu Kategorien oder Branchen oder beidem
-- Möglichkeit zu In-App-Käufen
-- Alle erforderlichen Bekanntmachungen
-
-Hier einige Tipps zum Verfassen Ihrer Beschreibung:
-
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich den Nutzen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
-  - Beschreibung des Angebots.
-  - Typ von Benutzern, die von dem Produkt profitieren.
-  - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-- Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
-- Verwenden Sie möglichst branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
-
-Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
-
-![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
-
-| <center>Textformat ändern | <center>Aufzählungszeichen oder Nummerierung hinzufügen | <center>Texteinzüge hinzufügen oder entfernen |
-| --- | --- | --- |
-| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>Suchbegriffe
 

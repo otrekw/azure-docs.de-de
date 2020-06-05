@@ -11,46 +11,46 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408193"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650503"
 ---
-# <a name="troubleshooting-connectivity-issues"></a>Behandlung von Konnektivitätsproblemen
+# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Behandeln von Konnektivitätsproblemen im Synapse SQL-Pool
 
-In diesem Artikel werden allgemeine Problembehandlungsverfahren für das Herstellen von Verbindungen mit Ihrer SQL Analytics-Datenbank aufgeführt.
+In diesem Artikel werden allgemeine Troubleshootingverfahren für das Herstellen von Verbindungen mit Ihrer SQL-Pooldatenbank aufgeführt.
 
 ## <a name="check-service-availability"></a>Überprüfen der Verfügbarkeit des Diensts
 
-Überprüfen Sie, ob der Dienst verfügbar ist. Navigieren Sie im Azure-Portal zu dem Synapse SQL-Pool, mit dem Sie eine Verbindung herstellen möchten. Klicken Sie im Inhaltsverzeichnis auf der linken Seite auf **Diagnose und Problembehandlung**.
+Überprüfen Sie, ob der Dienst verfügbar ist. Navigieren Sie im Azure-Portal zu dem SQL-Pool, mit dem Sie eine Verbindung herstellen möchten. Klicken Sie im Inhaltsverzeichnis auf der linken Seite auf **Diagnose und Problembehandlung**.
 
 ![Auswählen der Ressourcenintegrität](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Der Status Ihres Synapse SQL-Pools wird hier angezeigt. Wenn der Dienst nicht als **Verfügbar** angezeigt wird, sind weitere Handlungen erforderlich.
+Der Status Ihres SQL-Pools wird hier angezeigt. Wenn der Dienst nicht als **Verfügbar** angezeigt wird, sind weitere Handlungen erforderlich.
 
 ![Dienst verfügbar](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Wenn die Ressourcenintegrität angibt, dass Ihre Instanz des Synapse SQL-Pools angehalten wurde oder skaliert wird, führen Sie die Anleitungen zum Fortsetzen der Instanz aus.
+Wenn die Ressourcenintegrität angibt, dass Ihre Instanz des SQL-Pools angehalten wurde oder skaliert wird, führen Sie die Anleitungen zum Fortsetzen der Instanz aus.
 
 ![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Hier finden Sie weitere Informationen zur Ressourcenintegrität.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Überprüfen auf angehaltene Vorgänge oder Skalierungen
 
-Sehen Sie im Portal nach, ob Ihre Instanz des Synapse SQL-Pools angehalten wurde oder skaliert wird.
+Sehen Sie im Portal nach, ob Ihre Instanz des SQL-Pools angehalten wurde oder skaliert wird.
 
 ![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Wenn Sie feststellen, dass der Dienst pausiert wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* für Ihre Instanz des Synapse SQL-Pools im Portal sehen Sie den ausgewählten Wartungszeitplan.
+Wenn Sie feststellen, dass der Dienst pausiert wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* zu Ihrem SQL-Pools im Portal sehen Sie den ausgewählten Wartungszeitplan.
 
 ![Übersicht über den Wartungszeitplan](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Kontaktieren Sie andernfalls Ihren IT-Administrator, um auszuschließen, dass es sich bei der Wartung um ein geplantes Ereignis handelt. Führen Sie zur Fortsetzung der SQL Analytics-Instanz die [hier](pause-and-resume-compute-portal.md) aufgeführten Schritte aus.
+Kontaktieren Sie andernfalls Ihren IT-Administrator, um auszuschließen, dass es sich bei der Wartung um ein geplantes Ereignis handelt. Führen Sie zur Fortsetzung der Instanz des SQL-Pools [diese Schritte](pause-and-resume-compute-portal.md) aus.
 
 ## <a name="check-your-firewall-settings"></a>Überprüfen der Firewalleinstellungen
 
-Die SQL Analytics-Datenbank kommuniziert über Port 1433.   Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet. [Hier](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules) finden Sie weitere Informationen zu den Firewallkonfigurationen.
+Die SQL-Pooldatenbank kommuniziert über Port 1433.  Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet. [Hier](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules) finden Sie weitere Informationen zu den Firewallkonfigurationen.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Überprüfen der Einstellungen für VNETs und Dienstendpunkte
 
@@ -60,7 +60,7 @@ Wenn die Fehler 40914 und 40615 bei Ihnen auftreten, finden Sie in diesem Artike
 
 ### <a name="software"></a>Software
 
-Stellen Sie sicher, dass Sie die neuesten Tools verwenden, um eine Verbindung mit dem Synapse SQL-Pool herzustellen:
+Stellen Sie sicher, dass Sie die neuesten Tools verwenden, um eine Verbindung mit dem SQL-Pool herzustellen:
 
 - SSMS
 - Azure Data Studio
@@ -105,7 +105,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Zeitweilige Verbindungsprobleme
 
-Überprüfen Sie, ob die Auslastung des Servers hoch ist und sich viele Anforderungen in der Warteschlange befinden. Sie müssen Ihren Synapse SQL-Pool ggf. für zusätzliche Ressourcen hochskalieren.
+Überprüfen Sie, ob die Auslastung des Servers hoch ist und sich viele Anforderungen in der Warteschlange befinden. Sie müssen Ihren SQL-Pool ggf. für zusätzliche Ressourcen hochskalieren.
 
 ## <a name="common-error-messages"></a>Häufige Fehlermeldungen
 

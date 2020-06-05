@@ -1,25 +1,25 @@
 ---
-title: Zusammenstellen von DSC-Konfigurationen in Azure Automation State Configuration mit zusammengesetzten Ressourcen
-description: Es wird beschrieben, wie Sie Konfigurationen in Azure Automation State Configuration mit zusammengesetzten Ressourcen zusammenstellen.
+title: Erstellen von DSC-Konfigurationen
+description: In diesem Artikel wird beschrieben, wie Sie Konfigurationen in Azure Automation State Configuration mit zusammengesetzten Ressourcen zusammenstellen.
 keywords: PowerShell DSC, Desired State Configuration, Konfiguration des gewünschten Zustands, PowerShell DSC Azure, zusammengesetzte Ressourcen
 services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993773"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835069"
 ---
-# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Zusammenstellen von DSC-Konfigurationen in Azure Automation State Configuration mit zusammengesetzten Ressourcen
+# <a name="compose-dsc-configurations"></a>Erstellen von DSC-Konfigurationen
 
 Wenn Sie eine Ressource mit mehr als nur einer Konfiguration des gewünschten Zustands (DSC) verwalten müssen, ist die beste Vorgehensweise die Nutzung von [zusammengesetzten Ressourcen](/powershell/scripting/dsc/resources/authoringresourcecomposite). Eine zusammengesetzte Ressource ist eine geschachtelte und parametrisierte Konfiguration, die als DSC-Ressource in einer anderen Konfiguration verwendet wird. Die Verwendung von zusammengesetzten Ressourcen ermöglicht Ihnen die Erstellung von komplexen Konfigurationen, während die zugrunde liegenden zusammengesetzten Ressourcen einzeln verwaltet und erstellt werden können.
 
 Mit Azure Automation können Sie [zusammengesetzte Ressourcen importieren und kompilieren](automation-dsc-compile.md). Nachdem Sie zusammengesetzte Ressourcen in Ihr Automation-Konto importiert haben, können Sie Azure Automation State Configuration über die Funktion **State Configuration (DSC)** im Azure-Portal verwenden.
 
-## <a name="composing-a-configuration-from-composite-resources"></a>Zusammenstellen einer Konfiguration aus zusammengesetzten Ressourcen
+## <a name="compose-a-configuration"></a>Zusammenstellen einer Konfiguration
 
 Bevor Sie eine aus zusammengesetzten Ressourcen erstellte Konfiguration im Azure-Portal zuweisen können, müssen Sie dies Konfiguration zusammenstellen. Bei der Zusammenstellung verwenden Sie auf der Seite „State Configuration (DSC)“ die Option **Konfiguration zusammenstellen**, während Sie sich auf der Registerkarte **Konfigurationen** oder **Kompilierte Konfigurationen** befinden.
 
@@ -34,15 +34,17 @@ Bevor Sie eine aus zusammengesetzten Ressourcen erstellte Konfiguration im Azure
 1. Im Schritt **Parameter** wird der Parameter für jede einzelne zusammengesetzte Ressource verfügbar gemacht, damit Werte angegeben werden können. Wenn ein Parameter über eine Beschreibung verfügt, wird diese neben dem Parameterfeld angezeigt. Wenn ein Parameter vom Typ `PSCredential` ist, bietet das Dropdown eine Liste der **Anmeldeinformations**objekte im aktuellen Automation-Konto. Außerdem ist die Option **+ Anmeldeinformationen hinzufügen** verfügbar. Nachdem alle erforderlichen Parameter angegeben wurden, können Sie auf **Save and compile** (Speichern und kompilieren) klicken.
    ![Screenshot: Schritt „Parameter“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Nachdem die neue Konfiguration gespeichert wurde, wird sie für die Kompilierung übermittelt. Sie können den Status des Kompilierungsauftrags wie für jede andere importierte Konfiguration anzeigen. Weitere Informationen finden Sie unter [Anzeigen eines Kompilierungsauftrags](automation-dsc-getting-started.md#view-a-compilation-job).
+## <a name="submit-the-configuration-for-compilation"></a>Übermitteln der Konfiguration für die Kompilierung
+
+Nachdem die neue Konfiguration gespeichert wurde, wird sie für die Kompilierung übermittelt. Sie können den Status des Kompilierungsauftrags wie bei jeder importierten Konfiguration anzeigen. Weitere Informationen finden Sie unter [Anzeigen eines Kompilierungsauftrags](automation-dsc-getting-started.md#view-a-compilation-job).
 
 Nachdem die Kompilierung erfolgreich abgeschlossen wurde, wird die neue Konfiguration auf der Registerkarte **Kompilierte Konfigurationen** angezeigt. Sie können die Konfiguration dann einem verwalteten Knoten zuweisen, indem Sie die Schritte unter [Neuzuweisen eines Knotens zu einer anderen Knotenkonfiguration](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
-- Weitere Informationen zum Onboarding von Knoten finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
-- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation) verfügbar.
+- Informationen zum Aktivieren von Knoten finden Sie unter [Aktivieren von Azure Automation State Configuration](automation-dsc-onboarding.md).
+- Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
+- Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

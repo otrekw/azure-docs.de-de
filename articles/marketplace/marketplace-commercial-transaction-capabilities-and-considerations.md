@@ -1,5 +1,5 @@
 ---
-title: Transaktionsfunktionen im kommerziellen Marketplace
+title: Transaktionsfunktionen im kommerziellen Microsoft Marketplace
 description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung für die Transaktionsoption im kommerziellen Marketplace beschrieben.
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4aeae69dd50e8c233a1903f6f2c7bd7795b8d7b9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857216"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800049"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -165,7 +165,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (in Partner Center verfügbar).
 
-Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://partner.microsoft.com/support/v2/?stage=1).
+Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="transact-requirements"></a>Anforderungen für die Veröffentlichungsoption „Transaktion“
 

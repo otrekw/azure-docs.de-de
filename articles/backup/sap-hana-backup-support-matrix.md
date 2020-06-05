@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für SAP HANA-Sicherungen
 description: Dieser Artikel enthält Informationen zu den unterstützten Szenarien und zu Einschränkungen beim Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern unter Verwendung von Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dcbfa67ce69a3dad1c263427ea3a0e34e8cef18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227458"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747335"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -36,8 +36,14 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 
 ------
 
+>[!NOTE]
+>Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.
+>
+>Ändern Sie die Richtlinie nach Bedarf manuell.
+
+
 > [!NOTE]
-> Sicherungs- und Wiederherstellungsvorgänge von nativen SAP HANA-Clients (SAP HANA Studio/Cockpit/DBA Cockpit) werden aktuell nicht unterstützt.
+> Sie können jetzt [Sicherungs- und Wiederherstellungsaufträge](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) (auf demselben Computer) überwachen, die von nativen HANA-Clients (SAP HANA Studio/Cockpit/DBA Cockpit) im Azure-Portal ausgelöst wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

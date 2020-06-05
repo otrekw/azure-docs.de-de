@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 05/21/2020
+ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086384"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758893"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -346,7 +346,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | databaseAccounts | Global | 3–31 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Beginnen Sie mit einem Kleinbuchstaben oder einer Zahl. |
+> | databaseAccounts | Global | 3-44 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Beginnen Sie mit einem Kleinbuchstaben oder einer Zahl. |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -696,6 +696,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | serverfarms | Ressourcengruppe | 1–40 | Alphanumerische Zeichen und Bindestriche. |
 > | sites | Global | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | sites/slots | site | 2–59 | Alphanumerische Zeichen und Bindestriche. |
+
+> [!NOTE]
+> Azure Functions weist dieselben Benennungsregeln und -einschränkungen auf wie Microsoft.Web/sites.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

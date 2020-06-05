@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780333"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758944"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -105,7 +105,7 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
 management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 *.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
-*.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault
+*.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault Hinweis: Stellen Sie sicher, dass die replizierten Computer darauf zugreifen können.
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
 download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center
 *.servicebus.windows.net | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
@@ -222,7 +222,7 @@ Remoteport | netstat
 Remote-IP-Adresse | netstat
 TCP-Verbindungsstatus | netstat
 Prozess-ID | netstat
-Nein. aktiver Verbindungen | netstat
+Anzahl der aktiven Verbindungen | netstat
 
 #### <a name="process-data"></a>Verarbeiten von Daten
 Hier sind die Prozessdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
@@ -244,7 +244,7 @@ Lokale IP-Adresse | netstat
 Remoteport | netstat 
 Remote-IP-Adresse | netstat 
 TCP-Verbindungsstatus | netstat 
-Nein. aktiver Verbindungen | netstat
+Anzahl der aktiven Verbindungen | netstat
 Prozess-ID  | netstat 
 Prozessname | ps
 Prozessargumente | ps
@@ -340,7 +340,7 @@ Nachstehend finden Sie die vollständige Liste der Linux-Servermetadaten, die di
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
 Anzahl der Prozessorkerne |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 Zugeordneter Arbeitsspeicher | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
-Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS-GUID | cat /sys/class/dmi/id/product_uuid
 Starttyp | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 Betriebssystemname/-version | Für die Version und den Namen des Betriebssystems wird auf folgende Dateien zugegriffen:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
@@ -440,12 +440,12 @@ So überprüfen Sie die Version in der Systemsteuerung:
 Wenn bei einer oder mehreren Komponenten eine ältere Version vorhanden ist, müssen Sie den Dienst deinstallieren und eine manuelle Aktualisierung auf die aktuelle Version durchführen.
 
 1. In diesem [Download](https://aka.ms/latestapplianceservices) der LatestComponents.json-Datei finden Sie die jeweils aktuelle Version der Appliancedienste.
-2.  Öffnen Sie die Datei „LatestComponents.json“ nach dem Herunterladen im Editor.
+2.    Öffnen Sie die Datei „LatestComponents.json“ nach dem Herunterladen im Editor.
 3. Suchen Sie in der Datei nach der aktuellen Dienstversion und dem zugehörigen Downloadlink. Beispiel:
 
     "Name": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Laden Sie die aktuelle Version eines überholten Diensts über den Downloadlink in der Datei herunter.
+4.    Laden Sie die aktuelle Version eines überholten Diensts über den Downloadlink in der Datei herunter.
 5. Führen Sie nach dem Herunterladen den folgenden Befehl in einem Befehlsfenster für Administratoren aus, um die Integrität der heruntergeladenen MSI-Datei zu überprüfen.
 
     Beispiel: ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```  C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5

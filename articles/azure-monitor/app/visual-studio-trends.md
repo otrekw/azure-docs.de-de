@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670864"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744130"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analysieren von Trends in Visual Studio
 Mit dem Application Insights-Tool „Trends“ wird visualisiert, wie sich die wichtigen Telemetrieereignisse Ihrer Webanwendung im Laufe der Zeit ändern, damit Sie Probleme und Anomalien schnell identifizieren können. Durch die Angabe von Links zu ausführlicheren Diagnoseinformationen kann das Trends-Tool Sie in Bezug auf das Verbessern der App-Leistung, das Ermitteln der Ursachen von Ausnahmen und das Erlangen von Einblicken in benutzerdefinierte Ereignisse unterstützen.
@@ -48,7 +48,7 @@ Wählen Sie zunächst eine von fünf gängigen Trendanalysen aus, bei denen jewe
 Diese vorgefertigten Analysen sind später über die Schaltfläche **Zeigt gängige Typen der Telemetrieanalyse an** oben links im Trends-Fenster verfügbar.
 
 ## <a name="visualize-trends-in-your-application"></a>Visualisieren von Trends in der Anwendung
-Application Insights Trends erstellt eine Zeitreihenvisualisierung für die Telemetriedaten der App. Für jede Zeitreihenvisualisierung wird eine Art von Telemetriedaten angezeigt, gruppiert nach einer Eigenschaft dieser Telemetriedaten für einen bestimmten Zeitbereich. Beispielsweise kann es sein, dass Sie Serveranforderungen gruppiert nach dem Ursprungsland für die letzten 24 Stunden anzeigen möchten. In diesem Beispiel stellte jede Blase der Visualisierung eine Anzahl von Serveranforderungen für ein Land bzw. eine Region und eine Stunde dar.
+Application Insights Trends erstellt eine Zeitreihenvisualisierung für die Telemetriedaten der App. Für jede Zeitreihenvisualisierung wird eine Art von Telemetriedaten angezeigt, gruppiert nach einer Eigenschaft dieser Telemetriedaten für einen bestimmten Zeitbereich. Beispielsweise möchten Sie u. U. Serveranforderungen gruppiert nach dem Ursprungsland/der Ursprungsregion für die letzten 24 Stunden anzeigen. In diesem Beispiel stellte jede Blase der Visualisierung eine Anzahl von Serveranforderungen für ein Land bzw. eine Region und eine Stunde dar.
 
 Verwenden Sie die Steuerelemente am oberen Rand des Fensters, um anzupassen, welche Arten von Telemetriedaten angezeigt werden. Wählen Sie zuerst die Telemetrietypen aus, an denen Sie interessiert sind:
 

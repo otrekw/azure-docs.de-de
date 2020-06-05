@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891274"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648313"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -401,17 +401,17 @@ Erstellen Sie für den Empfang von HTTP-Anforderungen in Event Grid ein Event Gr
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wählen Sie für Funktionen, die Sie im Azure-Portal mit dem Event Grid-Trigger entwickeln, die Option **Event Grid-Abonnement hinzufügen** aus.
+Wählen Sie für Funktionen, die Sie im Azure-Portal mit dem Event Grid-Trigger entwickeln, nacheinander die Optionen **Integration**, **Event Grid-Trigger** und **Event Grid-Abonnement erstellen** aus.
 
-![Erstellen eines Abonnements im Portal](media/functions-bindings-event-grid/portal-sub-create.png)
+:::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="Verbinden eines neuen Ereignisabonnements mit einem Trigger im Portal":::
 
-Bei Auswahl dieses Links wird das Portal mit der Seite **Ereignisabonnement erstellen** geöffnet, auf der die Endpunkt-URL bereits ausgefüllt ist.
+Bei Auswahl dieses Links wird das Portal mit der Seite **Ereignisabonnement erstellen** geöffnet, auf der der aktuelle Triggerendpunkt bereits definiert ist.
 
-![Bereits ausgefüllte Endpunkt-URL](media/functions-bindings-event-grid/endpoint-url.png)
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Erstellen eines Ereignisabonnements mit bereits definiertem Funktionsendpunkt" :::
 
 Weitere Informationen zum Erstellen von Abonnements über das Azure-Portal finden Sie unter [Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal](../event-grid/custom-event-quickstart-portal.md) in der Event Grid-Dokumentation.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Verwenden Sie den Befehl [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create), um ein Abonnement über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) zu erstellen.
 

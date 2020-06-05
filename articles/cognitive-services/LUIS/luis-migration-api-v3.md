@@ -2,14 +2,14 @@
 title: Änderungen an Vorhersageendpunkten in der V3-API
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530384"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849330"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
@@ -73,16 +73,9 @@ Die V2-Vorhersage-API wird für mindestens neun Monate nach der V3-Vorschau am 8
 
 ### <a name="changes-by-slot-name-and-version-name"></a>Änderungen nach Slotname und Versionsname
 
-Das Format des HTTP-Endpunktaufrufs für V3 hat sich geändert.
+Das [Format des HTTP-Endpunktaufrufs für Version 3](developer-reference-resource.md#rest-endpoints) hat sich geändert.
 
 Falls Sie nach Version abfragen möchten, müssen Sie zuerst die [Veröffentlichung per API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) mit `"directVersionPublish":true` durchführen. Fragen Sie den Endpunkt ab, und verweisen Sie dabei nicht auf die Versions-ID, sondern auf den Slotnamen.
-
-|VERSION DER VORHERSAGE-API|METHODE|URL|
-|--|--|--|
-|V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
-|V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
-|V2|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|V2|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
 
 |Gültige Werte für `SLOT-NAME`|
 |--|
@@ -290,4 +283,4 @@ Die V2-API wird mindestens neun Monate nach der V3-Vorschau nicht eingestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aktualisieren Sie mithilfe der Dokumentation zur API V3 vorhandene REST-Aufrufe der [LUIS-Endpunkt-APIs](https://aka.ms/luis-api-v3).
+Aktualisieren Sie mithilfe der Dokumentation zur API V3 vorhandene REST-Aufrufe der [LUIS-Endpunkt-APIs](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8).

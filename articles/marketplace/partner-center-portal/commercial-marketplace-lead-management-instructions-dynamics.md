@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 65139e0842679f59733c34be838d4aad7f3c63e4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790999"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847944"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 Customer Engagement
 
@@ -172,9 +172,9 @@ Der letzte Schritt ist das Aktivieren des erstellten Benutzers für das Schreibe
 So konfigurieren Sie die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal:
 
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
-1. Klicken Sie im Abschnitt **Leadverwaltung** auf die Option **Verbinden**.
+1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
 
-    ![Schaltfläche „Verbinden“ im Bereich „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-dynamics/customer-leads.png" alt-text="Kundenleads":::
 
 1. Wählen Sie im Popupfenster „Verbindungsdetails“ die Option **Dynamics 365 Customer Engagement** als Leadziel aus.
 

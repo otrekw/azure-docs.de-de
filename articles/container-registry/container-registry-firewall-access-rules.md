@@ -1,36 +1,37 @@
 ---
 title: Firewallzugriffsregeln
-description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Speicherendpunkts zulassen.
+description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Datenendpunkts zulassen.
 ms.topic: article
-ms.date: 02/11/2020
-ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/18/2020
+ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77168018"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849983"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall
 
 Dieser Artikel erläutert, wie Sie in Ihrer Firewall Regeln konfigurieren, um den Zugriff auf eine Azure-Containerregistrierung zuzulassen. Möglicherweise muss ein Azure IoT Edge-Gerät hinter einer Firewall oder einem Proxyserver auf eine Containerregistrierung zugreifen, um ein Pull für ein Containerimage auszuführen. Oder vielleicht benötigt ein gesperrter Server in einem lokalen Netzwerk Zugriff, um ein Push für ein Image auszuführen.
 
-Wenn Sie stattdessen in einer Containerregistrierung Zugriffsregeln für eingehenden Netzwerkdatenverkehr nur innerhalb eines virtuellen Azure-Netzwerks oder von einem öffentlichen IP-Adressbereich konfigurieren möchten, finden Sie Informationen dazu unter [Beschränken des Zugriffs auf eine Azure-Containerregistrierung aus einem virtuellen Netzwerk](container-registry-vnet.md).
+Wenn Sie stattdessen eingehenden Netzwerkzugriff auf eine Containerregistrierung nur innerhalb eines virtuellen Azure-Netzwerks konfigurieren möchten, finden Sie Informationen dazu unter [Konfigurieren von Azure Private Link für eine Azure-Containerregistrierung](container-registry-private-link.md).
 
 ## <a name="about-registry-endpoints"></a>Informationen über Registrierungsendpunkte
 
-Um ein Pull oder ein Push für Images oder andere Artefakt für eine Azure-Containerregistrierung auszuführen, muss ein Client wie z.B. ein Docker-Daemon über HTTPS mit zwei verschiedenen Endpunkten interagieren.
+Um ein Pull oder ein Push für Images oder andere Artefakt für eine Azure-Containerregistrierung auszuführen, muss ein Client wie z.B. ein Docker-Daemon über HTTPS mit zwei verschiedenen Endpunkten interagieren. Für Clients, die von hinter einer Firewall auf eine Registrierung zugreifen, müssen Sie Zugriffsregeln für beide Endpunkte konfigurieren. Beide Endpunkte werden über Port 443 erreicht.
 
-* **REST-API-Endpunkt der Registrierung**: Vorgänge für die Authentifizierungs- und Registrierungsverwaltung werden über den öffentlichen REST-API-Endpunkt der Registrierung verarbeitet. Dieser Endpunkt ist der Anmeldeservername der Registrierung oder ein zugeordneter IP-Adressbereich. 
+* **REST-API-Endpunkt der Registrierung**: Vorgänge für die Authentifizierungs- und Registrierungsverwaltung werden über den öffentlichen REST-API-Endpunkt der Registrierung verarbeitet. Dieser Endpunkt ist der Anmeldeservername der Registrierung. Beispiel: `myregistry.azurecr.io`
 
-* **Speicherendpunkt**: Azure [weist Blobspeicher](container-registry-storage.md) in Azure-Speicherkonten im Namen jeder Registrierung zu, um die Daten für Containerimages und andere Artefakte zu verwalten. Wenn ein Client auf Imageebenen in einer Azure-Containerregistrierung zugreift, erfolgen die Anforderungen über einen Speicherkonto-Endpunkt, der von der Registrierung bereitgestellt wird.
+* **Speicher(daten)endpunkt**: Azure [weist Blobspeicher](container-registry-storage.md) in Azure-Speicherkonten im Namen jeder Registrierung zu, um die Daten für Containerimages und andere Artefakte zu verwalten. Wenn ein Client auf Imageebenen in einer Azure-Containerregistrierung zugreift, erfolgen die Anforderungen über einen Speicherkonto-Endpunkt, der von der Registrierung bereitgestellt wird.
 
-Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, muss ein Client möglicherweise mit den REST- und Speicherendpunkten in einer bestimmten Region oder mehreren replizierten Regionen interagieren.
+Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, muss ein Client möglicherweise mit dem Datenendpunkt in einer bestimmten Region oder mehreren replizierten Regionen interagieren.
 
-## <a name="allow-access-to-rest-and-storage-domain-names"></a>Zulassen des Zugriffs auf REST- und Speicherdomänennamen
+## <a name="allow-access-to-rest-and-data-endpoints"></a>Zulassen des Zugriffs auf REST- und Datenendpunkte
 
-* **REST-Endpunkt**: Erlaubt den Zugriff auf den vollqualifizierten Namen des Registrierungsanmeldeservers, z. B. `myregistry.azurecr.io`.
-* **Speicher(daten)endpunkt**: Erlaubt den Zugriff auf alle Azure-Blobspeicherkonten mithilfe des Platzhalters `*.blob.core.windows.net`.
-
+* **REST-Endpunkt**: Erlaubt den Zugriff auf den vollqualifizierten Namen des Registrierungsanmeldeservers, z. B. `<registry-name>.azurecr.io`, oder einen zugeordneten IP-Adressbereich.
+* **Speicher(daten)endpunkt**: Erlaubt den Zugriff auf alle Azure-Blobspeicherkonten mithilfe des Platzhalters `*.blob.core.windows.net` oder auf einen zugeordneten IP-Adressbereich.
+> [!NOTE]
+> Mit Azure Container Registry werden [dedizierte Datenendpunkte](#enable-dedicated-data-endpoints) eingeführt, was es Ihnen erlaubt, den Gültigkeitsbereich von Clientfirewallregeln für Ihren Registrierungsspeicher sehr eng festzulegen. Aktivieren Sie optional Datenendpunkte in allen Regionen, in denen sich die Registrierung befindet bzw. in die sie repliziert wird, indem Sie das Format `<registry-name>.<region>.data.azurecr.io` verwenden.
 
 ## <a name="allow-access-by-ip-address-range"></a>Zulassen des Zugriffs nach IP-Adressbereich
 
@@ -39,7 +40,7 @@ Wenn Ihre Organisation über Richtlinien verfügt, um den Zugriff nur auf bestim
 Suchen Sie in der JSON-Datei nach **AzureContainerRegistry**, um die IP-Adressbereiche für ACR-REST-Endpunkte zu finden, für die Sie den Zugriff gewähren müssen.
 
 > [!IMPORTANT]
-> Die IP-Adressbereiche für Azure-Dienste können sich ändern, Updates werden wöchentlich veröffentlicht. Laden Sie die JSON-Datei regelmäßig herunter, und aktualisieren Sie Ihre Zugriffsregeln, sofern erforderlich. Wenn Ihr Szenario das Konfigurieren von Netzwerksicherheitsgruppen-Regeln in einem virtuellen Azure-Netzwerk für den Zugriff auf eine Azure-Containerregistrierung umfasst, verwenden Sie stattdessen das [Diensttag](#allow-access-by-service-tag) **AzureContainerRegistry**.
+> Die IP-Adressbereiche für Azure-Dienste können sich ändern, Updates werden wöchentlich veröffentlicht. Laden Sie die JSON-Datei regelmäßig herunter, und aktualisieren Sie Ihre Zugriffsregeln, sofern erforderlich. Wenn Ihr Szenario das Konfigurieren von Netzwerksicherheitsgruppen-Regeln in einem virtuellen Azure-Netzwerk umfasst, oder wenn Sie Azure Firewall verwenden, verwenden Sie stattdessen das [Diensttag](#allow-access-by-service-tag) **AzureContainerRegistry**.
 >
 
 ### <a name="rest-ip-addresses-for-all-regions"></a>REST-IP-Adressen für alle Regionen
@@ -116,6 +117,64 @@ Verwenden Sie in einem virtuellen Azure-Netzwerk Netzwerksicherheitsregeln, um d
 
 Erstellen Sie z.B. eine ausgehende Netzwerksicherheitsgruppen-Regel mit dem Ziel **AzureContainerRegistry**, um Datenverkehr zu einer Azure-Containerregistrierung zuzulassen. Um den Zugriff auf das Diensttag nur in einer bestimmten Region zuzulassen, geben Sie die Region in folgendem Format an: **AzureContainerRegistry**.[*Regionsname*].
 
+## <a name="enable-dedicated-data-endpoints"></a>Aktivieren dedizierter Datenendpunkte 
+
+> [!WARNING]
+> Wenn Sie zuvor den Clientfirewallzugriff auf die vorhandenen `*.blob.core.windows.net`-Endpunkte konfiguriert haben, wirkt sich der Wechsel zu dedizierten Datenendpunkten auf die Clientkonnektivität aus und führt zu Pullfehlern. Um sicherzustellen, dass Clients über konsistenten Zugriff verfügen, fügen Sie die neuen Datenendpunktregeln zu den Clientfirewallregeln hinzu. Aktivieren Sie nach Abschluss des Vorgangs dedizierte Datenendpunkte für Ihre Registrierungen mithilfe der Azure CLI oder anderer Tools.
+
+Dedizierte Datenendpunkte sind eine optionale Funktion des Containerregistrierungstarifs **Premium**. Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md). 
+
+Sie können dedizierte Datenendpunkte über das Azure-Portal oder die Azure CLI aktivieren. Die Datenendpunkte folgen einem regionalen Muster, `<registry-name>.<region>.data.azurecr.io`. In einer georeplizierten Registrierung werden durch das Aktivieren von Datenendpunkten Endpunkte in allen Replikatregionen aktiviert.
+
+### <a name="portal"></a>Portal
+
+So aktivieren Sie Datenendpunkte über das Portal
+
+1. Navigieren Sie zu Ihrer Containerregistrierung.
+1. Wählen Sie **Netzwerk** > **Öffentlicher Zugriff** aus.
+1. Aktivieren Sie das Kontrollkästchen **Dedizierten Datenendpunkt aktivieren**.
+1. Wählen Sie **Speichern** aus.
+
+Die Datenendpunkte werden im Portal angezeigt.
+
+:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Dedizierte Datenendpunkte im Portal":::
+
+### <a name="azure-cli"></a>Azure CLI
+
+Um Datenendpunkte mit der Azure CLI zu aktivieren, verwenden Sie Azure CLI Version 2.4.0 oder höher. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+Der folgende Befehl [az acr update][az-acr-update] aktiviert dedizierte Datenendpunkte in einer Registrierung namens *myregistry*. 
+
+```azurecli
+az acr update --name myregistry --data-endpoint-enabled
+```
+
+Um die Datenendpunkte anzuzeigen, verwenden Sie den Befehl [az acr show-endpoints][az-acr-show-endpoints]:
+
+```azurecli
+az acr show-endpoints --name myregistry
+```
+
+Ausgabe zu Demonstrationszwecken, die zwei regionale Endpunkte zeigt
+
+```
+{
+    "loginServer": "myregistry.azurecr.io",
+    "dataEndpoints": [
+        {
+            "region": "eastus",
+            "endpoint": "myregistry.eastus.data.azurecr.io",
+        },
+        {
+            "region": "westus",
+            "endpoint": "myregistry.westus.data.azurecr.io",
+        }
+    ]
+}
+```
+
+Nachdem Sie dedizierte Datenendpunkte für Ihre Registrierung eingerichtet haben, können Sie Clientfirewall-Zugriffsregeln für die Datenendpunkte aktivieren. Aktivieren Sie die Zugriffsregeln für den Datenendpunkt für alle erforderlichen Registrierungsregionen.
+
 ## <a name="configure-client-firewall-rules-for-mcr"></a>Konfigurieren von Clientfirewallregeln für MCR
 
 Wenn Sie von hinter einer Firewall auf Microsoft Container Registry (MCR) zugreifen müssen, lesen Sie den Leitfaden zum Konfigurieren von [MCR-Clientfirewallregeln](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md). MCR ist die primäre Registrierung für alle von Microsoft veröffentlichten Docker-Images, z. B. Windows Server-Images.
@@ -126,6 +185,10 @@ Wenn Sie von hinter einer Firewall auf Microsoft Container Registry (MCR) zugrei
 
 * Weitere Informationen zu [Sicherheitsgruppen](/azure/virtual-network/security-overview) in einem virtuellen Azure-Netzwerk
 
+* Erfahren Sie mehr über das Einrichten von [Private Link](container-registry-private-link.md) für eine Containerregistrierung.
+
+* Erfahren Sie mehr über [dedizierte Datenendpunkte](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/) für Azure Container Registry.
+
 
 
 <!-- IMAGES -->
@@ -133,4 +196,7 @@ Wenn Sie von hinter einer Firewall auf Microsoft Container Registry (MCR) zugrei
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
+
+[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
 

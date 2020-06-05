@@ -3,12 +3,12 @@ title: Erstellen einer Parameterdatei
 description: Erstellen einer Parameterdatei zum Übergeben von Werten während der Bereitstellung einer Azure Resource Manager-Vorlage
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682889"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873081"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
@@ -193,7 +193,7 @@ Erstellen Sie mehr als eine Parameterdatei, wenn Sie die Bereitstellung in unter
 
 Sie können Inlineparameter und eine lokale Parameterdatei im selben Bereitstellungsvorgang verwenden. Sie können beispielsweise einige Werte in der lokalen Parameterdatei angeben und weitere Werte während der Bereitstellung inline hinzufügen. Wenn Sie Werte für einen Parameter sowohl in der lokalen Parameterdatei als auch inline bereitstellen, haben die Inlinewerte Vorrang.
 
-Bei Verwendung einer externen Parameterdatei können Sie jedoch keine anderen Werte (weder inline noch aus einer lokalen Datei) übergeben. Alle Inlineparameter werden ignoriert. Stellen Sie alle Parameterwerte in der externen Datei bereit.
+Sie können eine externe Parameterdatei verwenden, indem Sie den URI der Datei bereitstellen. In diesem Fall können Sie keine anderen Werte übergeben, weder inline noch aus einer lokalen Datei. Alle Inlineparameter werden ignoriert. Stellen Sie alle Parameterwerte in der externen Datei bereit.
 
 ## <a name="parameter-name-conflicts"></a>Parameternamenskonflikte
 

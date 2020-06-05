@@ -1,24 +1,24 @@
 ---
-title: Migrieren zu V3 einer durch maschinelles Lernen erworbenen Entität
-description: Die V3-Erstellung bietet einen neuen Entitätstyp, die durch maschinelles Lernen erworbene Entität, sowie die Möglichkeit, Beziehungen zur durch maschinelles Lernen erworbenen Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
+title: Migrieren zur Machine Learning-Entität in V3
+description: Die V3-Erstellung bietet einen neuen Entitätstyp, die Machine Learning-Entität, sowie die Möglichkeit, Beziehungen zur Machine Learning-Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593221"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684594"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrieren zur V3-Erstellungsentität
 
-Die V3-Erstellung bietet einen neuen Entitätstyp, die durch maschinelles Lernen erworbene Entität, sowie die Möglichkeit, Beziehungen zur durch maschinelles Lernen erworbenen Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
+Die V3-Erstellung bietet einen neuen Entitätstyp, die Machine Learning-Entität, sowie die Möglichkeit, Beziehungen zur Machine Learning-Entität und anderen Entitäten oder Funktionen der Anwendung hinzuzufügen.
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entitäten sind in V3 zerlegbar
 
-Entitäten, die mit den V3-Erstellungs-APIs erstellt werden (entweder mithilfe der [APIs](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) oder über das Portal), ermöglichen das Erstellen eines mehrstufigen Entitätsmodells mit einem übergeordneten Element und mehreren untergeordneten Elementen. Das übergeordnete Element wird als **durch maschinelles Lernen erworbene Entität** bezeichnet, und die untergeordneten Elemente werden als **untergeordnete Entitäten** der durch maschinelles Lernen erworbenen Entität bezeichnet.
+Entitäten, die mit den V3-Erstellungs-APIs erstellt werden (entweder mithilfe der [APIs](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) oder über das Portal), ermöglichen das Erstellen eines mehrstufigen Entitätsmodells mit einem übergeordneten Element und mehreren untergeordneten Elementen. Das übergeordnete Element wird als **Machine Learning-Entität** bezeichnet, und die untergeordneten Elemente werden als **untergeordnete Entitäten** der Machine Learning-Entität bezeichnet.
 
-Jede untergeordnete Entität ist ebenfalls eine durch maschinelles Lernen erworbene Entität, verfügt aber über die zusätzlichen Konfigurationsoptionen von Features.
+Jede untergeordnete Entität ist ebenfalls eine Machine Learning-Entität, verfügt aber über die zusätzlichen Konfigurationsoptionen von Features.
 
 * **Erforderliche Features** sind Regeln, die sicherstellen, dass eine Entität extrahiert wird, wenn sie einem Feature entspricht. Die Regel wird durch das erforderliche Feature für das Modell definiert:
     * [Vordefinierte Entität](luis-reference-prebuilt-entities.md)
@@ -54,36 +54,36 @@ Berücksichtigen Sie bei der Migration die folgenden Punkte in Ihrem Migrationsp
     * Entitäten
         * Entität vom Typ „Hierarchical“
         * Entität vom Typ „Composite“
-    * Rollen: Rollen können nur auf eine durch maschinelles Lernen erworbene (übergeordnete) Entität angewendet werden. Rollen können nicht auf untergeordnete Entitäten angewendet werden.
+    * Rollen: Rollen können nur auf eine (übergeordnete) Machine Learning-Entität angewendet werden. Rollen können nicht auf untergeordnete Entitäten angewendet werden.
     * Batchtests und Muster, die hierarchische und zusammengesetzte Entitäten verwenden
 
-Wenn Sie den Migrationsplan entwerfen, sehen Sie Zeit zum Überprüfen der endgültigen durch maschinelles Lernen erworbenen Entitäten nach der Migration aller hierarchischen und zusammengesetzten Entitäten vor. Auch wenn eine geradlinige Migration funktioniert, kann Sie der stärker vereinheitlichte JSON nach dem Ändern und Überprüfen Ihrer Batchtestergebnisse und des Vorhersage-JSONs zu Änderungen veranlassen, sodass die endgültigen Informationen, die an die clientseitige App übermittelt werden, anders organisiert sind. Dieser Vorgang hat Ähnlichkeiten mit dem Refactoring von Code und sollte dem gleichen Reviewprozess unterzogen werden, wie er in Ihrer Organisation etabliert wurde.
+Wenn Sie den Migrationsplan entwerfen, planen Sie auch etwas Zeit für die Überprüfung der endgültigen Machine Learning-Entitäten nach der Migration aller hierarchischen und zusammengesetzten Entitäten. Auch wenn eine geradlinige Migration funktioniert, kann Sie der stärker vereinheitlichte JSON nach dem Ändern und Überprüfen Ihrer Batchtestergebnisse und des Vorhersage-JSONs zu Änderungen veranlassen, sodass die endgültigen Informationen, die an die clientseitige App übermittelt werden, anders organisiert sind. Dieser Vorgang hat Ähnlichkeiten mit dem Refactoring von Code und sollte dem gleichen Reviewprozess unterzogen werden, wie er in Ihrer Organisation etabliert wurde.
 
 Wenn für Ihr V2-Modell keine Batchtests eingerichtet wurden und die Batchtests im Rahmen der Migration zum V3-Modell migriert werden, können Sie nicht überprüfen, wie sich die Migration auf die Endpunktvorhersageergebnisse auswirkt.
 
 ## <a name="migrating-from-v2-entities"></a>Migration von V2-Entitäten
 
-Wenn Sie mit der Umstellung auf das V3-Erstellungsmodell beginnen, müssen Sie sich überlegen, wie die Umstellung auf die durch maschinelles Lernen erworbene Entität und ihre untergeordneten Entitäten und Features erfolgen soll.
+Wenn Sie mit der Umstellung auf das V3-Erstellungsmodell beginnen, müssen Sie sich überlegen, wie die Umstellung auf die Machine Learning-Entität und ihre untergeordneten Entitäten und Features erfolgen soll.
 
 Die folgende Tabelle gibt an, welche Entitäten von einem V2- zu einem V3-Entitätsdesign migriert werden müssen.
 
 |V2-Erstellungsentitätstyp|V3-Erstellungsentitätstyp|Beispiel|
 |--|--|--|
 |Entität vom Typ „Composite“|Durch maschinelles Lernen erworbene Entität|[Weitere Informationen](#migrate-v2-composite-entity)|
-|Entität vom Typ „Hierarchical“|Rolle einer durch maschinelles Lernen erworbenen Entität|[Weitere Informationen](#migrate-v2-hierarchical-entity)|
+|Entität vom Typ „Hierarchical“|Rolle der Machine Learning-Entität|[Weitere Informationen](#migrate-v2-hierarchical-entity)|
 
 ## <a name="migrate-v2-composite-entity"></a>Migrieren einer zusammengesetzten V2-Entität
 
-Jedes untergeordnete Element der zusammengesetzten V2-Entität muss durch eine untergeordnete Entität der durch maschinelles Lernen erworbenen V3-Entität dargestellt werden. Wenn es sich bei dem zusammengesetzten untergeordneten Element um eine vordefinierte Entität, um einen regulären Ausdruck oder um eine Listenentität handelt, muss dies als erforderliches Feature auf die untergeordnete Entität angewendet werden.
+Jedes untergeordnete Element der zusammengesetzten V2-Entität muss durch eine untergeordnete Entität der V3-Machine Learning-Entität dargestellt werden. Wenn es sich bei dem zusammengesetzten untergeordneten Element um eine vordefinierte Entität, um einen regulären Ausdruck oder um eine Listenentität handelt, muss dies als erforderliches Feature auf die untergeordnete Entität angewendet werden.
 
-Überlegungen bei der Planung der Migration einer zusammengesetzten Entität zu einer durch maschinelles Lernen erworbenen Entität:
+Überlegungen bei der Planung der Migration einer zusammengesetzten Entität zu einer Machine Learning-Entität:
 * Untergeordnete Entitäten können nicht in Mustern verwendet werden
 * Untergeordnete Entitäten werden nicht mehr gemeinsam verwendet
 * Untergeordnete Entitäten müssen bezeichnet werden, wenn sie bisher keine durch maschinelles Lernen erworbenen Entitäten waren
 
 ### <a name="existing-features"></a>Vorhandene Features
 
-Jede Ausdruckliste, die zur Verstärkung von Wörtern in der zusammengesetzten Entität verwendet wird, muss als Feature entweder auf die durch maschinelles Lernen erworbene (übergeordnete) Entität, auf die untergeordnete Entität oder auf die Absicht (sofern sich die Ausdrucksliste nur auf eine einzelne Absicht bezieht) angewendet werden. Planen Sie, das Feature der Entität hinzuzufügen, die am meisten verstärkt werden soll. Fügen Sie das Feature nicht allgemein der durch maschinelles Lernen erworbenen (übergeordneten) Entität hinzu, wenn damit die Vorhersage einer untergeordneten Entität am meisten verstärkt wird.
+Jede Ausdruckliste, die zur Verstärkung von Wörtern in der zusammengesetzten Entität verwendet wird, muss als Feature entweder auf die (übergeordnete) Machine Learning-Entität, auf die untergeordnete Entität oder auf die Absicht (sofern sich die Ausdrucksliste nur auf eine einzelne Absicht bezieht) angewendet werden. Planen Sie, das Feature der Entität hinzuzufügen, die am meisten verstärkt werden soll. Fügen Sie das Feature nicht allgemein der (übergeordneten) Machine Learning-Entität hinzu, wenn damit die Vorhersage einer untergeordneten Entität am meisten verstärkt wird.
 
 ### <a name="new-features"></a>Neue Funktionen
 
@@ -106,9 +106,9 @@ Die Migration ist in der folgenden Tabelle veranschaulicht:
 
 |V2-Modelle|V3-Modelle|
 |--|--|
-|Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: durch maschinelles Lernen erworbene Entität mit dem Namen `Order`|
-|Untergeordnete Entität: vordefinierte datetimeV2|* Migrieren Sie die vordefinierte Entität zur neuen App.<br>* Fügen Sie das erforderliche Feature dem übergeordneten Element für „datetimeV2“ (vordefiniert) hinzu.|
-|Untergeordnete Entität: Listenentität für Beläge|* Migrieren Sie die Listenentität zur neuen App.<br>* Fügen Sie anschließend dem übergeordneten Element ein erforderliches Feature für die Listenentität hinzu.|
+|Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: Machine Learning-Entität mit dem Namen `Order`|
+|Untergeordnete Entität: vordefinierte datetimeV2|* Migrieren der vordefinierten Entität zur neuen App<br>* Fügen Sie das erforderliche Feature dem übergeordneten Element für „datetimeV2“ (vordefiniert) hinzu.|
+|Untergeordnete Entität: Listenentität für Beläge|* Migrieren der Listenentität zur neuen App<br>* Fügen Sie anschließend dem übergeordneten Element ein erforderliches Feature für die Listenentität hinzu.|
 
 
 ## <a name="migrate-v2-hierarchical-entity"></a>Migrieren einer hierarchischen V2-Entität
@@ -116,7 +116,7 @@ Die Migration ist in der folgenden Tabelle veranschaulicht:
 Bei der V2-Erstellung wurde eine hierarchische Entität vor den in LUIS vorhandenen Rollen bereitgestellt. Beide dienten dem gleichen Zweck, Entitäten auf der Grundlage der Kontextverwendung zu extrahieren. Wenn Sie über hierarchische Entitäten verfügen, können Sie sich diese als einfache Entitäten mit Rollen vorstellen.
 
 Bei der V3-Erstellung:
-* Eine Rolle kann auf die durch maschinelles Lernen erworbene (übergeordnete) Entität angewendet werden
+* Eine Rolle kann auf die (übergeordnete) Machine Learning-Entität angewendet werden.
 * Eine Rolle kann auf keine untergeordneten Entitäten angewendet werden.
 
 Diese Entität ist lediglich ein Beispiel. Die Migration Ihrer eigenen Entität erfordert möglicherweise andere Überlegungen.
@@ -132,7 +132,7 @@ Die Migration ist in der folgenden Tabelle veranschaulicht:
 
 |V2-Modelle|V3-Modelle|
 |--|--|
-|Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: durch maschinelles Lernen erworbene Entität mit dem Namen `Order`|
+|Übergeordnete Entität: Komponentenentität mit dem Namen `Order`|Übergeordnete Entität: Machine Learning-Entität mit dem Namen `Order`|
 |Untergeordnete Entität: hierarchische Entität mit ursprünglichem und endgültigem Pizzabelag|* Fügen Sie `Order` für jeden Belag eine Rolle hinzu.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>API-Änderung: Einschränkung durch erforderliches Feature ersetzt

@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c1af9a532b390b428e74957c455988dfd4df3967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184944"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797524"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -18,15 +18,16 @@ Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend 
 - Überwachung von Sicherungen und Wiederherstellungen.
 - Identifizierung wichtiger Trends auf verschiedenen Granularitätsebenen.
 
-Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) und [Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
+Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) und [Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-- Backup-Berichte werden für Azure-VMs, SQL in Azure-VMs, SAP HANA/ASE in Azure-VMS, Microsoft Azure Recovery Services (MARS)-Agent, Microsoft Azure Backup Server (MABS) und System Center Data Protection Manager (DPM) unterstützt. Daten für die Sicherung von Azure-Dateifreigaben werden derzeit in Sicherungsberichten nicht angezeigt.
+- Sicherungsberichte werden für Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs, Microsoft Azure Recovery Services-Agent (MARS), Microsoft Azure Backup Server (MABS) und System Center Data Protection Manager (DPM) unterstützt. Daten für die Sicherung von Azure-Dateifreigaben werden derzeit in Sicherungsberichten nicht angezeigt.
 - Bei DPM-Workloads werden Backup-Berichte für DPM, Version 5.1.363.0 und höher, sowie Agent, Version 2.0.9127.0 und höher, unterstützt.
 - Bei MABS-Workloads werden Backup-Berichte für MABS, Version 13.0.415.0 und höher, sowie Agent, Version 2.0.9170.0 und höher, unterstützt.
 - Backup-Berichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. Zum Anzeigen von Berichten für eine Gruppe von Tresoren müssen Sie nur über Lesezugriff auf den Log Analytics-Arbeitsbereich verfügen, an den die Tresore ihre Daten senden. Sie benötigen keinen Zugriff auf die einzelnen Tresore.
 - Wenn Sie ein [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements Ihrer Kunden sind, können Sie diese Berichte mit Azure Lighthouse verwenden, um Berichte zu allen Ihren Mandanten anzuzeigen.
+- Zurzeit können Daten in Sicherungsberichten für maximal 100 Log Analytics-Arbeitsbereiche (mandantenübergreifend) angezeigt werden.
 - Daten für Protokollsicherungsaufträge werden in den Berichten zurzeit nicht angezeigt.
 
 ## <a name="get-started"></a>Erste Schritte
@@ -81,6 +82,9 @@ Der Bericht enthält verschiedene Registerkarten:
 
    ![Registerkarte „Verwendung“](./media/backup-azure-configure-backup-reports/usage.png)
 
+> [!NOTE]
+> Bei DPM-Workloads bemerken Benutzer möglicherweise einen geringfügigen Unterschied (in der Größenordnung von 20 MB pro DPM-Server) zwischen den Nutzungswerten in den Berichten und dem aggregierten Nutzungswert auf der Registerkarte „Übersicht“ des Recovery Services-Tresors. Dieser Unterschied liegt darin begründet, dass jeder für die Sicherung registrierte DPM-Server über eine zugeordnete Datenquelle für Metadaten verfügt, die in den Berichten nicht als Artefakt aufgeführt wird.
+
 - **Aufträge**: Verwenden Sie diese Registerkarte zum Anzeigen von langfristigen Trends für Aufträge, z. B. die Anzahl der fehlerhaften Aufträge pro Tag und die Hauptgründe für Auftragsfehler. Sie können diese Informationen sowohl auf einer aggregierten Ebene als auch auf der Ebene eines Sicherungselements anzeigen. Wählen Sie ein bestimmtes Sicherungselement in einem Raster aus, um detaillierte Informationen zu jedem Auftrag anzuzeigen, der für dieses Element im ausgewählten Zeitbereich ausgelöst wurde.
 
    ![Registerkarte „Aufträge“](./media/backup-azure-configure-backup-reports/jobs.png)
@@ -127,7 +131,7 @@ Die Widgets im Backup-Bericht werden von Kusto-Abfragen unterstützt, die in den
 
 - Die frühere Power BI-Vorlagen-App für die Berichterstellung, die Daten aus einem Azure Storage-Konto bezogen hat, wird bald eingestellt. Wir empfehlen, dass Sie mit dem Senden von Tresordiagnosedaten an Log Analytics beginnen, um Berichte anzeigen zu können.
 
-- * Darüber hinaus wird auch das [V1-Schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. Das heißt, wenn Sie benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
+- Darüber hinaus wird auch das [V1-Schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. Das heißt, wenn Sie benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

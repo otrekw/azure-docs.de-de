@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a07c419ecaa0cb0ec05c7c392a4d5ed9b0bfa491
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747414"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -153,7 +153,7 @@ Um das zwischengespeicherte Ergebnis verwenden zu können, muss die Form des Cac
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel wird eine TPCDS-ähnliche Abfrage verwendet, bei der Kunden gefunden werden, die über den Katalog mehr Geld aufwenden als in Geschäften. Außerdem werden die bevorzugten Kunden und deren Ursprungsland identifiziert.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
+In diesem Beispiel wird eine TPCDS-ähnliche Abfrage verwendet, bei der Kunden gefunden werden, die über den Katalog mehr Geld aufwenden als in Geschäften. Außerdem werden die bevorzugten Kunden und deren Ursprungsland/-region ermittelt.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
 
 ```sql
 WITH year_total AS (

@@ -1,41 +1,41 @@
 ---
 title: Verwalten von Änderungsnachverfolgung und Bestand in Azure Automation
-description: Dieser Artikel beschreibt, wie Sie Änderungsnachverfolgung und Bestand verwenden, um Änderungen an Software und Microsoft-Diensten nachzuverfolgen, die in Ihrer Umgebung auftreten.
+description: In diesem Artikel wird beschrieben, wie Sie Änderungsnachverfolgung und Bestand verwenden, um Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung nachzuverfolgen.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779296"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830479"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
-Wenn Sie eine neue Datei oder einen neuen Registrierungsschlüssel zur Nachverfolgung hinzufügen, aktiviert Azure Automation dieses Element für die Funktion [Änderungsnachverfolgung und Bestand](change-tracking.md). Dieser Artikel enthält Verfahren, um mit dieser Funktion zu arbeiten.
+Azure Automation aktiviert das Feature [Änderungsnachverfolgung und Bestand](change-tracking.md) für Computer in Ihrer Umgebung. Das Feature verfolgt Änderungen an Registrierungsschlüsseln, Dateien, Inhalten und Ähnlichem und macht diese verfügbar. Dieser Artikel enthält Verfahren, um mit dieser Funktion zu arbeiten.
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>Aktivieren der vollständigen Funktion „Änderungsnachverfolgung“ und „Bestand“
 
-Wenn Sie die [Azure Security Center-Dateiintegritätsüberwachung (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) aktiviert haben, können Sie die vollständige Funktion „Änderungsnachverfolgung“ und „Bestand“, wie unten beschrieben, verwenden. Ihre Einstellungen werden durch diesen Prozess nicht entfernt.
+Wenn Sie die [Azure Security Center-Dateiintegritätsüberwachung (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) aktiviert haben, können Sie das vollständige Feature Änderungsnachverfolgung und Bestand wie unten beschrieben für Ihre Computer verwenden. Ihre Einstellungen werden durch diesen Prozess nicht entfernt.
 
 > [!NOTE]
 > Das Aktivieren der vollständigen Funktion „Änderungsnachverfolgung“ und „Bestand“ kann zusätzliche Gebühren verursachen. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Entfernen Sie die Überwachungslösung, indem Sie zum Arbeitsbereich navigieren und in der [Liste mit den installierten Überwachungslösungen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) danach suchen.
 2. Klicken Sie auf den Namen der Lösung, um die entsprechende Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**, wie unter [Entfernen einer Überwachungslösung](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution) beschrieben.
-3. Um „Änderungsnachverfolgung“ und „Bestand“ erneut zu aktivieren, navigieren Sie zum Automation-Konto, und wählen Sie unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** aus.
+3. Um Änderungsnachverfolgung und Bestand erneut zu aktivieren, navigieren Sie zum Automation-Konto, und wählen Sie unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** oder **Bestand** aus.
 4. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, bestätigen Sie Ihre Arbeitsbereichseinstellungen, und klicken Sie auf **Aktivieren**.
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Onboarding von Computern bei Änderungsnachverfolgung und Bestand
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Aktivieren von Computern für Änderungsnachverfolgung und Bestand
 
-Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Änderungsnachverfolgung und den Bestand in Azure Automation aktivieren. Im Folgenden finden Sie die empfohlenen und unterstützten Methoden für das Onboarding Ihrer Computer bei dieser Funktion: 
+Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Änderungsnachverfolgung und den Bestand in Azure Automation aktivieren. Im Folgenden finden Sie die empfohlenen und unterstützten Methoden für das Aktivieren dieses Features für Ihre Computer: 
 
-* [Onboarding über einen virtuellen Computer](automation-onboard-solutions-from-vm.md)
-* [Onboarding über das Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md)
-* [Onboarding über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md)
-* [Onboarding in einem Azure Automation-Runbook](automation-onboard-solutions.md)
+* [Aktivieren über einen virtuellen Computer](automation-onboard-solutions-from-vm.md)
+* [Aktivieren über das Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md)
+* [Aktivieren über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md)
+* [Aktivieren in einem Azure Automation-Runbook](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>Dateien nachverfolgen
 
@@ -178,6 +178,5 @@ Lassen Sie uns anhand dieses Beispiels die Schritte zum Erstellen von Warnungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Grundlegende Informationen zu Änderungsnachverfolgung und Bestand finden Sie unter [Übersicht über Änderungsnachverfolgung und Bestand](change-tracking.md).
-* Informationen zur Problembehandlung bei Änderungen an einer Azure-VM finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).
-* Verwenden Sie [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md), um ausführliche Nachverfolgungsdaten anzuzeigen.
+* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md) weitere Informationen.
+* Informationen zum Behandeln von Problemen bei diesem Feature finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

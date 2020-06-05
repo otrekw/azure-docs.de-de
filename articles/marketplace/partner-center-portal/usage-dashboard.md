@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793005"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746666"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 
@@ -54,7 +54,7 @@ In der Tabelle „Nutzungszusammenfassung“ werden die Nutzungsstunden der Kund
 
 ### <a name="usage-by-geography"></a>Nutzung nach Geografie
 
-Im Wärmebild **Normalisierte Nutzung nach Geografie** werden die Nutzungsstunden jeweils nach dem Land des Kunden angezeigt. Variationen in den Länderfarben spiegeln wider, wie sich die normalisierte Nutzung verteilt. Um wieder zur ursprünglichen Ansicht zurückzukehren, wählen Sie in der Karte die Schaltfläche **Home** aus.
+Im Wärmebild zur **normalisierten Nutzung nach Geografie** werden die Nutzungsstunden jeweils nach dem Land/der Region des Kunden angezeigt. Variationen in den Farben für das Land/die Region spiegeln wider, wie die normalisierte Nutzung verteilt ist. Um wieder zur ursprünglichen Ansicht zurückzukehren, wählen Sie in der Karte die Schaltfläche **Home** aus.
 
 ### <a name="usage-by-offers"></a>Nutzung nach Angeboten
 
@@ -92,7 +92,7 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine CSV-Datei extrahiert werden, wenn die Anzahl weniger als 1000 Einträge beträgt.
 - Liegt die Anzahl der Einträge über 1000, werden die exportierten Daten asynchron auf einer Downloadseite abgelegt und sind für die nächsten 30 Tage verfügbar.
-- Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
+- Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Unternehmensname gefiltert werden.
 
 > [!NOTE]
 > Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der normalisierten Ansicht oder in der Rohdatenansicht anzuzeigen. Die normalisierte Ansicht ist die Standardansicht für diese Diagramme.

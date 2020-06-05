@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183652"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714830"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -45,6 +45,9 @@ Das definierende Merkmal einer Warnung ist die auslösende Bedingung. Wählen Si
 
 Bei Bedarf können Sie die Kusto-Abfrage bearbeiten. Wählen Sie einen Schwellenwert, einen Zeitraum und eine Häufigkeit aus. Der Schwellenwert bestimmt, wann die Warnung ausgelöst wird. Der Zeitraum ist das Zeitfenster, in dem die Abfrage ausgeführt wird. Wenn der Schwellenwert z.B. größer als 0 ist, der Zeitraum 5 Minuten und die Häufigkeit 5 Minuten beträgt, führt die Regel die Abfrage alle 5 Minuten aus, wobei die letzten 5 Minuten überprüft werden. Wenn die Anzahl der Ergebnisse größer als 0 ist, werden Sie über die ausgewählte Aktionsgruppe benachrichtigt.
 
+> [!NOTE]
+> Um die Warnungsregel einmal täglich auszuführen, ändern Sie für alle an einem bestimmten Tag erstellten Ereignisse/Protokolle den Wert von „period“ und „frequency“ in 1.440, d. h. 24 Stunden.
+
 #### <a name="alert-action-groups"></a>Warnungsaktionsgruppen
 
 Verwenden Sie eine Aktionsgruppe, um einen Benachrichtigungskanal anzugeben. Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus, um die verfügbaren Benachrichtigungsmechanismen anzuzeigen.
@@ -64,6 +67,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -72,6 +76,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -80,6 +85,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -96,6 +102,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -112,6 +119,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -161,8 +169,8 @@ Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den L
 Sie können auch Aktivitätsprotokolle verwenden, um Benachrichtigungen zu Ereignissen zu erhalten, etwa zur erfolgreichen Sicherung. Führen Sie zunächst die folgenden Schritte aus:
 
 1. Melden Sie sich beim Azure-Portal an.
-1. Öffnen Sie den relevanten Recovery Services-Tresor.
-1. Öffnen Sie in den Eigenschaften des Tresors den Abschnitt **Aktivitätsprotokoll**.
+2. Öffnen Sie den relevanten Recovery Services-Tresor.
+3. Öffnen Sie in den Eigenschaften des Tresors den Abschnitt **Aktivitätsprotokoll**.
 
 Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
 
@@ -170,9 +178,9 @@ Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
 
    ![Filtern, um Aktivitätsprotokolle für Azure-VM-Sicherungen zu ermitteln](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. Wählen Sie den Vorgangsnamen aus, um die relevanten Details anzuzeigen.
-1. Wählen Sie **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
-1. Erstellen Sie eine Warnung anhand der unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log) beschriebenen Schritte.
+2. Wählen Sie den Vorgangsnamen aus, um die relevanten Details anzuzeigen.
+3. Wählen Sie **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
+4. Erstellen Sie eine Warnung anhand der unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log) beschriebenen Schritte.
 
    ![Neue Warnungsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 

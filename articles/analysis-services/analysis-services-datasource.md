@@ -4,15 +4,15 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71df537535003fe23902949c70b086a30a6b5049
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77461656"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698138"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -87,7 +87,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure Ana
 
 ## <a name="understanding-providers"></a>Grundlegendes zu Anbietern
 
-Bei der Erstellung eines tabellarischen Modellprojekts ab 1400 in Visual Studio geben Sie standardmäßig keinen Datenanbieter an, wenn mithilfe von **Daten abrufen** eine Verbindung mit einer Datenquelle hergestellt wird. Tabellarische Modelle ab 1400 verwenden [Power Query](/power-query/power-query-what-is-power-query)-Connectors, um Verbindungen, Datenabfragen und Mashups zwischen Datenquelle und Analysis Services zu verwalten. Diese werden gelegentlich als *strukturierte* Datenquellenverbindungen bezeichnet, da Verbindungseigenschaftseinstellungen für Sie festgelegt werden. Sie können jedoch Legacydatenquellen aktivieren. In diesem Fall können Sie den **Tabellenimport-Assistenten** verwenden, um eine Verbindung mit bestimmten Datenquellen herzustellen, die in tabellarischen Modellen bis 1200 traditionell als *Legacy-* oder *Anbieterdatenquelle* unterstützt werden. Bei Angabe als Anbieterdatenquelle können Sie einen bestimmten Datenanbieter sowie andere erweiterte Verbindungseigenschaften angeben. So können Sie beispielsweise eine Verbindung mit einer lokalen SQL Server Data Warehouse-Instanz oder sogar mit einer Azure SQL-Datenbank als Legacydatenquelle herstellen. Anschließend können Sie den Datenanbieter „OLE DB-Treiber für SQL Server“ (MSOLEDBSQL) auswählen. In diesem Fall kann durch die Wahl eines OLE DB-Datenanbieters anstelle des Power Query-Connectors ggf. eine Verbesserung der Leistung erzielt werden. 
+Bei der Erstellung eines tabellarischen Modellprojekts ab 1400 in Visual Studio geben Sie standardmäßig keinen Datenanbieter an, wenn mithilfe von **Daten abrufen** eine Verbindung mit einer Datenquelle hergestellt wird. Tabellarische Modelle ab 1400 verwenden [Power Query](/power-query/power-query-what-is-power-query)-Connectors, um Verbindungen, Datenabfragen und Mashups zwischen Datenquelle und Analysis Services zu verwalten. Diese werden gelegentlich als *strukturierte* Datenquellenverbindungen bezeichnet, da Verbindungseigenschaftseinstellungen für Sie festgelegt werden. Sie können jedoch Legacydatenquellen für ein Modellprojekt in Visual Studio aktivieren. In diesem Fall können Sie den **Tabellenimport-Assistenten** verwenden, um eine Verbindung mit bestimmten Datenquellen herzustellen, die in tabellarischen Modellen bis 1200 traditionell als *Legacy-* oder *Anbieterdatenquelle* unterstützt werden. Bei Angabe als Anbieterdatenquelle können Sie einen bestimmten Datenanbieter sowie andere erweiterte Verbindungseigenschaften angeben. So können Sie beispielsweise eine Verbindung mit einer lokalen SQL Server Data Warehouse-Instanz oder sogar mit einer Azure SQL-Datenbank als Legacydatenquelle herstellen. Anschließend können Sie den Datenanbieter „OLE DB-Treiber für SQL Server“ (MSOLEDBSQL) auswählen. In diesem Fall kann durch die Wahl eines OLE DB-Datenanbieters anstelle des Power Query-Connectors ggf. eine Verbesserung der Leistung erzielt werden. 
 
 Wenn Sie den Tabellenimport-Assistenten in Visual Studio verwenden, ist für Verbindungen mit einer Datenquelle ein Datenanbieter erforderlich. Es wird automatisch ein Standarddatenanbieter ausgewählt. Der Datenanbieter kann bei Bedarf geändert werden. Entscheidende Faktoren für die Wahl des Anbietertyps können die Leistung, die Verwendung von In-Memory-Speicher oder DirectQuery durch das Modell und die Analysis Services-Plattform sein, auf der das Modell bereitgestellt wird.
 
@@ -107,7 +107,7 @@ Verwenden Sie genau wie bei tabellarischen Modellprojekten vom Typ 1200 den **T
 
 
 ## <a name="impersonation"></a>Identitätswechsel
-In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio oder SSMS angegeben werden.
+In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio oder SQL Server Management Studio (SSMS) angegeben werden.
 
 Für lokale Datenquellen:
 

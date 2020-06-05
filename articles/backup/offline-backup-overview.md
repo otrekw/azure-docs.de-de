@@ -3,12 +3,12 @@ title: Übersicht über die Offlinesicherung
 description: Erfahren Sie mehr über die Komponenten der Offlinesicherung. Dazu zählen Offlinesicherungen basierend auf Azure Data Box und Offlinesicherungen basierend auf dem Azure Import/Export-Dienst.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160920"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744636"
 ---
 # <a name="overview-of-offline-backup"></a>Übersicht über die Offlinesicherung
 
@@ -73,11 +73,11 @@ In der folgenden Tabelle werden die beiden verfügbaren Optionen verglichen, sod
 | Sicherheit (Daten, Gerät und Dienst)                           | [Daten:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) AES-256-Bit-Verschlüsselung <br> [Gerät:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) robustes Gehäuse, proprietäre und auf Anmeldeinformationen basierende Schnittstelle zum Kopieren von Daten <br> [Dienst:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) Schutz durch Azure-Sicherheitsfeatures | Daten: BitLocker-verschlüsselt                                 |
 | Bereitstellung von temporärem Stagingspeicherort                     | Nicht erforderlich                                                | Umfang größer oder gleich der geschätzten Größe der Sicherungsdaten        |
 | Unterstützte Regionen                                           | [Azure Data Box Disk-Regionen](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box-Regionen](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Import/Export-Dienst: Regionen](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Länderübergreifender Versand                                     | Nicht unterstützt  <br>    Die Quelladresse und das gewünschte Azure-Rechenzentrum müssen sich im gleichen Land/in der gleichen Region befinden* | Unterstützt                                                    |
+| Länderübergreifender Versand                                     | Nicht unterstützt  <br>    Die Quelladresse und das Azure-Zielrechenzentrum müssen sich im selben Land/derselben Region befinden.* | Unterstützt                                                    |
 | Transportlogistik (Lieferung, Transport und Abholung)           | Vollständig von Microsoft verwaltet                                     | Vom Kunden verwaltet                                            |
 | Preise                                                      | [Azure Data Box: Preise](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box Disk: Preise](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Import/Export-Dienst: Preise](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-*Wenn es in Ihrem Land/Ihrer Region kein Azure-Rechenzentrum gibt, müssen Sie Ihre Datenträger an ein Azure-Rechenzentrum in einem anderen Land schicken.
+\* Wenn es in Ihrem Land/Ihrer Region kein Azure-Rechenzentrum gibt, müssen Sie Ihre Datenträger an ein Azure-Rechenzentrum in einem anderen Land/einer anderen Region schicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

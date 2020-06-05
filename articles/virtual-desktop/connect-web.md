@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70fd29944d31682de5a6a34f76fdf27e3ff7d3ff
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 061805896203615d7673a006059080e9c4246863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607842"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657210"
 ---
 # <a name="connect-with-the-web-client"></a>Herstellen einer Verbindung mit dem Webclient
 
 >[!IMPORTANT]
 >Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md).
 >
-> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Windows Virtual Desktop zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
@@ -42,7 +42,10 @@ Es sollten alle HTML5-fähigen Browser funktionieren, aber hier sind die Betrieb
 
 ## <a name="access-remote-resources-feed"></a>Zugreifen auf den Feed für Remoteressourcen
 
-Navigieren Sie in einem Browser zum [Windows Virtual Desktop-Webclient](https://rdweb.wvd.microsoft.com/arm/webclient), und melden Sie sich mit Ihrem Benutzerkonto an.
+Navigieren Sie in einem Browser unter <https://rdweb.wvd.microsoft.com/arm/webclient> zu der mit dem Azure Resource Manager integrierten Version des Windows Virtual Desktop-Webclients, und melden Sie sich mit Ihrem Benutzerkonto an.
+
+>[!NOTE]
+>Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Integration verwenden, stellen Sie stattdessen bei <https://rdweb.wvd.microsoft.com/webclient> eine Verbindung mit Ihren Ressourcen her.
 
 >[!NOTE]
 >Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.

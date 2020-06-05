@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224926"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758366"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurieren des SAML-basierten einmaligen Anmeldens bei nicht im Katalog aufgeführten Anwendungen
 
@@ -26,7 +26,7 @@ Wenn Sie Ihren Azure AD-Unternehmensanwendungen [eine Katalog-App](add-gallery-a
 > [!NOTE]
 > Fügen Sie eine Katalog-App hinzu? Eine detaillierte Einrichtungsanleitung finden Sie in der [Liste mit den SaaS-App-Tutorials](../saas-apps/tutorial-list.md).
 
-Wenn Sie das einmalige Anmelden über SAML für eine nicht aus dem Katalog stammende Anwendung konfigurieren und dafür keinen Code schreiben möchten, müssen Sie über ein Abonnement zusammen mit einer Azure AD Premium-Lizenz verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Wenn Sie das einmalige Anmelden über SAML für eine nicht aus dem Katalog stammende Anwendung konfigurieren und dafür keinen Code schreiben möchten, müssen Sie über ein Azure AD-Abonnement verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

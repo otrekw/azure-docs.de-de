@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801262"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659382"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -56,7 +56,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 
 **Begrenzung** | **Details**
 --- | ---
-**Azure-VM-Datenträger** | Maximal 16 <br> Wenn Sie sich für die eingeschränkte Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (mit bis zu 32 Datenträgern) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
+**Azure-VM-Datenträger** | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
@@ -152,9 +152,9 @@ Azure Backup hat das Feature zur regionsübergreifenden Wiederherstellung hinzug
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
-| MARS-Agent/lokal | Nein                                                            | –               |
-| SQL/SAP HANA          | Nein                                                            | –               |
-| AFS                    | Nein                                                            | –               |
+| MARS-Agent/lokal | Nein                                                           | –               |
+| SQL/SAP HANA          | Nein                                                           | –               |
+| AFS                    | Nein                                                           | –               |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

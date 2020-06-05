@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735622"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874041"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -358,6 +358,15 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“ zu einem neuen Dienstprinzipal für verwaltete Identitäten nach dem Bereitstellen der Vorlage.
 
 ![Rollenzuweisung für einen neuen Dienstprinzipal für verwaltete Identitäten](./media/role-assignments-template/role-assignment-template-msi.png)
+
+## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
+
+Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entfernen Sie die Rollenzuweisung. Es gibt keine Möglichkeit, eine Rollenzuweisung mithilfe einer Vorlage zu entfernen. Zum Entfernen einer Rollenzuweisung müssen Sie andere Tools verwenden, z. B.:
+
+- [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-a-role-assignment)
+- [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

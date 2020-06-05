@@ -3,21 +3,21 @@ title: Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-
 titleSuffix: Azure
 description: Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: dcd6aaf584691005dd071a7aba5958070f598978
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 5/19/2020
+ms.author: derekol
+ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681054"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683995"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Erstellen oder Ändern einer Instanz für Direct Peering über das Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal ein direktes Microsoft-Peering erstellen. Der Artikel veranschaulicht darüber hinaus, wie Sie den Status der Ressource prüfen und die Ressource aktualisieren, löschen oder ihre Bereitstellung aufheben.
+Dieser Artikel erläutert, wie Sie im Azure-Portal ein Microsoft Direct Peering für einen Internetdienstanbieter oder einen Internet Exchange-Anbieter erstellen. Der Artikel zeigt auch, wie Sie den Status der Ressource prüfen und die Ressource aktualisieren, löschen oder ihre Bereitstellung aufheben.
 
 Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von Azure [PowerShell](howto-direct-powershell.md) ausführen.
 
@@ -32,10 +32,35 @@ Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von Azure [Pow
 
 ### <a name="create-a-direct-peering"></a><a name=create></a>Erstellen eines direkten Peerings
 
-Sie können mithilfe der **Peering**ressource eine neue Peeringanforderung erstellen.
+Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie durch [Erstellen eines Peerings]( https://go.microsoft.com/fwlink/?linkid=2129593) eine neue Anforderung für ein Direct Peering erstellen.
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+1. Füllen Sie auf der Seite **Peering erstellen** auf der Registerkarte **Grundlagen** die Felder wie folgt aus:
+
+
+    ![Registrieren von Peering Service](./media/setup-basics-tab.png)
+
+2. Wählen Sie Ihr Azure-Abonnement aus.
+
+3. Als Ressourcengruppe können Sie in der Dropdownliste eine vorhandene Ressourcengruppe auswählen oder eine neue Gruppe erstellen, indem Sie „Neu erstellen“ auswählen. Im Rahmen dieses Beispiels erstellen Sie eine neue Ressourcengruppe.
+
+4. Der Name entspricht dem Ressourcennamen und ist frei wählbar.
+
+5. Die Region wird automatisch ausgewählt, wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben. Wenn Sie eine neue Ressourcengruppe erstellen möchten, müssen Sie auch die Azure-Region auswählen, in der sich die Ressource befinden soll.
+
+    >[!NOTE]
+    > Die Region, in der sich die Ressourcengruppe befindet, ist unabhängig vom Standort, an dem Sie das Peering mit Microsoft erstellen möchten. Es empfiehlt sich jedoch, Ihre Peeringressourcen innerhalb von Ressourcengruppen zu organisieren, die sich in nahegelegenen Azure-Regionen befinden. Beispiel: Für Peerings in Ashburn können Sie eine Ressourcengruppe in „USA, Osten“ oder in „USA, Osten 2“ erstellen.
+
+6. Wählen Sie Ihre ASN im Feld **PeerASN** aus.
+
+    >[!IMPORTANT]
+    >Sie können nur eine ASN mit dem ValidationState „Genehmigt“ auswählen, bevor Sie eine Peeringanforderung übermitteln. Wenn Sie Ihre PeerAsn-Anforderung gerade erst übermittelt haben, warten Sie ca. 12 Stunden, damit die ASN-Zuordnung genehmigt werden kann. Wenn die Genehmigung der von Ihnen ausgewählten ASN noch aussteht, wird eine Fehlermeldung angezeigt. Wenn die benötigte ASN nicht angezeigt wird, überprüfen Sie, ob Sie das richtige Abonnement ausgewählt haben. Ist dies der Fall, überprüfen Sie mithilfe von **[Zuordnen der Peer-ASN zum Azure-Abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)** , ob Sie bereits über eine PeerAsn verfügen.
+
+7. Klicken Sie auf **Weiter: Konfiguration**, um fortzufahren.
+
+
+
+    ![Registrieren von Peering Service](./media/setup-direct-basics-filled-tab.png)
+
 
 #### <a name="configure-connections-and-submit"></a>Konfigurieren von Verbindungen und Übermitteln
 [!INCLUDE [direct-peering-configuration](./includes/direct-portal-configuration.md)]

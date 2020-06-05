@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207223"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773354"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/) und [Azure Automation](../../automation/automation-intro.md).
@@ -91,7 +91,7 @@ Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agen
 * Windows Server 2016, Version 1709 und 1803
 * Windows Server 2012, 2012 R2
 * Windows Server 2008 SP2 (x64), 2008 R2
-* Windows 10 Enterprise und Pro
+* Windows 10 Enterprise (einschließlich Multisession) und Pro
 * Windows 8 Enterprise und Pro 
 * Windows 7 SP1
 
@@ -115,11 +115,11 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
 >Wenn Sie eine Distribution oder eine Version verwenden, die derzeit nicht unterstützt wird und nicht auf unser Supportmodell abgestimmt ist, wird empfohlen, dieses Repository zu forken und dabei anzuerkennen, dass der Microsoft-Support bei geforkten Agent-Versionen keine Unterstützung bietet.
 
 * Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x86/x64) und 7 (x64)  
-* Oracle Linux 6 und 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) und 7 (x64)
-* Debian GNU/Linux 8 und 9 (x86/x64)
-* Ubuntu 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) und 18.04 LTS (x64)
+* CentOS Linux 6 (x64) und 7 (x64)  
+* Oracle Linux 6 und 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64), 7 (x64) und 8 (x64)
+* Debian GNU/Linux 8 und 9 (x64)
+* Ubuntu 14.04 LTS (x86/x64), 16.04 LTS (x64) und 18.04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) und 15 (x64)
 
 >[!NOTE]
@@ -147,7 +147,7 @@ Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle si
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Unterstützung der SHA-2-Codesignierung für Windows erforderlich
-Der Windows-Agent verwendet ab dem 18. Mai 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 18. Mai 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
+Der Windows-Agent verwendet ab dem 17. August 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 17. August 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
 
 1. Installieren Sie das neueste Service Pack für Ihr Betriebssystem. Folgende Service Pack-Versionen sind erforderlich:
     - Windows 7 SP1
@@ -170,11 +170,10 @@ Die folgende Tabelle enthält die Proxy- und Firewall-Konfigurationsinformatione
 
 |Agent-Ressource|Ports |Direction |Umgehung der HTTPS-Überprüfung|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
-|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
-|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|Ja |
-|*.azure-automation.net |Port 443 |Eingehend und ausgehend|Ja |
-|*.azure.com |Port 443|Eingehend und ausgehend|Ja |
+|*.ods.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
+|*.oms.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
+|*.blob.core.windows.net |Port 443 |Ausgehend|Ja |
+|*.azure-automation.net |Port 443 |Ausgehend|Ja |
 
 Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 

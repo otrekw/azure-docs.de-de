@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605900"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714575"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
 
@@ -200,7 +200,7 @@ Wenn Sie eine Logik-App aus einer Azure-Funktion auslösen möchten, muss diese 
 
 ## <a name="enable-authentication-for-azure-functions"></a>Aktivieren der Authentifizierung für Azure-Funktionen
 
-Um den Zugriff auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directory) ohne Anmeldung oder Bereitstellung von Anmeldeinformationen oder Geheimnissen zu authentifizieren, kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung oder Bereitstellung von Anmeldeinformationen oder Geheimnissen einfach zu authentifizieren, kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität oder eine manuell erstellte benutzerseitig zugewiesene Identität verwendet, können die Azure-Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Azure-Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 

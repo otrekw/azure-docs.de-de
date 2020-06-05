@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596409"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744681"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
 
@@ -64,7 +64,7 @@ Im Folgenden finden Sie eine Anleitung für die Datenintegration für Batch- und
 
   * Schreiben Sie codefreie ETL-Pipelines in Azure Cosmos DB einschließlich [Relations-Hierarchie- und Hierarchie-Hierarchie-Zuordnungen mit Zuordnungsdatenflüssen](../data-factory/how-to-sqldb-to-cosmosdb.md).
 
-* **Integration und Verarbeitung von Streamingdaten:** Mit der Zunahme des industriellen IOT (die Nachverfolgung von Waren über die gesamten Lieferkette hinweg mithilfe von Sensoren, vernetzte Logistikflotten usw.) gibt es immer mehr Echtzeitdaten, die in einem Streamingmodus generiert werden, der in herkömmliche, sich langsam bewegende Daten integriert werden muss, um Erkenntnisse zu generieren. Azure Stream Analytics ist ein empfohlener Dienst für das Streaming von ETL und die Verarbeitung in Azure mit einer [Vielzahl von Szenarien](../stream-analytics/streaming-technologies.md). Azure Stream Analytics unterstützt [Azure Cosmos DB als native Datensenke](../stream-analytics/stream-analytics-documentdb-output.md).
+* **Integration und Verarbeitung von Streamingdaten:** Mit der Zunahme des industriellen IoT (die Nachverfolgung von Waren über die gesamten Lieferkette hinweg mithilfe von Sensoren, vernetzte Logistikflotten usw.) gibt es immer mehr Echtzeitdaten, die in Datenströmen generiert werden, die in herkömmliche, sich langsam bewegende Daten integriert werden müssen, um Erkenntnisse zu generieren. Azure Stream Analytics ist ein empfohlener Dienst für das Streaming von ETL und die Verarbeitung in Azure mit einer [Vielzahl von Szenarien](../stream-analytics/streaming-technologies.md). Azure Stream Analytics unterstützt [Azure Cosmos DB als native Datensenke](../stream-analytics/stream-analytics-documentdb-output.md).
 
 ## <a name="real-time-personalization"></a>Echtzeitpersonalisierung
 
@@ -106,13 +106,13 @@ Azure Synapse Link ermöglicht Azure Cosmos DB nicht nur die Unterstützung von 
 
 Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: ![Workloadmuster für Azure Synapse Link für Azure Cosmos DB](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl transaktionale als auch analytische Anforderungen einer Bestandsverwaltungsplattform unterstützt, soll am Beispiel des E-Commerce-Unternehmens CompanyXYZ verdeutlicht werden, das in mehr als 20 Ländern tätig ist.
+Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl transaktionale als auch analytische Anforderungen einer Bestandsverwaltungsplattform unterstützt, soll am Beispiel des E-Commerce-Unternehmens CompanyXYZ verdeutlicht werden, das in mehr als 20 Ländern/Regionen tätig ist.
 
 * Die Arbeit von CompanyXYZ hängt vom Bestandsverwaltungssystem ab – Verfügbarkeit und Zuverlässigkeit sind daher zentrale Anforderungen. Vorteile von Azure Cosmos DB:
 
   * Aufgrund der engen Integration in die Azure-Infrastruktur und der transparenten globalen Multimasterreplikation bietet Azure Cosmos DB eine branchenführende [Hochverfügbarkeit von 99,999 %](high-availability.md) gegenüber regionalen Ausfällen.
 
-* Die Lieferkettenpartner von CompanyXYZ befinden sich möglicherweise an separaten geografischen Standorten, sie benötigen jedoch eine einzelne Ansicht des weltweiten Produktbestands für ihre lokalen Vorgänge. Dies umfasst auch das Lesen von Aktualisierungen, die von anderen Lieferkettenpartnern in Echtzeit durchgeführt werden. Außerdem können Aktualisierungen vorgenommen werden, ohne dass die Gefahr von Konflikten mit anderen Partnern mit hohem Durchsatz besteht. Vorteile von Azure Cosmos DB:
+* Die Lieferkettenpartner von CompanyXYZ befinden sich möglicherweise an separaten geografischen Standorten, sie benötigen jedoch eine zentrale Ansicht des weltweiten Produktbestands für ihre lokalen Vorgänge. Dies umfasst auch das Lesen von Aktualisierungen, die von anderen Lieferkettenpartnern in Echtzeit durchgeführt werden. Außerdem können Aktualisierungen vorgenommen werden, ohne dass die Gefahr von Konflikten mit anderen Partnern mit hohem Durchsatz besteht. Vorteile von Azure Cosmos DB:
 
   * Dank des eindeutigen Protokolls für die Multimasterreplikation und des schreiboptimierten Transaktionsspeichers ohne Latches garantiert Azure Cosmos DB Wartezeiten von unter 10 ms für indizierte Lese- und Schreibvorgänge auf der ganzen Welt im 99. Quantil.
 
@@ -122,7 +122,7 @@ Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl tran
 
 * Die Lieferkettenpartner von CompanyXYZ weisen hochgradig schwankende Datenverkehrsmuster auf, die von Hunderten bis zu Millionen von Anforderungen pro Sekunde reichen. Daher muss die Bestandsverwaltungsplattform mit unerwarteten Bursts im Datenverkehr umgehen.  Vorteile von Azure Cosmos DB:
 
-  * Der Transaktionsspeicher von Azure Cosmos DB unterstützt die elastische Skalierbarkeit von Speicher und Durchsatz mithilfe der horizontalen Partitionierung. Bei Containern und Datenbanken, die im Autopilot-Modus konfiguriert wurden, wird der bereitgestellte Durchsatz automatisch und verzögerungsfrei den Anwendungsanforderungen entsprechend skaliert, ohne dass dies Auswirkungen auf Verfügbarkeit, Latenz, Durchsatz oder Leistung der allgemeinen Workload hat.
+  * Der Transaktionsspeicher von Azure Cosmos DB unterstützt die elastische Skalierbarkeit von Speicher und Durchsatz mithilfe der horizontalen Partitionierung. Bei Containern und Datenbanken, die im Autopilot-Modus konfiguriert wurden, wird der bereitgestellte Durchsatz automatisch und verzögerungsfrei den Anwendungsanforderungen entsprechend skaliert, ohne dass dies Auswirkungen auf Verfügbarkeit, Latenz, Durchsatz oder Leistung der allgemeinen Workload hat.
 
 * CompanyXYZ muss eine sichere Analyseplattform einrichten, um systemweite Bestandsdaten zu erfassen, damit Analysen und Erkenntnisse zu Lieferkettenpartnern, Geschäftseinheiten und Funktionen möglich sind. Die Analyseplattform muss die Zusammenarbeit über das System, herkömmliche BI-/Berichtsanwendungsfälle, erweiterte Analyseanwendungsfälle und intelligente Prognoselösungen über die betrieblichen Bestandsdaten hinweg ermöglichen. Vorteile der Verwendung von Synapse Link für Azure Cosmos DB:
 

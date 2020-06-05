@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284975"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746639"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Kaufen von Software in Microsoft AppSource
 
@@ -29,11 +29,11 @@ Für den Kauf von SaaS-Angeboten benötigen Sie Folgendes:
 - Eine gültige Kreditkarte in dem Land/der Region, in dem/der Sie das Angebot erwerben.
 
     > [!Note]
-    > Das Land der Kreditkartenabrechnung kann an den Standort Ihrer Azure Active Directory-Instanz gebunden sein.
+    > Das Land/die Region der Kreditkartenabrechnung kann an den Standort Ihrer Azure Active Directory-Instanz gebunden sein.
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>Schritte zum Kauf in AppSource
 
-1. Treffen Sie in [AppSource](https://appsource.microsoft.com/) eine Wahl für „Abrechnungsland/-region“.
+1. Treffen Sie in [AppSource](https://appsource.microsoft.com/) eine Auswahl für das Abrechnungsland/die Abrechnungsregion.
 1. Suchen Sie die Anwendung, die Sie kaufen möchten.
 1. Wählen Sie **Jetzt anfordern** aus.
 1. Wählen Sie den Plan:

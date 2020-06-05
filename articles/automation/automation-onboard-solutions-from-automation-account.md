@@ -1,163 +1,88 @@
 ---
-title: Erfahren Sie, wie Sie Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand in Azure Automation integrieren
-description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren, die Bestandteil von Azure Automation sind
+title: Aktivieren der Azure Automation-Updateverwaltung über ein Automation-Konto
+description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung über ein Automation-Konto aktivieren.
 services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a521ff690f59b6beafd1113b177b43193dc7447e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457653"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743989"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
+# <a name="enable-update-management-from-an-automation-account"></a>Aktivieren der Updateverwaltung über ein Automation-Konto
 
-Azure Automation stellt Lösungen zum Verwalten der Sicherheitsupdates für das Betriebssystem, zum Nachverfolgen von Änderungen und für den Bestand bereit, der auf Ihren Computern installiert ist. Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md), über Ihr Automation-Konto oder per [Runbook](automation-onboard-solutions.md) integrieren. Dieser Artikel behandelt das Integrieren dieser Lösungen über Ihr Automation-Konto.
+In diesem Artikel wird beschrieben, wie Sie mit Ihrem Automation-Konto das Feature [Updateverwaltung](automation-update-management.md) für VMs in Ihrer Umgebung aktivieren können. Sie müssen eine vorhandene VM über die Updateverwaltung aktivieren, um Azure-VMs im großen Stil zu aktivieren. 
+
+> [!NOTE]
+> Wenn Sie die Updateverwaltung aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
+* [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
+* Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com bei Azure an.
 
-## <a name="enable-solutions"></a>Aktivieren von Lösungen
+## <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
 
-Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie unter **Konfigurationsverwaltung** eine der Optionen **Bestand** oder **Änderungsnachverfolgung** aus.
+1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
+2. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Updateverwaltung zu aktivieren. Die Einrichtung dauert bis zu 15 Minuten.
 
-![Integrieren der Bestandslösung](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+    ![Aktivieren der Updateverwaltung](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-> [!NOTE]
-> Wenn Sie Lösungen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
->
-> Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
+## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Überprüfen der Bereichskonfiguration
 
-Die Lösung für Änderungsnachverfolgung und Bestand bietet die Möglichkeit zum Nachverfolgen von [Änderungen](automation-vm-change-tracking.md) und [Bestand](automation-vm-inventory.md) in Ihren virtuellen Computern. In diesem Schritt aktivieren Sie die Lösung auf einem virtuellen Computer.
+Die Updateverwaltung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, die für die Funktion aktiviert werden sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Funktion auf bestimmte Computer verwendet wird. Weitere Informationen finden Sie unter [Arbeiten mit Bereichskonfigurationen für die Updateverwaltung](automation-scope-configurations-update-management.md).
 
-Wenn Sie die Benachrichtigung erhalten haben, dass die Lösung für Änderungsnachverfolgung und Bestand integriert wurde, wählen Sie unter **Updateverwaltung** die Option **Updateverwaltung** aus.
+## <a name="enable-azure-vms"></a>Aktivieren von Azure-VMs
 
-Mithilfe der Lösung zur Updateverwaltung können Sie Updates und Patches für Ihre Azure- und Hybrid-VMs verwalten. Sie können den Status verfügbarer Updates bewerten, die Installation erforderlicher Updates planen und Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich angewandt wurden.
+1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-Auf der Seite zum Aktivieren der Lösung ist der ausgewählte Log Analytics-Arbeitsbereich derselbe, der im vorherigen Schritt verwendet wurde. Klicken Sie auf **Aktivieren**, um die Lösung für die Updateverwaltung zu integrieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
+2. Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens einen virtuellen Computer aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind abgeblendet und können nicht ausgewählt werden. Virtuelle Azure-Computer können sich unabhängig vom Standort Ihres Automation-Kontos in einer beliebigen Region befinden. 
 
-![Integrieren der Updatelösung](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
+3. Klicken Sie auf **Aktivieren**, um die ausgewählten virtuellen Computer der gespeicherten Computergruppensuche für das Feature hinzuzufügen.
 
-## <a name="scope-configuration"></a>Bereichskonfiguration
+    ![Aktivieren von Azure-VMs](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
-Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. Wählen Sie in Ihrem Automation-Konto unter **Verwandte Ressourcen** die Option **Arbeitsbereich** aus, um auf die Bereichskonfigurationen zuzugreifen. Wählen dann im Arbeitsbereich unter **Arbeitsbereichsdatenquellen** die Option **Bereichskonfigurationen** aus.
+## <a name="enable-non-azure-vms"></a>Aktivieren Azure-fremder virtueller Computer
 
-Falls der ausgewählte Arbeitsbereich noch nicht die Lösungen „Updateverwaltung“ und „Änderungsnachverfolgung“ enthält, werden die folgenden Bereichskonfigurationen erstellt:
+Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. 
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-* **MicrosoftDefaultScopeConfig-Updates**
+2. Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Diese Aktion öffnet ein neues Browserfenster mit [Anweisungen zum Installieren und Konfigurieren des Log Analytics-Agents für Windows](../azure-monitor/platform/log-analytics-agent.md), sodass der Computer mit dem Erstellen von Berichten über Updateverwaltungsvorgänge beginnen kann. Wenn Sie einen Computer aktivieren, der aktuell von Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
 
-Verfügt der ausgewählte Arbeitsbereich bereits über die Lösung, wird die Lösung nicht erneut bereitgestellt, und die Bereichskonfiguration wird nicht hinzugefügt.
+## <a name="enable-machines-in-the-workspace"></a>Aktivieren von Computern im Arbeitsbereich
 
-## <a name="saved-searches"></a>Gespeicherte Suchvorgänge
+Manuell installierte Computer oder Computer, die bereits Berichte für Ihren Arbeitsbereich erstellen, müssen Azure Automation hinzugefügt werden, damit die Updateverwaltung aktiviert wird. 
 
-Wenn ein Computer zu den Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand hinzugefügt wird, werden diese Lösungen einem der beiden gespeicherten Suchvorgänge in Ihrem Arbeitsbereich hinzugefügt. Diese gespeicherten Suchvorgänge sind Abfragen, welche die Computer enthalten, die die Zielgruppe für diese Lösungen bilden.
+1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
-Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie **Gespeicherte Suchvorgänge** unter **Allgemein** aus. Die beiden gespeicherten Suchvorgänge, die von diesen Lösungen verwendet werden, können Sie in der folgenden Tabelle anzeigen:
+2. Wählen Sie **Computer verwalten** aus. Die Schaltfläche **Computer verwalten** ist möglicherweise abgeblendet, wenn Sie zuvor die Option **Auf allen verfügbaren und zukünftigen Computern aktivieren** ausgewählt haben.
 
-|Name     |Category  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Aktualisierungen        | Updates__MicrosoftDefaultComputerGroup         |
+    ![Gespeicherte Suchvorgänge](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-Wählen Sie einen der gespeicherten Suchvorgänge aus, um die zum Füllen der Gruppe verwendete Abfrage anzuzeigen. Die folgende Abbildung zeigt die Abfrage und ihre Ergebnisse:
+4. Wenn Sie die Updateverwaltung für alle verfügbaren Computer aktivieren möchten, wählen Sie auf der Seite „Computer verwalten“ die Option **Auf allen verfügbaren Computern aktivieren** aus. Diese Aktion deaktiviert das Steuerelement zum einzelnen Hinzufügen von Computern. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten**.
 
-![Gespeicherte Suchvorgänge](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+5. Wenn Sie das Feature für alle verfügbaren und zukünftigen Computer aktivieren möchten, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherten Suchen und die Bereichskonfigurationen aus dem Arbeitsbereich gelöscht, und das Feature wird für alle Azure-Computer und Azure-fremden Computer geöffnet, von denen Berichte an den Arbeitsbereich übermittelt werden. Bei Verwendung dieser Aktion wird die Schaltfläche **Computer verwalten** dauerhaft deaktiviert, da keine Bereichskonfiguration mehr vorhanden ist.
 
-## <a name="onboard-azure-vms"></a>Integrieren von Azure-VMs
+6. Die Bereichskonfigurationen können bei Bedarf durch Hinzufügen der anfänglichen gespeicherten Suchen wieder hinzugefügt werden. Weitere Informationen finden Sie unter [Arbeiten mit Bereichskonfigurationen für die Updateverwaltung](automation-scope-configurations-update-management.md).
 
-Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** eine der Optionen **Bestand** oder **Änderungsnachverfolgung** bzw. unter **Updateverwaltung** die Option **Updateverwaltung** aus.
-
-Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind ausgegraut und können nicht ausgewählt werden. Azure-VMs können in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Klicken Sie auf der Seite **Updateverwaltung aktivieren** auf **Aktivieren**. Diese Aktion fügt die ausgewählten virtuellen Computer zum gespeicherten Suchvorgang der Computergruppe für die Lösung hinzu.
-
-![Aktivieren von Azure-VMs](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
-
-## <a name="onboard-a-non-azure-machine"></a>Integrieren eines Nicht-Azure-Computers
-
-Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** eine der Optionen **Bestand** oder **Änderungsnachverfolgung** bzw. unter **Updateverwaltung** die Option **Updateverwaltung** aus.
-
-Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Diese Aktion öffnet ein neues Browserfenster mit [Anweisungen zum Installieren und Konfigurieren des Log Analytics-Agents für Windows](../azure-monitor/platform/log-analytics-agent.md), sodass der Computer mit dem Erstellen von Berichten zur Lösung beginnen kann. Wenn Sie das Onboarding für einen Computer durchführen, der aktuell von System Center Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
-
-## <a name="onboard-machines-in-the-workspace"></a>Integrierte Computer im Arbeitsbereich
-
-Manuell installierte Computer oder Computer, die bereits Berichte für Ihren Arbeitsbereich erstellen, müssen Azure Automation hinzugefügt werden, damit die Lösung aktiviert wird. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** eine der Optionen **Bestand** oder **Änderungsnachverfolgung** bzw. unter **Updateverwaltung** die Option **Updateverwaltung** aus.
-
-Wählen Sie **Computer verwalten** aus. Diese Aktion öffnet die Seite **Computer verwalten**. Auf dieser Seite können Sie die Lösung für eine ausgewählte Computergruppe, für alle verfügbaren Computer oder für alle aktuellen und zukünftigen Computer aktivieren. Die Schaltfläche **Computer verwalten** wird möglicherweise abgeblendet dargestellt, wenn Sie zuvor die Option **Auf allen verfügbaren und zukünftigen Computern aktivieren** ausgewählt haben.
-
-![Gespeicherte Suchvorgänge](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="all-available-machines"></a>Alle verfügbaren Computer
-
-Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf allen verfügbaren Computern aktivieren** aus. Diese Aktion deaktiviert das Steuerelement zum einzelnen Hinzufügen von Computern. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten**.
-
-### <a name="all-available-and-future-machines"></a>Alle verfügbaren und zukünftigen Computer
-
-Um die Lösung für alle verfügbaren und zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Diese Aktion öffnet die Lösung für alle Azure- und Nicht-Azure-Computer, die Berichte für den Arbeitsbereich erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten** dauerhaft, da keine Bereichskonfiguration übrig ist.
-
-Sie können die Bereichskonfigurationen wieder hinzufügen, indem Sie die ersten gespeicherten Suchen wieder hinzufügen. Weitere Informationen finden Sie unter [Gespeicherte Suchen](#saved-searches).
-
-### <a name="selected-machines"></a>Ausgewählte Computer
-
-Um die Lösung für einen oder mehrere Computer zu aktivieren, wählen Sie **Auf ausgewählten Computern aktivieren** aus, und klicken Sie neben jedem Computer, den Sie der Lösung hinzufügen möchten, auf **Hinzufügen**. Mit dieser Aufgabe werden die Namen der ausgewählten Computer der Computergruppe der gespeicherten Suchabfrage für die Lösung hinzugefügt.
-
-## <a name="unlink-workspace"></a>Aufheben der Verknüpfung mit dem Arbeitsbereich
-
-Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
-
-* [Updateverwaltung](automation-update-management.md)
-* [Änderungsnachverfolgung](automation-change-tracking.md)
-* [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
-
-Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um zu erfahren, welche Schritte zur Entfernung ausgeführt werden müssen.
-
-Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
-
-> [!NOTE]
-> Einige Lösungen – einschließlich früherer Versionen der Azure SQL-Überwachungslösung – haben möglicherweise Automatisierungsressourcen erstellt und müssen möglicherweise vor dem Aufheben der Verknüpfung des Arbeitsbereichs entfernt werden.
-
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
-
-2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
-
-   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)erforderlich.
-
-   Sie werden gefragt, ob Sie fortfahren möchten.
-
-3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
-
-Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
-
-* Zeitpläne für Updates: Diese weisen Namen auf, die den erstellten Updatebereitstellungen entsprechen.
-
-* Für die Lösung erstellte Hybrid Worker-Gruppen: Diese erhalten Namen ähnlich „machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8“.
-
-Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
-
-* Starten und beenden Sie Zeitpläne für VM-Runbooks.
-* Starten und beenden Sie VM-Runbooks.
-* Variables
-
-Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
-
-* Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-* Entfernen Sie den [Log Analytics-Agent für Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics-Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+7. Wenn Sie das Feature für einen oder mehrere Computer aktivieren möchten, wählen Sie **Auf ausgewählten Computern aktivieren** aus, und klicken Sie neben jedem Computer, für den das Feature aktiviert werden soll, auf **Hinzufügen**. Dadurch werden die Namen der ausgewählten Computer der gespeicherten Computergruppensuchabfrage für das Feature hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit den Tutorials fort, um mehr über die Verwendung der Lösungen zu erfahren.
-
-* [Tutorial: Verwalten von Updates für den virtuellen Computer](automation-tutorial-update-management.md)
-
-* [Tutorial: Identifizieren von Software auf einem virtuellen Computer](automation-tutorial-installed-software.md)
-
-* [Tutorial: Problembehandlung bei Änderungen auf einem virtuellen Computer](automation-tutorial-troubleshoot-changes.md)
+* Wie Sie die Updateverwaltung für VMs verwenden, erfahren Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).
+* Informationen zu Bereichskonfigurationen finden Sie unter [Arbeiten mit Bereichskonfigurationen für die Updateverwaltung](automation-scope-configurations-update-management.md).
+* Wenn Sie den Log Analytics-Arbeitsbereich nicht mehr benötigen, lesen Sie die Informationen unter [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto für die Updateverwaltung](automation-unlink-workspace-update-management.md).
+* Informationen zum Löschen von VMs aus der Updateverwaltung finden Sie unter [Entfernen virtueller Computer aus der Updateverwaltung](automation-remove-vms-from-update-management.md).
+* Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](troubleshoot/update-management.md).
+* Informationen zum Behandeln von Problemen mit dem Windows Update-Agent finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](troubleshoot/update-agent-issues.md).
+* Informationen zum Behandeln von Problemen mit dem Linux Update-Agent finden Sie unter [Beheben von Problemen mit dem Linux-Update-Agent](troubleshoot/update-agent-issues-linux.md).

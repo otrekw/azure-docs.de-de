@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595346"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837921"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -257,32 +257,6 @@ Alle Azure-Regionen unterstützen jetzt Standard-SSD-Datenträger.
 **Ist Azure Backup verfügbar, wenn Standard-SSDs verwendet werden?**
 Ja, Azure Backup ist jetzt verfügbar.
 
-**Wie erstelle ich Standard-SSD-Datenträger?**
-Sie können SSD Standard-Datenträger mithilfe von Azure Resource Manager-Vorlagen, SDK, PowerShell oder CLI erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:
-
-* *apiVersion* für Microsoft.Compute muss auf `2018-04-01` (oder höher) festgelegt werden.
-* Geben Sie unter *managedDisk.storageAccountType* den Typ `StandardSSD_LRS` an.
-
-Das folgende Beispiel zeigt den Abschnitt *properties.storageProfile.osDisk* für eine VM, die Standard-SSD-Datenträger verwendet:
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
-
-**Kann ich meine vorhandenen Laufwerke in Standard-SSD konvertieren?**
-Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
--AccountType StandardSSD_LRS
-
 **Was ist der Vorteil der Verwendung von Standard-SSD-Datenträgern anstelle von HDD?**
 Im Vergleich zu Festplattenlaufwerken bieten SSD Standard-Datenträger eine bessere Latenz, Konsistenz, Verfügbarkeit und Zuverlässigkeit. Aus diesem Grund können Anwendungsworkloads sehr viel reibungsloser auf Standard-SSD-Datenträgern ausgeführt werden. Premium-SSD-Datenträger sind die empfohlene Lösung für die meisten E/A-intensiven Produktionsworkloads.
 
@@ -332,9 +306,9 @@ Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks und Storage Service Encryption
 
-**Ist Azure Storage Service Encryption standardmäßig beim Erstellen eines verwalteten Datenträgers aktiviert?**
+**Ist serverseitige Verschlüsselung standardmäßig beim Erstellen eines verwalteten Datenträgers aktiviert?**
 
-Ja.
+Ja. Verwaltete Datenträger werden standardmäßig mit serverseitiger Verschlüsselung mit von der Plattform verwalteten Schlüsseln verschlüsselt. 
 
 **Ist das Startvolume auf einem verwalteten Datenträger standardmäßig verschlüsselt?**
 
@@ -342,30 +316,27 @@ Ja. Standardmäßig sind alle verwalteten Datenträger verschlüsselt, einschlie
 
 **Wer verwaltet die Verschlüsselungsschlüssel?**
 
-Microsoft verwaltet die Verschlüsselungsschlüssel.
+Von der Plattform verwaltete Schlüssel werden von Microsoft verwaltet. Sie können auch Ihre eigenen Schlüssel in Azure Key Vault verwenden und verwalten. 
 
-**Kann ich für meine verwalteten Datenträger Storage Service Encryption deaktivieren?**
+**Kann ich die serverseitige Verschlüsselung für meine verwalteten Datenträger deaktivieren?**
 
 Nein.
 
-**Ist Storage Service Encryption nur in bestimmten Regionen verfügbar?**
+**Ist die serverseitige Verschlüsselung nur in bestimmten Regionen verfügbar?**
 
-Nein. Sie ist in allen Regionen verfügbar, in denen Managed Disks verfügbar ist. Managed Disks ist in allen öffentlichen Regionen und Deutschland verfügbar. Es ist auch in China verfügbar, jedoch nur für von Microsoft verwaltete Schlüssel, nicht für vom Kunden verwaltete Schlüssel.
+Nein. Die serverseitige Verschlüsselung sowohl mit den von der Plattform als auch mit vom Kunden verwalteten Schlüsseln ist in allen Regionen verfügbar, in denen verwaltete Datenträger verfügbar sind. 
 
-**Wie finde ich heraus, ob mein verwalteter Datenträger verschlüsselt ist?**
+**Unterstützt Azure Site Recovery die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüssel in Szenarien der Notfallwiederherstellung zwischen lokalen Standorten und Azure und zwischen zwei Azure-Standorten?**
 
-Sie können im Azure-Portal, der Azure-CLI und in PowerShell herausfinden, wann ein verwaltetet Datenträger erstellt wurde. Wenn der Zeitpunkt nach dem 9. Juni 2017 liegt, ist Ihr Datenträger verschlüsselt.
+Ja. 
 
-**Wie kann ich meine vorhandenen Laufwerke verschlüsseln, die vor dem 10. Juni 2017 erstellt wurden?**
+**Kann ich verwaltete Datenträger mit serverseitiger Verschlüsselung mit vom Kunden verwalteten Schlüsseln mit dem Azure Backup-Dienst sichern?**
 
-Ab dem 10. Juni 2017 werden neue Daten, die in vorhandene Datenträger geschrieben werden, automatisch verschlüsselt. Darüber hinaus ist geplant, dass vorhandene Daten verschlüsselt werden, wobei die Verschlüsselung asynchron im Hintergrund abläuft. Wenn Sie jetzt schon vorhandene Daten verschlüsseln müssen, erstellen Sie eine Kopie Ihres Datenträgers. Neue Datenträger werden verschlüsselt.
-
-* [Kopieren von verwalteten Datenträger mithilfe der Azure-CLI](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Kopieren von verwalteten Datenträger mithilfe von PowerShell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+Ja.
 
 **Werden verwaltete Momentaufnahmen und Bilder verschlüsselt?**
 
-Ja. Alle verwalteten Momentaufnahmen und Bilder, die nach dem 9. Juni 2017 erstellt werden, werden automatisch verschlüsselt. 
+Ja. Alle verwalteten Momentaufnahmen und Images werden automatisch verschlüsselt. 
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, in verwaltete Datenträger konvertieren?**
 
@@ -484,6 +455,6 @@ Die Hostzwischenspeicherung mit Schreibschutz und Lese-/Schreibzugriff wird für
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 
-Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels Fragen stellen. Im [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata) von MSDN können Sie sich mit dem Azure Storage-Team und anderen Mitgliedern der Community über diesen Artikel austauschen.
+Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels Fragen stellen. Auf der [Microsoft-Seite mit Fragen und Antworten zu Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage) von MSDN können Sie sich mit dem Azure Storage-Team und anderen Communitymitgliedern über diesen Artikel austauschen.
 
 Funktionsvorschläge und -ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/forums/217298-storage) eingereicht werden.
