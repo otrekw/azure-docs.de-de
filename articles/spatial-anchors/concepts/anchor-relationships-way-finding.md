@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74270604"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006017"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Ankerbeziehungen und Wegeleitsysteme in Azure Spatial Anchors
 
@@ -73,7 +73,7 @@ Sie können dieses Verfahren später für weitere Anker und weitere Sitzungen fo
 
 ### <a name="verify-anchor-connections"></a>Überprüfen von Ankerverbindungen
 
-Die App kann überprüfen, ob zwei Anker verbunden sind, indem sie eine Abfrage für in der Nähe befindliche Anker durchführt. Wenn das Ergebnis der Abfrage den Zielanker enthält, wird die Ankerverbindung bestätigt. Falls die Anker nicht verbunden sind, kann die App versuchen, die Verbindung wiederherzustellen.
+Die App kann überprüfen, ob zwei Anker verbunden sind, indem sie eine Abfrage für in der Nähe befindliche Anker durchführt. Hierfür werden `NearAnchorCriteria` für `CloudSpatialAnchorWatcher` festgelegt. Wenn das Ergebnis der Abfrage den Zielanker enthält, wird die Ankerverbindung bestätigt. Falls die Anker nicht verbunden sind, kann die App versuchen, die Verbindung wiederherzustellen.
 
 Hier sind einige Gründe angegeben, warum beim Verbinden von Ankern ggf. ein Fehler auftritt:
 

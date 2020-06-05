@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684727"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983600"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -150,6 +150,8 @@ Dies sind die vorinstallierten Pakete:
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> Wenn Ihre Pipeline mehrere Execute Python Script-Module enthält und diese dieselben Pakete benötigen, die nicht in der Liste der vorinstallierten Pakete aufgeführt sind, müssen Sie die Pakete in jedem Modul einzeln installieren. 
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 Die Option **Execute Python Script** (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
@@ -218,7 +220,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 5. Geben oder fügen Sie in das Textfeld **Python script** (Python-Skript) ein gültiges Python-Skript ein.
 
     > [!NOTE]
-    > Gehen Sie beim Schreiben Ihres Skripts sehr vorsichtig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, z. B. das Verwenden eines nicht deklarierten Objekts oder eines nicht importierten Moduls. Widmen Sie außerdem der Liste der vorinstallierten Module besondere Aufmerksamkeit. Um Module zu importieren, die nicht aufgelistet sind, installieren Sie die entsprechenden Pakete in Ihrem Skript, z. B.
+    > Gehen Sie beim Schreiben Ihres Skripts sehr sorgfältig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, also z. B. keine nicht deklarierten Objekte oder nicht importierten Module verwendet werden. Widmen Sie außerdem der Liste der vorinstallierten Module besondere Aufmerksamkeit. Um Module zu importieren, die nicht aufgelistet sind, installieren Sie die entsprechenden Pakete in Ihrem Skript, z. B.
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

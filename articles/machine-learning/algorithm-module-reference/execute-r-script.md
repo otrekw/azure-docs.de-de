@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684714"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983566"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> Wenn Ihre Pipeline mehrere Execute R Script-Module enthält und diese dieselben Pakete benötigen, die nicht in der Liste der vorinstallierten Pakete aufgeführt sind, müssen Sie die Pakete in jedem Modul einzeln installieren. 
 
 ## <a name="installing-r-packages"></a>Installieren von R-Paketen
 Um zusätzliche R-Pakete zu installieren, verwenden Sie die `install.packages()`-Methode. Pakete werden für jedes **Execute R Script**-Modul installiert und nicht mit anderen **Execute R Script**-Modulen gemeinsam genutzt.
@@ -140,7 +142,7 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 1. Geben oder fügen Sie in das Textfeld **R script** (R-Skript) ein gültiges R-Skript ein.
 
     > [!NOTE]
-    > Gehen Sie beim Schreiben Ihres Skripts sehr vorsichtig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, dass also beispielsweise keine nicht deklarierten Variablen oder nicht importierten Module oder Funktionen verwendet werden. Achten Sie besonders auf die Liste der vorinstallierten Pakete ganz unten in diesem Dokument. Um nicht aufgeführte Pakete zu verwenden, installieren Sie diese in Ihrem Skript, z. B. so: `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+    > Gehen Sie beim Schreiben Ihres Skripts sehr vorsichtig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, dass also beispielsweise keine nicht deklarierten Variablen oder nicht importierten Module oder Funktionen verwendet werden. Achten Sie zudem besonders auf die Liste der vorinstallierten Pakete ganz unten in diesem Dokument. Um nicht aufgeführte Pakete zu verwenden, installieren Sie diese in Ihrem Skript, z. B. so: `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
     
     > [!NOTE]
     > Funktionen, die von der X11-Bibliothek abhängig sind, wie z. B. „View“, werden nicht unterstützt, weil die X11-Bibliothek nicht vorinstalliert ist.

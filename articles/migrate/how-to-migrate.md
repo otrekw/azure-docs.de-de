@@ -1,32 +1,21 @@
 ---
 title: Hinzufügen von Migrationstools in Azure Migrate
 description: Hinzufügen von Migrationstools in Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185962"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901474"
 ---
 # <a name="add-migration-tools"></a>Hinzufügen von Migrationstools
 
 In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.md) Migrationstools hinzufügen.
 
-Azure Migrate stellt einen Hub mit Tools für die Bewertung und Migration zu Azure bereit. Hier finden Sie native Tools, von anderen Azure-Diensten bereitgestellte Tools sowie ISV-Angebote (Independent Software Vendor) von Drittanbietern.
-
-Wenn Sie ein Migrationstool hinzufügen möchten und noch kein Azure Migrate-Projekt angelegt haben, befolgen Sie die Anweisungen in diesem [Artikel](how-to-add-tool-first-time.md).
-
-
-
-## <a name="selecting-an-isv-tool"></a>Auswählen eines ISV-Tools
-
-Wenn Sie ein [ISV-Tool](migrate-services-overview.md#isv-integration) für die Migration auswählen, können Sie zunächst eine Lizenz erwerben oder sich in Übereinstimmung mit der ISV-Richtlinie für eine kostenlose Testversion anmelden. In jedem Tool ist eine Option zum Herstellen einer Verbindung mit Azure Migrate vorhanden. Stellen Sie das Tool bereit, und befolgen Sie die Anweisungen des Tools und seine Dokumentation, um den Toolarbeitsbereich mit Azure Migrate zu verbinden. 
+- Wenn Sie ein Migrationstool hinzufügen möchten und noch kein Azure Migrate-Projekt angelegt haben, befolgen Sie die Anweisungen in diesem [Artikel](how-to-add-tool-first-time.md).
+- Wenn Sie für die Migration ein ISV-Tool hinzugefügt haben, [befolgen Sie die Schritte](prepare-isv-movere.md) zur Vorbereitung auf die Arbeit mit dem Tool.
 
 ## <a name="select-a-migration-scenario"></a>Auswählen eines Datenmigrationsszenarios
 

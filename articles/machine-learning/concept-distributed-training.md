@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385343"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995009"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Verteiltes Training mit Azure Machine Learning
 
 Dieser Artikel informiert Sie über verteiltes Training und die Unterstützung von Deep Learning-Modellen durch Azure Machine Learning. 
 
-Beim verteilten Training wird die Arbeitsauslastung zum Trainieren eines Modells auf mehrere Miniprozessoren, die als Workerknoten bezeichnet werden, verteilt. Diese Workerknoten werden parallel ausgeführt, um das Modelltraining zu beschleunigen. Verteiltes Training kann für herkömmliche ML-Modelle verwendet werden, eignet sich jedoch besser für rechen- und zeitintensive Aufgaben, z. B. [Deep Learning](concept-deep-learning-vs-machine-learning.md) zum Trainieren von Deep Neural Networks.
+Beim verteilten Training wird die Arbeitsauslastung zum Trainieren eines Modells auf mehrere Miniprozessoren, die als Workerknoten bezeichnet werden, verteilt. Diese Workerknoten werden parallel ausgeführt, um das Modelltraining zu beschleunigen. Verteiltes Training kann für herkömmliche ML-Modelle verwendet werden, eignet sich jedoch besser für rechen- und zeitintensive Aufgaben, z. B. [Deep Learning](concept-deep-learning-vs-machine-learning.md) zum Trainieren von Deep Neural Networks. 
 
 ## <a name="deep-learning-and-distributed-training"></a>Deep Learning und verteiltes Training 
 
@@ -36,7 +36,9 @@ Für ML-Modelle, die kein verteiltes Training erfordern, finden Sie unter [Train
 
 Datenparallelität lässt sich einfacher als der andere Ansatz für verteiltes Training implementieren und ist für die meisten Anwendungsfälle ausreichend.
 
-Hierbei werden die Daten in Partitionen unterteilt, wobei die Anzahl der Partitionen gleich der Gesamtzahl der verfügbaren Knoten im Computecluster ist. Das Modell wird in jeden dieser Workerknoten kopiert, und jeder Worker arbeitet mit einer eigenen Teilmenge der Daten. Beachten Sie, dass jeder Knoten das Modell unterstützen können muss, das trainiert wird. Das heißt, das Modell muss vollständig auf jeden Knoten passen.
+Hierbei werden die Daten in Partitionen unterteilt, wobei die Anzahl der Partitionen gleich der Gesamtzahl der verfügbaren Knoten im Computecluster ist. Das Modell wird in jeden dieser Workerknoten kopiert, und jeder Worker arbeitet mit einer eigenen Teilmenge der Daten. Beachten Sie, dass jeder Knoten das Modell unterstützen können muss, das trainiert wird. Das heißt, das Modell muss vollständig auf jeden Knoten passen. Im folgenden Diagramm ist dieser Ansatz dargestellt.
+
+![Konzeptdiagramm Datenparallelität](./media/concept-distributed-training/distributed-training.svg)
 
 Jeder Knoten berechnet eigenständig die Fehler (Abweichungen) zwischen den Vorhersagen für die Trainingsbeispiele und den gekennzeichneten Ausgaben. Jeder Knoten wiederum aktualisiert sein Modell basierend auf den Fehlern. Er muss alle seine Änderungen an die anderen Knoten übermitteln, damit diese ihre entsprechenden Modelle aktualisieren. Dies bedeutet, dass die Workerknoten die Modellparameter (oder Gradienten) am Ende der Batchberechnung synchronisieren müssen, um sicherzustellen, dass sie ein konsistentes Modell trainieren. 
 

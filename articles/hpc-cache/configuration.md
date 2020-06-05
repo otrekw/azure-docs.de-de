@@ -4,14 +4,14 @@ description: Erläutert, wie zusätzliche Einstellungen für den Cache konfiguri
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195059"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871413"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
@@ -42,13 +42,15 @@ Weitere Informationen zu den MTU-Einstellungen in virtuellen Azure-Netzwerken fi
 ## <a name="configure-root-squash"></a>Konfigurieren von Root-Squash
 <!-- linked from troubleshoot -->
 
-Die Einstellung **Root-Squash aktivieren** kontrolliert, wie der Azure HPC Cache root-Zugriff zulässt. Root-Squash hilft, den Zugriff nicht autorisierter Clients auf Stammebene zu verhindern.
+Die Einstellung **Root-Squash aktivieren** steuert, wie Azure HPC Cache Anforderungen des Stammbenutzers auf Clientcomputern verarbeitet.
 
-Mit dieser Einstellung können Benutzer den Stammzugriff auf Cacheebene steuern, wodurch die erforderliche ``no_root_squash``-Einstellung für NAS-Systeme, die als Speicherziele verwendet werden, kompensiert werden kann. (Weitere Informationen zu [Voraussetzungen für NFS-Speicherziele](hpc-cache-prereqs.md#nfs-storage-requirements).) Außerdem kann dadurch die Sicherheit verbessert werden, wenn sie mit Azure-Blobspeicherzielen verwendet wird.
+Wenn der Root-Squash aktiviert ist, werden Stammbenutzer auf einem Client automatisch dem Benutzer „Nobody“ (niemand) zugeordnet, wenn sie Anforderungen über Azure HPC Cache senden. Die Einstellung verhindert außerdem, dass Clientanforderungen set-UID-Berechtigungsbits verwenden.
+
+Bei deaktiviertem Root-Squash werden Anforderungen vom Stammbenutzer des Clients (UID 0) als Stamm an ein Back-End-NFS-Speichersystem übergeben. Diese Konfiguration kann einen unangemessenen Dateizugriff ermöglichen.
+
+Wenn der Root-Squash für den Cache festgelegt wird, kann diese Einstellung dazu beitragen, die erforderliche Einstellung ``no_root_squash`` in NAS-Systemen auszugleichen, die als Speicherziele verwendet werden. (Weitere Informationen zu [Voraussetzungen für NFS-Speicherziele](hpc-cache-prereqs.md#nfs-storage-requirements).) Außerdem kann dadurch die Sicherheit verbessert werden, wenn sie mit Azure-Blobspeicherzielen verwendet wird.
 
 Die Standardeinstellung ist **Ja**. (Caches, die vor April 2020 erstellt wurden, haben die Standardeinstellung **Nein**.)
-
-Wenn diese Funktion aktiviert ist, verhindert sie auch die Verwendung von Set-UID-Berechtigungsbits in Clientanforderungen an den Cache.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Anzeigen von Momentaufnahmen für Blobspeicherziele
 

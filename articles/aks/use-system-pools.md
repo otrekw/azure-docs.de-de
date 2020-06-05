@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten von Systemknotenpools in 
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790557"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125246"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)
 
@@ -50,6 +50,7 @@ Mit Knotenpools sind folgende Vorgänge möglich:
 * Sie können Benutzerknotenpools löschen.
 * Systemknotenpools können Sie löschen, wenn im AKS-Cluster ein anderer Systemknotenpool als Ersatz vorhanden ist.
 * Ein AKS-Cluster kann mehrere Systemknotenpools enthalten, benötigt jedoch mindestens einen Systemknotenpool.
+* Wenn Sie verschiedene unveränderliche Einstellungen für vorhandene Knotenpools ändern möchten, können Sie neue Knotenpools erstellen, um diese zu ersetzen. Ein Beispiel hierfür besteht darin, einen neuen Knotenpool mit einer neuen Einstellung für maximale Pods hinzuzufügen und den alten Knotenpool zu löschen.
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Erstellen eines neuen AKS-Clusters mit einem Systemknotenpool
 

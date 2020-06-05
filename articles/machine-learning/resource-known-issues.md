@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231967"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889395"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -39,7 +39,7 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), die Ihnen im Rahmen von Azure Machine Learning begegnen können.
 
 ## <a name="installation-and-import"></a>Installation und Import
-
+                           
 * **pip-Installation: Es ist nicht gewährleistet, dass Abhängigkeiten mit der Installation in einer Zeile konsistent sind**: 
 
    Dies ist eine bekannte Einschränkung von pip, da keine funktionsfähige Abhängigkeitskonfliktauflösung vorhanden ist, wenn Sie die Installation in einer einzigen Zeile ausführen. Es wird nur die erste eindeutige Abhängigkeit untersucht. 
@@ -56,7 +56,29 @@ Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), di
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **Es ist nicht garantiert, dass das Erklärungspaket installiert wird, wenn azureml-train-automl-client installiert wird:** 
+   
+   Wenn Sie AutoML remote mit aktivierter Modellerklärung ausführen, wird Ihnen folgende Fehlermeldung angezeigt: „Please install azureml-explain-model package for model explanations“ (Installieren Sie das azureml-explain-model-Paket für Modellerklärungen). Dies ist ein bekanntes Problem. Führen Sie einen der folgenden Schritte durch, um das Problem zu umgehen:
+  
+  1. Installieren Sie azureml-explain-model lokal.
+   ```
+      pip install azureml-explain-model
+   ```
+  2. Deaktivieren Sie die Erklärungsfunktion vollständig, indem Sie bei der AutoML-Konfiguration „model_explainability=False“ festlegen.
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Pandas-Fehler: Normalerweise bei AutoML-Experimenten angezeigt:**
    
    Wenn Sie Ihre Umgebung manuell mithilfe von pip einrichten, fallen Attributfehler (insbesondere von Pandas) auf, da nicht unterstützte Paketversionen installiert werden. Um diese Fehler zu vermeiden, [installieren Sie das AutoML SDK mithilfe von „automl_setup.cmd“](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):

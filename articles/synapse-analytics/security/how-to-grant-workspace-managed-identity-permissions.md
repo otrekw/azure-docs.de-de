@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426458"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983294"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie der verwalteten Identität in einem Azure Synapse-Arbeitsbereich Berechtigungen gewähren. Berechtigungen wiederum ermöglichen den Zugriff auf SQL-Pools im Arbeitsbereich und im ADLS Gen2-Speicherkonto über das Azure-Portal.
+In diesem Artikel erfahren Sie, wie Sie der verwalteten Identität in einem Azure Synapse-Arbeitsbereich Berechtigungen gewähren. Berechtigungen ermöglichen wiederum den Zugriff auf SQL-Pools im Arbeitsbereich und im ADLS Gen2-Speicherkonto über das Azure-Portal.
 
 >[!NOTE]
->Diese verwaltete Identität des Arbeitsbereichs wird im Rest dieses Dokuments als „verwaltete Identität“ bezeichnet.
+>Diese verwaltete Identität für den Arbeitsbereich wird im Rest dieses Dokuments als „verwaltete Identität“ bezeichnet.
 
 ## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>Gewähren von Berechtigungen für die verwaltete Identität für den SQL-Pool
 
@@ -31,19 +31,19 @@ Wählen Sie beim Erstellen Ihres Azure Synapse-Arbeitsbereichs **Sicherheit + N
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Gewähren von Berechtigungen für die verwaltete Identität für das ADLS Gen2-Speicherkonto
 
-Ein ADL Gen2-Speicherkonto ist erforderlich, um einen Azure Synapse-Arbeitsbereich zu erstellen. Um Spark-Pools erfolgreich im Azure Synapse-Arbeitsbereich zu starten, benötigt die verwaltete Azure Synapse-Identität für dieses Speicherkonto die Rolle *Mitwirkender an Storage-Blobdaten*. Die Pipelineorchestrierung in Azure Synapse profitiert ebenfalls von dieser Rolle.
+Ein ADLS Gen2-Speicherkonto ist erforderlich, um einen Azure Synapse-Arbeitsbereich zu erstellen. Um Spark-Pools erfolgreich im Azure Synapse-Arbeitsbereich zu starten, benötigt die verwaltete Azure Synapse-Identität für dieses Speicherkonto die Rolle *Mitwirkender an Storage-Blobdaten*. Die Pipelineorchestrierung in Azure Synapse profitiert ebenfalls von dieser Rolle.
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>Gewähren von Berechtigungen für die verwaltete Identität während der Erstellung eines Arbeitsbereichs
 
-Azure Synapse versucht, der verwalteten Identität die Rolle „Mitwirkender an Storage-Blobdaten“ zu gewähren, nachdem Sie den Azure Synapse-Arbeitsbereich über das Azure-Portal erstellt haben. Die Details zum ADLS Gen2-Speicherkonto stellen Sie auf der Registerkarte **Grundlagen** bereit.
+Azure Synapse versucht, der verwalteten Identität die Rolle „Mitwirkender an Storage-Blobdaten“ zu gewähren, nachdem Sie den Azure Synapse-Arbeitsbereich über das Azure-Portal erstellt haben. Stellen Sie auf der Registerkarte **Grundlagen** die ADLS Gen2-Speicherkontodetails bereit.
 
 ![Registerkarte „Grundlagen“ im Erstellungsfluss des Arbeitsbereichs](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-Wählen Sie das ADLS Gen2-Speicherkonto und Dateisystem in **Kontoname** und **Dateisystemname** aus.
+Wählen Sie unter **Kontoname** und **File system name** (Dateisystemname) das ADLS Gen2-Speicherkonto bzw. -Dateisystem aus.
 
 ![Bereitstellen der Details eines ADLS Gen2-Speicherkontos](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-Wenn der Ersteller des Arbeitsbereichs ebenfalls der **Besitzer** des ADLS Gen2-Speicherkontos ist, weist Azure Synapse der verwalteten Identität die Rolle *Mitwirkender an Storage-Blobdaten* zu. Unterhalb der von Ihnen eingegebenen Speicherkontodetails wird die folgende Meldung angezeigt.
+Wenn der Ersteller des Arbeitsbereichs auch **Besitzer** des ADLS Gen2-Speicherkontos ist, weist Azure Synapse der verwalteten Identität die Rolle *Mitwirkender an Storage-Blobdaten* zu. Unterhalb der von Ihnen eingegebenen Speicherkontodetails wird die folgende Meldung angezeigt.
 
 ![Erfolgreiche Zuweisung von „Mitwirkender an Storage-Blobdaten“.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
@@ -55,11 +55,11 @@ Wie die Meldung besagt, können Sie Spark-Pools nur erstellen, wenn der verwalte
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>Gewähren von Berechtigungen für die verwaltete Identität nach der Erstellung eines Arbeitsbereichs
 
-Wenn Sie während der Erstellung eines Arbeitsbereichs der verwalteten Identität nicht *Mitwirkender an Storage-Blobdaten* zuweisen, weist der **Besitzer** des ADLS Gen2-Speicherkontos diese Rolle der Identität manuell zu. Die folgenden Schritten helfen Ihnen bei der manuellen Zuweisung.
+Wenn Sie bei der Erstellung eines Arbeitsbereichs der verwalteten Identität nicht die Rolle *Mitwirkender an Storage-Blobdaten* zuweisen, weist der **Besitzer** des ADLS Gen2-Speicherkontos der Identität diese Rolle manuell zu. Die folgenden Schritten helfen Ihnen bei der manuellen Zuweisung.
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Schritt 1: Navigieren zum ADLS Gen2-Speicherkonto im Azure-Portal
 
-Öffnen Sie im Azure-Portal das ADLS Gen2-Speicherkonto, und wählen Sie im linken Navigationsbereich **Übersicht** aus. Sie müssen die Rolle *Mitwirkender an Storage-Blobdaten* nur auf Container- oder Dateisystemebene zuweisen. Wählen Sie **Container**aus.  
+Öffnen Sie im Azure-Portal das ADLS Gen2-Speicherkonto, und klicken Sie im linken Navigationsbereich auf **Übersicht**. Sie müssen die Rolle *Mitwirkender an Storage-Blobdaten* nur auf Container- oder Dateisystemebene zuweisen. Wählen Sie **Container**aus.  
 ![ADLS Gen2-Speicherkonto – Übersicht](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>Schritt 2: Auswählen des Containers

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314311"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929756"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -153,7 +153,7 @@ Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ress
 - Dank der [Interpretierbarkeit](how-to-machine-learning-interpretability.md) ist es möglich, Ihre Modelle zu erläutern, gesetzliche Bestimmungen einzuhalten und zu verstehen, wie Modelle bei bestimmten Eingaben zu einem Ergebnis kommen.
 - Der Azure ML-Ausführungsverlauf speichert eine Momentaufnahme des Codes, der Daten und der Computevorgänge, mit denen ein Modell trainiert wurde.
 - Die Azure ML-Modellregistrierung erfasst alle Metadaten, die Ihrem Modell zugeordnet sind (welches Experiment wurde für das Training verwendet, wo wird es bereitgestellt und ob die Bereitstellungen fehlerfrei sind).
-- Durch die [Integration in Azure Event Grid](concept-event-grid-integration.md) können Sie auf Ereignisse im ML-Lebenszyklus reagieren. Hierzu zählen beispielsweise Ereignisse für Modellregistrierung, Bereitstellung, Datenabweichung und Training (Ausführung).
+- Durch die [Integration mit Azure](how-to-use-event-grid.md) können Sie auf Ereignisse im ML-Lebenszyklus reagieren. Hierzu zählen beispielsweise Ereignisse für Modellregistrierung, Bereitstellung, Datenabweichung und Training (Ausführung).
 
 > [!TIP]
 > Während einige Informationen zu Modellen und Datasets automatisch erfasst werden, können Sie mithilfe von __Tags__ zusätzliche Informationen hinzufügen. Wenn Sie in Ihrem Arbeitsbereich nach registrierten Modellen und Datasets suchen, können Sie Tags als Filter verwenden.

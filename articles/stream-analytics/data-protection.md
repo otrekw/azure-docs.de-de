@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299395"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857290"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
@@ -61,6 +61,9 @@ Alle privaten Daten, die von Stream Analytics dauerhaft aufbewahrt werden müsse
 Verbindungsdetails Ihrer Ressourcen, die von Ihrem Stream Analytics-Auftrag genutzt werden, werden ebenfalls gespeichert. Verschlüsseln Sie Ihr Speicherkonto, um Ihre gesamten Daten zu schützen. 
 
 Sie können sich weiter über die [Complianceangebote von Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) informieren, um Ihre Konformitätsverpflichtungen für regulierte Branchen oder Umgebungen zu erfüllen. 
+
+## <a name="known-issues"></a>Bekannte Probleme
+Es gibt ein bekanntes Problem, bei dem ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird. Derzeit wird an der Lösung für dieses Problem gearbeitet. Diese wird in naher Zukunft verfügbar gemacht. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

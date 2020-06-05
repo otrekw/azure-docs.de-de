@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure CNI-Netzwerke – „Advanced“ (Erwei
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207495"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120928"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -63,11 +63,13 @@ Die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster ist 250. *Standardm
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ja (bis zu 250) |
 | Resource Manager-Vorlage | 110 | 30 | Ja (bis zu 250) |
-| Portal | 110 | 30 | Nein  |
+| Portal | 110 | 30 | Nein |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurieren des Höchstwerts: Neue Cluster
 
-Sie können die maximale Anzahl von Pods pro Knoten *nur zum Zeitpunkt der Bereitstellung* konfigurieren. Wenn Sie die Bereitstellung mit der Azure CLI oder mit einer Resource Manager-Vorlage durchführen, können Sie die maximale Anzahl von Pods pro Knoten auf bis zu 250 festlegen.
+Sie können die maximale Anzahl von Pods pro Knoten bei der Clusterbereitstellung oder beim Hinzufügen von neuen Knotenpools konfigurieren. Wenn Sie die Bereitstellung mit der Azure CLI oder mit einer Resource Manager-Vorlage durchführen, können Sie die maximale Anzahl von Pods pro Knoten auf bis zu 250 festlegen.
+
+Wenn Sie die maximale Anzahl von Pods (maxPods) beim Erstellen neuer Knotenpools nicht angeben, wird der Standardwert 30 für Azure CNI verwendet.
 
 Ein Mindestwert für maximale Pods pro Knoten wird erzwungen, um Platz für Systempods zu garantieren, die für die Clusterintegrität entscheidend sind. Der Mindestwert, der für maximale Pods pro Knoten festgelegt werden kann, ist nur dann 10, wenn die Konfiguration der einzelnen Knotenpools Platz für mindestens 30 Pods bietet. Wenn Sie z. B. die maximalen Pods pro Knoten auf mindestens 10 festlegen, muss jeder einzelne Knotenpool mindestens drei Knoten aufweisen. Diese Anforderung gilt auch für jeden neu erstellten Knotenpool, d. h. wenn für die maximalen Pods pro Knoten der Wert 10 definiert ist, muss jeder weitere hinzugefügte Knotenpool mindestens drei Knoten aufweisen.
 
@@ -85,7 +87,7 @@ Ein Mindestwert für maximale Pods pro Knoten wird erzwungen, um Platz für Syst
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurieren des Höchstwerts: Vorhandene Cluster
 
-Sie können die maximalen Anzahl von Pods pro Knoten für einen vorhandenen AKS-Cluster nicht ändern. Sie können die Anzahl nur bei der ersten Bereitstellung des Clusters anpassen.
+Die Einstellung für die maximale Anzahl von Pods pro Knoten kann beim Erstellen eines neuen Knotenpools definiert werden. Wenn Sie die maximale Anzahl von Pods pro Knoten in einem vorhandenen Cluster erhöhen müssen, fügen Sie einen neuen Knotenpool mit dem neuen gewünschten Maximalwert hinzu. Nachdem Sie Ihre Pods in den neuen Pool migriert haben, löschen Sie den älteren Pool. Wenn Sie einen älteren Pool in einem Cluster löschen möchten, müssen Sie sicherstellen, dass Sie die Modi der Knotenpools gemäß der Definition im Artikel [Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)] festlegen.
 
 ## <a name="deployment-parameters"></a>Bereitstellungsparameter
 
@@ -212,3 +214,4 @@ Per AKS-Engine erstellte Kubernetes-Cluster unterstützen sowohl das [kubenet][k
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)]: use-system-pools.md

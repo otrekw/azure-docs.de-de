@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426730"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983226"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Erstellen eines verwalteten privaten Endpunkts zu Ihrer Datenquelle (Vorschau)
 
@@ -35,12 +35,12 @@ Wählen Sie den Datenquellentyp aus. In diesem Fall ist die Zieldatenquelle ein 
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>Schritt 4: Eingeben von Informationen über die Datenquelle
 
-Im nächsten Fenster geben Sie die Informationen zu der Datenquelle ein. In diesem Beispiel erstellen wir einen verwalteten privaten Endpunkt zu einem ADLS Gen2-Konto. Geben Sie einen **Namen** für den verwalteten privaten Endpunkt ein. Geben Sie ein **Azure-Abonnement** und einen **Speicherkontonamen** an. Klicken Sie auf **Erstellen**.
+Im nächsten Fenster geben Sie die Informationen zu der Datenquelle ein. In diesem Beispiel erstellen Sie einen verwalteten privaten Endpunkt für ein ADLS Gen2-Konto. Geben Sie einen **Namen** für den verwalteten privaten Endpunkt ein. Geben Sie ein **Azure-Abonnement** und einen **Speicherkontonamen** an. Klicken Sie auf **Erstellen**.
 ![Eingeben von Details der Zieldatenquelle](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>Schritt 5: Überprüfen, ob Ihr verwalteter privater Endpunkt erfolgreich erstellt wurde
 
-Nachdem Sie die Anforderung übermittelt haben, wird ihr Status angezeigt. Um die erfolgreiche Erstellung Ihres verwalteten privaten Endpunkts, überprüfen Sie seinen *Bereitstellungsstatus*. Möglicherweise müssen Sie 1 Minute warten und **Aktualisieren** auswählen, um den Bereitstellungsstatus zu aktualisieren. Sie können sehen, dass der verwaltete private Endpunkt zu dem ADLS Gen2-Konto erfolgreich erstellt wurde.
+Nachdem Sie die Anforderung übermittelt haben, wird ihr Status angezeigt. Um die erfolgreiche Erstellung Ihres verwalteten privaten Endpunkts, überprüfen Sie seinen *Bereitstellungsstatus*. Möglicherweise müssen Sie 1 Minute warten und **Aktualisieren** auswählen, um den Bereitstellungsstatus zu aktualisieren. Sie können sehen, dass der verwaltete private Endpunkt für das ADLS Gen2-Konto erfolgreich erstellt wurde.
 
 Sie können auch sehen, dass der *Genehmigungszustand* *Ausstehend* lautet. Der Besitzer der Zielressource kann die Verbindungsanforderung des privaten Endpunkts genehmigen oder ablehnen. Wenn der Besitzer die Verbindungsanforderung des privaten Endpunkts genehmigt, wird ein privater Link hergestellt. Wird sie abgelehnt, wird kein privater Link hergestellt.
 ![Status der Erstellungsanforderung eines privaten Endpunkts](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

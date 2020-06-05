@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209501"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982189"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Erste Schritte mit Azure Machine Learning Studio (Classic) in R
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-Dieses Tutorial hilft Ihnen bei der Erweiterung von Azure Machine Learning Studio (klassisch) mithilfe der Programmiersprache R. Führen Sie dieses Tutorial zur Programmierung mit R aus, um R-Code innerhalb von Studio (klassisch) zu erstellen, zu testen und auszuführen. Beim Durcharbeiten dieses Tutorials erstellen Sie unter Verwendung der Sprache R in Studio (klassisch) eine vollständige Vorhersagelösung.  
+In diesem Tutorial erfahren Sie, wie Sie mit ML Studio (Classic) R-Code schreiben, testen und ausführen. Ziel ist es, eine komplette Vorhersagelösung zu erstellen.  
 
-Azure Machine Learning Studio (klassisch) enthält viele leistungsfähige Module für maschinelles Lernen und Datenbearbeitung. Die leistungsfähige Sprache R wurde als die Lingua franca der Analytik beschrieben. Glücklicherweise lassen sich Analyse und Datenbearbeitung in Studio (klassisch) mithilfe von R erweitern. Diese Kombination bietet die einfache Skalierbarkeit von Bereitstellungen aus Studio (klassisch) zusammen mit der Flexibilität und den tiefgreifenden Analysefunktionen von R.
+> [!div class="checklist"]
+> * Erstellen von Code für die Datenbereinigung und -transformation
+> * Analysieren der Korrelationen zwischen mehreren Variablen in Ihrem Dataset
+> * Erstellen eines saisonalen Zeitreihen-Vorhersagemodells für die Produktion von Milcherzeugnissen
 
-### <a name="forecasting-and-the-dataset"></a>Vorhersagen und das DataSet
 
-Vorhersagen stellen eine verbreitet angewendete und durchaus nützliche Analysemethode dar. Allgemeine Anwendungen reichen von der Vorhersage der Umsätze für Saisonartikel, über die Bestimmung der optimalen Lagerbestände bis hin zur Vorhersage makroökonomischer Variablen. Vorhersagen werden normalerweise mit Zeitreihenmodellen erstellt.
+Azure Machine Learning Studio (klassisch) enthält viele leistungsfähige Module für maschinelles Lernen und Datenbearbeitung. In Kombination mit der Programmiersprache R profitieren Benutzer von der Skalierbarkeit und einfachen Bereitstellung von ML Studio (Classic) und der Flexibilität und den tiefgreifenden Analysefunktionen von R.
 
-Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex kann regelmäßig sein, z. B. monatlich oder jede Minute, oder auch unregelmäßig. Ein Zeitreihenmodell basiert auf Zeitreihendaten. Die Programmiersprache R enthält ein flexibles Framework sowie umfassende Analysefunktionen für Zeitreihendaten.
+Vorhersagen stellen eine verbreitet angewendete und durchaus nützliche Analysemethode dar. Allgemeine Anwendungen reichen von der Vorhersage der Umsätze für Saisonartikel, über die Bestimmung der optimalen Lagerbestände bis hin zur Vorhersage makroökonomischer Variablen. Vorhersagen werden normalerweise mit Zeitreihenmodellen erstellt. Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex kann regelmäßig sein, z. B. monatlich oder jede Minute, oder auch unregelmäßig. Ein Zeitreihenmodell basiert auf Zeitreihendaten. Die Programmiersprache R enthält ein flexibles Framework sowie umfassende Analysefunktionen für Zeitreihendaten.
 
-In diesem Leitfaden arbeiten wir mit Daten zur Milchproduktion und zu den Milchpreisen in Kalifornien. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
+## <a name="get-the-data"></a>Abrufen von Daten
+
+In diesem Tutorial verwenden Sie die Daten zur Herstellung und den Preisen von Milchprodukten in Kalifornien. Diese enthalten monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
 Die in diesem Artikel verwendeten Daten und die R-Skripts können unter [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) heruntergeladen werden. Die Daten in der Datei `cadairydata.csv` wurden ursprünglich aus Informationen zusammengestellt, die von der University of Wisconsin unter [https://dairymarkets.com](https://dairymarkets.com) zur Verfügung gestellt wurden.
 
-### <a name="organization"></a>Organization
 
-Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der Azure Machine Learning Studio-Umgebung (klassisch) R-Code zur Analyse und Datenbearbeitung erstellen, testen und ausführen.  
-
-* Zunächst werden die Grundlagen der Verwendung der Sprache R in der Azure Machine Learning Studio-Umgebung (klassisch) behandelt.
-* Wir fahren dann mit der Erläuterung verschiedener E/A-Aspekte von Daten, R-Code und Grafiken in der Azure Machine Learning Studio-Umgebung (klassisch) fort.
-* Danach erstellen wir den ersten Teil der Vorhersagelösung, indem wir Code für die Datenbereinigung und -transformation erstellen.
-* Mit den vorbereiteten Daten führen wir eine Analyse der Korrelationen zwischen mehreren der Variablen in unserem DataSet durch.
-* Schließlich erstellen wir ein saisonales Zeitreihen-Vorhersagemodell für die Produktion von Milcherzeugnissen.
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Interagieren mit der Sprache R in Machine Learning Studio (klassisch)
 
@@ -143,7 +139,7 @@ In diesem Abschnitt wird erörtert, wie Sie Daten im Modul [R-Skript ausführen]
 
 Der vollständige Code für diesen Abschnitt befindet sich unter [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Laden und Überprüfen von Daten in Machine Learning Studio (klassisch)
+### <a name="load-and-check-data"></a>Laden und Überprüfen der Daten 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Laden des DataSets
 
