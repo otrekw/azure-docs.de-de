@@ -19,7 +19,7 @@ ms.locfileid: "83683842"
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-Beispiele](sql-api-dotnet-v3sdk-samples.md)
-> * [Java V4 SDK-Beispiele](sql-api-java-sdk-samples.md)
+> * [Java v4 SDK-Beispiele](sql-api-java-sdk-samples.md)
 > * [Node.js-Beispiele](sql-api-nodejs-samples.md)
 > * [Python-Beispiele](sql-api-python-samples.md)
 > * [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

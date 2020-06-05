@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: Anzeigen einer Wegbeschreibung von A nach B
               href: map-route.md
+        - name: Modul für Gebäudepläne
+          items:
+            - name: Modul für Gebäudepläne
+              href: how-to-use-indoor-module.md
+            - name: Dynamischer Stil für Gebäudepläne
+              href: indoor-map-dynamic-styling.md
+            - name: Schnellansicht für Zeichnungsfehler
+              href: drawing-error-visualizer.md
         - name: Räumliches IO-Modul
           items:
             - name: Verwenden des räumlichen IO-Moduls
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten
           href: how-to-show-traffic-android.md
-    - name: Entwickeln mit Creator-Gebäudeplänen
-      items:
-        - name: Modul für Gebäudepläne
-          href: how-to-use-indoor-module.md
-        - name: Dynamischer Stil für Gebäudepläne
-          href: indoor-map-dynamic-styling.md
-        - name: Schnellansicht für Zeichnungsfehler
-          href: drawing-error-visualizer.md
     - name: Bereitstellen von Datenfeedback
       href: how-to-use-feedback-tool.md
 - name: Verweis

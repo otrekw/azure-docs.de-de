@@ -133,7 +133,7 @@ Sie können Jenkins innerhalb oder außerhalb eines Service Fabric-Clusters einr
     </div>
     ```
 
-1. Aktualisieren Sie die Versionen **ApplicationTypeVersion** und **ServiceManifestVersion** in der Datei **Voting/VotingApplication/ApplicationManifest.xml** auf *2.0.0*.
+1. Aktualisieren Sie die Versionen **ApplicationTypeVersion** und **ServiceManifestVersion** in der Datei *Voting/VotingApplication/ApplicationManifest.xml* auf **2.0.0**.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>

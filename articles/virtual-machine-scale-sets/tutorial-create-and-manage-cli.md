@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -78,7 +78,7 @@ Die folgende Beispielausgabe zeigt zwei VM-Instanzen in der Skalierungsgruppe:
 ```
 
 
-Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie `--instance-id`az vmss get-instance-view[ den Parameter ](/cli/azure/vmss) hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss) den Parameter `--instance-id` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -234,7 +234,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
-Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können `--instance-count`az vmss create[ zusammen mit dem Parameter ](/cli/azure/vmss) angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
+Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können [az vmss create](/cli/azure/vmss) zusammen mit dem Parameter `--instance-count` angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
 Die Anzahl von VM-Instanzen in der Skalierungsgruppe kann mit [az vmss scale](/cli/azure/vmss) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 

@@ -22,7 +22,7 @@ ms.locfileid: "80877821"
 
 1. Geben Sie folgende Informationen auf der Registerkarte **Grundeinstellungen** an:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |--|--|
     |Subscription|Wählen Sie ein entsprechendes Abonnement aus.|
     |Resource group|Wählen Sie eine verfügbare Ressourcengruppe aus.|
@@ -37,7 +37,7 @@ ms.locfileid: "80877821"
 1. Behalten Sie Registerkarte **Authentifizierung** die Standardwerte für **Dienstprinzipal** und **RBAC aktivieren** bei.
 1. Geben Sie auf der Registerkarte **Netzwerk** die folgende Auswahl ein:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |--|--|
     |HTTP-Anwendungsrouting|Nein|
     |Netzwerkkonfiguration|Basic|

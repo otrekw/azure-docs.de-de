@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833930"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020879"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 
@@ -41,7 +41,7 @@ Es ist wichtig, den End-to-End-Prozess einschließlich der Nutzung des Premium-A
 * Mögliche Migrationsansätze.
 * Vollständiges End-to-End-Beispiel für Azure-, Windows- und SQL Server-Schritte zur Migration einer vorhandenen AlwaysOn-Implementierung.
 
-Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 **Autor**: Daniel Sol **Technische Lektoren:** Luis Carlos Vargas Herring, Sanjay Mishra, Pravin Mital, Jürgen Thomas, Gonzalo Ruiz.
 
@@ -1250,7 +1250,7 @@ Informationen zum Hinzufügen einer IP-Adresse finden Sie im Anhang in Schritt 1
 
 * [Azure Premium-Speicher](../disks-types.md)
 * [Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/)
-* [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server auf virtuellen Azure-Computern](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

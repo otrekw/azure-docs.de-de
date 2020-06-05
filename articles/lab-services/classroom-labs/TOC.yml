@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: Angeben von Supportinformationen (Labkontobesitzer)
           href: lab-account-owner-support-information.md
+        - name: Kostenverwaltung für Labs
+          href: cost-management-guide.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Lehrkraft)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs

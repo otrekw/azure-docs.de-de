@@ -40,7 +40,7 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Python 2.7 und 3.5 oder höher mit installiertem und aktualisiertem PIP  
-- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.  
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.  
 - Ein aktiver Event Hubs-Namespace und -Event Hub.
 [Erstellen Sie einen Event Hubs-Namespace und einen Event Hub im Namespace](event-hubs-create.md). Notieren Sie sich den Namen des Event Hubs-Namespace, den Namen des Event Hubs und den primären Zugriffsschlüssel für den Namespace. Anweisungen zum Abrufen des Zugriffsschlüssels finden Sie unter [Abrufen einer Event Hubs-Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Der Standardname des Schlüssels lautet *RootManageSharedAccessKey*. Für diese Schnellstartanleitung benötigen Sie nur den Primärschlüssel. Die Verbindungszeichenfolge ist nicht erforderlich.  
 - Ein Azure-Speicherkonto, ein Blobcontainer im Speicherkonto und eine Verbindungszeichenfolge für das Speicherkonto. Besitzen Sie diese Elemente nicht, führen Sie die folgenden Schritte aus:  

@@ -57,6 +57,8 @@
       href: concepts-architecture.md
     - name: Was sind Anwendungsvorlagen?
       href: concepts-app-templates.md
+    - name: Was sind Gerätevorlagen?
+      href: concepts-device-templates.md
     - name: Gerätekonnektivität
       href: concepts-get-connected.md
     - name: Verbinden von IoT Edge-Geräten

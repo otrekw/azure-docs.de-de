@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard-Encoder-Schemas
+      items:
+        - name: Ausgeben von Metadaten
+          href: output-metadata-schema.md
 - name: Ressourcen
   items:
     - name: Azure Media Services-Community

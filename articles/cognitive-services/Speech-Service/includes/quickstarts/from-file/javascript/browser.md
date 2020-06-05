@@ -36,7 +36,7 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 ```
 ## <a name="add-ui-elements"></a>Hinzufügen von Benutzeroberflächenelementen
 
-Sie fügen nun einige grundlegende Oberflächenelemente für Eingabefelder hinzu, verweisen auf den JavaScript-Code des Speech SDK, und rufen ein Autorisierungstoken ab, sofern verfügbar.
+Sie fügen nun einige grundlegende Benutzeroberflächenelemente für Eingabefelder hinzu, verweisen auf den JavaScript-Code des Speech SDK, und rufen ein Autorisierungstoken ab, sofern verfügbar.
 
 ```html  
   <div id="content" style="display:none">

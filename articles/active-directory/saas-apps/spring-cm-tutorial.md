@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit SpringCM | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit SpringCM | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SpringCM konfigurieren.
 services: active-directory
 documentationCenter: na

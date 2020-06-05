@@ -230,7 +230,7 @@
                     - name: Versionsverlauf
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON-Zeilenformat für Ressourcenprotokolle
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Problembehandlung
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Plattformprotokolle
       items:
+        - name: Unterstützte Ressourcenprotokolltypen und -kategorien
+          href: platform/resource-logs-categories.md
         - name: Ressourcenprotokollschemas
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: Aktivitätsprotokollschema
           href: platform/activity-log-schema.md
     - name: Diagnoseerweiterungsschemas

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef54eddd52d67f595fe78cd8bba9f308a4f19a94
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832820"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235238"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -175,9 +175,6 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
     Die von Ihnen erstellte Active Directory-Verbindung wird angezeigt.
 
     ![Active Directory-Verbindungen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> Die Felder für Benutzername und Kennwort können nach dem Speichern der Active Directory-Verbindung bearbeitet werden. Andere Werte können nach dem Speichern der Verbindung nicht mehr bearbeitet werden. Wenn Sie andere Werte ändern möchten, müssen Sie zuerst alle bereitgestellten SMB-Volumes löschen und anschließend die Active Directory-Verbindung löschen und neu erstellen.
 
 ## <a name="add-an-smb-volume"></a>Hinzufügen eines SMB-Volumes
 

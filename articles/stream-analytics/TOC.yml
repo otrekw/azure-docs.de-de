@@ -114,6 +114,8 @@
   items:
     - name: Verwalten
       items:
+        - name: Automatisches Skalieren von Aufträgen
+          href: stream-analytics-autoscale.md
         - name: Aktualisieren von Anmeldeinformationen
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurieren von Richtlinien für die Ereignisreihenfolge
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Ressourcen
   items:
     - name: Stream Analytics-Vorschauversionen
