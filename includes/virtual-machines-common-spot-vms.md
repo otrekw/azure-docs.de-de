@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422218"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317532"
 ---
 Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
@@ -90,7 +90,7 @@ Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar
 | Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Microsoft-Kundenvereinbarung | Ja                               |
 | Vorteile                     | Nicht verfügbar                     |
-| Sponsoren                    | Nicht verfügbar                     |
+| Sponsoren                    | Ja                               |
 | Kostenlose Testversion                   | Nicht verfügbar                     |
 
 

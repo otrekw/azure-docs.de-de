@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836310"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013196"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Integrieren der Updateverwaltung mit Windows Endpoint Configuration Manager
 
@@ -38,7 +38,7 @@ Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin üb
 1. Wählen Sie in Azure Automation die Option **Updateverwaltung** aus. Erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Windows Endpoint Configuration Manager-Sammlung auszuwählen. Berücksichtigen Sie dabei die folgenden wichtigen Punkte: a. Wenn in der ausgewählten Windows Endpoint Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster anstelle der Einstellung **Dauer**, die in der geplanten Bereitstellung definiert ist.
     b. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das Log Analytics-Gateway).
 
-Nach Abschluss der Updatebereitstellung über Azure Automation installieren die Zielcomputer, die Mitglieder der ausgewählten Computergruppe sind, die Updates zum geplanten Zeitpunkt aus ihrem lokalen Clientcache. Sie können den [Status der Updatebereitstellung anzeigen](automation-tutorial-update-management.md#view-results-of-an-update-deployment), um die Ergebnisse Ihrer Bereitstellung zu überwachen.
+Nach Abschluss der Updatebereitstellung über Azure Automation installieren die Zielcomputer, die Mitglieder der ausgewählten Computergruppe sind, die Updates zum geplanten Zeitpunkt aus ihrem lokalen Clientcache. Sie können den [Status der Updatebereitstellung anzeigen](automation-tutorial-update-management.md#check-deployment-status), um die Ergebnisse Ihrer Bereitstellung zu überwachen.
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Verwalten von Softwareupdates über Azure Automation
 

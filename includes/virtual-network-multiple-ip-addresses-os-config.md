@@ -8,51 +8,55 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159378"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194227"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
 Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehreren privaten IP-Adresse erstellt haben, und melden Sie sich an. Alle dem virtuellen Computer hinzugefügten privaten IP-Adressen müssen manuell hinzugefügt werden. (Das gilt auch für die primäre Adresse.) Führen Sie für das Betriebssystem Ihres virtuellen Computers die folgenden Schritte aus.
 
-### <a name="windows"></a>Windows
+### <a name="windows-server"></a>Windows Server
+<details>
+  <summary>Expand</summary>
 
 1. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein.  Sie können nur die *primäre* private Adresse anzeigen (über DHCP).
 2. Geben Sie an der Eingabeaufforderung *ncpa.cpl* ein, um das Fenster **Netzwerkverbindungen** zu öffnen.
-3. Öffnen Sie die Eigenschaften für den entsprechenden Adapter: **LAN-Verbindung**.
+3. Öffnen Sie die Eigenschaften für den entsprechenden Adapter: **Ethernet**.
 4. Doppelklicken Sie auf „Internetprotokoll, Version 4“ (IPv4).
 5. Wählen Sie **Folgende IP-Adresse verwenden** aus, und geben Sie die folgenden Werte ein:
 
-    * **IP-Adresse:** Geben Sie die *primäre* private IP-Adresse ein.
-    * **Subnetzmaske:** wird basierend auf dem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
-    * **Standardgateway:** die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
+    * **IP-Adresse**: Geben Sie die *primäre* private IP-Adresse ein.
+    * **Subnetzmaske**: Wird basierend auf Ihrem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
+    * **Standardgateway**: Die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
     * Wählen Sie **Folgende DNS-Serveradressen verwenden** aus, und geben Sie die folgenden Werte ein:
-        * **Bevorzugter DNS-Server:** Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.
+        * **Bevorzugter DNS-Server**: Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.  (Bei einem alternativen DNS-Server können Sie eine beliebige öffentliche DNS-Serveradresse auswählen.)
     * Wählen Sie die Schaltfläche **Erweitert** aus, und fügen Sie zusätzliche IP-Adressen hinzu. Fügen Sie jede der sekundären privaten IP-Adressen, die Sie in einem vorherigen Schritt der Azure-Netzwerkschnittstelle hinzugefügt haben, der Windows-Netzwerkschnittstelle hinzu, die der primären IP-Adresse der Azure-Netzwerkschnittstelle zugewiesen ist.
 
         Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden. Wenn Sie die IP-Adresse im Betriebssystem manuell festlegen, stellen Sie sicher, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Verbindung mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](../articles/virtual-network/virtual-network-network-interface-addresses.md#private). Eine öffentliche Azure-IP-Adresse sollte niemals im Betriebssystem zugewiesen werden.
 
     * Klicken Sie auf **OK**, um die TCP/IP-Einstellungen zu schließen, und dann erneut auf **OK**, um die Adaptereinstellungen zu schließen. Die RDP-Verbindung wird wiederhergestellt.
 
-6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein. Alle hinzugefügten IP-Adressen werden angezeigt, und DHCP ist deaktiviert.
+6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein. Überprüfen Sie, ob alle hinzugefügten IP-Adressen angezeigt werden und DHCP deaktiviert ist.
 7. Konfigurieren Sie Windows so, dass die private IP-Adresse der primären IP-Konfiguration in Azure als die primäre IP-Adresse für Windows verwendet wird. Ausführliche Informationen finden Sie unter [No Internet access from Azure Windows VM that has multiple IP addresses](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) (Kein Internetzugriff über einen virtuellen Azure Windows-Computer mit mehreren IP-Adressen). 
 
-### <a name="validation-windows"></a>Überprüfung (Windows)
+### <a name="validation-windows-server"></a>Überprüfung (Windows Server)
 
-Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, sobald Sie sie anhand der oben beschriebenen Schritte ordnungsgemäß hinzugefügt haben, verwenden den folgenden Befehl:
+Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können. Sobald Sie sie anhand der oben beschriebenen Schritte ordnungsgemäß hinzugefügt haben, verwenden Sie den folgenden Befehl (ersetzen Sie 10.0.0.7 durch die sekundäre, private IP-Adresse):
 
 ```bash
-ping -S 10.0.0.5 hotmail.com
+ping -S 10.0.0.7 outlook.com
 ```
 >[!NOTE]
 >Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+</details>
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
-
+<details>
+  <summary>Expand</summary>
 Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nutzen. 
 
 1. Öffnen Sie ein Terminalfenster.
@@ -112,8 +116,33 @@ Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nu
 
    Es sollte die IP-Adresse angezeigt werden, die Sie als Teil der Liste hinzugefügt haben.
 
-### <a name="linux-ubuntu-1804"></a>Linux (ab Ubuntu 18.04)
+### <a name="validation-ubuntu-1416"></a>Überprüfung (Ubuntu 14/16)
 
+Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+
+Wenn Sie ausgehende Verbindungen von einem sekundären NIC für virtuelle Linux-Computer überprüfen möchten, müssen Sie möglicherweise entsprechende Routen hinzufügen. Dazu gibt es zahlreiche Möglichkeiten. Weitere Informationen für Ihre Linux-Distribution finden Sie in der entsprechenden Dokumentation. Nachfolgend finden Sie eine der möglichen Methoden:
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- Achten Sie darauf, folgende Ersetzungen vorzunehmen:
+    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
+    - **10.0.0.1** durch Ihr Standardgateway
+    - **eth2** durch den Namen Ihrer sekundären NIC </details>
+
+### <a name="linux-ubuntu-1804"></a>Linux (ab Ubuntu 18.04)
+<details>
+  <summary>Expand</summary>
 Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `netplan` geändert. Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nutzen. 
 
 1. Öffnen Sie ein Terminalfenster.
@@ -185,8 +214,33 @@ Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `n
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-    
+### <a name="validation-ubuntu-1804"></a>Überprüfung (Ubuntu 18.04+)
+
+Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+
+Wenn Sie ausgehende Verbindungen von einem sekundären NIC für virtuelle Linux-Computer überprüfen möchten, müssen Sie möglicherweise entsprechende Routen hinzufügen. Dazu gibt es zahlreiche Möglichkeiten. Weitere Informationen für Ihre Linux-Distribution finden Sie in der entsprechenden Dokumentation. Nachfolgend finden Sie eine der möglichen Methoden:
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- Achten Sie darauf, folgende Ersetzungen vorzunehmen:
+    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
+    - **10.0.0.1** durch Ihr Standardgateway
+    - **eth2** durch den Namen Ihrer sekundären NIC </details>
+
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS usw.)
+<details>
+  <summary>Expand</summary>
 
 1. Öffnen Sie ein Terminalfenster.
 2. Stellen Sie sicher, dass Sie der root-Benutzer sind. Geben Sie andernfalls den folgenden Befehl ein:
@@ -246,12 +300,12 @@ Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `n
 
     In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0*angezeigt werden.
 
-### <a name="validation-linux"></a>Überprüfung (Linux)
+### <a name="validation-red-hat-centos-and-others"></a>Überprüfung (Red Hat, CentOS usw.)
 
 Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
 
 ```bash
-ping -I 10.0.0.5 hotmail.com
+ping -I 10.0.0.5 outlook.com
 ```
 >[!NOTE]
 >Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
@@ -268,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
     - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
     - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch dem Namen Ihrer sekundären NIC
+    - **eth2** durch den Namen Ihrer sekundären NIC </details>

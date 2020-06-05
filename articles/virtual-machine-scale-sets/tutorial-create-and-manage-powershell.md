@@ -27,7 +27,7 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 > * Manuelles Skalieren einer Skalierungsgruppe
 > * Ausführen allgemeiner Verwaltungsaufgaben für Skalierungsgruppen
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -84,7 +84,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie `-InstanceId`Get-AzVmssVM[ den Parameter ](/powershell/module/az.compute/get-azvmssvm) hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) den Parameter `-InstanceId` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
