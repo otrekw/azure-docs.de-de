@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: Konfigurieren optionaler Einstellungen
       href: configuration.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: Ressourcen
   items:
     - name: Öffnen eines Supporttickets
