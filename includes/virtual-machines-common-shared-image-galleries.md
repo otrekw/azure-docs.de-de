@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789034"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317745"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -33,9 +33,9 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 | Resource | BESCHREIBUNG|
 |----------|------------|
-| **Imagequelle** | Dies ist eine Ressource, die zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Eine Imagequelle kann eine vorhandene Azure-VM sein, die entweder [generalisiert oder spezialisiert](#generalized-and-specialized-images) ist, ein verwaltetes Image, eine Momentaufnahme oder eine Imageversion in einem anderen Imagekatalog. |
+| **Imagequelle** | Dies ist eine Ressource, die zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Eine Imagequelle kann eine vorhandene Azure-VM, die entweder [generalisiert oder spezialisiert](#generalized-and-specialized-images) ist, ein verwaltetes Image, eine Momentaufnahme oder eine Imageversion in einem anderen Imagekatalog sein. |
 | **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
-| **Imagedefinition** | Imagedefinitionen werden in einem Katalog erstellt und enthalten Informationen zum Image und den Anforderungen für seine interne Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Es ist eine Definition eines Imagetyps. |
+| **Imagedefinition** | Imagedefinitionen werden in einem Katalog erstellt und enthalten Informationen zum Image und zu den Anforderungen für seine interne Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Es ist eine Definition eines Imagetyps. |
 | **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
 
 <br>
@@ -71,7 +71,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 
 ## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
 
-Die Shared Image Gallery unterstützt zwei Betriebssystemzustände. In der Regel ist es erforderlich, dass der zum Erstellen des Images verwendete virtuelle Computer generalisiert wurde, bevor das Image verwendet wird. Durch das Generalisieren werden computer- und benutzerspezifische Informationen aus dem virtuellen Computer entfernt. Für Windows wird Sysprep ebenfalls verwendet. Für Linux können Sie den [waagent](https://github.com/Azure/WALinuxAgent)-Parameter `-deprovision` oder `-deprovision+user` verwenden.
+Die Shared Image Gallery unterstützt zwei Betriebssystemzustände. In der Regel ist es erforderlich, dass der zum Erstellen des Images verwendete virtuelle Computer generalisiert wurde, bevor das Image verwendet wird. Durch das Generalisieren werden computer- und benutzerspezifische Informationen aus dem virtuellen Computer entfernt. Für Windows wird das Sysprep-Tool verwendet. Für Linux können Sie den [waagent](https://github.com/Azure/WALinuxAgent)-Parameter `-deprovision` oder `-deprovision+user` verwenden.
 
 Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informationen und Konten entfernt. Virtuellen Computern, die aus spezialisierten Images erstellt wurden, ist zudem kein `osProfile` zugeordnet. Dies bedeutet, dass spezialisierte Images neben Vorteilen auch einige Einschränkungen aufweisen.
 
@@ -146,7 +146,7 @@ Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der
 | Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Imagedefinition | Imageversion |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | Ja                  | Ja          | Ja                  |
-| Imagedefinition     | Nein                    | Ja          | Ja                  |
+| Imagedefinition     | Nein                   | Ja          | Ja                  |
 
 Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
