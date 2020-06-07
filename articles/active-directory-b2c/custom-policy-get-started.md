@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407295"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738250"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -138,7 +138,7 @@ Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden s
 
 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 1. Wählen Sie **Neue Benutzeroberfläche ausprobieren** aus (sofern die Option angezeigt wird).
-1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Anwendung als öffentlichen Client behandeln** aus (wählen Sie **Ja** aus).
+1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Anwendung als öffentlichen Client behandeln** aus (wählen Sie **Ja** aus). Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
 1. Wählen Sie **Speichern** aus.
 
 Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:

@@ -3,12 +3,12 @@ title: Ausschließen von Datenträgern von der Replikation mit Azure Site Recove
 description: Es wird beschrieben, wie Sie Datenträger mit Azure Site Recovery von der Replikation in Azure ausschließen.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236506"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740517"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Ausschließen von Datenträgern von der Notfallwiederherstellung
 
@@ -24,9 +24,9 @@ In diesem Artikel wird beschrieben, wie Datenträger während der Notfallwiederh
 
 Die Möglichkeiten zum Ausschließen von Datenträgern von der Replikation sind in der folgenden Tabelle zusammengefasst.
 
-**Azure zu Azure** | **VMware zu Azure** | **Hyper-V in Azure** 
---- | --- | ---
-Ja (mit PowerShell) | Ja | Ja 
+**Azure zu Azure** | **VMware zu Azure** | **Hyper-V in Azure** | **Physischer Server zu Azure**
+--- | --- | --- | ---
+Ja | Ja | Ja | Ja
 
 ## <a name="exclude-limitations"></a>Einschränkungen für den Ausschluss
 
@@ -35,7 +35,7 @@ Ja (mit PowerShell) | Ja | Ja
 **Datenträgertypen** | Sie können Basisdatenträger von der Replikation ausschließen.<br/><br/> Sie können keine Betriebssystemdatenträger und keine dynamischen Datenträger ausschließen. Temporäre Datenträger sind standardmäßig ausgeschlossen. | Sie können Basisdatenträger von der Replikation ausschließen.<br/><br/> Sie können keine Betriebssystemdatenträger und keine dynamischen Datenträger ausschließen. | Sie können Basisdatenträger von der Replikation ausschließen.<br/><br/> Sie können keine Betriebssystemdatenträger ausschließen. Es wird empfohlen, keine dynamischen Datenträger auszuschließen. Site Recovery kann nicht feststellen, welche VHD auf der Gast-VM eine einfache oder dynamische VHD ist. Wenn nicht alle abhängigen dynamischen Volumedatenträger ausgeschlossen werden, wird der geschützte dynamische Datenträger auf einer Failover-VM zu einem fehlerhaften Datenträger, sodass die Daten auf diesem Datenträger nicht zugänglich sind.
 **Datenträger während der Replikation** | Es ist nicht möglich, einen Datenträger auszuschließen, der gerade repliziert wird.<br/><br/> Deaktivieren Sie die Replikation für die VM, und aktivieren Sie sie anschließend wieder. |  Es ist nicht möglich, einen Datenträger auszuschließen, der gerade repliziert wird. |  Es ist nicht möglich, einen Datenträger auszuschließen, der gerade repliziert wird.
 **Mobilitätsdienst (VMware)** | Nicht relevant | Sie können nur Datenträger auf VMs ausschließen, auf denen der Mobilitätsdienst installiert ist.<br/><br/> Dies bedeutet, dass Sie den Mobilitätsdienst manuell auf den VMs installieren müssen, für die sie Datenträger ausschließen möchten. Sie können den Mechanismus für die Pushinstallation nicht nutzen, weil der Mobilitätsdienst dabei erst nach der Aktivierung der Replikation installiert wird. | Nicht relevant.
-**Hinzufügen/Entfernen** | Sie können Datenträger auf Azure-VMs mit verwalteten Datenträgern hinzufügen und entfernen. | Sie können keine Datenträger mehr hinzufügen oder entfernen, nachdem die Replikation aktiviert wurde. Deaktivieren Sie die Replikation, und aktivieren Sie sie anschließend wieder, um einen Datenträger hinzuzufügen. | Sie können keine Datenträger mehr hinzufügen oder entfernen, nachdem die Replikation aktiviert wurde. Deaktivieren Sie die Replikation, und aktivieren Sie Sie anschließend wieder.
+**Hinzufügen/Entfernen** | Sie können verwaltete Datenträger auf replikationsaktivierten Azure-VMs mit verwalteten Datenträgern hinzufügen. Sie können Datenträger auf replikationsaktivierten Azure-VMs nicht entfernen. | Sie können keine Datenträger mehr hinzufügen oder entfernen, nachdem die Replikation aktiviert wurde. Deaktivieren Sie die Replikation, und aktivieren Sie sie anschließend wieder, um einen Datenträger hinzuzufügen. | Sie können keine Datenträger mehr hinzufügen oder entfernen, nachdem die Replikation aktiviert wurde. Deaktivieren Sie die Replikation, und aktivieren Sie Sie anschließend wieder.
 **Failover** | Wenn eine App einen von Ihnen ausgeschlossenen Datenträger benötigt, müssen Sie diesen nach einem Failover manuell erstellen, damit die replizierte App ausgeführt werden kann.<br/><br/> Alternativ können Sie den Datenträger auch während des VM-Failovers erstellen, indem Sie Azure Automation in einen Wiederherstellungsplan integrieren. | Wenn Sie einen Datenträger ausschließen, der von einer App benötigt wird, sollten Sie ihn nach dem Failover in Azure manuell erstellen. | Wenn Sie einen Datenträger ausschließen, der von einer App benötigt wird, sollten Sie ihn nach dem Failover in Azure manuell erstellen.
 **Manuell erstellte lokale Failbackdatenträger** | Nicht relevant | **Virtuelle Windows-Computer:** Für Datenträger, die in Azure manuell erstellt werden, wird kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf einem virtuellen Azure-Computer erstellen, erfolgt nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback.<br/><br/> **Virtuelle Linux-Computer:** Für Datenträger, die in Azure manuell erstellt werden, wird ein Failback ausgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger auf einer Azure-VM erstellen, wird für alle fünf ein Failback ausgeführt. Sie können keine Datenträger von einem Failback ausschließen, die manuell erstellt wurden. | Für Datenträger, die in Azure manuell erstellt werden, wird kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf einer Azure-VM erstellen, erfolgt nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback.
 **Lokale Datenträger, die vom Failback ausgeschlossen sind** | Nicht relevant | Wenn Sie ein Failback auf den ursprünglichen Computer ausführen, umfasst die Konfiguration des VM-Failbackdatenträgers nicht die ausgeschlossenen Datenträger. Datenträger, die von der Replikation von VMware zu Azure ausgeschlossen wurden, sind auf der Failback-VM nicht verfügbar. | Beim Failback zum ursprünglichen Hyper-V-Speicherort bleibt die Konfiguration des VM-Failbackdatenträgers mit der Konfiguration für den ursprünglichen VM-Quelldatenträger identisch. Datenträger, die von der Replikation vom Hyper-V-Standort zu Azure ausgeschlossen wurden, sind auf der Failback-VM verfügbar.

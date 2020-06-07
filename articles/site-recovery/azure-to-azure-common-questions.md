@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738047"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834576"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -100,6 +100,10 @@ Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wi
 Ja, Sie können die Anwendung replizieren und die Notfallwiederherstellungskonfiguration auch in einer separaten Ressourcengruppe speichern.
 
 Angenommen, Sie verwenden eine Anwendung, bei der die Ebenen von Anwendung, Datenbank und Web sich jeweils in einer separaten Ressourcengruppe befinden, dann müssen Sie den [Replikations-Assistenten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) dreimal auswählen, um alle Ebenen zu schützen. Site Recovery repliziert diese drei Ebenen in drei verschiedenen Ressourcengruppen.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Kann ich Speicherkonten über Ressourcengruppen hinweg verschieben?
+
+Nein, dieses Szenario wird nicht unterstützt. Wenn Sie jedoch versehentlich Speicherkonten in eine andere Ressourcengruppe verschieben und die ursprüngliche Ressourcengruppe löschen, können Sie eine neue Ressourcengruppe mit dem gleichen Namen wie die alte Ressourcengruppe erstellen und dann das Speicherkonto in diese Ressourcengruppe verschieben.
 
 ## <a name="replication-policy"></a>Replikationsrichtlinie
 
@@ -311,4 +315,4 @@ Ja. Sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung im R
 
 - [Überprüfen der Azure-zu-Azure-Supportanforderungen](azure-to-azure-support-matrix.md).
 - [Einrichten der Azure-zu-Azure-Replikation](azure-to-azure-tutorial-enable-replication.md).
-- Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+- Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese auf der [Microsoft F&A-Seite für Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112200"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725294"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -48,6 +48,18 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 >
 >In [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
 
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>Releasestatus
+07.05.2020: Für den Download veröffentlicht
+
+### <a name="fixed-issues"></a>Behobene Probleme
+Mit diesem Hotfixbuild wird ein Problem behoben, bei dem nicht ausgewählte Domänen auf der Benutzeroberfläche des Assistenten falsch ausgewählt wurden, wenn nur zwei Ebenen untergeordnete Container ausgewählt wurden.
+
+
+>[!NOTE]
+>Diese Version enthält die neue Synchronisierungsendpunkt-API V2 für Azure AD Connect.  Dieser neue V2-Endpunkt befindet sich zurzeit in der öffentlichen Vorschau.  Diese Version oder eine höhere Version ist für die Verwendung der neuen V2-Endpunkt-API erforderlich.  Durch die einfache Installation dieser Version wird der V2-Endpunkt jedoch nicht aktiviert. Der V1-Endpunkt wird weiterhin verwendet, es sei denn, Sie aktivieren den V2-Endpunkt.  Führen Sie die Schritte unter [Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau)](how-to-connect-sync-endpoint-api-v2.md) aus, um ihn zu aktivieren und die öffentliche Vorschau zu abonnieren.  
+
 ## <a name="15290"></a>1.5.29.0
 
 ### <a name="release-status"></a>Releasestatus
@@ -70,7 +82,10 @@ Dieser Hotfixbuild behebt ein Problem in Build 1.5.20.0, wenn Sie beim Klonen d
 09.04.2020: Für den Download veröffentlicht
 
 ### <a name="fixed-issues"></a>Behobene Probleme
-Durch diesen Hotfix-Build wird ein Problem mit dem Build 1.5.18.0 behoben, das auftrat, wenn die Gruppenfilterung aktiviert war und „ms-DS-ConsistencyGuid“ als Quellanker verwendet wurde.
+- Durch diesen Hotfix-Build wird ein Problem mit dem Build 1.5.18.0 behoben, das auftrat, wenn die Gruppenfilterung aktiviert war und „ms-DS-ConsistencyGuid“ als Quellanker verwendet wurde.
+- Es wurde ein Problem im PowerShell-Modul ADSyncConfig behoben, bei dem das Aufrufen des DSACLS-Befehls, der in allen Set-ADSync-Berechtigungs-Cmdlets* verwendet wird, einen der folgenden Fehler verursacht hat:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > Wenn Sie die Synchronisierungsregel **Eingehend aus AD – Gruppenverknüpfung** geklont haben, aber nicht die Synchronisierungsregel **Eingehend aus AD – Gruppen allgemein**, und nun ein Upgrade planen, führen Sie im Rahmen des Upgrades die folgenden Schritte aus:
@@ -1324,7 +1339,6 @@ Veröffentlichung: Juni 2015
 **Neue Vorschaufeatures:**
 
 * [Rückschreiben von Benutzern](how-to-connect-preview.md#user-writeback)
-* [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback)
 * [Geräterückschreiben](how-to-connect-device-writeback.md)
 * [Verzeichniserweiterungen](how-to-connect-preview.md)
 

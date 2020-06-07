@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561997"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653641"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen verschiedenen Knoten eines eigenständigen Windows-Clusters sichern. Außerdem wird beschrieben, wie Sie mithilfe von X.509-Zertifikaten Clients authentifizieren, die sich mit diesem Cluster verbinden. Mit der Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und bereitgestellte Anwendungen zugreifen und Verwaltungsaufgaben ausführen können. Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -248,9 +248,21 @@ Bei Verwendung von Zertifikatausstellerspeichern muss kein Konfigurationsupgrade
 ## <a name="acquire-the-x509-certificates"></a>Erwerben der X.509-Zertifikate
 Zum Schutz der Kommunikation zwischen Clustern müssen Sie zuerst X.509-Zertifikate für die Clusterknoten abrufen. Um die Verbindungsherstellung für diesen Cluster auf autorisierte Computer und Benutzer zu beschränken, müssen Sie Zertifikate für die Clientcomputer abrufen und installieren.
 
-Verwenden Sie zum Schutz von Clustern, die Produktionsworkloads ausführen, ein von der [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) signiertes X.509-Zertifikat. Weitere Informationen zum Abrufen dieser Zertifikate finden Sie unter [Abrufen eines Zertifikats](https://msdn.microsoft.com/library/aa702761.aspx).
+Verwenden Sie zum Schutz von Clustern, die Produktionsworkloads ausführen, ein von der [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) signiertes X.509-Zertifikat. Weitere Informationen zum Abrufen dieser Zertifikate finden Sie unter [Abrufen eines Zertifikats](https://msdn.microsoft.com/library/aa702761.aspx). 
+
+Es gibt eine Reihe von Eigenschaften, die das Zertifikat besitzen muss, damit es ordnungsgemäß funktioniert:
+
+* Der Anbieter des Zertifikats muss **Microsoft Enhanced RSA and AES Cryptographic Provider** sein.
+
+* Wenn Sie einen RSA-Schlüssel erstellen, stellen Sie sicher, dass der Schlüssel ein **2048-Bit-Schlüssel** ist.
+
+* Die Erweiterung „Key Usage“ hat den Wert **Digital Signature, Key Encipherment (a0)** .
+
+* Die Erweiterung „Enhanced Key Usage“ weist die Werte **Server Authentication** (OID: 1.3.6.1.5.5.7.3.1) und **Client Authentication** (OID: (1.3.6.1.5.5.7.3.2) auf.
 
 Für Testcluster können Sie ein selbstsigniertes Zertifikat verwenden.
+
+Antworten auf weitere Fragen finden Sie unter [häufig gestellte Fragen zu Zertifikaten](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions).
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Optional: Erstellen eines selbstsignierten Zertifikats
 Ein selbstsigniertes Zertifikat, das ordnungsgemäß geschützt werden kann, können Sie beispielsweise mithilfe des Skripts „CertSetup.ps1“ im Service Fabric SDK-Ordner im Verzeichnis „C:\Programme\Microsoft SDKs\Service Fabric\ClusterSetup\Secure“ erstellen. Bearbeiten Sie diese Datei, um den Standardnamen des Zertifikats zu ändern. Suchen Sie dabei nach dem Wert „CN=ServiceFabricDevClusterCert“. Führen Sie dieses Skript als `.\CertSetup.ps1 -Install` aus.

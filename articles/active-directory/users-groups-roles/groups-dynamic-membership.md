@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582901"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744695"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -118,7 +118,7 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 | streetAddress |Jeder string-Wert oder *null* |(user.streetAddress -eq "value") |
 | surname |Jeder string-Wert oder *null* |(user.surname -eq "value") |
 | telephoneNumber |Jeder string-Wert oder *null* |(user.telephoneNumber -eq "value") |
-| usageLocation |Aus zwei Buchstaben bestehender Ländercode. |(user.usageLocation -eq "US") |
+| usageLocation |Aus zwei Buchstaben bestehender Länder-/Regionscode |(user.usageLocation -eq "US") |
 | userPrincipalName |Ein beliebiger Zeichenfolgenwert |(user.userPrincipalName -eq "alias@domain") |
 | userType |member-Gast *null* |(user.userType -eq "Member") |
 

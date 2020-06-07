@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: d6cf00fab14f91b151327b435068d689edab32b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778463"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737723"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -117,6 +117,10 @@ Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte
 - [Aus dem Katalog hinzugefügte Anwendungen](../manage-apps/add-application-portal.md)
 - [Benutzerdefinierte Nicht-Kataloganwendungen](../manage-apps/add-non-gallery-app.md)
 - [Ältere Anwendungen, die über App-Bereitstellungscontroller und -netzwerke veröffentlicht wurden](../manage-apps/secure-hybrid-access.md)
+
+> [!NOTE]
+> Da die Richtlinie für bedingten Zugriff die Anforderungen für den Zugriff auf einen Dienst festlegt, können Sie sie nicht auf eine Clientanwendung (öffentliche/native Anwendung) anwenden. Anders ausgedrückt: Die Richtlinie wird nicht direkt in einer Clientanwendung (öffentlichen/nativen Anwendung) festgelegt, sondern angewendet, wenn ein Client einen Dienst aufruft. Eine Richtlinie, die für den SharePoint-Dienst festgelegt wurde, gilt beispielsweise für die Clients, die SharePoint aufrufen. Eine Richtlinie, die für Exchange festgelegt wurde, gilt für den Zugriffsversuch auf E-Mail mithilfe des Outlook-Clients. Aus diesem Grund stehen Clientanwendungen (öffentliche/native Anwendungen) in der Cloud-Apps-Auswahl nicht zur Auswahl zur Verfügung, und die Option „Bedingter Zugriff“ ist in den Anwendungseinstellungen für die in Ihrem Mandanten registrierte Clientanwendung (öffentliche/native Anwendung) nicht verfügbar. 
+
 
 ## <a name="user-actions"></a>Benutzeraktionen
 

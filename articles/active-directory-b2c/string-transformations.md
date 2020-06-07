@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81756792"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739089"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -516,7 +516,7 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - Ausgabeansprüche:
-    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
 Wenn der Eingabeparameter `errorOnFailedLookup` auf `true` festgelegt ist, wird die Anspruchstransformation **LookupValue** immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird (oder von einem Element vom Typ [DisplayControl](display-controls.md)). Die `LookupNotFound`-Metadaten eines selbstbestätigten technischen Profils steuern die Fehlermeldung, die dem Benutzer angezeigt wird.
 
@@ -825,7 +825,7 @@ Extrahiert Teile eines Zeichenfolgenanspruchstyps ab dem Zeichen an der angegebe
 | InputParameter | length | INT | Die Anzahl der Zeichen in der Teilzeichenfolge. |
 | OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der Teilzeichenfolge mit der Länge ab „startIndex“ in dieser Instanz entspricht, oder „Empty“, wenn „startIndex“ der Länge dieser Instanz entspricht und „length“ Null ist. |
 
-Ruft z. B. die Ländervorwahl der Telefonnummer ab.
+Ruft z. B. die Länder-/Regionsvorwahl der Telefonnummer ab.
 
 
 ```XML

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c16ba26d1c59bd932e657f41882fbd23dc3a69e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592229"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860595"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -99,14 +99,6 @@ Alle Azure DevOps-Richtlinien des Unternehmens können von Benutzern mit dieser 
 ### <a name="azure-information-protection-administrator"></a>[Azure Information Protection-Administrator](#azure-information-protection-administrator-permissions)
 
 Benutzer mit dieser Rolle besitzen alle Berechtigungen für den Azure Information Protection-Dienst. Sie können Bezeichnungen für die Azure Information Protection-Richtlinie konfigurieren, Schutzvorlagen verwalten und den Schutz aktivieren. Diese Rolle gewährt keine Berechtigungen für Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health oder Office 365 Security & Compliance Center.
-
-### <a name="b2c-user-flow-administrator"></a>[B2C-Benutzerflowadministrator](#b2c-user-flow-administrator-permissions)
-
-Benutzer mit dieser Rolle können B2C-Benutzerflows (auch als „integrierte“ Richtlinien bezeichnet) im Azure-Portal erstellen und verwalten. Durch Erstellen oder Bearbeiten von Benutzerflows können diese Benutzer den HTML-/CSS-/JavaScript-Inhalt für Benutzer ändern, die MFA-Anforderungen pro Benutzerflow ändern, Ansprüche im Token ändern und Sitzungseinstellungen für alle Richtlinien in der Azure AD-Organisation anpassen. Auf der anderen Seite bietet diese Rolle nicht die Möglichkeit, Benutzerdaten zu überprüfen oder Änderungen an Attributen vorzunehmen, die im Organisationsschema enthalten sind. Änderungen an Richtlinien des Identity Experience Framework (auch bezeichnet als „Custom“) sind auch außerhalb des Bereichs dieser Rolle möglich.
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[B2C-Administrator für Benutzerflowattribute](#b2c-user-flow-attribute-administrator-permissions)
-
-Benutzer mit dieser Rolle können benutzerdefinierte Attribute, die für alle Benutzerflows in der Azure AD-Organisation verfügbar sind, hinzufügen und löschen. Daher können Benutzer mit dieser Rolle dem Benutzerschema neue Elemente hinzufügen und diese ändern und haben damit Einfluss auf das Verhalten aller Benutzerflows. Indirekt kann dies auch ändern, welche Daten von Benutzern abgefragt und letztendlich als Ansprüche an Anwendungen gesendet werden. Diese Rolle kann keine Benutzerflows bearbeiten.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C-IEF-Schlüsselsatzadministrator](#b2c-ief-keyset-administrator-permissions)
 
@@ -214,6 +206,15 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Exchange-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Exchange-Administrator“. Im [Exchange Admin Center](https://go.microsoft.com/fwlink/p/?LinkID=529144) lautet sie „Exchange Online-Administrator“.
 
+
+### <a name="external-id-user-flow-administrator"></a>[Administrator für Benutzerflows mit externer ID](#external-id-user-flow-administrator-permissions)
+
+Benutzer mit dieser Rolle können B2C-Benutzerflows (auch als „integrierte“ Richtlinien bezeichnet) im Azure-Portal erstellen und verwalten. Durch Erstellen oder Bearbeiten von Benutzerflows können diese Benutzer den HTML-/CSS-/JavaScript-Inhalt für Benutzer ändern, die MFA-Anforderungen pro Benutzerflow ändern, Ansprüche im Token ändern und Sitzungseinstellungen für alle Richtlinien in der Azure AD-Organisation anpassen. Auf der anderen Seite bietet diese Rolle nicht die Möglichkeit, Benutzerdaten zu überprüfen oder Änderungen an Attributen vorzunehmen, die im Organisationsschema enthalten sind. Änderungen an Richtlinien des Identity Experience Framework (auch bezeichnet als „Custom“) sind auch außerhalb des Bereichs dieser Rolle möglich.
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[Administrator für Benutzerflowattribute mit externer ID](#external-id-user-flow-attribute-administrator-permissions)
+
+Benutzer mit dieser Rolle können benutzerdefinierte Attribute, die für alle Benutzerflows in der Azure AD-Organisation verfügbar sind, hinzufügen und löschen. Daher können Benutzer mit dieser Rolle dem Benutzerschema neue Elemente hinzufügen und diese ändern und haben damit Einfluss auf das Verhalten aller Benutzerflows. Indirekt kann dies auch ändern, welche Daten von Benutzern abgefragt und letztendlich als Ansprüche an Anwendungen gesendet werden. Diese Rolle kann keine Benutzerflows bearbeiten.
+
 ### <a name="external-identity-provider-administrator"></a>[Externer Identitätsanbieteradministrator](#external-identity-provider-administrator-permissions)
 
 Dieser Administrator verwaltet den Verbund zwischen Azure AD-Organisationen und externen Identitätsanbietern. Benutzer mit dieser Rolle können neue Identitätsanbieter hinzufügen und alle verfügbaren Einstellungen (z.B. Authentifizierungspfad, Dienst-ID, zugewiesene Schlüsselcontainer) konfigurieren. Diese Benutzer können festlegen, dass die Azure AD-Organisation Authentifizierungen von externen Identitätsanbietern vertraut. Die resultierenden Auswirkungen auf die Benutzerumgebung hängt vom Typ der Organisation ab:
@@ -237,8 +238,6 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > [!NOTE]
 > Die Rolle „Globaler Leser“ weist zurzeit einige Einschränkungen auf.
 >
->- [OneDrive Admin Center:](https://admin.onedrive.com/) OneDrive Admin Center unterstützt die Rolle „Globaler Leser“ nicht.
->- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/): Die Rolle „Globaler Leser“ kann den Bereitstellungsmodus einer Unternehmens-App nicht lesen.
 >- [M365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage): Die Rolle „Globaler Leser“ kann keine Kunden-Lockbox-Anforderungen lesen. Im linken Bereich von M365 Admin Center wird keine Registerkarte **Kunden-Lockbox-Anforderungen** unter **Support** angezeigt.
 >- [Office Security & Compliance Center](https://sip.protection.office.com/homepage): Die Rolle „Globaler Leser“ kann weder SCC-Überwachungsprotokolle lesen, die Inhaltssuche durchführen noch die Sicherheitsbewertung anzeigen.
 >- [Teams Admin Center](https://admin.teams.microsoft.com): Die Rolle „Globaler Leser“ kann den **Teams-Lebenszyklus**, **Analysen und Berichte**, die **IP-Telefon-Geräteverwaltung** und den **App-Katalog** nicht lesen.
@@ -307,6 +306,21 @@ Benutzer mit dieser Rolle können alle Benachrichtigungen im Nachrichtencenter �
 ### <a name="message-center-reader"></a>[Nachrichtencenter-Leseberechtigter](#message-center-reader-permissions)
 
 Benutzer mit dieser Rolle können Benachrichtigungen und empfohlene Integritätsupdates für ihre Organisation und die konfigurierten Dienste wie Exchange, Intune und Microsoft Teams im [Office 365-Nachrichtencenter](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) überwachen. Nachrichtencenter-Leser erhalten eine wöchentliche E-Mail-Übersicht der Beiträge und Updates und können Beiträge in Office 365 teilen. In Azure AD haben Benutzer mit dieser Rolle nur schreibgeschützten Zugriff auf Azure AD-Dienste wie Benutzer und Gruppen. Diese Rolle kann keine Supporttickets anzeigen, erstellen oder verwalten.
+
+### <a name="modern-commerce-administrator"></a>[Moderner Commerceadministrator](#modern-commerce-administrator-permissions)
+Darf nicht verwendet werden. Diese Rolle wird automatisch von Commerce zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt. Die Details hierzu finden Sie unten.
+
+Mit der Rolle „Moderner Commerceadministrator“ sind bestimmte Benutzer berechtigt, auf Microsoft 365 Admin Center zuzugreifen und die linken Navigationseinträge für **Home**, **Abrechnung** und **Support** anzuzeigen. Der in diesen Bereichen verfügbare Inhalt wird von [commercespezifischen Rollen gesteuert](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles), die Benutzern zugewiesen werden, um Produkte zu verwalten, die sie für sich selbst oder für Ihre Organisation gekauft haben. Dies kann Aufgaben wie das Bezahlen von Rechnungen oder den Zugriff auf Abrechnungskonten und Abrechnungsprofile umfassen. 
+
+Benutzer mit der Rolle „Moderner Commerceadministrator“ verfügen in der Regel über administrative Berechtigungen in anderen Microsoft-Einkaufssystemen, jedoch nicht über die Rollen „Unternehmensadministrator“ oder „Abrechnungsadministrator“, die für den Zugriff auf Admin Center verwendet werden. 
+
+**Wann wird die Rolle „Moderner Commerceadministrator“ zugewiesen?**
+* **Self-Service-Käufe in Microsoft 365 Admin Center**: Self-Service-Käufe bieten Benutzern die Möglichkeit, neue Produkte zu testen, indem sie sich diese Produkte selbst kaufen oder sich dafür registrieren. Diese Produkte werden in Admin Center verwaltet. Benutzern, die einen Self-Service-Kauf tätigen, wird eine Rolle im Commerce System und die Rolle „Moderner Commerceadministrator“ zugewiesen, damit sie ihre Käufe in Admin Center verwalten können. Administratoren können über [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) Self-Service-Käufe (für Power BI, Power Apps, Power Automate) blockieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Self-Service-Einkäufen](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Käufe über den kommerziellen Microsoft Marketplace**: Wenn ein Benutzer ein Produkt oder einen Dienst von Microsoft AppSource oder Azure Marketplace kauft, wird ähnlich wie beim Self-Service-Kauf die Rolle „Moderner Commerceadministrator“ zugewiesen, wenn er nicht über die Rolle „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt. In einigen Fällen werden Benutzer möglicherweise daran gehindert, diese Käufe durchzuführen. Weitere Informationen finden Sie unter [Kommerzieller Microsoft Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
+* **Vorschläge von Microsoft**: Ein Vorschlag ist ein formales Angebot von Microsoft für Ihre Organisation, Microsoft-Produkte und -Dienste zu erwerben. Wenn die Person, die den Vorschlag annimmt, nicht in Azure AD über eine globale Administrator- oder Abrechnungsadministratorrolle verfügt, wird ihr eine commercespezifische Rolle zugewiesen, um den Vorschlag abzuschließen, sowie die Rolle „Moderner Commerceadministrator“ für den Zugriff auf Admin Center. Wenn diese Person auf Admin Center zugreifen, kann sie nur Funktionen verwenden, die von ihrer commercespezifischen Rolle autorisiert werden. 
+* **Commercespezifische Rollen**: Einigen Benutzern werden commercespezifische Rollen zugewiesen. Wenn ein Benutzer kein globaler Administrator oder Abrechnungsadministrator ist, erhält er die Rolle „Moderner Commerceadministrator“, damit er auf Admin Center zugreifen kann.  
+
+Wenn die Zuweisung der Rolle „Moderner Commerceadministrator“ für einen Benutzer aufgehoben wird, verliert er den Zugriff auf Microsoft 365 Admin Center. Wenn er Produkte entweder für sich selbst oder für Ihre Organisation verwaltet hat, kann er die Verwaltung nicht fortsetzen. Dies kann das Zuweisen von Lizenzen, das Ändern von Zahlungsmethoden, das Bezahlen von Rechnungen oder andere Aufgaben zum Verwalten von Abonnements umfassen. 
 
 ### <a name="network-administrator"></a>[Netzwerkadministrator](#network-administrator-permissions)
 
@@ -382,7 +396,7 @@ Benutzer mit dieser Rolle können Inhalte für Microsoft Search im Microsoft 365
 
 ### <a name="security-administrator"></a>[Sicherheitsadministrator](#security-administrator-permissions)
 
-Benutzer mit dieser Rolle haben Berechtigungen zur Verwaltung sicherheitsrelevanter Funktionen im Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Information Protection und Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+Benutzer mit dieser Rolle haben Berechtigungen zur Verwaltung sicherheitsrelevanter Funktionen in Microsoft 365 Security Center, Azure Active Directory Identity Protection, für Azure Active Directory-Authentifizierung, Azure Information Protection und Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 Geben Sie in | Möglich
 --- | ---
@@ -396,6 +410,8 @@ Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergrup
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Hinzufügen von Administratoren, Richtlinien und Einstellungen, Hochladen von Protokollen und Ausführen von Governanceaktionen
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen.
 [Office 365-Dienstintegrität](https://docs.microsoft.com/office365/enterprise/view-service-health) | Anzeigen der Integrität von Office 365-Diensten
+[Smart Lockout](../authentication/howto-password-smart-lockout.md) | Hiermit werden der Schwellenwert und die Dauer für Sperren definiert, wenn fehlerhafte Anmeldeereignisse auftreten.
+[Kennwortschutz](../authentication/concept-password-ban-bad.md) | Konfigurieren Sie die benutzerdefinierte Liste der gesperrten Kennwörter oder lokalen Kennwortschutz.
 
 ### <a name="security-operator"></a>[Sicherheitsoperator](#security-operator-permissions)
 
@@ -597,22 +613,6 @@ Verwalten sämtlicher Aspekte des Azure Information Protection-Diensts.
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>Berechtigungen von B2C-Benutzerflowadministratoren
-
-Erstellen und Verwalten aller Aspekte von Benutzerflows
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.aad.b2c/userFlows/allTasks | Erstellen und Konfigurieren von Benutzerflows in Azure Active Directory B2C |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>Berechtigungen von B2C-Administratoren für Benutzerflowattribute
-
-Erstellen und Verwalten des Attributschemas für alle Benutzerabläufe
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.aad.b2c/userAttributes/allTasks | Lesen und Konfigurieren von Benutzerattributen in Azure Active Directory B2C |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>Berechtigungen von B2C-IEF-Schlüsselsatzadministratoren
 
@@ -1029,6 +1029,22 @@ Verwalten sämtlicher Aspekte des Produkts Exchange.
 | microsoft.office365.usageReports/allEntities/read | Lesen von Office 365-Nutzungsberichten. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 
+### <a name="external-id-user-flow-administrator-permissions"></a>Berechtigungen von B2C-Benutzerflowadministratoren mit externer ID
+
+Erstellen und Verwalten aller Aspekte von Benutzerflows
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Erstellen und Konfigurieren von Benutzerflows in Azure Active Directory B2C |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Berechtigungen von Administratoren für Benutzerflowattribute mit externer ID
+
+Erstellen und Verwalten des Attributschemas für alle Benutzerabläufe
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Lesen und Konfigurieren von Benutzerattributen in Azure Active Directory B2C |
+
 ### <a name="external-identity-provider-administrator-permissions"></a>Berechtigungen von externen Identitätsanbieteradministratoren
 
 Konfigurieren von Identitätsanbietern für die Verwendung in einem direkten Verbund
@@ -1316,6 +1332,23 @@ Lesen von Nachrichten und Updates für die Organisation ausschließlich im Offic
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 | microsoft.office365.messageCenter/messages/read | Lesen von Nachrichten in microsoft.office365.messageCenter |
+
+### <a name="modern-commerce-administrator-permissions"></a>Berechtigungen „Moderner Commerceadministrator“
+Kann kommerzielle Käufe für ein Unternehmen, eine Abteilung oder ein Team verwalten. 
+
+> [!NOTE]
+> Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
+>
+>
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.commerce.billing/partners/read | Lesen der Partnereigenschaft der O365-Abrechnung. |
+| microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | Verwalten aller Aspekte von Volume Licensing Service Center. |
+| microsoft.directory/organization/basic/update | Aktualisieren der Basiseigenschaften für die Organisation in Azure Active Directory |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
+
 
 ### <a name="network-administrator-permissions"></a>Berechtigungen von Netzwerkadministratoren
 Verwalten von Netzwerkstandorten und überprüfen von Erkenntnissen zum Entwurf des Unternehmensnetzwerks für Microsoft 365-SaaS-Anwendungen (Software-as-a-Service).
@@ -1807,8 +1840,6 @@ Anwendungsentwickler | Anwendungsentwickler | CF1C38E5-3621-4004-A7CB-879624DCED
 Authentifizierungsadministrator | Authentifizierungsadministrator | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps-Administrator | Azure DevOps-Administrator | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection-Administrator | Azure Information Protection-Administrator | 7495fdc4-34c4-4d15-a289-98788ce399fd
-B2C-Benutzerflowadministrator | B2C-Benutzerflowadministrator | 6e591065-9bad-43ed-90f3-e9424366d2f0
-B2C-Administrator für Benutzerflowattribute | B2C-Administrator für Benutzerflowattribute | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C-IEF-Schlüsselsatzadministrator | B2C-IEF-Schlüsselsatzadministrator | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C-IEF-Richtlinienadministrator | B2C-IEF-Richtlinienadministrator | 3edaf663-341e-4475-9f94-5c398ef6c070
 Abrechnungsadministrator | Rechnungsadministrator | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1829,6 +1860,8 @@ Rolle „Verzeichnis lesen“ | Rolle „Verzeichnis lesen“ | 88d8e3e3-8f55-4a
 Konten zur Verzeichnissynchronisierung | Nicht angezeigt, da keine Verwendung erfolgen soll | d29b2b05-8046-44ba-8758-1e26182fcf32
 Verzeichnis schreiben | Nicht angezeigt, da keine Verwendung erfolgen soll | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange-Dienstadministrator | Exchange-Administrator | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Administrator für Benutzerflows mit externer ID | Administrator für Benutzerflows mit externer ID | 6e591065-9bad-43ed-90f3-e9424366d2f0
+Administrator für Benutzerflowattribute mit externer ID | Administrator für Benutzerflowattribute mit externer ID | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Externer Identitätsanbieteradministrator | Externer Identitätsanbieteradministrator | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globaler Leser | Globaler Leser | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Gruppenadministrator | Gruppenadministrator | fdd7a751-b60b-444a-984c-02652fe8fa1c 
@@ -1841,6 +1874,7 @@ Lizenzadministrator | Lizenzadministrator | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-Dienstadministrator | Skype for Business-Administrator | 75941009-915a-4869-abe7-691bff18279e
 Nachrichtencenter-Datenschutzleseberechtigter | Nachrichtencenter-Datenschutzleseberechtigter | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Nachrichtencenter-Leser | Nachrichtencenter-Leser | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Moderner Commerceadministrator | Moderner Commerceadministrator | d24aef57-1500-4070-84db-2666f29cf966
 Netzwerkadministrator | Netzwerkadministrator | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office-Apps-Administrator | Office-Apps-Administrator | 2b745bdf-0803-4d80-aa65-822c4493daac
 Partnersupport der Ebene 1 | Nicht angezeigt, da keine Verwendung erfolgen soll | 4ba39ca4-527c-499a-b93d-d9b492c50246

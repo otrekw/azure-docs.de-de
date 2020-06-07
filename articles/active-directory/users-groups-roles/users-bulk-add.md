@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203397"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848922"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
 
@@ -66,7 +66,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Importieren der neuen Benutzer zu starten.
 1. Nach Abschluss des Importvorgangs wird eine Benachrichtigung mit dem Auftragsstatus des Massenvorgangs angezeigt.
 
-Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse von Massenvorgängen** herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
+Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse von Massenvorgängen** herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler. Die Dateiübermittlung muss mit der angegebenen Vorlage übereinstimmen und die genauen Spaltennamen enthalten.
 
 ## <a name="check-status"></a>Status überprüfen
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057288"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738556"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -54,7 +54,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](ht
 |jobTitle        |String|Die Position des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Ja|Persistent, Ausgabe|
 |immutableId     |String|Ein Bezeichner, der in der Regel für Benutzer verwendet wird, die von einer lokalen Active Directory-Instanz migriert werden.|Nein|Nein|Persistent, Ausgabe|
 |legalAgeGroupClassification|String|Rechtliche Altersgruppenklassifizierung. Dieses Attribut ist schreibgeschützt und wird basierend auf den Eigenschaften „ageGroup“ und „consentProvidedForMinor“ berechnet. Zulässige Werte: „Null“, „minorWithOutParentalConsent“, „minorWithParentalConsent“, „minorNoParentalConsentRequired“, „notAdult“ und „adult“.|Ja|Nein|Persistent, Ausgabe|
-|legalCountry<sup>1</sup>  |String|Das Land für rechtliche Zwecke.|Nein|Nein|Persistent, Ausgabe|
+|legalCountry<sup>1</sup>  |String|Land/Region für rechtliche Zwecke.|Nein|Nein|Persistent, Ausgabe|
 |mail            |String|Die SMTP-Adresse für den Benutzer, z. B. „bob@contoso.com“. Schreibgeschützt.|Nein|Nein|Persistent, Ausgabe|
 |mailNickName    |String|Der E-Mail-Alias für den Benutzer. Maximale Länge: 64 Zeichen.|Nein|Nein|Persistent, Ausgabe|
 |mobile (mobilePhone) |String|Die primäre Mobiltelefonnummer des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Nein|Persistent, Ausgabe|
@@ -62,7 +62,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](ht
 |objectId        |String|Ein global eindeutiger Bezeichner (Globally Unique Identifier, GUID), bei dem es sich um den eindeutigen Bezeichner für den Benutzer handelt. Beispiel: 12345678-9abc-def0-1234-56789abcde. Schreibgeschützt, unveränderlich.|Nur Lesezugriff|Ja|Eingabe, Persistent, Ausgabe|
 |otherMails      |Zeichenfolgensammlung|Eine Liste zusätzlicher E-Mail-Adressen für den Benutzer. Beispiel: [„bob@contoso.com“, „Robert@fabrikam.com“].|Ja (Alternative E-Mail-Adresse)|Nein|Persistent, Ausgabe|
 |password        |String|Das Kennwort für das lokale Konto bei der Benutzererstellung.|Nein|Nein|Persistent|
-|passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Beispiel: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
+|passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Das heißt: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
 |physicalDeliveryOfficeName (officeLocation)|String|Position des Büros am Unternehmensstandort des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |postalCode      |String|Die Postleitzahl der Anschrift des Benutzers. Die Postleitzahl ist spezifisch für das Land oder die Region des Benutzers. In den USA enthält dieses Attribut die Postleitzahl. Maximale Länge: 40 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |preferredLanguage    |String|Die bevorzugte Sprache des Benutzers. Sollte den ISO 639-1-Codes entsprechen. Beispiel:„ en-US“.|Nein|Nein|Persistent, Ausgabe|
@@ -79,7 +79,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](ht
 |surname         |String|Der Nachname (oder Familienname) des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Ja|Persistent, Ausgabe|
 |telephoneNumber (erster Eintrag von „businessPhones“)|String|Die primäre geschäftliche Telefonnummer des Benutzers.|Ja|Nein|Persistent, Ausgabe|
 |userPrincipalName    |String|Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers. Der UPN ist ein Anmeldename im Internetformat für den Benutzer basierend auf dem Internetstandard RFC 822. Die Domäne muss in der Sammlung der überprüften Domänen des Mandanten enthalten sein. Diese Eigenschaft ist beim Erstellen eines Kontos erforderlich. Unveränderlich.|Nein|Nein|Eingabe, Persistent, Ausgabe|
-|usageLocation   |String|Erforderlich für Benutzer, denen aufgrund gesetzlicher Anforderungen Lizenzen zugewiesen werden, um die Verfügbarkeit von Diensten in den jeweiligen Ländern zu überprüfen. Lässt keine NULL-Werte zu. Ein aus zwei Buchstaben bestehender Ländercode (ISO-Standard 3166). Beispiele: „US“, „JP“ und „GB“.|Ja|Nein|Persistent, Ausgabe|
+|usageLocation   |String|Erforderlich für Benutzer, denen aufgrund gesetzlicher Anforderungen Lizenzen zugewiesen werden, um die Verfügbarkeit von Diensten in den jeweiligen Ländern/Regionen zu überprüfen. Lässt keine NULL-Werte zu. Ein aus zwei Buchstaben bestehender Länder-/Regionscode (ISO-Standard 3166). Beispiele: „US“, „JP“ und „GB“.|Ja|Nein|Persistent, Ausgabe|
 |userType        |String|Ein Zeichenfolgenwert, der zum Klassifizieren von Benutzertypen in Ihrem Verzeichnis verwendet werden kann. Der Wert muss „Member“ (Mitglied) lauten. Schreibgeschützt.|Nur Lesezugriff|Nein|Persistent, Ausgabe|
 |userState (externalUserState)<sup>2</sup>|String|Gilt nur für das Azure AD B2B-Konto. Gibt an, ob der Status der Einladung „PendingAcceptance“ (Annahme ausstehend) oder „Accepted“ (Angenommen) lautet.|Nein|Nein|Persistent, Ausgabe|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|Datetime|Zeigt den Zeitstempel der letzten Änderung der „UserState“-Eigenschaft an.|Nein|Nein|Persistent, Ausgabe|

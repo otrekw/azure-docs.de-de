@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77483753"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827164"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -36,7 +36,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 ![Nahtloses einmaliges Anmelden](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Für das nahtlose einmalige Anmelden darf das Gerät des Benutzers ausschließlich **in die Domäne eingebunden** sein, für in [Azure AD eingebundene](../devices/concept-azure-ad-join.md) oder [In Hybrid-Azure AD eingebundene](../devices/concept-azure-ad-join-hybrid.md) Geräte kann diese Funktion nicht verwendet werden. Das einmalige Anmelden (SSO) für in Azure AD und in Hybrid-Azure AD eingebundene Geräte funktioniert basierend auf dem [primären Aktualisierungstoken](../devices/concept-primary-refresh-token.md).
+>Für das nahtlose einmalige Anmelden darf das Gerät des Benutzers ausschließlich **in die Domäne eingebunden** sein, für in [Azure AD eingebundene](../devices/concept-azure-ad-join.md) oder [In Hybrid-Azure AD eingebundene](../devices/concept-azure-ad-join-hybrid.md) Geräte kann diese Funktion nicht verwendet werden. Das einmalige Anmelden (SSO) für in Azure AD oder in Hybrid-Azure AD eingebundene Geräte sowie in Azure AD registrierte Geräte funktioniert basierend auf dem [primären Aktualisierungstoken](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Hauptvorteile
 

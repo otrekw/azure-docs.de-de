@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74275467"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846731"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -71,7 +71,7 @@ Als ersten schnellen Schritt können Sie die interne URL überprüfen und korrig
 So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
 1. Öffnen Sie die Anwendung im Verwaltungsportal, indem Sie zu **Azure Active Directory** navigieren und dann auf **Unternehmensanwendungen** und **Alle Anwendungen** klicken. Öffnen Sie die Anwendung, und wählen Sie dann im linken Menü **Anwendungsproxy** aus.
-1. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
+1. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle [erforderlichen Ports](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) zulässig sind.
 1. Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
 1. Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
 
@@ -83,7 +83,7 @@ Testen Sie nach dem Ausführen der Schritte die Anwendung erneut, um sicherzuste
 
 ## <a name="check-all-required-ports-are-open"></a>Überprüfen, ob alle erforderlichen Ports geöffnet sind
 
-Informationen zur Überprüfung, ob alle erforderlichen Ports geöffnet sind, finden Sie in der Dokumentation zum Öffnen von Ports. Wenn alle erforderlichen Ports geöffnet sind, fahren Sie mit dem nächsten Abschnitt fort.
+Informationen zur Überprüfung, ob alle erforderlichen Ports geöffnet sind, finden Sie in der [Dokumentation zum Öffnen von Ports](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to). Wenn alle erforderlichen Ports geöffnet sind, fahren Sie mit dem nächsten Abschnitt fort.
 
 ## <a name="check-for-other-connector-errors"></a>Überprüfen auf andere Connectorfehler
 

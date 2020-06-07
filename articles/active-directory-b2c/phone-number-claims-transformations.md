@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183929"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738760"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definieren von Anspruchstransformationen von Telefonnummern in Azure AD B2C
 
@@ -62,8 +62,8 @@ Diese Anspruchstransformation überprüft das Format der Telefonnummer. Wenn ein
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumberString | Zeichenfolge |  Der Zeichenfolgenanspruch für die Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. Wenn der Eingabeanspruch `country` bereitgestellt wird, liegt die Telefonnummer im lokalen Format vor (ohne Ländercode). |
-| InputClaim | country | Zeichenfolge | [Optional] Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer im ISO3166-Format (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
+| InputClaim | phoneNumberString | Zeichenfolge |  Der Zeichenfolgenanspruch für die Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Länder-/Regionscode vorangestellt werden. Wenn der Eingabeanspruch `country` bereitgestellt wird, liegt die Telefonnummer im lokalen Format vor (ohne Länder-/Regionscode). |
+| InputClaim | country | Zeichenfolge | [Optional] Der Zeichenfolgenanspruch für den Länder-/Regionscode der Telefonnummer im ISO3166-Format (der aus zwei Buchstaben bestehende ISO-3166-Länder-/Regionscode). |
 | OutputClaim | outputClaim | phoneNumber | Das Ergebnis dieser Anspruchstransformation. |
 
 Die Anspruchstransformation **ConvertStringToPhoneNumberClaim** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einem [Anzeigesteuerelement](display-controls.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationInvalidPhoneNumber** steuern die Fehlermeldung, die dem Benutzer anzeigt wird.
@@ -113,24 +113,24 @@ Das selbstbestätigte technische Profil, das das technische Validierungsprofil a
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-Hierdurch werden der Ländercode und die nationale Rufnummer aus dem Eingabeanspruch extrahiert. Optional wird eine Ausnahme ausgelöst, wenn die angegebene Telefonnummer ungültig ist.
+Hierdurch werden der Länder-/Regionscode und die nationale Rufnummer aus dem Eingabeanspruch extrahiert. Optional wird eine Ausnahme ausgelöst, wenn die angegebene Telefonnummer ungültig ist.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | Zeichenfolge | Der Zeichenfolgenanspruch der Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. |
+| InputClaim | phoneNumber | Zeichenfolge | Der Zeichenfolgenanspruch der Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Länder-/Regionscode vorangestellt werden. |
 | InputParameter | throwExceptionOnFailure | boolean | [Optional] Ein Parameter, der angibt, ob eine Ausnahme ausgelöst wird, wenn die Telefonnummer ungültig ist. Der Standardwert ist „false“. |
-| InputParameter | countryCodeType | Zeichenfolge | [Optional] Ein Parameter, der den Typ des Ländercodes im Ausgabeanspruch angibt. Verfügbare Werte sind **CallingCode** (der internationale Aufrufcode für ein Land, z.B. +1) oder **ISO3166** (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
+| InputParameter | countryCodeType | Zeichenfolge | [Optional] Ein Parameter, der den Typ des Länder-/Regionscodes im Ausgabeanspruch angibt. Verfügbare Werte sind **CallingCode** (der internationale Aufrufcode für ein Land bzw. eine Region, z. B. +1) oder **ISO3166** (der aus zwei Buchstaben bestehende ISO-3166-Länder-/Regionscode). |
 | OutputClaim | nationalNumber | Zeichenfolge | Der Zeichenfolgenanspruch für die nationale Rufnummer der Telefonnummer. |
-| OutputClaim | countryCode | Zeichenfolge | Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer. |
+| OutputClaim | countryCode | Zeichenfolge | Der Zeichenfolgenanspruch für den Länder-/Regionscode der Telefonnummer. |
 
 
 Wenn die Anspruchstransformation **GetNationalNumberAndCodeFromPhoneNumberString** aus einem [technischen Validierungsprofil](validation-technical-profile.md) ausgeführt wird, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einer [Anzeigesteuerelementaktion](display-controls.md#display-control-actions) aufgerufen wird, dann steuern die **UserMessageIfPhoneNumberParseFailure**-Metadaten des selbstbestätigten technischen Profils die Fehlermeldung, die dem Benutzer angezeigt wird.
 
 ![Abbildung des Ausführungspfads der Fehlermeldung](./media/phone-authentication/assert-execution.png)
 
-Mit dieser Anspruchstransformation können Sie eine vollständige Telefonnummer in den Ländercode und die nationale Rufnummer aufteilen. Wenn die angegebene Telefonnummer ungültig ist, können Sie auswählen, ob eine Fehlermeldung ausgegeben werden soll.
+Mit dieser Anspruchstransformation können Sie eine vollständige Telefonnummer in den Länder-/Regionscode und die nationale Rufnummer aufteilen. Wenn die angegebene Telefonnummer ungültig ist, können Sie auswählen, ob eine Fehlermeldung ausgegeben werden soll.
 
-Im folgenden Beispiel wird versucht, die Telefonnummer in die nationale Rufnummer und den Ländercode aufzuteilen. Wenn die Telefonnummer gültig ist, wird die Telefonnummer von der nationalen Rufnummer überschrieben. Wenn die Telefonnummer ungültig ist, wird keine Ausnahme ausgelöst, und die Telefonnummer weist weiterhin den ursprünglichen Wert auf.
+Im folgenden Beispiel wird versucht, die Telefonnummer in die nationale Rufnummer und den Länder-/Regionscode aufzuteilen. Wenn die Telefonnummer gültig ist, wird die Telefonnummer von der nationalen Rufnummer überschrieben. Wenn die Telefonnummer ungültig ist, wird keine Ausnahme ausgelöst, und die Telefonnummer weist weiterhin den ursprünglichen Wert auf.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">

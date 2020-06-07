@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67476249"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868105"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Erstellen einer oder mehrerer Zugriffsüberprüfungen
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476249"
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
+    > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
+    > - Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
 
-    Wenn Sie eine Zugriffsüberprüfung für Azure AD-Rollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
+    Wenn Sie eine Zugriffsüberprüfung für **Azure AD-Rollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus.
 
     ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure AD-Rollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Wenn Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
+    Wenn Sie eine Zugriffsüberprüfung für **Azure-Ressourcenrollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie in der folgenden Abbildung aus.
 
     ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure-Ressourcenrollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

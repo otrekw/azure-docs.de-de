@@ -3,12 +3,12 @@ title: Hochskalieren eines Azure Service Fabric-Knotentyps
 description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skaliert wird.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998940"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674218"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Hochskalieren des primären Knotentyps eines Service Fabric-Clusters
 Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters durch Erhöhen der Ressourcen des virtuellen Computers hochskalieren können. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -22,7 +22,7 @@ Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Aktualisieren der Größe und des Betriebssystems der VMs des primären Knotentyps
+## <a name="process-to-upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Prozess zum Aktualisieren der Größe und des Betriebssystems der VMs des primären Knotentyps
 Im Folgenden wird der Vorgang zum Aktualisieren der VM-Größe und des Betriebssystems der VMs des primären Knotentyps beschrieben.  Nach dem Upgrade weisen die VMs des primären Knotentyps die Größe „Standard D4_V2“ auf und werden unter Windows Server 2016 Datacenter mit Containern ausgeführt.
 
 > [!WARNING]
@@ -41,43 +41,126 @@ Im Folgenden wird der Vorgang zum Aktualisieren der VM-Größe und des Betriebss
 10. Entfernen Sie den Knotenstatus der Knoten aus dem Cluster.  Wenn die alte Skalierungsgruppe die Dauerhaftigkeitsstufe „Silber“ oder „Gold“ aufwies, wird dieser Schritt automatisch vom System ausgeführt.
 11. Wenn Sie die zustandsbehaftete Anwendung in einem vorherigen Schritt bereitgestellt haben, stellen Sie sicher, dass die Anwendung funktionsfähig ist.
 
+## <a name="set-up-the-test-cluster"></a>Einrichten des Testclusters
+
+Beginnen Sie mit dem Herunterladen der beiden Dateisätze, die für dieses Tutorial erforderlich sind: [Vorlage]() und [Parameter]() vor dem Vorgang und [Vorlage]() und [Parameter]() nach dem Vorgang.
+
+Melden Sie sich anschließend bei Ihrem Azure-Konto an.
+
 ```powershell
-# Variables.
-$groupname = "sfupgradetestgroup"
-$clusterloc="southcentralus"  
-$subscriptionID="<your subscription ID>"
-
 # sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId $subscriptionID 
+Login-AzAccount -SubscriptionId "<your subscription ID>"
+```
 
-# Create a new resource group for your deployment and give it a name and a location.
-New-AzResourceGroup -Name $groupname -Location $clusterloc
+Dieses Tutorial führt Sie schrittweise durch das Szenario der Erstellung eines selbstsignierten Zertifikats. Wenn Sie ein vorhandenes Zertifikat aus Azure Key Vault verwenden möchten, überspringen Sie den folgenden Schritt und führen stattdessen die Schritte unter [Verwenden eines vorhandenen Zertifikats zum Bereitstellen des Clusters](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster) aus.
 
-# Deploy the two node type cluster.
-New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.parameters.json" `
-    -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.json" -Verbose
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Generieren eines selbstsignierten Zertifikats und Bereitstellen des Clusters
 
-# Connect to the cluster and check the cluster health.
-$ClusterName= "sfupgradetest.southcentralus.cloudapp.azure.com:19000"
-$thumb="F361720F4BD5449F6F083DDE99DC51A86985B25B"
+Weisen Sie zunächst die Variablen zu, die Sie für die Bereitstellung des Service Fabric-Clusters benötigen. Passen Sie die Werte für `resourceGroupName`, `certSubjectName`, `parameterFilePath` und `templateFilePath` für ihr spezifisches Konto und Ihre Umgebung an:
 
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+```powershell
+# Assign deployment variables
+$resourceGroupName = "sftestupgradegroup"
+$certOutputFolder = "c:\certificates"
+$certPassword = "Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$certSubjectName = "sftestupgrade.southcentralus.cloudapp.azure.com"
+$templateFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.json"
+$parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
+```
+
+> [!NOTE]
+> Stellen Sie sicher, dass der Speicherort `certOutputFolder` auf Ihrem lokalen Computer vorhanden ist, bevor Sie den Befehl zum Bereitstellen eines neuen Service Fabric-Clusters ausführen.
+
+Öffnen Sie anschließend die Datei *Deploy-2NodeTypes-2ScaleSets.parameters.json*, und passen Sie die Werte für `clusterName` und `dnsName` an, sodass diese den dynamischen Werten entsprechen, die Sie in PowerShell festlegen. Speichern Sie anschließend Ihre Änderungen.
+
+Stellen Sie nun den Service Fabric-Testcluster bereit:
+
+```powershell
+# Deploy the initial test cluster
+New-AzServiceFabricCluster `
+    -ResourceGroupName $resourceGroupName `
+    -CertificateOutputFolder $certOutputFolder `
+    -CertificatePassword $certPassword `
+    -CertificateSubjectName $certSubjectName `
+    -TemplateFile $templateFilePath `
+    -ParameterFile $parameterFilePath
+```
+
+Nachdem die Bereitstellung abgeschlossen ist, suchen Sie die *.pfx*-Datei (`$certPfx`) auf Ihrem lokalen Computer, und importieren Sie sie in Ihren Zertifikatspeicher:
+
+```powershell
+cd c:\certificates
+$certPfx = ".\sftestupgradegroup20200312121003.pfx"
+
+Import-PfxCertificate `
+     -FilePath $certPfx `
+     -CertStoreLocation Cert:\CurrentUser\My `
+     -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
+```
+
+Bei diesem Vorgang wird der Zertifikatfingerabdruck zurückgegeben, mit dem Sie später eine Verbindung mit dem neuen Cluster herstellen und dessen Integritätsstatus überprüfen.
+
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Herstellen einer Verbindung zu dem neuen Cluster und Überprüfen des Integritätsstatus
+
+Stellen Sie eine Verbindung mit dem Cluster her, und stellen Sie sicher, dass alle seine Knoten fehlerfrei sind (ersetzen Sie dazu die Variablen `clusterName` und `thumb` für Ihren Cluster):
+
+```powershell
+# Connect to the cluster
+$clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+
+Connect-ServiceFabricCluster `
+    -ConnectionEndpoint $clusterName `
+    -KeepAliveIntervalInSec 10 `
     -X509Credential `
     -ServerCertThumbprint $thumb  `
     -FindType FindByThumbprint `
     -FindValue $thumb `
     -StoreLocation CurrentUser `
-    -StoreName My 
+    -StoreName My
 
+# Check cluster health
 Get-ServiceFabricClusterHealth
+```
 
-# Deploy a new scale set into the primary node type.  Create a new load balancer and public IP address for the new scale set.
-New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.parameters.json" `
-    -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.json" -Verbose
+Wir können nun mit dem Upgradevorgang beginnen.
 
-# Check the cluster health again. All 15 nodes should be healthy.
+## <a name="upgrade-the-primary-node-type-vms"></a>Upgraden der VMs des primären Knotentyps
+
+Nachdem Sie sich für das Upgrade der VMs des primären Knotentyps entschieden haben, fügen Sie dem primären Knotentyp so eine neue Skalierungsgruppe hinzu, dass der primäre Knotentyp nun über zwei Skalierungsgruppen verfügt. Beispieldateien für die [Vorlage](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) und [Parameter](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) wurden bereitgestellt, um die erforderlichen Änderungen anzuzeigen. Die neuen VMs der Skalierungsgruppe weisen die Größe „Standard D4_V2“ auf und werden unter Windows Server 2016 Datacenter mit Containern ausgeführt. Mit der neuen Skalierungsgruppe werden auch ein neuer Lastenausgleich und eine öffentliche IP-Adresse hinzugefügt. 
+
+Um die neue Skalierungsgruppe in der Vorlage zu finden, suchen Sie nach der Ressource „Microsoft.Compute/virtualMachineScaleSets“, die durch den Parameter vmNodeType2Name benannt wird. Die neue Skalierungsgruppe wird dem primären Knotentyp mithilfe der Einstellung „properties->virtualMachineProfile->extensionProfile->extensions->properties->settings->nodeTypeRef“ hinzugefügt.
+
+### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
+
+Passen Sie die Werte von `parameterFilePath` und `templateFilePath` nach Bedarf an, und führen Sie den folgenden Befehl aus:
+
+```powershell
+# Deploy the new scale set into the primary node type along with a new load balancer and public IP
+$templateFilePath = "C:\Deploy-2NodeTypes-3ScaleSets.json"
+$parameterFilePath = "C:\Deploy-2NodeTypes-3ScaleSets.parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
+```
+
+Überprüfen Sie nach Abschluss der Bereitstellung noch einmal die Clusterintegrität, und stellen Sie sicher, dass alle Knoten (in der ursprünglichen und in der neuen Skalierungsgruppe) fehlerfrei sind.
+
+```powershell
 Get-ServiceFabricClusterHealth
+```
 
+## <a name="migrate-nodes-to-the-new-scale-set"></a>Migrieren von Knoten zur neuen Skalierungsgruppe
+
+Sie werden nun mit der Deaktivierung der Knoten der ursprünglichen Skalierungsgruppe beginnen. Infolge dessen werden die Knoten der Systemdienste und die Startknoten zu den VMs der neuen Skalierungsgruppe migriert, da diese ebenfalls als primärer Knotentyp gekennzeichnet ist.
+
+```powershell
 # Disable the nodes in the original scale set.
 $nodeNames = @("_NTvm1_0","_NTvm1_1","_NTvm1_2","_NTvm1_3","_NTvm1_4")
 
@@ -85,36 +168,36 @@ Write-Host "Disabling nodes..."
 foreach($name in $nodeNames){
     Disable-ServiceFabricNode -NodeName $name -Intent RemoveNode -Force
 }
+```
 
-Write-Host "Checking node status..."
-foreach($name in $nodeNames){
- 
-    $state = Get-ServiceFabricNode -NodeName $name 
+Verwenden Sie Service Fabric Explorer, um die Migration der Startknoten zur neuen Skalierungsgruppe sowie den Statuswechsel der Knoten in der ursprünglichen Skalierungsgruppe von *Wird deaktiviert* zu *Deaktiviert* zu überwachen.
 
-    $loopTimeout = 50
+> [!NOTE]
+> Die Deaktivierung aller Knoten in der ursprünglichen Skalierungsgruppe kann einige Zeit in Anspruch nehmen. Damit die Datenkonsistenz sichergestellt ist, können Startknoten nur nacheinander deaktiviert werden. Jede Deaktivierung eines Startknotens erfordert ein Clusterupdate. Das Ersetzen eines Startknotens erfordert daher zwei Clusterupgrades (eines für das Hinzufügen und eines für das Entfernen von Knoten). Das Upgraden der fünf Startknoten in diesem Beispielszenario ergibt zehn Clusterupgrades.
 
-    do{
-        Start-Sleep 5
-        $loopTimeout -= 1
-        $state = Get-ServiceFabricNode -NodeName $name
-        Write-Host "$name state: " $state.NodeDeactivationInfo.Status
-    }
+## <a name="remove-the-original-scale-set"></a>Entfernen der ursprünglichen Skalierungsgruppe
 
-    while (($state.NodeDeactivationInfo.Status -ne "Completed") -and ($loopTimeout -ne 0))
-    
+Nachdem die Deaktivierung abgeschlossen ist, müssen Sie die Skalierungsgruppe entfernen.
 
-    if ($state.NodeStatus -ne [System.Fabric.Query.NodeStatus]::Disabled)
-    {
-        Write-Error "$name node deactivation failed with state" $state.NodeStatus
-        exit
-    }
-}
+```powershell
+# Remove the original scale set
+$scaleSetName = "NTvm1"
 
-# Remove the scale set
-$scaleSetName="NTvm1"
-Remove-AzVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
+Remove-AzVmss `
+    -ResourceGroupName $resourceGroupName `
+    -VMScaleSetName $scaleSetName `
+    -Force
+
 Write-Host "Removed scale set $scaleSetName"
+```
 
+In Service Fabric Explorer werden die entfernten Knoten (und damit auch der *Integritätszustand des Clusters*) nun mit dem Status *Fehler* angezeigt.
+
+## <a name="remove-the-old-load-balancer-and-update-dns-settings"></a>Entfernen des alten Load Balancers und Aktualisieren der DNS-Einstellungen
+
+Nun können wir die Ressourcen, die mit dem alten primären Knotentyp verknüpft sind, beginnend mit dem Load Balancer und der alten öffentlichen IP-Adresse entfernen. 
+
+```powershell
 $lbname="LB-sfupgradetest-NTvm1"
 $oldPublicIpName="PublicIP-LB-FE-0"
 $newPublicIpName="PublicIP-LB-FE-2"
@@ -131,16 +214,28 @@ Remove-AzLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 
 # Remove the old public IP
 Remove-AzPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+```
 
+Dann aktualisieren wir die DNS-Einstellungen der neuen öffentlichen IP-Adresse, um die Einstellungen der öffentlichen IP-Adresse des alten primären Knotentyps zu spiegeln.
+
+```powershell
 # Replace DNS settings of Public IP address related to new Primary Node Type with DNS settings of Public IP address related to old Primary Node Type
 $PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
+```
 
+Überprüfen Sie die Integrität des Clusters erneut.
+
+```powershell
 # Check the cluster health
 Get-ServiceFabricClusterHealth
+```
 
+Entfernen Sie schließlich den Knotenstatus für jeden der zugehörigen Knoten. Wenn die alte Skalierungsgruppe die Dauerhaftigkeitsstufe „Silber“ oder „Gold“ aufwies, geschieht dies automatisch.
+
+```powershell
 # Remove node state for the deleted nodes.
 foreach($name in $nodeNames){
     # Remove the node from the cluster
@@ -148,6 +243,8 @@ foreach($name in $nodeNames){
     Write-Host "Removed node state for node $name"
 }
 ```
+
+Der primäre Knotentyp des Clusters wurde jetzt aktualisiert. Stellen Sie sicher, dass alle bereitgestellten Anwendungen ordnungsgemäß funktionieren und die Clusterintegrität fehlerfrei ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie [einem Cluster ein Knotentyp hinzugefügt wird](virtual-machine-scale-set-scale-node-type-scale-out.md).

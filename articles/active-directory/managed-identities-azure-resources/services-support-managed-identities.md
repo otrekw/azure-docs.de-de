@@ -4,18 +4,18 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/09/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 550c025807b1ec3d0d5b8fb54f4b358c9f1ec6d3
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991278"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846034"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -28,20 +28,150 @@ Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine au
 
 Die folgenden Azure-Dienste unterstützen verwaltete Identitäten für Azure-Ressourcen:
 
-### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+
+### <a name="azure-api-management"></a>Azure API Management
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
+
+Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure Resource Manager-Vorlage](/azure/api-management/api-management-howto-use-managed-service-identity)
+
+
+### <a name="azure-app-service"></a>Azure App Service
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau | 
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check] |
 
-Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](qs-configure-portal-windows-vm.md)
-- [PowerShell](qs-configure-powershell-windows-vm.md)
-- [Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md)
-- [Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vm.md)
-- [REST](qs-configure-rest-vm.md)
+- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+
+### <a name="azure-blueprints"></a>Azure Blueprint
+
+|Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
+
+Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Blueprints](../../governance/blueprints/overview.md) zu nutzen:
+
+- [Azure-Portal: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST-API: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Konfigurieren Sie die verwaltete Identität für Azure Container Instances anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure-Befehlszeilenschnittstelle](~/articles/container-instances/container-instances-managed-identity.md)
+- [Azure Resource Manager-Vorlage](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
+
+
+### <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Konfigurieren Sie die verwaltete Identität für Azure Container Registry Tasks anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure-Befehlszeilenschnittstelle](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
+
+
+### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
+- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+
+
+### <a name="azure-functions"></a>Azure-Funktionen
+
+Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check]  |
+
+Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-iot-hub"></a>Azure IoT Hub
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
+
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+
+| Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | - | - | - | 
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | - | - | - |
+
+
+Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-managed-identity).
+
+
+### <a name="azure-logic-apps"></a>Azure Logic Apps
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+
+
+Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+
+- [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+
+
+### <a name="azure-service-fabric"></a>Azure Service Fabric
+[Verwaltete Identität für Service Fabric-Anwendungen](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) ist als Vorschauversion in allen Regionen verfügbar.
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. |Nicht verfügbar. |
+
+Informationen zum Konfigurieren der verwalteten Identität für Azure Service Fabric-Anwendungen in allen Regionen finden Sie in der folgenden Liste:
+- [Azure Resource Manager-Vorlage](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+
+
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Skalierungsgruppen für virtuelle Azure-Computer
 
@@ -58,118 +188,25 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Set
 - [Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
-### <a name="azure-app-service"></a>Azure App Service
+
+
+### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check] |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau | 
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
 
-Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
-
-### <a name="azure-blueprints"></a>Azure Blueprint
-
-|Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
-
-Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Blueprints](../../governance/blueprints/overview.md) zu nutzen:
-
-- [Azure-Portal: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST-API: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
-
-### <a name="azure-functions"></a>Azure-Funktionen
-
-Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check]  |
-
-Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
-
-- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
-
-### <a name="azure-logic-apps"></a>Azure Logic Apps
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+- [Azure portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md)
+- [Azure-Ressourcen-Manager-Vorlagen](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 
-Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
-
-### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-
-Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
-
-- [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
-
-### <a name="azure-api-management"></a>Azure API Management
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
-
-Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
-
-- [Azure Resource Manager-Vorlage](/azure/api-management/api-management-howto-use-managed-service-identity)
-
-### <a name="azure-container-instances"></a>Azure Container Instances
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-
-Konfigurieren Sie die verwaltete Identität für Azure Container Instances anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
-
-- [Azure-Befehlszeilenschnittstelle](~/articles/container-instances/container-instances-managed-identity.md)
-- [Azure Resource Manager-Vorlage](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
-- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
-
-### <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-
-Konfigurieren Sie die verwaltete Identität für Azure Container Registry Tasks anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
-
-- [Azure-Befehlszeilenschnittstelle](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
-
-### <a name="azure-service-fabric"></a>Azure Service Fabric
-[Verwaltete Identität für Service Fabric-Anwendungen](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) ist als Vorschauversion in allen Regionen verfügbar.
-
-Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. |Nicht verfügbar. |
-
-Informationen zum Konfigurieren der verwalteten Identität für Azure Service Fabric-Anwendungen in allen Regionen finden Sie in der folgenden Liste:
-- [Azure Resource Manager-Vorlage](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Dienste, die die Azure AD-Authentifizierung unterstützen
 

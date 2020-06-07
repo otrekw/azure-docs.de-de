@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837191"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759029"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -82,7 +82,7 @@ Gehen Sie nach dem Aktivieren von Azure AD Privileged Identity Management wie fo
 
 4. Öffnen Sie Privileged Identity Management in der Liste **Alle Dienste**, und heften Sie Privileged Identity Management an Ihr Dashboard.
 
-Die Person in Ihrer Organisation, die PIM zum ersten Mal verwendet, wird automatisch den Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** zugewiesen. Nur Administratoren für privilegierte Rollen können die Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Der PIM-Sicherheitsassistent führt Sie durch die anfängliche Erkennungs- und Zuweisungsumgebung. Sie können den Assistenten zu diesem Zeitpunkt ohne weitere Änderungen beenden.
+Stellen Sie sicher, dass der Person in Ihrer Organisation, die PIM zum ersten Mal verwendet, automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** zugewiesen werden. Nur Administratoren für privilegierte Rollen können die Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Der PIM-Sicherheitsassistent führt Sie durch die anfängliche Erkennungs- und Zuweisungsumgebung. Sie können den Assistenten zu diesem Zeitpunkt ohne weitere Änderungen beenden.
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifizieren und Kategorisieren von Konten in stark privilegierten Rollen
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c25ce417a17024843de1b9b16f57740de1e9fc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188116"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636983"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Microsoft-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -38,8 +38,8 @@ Sie müssen eine Anwendung im Azure AD-Mandanten registrieren, um die Anmeldung 
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Zum Beispiel *MSAapp1*.
-1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)**  aus.
-1. Klicken Sie unter **Umleitungs-URI (optional)** auf **Web**, und geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in das Textfeld ein. Ersetzen Sie `your-tenant-name` durch den Azure AD B2C-Mandantennamen.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)** (Konten in allen Organisationsverzeichnissen (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)) aus.
+1. Klicken Sie unter **Umleitungs-URI (optional)** auf **Web**, und geben Sie `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` in das Textfeld ein. Ersetzen Sie `<tenant-name>` durch den Azure AD B2C-Mandantennamen.
 1. Wählen Sie **Registrieren** aus.
 1. Notieren Sie die **Anwendungs-ID (Client)** , die auf der Seite „Übersicht“ der Anwendung angezeigt wird. Sie benötigen diese beim Konfigurieren des Anspruchsanbieters in einem späteren Abschnitt.
 1. Wählen Sie **Zertifikate und Geheimnisse** aus.
@@ -208,7 +208,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
       "exp": 1562365200,
       "nbf": 1562361600,
       "ver": "1.0",
-      "iss": "https://your-b2c-tenant.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
+      "iss": "https://<tenant-name>.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
       "sub": "20000000-0000-0000-0000-000000000000",
       "aud": "30000000-0000-0000-0000-000000000000",
       "acr": "b2c_1a_signupsigninmsa",

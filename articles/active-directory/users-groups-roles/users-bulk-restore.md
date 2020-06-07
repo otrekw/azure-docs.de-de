@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203295"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685253"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer in Azure Active Directory
 
@@ -28,15 +28,15 @@ Azure Active Directory (Azure AD) unterstützt Vorgänge zur Massenwiederherstel
 
 Laden Sie die CSV-Vorlage herunter, und füllen Sie sie aus, um mehrere Azure AD-Benutzer gleichzeitig wiederherzustellen. Die heruntergeladene CSV-Vorlage ähnelt möglicherweise dem folgenden Beispiel:
 
-![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und zu den Werten für jede Zeile und Spalte](./media/users-bulk-restore/understand-template.png)
+![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/users-bulk-restore/understand-template.png)
 
 ### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
 
-Die heruntergeladene CSV-Vorlage umfasst folgende Zeilen:
+Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 - **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
-- **Spaltenüberschriften**: Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Object ID [objectId] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
-- **Beispielzeile**: In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+- **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Object ID [objectId] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
+- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
 
 ### <a name="additional-guidance"></a>Zusätzliche Anleitungen
 
@@ -51,11 +51,11 @@ Die heruntergeladene CSV-Vorlage umfasst folgende Zeilen:
 1. Wählen Sie in Azure AD **Benutzer** > **Gelöscht** aus.
 1. Wählen Sie auf der Seite **Gelöschte Benutzer** die Option **Massenwiederherstellung** aus, um eine gültige CSV-Datei mit den Eigenschaften der wiederherzustellenden Benutzer hochzuladen.
 
-   ![Auf der Seite „Gelöschte Benutzer“ den Benutzer „Massenwiederherstellung“ auswählen](./media/users-bulk-restore/bulk-restore.png)
+    ![Auf der Seite „Gelöschte Benutzer“ den Benutzer „Massenwiederherstellung“ auswählen](./media/users-bulk-restore/bulk-restore.png)
 
 1. Öffnen Sie die CSV-Vorlage, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie wiederherstellen möchten. Der einzige erforderliche Wert ist **ObjectID**. Speichern Sie dann die Datei.
 
-   ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten.](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="Auswählen einer lokalen CSV-Datei, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten":::
 
 1. Navigieren Sie auf der Seite **Massenwiederherstellung von Benutzern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.

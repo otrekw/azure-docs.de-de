@@ -8,19 +8,19 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062658"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828405"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
 
-Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und Ihr Kennwort zurücksetzen können.
+Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und [Ihr Kennwort zurücksetzen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register) können.
 
 Wenn Sie Ihr Kennwort kennen, aber es ändern möchten, führen Sie die entsprechenden Schritte aus, die in diesem Artikel in den Abschnitten über das [Ändern des Kennworts](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) aufgeführt sind.
 
