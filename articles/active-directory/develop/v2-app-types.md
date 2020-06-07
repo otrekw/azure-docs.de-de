@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677986"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682278"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ Der Microsoft Identity Platform (v2.0)-Endpunkt unterstützt die Authentifizieru
 
 ## <a name="the-basics"></a>Grundlagen
 
-Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im [Portal für App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
+Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im Azure-Portal in [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
 
 * Eine **Anwendungs- (bzw. Client-) ID**, die Ihre App eindeutig identifiziert
 * Ein **Umleitungs-URI**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Single-Page-Apps (JavaScript)
 
-Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird dazu ein Framework verwendet, z. B. Angular, React oder Vue. Der Microsoft Identity Plattform-Endpunkt unterstützt diese Apps mithilfe des [impliziten OAuth 2.0-Flusses](v2-oauth2-implicit-grant-flow.md).
+Viele moderne Apps verfügen über ein Single-Page-Webanwendungs-Front-End, das in erster Linie in JavaScript geschrieben ist, häufig mit einem Framework wie Angular, React oder Vue. Der Microsoft Identity Plattform-Endpunkt unterstützt diese Apps mithilfe des [OAuth 2.0-Autorisierungscodeflows](v2-oauth2-auth-code-flow.md).
 
-In diesem empfängt die App Token direkt vom Microsoft Identity Plattform-Autorisierungsendpunkt, ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung erfolgt ohne zusätzliche Seitenumleitungen vollständig im JavaScript-Client.
+In diesem Flow empfängt die App Code vom `authorize`-Endpunkt der Microsoft Identity Platform und löst ihn für Token und Aktualisierungstoken mithilfe websiteübergreifender Webanforderungen ein. Das Aktualisierungstoken läuft nach jeweils 24 Stunden ab, und die App muss einen weiteren Code anfordern.
 
-![Zeigt den impliziten Authentifizierungsflow](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Codeflow für SPA-Apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-Um dieses Szenario in Aktion zu sehen, testen Sie eines der Codebeispiele für Apps mit einer Seite im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started).
+Ein Beispiel für dieses Szenario finden Sie unter [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses](tutorial-v2-javascript-auth-code.md).
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>Autorisierungscodeflow im Vergleich zum impliziten Fluss
+
+Während des größten Teils des Entwicklungsverlaufs von OAuth 2.0 war der [implizite Fluss](v2-oauth2-implicit-grant-flow.md) die empfohlene Methode zum Erstellen von Single-Page-Apps. Durch den Wegfall von [Cookies von Drittanbietern](reference-third-party-cookies-spas.md) und die [größere Aufmerksamkeit](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14), die Sicherheitsbedenken im Zusammenhang mit dem impliziten Fluss geschenkt wurde, haben wir auf den Autorisierungscodeflow für Single-Page-Apps umgestellt.
+
+Um die Kompatibilität Ihrer App in Safari und anderen datenschutzbewussten Browsern sicherzustellen, empfehlen wir nicht mehr die Verwendung des impliziten Flusses, sondern stattdessen die Verwendung des Autorisierungscodeflows.
 
 ## <a name="web-apps"></a>Web-Apps
 
@@ -77,7 +83,8 @@ Sie können die Identität des Benutzers validieren, indem Sie das ID-Token mit 
 
 Um dieses Szenario in Aktion zu sehen, können Sie eines der Web-App-Codebeispiele für die Anmeldung im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started) testen.
 
-Neben der einfachen Anmeldung benötigt eine Webserver-App möglicherweise Zugriff auf einen anderen Webdienst, z.B. auf eine REST-API. In diesem Fall wird die Webserver-App in einem kombinierten OpenID Connect- und OAuth 2.0-Vorgang ausgeführt, indem der [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols.md) verwendet wird. Weitere Informationen zu diesem Szenario finden Sie in den [ersten Schritten mit Web-Apps und Web-APIs](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Neben der einfachen Anmeldung benötigt eine Webserver-App möglicherweise Zugriff auf einen anderen Webdienst, z.B. auf eine REST-API. In diesem Fall wird die Webserver-App in einem kombinierten OpenID Connect- und OAuth 2.0-Vorgang ausgeführt, indem der [OAuth 2.0-Autorisierungscodefluss](v2-oauth2-auth-code-flow.md) verwendet wird. Weitere Informationen zu diesem Szenario finden Sie in den [ersten Schritten mit Web-Apps und Web-APIs](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+
 
 ## <a name="web-apis"></a>Web-APIs
 
@@ -120,3 +127,7 @@ In diesem Flow interagiert die App direkt mit dem `/token`-Endpunkt, um Zugriff 
 ![Zeigt den Authentifizierungsflow für Daemon-Apps](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Informationen zum Erstellen einer Daemon-App finden Sie in der [Dokumentation zu Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md). Sie können aber auch eine [.NET-Beispiel-App](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2) testen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie nun mit den von der Microsoft Identity Platform unterstützten Anwendungstypen vertraut sind, informieren Sie sich über [OAuth 2.0 und OpenID Connect](active-directory-v2-protocols.md), um ein besseres Verständnis der in den verschiedenen Szenarien verwendeten Protokollkomponenten zu entwickeln.

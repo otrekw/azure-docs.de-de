@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050507"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772130"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -151,7 +151,7 @@ Mithilfe des Gerätecodeflusses ruft die Anwendung Token in einem zweistufigen P
 
 Im obigen Diagramm ist Folgendes zu sehen:
 
-1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) eine URL (z. B. `https://microsoft.com/devicelogin`) aufzurufen. Der Benutzer wird anschließend aufgefordert, den Code einzugeben, und führt danach wie gewohnt den Authentifizierungsvorgang durch. Dabei sind ggf. auch Zustimmungsaufforderungen und eine mehrstufige Authentifizierung erforderlich.
+1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) eine URL (z. B. `https://microsoft.com/devicelogin`) aufzurufen. Der Benutzer wird dann zur Eingabe des Codes aufgefordert und durch einen normalen Authentifizierungsprozess geführt, der ggf. auch Zustimmungsaufforderungen und die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) umfasst.
 
 2. Nach erfolgreicher Authentifizierung empfängt die Befehlszeilen-App die erforderlichen Token über einen Backchannel und führt damit die benötigten Web-API-Aufrufe aus.
 
@@ -182,7 +182,7 @@ IWA ist für Apps bestimmt, die für die .NET Framework- und .NET Core-Plattform
 
 Die mehrstufige Authentifizierung (MFA) wird von der IWA nicht umgangen. Wenn eine solche Authentifizierung konfiguriert ist, kann die IWA im Fall einer MFA-Aufforderung fehlschlagen. Die MFA erfordert eine Interaktion mit dem Benutzer.
 
-Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. Die MFA ist üblicherweise erforderlich, wenn Sie sich beim Anmeldevorgang in einem anderen Land befinden oder sich mit einem Firmennetzwerk verbinden und dabei kein VPN verwenden. Gelegentlich ist allerdings selbst bei Nutzung eines VPN eine MFA notwendig. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Wenn die integrierte Windows-Authentifizierung zu einem Fehler führt, sollten Sie auf eine [interaktive Benutzeraufforderung]\(#Interactive) zurückgreifen.
+Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. In der Regel ist die zweistufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Wenn die integrierte Windows-Authentifizierung zu einem Fehler führt, sollten Sie auf eine [interaktive Benutzeraufforderung]\(#Interactive) zurückgreifen.
 
 Die beim Erstellen der öffentlichen Clientanwendung übergebene Autorität muss eine der folgenden Voraussetzungen erfüllen:
 - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).
@@ -232,4 +232,4 @@ Neben den [Einschränkungen der integrierten Windows-Authentifizierung](#integra
 
 ### <a name="azure-ad-b2c-specifics"></a>Spezifische Informationen zu Azure AD B2C
 
-Weitere Informationen zur Verwendung von MSAL.NET und Azure AD B2C finden Sie unter [Verwenden von ROPC mit Azure AD B2C (MSAL.NET)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c).
+Weitere Informationen zur Verwendung von ROPC in MSAL.NET und Azure AD B2C finden Sie unter [Verwenden von ROPC mit Azure AD B2C](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc).

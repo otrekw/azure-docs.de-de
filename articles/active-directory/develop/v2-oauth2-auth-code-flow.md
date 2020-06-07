@@ -1,5 +1,6 @@
 ---
-title: OAuth-Autorisierungscodeflow – Microsoft Identity Platform | Azure
+title: Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow | Azure
+titleSuffix: Microsoft identity platform
 description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des OAuth 2.0-Authentifizierungsprotokolls.
 services: active-directory
 author: hpsin
@@ -8,30 +9,40 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ed41150e8247a738d3222127243083470211f7a9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 2bc9bb8b79ca0a6f59e6c771109cf4d102cdd78e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82689811"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682240"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
-Der OAuth 2.0-Autorisierungcodefluss kann in Apps verwendet werden, die auf einem Gerät installiert sind, um Zugriff auf geschützte Ressourcen wie Web-APIs zu gewähren. Mithilfe der Microsoft Identity Platform-Implementierung von OAuth 2.0 können Sie sich bei mobilen Apps und Desktop-Apps anmelden und über APIs darauf zugreifen. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung der [Open Source-Bibliotheken für die Azure-Authentifizierung](reference-v2-libraries.md).
+Der OAuth 2.0-Autorisierungcodefluss kann in Apps verwendet werden, die auf einem Gerät installiert sind, um Zugriff auf geschützte Ressourcen wie Web-APIs zu gewähren. Mithilfe der Microsoft Identity Platform-Implementierung von OAuth 2.0 können Sie sich bei mobilen Apps und Desktop-Apps anmelden und über APIs darauf zugreifen.
 
-In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
+In diesem Artikel wird beschrieben, wie Sie direkt für das Protokoll in Ihrer Anwendung in einer beliebigen Sprache programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
-Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Er wird zum Ausführen der Authentifizierung und Autorisierung in den meisten App-Typen genutzt, einschließlich [Web-Apps](v2-app-types.md#web-apps) und [nativ installierten Apps](v2-app-types.md#mobile-and-native-apps). Durch den Fluss können Apps Zugriffstoken sicher abrufen, die für den Zugriff auf Ressourcen verwendet werden können, die mithilfe des Microsoft Identity Platform-Endpunkts geschützt werden.
+Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Er wird zum Ausführen der Authentifizierung und Autorisierung in den meisten App-Typen einschließlich [Single-Page-Webanwendungen](v2-app-types.md#single-page-apps-javascript), [Web-Apps](v2-app-types.md#web-apps) und [nativ installierten Apps](v2-app-types.md#mobile-and-native-apps) verwendet. Der Flow ermöglicht Apps das sichere Abrufen von Zugriffstoken, die für den Zugriff auf durch den Microsoft Identity Platform-Endpunkt geschützte Ressourcen verwendet werden können, sowie von Aktualisierungstoken, um zusätzliche Zugriffstoken und ID-Token für den angemeldeten Benutzer abzurufen.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
-Allgemein sieht der gesamte Authentifizierungsablauf für eine systemeigene oder mobile Anwendung etwa wie folgt aus:
+Allgemein sieht der gesamte Authentifizierungsflow für eine Anwendung in etwa wie folgt aus:
 
 ![OAuth-Autorisierungscodefluss](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
+
+## <a name="setup-required-for-single-page-apps"></a>Für Single-Page-Webanwendungen erforderliche Einrichtung
+
+Der Autorisierungscodeflow für Single-Page-Webanwendungen erfordert einige zusätzliche Einrichtungsschritte.  Beim [Erstellen Ihrer Anwendung](howto-create-service-principal-portal.md) müssen Sie den Umleitungs-URI für Ihre App als `spa`-Umleitungs-URI kennzeichnen. Dadurch lässt der Anmeldeserver CORS (Cross Origin Resource Sharing) für Ihre App zu.  Dies ist erforderlich, um den Code mithilfe von XHR einlösen zu können.
+
+Wenn Sie versuchen, den Autorisierungscodeflow zu verwenden, und der folgende Fehler angezeigt wird:
+
+`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
+
+Dann müssen Sie Ihre App-Registrierung aufrufen und den Umleitungs-URI für Ihre App auf den Typ `spa` aktualisieren.
 
 ## <a name="request-an-authorization-code"></a>Anfordern eines Autorisierungscodes
 
@@ -64,9 +75,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `state`                 | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Wert kann ebenfalls Informationen über den Status des Benutzers in der App codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `prompt`  | optional    | Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none` und `consent`.<br/><br/>- `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich.<br/>- `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der Microsoft Identity Platform-Endpunkt einen `interaction_required`-Fehler zurück.<br/>- `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu erteilen.<br/>- `prompt=select_account` unterbricht beim einmaligen Anmelden die Kontoauswahlumgebung, in der entweder alle Konten in der Sitzung, alle gespeicherten Konten oder eine Option zur Verwendung eines ganz anderen Kontos aufgelistet werden.<br/> |
 | `login_hint`  | optional    | Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben.   |
-| `domain_hint`  | optional    | Kann `consumers` oder `organizations` sein.<br/><br/>Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, und so die Benutzerfreundlichkeit verbessert. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren. Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat. Verwenden Sie andernfalls `domain_hint=organizations`.  |
-| `code_challenge_method` | optional    | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Es kann sich um einen der folgenden Werte handeln:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist. Microsoft Identity Platform unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| `code_challenge`  | optional | Wird verwendet, um die Gewährung von Autorisierungscodes über Proof Key for Code Exchange (PKCE) von einem nativen Client aus zu sichern. Erforderlich, wenn `code_challenge_method` enthalten ist. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `domain_hint`  | optional    | Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft. Dadurch wird die Benutzerfreundlichkeit verbessert, und der Benutzer wird beispielsweise an seinen Verbundidentitätsanbieter weitergeleitet. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren. Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat. Verwenden Sie andernfalls `domain_hint=organizations`.  |
+| `code_challenge`  | Empfohlen/erforderlich | Wird verwendet, um die Gewährung von Autorisierungscodes über Proof Key for Code Exchange (PKCE) zu sichern. Erforderlich, wenn `code_challenge_method` enthalten ist. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies wird jetzt für alle Anwendungstypen (native Apps, SPAs und vertrauliche Clients wie Web-Apps) empfohlen. |
+| `code_challenge_method` | Empfohlen/erforderlich | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Es kann sich um einen der folgenden Werte handeln:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist. Microsoft Identity Platform unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies ist für [Single-Page-Webanwendungen erforderlich, die den Autorisierungscodeflow verwenden](reference-third-party-cookies-spas.md).|
+
 
 Zu diesem Zeitpunkt wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Der Microsoft Identity Platform-Endpunkt stellt auch sicher, dass der Benutzer den Berechtigungen zugestimmt hat, die im `scope`-Abfrageparameter angegeben sind. Wenn der Benutzer keiner Berechtigung zugestimmt hat, wird er dazu aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Nähere Einzelheiten zu [Berechtigungen, Zustimmung und mehrinstanzenfähigen Apps erhalten Sie hier](v2-permissions-and-consent.md).
 
@@ -86,6 +98,8 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 |-----------|--------------|
 | `code` | Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. Autorisierungscodes sind kurzlebig und laufen in der Regel nach etwa zehn Minuten ab. |
 | `state` | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
+
+Sie können auch ein Zugriffstoken und ein ID-Token erhalten, wenn Sie eines anfordern und die implizite Genehmigung in Ihrer Anwendungsregistrierung aktiviert ist.  Dies wird manchmal als „hybrider Flow“ bezeichnet und von Frameworks wie ASP.NET verwendet.
 
 #### <a name="error-response"></a>Fehlerantwort
 
@@ -148,8 +162,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | required   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ersten Abschnitt angefordert wurden. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
 | `code`          | required  | Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
 | `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
-| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer systemeigenen App verwenden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. Weitere Informationen finden Sie [hier](https://tools.ietf.org/html/rfc3986#page-12). |
-| `code_verifier` | optional  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
+| `code_verifier` | empfohlen  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 
@@ -205,7 +219,7 @@ Fehlerantworten sehen wie folgt aus:
 
 | Fehlercode         | BESCHREIBUNG        | Clientaktion    |
 |--------------------|--------------------|------------------|
-| `invalid_request`  | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut.   |
+| `invalid_request`  | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung oder die App-Registrierung, und senden Sie die Anforderung erneut.   |
 | `invalid_grant`    | Der Autorisierungscode oder PKCE-Codeprüfer ist ungültig oder abgelaufen. | Versuchen Sie, eine neue Anforderung für den `/authorize`-Endpunkt zu senden, und stellen Sie sicher, dass der „code_verifier“-Parameter korrekt war.  |
 | `unauthorized_client` | Der authentifizierte Client ist zur Verwendung dieses Autorisierungsgewährungstyps nicht autorisiert. | Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
 | `invalid_client` | Clientauthentifizierung fehlgeschlagen.  | Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen.   |
@@ -213,6 +227,9 @@ Fehlerantworten sehen wie folgt aus:
 | `invalid_resource` | Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. | Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern.  |
 | `interaction_required` | Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung mit der gleichen Ressource.  |
 | `temporarily_unavailable` | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
+
+> [!NOTE]
+> Single-Page-Webanwendungen erhalten möglicherweise eine Fehlermeldung des Typs `invalid_request`, die besagt, dass eine ursprungsübergreifende Tokeneinlösung nur für den Clienttyp „Single-Page-Webanwendung“ zulässig ist.  Dies weist darauf hin, dass der zum Anfordern des Tokens verwendete Umleitungs-URI nicht als `spa`-Umleitungs-URI gekennzeichnet wurde.  Informationen zum Aktivieren dieses Flows finden Sie im Abschnitt [Für Single-Page-Webanwendungen erforderliche Einrichtung](#setup-required-for-single-page-apps).
 
 ## <a name="use-the-access-token"></a>Verwenden des Zugriffstokens
 
@@ -231,11 +248,15 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Zugriffstoken sind kurzlebig. Daher müssen Sie sie nach Ablauf aktualisieren, um weiterhin auf Ressourcen zuzugreifen. Dazu übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt, dieses Mal unter Angabe des `refresh_token` statt des `code`.  Aktualisierungstoken sind für alle Berechtigungen gültig, für die Ihr Client bereits die Einwilligung erhalten hat. Daher kann ein Aktualisierungstoken, das für eine Anforderung für `scope=mail.read` ausgestellt wurde, zum Anfordern eines neuen Zugriffstokens für `scope=api://contoso.com/api/UseResource` verwendet werden.
 
-Für Aktualisierungstoken werden keine Lebensdauern angegeben. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen [Fehler, die vom Tokenausstellungsendpunkt zurückgegeben werden](#error-codes-for-token-endpoint-errors), erwartet und richtig behandelt werden.
+Für Aktualisierungstoken für Web-Apps und native Apps ist keine bestimmte Lebensdauer festgelegt. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen [Fehler, die vom Tokenausstellungsendpunkt zurückgegeben werden](#error-codes-for-token-endpoint-errors), erwartet und richtig behandelt werden. Single-Page-Webanwendungen erhalten jedoch ein Token mit einer Lebensdauer von 24 Stunden, wobei täglich eine neue Authentifizierung erforderlich ist.  Diese Authentifizierung kann im Hintergrund in einem IFrame erfolgen, wenn Cookies von Drittanbietern aktiviert sind. In Browsern ohne Cookies von Drittanbietern (z. B. in Safari) muss sie jedoch in einem Frame der obersten Ebene (entweder vollständige Seitennavigation oder Popup) ausgeführt werden.
 
 Obwohl Aktualisierungstoken nicht widerrufen werden, wenn sie zum Abrufen neuer Zugriffstoken verwendet werden, sollten Sie das alte Aktualisierungstoken verwerfen. Die [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-6) besagt Folgendes: „Der Autorisierungsserver KANN ein neues Aktualisierungstoken ausstellen. In dem Fall MUSS der Client das alte Aktualisierungstoken verwerfen und durch das neue Aktualisierungstoken ersetzen. Der Autorisierungsserver KANN das alte Aktualisierungstoken nach dem Ausstellen eines neuen Aktualisierungstokens für den Client widerrufen.“
 
+>[!IMPORTANT]
+> Aktualisierungstoken, die an einen als `spa` registrierten Umleitungs-URI gesendet werden, laufen nach 24 Stunden ab. Weitere Aktualisierungstoken, die mithilfe des ersten Aktualisierungstokens abgerufen werden, übernehmen diese Ablaufzeit, sodass Apps darauf vorbereitet werden müssen, den Autorisierungscodeflow mithilfe einer interaktiven Authentifizierung erneut auszuführen, um alle 24 Stunden ein neues Aktualisierungstoken abzurufen. Benutzer müssen ihre Anmeldeinformationen nicht eingeben, und normalerweise wird nicht einmal eine Benutzeroberfläche, sondern nur ein erneutes Laden Ihrer Anwendung angezeigt. Der Browser muss jedoch die Anmeldeseite in einem Frame der obersten Ebene aufrufen, damit die Anmeldesitzung angezeigt wird.  Dies liegt an den [Datenschutzfunktionen in Browsern, die Cookies von Drittanbietern blockieren](reference-third-party-cookies-spas.md).
+
 ```HTTP
+
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -260,7 +281,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | required    | Muss der `refresh_token` für diesen Abschnitt des Autorisierungscodeflusses sein. |
 | `scope`         | required    | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ursprünglichen Autorisierungscode-Abschnitt angefordert wurden. Wenn die in dieser Anforderung angegebenen Bereiche mehrere Ressourcenserver umfassen, gibt der Microsoft Identity Platform-Endpunkt ein Token für die im ersten Bereich angegebene Ressource zurück. Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
 | `refresh_token` | required    | Das Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
-| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern. Dieses Geheimnis muss URL-codiert sein. Weitere Informationen finden Sie [hier](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern. Dieser geheime Schlüssel muss URL-codiert sein. Weitere Informationen finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Erfolgreiche Antwort
 

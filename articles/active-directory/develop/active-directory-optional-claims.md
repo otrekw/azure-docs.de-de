@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 515ac034158b821968e2d7b2be9514a3f7c20866
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099066"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737553"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
@@ -53,16 +53,16 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
 | `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
-| `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Home-Mandanten des Benutzers.| JWT        |           | |
+| `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Basismandanten des Benutzers.| JWT        |           | |
 | `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird | JWT        |  Persönliche Konten und Azure AD-Konten   |         |
 | `platf`                    | Geräteplattform    | JWT        |           | Beschränkt auf verwaltete Geräte, die den Gerätetyp überprüfen können.|
-| `verified_primary_email`   | Stammt von „PrimaryAuthoritativeEmail“ des Benutzers.      | JWT        |           |         |
-| `verified_secondary_email` | Stammt von „SecondaryAuthoritativeEmail“ des Benutzers.   | JWT        |           |        |
+| `verified_primary_email`   | Wird aus der „PrimaryAuthoritativeEmail“ des Benutzers abgerufen      | JWT        |           |         |
+| `verified_secondary_email` | Wird aus der „SecondaryAuthoritativeEmail“ des Benutzers abgerufen   | JWT        |           |        |
 | `enfpolids`                | IDs erzwungener Richtlinien. Eine Liste der Richtlinien-IDs, die für den aktuellen Benutzer ausgewertet wurden. | JWT |  |  |
 | `vnet`                     | Informationen zum VNET-Spezifizierer | JWT        |           |      |
 | `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
-| `ctry`                     | Land des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs aus einem standardmäßigen Ländercode mit zwei Buchstaben besteht, z.B. FR, JP oder SZ. |
-| `tenant_ctry`              | Land des Ressourcenmandanten | JWT | | |
+| `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
+| `tenant_ctry`              | Land/Region des Ressourcenmandanten | JWT | | |
 | `xms_pdl`             | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist der bevorzugte Datenspeicherort ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Sie wird im Format Sprachkürzel-Länderkürzel angegeben (z. B. en-us). |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Sie wird in Form des Sprachkürzels angegeben (z. B.: en). |

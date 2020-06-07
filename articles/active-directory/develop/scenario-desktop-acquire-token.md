@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439c118e242f3561593aa0c8fe9a88b3b07a4a9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097760"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771841"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -105,7 +105,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL für iOS und macOS
 
@@ -374,7 +374,7 @@ if not result:
 
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL für iOS und macOS
 
@@ -419,9 +419,9 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
 
 - Die integrierte Windows-Authentifizierung kann nur für Benutzer des Typs *Federated+* verwendet werden, d. h. für Benutzer, die in Azure Active Directory erstellt und von Azure AD unterstützt werden. Direkt in Azure AD erstellte Benutzer ohne Azure Active Directory-Unterstützung (d. h. *verwaltete* Benutzer) können diesen Authentifizierungsflow nicht verwenden. Diese Einschränkung wirkt sich nicht auf den Flow mit Benutzername und Kennwort aus.
 - IWA ist für Apps bestimmt, die für die .NET Framework-, .NET Core- und die UWP-Plattform (Universal Windows Platform) geschrieben wurden.
-- Die mehrstufige Authentifizierung (MFA) wird von der IWA nicht umgangen. Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
+- Die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) wird von der IWA nicht umgangen. Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
   > [!NOTE]
-  > Dies ist eine komplizierte Situation. IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.
+  > Dies ist eine komplizierte Situation. IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.
 
 - Für die in `PublicClientApplicationBuilder` übergebene Autorität gelten folgende Voraussetzungen:
   - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).
@@ -590,7 +590,7 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 Dieser Flow wird in MSAL Python noch nicht unterstützt.
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Dieser Flow gilt nicht für macOS.
 
@@ -615,7 +615,7 @@ Dieser Flow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung d
 
 Außerdem gelten die folgenden Einschränkungen:
 
-- Der Flow mit Benutzername und Kennwort ist nicht kompatibel mit dem bedingten Zugriff und der mehrstufigen Authentifizierung. Wenn also Ihre App in einem Azure AD-Mandanten ausgeführt wird, für den der Mandantenadministrator die mehrstufige Authentifizierung fordert, können Sie diesen Flow nicht nutzen. Dies ist aber in vielen Organisationen der Fall.
+- Der Flow mit Benutzername und Kennwort ist nicht mit dem bedingten Zugriff und der mehrstufigen Authentifizierung kompatibel. Wenn also Ihre App in einem Azure AD-Mandanten ausgeführt wird, für den der Mandantenadministrator die mehrstufige Authentifizierung fordert, können Sie diesen Flow nicht nutzen. Dies ist aber in vielen Organisationen der Fall.
 - Er funktioniert nur für Geschäfts-, Schul- oder Unikonten (nicht für MSA).
 - Der Flow ist für .NET Desktop und .NET Core, jedoch nicht für UWP verfügbar.
 
@@ -913,7 +913,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Dieser Flow wird in MSAL für macOS nicht unterstützt.
 
@@ -927,7 +927,7 @@ Wenn Sie ein Befehlszeilentool schreiben, das keine Websteuerelemente enthält, 
 
 Für die interaktive Authentifizierung mit Azure AD wird ein Webbrowser benötigt. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern](https://aka.ms/msal-net-uses-web-browser). Für die Authentifizierung von Benutzern bei Geräten oder Betriebssystemen ohne Webbrowser ermöglicht der Gerätecodeflow dem Benutzer, ein anderes Gerät wie einen Computer oder ein Mobiltelefon zu verwenden, um sich interaktiv anzumelden. Mithilfe des Gerätecodeflows ruft die Anwendung in einem zweistufigen Prozess, der speziell für diese Geräte oder Betriebssysteme entwickelt wurde, die Token ab. Beispiele für solche Anwendungen sind iOT-Anwendungen oder Befehlszeilentools (CLI). Dahinter steckt folgender Gedanke:
 
-1. Wenn eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code für den Benutzer bereit. Der Benutzer wird aufgefordert, ein anderes Gerät (z. B. ein Smartphone mit Internetverbindung) zu verwenden, um zu einer URL (z. B. `https://microsoft.com/devicelogin`) zu wechseln. Anschließend wird der Benutzer aufgefordert, den Code einzugeben. Danach wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, u. a. mit Zustimmungsaufforderung und mehrstufiger Authentifizierung, sofern erforderlich.
+1. Wenn eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code für den Benutzer bereit. Der Benutzer wird aufgefordert, ein anderes Gerät (z. B. ein Smartphone mit Internetverbindung) zu verwenden, um zu einer URL (z. B. `https://microsoft.com/devicelogin`) zu wechseln. Anschließend wird der Benutzer aufgefordert, den Code einzugeben. Danach wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, der ggf. auch Zustimmungsaufforderungen und die mehrstufige Authentifizierung umfasst.
 
 2. Nach erfolgreicher Authentifizierung empfängt die Befehlszeilen-App die erforderlichen Token über einen Backchannel und führt damit die benötigten Web-API-Aufrufe aus.
 
@@ -1144,7 +1144,7 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Dieser Flow gilt nicht für macOS.
 

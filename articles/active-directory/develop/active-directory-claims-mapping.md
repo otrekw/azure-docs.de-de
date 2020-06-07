@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871205"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737502"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -275,7 +275,7 @@ Legen Sie das Quellelement auf einen der folgenden Werte fest:
 - „application“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Anwendung (Client). 
 - „resource“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Ressource.
 - „audience“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals, der die Zielgruppe des Token ist (Client- oder Ressourcendienstprinzipal).
-- „company“: Die Daten im Anspruch sind eine Eigenschaft des Company-Objekts des Ressourcenmandanten.
+- „company“: Die Daten im Anspruch sind eine Eigenschaft des „Company“-Objekts des Ressourcenmandanten.
 - „transformation“: Die Daten im Anspruch stammen aus Anspruchtransformationen (siehe Abschnitt „Transformation von Ansprüchen“ weiter unten in diesem Artikel).
 
 Wenn die Quelle „transformation“ ist, muss das **TransformationID**-Element in dieser Anspruchsdefinition auch enthalten sein.
@@ -319,7 +319,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | extensionattribute14 | Erweiterungsattribut 14 |
 | Benutzer | extensionattribute15 | Erweiterungsattribut 15 |
 | Benutzer | othermail | Andere E-Mail-Nachrichten |
-| Benutzer | country | Country |
+| Benutzer | country | Land/Region |
 | Benutzer | city | City |
 | Benutzer | state | State |
 | Benutzer | jobtitle | Position |
@@ -328,9 +328,9 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Anwendung, Ressourcen, Zielgruppe | displayname | Anzeigename |
 | Anwendung, Ressourcen, Zielgruppe | objected | ObjectID |
 | Anwendung, Ressourcen, Zielgruppe | tags | Dienstprinzipal-Tag |
-| Company | tenantcountry | Land des Mandanten |
+| Company | tenantcountry | Land/Region des Mandanten |
 
-**TransformationID:** Das TransformationID-Element muss nur dann bereitgestellt werden, wenn das Quellelement auf „transformation“ festgelegt ist.
+**TransformationID:** Das „TransformationID“-Element muss nur bereitgestellt werden, wenn das Quellelement auf „transformation“ festgelegt ist.
 
 - Dieses Element muss mit dem ID-Element des Transformationseintrags in der Eigenschaft **ClaimsTransformation** entsprechen, die definiert, wie die Daten für diesen Anspruch generiert werden.
 
@@ -478,7 +478,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruch
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, um EmployeeID und TenantCountry als Ansprüche in Token einzuschließen, die für einen Dienstprinzipal ausgestellt wurden
 
-In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. TenantCountry wird als Landresanspruchstyp in den SAML-Token und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
+In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. „TenantCountry“ wird als Anspruchstyp für Land/Region in den SAML-Token und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
    1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:  
@@ -502,7 +502,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpft
 
 #### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, die eine Anspruchstransformation in Token verwendet, die für einen Dienstprinzipal ausgestellt wurden
 
-In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten Anspruch „JoinedData“ für JWTs ausgestellt, die für verknüpfte Dienstprinzipale ausgegeben wurden. Dieser Anspruch enthält einen Wert, der durch das Verknüpfen der Daten erstellt wird, die im Attribut „extensionattribute1“ im Benutzerobjekt mit „.sandbox“ gespeicherten wurden. In diesem Beispiel schließen wir den grundlegenden Anspruchssatz in Token aus.
+In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten Anspruch „JoinedData“ an JWTs ausgibt, die für verknüpfte Dienstprinzipale ausgestellt werden. Dieser Anspruch enthält einen Wert, der durch das Verknüpfen der im Attribut „extensionattribute1“ im Benutzerobjekt mit „.sandbox“ gespeicherten Daten erstellt wird. In diesem Beispiel schließen wir den grundlegenden Anspruchssatz in Token aus.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
    1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:

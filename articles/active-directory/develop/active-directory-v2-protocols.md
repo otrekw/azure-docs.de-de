@@ -1,5 +1,6 @@
 ---
-title: OAuth 2.0 und OpenID Connect-Protokolle – Microsoft Identity Platform | Azure
+title: OAuth 2.0- und OpenID Connect-Protokolle auf der Microsoft Identity Platform | Azure
+titleSuffix: Microsoft identity platform
 description: Anleitung für die OAuth 2.0- und OpenID Connect-Protokolle, die vom Microsoft Identity Platform-Endpunkt unterstützt werden.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690262"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737485"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 und OpenID Connect-Protokolle auf der Microsoft Identity Platform
+# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2.0- und OpenID Connect-Protokolle auf der Microsoft Identity Platform
 
-Der Microsoft Identity Platform-Endpunkt ist eine Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind hilfreich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer [Open-Source-Bibliotheken](reference-v2-libraries.md) zu nutzen.
+Der Microsoft Identity Platform-Endpunkt für Identity-as-a-Service implementiert die Authentifizierung und Autorisierung mit den Industriestandardprotokollen OpenID Connect (OIDC) bzw. OAuth 2.0. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind hilfreich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open-Source-Bibliothek eines Drittanbieters verwenden, statt eine unserer [Open-Source-Bibliotheken](reference-v2-libraries.md) zu nutzen.
 
 ## <a name="the-basics"></a>Grundlagen
 
@@ -69,13 +70,13 @@ Um zu erfahren, wie Sie mit diesen Endpunkten interagieren, wählen Sie im Absch
 
 ## <a name="tokens"></a>Token
 
-Bei der Microsoft Identity Platform-Implementierung von OAuth 2.0 und OpenID Connect werden Bearertoken (auch in Form von JWTs) in großem Umfang verwendet. Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Microsoft Identity Platform authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
+Bei der Microsoft Identity Platform-Implementierung von OAuth 2.0 und OpenID Connect werden in großem Umfang Bearertoken (einschließlich als JWTs (JSON Web Token) dargestellte Bearertoken) verwendet. Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Microsoft Identity Platform authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
 
 Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Platform-Endpunkt verwendet werden, finden Sie in der [Referenz der Microsoft Identity Platform-Endpunkttoken](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokolle
 
-Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Arbeitsablaufs benötigen, informieren Sie sich über die [App-Typen, die mit Microsoft Identity Platform erstellt werden können](v2-app-types.md).
+Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Flows benötigen, informieren Sie sich über die [App-Typen, die mit Microsoft Identity Platform erstellt werden können](v2-app-types.md).
 
 * [Erstellen von mobilen und nativen Anwendungen mit OAuth 2.0](v2-oauth2-auth-code-flow.md)
 * [Erstellen von Web-Apps mit OpenID Connect](v2-protocols-oidc.md)

@@ -1,5 +1,6 @@
 ---
-title: OpenID Connect-Protokoll – Microsoft Identity Platform | Azure
+title: Microsoft Identity Platform und das OpenID Connect-Protokoll | Azure
+titleSuffix: Microsoft identity platform
 description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des OpenID Connect-Authentifizierungsprotokolls.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e1284b94500ae6b6f1aa5eb632e94e03f3d3df3
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688227"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771586"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
-OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Die Implementierung von OpenID Connect im Microsoft Identity Platform-Endpunkt ermöglicht es Ihnen, Anmeldungen und API-Zugriff für Ihre webbasierten Apps hinzuzufügen. In diesem Artikel wird erläutert,wie dies sprachunabhängig funktioniert. Außerdem wird beschrieben, wie HTTP-Nachrichten gesendet und empfangen werden, ohne Open Source-Bibliotheken zu verwenden.
+OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Die Implementierung von OpenID Connect im Microsoft Identity Platform-Endpunkt ermöglicht es Ihnen, Anmeldungen und API-Zugriff für Ihre webbasierten Apps hinzuzufügen. In diesem Artikel wird erläutert,wie dies sprachunabhängig funktioniert. Außerdem wird beschrieben, wie HTTP-Nachrichten gesendet und empfangen werden, ohne Open Source-Bibliotheken zu verwenden.
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungsprotokoll*, das als *Authentifizierungsprotokoll* verwendet werden soll, sodass das einmalige Anmelden mithilfe von OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. Der Microsoft Identity Platform-Endpunkt lässt auch zu, dass bei Azure AD registrierte Drittanbieter-Apps Zugriffstoken für geschützte Ressourcen wie Web-APIs ausstellen. Weitere Informationen zum Einrichten einer Anwendung zum Ausstellen von Zugriffstoken finden Sie unter [Registrieren einer App mit dem Microsoft Identity Platform-Endpunkt](quickstart-register-app.md). OpenID Connect wird für das Erstellen von [Webanwendungen](v2-app-types.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
 
@@ -33,7 +34,7 @@ Der grundlegende Anmeldefluss besteht aus den in der nächsten Abbildung gezeigt
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Abrufen des OpenID Connect-Metadatendokuments
 
-OpenID Connect beschreibt ein Metadatendokument, das den Großteil der Informationen enthält, die für eine App erforderlich sind, um eine Anmeldung auszuführen. Hierzu gehören Informationen wie z.B. die zu verwendenden URLs und der Speicherort der öffentlichen Signaturschlüssel des Dienstes. Für den Microsoft Identity Platform-Endpunkt sollten Sie folgendes OpenID Connect-Metadatendokument verwenden:
+OpenID Connect beschreibt ein Metadatendokument, das den Großteil der Informationen enthält, die für eine App erforderlich sind, um eine Anmeldung auszuführen. Hierzu gehören Informationen wie z.B. die zu verwendenden URLs und der Speicherort der öffentlichen Signaturschlüssel des Dienstes. Für den Microsoft Identity Platform-Endpunkt sollten Sie folgendes OpenID Connect-Metadatendokument verwenden:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
@@ -178,7 +179,7 @@ Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen. Einige a
 
 * Sicherstellen, dass sich der Benutzer/die Organisation für die App angemeldet hat.
 * Sicherstellen, dass der Benutzer über eine ordnungsgemäße Autorisierung und Berechtigungen verfügt.
-* Sicherstellen, dass eine bestimmte Stärke der Authentifizierung aufgetreten ist, z.B. die mehrstufige Authentifizierung.
+* Sicherstellen, dass eine bestimmte Authentifizierungsmethode verwendet wird, z. B. die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md).
 
 Nachdem Sie das ID-Token überprüft haben, können Sie mit dem Benutzer eine Sitzung beginnen und die Ansprüche im ID-Token zum Abrufen von Informationen über den Benutzer in der App verwenden. Diese Informationen können für die Anzeige, für Datensätze, für die Personalisierung usw. verwendet werden.
 
