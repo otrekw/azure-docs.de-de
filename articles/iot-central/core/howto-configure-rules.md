@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158455"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659357"
 ---
 # <a name="configure-rules"></a>Konfigurieren von Regeln
-
-
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
@@ -37,6 +35,12 @@ Im nachstehenden Screenshot wird mit den Bedingungen überprüft, wann die Tempe
 
 ![Bedingungen](media/howto-configure-rules/conditions.png)
 
+### <a name="use-a-cloud-property-in-a-value-field"></a>Verwenden einer Cloudeigenschaft in einem Wertefeld
+
+Sie können im Feld **Wert** für eine Bedingung von der Gerätevorlage auf eine Cloudeigenschaft verweisen. Die Cloudeigenschaft und der Telemetriewert müssen vom gleichen Typ sein. Wenn z. B. **Temperatur** ein Double-Wert ist, werden nur die Cloudeigenschaften vom Typ Double als Optionen in der Dropdownliste **Wert** angezeigt.
+
+Wenn Sie einen Telemetriewert von einem Ereignistyp auswählen, enthält die Dropdownliste **Wert** die Option **Beliebig**. Die Option **Beliebig** bedeutet, dass die Regel ausgelöst wird, wenn die Anwendung ein Ereignis dieses Typs empfängt, unabhängig von der Nutzlast.
+
 ## <a name="use-aggregate-windowing"></a>Verwenden von aggregiertem Windowing
 
 Regeln werten aggregierte Zeitfenster als rollierende Fenster aus. Im nachstehenden Screenshot beträgt das Zeitfenster fünf Minuten. Die Regel wertet alle fünf Minuten die Daten der letzten fünf Minuten aus. Die Daten werden nur einmal in dem für sie zutreffenden Fenster ausgewertet.
@@ -49,7 +53,4 @@ Für Regeln, die auf IoT Edge-Module angewendet werden, gilt eine Einschränkung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, wie Sie eine Regel in Ihrer Azure IoT Central-Anwendung konfigurieren, wird als Nächstes Folgendes empfohlen:
-
-> [!div class="nextstepaction"]
-> [Analysieren Ihrer Daten während der Ausführung](howto-create-analytics.md)
+Nachdem Sie erfahren haben, wie Sie eine Regel in der Azure IoT Central-Anwendung konfigurieren, können Sie erfahren, wie Sie mit Power Automate oder Azure Logic Apps [erweiterte Regeln konfigurieren](howto-configure-rules-advanced.md).

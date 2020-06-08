@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657043"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742215"
 ---
 # <a name="glossary"></a>Glossar
 
@@ -31,7 +31,7 @@ Die folgende Liste enthält Beschreibungen gängiger Begriffe, die im Zusammenha
 
 <a name="altitude"></a> **Höhe**: Die Höhe oder die vertikale Erhebung eines Punkts über einer Referenzfläche. Höhenmessungen basieren auf einem bestimmten Referenzdatum wie z.B. das Normalnull. Siehe auch „Erstreckung“.
 
-<a name="ambiguous"></a> **Mehrdeutig**: Ein gewisser Grad an Unbestimmtheit hinsichtlich der Datenklassifizierung, der vorliegt, wenn einem Objekt entsprechend mindestens zwei Werte für ein bestimmtes Attribut zugewiesen sind. Dies kommt beispielsweise bei der Geocodierung von „CA“ vor, bei der zwei mehrdeutige Ergebnisse zurückgegeben werden: Kanada (Canada) und Kalifornien (California). „CA“ bezeichnet nämlich einerseits das Land Kanada und ist gleichzeitig der Bundesstaatcode für Kalifornien. 
+<a name="ambiguous"></a> **Mehrdeutig**: Ein gewisser Grad an Unbestimmtheit hinsichtlich der Datenklassifizierung, der vorliegt, wenn einem Objekt entsprechend mindestens zwei Werte für ein bestimmtes Attribut zugewiesen sind. Dies kommt beispielsweise bei der Geocodierung von „CA“ vor, bei der zwei mehrdeutige Ergebnisse zurückgegeben werden: Kanada (Canada) und Kalifornien (California). „CA“ bezeichnet nämlich einerseits das Land/die Region Kanada und ist gleichzeitig der Bundesstaatcode für Kalifornien. 
 
 <a name="annotation"></a> **Anmerkung**: Textelemente oder Grafiken, die auf der Karte angezeigt werden, um Informationen für den Benutzer bereitzustellen. Anmerkungen können eine bestimmte Kartenentität darstellen bzw. beschreiben, allgemeine Informationen zu einem Bereich auf der Karte liefern oder Informationen zur Karte selbst angeben.
 
@@ -53,7 +53,7 @@ Die folgende Liste enthält Beschreibungen gängiger Begriffe, die im Zusammenha
 
 <a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : Der frühere Name von Azure Maps in der Vorschau.
 
-<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** : Azure AD ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration in Azure Maps ist derzeit in der Vorschau für alle Azure Maps-APIs verfügbar. Azure AD unterstützt die rollenbasierte Zugriffssteuerung (RBAC), um einen differenzierten Zugriff auf Azure Maps-Ressourcen zu ermöglichen. Weitere Informationen zur Azure AD-Integration in Azure Maps finden Sie unter [Azure Maps und Azure AD](azure-maps-authentication.md) sowie [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** : Azure AD ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration in Azure Maps ist derzeit in der Vorschau für alle Azure Maps-APIs verfügbar. Azure AD unterstützt die rollenbasierte Zugriffssteuerung (RBAC), um einen differenzierten Zugriff auf Azure Maps-Ressourcen zu ermöglichen. Weitere Informationen zur Azure AD-Integration in Azure Maps finden Sie unter [Azure Maps und Azure AD](azure-maps-authentication.md) sowie [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a name="azure-maps-key"></a> **Azure Maps-Schlüssel**: Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
 
@@ -93,7 +93,7 @@ Die folgende Liste enthält Beschreibungen gängiger Begriffe, die im Zusammenha
 
 <a name="coordinate-system"></a> **Koordinatensystem**: Ein Referenzframework, das verwendet wird, um die Positionen von Punkten im Raum in zwei oder drei Dimensionen zu definieren.
 
-<a name="country-code"></a> **Ländercode**: Ein eindeutiger Bezeichner für ein Land/eine Region basierend auf dem ISO-Standard. ISO2 ist ein Code mit zwei Buchstaben für ein Land (z.B. „US“), das bei ISO3 als Code mit drei Zeichen (z.B. „USA“) dargestellt wird.
+<a name="country-code"></a> **Ländercode**: Ein eindeutiger Bezeichner für ein Land/eine Region basierend auf dem ISO-Standard. ISO2 ist ein Code mit zwei Buchstaben für ein Land/eine Region (z. B. „US“), das bei ISO3 als Code mit drei Zeichen (z. B. „USA“) dargestellt wird.
 
 <a name="country-subdivision"></a> **Primäre Untereinheit eines Landes**: Eine Untereinheit eines Landes/einer Region auf oberster Ebene, z.B. ein Bundesstaat, ein Bundesland, ein Kanton oder eine Provinz.
 

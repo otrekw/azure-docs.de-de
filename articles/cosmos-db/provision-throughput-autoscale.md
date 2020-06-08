@@ -1,101 +1,89 @@
 ---
-title: Erstellen von Azure Cosmos-Containern und -Datenbanken mit per Autoskalierung bereitgestelltem Durchsatz
-description: Informieren Sie sich über die Vorteile, die Anwendungsfälle und die Bereitstellung von Azure Cosmos-Datenbanken und -Containern mit per Autoskalierung bereitgestelltem Durchsatz.
+title: Erstellen von Azure Cosmos-Containern und -Datenbanken im Autoskalierungsmodus
+description: Erfahren Sie mehr über die Vorteile, die Anwendungsfälle und die Bereitstellung von Azure Cosmos-Datenbanken und -Containern im Autoskalierungsmodus.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 81a13dcb7955a7d46f485416bf9b7e4e7be4d9ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/11/2020
+ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791713"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655812"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-autoscale-provisioned-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit per Autoskalierung bereitgestelltem Durchsatz
+# <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 
-Mit Azure Cosmos DB können Sie Ihre Container mit dem (manuell bereitgestellten) Standarddurchsatz oder dem per Autoskalierung bereitgestellten Durchsatz konfigurieren. In diesem Artikel werden die Vorteile und Anwendungsfälle der Autoskalierung beschrieben.
+Mit Azure Cosmos DB können Sie Standarddurchsatz (manuell) oder per Autoskalierung bereitgestellten Durchsatz für Ihre Datenbanken und Container festlegen. In diesem Artikel werden die Vorteile des per Autoskalierung bereitgestellten Durchsatzes und Anwendungsfälle beschrieben. 
 
-> [!NOTE]
-> Sie können die [Autoskalierung nur für neue Datenbanken und Container aktivieren](#create-db-container-autoscale). Der Modus ist für vorhandene Container und Datenbanken nicht verfügbar.
+Per Autoskalierung bereitgestellter Durchsatz eignet sich gut für unternehmenskritische Workloads, die über variable oder unvorhersehbare Datenverkehrsmuster verfügen und SLAs für hohe Leistung und Skalierung erfordern. 
 
-Zusätzlich zur Standardbereitstellung von Durchsatz können Sie jetzt Azure Cosmos-Container mit per Autoskalierung bereitgestelltem Durchsatz konfigurieren. Bei Containern und Datenbanken, die mit per Autoskalierung bereitgestelltem Durchsatz konfiguriert wurden, wird **der bereitgestellte Durchsatz automatisch und verzögerungsfrei gemäß Ihren Anwendungsanforderungen skaliert, ohne dass dies Auswirkungen auf Verfügbarkeit, Latenz, Durchsatz oder Leistung der allgemeinen Workload hat**.
+Mit Autoskalierung erfolgt eine **automatische und unmittelbare Skalierung des Durchsatzes (RU/s)** der Datenbank oder des Containers durch Azure Cosmos DB auf Grundlage der Nutzung. Dabei werden die Verfügbarkeit, Latenz, der Durchsatz und die Leistung der Arbeitsauslastung nicht beeinträchtigt. 
 
-Beim Konfigurieren von Containern und Datenbanken mit Autoskalierung müssen Sie den maximalen Durchsatz `Tmax` angeben, der nicht überschritten werden darf. Container können dann ihren Durchsatz so skalieren, dass `0.1*Tmax < T < Tmax` gilt. Mit anderen Worten: Container und Datenbanken werden basierend auf den Anforderungen der Workload unverzüglich skaliert – von einem von Ihnen konfigurierten geringen Wert (z. B. 10 % des maximalen Durchsatzwerts) bis zum konfigurierten Maximalwert. Nach dem Konfigurieren der Autoskalierung können Sie die Einstellung für den maximalen Durchsatz (`Tmax`) für eine Datenbank oder einen Container jederzeit ändern. Mit der Autoskalierungsoption gilt der minimale Durchsatz von 400 RU/s pro Container oder Datenbank nicht mehr.
+## <a name="benefits-of-autoscale"></a>Vorteile der automatischen Skalierung
 
-Für den angegebenen maximalen Durchsatz im Container oder in der Datenbank ist der Betrieb innerhalb der berechneten Speicherbegrenzung zulässig. Wenn die Speicherbegrenzung überschritten wird, wird der maximale Durchsatz automatisch auf einen höheren Wert festgelegt. Bei Verwendung des Durchsatzes auf Datenbankebene mit Autoskalierung wird die Anzahl von Containern, die in einer Datenbank zulässig ist, wie folgt berechnet: `0.001*TMax`. Wenn Sie beispielsweise 20.000 RU/s im Autoskalierungsmodus bereitstellen, kann die Datenbank über 20 Container verfügen.
+Azure Cosmos-Datenbanken und -Container, die mit per Autoskalierung bereitgestelltem Durchsatz konfiguriert sind, bieten die folgenden Vorteile:
 
-## <a name="benefits-of-autoscale-provisioned-throughput"></a><a id="autoscale-benefits">Vorteile des per Autoskalierung bereitgestellten Durchsatzes</a>
+* **Einfach:** Durch Autoskalierung ist die komplexe Verwaltung des Durchsatzes mit benutzerdefinierter Skripterstellung oder manueller Skalierung nicht mehr erforderlich. 
 
-Azure Cosmos-Container, die mit Autoskalierung konfiguriert sind, bieten die folgenden Vorteile:
+* **Skalierbar:** Mit Datenbanken und Containern wird der bereitgestellte Durchsatz nach Bedarf automatisch skaliert. Dabei werden weder Clientverbindungen oder Anwendungen unterbrochen noch SLAs für Azure Cosmos DB beeinträchtigt.
 
-* **Einfach:** Container mit Autoskalierung machen komplexe Abläufe wie die manuelle Verwaltung des bereitgestellten Durchsatzes (RUs) und der Kapazität für verschiedene Container überflüssig.
+* **Kosteneffizient:** Mit Autoskalierung können Sie den Durchsatz und die Kosten optimieren, indem Sie den Durchsatz situationsabhängig herunterskalieren. Sie zahlen nur für die Ressourcen, die von Ihren Workloads pro Stunde benötigt werden.
 
-* **Skalierbar:** Bei Containern mit Autoskalierung lässt sich die Kapazität des bereitgestellten Durchsatzes nach Bedarf nahtlos skalieren. Dabei werden weder Clientverbindungen oder Anwendungen unterbrochen, noch vorhandene SLAs beeinträchtigt.
+* **Hochverfügbarkeit:** Datenbanken und Container mit Autoskalierung verwenden dasselbe global verteilte, fehlertolerante, hochverfügbare Azure Cosmos DB-Back-End, um die Dauerhaftigkeit und ständige Hochverfügbarkeit von Daten sicherzustellen.
 
-* **Kosteneffizient:** Wenn Sie mit Autoskalierung konfigurierte Container verwenden, zahlen Sie auf Stundenbasis nur für die Ressourcen, die Ihre Workloads benötigen.
+## <a name="use-cases-of-autoscale"></a>Anwendungsfälle der Autoskalierung
 
-* **Hochverfügbarkeit:** Container mit Autoskalierung verwenden dasselbe global verteilte, fehlertolerante, hochverfügbare Back-End, um die Dauerhaftigkeit und Hochverfügbarkeit von Daten sicherzustellen.
+Anwendungsfälle des automatisch skalierten Durchsatzes:
 
-## <a name="use-cases-of-autoscale-provisioned-throughput"></a><a id="autoscale-usecases"></a> Anwendungsfälle des per Autoskalierung bereitgestellten Durchsatzes
+* **Variable oder nicht vorhersehbare Workloads:** Wenn Ihre Workloads variable oder unvorhersehbare Spitzenlasten aufweisen, unterstützt die Autoskalierung das automatische zentrale Hoch- und Herunterskalieren basierend auf der Nutzung. Beispiele hierfür sind Einzelhandelswebsites mit unterschiedlichen, saisonabhängigen Datenverkehrsmustern, IoT-Arbeitsauslastungen mit Spitzen zu verschiedenen Tageszeiten, Branchenanwendungen, die einige Male im Monat oder Jahr Auslastungsspitzen aufweisen, usw. Mit Autoskalierung ist es nicht mehr erforderliche, manuelle Vorkehrungen für die Spitzen- oder Durchschnittskapazität zu treffen. 
 
-Folgende Anwendungsfälle bieten sich für die mit Autoskalierung konfigurierten Azure Cosmos-Container an:
+* **Neue Anwendungen:** Wenn Sie eine neue Anwendung entwickeln und sich nicht sicher sind, welchen Durchsatz (RU/s) Sie benötigen, erleichtert Ihnen die Autoskalierung die ersten Schritte. Sie können mit einem Autoskalierungseinstiegspunkt von 400–4.000 RU/s beginnen, die Nutzung überwachen und im Laufe der Zeit den richtigen Durchsatz bestimmen.
 
-* **Variable Workloads:** Sie führen eine gering ausgelastete Anwendung mit einer Spitzenauslastung von einer bis zu mehreren Stunden einige Male täglich oder mehrmals pro Jahr aus. Beispiele hierfür sind Anwendungen für Personalwesen, Budgetierung und Betriebsberichterstattung. Für solche Szenarien können Container verwendet werden, die mit Autoskalierung konfiguriert sind. Es ist nicht mehr erforderlich, eine manuelle Bereitstellung für maximale oder durchschnittliche Kapazitäten vorzunehmen.
+* **Selten genutzte Anwendungen:** Wenn Sie über eine Anwendung verfügen, die nur mehrmals pro Tag, Woche oder Monat einige Stunden lang verwendet wird – z. B. eine Anwendungswebsite/allgemeine Website/Blogwebsite –, passt die Autoskalierung die Kapazität an, um die Spitzenauslastung zu bewältigen, und verringert die Kapazität, wenn die Auslastung gesunken ist. 
 
-* **Unvorhersehbare Workloads:** Sie führen Workloads aus, bei denen die Datenbanknutzung über den ganzen Tag erfolgt, allerdings auch Aktivitätsspitzen auftreten, die nur schwer vorhersehbar sind. Ein Beispiel hierfür ist eine Verkehrsinfo-Website, bei der die Aktivitäten ansteigen, sobald sich der Wetterbericht ändert. Bei Containern, die mit Autoskalierung konfiguriert sind, wird die Kapazität angepasst, wenn die Anwendung eine Spitzenlast verzeichnet, und wieder herunterskaliert, wenn die Aktivitäten wieder auf das normale Maß zurückgehen.
+* **Entwicklungs- und Testworkloads:** Wenn Sie oder Ihr Team Azure Cosmos-Datenbanken und -Container während der Arbeitszeit verwenden, diese aber nicht in der Nacht oder an Wochenenden benötigen, können Sie durch die Autoskalierung Kosten sparen, indem Sie auf ein Minimum zentral herunterskalieren, wenn keine Nutzung erfolgt. 
 
-* **Neue Anwendungen:** Sie stellen eine neue Anwendung bereit und sind sich nicht sicher, wie viel bereitgestellten Durchsatz (d. h. wie viele RUs) Sie benötigen. Bei Containern, die mit Autoskalierung konfiguriert sind, können Sie die Skalierung automatisch an den Kapazitätsbedarf und die Anforderungen Ihrer Anwendung anpassen.
+* **Geplante Produktionsworkloads/-abfragen:** Wenn eine Reihe geplanter Anforderungen, Vorgänge oder Abfragen in Leerlaufzeiten ausgeführt werden soll, können Sie dies problemlos mit Autoskalierung durchführen. Wenn Sie die Arbeitsauslastung ausführen müssen, wird der Durchsatz automatisch auf die erforderliche Kapazität skaliert und anschließend herunterskaliert. 
 
-* **Selten genutzte Anwendungen:** Sie verfügen über eine Anwendung, die mehrmals pro Tag, Woche oder Monat für wenige Stunden genutzt wird, beispielsweise eine Anwendung/Website/Blogwebsite mit geringem Volumen.
+Das Entwickeln einer benutzerdefinierten Lösung für diese Probleme erfordert nicht nur sehr viel Zeit, sondern macht auch die Konfiguration oder den Code Ihrer Anwendung kompliziert. Mit der Autoskalierung werden die oben beschriebenen Szenarien vorkonfiguriert bereitgestellt, und die Notwendigkeit einer benutzerdefinierten oder manuellen Skalierung der Kapazität entfällt. 
 
-* **Entwicklungs-und Testdatenbanken:** Ihre Entwickler verwenden Container während der Arbeitszeit, benötigen sie jedoch nicht nachts oder an Wochenenden. Bei Containern, die mit Autoskalierung konfiguriert sind, wird auf ein Minimum herunterskaliert, wenn sie nicht verwendet werden.
+## <a name="how-autoscale-provisioned-throughput-works"></a>Funktionsweise von per Autoskalierung bereitgestelltem Durchsatz
 
-* **Geplante Produktionsworkloads/-abfragen:** Wenn Sie über eine Reihe geplanter Anforderungen/Vorgänge/Abfragen für einen einzelnen Container verfügen und es Leerlaufphasen gibt, in denen Sie den Durchsatz auf ein absolutes Minimum beschränken möchten, können Sie dies jetzt problemlos tun. Wenn eine geplante Abfrage/Anforderung an einen Container übermittelt wird, der mit Autoskalierung konfiguriert ist, wird der Durchsatz soweit wie nötig hochskaliert, und der Vorgang wird ausgeführt.
+Beim Konfigurieren von Containern und Datenbanken mit Autoskalierung müssen Sie den maximalen Durchsatz `Tmax` angeben. Azure Cosmos DB skaliert den Durchsatz `T`, sodass `0.1*Tmax <= T <= Tmax`. Wenn Sie z. B. den maximalen Durchsatz auf 20.000 RU/s festlegen, wird der Durchsatz auf einen Wert zwischen 2.000 und 20.000 RU/s skaliert. Da die Skalierung automatisch und sofort erfolgt, kann der Durchsatz zu jedem beliebigen Zeitpunkt und ohne Verzögerung bis zum festgelegten Wert `Tmax` betragen. 
 
-Lösungen für die vorherigen Probleme erfordern nicht nur eine sehr lange Implementierungszeit, sondern erhöhen auch die Komplexität der Konfiguration oder Ihres Codes. Außerdem ist häufig ein manuelles Eingreifen erforderlich, um die Probleme zu beheben. Bei der Autoskalierung werden die oben aufgeführten Szenarien standardmäßig unterstützt, sodass Sie sich nicht mehr um diese Probleme kümmern müssen.
+Jede Stunde wird Ihnen der höchste Durchsatz `T` in Rechnung gestellt, auf den das System innerhalb dieser Stunde skaliert wurde.
 
-## <a name="comparison--standard-manual-vs-autoscale-provisioned-throughput"></a>Vergleich von (manuell bereitgestelltem) Standarddurchsatz und per Autoskalierung bereitgestelltem Durchsatz
+Der Einstiegspunkt für den maximalen Durchsatz `Tmax` bei Autoskalierung beträgt 4.000 RU/s, sodass eine Skalierung zwischen 400 und 4.000 RU/s erfolgt. Sie können `Tmax` in Schritten von 1.000 RU/s festlegen und den Wert jederzeit ändern.  
 
-|  | Mit Standarddurchsatz konfigurierte Container  | Mit per Autoskalierung bereitgestelltem Durchsatz konfigurierte Container |
-|---------|---------|---------|
-| **Bereitgestellter Durchsatz** | Manuell bereitgestellt. | Automatische und sofortige Skalierung basierend auf den Workload-Verwendungsmustern. |
-| **Ratenbegrenzung von Anforderungen/Vorgängen (429)**  | Kann passieren, wenn die Nutzung die bereitgestellte Kapazität überschreitet. | Wird nicht durchgeführt, wenn der genutzte Durchsatz unter dem maximalen Durchsatz liegt, den Sie für die Autoskalierung ausgewählt haben.   |
-| **Kapazitätsplanung** |  Sie müssen eine anfängliche Kapazitätsplanung durchführen und den benötigten Durchsatz bereitstellen. |    Sie müssen sich nicht um die Kapazitätsplanung kümmern. Das System übernimmt automatisch die Kapazitätsplanung und -verwaltung. |
-| **Preise** | Manuell bereitgestellte RU/s pro Stunde | Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem Tarif für Autoskalierungs-RUs/s pro Stundensatz. <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für die Autoskalierung an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben Tarif für Multimaster-RU/s pro Stunde. |
-| **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
-
-## <a name="create-a-database-or-a-container-with-autoscale"></a><a id="create-db-container-autoscale"></a> Erstellen einer Datenbank oder eines Containers mit Autoskalierung
-
-Sie können den Autoskalierungsmodus für neue Datenbanken oder Container konfigurieren, während Sie diese über das Azure-Portal erstellen. Führen Sie die folgenden Schritte aus, um eine neue Datenbank oder einen neuen Container zu erstellen, die Autoskalierung zu aktivieren und den maximalen Durchsatz (RU/s) anzugeben.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder beim [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) an.
-
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
-
-1. Wählen Sie **Neuer Container** aus. Geben Sie einen Namen für die Datenbank und den Container sowie einen Partitionsschlüssel an. Wählen Sie unter **Durchsatz** die Option **Autoskalierung** aus. Wählen Sie dann den maximalen Durchsatz (RU/s) aus, der von der Datenbank oder vom Container bei der Verwendung der Autoskalierungsoption nicht überschritten werden darf.
-
-   ![Erstellen eines Containers und Konfigurieren des Durchsatzes mit Autoskalierung](./media/provision-throughput-autoscale/create-container-autoscale-mode.png)
-
-1. Klicken Sie auf **OK**.
-
-Sie können eine Datenbank mit gemeinsam genutztem Durchsatz mit Autoskalierung erstellen, indem Sie die Option **Datenbankdurchsatz bereitstellen** auswählen.
+## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen ##
+Verwenden Sie das [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), um Autoskalierung für vorhandene Datenbanken oder Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work).
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Durchsatz- und Speicherlimits für die Autoskalierung
 
-In der nachstehenden Tabelle werden die maximalen Durchsatz- und Speicherlimits für verschiedene Optionen mit Autoskalierung gezeigt:
+Für einen beliebigen Wert `Tmax` kann die Datenbank oder der Container insgesamt `0.01 * Tmax GB` speichern. Nachdem diese Menge an Speicher erreicht wurde, wird der maximale Durchsatz automatisch basierend auf dem neuen Speicherwert erhöht, ohne dass sich dies auf Ihre Anwendung auswirkt. 
 
-|Maximales Durchsatzlimit  |Maximales Speicherlimit  |
-|---------|---------|
-|4\.000 RU/s  |   50 GB    |
-|20.000 RU/s  |  200 GB  |
-|100.000 RU/s    |  1 TB   |
-|500.000 RU/s    |  5 TB  |
+Wenn Sie z. B. mit dem Höchstwert von 50.000 RU/s beginnen (Skalierungen zwischen 5.000 und 50.000 RU/s), können Sie bis zu 500 GB an Daten speichern. Wenn Sie 500 GB überschreiten (z. B. 600 GB), gilt als neuer Höchstwert 60.000 RU/s (Skalierungen zwischen 6.000 und 60.000 RU/s).
+
+Wenn Sie den Durchsatz auf Datenbankebene mit Autoskalierung verwenden, gilt für die ersten 25 Container ein maximaler automatisch skalierter Durchsatz von 4.000 RU/s (Skalierungen zwischen 400 und 4.000 RU/s), solange Sie nicht mehr als 40 GB Speicher benötigen. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container).
+
+## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Vergleich – Container mit manuell skaliertem und automatisch skaliertem Durchsatz
+Weitere Informationen finden Sie in diesem [Dokument](how-to-choose-offer.md), in dem erläutert wird, wie Sie zwischen Standarddurchsatz (manuell) und Durchsatz mit Autoskalierung wählen.  
+
+|| Container mit Standarddurchsatz (manuell)  | Container mit automatisch skaliertem Durchsatz |
+|---------|---------|---------|
+| **Bereitgestellter Durchsatz (RU/s)** | Manuell bereitgestellt. | Automatische und sofortige Skalierung basierend auf den Workload-Verwendungsmustern. |
+| **Ratenbegrenzung von Anforderungen/Vorgängen (429)**  | Kann passieren, wenn die Nutzung die bereitgestellte Kapazität überschreitet. | Dies geschieht nicht, wenn Sie Durchsatz innerhalb des von Ihnen festgelegten Durchsatzbereichs mit Autoskalierung nutzen.    |
+| **Kapazitätsplanung** |  Sie müssen eine Kapazitätsplanung durchführen und den genauen benötigten Durchsatz bereitstellen. |    Das System übernimmt automatisch die Kapazitätsplanung und -verwaltung. |
+| **Preise** | Sie zahlen für den manuell bereitgestellten Durchsatz pro Stunde nach dem [Tarif für Standard-RU/s (manuell) auf Stundenbasis](https://azure.microsoft.com/pricing/details/cosmos-db/). | Sie zahlen pro Stunde für den höchsten Durchsatz, auf den das System innerhalb der Stunde zentral hochskaliert wurde. <br/><br/> Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem [Tarif für Autoskalierungs-RUs/s pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für die Autoskalierung an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben [Tarif für Multimaster-RU/s pro Stunde](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr in den [häufig gestellten Fragen zur Autoskalierung](autoscale-faq.md).
-* Erfahren Sie mehr über [logische Partitionen](partition-data.md).
-* Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
-* Erfahren Sie mehr über das [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos](how-to-provision-database-throughput.md).
+* Erfahren Sie, wie Sie sich [zwischen manuellem Durchsatz und automatisch skaliertem Durchsatz entscheiden](how-to-choose-offer.md).
+* Erfahren Sie mehr über das [Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md).
+* Erfahren Sie mehr über die [Partitionierung](partition-data.md) in Azure Cosmos DB.
+
+

@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649899"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Integrieren von Azure Event Hubs in Azure Private Link (Vorschau)
+# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrieren von Event Hubs in Azure Private Link
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
@@ -23,8 +23,6 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 
 > [!IMPORTANT]
 > Diese Funktion wird nur für den **Dedicated**-Tarif unterstützt. Weitere Informationen zum Dedicated-Tarif finden Sie unter [Übersicht über Event Hubs Dedicated](event-hubs-dedicated-overview.md). 
->
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
 
 >[!WARNING]
 > Durch das Aktivieren von privaten Endpunkten kann verhindert werden, dass andere Azure-Dienste mit Event Hubs interagieren.
@@ -39,7 +37,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 > - Azure IoT Device Explorer
 >
 > Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
-> - Azure-Web-Apps 
+> - Azure-Web-Apps
 > - Azure-Funktionen
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Hinzufügen eines privaten Endpunkts über das Azure-Portal
@@ -64,7 +62,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 2. Geben Sie auf der Suchleiste den Suchbegriff **Event Hubs** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
 4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen (Vorschau)** aus. Wenn Sie keinen Dedicated-Tarif von Event Hubs verwenden, wird folgende Meldung angezeigt: **Private Endpunktverbindungen auf Event Hubs werden nur von Namespaces unterstützt, die unter einem dedizierten Cluster erstellt werden**.
+5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. Wenn Sie keinen Dedicated-Tarif von Event Hubs verwenden, wird folgende Meldung angezeigt: **Private Endpunktverbindungen auf Event Hubs werden nur von Namespaces unterstützt, die unter einem dedizierten Cluster erstellt werden**.
 6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
     ![Image](./media/private-link-service/private-link-service-3.png)
@@ -244,46 +242,33 @@ Vergewissern Sie sich, dass die Ressourcen innerhalb des Subnetzes, in dem sich 
 
 Erstellen Sie zunächst einen virtuellen Computer. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md).
 
-Gehen Sie auf der Registerkarte **Netzwerk** wie folgt vor:
+Gehen Sie auf der Registerkarte **Netzwerk** wie folgt vor: 
 
-1. Geben Sie ein **virtuelles Netzwerk** und ein **Subnetz** an. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. Vergewissern Sie sich bei Verwendung eines bereits vorhandenen Netzwerks, dass die Region übereinstimmt.
-1. Geben Sie eine **öffentliche IP-Ressource** an.
-1. Wählen Sie für **NIC-Netzwerksicherheitsgruppe** die Option **Keine** aus.
-1. Wählen Sie für den **Lastenausgleich** **Nein** aus.
+1. Geben Sie ein **virtuelles Netzwerk** und ein **Subnetz** an. Sie müssen das virtuelle Netzwerk auswählen, in dem Sie den privaten Endpunkt bereitgestellt haben.
+2. Geben Sie eine **öffentliche IP-Ressource** an.
+3. Wählen Sie für **NIC-Netzwerksicherheitsgruppe** die Option **Keine** aus.
+4. Wählen Sie für den **Lastenausgleich** **Nein** aus.
 
-Öffnen Sie die Befehlszeile, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der VM her, öffnen Sie die Befehlszeile, und führen Sie den folgenden Befehl aus:
 
 ```console
-nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
+nslookup <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Wenn Sie den Befehl „ns lookup“ ausführen, um die IP-Adresse eines Event Hubs-Namespace über einen öffentlichen Endpunkt aufzulösen, sieht das Ergebnis wie folgt aus:
+Das Ergebnis sollte in etwa wie folgt aussehen. 
 
 ```console
-c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
-```
-
-Wenn Sie den Befehl „ns lookup“ ausführen, um die IP-Adresse eines Event Hubs-Namespace über einen privaten Endpunkt aufzulösen, sieht das Ergebnis wie folgt aus:
-
-```console
-c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-event-hub-name>.servicebus.windows.net
+Name:    <event-hubs-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Einschränkungen und Entwurfsaspekte
 
 **Preise:** Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Einschränkungen:**  Der private Endpunkt für Azure Event Hubs befindet sich in der Public Preview-Phase. Dieses Feature steht in allen öffentlichen Azure-Regionen zur Verfügung.
+**Einschränkungen:**  Dieses Feature steht in allen öffentlichen Azure-Regionen zur Verfügung.
 
 **Maximal zulässige Anzahl privater Endpunkte pro Event Hubs-Namespace:** 120.
 
