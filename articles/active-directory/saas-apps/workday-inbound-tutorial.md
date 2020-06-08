@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 9c953c43ff119d42cdadcd2aba6e15f69765afc2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201634"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745438"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -492,7 +492,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Workday-Worker in lokalem Active Directory synchronisieren**.
 
-1. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
+1. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Der Standardbereich ist „Alle Benutzer in Workday“. Beispielfilter:
 
    * Beispiel: Auswählen der Benutzer mit Worker-IDs von 1000000 bis 2000000 (außer 2000000)
 
@@ -808,7 +808,7 @@ Nein, das Senden von E-Mail-Benachrichtigungen nach Abschluss der Bereitstellung
 
 Einer der letzten Schritte bei der Bereitstellung eines neuen AD-Kontos ist die Bereitstellung des temporären Kennworts, das dem AD-Konto des Benutzers zugewiesen wurde. Viele Unternehmen verwenden immer noch den traditionellen Ansatz, bei dem das temporäre Kennwort an den Manager des Benutzers übermittelt wird, der dann das Kennwort an den neuen Mitarbeiter übergibt. Dieser Prozess hat einen inhärenten Sicherheitsfehler und es gibt eine Option, um einen besseren Ansatz mit Hilfe der Azure AD-Funktionen zu implementieren.
 
-Im Rahmen des Einstellungsprozesses führen die HR-Teams in der Regel eine Hintergrundüberprüfung durch und überprüfen die Mobilfunknummer des neuen Mitarbeiters. Mit der Integration der „Workday to AD“-Benutzerbereitstellungs-App können Sie darauf aufbauen und bereits am ersten Tag eine Funktion für die Self-Service-Kennwortzurücksetzung für den Benutzer einführen. Dies erfolgt durch die Weitergabe des Attributs „Mobil Number“ des neuen Mitarbeiters von Workday zu AD und dann von AD zu Azure AD über Azure AD Connect. Sobald dieses Attribut in Azure AD vorhanden ist, können Sie die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](../authentication/howto-sspr-authenticationdata.md) für das Konto des Benutzers aktivieren, sodass ein neuer Mitarbeiter am ersten Tag die registrierte und verifizierte Mobilfunknummer zur Authentifizierung verwenden kann.
+Im Rahmen des Einstellungsprozesses führen die HR-Teams in der Regel eine Hintergrundüberprüfung durch und überprüfen die Mobilfunknummer des neuen Mitarbeiters. Mit der Integration der „Workday to AD“-Benutzerbereitstellungs-App können Sie darauf aufbauen und bereits am ersten Tag eine Funktion für die Self-Service-Kennwortzurücksetzung für den Benutzer einführen. Dies erfolgt durch die Weitergabe des Attributs „Mobile Number“ des neuen Mitarbeiters von Workday zu AD und dann von AD zu Azure AD über Azure AD Connect. Sobald das Attribut „Mobile Number“ in Azure AD vorhanden ist, können Sie die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](../authentication/howto-sspr-authenticationdata.md) für das Konto des Benutzers aktivieren, sodass ein neuer Mitarbeiter am ersten Tag die registrierte und verifizierte Mobilfunknummer zur Authentifizierung verwenden kann.
 
 #### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>Speichert die Lösung Workday-Benutzerprofile in der Azure AD Cloud oder auf der Ebene des Bereitstellungs-Agents zwischen?
 
@@ -919,7 +919,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 * Wechseln Sie in das Verzeichnis mit den Registrierungsskripten und führen Sie die folgenden Befehle aus, um den Parameter \[tenant ID\] durch den Wert Ihrer Mandanten-ID zu ersetzen.
 
   ```powershell
-  cd “C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder”
+  cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder"
   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder\AppProxyPSModule.psd1"
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
@@ -1008,9 +1008,9 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
   
    Vergewissern Sie sich bei Ihrem Workday-Team, dass der obige API-Ausdruck für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Auf ähnliche Weise werden die in Workday vorhandenen Länderinformationen mit dem folgenden XPATH abgerufen: *wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference*
+* Auf ähnliche Weise werden die in Workday vorhandenen Länder-/Regionsinformationen mit dem folgenden XPATH abgerufen: *wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference*
 
-     Es gibt 5 länderbezogene Attribute, die im Abschnitt „Workday-Attributliste“ verfügbar sind.
+     Es gibt 5 länder-/regionsbezogene Attribute, die im Abschnitt „Workday-Attributliste“ verfügbar sind.
 
      | Workday-Attribut | API-XPATH-Ausdruck |
      | ----------------- | -------------------- |
@@ -1022,7 +1022,7 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
 
   Vergewissern Sie sich bei Ihrem Workday-Team, dass die obigen API-Ausdrücke für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, Nachnamen, das Land / die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
+* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, den Nachnamen, das Land bzw. die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1272,7 +1272,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 7. Legen Sie **Operation** auf **Get_Workers** fest.
 
-8.  Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
+8.    Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
