@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127847"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639801"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -141,6 +141,7 @@ Kennwörter werden in folgenden Situationen nicht zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Administratoren**
    * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API (die [Betaversion der Microsoft Graph-API](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) wird unterstützt).
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch den Endbenutzer über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
+   * Administratoren können das Tool zum Zurücksetzen von Kennwörtern nicht zum Zurücksetzen des eigenen Kennworts für das Kennwortrückschreiben verwenden.
 
 > [!WARNING]
 > Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen AD DS-Verwaltungstools wie Active Directory-Benutzer und -Computer oder dem Active Directory-Verwaltungscenter wird als Previewfunktion von Azure AD Connect unterstützt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).

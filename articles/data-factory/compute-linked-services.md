@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.date: 10/10/2019
-ms.openlocfilehash: 63843230b3d4a521df858b00c8e5c887e8f53a7a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/08/2019
+ms.openlocfilehash: 3233292f0097330cc5e6ed07460de80934a278e4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415589"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849296"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -38,16 +38,27 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure-Funktion](#azure-function-linked-service)         | [Aktivität „Azure Function“](control-flow-azure-function-activity.md)
 >  
 
-## <a name="on-demand-hdinsight-compute-environment"></a>Bedarfsgesteuerte HDInsight-Compute-Umgebung
+## <a name="hdinsight-compute-environment"></a>HDInsight-Compute-Umgebung
+
+In der folgenden Tabelle finden Sie ausführliche Informationen zu den unterstützten, mit Storage verknüpften Diensttypen für die Konfiguration in bedarfsgesteuerter und eigener Compute-Umgebung.
+
+| In Compute verknüpfter Dienst | Eigenschaftenname                | BESCHREIBUNG                                                  | Blob | ADLS Gen2 | Azure SQL-Datenbank | ADLS Gen 1 |
+| ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
+| Bei Bedarf                 | linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzen soll. | Ja  | Ja       | Nein           | Nein         |
+|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. | Ja  | Nein        | Nein           | Nein         |
+|                           | hcatalogLinkedServiceName    | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mithilfe der Azure SQL-Datenbank als Metastore erstellt. | Nein   | Nein        | Ja          | Nein         |
+| BYOC                      | linkedServiceName            | Der Verweis auf den mit Azure Storage verknüpften Dienst.                | Ja  | Ja       | Nein           | Nein         |
+|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. | Nein   | Nein        | Nein           | Nein         |
+|                           | hcatalogLinkedServiceName    | Ein Verweis auf den verknüpften Azure SQL-Dienst, der wiederum auf die HCatalog-Datenbank verweist. | Nein   | Nein        | Nein           | Nein         |
+
+### <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
 
 Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data Factory-Dienst verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können einen verknüpften Dienst für die bedarfsgesteuerte Compute-Umgebung erstellen, diesen konfigurieren und differenzierte Einstellungen für Auftragsausführung, Clusterverwaltung und Bootstrappingaktionen festlegen.
 
 > [!NOTE]
 > Die bedarfsgesteuerte Konfiguration wird gegenwärtig nur für Azure HDInsight-Cluster unterstützt. Azure Databricks unterstützt auch bedarfsgesteuerte Aufträge mithilfe von Auftragsclustern. Weitere Informationen finden Sie unter [Mit Azure Databricks verknüpfter Dienst](#azure-databricks-linked-service).
 
-## <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
-
-Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto muss ein allgemeines Azure Storage-Standardkonto sein. 
+Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto `must` (muss) ein allgemeines Azure Storage-Standardkonto sein. 
 
 Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknüpften HDInsight-Dienst:
 
@@ -59,7 +70,7 @@ Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknü
 > [!IMPORTANT]
 > Die bedarfsgesteuerte Bereitstellung eines Azure HDInsight-Clusters dauert üblicherweise **20 Minuten** oder länger.
 
-### <a name="example"></a>Beispiel
+#### <a name="example"></a>Beispiel
 
 Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt automatisch einen **Linux-basierten** HDInsight-Cluster zur Verarbeitung der angeforderten Aktivität. 
 
@@ -100,7 +111,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](https://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
 
-### <a name="properties"></a>Eigenschaften
+#### <a name="properties"></a>Eigenschaften
 
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
@@ -131,7 +142,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > [!IMPORTANT]
 > Derzeit werden HBase-, Interactive Query- (Hive LLAP) und Storm-Cluster von verknüpften HDInsight-Diensten nicht unterstützt. 
 
-#### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames (JSON-Beispiel)
+* additionalLinkedServiceNames (JSON-Beispiel)
 
 ```json
 "additionalLinkedServiceNames": [{
@@ -140,7 +151,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 }]
 ```
 
-### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
+#### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
 Der verknüpfte, bedarfsgesteuerte HDInsight-Dienst erfordert eine Dienstprinzipalauthentifizierung, um HDInsight-Cluster in Ihrem Namen zu erstellen. Um die Dienstprinzipalauthentifizierung zu verwenden, registrieren Sie eine Anwendungsentität in Azure Active Directory (Azure AD), und teilen Sie ihr die Rolle **Mitwirkender** des Abonnements oder der Ressourcengruppe zu, wo der HDInsight-Cluster erstellt wird. Nähere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 
@@ -156,7 +167,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
 | **tenant**              | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja      |
 
-### <a name="advanced-properties"></a>Erweiterte Eigenschaften
+#### <a name="advanced-properties"></a>Erweiterte Eigenschaften
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
@@ -171,7 +182,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 | stormConfiguration     | Gibt die Storm-Konfigurationsparameter (storm-site.xml) für den HDInsight-Cluster an. | Nein       |
 | yarnConfiguration      | Gibt die Yarn-Konfigurationsparameter (yarn-site.xml) für den HDInsight-Cluster an. | Nein       |
 
-#### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Beispiel: Konfiguration eines bedarfsgesteuerten HDInsight-Clusters mit erweiterten Eigenschaften
+* Beispiel: Konfiguration eines bedarfsgesteuerten HDInsight-Clusters mit erweiterten Eigenschaften
 
 ```json
 {
@@ -225,7 +236,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 }
 ```
 
-### <a name="node-sizes"></a>Knotengrößen
+#### <a name="node-sizes"></a>Knotengrößen
 Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden Eigenschaften angeben: 
 
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
@@ -234,8 +245,7 @@ Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden
 | dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert lautet: Standard_D3. | Nein       |
 | zookeeperNodeSize | Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert lautet: Standard_D3. | Nein       |
 
-#### <a name="specifying-node-sizes"></a>Knotengrößen angeben
-Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/linux/sizes.md), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die Eigenschaften angeben müssen, die im vorherigen Abschnitt erwähnt wurden. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
+* Für die Angabe von Knotengrößen lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/linux/sizes.md), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die im vorherigen Abschnitt erwähnten Eigenschaften angeben müssen. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
 
 Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, geben Sie **Standard_D4** als Wert für die Eigenschaften „headNodeSize“ und „dataNodeSize“ an. 
 
@@ -246,7 +256,7 @@ Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, geben S
 
 Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler**: Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/linux/sizes.md) verwenden.        
 
-## <a name="bring-your-own-compute-environment"></a>Eigene Compute-Umgebung
+### <a name="bring-your-own-compute-environment"></a>Eigene Compute-Umgebung
 Bei dieser Konfiguration können Benutzer eine bereits vorhandene Compute-Umgebung als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird vom Benutzer verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet.
 
 Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstützt:
@@ -437,7 +447,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 | servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Nein |
 | servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Nein |
 | tenant                 | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Erforderlich, wenn updateResourceEndpoint angegeben wird | Nein |
-| connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |    
+| connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Mit Azure Data Lake Analytics verknüpfter Dienst
 Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um einen Azure Data Lake Analytics-Computedienst mit einer Azure Data Factory zu verknüpfen. Die Data Lake Analytics-U-SQL-Aktivität in der Pipeline verweist auf diesen verknüpften Dienst. 

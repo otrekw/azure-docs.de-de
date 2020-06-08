@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686429"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683299"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Pivottransformation im Zuordnungsdatenfluss
 
@@ -27,7 +27,7 @@ Für die Pivottransformation sind drei verschiedene Eingaben erforderlich: „Na
 
 ### <a name="group-by"></a>Gruppieren nach
 
-![Gruppierungsoptionen](media/data-flow/pivot2.png "[Optionen für „Gruppieren nach“")
+![Gruppierungsoptionen](media/data-flow/pivot2.png "Gruppierungsoptionen")
 
 Wählen Sie aus, über welche Spalten die pivotierten Spalten aggregiert werden sollen. Die Ausgabedaten gruppieren alle Zeilen mit denselben Werten für „Gruppieren nach“ in eine Zeile. Die in der pivotierten Spalte ausgeführte Aggregation erfolgt in jeder Gruppe.
 
@@ -63,7 +63,7 @@ Die folgende Hilfegrafik zeigt, wie die verschiedenen Pivotkomponenten miteinand
 
 Wenn in der Pivotschlüsselkonfiguration keine Werte angegeben sind, werden die pivotierten Spalten dynamisch zur Laufzeit generiert. Die Anzahl von pivotierten Spalten entspricht der Anzahl von eindeutigen Pivotschlüsselwerte multipliziert mit der Anzahl von Pivotspalten. Da diese Zahl veränderlich ist, werden die Spaltenmetadaten auf der Benutzeroberfläche auf der Registerkarte **Untersuchen** nicht angezeigt, und es erfolgt keine Spaltenweitergabe. Verwenden Sie zum Transformieren dieser Spalten die [Spaltenmuster](concepts-data-flow-column-pattern.md)-Funktionen des Zuordnungsdatenflusses. 
 
-Wenn bestimmte Pivotschlüsselwerte festgelegt sind, werden die pivotierten Spalten in den Metadaten angezeigt. Spaltennamen stehen Ihnen in der Zuordnung für Untersuchung und Senke zur Verfügung.
+Wenn bestimmte Pivotschlüsselwerte festgelegt wurden, werden die pivotierten Spalten in den Metadaten angezeigt. Spaltennamen stehen Ihnen in der Zuordnung für Untersuchung und Senke zur Verfügung.
 
 ### <a name="generate-metadata-from-drifted-columns"></a>Generieren von Metadaten aus Driftspalten
 
@@ -73,7 +73,7 @@ Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie kön
 
 ### <a name="sinking-pivoted-columns"></a>Senken für pivotierte Spalten
 
-Pivotierte Spalten sind zwar dynamisch, können aber trotzdem in Ihren Zieldatenspeicher geschrieben werden. Aktivieren Sie in Ihren Senkeneinstellungen die Option **Schemaabweichung zulassen**. So können Sie in Spalten schreiben, die in den Metadaten nicht enthalten sind. Die Option zur Schemaabweichung ermöglicht Ihnen dennoch die Bereitstellung der Daten.
+Pivotierte Spalten sind zwar dynamisch, können aber trotzdem in Ihren Zieldatenspeicher geschrieben werden. Aktivieren Sie in Ihren Senkeneinstellungen die Option **Schemaabweichung zulassen**. So können Sie in Spalten schreiben, die in den Metadaten nicht enthalten sind. Die neuen dynamischen Namen werden nicht in Ihren Spaltenmetadaten angezeigt, die Option zur Schemaabweichung ermöglicht Ihnen aber trotzdem die Bereitstellung der Daten.
 
 ### <a name="rejoin-original-fields"></a>Erneutes Verknüpfen der ursprünglichen Felder
 

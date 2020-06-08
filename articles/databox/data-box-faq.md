@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438615"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742995"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -166,7 +166,7 @@ A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. Kann ich mehrere Speicherkonten mit Data Box verwenden?
@@ -194,8 +194,8 @@ Führen Sie nach dem Kopieren der Daten die folgenden Schritte aus, um das Gerä
 3. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
 4. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den zuvor gespeicherten Code an. Sie erhalten Informationen darüber, wo und wann Sie das Gerät abgeben müssen.
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Überqueren meine Data Box-Geräte beim Versand Ländergrenzen?
-A. Alle Data Box-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Geräte in und aus beliebigen EU-Länder(n) gesendet werden können. Dies gilt sowohl für Data Box- als auch für Data Box Heavy-Geräte.
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. Überqueren meine Data Box-Geräte beim Versand Länder-/Regionsgrenzen?
+A. Alle Data Box-Geräte werden aus demselben Land/derselben Region wie ihr Ziel versendet und überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU). Dort können Geräte in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden. Dies gilt sowohl für Data Box- als auch für Data Box Heavy-Geräte.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. Ich habe eine Data Box in der Region „USA, Osten“ bestellt, habe aber ein Gerät erhalten, das von einem Standort in der Region „USA, Westen“ versandt wurde. Wohin soll ich das Gerät zurücksenden?
 A. Wir versuchen, Ihnen schnellstmöglich ein Data Box-Gerät zu senden. Wir priorisieren den Versand von einem Datencenter, das dem Standort Ihres Speicherkontos am nächsten liegt, senden jedoch ggf. ein Gerät von einem beliebigen Azure-Datencenter mit verfügbarem Bestand. Ihre Data Box muss an denselben Standort zurückgesendet werden, von dem sie ausgeliefert wurde (siehe Adressetikett).
@@ -258,7 +258,7 @@ A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfo
 - Bereinigung des Data Box-Geräts (gemäß NIST 800-88R1-Standards) nach Kopieren der Daten in Ihr Azure Storage-Konto
 
 ### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Stehen die Sendungsverfolgungsprotokolle des Zustelldiensts (UPS) zur Verfügung? 
-A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch direkt die Website des Zustelldiensts besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
+A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch die Website des Zustelldiensts direkt besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kann ich die Data Box selbst zum Azure-Rechenzentrum transportieren? 
 A.  Nein. Derzeit nimmt das Azure-Rechenzentrum die Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS nicht an.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113152"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845745"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -245,9 +245,9 @@ In diesem Abschnitt konfigurieren Sie Ihren VPN-Server zur Verwendung der RADIUS
     b. Wählen Sie für **Gemeinsamer geheimer Schlüssel** die Schaltfläche **Ändern** aus, und geben Sie das gemeinsame geheime Kennwort ein, das Sie zuvor erstellt und notiert haben.
 
     c. Geben Sie im Feld **Timeout (Sekunden)** den Wert **30** ein.  
-    Der Timeoutwert ist erforderlich, damit genügend Zeit für den Abschluss des zweiten Authentifizierungsfaktors bleibt.
+    Der Timeoutwert ist erforderlich, damit genügend Zeit für den Abschluss des zweiten Authentifizierungsfaktors bleibt. Bei einigen VPNs oder Regionen sind Timeouteinstellungen von mehr als 30 Sekunden erforderlich, um zu verhindern, dass Benutzer mehrere Anrufe empfangen. Wenn dieses Problem entsteht, erhöhen Sie den Wert für **Timeout (Sekunden)** in Inkrementen von 30 Sekunden, bis das Problem nicht wieder auftritt.
 
-    ![Fenster „RADIUS-Server hinzufügen“, in dem der Timeoutwert ausgewählt wird](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![Fenster „RADIUS-Server hinzufügen“, in dem der Timeoutwert ausgewählt wird](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. Klicken Sie auf **OK**.
 

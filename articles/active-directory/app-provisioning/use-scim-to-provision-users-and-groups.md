@@ -2,28 +2,23 @@
 title: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps von Azure AD
 description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. Erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API in Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fbdf947eb36e1591cc9da52a85e389be63c8535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297682"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826654"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
 Als Anwendungsentwickler können Sie die SCIM-Benutzerverwaltungs-API (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) verwenden, um die automatische Bereitstellung von Benutzern und Gruppen zwischen Ihrer Anwendung und Azure AD zu aktivieren. In diesem Artikel wird beschrieben, wie ein SCIM-Endpunkt erstellt und in den Azure AD-Bereitstellungsdienst integriert wird. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
@@ -810,7 +805,7 @@ Anforderungen aus Azure Active Directory enthalten ein OAuth 2.0-Bearertoken. A
 
 Im Token wird der Aussteller durch einen iss-Anspruch identifiziert (z. B. `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`). In diesem Beispiel wird die Basisadresse des Anspruchswerts (`https://sts.windows.net`) zum Identifizieren von Azure Active Directory als Aussteller verwendet, während das Segment mit der relativen Adresse (_cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_) ein eindeutiger Bezeichner des Azure Active Directory-Mandanten ist, für den das Token ausgestellt wurde.
 
-Zielgruppe für das Token ist die Anwendungsvorlagen-ID für die Anwendung im Katalog. Jede in einem einzelnen Mandanten registrierte Anwendung empfängt mit SCIM-Anforderungen möglicherweise denselben `iss`-Anspruch. Jede Anwendung im Katalog verfügt über eine andere Anwendungsvorlagen-ID. Bei Fragen rund um die Anwendungsvorlagen-ID für eine Kataloganwendung wenden Sie sich an [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com). Die Anwendungsvorlagen-ID für alle benutzerdefinierten Apps lautet _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_.
+Zielgruppe für das Token ist die Anwendungsvorlagen-ID für die Anwendung im Katalog. Jede in einem einzelnen Mandanten registrierte Anwendung empfängt mit SCIM-Anforderungen möglicherweise denselben `iss`-Anspruch. Die Anwendungsvorlagen-ID für alle benutzerdefinierten Apps lautet _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_. Das vom Azure AD-Bereitstellungsdienst generierte Token sollte nur für Tests verwendet werden. Es darf nicht in Produktionsumgebungen verwendet werden.
 
 Im Beispielcode werden Anforderungen mit dem Microsoft.AspNetCore.Authentication.JwtBearer-Paket authentifiziert. Mit dem folgenden Code wird erzwungen, dass Anforderungen an Endpunkte des Diensts mit dem von Azure Active Directory für einen bestimmten Mandanten ausgegebenen Bearertoken authentifiziert werden:
 
@@ -1200,8 +1195,8 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 [!NOTE] Es wird nicht empfohlen, das Tokenfeld auf der Benutzeroberfläche der benutzerdefinierten App zur Konfiguration der Azure AD-Bereitstellung leer zu lassen. Das generierte Token steht in erster Linie zu Testzwecken zur Verfügung.
 
 **Ablauf der OAuth-Autorisierungscodegenehmigung:** Der Bereitstellungsdienst unterstützt die [Autorisierungscodegenehmigung](https://tools.ietf.org/html/rfc6749#page-24). Nachdem Sie Ihre Anforderung zur Veröffentlichung Ihrer App im Katalog übermittelt haben, wird unser Team mit Ihnen zusammenarbeiten, um die folgenden Informationen zu sammeln:
-*  URL für Autorisierung: Eine URL des Clients, um die Autorisierung des Ressourcenbesitzers über die Umleitung des Benutzer-Agents zu erhalten. Der Benutzer wird zu dieser URL umgeleitet, um den Zugriff zu autorisieren. 
-*  URL für den Tokenaustausch: Eine URL des Clients, um eine Autorisierungsgenehmigung für ein Zugriffstoken auszutauschen, typischerweise mit Clientauthentifizierung.
+*  URL für Autorisierung: Eine URL des Clients, um die Autorisierung des Ressourcenbesitzers über die Umleitung des Benutzer-Agents zu erhalten. Der Benutzer wird zu dieser URL umgeleitet, um den Zugriff zu autorisieren. Beachten Sie, dass diese URL derzeit nicht für einzelne Mandanten konfiguriert werden kann.
+*  URL für den Tokenaustausch: Eine URL des Clients, um eine Autorisierungsgenehmigung für ein Zugriffstoken auszutauschen, typischerweise mit Clientauthentifizierung. Beachten Sie, dass diese URL derzeit nicht für einzelne Mandanten konfiguriert werden kann.
 *  Client-ID: Der Autorisierungsserver stellt dem registrierten Client eine Client-ID aus, die eine eindeutige Zeichenfolge ist, die die vom Client bereitgestellten Registrierungsinformationen darstellt.  Die Client-ID ist kein Geheimnis. Sie wird dem Ressourcenbesitzer verfügbar gemacht und **darf nicht** allein für die Clientauthentifizierung verwendet werden.  
 *  Geheimer Clientschlüssel: Der geheime Clientschlüssel ist ein Geheimnis, das vom Autorisierungsserver generiert wird. Es sollte ein eindeutiger Wert sein, der nur dem Autorisierungsserver bekannt ist. 
 
@@ -1225,10 +1220,6 @@ Es empfiehlt sich, die vorhandene Dokumentation zu aktualisieren und unsere geme
 * **Technische Dokumentation:** Erstellen Sie einen Hilfecenter-Artikel oder eine technische Dokumentation mit den ersten Schritten für Kunden. [Beispiel: Integration von Envoy und Microsoft Azure Active Directory](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Kundenkommunikation:** Machen Sie Kunden über Ihre Kundenkommunikationskanäle (monatliche Newsletter, E-Mail-Kampagnen, Produktanmerkungen) auf die neue Integration aufmerksam. 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Zulassen, dass vom Azure AD-Bereitstellungsdienst verwendete IP-Adressen SCIM-Anforderungen senden
-
-Bestimmte Apps lassen eingehenden Datenverkehr für ihre App zu. Damit der Azure AD-Bereitstellungsdienst erwartungsgemäß funktioniert, müssen die verwendeten IP-Adressen zulässig sein. Eine Liste der IP-Adressen für die einzelnen Diensttags/Regionen finden Sie in der JSON-Datei unter [Azure-IP-Bereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Sie können diese IP-Adressen herunterladen und bei Bedarf für Ihre Firewall programmieren. Die reservierten IP-Adressbereiche für die Azure AD-Bereitstellung finden Sie unter „AzureActiveDirectoryDomainServices“.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 

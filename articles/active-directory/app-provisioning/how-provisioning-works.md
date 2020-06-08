@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593725"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712229"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -63,7 +63,7 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 
 Bei der Ausgangsbereitstellung von Azure AD für eine SaaS-Anwendung stellt die Verwendung von [Benutzer- oder Gruppenzuweisungen](../manage-apps/assign-user-or-group-access-portal.md) die gängigste Methode dar, um zu bestimmen, für welche Benutzer die Bereitstellung gelten soll. Da Benutzerzuweisungen auch zum Aktivieren des einmaligen Anmeldens verwendet werden, kann dieselbe Methode zum Verwalten des Zugriffs und der Bereitstellung verwendet werden. Die zuweisungsbasierte Bereichsdefinition gilt nicht für Eingangsbereitstellungsszenarien wie Workday und SuccessFactors.
 
-* **Gruppen.** Mit einem Azure AD Premium-Lizenzplan können Sie Gruppen zum Zuweisen des Zugriffs auf eine SaaS-Anwendung verwenden. Wenn der Bereitstellungsbereich auf **Nur zugewiesene Benutzer und Gruppen synchronisieren** festgelegt ist, werden dann Benutzer vom Azure AD-Benutzerbereitstellungsdienst basierend darauf bereitgestellt oder deren Bereitstellungen aufgehoben, ob sie Mitglieder einer der Anwendung zugewiesenen Gruppe sind. Das Gruppenobjekt selbst wird nur bereitgestellt, wenn die Anwendung Gruppenobjekte unterstützt. Stellen Sie sicher, dass die „SecurityEnabled“-Eigenschaft für Gruppen, die Ihrer Anwendung zugewiesen sind, auf „False“ festgelegt ist.
+* **Gruppen.** Mit einem Azure AD Premium-Lizenzplan können Sie Gruppen zum Zuweisen des Zugriffs auf eine SaaS-Anwendung verwenden. Wenn der Bereitstellungsbereich auf **Nur zugewiesene Benutzer und Gruppen synchronisieren** festgelegt ist, werden dann Benutzer vom Azure AD-Benutzerbereitstellungsdienst basierend darauf bereitgestellt oder deren Bereitstellungen aufgehoben, ob sie Mitglieder einer der Anwendung zugewiesenen Gruppe sind. Das Gruppenobjekt selbst wird nur bereitgestellt, wenn die Anwendung Gruppenobjekte unterstützt. Stellen Sie sicher, dass die Eigenschaft „SecurityEnabled“ bei Gruppen, die Ihrer Anwendung zugewiesen sind, auf „True“ eingestellt ist.
 
 * **Dynamische Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) lesen und bereitstellen. Berücksichtigen Sie die folgenden Einschränkungen und Empfehlungen:
 

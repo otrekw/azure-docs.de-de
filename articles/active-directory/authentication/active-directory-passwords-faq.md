@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407175"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826467"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
 Im Folgenden werden einige häufig gestellte Fragen (FAQ) rund um die Kennwortzurücksetzung aufgeführt.
 
-Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
+Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community auf der [Microsoft-Frageseite „Q&A“ für Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
 
 Diese FAQ sind in folgende Abschnitte unterteilt:
 

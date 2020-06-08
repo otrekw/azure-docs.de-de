@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 87cb7c57aab048e1b7acf211d58c850a41afa5a2
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628220"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772861"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -570,6 +570,26 @@ Denken Sie daran, die Data Factory-Skripts vor und nach dem Bereitstellungstask 
 
 Wenn Sie Git nicht konfiguriert haben, können Sie über die Option **Export ARM Template** (ARM-Vorlage exportieren) in der Liste **ARM-Vorlage** auf die verknüpften Vorlagen zugreifen.
 
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Ausschließen von Azure-SSIS Integration Runtimes aus CI/CD
+
+Wenn Ihre Entwicklungsfactory Azure-SSIS Integration Runtime enthält, können Sie alle Azure-SSIS Integration Runtimes aus dem CI/CD-Prozess im nachstehenden Szenario ausschließen:
+
+- Die Azure-SSIS Integration Runtime-Infrastruktur (Azure-SSIS IR) ist komplex und variiert in jeder Umgebung.  
+- Azure-SSIS IR wird für jede Umgebung mit demselben Namen manuell eingerichtet. Andernfalls tritt bei der Veröffentlichung ein Fehler auf, wenn eine Aktivität je nach Azure-SSIS IR vorliegt.
+
+So schließen Sie Azure-SSIS Integration Runtime aus:
+
+1. Fügen Sie dem Stammordner im Branch für die Zusammenarbeit eine „publish_config.json“-Datei hinzu, sofern diese noch nicht vorhanden ist.
+1. Fügen Sie die folgende Einstellung zu „publish_config.json“ hinzu: 
+
+```json
+{
+    " excludeIRs": "true"
+}
+```
+
+Bei der Veröffentlichung aus dem Branch für die Zusammenarbeit werden Azure-SSIS Integration Runtimes aus der generierten Resource Manager-Vorlage ausgeschlossen.
+
 ## <a name="hotfix-production-branch"></a>Hotfix für den Produktionsbranch
 
 Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu behebender Fehler vorhanden ist, Sie den aktuellen Kollaborationsbranch aber nicht bereitstellen können, müssen Sie unter Umständen einen Hotfix verwenden. Dieser Ansatz wird als Quick Fix Engineering oder QFE bezeichnet.
@@ -775,25 +795,44 @@ $resources = $templateJson.resources
 
 #Triggers 
 Write-Host "Getting triggers"
-$triggersADF = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-$triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
-$triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
-$triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
+$triggersInTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
+$triggerNamesInTemplate = $triggersInTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+
+$triggersDeployed = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+
+$triggersToStop = $triggersDeployed | Where-Object { $triggerNamesInTemplate -contains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToDelete = $triggersDeployed | Where-Object { $triggerNamesInTemplate -notcontains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToStart = $triggersInTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.name.Substring(37, $_.name.Length-40)
+        TriggerType = $_.Properties.type
+    }
+}
 
 if ($predeployment -eq $true) {
     #Stop all triggers
-    Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { 
-        Write-host "Disabling trigger " $_
-        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Disabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    Write-Host "Stopping deployed triggers`n"
+    $triggersToStop | ForEach-Object {
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Unsubscribing" $_.Name "from events"
+            $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Disabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Stopping trigger" $_.Name
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 else {
@@ -830,10 +869,18 @@ else {
 
     #Delete resources
     Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { 
+    $triggersToDelete | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
+            if ($_.TriggerType -eq "BlobEventsTrigger") {
+                Write-Host "Unsubscribing trigger" $_.Name "from events"
+                $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                while ($status.Status -ne "Disabled"){
+                    Start-Sleep -s 15
+                    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                }
+            }
             Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
         }
         Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
@@ -884,15 +931,17 @@ else {
 
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { 
-        Write-host "Enabling trigger " $_
-        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Enabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    $triggersToStart | ForEach-Object { 
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Subscribing" $_.Name "to events"
+            $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Enabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Starting trigger" $_.Name
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 ```

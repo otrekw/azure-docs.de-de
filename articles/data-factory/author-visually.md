@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418489"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832778"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 
@@ -34,6 +34,14 @@ Um den **Erstellungsbereich** zu öffnen, klicken Sie auf das Stiftsymbol.
 Hier erstellen Sie die Pipelines, Aktivitäten, Datasets, verknüpften Dienste, Datenflüsse, Trigger und Integrationslaufzeiten, aus denen Ihre Factory besteht. Informationen zum Einstieg in das Erstellen einer Pipeline im Erstellungsbereich finden Sie unter [Kopieren von Daten mit der Kopieraktivität](tutorial-copy-data-portal.md). 
 
 Die standardmäßige visuelle Erstellungsumgebung arbeitet direkt mit dem Data Factory-Dienst zusammen. Die Integration in Azure Repos Git oder GitHub wird ebenfalls unterstützt, um die Versionskontrolle und Zusammenarbeit an Ihren Data Factory-Pipelines zu ermöglichen. Weitere Informationen zu den Unterschieden dieser Erstellungsumgebungen finden Sie unter [Quellcodeverwaltung in Azure Data Factory](source-control.md).
+
+### <a name="properties-pane"></a>Eigenschaftenbereich
+
+Bei Ressourcen der obersten Ebene, z. B Pipelines, Datasets und Datenflüssen, können allgemeine Eigenschaften im Eigenschaftenbereich auf der rechten Seite der Canvas bearbeitet werden. Der Eigenschaftenbereich enthält Eigenschaften wie Name, Beschreibung, Anmerkungen und andere allgemeine Eigenschaften. Unterressourcen, z. B. Pipelineaktivitäten und Datenflusstransformationen, werden in dem Bereich unten in der Canvas bearbeitet. 
+
+![Erstellungsbereich](media/author-visually/properties-pane.png)
+
+Der Eigenschaftenbereich wird standardmäßig nur bei der Ressourcenerstellung geöffnet. Wenn Sie ihn bearbeiten möchten, klicken Sie oben rechts im Erstellungsbereich auf das Symbol für den Eigenschaftenbereich.
 
 ## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
 

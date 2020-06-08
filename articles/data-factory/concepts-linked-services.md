@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: a6002ed173ca5358df4257f4c8b41c88bcf60ad8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0703e7cd44a79dd45680e19c8f5f3232be840823
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418372"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826178"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
 
@@ -28,7 +28,7 @@ ms.locfileid: "81418372"
 
 In diesem Artikel wird beschrieben, was verknüpfte Dienste sind, wie sie im JSON-Format definiert werden und wie sie in Azure Data Factory-Pipelines verwendet werden.
 
-Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](introduction.md) lesen, um eine Übersicht zu erhalten.
+Wenn Sie mit Data Factory noch nicht vertraut sind, finden Sie unter [Einführung in Azure Data Factory](introduction.md) eine Übersicht.
 
 ## <a name="overview"></a>Übersicht
 

@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929008"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652041"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Technische Spezifikationen für Azure Stack Edge
 
-Die Hardwarekomponenten Ihres Microsoft Azure Stack Edge-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Netzteile, die Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben. 
+Die Hardwarekomponenten Ihres Microsoft Azure Stack Edge-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Netzteile, die Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben.
 
 ## <a name="compute-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
 
@@ -28,15 +28,13 @@ Das Azure Stack Edge-Gerät verfügt über die folgenden Spezifikationen für Co
 | CPU    | 2 X 10-Kern-CPU                     |
 | Arbeitsspeicher              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>FPGA-Spezifikationen
 
-Auf jedem Azure Stack Edge-Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein „Field Programmable Gate Array“ (FPGA). 
+Auf jedem Azure Stack Edge-Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein „Field Programmable Gate Array“ (FPGA).
 
 | Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
-
+| FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
 
@@ -48,6 +46,11 @@ Das Azure Stack Edge-Gerät enthält zwei 100–240 Volt-Netzteile mit leistung
 | Häufigkeit               | 50/60 Hz                   |
 | Spannungsbereichsauswahl | Automatischer Spannungsbereich: 100-240 V AC |
 | Hot-Plug-fähig           | Ja                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack Edge-Netzkabelspezifikationen nach Region
+
+Ihr Azure Stack Edge-Gerät benötigt ein Netzkabel, das je nach Ihrer Azure-Region variiert.
+Technische Spezifikationen für alle unterstützten Netzkabel finden Sie unter [Azure Stack Edge-Netzkabelspezifikationen nach Region](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
@@ -133,7 +136,6 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 |    Energieversorgung             |    Kommissionsregelung (EU) Nr. 617/2013.                                                                                                                                                                                        |
 |    RoHS-Richtlinien           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>Spezifikationen für Betriebstemperatur bei heruntergesetzter Leistung
 
 |     Betriebstemperatur bei heruntergesetzter Leistung     |     Umgebungstemperaturspanne                                                         |
@@ -141,7 +143,6 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 |    Bis zu 35°C (95°F)                       |    Die maximale Temperatur reduziert sich auf über 950 Metern (3.117 Fuß) alle 300 Meter um 1°C (1°F/547 Fuß).    |
 |    35°C bis 40°C (95°F bis 104°F)            |    Die maximale Temperatur reduziert sich auf über 950 Metern (3.117 Fuß) alle 175 Meter um 1°C (1°F/319 Fuß).    |
 |    40°C bis 45°C (104°F bis 113°F)           |    Die maximale Temperatur reduziert sich auf über 950 Metern (3.117 Fuß) alle 125 Meter um 1°C (1°F/228 Fuß).    |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

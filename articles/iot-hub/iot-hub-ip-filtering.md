@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2017
+ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68414315"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849843"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -28,25 +28,30 @@ Wenn es hilfreich ist, die IoT Hub-Endpunkte für bestimmte IP-Adressen zu block
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
-Die IP-Filterregeln werden auf IoT Hub-Dienstebene angewendet. Daher gelten die IP-Filterregeln für alle Verbindungen von Geräten und Back-End-Apps mit allen unterstützten Protokollen.
+Die IP-Filterregeln werden auf IoT Hub-Dienstebene angewendet. Daher gelten die IP-Filterregeln für alle Verbindungen von Geräten und Back-End-Apps mit allen unterstützten Protokollen. Allerdings sind Clients, die aus dem [integrierten Event Hub-kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md) direkt (und nicht über die IoT Hub-Verbindungszeichenfolge) lesen, nicht an die IP-Filterregeln gebunden. 
 
-Alle Verbindungsversuche über eine IP-Adresse, die für eine IP-Ablehnungsregel in IoT Hub eine Übereinstimmung ergeben, werden mit dem Statuscode „401 – Nicht autorisiert“ und einer Beschreibung versehen. In der Antwortnachricht wird die IP-Regel nicht erwähnt.
+Alle Verbindungsversuche über eine IP-Adresse, die für eine IP-Ablehnungsregel in IoT Hub eine Übereinstimmung ergeben, werden mit dem Statuscode „401 – Nicht autorisiert“ und einer Beschreibung versehen. In der Antwortnachricht wird die IP-Regel nicht erwähnt. Das Ablehnen von IP-Adressen kann andere Azure-Dienste wie z. B. Azure Stream Analytics, Azure Virtual Machines oder den Geräte-Explorer im Azure-Portal an der Interaktion mit dem IoT-Hub hindern.
+
+> [!NOTE]
+> Wenn Sie Azure Stream Analytics (ASA) verwenden müssen, um Nachrichten aus einem IoT-Hub mit aktiviertem IP-Filter zu lesen, verwenden Sie den Event Hub-kompatiblen Namen und Endpunkt Ihres IoT-Hubs zum manuellen Hinzufügen einer [Event Hubs-Streameingabe](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) in der ASA.
 
 ## <a name="default-setting"></a>Standardeinstellung
 
 Das Raster **IP-Filter** im Portal ist für ein IoT Hub standardmäßig leer. Diese Standardeinstellung bedeutet, dass Ihr Hub Verbindungen von allen IP-Adressen akzeptiert. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist.
 
-![Standardeinstellungen der IP-Filterung von IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
+Wenn Sie die Seite mit den IP-Filtereinstellungen aufrufen möchten, wählen Sie **Netzwerk**, **Öffentlicher Zugriff** und dann **Ausgewählte IP-Bereiche** aus:
+
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Standardeinstellungen der IP-Filterung von IoT Hub":::
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Hinzufügen oder Bearbeiten einer IP-Filterregel
 
 Zum Hinzufügen einer IP-Filterregel wählen Sie **+ IP-Filterregel hinzufügen** aus.
 
-![Hinzufügen einer IP-Filterregel zu IoT Hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Hinzufügen einer IP-Filterregel zu einem IoT-Hub":::
 
 Nachdem Sie **IP-Filterregel hinzufügen** ausgewählt haben, füllen Sie die Felder aus.
 
-![Nach dem Auswählen von „IP-Filterregel hinzufügen“](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Nach dem Auswählen von „IP-Filterregel hinzufügen“":::
 
 * Geben Sie einen **Namen** für die IP-Filterregel an. Er muss eine eindeutige alphanumerische Zeichenfolge ohne Beachtung von Groß-/Kleinschreibung sein, die bis zu 128 Zeichen umfassen kann. Nur alphanumerische ASCII 7-Bit-Zeichen und die Zeichen `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` sind zulässig.
 
@@ -56,23 +61,17 @@ Nachdem Sie **IP-Filterregel hinzufügen** ausgewählt haben, füllen Sie die Fe
 
 Nachdem Sie die Felder ausgefüllt haben, wählen Sie **Speichern** aus, um die Regel zu speichern. Daraufhin wird eine Warnung mit dem Hinweis angezeigt, dass der Updatevorgang läuft.
 
-![Benachrichtigung über das Speichern einer IP-Filterregel](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Benachrichtigung über das Speichern einer IP-Filterregel":::
 
 Die Option **Hinzufügen** ist deaktiviert, wenn Sie das Maximum von 10 IP-Filterregeln erreichen.
 
 Wenn Sie eine vorhandene Regel bearbeiten möchten, wählen Sie die zu ändernden Daten aus, nehmen Sie die Änderung vor, und wählen Sie **Speichern** aus, um Ihre Bearbeitung zu speichern.
 
-> [!NOTE]
-> Das Ablehnen von IP-Adressen kann andere Azure-Dienste (z. B. Azure Stream Analytics, Azure Virtual Machines oder den Geräte-Explorer im Portal) an der Interaktion mit dem IoT Hub hindern.
-
-> [!WARNING]
-> Wenn Sie Azure Stream Analytics (ASA) verwenden, um Nachrichten von einer IoT Hub-Instanz mit aktivierter IP-Filterung zu lesen, verwenden Sie den Event Hub-kompatiblen Namen und Endpunkt Ihrer IoT Hub-Instanz in der ASA-Verbindungszeichenfolge.
-
 ## <a name="delete-an-ip-filter-rule"></a>Löschen einer IP-Filterregel
 
 Wählen Sie zum Löschen einer IP-Filterregel das Papierkorbsymbol in dieser Zeile und dann **Speichern** aus. Die Regel wird entfernt und die Änderung gespeichert.
 
-![Löschen einer IP-Filterregel von IoT Hub](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Löschen einer IP-Filterregel für IoT Hub":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Abrufen und Aktualisieren von IP-Filtern über die Azure-Befehlszeilenschnittstelle
 
@@ -162,11 +161,10 @@ Sie können die Reihenfolge der IP-Filterregeln im Raster ändern, indem Sie auf
 
 Klicken Sie auf **Speichern**, um die neue Reihenfolge der IP-Filterregeln zu speichern.
 
-![Ändern der Reihenfolge der IP-Filterregeln von IoT Hub](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Ändern der Reihenfolge Ihrer IP-Filterregeln für IoT Hub":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
 * [IoT Hub-Metriken](iot-hub-metrics.md)
