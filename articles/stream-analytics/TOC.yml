@@ -49,6 +49,10 @@
       href: feature-comparison.md
     - name: Lokale Entwicklung
       href: develop-locally.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Eingabetypen für einen Auftrag
       items:
         - name: Übersicht über Eingaben

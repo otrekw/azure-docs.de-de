@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588257"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774312"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Authentifizieren des Zugriffs auf Azure Event Grid-Ressourcen
 Dieser Artikel enthält Informationen zu den folgenden Szenarien:  
 
 - Authentifizieren von Clients, die mithilfe einer Shared Access Signature (SAS) oder eines Schlüssels Ereignisse in Azure Event Grid-Themen veröffentlichen. 
-- Schützen Ihres Webhook-Endpunkts mit Azure Active Directory (Azure AD), um Event Grid für die **Übermittlung** von Ereignissen an den Endpunkt zu authentifizieren.
+- Sichern Sie den Webhook-Endpunkt, der verwendet wird, um Ereignisse von Event Grid zu empfangen, mit Azure Active Directory (Azure AD) oder einem gemeinsamen geheimen Schlüssel.
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>Authentifizieren von Veröffentlichungsclients mit einer SAS oder einem Schlüssel
 Benutzerdefinierte Themen verwenden Authentifizierungen über Shared Access Signatures (SAS) oder Schlüssel. Wir empfehlen SAS, aber die Schlüsselauthentifizierung ist einfacher zu programmieren und mit vielen vorhandenen Webhookherausgebern kompatibel.
@@ -83,18 +83,18 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Alle Ereignisse oder Daten, die vom Event Grid-Dienst auf den Datenträger geschrieben werden, werden unter Verwendung eines von Microsoft verwalteten Schlüssels verschlüsselt, um die Verschlüsselung der ruhenden Daten zu gewährleisten. Ereignisse und Daten werden außerdem maximal 24 Stunden lang aufbewahrt (in Übereinstimmung mit der [Event Grid-Wiederholungsrichtlinie](delivery-and-retry.md)). Nach 24 Stunden oder nach Ablauf der Ereignislebensdauer (je nachdem, welcher Zeitraum kürzer ist) werden alle Ereignisse und Daten von Event Grid gelöscht.
+Alle Ereignisse oder Daten, die vom Event Grid-Dienst auf den Datenträger geschrieben werden, werden unter Verwendung eines von Microsoft verwalteten Schlüssels verschlüsselt, um die Verschlüsselung der ruhenden Daten zu gewährleisten. Ereignisse und Daten werden außerdem maximal 24 Stunden lang aufbewahrt (in Übereinstimmung mit der [Event Grid-Wiederholungsrichtlinie](delivery-and-retry.md)). Nach 24 Stunden oder nach Ablauf der Ereignislebensdauer (je nachdem, welcher Zeitraum kürzer ist) werden alle Ereignisse und Daten von Event Grid gelöscht.
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Authentifizieren der Ereignisübermittlung an Webhook-Endpunkte
 In den folgenden Abschnitten wird beschrieben, wie die Übermittlung von Ereignissen an Webhook-Endpunkte authentifiziert wird. Sie müssen unabhängig von der verwendeten Methode einen Mechanismus für einen Überprüfungshandshake verwenden. Weitere Informationen finden Sie unter [Webhook-Ereignisbereitstellung](webhook-event-delivery.md). 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Mit Azure Active Directory (Azure AD)
-Sie können Ihren Webhook-Endpunkt mithilfe von Azure Active Directory (Azure AD) schützen, um Event Grid zum Übermitteln von Ereignissen an Ihre Endpunkte zu authentifizieren und zu autorisieren. Sie müssen eine Azure AD-Anwendung erstellen, eine Rolle und einen Dienstprinzipal zur Autorisierung von Event Grid in Ihrer Anwendung erstellen und das Ereignisabonnement zur Verwendung der Azure AD-Anwendung konfigurieren. [Erfahren Sie, wie Sie Azure Active Directory mit Event Grid konfigurieren](secure-webhook-delivery.md).
+Sie können den Webhook-Endpunkt, der verwendet wird, um Ereignisse von Event Grid zu empfangen, mit Azure AD sichern. Sie müssen eine Azure AD-Anwendung erstellen, eine Rolle und einen Dienstprinzipal zur Autorisierung von Event Grid in Ihrer Anwendung erstellen und das Ereignisabonnement zur Verwendung der Azure AD-Anwendung konfigurieren. Erfahren Sie, wie Sie [Azure Active Directory mit Event Grid konfigurieren](secure-webhook-delivery.md).
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>Mit dem geheimen Clientschlüssel als Abfrageparameter
-Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter z. B. ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token) oder einen gemeinsamen geheimen Schlüssel als geheimen Clientschlüssel fest. Der Webhook kann das Geheimnis verwenden, um zu erkennen, dass das Ereignis von Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf. Wenn der geheime Clientschlüssel aktualisiert wird, muss das Ereignisabonnement ebenfalls aktualisiert werden. Damit bei dieser Geheimnisrotation keine Übermittlungsfehler auftreten, lassen Sie den Webhook für einen begrenzten Zeitraum sowohl alte als auch neue Geheimnisse akzeptieren. 
+Sie können auch den Webhook-Endpunkt sichern, indem Sie der Webhook-Ziel-URL, die beim Erstellen eines Ereignisabonnements angegeben wurde, Abfrageparameter hinzufügen. Legen Sie einen der Abfrageparameter als geheimen Clientschlüssel, z. B. ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token), oder als gemeinsamen geheimem Schlüssel fest. Der Event Grid-Dienst nimmt alle Abfrageparameter in jede Ereignisbereitstellungsanforderung an den Webhook auf. Der Webhookdienst kann das Geheimnis abrufen und überprüfen. Wenn der geheime Clientschlüssel aktualisiert wird, muss das Ereignisabonnement ebenfalls aktualisiert werden. Damit bei dieser Geheimnisrotation keine Übermittlungsfehler auftreten, lassen Sie den Webhook für einen begrenzten Zeitraum sowohl alte als auch neue Geheimnisse akzeptieren, bevor das Ereignisabonnement mit dem neuen Geheimnis aktualisiert wird. 
 
-Da Abfrageparameter geheime Clientschlüssel enthalten können, werden Sie mit besonderer Sorgfalt behandelt. Sie werden verschlüsselt gespeichert und sind für Dienstoperatoren nicht zugänglich. Sie werden nicht im Rahmen der Dienstprotokollierung/Ablaufverfolgung protokolliert. Wenn Sie das Ereignisabonnement bearbeiten, werden die Abfrageparameter nur angezeigt und zurückgegeben, wenn der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) verwendet wird.
+Da Abfrageparameter geheime Clientschlüssel enthalten können, werden Sie mit besonderer Sorgfalt behandelt. Sie werden verschlüsselt gespeichert und sind für Dienstoperatoren nicht zugänglich. Sie werden nicht im Rahmen der Dienstprotokollierung/Ablaufverfolgung protokolliert. Beim Abrufen der Ereignisabonnementeigenschaften werden die Zielabfrageparameter standardmäßig nicht zurückgegeben. Beispiel: In der Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) muss der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) verwendet werden.
 
 Weitere Informationen zum Übermitteln von Ereignissen an Webhooks finden Sie unter [Webhook-Ereignisbereitstellung](webhook-event-delivery.md).
 

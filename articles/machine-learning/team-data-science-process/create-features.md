@@ -1,54 +1,53 @@
 ---
 title: 'Featureentwicklung in Data Science: Team Data Science-Prozess'
-description: Erläutert den Zweck der Entwicklung von Features, und es werden Beispiele für ihre Rolle im Datenaufbereitungsprozess für Machine Learning vorgestellt.
+description: Informationen zu Feature Engineering und seine Rolle im Datenaufbereitungsprozess für Machine Learning
 services: machine-learning
 author: marktab
 manager: marktab
 editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
-ms.topic: article
-ms.date: 01/10/2020
+ms.topic: conceptual
+ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02f109f250fa9bcd4c77cecd0b1b3e4514ecd8bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
+ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721131"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836820"
 ---
 # <a name="feature-engineering-in-data-science"></a>Featureentwicklung im Data Science-Prozess
-Dieser Artikel erläutert den Zweck der Erstellung von Features und stellt Beispiele ihrer Rolle im Datenaufbereitungsprozess für maschinelles Lernen vor. Die Beispiele zur Veranschaulichung dieses Prozesses stammen aus Azure Machine Learning Studio. 
 
-Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+In diesem Artikel erfahren Sie mehr über Feature Engineering und seine Rolle bei der Datenaufbereitung in Machine Learning. Lernen Sie aus den anschaulichen Beispielen, die aus [Azure Machine Learning Studio (Classic)](../studio/what-is-ml-studio.md) entnommen wurden. 
 
-Bei der Featureentwicklung wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Entwicklung und Auswahl von Features sind ein Teil des Team Data Science-Prozesses, der unter [Was ist der Team Data Science-Prozesslebenszyklus?](overview.md) beschrieben ist. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP. 
+* **Featureentwicklung**: Das Erstellen neuer Features aus Rohdaten, um die Vorhersageleistung des Lernalgorithmus zu erhöhen. Die entwickelten Features sollten zusätzliche Informationen erfassen, die im ursprünglichen Satz der Features nicht leicht ersichtlich sind.
+* **Featureauswahl**: Das Auswählen der wichtigsten Teilmenge von Features, um die Anzahl der Dimensionen des Trainingsproblems zu verringern.
 
-* **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
-* **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
+Normalerweise wird **Feature Engineering** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
 
-Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
+Feature Engineering und Featureauswahl sind Teil der [Modellierungsphase](lifecycle-modeling.md) des Team Data Science-Prozesses (TDSP). Weitere Informationen zum TDSP und zum Data Science-Lebenszyklus finden Sie unter [Was ist der Team Data Science-Prozess (TDSP)?](overview.md)
 
-Die beim Machine Learning verwendeten Trainingsdaten können häufig durch Extrahieren von Features aus den gesammelten Rohdaten verbessert werden. Ein Beispiel für ein entwickeltes Feature im Kontext des Lernvorgangs, wie Bilder von handschriftlichen Zeichen klassifiziert werden, ist eine aus den Rohdaten der Bitverteilung erstellte Bitdichtekarte. Diese Karte kann helfen, die Kanten der Zeichen effizienter als einfach mit der direkten Rohdatenverteilung zu ermitteln.
+## <a name="what-is-feature-engineering"></a>Was ist Feature Engineering?
 
-Informationen zum Erstellen von Features für Daten in bestimmten Umgebungen finden Sie in den folgenden Artikeln:
+Trainingsdaten bestehen aus einer Matrix von Zeilen und Spalten. Jede Zeile in der Matrix ist eine Beobachtung oder ein Datensatz. Die Spalten jeder Zeile sind die Features, mit denen die einzelnen Datensätze beschrieben werden. Die im Entwurf des Experiments angegebenen Features sollen die Muster in den Daten beschreiben.
 
-* [Erstellen von Features für Daten in SQL Server](create-features-sql-server.md)
-* [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](create-features-hive.md)
+Obwohl viele der Rohdatenfelder direkt zum Trainieren eines Modells verwendet werden können, ist es häufig erforderlich, zusätzliche (entwickelte) Features für ein verbessertes Trainingsdataset zu erstellen.
 
-## <a name="create-features-from-your-data---feature-engineering"></a>Erstellen von Features aus Ihren Daten – Featureentwicklung
-Die Trainingsdaten bestehen aus einer aus Bespielen zusammengesetzten Matrix (in Zeilen gespeicherte Datensätze oder Beobachtungen), von denen jedes eine Reihe von Features (in Spalten gespeicherten Variablen oder Feldern) aufweist. Die Features, die in der Experimentanordnung angegeben werden, beschreiben wahrscheinlich die Muster in den Daten. Obwohl viele der Rohdatenfelder direkt in die ausgewählte Featuregruppe einbezogen werden können, die zum Trainieren eines Modells dient, müssen oft zusätzliche (entwickelte) Features aus den Features in den Rohdaten erstellt werden, um ein verbessertes Trainingsdataset generieren zu können.
-
-Welche Art von Features sollte erstellt werden, um das Dataset beim Trainieren eines Modells zu verbessern? Entwickelte Features, die das Training verbessern, liefern Informationen, die die Muster in den Daten besser differenzieren. Die neuen Features sollen zusätzliche Informationen bereitstellen, die in den ursprünglichen oder vorhandenen Featuregruppen nicht eindeutig erfasst werden können oder nicht einfach ersichtlich sind. Doch dieser Prozess nicht einfach. Fundierte und produktive Entscheidungen erfordern häufig ein gewisses Fachwissen.
-
-Wenn Sie Azure Machine Learning zum ersten Mal verwenden, ist es am einfachsten, wenn Sie sich diesen Prozess anhand der Beispiele in Studio verdeutlichen. Zwei Beispiele sind hier dargestellt:
-
-* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
-* Ein Text Mining-Klassifizierungsbeispiel mit [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+Entwickelte Features, die das Training verbessern, liefern Informationen, die die Muster in den Daten besser differenzieren. Doch dieser Prozess nicht einfach. Fundierte und produktive Entscheidungen erfordern häufig Fachwissen.
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Beispiel 1: Hinzufügen von temporären Features zu einem Regressionsmodell
-Das Experiment „Vorhersage der Anzahl ausgeliehener Fahrräder“ in Azure Machine Learning Studio (klassisch) soll veranschaulichen, wie Features für Regressionsaufgaben entwickelt werden können. Dieses Experiment soll den Bedarf an Fahrrädern, d. h. die Anzahl von vermieteten Fahrrädern für einen bestimmten Monat/Tag/Stunde, vorhersagen. Das Dataset "Bike Rental UCI" liefert die Rohdaten für die Eingabe. Dieses Dataset basiert auf echten Daten des Unternehmens Capital Bikeshare, das eine Fahrradvermietung in Washington DC in den USA betreibt. Das Dataset stellt die Anzahl von geliehenen Fahrrädern zu einer bestimmten Tageszeit in den Jahren 2011 und 2012 dar und enthält 17.379 Zeilen und 17 Spalten. Die unformatierte Featuregruppe enthält Wetterbedingungen (Temperatur/Luftfeuchtigkeit/Windgeschwindigkeit) und den Typ des Tags (Feiertag/Wochentag). Das Feld für die Vorhersage ist der Zähler „cnt“, der die ausgeliehenen Fahrräder innerhalb einer bestimmten Tageszeit darstellt und von 1 bis 977 reicht.
+
+Das Experiment [Vorhersage der Anzahl ausgeliehener Fahrräder](https://gallery.azure.ai/Experiment/Regression-Demand-estimation-4) in Azure Machine Learning Studio (Classic) soll veranschaulichen, wie Features für Regressionsaufgaben entwickelt werden können. Dieses Experiment soll den Bedarf an vermieteten Fahrrädern für eine(n) bestimmte(n) Monat/Tag/Stunde vorhersagen.
+
+### <a name="bike-rental-dataset"></a>Fahrradvermietungsdataset
+
+Das [UCI-Dataset zur Fahrradvermietung](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset/) basiert auf echten Daten eines Fahrradverleihers in den USA. Es stellt die Anzahl von geliehenen Fahrrädern zu einer bestimmten Tageszeit in den Jahren 2011 und 2012 dar. Es enthält 17.379 Zeilen und 17 Spalten.
+
+Die unformatierte Featuregruppe enthält Wetterbedingungen (Temperatur/Luftfeuchtigkeit/Windgeschwindigkeit) und den Typ des Tags (Feiertag/Wochentag). Das Feld für die Vorhersage ist die Anzahl, die die ausgeliehenen Fahrräder innerhalb einer bestimmten Tageszeit darstellt. Die Anzahl reicht von 1 bis 977.
+
+### <a name="create-a-feature-engineering-experiment"></a>Erstellen eines Feature Engineering-Experiments
 
 Mit dem Ziel, effektive Features in den Trainingsdaten zu entwickeln, werden vier Regressionsmodelle mit demselben Algorithmus, jedoch mit vier verschiedenen Trainingsdatasets erstellt. Die vier Datasets enthalten dieselben Roheingabedaten, jedoch mit einer steigenden Anzahl von festgelegten Features. Diese Features sind in vier Kategorien unterteilt:
 
@@ -59,9 +58,15 @@ Mit dem Ziel, effektive Features in den Trainingsdaten zu entwickeln, werden vie
 
 Neben Featuregruppe A, die bereits in den ursprünglichen Rohdaten vorhanden ist, werden die anderen drei Featuregruppen über den Featureentwicklungsprozess erstellt. Featuregruppe B erfasst die jüngste Nachfrage nach Fahrrädern. Featuregruppe C erfasst die Nachfrage nach Fahrrädern zu einer bestimmten Stunde Featuregruppe D erfasst die Nachfrage nach Fahrrädern zu bestimmten Uhrzeiten an bestimmten Wochentagen. Die vier Trainingsdatasets umfassen jeweils Featuregruppe A, A+B, A+B+C und A+B+C+D.
 
-Diese vier Trainingsdatasets werden im Azure Machine Learning-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen das Modul [Execute R Script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/), in dem die abgeleiteten Features (Featuregruppe B, C und D) erstellt und an das importierte DataSet angehängt werden. Die folgende Abbildung veranschaulicht das R-Skript, das zur Erstellung der Featuregruppe B in der zweiten Verzweigung von links verwendet wird.
+### <a name="feature-engineering-using-studio-classic"></a>Feature Engineering mit Studio (Classic)
+
+Diese vier Trainingsdatasets werden im Studio (Classic)-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen das Modul [Execute R Script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/), in dem die abgeleiteten Features (Featuregruppe B, C und D) erstellt und an das importierte Dataset angehängt werden.
+
+Die folgende Abbildung veranschaulicht das R-Skript, das zur Erstellung der Featuregruppe B in der zweiten Verzweigung von links verwendet wird.
 
 ![Features erstellen](./media/create-features/addFeature-Rscripts.png)
+
+### <a name="results"></a>Ergebnisse
 
 Ein Vergleich der Leistungsergebnisse der vier Modelle ist in der folgenden Tabelle zusammengefasst: 
 
@@ -69,12 +74,15 @@ Ein Vergleich der Leistungsergebnisse der vier Modelle ist in der folgenden Tabe
 
 Die besten Ergebnisse werden mit den Features A+B+C angezeigt. Die Fehlerrate ist niedriger, wenn eine zusätzliche Featuregruppe in den Trainingsdaten enthalten ist. Dies bestätigt die Vermutung, dass die Featuregruppen B und C weitere relevante Informationen für die Regressionsaufgabe liefern. Das Hinzufügen des Features D scheint jedoch keine zusätzliche Verringerung der Fehlerrate zu ergeben.
 
-## <a name="example-2-creating-features-in-text-mining"></a><a name="example2"></a> Beispiel 2: Erstellen von Features beim Text Mining
-Die Featureentwicklung wird häufig in Aufgaben verwendet, die mit Text Mining im Zusammenhang stehen, z.B. Dokumentklassifizierung und Stimmungsanalyse. Wenn z.B. Dokumente in verschiedene Kategorien klassifiziert werden sollen, ist eine typische Annahme, dass die in der einen Dokumentkategorie enthaltenen Wörter/Ausdrücke mit geringerer Wahrscheinlichkeit in der anderen Dokumentkategorie auftreten. Anders ausgedrückt kann die Häufigkeit der Verteilung von Wörtern und Ausdrücken verschiedene Dokumenttypen charakterisieren. In Text Mining-Anwendungen, bei denen einzelne Teile des Textinhalts in der Regel als Eingabedaten dienen, ist der Featureentwicklungsprozess erforderlich, um Features in Zusammenhang mit Häufigkeiten von Wörtern/Ausdrücken zu erstellen.
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> Beispiel 2: Erstellen von Features für Textmining
 
-Für diese Aufgabe wird ein Verfahren namens **Feature Hashing** angewendet, um beliebige Textfeatures effizient in Indizes zu verwandeln. Statt jedes Textfeature (Wörter/Ausdrücke) einem bestimmten Index zuzuweisen, wird bei dieser Methode durch Anwenden einer Hashfunktion auf die Features und die direkte Verwendung ihrer Hashwerte als Indizes ein Ergebnis erzielt.
+Feature Engineering wird häufig in Aufgaben verwendet, die mit Textmining im Zusammenhang stehen, z. B. Dokumentklassifizierung und Stimmungsanalyse. Da einzelne Teile des Textinhalts in der Regel als Eingabedaten dienen, ist Feature Engineering erforderlich, um Features in Zusammenhang mit Häufigkeiten von Wörtern/Ausdrücken zu erstellen.
 
-Azure Machine Learning enthält ein Modul [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/), das Wort/Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Das Ziel dieses [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) -Moduls ist, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter/Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, führen Sie die folgenden Schritte aus:
+### <a name="feature-hashing"></a>Feature Hashing
+
+Für diese Aufgabe wird ein Verfahren namens [Feature Hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) angewendet, um beliebige Textfeatures effizient in Indizes zu verwandeln. Statt jedes Textfeature (Wörter/Ausdrücke) einem bestimmten Index zuzuweisen, wird bei dieser Methode durch Anwenden einer Hashfunktion auf die Features und die direkte Verwendung ihrer Hashwerte als Indizes ein Ergebnis erzielt.
+
+Studio (Classic) enthält das Modul [Feature Hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing), das Wort/Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Dieses Modul dient dem Zweck, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter/Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, führen Sie die folgenden Schritte aus:
 
 * Wählen Sie zuerst die Spalte, die den eingegebenen Text enthält (in diesem Beispiel "Col2").
 * Legen Sie dann "Hashing bitsize" auf 8 fest, d. h. 2^8 = 256 Features werden erstellt. Die Wörter/Ausdrücke im gesamten Text werden auf 256 Indizes gehasht. Der Parameter "Hashing bitsize" reicht von 1 bis 31. Die Wörter/Ausdrücke werden mit geringerer Wahrscheinlichkeit in den gleichen Index gehasht, wenn eine größere Zahl festgelegt wird.
@@ -87,7 +95,15 @@ Die folgende Abbildung zeigt, wie dieses neue Feature aussehen wird.
 !["Feature Hashing"-Beispiel](./media/create-features/feature-Hashing2.png)
 
 ## <a name="conclusion"></a>Zusammenfassung
-Entwickelte und ausgewählte Features steigern die Effizienz des Trainingsprozesses, der versucht, die in den Daten enthaltenen Schlüsselinformationen zu extrahieren. Sie verbessern auch die Leistungsfähigkeit dieser Modelle für eine exakte Klassifizierung der Eingabedaten und verlässlichere Vorhersagen von Ergebnissen, die von Interesse sind. Entwicklung und Auswahl von Features können auch kombiniert werden, damit das Lernen besser rechnerisch verfolgt werden kann. Dies erfolgt durch eine Erweiterung und anschließende Verringerung der Anzahl von Features zum Kalibrieren oder Trainieren eines Modells. Mathematisch gesehen stehen die Features, die zum Trainieren des Modells ausgewählt werden, für einen minimalen Satz von unabhängigen Variablen, die Muster in den Daten erklären und dann erfolgreich Vorhersageergebnisse liefern.
+Entwickelte und ausgewählte Features steigern die Effizienz des Trainingsprozesses, der versucht, die in den Daten enthaltenen Schlüsselinformationen zu extrahieren. Sie verbessern auch die Leistungsfähigkeit dieser Modelle für eine exakte Klassifizierung der Eingabedaten und verlässlichere Vorhersagen von Ergebnissen, die von Interesse sind.
 
-Die Entwicklung bzw. Auswahl von Features muss nicht immer unbedingt erfolgen. Ob sie benötigt werden, hängt von den vorliegenden oder gesammelten Daten, dem ausgewählten Algorithmus und dem Ziel des Experiments ab.
+Entwicklung und Auswahl von Features können auch kombiniert werden, damit das Lernen besser rechnerisch verfolgt werden kann. Dies erfolgt durch eine Erweiterung und anschließende Verringerung der Anzahl von Features zum Kalibrieren oder Trainieren eines Modells. Mathematisch gesehen stehen die ausgewählten Features für einen minimalen Satz von unabhängigen Variablen, die Muster in den Daten erklären und erfolgreich Vorhersageergebnisse liefern.
 
+Feature Engineering bzw. Featureauswahl muss nicht immer unbedingt erfolgen. Dies hängt von den Daten, dem ausgewählten Algorithmus und dem Ziel des Experiments ab.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zum Erstellen von Features für Daten in bestimmten Umgebungen finden Sie in den folgenden Artikeln:
+
+* [Erstellen von Features für Daten in SQL Server](create-features-sql-server.md)
+* [Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen](create-features-hive.md)

@@ -7,24 +7,24 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584967"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344423"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Hinzufügen von Absichten, um die Absicht von Benutzeräußerungen zu bestimmen
 
 Fügen Sie Ihrer LUIS-App [Absichten](luis-concept-intent.md) hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen.
 
-Navigieren Sie in der oberen Navigationsleiste zum Abschnitt **Build** und dann im linken Bereich zu **Absichten**, um die Absichten zu verwalten.
+Navigieren Sie im LUIS-Portal in der oberen Navigationsleiste zum Abschnitt **Build** und dann im linken Bereich zu **Absichten**, um die Absichten zu verwalten.
 
-## <a name="add-intent"></a>Hinzufügen einer Absicht
+## <a name="add-an-intent-to-your-app"></a>Hinzufügen einer Absicht zu Ihrer App
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
 1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
@@ -34,7 +34,7 @@ Navigieren Sie in der oberen Navigationsleiste zum Abschnitt **Build** und dann 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen einer Absicht](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Für die Absicht sind Beispieläußerungen erforderlich.
+    Die Absicht erfordert [Beispieläußerungen](luis-concept-utterance.md), um Äußerungen am veröffentlichten Vorhersageendpunkt vorherzusagen.
 
 ## <a name="add-an-example-utterance"></a>Hinzufügen einer Beispieläußerung
 
@@ -51,16 +51,16 @@ Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Sie m
 
 ## <a name="intent-prediction-errors"></a>Fehler bei Absichtsvorhersagen
 
-Eine Beispieläußerung in eine Absicht, bei der möglicherweise ein Fehler bei der Absichtsvorhersage zwischen der Absicht, zu der die Beispieläußerung gehört, und der während des Trainings ermittelten Absicht aufgetreten ist.
+Ein Absichtsvorhersagefehler liegt vor, wenn die Äußerung nicht mit der für die Absicht trainierten App vorhergesagt wird.
 
-Um Äußerungsvorhersagefehler zu finden und zu beheben, verwenden Sie die **Filteroptionen** „Falsch“ und „Unklar“ zusammen mit der Option **Ansicht** von **Detailansicht**.
+1. Verwenden Sie für das Ermitteln und Beheben von Äußerungsvorhersagefehlern unter **Filter** die Optionen „Falsch“ und „Unklar“.
 
-![Verwenden Sie für das Ermitteln und Beheben von Äußerungsvorhersagefehlern die Option „Filter“.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![Verwenden der Option „Filter“ zum Ermitteln und Beheben von Äußerungsvorhersagefehlern](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Wenn die Filter und die Ansicht angewandt wurden und Beispieläußerungen mit Fehlern vorhanden sind, enthält die Liste der Beispieläußerungen die Äußerungen und die Probleme.
+1. Klicken Sie im Optionsmenü **Ansicht** auf **Show details intent scores** (Detaillierte Absichtsbewertungen anzeigen), um den Ergebniswert auf der Seite mit den Absichtsdetails anzuzeigen.
 
-> [!div class="mx-imgBorder"]
-> ![![Wenn die Filter und die Ansicht angewandt wurden und Beispieläußerungen mit Fehlern vorhanden sind, enthält die Liste der Beispieläußerungen die Äußerungen und die Probleme.](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    Wenn die Filter und die Ansicht angewandt wurden und Beispieläußerungen mit Fehlern vorhanden sind, enthält die Liste der Beispieläußerungen die Äußerungen und die Probleme.
 
 Jede Zeile zeigt das aktuelle Vorhersageergebnis des Trainings für die Beispieläußerung, das nächstschlechtere Ergebnis und den Unterschied zwischen diesen beiden Bewertungen.
 

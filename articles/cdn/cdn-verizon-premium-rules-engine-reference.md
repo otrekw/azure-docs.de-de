@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253389"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872502"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referenz zur Regel-Engine für Azure CDN Premium von Verizon
 
@@ -26,20 +26,62 @@ Die Regel-Engine fungiert als endgültige Autorität, wie vom CDN bestimmte Type
 - Schützen oder Ablehnen von Anforderungen vertraulicher Inhalte
 - Umleiten von Anforderungen
 - Speichern benutzerdefinierter Protokolldaten
+## <a name="key-concepts"></a>Wichtige Begriffe
+Im Folgenden werden die wichtigsten Konzepte für das Einrichten der Regel-Engine beschrieben.
+### <a name="draft"></a>Entwurf
+Ein Entwurf einer Richtlinie besteht aus mindestens einer Regel, die zum Identifizieren von Anforderungen und der Aktionen verwendet wird, die auf sie angewendet werden. Ein Entwurf ist eine fortlaufende Arbeit, die häufige Konfigurationsaktualisierungen ermöglicht, ohne dass sich dies auf den Websitedatenverkehr auswirkt. Zum Fertigstellen eines Entwurfs sollte dieser in eine schreibgeschützte Richtlinie konvertiert werden.
 
-## <a name="terminology"></a>Begriff
+### <a name="rule"></a>Regel
+Eine Regel identifiziert einen oder mehrere Typen von Anforderungen und den Satz von Aktionen, die auf sie angewendet werden.
 
-Eine Regel wird mithilfe von [**bedingten Ausdrücken**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md), [**Übereinstimmungsbedingungen**](cdn-verizon-premium-rules-engine-reference-match-conditions.md) und [**Features**](cdn-verizon-premium-rules-engine-reference-features.md) definiert. Diese Elemente sind in der folgenden Abbildung hervorgehoben:
+Sie besteht aus: 
 
- ![CDN-Übereinstimmungsbedingung](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+- Einem Satz bedingter Ausdrücke, die die Logik zum Identifizieren von Anforderungen definieren.
+- Einer Reihe von Übereinstimmungsbedingungen, die die Kriterien zum Identifizieren von Anforderungen definieren.
+- Einer Reihe von Features, die definieren, wie das CDN die oben genannten Anforderungen behandelt.
+Diese Elemente sind in der folgenden Abbildung gekennzeichnet.
 
+![Workflow der Richtlinienbereitstellung](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+
+### <a name="policy"></a>Richtlinie
+Eine Richtlinie, die aus einem Satz schreibgeschützter Regeln besteht, ermöglicht Folgendes:
+
+- Erstellen, Speichern und Verwalten mehrerer Varianten der Regeln
+- Zurücksetzen auf eine zuvor bereitgestellte Version
+- Erstellen ereignisspezifischer Regeln im Voraus (z. B. einer Regel, die den Datenverkehr aufgrund einer Kundenursprungswartung umleitet)
+
+> [!NOTE]
+> Obwohl nur eine einzige Richtlinie pro Umgebung zulässig ist, können Richtlinien bei Bedarf bereitgestellt werden.
+
+### <a name="deploy-request"></a>Bereitstellungsanforderung
+Eine Bereitstellungsanforderung bietet ein einfaches und optimiertes Verfahren für die schnelle Anwendung einer Richtlinie auf die Staging- oder Produktionsumgebung. Ein Verlauf der Bereitstellungsanforderungen wird bereitgestellt, um die Nachverfolgung der auf diese Umgebungen angewendeten Änderungen zu erleichtern.
+
+> [!NOTE]
+> Nur Anforderungen, die von unserem automatisierten Überprüfungs- und Fehlererkennungssystem nicht akzeptiert werden, erfordern eine manuelle Überprüfung und Genehmigung.
+
+### <a name="rule-precedence"></a>Rangfolge der Regeln
+Die Regeln in einer Richtlinie werden normalerweise in der Reihenfolge verarbeitet, in der sie aufgelistet sind (d. h. von oben nach unten). Wenn die Anforderung mit Regeln übereinstimmt, die miteinander in Konflikt stehen, hat die letzte zu verarbeitende Regel Vorrang.
+
+### <a name="policy-deployment-workflow"></a>Workflow der Richtlinienbereitstellung
+Der Workflow für das Anwenden einer Richtlinie auf die Produktions- oder Stagingumgebung ist unten dargestellt.
+
+![Workflow der Richtlinienbereitstellung](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
+
+|Schritt |BESCHREIBUNG |
+|---------|---------|
+|[Erstellen des Entwurfs](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Ein Entwurf besteht aus einer Reihe von Regeln, die definieren, wie Anforderungen für Ihre Inhalte vom CDN verarbeitet werden sollen.     |
+|Sperren des Entwurfs   |     Nach dem Abschließen eines Entwurfs sollte dieser gesperrt und in eine schreibgeschützte Richtlinie konvertiert werden.    |
+|[Übermitteln der Bereitstellungsanforderung](https://docs.vdms.com/cdn/index.html#HRE/DeployRequest.htm)   |   <br> Eine Bereitstellungsanforderung ermöglicht das Anwenden einer Richtlinie auf den Test- oder Produktionsdatenverkehr.</br> <br>Übermitteln Sie eine Bereitstellungsanforderung an die Staging- oder Produktionsumgebung.</br>     |
+|Überprüfen der Bereitstellungsanforderung   |    <br>Eine Bereitstellungsanforderung wird einer automatisierten Überprüfung und Fehlererkennung unterzogen.</br><br>Obwohl die meisten Bereitstellungsanforderungen automatisch genehmigt werden, erfordern komplexere Richtlinien eine manuelle Überprüfung.</br>   |
+|Richtlinienbereitstellung ([Staging](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Nach der Genehmigung einer Bereitstellungsanforderung an die Stagingumgebung wird eine Richtlinie auf die Stagingumgebung angewendet. Diese Umgebung ermöglicht das erneute Testen der Richtlinie mit simuliertem Websitedatenverkehr.</br><br>Sobald die Richtlinie auf Live-Websitedatenverkehr angewendet werden kann, sollte eine neue Bereitstellungsanforderung für die Produktionsumgebung übermittelt werden.</br>      |
+|Richtlinienbereitstellung ([Produktion](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Nach der Genehmigung einer Bereitstellungsanforderung an die Produktionsumgebung wird eine Richtlinie auf die Produktionsumgebung angewendet. In dieser Umgebung kann eine Richtlinie als endgültige Stelle fungieren, die bestimmt, wie die Verarbeitung von Livedatenverkehr durch das CDN erfolgen soll.     |
 ## <a name="syntax"></a>Syntax
 
 Die Art und Weise, in der Sonderzeichen behandelt werden, hängt davon ab, wie eine Übereinstimmungsbedingung Textwerte behandelt. Eine Übereinstimmungsbedingung (bzw. Feature) kann Text interpretieren als:
 
-1. [**Literalwerte**](#literal-values)
-2. [**Platzhalterwerte**](#wildcard-values)
-3. [**Reguläre Ausdrücke**](#regular-expressions)
+- [**Literalwerte**](#literal-values)
+- [**Platzhalterwerte**](#wildcard-values)
+- [**Reguläre Ausdrücke**](#regular-expressions)
 
 ### <a name="literal-values"></a>Literalwerte
 
@@ -66,12 +108,14 @@ Reguläre Ausdrücke definieren ein Muster, das in einem Textwert gesucht wird. 
 Sonderzeichen | BESCHREIBUNG
 ------------------|------------
 \ | Ein umgekehrter Schrägstrich als Escapezeichen für das nach diesem folgende Zeichen bewirkt, dass das Zeichen als Literalwert behandelt wird, anstatt seine Bedeutung als regulärer Ausdruck zu haben. Es folgt als Beispiel die Syntax für das Escapezeichen eines Sternchens: `\*`
-% | Die Bedeutung eines Prozentzeichens hängt von seiner Verwendung ab.<br/><br/> `%{HTTPVariable}`: Diese Syntax gibt eine HTTP-Variable an.<br/>`%{HTTPVariable%Pattern}`: Diese Syntax verwendet ein Prozentzeichen, um eine HTTP-Variable und ein Trennzeichen zu bestimmen.<br />`\%`: Wenn ein Prozentzeichen mit einem Escapezeichen versehen wird, kann es als Literalwert verwendet werden oder die URL-Codierung angeben (z.B. `\%20`).
+% | Die Bedeutung eines Prozentzeichens hängt von seiner Verwendung ab.<br/><br/> `%{HTTPVariable}`: Diese Syntax gibt eine HTTP-Variable an.<br/>`%{HTTPVariable%Pattern}`: Diese Syntax verwendet ein Prozentzeichen, um eine HTTP-Variable und ein Trennzeichen anzugeben.<br />`\%`: Wenn ein Prozentzeichen mit einem Escapezeichen versehen wird, kann es als Literalwert verwendet werden oder die URL-Codierung angeben (z. B. `\%20`).
 \* | Ein Sternchen ermöglicht, dass für das vorherige Zeichen keine oder mehrere Übereinstimmungen gefunden werden.
 LeerZchn | Ein Leerzeichen wird in der Regel als Literalzeichen behandelt.
 'Wert' | Einfache Anführungszeichen werden als Literalzeichen behandelt. Eine Gruppe einfacher Anführungszeichen hat keine besondere Bedeutung.
 
 Übereinstimmungsbedingungen und Features, die reguläre Ausdrücke unterstützen, akzeptieren Muster, die durch PCRE (Perl Compatible Regular Expressions) definiert sind.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

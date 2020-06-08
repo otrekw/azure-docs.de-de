@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735887"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170255"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -50,7 +50,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Rufen Sie den Abschnitt [Netzwerkkonfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit der Log Analytics-Agent funktioniert.
 
-* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht im Portal für die Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie für die Computer gilt. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-scope-configurations-update-management.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht im Portal für die Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie für die Computer gilt. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Entfernen Sie die Workerkonfiguration, indem Sie die Schritte unter [Entfernen des Hybrid Runbook Workers von einem lokalen Windows-Computer](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder [Bereitstellen eines Linux-Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen. 
 
