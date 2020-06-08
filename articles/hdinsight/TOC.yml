@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planen der Clusterkapazität
           href: ./hdinsight-capacity-planning.md
-        - name: Anfordern einer Erhöhung des Kontingents für CPU-Kerne
-          href: ./quota-increase-request.md
         - name: Bewährte Methoden für die Clusterverwaltung
           href: ./cluster-management-best-practices.md
         - name: Verfügbarkeit und Zuverlässigkeit
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: Problembehandlung
           items:
+            - name: Anfordern einer Erhöhung des Kontingents für CPU-Kerne
+              href: ./quota-increase-request.md
             - name: Problembehandlung für Skriptaktionen
               href: ./troubleshoot-script-action.md
             - name: Fehler bei der Ressourcenerstellung

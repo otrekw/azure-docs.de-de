@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772130"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266609"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -43,7 +43,7 @@ Je nach Art Ihres Clients kann einer (oder auch mehrere) der Authentifizierungsa
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliziter Flow](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hybrid-OIDC-Ablauf](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Hybrid-OIDC-Ablauf](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Einlösung des Aktualisierungstokens](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Aktualisierungstoken | x | x | x| |
 |[„Im Auftrag von“-Ablauf](v2-oauth2-on-behalf-of-flow.md) | Zugriffstoken| x| x| x| |
 |[Gerätecodeflow](v2-oauth2-device-code.md) | | x| x| x| |

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: In diesem Artikel wird das Einrichten eines Azure Kubernetes Service-Clusters für Azure Dev Spaces beschrieben.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241344"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873548"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Einrichten eines Clusters für Azure Dev Spaces
 
@@ -86,7 +86,7 @@ Während Ihre Anwendung ausgeführt wird, führen die clientseitigen Tools auße
 Sie können die clientseitigen Tools über die Befehlszeile als Bestandteil des `azds`-Befehls verwenden. Sie können die clientseitigen Tools auch verwenden mit:
 
 * Visual Studio Code über die [Azure Dev Spaces-Erweiterung](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)
-* Visual Studio mit [Visual Studio-Tools für Kubernetes](https://aka.ms/get-vsk8stools)
+* Visual Studio mit der Workload „Azure-Entwicklung“
 
 ## <a name="next-steps"></a>Nächste Schritte
 

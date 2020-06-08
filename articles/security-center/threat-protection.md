@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606890"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744164"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bedrohungsschutz in Azure Security Center
 
@@ -29,7 +29,10 @@ Der Bedrohungsschutz von Azure Security Center bietet umfassende Schutzmaßnahme
 
 * **Bedrohungsschutz für Azure-Dienstebenen**: Azure-Netzwerkebene, Azure-Verwaltungsebene (Azure Resource Manager (Vorschau)) und Azure Key Vault (Vorschau)
 
-Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um Ihre Warnungen an Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. an ein beliebiges anderes externes Tool zu exportieren. 
+Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren. 
+
+> [!NOTE]
+> Warnungen aus unterschiedlichen Quellen erfordern möglicherweise unterschiedlich lange Zeit, bis sie angezeigt werden. Beispielsweise kann es länger dauern, bis Warnungen, die eine Analyse des Netzwerkdatenverkehrs erfordern, angezeigt werden, als das Anzeigen von Warnungen im Zusammenhang mit verdächtigen Prozessen auf virtuellen Computern.
 
 > [!TIP]
 > Wenn Sie die Security Center-Features zum Schutz vor Bedrohungen aktivieren möchten, müssen Sie den Tarif „Standard“ dem Abonnement mit den entsprechenden Workloads zuweisen.
@@ -44,20 +47,12 @@ Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Securi
 
 Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basierten Computer in Azure-Dienste integriert. In Security Center werden die Warnungen und Behandlungsvorschläge aus allen diesen Diensten in einem benutzerfreundlichen Format präsentiert.
 
-* **Microsoft Defender ATP** <a name="windows-atp"></a> – Security Center erweitert seine Plattformen für den Cloudworkloadschutz durch die Integration in Microsoft Defender Advanced Threat Protection (ATP). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung.
+* **Microsoft Defender Advanced Threat Protection (ATP)** <a name="windows-atp"></a> – Security Center erweitert seine Plattformen für den Cloudworkloadschutz durch die Integration in Microsoft Defender Advanced Threat Protection (ATP). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung.
 
     > [!IMPORTANT]
     > Der Microsoft Defender ATP-Sensor wird automatisch auf Windows-Servern aktiviert, die Security Center verwenden.
 
     Wenn von Microsoft Defender ATP eine Bedrohung erkannt wird, wird eine Warnung ausgelöst. Die Warnung wird auf dem Security Center-Dashboard angezeigt. Über das Dashboard können Sie zur Microsoft Defender ATP-Konsole wechseln und eine detaillierte Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Weitere Informationen zu Microsoft Defender ATP finden Sie unter [Integrieren von Servern in den Microsoft Defender ATP-Dienst](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
-
-* **Absturzabbildanalyse** <a name="windows-dump"></a> – Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst.
-
-    Ein Absturz kann durch Schadsoftware verursacht worden sein oder Schadsoftware enthalten. Um einer Erkennung durch Sicherheitsprodukte zu entgehen, nutzen verschiedene Arten von Schadsoftware einen dateilosen Angriff. Dadurch werden Schreibvorgänge auf dem Datenträger sowie die Verschlüsselung von auf den Datenträger geschriebenen Softwarekomponenten vermieden. Diese Art von Angriff ist mit einem herkömmlichen datenträgerbasierten Ansatz nur schwer zu erkennen.
-
-    Sie können diese Art von Angriff jedoch mithilfe einer Arbeitsspeicheranalyse erkennen. Durch die Analyse des Arbeitsspeichers im Absturzabbild kann Security Center Methoden erkennen, die der Angriff verwendet. Beispielsweise könnte der Angriff versuchen, Schwachstellen in der Software auszunutzen, auf vertrauliche Daten zuzugreifen und sich heimlich auf einem kompromittierten Computer einzunisten. Security Center erledigt diese Arbeit mit nur minimalen Leistungseinbußen bei den Hots.
-
-    Details der Absturzabbildanalyse-Warnungen finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-windows).
 
 * **Erkennung dateiloser Angriffe** <a name="windows-fileless"></a> – Dateilose Angriffe, die auf Ihre Endpunkte abzielen, sind gängig. Bei dateilosen Angriffen werden schädliche Nutzlasten in den Arbeitsspeicher injiziert, um einer Erkennung zu entgehen. Nutzlasten von Angreifern nisten sich im Arbeitsspeicher von kompromittierten Prozessen ein und führen ein breites Spektrum an schädlichen Aktivitäten aus.
 

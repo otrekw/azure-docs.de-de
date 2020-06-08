@@ -6,54 +6,124 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/20/2019
-ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133274"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860493"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Fehler beim Bilden eines Quorums durch den Apache ZooKeeper-Server in Azure HDInsight
 
-In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
+In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme mit ZooKeeper-Instanzen in Azure HDInsight-Clustern beschrieben.
 
-## <a name="issue"></a>Problem
+## <a name="symptoms"></a>Symptome
 
-Die Integrität des Apache ZooKeeper-Servers ist beeinträchtigt; mögliche Symptome: Resource Manager-Knoten/Namensknoten befinden sich im Standbymodus, einfache HDFS-Vorgänge (Hadoop Distributed File System) schlagen fehl, `zkFailoverController` wird beendet und kann nicht gestartet werden, Yarn/Spark/Livy-Aufträge schlagen aufgrund von ZooKeeper-Fehlern fehl. Auch LLAP-Daemons können möglicherweise nicht in Secure Spark- oder Interactive Hive-Clustern gestartet werden. Unter Umständen wird in etwa folgende Fehlermeldung angezeigt:
+* Beide Ressourcen-Manager wechseln in den Standbymodus.
+* Beide NameNodes befinden sich im Standbymodus.
+* Aufgrund von ZooKeeper-Verbindungsfehlern treten bei Spark-, Hive- und Yarn-Aufträgen oder Hive-Abfragen Fehler auf.
+* LLAP-Daemons können nicht in sicheren Spark- oder sicheren, interaktiven Hive-Clustern gestartet werden.
 
+## <a name="sample-log"></a>Beispielprotokoll
+
+Unter Umständen wird in etwa folgende Fehlermeldung angezeigt:
+
+```output
+2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
+Message
+2020-05-05 03:17:07.7924490|Received RMFatalEvent of type STATE_STORE_FENCED, caused by org.apache.zookeeper.KeeperException$NoAuthException: KeeperErrorCode = NoAuth
+...
+2020-05-05 03:17:08.3890350|State store operation failed 
+2020-05-05 03:17:08.3890350|Transitioning to standby state
 ```
-19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
-19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
+
+## <a name="related-issues"></a>Verwandte Probleme
+
+* Hochverfügbarkeitsdienste wie Yarn, NameNode und Livy können aus vielen Gründen ausfallen.
+* Bestätigen Sie mithilfe der Protokolle, dass das Problem mit ZooKeeper-Verbindungen zusammenhängt.
+* Stellen Sie sicher, dass das Problem wiederholt auftritt (verwenden Sie diese Lösungen nicht für Einzelfälle).
+* Bei Aufträgen können aufgrund von ZooKeeper-Verbindungsproblemen vorübergehend Fehler auftreten.
+
+## <a name="common-causes-for-zookeeper-failure"></a>Häufige Gründe für ZooKeeper-Fehler
+
+* Hohe CPU-Auslastung auf den ZooKeeper-Servern
+  * Wenn in der Ambari-Benutzeroberfläche eine anhaltende CPU-Auslastung von beinahe 100 % auf den ZooKeeper-Servern angezeigt wird, können die zu diesem Zeitpunkt offenen ZooKeeper-Sitzungen ablaufen und ein Timeout auftreten.
+* ZooKeeper-Clients melden häufige Timeouts.
+  * In den Protokollen für Resource Manager, NameNode u. a. werden Ihnen häufige Timeouts bei Clientverbindungen angezeigt.
+  * Dies könnte zu einem Quorumverlust, häufigen Failovern und anderen Problemen führen.
+
+## <a name="check-for-zookeeper-status"></a>Überprüfen des ZooKeeper-Status
+
+* Suchen Sie die ZooKeeper-Server über die Datei „/etc/hosts“ oder die Ambari-Benutzeroberfläche.
+* Führen Sie den folgenden Befehl aus.
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (oder 2182)  
+  * Port 2181 ist die Apache ZooKeeper-Instanz.
+  * Port 2182 wird von der HDInsight-ZooKeeper-Instanz verwendet (um Hochverfügbarkeit für Dienste bereitzustellen, die standardmäßig nicht hochverfügbar sind).
+  * Wenn der Befehl keine Ausgabe anzeigt, bedeutet dies, dass die ZooKeeper-Server nicht ausgeführt werden.
+  * Wenn die Server ausgeführt werden, enthält das Ergebnis Statistiken zu Clientverbindungen und andere Statistiken.
+
+```output
+Zookeeper version: 3.4.6-8--1, built on 12/05/2019 12:55 GMT
+Clients:
+ /10.2.0.57:50988[1](queued=0,recved=715,sent=715)
+ /10.2.0.57:46632[1](queued=0,recved=138340,sent=138347)
+ /10.2.0.34:14688[1](queued=0,recved=264653,sent=353420)
+ /10.2.0.52:49680[1](queued=0,recved=134812,sent=134814)
+ /10.2.0.57:50614[1](queued=0,recved=19812,sent=19812)
+ /10.2.0.56:35034[1](queued=0,recved=2586,sent=2586)
+ /10.2.0.52:63982[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.57:53024[1](queued=0,recved=19805,sent=19805)
+ /10.2.0.57:45126[1](queued=0,recved=19621,sent=19621)
+ /10.2.0.56:41270[1](queued=0,recved=1348743,sent=1348788)
+ /10.2.0.53:59097[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.56:41088[1](queued=0,recved=788,sent=802)
+ /10.2.0.34:10246[1](queued=0,recved=19575,sent=19575)
+ /10.2.0.56:40944[1](queued=0,recved=717,sent=717)
+ /10.2.0.57:45466[1](queued=0,recved=19861,sent=19861)
+ /10.2.0.57:59634[0](queued=0,recved=1,sent=0)
+ /10.2.0.34:14704[1](queued=0,recved=264622,sent=353355)
+ /10.2.0.57:42244[1](queued=0,recved=49245,sent=49248)
+
+Latency min/avg/max: 0/3/14865
+Received: 238606078
+Sent: 239139381
+Connections: 18
+Outstanding: 0
+Zxid: 0x1004f99be
+Mode: follower
+Node count: 133212
 ```
 
-In den Zookeeper-Serverprotokollen auf einem Zookeeper-Host unter „/var/log/zookeeper/zookeeper-zookeeper-server-\*.out“ wird möglicherweise auch der folgende Fehler angezeigt:
+## <a name="cpu-load-peaks-up-every-hour"></a>CPU-Auslastung steigt stündlich auf Spitzenwerte
 
-```
-2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
-java.nio.channels.CancelledKeyException
-```
+* Melden Sie sich beim ZooKeeper-Server an, und überprüfen Sie „/etc/crontab“.
+* Wenn zu diesem Zeitpunkt stündliche Aufträge ausgeführt werden, können Sie die Startzeit auf verschiedenen ZooKeeper-Servern zufällig festlegen.
+  
+## <a name="purging-old-snapshots"></a>Löschen von alten Momentaufnahmen
 
-## <a name="cause"></a>Ursache
+* ZooKeeper-Instanzen sind so konfiguriert, dass alte Momentaufnahmen automatisch gelöscht werden.
+* Standardmäßig werden die letzten 30 Momentaufnahmen beibehalten.
+* Die Anzahl der beibehaltenen Momentaufnahmen wird durch den Konfigurationsschlüssel `autopurge.snapRetainCount` gesteuert. Diese Eigenschaft befindet sich in den folgenden Dateien:
+  * `/etc/zookeeper/conf/zoo.cfg` für Hadoop-ZooKeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` für HDInsight-ZooKeeper
+* Legen Sie `autopurge.snapRetainCount` auf den Wert 3 fest, und starten Sie die ZooKeeper-Server neu.
+  * Die Konfiguration von Hadoop-ZooKeeper kann aktualisiert und der Dienst über Ambari neu gestartet werden.
+  * Manuelles Anhalten und Neustarten von HDInsight-ZooKeeper
+    * `sudo lsof -i :2182` gibt Ihnen die Prozess-ID, die Sie beenden sollen.
+    * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
+* Löschen Sie Momentaufnahmen nicht manuell – dies könnte zu einem Datenverlust führen.
 
-Wenn das Volume mit den Momentaufnahmedateien groß oder beschädigt ist, kann der ZooKeeper-Server kein Quorum bilden, und dies führt zu Fehlern in den ZooKeeper-Diensten. Der ZooKeeper-Server entfernt keine alten Momentaufnahmedateien aus seinem Datenverzeichnis. Dies ist stattdessen ein Vorgang, der von Benutzern regelmäßig auszuführen ist, um die Integrität von ZooKeeper zu erhalten. Weitere Informationen finden Sie unter [ZooKeeper Strengths and Limitations](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations) (Vorteile und Einschränkungen von ZooKeeper).
+## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException im ZooKeeper-Serverprotokoll erfordert keine Momentaufnahmenbereinigung
 
-## <a name="resolution"></a>Lösung
-
-Überprüfen Sie das ZooKeeper `/hadoop/hdinsight-zookeeper/version-2`-Datenverzeichnis `/hadoop/zookeeper/version-2`, und stellen Sie fest, ob die Momentaufnahmendatei groß ist. Wenn große Momentaufnahmen vorhanden sind, führen Sie folgende Schritte aus:
-
-1. Überprüfen Sie den Status anderer ZooKeeper-Server im selben Quorum, um sicherzustellen, dass sie mit dem Befehl „`echo stat | nc {zk_host_ip} 2181 (or 2182)`“ einwandfrei funktionieren.  
-
-1. Melden Sie sich bei dem problematischen ZooKeeper-Host an, sichern Sie Momentaufnahmen und Transaktionsprotokolle in `/hadoop/zookeeper/version-2` und `/hadoop/hdinsight-zookeeper/version-2`, und bereinigen Sie dann diese Dateien in den beiden Verzeichnissen. 
-
-1. Starten Sie den problematischen ZooKeeper-Server in Ambari oder den ZooKeeper-Host neu. Starten Sie dann den Dienst neu, bei dem Probleme auftreten.
+* Diese Ausnahme bedeutet in der Regel, dass der Client nicht mehr aktiv ist und der Server keine Nachricht senden kann.
+* Diese Ausnahme weist zudem darauf hin, dass der ZooKeeper-Client Sitzungen vorzeitig beendet.
+* Suchen Sie nach den anderen in diesem Dokument beschriebenen Symptomen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 - Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
-
 - Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
-
 - Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

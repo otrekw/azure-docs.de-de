@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: b78d32dbb7b4e0d9a3b13ff741e6e38c12be0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4526611fa8b80a7b97ee7317f5e285c50f05b0de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528505"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650666"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>Informationen zu P2S VPN-Clientprofilen
 
@@ -20,7 +20,7 @@ Die heruntergeladene Profildatei enthält Informationen, die zum Konfigurieren e
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 
-* Der Ordner **OpenVPN** enthält das Profil *ovpn*, das geändert werden muss, um den Schlüssel und das Zertifikat einzuschließen. Weitere Informationen finden Sie unter [Konfigurieren von OpenVPN-Clients für Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). Wenn Azure AD Authentifizierung auf dem VPN-Gateway ausgewählt ist, ist dieser Ordner in der ZIP-Datei nicht vorhanden. Stattdessen befindet sich die Datei „azurevpnconfig.xml“ im Ordner „AzureVPN“.
+* Der Ordner **OpenVPN** enthält das Profil *ovpn*, das geändert werden muss, um den Schlüssel und das Zertifikat einzuschließen. Weitere Informationen finden Sie unter [Konfigurieren von OpenVPN-Clients für Azure VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). Wenn die Azure AD-Authentifizierung auf dem VPN-Gateway ausgewählt ist, ist dieser Ordner in der ZIP-Datei nicht vorhanden. Navigieren Sie stattdessen zum Ordner „AzureVPN“, und suchen Sie nach der Datei „azurevpnconfig.xml“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530392"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799591"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Übersicht über Azure Multi-Factor Authentication für Ihre Organisation
 
@@ -32,7 +32,7 @@ Wie kann Ihre Organisation MFA sogar kostenlos aktivieren, bevor sie Teil einer 
 
 Kunden, die die kostenlosen Vorteile von Azure AD nutzen, können mithilfe von [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) die mehrstufige Authentifizierung in ihrer Umgebung aktivieren.
 
-## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 oder E5
+## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 oder E5
 
 Kunden, die über Office 365 verfügen, stehen zwei Optionen zur Verfügung:
 
@@ -43,7 +43,7 @@ Kunden, die über Office 365 verfügen, stehen zwei Optionen zur Verfügung:
 
 Für Kunden, die über Azure AD Premium P1- oder ähnliche Lizenzen mit dieser Funktionalität verfügen (z. B. Enterprise Mobility + Security E3, Microsoft 365 F1 oder Microsoft 365 E3), gilt Folgendes: 
 
-Mit dem [bedingten Zugriff von Azure AD](../conditional-access/overview.md) können Sie Benutzer bei bestimmten Szenarien oder Ereignissen zur mehrstufigen Authentifizierung auffordern und auf diese Weise Ihre geschäftlichen Anforderungen erfüllen.
+Mit dem [bedingten Zugriff von Azure AD](../authentication/tutorial-enable-azure-mfa.md) können Sie Benutzer bei bestimmten Szenarien oder Ereignissen zur mehrstufigen Authentifizierung auffordern und auf diese Weise Ihre geschäftlichen Anforderungen erfüllen.
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 

@@ -1,20 +1,20 @@
 ---
 title: Erstellen eines eigenständigen Azure Automation-Kontos
-description: Dieser Artikel führt Sie anhand eines Beispiels durch die Schritte zum Erstellen, Testen und Verwenden der Authentifizierung per Sicherheitsprinzipal in Azure Automation.
+description: In diesem Artikel wird beschrieben, wie Sie ein eigenständiges Azure Automation-Konto und ein klassisches ausführendes Konto erstellen.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392290"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837092"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 
-In diesem Artikel erfahren Sie, wie Sie ein Azure Automation-Konto im Azure-Portal erstellen. Mit dem Automation-Konto im Portal können Sie Automation auswerten und sich damit vertraut machen, ohne zusätzliche Verwaltungslösungen oder eine Azure Monitor-Protokolle-Integration zu verwenden. Wenn Sie Runbookaufträge später genauer überwachen möchten, können Sie jederzeit entsprechende Verwaltungslösungen hinzufügen oder eine Azure Monitor-Protokolle-Integration durchführen.
+In diesem Artikel erfahren Sie, wie Sie ein Azure Automation-Konto im Azure-Portal erstellen. Mit dem Automation-Konto im Portal können Sie Automation auswerten und sich damit vertraut machen, ohne zusätzliche Verwaltungsfeatures zu verwenden oder Azure Monitor-Protokolle zu integrieren. Wenn Sie Runbookaufträge später genauer überwachen möchten, können Sie jederzeit entsprechende Verwaltungsfeatures hinzufügen oder eine Integration von Azure Monitor-Protokollen durchführen.
 
 Mit einem Automation-Konto können Sie Runbooks authentifizieren, indem Sie Ressourcen im Azure Resource Manager-Bereitstellungsmodell oder im klassischen Bereitstellungsmodell verwalten. Ein Automation-Konto kann Ressourcen in allen Regionen und Abonnements für einen bestimmten Mandanten verwalten.
 
@@ -35,9 +35,7 @@ Zum Erstellen oder Aktualisieren eines Automation-Kontos und zum Abschließen de
 
 Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, werden Sie, bevor Sie der Rolle „Globaler Administrator“/„Co-Administrator“ des Abonnements hinzugefügt werden, zunächst in Active Directory als Gast hinzugefügt. In diesem Szenario wird im Bereich „Automation-Konto hinzufügen“ die folgende Meldung angezeigt: `You do not have permissions to create.`
 
-Wird ein Benutzer zuerst der Rolle „Globaler Administrator“/„Co-Administrator“ hinzugefügt, können Sie diesen aus der Active Directory-Instanz des Abonnements entfernen. Sie können den Benutzer der Rolle „Benutzer“ in Active Directory erneut hinzufügen.
-
-So überprüfen Sie Benutzerrollen
+Wird ein Benutzer zuerst der Rolle „Globaler Administrator“/„Co-Administrator“ hinzugefügt, können Sie diesen aus der Active Directory-Instanz des Abonnements entfernen. Sie können den Benutzer der Rolle „Benutzer“ in Active Directory erneut hinzufügen. So überprüfen Sie Benutzerrollen
 
 1. Navigieren Sie im Azure-Portal zum Bereich „Azure Active Directory“.
 1. Wählen Sie **Benutzer und Gruppen**.
@@ -83,8 +81,6 @@ Führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto über das 
 
 1. Den Status der Automation-Kontoerstellung können Sie über das Menü unter **Benachrichtigungen** verfolgen.
 
-### <a name="resources-included"></a>Enthaltene Ressourcen
-
 Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt. Nachdem diese Ressourcen erstellt sind, können Runbooks gefahrlos gelöscht, wenn Sie diese nicht behalten möchten. Die ausführenden Konten können dazu verwendet werden, sich bei Ihrem Konto in einem Runbook zu authentifizieren, und sollten erhalten bleiben, es sei denn, Sie erstellen ein anderes oder benötigen sie nicht mehr. In der folgenden Tabelle sind die Ressourcen für das ausführende Konto zusammengefasst.
 
 | Resource | BESCHREIBUNG |
@@ -105,9 +101,9 @@ Klassische ausführende Konten werden nicht mehr standardmäßig erstellt, wenn 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
-* Erste Schritte mit PowerShell-Runbooks werden unter [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md) beschrieben.
-* Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)beschrieben.
-* Eine Einführung in Python 2-Runbooks finden Sie unter [Mein erstes Python 2-Runbook](automation-first-runbook-textual-python2.md).
+* Weitere Informationen zur grafischen Erstellung finden Sie unter [Erstellen grafischer Runbooks in Azure Automation](automation-graphical-authoring-intro.md).
+* Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
+* Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Workflow-Runbooks](learn/automation-tutorial-runbook-textual.md).
+* Informationen zu den ersten Schritten mit Python 2-Runbooks finden Sie unter [Tutorial: Erstellen eines Python 2-Runbooks](learn/automation-tutorial-runbook-textual-python2.md).
 * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).

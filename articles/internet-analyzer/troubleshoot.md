@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069216"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745469"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Problembehandlung für Azure Internet Analyzer
 
@@ -25,10 +25,10 @@ In diesem Artikel werden Schritte zur Problembehandlung häufig auftretender Pro
 ## <a name="azure-portal"></a>Azure-Portal
 **„Für die ausgewählte Filterkombination wurde keine Scorecard generiert“ im Abschnitt „Scorecards“**
 - Scorecards werden täglich generiert (am Ende jedes Tags, UTC-Zeit).
-- Scorecards werden nur generiert, wenn mehr als 100 Messungen für die ausgewählte Filterkombination (Test, Zeitraum, Land usw.) erfasst wurden.
+- Scorecards werden nur generiert, wenn mehr als 100 Messungen für die ausgewählte Filterkombination (Test, Zeitraum, Land/Region usw.) erfasst wurden.
 
 **„Gesamtanzahl der Messungen“ ist für einen oder beide Endpunkte in einem Test Null**
-- Zeitreihen und die Anzahl von Messungen werden ein Mal pro Stunde berechnet. Daher müssen Sie mindestens so lange warten, bis neue Messdaten angezeigt werden.
+- Zeitreihen und die Anzahl von Messungen werden einmal pro Stunde berechnet. Daher müssen Sie mindestens so lange warten, bis neue Messdaten angezeigt werden.
 - Internet Analyzer zählt für die Analyse ausschließlich erfolgreiche Messungen (d.h. HTTP 200-Antworten). Wenn einer oder beide Endpunkte in einem Test nicht erreichbar sind oder einen anderen Code als HTTP 200 zurückgeben, wird für die Gesamtzahl der Messungen Null angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte

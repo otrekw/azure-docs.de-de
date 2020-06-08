@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2020
+ms.date: 5/14/2020
 ms.author: yohaddad
-ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791560"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656396"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="may-2020-guest-os"></a>Gastbetriebssystem für Mai 2020
+>[!NOTE]
+>Das Gastbetriebssystem für April wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für April enthalten. Änderungen an der Liste sind vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2.98,  3.85, 4.78  |  12. Mai 2020  |
+|  Rel 20-05   |  [4556813]  |  Letztes kumulatives Update   |  5.43  |  12. Mai 2020  |
+|  Rel 20-05   |  [4551853]  |  Letztes kumulatives Update   |  6.19  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552940]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
+|  Rel 20-05   |  [4556836]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
+|  Rel 20-05   |  [4555449]  |  Wartungsstapelaktualisierung   |  2.98  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552920]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552979]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
+|  Rel 20-05   |  [4556840]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552947]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552982]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
+|  Rel 20-05   |  [4552946]  |  Monatlicher Rollup   |  4.78  |  12. Mai 2020  |
+|  Rel 20-05   |  [4556846]  |  Monatlicher Rollup   |  4.78  |  12. Mai 2020  |
+|  Rel 20-05   |  [4550994]  |  Wartungsstapelaktualisierung   |  5.43  |  14. April 2020  |
+|  Rel 20-05   |  [4552924]  |  Monatlicher Rollup   |  6.19  |  12. Mai 2020  |
+|  Rel 20-05   |  [4549947]  |  Wartungsstapelaktualisierung   |  6.19  |  14. April 2020  |
+
+
+[4556798]: https://support.microsoft.com/kb/4556798
+[4556813]: https://support.microsoft.com/kb/4556813
+[4551853]: https://support.microsoft.com/kb/4551853
+[4552940]: https://support.microsoft.com/kb/4552940
+[4556836]: https://support.microsoft.com/kb/4556836
+[4555449]: https://support.microsoft.com/kb/4555449
+[4552920]: https://support.microsoft.com/kb/4552920
+[4552979]: https://support.microsoft.com/kb/4552979
+[4556840]: https://support.microsoft.com/kb/4556840
+[4552947]: https://support.microsoft.com/kb/4552947
+[4552982]: https://support.microsoft.com/kb/4552982
+[4552946]: https://support.microsoft.com/kb/4552946
+[4556846]: https://support.microsoft.com/kb/4556846
+[4550994]: https://support.microsoft.com/kb/4550994
+[4552924]: https://support.microsoft.com/kb/4552924
+[4549947]: https://support.microsoft.com/kb/4549947
+
 
 ## <a name="april-2020-guest-os"></a>Gastbetriebssystem April 2020
 

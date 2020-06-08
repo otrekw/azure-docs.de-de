@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79296964"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835721"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Die folgenden Metriken können während des Trainings eines Experiments zu einem
 |Listen|Funktion:<br>`run.log_list(name, value, description='')`<br><br>Beispiel:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | Protokollieren Sie eine Liste mit Werten für die Ausführung unter dem jeweiligen Namen.|
 |Zeile|Funktion:<br>`run.log_row(name, description=None, **kwargs)`<br>Beispiel:<br>run.log_row("Y over X", x=1, y=0.4) | Mit *log_row* wird eine Metrik mit mehreren Spalten erstellt, wie in kwargs beschrieben. Jeder benannte Parameter erzeugt eine Spalte mit dem angegebenen Wert.  *log_row* kann einmal aufgerufen werden, um ein beliebiges Tupel zu protokollieren, oder mehrmals in einer Schleife, um eine vollständige Tabelle zu erzeugen.|
 |Tabelle|Funktion:<br>`run.log_table(name, value, description='')`<br><br>Beispiel:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | Protokollieren Sie ein Wörterbuchobjekt für die Ausführung unter dem jeweiligen Namen. |
-|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>`run.log_image("ROC", plot=plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
+|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>`run.log_image("ROC", plot=plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine PNG-Bilddatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
 |Ausführung kennzeichnen|Funktion:<br>`run.tag(key, value=None)`<br><br>Beispiel:<br>run.tag("selected", "yes") | Kennzeichnen Sie die Ausführung mit einem Zeichenfolgenschlüssel und einem optionalen Zeichenfolgenwert.|
 |Datei oder Verzeichnis hochladen|Funktion:<br>`run.upload_file(name, path_or_stream)`<br> <br> Beispiel:<br>run.upload_file("best_model.pkl", "./model.pkl") | Laden Sie eine Datei in die Ausführungsaufzeichnung hoch. Ausführungen erfassen die Datei im angegebenen Ausgabeverzeichnis. Die ist für die meisten Ausführungstypen standardmäßig „./outputs“.  Verwenden Sie upload_file nur, wenn zusätzliche Dateien hochgeladen werden müssen, oder kein Ausgabeverzeichnis angegeben ist. Wir empfehlen, `outputs` zum Namen hinzuzufügen, damit das Hochladen in das Ausgabeverzeichnis erfolgt. Sie können alle Dateien, die dieser Ausführungsaufzeichnung zugeordnet sind, mit `run.get_file_names()` auflisten.|
 
@@ -52,6 +52,7 @@ Die folgenden Metriken können während des Trainings eines Experiments zu einem
 Wenn Sie Ihr Experiment nachverfolgen oder überwachen möchten, müssen Sie Code hinzufügen, um die Protokollierung zu starten, wenn Sie die Ausführung übermitteln. Im Folgenden werden Möglichkeiten beschrieben, wie Sie die Übermittlung auslösen können:
 * __Run.start_logging__ – Fügen Sie Ihrem Trainingsskript Protokollierungsfunktionen hinzu und starten Sie eine interaktive Protokollierungssitzung im angegebenen Experiment. **Start_logging** erstellt eine interaktive Ausführung für die Verwendung in Szenarien wie z.B. Notebooks. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt.
 * __ScriptRunConfig__ – Fügen Sie Ihrem Trainingsskript Protokollierungsfunktionen hinzu und laden Sie den gesamten Skriptordner mit der Ausführung.  **ScriptRunConfig** ist eine Klasse für das Einrichten der Konfigurationen für Skriptausführungen. Mit dieser Option können Sie Überwachungscode hinzufügen, um über den Abschluss informiert zu werden oder um ein visuelles Widget zur Überwachung zu erhalten.
+* __Designerprotokollierung:__ Mithilfe des Moduls zum __Ausführen des Python-Skripts__ können Sie Protokollierungsfunktionen in einer Drag & Drop-Designerpipeline hinzufügen. Fügen Sie Python-Code hinzu, um Designerexperimente zu protokollieren. 
 
 ## <a name="set-up-the-workspace"></a>Arbeitsbereich einrichten
 Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müssen Sie den Arbeitsbereich einrichten.
@@ -103,8 +104,33 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
 
    [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
+## <a name="option-3-log-designer-experiments"></a>Option 3: Protokollieren von Designerexperimenten
 
+Verwenden Sie das Modul zum __Ausführen des Python-Skripts__, um Ihren Designerexperimenten eine Protokollierungslogik hinzuzufügen. Sie können beliebige Werte mithilfe dieses Workflows protokollieren. Er ist aber besonders dann hilfreich, wenn Sie Metriken aus dem Modell zum __Evaluieren des Modells__ protokollieren möchten, um die Modellleistung für mehrere Ausführungen überwachen zu können.
 
+1. Stellen Sie eine Verbindung vom Modul zum __Ausführen des Python-Skripts__ zur Ausgabe des Moduls zum __Evaluieren des Modells__ her.
+
+    ![Herstellen einer Verbindung vom Modul zum Ausführen des Python-Skripts zum Modul zum Evaluieren des Modells](./media/how-to-track-experiments/designer-logging-pipeline.png)
+
+1. Fügen Sie den folgenden Code in den Code-Editor zum __Ausführen des Python-Skripts__ ein, um den mittleren absoluten Fehler für Ihr trainiertes Modell zu protokollieren:
+
+    ```python
+    # dataframe1 contains the values from Evaluate Model
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+        from azureml.core import Run
+
+        run = Run.get_context()
+
+        # Log the mean absolute error to the current run to see the metric in the module detail pane.
+        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log the mean absolute error to the parent run to see the metric in the run details page.
+        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+    
+        return dataframe1,
+    ```
 
 ## <a name="manage-a-run"></a>Verwalten einer Ausführung
 

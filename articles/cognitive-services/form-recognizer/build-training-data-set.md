@@ -9,18 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75380625"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873288"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
-Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie Ihre eigenen Trainingsdaten bereit, damit das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. Sie können ein Modell mit fünf ausgefüllten Formularen oder einem leeren Formular (der Dateiname muss das Wort „empty“ enthalten) und zwei ausgefüllten Formularen trainieren. Selbst wenn Sie über genügend ausgefüllte Formulare für das Training verfügen, kann das Hinzufügen eines leeren Formulars zu Ihrem Trainingsdataset die Genauigkeit des Modells verbessern.
+Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie Ihre eigenen Trainingsdaten bereit, damit das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. 
 
-Wenn Sie manuell bezeichnete Trainingsdaten verwenden möchten, sollten Sie mit mindestens fünf Formularen desselben Typs beginnen. Sie können trotzdem nicht bezeichnete Formulare und ein leeres Formular im gleichen Dataset verwenden.
+Wenn Sie das Modell ohne manuelle Bezeichnungen trainieren, können Sie fünf ausgefüllte Formulare oder ein leeres Formular (der Dateiname muss das Wort „empty“ enthalten) und zwei ausgefüllte Formulare verwenden. Selbst wenn Sie über genügend ausgefüllte Formulare verfügen, kann das Hinzufügen eines leeren Formulars zu Ihrem Trainingsdataset die Genauigkeit des Modells verbessern.
+
+Wenn Sie manuell bezeichnete Trainingsdaten verwenden möchten, müssen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs beginnen. Sie können trotzdem nicht bezeichnete Formulare und ein leeres Formular zusätzlich zum erforderlichen Dataset verwenden.
 
 ## <a name="training-data-tips"></a>Tipps zu Trainingsdaten
 
@@ -42,9 +44,11 @@ Achten Sie darauf, dass Ihr Trainingsdataset auch den Eingabeanforderungen für 
 
 Wenn Sie den Satz von Formulardokumenten, die Sie für das Training verwenden möchten, zusammengestellt haben, müssen Sie ihn in einen Azure Blob Storage-Container hochladen. Wenn Sie nicht wissen, wie Sie ein Azure Storage-Konto mit einem Container erstellen, folgen Sie den Anweisungen im [Azure Storage-Schnellstart für das Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
+Wenn Sie manuell bezeichnete Daten verwenden möchten, müssen Sie auch die Dateien *.labels.json* und *.ocr.json* hochladen, die den Trainingsdokumenten entsprechen. Sie können das [Tool für die Beschriftung von Beispielen](./quickstarts/label-tool.md) (oder Ihre eigene Benutzeroberfläche) verwenden, um diese Dateien zu generieren.
+
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organisieren Ihrer Daten in Unterordnern (optional)
 
-Standardmäßig werden von der [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-Aufrufs die folgende Form, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
+Standardmäßig werden von der [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-Aufrufs das folgende Format, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
 
 ```json
 {
@@ -69,6 +73,7 @@ Wenn Sie dem Anforderungstext den folgenden Inhalt hinzufügen, wird die API mit
 
 Nachdem Sie nun gelernt haben, wie Sie ein Trainingsdataset erstellen, folgen Sie den Anweisungen in einem Schnellstart, um ein benutzerdefiniertes Formularerkennungsmodell zu trainieren und es mit Ihren Formularen zu verwenden.
 
-* [Schnellstart: Trainieren eines Modells und Extrahieren von Formulardaten mit cURL](./quickstarts/curl-train-extract.md)
-* [Schnellstart: Trainieren eines Modells und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](./quickstarts/python-train-extract.md)
+* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](./quickstarts/curl-train-extract.md)
+* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](./quickstarts/python-train-extract.md)
+* [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](./quickstarts/label-tool.md)
 * [Trainieren mit Bezeichnungen mit der REST-API und Python](./quickstarts/python-labeled-data.md)

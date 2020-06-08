@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679232"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844504"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Erstellen eines Azure Remote Rendering-Kontos
 
@@ -81,9 +81,12 @@ Es wird davon ausgegangen, dass Sie jetzt über ein Speicherkonto verfügen. Nav
 
 ![Speicherkonto (IAM)](./media/azure-add-role-assignment.png)
 
-* Die erste zuzuweisende Rolle ist **Besitzer**, wie im Screenshot oben gezeigt. 
-* Wählen Sie **Remote Rendering-Konto** aus der Dropdownliste ***Zugriff zuweisen zu** aus.
+* Die erste zuzuweisende Rolle ist **Besitzer**, wie im Screenshot oben gezeigt.
+* Wählen Sie **Remote Rendering-Konto** aus der Dropdownliste **Zugriff zuweisen zu** aus.
 * Wählen Sie in den letzten Dropdownlisten Ihr Abonnement und das Remote Rendering-Konto aus.
+
+> [!WARNING]
+> Wenn Ihr Remote Rendering-Konto nicht aufgeführt ist, lesen Sie den [Abschnitt zur Problembehandlung](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle**:
 * **Mitwirkender von Speicherkonto**

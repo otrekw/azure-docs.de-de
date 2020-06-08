@@ -1,5 +1,5 @@
 ---
-title: Aktivieren von Remotedesktop für Linux in Azure Lab Services | Microsoft-Dokumentation
+title: Aktivieren des grafischen Remotedesktops für Linux in Azure Lab Services | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services aktivieren.
 services: lab-services
 documentationcenter: na
@@ -11,57 +11,110 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a40575340fc5b1c202be6b001807085954439f03
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc59cd40701957591faba3fb91c2596bc92e21e3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588155"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701743"
 ---
-# <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services
+# <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Aktivieren des grafischen Remotedesktops für Linux-VMs in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
 
-- Aktivieren von Remotedesktop für einen virtuellen Linux-Computer
-- Herstellen einer Verbindung mit der Vorlage für virtuelle Computer per Remotedesktopverbindung (RDP) für Lehrer/Dozenten.
+- Aktivieren von grafischen Remotedesktopsitzungen für eine Linux-VM
+- Herstellen einer Verbindung mit einer Linux-VM mit dem RDP (Remotedesktopprotokoll) oder mit X2Go-Remotedesktopclients
 
-## <a name="enable-remote-desktop-for-linux-vm"></a>Aktivieren von Remotedesktop für einen virtuellen Linux-Computer
-Während der Lab-Erstellung können Lehrer/Dozenten die **Remotedesktopverbindung** für **Linux**-Images aktivieren. Die Option **Remotedesktop aktivieren** wird angezeigt, wenn für die Vorlage ein Linux-Image ausgewählt wurde. Wenn diese Option aktiviert ist, können Lehrer/Dozenten eine Verbindung mit der Vorlage für virtuelle Computer und mit virtuellen Computern für Kursteilnehmer per RDP (Remotedesktopverbindung) herstellen. 
+## <a name="set-up-graphical-remote-desktop-solution"></a>Einrichten einer grafischen Remotedesktoplösung
+Wenn ein Lab aus einem **Linux**-Image erstellt wird, wird der **SSH**-Zugriff (Secure Shell) automatisch so konfiguriert, dass der Kursleiter über die Befehlszeile mit SSH eine Verbindung zur Vorlagen-VM herstellen kann.  Ebenso können Kursteilnehmer per SSH eine Verbindung mit ihren VMs herstellen, wenn die Vorlagen-VM veröffentlicht wurde.
 
-![Aktivieren der Remotedesktopverbindung für ein Linux-Image](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+Zum Herstellen einer Verbindung mit einer Linux-VM mithilfe einer **GUI** (grafische Benutzeroberfläche) wird entweder **RDP** oder **X2Go** empfohlen.  Bei beiden dieser Optionen muss der Kursleiter zusätzliche Einrichtungsschritte für die Vorlagen-VM ausführen:
 
-Wählen Sie im Meldungsfeld **Enabling Remote Desktop Connection** (Aktivieren der Remotedesktopverbindung) die Option **Continue with Remote Desktop** (Weiter mit Remotedesktop) aus. 
+### <a name="rdp-setup"></a>RDP-Setup
+Für die Verwendung von RDP muss der Kursleiter:
+  - die Remotedesktopverbindung aktivieren (dies ist spezifisch zum Öffnen des Ports der VM für RDP erforderlich).
+  - den RDP-Remotedesktopserver installieren.
+  - eine grafische Linux-Desktopumgebung installieren (z. B. MATE, XFCE und so weiter).
 
-![Aktivieren der Remotedesktopverbindung für ein Linux-Image](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
+### <a name="x2go-setup"></a>X2Go-Setup
+Für die Verwendung von X2Go muss der Kursleiter:
+- den X2Go-Remotedesktopserver installieren.
+- eine grafische Linux-Desktopumgebung installieren (z. B. MATE, XFCE und so weiter).
 
-> [!IMPORTANT] 
-> Beim Aktivieren der **Remotedesktopverbindung** wird auf Linux-Computern nur der **RDP**-Port geöffnet. Wenn RDP bereits für das VM-Image installiert und konfiguriert ist, können Sie/Kursteilnehmer über RDP eine Verbindung mit virtuellen Computern herstellen, ohne weitere Schritte ausführen zu müssen.
-> 
-> Wenn in dem VM-Image kein RDP installiert und konfiguriert ist, müssen Sie beim ersten Mal eine Verbindung mit dem Linux-Computer per SSH herstellen und dann RDP- und GUI-Pakete installieren, damit Sie/Studenten später eine Verbindung mit dem Linux-Computer per RDP herstellen können. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind. 
+X2Go nutzt denselben Port, der bereits für SSH aktiviert ist.  Daher ist keine weitere Konfiguration erforderlich, um einen Port der VM für X2Go zu öffnen.
 
-## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-Derzeit wird die Remotedesktopverbindung für die folgenden Betriebssysteme unterstützt:
+> [!NOTE]
+> In einigen Fällen, z. B. bei Ubuntu LTS 18.04, bietet X2Go bessere Leistung.  Wenn Sie RDP verwenden und Verzögerungen bei der Interaktion mit der grafischen Desktopumgebung bemerken, sollten Sie X2Go testen, da Sie möglicherweise eine bessere Leistung erzielen.
 
-- openSUSE Leap 42.3
-- 7\.5 (CentOS-basiert)
-- Debian 9 „Stretch“
-- Ubuntu Server 16.04 LTS
+> [!IMPORTANT]
+>  Auf einigen Marketplace-Images sind bereits eine grafische Desktopumgebung und ein Remotedesktopserver installiert.  Beispielsweise ist auf dem Produkt [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) bereits [XFCE und X2Go-Server installiert und zum Akzeptieren von Clientverbindungen konfiguriert](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go).
 
-## <a name="connect-to-the-template-vm"></a>Herstellen einer Verbindung mit der Vorlage für virtuelle Computer 
-Lehrer/Dozenten müssen zunächst per SSH eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf RDP- und GUI-Pakete installieren. Anschließend können die Lehrer/Dozenten RDP verwenden, um eine Verbindung mit der Vorlage für virtuelle Computer herzustellen: 
+## <a name="enable-remote-desktop-connection-for-rdp"></a>Aktivieren der Remotedesktopverbindung für RDP
+
+Dieser Schritt ist nur zum Herstellen einer Verbindung mit dem RDP erforderlich.  Wenn Sie stattdessen planen, X2Go zu verwenden, können Sie mit dem nächsten Abschnitt fortfahren, da X2Go den SSH-Port verwendet.
+
+1.  Während das Lab erstellt wird, hat der Kursleiter die Option, die **Remotedesktopverbindung zu aktivieren**.  Der Kursleiter muss diese Option **aktivieren**, um den Port der Linux-VM zu öffnen, der für RDP-Remotedesktopsitzungen erforderlich ist.  Wenn diese Option **deaktiviert** bleibt, ist nur der Port für SSH geöffnet.
+  
+    ![Aktivieren der Remotedesktopverbindung für ein Linux-Image](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+
+2. Wählen Sie im Meldungsfeld **Enabling Remote Desktop Connection** (Aktivieren der Remotedesktopverbindung) die Option **Continue with Remote Desktop** (Weiter mit Remotedesktop) aus. 
+
+    ![Aktivieren der Remotedesktopverbindung für ein Linux-Image](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
+
+## <a name="install-rdp-or-x2go"></a>Installieren von RDP oder X2Go
+
+Nachdem das Lab erstellt wurde, muss der Kursleiter sicherstellen, dass eine grafische Desktopumgebung und ein Remotedesktopserver auf der Vorlagen-VM aktiviert sind.  Kursleiter müssen zunächst eine Verbindung mit der Vorlagen-VM per SSH herstellen, um die folgenden Pakete zu installieren:
+- Entweder den RDP- oder X2Go-Remotedesktopserver
+- Eine grafische Desktopumgebung (z. B. MATE, XFCE und so weiter)
+
+Sobald dies eingerichtet ist, kann der Kursleiter über den **Microsoft-Remotedesktopclient (RDP)** oder den **X2Go-Client** eine Verbindung mit der Vorlagen-VM herstellen.
+
+Führen Sie die folgenden Schritte aus, um die Vorlagen-VM einzurichten:
 
 1. Wird **Customize template** (Vorlage anpassen) auf der Symbolleiste angezeigt, wählen Sie die Option aus. Wählen Sie anschließend im Dialogfeld **Customize template** (Vorlage anpassen) die Option **Weiter** aus. Durch diese Aktion wird die Vorlage für virtuelle Computer gestartet.  
 
     ![Anpassen der Vorlage](../media/how-to-enable-remote-desktop-linux/customize-template.png)
-2. Nach dem Starten der Vorlage für virtuelle Computer können Sie **Connect template** (Vorlage verbinden) und dann auf der Symbolleiste **Connect via SSH** (Über SSH verbinden) auswählen. 
+1. Nach dem Starten der Vorlage für virtuelle Computer können Sie **Connect template** (Vorlage verbinden) und dann auf der Symbolleiste **Connect via SSH** (Über SSH verbinden) auswählen. 
 
     ![Herstellen einer Verbindung mit der Vorlage per RDP nach der Lab-Erstellung](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
-3. Das Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** wird angezeigt. Wählen Sie neben dem Textfeld die Schaltfläche **Kopieren** aus, um den Wert in die Zwischenablage zu kopieren. Speichern Sie die SSH-Verbindungszeichenfolge. Verwenden Sie diese Verbindungszeichenfolge über ein SSH-Terminal (z. B. [Putty](https://www.putty.org/)), um eine Verbindung mit dem virtuellen Computer herzustellen.
+1. Das Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** wird angezeigt. Wählen Sie neben dem Textfeld die Schaltfläche **Kopieren** aus, um den Wert in die Zwischenablage zu kopieren. Speichern Sie die SSH-Verbindungsinformationen. Verwenden Sie diese Verbindungsinformationen über ein SSH-Terminal (z. B. [Putty](https://www.putty.org/)), um eine Verbindung mit der VM herzustellen.
  
     ![SSH-Verbindungszeichenfolge](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
-4. Installieren Sie RDP- und GUI-Pakete, damit Sie bzw. Kursteilnehmer später über RDP eine Verbindung mit dem Linux-Computer herstellen können. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind.
-5. Nach der Installation dieser Pakete können Sie auf der Symbolleiste die Schaltfläche **Connect to template** (Mit Vorlage verbinden) und anschließend **Connect via RDP** (Über RDP verbinden) auswählen, um eine RDP-Verbindung mit der Vorlage für virtuelle Computer herzustellen. Speichern Sie die RDP-Datei, und verwenden Sie sie, um über RDP eine Verbindung mit der Vorlage für virtuelle Computer herzustellen. 
+
+4. Installieren Sie RDP oder X2Go sowie eine grafische Desktopumgebung Ihrer Wahl.  Anweisungen finden Sie in den folgenden Artikeln:
+    - [Installieren und Konfigurieren des RDPs](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [Installieren und Konfigurieren von X2Go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
+
+## <a name="connect-to-the-template-vm-via-the-gui"></a>Herstellen einer Verbindung mit der Vorlagen-VM über die GUI
+
+Sobald die Vorlagen-VM eingerichtet ist, kann der Kursleiter über die GUI mit dem **Microsoft-Remotedesktopclient (RDP)** oder dem **X2Go-Client** eine Verbindung mit der Vorlagen-VM herstellen.  Welchen Client Sie hierfür verwenden, hängt davon ab, ob RDP oder X2Go als Remotedesktopserver für die Vorlagen-VM konfiguriert ist.  
+
+### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft-Remotedesktopclient (RDP)
+
+Der Microsoft-Remotedesktopclient wird zum Herstellen einer Verbindung mit einer Vorlagen-VM verwendet, für die das RDP konfiguriert wurde.  Der Remotedesktopclient kann unter Windows, auf Chromebooks, auf Macs und weiteren Geräten verwendet werden.  Ausführliche Informationen finden Sie im Artikel zu [Remotedesktopclients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).
+
+Führen Sie die Schritte für den jeweiligen Computer aus, den Sie zum Herstellen einer Verbindung mit der Vorlagen-VM verwendet haben:
+
+- Windows
+  1. Klicken Sie in der Symbolleiste Ihres Labs auf **Mit Vorlage verbinden**, und wählen Sie dann **Über RDP verbinden** aus, um eine Verbindung mit der Vorlagen-VM herzustellen. 
+  1. Speichern Sie die RDP-Datei, und verwenden Sie sie, um mithilfe des Remotedesktopclients eine Verbindung mit der Vorlagen-VM herzustellen. 
+  1. Der Remotedesktopclient ist üblicherweise bereits unter Windows installiert und konfiguriert.  Daher müssen Sie lediglich auf die RDP-Datei klicken, um die Remotesitzung zu öffnen und zu starten.
+
+- Mac
+  1. Klicken Sie in der Symbolleiste Ihres Labs auf **Mit Vorlage verbinden**, und wählen Sie dann **Über RDP verbinden** aus, um die RDP-Datei zu speichern.  
+  1. Führen Sie dann die Schritte im Artikel [Herstellen einer Verbindung mit einer VM mithilfe des RDPs auf einem Mac](connect-virtual-machine-mac-remote-desktop.md) aus.
+
+- Chromebook
+  1. Klicken Sie in der Symbolleiste Ihres Labs auf **Mit Vorlage verbinden**, und wählen Sie dann **Über RDP verbinden** aus, um die RDP-Datei zu speichern.  
+  1. Führen Sie dann die Schritte im Artikel [Herstellen einer Verbindung mit einer VM mithilfe des RDPs auf einem Chromebook](connect-virtual-machine-chromebook-remote-desktop.md).
+
+### <a name="x2go-client"></a>X2Go-Client
+
+Der X2Go-Client wird zum Herstellen einer Verbindung mit einer Vorlagen-VM verwendet, für die X2Go konfiguriert ist.  Führen Sie die Schritte im Artikel [Herstellen einer Verbindung mit einer VM mithilfe von X2Go](how-to-use-remote-desktop-linux-student.md#connect-to-the-student-vm-using-x2go) mit den SSH-Verbindungsinformationen der Vorlagen-VM aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem ein Dozent das Feature „Remotedesktopverbindung“ aktiviert hat, können Kursteilnehmer über RDP/SSH eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Classroom-Lab in Azure Lab Services](how-to-use-remote-desktop-linux-student.md). 
+Nachdem ein Kursleiter das RDP oder X2Go auf seiner Vorlagen-VM eingerichtet hat und diese veröffentlicht, können Kursteilnehmer über die Remotedesktop-GUI oder über SSH eine Verbindung mit den VMs herstellen.
+
+Weitere Informationen finden Sie unter
+ - [Herstellen einer Verbindung mit einer Linux-VM](how-to-use-remote-desktop-linux-student.md)

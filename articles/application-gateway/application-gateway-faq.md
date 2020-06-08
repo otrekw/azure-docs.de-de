@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873505"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -94,7 +94,7 @@ Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.
 
 Ja. Sie können nicht nur mehrere Instanzen einer bestimmten Application Gateway-Bereitstellung besitzen, sondern auch eine weitere eindeutige Application Gateway-Ressource zu einem vorhandenen Subnetz hinzufügen, das eine andere Application Gateway-Ressource enthält.
 
-Ein einzelnes Subnetz kann entweder eine Application Gateway-Instanz vom Typ „Standard“ oder eine Application Gateway-Instanz vom Typ „Standard_v2“ unterstützen, aber nicht beide gleichzeitig.
+Ein einzelnes Subnetz kann nicht gleichzeitig v2- und v1-SKUs für Application Gateway unterstützen.
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Unterstützt Application Gateway v2 benutzerdefinierte Routen?
 

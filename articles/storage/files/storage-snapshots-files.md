@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176140"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873593"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -80,7 +80,7 @@ Bei der Verwendung von Infrastruktur in Azure sollten Sicherungen für die Daten
 
 Überlegen Sie vor der Bereitstellung des Freigabemomentaufnahmen-Planers sorgfältig, in welchem Intervall die Freigabemomentaufnahmen erstellt werden sollen und welche Aufbewahrungseinstellungen Sie festlegen möchten, um unnötige Kosten zu vermeiden.
 
-Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufnahmen verhindern keine versehentlichen Löschvorgänge für eine Dateifreigabe oder ein Speicherkonto. Zum Schutz vor versehentlichem Löschen können Sie das Speicherkonto oder die Ressourcengruppe sperren.
+Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufnahmen verhindern keine versehentlichen Löschvorgänge für eine Dateifreigabe oder ein Speicherkonto. Zum Schutz vor versehentlichem Löschen können Sie [vorläufiges Löschen aktivieren](storage-files-prevent-file-share-deletion.md) oder das Speicherkonto und/oder die Ressourcengruppe sperren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden von Azure-Dateifreigabemomentaufnahmen:

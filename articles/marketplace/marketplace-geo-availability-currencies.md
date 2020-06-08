@@ -1,18 +1,18 @@
 ---
-title: Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace | Azure Marketplace
-description: Geografische Verfügbarkeit im kommerziellen Marketplace
+title: Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Microsoft-Marketplace
+description: Die geografische Verfügbarkeit und Unterstützung von Währungen für Transaktionen im kommerziellen Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687581"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657877"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 

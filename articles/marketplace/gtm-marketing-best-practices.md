@@ -1,27 +1,21 @@
 ---
-title: 'Go-To-Market-Dienste: bewährte Marketingmethoden | Azure Marketplace'
-description: Go-To-Market-Dienste – In diesem Abschnitt werden bewährte Marketingmethoden für Azure Marketplace-Herausgeber beschrieben
+title: Bewährte Marketingmethoden – kommerzieller Microsoft-Marketplace
+description: Hier finden Sie Ressourcen zu bewährten Marketingmethoden für Partner, die Angebote in Microsoft AppSource und Azure Marketplace veröffentlichen.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1955dd9dda75906e52007958fe7b4385e657444c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684601"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658022"
 ---
 # <a name="marketing-best-practices"></a>Bewährte Marketingmethoden
 
-Eine optimierte Listung in Marketplace und Markteinführungskampagnen können Ihnen helfen, mehr Kunden schnelle zu gewinnen, und daher eine wichtige Rolle als Motor Ihrer Geschäftsstrategie für die Cloud spielen. Machen Sie sich bereit, Angebote zu veröffentlichen, Kunden Testversionen anzubieten und mit Microsoft-Kunden und der Partner-Community in Kontakt zu treten. Laden Sie den [AppSource & Azure Marketplace marketing best practice guide](https://aka.ms/marketplacebestpractices) (Leitfaden mit bewährten Methoden für das Marketing in AppSource und Azure Marketplace) herunter, um zu erfahren, wie Sie das Beste aus Ihren Onlinemarketingaktivitäten herausholen können.
+Nutzen Sie bewährte Marketingmethoden, wenn Sie Angebote für den kommerziellen Marketplace erstellen und auflisten, Testversionen für Kunden anbieten und sich mit Microsoft-Kunden und der Partner Community in Verbindung setzen. Wenn Sie Ihre Angebotslisten und Markteinführungskampagnen optimieren, können Sie die Kundengewinnung beschleunigen. Laden Sie den [Azure Marketplace & AppSource best practice guide](https://aka.ms/marketplacebestpractices) (Leitfaden mit bewährten Methoden für Azure Marketplace und AppSource) herunter, um zu erfahren, wie Sie das Beste aus Ihren Onlinemarketingaktivitäten herausholen können.
 
-**Nächste Schritte**
-
-Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-Diensten zu erhalten.
-
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
-
----
+Weitere Informationen darüber, wie Sie das Microsoft Partner Network für das Wachstum Ihres Unternehmens nutzen können, finden Sie unter [Markteinführung mit Microsoft](https://partner.microsoft.com/reach-customers/gtm). Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/) an, um Ihr Angebot zu erstellen und zu konfigurieren.

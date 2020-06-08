@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585622"
+ms.locfileid: "83653907"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im LUIS-Portal oder mithilfe der LUIS-Erstellungs-[APIs](developer-reference-resource.md) erstellen.
@@ -45,10 +45,10 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 ## <a name="create-new-app-in-luis"></a>Erstellen einer neuen App in LUIS
 
-1. Wählen Sie auf der Seite **Meine Apps** Ihr Abonnement und die Erstellungsressource sowie anschließend **+ Erstellen** aus. Wenn Sie einen Schlüssel für die kostenlose Testversion verwenden, erfahren Sie, wie Sie [eine Erstellungsressource erstellen können](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. Wählen Sie auf der Seite **Meine Apps** Ihr **Abonnement** und die **Erstellungsressource** aus, und klicken Sie dann auf **+ Erstellen**. Wenn Sie einen Schlüssel für die kostenlose Testversion verwenden, erfahren Sie, wie Sie [eine Erstellungsressource erstellen können](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Liste der LUIS-Apps](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![Liste der LUIS-Apps](./media/create-app-in-portal.png)
 
 1. Geben Sie im Dialogfeld den Namen Ihrer Anwendung ein, z. B. `Pizza Tutorial`.
 
@@ -64,7 +64,7 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
     > [!div class="mx-imgBorder"]
     > ![Liste „Absichten“ mit erstellter Absicht „Keine“ ohne Beispieläußerungen.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>Weitere verfügbare Aktionen
+## <a name="other-actions-available-on-my-apps-page"></a>Weitere verfügbare Aktionen auf der Seite „Meine Apps“
 
 Die Kontextsymbolleiste bietet weitere Aktionen:
 

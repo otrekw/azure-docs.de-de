@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592184"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701816"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592184"
 
 **F: Was ist verfügbar?**
 
-**A:** Mithilfe von Azure Cognitive Services-Containern können Entwickler dieselben intelligenten APIs wie in Azure verwenden, die dabei aber über die [Vorteile](../cognitive-services-container-support.md#features-and-benefits) der Containerisierung verfügen. Einige Container sind als [geschlossene Vorschau](../cognitive-services-gating-process.md) verfügbar, für die möglicherweise eine Bewerbung für den Zugriff erforderlich ist. Andere Container sind als nicht geschlossene Vorschauversion öffentlich oder allgemein verfügbar. Eine vollständige Liste der Container und ihrer Verfügbarkeit finden Sie im Artikel [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). 
+**A:** Mithilfe von Azure Cognitive Services-Containern können Entwickler dieselben intelligenten APIs wie in Azure verwenden, die dabei aber über die [Vorteile](../cognitive-services-container-support.md#features-and-benefits) der Containerisierung verfügen. Einige Container sind als geschlossene Vorschau verfügbar, für die möglicherweise eine Bewerbung für den Zugriff erforderlich ist. Andere Container sind als nicht geschlossene Vorschauversion öffentlich oder allgemein verfügbar. Eine vollständige Liste der Container und ihrer Verfügbarkeit finden Sie im Artikel [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). 
 
 **F: Gibt es einen Unterschied zwischen der Cognitive Services-Cloud und den Containern?**
 

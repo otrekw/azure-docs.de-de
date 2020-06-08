@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: Identifizieren und Diagnostizieren von Problemen
       href: diagnostics-role-service.md
-    - name: Mandanten- und Hostpoolerstellung
+    - name: Hostpoolerstellung
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md

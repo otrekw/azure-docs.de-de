@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c2c02e47059d73e29da705fc9075721e080e636
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588172"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701789"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -29,18 +29,18 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
 1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Internet Explorer 11 wird noch nicht unterstützt. 
-2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
-3. Wählen Sie **Neues Lab** aus. 
+1. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
+1. Wählen Sie **Neues Lab** aus. 
     
     ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-button.png)
-3. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
+1. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie unter **Name** einen Namen für Ihr Lab an. 
-    2. Wählen Sie die **Größe der virtuellen Computer** aus, die Sie für die Klasse benötigen. Die Liste der verfügbaren Größen finden Sie im Abschnitt [VM-Größen ](#vm-sizes). 
-    3. Wählen Sie das **VM-Image** aus, das Sie für das Classroom-Lab verwenden möchten. Bei Auswahl eines Linux-Images wird eine Option zum Aktivieren der Remotedesktopverbindung angezeigt. Ausführliche Informationen finden Sie unter [Aktivieren der Remotedesktopverbindung für Linux](how-to-enable-remote-desktop-linux.md).
+    1. Wählen Sie die **Größe der virtuellen Computer** aus, die Sie für die Klasse benötigen. Die Liste der verfügbaren Größen finden Sie im Abschnitt [VM-Größen ](#vm-sizes). 
+    1. Wählen Sie das **VM-Image** aus, das Sie für das Classroom-Lab verwenden möchten. Bei Auswahl eines Linux-Images wird eine Option zum **Aktivieren der Remotedesktopverbindung** angezeigt. Ausführliche Informationen finden Sie unter [Aktivieren der Remotedesktopverbindung für Linux](how-to-enable-remote-desktop-linux.md).
 
         Wenn Sie sich mit den Anmeldeinformationen für Labkontobesitzer angemeldet haben, wird eine Option angezeigt, mit der Sie weitere Images für das Lab aktivieren können. Weitere Informationen finden Sie unter [Aktivieren von Images zum Zeitpunkt der Laberstellung](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
-    4. Überprüfen Sie den **Gesamtpreis pro Stunde** , der auf der Seite angezeigt wird. 
-    6. Wählen Sie **Speichern** aus.
+    1. Überprüfen Sie den **Gesamtpreis pro Stunde** , der auf der Seite angezeigt wird. 
+    1. Wählen Sie **Speichern** aus.
 
         ![Fenster „Neues Lab“](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -70,24 +70,24 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     ![Status der VM-Vorlagenerstellung](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. Führen Sie auf der Seite **Vorlage** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
 
-    2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder RDP (sofern RDP aktiviert ist) hergestellt werden soll.
+    1. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder über einen Remotedesktop mit grafischer Benutzeroberfläche hergestellt werden soll.  Zur Verwendung eines Remotedesktops mit grafischer Benutzeroberfläche ist ein zusätzliches Setup erforderlich. Weitere Informationen finden Sie unter [Aktivieren eines Remotedesktops mit GUI für Linux-VMs](how-to-use-remote-desktop-linux-student.md).
     1. Klicken Sie auf **Kennwort zurücksetzen**, um das Kennwort für die VM zurückzusetzen. 
     1. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     1. **Beenden** Sie den virtuellen Computer.  
     1. Geben Sie eine **Beschreibung** für die Vorlage ein.
-10. Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option **Veröffentlichen** aus. 
+9.  Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option **Veröffentlichen** aus. 
 
     ![Schaltfläche „Vorlage veröffentlichen“](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Nachdem die Veröffentlichung erfolgt ist, kann sie nicht mehr rückgängig gemacht werden. 
-8. Geben Sie auf der Seite **Vorlage veröffentlichen** die Anzahl von virtuellen Computern ein, die Sie im Lab erstellen möchten, und wählen Sie anschließend die Option **Veröffentlichen** aus. 
+10. Geben Sie auf der Seite **Vorlage veröffentlichen** die Anzahl von virtuellen Computern ein, die Sie im Lab erstellen möchten, und wählen Sie anschließend die Option **Veröffentlichen** aus. 
 
     ![Vorlage veröffentlichen: Anzahl von VMs](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. Auf der Seite wird der **Veröffentlichungsstatus** der Vorlage angezeigt. Dieser Vorgang kann bis zu einer Stunde dauern. 
 
     ![Veröffentlichen der Vorlage – Status](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Wechseln Sie zur Seite **VM-Pool**, indem Sie im linken Menü die Option „Virtuelle Computer“ bzw. die entsprechende Kachel auswählen. Vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 
+12. Wechseln Sie zur Seite **VM-Pool**, indem Sie im linken Menü die Option „Virtuelle Computer“ bzw. die entsprechende Kachel auswählen. Vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 
 
     ![Virtuelle Computer im Status „Beendet“](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

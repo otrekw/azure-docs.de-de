@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 26b4232832589827a09774eb0106c25e5c446eb1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791084"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658640"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Troubleshooting gängiger Azure-Bereitstellungsfehler mit Azure Load Balancer
 
@@ -34,6 +34,7 @@ In diesem Artikel werden einige häufige Azure Load Balancer-Bereitstellungsfehl
 |CannotUseInactiveHealthProbe| Sie können nicht über einen Test verfügen, der von keiner für die Integrität von VM-Skalierungsgruppen konfigurierten Regel verwendet wird. Stellen Sie sicher, dass der eingerichtete Test aktiv genutzt wird. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Es können nicht mehrere Load Balancer-Instanzen desselben Typs (intern, öffentlich) vorhanden sein. Maximal sind eine interne und eine öffentliche Load Balancer-Instanz möglich. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Load Balancer Basic wird für VM-Skalierungsgruppen mit mehreren Platzierungsgruppen und verfügbarkeitszonenübergreifende VM-Skalierungsgruppen nicht unterstützt. Verwenden Sie stattdessen Load Balancer Standard. |
+|MarketplacePurchaseEligibilityFailed | Wechseln Sie zum richtigen Administratorkonto, um Käufe zu aktivieren, da das Abonnement ein EA-Abonnement ist. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase). |
 |ResourceDeploymentFailure| Wenn der Load Balancer einen Fehlerstatus besitzt, führen Sie die folgenden Schritte aus, um den Fehlerstatus aufzuheben:<ol><li>Melden Sie sich auf https://resources.azure.com mit Ihren Anmeldeinformationen für das Azure-Portal an.</li><li>Wählen Sie **Lesen/Schreiben** aus.</li><li>Erweitern Sie auf der linken Seite **Abonnements** und dann das Abonnement mit dem Load Balancer, der aktualisiert werden soll.</li><li>Erweitern Sie **ResourceGroups** und dann die Ressourcengruppe mit dem Load Balancer, der aktualisiert werden soll.</li><li>Wählen Sie **Microsoft.Network** > **LoadBalancers** und dann den zu aktualisierenden Load Balancer **LoadBalancer_1**.</li><li>Wählen Sie auf der Anzeigeseite **LoadBalancer_1** die Option **GET** > **Bearbeiten**.</li><li>Ändern Sie den **ProvisioningState**-Wert von **Fehler** in **Erfolgreich**.</li><li>Wählen Sie **PUT**aus.</li></ol>|
 |  |  |
 

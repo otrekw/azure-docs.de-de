@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure Automation State Configuration
-description: Übersicht über Azure Automation Desired State Configuration (DSC), die verwendeten Begriffe und bekannte Probleme
+description: Dieser Artikel enthält eine Übersicht über Azure Automation State Configuration.
 keywords: PowerShell DSC, Desired State Configuration, Konfiguration des gewünschten Zustands, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,20 +10,34 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406183"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836888"
 ---
-# <a name="state-configuration-overview"></a>Übersicht über die Zustandskonfiguration
+# <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
-Azure Automation State Configuration ist ein Azure-Dienst, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) (Desired State Configuration, Konfiguration des gewünschten Zustands) schreiben, verwalten und kompilieren können. Darüber hinaus ermöglicht der Dienst in der Cloud einen Import von [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) und die Zuweisung von Konfigurationen zu Zielknoten.
+Azure Automation State Configuration ist ein Azure-Dienst für die Konfigurationsverwaltung, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) (Desired State Configuration) schreiben, verwalten und kompilieren können – für Knoten in der Cloud oder in einem lokalen Rechenzentrum. Darüber hinaus ermöglicht der Dienst in der Cloud einen Import von [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) und die Zuweisung von Konfigurationen zu Zielknoten. Sie können im Azure-Portal auf Azure Automation State Configuration zugreifen, indem Sie unter **Konfigurationsverwaltung** die Option **State Configuration (DSC)** auswählen. 
+
+Mit Azure Automation State Configuration können zahlreiche Computer verwaltet werden:
+
+- Virtuelle Azure-Computer
+- Virtuelle Azure-Computer (klassisch)
+- Physische/virtuelle Windows-Computer, die lokal oder in einer anderen Cloud als Azure (einschließlich AWS-EC2-Instanzen) ausgeführt werden
+- Physische/virtuelle Linux-Computer, lokal, in Azure oder in einer anderen Cloud als Azure
+
+Wenn Sie Computerkonfigurationen noch nicht in der Cloud verwalten möchten, können Sie Azure Automation State Configuration auch ausschließlich als Endpunkt für Berichte verwenden. Mit diesem Feature können Sie Konfigurationen mittels DSC festlegen (pushen) und Berichterstellungsdetails in Azure Automation anzeigen.
+
+> [!NOTE]
+> Das Verwalten von Azure-VMs mit Azure Automation State Configuration ist kostenlos möglich, wenn die installierte Version der Azure-VM-Erweiterung für DSC höher als 2.70 ist. Weitere Informationen hierzu finden Sie unter [**Automation – Preise**](https://azure.microsoft.com/pricing/details/automation/).
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Gründe für Azure Automation State Configuration
 
-Azure Automation State Configuration bietet verschiedene Vorteile gegenüber der Verwendung von DSC außerhalb von Azure.
+Azure Automation State Configuration bietet verschiedene Vorteile gegenüber der Verwendung von DSC außerhalb von Azure. Mit diesem Dienst können Sie Skalierbarkeit über Tausende von Computern schnell und einfach von einem zentralen, sicheren Ort aus erreichen. Sie können problemlos Computer aktivieren, ihnen deklarative Konfigurationen zuweisen und Berichte dazu anzeigen, inwieweit jeder Computer mit dem gewünschten Zustand, den Sie angegeben haben, kompatibel ist.
+
+Der Azure Automation DSC-Dienst ist für DSC, was die Azure Automation-Runbooks für PowerShell-Skripts sind. So hilft Azure Automation auf die gleiche Weise wie beim Verwalten von PowerShell-Skripts bei der Verwaltung von DSC-Konfigurationen. 
 
 ### <a name="built-in-pull-server"></a>Integrierter Pullserver
 
@@ -41,7 +55,7 @@ Mit Azure Automation State Configuration verwaltete Knoten senden detaillierte S
 
 ## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Voraussetzungen für die Verwendung von Azure Automation State Configuration
 
-Berücksichtigen Sie die folgenden Anforderungen, wenn Sie Azure Automation State Configuration für DSC verwenden.
+Berücksichtigen Sie die in diesem Abschnitt beschriebenen Anforderungen, wenn Sie Azure Automation State Configuration verwenden.
 
 ### <a name="operating-system-requirements"></a>Betriebssystemanforderungen
 
@@ -63,9 +77,9 @@ Für Linux-Knoten unterstützt die DSC Linux-Erweiterung alle unter [Unterstütz
 
 ### <a name="dsc-requirements"></a>DSC-Anforderungen
 
-Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) installiert. Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, wird [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) aktiviert.
+Für alle Windows-Knoten, die in Azure ausgeführt werden, wird beim Aktivieren der Computer [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) installiert. Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, wird [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) aktiviert.
 
-Für alle Linux-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
+Für alle Linux-Knoten, die in Azure ausgeführt werden, wird beim Aktivieren der Computer [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Konfiguration privater Netzwerke
 
@@ -80,12 +94,12 @@ Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren (z. B. [Wai
 
 #### <a name="proxy-support"></a>Proxyunterstützung
 
-Proxyunterstützung für den DSC-Agent ist in Windows, Version 1809 und höher, verfügbar. Diese Option wird aktiviert, indem die Werte für `ProxyURL` und `ProxyCredential` im [Metakonfigurationsskript](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) festgelegt werden, das zum Registrieren von Knoten verwendet wird.
+Proxyunterstützung für den DSC-Agent ist in Windows, Version 1809 und höher, verfügbar. Diese Option wird aktiviert, indem die Werte für die Eigenschaften `ProxyURL` und `ProxyCredential` im [Metakonfigurationsskript](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) festgelegt werden, das zum Registrieren von Knoten verwendet wird. 
 
 >[!NOTE]
 >Azure Automation State Configuration bietet keine DSC-Proxyunterstützung für frühere Windows-Versionen.
 
-Bei Linux-Knoten unterstützt der DSC-Agent den Proxy und bestimmt die URL anhand der Variablen `http_proxy`.
+Bei Linux-Knoten unterstützt der DSC-Agent den Proxy und bestimmt die URL anhand der Variablen `http_proxy`. Weitere Informationen zur Unterstützung von Proxys finden Sie unter [Generieren von DSC-Metakonfigurationen](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation State Configuration-Netzwerkbereiche und -Namespace
 
@@ -120,10 +134,10 @@ Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Einführung in die Verwendung von DSC in Azure Automation State Configuration finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
-- Weitere Informationen zum Onboarding von Knoten finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
+- Informationen zum Aktivieren von Knoten finden Sie unter [Aktivieren von Azure Automation State Configuration](automation-dsc-onboarding.md).
+- Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
+- Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
+- Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 - Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).

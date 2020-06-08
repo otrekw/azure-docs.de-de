@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/18/2020
+ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246334"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660275"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung
 
@@ -19,8 +19,6 @@ In diesem Thema wird erläutert, wie Sie eine Anwendung mit Ihrem Azure Database
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MySQL-Server mit der Engine-Version 5.6, 5.7 oder 8.0. Weitere Informationen finden Sie unter [Erstellen von Azure-Datenbank für MySQL-Server im Portal](quickstart-create-mysql-server-database-using-azure-portal.md) oder [Erstellen von Azure-Datenbank für MySQL-Server mithilfe der Befehlszeilenschnittstelle](quickstart-create-mysql-server-database-using-azure-cli.md).
-
-Die Umleitung wird zurzeit nur unterstützt, wenn **SSL** auf Ihrem Azure Database for MySQL-Server aktiviert ist. Weitere Informationen zum Konfigurieren von SSL finden Sie unter [Verwenden von SSL mit Azure Database for MySQL](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure).
 
 ## <a name="php"></a>PHP
 
@@ -43,8 +41,8 @@ Wenn Sie eine ältere Version der Erweiterung „mysqlnd_azure“ (Version 1.0.
 |**mysqlnd_azure.enableRedirect-Wert**| **Verhalten**|
 |----------------------------------------|-------------|
 |`off` oder `0`|Die Umleitung wird nicht verwendet. |
-|`on` oder `1`|– Wenn SSL auf dem Azure Database for MySQL-Server nicht aktiviert ist, wird keine Verbindung hergestellt. Der folgende Fehler wird zurückgegeben: *mysqlnd_azure.enableRedirect ist aktiviert, die SSL-Option ist in der Verbindungszeichenfolge jedoch nicht festgelegt. Die Umleitung ist nur mit SSL möglich.*<br>– Wenn SSL auf dem MySQL-Server aktiviert ist, die Umleitung auf dem Server aber nicht unterstützt wird, wird die erste Verbindung abgebrochen, und der folgende Fehler wird zurückgegeben: *Die Verbindung wurde abgebrochen, da die Umleitung auf dem MySQL-Server nicht aktiviert ist oder das Netzwerkpaket nicht dem Umleitungsprotokoll entspricht.*<br>– Wenn der MySQL-Server die Umleitung unterstützt, bei der umgeleiteten Verbindung jedoch aus irgendeinem Grund ein Fehler aufgetreten ist, brechen Sie auch die erste Proxyverbindung ab. Geben Sie den Fehler der umgeleiteten Verbindung zurück.|
-|`preferred` oder `2`<br> (Standardwert)|– wenn möglich, verwendet mysqlnd_azure die Umleitung.<br>– Wenn die Verbindung kein SSL verwendet, der Server keine Umleitung unterstützt oder die umgeleitete Verbindung aus einem nicht schwerwiegenden Grund nicht hergestellt werden kann, während die Proxyverbindung weiterhin gültig ist, wird auf die erste Proxyverbindung zurückgegriffen.|
+|`on` oder `1`|– Wenn die Verbindung treiberseitig nicht SSL verwendet, wird keine Verbindung hergestellt. Der folgende Fehler wird zurückgegeben: *mysqlnd_azure.enableRedirect ist aktiviert, die SSL-Option ist in der Verbindungszeichenfolge jedoch nicht festgelegt. Die Umleitung ist nur mit SSL möglich.*<br>– Wenn SSL auf der Treiberseite verwendet wird, die Umleitung auf dem Server aber nicht unterstützt wird, wird die erste Verbindung abgebrochen, und der folgende Fehler wird zurückgegeben: *Die Verbindung wurde abgebrochen, da die Umleitung auf dem MySQL-Server nicht aktiviert ist oder das Netzwerkpaket nicht dem Umleitungsprotokoll entspricht.*<br>– Wenn der MySQL-Server die Umleitung unterstützt, bei der umgeleiteten Verbindung jedoch aus irgendeinem Grund ein Fehler aufgetreten ist, brechen Sie auch die erste Proxyverbindung ab. Geben Sie den Fehler der umgeleiteten Verbindung zurück.|
+|`preferred` oder `2`<br> (Standardwert)|– wenn möglich, verwendet mysqlnd_azure die Umleitung.<br>– Wenn die Verbindung kein SSL auf Treiberseite verwendet, der Server keine Umleitung unterstützt oder die umgeleitete Verbindung aus einem nicht schwerwiegenden Grund nicht hergestellt werden kann, während die Proxyverbindung weiterhin gültig ist, wird auf die erste Proxyverbindung zurückgegriffen.|
 
 In den nachfolgenden Abschnitten dieses Dokuments wird erläutert, wie Sie die `mysqlnd_azure`-Erweiterung mithilfe von PECL installieren und den Wert dieses Parameters festlegen.
 
@@ -54,7 +52,7 @@ In den nachfolgenden Abschnitten dieses Dokuments wird erläutert, wie Sie die `
 - PHP-Versionen 7.2.15+ und 7.3.2+
 - PHP PEAR 
 - php-mysql
-- Azure Database for MySQL-Server mit aktiviertem SSL
+- Azure Database for MySQL-Server
 
 1. Installieren Sie [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) mit [PECL](https://pecl.php.net/package/mysqlnd_azure). Empfohlen wird die Verwendung von Version 1.1.0+.
 
@@ -92,7 +90,7 @@ In den nachfolgenden Abschnitten dieses Dokuments wird erläutert, wie Sie die `
 #### <a name="prerequisites"></a>Voraussetzungen 
 - PHP-Versionen 7.2.15+ und 7.3.2+
 - php-mysql
-- Azure Database for MySQL-Server mit aktiviertem SSL
+- Azure Database for MySQL-Server
 
 1. Ermitteln Sie, ob Sie eine x64- oder x86-Version von PHP ausführen, indem Sie den folgenden Befehl ausführen:
 

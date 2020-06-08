@@ -2,13 +2,13 @@
 title: 'Bearbeiten einer Wissensdatenbank: QnA Maker'
 description: Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3cf5dcedd4d2cfa82fda002b71abca1e5bea4b18
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/19/2020
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756719"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993574"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bearbeiten von Frage-Antwort-Paaren in Ihrer Wissensdatenbank
 
@@ -16,21 +16,68 @@ Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerf
 
 Frage-Antwort-Paare werden aus einer Datenquelle (beispielsweise einer Datei oder URL) oder als redaktionelle Quelle hinzugefügt. Eine redaktionelle Quelle deutet darauf hin, dass das Frage-Antwort-Paar manuell im QnA-Portal hinzugefügt wurde. Alle Frage-Antwort-Paare können bearbeitet werden.
 
+<a name="add-an-editorial-qna-set"></a>
+
 ## <a name="add-an-editorial-qna-pair"></a>Hinzufügen eines redaktionellen Frage-Antwort-Paars
+
 1. Melden Sie sich beim [QnA-Portal](https://www.qnamaker.ai/) an, und wählen Sie die Wissensdatenbank aus, der Sie das Frage-Antwort-Paar hinzufügen möchten.
 1. Wählen Sie auf der Seite **BEARBEITEN** der Wissensdatenbank die Option **Add QnA pair** (Frage-Antwort-Paar hinzufügen) aus, um ein neues Frage-Antwort-Paar hinzuzufügen.
 
-1. Fügen Sie in der Zeile des neuen Frage-Antwort-Paars die erforderlichen Felder für **Frage** und **Antwort** hinzu. Die anderen Felder sind optional. Alle Felder können jederzeit geändert werden.
+    > [!div class="mx-imgBorder"]
+    > ![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-1. Fügen Sie optional **alternative Formulierungen** hinzu. Eine alternative Formulierung ist eine beliebige Form der Frage, die sich deutlich von der ursprünglichen Frage unterscheidet, aber die gleiche Antwort liefern sollte.
+1. Fügen Sie in der Zeile des neuen Frage-Antwort-Paars die erforderlichen Frage- und Antwortfelder hinzu. Die anderen Felder sind optional. Alle Felder können jederzeit geändert werden.
+
+1. Fügen Sie optional **[alternative Formulierungen](../Quickstarts/add-question-metadata-portal.md#add-additional-alternatively-phrased-questions)** hinzu. Eine alternative Formulierung ist eine beliebige Form der Frage, die sich deutlich von der ursprünglichen Frage unterscheidet, aber die gleiche Antwort liefern sollte.
 
     Wenn Ihre Wissensdatenbank veröffentlicht wurde und Sie [aktives Lernen](use-active-learning.md) aktiviert haben, sammelt QnA Maker alternative Formulierungen, die Sie akzeptieren können. Diese Optionen werden ausgewählt, um die Vorhersagegenauigkeit zu erhöhen.
 
-1. Fügen Sie optional **Metadaten** hinzu. Wählen Sie im Kontextmenü die Option **Ansichtsoptionen** aus, um Metadaten anzuzeigen. Metadaten bieten Filter für die Antworten, die von der Clientanwendung (beispielsweise von einem Chatbot) bereitgestellt werden.
+1. Fügen Sie optional **[Metadaten](../Quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)** hinzu. Wählen Sie im Kontextmenü die Option **Ansichtsoptionen** aus, um Metadaten anzuzeigen. Metadaten bieten Filter für die Antworten, die von der Clientanwendung (beispielsweise von einem Chatbot) bereitgestellt werden.
 
-1. Fügen Sie optional **Folgeaufforderungen** hinzu. Folgeaufforderungen bieten zusätzliche Konversationspfade, die die Clientanwendung dem Benutzer präsentieren kann.
+1. Fügen Sie optional **[Folgeaufforderungen](multiturn-conversation.md)** hinzu. Folgeaufforderungen bieten zusätzliche Konversationspfade, die die Clientanwendung dem Benutzer präsentieren kann.
 
 1. Wählen Sie **Speichern und trainieren** aus, um Vorhersagen mit dem neuen Frage-Antwort-Paar zu erhalten.
+
+## <a name="rich-text-editing-for-answer"></a>Rich-Text-Bearbeitung für Antworten
+
+Mit der Rich-Text-Bearbeitung Ihres Antworttexts können Sie die Markdownformatierung über eine einfache Symbolleiste verwenden.
+
+1. Wählen Sie den Textbereich für eine Antwort aus. Die Symbolleiste für den Rich-Text-Editor wird in der Zeile des Frage-Antwort-Paars angezeigt.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Rich-Text-Editor mit der Frage und der Antwort einer Frage-Antwort-Paarzeile](../media/qnamaker-how-to-edit-kb/rich-text-control-qna-pair-row.png)
+
+    Jeder Text, der sich bereits in der Antwort befindet, wird Benutzern ordnungsgemäß über einen Bot angezeigt.
+
+1. Bearbeiten Sie den Text. Wählen Sie Formatierungsfunktionen aus der Symbolleiste für die Rich-Text-Formatierung aus, oder verwenden Sie das Umschaltfeature, um zur Markdownsyntax zu wechseln.
+
+    > [!div class="mx-imgBorder"]
+    > ![Verwenden des Rich-Text-Editors zum Schreiben, Formatieren und Speichern von Text als Markdown](../media/qnamaker-how-to-edit-kb/rich-text-display-image.png)
+
+    |Features des Rich-Text-Editors|Tastenkombinationen|
+    |--|--|
+    |Wechseln zwischen dem Rich-Text-Editor und Markdown `</>`|STRG+M|
+    |Fettdruck **B**|STRG+B|
+    |Kursiv (angegeben durch ein kursives **_I_**)|STRG+I|
+    |Unsortierte Liste||
+    |Sortierte Liste||
+    |Absatzformatierung||
+    |Bild – Hinzufügen eines Bilds über eine öffentliche URL|STRG+G|
+    |Hinzufügen eines Links zu einer öffentlich verfügbaren URL|STRG+K|
+    |Emoticon – Hinzufügen einer Auswahl von Emoticons|STRG+E|
+    |Menü „Erweitert“ – Rückgängig|STRG+Z|
+    |Menü „Erweitert“ – Wiederholen|STRG+Y|
+
+1. Fügen Sie mit dem Bildsymbol auf der Rich-Text-Symbolleiste ein Bild hinzu. Der Editor benötigt die öffentlich zugängliche Bild-URL und einen Alternativtext für das Bild.
+
+
+    > [!div class="mx-imgBorder"]
+    > ![Verwenden des Rich-Text-Editors zum Hinzufügen eines öffentlich zugänglichen Bilds und dessen Alternativtexts](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+
+1. Fügen Sie einen Link zu einer URL hinzu, indem Sie entweder den Text in der Antwort auswählen und dann auf das Linksymbol in der Symbolleiste klicken oder indem Sie in der Symbolleiste auf das Linksymbol klicken und dann den neuen Text und die URL eingeben.
+
+    > [!div class="mx-imgBorder"]
+    > ![Verwenden des Rich-Text-Editors zum Hinzufügen eines öffentlich zugänglichen Bilds und dessen Alternativtexts](../media/qnamaker-how-to-edit-kb/add-link-to-answer-rich-text-editor.png)
 
 ## <a name="edit-a-qna-pair"></a>Bearbeiten eines Frage-Antwort-Paars
 
@@ -38,7 +85,7 @@ Jedes Feld eines Frage-Antwort-Paars kann bearbeitet werden – unabhängig von
 
 ## <a name="delete-a-qna-pair"></a>Löschen eines Fragen-und-Antworten-Paars
 
-Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**. Das Paar wird endgültig gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Es empfiehlt sich gegebenenfalls, vor dem Löschen von Frage-Antwort-Sätzen Ihre Wissensdatenbank auf der Seite **Veröffentlichen** zu exportieren.
+Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**. Das Paar wird endgültig gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Es ist ratsam, Ihre Wissensdatenbank auf der Seite **Veröffentlichen** zu exportieren, bevor Sie Paare löschen.
 
 ![Löschen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -63,13 +110,19 @@ Frage-Antwort-Paare können nicht in den Metadaten der Antwort verknüpft werden
 
 ## <a name="add-metadata"></a>Hinzufügen von Metadaten
 
-Fügen Sie Metadatensätze hinzu, indem Sie zuerst **Ansichtsoptionen** und dann **Metadaten anzeigen** auswählen. Dadurch wird die Metadatenspalte angezeigt. Wählen Sie anschließend das Zeichen **+** aus, um einen Metadatensatz hinzuzufügen. Dieser Satz besteht aus einem Schlüssel und einem Wert.
+Fügen Sie Metadatenpaare hinzu, indem Sie zuerst **Ansichtsoptionen** und dann **Metadaten anzeigen** auswählen. Dadurch wird die Metadatenspalte angezeigt. Wählen Sie anschließend das Zeichen **+** aus, um ein Metadatenpaar hinzuzufügen. Dieses Paar besteht aus einem Schlüssel und einen Wert.
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Speichern von Änderungen an Frage-Antwort-Paaren
 
 Wählen Sie bei der Bearbeitung regelmäßig **Save and train** (Speichern und trainieren) aus, damit keine Änderungen verloren gehen.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+
+## <a name="when-to-use-rich-text-editing-versus-markdown"></a>Vergleich der Anwendungsfälle für Rich-Text-Bearbeitung und Markdown
+
+Mit der [Rich-Text-Bearbeitung](#add-an-editorial-qna-set) von Antworten können Sie als Autor die Formatierungssymbolleiste verwenden, um Text schnell auszuwählen und zu formatieren.
+
+[Markdown](../reference-markdown-format.md) eignet sich besser, wenn Sie Inhalte automatisch generieren müssen, um Wissensdatenbanken zu erstellen, die im Rahmen einer CI/CD-Pipeline oder für [Batchtests](../Quickstarts/batch-testing.md) importiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

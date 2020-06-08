@@ -1,17 +1,17 @@
 ---
 title: Indizierung in Azure Cosmos DB
 description: Hier finden Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB sowie zu verschiedenen unterstützten Indextypen (etwa zu Bereichsindizes, räumlichen Indizes und zusammengesetzten Indizes).
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273238"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849789"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -98,10 +98,14 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Zeichenfolgen-Präfixübereinstimmungen (Schlüsselwort CONTAINS verwendet nicht den Bereichsindex):
+- Zeichenfolgensystemfunktionen:
 
    ```sql
-   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
+
+   ```sql
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
 - `ORDER BY` fragt Folgendes ab:
@@ -175,7 +179,7 @@ Solange ein einziges Filterprädikat einen der Indextypen verwendet, wertet die 
 
 Die während der Indizierung der Daten extrahierten Pfade vereinfachen das Suchen im Index bei der Verarbeitung einer Abfrage. Durch einen Abgleich der `WHERE`-Klausel einer Abfrage mit der Liste der indizierten Pfade ist es möglich, sehr schnell die Elemente zu ermitteln, die dem Abfrageprädikat entsprechen.
 
-Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
+Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land oder Region enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
 
 ![Abgleichen mit einem bestimmten Pfad in einer Struktur](./media/index-overview/matching-path.png)
 

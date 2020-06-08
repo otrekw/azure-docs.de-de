@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68359584"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835630"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
 Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.
@@ -23,7 +23,7 @@ Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 a
 
 **3. November 2014** Die erweiterte Unterstützung für die Gastbetriebssystemfamilie 1 wurde beendet, und die Familie wurde vollständig außer Betrieb genommen. Alle noch in Familie 1 enthaltenen Dienste sind davon betroffen. Wir können diese Dienste jederzeit beenden. Es gibt keine Garantie dafür, dass Ihre Dienste weiterhin ausgeführt werden können, sofern Sie diese nicht selbst manuell aktualisieren.
 
-Wenn Sie weitere Fragen haben, besuchen Sie die [Cloud Services-Foren](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc), oder [wenden Sie sich an den Azure-Support](https://azure.microsoft.com/support/options/).
+Wenn Sie weitere Fragen haben, besuchen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten) für Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html), oder [wenden Sie sich an den Azure-Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Sind Sie betroffen?
 Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:

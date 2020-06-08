@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 37a458aea659cb6215cf29e6abcbc3341c7e0b7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393108"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643251"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -119,7 +119,7 @@ Bei Verwendung von [Standard Load Balancer mit Verfügbarkeitszonen](load-balanc
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Portmaskierung mit SNAT (PAT)
 
-Wenn eine öffentliche Load Balancer-Ressource mit VM-Instanzen verknüpft ist, wird jede ausgehende Verbindungsquelle erneut geschrieben. Die Quelle wird aus dem privaten IP-Adressraum des virtuellen Netzwerks in die öffentliche Front-End-IP-Adresse des Lastenausgleichs umgeschrieben. Im öffentlichen IP-Adressraum müssen die fünf Tupel des Datenflusses (IP-Quelladresse, Quellport, IP-Transportprotokoll, IP-Zieladresse, Zielport) eindeutig sein.  Portmaskierung mit SNAT kann mit entweder mit dem TCP- oder UDP IP-Protokoll verwendet werden.
+Wenn eine öffentliche Load Balancer-Ressource VM-Instanzen zugeordnet wird, die über keine dedizierte öffentliche IP-Adresse verfügen, werden alle ausgehenden Verbindungsquellen umgeschrieben. Die Quelle wird aus dem privaten IP-Adressraum des virtuellen Netzwerks in die öffentliche Front-End-IP-Adresse des Lastenausgleichs umgeschrieben. Im öffentlichen IP-Adressraum müssen die fünf Tupel des Datenflusses (IP-Quelladresse, Quellport, IP-Transportprotokoll, IP-Zieladresse, Zielport) eindeutig sein. Portmaskierung mit SNAT kann mit entweder mit dem TCP- oder UDP IP-Protokoll verwendet werden.
 
 Hierfür werden kurzlebige Ports (SNAT-Ports) verwendet, nachdem die private IP-Quelladresse umgeschrieben wurde, da mehrere Datenflüsse von einer einzelnen öffentlichen IP-Adresse stammen. Die Portmaskierung mit SNAT-Algorithmus weist SNAT-Ports für UDP und TCP unterschiedlich zu.
 
@@ -147,7 +147,7 @@ Im Abschnitt [Verwalten von SNAT](#snatexhaust) werden Muster für das Entschär
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Vorabzuordnung von kurzlebigen Ports für die Portmaskierung per SNAT (PAT)
 
-In Azure wird ein Algorithmus verwendet, um basierend auf der Größe des Back-End-Pools bei der Portmaskierung per SNAT ([PAT](#pat)) die Anzahl von verfügbaren vorab zugeordneten SNAT-Ports zu ermitteln. SNAT-Ports sind kurzlebige Ports, die für eine bestimmte öffentliche IP-Quelladresse verfügbar sind.
+In Azure wird ein Algorithmus verwendet, um basierend auf der Größe des Back-End-Pools bei der Portmaskierung per SNAT ([PAT](#pat)) die Anzahl von verfügbaren vorab zugeordneten SNAT-Ports zu ermitteln. SNAT-Ports sind kurzlebige Ports, die für eine bestimmte öffentliche IP-Quelladresse verfügbar sind. Für alle öffentlichen IP-Adressen, die einem Lastenausgleich zugeordnet sind, stehen 64.000 Ports als SNAT-Ports für jedes IP-Transportprotokoll zur Verfügung.
 
 Dieselbe Anzahl von SNAT-Ports wird vorab für UDP bzw. TCP zugeordnet und unabhängig voneinander pro IP-Transportprotokoll genutzt.  Die Verwendung des SNAT-Ports unterscheidet sich jedoch abhängig davon, ob es sich um einen UDP- oder TCP-Datenfluss handelt.
 
@@ -198,6 +198,9 @@ Dieser Abschnitt enthält Informationen dazu, wie Sie das Problem einer SNAT-Üb
 Wenn Sie wissen, dass Sie viele ausgehende TCP- oder UDP-Verbindungen zu derselben IP-Zieladresse und demselben Port initiieren und Fehler bei ausgehenden Verbindungen feststellen oder vom Support darauf hingewiesen werden, dass Sie zu viele SNAT-Ports (vorab zugeordnete [kurzlebige Ports](#preallocatedports), die für [PAT](#pat) verwendet werden) in Anspruch nehmen, stehen Ihnen mehrere Lösungsmöglichkeiten zur Verfügung. Überprüfen Sie diese Optionen, und entscheiden Sie, welche für Ihr Szenario verfügbar und am besten geeignet sind. Möglicherweise kann die ein oder andere die Verwaltung dieses Szenarios erleichtern.
 
 Wenn Sie Probleme haben, das Verhalten der ausgehenden Verbindungen zu verstehen, können Sie die IP-Stapelstatistiken (netstat) verwenden. Es kann aber auch hilfreich sein, das Verbindungsverhalten mithilfe von Paketerfassungen zu beobachten. Sie können diese Paketerfassungen im Gastbetriebssystem Ihrer Instanz durchführen oder [Network Watcher für die Paketerfassung](../network-watcher/network-watcher-packet-capture-manage-portal.md) verwenden. 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>Manuelles Zuordnen von SNAT-Ports zum Maximieren der SNAT-Ports pro VM
+Gemäß der Definition in [vorab zugeordneten Ports](#preallocatedports) ordnet der Lastenausgleich Ports basierend auf der Anzahl der VMs im Back-End automatisch zu. Dieser Prozess wird standardmäßig konservativ durchgeführt, um die Skalierbarkeit zu gewährleisten. Wenn Sie die maximale Anzahl der VMs kennen, die im Back-End enthalten sein werden, können Sie SNAT-Ports manuell zuordnen, indem Sie dies in den Ausgangsregeln konfigurieren. Wenn Sie beispielsweise wissen, dass Sie maximal 10 VMs verwenden, können Sie, anstelle des Standards von 1.024 Ports, pro VM 6.400 SNAT-Ports zuordnen. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Ändern der Anwendung für die Wiederverwendung von Verbindungen 
 Sie können den Bedarf an kurzlebigen Ports, die für SNAT verwendet werden, durch Wiederverwenden von Verbindungen in der Anwendung reduzieren. Dies gilt insbesondere für Protokolle wie HTTP/1.1, das standardmäßig Verbindungen wiederverwendet. Andere Protokolle, die HTTP als Transportprotokoll verwenden (z. B. REST) können davon wiederum profitieren. 
@@ -254,6 +257,10 @@ Manchmal ist es nicht wünschenswert, einem virtuellen Computer das Erstellen ei
 Wenn Sie eine Netzwerksicherheitsgruppe einem virtuellen Computer mit Lastenausgleich zuordnen, müssen Sie auf die [Diensttags](../virtual-network/security-overview.md#service-tags) und [Standardsicherheitsregeln](../virtual-network/security-overview.md#default-security-rules) achten. Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. 
 
 Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
+
+## <a name="connections-to-azure-storage-in-the-same-region"></a>Verbindungen mit Azure Storage in derselben Region
+
+Eine ausgehende Konnektivität mithilfe der oben genannten Szenarios ist nicht erforderlich, um eine Verbindung mit Azure Storage in derselben Region wie die VM herzustellen. Alternativ können Sie NSGs (Netzwerksicherheitsgruppen) verwenden, wenn Sie dies nicht möchten. Für Verbindungen mit Azure Storage in anderen Regionen ist die ausgehende Konnektivität erforderlich. Beachten Sie, dass es sich bei der Quell-IP-Adresse in den Azure Storage-Diagnoseprotokollen um eine interne Anbieteradresse handelt und nicht um die öffentliche IP-Adresse Ihrer VM, wenn Sie eine Verbindung mit Azure Storage über eine VM in derselben Region herstellen. Wenn Sie den Zugriff auf Ihr Azure Storage-Konto für VMs in mindestens einem Subnetz des virtuellen Netzwerks innerhalb derselben Region einschränken möchten, sollten Sie [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) anstelle Ihrer öffentlichen IP-Adresse verwenden, wenn Sie die Firewall für Ihr Speicherkonto konfigurieren. Sobald die Dienstendpunkte konfiguriert wurden, wird Ihre private VNET-IP-Adresse in Ihren Azure Storage-Diagnoseprotokollen anstelle der internen Anbieteradresse angezeigt.
 
 ## <a name="limitations"></a>Einschränkungen
 - Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Verlassen Sie sich nicht auf diesen Nebeneffekt, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.

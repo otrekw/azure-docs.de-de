@@ -324,24 +324,28 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Upgraden der REST-API
           href: search-api-migration.md
-    - name: Sicher
+    - name: Sicherheit
       items:
-        - name: Sicherheitsübersicht
+        - name: Übersicht
           href: search-security-overview.md
-        - name: Erstellen eines privaten Endpunkts
-          href: service-create-private-endpoint.md
-        - name: Konfigurieren einer IP-Firewall
-          href: service-configure-firewall.md
-        - name: Dienstschlüsselverwaltung
-          href: search-security-api-keys.md
-        - name: Rollenbasierter Administratorzugriff
-          href: search-security-rbac.md
-        - name: Sicherheitsfilter
-          href: search-security-trimming-for-azure-search.md
-        - name: Filtern nach AAD-Identitäten
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Verwalten von Verschlüsselungsschlüsseln
-          href: search-security-manage-encryption-keys.md
+        - name: Datenverschlüsselung
+          items:
+            - name: Vom Kunden verwaltete Schlüssel
+              href: search-security-manage-encryption-keys.md
+        - name: Sicherheit bei eingehendem Datenverkehr
+          items:
+            - name: API-Zugriffsschlüssel
+              href: search-security-api-keys.md
+            - name: Konfigurieren einer IP-Firewall
+              href: service-configure-firewall.md
+            - name: Erstellen eines privaten Endpunkts
+              href: service-create-private-endpoint.md
+        - name: Identitätsbasierter Zugriff
+          items:
+            - name: Sicherheitsfilter
+              href: search-security-trimming-for-azure-search.md
+            - name: Filtern nach AAD-Identitäten
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Verwalten
       items:
         - name: Portal
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: Regionsübergreifendes Verschieben eines Diensts
           href: search-howto-move-across-regions.md
+        - name: Rollenbasierter Administratorzugriff
+          href: search-security-rbac.md
     - name: Überwachen
       items:
         - name: Grundlagen
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Feedback-Forum (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: Compliance und Zertifizierungen
+      href: 'https://aka.ms/azurecompliance'
     - name: Demo-Websites
       items:
         - name: Demo zu Finanzdateien

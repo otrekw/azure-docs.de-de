@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tagore
-ms.openlocfilehash: b86e0d784d26e9e483dd12e20d45189ae8bfb9bd
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866185"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778298"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Zunächst einmal ist es wichtig, den Unterschied zwischen Vorgängen auf der Datenebene und Vorgängen auf der Verwaltungsebene für IaaS-Ressourcen (Infrastructure-as-a-Service) zu verstehen.
@@ -151,11 +151,11 @@ Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereits
 | Eingehende NAT-Regeln |Eingehende NAT-Regeln |Auf dem virtuellen Computer definierte Eingabeendpunkte werden bei der Migration in Netzwerkadressenübersetzungs-Eingangsregeln für den Load Balancer umgewandelt. |
 | VIP-Adresse |Öffentliche IP-Adresse mit DNS-Name |Die virtuelle IP-Adresse wird zu einer öffentlichen IP-Adresse und dem Load Balancer zugeordnet. Eine virtuelle IP-Adresse kann nur migriert werden, wenn ihr ein Eingabeendpunkt zugewiesen ist. |
 | Virtuelles Netzwerk |Virtuelles Netzwerk |Das virtuelle Netzwerk wird mit allen zugehörigen Eigenschaften in das Resource Manager-Bereitstellungsmodell migriert. Eine neue Ressourcengruppe namens `-migrated`wird erstellt. |
-| Reservierte IP-Adressen |Öffentliche IP-Adresse mit statischer Zuordnungsmethode |Dem Load Balancer zugeordnete reservierte IP-Adressen werden zusammen mit dem Clouddienst oder virtuellen Computer migriert. Die Migration nicht zugeordneter reservierter IP-Adressen wird derzeit nicht unterstützt. |
+| Reservierte IP-Adressen |Öffentliche IP-Adresse mit statischer Zuordnungsmethode |Dem Load Balancer zugeordnete reservierte IP-Adressen werden zusammen mit dem Clouddienst oder virtuellen Computer migriert. Nicht zugeordnete reservierte IP-Adressen können mithilfe von [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) migriert werden.  |
 | Öffentliche IP-Adresse pro virtuellem Computer |Öffentliche IP-Adresse mit dynamischer Zuordnungsmethode |Die dem virtuellen Computer zugeordnete öffentliche IP-Adresse wird in eine öffentliche IP-Adressressource mit statischer Zuordnungsmethode konvertiert. |
-| NSGs |NSGs |Einem Subnetz zugeordnete Netzwerksicherheitsgruppen (Network Security Groups, NSGs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die NSG aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden jedoch Vorgänge auf Verwaltungsebene für die NSG blockiert. |
+| NSGs |NSGs |Einem Subnetz zugeordnete Netzwerksicherheitsgruppen (Network Security Groups, NSGs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die NSG aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden jedoch Vorgänge auf Verwaltungsebene für die NSG blockiert. Nicht zugeordnete NSGs können mithilfe von [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) migriert werden.|
 | DNS-Server |DNS-Server |DNS-Server, die einem virtuellen Netzwerk oder dem virtuellen Computer zugeordnet sind, werden im Rahmen der entsprechenden Ressourcenmigration zusammen mit allen Eigenschaften migriert. |
-| UDRs |UDRs |Einem Subnetz zugeordnete benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die UDR aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden Vorgänge auf Verwaltungsebene für die UDR blockiert. |
+| UDRs |UDRs |Einem Subnetz zugeordnete benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die UDR aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden Vorgänge auf Verwaltungsebene für die UDR blockiert. Nicht zugeordnete UDRs können mithilfe von [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) migriert werden. |
 | IP-Weiterleitungseigenschaft für die Netzwerkkonfiguration eines virtuellen Computers |IP-Weiterleitungseigenschaft für die Netzwerkschnittstellenkarte |Die IP-Weiterleitungseigenschaft für einen virtuellen Computer wird im Zuge der Migration in eine Eigenschaft der Netzwerkschnittstelle konvertiert. |
 | Load Balancer mit mehreren IP-Adressen |Load Balancer mit mehreren öffentlichen IP-Ressourcen |Jede öffentliche, dem Load Balancer zugeordnete IP-Adresse wird in eine öffentliche IP-Ressource konvertiert und nach der Migration dem Load Balancer zugeordnet. |
 | Interne DNS-Namen für den virtuellen Computer |Interne DNS-Namen für die Netzwerkschnittstellenkarte |Während der Migration werden die internen DNS-Suffixe für die virtuellen Computer in eine schreibgeschützte Eigenschaft mit dem Namen InternalDomainNameSuffix auf der NIC migriert. Das Suffix bleibt nach der Migration unverändert, und die Auflösung des virtuellen Computers sollte weiterhin funktionieren. |

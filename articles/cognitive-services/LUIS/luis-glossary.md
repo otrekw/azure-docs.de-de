@@ -3,12 +3,12 @@ title: LUIS-Glossar
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589668"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681613"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -139,9 +139,9 @@ Das Entitätsschema ist die Struktur, die Sie für Machine Learning-Entitäten m
 
 ### <a name="entitys-subentity"></a>Untergeordnete Entität einer Entität
 
-Eine untergeordnete Entität ist einer Entität des maschinellen Lernens untergeordnet.
+Eine Subentität ist einer Machine-Learning-Entität untergeordnet.
 
-### <a name="non-machine-learned-entity"></a>Nicht durch maschinelles Lernen erworbene Entität
+### <a name="non-machine-learning-entity"></a>Entität ohne Machine Learning
 
 Eine Entität, die Textabgleiche verwendet, um Daten zu extrahieren:
 * Entität vom Typ „List“
@@ -164,7 +164,7 @@ Weitere Informationen finden Sie im Eintrag des vordefinierten Modells für [vor
 
 Beim maschinellen Lernen ist ein Feature ein Merkmal, das dem Modell hilft, ein bestimmtes Konzept zu erkennen. Es ist ein Hinweis, den LUIS verwenden kann, aber keine feste Regel.
 
-Dieser Begriff wird auch als **[durch maschinelles Lernen erworbenes Feature](luis-concept-feature.md)** bezeichnet.
+Das wird auch als **[Machine-Learning-Feature](luis-concept-feature.md)** bezeichnet.
 
 Diese Hinweise werden in Verbindung mit den Bezeichnungen verwendet, um zu lernen, wie neue Daten vorhergesagt werden können. LUIS unterstützt als Features sowohl Ausdruckslisten als auch andere Modelle.
 
@@ -199,6 +199,10 @@ Ein (durch maschinelles Lernen erworbenes) Modell ist eine Funktion, die eine Vo
 ## <a name="normalized-value"></a>Normalisierter Wert
 
 Sie fügen Werte zu Ihren [Listenentitäten](#list-entity) hinzu. Jeder dieser Werte kann eine Liste mit einem oder mehreren Synonymen aufweisen. In der Antwort wird nur der normalisierte Wert zurückgegeben.
+
+## <a name="overfitting"></a>Überanpassung
+
+Eine Überanpassung tritt auf, wenn das Modell auf bestimmte Beispiele fixiert ist und nicht gut generalisieren kann.
 
 ## <a name="owner"></a>Besitzer
 
@@ -260,7 +264,7 @@ Das LUIS-Kontingent ist die Einschränkung durch den Azure-Abonnementtarif. Das 
 
 ## <a name="schema"></a>Schema
 
-Ihr Schema umfasst Ihre Absichten und Entitäten zusammen mit den untergeordneten Entitäten. Das Schema wird anfänglich geplant und dann im Laufe der Zeit iteriert. Das Schema umfasst keine App-Einstellungen, Features oder Beispieläußerungen. 
+Ihr Schema umfasst Ihre Absichten und Entitäten zusammen mit den untergeordneten Entitäten. Das Schema wird anfänglich geplant und dann im Laufe der Zeit iteriert. Das Schema umfasst keine App-Einstellungen, Features oder Beispieläußerungen.
 
 ## <a name="sentiment-analysis"></a>Standpunktanalyse
 Die Standpunktanalyse (Stimmungsanalyse) liefert durch eine [Textanalyse](../text-analytics/overview.md) positive oder negative Werte zu Äußerungen.

@@ -2,15 +2,15 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 05/20/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714796"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235218"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -39,6 +39,9 @@ Zum Bereitstellen der Vorlage benötigen Sie außerdem entweder Azure PowerShell
 - [Installieren der Azure CLI unter Linux](/cli/azure/install-azure-cli-linux)
 
 Melden Sie sich nach der Installation von Azure PowerShell oder der Azure CLI zum ersten Mal an. Hilfe finden Sie unter [Anmelden –PowerShell](/powershell/azure/install-az-ps#sign-in) oder [Anmelden – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+
+> [!IMPORTANT]
+> Wenn Sie Azure CLI verwenden, stellen Sie sicher, dass Sie Version 2.6 oder höher verwenden. Die in diesem Tutorial gezeigten Befehle funktionieren nicht, wenn Sie eine niedrigere Version verwenden. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
 
 Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
 

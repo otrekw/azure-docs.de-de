@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141945"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650952"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Integrieren von Azure Service Bus in den Azure Private Link-Dienst (Vorschau)
+# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Integrieren von Azure Service Bus in Azure Private Link
 
 Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Service Bus, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
@@ -38,8 +38,6 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 
 > [!IMPORTANT]
 > Dieses Feature wird mit dem Tarif **Premium** von Azure Service Bus unterstützt. Weitere Informationen zum Premium-Tarif finden Sie im Artikel [Service Bus Premium- und Standard-Tarif für Messaging](service-bus-premium-messaging.md).
->
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Hinzufügen eines privaten Endpunkts über das Azure-Portal
@@ -63,7 +61,7 @@ Wenn Sie bereits über einen Namespace verfügen, können Sie wie folgt einen pr
 2. Geben Sie auf der Suchleiste den Suchbegriff **Service Bus** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
 4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen (Vorschau)** aus.
+5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus.
 6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
     ![Hinzufügen einer Schaltfläche für den privaten Endpunkt](./media/private-link-service/private-link-service-3.png)
@@ -231,46 +229,33 @@ Vergewissern Sie sich, dass die Ressourcen innerhalb des Subnetzes, in dem sich 
 
 Erstellen Sie zunächst einen virtuellen Computer. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md).
 
-Gehen Sie auf der Registerkarte **Netzwerk** wie folgt vor:
+Gehen Sie auf der Registerkarte **Netzwerk** wie folgt vor: 
 
-1. Geben Sie ein **virtuelles Netzwerk** und ein **Subnetz** an. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. Vergewissern Sie sich bei Verwendung eines bereits vorhandenen Netzwerks, dass die Region übereinstimmt.
-1. Geben Sie eine **öffentliche IP-Ressource** an.
-1. Wählen Sie für **NIC-Netzwerksicherheitsgruppe** die Option **Keine** aus.
-1. Wählen Sie für den **Lastenausgleich** **Nein** aus.
+1. Geben Sie ein **virtuelles Netzwerk** und ein **Subnetz** an. Sie müssen das virtuelle Netzwerk auswählen, in dem Sie den privaten Endpunkt bereitgestellt haben.
+2. Geben Sie eine **öffentliche IP-Ressource** an.
+3. Wählen Sie für **NIC-Netzwerksicherheitsgruppe** die Option **Keine** aus.
+4. Wählen Sie für den **Lastenausgleich** **Nein** aus.
 
-Öffnen Sie die Befehlszeile, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der VM her, öffnen Sie die Befehlszeile, und führen Sie den folgenden Befehl aus:
 
 ```console
-nslookup <your-service-bus-namespace-name>.servicebus.windows.net
+nslookup <service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Wenn Sie den Befehl „ns lookup“ ausführen, um die IP-Adresse eines Service Bus-Namespace über einen öffentlichen Endpunkt aufzulösen, sieht das Ergebnis wie folgt aus:
+Das Ergebnis sollte in etwa wie folgt aussehen. 
 
 ```console
-c:\ >nslookup <your-service-bus-namespace-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
-```
-
-Wenn Sie den Befehl „ns lookup“ ausführen, um die IP-Adresse eines Service Bus-Namespace über einen privaten Endpunkt aufzulösen, sieht das Ergebnis wie folgt aus:
-
-```console
-c:\ >nslookup your_service-bus-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
+Name:    <service-bus-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Einschränkungen und Entwurfsaspekte
 
 **Preise:** Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Einschränkungen:**  Der private Endpunkt für Azure Service Bus befindet sich in der Public Preview-Phase. Dieses Feature steht in allen öffentlichen Azure-Regionen zur Verfügung.
+**Einschränkungen:**  Dieses Feature steht in allen öffentlichen Azure-Regionen zur Verfügung.
 
 **Maximal zulässige Anzahl privater Endpunkte pro Service Bus-Namespace:** 120.
 

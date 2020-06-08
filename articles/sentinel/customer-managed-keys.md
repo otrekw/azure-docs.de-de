@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461632"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674171"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
 
@@ -29,11 +29,13 @@ Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren 
 > [!NOTE]
 > -   Die CMK-Funktion von Azure Sentinel steht nur für **neue** Kunden zur Verfügung, und der Zugriff auf diese Funktion wird über die Azure-Featureregistrierung gesteuert. Wenn Sie Zugriff anfordern möchten, wenden Sie sich an azuresentinelCMK@microsoft.com. Ausstehende Anforderungen werden je nach verfügbarer Kapazität genehmigt.
 > -   Die CMK-Funktion von Azure Sentinel ist nur in den Regionen „USA, Osten“, „USA, Westen 2“ und „USA, Süden-Mitte“ verfügbar.
-> -   Die CMK-Funktion ist nur für Kunden mit einem täglichen Sendevolumen von mindestens 1 TB verfügbar. Informationen zu zusätzlichen Preisen erhalten Sie, wenn Sie bei Microsoft die Bereitstellung von CMK in Ihrem Azure-Abonnement beantragen. Weitere Informationen zur Abrechnung für Log Analytics finden Sie [hier](../azure-monitor/platform/customer-managed-keys.md#disclaimers).
+> -   Die CMK-Funktion ist nur für Kunden mit einem täglichen Sendevolumen von mindestens 1 TB verfügbar. Informationen zu zusätzlichen Preisen erhalten Sie, wenn Sie bei Microsoft die Bereitstellung von CMK in Ihrem Azure-Abonnement beantragen. Weitere Informationen zu den Preisen für Log Analytics finden Sie [hier](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Funktionsweise von CMK 
 
-Die Azure Sentinel-Lösung nutzt eine Reihe von Speicherressourcen für die Protokollerfassung und Features. Hierzu zählen unter anderem Log Analytics und andere Speicherressourcen. Im Rahmen der Azure Sentinel-CMK-Konfiguration müssen auch die CMK-Einstellungen für die zugehörigen Speicherressourcen konfiguriert werden. In Log Analytics-fremden Speicherressourcen gespeicherte Daten werden ebenfalls verschlüsselt.
+Die Azure Sentinel-Lösung nutzt eine Reihe von Speicherressourcen für die Protokollerfassung und Features, einschließlich Log Analytics und anderer Ressourcen. Im Rahmen der Azure Sentinel-CMK-Konfiguration müssen auch die CMK-Einstellungen für die zugehörigen Speicherressourcen konfiguriert werden. In Log Analytics-fremden Speicherressourcen gespeicherte Daten werden ebenfalls verschlüsselt.
+
+Weitere Informationen über [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview).
 
 > [!NOTE]
 > Wenn Sie CMK in Azure Sentinel aktivieren, werden Public Preview-Features ohne CMK-Unterstützung nicht aktiviert.

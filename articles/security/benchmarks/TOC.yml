@@ -35,6 +35,8 @@
       href: security-baselines-overview.md
     - name: API Management-Sicherheitsbaseline
       href: ../../api-management/security-baseline.md
+    - name: Application Gateway-Sicherheitsbaseline
+      href: ../../application-gateway/security-baseline.md
     - name: Azure Cache for Redis-Sicherheitsbaseline
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup-Sicherheitsbaseline
@@ -47,8 +49,12 @@
       href: ../../container-registry/security-baseline.md
     - name: "Cosmos\_DB-Sicherheitsbaseline"
       href: ../../cosmos-db/security-baseline.md
+    - name: Sicherheitsbaseline für Kunden-Lockbox
+      href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Daten-Explorer-Sicherheitsbaseline
       href: /azure/data-explorer/security-baseline
+    - name: Data Factory-Sicherheitsbaseline
+      href: /azure/data-factory/security-baseline
     - name: Databricks-Sicherheitsbaseline
       href: ../../azure-databricks/security-baseline.md
     - name: "Event\_Hubs-Sicherheitsbaseline"
@@ -67,5 +73,7 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL-Datenbank-Sicherheitsbaseline
       href: ../../sql-database/security-baseline.md
+    - name: Stream Analytics-Baseline
+      href: ../../stream-analytics/security-baseline.md
     - name: Storage-Sicherheitsbaseline
       href: ../../storage/common/security-baseline.md

@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Datenflüsse
       items:
         - name: Transformieren von Daten mit Zuordnungsdatenflüssen

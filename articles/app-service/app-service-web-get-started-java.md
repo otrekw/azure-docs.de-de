@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 6681b2688c7e8884a197ebe27fb784b1a195f4b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732163"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300942"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Windows
 
@@ -38,73 +38,130 @@ Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhosting
 Führen Sie den folgenden Maven-Befehl über die Eingabeaufforderung der Cloud Shell aus, um eine neue App mit dem Namen `helloworld` zu erstellen:
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0-SNAPSHOT
+```
+
+Ändern Sie anschließend Ihr Arbeitsverzeichnis in den Projektordner:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurieren des Maven-Plug-Ins
 
-Verwenden Sie zum Bereitstellen über Maven den Code-Editor in der Cloud Shell, um die Projektdatei `pom.xml` im Verzeichnis `helloworld` zu öffnen. 
+Sie können den folgenden maven-Befehl an der Eingabeaufforderung ausführen, um die Bereitstellung zu konfigurieren, indem Sie im ersten Schritt für das **Windows**-Betriebssystem **‚2‘** auswählen, dann die Standardkonfigurationen akzeptieren, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Bestätigen [ja/nein]** angezeigt wird. Drücken Sie dann **‚j‘** , um die Konfiguration abzuschließen. 
 
 ```bash
-code pom.xml
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-Fügen Sie dann die folgende Plug-In-Definition im `<build>`-Element der Datei `pom.xml` hinzu.
+Ein Beispielprozess sieht wie folgt aus:
 
-```xml
-<plugins>
-    <!--*************************************************-->
-    <!-- Deploy to Tomcat in App Service Windows         -->
-    <!--*************************************************-->
-    <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.9.0</version>
-        <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
-            <!-- App information -->
-            <subscriptionId>SUBSCRIPTION_ID</subscriptionId>
-            <resourceGroup>RESOURCEGROUP_NAME</resourceGroup>
-            <appName>WEBAPP_NAME</appName>
-            <region>REGION</region>
-            <!-- Java Runtime Stack for App Service on Windows-->
-            <runtime>
-                <os>windows</os>
-                <javaVersion>1.8</javaVersion>
-                <webContainer>tomcat 9.0</webContainer>
-            </runtime>
-            <deployment>
-                <resources>
-                    <resource>
-                        <directory>${project.basedir}/target</directory>
-                        <includes>
-                            <include>*.war</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </deployment>
-        </configuration>
-    </plugin>
-</plugins>
+```cmd
+~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< example.demo:helloworld >-----------------------
+[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
+[WARNING] The plugin may not work if you change the os of an existing webapp.
+Define value for OS(Default: Linux):
+1. linux [*]
+2. windows
+3. docker
+Enter index to use: 2
+Define value for javaVersion(Default: 1.8): 
+1. 1.7
+2. 1.7.0_191_ZULU
+3. 1.7.0_51
+4. 1.7.0_71
+5. 1.7.0_80
+6. 1.8 [*]
+7. 1.8.0_102
+8. 1.8.0_111
+9. 1.8.0_144
+10. 1.8.0_172
+11. 1.8.0_172_ZULU
+12. 1.8.0_181
+13. 1.8.0_181_ZULU
+14. 1.8.0_202
+15. 1.8.0_202_ZULU
+16. 1.8.0_25
+17. 1.8.0_60
+18. 1.8.0_73
+19. 1.8.0_92
+20. 11
+21. 11.0.2_ZULU
+Enter index to use:
+Define value for webContainer(Default: tomcat 8.5): 
+1. jetty 9.1
+2. jetty 9.1.0.20131115
+3. jetty 9.3
+4. jetty 9.3.13.20161014
+5. tomcat 7.0
+6. tomcat 7.0.50
+7. tomcat 7.0.62
+8. tomcat 8.0
+9. tomcat 8.0.23
+10. tomcat 8.5 [*]
+11. tomcat 8.5.20
+12. tomcat 8.5.31
+13. tomcat 8.5.34
+14. tomcat 8.5.37
+15. tomcat 8.5.6
+16. tomcat 9.0
+17. tomcat 9.0.0
+18. tomcat 9.0.12
+19. tomcat 9.0.14
+20. tomcat 9.0.8
+Enter index to use:
+Please confirm webapp properties
+AppName : helloworld-1590394316693
+ResourceGroup : helloworld-1590394316693-rg
+Region : westeurope
+PricingTier : PremiumV2_P1v2
+OS : Windows
+Java : 1.8
+WebContainer : tomcat 8.5
+Deploy to slot : false
+Confirm (Y/N)? :
+[INFO] Saving configuration to pom.
 ```
 
 > [!NOTE]
 > In diesem Artikel arbeiten wir nur mit Java-Apps, die in WAR-Dateien enthalten sind. Das Plug-In unterstützt auch JAR-Webanwendungen. Dies können Sie unter [Bereitstellen einer Spring Boot-App mit JAR-Datei in Azure App Service unter Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) ausprobieren.
 
+Öffnen Sie `pom.xml`, um die aktualisierte Konfiguration anzuzeigen.
 
-Aktualisieren Sie die folgenden Platzhalter in der Plug-In-Konfiguration:
+```bash
+code pom.xml
+```
 
-| Platzhalter | BESCHREIBUNG |
-| ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Die eindeutige ID des Abonnements, in dem Sie Ihre App bereitstellen möchten. Die ID des Standardabonnement finden Sie in der Cloud Shell oder der CLI mithilfe des Befehls `az account show`. Verwenden Sie für alle verfügbaren Abonnements den Befehl `az account list`.|
-| `RESOURCEGROUP_NAME` | Der Name der neuen Ressourcengruppe, in der Ihre App erstellt wird. Indem Sie alle Ressourcen für eine App in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen gelöscht, die der App zugeordnet sind. Aktualisieren Sie diesen Wert mit einem neuen eindeutigen Ressourcengruppennamen, z.B. *myResourceGroup*. In einem Abschnitt weiter unten verwenden Sie diesen Ressourcengruppennamen zum Bereinigen aller Azure-Ressourcen. |
-| `WEBAPP_NAME` | Der App-Name wird bei der Bereitstellung in Azure als Teil des Hostnamens für die App (WEBAPP_NAME.azurewebsites.net) verwendet. Aktualisieren Sie diesen Wert mit einem eindeutigen Namen für die neue App Service-App, die Ihre Java-App hostet, z.B. *contoso*. |
-| `REGION` | Eine Azure-Region, in der die App gehostet wird, z.B. *westus2*. Sie können eine Liste von Regionen über die Cloud Shell oder CLI mit dem Befehl `az account list-locations` abrufen. |
+Sie können bei Bedarf die Konfigurationen für den App Service direkt in Ihrer POM-Datei ändern. Einige gängige sind nachstehend aufgeführt:
+
+ Eigenschaft | Erforderlich | Beschreibung | Version
+---|---|---|---
+`<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
+`<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
+`<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
+`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
+`<pricingTier>` | false | Der Tarif für Ihre Web-App. Der Standardwert ist **P1V2**.| 0.1.0+
+`<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
+`<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
 
 ## <a name="deploy-the-app"></a>Bereitstellen der App
 
-Stellen Sie Ihre Java-App mit dem folgenden Befehl in Azure bereit:
+Beim Prozess der Bereitstellung in Azure App Service werden Kontoanmeldeinformation aus der Azure CLI verwendet. [Melden Sie sich über die Azure CLI an](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), ehe Sie fortfahren.
+
+```azurecli
+az login
+```
+Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen:
 
 ```bash
 mvn package azure-webapp:deploy

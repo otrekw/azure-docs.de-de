@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren von benutzerdefinierten v2-Regeln mit PowerShell
 titleSuffix: Azure Web Application Firewall
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell benutzerdefinierte Regeln für WAF v2 konfigurieren. Sie können eigene Regeln erstellen, die für jede Anforderung ausgewertet werden, die die Firewall durchläuft.
+description: Erfahren Sie, wie Sie benutzerdefinierte Regeln für Web Application Firewall v2 (WAF) mit Azure PowerShell konfigurieren. Sie können eigene Regeln erstellen, die für jede Anforderung ausgewertet werden, die die Firewall durchläuft.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471634"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758961"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurieren von Web Application Firewall v2 für Application Gateway mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell
 
@@ -136,6 +136,19 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig `
   -WebApplicationFirewallConfig $wafConfig `
   -FirewallPolicy $wafPolicy
+```
+
+## <a name="update-your-waf"></a>Aktualisieren der WAF
+
+Nach dem Erstellen der WAF können Sie sie mit einer Prozedur aktualisieren, die dem folgenden Code ähnelt:
+
+```azurepowershell
+# Get the existing policy
+$policy = Get-AzApplicationGatewayFirewallPolicy -Name $policyName -ResourceGroupName $RGname
+# Add an existing rule named $rule
+$policy.CustomRules.Add($rule)
+# Update the policy
+Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

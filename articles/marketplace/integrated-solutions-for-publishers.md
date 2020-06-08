@@ -1,22 +1,22 @@
 ---
-title: Integrierte Lösungen – Azure Marketplace
-description: Integrierte Lösungen in Azure Marketplace und Microsoft AppSource
+title: Veröffentlichen einer integrierten Lösung – kommerzieller Microsoft-Marketplace
+description: Informieren Sie sich über die Anforderungen und Schritte zum Veröffentlichen integrierter Lösungen in Microsoft AppSource und Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 835aa0192dc37032a76bf3863dc1a4ac0109bb22
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160561"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800617"
 ---
 # <a name="publish-an-integrated-solution"></a>Veröffentlichen einer integrierten Lösung
 
-In einem einzelnen gebündelten Angebot kombiniert eine integrierte Lösung Punktlösungstechnologien von Softwareanbietern mit der Bereitstellung und dem Support eines Dienstleistungspartners. Der Dienstleistungspartner listet das Angebot in Microsoft AppSource oder Azure Marketplace als [Beratungsdienst](./consulting-services.md).
+In diesem Artikel werden der gesamte Prozess und die allgemeinen Anforderungen für die Veröffentlichung einer integrierten Lösung im kommerziellen Marketplace erläutert. In einem einzelnen gebündelten Angebot kombiniert eine integrierte Lösung Punktlösungstechnologien von Softwareanbietern mit der Bereitstellung und dem Support eines Dienstleistungspartners. Der Dienstleistungspartner listet das Angebot in Microsoft AppSource oder Azure Marketplace als [Beratungsdienst](./consulting-services.md).
 
 Integrierte Lösungen zielen auf bestimmte Kundenanforderungen ab, oder wurden für bestimmte Szenarios erstellt. Dazu sind erst einmal grundlegende Kenntnisse der Herausforderungen oder Probleme in der Branche erforderlich. Zwei oder mehrere branchenführende Technologien werden dann miteinander integriert, um eine einheitliche und wiederholbare Bereitstellungserfahrung für den Kunden zu erstellen. Anbieter ermöglichen Kunden eine schnelle Inbetriebnahme. Sie stellen für den Kunden einen zentralen Ansprechpartner bereit, der für die entsprechende Anpassung und Beratung sowie für den Support rund um die Lösung verantwortlich ist. Das Ergebnis ist eine integrierte Lösung mit Technologien und Diensten.
 
@@ -52,7 +52,7 @@ Einen Überblick über das Programm für integrierte Lösungen erhalten Sie im [
 
 ## <a name="submit-a-nomination"></a>Einreichen einer Nominierung
 
-Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das Formular zur [Nominierung für integrierte Lösungen](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
+Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angeben, mit denen sie zusammenarbeiten möchten. Sie sollten das Formular zur [Nominierung für integrierte Lösungen](https://aka.ms/AA5qicu) ausfüllen. Das Programmteam für integrierte Lösungen überprüft die Nominierung und antwortet innerhalb von 10 Werktagen. Das Team gibt dabei die Genehmigung und die nächsten Schritte aus.
 
 ## <a name="develop-an-integrated-solution"></a>Entwickeln einer integrierten Lösung
 
@@ -84,8 +84,8 @@ Nachdem Ihre Nominierung genehmigt wurde, entwickeln Sie mithilfe der verlinkten
 
     Verwenden Sie die folgenden Ressourcen für den Entwicklungsprozess:
 
-    * [Business decision workshop discussion guide](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-business-workshop.pptx) (Diskussionsleitfaden für Workshop zu geschäftlichen Entscheidungen)
-    * [Technical decision workshop discussion guide](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-technical-workshop.pptx) (Diskussionsleitfaden für Workshop zu technischen Entscheidungen)
+    * [Business decision workshop discussion guide](https://aka.ms/AA5qicx) (Diskussionsleitfaden für Workshop zu geschäftlichen Entscheidungen)
+    * [Technical decision workshop discussion guide](https://aka.ms/AA5qid1) (Diskussionsleitfaden für Workshop zu technischen Entscheidungen)
     * [Quickstart video: Workshops zu integrierten Lösungen](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
 
 1. Benennen Sie einen partnerübergreifenden Projektmanager zum Steuern der in den geschäftlichen und technischen Workshops erarbeiteten Projekt- und Zeitpläne.
@@ -98,8 +98,8 @@ Nachdem Ihre Nominierung genehmigt wurde, entwickeln Sie mithilfe der verlinkten
 
     * Ein Name für die kombinierte Lösung.
     * Eine Beschreibung für das Listing der integrierten Lösung. Befolgen Sie die [bewährten Methoden für Angebotslistings](./gtm-offer-listing-best-practices.md).
-    * Eine einseitige Kurzpräsentation für Kunden. Verwenden Sie die [einseitige Vorlage](https://assetsprod.microsoft.com/mpn/integrated-solutions-customer-one-pager-template.pptx).
-    * Eine Kundenpräsentation. Verwenden Sie die [Präsentationsvorlage](https://assetsprod.microsoft.com/mpn/customer-presentation-template.pptx).
+    * Eine einseitige Kurzpräsentation für Kunden. Verwenden Sie die [einseitige Vorlage](https://aka.ms/AA5s08a).
+    * Eine Kundenpräsentation. Verwenden Sie die [Präsentationsvorlage](https://aka.ms/AA5s7ql).
     * Ein Logo für die kombinierte Lösung.
 
 ## <a name="publish-your-integrated-solution"></a>Veröffentlichen der integrierten Lösung

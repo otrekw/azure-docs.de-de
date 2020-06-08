@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878101"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650536"
 ---
 # <a name="classroom-lab-setup-guide"></a>Einrichtungsleitfaden für Classroom-Labs
 
@@ -127,7 +127,12 @@ Nachdem Sie sich mit den Anforderungen für das Lab Ihres Kurses vertraut gemach
    - [Aktivieren von automatischem Herunterfahren beim Trennen der Verbindung](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Zeitpläne, Kontingente und automatisches Herunterfahren gelten nicht für die Vorlagen-VM. Deshalb müssen Sie die Vorlagen-VM unbedingt herunterfahren, wenn sie nicht verwendet wird. Sonst fallen weiterhin Kosten an. Außerdem wird die Vorlagen-VM beim Erstellen eines Labs standardmäßig automatisch gestartet. In diesem Fall müssen Sie die Einrichtung des Labs sofort beenden und die Vorlagen-VM herunterfahren.
+        > Zeitpläne und Kontingente gelten nicht für die Vorlagen-VM, die Einstellungen für das automatische Herunterfahren allerdings schon. 
+        > 
+        > Wenn Sie ein Lab erstellen,wird die Vorlagen-VM zwar erstellt, aber nicht gestartet. Sie können diese starten, eine Verbindung herstellen, eine beliebige erforderliche Software für das Lab installieren und die VM dann veröffentlichen. Wenn Sie die Vorlagen-VM veröffentlichen, wird diese automatisch für Sie heruntergefahren, wenn Sie dies nicht bereits selbst getan haben. 
+        > 
+        > Bei Vorlagen-VMs entstehen **Kosten**, wenn sie ausgeführt werden. Stellen Sie daher sicher, dass die Vorlagen-VM heruntergefahren wird, wenn sie nicht ausgeführt werden muss. 
+
 
 1. **Verwenden Sie das Dashboard.** Entsprechende Anleitungen finden Sie unter [Verwenden des Dashboards des Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 

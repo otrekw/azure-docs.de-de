@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596389"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674333"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Was ist Azure Synapse Link für Azure Cosmos DB (Vorschau)?
 
@@ -35,11 +35,11 @@ Im Vergleich zu herkömmlichen ETL-basierten Lösungen bietet Azure Synapse Link
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Verringerte Komplexität ohne zu verwaltende ETL-Aufträge
 
-Azure Synapse Link ermöglicht Ihnen den direkten Zugriff auf den Azure Cosmos DB-Analysespeicher mithilfe von Azure Synapse Analytics ohne komplexe Datenverschiebungen. Alle Aktualisierungen der operativen Daten werden im Analysespeicher in Quasi-Echtzeit ohne ETL oder einen Änderungsfeed angezeigt. Sie können umfangreiche Analysen für den Analysespeicher von Synapse Analytics ohne eine zusätzliche Datentransformation ausführen.
+Azure Synapse Link ermöglicht Ihnen den direkten Zugriff auf den Azure Cosmos DB-Analysespeicher mithilfe von Azure Synapse Analytics ohne komplexe Datenverschiebungen. Alle Aktualisierungen der operativen Daten werden im Analysespeicher in Quasi-Echtzeit ohne ETL- oder Änderungsfeedaufträge angezeigt. Sie können umfangreiche Analysen für den Analysespeicher von Synapse Analytics ohne eine zusätzliche Datentransformation ausführen.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Einblicke in Ihre operativen Daten in Quasi-Echtzeit
 
-Sie können mit Azure Synapse Link jetzt umfassende Einblicke in Ihre operativen Daten in Quasi-Echtzeit erhalten. ETL-basierte Systeme verfügen tendenziell über eine größere Wartezeit bei der Analyse Ihrer operativen Daten, da viele Ebenen zum Extrahieren, Transformieren und Laden der operativen Daten erforderlich sind. Mit nativer Integration des Azure Cosmos DB-Analysespeichers in Azure Synapse Analytics können Sie operative Daten in Quasi-Echtzeit analysieren, um neue Geschäftsszenarien zu ermöglichen. 
+Sie können mit Azure Synapse Link jetzt umfassende Einblicke in Ihre operativen Daten in Quasi-Echtzeit erhalten. ETL-basierte Systeme verfügen tendenziell über längere Wartezeiten bei der Analyse der operativen Daten, da zum Extrahieren, Transformieren und Laden dieser Daten viele Ebenen erforderlich sind. Mit nativer Integration des Azure Cosmos DB-Analysespeichers in Azure Synapse Analytics können Sie operative Daten in Quasi-Echtzeit analysieren, um neue Geschäftsszenarien zu ermöglichen. 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>Keine Auswirkungen auf operative Workloads
@@ -54,7 +54,7 @@ Der Azure Cosmos DB-Analysespeicher ist optimiert, um Skalierbarkeit, Elastizit�
 
 Mit Azure Synapse Link erhalten Sie eine kostenoptimierte, vollständig verwaltete Lösung für die operative Analyse. Die zusätzlichen Speicherebenen und die Computekapazität entfallen, die bei herkömmlichen ETL-Pipelines zum Analysieren operativer Daten erforderlich sind. 
 
-Der Azure Cosmos DB-Analysespeicher folgt einem nutzungsbasierten Preismodell, das auf Datenspeicherung, analytischen Lese-/Schreibvorgängen und ausgeführten Abfragen basiert. Es ist nicht erforderlich, dass Sie einen Durchsatz bereitstellen, wie es heute bei Transaktionsworkloads erforderlich ist. Durch den Zugriff auf Ihre Daten mit äußerst elastischen Computemodulen aus Azure Synapse Analytics werden die Gesamtkosten für die Ausführung von Speicher und Compute sehr günstig.
+Der Azure Cosmos DB-Analysespeicher verfügt über ein nutzungsbasiertes Preismodell basierend auf Datenspeicher, analytischen Lese-/Schreibvorgängen und ausgeführten Abfragen. Es ist nicht erforderlich, dass Sie einen Durchsatz bereitstellen, wie es heute bei Transaktionsworkloads erforderlich ist. Durch den Zugriff auf Ihre Daten mit äußerst elastischen Computemodulen aus Azure Synapse Analytics werden die Gesamtkosten für die Ausführung von Speicher und Compute sehr günstig.
 
 
 ### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Analysen für lokal verfügbare, global verteilte Multimasterdaten
@@ -99,7 +99,7 @@ Diese Integration ermöglicht die folgenden HTAP-Szenarien für verschiedene Ben
 
 * Ein Data Engineer, der Daten für Consumer zugänglich machen möchte, indem er SQL- oder Spark-Tabellen über Azure Cosmos DB-Container ohne manuelle ETL-Prozesse erstellt.
 
-Weitere Informationen zur Azure Synapse Analytics-Laufzeitunterstützung für Azure Cosmos DB finden Sie unter [Unterstützung für Azure Synapse Analytics für Cosmos DB]().
+Weitere Informationen zur Azure Synapse Analytics-Laufzeitunterstützung für Azure Cosmos DB finden Sie unter [Unterstützung für Azure Synapse Analytics für Cosmos DB](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Anwendungsmöglichkeiten für Azure Synapse Link für Azure Cosmos DB
 
@@ -124,11 +124,11 @@ Synapse Link wird nicht empfohlen, wenn Sie herkömmliche Data Warehouse-Anforde
 
 * Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (serverlos) befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 
-* Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (bereitgestellt) ist derzeit nicht verfügbar. 
+* Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (bereitgestellt) ist derzeit nicht verfügbar.
 
 ## <a name="pricing"></a>Preise
 
-Das Abrechnungsmodell für Azure Synapse Link entspricht den Kosten, die durch die Verwendung des Azure Cosmos DB-Analysespeichers und der Synapse-Laufzeit anfallen. Weitere Informationen finden Sie unter den [Preisen für den Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md#analytical-store-pricing) und den [Preisen für Azure Synapse Analytics]().
+Das Abrechnungsmodell für Azure Synapse Link umfasst die Kosten für die Nutzung des Azure Cosmos DB-Analysespeichers und der Synapse-Runtime. Weitere Informationen finden Sie unter den [Preisen für den Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md#analytical-store-pricing) und den [Preisen für Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -136,9 +136,9 @@ Weitere Informationen finden Sie in den folgenden Dokumenten:
 
 * [Übersicht über den Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md)
 
-* [Erste Schritte mit Azure Synapse Link für Azure Cosmos DB](configure-synapse-link.md) 
+* [Erste Schritte mit Azure Synapse Link für Azure Cosmos DB](configure-synapse-link.md)
  
-* [In der Azure Synapse Analytics-Laufzeit unterstützte Features]()
+* [In der Azure Synapse Analytics-Laufzeit unterstützte Features](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 

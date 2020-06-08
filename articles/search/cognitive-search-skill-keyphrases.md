@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72791980"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744013"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Der kognitive Skill „Schlüsselbegriffserkennung“
 
@@ -44,10 +44,17 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingaben     | BESCHREIBUNG |
+| Eingabe  | BESCHREIBUNG |
 |--------------------|-------------|
 | text | Der zu analysierende Text|
 | languageCode  |  Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages).|
+
+## <a name="skill-outputs"></a>Skillausgaben
+
+| Ausgabe  | BESCHREIBUNG |
+|--------------------|-------------|
+| keyPhrases | Eine Liste mit aus dem Eingabetext extrahierten Schlüsselausdrücken. Die Schlüsselausdrücke werden in der Reihenfolge ihrer Wichtigkeit zurückgegeben. |
+
 
 ##  <a name="sample-definition"></a>Beispieldefinition
 

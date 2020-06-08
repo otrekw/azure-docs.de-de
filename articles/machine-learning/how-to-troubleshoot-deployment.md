@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929246"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873380"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -180,6 +180,11 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+## <a name="container-cannot-be-scheduled"></a>Planen des Containers nicht möglich
+
+Beim Bereitstellen eines Diensts für ein Azure Kubernetes Service-Computeziel versucht Azure Machine Learning, den Dienst mit der angeforderten Menge von Ressourcen zu planen. Wenn nach 5 Minuten keine Knoten mit der entsprechenden Menge von verfügbaren Ressourcen im Cluster vorhanden sind, schlägt die Bereitstellung fehl mit der Meldung `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` (Planung nicht möglich, da im Kubernetes-Cluster nach 00:05:00 Stunden keine verfügbaren Ressourcen vorhanden sind.). Sie können diesen Fehler beheben, indem Sie entweder weitere Knoten hinzufügen oder die SKU Ihrer Knoten oder die Ressourcenanforderungen für Ihren Dienst ändern. 
+
+In der Fehlermeldung ist in der Regel angegeben, von welcher Ressource mehr benötigt wird. Wenn beispielsweise eine Fehlermeldung angezeigt wird, in der `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` (0/3 Knoten sind verfügbar: 3 unzureichend nvidia.com/gpu) steht, bedeutet dies, dass der Dienst GPUs benötigt und drei Knoten im Cluster vorhanden sind, die nicht über verfügbare GPUs verfügen. Dieses Problem kann durch Hinzufügen weiterer Knoten behoben werden, wenn Sie eine GPU-SKU verwenden, oder durch Wechseln zu einer GPU-fähigen SKU, wenn nicht. Alternativ können Sie Ihre Umgebung so ändern, dass keine GPUs erforderlich sind.  
 
 ## <a name="service-launch-fails"></a>Fehler beim Starten des Diensts
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186321"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647724"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -41,7 +41,7 @@ Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der
 
 ### <a name="billing-example---throughput-on-a-container-partial-month"></a>Abrechnungsbeispiel: Durchsatz für einen Container (anteiliger Monat)
 
-* Angenommen, Sie erstellen einen Container mit bereitgestelltem Durchsatz von 2.500 RUs/Sek. Der Container ist im Monat 24 Stunden lang in Betrieb (er wird beispielsweise nach 24 Stunden wieder gelöscht).  
+* Angenommen, Sie erstellen einen Container mit einem bereitgestellten Durchsatz von 2.500 RU/Sek. Der Container ist im betreffenden Monat 24 Stunden lang in Betrieb. (Er wird beispielsweise 24 Stunden nach der Erstellung wieder gelöscht).  
 
 * Dann werden auf der Rechnung 600 Einheiten ausgewiesen (2.500 RUs/Sek. geteilt durch die Grundeinheit von 100 RUs/Sek. x 24 Stunden). Die Kosten belaufen sich auf 4,80 US-Dollar (600 Einheiten mal 0,008 US-Dollar pro Einheit).
 
@@ -67,7 +67,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Ihnen würde Folgendes berechnet: 1.200/100 x 0,008 US-Dollar = 0,096 US-Dollar pro Stunde. 
 
-* Wenn Sie aufgrund geänderter Durchsatzanforderungen die Kapazität der einzelnen Container um jeweils 500 RUs/Sek. erhöhen und einen neuen unbegrenzten Container mit 20.000 RUs/Sek. erstellen, beträgt Ihre bereitgestellte Gesamtkapazität 22.200 RUs/Sek. (1.000 + 1.200 + 20.000 RUs/Sek.).  
+* Wenn Sie aufgrund geänderter Durchsatzanforderungen die Kapazität der einzelnen Container um jeweils 500 RU/Sek. erhöhen und einen neuen, unbegrenzten Container mit 20.000 RU/Sek. erstellen, beträgt Ihre bereitgestellte Gesamtkapazität 22.200 RU/Sek. (1.000 RU/Sek.+ 1.200 RU/Sek. + 20.000 RU/Sek.).  
 
 * Ihre Rechnung sähe dann folgendermaßen aus: 0,008 x 222 = 1,776 US-Dollar pro Stunde. 
 
@@ -81,7 +81,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Ihnen würden 1.200 x 0,008 US-Dollar = 9,60 US-Dollar pro Stunde berechnet. 
 
-* Dann muss der Durchsatz geändert werden, und Sie erhöhen den bereitgestellten Durchsatz für jede Datenbank um 10.000 RUs/Sek. Der ersten Datenbank mit dem geteilten Durchsatz fügen Sie außerdem einen neuen Container mit einem dedizierten Durchsatz von 15.000 RUs/Sek. hinzu. Die bereitgestellte Gesamtkapazität errechnet sich dann wie folgt: 60.000 + 80.000 + 15.000 = 155.000 RUs/Sek.  
+* Wenn Sie aufgrund geänderter Durchsatzanforderungen den bereitgestellten Durchsatz für jede Datenbank um 10.000 RU/Sek. erhöhen und zur ersten Datenbank mit dem geteilten Durchsatz außerdem einen neuen Container mit einem dedizierten Durchsatz von 15.000 RU/Sek. hinzufügen, beträgt Ihre bereitgestellte Gesamtkapazität 155.000 RU/Sek. (60.000 RU/Sek. + 80.000 RU/Sek.+ 15.000 RU/Sek.).  
 
 * Ihre Rechnung sähe dann folgendermaßen aus: 1.550 x 0,008 = 12,40 US-Dollar pro Stunde.  
 
@@ -95,7 +95,7 @@ Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos-D
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Abrechnungsbeispiel: Azure Cosmos DB-Konto mit mehreren Regionen und Schreibanforderung für eine Region
 
-Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Angenommen, Sie fügen Ihrem Azure Cosmos-Konto drei weitere Regionen („USA, Osten“, „Europa, Norden“ und „Asien, Osten“) mit jeweils der gleichen Speicherkapazität und dem gleichen Durchsatz hinzu. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus: 
+Angenommen, Sie verfügen über einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Angenommen, Sie fügen zu Ihrem Azure Cosmos-Konto drei weitere Regionen („USA, Osten“, „Europa, Norden“ und „Asien, Osten“) mit jeweils der gleichen Speicherkapazität und dem gleichen Durchsatz hinzu. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus: 
 
 |**Element** |**Nutzung (Monat)** |**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
@@ -105,11 +105,11 @@ Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen�
 |Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**2.554 US-Dollar**|
 
-*Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, um Daten in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
+*Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, in die Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“, um sie dort zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-multi-region-writes"></a>Abrechnungsbeispiel: Azure Cosmos DB-Konto mit mehreren Regionen und Schreibanforderung für mehrere Regionen
 
-Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Angenommen, Sie fügen drei weitere Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ hinzu, wobei für jede Region die gleiche Speicherkapazität und der gleiche Durchsatz bereitgestellt werden. Außerdem sollen die Container in allen, mit Ihrem Azure Cosmos-Konto verknüpften Regionen für Schreibanforderungen ausgelegt sein. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus:
+Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Westen“. Der Container wird mit einem Durchsatz von 10.000 RUs/Sek. erstellt, und Sie benötigen in diesem Monat einen Speicher von 1 TB für Ihre Daten. Nehmen wir an, Sie fügen nun drei weitere Regionen („USA, Osten“, „Europa, Norden“ und „Asien, Osten“) mit jeweils der gleichen Speicherkapazität und dem gleichen Durchsatz hinzu. Dabei sollen in allen mit Ihrem Azure Cosmos-Konto verknüpften Regionen Schreibvorgänge für die Container möglich sein. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 30 Tagen) sieht dann wie folgt aus:
 
 |**Element** |**Nutzung (Monat)**|**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
@@ -119,11 +119,11 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 |Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**6.010 US-Dollar**|
 
-*Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, um Daten in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
+*Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, in die Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“, um sie dort zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
 
 ### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Abrechnungsbeispiel: Azure Cosmos-Konto mit Multimasterkonfiguration, Durchsatz auf Datenbankebene einschließlich dediziertem Durchsatz für einige Container
 
-Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimasterkonfiguration, bei dem alle Regionen für Schreibanforderungen ausgelegt sind. Der Einfachheit halber wird davon ausgegangen, dass die Speichergröße konstant bleibt und sich nicht ändert. Daher wird sie hier nicht aufgeführt, um das Beispiel einfacher zu halten. Der bereitgestellte Durchsatz schwankt während des Monats wie folgt (30 Tage bzw. 720 Stunden vorausgesetzt): 
+Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Regionen, bei dem in allen Regionen Schreibvorgänge ausgeführt werden können (Multimasterkonfiguration). Der Einfachheit halber wird davon ausgegangen, dass die Speichergröße konstant bleibt und sich nicht ändert. Daher wird sie hier nicht aufgeführt, um das Beispiel einfacher zu halten. Der bereitgestellte Durchsatz schwankt während des Monats wie folgt (30 Tage bzw. 720 Stunden vorausgesetzt): 
 
 [0-100 Stunden]\:  
 
@@ -208,8 +208,8 @@ Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5
 - Nehmen Sie jetzt an, in demselben Konto fügen Sie eine weitere Datenbank oder einen weiteren Container mit 1.000 RUs/Sek. und 10 GB Speicher hinzu.
 - Dann zeigt Ihre Rechnung eine Gebühr für die 1.000 RUs/Sek. und 10 GB Speicher an. 
 
-### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit automatisch skaliertem Durchsatz
-- Angenommen, Sie erstellen in einem Free-Tarif-Konto eine Datenbank oder einen Container mit aktivierter Autoskalierung mit maximal 4000 RUs/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert. 
+### <a name="billing-example---container-with-autoscale-throughput"></a>Abrechnungsbeispiel: Container mit automatisch skalierendem Durchsatz
+- Angenommen, Sie erstellen in einem Konto mit Free-Tarif einen Container mit aktivierter Autoskalierung mit einem maximalen Durchsatz von 4.000 RU/Sek. Diese Ressource wird automatisch zwischen 400 RUs/Sek. und 4.000 RUs/Sek. skaliert. 
 - Angenommen, in Stunde 1 bis 10 erfolgt der Durchsatz bei der Ressource mit dem minimalen Wert 400 RUs/Sek. Während Stunde 11 wird die Ressource auf 1.000 RUs/Sek. zentral hochskaliert und anschließend innerhalb dieser Stunde wieder auf 400 RUs/Sek. herunterskaliert.
 - In den Stunden 1 bis 10 werden Ihnen 0 US-Dollar für den Durchsatz in Rechnung gestellt, da die 400 RUs/Sek. durch den Free-Tarif abgedeckt wurden. 
 - In Stunde 11 werden Ihnen effektive 1.000 RUs/Sek. – 400 RUs/Sek. = 600 RUs/Sek. in Rechnung gestellt, da dies der höchste RUs/Sek.-Wert in dieser Stunde ist. Dies sind 6 Einheiten von 100 RUs/Sek. für die Stunde. Damit belaufen sich die gesamten Durchsatzkosten für diese Stunde auf 6 Einheiten x 0,012 US-Dollar = 0,072 US-Dollar. 
@@ -232,7 +232,7 @@ In diesem Beispiel werden [Multimasterpreise](https://azure.microsoft.com/pricin
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Vorausschauende Schätzung der monatlichen Rechnung  
 
-Betrachten wir ein weiteres Beispiel, bei dem Sie vor dem Monatsende vorausschauend Ihre Rechnung schätzen möchten. Sie können Ihre Rechnung wie folgt schätzen:
+Betrachten wir ein weiteres Beispiel, bei dem Sie vor dem Monatsende proaktiv Ihren Rechnungsbetrag schätzen möchten. Sie können Ihre Rechnung wie folgt schätzen:
 
 |**Speicherkosten** | |
 |----|----|
@@ -260,7 +260,7 @@ Monatliche Gesamtkosten = monatliche Speicherkosten + monatliche Durchsatzkosten
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Abrechnung mit reservierter Kapazität für Azure Cosmos DB
 
-Mit der reservierten Kapazität für Azure Cosmos DB können Sie im Voraus bereitgestellten Durchsatz (reservierte Kapazität oder eine Reservierung) erwerben, der auf alle Azure Cosmos-Datenbanken und -Container (für jede API und jedes Datenmodell) in allen Azure-Regionen angewendet werden kann. Da die Preise für den bereitgestellten Durchsatz in den einzelnen Regionen variieren, können Sie sich reservierte Kapazität als ein Guthaben vorstellen, das Sie mit einem Rabatt erworben haben und für die Bezahlung des Durchsatzes zum jeweils in der Region geltenden Preis nutzen können. Nehmen wir beispielsweise an, dass Sie ein Azure Cosmos-Konto mit einem einzelnen Container haben, für den 50.000 RUs/Sek. bereitgestellt werden und der global in zwei Regionen („USA, Osten“ und „Japan, Osten“) repliziert wird. Bei der nutzungsbasierten Option würden Sie Folgendes zahlen:  
+Mit der reservierten Kapazität für Azure Cosmos DB können Sie im Voraus bereitgestellten Durchsatz (reservierte Kapazität oder eine Reservierung) erwerben, der auf alle Azure Cosmos-Datenbanken und -Container (für jede API und jedes Datenmodell) in allen Azure-Regionen angewendet werden kann. Da sich die Preise für den bereitgestellten Durchsatz je nach Region unterscheiden, können Sie sich reservierte Kapazität als monetäres Guthaben vorstellen, das Sie mit einem Rabatt erworben haben und für die Zahlung des für den bereitgestellten Durchsatz fälligen Betrags zum jeweils in der Region geltenden Preis nutzen können. Nehmen wir beispielsweise an, Sie verfügen über ein Azure Cosmos-Konto mit einem einzelnen Container, für den 50.000 RU/Sek. bereitgestellt werden und der global in zwei Regionen („USA, Osten“ und „Japan, Osten“) repliziert wird. Bei der nutzungsbasierten Option würden Sie Folgendes zahlen:  
 
 * In der Region „USA, Osten“: 50.000 RUs/Sek. zu einer Rate von 0,008 US-Dollar pro 100 RUs/Sek. in dieser Region 
 
@@ -280,7 +280,7 @@ Angenommen, Sie hätten stattdessen reservierte Kapazität gekauft. Sie können 
 
 * Durchsatzkosten (mit reservierter Kapazität): 20 % Rabatt auf 70.080 US-Dollar = 56.064 US-Dollar 
 
-Was Sie tatsächlich erworben haben, ist ein Guthaben von 8 US-Dollar pro Stunde für 100.000 RUs/Sek. zum Preis von 6,40 US-Dollar pro Stunde (auf Basis des Listenpreises für die Region „USA, Osten“). Von dieser im Voraus bezahlten Durchsatzreservierung wird dann auf Stundenbasis die bereitgestellte Durchsatzkapazität abgezogen. Dies gilt für jede globale Azure-Region und für die entsprechenden regionalen Listenpreise, die für Ihr Abonnement festgelegt sind. In diesem Beispiel, in dem Sie 50.000 RUs/Sek. sowohl in der Region „USA, Osten“ als auch in „Japan, Osten“ bereitstellen, können Sie bereitgestellten Durchsatz im Wert von 8,00 US-Dollar pro Stunde abziehen. Die Überschreitung von 0,50 US-Dollar pro Stunde (bzw. 360 US-Dollar pro Monat) wird Ihnen dann in Rechnung gestellt. 
+Was Sie tatsächlich erworben haben, ist ein Guthaben von 8 US-Dollar pro Stunde für 100.000 RU/Sek. zum Preis von 6,40 US-Dollar pro Stunde (auf Basis des Listenpreises für die Region „USA, Osten“). Von dieser im Voraus bezahlten Durchsatzreservierung wird dann auf Stundenbasis die bereitgestellte Durchsatzkapazität abgezogen. Dies gilt für jede globale Azure-Region und für die entsprechenden regionalen Listenpreise, die für Ihr Abonnement festgelegt sind. In diesem Beispiel, in dem Sie 50.000 RUs/Sek. sowohl in der Region „USA, Osten“ als auch in „Japan, Osten“ bereitstellen, können Sie bereitgestellten Durchsatz im Wert von 8,00 US-Dollar pro Stunde abziehen. Die Überschreitung von 0,50 US-Dollar pro Stunde (bzw. 360 US-Dollar pro Monat) wird Ihnen dann in Rechnung gestellt. 
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**| **Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|

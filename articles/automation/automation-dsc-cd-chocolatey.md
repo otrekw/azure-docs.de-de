@@ -1,18 +1,18 @@
 ---
-title: Continuous Deployment mit Azure Automation State Configuration und Chocolatey
-description: In diesem Artikel wird DevOps-Continuous Deployment mit Azure Automation State Configuration mit dem Chocolatey-Paket-Manager beschrieben. Er enthält ein Beispiel mit vollständiger JSON-Resource Manager-Vorlage und PowerShell-Quellcode.
+title: Einrichten von Continuous Deployment mit Azure Automation und Chocolatey
+description: In diesem Artikel erfahren Sie, wie Sie Continuous Deployment mit State Configuration und dem Chocolatey-Paket-Manager einrichten.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ec954c2da317e2e4b332b959b9627cf96792da84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996118"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837058"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Bereitstellen von Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Einrichten von Continuous Deployment mit Chocolatey
 
 In einer DevOps-Umgebung gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen. Azure Automation [State Configuration](automation-dsc-overview.md) ist eine willkommene neue Option für DevOps-Teams. 
 
@@ -210,9 +210,8 @@ Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfigurati
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md).
-- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine Einführung in dieses Feature finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
+- Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
 - Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).

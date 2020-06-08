@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684904"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267612"
 ---
 # <a name="monitor-azure-storage"></a>Überwachen von Azure Storage
 
@@ -407,4 +407,3 @@ Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weit
 - Eine Referenz zu den von Azure Storage erstellten Protokollen und Metriken finden Sie unter [Referenz zu Azure Storage-Überwachungsdaten](monitor-storage-reference.md).
 - Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
 - Weitere Informationen zur Migration von Metriken finden Sie unter [Migration von Azure Storage-Metriken](./storage-metrics-migration.md).
-

@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: Quellzuordnungsdatei für JavaScript
                   href: app/source-map-support.md
+                - name: Problembehandlung
+                  items:
+                    - name: SDK-Ladefehler
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights-API-Zusammenfassung
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: Nachverfolgen von Anforderungen für die Profilerstellung
               href: app/profiler-trackrequests.md
+            - name: Konfigurieren von BYOS (Bring Your Own Storage)
+              href: app/profiler-bring-your-own-storage.md
             - name: Problembehandlung für den Profiler
               href: app/profiler-troubleshooting.md
         - name: Debuggen von Momentaufnahmen
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: Aktualisieren des Momentaufnahmedebuggers
               href: app/snapshot-debugger-upgrade.md
+            - name: Konfigurieren von BYOS (Bring Your Own Storage)
+              href: app/profiler-bring-your-own-storage.md
             - name: Problembehandlung für Momentaufnahmedebugger
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

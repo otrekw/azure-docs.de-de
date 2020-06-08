@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790982"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847811"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -229,8 +229,9 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 
 1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 
-1. Wählen Sie im Abschnitt **Leadverwaltung** die Option **Verbinden** aus. 
-    ![Schaltfläche „Verbinden“ in der Leadverwaltung](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Kundenleads":::
 
 1. Wählen Sie im Popupfenster **Verbindungsdetails** die Option **HTTPS-Endpunkt** als **Leadziel** aus. Fügen Sie die HTTP POST-URL aus dem in den vorherigen Schritten erstellten Flow im Feld **HTTPS-Endpunkt-URL** ein.
     ![„Kontakt-E-Mail“ unter „Verbindungsdetails“](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)

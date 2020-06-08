@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines neuen Angebots für verwaltete Dienste im kommerziellen Marketplace
+title: Erstellen eines Angebots für verwaltete Dienste im kommerziellen Microsoft-Marketplace
 description: Erstellen eines neuen Angebots für verwaltete Dienste, um das Angebot über das Portal des kommerziellen Marketplace im Partner Center in Azure Marketplace aufzulisten
 author: JnHs
 ms.author: jenhayes
@@ -7,57 +7,61 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.date: 05/19/2020
+ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991619"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847718"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Erstellen eines neuen Angebots für verwaltete Dienste
+# <a name="create-a-managed-service-offer"></a>Erstellen eines Angebots für einen verwalteten Dienst
 
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Angebote für verwaltete Dienste aus dem Cloud-Partnerportal in Partner Center. Folgen Sie den Anweisungen unter [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md), um Ihre Angebote im Cloud-Partnerportal zu verwalten, bis Ihre Angebote migriert wurden.
+Angebote für verwaltete Dienste unterstützen [Azure Lighthouse](../../lighthouse/overview.md)-Szenarien. Wenn ein Kunde ein Angebot für verwaltete Dienste annimmt, kann er Ressourcen für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) integrieren. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
-Angebote für verwaltete Dienste unterstützen [Azure Lighthouse](../../lighthouse/overview.md)-Szenarien. Wenn ein Kunde ein Angebot für verwaltete Dienste annimmt, kann er Ressourcen für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) integrieren.
-
-Um mit dem Erstellen von Angeboten für verwaltete Dienste zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md), das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen und darin die Seite **Übersicht** auswählen. Sie müssen über eine [Silver oder Gold Cloud Platform-Kompetenzebene](https://partner.microsoft.com/membership/cloud-platform-competency) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen.
-
-![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
-
->[!Note]
-> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
+Sie müssen über eine [Silver oder Gold Cloud Platform-Kompetenzebene](https://partner.microsoft.com/membership/cloud-platform-competency) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
-Wählen Sie die Schaltfläche **+ Neues Angebot** und dann das Menüelement **Verwalteter Dienst** aus. Das Dialogfeld **Neues Angebot** wird angezeigt.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Verwalteter Dienst** aus.
 
-### <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
+    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-managed-service.png)
 
-- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID ist für Kunden in der URL-Adresse des Marketplace-Angebots sichtbar. Die ID darf nur alphanumerische Zeichen ohne Großbuchstaben enthalten (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach dem Auswählen von **Erstellen** nicht mehr geändert werden.  Wenn Sie hier z.B. *test-offer-1* eingeben, lautet die Angebots-URL `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+>[!NOTE]
+>Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
-- **Angebotsalias**: Der Name, der zum Verweisen auf das Angebot im Partner Center verwendet wird. Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden. Dieser Wert kann nach der Auswahl von **Erstellen** nicht mehr geändert werden.
+## <a name="new-offer"></a>Neues Angebot
 
-Nachdem Sie Ihre **Angebots-ID** und ihren **Angebotsalias** eingegeben haben, wählen Sie **Erstellen** aus. Sie können dann alle anderen Teile Ihres Angebots bearbeiten.
+Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
+
+* Diese ID wird für Kunden unter der Webadresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt.
+* Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn Sie hier z. B. **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
+
+Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
+
+* Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
+* Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
+
+Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
-Auf der Seite **Angebotseinrichtung** wird um die folgenden Informationen gebeten. Vergessen Sie nicht, **Speichern** auszuwählen, nachdem Sie die Angaben in diesen Feldern vorgenommen haben.
-
-## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Beachten Sie, dass gemäß den [Zertifizierungsrichtlinien für verwaltete Dienste](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) eine **Leadzielgruppe** erforderlich ist. Dadurch wird jedes Mal, wenn ein Kunde Ihr Angebot bereitstellt, ein Eintrag in Ihrem CRM-System erstellt.
+Gemäß den [Zertifizierungsrichtlinien für verwaltete Dienste](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) ist eine **Leadzielgruppe** erforderlich. Dadurch wird jedes Mal, wenn ein Kunde Ihr Angebot bereitstellt, ein Eintrag in Ihrem CRM-System erstellt.
 
 Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./commercial-marketplace-get-customer-leads.md).
 
-Sie sollten die Seite **speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="properties"></a>Eigenschaften
 
-Auf der Seite **Eigenschaften** können Sie die Kategorien, die zum Gruppieren Ihres Angebots im Marketplace verwendet werden, und die Verträge definieren, die Ihr Angebot unterstützen. Wählen Sie **Speichern** aus, nachdem Sie diese Seite ausgefüllt haben.
+Auf dieser Seite können Sie die Kategorien zum Gruppieren Ihres Angebots im Marketplace und die Verträge definieren, die Ihr Angebot unterstützen.
 
 ### <a name="category"></a>Category
 
@@ -67,12 +71,14 @@ Wählen Sie mindestens eine und höchstens fünf Kategorien aus, die zum Platzie
 
 Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bestimmungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
 
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+
 ## <a name="offer-listing"></a>Angebotsliste
 
-Auf der Seite **Angebotsliste** können Sie Marketplace-Informationen (Angebotsname, Beschreibung, Bilder usw.) für Ihr Angebot definieren.
+Auf dieser Seite können Sie Marketplace-Informationen (z. B. Angebotsname, Beschreibung und Bilder) definieren.
 
 > [!NOTE]
-> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots und Nutzungsbedingungen) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
 ### <a name="name"></a>Name
 
@@ -88,35 +94,11 @@ Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 256 Zeichen). Die
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Einige Tipps zum Verfassen Ihrer Beschreibung:  
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Fügen Sie folgende Elemente in Ihr Wertversprechen ein:
-  - Beschreibung des Angebots
-  - Benutzertyp, der von dem Produkt profitiert
-  - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet
-- Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
-- Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
-
-Um Ihre Angebotsbeschreibung ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors.
-
-![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
-
-Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
-
-- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text und wählen ein Textformat aus, wie unten dargestellt:
-
-     ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
-
-- Um dem Text eine nummerierte Liste oder eine Liste mit Aufzählungszeichen hinzuzufügen, verwenden Sie die folgenden Optionen:
-
-     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png)
-
-- Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
-
-     ![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png)
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="privacy-policy-link"></a>Link zur Datenschutzrichtlinie
 
@@ -138,9 +120,19 @@ Wenn Sie Supportwebsites für **weltweite Azure-Kunden** und/oder **Azure Govern
 
 In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeigen Ihres Angebots für Kunden verwendet werden. Alle Bilder müssen das PNG-Format aufweisen.
 
+>[!NOTE]
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
+
 #### <a name="marketplace-logos"></a>Marketplace-Logos
 
-Vier Logogrößen sind erforderlich: **Klein (40 x 40)** , **Mittel (90 x 90)** , **Groß (115 x 115)** und **Breit (255 x 115)** . Befolgen Sie die folgenden Richtlinien für Ihre Logos:
+Stellen Sie ein Logo für Ihr Angebot in vier Bildauflösungen bereit:
+
+- **Klein** (40 × 40)
+- **Mittel** (90 x 90)
+- **Groß** (115 × 115)
+- **Breit** (255 x 115)
+
+Befolgen Sie die folgenden Richtlinien für Ihre Logos:
 
 - Die Farbpalette des Azure-Designs ist einfach und geradlinig. Beschränken Sie die Anzahl der Primär- und Sekundärfarben auf Ihrem Logo.
 - Die Designfarben des Azure-Portals sind Weiß und Schwarz. Verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihr Logo. Verwenden Sie eine Farbe, die Ihr Logo im Portal ideal zur Geltung bringt. Sie sollten einfache Primärfarben verwenden.
@@ -161,6 +153,8 @@ Optional können Sie bis zu fünf Videos hinzufügen, die Ihr Angebot veranschau
 
 - [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+
 ## <a name="preview"></a>Vorschau
 
 Bevor Sie Ihr Angebot im Marketplace für die breite Öffentlichkeit live schalten, müssen Sie es zunächst für eine begrenzte Vorschauzielgruppe verfügbar machen. Auf diese Weise können Sie ermitteln, wie Ihr Angebot im Azure Marketplace dargestellt wird, bevor Sie es Kunden zur Verfügung stellen. Die Support- und Entwicklerteams von Microsoft können Ihr Angebot während dieses Vorschauzeitraums ebenfalls sehen.
@@ -168,6 +162,8 @@ Bevor Sie Ihr Angebot im Marketplace für die breite Öffentlichkeit live schalt
 Sie können die Vorschauzielgruppe definieren, indem Sie im Abschnitt **Vorschauzielgruppe** Azure-Abonnement-IDs eingeben. Sie können bis zu 10 Abonnement-IDs manuell eingeben oder eine CSV-Datei mit bis zu 100 Abonnement-IDs hochladen.
 
 Alle Kunden, die mit diesen Abonnements verknüpft sind, können das Angebot im Azure Marketplace sehen, bevor es live geschaltet wird. Achten Sie darauf, hier Ihre eigenen Abonnements anzugeben, damit Sie das Angebot in der Vorschau betrachten können.
+
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="plan-overview"></a>Planübersicht
 
@@ -192,7 +188,7 @@ Im Abschnitt zur **Sichtbarkeit des Plans** können Sie angeben, ob dieser Plan 
 Um diesen Plan nur für bestimmte Kunden verfügbar zu machen, wählen Sie **Ja** aus. Wenn Sie dies tun, müssen Sie die Kunden identifizieren, indem Sie ihre Abonnement-IDs angeben. Sie können diese einzeln (für bis zu 10 Abonnements) eingeben oder eine CSV-Datei (planübergreifend für bis zu 10.000 Abonnements) hochladen. Stellen Sie sicher, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie das Angebot testen und validieren können.
 
 > [!IMPORTANT]
-> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](../../lighthouse/how-to/onboard-customer.md#remove-access-to-a-delegation), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
+> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](../../lighthouse/how-to/remove-delegation.md), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ### <a name="technical-configuration"></a>Technische Konfiguration
 
@@ -230,22 +226,24 @@ Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie könne
 - **Zuweisbare Rollen**: Diese Option wird nur angezeigt, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Objekt-ID von Azure AD** kann diese Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](../../lighthouse/how-to/deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
 
 > [!TIP]
-> Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](../../lighthouse/how-to/onboard-customer.md#remove-access-to-a-delegation) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
+> Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](../../lighthouse/how-to/remove-delegation.md) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 Nachdem Sie alle Abschnitte für Ihren Plan bearbeitet haben, können Sie so häufig wie nötig **+ Neuen Plan erstellen** auswählen, um zusätzliche Pläne zu erstellen. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
+
+Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="publish"></a>Veröffentlichen
 
 ### <a name="submit-offer-to-preview"></a>Übermitteln des Angebots für die Vorschau
 
-Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, klicken Sie rechts oben im Portal auf **Veröffentlichen**. Sie werden zur Seite **Review and publish** (Überprüfen und veröffentlichen) weitergeleitet.
+Nachdem Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, wählen Sie rechts oben im Portal **Überprüfen und veröffentlichen** aus.
 
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-  - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-  - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-  - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+  - **Nicht gestartet:** Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+  - **Unvollständig:** Der Abschnitt enthält Fehler, die behoben werden müssen, oder er erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+  - **Vollständig:** Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam im Abschnitt **Hinweise zur Zertifizierung** Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 

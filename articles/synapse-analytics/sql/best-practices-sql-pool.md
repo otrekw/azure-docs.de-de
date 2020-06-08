@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426390"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834984"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für SQL-Pools in Azure Synapse Analytics
 
@@ -193,7 +193,7 @@ SQL-Pools verfügen über mehrere DMVs, mit denen die Abfrageausführung überwa
 
 Informationen zu allgemeinen Problemen und entsprechende Lösungen finden Sie im Artikel [Problembehandlung](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Das [SQL-Poolforum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) ist ein Ort, an dem Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen können.  
+Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, können Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) Fragen an andere Benutzer und die Produktgruppe „SQL-Pool“ stellen.  
 
 Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure SQL-Pool](https://stackoverflow.com/questions/tagged/azure-sqldw) nutzen.
 

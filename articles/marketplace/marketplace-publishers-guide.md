@@ -1,22 +1,22 @@
 ---
-title: Herausgeberleitfaden für den kommerziellen Marketplace
-description: Eine Übersicht über den kommerziellen Marketplace für App- und Dienstherausgeber.
+title: Herausgeberleitfaden für den kommerziellen Microsoft-Marketplace
+description: Eine Übersicht über den kommerziellen Marketplace für Microsoft-Partner, die Angebote in Microsoft AppSource und Azure Marketplace veröffentlichen möchten.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261991"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657860"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Herausgeberleitfaden für den kommerziellen Marketplace
 
-Dieser Marketplace-Veröffentlichungsleitfaden soll neue und vorhandene Herausgeber dabei unterstützen, [Azure Marketplace](https://azuremarketplace.microsoft.com) und [Microsoft AppSource](https://appsource.microsoft.com) zu nutzen, um ihr Geschäft im Rahmen der Partnerschaft mit Microsoft auszubauen, indem sie Anwendungen und Dienste auflisten.
+Dieser Herausgeberleitfaden soll neuen und vorhandenen Herausgebern Anleitungen zum Auflisten von Anwendungen und Diensten in den Storefronts des kommerziellen Marketplace, in [Azure Marketplace](https://azuremarketplace.microsoft.com) und [Microsoft AppSource](https://appsource.microsoft.com) bieten, um ihr Geschäft im Rahmen der Partnerschaft mit Microsoft auszubauen.
 
 >[!Note]
 >Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).

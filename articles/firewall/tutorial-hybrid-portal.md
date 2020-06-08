@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239685"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298957"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -131,18 +131,6 @@ Erstellen Sie nun ein zweites Subnetz für das Gateway.
 4. Geben Sie unter **Adressbereich (CIDR-Block)** den Adressbereich **192.168.2.0/24** ein.
 5. Klicken Sie auf **OK**.
 
-### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-
-Dies ist die öffentliche IP-Adresse für das lokale Gateway.
-
-1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
-2. Geben Sie **öffentliche IP-Adresse** in das Textfeld für die Suche ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie **Öffentliche IP-Adresse** und anschließend **Erstellen** aus.
-4. Geben als Name die Zeichenfolge **VNet-Onprem-GW-pip** ein.
-5. Geben Sie als Ressourcengruppe die Zeichenfolge **FW-Hybrid-Test** ein.
-6. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-7. Übernehmen Sie für die anderen Optionen die Standardwerte, und wählen Sie **Erstellen** aus.
-
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurieren und Bereitstellen der Firewall
 
 Stellen Sie nun die Firewall im virtuellen Firewall-Hub-Netzwerk bereit.
@@ -153,10 +141,10 @@ Stellen Sie nun die Firewall im virtuellen Firewall-Hub-Netzwerk bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Subscription     |\<Ihr Abonnement\>|
+   |Subscription     |\<your subscription\>|
    |Resource group     |**FW-Hybrid-Test** |
    |Name     |**AzFW01**|
-   |Position     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**:<br> **VNet-hub**|
    |Öffentliche IP-Adresse     |Neu erstellen: <br>**Name** - **fw-pip**. |
 

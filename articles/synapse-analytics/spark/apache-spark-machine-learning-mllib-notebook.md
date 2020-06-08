@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096298"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774446"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -54,7 +54,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um vorherzusagen, ob eine 
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -238,6 +238,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 ```
 
 Nachdem nun zwei DataFrames vorhanden sind, besteht die nächste Aufgabe darin, die Modellformel zu erstellen, sie mit dem Trainings-DataFrame auszuführen und dann anhand des Test-DataFrames zu validieren. Sie sollten mit verschiedenen Versionen der Modellformel experimentieren, um die Auswirkungen verschiedener Kombinationen herauszufinden.
+
+> [!Note]
+> Sie benötigen in Azure die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“, um das Modell speichern zu können. Navigieren Sie unter Ihrem Speicherkonto zu „Zugriffssteuerung (IAM)“, und klicken Sie auf „Rollenzuweisung hinzufügen“. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“ zu. Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 449ff8aafd6dec1e9c0ff16dc407155949fd1313
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4b4e6bf7b69f1b4c7664a104a0af70d9e486f08a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586166"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699959"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Zugreifen auf virtuelle Computer als Kursteilnehmer in der Lehrer-/Dozentenansicht
 In diesem Artikel wird gezeigt, wie Lehrer/Dozenten auf ihre VMs für Klassen zugreifen können, die sie als Kursteilnehmer besuchen. 
@@ -36,5 +36,6 @@ Im Folgenden finden Sie ein Szenario, in dem dieses Feature hilfreich ist. Ein T
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Herstellen einer Verbindung mit einem virtuellen Computer](how-to-use-classroom-lab.md#connect-to-the-vm)
-- [Herstellen einer RDP-Verbindung mit einem virtuellen Computer auf einem Mac](connect-virtual-machine-mac-rdp.md)
+- [Herstellen einer RDP-Verbindung mit einem virtuellen Computer auf einem Mac](connect-virtual-machine-mac-remote-desktop.md)
+- [Herstellen einer Verbindung zu einer VM mithilfe des Remotedesktopprotokolls auf einem Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)
 - [Verwenden von Remotedesktop für virtuelle Linux-Computer](how-to-use-remote-desktop-linux-student.md)

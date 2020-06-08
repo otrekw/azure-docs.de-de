@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676933"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659230"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
@@ -30,11 +30,13 @@ Je mehr Informationen zu Ihren Daten die SQL-Poolressource besitzt, desto schnel
 
 Der Abfrageoptimierer im SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird.
 
-Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
+Wenn der Abfrageoptimierer beispielsweise schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wählt er einen Plan aus. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatische Erstellung von Statistiken
 
-Der SQL-Pool analysiert eingehende Benutzerabfragen auf fehlende Statistiken, wenn die Datenbankoption AUTO_CREATE_STATISTICS auf `ON` festgelegt ist.  Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung. Diese Funktion wird verwendet, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
+Der SQL-Pool analysiert eingehende Benutzerabfragen auf fehlende Statistiken, wenn die Datenbankoption AUTO_CREATE_STATISTICS auf `ON` festgelegt ist.  Wenn Statistiken fehlen, erstellt der Abfrageoptimierer Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung. 
+
+Diese Funktion wird verwendet, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern.
 
 > [!IMPORTANT]
 > Die automatische Erstellung von Statistiken ist zurzeit standardmäßig aktiviert.
@@ -101,7 +103,9 @@ Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten
 
 Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte aufgetreten ist, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
 
-Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen. Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
+Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen. 
+
+Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
 
 > [!NOTE]
 > Immer wenn sich die Verteilung der Werte einer Spalte wesentlich ändert, sollten Sie die Statistiken – unabhängig vom Zeitpunkt des letzten Updates – aktualisieren.
@@ -137,9 +141,11 @@ Beispielsweise benötigen **Datumsspalten** in einem Data Warehouse normalerweis
 
 Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle müssen unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung.
 
-Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ aktualisieren. Weitere Informationen finden Sie im Artikel [Statistiken](/sql/relational-databases/statistics/statistics).
+Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ aktualisieren. 
 
-### <a name="implementing-statistics-management"></a>Implementieren der Statistikverwaltung
+Weitere Informationen finden Sie im Artikel [Statistiken](/sql/relational-databases/statistics/statistics).
+
+### <a name="implement-statistics-management"></a>Implementieren der Statistikverwaltung
 
 Häufig ist es ratsam, den Datenladeprozess zu erweitern, um sicherzustellen, dass die Statistiken am Ende des Ladevorgangs aktualisiert werden. Das Laden von Daten ist der Zeitpunkt, zu dem Tabellen am häufigsten ihre Größe, die Verteilung der Werte oder beides ändern. Daher ist der Ladevorgang ein logischer Ansatzpunkt zum Implementieren einiger Verwaltungsprozesse.
 
@@ -275,6 +281,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Verwenden einer gespeicherten Prozedur zum Erstellen von Statistiken für alle Spalten einer Datenbank
 
 Der SQL-Pool verfügt nicht über eine gespeicherte Systemprozedur, die „sp_create_stats“ in SQL Server entspricht. Mit dieser gespeicherten Prozedur wird ein Einzelspaltenstatistik-Objekt für jede Spalte der Datenbank erstellt, die nicht bereits über eine Statistik verfügt.
+
 Das folgende Beispiel ist eine nützliche Einstiegshilfe für den Datenbankentwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen:
 
 ```sql
@@ -418,7 +425,9 @@ Beispiel:
 UPDATE STATISTICS dbo.table1;
 ```
 
-Die UPDATE STATISTICS-Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit *alle* Statistiken der Tabelle aktualisiert werden und damit mehr Arbeit als nötig anfällt. Wenn die Leistung kein Problem darstellt, ist diese Methode die einfachste und umfassendste Möglichkeit sicherzustellen, dass die Statistiken aktuell sind.
+Die UPDATE STATISTICS-Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit *alle* Statistiken der Tabelle aktualisiert werden und damit mehr Arbeit als nötig anfällt. 
+
+Wenn die Leistung kein Problem darstellt, ist diese Methode die einfachste und umfassendste Möglichkeit sicherzustellen, dass die Statistiken aktuell sind.
 
 > [!NOTE]
 > Beim Aktualisieren aller Statistiken einer Tabelle führt der SQL-Pool einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
@@ -501,7 +510,9 @@ Mit DBCC SHOW_STATISTICS() werden die Daten angezeigt, die in einem Statistikobj
 - Dichtevektor
 - Histogramm
 
-Der Header stellt die Metadaten zur Statistik dar. Im Histogramm wird die Verteilung der Werte in der ersten Schlüsselspalte des Statistikobjekts angezeigt. Der Dichtevektor misst die spaltenübergreifende Korrelation. Der SQL-Pool berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
+Der Header stellt die Metadaten zur Statistik dar. Im Histogramm wird die Verteilung der Werte in der ersten Schlüsselspalte des Statistikobjekts angezeigt. 
+
+Der Dichtevektor misst die spaltenübergreifende Korrelation. Der SQL-Pool berechnet Kardinalitätsschätzungen anhand der Daten im Statistikobjekt.
 
 #### <a name="show-header-density-and-histogram"></a>Anzeigen von Header, Dichte und Histogramm
 
@@ -555,7 +566,11 @@ Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spa
 
 ### <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen zu Ihren Daten SQL On-Demand (Vorschauversion) besitzt, desto schneller können Abfragen dafür durchgeführt werden. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. Der Abfrageoptimierer in SQL On-Demand arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
+Je mehr Informationen zu Ihren Daten SQL On-Demand (Vorschauversion) besitzt, desto schneller können Abfragen dafür durchgeführt werden. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
+
+Der Abfrageoptimierer in SQL On-Demand arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. 
+
+Wenn der Abfrageoptimierer z.B. schätzt, dass das Datum, nach dem die Abfrage gefiltert wird, eine Zeile zurückgibt, wird er einen Plan auswählen. Wenn er schätzt, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden, wird er einen anderen Plan zurückgegeben.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatische Erstellung von Statistiken
 
@@ -570,9 +585,11 @@ Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherw
 
 ### <a name="manual-creation-of-statistics"></a>Manuelle Erstellung von Statistiken
 
-SQL On-Demand ermöglicht das manuelle Erstellen von Statistiken. Für CSV-Dateien müssen Sie Statistiken manuell erstellen, da die automatische Erstellung von Statistiken für CSV-Dateien nicht aktiviert ist. In den folgenden Beispielen finden Sie Anweisungen zum manuellen Erstellen von Statistiken.
+SQL On-Demand ermöglicht das manuelle Erstellen von Statistiken. Für CSV-Dateien müssen Sie Statistiken manuell erstellen, da die automatische Erstellung von Statistiken für CSV-Dateien nicht aktiviert ist. 
 
-### <a name="updating-statistics"></a>Aktualisieren von Statistiken
+In den folgenden Beispielen finden Sie Anweisungen zum manuellen Erstellen von Statistiken.
+
+### <a name="update-statistics"></a>Statistikaktualisierung
 
 Änderungen an Daten in Dateien sowie das Löschen und Hinzufügen von Dateien führen zu Änderungen der Datenverteilung und bewirken, dass die Statistiken nicht mehr aktuell sind. In diesem Fall müssen die Statistiken aktualisiert werden.
 
@@ -592,9 +609,9 @@ Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche 
 > [!NOTE]
 > Immer wenn sich die Verteilung der Werte einer Spalte wesentlich ändert, sollten Sie die Statistiken – unabhängig vom Zeitpunkt des letzten Updates – aktualisieren.
 
-### <a name="implementing-statistics-management"></a>Implementieren der Statistikverwaltung
+### <a name="implement-statistics-management"></a>Implementieren der Statistikverwaltung
 
-Möglicherweise möchten Sie Ihre Datenpipeline erweitern, um sicherzustellen, dass die Statistiken aktualisiert werden, wenn Daten durch Hinzufügen, Löschen oder Ändern von Dateien erheblich verändert werden.
+Sie sollten Ihre Datenpipeline erweitern, um sicherzustellen, dass die Statistiken aktualisiert werden, wenn Daten durch Hinzufügen, Löschen oder Ändern von Dateien erheblich verändert werden.
 
 Im Folgenden finden Sie einige Richtlinien zur Aktualisierung von Statistiken:
 
@@ -611,6 +628,8 @@ In den folgenden Beispielen wird veranschaulicht, wie verschiedene Optionen zum 
 
 > [!NOTE]
 > Im Moment können Sie nur einspaltige Statistiken erstellen.
+>
+> Die Prozedur sp_create_file_statistics wird in sp_create_openrowset_statistics umbenannt. Der öffentlichen Serverrolle besitzt die Berechtigung ADMINISTER BULK OPERATIONS, während die öffentliche Datenbankrolle nur die Berechtigungen für sp_create_file_statistics und sp_drop_file_statistics besitzt. Das wird in Zukunft ggf. geändert.
 
 Die folgende gespeicherte Prozedur wird zur Erstellung von Statistiken verwendet:
 
@@ -696,6 +715,9 @@ Zum Aktualisieren von Statistiken müssen Sie Statistiken löschen und erstellen
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
+> [!NOTE]
+> Die Prozedur sp_drop_file_statistics wird in sp_drop_openrowset_statistics umbenannt. Der öffentlichen Serverrolle besitzt die Berechtigung ADMINISTER BULK OPERATIONS, während die öffentliche Datenbankrolle nur die Berechtigungen für sp_create_file_statistics und sp_drop_file_statistics besitzt. Das wird in Zukunft ggf. geändert.
+
 Argumente: [ @stmt = ] N'statement_text' – Gibt dieselbe Transact-SQL-Anweisung an, die bei der Erstellung der Statistiken verwendet wurde.
 
 Um die Statistiken für die Jahresspalte im Dataset, das auf der Datei „population.csv“ basiert, zu aktualisieren, müssen Sie die Statistiken löschen und erstellen:
@@ -750,7 +772,7 @@ ON { external_table } ( column )
 
 Argumente: external_table – Gibt die externe Tabelle an, für die Statistiken erstellt werden sollen.
 
-FULLSCAN berechnet die Statistiken, indem alle Zeilen überprüft werden. FULLSCAN und SAMPLE 100 PERCENT führen zu gleichen Ergebnissen. FULLSCAN kann nicht in Verbindung mit der SAMPLE-Option verwendet werden.
+FULLSCAN berechnet die Statistiken, indem alle Zeilen überprüft werden. FULLSCAN und SAMPLE 100 PERCENT führen zu gleichen Ergebnissen. FULLSCAN kann nicht in Verbindung mit der Option SAMPLE verwendet werden.
 
 SAMPLE Zahl PERCENT – Gibt den ungefähren Prozentsatz oder die ungefähre Anzahl von Zeilen in der Tabelle oder indizierten Sicht an, die vom Abfrageoptimierer beim Erstellen von Statistiken verwendet werden sollen. Die Zahl kann zwischen 0 und 100 liegen.
 

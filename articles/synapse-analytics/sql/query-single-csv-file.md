@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 41c4a8940cc49a3859a2511f0de65d0019817078
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427558"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836548"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
@@ -29,10 +29,7 @@ Alle oben aufgeführten Varianten werden im Folgenden behandelt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Lesen Sie die folgenden Artikel, bevor Sie den Rest dieses Artikels lesen:
-
-- [Erstmalige Einrichtung](query-data-storage.md#first-time-setup)
-- [Voraussetzungen](query-data-storage.md#prerequisites)
+Im ersten Schritt erstellen Sie eine **Datenbank**, in der die Tabellen erstellt werden sollen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
 ## <a name="windows-style-new-line"></a>Neue-Zeile-Zeichen im Windows-Stil
 
@@ -45,8 +42,9 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -72,7 +70,8 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
@@ -99,7 +98,8 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr/population.csv',
+        BULK 'csv/population-unix-hdr/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
@@ -126,7 +126,8 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-quoted/population.csv',
+        BULK 'csv/population-unix-hdr-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -158,7 +159,8 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-escape/population.csv',
+        BULK 'csv/population-unix-hdr-escape/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -176,7 +178,7 @@ WHERE
 ```
 
 > [!NOTE]
-> Diese Abfrage würde nicht erfolgreich ausgeführt werden, wenn ESCAPECHAR nicht angegeben wird, da das Komma in „Slov,enia“ als Feldtrennzeichen und nicht als Teil des Ländernamens behandelt würde. „Slov,enia“ würde als zwei Spalten behandelt. Daher hätte die bestimmte Zeile eine Spalte mehr als die anderen Zeilen und eine Spalte mehr als Sie in der WITH-Klausel definiert haben.
+> Diese Abfrage würde nicht erfolgreich ausgeführt werden, wenn ESCAPECHAR nicht angegeben wird, da das Komma in „Slov,enia“ als Feldtrennzeichen und nicht als Teil des Länder-/Regionsnamens behandelt würde. „Slov,enia“ würde als zwei Spalten behandelt. Daher hätte die bestimmte Zeile eine Spalte mehr als die anderen Zeilen und eine Spalte mehr als Sie in der WITH-Klausel definiert haben.
 
 ## <a name="tab-delimited-files"></a>Dateien mit Tabstopps als Trennzeichen
 
@@ -189,7 +191,8 @@ Dateivorschau:
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-tsv/population.csv',
+        BULK 'csv/population-unix-hdr-tsv/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
@@ -210,7 +213,7 @@ WHERE
 
 Bisher haben Sie das CSV-Dateischema mit WITH angegeben und alle Spalten aufgelistet. Sie können nur Spalten angeben, die Sie in Ihrer Abfrage tatsächlich benötigen, indem Sie für jede erforderliche Spalte eine Ordnungszahl verwenden. Sie werden auch Spalten auslassen, die Sie nicht interessieren.
 
-Die folgende Abfrage gibt die Anzahl der verschiedenen Ländernamen in einer Datei zurück, wobei nur die erforderlichen Spalten angegeben werden:
+Die folgende Abfrage gibt die Anzahl der verschiedenen Länder-/Regionsnamen in einer Datei zurück, wobei nur die erforderlichen Spalten angegeben werden:
 
 > [!NOTE]
 > Werfen Sie einen Blick auf die WITH-Klausel in der Abfrage unten und beachten Sie, dass am Ende der Zeile, in der Sie die Spalte *[country_name]* definieren, „2“ (ohne Anführungszeichen) steht. Dies bedeutet, dass die Spalte *[country_name]* die zweite Spalte in der Datei ist. Die Abfrage ignoriert alle Spalten in der Datei außer der zweiten.
@@ -219,14 +222,15 @@ Die folgende Abfrage gibt die Anzahl der verschiedenen Ländernamen in einer Dat
 SELECT
     COUNT(DISTINCT country_name) AS countries
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
 WITH (
-    --[country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2 2
+    --[country_code] VARCHAR (5),
+    [country_name] VARCHAR (100) 2
     --[year] smallint,
     --[population] bigint
 ) AS [r]

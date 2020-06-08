@@ -1,18 +1,18 @@
 ---
-title: Bestimmen Ihrer Veröffentlichungsoption in den Storefronts im kommerziellen Microsoft-Marketplace
-description: In diesem Artikel werden die Berechtigungskriterien und Veröffentlichungsanforderungen für Partner beschrieben, die sich über die Veröffentlichung von Apps in Microsoft AppSource und Azure Marketplace informieren möchten.
+title: Bestimmen Ihrer Veröffentlichungsoption im kommerziellen Microsoft-Marketplace
+description: In diesem Artikel werden die Eignungskriterien und Bedingungen für die Veröffentlichung von Angeboten in Microsoft AppSource und im Azure Marketplace beschrieben.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415737"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658058"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590661"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721374"
 ---
 ### <a name="container-repositories-and-images"></a>Containerrepositorys und -images
 
@@ -62,7 +62,7 @@ Die folgenden Vorschaucontainer sind öffentlich verfügbar. Die Microsoft-Conta
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Öffentliche „verwaltete“ Vorschau (Containerregistrierung: `containerpreview.azurecr.io`)
 
-Die folgenden Container für die verwaltete Vorschau werden in der Registrierung der Containervorschau gehostet und setzen eine Zugriffsbewerbung voraus. Weitere Informationen finden Sie unter [Cognitive Services-Zulassung](../../cognitive-services-gating-process.md).
+Die folgenden Container für die verwaltete Vorschau werden in der Registrierung der Containervorschau gehostet und setzen eine Zugriffsbewerbung voraus. Weitere Informationen zu Containern finden Sie in den folgenden Artikeln.
 
 | Dienst | Container | Container Registry/Repository/Imagename |
 |--|--|--|

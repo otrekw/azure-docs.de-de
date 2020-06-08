@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237146"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816351"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -49,9 +49,8 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |----|:----:|
 |Treiber|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPI Library||
-|Azure-Befehlszeilenschnittstelle ||
+|Azure CLI ||
 |Azure Machine Learning-Beispiele ||
-|Azure Machine Learning EDAT-Engine ||
 |Docker||
 |nginx||
 |NCCL 2.0 ||
@@ -68,9 +67,8 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |Anaconda Python||
 |Jupyter und Erweiterungen||
 |Jupyterlab und Erweiterungen||
-|Visual Studio Code ||
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>aus PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|Andere PyPi-Pakete|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>aus PyPI|Umfasst die meisten der AzureML-Zusatzpakete.  Um die vollständige Liste anzuzeigen, [öffnen Sie auf Ihrer Compute-Instanz ein Terminalfenster](how-to-run-jupyter-notebooks.md#terminal), und führen Sie Folgendes aus: <br/> `conda list -n azureml_py36 azureml*` |
+|Andere PyPi-Pakete|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-Pakete|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep Learning-Pakete|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
@@ -116,7 +114,7 @@ Sie können folgende Aktionen ausführen:
 
 * Erstellen einer Compute-Instanz. Geben Sie den Namen und den Azure-VM-Typ einschließlich GPUs an (dieser kann nach der Erstellung nicht mehr geändert werden), aktivieren bzw. deaktivieren Sie den SSH-Zugriff, und konfigurieren Sie optional Einstellungen für virtuelle Netzwerke. Sie können eine Instanz auch direkt anhand integrierter Notebooks, des Azure-Portals, einer Resource Manager-Vorlage oder des Azure Machine Learning SDK erstellen. Das Kontingent dedizierter Kerne pro Region, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Computecluster gemeinsam genutzt.
 * Aktualisieren der Registerkarte „Compute-Instanzen“
-* Starten, Beenden und erneutes Starten einer Compute-Instanz
+* Starten, Beenden und erneutes Starten einer Compute-Instanz. Beenden Sie die VM, wenn Sie sie nicht mehr verwenden, um Kosten zu sparen. Starten Sie sie dann erneut, wenn Sie sie benötigen.
 * Löschen einer Compute-Instanz
 
 Für jede Compute-Instanz in Ihrem Arbeitsbereich können Sie folgende Aktionen ausführen:

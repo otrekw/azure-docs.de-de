@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732897"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300065"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Linux
 
@@ -34,7 +34,7 @@ ms.locfileid: "81732897"
 Führen Sie den folgenden Maven-Befehl über die Eingabeaufforderung der Cloud Shell aus, um eine neue App mit dem Namen `helloworld` zu erstellen:
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 Ändern Sie anschließend Ihr Arbeitsverzeichnis in den Projektordner:
 
@@ -44,13 +44,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurieren des Maven-Plug-Ins
 
-Beim Prozess der Bereitstellung in Azure App Service werden Kontoanmeldeinformation aus der Azure CLI verwendet. [Melden Sie sich über die Azure CLI an](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), ehe Sie fortfahren.
+Der Prozess zur Bereitstellung in Azure App Service kann Ihre Azure-Anmeldeinformation automatisch aus der Azure CLI übernehmen. Wenn Sie Azure CLI nicht installiert haben, werden Sie vom Maven-Plug-In mit OAuth oder der Geräteanmeldung angemeldet. Überprüfen Sie bei Bedarf die Details zur [Authentifizierung mit Maven-Plug-Ins](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio).
 
-```azurecli
-az login
-```
-
-Dann können Sie die Bereitstellung konfigurieren, den maven-Befehl an der Eingabeaufforderung ausführen und die Standardkonfigurationen verwenden, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Confirm (Y/N)** (Bestätigen [ja/nein]) angezeigt wird. Drücken Sie dann **y**, um die Konfiguration abzuschließen. 
+Um die Bereitstellung zu konfigurieren, führen Sie den maven-Befehl an der Eingabeaufforderung aus und verwenden die Standardkonfigurationen, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Bestätigen [ja/nein]** angezeigt wird. Drücken Sie dann **‚j‘** , um die Konfiguration abzuschließen. 
 ```cmd
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
@@ -93,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > In diesem Artikel arbeiten wir nur mit Java-Apps, die in WAR-Dateien enthalten sind. Das Plug-In unterstützt auch JAR-Webanwendungen. Dies können Sie unter [Bereitstellen einer Spring Boot-App mit JAR-Datei in Azure App Service unter Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) ausprobieren.
 
-Navigieren Sie erneut zu `pom.xml`, um zu prüfen, ob die Plug-In-Konfiguration aktualisiert wurde. Sie können bei Bedarf andere Konfigurationen für den App Service direkt in Ihrer POM-Datei ändern. Einige gängige sind nachstehend aufgeführt:
+Öffnen Sie `pom.xml`, um die aktualisierte Konfiguration anzuzeigen.
+
+```bash
+code pom.xml
+```
+
+Sie können bei Bedarf die Konfigurationen für den App Service direkt in Ihrer POM-Datei ändern. Einige gängige sind nachstehend aufgeführt:
 
  Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
@@ -147,7 +149,7 @@ Die Ausführung dieses Befehls kann eine Minute in Anspruch nehmen.
 > [Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver und zum Abfragen von Daten](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Konfigurieren der Java-App](configure-custom-container.md)
+> [Konfigurieren der Java-App](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [CI/CD mit Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)

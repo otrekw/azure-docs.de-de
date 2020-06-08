@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 7b7580843bc5ad90ebc394c41e81f4d16f51ccb1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891457"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701766"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Erstellen von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage
 
@@ -110,7 +110,7 @@ Nachstehend finden Sie zwei Beispiele für vollständige Vorlagen zum Einrichten
 ```
 
 > [!NOTE]
-> * Der Name der Ressource weist das Format „übergeordnete Ressource/untergeordnete Ressource“ auf. Hier ist die übergeordnete Ressource die regionale Network Watcher Instanz (Format: NetworkWatcher_<RegionName>. Beispiel: NetworkWatcher_centraluseuap)
+> * Der Name der Ressource weist das Format „übergeordnete Ressource_untergeordnete Ressource“ auf. Hier ist die übergeordnete Ressource die regionale Network Watcher Instanz (Format: NetworkWatcher_RegionName. Beispiel: NetworkWatcher_centraluseuap)
 > * targetResourceId ist die Ressourcen-ID der Ziel-NSG.
 > * storageId ist die Ressourcen-ID des Zielspeicherkontos.
 
@@ -160,9 +160,14 @@ Sie können jede der oben aufgeführten Beispielvorlagen lokal als `azuredeploy.
 
 Führen Sie den folgenden Befehl in PowerShell aus, um die Vorlage bereitzustellen.
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> Mit den obigen Befehlen wird eine Ressource für die Ressourcengruppe „NetworkWatcherRG“ bereitgestellt, nicht für die Ressourcengruppe, die die NSG enthält.
 
 
 ## <a name="verifying-your-deployment"></a>Überprüfen der Bereitstellung

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 1167846c399430bd2db2eaa3114628ebb63ce639
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592320"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699654"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Einrichten eines Labs mit Schwerpunkt Deep Learning und Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services
 Dieser Artikel beschreibt, wie Sie ein Lab mit Schwerpunkt Deep Learning mit Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) mithilfe von Azure Lab Services einrichten. NLP ist eine Form der künstlichen Intelligenz (KI), die Computern Übersetzungs-, Spracherkennungs- und andere Sprachverständnisfunktionen bietet.  
@@ -40,7 +40,9 @@ Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab 
 | ------------ | ------------------ |
 | Größe des virtuellen Computers (VM) | Kleine GPU (Compute). Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
 | VM-Image | [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Dieses Image bietet Frameworks für Deep Learning sowie Tools für maschinelles Lernen und Data Science. Die vollständige Liste der auf diesem Image installierten Tools finden Sie im folgenden Artikel: [Was ist in DSVM enthalten?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Remotedesktopverbindung aktivieren | <p>Wenn Sie diese Einstellung aktivieren, können Lehrer/Dozenten und Kursteilnehmer mit Hilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen.</p><p>**Wichtig**: Beim Aktivieren dieser Einstellung wird auf Linux-Computern nur der **RDP**-Port geöffnet. Wenn RDP bereits für das VM-Image installiert und konfiguriert ist, können Sie/Kursteilnehmer über RDP eine Verbindung mit virtuellen Computern herstellen, ohne weitere Schritte ausführen zu müssen. <p>Wenn in dem VM-Image kein RDP installiert und konfiguriert ist, müssen Sie beim ersten Mal eine Verbindung mit dem Linux-Computer per SSH herstellen und dann RDP- und GUI-Pakete installieren, damit Sie/Studenten später eine Verbindung mit dem Linux-Computer per RDP herstellen können. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind.  |
+| Remotedesktopverbindung aktivieren | <p>Das Data Science-Image ist bereits für die Verwendung von X2Go konfiguriert, sodass Lehrkräfte und Kursteilnehmer eine Verbindung über einen Remotedesktop mit grafischer Benutzeroberfläche herstellen können.  Für X2Go ist es *nicht* erforderlich, die Einstellung **Remotedesktopverbindung aktivieren** zu aktivieren.  Diese Einstellung muss nur aktiviert werden, wenn Sie stattdessen RDP verwenden möchten.
+
+>**Wichtig**: Die Verwendung von X2Go mit dem Data Science-Image wird empfohlen. Wenn Sie jedoch stattdessen RDP verwenden möchten, müssen Sie SSH bei der ersten Verbindungsherstellung mit der Linux-VM verwenden und die RDP- und GUI-Pakete installieren.  Dann können Sie und Ihre Kursteilnehmer später mithilfe von RDP eine Verbindung mit der Linux-VM herstellen.  Weitere Informationen finden Sie unter [Aktivieren eines Remotedesktops mit GUI für Linux-VMs](how-to-enable-remote-desktop-linux.md).
 
 Das Image der Data Science Virtual Machine für Linux bietet die für Kurse dieser Art erforderlichen Deep Learning-Frameworks und -Tools. Es muss daher nach dem Erstellen des Vorlagen-Computers nicht weiter angepasst werden. Es kann zur Nutzung durch die Kursteilnehmer veröffentlicht werden. Wählen Sie auf der Vorlagenseite die Schaltfläche **Veröffentlichen** aus, um die Vorlage im Lab zu veröffentlichen.  
 

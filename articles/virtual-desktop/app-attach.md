@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612468"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742933"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
 > [!IMPORTANT]
-> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
+> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der privaten Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Windows Virtual Desktop-Umgebung einrichten.
@@ -41,7 +41,7 @@ Zunächst müssen Sie das Betriebssystemimage abrufen, das Sie für die MSIX-App
      >[!NOTE]
      >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](/windows-insider/at-home/).
 
-2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** aus.
+2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19041** oder höher aus.
 
 3. Wählen Sie **Bestätigen** aus, und wählen Sie dann die gewünschte Sprache aus. Wählen Sie anschließend **Bestätigen** erneut aus.
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Nachdem Sie die automatischen Updates deaktiviert haben, müssen Sie Hyper-V aktivieren, da Sie den „Mount-VHD“-Befehl zum Stagen und „Dismount-VHD“ zum Aufheben des Stagings verwenden. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>Diese Änderung erfordert, dass Sie den virtuellen Computer neu starten.
 
 Bereiten Sie im nächsten Schritt die VM-VHD für Azure vor, und laden Sie den sich ergebenden VHD-Datenträger in Azure hoch. Weitere Informationen finden Sie unter [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md).
 
@@ -257,7 +265,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
@@ -452,4 +460,4 @@ catch [Exception]
 
 Dieses Feature wird zurzeit nicht unterstützt, aber Sie können der Community in der [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen stellen.
 
-Sie können Feedback zu Windows Virtual Desktop auch auf dem [Windows Virtual Desktop-Feedback-Hub](https://aka.ms/MRSFeedbackHub) oder für die MSIX-App und das Pakettool auf dem [Feedback-Hub für das Feature zum Anfügen von Apps](https://aka.ms/msixappattachfeedback) und dem [Feedback-Hub für das MSIX-Pakettool](https://aka.ms/msixtoolfeedback) hinterlassen.
+Sie können Ihr Feedback in Bezug auf Windows Virtual Desktop auch im [Windows Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.

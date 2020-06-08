@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Node.js-API, SDK und Ressourcen'
 description: Erhalten Sie alle Informationen zur SQL Node.js-API und zum SDK einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB Node.js SDK.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 09/24/2018
-ms.author: dech
-ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982887"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650742"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982887"
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -359,7 +360,7 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 * Behebt Problem [100](https://github.com/Azure/azure-documentdb-node/issues/100): Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für Azure Cosmos DB-Zwecke. Verwenden Sie für alle Anforderungen der Bibliothek einen dedizierten Agent.
 
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
-* Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
+* Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81): ordnungsgemäße Verarbeitung von Bindestrichen in Medien-IDs
 
 ### <a name=""></a><a name="1.5.2"/>1.5.2</a>
 * Behebt Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
@@ -386,7 +387,7 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 
 ### <a name=""></a><a name="1.2.0"/>1.2.0</a>
 * Unterstützung für „GeoSpatial“-Index hinzugefügt.
-* „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden.
+* „ID“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden.
 * Neue Überschrift „Fortschritt der Indextransformation“ zu „ResourceResponse“ hinzugefügt.
 
 ### <a name=""></a><a name="1.1.0"/>1.1.0</a>

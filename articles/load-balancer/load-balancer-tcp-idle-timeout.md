@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456827"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780600"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurieren der TCP-Leerlauftimeout-Einstellungen für Azure Load Balancer
 
@@ -42,6 +42,10 @@ TCP-Keep-Alive eignet sich für Szenarien, in denen die Akkulaufzeit keine Einsc
 ![TCP-Timeout](./media/load-balancer-tcp-idle-timeout/image1.png)
 
 In den folgenden Abschnitten wird das Ändern von Leerlauftimeout-Einstellungen für öffentliche IP-Adressen und Lastenausgleichsressourcen beschrieben.
+
+>[!NOTE]
+> Der TCP-Leerlauftimeout wirkt sich nicht auf die Lastenausgleichsregeln des UDP-Protokolls aus.
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Festlegen des TCP-Timeouts für Ihre öffentliche IP auf Instanzebene auf 15 Minuten
 

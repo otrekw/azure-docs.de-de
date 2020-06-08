@@ -11,14 +11,14 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626716"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654504"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Laden von Daten aus Azure Data Lake Storage für SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Laden von Daten aus Azure Data Lake Storage für Synapse SQL
 
 In dieser Anleitung erfahren Sie, wie Sie mithilfe externer PolyBase-Tabellen Daten aus Azure Data Lake Storage laden. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung importieren.
 

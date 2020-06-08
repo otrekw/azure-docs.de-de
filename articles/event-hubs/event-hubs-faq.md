@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086367"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835613"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -150,9 +150,11 @@ Sie können mit einer niedrigen Anzahl von Durchsatzeinheiten (TUs) beginnen, z.
 Mit diesem Feature sind **keine Kosten** verbunden. 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Wie werden Durchsatzlimits durchgesetzt?
-Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
+Wenn der gesamte **eingehende** Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
 
-Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt und erhalten die Fehlermeldung, dass das Ausgangskontingent überschritten wurde. Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
+Wenn der gesamte **ausgehende** Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt. Es werden jedoch keine Fehlermeldungen generiert. 
+
+Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten (TUs), die reserviert und ausgewählt werden können?
 Bei einem mehrinstanzenfähigen Angebot können die Durchsatzeinheiten auf maximal 40 TUs erhöht werden. (Sie können bis zu 20 TUs im Portal auswählen und ein Supportticket erstellen, um diese Anzahl für den Namespace auf 40 TUs zu erhöhen.) Für eine Anzahl über 40 TUs umfasst Event Hubs das ressourcen- und kapazitätsbasierte Modell der **Event Hubs Dedicated-Cluster**. Dedicated-Cluster werden in Kapazitätseinheiten (Capacity Units, CUs) angeboten.
@@ -248,7 +250,7 @@ Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnost
 
 ### <a name="support-and-sla"></a>Support und SLA
 
-Technischer Support für Event Hubs steht über die [Communityforen](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)bereit. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
+Technischer Support für Event Hubs steht über die Seite mit [häufig gestellten Fragen zu Azure Service Bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html) von Microsoft zur Verfügung. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
 
 Weitere Informationen zu unserem SLA finden Sie auf der Seite [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) .
 

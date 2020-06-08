@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617197"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740398"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Unterstützung von hohem Datenverkehr für Application Gateway
 
@@ -51,7 +51,7 @@ Dieses Beispiel zeigt, wie Sie im Azure-Portal eine Warnung einrichten können, 
 > Sie können festlegen, dass die Warnung bei einem niedrigeren oder höheren CU-Auslastungsprozentsatz auftritt, je nachdem, wie empfindlich Sie auf potenzielle Datenverkehrsspitzen reagieren möchten.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Einrichten von WAF mit Geofilterung und Bot-Schutz, um Angriffe zu verhindern
-Wenn Sie vor Ihrer Anwendung noch eine zusätzliche Sicherheitsschicht benötigen, verwenden Sie die Application Gateway WAF_v2-SKU für WAF-Funktionen. Sie können die v2-SKU so konfigurieren, dass nur der Zugriff auf Ihre Anwendungen aus einem oder mehreren bestimmten Ländern zugelassen wird. Sie richten eine benutzerdefinierte WAF-Regel ein, um Datenverkehr basierend auf dem Geostandort explizit zuzulassen oder zu blockieren. Weitere Informationen finden Sie unter [Geofilterung benutzerdefinierter Regeln](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) und [Konfigurieren von benutzerdefinierten Regeln in Application Gateway WAF_v2-SKU mit PowerShell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Wenn Sie vor Ihrer Anwendung noch eine zusätzliche Sicherheitsschicht benötigen, verwenden Sie die Application Gateway WAF_v2-SKU für WAF-Funktionen. Sie können die v2-SKU so konfigurieren, dass nur der Zugriff auf Ihre Anwendungen aus einem oder mehreren bestimmten Ländern bzw. aus einer oder mehreren Regionen zugelassen wird. Sie richten eine benutzerdefinierte WAF-Regel ein, um Datenverkehr basierend auf dem Geostandort explizit zuzulassen oder zu blockieren. Weitere Informationen finden Sie unter [Geofilterung benutzerdefinierter Regeln](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) und [Konfigurieren von benutzerdefinierten Regeln in Application Gateway WAF_v2-SKU mit PowerShell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
 Aktivieren Sie den Bot-Schutz, um bekannte bösartige Bots zu blockieren. Dadurch sollte die Menge des Datenverkehrs, der zu Ihrer Anwendung gelangt, reduziert werden. Weitere Informationen finden Sie unter [Bot-Schutz mit Einrichtungsanweisungen](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 

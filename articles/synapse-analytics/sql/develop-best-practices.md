@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086350"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834950"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Bewährte Methoden für die Entwicklung für Synapse SQL
 In diesem Artikel werden Anleitungen und bewährte Methoden für die Entwicklung Ihrer Data Warehouse-Lösung beschrieben. 
@@ -154,7 +154,7 @@ Folglich erzielen Sie eine bessere Leistung. Weitere Informationen finden Sie un
 
 Wenn Ihre gespeicherten Daten nicht partitioniert sind, sollten Sie eine Partitionierung in Erwägung ziehen, damit Sie diese Funktionen verwenden können, um Abfragen zu optimieren, die auf diese Dateien ausgerichtet sind.
 
-Bei der [Abfrage partitionierter Spark-Tabellen](develop-storage-files-spark-tables.md) aus SQL On-Demand ist die Abfrage automatisch nur auf die benötigten Dateien ausgerichtet.
+Bei der [Abfrage partitionierter externer Apache Spark für Azure Synapse-Tabellen](develop-storage-files-spark-tables.md) in SQL On-Demand ist die Abfrage automatisch nur auf die erforderlichen Dateien ausgerichtet.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Verwenden von CETAS zum Verbessern von Abfrageleistung und Verknüpfungen
 
@@ -166,7 +166,7 @@ Da CETAS Parquet-Dateien generiert, werden Statistiken automatisch erstellt, wen
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Das [SQL-Poolforum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) ist ein Ort, an dem Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen können.  
+Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für SQL-Pool ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) können Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen.  
 
 Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure SQL-Pool](https://stackoverflow.com/questions/tagged/azure-sqldw) nutzen.
  

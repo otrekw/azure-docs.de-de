@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402942"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773167"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
 
@@ -76,6 +76,9 @@ Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Verwenden Sie d
 3. Klicken Sie auf **...** und dann auf **Virtuellen Hub bearbeiten**.
 4. Scrollen Sie auf der Seite **Virtuellen Hub bearbeiten** nach unten, und aktivieren Sie das Kontrollkästchen **Tabelle für Routing verwenden**.
 5. Fügen Sie der Spalte **Wenn das Zielpräfix folgendermaßen lautet** die Adressräume hinzu. Fügen Sie der Spalte **An Adresse für nächsten Hop senden** die private IP-Adresse der Netzwerkschnittstelle der DMZ des virtuellen Netzwerkgeräts hinzu.
+>[!NOTE]
+>Das DMZ NVA-Netzwerk kann für den lokalen Hub verwendet werden.
+>
 6. Klicken Sie auf **Bestätigen**, um die Hubressource mit den Einstellungen der Routingtabelle zu aktualisieren.
 
 ## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. Herstellen der VNET-Verbindungen

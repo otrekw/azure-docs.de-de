@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335305"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742770"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
@@ -52,7 +52,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Verf
 
 Um die Ergebnisse geografisch in den für Ihren Benutzer relevanten Bereich zu lenken, fügen Sie immer so viele Standortangaben wie möglich hinzu. Möglicherweise möchten Sie die Suchergebnisse einschränken, indem Sie einige Eingabetypen angeben:
 
-* Legen Sie den Parameter `countrySet` fest. Sie können ihn z. B. auf `US,FR` festlegen. Standardmäßig durchsucht die API die gesamte Welt, sodass sie möglicherweise überflüssige Ergebnisse zurückgeben kann. Wenn Ihre Abfrage keinen `countrySet`-Parameter umfasst, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens *Bellevue* liefert z. B. Ergebnisse aus den USA und Frankreich, da in beiden Ländern eine Stadt mit dem Namen *Bellevue* existiert.
+* Legen Sie den Parameter `countrySet` fest. Sie können ihn z. B. auf `US,FR` festlegen. Standardmäßig durchsucht die API die gesamte Welt, sodass sie möglicherweise überflüssige Ergebnisse zurückgeben kann. Wenn Ihre Abfrage keinen `countrySet`-Parameter umfasst, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens *Bellevue* liefert z. B. Ergebnisse aus den USA und Frankreich, da in beiden Ländern/Regionen eine Stadt mit dem Namen *Bellevue* existiert.
 
 * Mit den Parametern `btmRight` und `topleft` können Sie die Begrenzungsrahmen festlegen. Diese Parameter schränken die Suche auf ein bestimmtes Gebiet auf der Karte ein.
 
@@ -70,7 +70,7 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 * Verwenden Sie den Parameter `idxSet`, um den genauen Satz von Ergebnistypen zu priorisieren. Um einen genauen Satz von Ergebnissen zu priorisieren, können Sie eine durch Trennzeichen getrennte Liste von Indizes übermitteln. In der Liste spielt die Reihenfolge der Elemente keine Rolle. Azure Maps unterstützt die folgenden Indizes:
 
 * `Addr` - **Adressbereiche**: Adresspunkte, die über Anfang und Ende der Straße interpoliert werden. Diese Punkte werden als Adressbereiche dargestellt.
-* `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land, ein Bundesstaat oder eine Stadt sein.
+* `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land/eine Region, ein Bundesstaat oder eine Stadt sein.
 * `PAD` - **Punktadressen**: Adressen, die einen Straßennamen und eine Nummer enthalten. Punktadressen können in einem Index gefunden werden. Ein Beispiel ist *Soquel Dr 2501*. Eine Punktadresse bietet den höchsten Grad an Genauigkeit, der für Adressen verfügbar ist.  
 * `POI` - **Points of Interest**: Punkte auf einer Karte, die als beachtenswert angesehen werden oder die interessant sein könnten. Die [Suchadressen-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine Points of Interest (POIs) zurück.  
 * `Str` - **Straßen:** Straßen auf der Karte.
@@ -480,7 +480,7 @@ url.QueryEscape(query)
 
 Bei einer POI-Suche können Sie POI-Ergebnisse nach Namen anfordern. Sie können z. B. nach dem Namen eines Unternehmens suchen. 
 
-Es wird dringend empfohlen, den Parameter `countrySet` zu verwenden, um die Länder anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Standardmäßig wird weltweit gesucht. Diese umfassende Suche könnte überflüssige Ergebnisse liefern und sehr lange dauern.
+Es wird dringend empfohlen, den Parameter `countrySet` zu verwenden, um die Länder/Regionen anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Standardmäßig wird weltweit gesucht. Diese umfassende Suche könnte überflüssige Ergebnisse liefern und sehr lange dauern.
 
 ### <a name="brand-search"></a>Markensuche
 
@@ -769,7 +769,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Adressbereich**: Der Bereich der Adresspunkte, die über Anfang und Ende der Straße interpoliert werden.  
 
-* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land, Bundesland, Stadt. 
+* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land/Region, Bundesland, Stadt. 
 
 * **POI**: Punkte auf einer Karte, die beachtenswert sind und interessant sein können.
 

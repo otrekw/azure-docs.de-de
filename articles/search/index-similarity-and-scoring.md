@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254063"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679658"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
@@ -36,7 +36,9 @@ Sie können die Sortierung der verschiedenen Felder anpassen, indem Sie ein benu
 
 Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Feldern, Funktionen und Parametern. Weitere Informationen zum Definieren von Bewertungsprofilen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Index für Azure Cognitive Search](index-add-scoring-profiles.md).
 
-## <a name="scoring-statistics"></a>Bewertungsstatistiken
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Bewertungsstatistiken und persistente Sitzungen (Vorschau)
 
 Aus Gründen der Skalierbarkeit verteilt Azure Cognitive Search jeden Index horizontal mithilfe eines Shardingprozesses. Dies bedeutet, dass Teile eines Indexes physisch voneinander getrennt sind.
 
@@ -45,13 +47,21 @@ Standardmäßig wird die Bewertung eines Dokuments basierend auf statistischen E
 Wenn Sie die Bewertung lieber auf Grundlage der statistischen Eigenschaften in allen Shards berechnen möchten, können Sie dies tun, indem Sie *scoringStatistics=global* als [Abfrageparameter](https://docs.microsoft.com/rest/api/searchservice/search-documents) hinzufügen (oder *"scoringStatistics": "global"* als Textkörperparameter der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+Durch die Verwendung von „scoringStatistics“ wird sichergestellt, dass alle Shards in demselben Replikat die gleichen Ergebnisse liefern. Dennoch können sich unterschiedliche Replikate geringfügig voneinander unterscheiden, da sie immer mit den neuesten Änderungen am Index aktualisiert werden. In einigen Szenarien möchten Sie möglicherweise, dass die Benutzer während einer Abfragesitzung konsistentere Ergebnisse erhalten. In solchen Szenarien können Sie eine `sessionId` in den Abfragen bereitstellen. Die `sessionId` ist eine eindeutige Zeichenfolge, die Sie erstellen, um auf eine eindeutige Benutzersitzung zu verweisen.
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+Solange dieselbe `sessionId` verwendet wird, wird ein bestmöglicher Versuch unternommen, das gleiche Replikat als Ziel zu verwenden und die Konsistenz der Ergebnisse zu erhöhen, die den Benutzern angezeigt werden. 
 
 > [!NOTE]
-> Für den Parameter `scoringStatistics` ist ein Administrator-API-Schlüssel erforderlich.
+> Wenn Sie wiederholt die gleichen `sessionId`-Werte verwenden, können der Lastenausgleich der Anforderungen über Replikate hinweg und die Leistung des Suchdiensts beeinträchtigt werden. Der als „sessionId“ verwendete Wert darf nicht mit dem Zeichen „_“ beginnen.
 
 ## <a name="similarity-ranking-algorithms"></a>Ähnlichkeitsalgorithmus für die Rangfolge
 
@@ -59,16 +69,9 @@ Azure Cognitive Search unterstützt zwei verschiedene Ähnlichkeitsalgorithmen f
 
 Aktuell können Sie angeben, welchen Ähnlichkeitsalgorithmus für die Rangfolge Sie verwenden möchten. Weitere Informationen finden Sie unter [Ähnlichkeitsalgorithmus für die Rangfolge in Azure Cognitive Search](index-ranking-similarity.md).
 
-## <a name="watch-this-video"></a>Video ansehen
+Das folgende Videosegment bietet eine schnelle Übersicht über die in Azure Cognitive Search verwendeten Ähnlichkeitsalgorithmen. Sie können sich das vollständige Video ansehen, um weitere Hintergrundinformationen zu erhalten.
 
-In diesem 16-minütigen Video erläutert Softwareentwickler Raouf Merouche den Prozess der Indizierung und Abfrage sowie das Erstellen von Bewertungsprofilen. Es vermittelt eine gute Vorstellung davon, was im Hintergrund passiert, wenn Ihre Dokumente indiziert und abgerufen werden.
-
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ In Minute 2 bis 3 werden folgende Aspekte der Indizierung behandelt: Textverarbeitung und lexikalische Analyse.
-+ In Minute 3 bis 4 wird folgender Aspekt der Indizierung behandelt: invertierte Indizes.
-+ In Minute 4 bis 6 werden folgende Aspekte der Abfrage behandelt: Abrufen und Rangzuweisung.
-+ In Minute 7 bis 16 werden Bewertungsprofile behandelt.
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>Weitere Informationen
 

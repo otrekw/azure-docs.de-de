@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/1/2020
-ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653138"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
@@ -151,6 +151,12 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MariaDB-Dokumentati
 ### <a name="time_zone"></a>time_zone
 
 Die Zeitzonentabellen können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden. Informationen zum Aufrufen der gespeicherten Prozedur und zum Festlegen der globalen Zeitzonen oder Zeitzonen auf Sitzungsebene finden Sie in den Artikeln für das [Azure-Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) und die [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
+
+### <a name="innodb_file_per_table"></a>innodb_file_per_table
+
+MariaDB speichert die InnoDB-Tabelle in verschiedenen Tabellenbereichen basierend auf der Konfiguration, die Sie während der Tabellenerstellung angegeben haben. Der [Systemtabellenbereich](https://mariadb.com/kb/en/innodb-system-tablespaces/) ist der Speicherbereich für das InnoDB-Datenwörterbuch. Ein [file-per-table-Tabellenbereich](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) enthält die Daten und Indizes für eine einzelne InnoDB-Tabelle und wird im Dateisystem in einer eigenen Datendatei gespeichert. Dieses Verhalten wird vom `innodb_file_per_table`-Serverparameter gesteuert. Durch Festlegen von `innodb_file_per_table` auf `OFF` werden Tabellen von InnoDB im Systemtabellenbereich erstellt. Andernfalls werden die Tabellen von InnoDB im „file-per-table“-Tabellenbereich erstellt.
+
+Azure Database for MariaDB unterstützt bis zu **ein Terabyte** in einer einzelnen Datendatei. Wenn die Datenbankgröße ein Terabyte überschreitet, sollten Sie die Tabelle im [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table)-Tabellenbereich erstellen. Wenn eine einzelne Tabelle größer als ein Terabyte ist, sollten Sie die Partitionstabelle verwenden.
 
 ## <a name="storage-engine-support"></a>Speicher-Engine-Unterstützung
 

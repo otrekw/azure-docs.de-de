@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: a6ea53e098a002e902d6ee6632f08dd7f2b63ca5
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: f48a54f2f220d83720d4a3233e2fb97a9efa64ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811664"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654675"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -40,7 +40,7 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlunge
 |**Zugriff auf Funktions-App nur über HTTPS gestatten**|Aktivieren Sie den Zugriff vom Typ „Nur HTTPS“ für Funktions-Apps. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.<br>(Zugehörige Richtlinie: Zugriff auf Funktions-App nur über HTTPS gestatten)|Medium|**J**|Funktionen-App|
 |**Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für Ihre virtuellen Computer.<br>(Zugehörige Richtlinie: Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.)|Hoch/Mittel|N|Virtueller Computer|
 |**Die IP-Weiterleitung auf dem virtuellen Computer muss deaktiviert sein**|Aktivieren Sie die IP-Weiterleitung. Wenn die IP-Weiterleitung auf der NIC eines virtuellen Computers aktiviert ist, kann der Computer Datenverkehr empfangen, der für andere Ziele bestimmt ist. Da die IP-Weiterleitung nur selten benötigt wird (z. B. bei Verwendung des virtuellen Computers als virtuelles Netzwerkgerät), sollte dieser Vorgang vom Netzwerksicherheitsteam geprüft werden.<br>(Zugehörige Richtlinie: [Vorschau]: IP-Weiterleitung für Ihre VM muss deaktiviert sein)|Medium|N|Virtueller Computer|
-|**Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden**|Wenden Sie die Just-In-Time-VM-Zugriffssteuerung (JIT) an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie per JIT nur für einen begrenzten Zeitraum zu öffnen.<br>(Zugehörige Richtlinie: Auf VMs muss die Just-in-Time-Netzwerkzugriffssteuerung angewendet werden)|High|N|Virtueller Computer|
+|**Verwaltungsports von virtuellen Computern sollten mit Just-In-Time-Netzwerkzugriffssteuerung geschützt werden**|Wenden Sie die Just-In-Time-VM-Zugriffssteuerung (JIT) an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie per JIT nur für einen begrenzten Zeitraum zu öffnen.<br>(Zugehörige Richtlinie: „Management ports of virtual machines should be protected with just-in-time network access control“ (Verwaltungsports von virtuellen Computern sollten mit Just-In-Time-Netzwerkzugriffssteuerung geschützt werden))|High|N|Virtueller Computer|
 |**Verwaltungsports sollten auf Ihren virtuellen Computern geschlossen werden**|Härten Sie die Netzwerksicherheitsgruppe Ihrer virtuellen Computer, um den Zugriff auf Verwaltungsports einzuschränken.<br>(Zugehörige Richtlinie: Verwaltungsports müssen auf Ihren VMs geschlossen sein)|High|N|Virtueller Computer|
 |**Sichere Übertragung in Speicherkonten sollte aktiviert werden**|Ermöglichen Sie die sichere Übertragung auf Speicherkonten. Sichere Übertragung ist eine Option, die erzwingt, dass Ihr Storage-Konto nur Anforderungen von sicheren Verbindungen (HTTPS) akzeptiert. Durch die Verwendung von HTTPS wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, z. B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.<br>(Zugehörige Richtlinie: Für Speicherkonten muss die sichere Übertragung aktiviert sein)|High|**J**|Speicherkonto|
 |**Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für in Ihren Subnetzen bereitgestellte Ressourcen.<br>(Zugehörige Richtlinie: Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden.<br>Diese Richtlinie ist standardmäßig deaktiviert.)|Hoch/Mittel|N|Subnet|
@@ -64,9 +64,9 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlunge
 
 |Empfehlung|Beschreibung und zugehörige Richtlinie|severity|Schnelle Behebung aktiviert?([Weitere Informationen](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Ressourcentyp|
 |----|----|----|----|----|
-|**Zugriff auf Webanwendung nur über HTTPS gestatten**|Beschränken Sie den Zugriff von Webanwendungen nur auf HTTPS.<br>(Zugehörige Richtlinie: )|Medium|N|App Service|
-|**Zugriff auf Funktions-App nur über HTTPS gestatten**|Beschränken Sie den Zugriff von Funktionen-Apps nur auf HTTPS.<br>(Zugehörige Richtlinie: )|Medium|N|App Service|
-|**Auf API-Apps sollte nur über HTTPS zugegriffen werden können**|Beschränken Sie den Zugriff von API-Apps auf HTTPS.<br>(Zugehörige Richtlinie: )|Medium|N|App Service|
+|**Zugriff auf Webanwendung nur über HTTPS gestatten**|Aktivieren Sie Zugriff vom Typ „Nur HTTPS“ für Webanwendungen. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.<br>(Zugehörige Richtlinie: Zugriff auf Webanwendung nur über HTTPS gestatten)|Medium|**J**|App Service|
+|**Zugriff auf Funktions-App nur über HTTPS gestatten**|Aktivieren Sie den Zugriff vom Typ „Nur HTTPS“ für Funktions-Apps. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.<br>(Zugehörige Richtlinie: Zugriff auf Funktions-App nur über HTTPS gestatten)|Medium|**J**|App Service|
+|**Auf API-Apps sollte nur über HTTPS zugegriffen werden können**|Beschränken Sie den Zugriff von API-Apps auf HTTPS.<br>(Zugehörige Richtlinie: „Zugriff auf API-App nur über HTTPS gestatten“)|Medium|N|App Service|
 |**Remotedebuggen sollte für Webanwendungen deaktiviert werden**|Deaktivieren Sie das Debuggen für eine Webanwendung, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Web-App geöffnet sein.<br>(Zugehörige Richtlinie: Remotedebuggen für Webanwendung deaktivieren)|Niedrig|**J**|App Service|
 |**Remotedebuggen sollte für Funktions-Apps deaktiviert werden**|Deaktivieren Sie das Debuggen für eine Funktionen-App, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein.<br>(Zugehörige Richtlinie: Remotedebuggen für Funktions-App deaktivieren)|Niedrig|**J**|App Service|
 |**Remotedebuggen für API-App deaktivieren**|Deaktivieren Sie das Debuggen für eine API-App, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine API-App geöffnet sein.<br>(Zugehörige Richtlinie: Remotedebuggen für API-App deaktivieren)|Niedrig|**J**|App Service|

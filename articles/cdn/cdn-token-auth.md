@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929127"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745458"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -33,7 +33,7 @@ Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, 
 
 Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vertrauenswürdigen Website generiert werden. Dazu müssen die Anforderungen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden der anfordernden Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können die Anforderungen einrichten, indem Sie einen oder mehrere der folgenden Parameter verwenden:
 
-- Land: Lassen Sie Anforderungen zu, die aus den Ländern/Regionen stammen, die durch den [Ländercode](/previous-versions/azure/mt761717(v=azure.100)) angegeben sind, oder verweigern Sie solche Anforderungen.
+- Land/Region: Lassen Sie Anforderungen zu, die aus den Ländern/Regionen stammen, die durch den [Länder-/Regionscode](/previous-versions/azure/mt761717(v=azure.100)) angegeben sind, oder verweigern Sie solche Anforderungen.
 - URL: Lassen Sie nur Anforderungen zu, die der angegebenen Ressource oder dem Pfad entsprechen.
 - Host: Lassen Sie Anforderungen zu, die die im Anforderungsheader angegebenen Hosts verwenden, oder verweigern Sie solche Anforderungen.
 - Verweiser: Lassen Sie Anforderungen vom angegebenen Verweiser zu, oder verweigern Sie solche Anforderungen.
@@ -120,11 +120,11 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](/previous-versions/azure/mt761717(v=azure.100)). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
+      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden abgelehnt. Verwenden Sie für jedes Land/jede Region einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](/previous-versions/azure/mt761717(v=azure.100)). Trennen Sie alle Länder/Regionen jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden zugelassen. Die Implementierung ist identisch mit dem <b>ec_country_allow</b>-Parameter. Ist ein Ländercode sowohl im <b>ec_country_allow</b>- als auch im <b>ec_country_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_country_allow</b> Vorrang.</td>
+      >    <td>Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern/Regionen stammen. Anforderungen aus allen anderen Ländern/Regionen werden zugelassen. Die Implementierung ist identisch mit dem <b>ec_country_allow</b>-Parameter. Ist ein Länder-/Regionscode sowohl im <b>ec_country_allow</b>-Parameter als auch im <b>ec_country_deny</b>-Parameter vorhanden, hat der <b>ec_country_allow</b>-Parameter Vorrang.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -195,7 +195,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Preise für Azure CDN-Funktionen und -Anbieter
 

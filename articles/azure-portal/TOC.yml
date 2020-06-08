@@ -14,7 +14,7 @@
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Festlegen Ihrer Azure-Portaleinstellungen
       href: set-preferences.md
@@ -70,6 +70,8 @@
       href: azure-portal-safelist-urls.md
     - name: Struktur von Azure-Dashboards
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77211421"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778243"
 ---
 ## <a name="general-entity-types"></a>Allgemeine Entitätstypen:
 
@@ -38,7 +38,7 @@ Sprachen:
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
 | –          | Berufe, z. B. `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
-### <a name="location"></a>Location
+### <a name="location"></a>Standort
 
 Natürliche und von Menschen hergestellte Wahrzeichen, Strukturen, geografische Merkmale und geopolitische Entitäten.
 
@@ -49,7 +49,7 @@ Sprachen:
 | Name des Untertyps              | BESCHREIBUNG                                                                              | Erst ab dieser Modellversion verfügbar |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | –                       | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitische Entität (GPE) – nur Englisch| Städte, Länder, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+| Geopolitische Entität (GPE) – nur Englisch| Städte, Länder, Regionen, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organization  
 
@@ -184,6 +184,6 @@ Sprachen:
 | Prozentwert  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
 | Age         | `90 day old`, `30 years old` |
-| Währung    | `$10.99`, `€30.00`           |
+| Währung    | `$10.99`, `&euro;30.00`           |
 | Dimension   | `10 miles`, `40 cm`          |
 | Temperatur | `32 degrees`, `10°C`         |
