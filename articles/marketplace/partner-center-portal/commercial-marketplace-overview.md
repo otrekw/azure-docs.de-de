@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 05/19/2020
+ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270399"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724818"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das kommerzielle Marketplace-Portal in Partner Center
 
@@ -26,31 +26,15 @@ Unternehmen, Regierungsbehörden und Organisationen jeder Größe finden Geschä
 
 Partner Center ist der zentrale Ort für Microsoft-Partner. Für Organisationen, die die Markteinführung mit Microsoft durchführen und den kommerziellen Marketplace nutzen, ist Partner Center das Portal, in dem Herausgeber Angebote erstellen und verwalten, Demos von Testversionen bereitstellen und Analysen zur Angebotsleistung anzeigen.
 
-## <a name="migration-from-cloud-partner-portal"></a>Migration vom Cloud-Partnerportal
+## <a name="migration-from-the-cloud-partner-portal"></a>Migration vom Cloud-Partnerportal
 
-Partner Center wird ständig weiterentwickelt, um alle Aspekte unserer Beziehung mit Softwareherstellern besser integrieren zu können. Im Rahmen dieser Weiterentwicklung migrieren wir das [Cloud-Partnerportal](https://cloudpartner.azure.com/) zu Partner Center.
+Partner Center wird ständig weiterentwickelt, um alle Aspekte unserer Beziehung mit Softwareherstellern besser integrieren zu können. Im Rahmen dieser Weiterentwicklung wurde die gesamte Angebotsverwaltung für den kommerziellen Marketplace vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) zu Partner Center migriert.
 
-Bestehende Herausgeber im kommerziellen Marketplace erwartet eine vertraute, jedoch verbesserte Umgebung mit intuitiver Benutzeroberfläche. Herausgeber werden durch Benachrichtigungen im Portal und durch E-Mail-Benachrichtigungen über die Migration informiert. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung hat keine negativen Auswirkungen auf die Kunden.
-
->[!NOTE]
->Derzeit unterstützt Partner Center die Erstellung und Verwaltung einiger Angebotstypen, wie in der folgenden Tabelle angegeben. Weitere Angebotstypen werden in Kürze unterstützt, wenn wir die gesamte Angebotsverwaltung zu Partner Center migrieren.
-
-|Angebotstyp  |Vom Cloud-Partnerportal zu Partner Center migrierte Angebotsverwaltung  |
-|---------|---------|
-|Software-as-a-Service (SaaS)     | Jetzt verfügbar       |
-|Dynamics 365 for Customer Engagement & PowerApps     | Jetzt verfügbar         |
-|Dynamics 365 for Operations     | Jetzt verfügbar        |
-|Dynamics 365 for Business Central     | Jetzt verfügbar        |
-|Azure-Anwendung     | Jetzt verfügbar        |
-|Virtueller Azure-Computer     | Allgemeine Verfügbarkeit April–Mai 2020        |
-|Azure-Container     | Allgemeine Verfügbarkeit April–Mai 2020        |
-|Beratungsdienst     | Allgemeine Verfügbarkeit April–Mai 2020        |
-|IoT Edge-Modul     | Allgemeine Verfügbarkeit April–Mai 2020        |
-|Power BI-App    | Allgemeine Verfügbarkeit April–Mai 2020        |
+Vorhandene Herausgeber, die zuvor das Cloud-Partnerportal verwenden haben, finden in Partner Center eine vertraute, aber verbesserte und intuitive Benutzeroberfläche vor. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung hat keine negativen Auswirkungen auf die Kunden.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbesserungen der Benutzeroberfläche für die Veröffentlichung und Angebotsverwaltung
 
-Mit dem Übergang zu Partner Center stehen neben den Verbesserungen der Benutzeroberfläche neue Funktionen für Herausgeber zur Verfügung.  Ausführliche Informationen hierzu finden Sie unter [Häufig gestellte Fragen zur Migration vom Cloud-Partnerportal zu Partner Center](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
+Mit dem Übergang zu Partner Center stehen neben den Verbesserungen der Benutzeroberfläche neue Funktionen für Herausgeber zur Verfügung.  Ausführliche Informationen hierzu finden Sie unter [Häufig gestellte Fragen zur Migration vom Cloud-Partnerportal zu Partner Center](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
 
 ### <a name="account-and-user-management-updates"></a>Aktualisierungen der Konto- und Benutzerverwaltung
 

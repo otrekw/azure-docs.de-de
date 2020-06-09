@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725532"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -37,9 +37,11 @@ Das folgende Diagramm zeigt die Teile, aus denen sich das [Custom Speech-Portal]
 
 4. [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md): Bewerten Sie die Genauigkeit des Spracherkennungsmodells. Das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) stellt eine *Wort-Fehler-Rate* bereit, mit der bestimmt werden kann, ob zusätzliches Training erforderlich ist. Wenn Sie mit der Genauigkeit zufrieden sind, können Sie die Speech-Dienst-APIs direkt verwenden. Wenn Sie die Genauigkeit um durchschnittlich 5 – 20 % verbessern möchten, verwenden Sie die Registerkarte **Training** im Portal, um zusätzliche Trainingsdaten hochzuladen, z.B. menschenmarkierte Transkripte und zugehörigen Text.
 
-5. [Trainieren des Modells](how-to-custom-speech-train-model.md): Verbessern Sie die Genauigkeit Ihres Spracherkennungsmodells, indem Sie schriftliche Transkripte (10 – 1.000 Stunden) und zugehörigen Text (< 200 MB) zusammen mit Ihren Audiotestdaten bereitstellen. Mithilfe dieser Daten kann das Spracherkennungsmodell trainiert werden. Testen Sie das Modell nach dem Training erneut. Wenn Sie mit dem Ergebnis zufrieden sind, können Sie das Modell bereitstellen.
+5. [Verbessern der Genauigkeit:](how-to-custom-speech-improve-accuracy.md) Wählen Sie strategisch zusätzliche Trainingsdaten, um die Qualität des Spracherkennungsmodells basierend auf Ihrem Szenario zu verbessern.
 
-6. [Bereitstellen des Modells](how-to-custom-speech-deploy-model.md): Erstellen Sie einen benutzerdefinierten Endpunkt für Ihr Spracherkennungsmodell, und verwenden Sie es in Ihren Anwendungen, Tools oder Produkten.
+6. [Trainieren des Modells](how-to-custom-speech-train-model.md): Verbessern Sie die Genauigkeit Ihres Spracherkennungsmodells, indem Sie schriftliche Transkripte (10 – 1.000 Stunden) und zugehörigen Text (< 200 MB) zusammen mit Ihren Audiotestdaten bereitstellen. Mithilfe dieser Daten kann das Spracherkennungsmodell trainiert werden. Testen Sie das Modell nach dem Training erneut. Wenn Sie mit dem Ergebnis zufrieden sind, können Sie das Modell bereitstellen.
+
+7. [Bereitstellen des Modells](how-to-custom-speech-deploy-model.md): Erstellen Sie einen benutzerdefinierten Endpunkt für Ihr Spracherkennungsmodell, und verwenden Sie es in Ihren Anwendungen, Tools oder Produkten.
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 

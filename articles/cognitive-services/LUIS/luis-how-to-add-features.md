@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592303"
+ms.locfileid: "83654078"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Verstärken des Signals von Wortlisten mithilfe von Features
 
@@ -49,8 +49,23 @@ Machen Sie sich mit den [Konzepten](luis-concept-feature.md) vertraut, um zu erf
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > Eine Begriffsliste kann über die kontextbezogene Symbolleiste auf der Seite **ML Features** (ML-Features) gelöscht oder deaktiviert werden.
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>Globale Ausdrucksliste für die gesamte App
+
+Eine Ausdrucksliste sollte auf die Absicht oder Entität angewendet werden, für deren Unterstützung sie vorgesehen ist. Manchmal empfiehlt es sich jedoch, eine Ausdruckliste als **globales** Feature auf die gesamte App anzuwenden.
+
+Wählen Sie auf der Seite „ML-Features“ die Ausdrucksliste und anschließend oben auf der kontextbezogenen Symbolleiste die Option **Global machen** aus.
+
+## <a name="model-as-a-feature"></a>Modell als Feature
+
+Eine Entität kann als [Feature für eine Absicht oder Entität](luis-concept-feature.md) fungieren.
+
+Wenn Sie einer Absicht eine Entität als Feature hinzufügen möchten, wählen Sie auf der Seite „Absichten“ die Absicht und anschließend über der kontextbezogenen Symbolleiste die Option **+ Feature hinzufügen** aus. Die Liste enthält alle Ausdruckslisten und Entitäten, die als Feature angewendet werden können.
+
+Wenn Sie einer anderen Entität eine Entität als Feature hinzufügen möchten, können Sie dazu entweder die [Entitätspalette](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) auf der Detailseite der Absicht verwenden oder das [Feature auf der Detailseite der Entität hinzufügen](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

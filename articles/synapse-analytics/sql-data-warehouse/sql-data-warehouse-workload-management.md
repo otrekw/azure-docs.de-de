@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 23ede806b627ad0f77e325ab391d37347f4bb29f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744223"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650448"
 ---
 # <a name="what-is-workload-management"></a>Worum geht es bei der Workloadverwaltung?
 
-Das Ausführen gemischter Workloads kann bei ausgelasteten Systemen zu Ressourcenproblemen führen.  Lösungsarchitekten suchen nach Möglichkeiten zum Trennen klassischer Data Warehousing-Aktivitäten (z.B. Laden, Transformieren und Abfragen von Daten), um sicherzustellen, dass genügend Ressourcen zum Einhalten von SLAs vorhanden sind.  
+Das Ausführen gemischter Workloads kann bei ausgelasteten Systemen zu Ressourcenproblemen führen.  Lösungsarchitekten suchen nach Möglichkeiten zum Trennen klassischer Data Warehousing-Aktivitäten (z. B. Laden, Transformieren und Abfragen von Daten), um sicherzustellen, dass genügend Ressourcen zum Einhalten von SLAs vorhanden sind.  
 
 Die Isolation physischer Server kann zu Bereichen in einer Infrastruktur führen, die nicht ausgelastet, überlastet oder in einem Zustand sind, in dem Caches ständig auf das Starten und Beenden von Hardware vorbereitet werden.  Mit einem erfolgreichen Verwaltungsschema für Workloads werden Ressourcen effektiv verwaltet, eine hochgradig effiziente Ressourcennutzung sichergestellt und die Rendite (ROI) maximiert.
 
@@ -38,13 +38,13 @@ Die Leistungskapazität eines Data Warehouse richtet sich nach den [Data Warehou
 
 ## <a name="workload-management-concepts"></a>Workloadverwaltungskonzepte
 
-In der Vergangenheit haben Sie für SQL Analytics in Azure Synapse die Abfrageleistung über [Ressourcenklassen](resource-classes-for-workload-management.md) verwaltet.  Mithilfe von Ressourcenklassen konnte einer Abfrage Arbeitsspeicher basierend auf der Rollenmitgliedschaft zugewiesen werden.  Die größte Herausforderung bei Ressourcenklassen war, dass nach der Konfiguration keine Governance oder Fähigkeit zum Steuern der Workload bestand.  
+In der Vergangenheit haben Sie für Synapse SQL in Azure Synapse die Abfrageleistung über [Ressourcenklassen](resource-classes-for-workload-management.md) verwaltet.  Mithilfe von Ressourcenklassen konnte einer Abfrage Arbeitsspeicher basierend auf der Rollenmitgliedschaft zugewiesen werden.  Die größte Herausforderung bei Ressourcenklassen war, dass nach der Konfiguration keine Governance oder Fähigkeit zum Steuern der Workload bestand.  
 
 Wenn Sie z.B. eine Ad-hoc-Benutzerrollenmitgliedschaft für „smallrc“ gewährten, konnte dieser Benutzer 100 % des Arbeitsspeichers im System belegen.  Bei Ressourcenklassen gibt es keine Möglichkeit, Ressourcen zu reservieren und sicherzustellen, dass Ressourcen für kritische Workloads verfügbar sind.
 
 Die SQL-Pool-Workloadverwaltung in Azure Synapse besteht aus drei grundlegenden Konzepten: [Workloadklassifizierung](sql-data-warehouse-workload-classification.md), [Workloadpriorität](sql-data-warehouse-workload-importance.md) und [Workloadisolation](sql-data-warehouse-workload-isolation.md).  Mit diesen Funktionen können Sie besser steuern, wie Systemressourcen von der Workload genutzt werden.
 
-Die Workloadklassifizierung ist das Konzept, bei dem eine Anforderung einer Arbeitsauslastungsgruppe zugewiesen wird und Prioritätsstufen festgelegt werden.  Bisher erfolgte diese Zuweisung über die Rollenmitgliedschaft mithilfe von [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dies ist nun über [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) möglich.  Die Klassifizierungsfunktion bietet einen umfassenderen Satz von Optionen, wie z.B. Bezeichnung, Sitzung und Zeit zum Klassifizieren von Anforderungen.
+Die Workloadklassifizierung ist das Konzept, bei dem eine Anforderung einer Arbeitsauslastungsgruppe zugewiesen wird und Prioritätsstufen festgelegt werden.  Bisher erfolgte diese Zuweisung über die Rollenmitgliedschaft mithilfe von [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Diese Aktion ist nun über [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) möglich.  Die Klassifizierungsfunktion bietet einen umfassenderen Satz von Optionen, wie z.B. Bezeichnung, Sitzung und Zeit zum Klassifizieren von Anforderungen.
 
 Die Workloadpriorität wirkt sich auf die Reihenfolge aus, in der eine Anforderung Zugriff auf Ressourcen erhält.  Auf einem ausgelasteten System hat eine Anforderung mit höherer Priorität zuerst Zugriff auf Ressourcen.  Durch die Priorität kann auch der geordnete Zugriff auf Sperren sichergestellt werden.
 

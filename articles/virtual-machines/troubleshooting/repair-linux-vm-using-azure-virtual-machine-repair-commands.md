@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da40deb4df55a63f5fecc380500a507b374ca63d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796198"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711141"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
@@ -52,7 +52,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
    Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie den Code anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um den Code auszuführen.
 
-   Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu finden. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu ermitteln. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 2. Wenn Sie die `az vm repair`-Befehle zum ersten Mal verwenden, fügen Sie die CLI-Erweiterung „vm-repair“ hinzu.
 
@@ -66,7 +66,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, wird eine Reparatur-VM erstellt und wird der Datenträger zugeordnet.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -84,7 +84,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
 Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens ``myVMDeployed`` in der Ressourcengruppe namens ``myResourceGroup`` aktiviert:
 
-Azure-Befehlszeilenschnittstelle
+Azure CLI
 
 ```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/

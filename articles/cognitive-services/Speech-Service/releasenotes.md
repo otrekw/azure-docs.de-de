@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584908"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800231"
 ---
 # <a name="release-notes"></a>Versionshinweise
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0: Release von Mai 2020
 
-**SPX-Befehlskonsole für Azure Speech-Dienste**
+**Die Azure Speech-Befehlszeilenschnittstelle**
 - **SPX** ist ein neues Befehlszeilentool, mit dem Sie Aktionen wie Erkennung, Synthese, Übersetzung, Batch-Transkription und benutzerdefinierte Sprachverwaltung über die Befehlszeile ausführen können. Verwenden Sie es zum Testen des Azure Speech-Diensts oder zum Erstellen von Skripts für die auszuführenden Aufgaben des Speech-Diensts. Das Tool steht [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview) zum Download zur Verfügung. Dort finden Sie auch die Dokumentation.
 
 **Neue Features**
 
-- **Go:** Neue Unterstützung der Sprache Go für [Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) und [benutzerdefinierten Sprachassistenten](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). Ihre Entwicklungsumgebung können Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go) einrichten. Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
+- **Go**: Neue Unterstützung der Sprache Go für [Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) und [benutzerdefinierten Sprachassistenten](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). Ihre Entwicklungsumgebung können Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go) einrichten. Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
 - **JavaScript:** Browserunterstützung für Sprachsynthese hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file?pivots=programming-language-JavaScript).
 - **C++, C#, Java:** Unterstützung des neuen KeywordRecognizer-Objekts sowie neuer APIs unter Windows, Android, Linux und iOS. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview). Beispielcode finden Sie weiter unten im Abschnitt „Beispiele“. 
-- **Java:** Konversation mit mehreren Geräten mit Übersetzungsunterstützung hinzugefügt. Die zugehörige Referenzdokumentation finden Sie [hier](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription).
+- **Java**: Konversation mit mehreren Geräten mit Übersetzungsunterstützung hinzugefügt. Die zugehörige Referenzdokumentation finden Sie [hier](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription).
 
 **Verbesserungen und Optimierungen**
 
@@ -42,8 +42,8 @@ ms.locfileid: "83584908"
 **Fehlerbehebungen**
 
 - **C#, Java:** Es wurde ein [Problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) beim Laden von SDK-Bibliotheken in Linux ARM behoben (sowohl für die 32-Bit- als auch für die 64-Bit-Version).
-- **C#:** Das explizite Löschen nativer Handles für die TranslationRecognizer-, IntentRecognizer- und Connection-Objekte wurde korrigiert.
-- **C#:** Für das ConversationTranscriber-Objekt wurde die Lebensdauerverwaltung für Audioeingaben korrigiert.
+- **C#** : Das explizite Löschen nativer Handles für die TranslationRecognizer-, IntentRecognizer- und Connection-Objekte wurde korrigiert.
+- **C#** : Für das ConversationTranscriber-Objekt wurde die Lebensdauerverwaltung für Audioeingaben korrigiert.
 - Es wurde ein Problem behoben, bei dem der Grund für das IntentRecognizer-Ergebnis nicht ordnungsgemäß festgelegt wurde, wenn Absichten aus einfachen Ausdrücken erkannt wurden.
 - Es wurde ein Problem behoben, bei dem das SpeechRecognitionEventArgs-Ergebnisoffset nicht ordnungsgemäß festgelegt wurde.
 - Es wurde eine Racebedingung behoben, bei der vom SDK versucht wurde, eine Netzwerknachricht zu senden, bevor die WebSocket-Verbindung hergestellt wurde. Dies war für „TranslationRecognizer“ beim Hinzufügen von Teilnehmern reproduzierbar.
@@ -51,7 +51,7 @@ ms.locfileid: "83584908"
 
 **Beispiele**
 
-- **Go:** Schnellstartanleitungen für [Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) und [benutzerdefinierten Sprachassistenten](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go) hinzugefügt. Beispielcode finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples). 
+- **Go**: Schnellstartanleitungen für [Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) und [benutzerdefinierten Sprachassistenten](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go) hinzugefügt. Beispielcode finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples). 
 - **JavaScript:** Schnellstartanleitungen für [Sprachsynthese](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [Übersetzung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript) und [Absichtserkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript) hinzugefügt.
 - Schlüsselworterkennungsbeispiele für [C\#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) und [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
 

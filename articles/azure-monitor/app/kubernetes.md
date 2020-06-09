@@ -5,21 +5,20 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132343"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797888"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen mit Istio – VERALTET
 
 > [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Public Preview.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Funktion wird derzeit eingestellt und wird nach dem 1. August 2020 nicht mehr unterstützt.
+> Zurzeit kann die Überwachung ohne Code nur für [Java über einen eigenständigen Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) aktiviert werden. Verwenden Sie für andere Sprachen die SDKs, um Ihre Apps in AKS zu überwachen: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript) und [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
-Azure Monitor nutzt jetzt die Service Mesh-Technologie in Ihrem Kubernetes-Cluster, um vorgefertigte Anwendungsüberwachung für jegliche gehosteten Kubernetes-Apps bereitzustellen. Mit standardmäßigen Application Insight-Features wie [Anwendungszuordnung](../../azure-monitor/app/app-map.md) zum Modellieren Ihrer Abhängigkeiten, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) für die Überwachung in Echtzeit, leistungsfähige Visualisierungen mit dem [Standarddashboard](../../azure-monitor/app/overview-dashboard.md), [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) und [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md). Mit diesem Feature können Benutzer innerhalb eines ausgewählten Kubernetes-Namespaces Leistungsengpässe und Fehlerhotspots in allen ihren Kubernetes-Workloads erkennen. Mit Nutzung Ihrer vorhandenen Service Mesh-Investitionen in Technologien wie Istio ermöglicht Azure Monitor automatisch instrumentierte App-Überwachung ohne Änderungen des Codes Ihrer Anwendung.
+Azure Monitor nutzt jetzt die Service Mesh-Technologie in Ihrem Kubernetes-Cluster, um vorgefertigte Anwendungsüberwachung für jegliche gehosteten Kubernetes-Apps bereitzustellen. Mit standardmäßigen Application Insight-Features wie [Anwendungszuordnung](../../azure-monitor/app/app-map.md) zum Modellieren Ihrer Abhängigkeiten, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) für die Überwachung in Echtzeit, leistungsfähige Visualisierungen mit dem [Standarddashboard](../../azure-monitor/app/overview-dashboard.md), [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) und [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md). Mit diesem Feature können Benutzer innerhalb eines ausgewählten Kubernetes-Namespaces Leistungsengpässe und Fehlerhotspots in allen ihren Kubernetes-Workloads erkennen. Mit Nutzung Ihrer vorhandenen Service Mesh-Investitionen in Technologien wie Istio ermöglicht Azure Monitor automatisch instrumentierte App-Überwachung ohne Änderungen des Codes Ihrer Anwendung.
 
 > [!NOTE]
 > Dies ist eine von vielen Möglichkeiten, Anwendungsüberwachung in Kubernetes durchzuführen. Sie können auch alle in Kubernetes gehosteten Apps mit dem [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) instrumentieren, ohne dass ein Service Mesh notwendig ist. Um Kubernetes ohne Instrumentierung der Anwendung mit einem SDK zu überwachen, können Sie die folgende Methode verwenden.
@@ -110,7 +109,7 @@ Unten wird der Problembehandlungablauf gezeigt, der verwendet wird, wenn Telemet
    ```
    Stellen Sie sicher, dass ein Container mit dem Namen *istio-proxy* auf dem Pod ausgeführt wird.
 
-5. Zeigen Sie die Ablaufverfolgung des Application Insights-Adapters an.
+5. Zeigen Sie die Ablaufverfolgungen des Application Insights-Adapters an.
 
    ```console
    kubectl get pods -n istio-system -l "app=application-insights-istio-mixer-adapter"

@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105640"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836106"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
-In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
+In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
 
 Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um sich einen Überblick über die Abschnitte dieses Artikels zu verschaffen.
 
@@ -80,9 +80,80 @@ Auf alle von Azure Backup erstellten Momentaufnahmen kann im Portal, über Power
 
 Ausführliche Informationen zur maximalen Aufbewahrung finden Sie in der [Unterstützungsmatrix](azure-file-share-support-matrix.md). Azure Backup führt eine Echtzeitberechnung der Anzahl von Momentaufnahmen durch, wenn Sie beim Konfigurieren der Sicherungsrichtlinie die Aufbewahrungswerte eingeben. Sobald die Anzahl der Momentaufnahmen, die Ihren definierten Aufbewahrungswerten entsprechen, 200 überschreitet, zeigt das Portal eine Warnung an, die Sie auffordert, Ihre Aufbewahrungswerte anzupassen. Dadurch wird die maximale Anzahl Momentaufnahmen, die von Azure Files für eine beliebige Dateifreigabe unterstützt werden, zu keiner Zeit überschritten.
 
-### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Was passiert, wenn ich die Sicherungsrichtlinie für eine Azure-Dateifreigabe ändere?
+### <a name="what-is-the-impact-on-existing-recovery-points-and-snapshots-when-i-modify-the-backup-policy-for-an-azure-file-share-to-switch-from-daily-policy-to-gfs-policy"></a>Welche Auswirkung hat es auf vorhandene Wiederherstellungspunkte und Momentaufnahmen, wenn ich die Backup-Richtlinie für eine Azure-Dateifreigabe von „Tägliche Richtlinie“ in „GFS-Richtlinie“ ändere?
 
-Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie im Rahmen der nächsten Bereinigung gelöscht.
+Bei der Umstellung von einer täglichen Richtlinie auf eine GFS-Richtlinie (mit wöchentlicher/monatlicher/jährlicher Aufbewahrung) ergibt sich das folgende Verhalten:
+
+- **Aufbewahrung**: Wenn Sie beim Ändern der Richtlinie die wöchentliche, monatliche bzw. jährliche Aufbewahrung hinzufügen, werden alle zukünftigen Wiederherstellungspunkte, die im Rahmen der geplanten Sicherung erstellt werden, gemäß der neuen Richtlinie mit Tags gekennzeichnet. Alle vorhandenen Wiederherstellungspunkte werden weiterhin als tägliche Wiederherstellungspunkte angesehen und daher nicht mit Tags als „Wöchentlich“, „Monatlich“ bzw. „Jährlich“ gekennzeichnet.
+
+- **Bereinigung von Momentaufnahmen und Wiederherstellungspunkten**:
+
+  - Bei einer Erweiterung der täglichen Aufbewahrung wird das Ablaufdatum der vorhandenen Wiederherstellungspunkte gemäß dem Wert für die tägliche Aufbewahrung aktualisiert, der in der neuen Richtlinie konfiguriert ist.
+  - Bei einer Reduzierung der täglichen Aufbewahrung werden die vorhandenen Wiederherstellungspunkte und Momentaufnahmen so gekennzeichnet, dass sie beim nächsten Bereinigungslauf gelöscht werden (basierend auf dem Wert für die tägliche Aufbewahrung, der in der neuen Richtlinie konfiguriert ist). Das Löschen wird dann entsprechend durchgeführt.
+
+Hier ist ein Beispiel für diesen Vorgang angegeben:
+
+#### <a name="existing-policy-p1"></a>Vorhandene Richtlinie [P1]
+
+|Aufbewahrungstyp |Zeitplan |Aufbewahrung  |
+|---------|---------|---------|
+|Täglich    |    Jeden Tag um 20 Uhr    |  100 Tage       |
+
+#### <a name="new-policy-modified-p1"></a>Neue Richtlinie [P1 geändert]
+
+| Aufbewahrungstyp | Zeitplan                       | Aufbewahrung |
+| -------------- | ------------------------------ | --------- |
+| Täglich          | Jeden Tag um 21 Uhr              | 50 Tage   |
+| Wöchentlich         | Sonntags um 21 Uhr              | 3 Wochen   |
+| Monatlich        | Am letzten Montag um 21 Uhr         | 1 Monat   |
+| Jährlich         | Im Januar am dritten Sonntag um 21 Uhr | 4 Jahre   |
+
+#### <a name="impact"></a>Auswirkung
+
+1. Das Ablaufdatum der vorhandenen Wiederherstellungspunkte wird gemäß dem Wert für tägliche Aufbewahrung angepasst, der in der neuen Richtlinie enthalten ist (50 Tage). Daher werden alle Wiederherstellungspunkte, die älter als 50 Tage sind, als zu löschend gekennzeichnet.
+
+2. Die vorhandenen Wiederherstellungspunkte werden basierend auf der neuen Richtlinie nicht als „Wöchentlich“, „Monatlich“ bzw. „Jährlich“ gekennzeichnet.
+
+3. Alle zukünftigen Sicherungen werden gemäß dem neuen Zeitplan ausgelöst (um 21 Uhr).
+
+4. Das Ablaufdatum aller zukünftigen Wiederherstellungspunkte wird anhand der neuen Richtlinie ausgerichtet.
+
+>[!NOTE]
+>Die Richtlinienänderungen wirken sich nur auf die Wiederherstellungspunkte aus, die im Rahmen der geplanten Ausführung des Sicherungsauftrags erstellt werden. Bei bedarfsgesteuerten Sicherungen richtet sich die Aufbewahrung nach dem Wert für **Aufbewahren bis**, der bei der Durchführung des Sicherungsvorgangs angegeben wurde.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-when-i-modify-an-existing-gfs-policy"></a>Welche Auswirkung ergibt sich für die vorhandenen Wiederstellungspunkte, wenn ich eine vorhandene GFS-Richtlinie ändere?
+
+Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden alle zukünftigen geplanten Sicherungen gemäß dem Zeitplan erstellt, der in der geänderten Richtlinie konfiguriert ist.  Die Aufbewahrung aller vorhandenen Wiederherstellungspunkte basiert auf den neuen konfigurierten Werten für die Aufbewahrung. Wenn die Aufbewahrung erweitert wird, werden vorhandene Wiederherstellungspunkte so gekennzeichnet, dass sie gemäß der neuen Richtlinie aufbewahrt werden. Bei einer Reduzierung der Aufbewahrung werden sie für die Löschung im Rahmen des nächsten Bereinigungsauftrags gekennzeichnet und dann entsprechend gelöscht.
+
+Hier ist ein Beispiel für diesen Vorgang angegeben:
+
+#### <a name="existing-policy-p2"></a>Vorhandene Richtlinie [P2]
+
+| Aufbewahrungstyp | Zeitplan           | Aufbewahrung |
+| -------------- | ------------------ | --------- |
+| Täglich          | Jeden Tag um 20 Uhr | 50 Tage   |
+| Wöchentlich         | Montags um 20 Uhr  | 3 Wochen   |
+
+#### <a name="new-policy-modified-p2"></a>Neue Richtlinie [P2 geändert]
+
+| Aufbewahrungstyp | Zeitplan               | Aufbewahrung |
+| -------------- | ---------------------- | --------- |
+| Täglich          | Jeden Tag um 21 Uhr     | 10 Tage   |
+| Wöchentlich         | Montags um 21 Uhr      | Zwei Wochen   |
+| Monatlich        | Am letzten Montag um 21 Uhr | 2 Monate  |
+
+#### <a name="impact-of-change"></a>Auswirkung der Änderung
+
+1. Das Ablaufdatum der vorhandenen täglichen Wiederherstellungspunkte wird am neuen Wert für die tägliche Aufbewahrung ausgerichtet (zehn Tage). Dies bedeutet, dass alle täglichen Wiederherstellungspunkte gelöscht werden, die älter als zehn Tage sind.
+
+2. Das Ablaufdatum der vorhandenen wöchentlichen Wiederherstellungspunkte wird am neuen Wert für die wöchentliche Aufbewahrung ausgerichtet (zwei Wochen). Dies bedeutet, dass alle wöchentlichen Wiederherstellungspunkte gelöscht werden, die älter als zwei Wochen sind.
+
+3. Die monatlichen Wiederherstellungspunkte werden erst bei zukünftigen Sicherungen anhand der Konfiguration der neuen Richtlinie erstellt.
+
+4. Das Ablaufdatum aller zukünftigen Wiederherstellungspunkte wird anhand der neuen Richtlinie ausgerichtet.
+
+>[!NOTE]
+>Die Richtlinienänderungen wirken sich nur auf die Wiederherstellungspunkte aus, die im Rahmen des geplanten Sicherungsvorgangs erstellt werden. Bei bedarfsgesteuerten Sicherungen richtet sich die Aufbewahrung nach dem Wert für **Aufbewahren bis**, der bei der Durchführung des Sicherungsvorgangs angegeben wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

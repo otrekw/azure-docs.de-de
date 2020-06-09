@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592898"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745365"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
 
@@ -35,7 +35,7 @@ Sie können eine LUIS-Anwendung verwenden, sofern diese **keine** der folgenden 
 
 Nicht unterstützte App-Konfigurationen|Details|
 |--|--|
-|Nicht unterstützte Containerkulturen| Niederländisch (`nl-NL`)<br>Japanisch (`ja-JP`)<br>Deutsch wird nur ab [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
+|Nicht unterstützte Containerkulturen| Die Sprachen Niederländisch (`nl-NL`), Japanisch (`ja-JP`) und Deutsch (`de-DE`) werden nur mit dem [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
 |Nicht unterstützte Entitäten für alle Kulturen|Vordefinierte [KeyPhrase](luis-reference-prebuilt-keyphrase.md)-Entität für alle Kulturen|
 |Nicht unterstützte Entitäten für die Kultur Englisch (`en-US`)|Vordefinierte [GeographyV2](luis-reference-prebuilt-geographyV2.md)-Entitäten|
 |Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|

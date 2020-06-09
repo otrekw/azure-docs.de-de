@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667872"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797430"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
@@ -36,10 +36,12 @@ Zum Planen eines Azure NetApp Files-Netzwerks müssen Sie zunächst verschiedene
 Azure NetApp Files unterstützt derzeit die folgenden Features nicht: 
 
 * Netzwerksicherheitsgruppen (NSGs), die auf das delegierte Subnetz angewendet werden
-* Benutzerdefinierte Routen (UDRs) mit dem Adresspräfix als Subnetz für Azure NetApp Files
+* Auf das delegierte Subnetz angewendete benutzerdefinierte Routen (User-Defined Routes, UDRs)
 * Azure-Richtlinien (z.B. benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle
 * Lastenausgleichsmodule für den Azure NetApp Files-Datenverkehr
-* Azure NetApp Files wird mit Azure Virtual WAN nicht unterstützt.
+* Azure Virtual WAN 
+* Zonenredundante Virtual Network-Gateways (Gateway-SKUs mit Az) 
+* Gateways für virtuelle Aktiv/Aktiv-Netzwerke 
 
 Für Azure NetApp Files gelten die folgenden Netzwerkeinschränkungen:
 
@@ -82,9 +84,10 @@ Wenn das VNET per Peering mit einem anderen VNET verknüpft ist, können Sie den
 
 ### <a name="udrs-and-nsgs"></a>Benutzerdefinierte Routen und Netzwerksicherheitsgruppen
 
-Benutzerdefinierte Routen (User-defined Route, UDR) und Netzwerksicherheitsgruppen (Network Security Group, NSG) werden auf delegierten Subnetzen für Azure NetApp Files nicht unterstützt.
+Benutzerdefinierte Routen (User-defined Route, UDR) und Netzwerksicherheitsgruppen (Network Security Group, NSG) werden auf delegierten Subnetzen für Azure NetApp Files nicht unterstützt. Sie können UDRs und NSGs jedoch auf andere Subnetze anwenden, die sich sogar im gleichen VNET befinden wie das an Azure NetApp Files delegierte Subnetz.
 
-Als Umgehungsmaßnahme können Sie NSGs anderen Subnetzen zuordnen, die den Datenverkehr zu und von dem von Azure NetApp Files delegierten Subnetz zulassen oder verweigern.  
+* UDRs definieren dann die Datenverkehrsflüsse aus den anderen Subnetzen an das delegierte Azure NetApp Files-Subnetz. Dadurch wird erreicht, dass dieser Datenfluss mit dem Datenverkehrsfluss von Azure NetApp Files an die anderen Subnetze über die Systemrouten in Einklang steht.  
+* NSGs lassen dann den Datenverkehr zu und von dem delegierten Azure NetApp Files-Subnetz zu oder verweigern ihn. 
 
 ## <a name="azure-native-environments"></a>Native Azure-Umgebungen
 

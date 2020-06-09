@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233942"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727011"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -108,6 +108,9 @@ Konfigurieren Sie eine Sicherungsrichtlinie für den Tresor.
    * VMs können nur in einem Tresor gesichert werden.
 
      ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+
+    >[!NOTE]
+    > Nur virtuelle Computer in derselben Region und in demselben Abonnement wie der Tresor sind zum Konfigurieren der Sicherung verfügbar.
 
 5. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**. Damit wird die Richtlinie für den Tresor und die VMs bereitgestellt, und die Sicherungserweiterung wird auf dem VM-Agent auf der Azure-VM installiert.
 

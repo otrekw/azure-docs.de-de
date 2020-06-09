@@ -1,18 +1,18 @@
 ---
-title: Fehlerbehandlung in grafischen Azure Automation-Runbooks
-description: In diesem Artikel wird beschrieben, wie Sie die Fehlerbehandlungslogik in grafischen Azure Automation-Runbooks implementieren.
+title: Behandeln von Fehlern in grafischen Azure Automation-Runbooks
+description: In diesem Artikel wird beschrieben, wie Sie die Fehlerbehandlungslogik in grafischen Runbooks implementieren.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26a4a3dbd54256fbc193fba299d0f7504f407254
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367073"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832264"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
+# <a name="handle-errors-in-graphical-runbooks"></a>Behandeln von Fehlern in grafischen Runbooks
 
 Ein wichtiges Entwurfsprinzip, das Sie für Ihr grafisches Azure Automation-Runbook beachten sollten, ist das Ermitteln von Problemen, auf die das Runbook bei der Ausführung möglicherweise stößt. z. B. Erfolg, erwartete Fehlerzustände und unerwartete Fehlerbedingungen.
 
@@ -21,9 +21,6 @@ Wenn bei einer Runbookaktivität ein Fehler ohne Abbruch auftritt, verarbeitet W
 Ihr grafisches Runbook sollte Fehlerbehandlungscode für Ausführungsprobleme enthalten. Wenn Sie die Ausgabe einer Aktivität überprüfen oder einen Fehler behandeln möchten, können Sie eine PowerShell-Codeaktivität verwenden, eine bedingte Logik für den Ausgabelink der Aktivität definieren oder eine andere Methode anwenden.
 
 Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlung erweitert. Sie können Ausnahmen jetzt in Fehler ohne Abbruch ändern und Fehlerlinks zwischen Aktivitäten erstellen. Mithilfe des verbesserten Verfahrens können Sie in Ihren Runbooks Fehler abfangen und erkannte bzw. unerwartete Bedingungen behandeln. 
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="powershell-error-types"></a>PowerShell-Fehlertypen
 
@@ -41,6 +38,8 @@ Ein Fehler ohne Abbruch ist ein nicht schwerwiegender Fehler, bei dem die Ausfü
 
 Verwenden Sie die Fehlerbehandlung in Ihrem Runbook, wenn eine kritische Aktivität einen Fehler oder eine Ausnahme auslöst. Es ist wichtig, die Verarbeitung der nächsten Aktivität im Runbook zu verhindern und den Fehler auf passende Weise zu behandeln. Die Behandlung des Fehlers ist besonders wichtig, wenn Sie mit Ihren Runbooks einen Geschäfts- oder Dienstprozess unterstützen.
 
+## <a name="add-error-links"></a>Hinzufügen von Fehlerlinks
+
 Für jede Aktivität, die einen Fehler erzeugen kann, können Sie einen Fehlerlink zu einer anderen Aktivität hinzufügen. Die Zielaktivität kann einen beliebigen Typ aufweisen: Codeaktivitäten, Aufruf eines Cmdlets, Aufruf eines anderen Runbooks usw. Die Zielaktivität kann auch über ausgehende Links verfügen, bei denen es sich um normale oder Fehlerlinks handeln kann. Durch die Links kann im Runbook eine komplexe Fehlerbehandlungslogik implementiert werden, ohne eine Codeaktivität einbinden zu müssen.
 
 Es wird empfohlen, ein dediziertes Runbook für die Fehlerbehandlung mit allgemeiner Funktionalität zu erstellen. Dies ist jedoch nicht zwingend erforderlich. Beispielsweise ist auch ein Runbook möglich, das versucht, einen virtuellen Computer zu starten und darauf eine Anwendung zu installieren. Wenn der virtuelle Computer nicht richtig gestartet wird, geschieht Folgendes:
@@ -52,7 +51,7 @@ Eine Lösung besteht darin, im Runbook über einen Fehlerlink auf eine Aktivitä
 
 Sie können dieses Verhalten auch für die Verwendung in vielen Runbooks verallgemeinern, indem Sie diese beiden Aktivitäten in ein separates Runbook für die Fehlerbehandlung einfügen. Bevor Ihr ursprüngliches Runbook diese Runbooks für die Fehlerbehandlung aufruft, kann es aus den Daten eine benutzerdefinierte Nachricht erstellen und diese als Parameter an das Runbook für die Fehlerbehandlung übergeben.
 
-## <a name="how-to-use-error-handling"></a>Verwenden der Fehlerbehandlung
+## <a name="turn-exceptions-into-non-terminating-errors"></a>Umwandeln von Ausnahmen in Fehler ohne Abbruch
 
 Jede Aktivität in Ihrem Runbook weist eine Konfigurationseinstellung auf, die Ausnahmen in Fehler ohne Abbruch umwandelt. Diese Einstellung ist standardmäßig deaktiviert. Es wird empfohlen, diese Einstellung für alle Aktivitäten zu aktivieren, bei denen das Runbook Fehler behandelt. Diese Einstellung stellt sicher, dass sowohl Fehler mit als auch ohne Abbruch in der Aktivität über einen Fehlerlink als Fehler ohne Abbruch behandelt werden.  
 
@@ -66,6 +65,4 @@ Fehlerlinks zeigen von diesen Aktivitäten auf eine einzelne Codeaktivität vom 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Links und Linktypen in grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
-
-* Weitere Informationen zum Ausführen von Runbooks und zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Ausführen von Runbooks in Azure Automation](automation-runbook-execution.md).
+* Informationen zum Beheben von Fehlern bei grafischen Runbooks finden Sie unter [Beheben von Runbookproblemen](troubleshoot/runbooks.md).

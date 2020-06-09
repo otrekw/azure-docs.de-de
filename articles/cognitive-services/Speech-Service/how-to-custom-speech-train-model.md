@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77137766"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722625"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
@@ -42,7 +42,7 @@ Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsd
 2. Navigieren Sie zu **Spracherkennung > Custom Speech > Training**.
 3. Klicken Sie auf **Modell trainieren**.
 4. Geben Sie als Nächstes einen **Namen** und eine **Beschreibung** für Ihr Training ein.
-5. Wählen Sie aus dem Dropdownmenü für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Wenn Sie keine Präferenz haben, können Sie das neueste Modell verwenden.
+5. Wählen Sie aus dem Dropdownmenü für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Das neueste Modell ist in der Regel die beste Wahl.
 6. Wählen Sie auf der Seite **Trainingsdaten auswählen** ein oder mehrere Audiodatasets und menschenmarkierten Transkriptionsdatasets aus, die Sie für das Training verwenden möchten.
 7. Nachdem das Training abgeschlossen ist, können Sie sich für das Ausführen von Genauigkeitsprüfungen für das neu trainierte Modell entscheiden. Dieser Schritt ist optional.
 8. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.

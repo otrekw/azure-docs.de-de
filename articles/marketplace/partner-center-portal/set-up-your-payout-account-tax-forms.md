@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792886"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738284"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Einrichten von Auszahlungskonten und Steuerformularen
 
@@ -36,13 +36,13 @@ Nachdem Sie Ihr Konto eingerichtet haben, müssen Sie zwei Schritte ausführen, 
 
 Zunächst müssen Sie ein Steuerprofil erstellen und es den Programmen zuweisen, an denen Sie teilnehmen. Sie können Ihr *Steuerprofil* für den kommerziellen Marketplace erstellen, indem Sie die folgenden Schritte ausführen:
 
-- Geben Sie Ihr Land (Wohnsitz) und Ihre Staatsbürgerschaft an.
+- Geben Sie Ihr Land/Ihre Region (Wohnsitz) und Ihre Staatsbürgerschaft an.
 - Füllen Sie die entsprechenden Steuerformulare aus.
 
 Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und übermitteln. In den meisten Fällen müssen Sie keine Formulare drucken und per E-Mail senden.
 
 > [!IMPORTANT]
-> In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihr Angebot bereitstellen. Unter [Microsoft Azure Marketplace – Herausgebervertrag](https://go.microsoft.com/fwlink/p/?LinkID=699560) ist angegeben, für welche Länder Microsoft die Mehrwertsteuer und Verbrauchssteuer für Sie überweist. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern unter Umständen die Mehrwert- und Verbrauchssteuer für Ihre Angebotsverkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen App-Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Aktivitäten auf dem kommerziellen Marketplace zu ermitteln.
+> In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihr Angebot bereitstellen. Unter [Microsoft Azure Marketplace – Herausgebervertrag](https://go.microsoft.com/fwlink/p/?LinkID=699560) ist angegeben, für welche Länder/Regionen Microsoft die Mehrwertsteuer und Verbrauchssteuer für Sie überweist. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern/Regionen unter Umständen die Mehrwert- und Verbrauchssteuer für Ihre Angebotsverkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen App-Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Aktivitäten auf dem kommerziellen Marketplace zu ermitteln.
 
 1. Wählen Sie in [Partner Center](https://partner.microsoft.com/dashboard) oben rechts das Symbol **Kontoeinstellungen** und dann die Option **Entwicklereinstellungen** aus.
 
@@ -54,20 +54,20 @@ Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und �
 
 5. Klicken Sie auf die Schaltfläche **Bearbeiten**, um Ihre Steuerinformationen zu bearbeiten.
 
-6. Aktivieren Sie das entsprechende Optionsfeld, und wählen Sie Ihr Land aus, wenn Sie dazu aufgefordert werden. Mit diesem Schritt wird die Microsoft-Geschäftseinheit festgelegt, die verwendet wird, um die Auszahlungen für Ihr Konto vorzunehmen.
+6. Aktivieren Sie das entsprechende Optionsfeld, und wählen Sie Ihr Land/Ihre Region aus, wenn Sie dazu aufgefordert werden. Mit diesem Schritt wird die Microsoft-Geschäftseinheit festgelegt, die verwendet wird, um die Auszahlungen für Ihr Konto vorzunehmen.
 
-7. Abhängig von Ihrer Auswahl in Schritt 6 werden Sie aufgefordert, die jeweiligen erforderlichen Steuerinformationen für Ihr Land anzugeben.
+7. Abhängig von Ihrer Auswahl in Schritt 6 werden Sie aufgefordert, die jeweiligen erforderlichen Steuerinformationen für Ihr Land/Ihre Region anzugeben.
 
    > [!NOTE]
-   > Unabhängig von Ihrem Land (Wohnsitz) und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über den kommerziellen Marketplace bereitstellen zu können. Herausgeber, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Herausgeber außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
+   > Unabhängig von Ihrem Land/Ihrer Region (Wohnsitz) und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über den kommerziellen Marketplace bereitstellen zu können. Herausgeber, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Herausgeber außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
 
 ### <a name="withholding-rates"></a>Quellensteuer
 
-Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Herausgebern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land ein Einkommenssteuerabkommen mit den USA getätigt hat.
+Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Herausgebern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land/Ihre Region ein Einkommenssteuerabkommen mit den USA geschlossen hat.
 
 ### <a name="tax-treaty-benefits"></a>Begünstigungen durch Steuerabkommen
 
-Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterscheiden sich je nach Land und ermöglichen es Ihnen unter Umständen, den Steuerbetrag zu reduzieren, der über den kommerziellen Marketplace einbehalten wird. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
+Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterscheiden sich je nach Land/Region und ermöglichen es Ihnen unter Umständen, den Steuerbetrag zu reduzieren, der über den kommerziellen Marketplace einbehalten wird. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
 
 > [!NOTE]
 > Es ist keine US-Steueridentifikationsnummer (ITIN) erforderlich, um Zahlungen von Microsoft zu erhalten oder um Begünstigungen von Steuerabkommen in Anspruch zu nehmen.

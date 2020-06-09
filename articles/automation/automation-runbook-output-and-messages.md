@@ -1,18 +1,18 @@
 ---
-title: Runbookausgabe und -meldungen in Azure Automation
-description: Hier wird beschrieben, wie Ausgaben und Fehlermeldungen von Runbooks in Azure Automation erstellt und abgerufen werden.
+title: Überwachen der Runbookausgabe in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie Runbookausgabe und -meldungen überwachen.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535535"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832281"
 ---
-# <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
+# <a name="monitor-runbook-output"></a>Überwachen der Runbookausgabe
 
 Die meisten Azure Automation-Runbooks besitzen eine Form von Ausgabe. Diese Ausgabe ist möglicherweise eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das für die Verwendung mit einem anderen Runbook gedacht ist. Windows PowerShell bietet [mehrere Datenströme](/powershell/module/microsoft.powershell.core/about/about_redirection) zum Senden der Ausgabe eines Skripts oder Workflows. Azure Automation verwendet jeden dieser Datenströme anders. Sie sollten beim Erstellen eines Runbooks die bewährten Methoden für die Verwendung der Datenströme befolgen.
 
@@ -27,14 +27,11 @@ In der folgenden Tabelle werden die einzelnen Datenströme kurz beschrieben und 
 | Ausführlich |Meldungen mit allgemeinen Informationen oder Debuginformationen. |Wird nur in den Auftragsverlauf geschrieben, wenn die ausführliche Protokollierung für das Runbook aktiviert ist. |Wird nur im Testausgabebereich angezeigt, wenn die Variable `VerbosePreference` im Runbook auf „Continue“ festgelegt ist. |
 | Warnung |Für den Benutzer vorgesehene Warnmeldung. |Wird in den Auftragsverlauf geschrieben. |Wird im Testausgabebereich angezeigt. |
 
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+## <a name="use-the-output-stream"></a>Verwenden des Ausgabedatenstroms
 
-## <a name="output-stream"></a>Ausgabedatenstrom
+Der Ausgabedatenstrom wird zur Ausgabe von Objekten verwendet, die bei korrekter Ausführung von einem Skript oder Workflow erstellt werden. Azure Automation verwendet diesen Datenstrom hauptsächlich für Objekte, die von übergeordneten Runbooks, die das [aktuelle Runbook](automation-child-runbooks.md) aufrufen, genutzt werden sollen. Wenn ein übergeordnetes Runbook [ein Runbook inline aufruft](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), gibt das untergeordnete Runbook Daten aus dem Ausgabedatenstrom an das übergeordnete Runbook zurück. 
 
-Der Ausgabedatenstrom wird zur Ausgabe von Objekten verwendet, die bei korrekter Ausführung von einem Skript oder Workflow erstellt werden. Azure Automation verwendet diesen Datenstrom hauptsächlich für Objekte, die von übergeordneten Runbooks, die das [aktuelle Runbook](automation-child-runbooks.md) aufrufen, genutzt werden sollen. Wenn ein übergeordnetes Runbook [ein Runbook inline aufruft](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution), gibt das untergeordnete Runbook Daten aus dem Ausgabedatenstrom an das übergeordnete Runbook zurück. 
-
-Ihr Runbook verwendet den Ausgabedatenstrom nur dann zum Übermitteln allgemeiner Informationen an den Benutzer, wenn es nie von einem anderen Runbook aufgerufen wird. In der Regel empfiehlt es sich jedoch als bewährte Methode, dass Ihre Runbooks den [ausführlichen Datenstrom](#verbose-stream) verwenden sollten, um allgemeine Informationen für den Benutzer bereitzustellen.
+Ihr Runbook verwendet den Ausgabedatenstrom nur dann zum Übermitteln allgemeiner Informationen an den Client, wenn es nie von einem anderen Runbook aufgerufen wird. In der Regel empfiehlt es sich jedoch als bewährte Methode, dass Ihre Runbooks den [ausführlichen Datenstrom](#monitor-verbose-stream) verwenden, um allgemeine Informationen für den Benutzer bereitzustellen.
 
 Lassen Sie Ihr Runbook mithilfe von [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) Daten in den Ausgabedatenstrom schreiben. Alternativ können Sie das Objekt in eine eigene Zeile im Skript einfügen.
 
@@ -44,7 +41,7 @@ Write-Output –InputObject $object
 $object
 ```
 
-### <a name="handling-output-from-a-function"></a>Verarbeiten von Ausgaben einer Funktion
+### <a name="handle-output-from-a-function"></a>Verarbeiten der Ausgabe einer Funktion
 
 Wenn eine Runbookfunktion in den Ausgabedatenstrom schreibt, wird die Ausgabe an das Runbook zurückgegeben. Weist das Runbook diese Ausgabe einer Variablen zu, wird die Ausgabe nicht in den Ausgabedatenstrom geschrieben. Wenn Sie innerhalb der Funktion in andere Datenströme schreiben, wird die Ausgabe in den entsprechenden Datenstrom für das Runbook geschrieben. Sehen Sie sich folgendes Beispielrunbook mit einem PowerShell-Workflow an.
 
@@ -80,7 +77,7 @@ Verbose inside of function
 
 Nach dem Veröffentlichen und vor dem Starten des Runbooks müssen Sie die ausführliche Protokollierung in den Runbookeinstellungen aktivieren, um die ausführliche Datenstromausgabe abzurufen.
 
-### <a name="declaring-output-data-type"></a>Deklarieren des Ausgabedatentyps
+### <a name="declare-output-data-type"></a>Deklarieren des Ausgabedatentyps
 
 Nachfolgend finden Sie Beispiele für Ausgabedatentypen:
 
@@ -126,15 +123,15 @@ Die erste Aktivität ruft das **AuthenticateTo-Azure**-Runbook auf. Die zweite A
 
 Die entstandene Ausgabe ist der Name des Abonnements.<br> ![Test-ChildOutputType- Runbookergebnisse](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-## <a name="message-streams"></a>Nachrichtendatenströme
+## <a name="monitor-message-streams"></a>Überwachen von Meldungsdatenströmen
 
-Im Gegensatz zum Ausgabedatenstrom übermitteln Nachrichtendatenströme Informationen an den Benutzer. Es gibt mehrere Nachrichtendatenströme für verschiedene Arten von Informationen, und jeder dieser Nachrichtendatenströme wird von Azure Automation anders behandelt.
+Im Gegensatz zum Ausgabedatenstrom übermitteln Meldungsdatenströme Informationen an den Benutzer. Es gibt mehrere Nachrichtendatenströme für verschiedene Arten von Informationen, und jeder dieser Nachrichtendatenströme wird von Azure Automation anders behandelt.
 
-### <a name="warning-and-error-streams"></a>Warnungs- und Fehlerdatenströme
+### <a name="monitor-warning-and-error-streams"></a>Überwachen von Warnungs- und Fehlerdatenströmen
 
 Die Warnungs- und Fehlerdatenströme protokollieren Probleme, die in einem Runbook auftreten. Azure Automation schreibt diese Datenströme in den Auftragsverlauf, wenn ein Runbook ausgeführt wird. Automation nimmt die Datenströme in den Testausgabebereich im Azure-Portal auf, wenn ein Runbook getestet wird. 
 
-Standardmäßig wird die Ausführung eines Runbooks nach einer Warnung oder einem Fehler fortgesetzt. Sie können angeben, dass Ihr Runbook bei einer Warnung oder einem Fehler angehalten werden soll, indem Sie vor dem Erstellen der Meldung das Runbook eine [Einstellungsvariable](#preference-variables) festlegen lassen. Soll beispielsweise ein Runbook beim Auftreten eines Fehlers wie bei einer Ausnahme angehalten werden, legen Sie die Variable `ErrorActionPreference` auf „Stop“ fest.
+Standardmäßig wird die Ausführung eines Runbooks nach einer Warnung oder einem Fehler fortgesetzt. Sie können angeben, dass Ihr Runbook bei einer Warnung oder einem Fehler angehalten werden soll, indem Sie vor dem Erstellen der Meldung das Runbook eine [Einstellungsvariable](#work-with-preference-variables) festlegen lassen. Soll beispielsweise ein Runbook beim Auftreten eines Fehlers wie bei einer Ausnahme angehalten werden, legen Sie die Variable `ErrorActionPreference` auf „Stop“ fest.
 
 Erstellen Sie mit dem Cmdlet [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) bzw. [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) eine Warn- oder Fehlermeldung. Aktivitäten können auch in die Warnungs- und Fehlerdatenströme schreiben.
 
@@ -146,11 +143,11 @@ Write-Warning –Message "This is a warning message."
 Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 ```
 
-### <a name="debug-stream"></a>Debugdatenstrom
+### <a name="monitor-debug-stream"></a>Überwachen eines Debugdatenstroms
 
-Azure Automation verwendet den Debugnachrichtenstrom für interaktive Benutzer. Er sollte nicht in Runbooks verwendet werden.
+Azure Automation verwendet den Debugmeldungsdatenstrom für interaktive Benutzer. Er sollte nicht in Runbooks verwendet werden.
 
-### <a name="verbose-stream"></a>Ausführlicher Datenstrom
+### <a name="monitor-verbose-stream"></a>Überwachen eines ausführlichen Datenstroms
 
 Der ausführliche Nachrichtendatenstrom unterstützt allgemeine Informationen zu Runbookvorgängen. Da der Debugdatenstrom für ein Runbook nicht verfügbar ist, sollte Ihr Runbook ausführliche Meldungen für Debuginformationen verwenden. 
 
@@ -166,7 +163,7 @@ Der folgende Code erstellt eine ausführliche Meldung mit dem Cmdlet [Write-Verb
 Write-Verbose –Message "This is a verbose message."
 ```
 
-## <a name="progress-records"></a>Statusdatensätze
+## <a name="handle-progress-records"></a>Verarbeiten von Statusdatensätzen
 
 Mithilfe der Registerkarte **Konfigurieren** im Azure-Portal können Sie ein Runbook für die Protokollierung von Statusdatensätzen konfigurieren. Die Standardeinstellung ist, dass die Datensätze nicht protokolliert werden, um die Leistung zu maximieren. In den meisten Fällen sollten Sie die Standardeinstellung beibehalten. Aktivieren Sie diese Option nur zum Beheben oder Debuggen eines Runbooks. 
 
@@ -175,7 +172,7 @@ Wenn Sie die Protokollierung von Statusdatensätzen aktivieren, schreibt ihr Run
 >[!NOTE]
 >Das Cmdlet [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) ist in einem Runbook ungültig, da es zur Verwendung mit einem interaktiven Benutzer vorgesehen ist.
 
-## <a name="preference-variables"></a>Einstellungsvariablen
+## <a name="work-with-preference-variables"></a>Verwenden von Einstellungsvariablen
 
 Sie können bestimmte Windows PowerShell-[Einstellungsvariablen](https://technet.microsoft.com/library/hh847796.aspx) in Ihren Runbooks festlegen, um die Antwort auf Daten zu kontrollieren, die an verschiedene Ausgabedatenströme gesendet werden. In der folgenden Tabelle sind die Einstellungsvariablen, die in Runbooks verwendet werden können, mit ihren Standardwerten und gültigen Werten aufgeführt. Bei der Verwendung in Windows PowerShell außerhalb von Azure Automation sind weitere Werte für die Einstellungsvariablen zulässig.
 
@@ -193,11 +190,11 @@ In der nächsten Tabelle wird das Verhalten für die in Runbooks zulässigen Ein
 | SilentlyContinue |Setzt die Ausführung des Runbooks ohne Protokollierung der Meldung fort. Dieser Wert hat den Effekt, dass die Meldung ignoriert wird. |
 | Beenden |Protokolliert die Meldung und hält das Runbook an. |
 
-## <a name="retrieving-runbook-output-and-messages"></a><a name="runbook-output"></a>Abrufen der Runbookausgabe und -meldungen
+## <a name="retrieve-runbook-output-and-messages"></a><a name="runbook-output"></a>Abrufen der Runbookausgabe und -meldungen
 
 ### <a name="retrieve-runbook-output-and-messages-in-azure-portal"></a>Abrufen von Runbookausgabe und -meldungen im Azure-Portal
 
-Sie können die Details eines Runbookauftrags im Azure-Portal mithilfe der Registerkarte **Aufträge** für das jeweilige Runbook anzeigen. Die Auftragszusammenfassung zeigt die Eingabeparameter und den [Ausgabedatenstrom](#output-stream) sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen an. Der Auftrags verlauf beinhaltet Meldungen aus den Ausgabe-, [Warnungs- und Fehlerdatenströmen](#warning-and-error-streams). Er enthält außerdem Meldungen aus dem [ausführlichen Datenstrom](#verbose-stream) und [Statusdatensätze](#progress-records), wenn das Runbook zum Protokollieren von ausführlichen Meldungen und Statusdatensätzen konfiguriert ist.
+Sie können die Details eines Runbookauftrags im Azure-Portal mithilfe der Registerkarte **Aufträge** für das jeweilige Runbook anzeigen. Die Auftragszusammenfassung zeigt die Eingabeparameter und den [Ausgabedatenstrom](#use-the-output-stream) sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen an. Der Auftragsverlauf beinhaltet Meldungen aus den Ausgabe-, [Warnungs- und Fehlerdatenströmen](#monitor-warning-and-error-streams). Er enthält außerdem Meldungen aus dem [ausführlichen Datenstrom](#monitor-verbose-stream) und [Statusdatensätze](#handle-progress-records), wenn das Runbook zum Protokollieren von ausführlichen Meldungen und Statusdatensätzen konfiguriert ist.
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Abrufen von Runbookausgabe und -meldungen in Windows PowerShell
 
@@ -262,6 +259,7 @@ Weitere Informationen zum Konfigurieren der Integration in Azure Monitor-Protoko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
-* Informationen zum Entwerfen und Verwenden von untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md).
-* Weitere Informationen zur PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* Informationen zur Arbeit mit Runbooks finden Sie unter [Verwalten eines Runbooks in Azure Automation](manage-runbooks.md).
+* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+* * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

@@ -3,12 +3,12 @@ title: Entwerfen mit Modellen – LUIS
 description: Language Understanding bietet verschiedene Typen von Modellen. Einige Modelle können auf mehr als eine Weise eingesetzt werden.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591878"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683934"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Entwerfen mit Absichts- und Entitätsmodellen
 
@@ -36,9 +36,9 @@ Die folgende Äußerung ist ein **positives Beispiel** für die Absicht `OrderBo
 
 ## <a name="entities-extract-data"></a>Extrahieren von Daten durch Entitäten
 
-Eine Entität stellt eine Dateneinheit dar, die aus der Äußerung extrahiert werden soll. Eine durch maschinelles Lernen erworbene Entität ist eine Entität der obersten Ebene, die untergeordnete Entitäten enthält, bei denen es sich ebenfalls um durch maschinelles Lernen erworbene Entitäten handelt.
+Eine Entität stellt eine Dateneinheit dar, die aus der Äußerung extrahiert werden soll. Eine Machine Learning-Entität ist eine Entität der obersten Ebene, die untergeordnete Entitäten enthält, bei denen es sich ebenfalls um Machine Learning-Entitäten handelt.
 
-Ein Beispiel für eine durch maschinelles Lernen erworbene Entität ist eine Bestellung eines Flugtickets. Konzeptionell handelt es sich dabei um eine einzelne Transaktion mit vielen kleineren Dateneinheiten, wie etwa Datum, Uhrzeit, Menge der Plätze, Art der Plätze (wie Erste Klasse oder Economy), Startort, Zielort und Auswahl des Bordmenüs.
+Ein Beispiel für eine Machine Learning-Entität ist eine Bestellung eines Flugtickets. Konzeptionell handelt es sich dabei um eine einzelne Transaktion mit vielen kleineren Dateneinheiten, wie etwa Datum, Uhrzeit, Menge der Plätze, Art der Plätze (wie Erste Klasse oder Economy), Startort, Zielort und Auswahl des Bordmenüs.
 
 ## <a name="intents-versus-entities"></a>Absichten im Vergleich mit Entitäten
 
@@ -64,19 +64,19 @@ LUIS unterstützt die _Modellaufschlüsselung_ mithilfe der Erstellungs-APIs, um
 Die Aufschlüsselung von Modellen setzt sich aus folgenden Teilen zusammen:
 
 * [Absichten](#intents-classify-utterances)
-    * [Features](#features)
-* [Durch maschinelles Lernen erworbene Entitäten](reference-entity-machine-learned-entity.md)
-    * Untergeordnete Entitäten (ebenfalls durch maschinelles Lernen erworbene Entitäten)
-        * [Features](#features)
+    * [features](#features)
+* [Machine Learning-Entitäten](reference-entity-machine-learned-entity.md)
+    * Untergeordnete Entitäten (ebenfalls Machine Learning-Entitäten)
+        * [features](#features)
             * [Ausdrucksliste](luis-concept-feature.md)
-            * [Nicht durch maschinelles Lernen erworbene Entitäten](luis-concept-feature.md) (beispielsweise [reguläre Ausdrücke](reference-entity-regular-expression.md), [Listen](reference-entity-list.md) und [vordefinierte Entitäten](luis-reference-prebuilt-entities.md))
+            * [Machine Learning-fremde Entitäten](luis-concept-feature.md) (beispielsweise [reguläre Ausdrücke](reference-entity-regular-expression.md), [Listen](reference-entity-list.md) und [vordefinierte Entitäten](luis-reference-prebuilt-entities.md))
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>
 
 ## <a name="features"></a>Features
 
-Ein [Feature](luis-concept-feature.md) ist ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht. Machine Learning-Features geben LUIS wichtige Hinweise darauf, wo nach Informationen gesucht werden soll, die ein Konzept ausmachen. Hierbei handelt es sich nicht um feste Regeln, sondern um Hinweise, die von LUIS genutzt werden können. Diese Hinweise werden zusammen mit den Beschriftungen genutzt, um die Daten zu finden.
+Ein [Feature](luis-concept-feature.md) ist ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht. Machine Learning-Features geben LUIS wichtige Hinweise darauf, wo nach Informationen gesucht werden soll, die ein Konzept ausmachen. Hierbei handelt es sich um Hinweise, die von LUIS befolgt werden können, aber nicht um feste Regeln. Diese Hinweise werden zusammen mit den Beschriftungen genutzt, um die Daten zu finden.
 
 ## <a name="patterns"></a>Muster
 

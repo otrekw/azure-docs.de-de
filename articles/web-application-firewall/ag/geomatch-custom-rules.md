@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76960383"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744306"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Benutzerdefinierte Geomatch-Regeln (Vorschau)
 
 Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstellen, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Manchmal ist eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Wie bei allen benutzerdefinierten Regeln kann diese Logik auch mit anderen Regeln kombiniert werden, um den Anforderungen Ihrer Anwendung zu entsprechen.
 
-Wählen Sie zum Erstellen einer benutzerdefinierten Regel für die Geofilterung einfach *Geografischer Standort* als Übereinstimmungstyp und dann die Länder aus, die Sie in Ihrer Anwendung zulassen/blockieren möchten. Weitere Informationen finden Sie unter [Erstellen von benutzerdefinierten Regeln in PowerShell](configure-waf-custom-rules.md) und in weiteren Beispielen für benutzerdefinierte Regeln (create-custom-waf-rules.md).
+Wählen Sie zum Erstellen einer benutzerdefinierten Regel für die Geofilterung einfach *Geografischer Standort* als Übereinstimmungstyp und dann die Länder/Regionen aus, die Sie in Ihrer Anwendung zulassen/blockieren möchten. Weitere Informationen finden Sie unter [Erstellen von benutzerdefinierten Regeln in PowerShell](configure-waf-custom-rules.md) und in weiteren Beispielen für benutzerdefinierte Regeln (create-custom-waf-rules.md).
 
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Landeskennzahlen
+## <a name="countryregion-codes"></a>Länder-/Regionscodes
 
-Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um einen der folgenden zweistelligen Ländercodes handeln. 
+Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um einen der folgenden zweistelligen Länder-/Regionscodes handeln: 
 
-|Landesvorwahl | Name des Lands |
+|Länder-/Regionscode | Name des Landes / der Region |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Vereinigte Arabische Emirate|

@@ -3,16 +3,16 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509617"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835953"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
-Vor dem Erstellen benutzerdefinierter Richtlinien empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen.
+Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen.
  
 Informationen zum Erstellen von Richtlinien für Gastkonfigurationen für Linux finden Sie auf der Seite [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md)
 
@@ -32,7 +32,14 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Das Erstellen eines Gastkonfigurationsartefakts, das automatisierte Testen des Artefakts, das Erstellen einer Richtliniendefinition und das Veröffentlichen der Richtlinie kann mit dem Modul für Gastkonfigurationen in PowerShell vollständig automatisiert werden. Das Modul kann auf einem Computer installiert werden, auf dem Windows, macOS oder Linux mit PowerShell 6.2 oder höher lokal oder mit [Azure Cloud Shell](https://shell.azure.com) oder dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) ausgeführt wird.
+Mit dem Modul „Gastkonfiguration“ wird die Erstellung von benutzerdefinierten Inhalten automatisiert, z. B.:
+
+- Erstellen eines Inhaltsartefakts für die Gastkonfiguration (ZIP-Datei)
+- Durchführen eines automatisierten Tests des Artefakts
+- Erstellen einer Richtliniendefinition
+- Veröffentlichen der Richtlinie
+
+Das Modul kann auf einem Computer installiert werden, auf dem Windows, macOS oder Linux mit PowerShell 6.2 oder höher lokal oder mit [Azure Cloud Shell](https://shell.azure.com) oder dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) ausgeführt wird.
 
 > [!NOTE]
 > Die Kompilierung von Konfigurationen wird unter Linux noch nicht unterstützt.
@@ -164,6 +171,9 @@ Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-
 Erstellen Sie eine DSC-Konfiguration zum Überwachen von Einstellungen. Im folgenden PowerShell-Beispielskript wird eine Konfiguration mit dem Namen **AuditBitLocker** erstellt, das Ressourcenmodul **PsDscResources** importiert und die Ressource `Service` verwendet, um eine Überwachung für einen ausgeführten Dienst durchzuführen. Das Konfigurationsskript kann von einem Windows- oder macOS-Computer aus ausgeführt werden.
 
 ```powershell
+# Add PSDscResources module to environment
+Install-Module 'PSDscResources'
+
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -205,7 +215,7 @@ New-GuestConfigurationPackage `
 
 Nach dem Erstellen des Konfigurationspakets – aber vor der Veröffentlichung in Azure – können Sie das Paket über Ihre Arbeitsstation oder die CI/CD-Umgebung testen. Das GuestConfiguration-Cmdlet `Test-GuestConfigurationPackage` enthält denselben Agent in Ihrer Entwicklungsumgebung, der auch auf Azure-Computern genutzt wird. Mit dieser Lösung können Sie Integrationstests lokal durchführen, bevor die Veröffentlichung für kostenpflichtige Cloudumgebungen erfolgt.
 
-Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten. Der Test verwendet nur im Inhaltspaket enthaltene Module.
+Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meisten Fällen das Test-Cmdlet auf derselben Betriebssystemplattform ausführen, die Sie überwachen möchten. Für den Test werden nur im Inhaltspaket enthaltene Module verwendet.
 
 Parameter des Cmdlets `Test-GuestConfigurationPackage`:
 
@@ -316,6 +326,14 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
+> [!Note]
+> Das aktuelle Gastkonfigurationsmodul enthält neue Parameter:
+> - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
+>   - Weitere Informationen finden Sie im Abschnitt [Filtern von Richtlinien der Gastkonfiguration mit Tags](#filtering-guest-configuration-policies-using-tags).
+> - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
+>   - Wenn der Parameter nicht hinzugefügt wird, wird standardmäßig „Gastkonfiguration“ als Kategorie verwendet.
+> Diese Features befinden sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+
 Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
 Um den Veröffentlichungsbefehl auszuführen, benötigen Sie Zugriff zum Erstellen von Richtlinien in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
@@ -355,7 +373,38 @@ $role.AssignableScopes.Add("/subscriptions/$subscriptionid")
 New-AzRoleDefinition -Role $role
 ```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Verwenden von Parametern in benutzerdefinierten Richtlinien für Gastkonfigurationen
+### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtern von Richtlinien der Gastkonfiguration mit Tags
+
+> [!Note]
+> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+
+Die mit Cmdlets im Gastkonfigurationsmodul erstellten Richtliniendefinitionen können optional einen Filter für Tags enthalten. Der Parameter **Tag** von `New-GuestConfigurationPolicy` unterstützt ein Array mit Hashtabellen, die die einzelnen Tageinträge enthalten. Die Tags werden dem Abschnitt `If` der Richtliniendefinition hinzugefügt und können nicht per Richtlinienzuweisung geändert werden.
+
+Unten ist ein Beispielcodeausschnitt einer Richtliniendefinition angegeben, mit der nach Tags gefiltert wird.
+
+```json
+"if": {
+  "allOf" : [
+    {
+      "allOf": [
+        {
+          "field": "tags.Owner",
+          "equals": "BusinessUnit"
+        },
+        {
+          "field": "tags.Role",
+          "equals": "Web"
+        }
+      ]
+    },
+    {
+      // Original Guest Configuration content
+    }
+  ]
+}
+```
+
+### <a name="using-parameters-in-custom-guest-configuration-policy-definitions"></a>Verwenden von Parametern in benutzerdefinierten Richtliniendefinitionen für Gastkonfigurationen
 
 Die Gastkonfiguration unterstützt das Außerkraftsetzen von Eigenschaften einer Konfiguration während der Laufzeit. Dieses Feature bewirkt, dass die Werte in der MOF-Datei im Paket nicht als statisch angesehen werden müssen. Die Überschreibungswerte werden über Azure Policy bereitgestellt und wirken sich nicht darauf aus, wie die Konfigurationen erstellt oder kompiliert werden.
 
@@ -384,6 +433,126 @@ New-GuestConfigurationPolicy
     -Path '.\policyDefinitions' `
     -Parameters $PolicyParameterInfo `
     -Version 1.0.0
+```
+
+## <a name="extending-guest-configuration-with-third-party-tools"></a>Erweitern der Gastkonfiguration mit Drittanbietertools
+
+> [!Note]
+> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+> In Version 1.20.1 ist dieses Feature nur für Richtliniendefinitionen verfügbar, mit denen Windows-Computer überwacht werden.
+
+Die Artefaktpakete für die Gastkonfiguration können um Drittanbietertools erweitert werden.
+Für die Erweiterung der Gastkonfiguration müssen zwei Komponenten entwickelt werden.
+
+- Eine Desired State Configuration-Ressource (DSC) zum Verarbeiten aller Verwaltungsaktivitäten für das Drittanbietertool
+  - Installieren
+  - Invoke
+  - Ausgabe konvertieren
+- Inhalt im richtigen Format für die native Nutzung durch das Tool
+
+Für die DSC-Ressource muss eine benutzerdefinierte Entwicklung durchgeführt werden, falls noch keine Communitylösung vorhanden ist.
+Sie können überprüfen, ob Communitylösungen verfügbar sind, indem Sie im PowerShell-Katalog nach dem Tag [GuestConfiguration](https://www.powershellgallery.com/packages?q=Tags%3A%22GuestConfiguration%22) suchen.
+
+> [!Note]
+> Für die Erweiterbarkeit der Gastkonfiguration gilt das Szenario „BYOL (Bring Your Own License)“. Stellen Sie sicher, dass Sie die für Drittanbietertools geltenden Bedingungen erfüllt haben, bevor Sie diese verwenden.
+
+Nachdem die DSC-Ressource in der Entwicklungsumgebung installiert wurde, sollten Sie den Parameter **FilesToInclude** für `New-GuestConfigurationPackage` verwenden, um den Inhalt für die Drittanbieterplattform in das Inhaltsartefakt einzubinden.
+
+### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Schritt-für-Schritt-Erstellung eines Inhaltsartefakts mit Verwendung von Drittanbietertools
+
+Gegenüber der Schritt-für-Schritt-Anleitung für DSC-Inhaltsartefakte muss nur das Cmdlet `New-GuestConfigurationPackage` geändert werden. Verwenden Sie für dieses Beispiel das Modul `gcInSpec`, um die Gastkonfiguration so zu erweitern, dass Windows-Computer überwacht werden – über die InSpec-Plattform, und nicht mit dem unter Linux verwendeten integrierten Modul. Das Communitymodul ist ein [Open-Source-Projekt auf GitHub](https://github.com/microsoft/gcinspec).
+
+Installieren Sie die benötigten Module in Ihrer Entwicklungsumgebung:
+
+```azurepowershell-interactive
+Install-Module GuestConfiguration, gcInSpec
+```
+
+Erstellen Sie zuerst die YAML-Datei, die von InSpec verwendet wird. Die Datei enthält grundlegende Informationen zur Umgebung. Nachfolgend sehen Sie ein Beispiel:
+
+```YaML
+name: wmi_service
+title: Verify WMI service is running
+maintainer: Microsoft Corporation
+summary: Validates that the Windows Service 'winmgmt' is running
+copyright: Microsoft Corporation
+license: MIT
+version: 1.0.0
+supports:
+  - os-family: windows
+```
+
+Speichern Sie diese Datei in einem Ordner mit dem Namen `wmi_service` in Ihrem Projektverzeichnis.
+
+Erstellen Sie dann die Ruby-Datei mit der InSpec-Sprachabstraktion, die zum Überwachen des Computers verwendet wird.
+
+```Ruby
+control 'wmi_service' do
+  impact 1.0
+  title 'Verify windows service: winmgmt'
+  desc 'Validates that the service, is installed, enabled, and running'
+
+  describe service('winmgmt') do
+    it { should be_installed }
+    it { should be_enabled }
+    it { should be_running }
+  end
+end
+
+```
+
+Speichern Sie diese Datei in einem neuen Ordner mit dem Namen `controls` im Verzeichnis `wmi_service`.
+
+Zum Schluss erstellen Sie eine Konfiguration, importieren das Ressourcenmodul **GuestConfiguration** und verwenden die Ressource `gcInSpec`, um den Namen des InSpec-Profils festzulegen.
+
+```powershell
+# Define the configuration and import GuestConfiguration
+Configuration wmi_service
+{
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    node 'wmi_service'
+    {
+        gcInSpec wmi_service
+        {
+            InSpecProfileName       = 'wmi_service'
+            InSpecVersion           = '3.9.3'
+            WindowsServerVersion    = '2016'
+        }
+    }
+}
+
+# Compile the configuration to create the MOF files
+wmi_service -out ./Config
+```
+
+Sie sollten jetzt über folgende Projektstruktur verfügen:
+
+```file
+/ wmi_service
+    / Config
+        wmi_service.mof
+    / wmi_service
+        wmi_service.yml
+        / controls
+            wmi_service.rb 
+```
+
+Die unterstützenden Dateien müssen in einem Paket zusammengefasst werden. Das fertige Paket wird von der Gastkonfiguration verwendet, um die Azure Policy-Definitionen zu erstellen.
+
+Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Verwenden Sie für Drittanbieterinhalt den Parameter **FilesToInclude**, um dem Paket den InSpec-Inhalt hinzuzufügen. Sie müssen nicht wie bei Linux-Paketen **ChefProfilePath** angeben.
+
+- **Name**: Name des Pakets mit der Gastkonfiguration.
+- **Konfiguration:** Vollständiger Pfad für das kompilierte Konfigurationsdokument.
+- **Pfad**: Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
+- **FilesoInclude**: Vollständiger Pfad zum InSpec-Profil.
+
+Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt angegebenen Konfiguration zu erstellen:
+
+```azurepowershell-interactive
+New-GuestConfigurationPackage `
+  -Name 'wmi_service' `
+  -Configuration './Config/wmi_service.mof' `
+  -FilesToInclude './wmi_service'
 ```
 
 ## <a name="policy-lifecycle"></a>Lebenszyklus von Richtlinien

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7fbe27845164eb7711d3531173fb440c5a3570f4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789707"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849133"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurieren der Leadverwaltung in Salesforce
 
@@ -31,9 +31,9 @@ In diesem Artikel wird beschrieben, wie Sie Ihr Salesforce-System einrichten, um
 
        ![Einrichtung von Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. Navigieren Sie auf der Seite **Setup** zu **Platform Tools** (Plattformtools)  >  **Feature Settings** (Featureeinstellungen)  >  **Marketing**  >  **Online-Lead-Erfassung**.
+    1. Navigieren Sie auf der Seite **Setup** zu **Platform Tools** (Plattformtools)  >  **Feature Settings** (Featureeinstellungen)  >  **Marketing**  >  **Web-to-Lead**.
 
-        ![Online-Lead-Erfassung in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+        ![Web-to-Lead in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
     Wenn Sie die klassische Salesforce-Benutzeroberfläche verwenden:
 
@@ -41,24 +41,24 @@ In diesem Artikel wird beschrieben, wie Sie Ihr Salesforce-System einrichten, um
 
        ![Klassisches Salesforce-Setup](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. Wählen Sie auf der Seite **Setup** die Option **Build** (Erstellen)  >  **Customize** (Anpassen)  >  **Leads**  >  **Online-Lead-Erfassung** aus.
+    1. Wählen Sie auf der Seite **Setup** die Option **Build** (Erstellen)  >  **Customize** (Anpassen)  >  **Leads**  >  **Web-to-Lead** aus.
 
-        ![Online-Lead-Erfassung in Salesforce (klassisch)](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+        ![Web-to-Lead in Salesforce (klassisch)](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
    Die übrigen Schritte sind für beide Salesforce-Umgebungen gleich.
 
-1. Klicken Sie auf der Seite **Setup der Online-Leaderfassung** auf die Schaltfläche **Online-Leaderfassungsformular erstellen**.
-1. Wählen Sie unter **Setup der Online-Leaderfassung** die Option **Online-Leaderfassungsformular erstellen** aus.
+1. Klicken Sie auf der Seite **Web-to-Lead Setup** auf die Schaltfläche **Create Web-to-Lead Form** (Web-to-Lead-Formular erstellen).
+1. Wählen Sie unter **Web-to-Lead Setup** die Option **Create Web-to-Lead Form** aus.
 
-    ![Setup der Online-Leaderfassung in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+    ![Web-to-Lead-Setup in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-1. Stellen Sie sicher, dass auf der Seite **Online-Leaderfassungsformular erstellen** die Einstellung `Include reCAPTCHA in HTML` deaktiviert ist, und wählen Sie **Generieren** aus.
+1. Stellen Sie sicher, dass auf der Seite **Create a Web-to-Lead Form** (Web-to-Lead-Formular erstellen) die Einstellung `Include reCAPTCHA in HTML` deaktiviert ist, und wählen Sie **Generate** (Generieren) aus.
 
-    ![Bereich zum Erstellen eines Online-Leaderfassungsformular in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+    ![Bereich zum Erstellen eines Web-to-Lead-Formulars in Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
 1. Es wird HTML-Text angezeigt. Suchen Sie den Text „oid“, kopieren Sie den **Wert für „oid“**  aus dem HTML-Text (nur den Text zwischen den Anführungszeichen), und speichern Sie ihn. Sie fügen diesen Wert in das Feld **Organisations-ID** im Veröffentlichungsportal ein.
 
-    ![Erstellen eines Online-Leaderfassungsformulars in Salesforce mit „oid“-Wert im HTML-Text](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+    ![Erstellen eines Web-to-Lead-Formulars in Salesforce mit „oid“-Wert im HTML-Text](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
 1. Wählen Sie **Finished** (Fertig) aus.
 
@@ -70,11 +70,11 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 
 1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 
-1. Wählen Sie im Abschnitt **Leadverwaltung** die Option **Verbinden** aus. 
+1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
 
-    ![Schaltfläche „Verbinden“ im Bereich „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="Kundenleads":::
 
-1. Wählen Sie im Popupfenster **Verbindungsdetails** für das **Leadziel** die Option **Salesforce** aus, und fügen Sie den `oid`-Wert aus dem erstellten Online-Leaderfassungsformular in das Feld **Organisations-ID** ein.
+1. Wählen Sie im Popupfenster **Verbindungsdetails** für das **Leadziel** die Option **Salesforce** aus, und fügen Sie den `oid`-Wert aus dem erstellten Web-to-Lead-Formular in das Feld **Organisations-ID** ein.
 
     ![Option „Überprüfen“ für das Feld „Kontakt-E-Mail“ im Popupfenster „Verbindungsdetails“](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 

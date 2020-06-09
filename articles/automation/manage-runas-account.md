@@ -1,18 +1,18 @@
 ---
-title: Verwalten von ausführenden Azure Automation-Konten
-description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Portal Ihre ausführenden Konten verwalten.
+title: Verwalten eines ausführenden Azure Automation-Kontos
+description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal Ihr ausführendes Konto verwalten.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d85eac7af71f03be384b8fa9d9603525c0807dac
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608676"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770787"
 ---
-# <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
+# <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
 In Azure Automation bieten ausführende Konten Authentifizierung für die Verwaltung von Ressourcen in Azure mit Azure-Cmdlets. Beim Erstellen eines ausführenden Kontos wird ein neuer Dienstprinzipalbenutzer in Azure Active Directory (AD) erstellt, und diesem Benutzer wird dann auf Abonnementebene die Rolle „Mitwirkender“ zugewiesen.
 
@@ -53,11 +53,11 @@ Das klassische ausführende Azure-Konto führt die folgenden Aufgaben durch.
 >[!NOTE]
 >Ein klassisches ausführendes Azure-Konto wird nicht mehr standardmäßig erstellt, wenn Sie ein Automation-Konto erstellen. Dieses Konto wird einzeln gemäß den weiter unten in diesem Artikel beschriebenen Schritten erstellt.
 
-## <a name="run-as-account-permissions"></a><a name="permissions"></a>Berechtigungen des ausführenden Kontos
+## <a name="obtain-run-as-account-permissions"></a><a name="permissions"></a>Erhalten von Berechtigungen des ausführenden Kontos
 
 In diesem Abschnitt werden Berechtigungen sowohl für normale ausführende Konten als auch für klassische ausführende Konten definiert.
 
-### <a name="permissions-to-configure-run-as-accounts"></a>Berechtigungen zum Konfigurieren von ausführenden Konten
+### <a name="get-permissions-to-configure-run-as-accounts"></a>Erhalten von Berechtigungen zum Konfigurieren von ausführenden Konten
 
 Um ein ausführendes Konto erstellen oder aktualisieren zu können, müssen Sie über bestimmte Rechte und Berechtigungen verfügen. Ein Anwendungsadministrator in Azure Active Directory und ein Besitzer in einem Abonnement können sämtliche Aufgaben erledigen. In der folgenden Tabelle werden die Aufgaben, das entsprechende Cmdlet und die erforderlichen Berechtigungen für Situationen mit Aufgabentrennung aufgeführt:
 
@@ -83,11 +83,11 @@ So überprüfen Sie, ob die Situation, die die Fehlermeldung erzeugt, behoben wu
 3. Wählen Sie Ihren Namen aus, und wählen Sie dann **Profil** aus. 
 4. Stellen Sie sicher, dass der Wert des Attributs **Benutzertyp** im Profil des Benutzers nicht auf **Gast** festgelegt ist.
 
-### <a name="permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Berechtigungen zum Konfigurieren von klassischen ausführenden Konten
+### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Erhalten von Berechtigungen zum Konfigurieren klassischer ausführender Konten
 
 Zum Konfigurieren oder Erneuern klassischer ausführender Konten benötigen Sie die Rolle „Co-Administrator“ auf Abonnementebene. Weitere Informationen zu klassischen Abonnementberechtigungen finden Sie unter [Administratoren für klassische Azure-Abonnements](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
-## <a name="creating-a-run-as-account-in-azure-portal"></a>Erstellen eines ausführenden Kontos im Azure-Portal
+## <a name="create-a-run-as-account-in-azure-portal"></a>Erstellen eines ausführenden Kontos im Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um Ihr Azure Automation-Konto im Azure-Portal zu aktualisieren. Erstellen Sie das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Azure Automation-Konto im Azure-P
 6. Verwenden Sie je nach gewünschtem Konto den Bereich **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen**. Klicken Sie nach dem Überprüfen der Übersichtsinformationen auf **Erstellen**.
 6. Während das ausführende Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen. Es wird auch ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird. Der Vorgang kann einige Minuten dauern.
 
-## <a name="creating-a-run-as-account-using-powershell"></a>Erstellen eines ausführenden Kontos mit PowerShell
+## <a name="create-a-run-as-account-using-powershell"></a>Erstellen eines ausführenden Kontos mit PowerShell
 
 In der folgenden Liste sind die Anforderungen zum Erstellen eines ausführenden Kontos in PowerShell aufgeführt. Diese Anforderungen gelten für beide Typen von ausführenden Konten.
 
@@ -126,7 +126,7 @@ In diesem Abschnitt finden Sie ein PowerShell-Skript zum Erstellen eines ausfüh
 * Erstellen Sie ein ausführendes Konto und ein klassisches ausführendes Konto, indem Sie ein Zertifikat nutzen, das von Ihrer Unternehmenszertifizierungsstelle ausgestellt wurde.
 * Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat in der Azure Government-Cloud
 
-Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. Informationen zu den Cmdlets und den Berechtigungen, die sie benötigen, finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](#permissions-to-configure-run-as-accounts).
+Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. Informationen zu den Cmdlets und den Berechtigungen, die sie benötigen, finden Sie unter [Erhalten von Berechtigungen zum Konfigurieren von ausführenden Konten](#get-permissions-to-configure-run-as-accounts).
 
 Speichern Sie das Skript auf Ihrem Computer unter dem Dateinamen **New-RunAsAccount. ps1**.
 
@@ -237,7 +237,7 @@ if (!(($AzureRmProfileVersion.Major -ge 3 -and $AzureRmProfileVersion.Minor -ge 
 
 
 Connect-AzAccount -Environment $EnvironmentName
-$Subscription = Get-AzSubscription -SubscriptionId $SubscriptionId
+$Subscription = Get-AzSubscription -SubscriptionId $SubscriptionId | Set-AzContext
 
 # Create a Run As account by using a service principal
 $CertifcateAssetName = "AzureRunAsCertificate"
@@ -299,7 +299,7 @@ if ($CreateClassicRunAsAccount) {
     CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
     # Populate the ConnectionFieldValues
-    $SubscriptionName = $subscription.Subscription.Name
+    $SubscriptionName = $subscription.Name
     $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
     # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
@@ -349,7 +349,7 @@ Wenn Sie ein klassisches ausführendes Konto mit einem öffentlichen Unternehmen
 
 Falls Sie ein klassisches ausführendes Konto mit einem selbstsignierten öffentlichen Zertifikat (**CER**-Datei) erstellt haben, führt das Skript die Erstellung durch und speichert es im Ordner für temporäre Dateien auf Ihrem Computer. Sie finden es unter dem Benutzerprofil `%USERPROFILE%\AppData\Local\Temp`, das Sie zum Ausführen der PowerShell-Sitzung verwendet haben.
 
-## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos
+## <a name="delete-a-run-as-or-classic-run-as-account"></a>Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos
 
 In diesem Abschnitt wird beschrieben, wie Sie ein ausführendes Konto oder klassisches ausführendes Konto löschen. Bei dieser Aktion wird das Automation-Konto beibehalten. Nach dem Löschen des Kontos können Sie es im Azure-Portal neu erstellen.
 
@@ -369,7 +369,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein ausführendes Konto oder klass
 
    ![Neuerstellen des ausführenden Automation-Kontos](media/manage-runas-account/automation-account-create-runas.png)
 
-## <a name="renewing-a-self-signed-certificate"></a><a name="cert-renewal"></a>Erneuern eines selbstsignierten Zertifikats
+## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Verlängern eines selbstsignierten Zertifikats
 
 Das selbstsignierte Zertifikat, das Sie für das ausführende Konto erstellt haben, läuft ein Jahr nach dem Erstellungsdatum ab. Das Zertifikat muss vor Ablauf Ihres ausführenden Kontos erneuert werden. Sie können es vor dem Ablaufdatum jederzeit erneuern. 
 
@@ -397,7 +397,7 @@ Verwenden Sie die folgenden Schritte, um das selbstsignierte Zertifikat zu erste
 
 1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
 
-## <a name="setting-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Einrichten der automatischen Zertifikaterneuerung mit einem Automation-Runbook
+## <a name="set-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Einrichten der automatischen Zertifikaterneuerung mit einem Automation-Runbook
 
 Zum automatischen Erneuern von Zertifikaten können Sie ein Automation-Runbook verwenden. Mit diesem Skript auf [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) wird diese Funktion in Ihrem Automation-Konto aktiviert.
 
@@ -432,7 +432,7 @@ Führen Sie die folgenden Schritte aus, um den Erneuerungsprozess sofort zu test
 5. Bearbeiten Sie nach dem Test das Runbook, und entfernen Sie das Kommentarzeichen, das Sie in Schritt 1 hinzugefügt haben.
 6. Veröffentlichen Sie das Runbook.
 
-## <a name="limiting-run-as-account-permissions"></a><a name="limiting-run-as-account-permissions"></a>Einschränken der Berechtigungen für ausführendes Konto
+## <a name="limit-run-as-account-permissions"></a>Einschränken der Berechtigungen des ausführenden Kontos
 
 Zum Steuern der Automatisierungsziele für Ressourcen in Azure können Sie das Skript [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8)ausführen. Dieses Skript ändert Ihren vorhandenen Dienstprinzipal für das ausführende Konto, um eine benutzerdefinierte Rollendefinition zu erstellen und zu verwenden. Die Rolle verfügt über Berechtigungen für alle Ressourcen außer [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
@@ -466,7 +466,7 @@ Sie können Azure Automation gestatten, zu überprüfen, ob Key Vault und Ihr Di
 
 Sie können das Skript [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) im PowerShell-Katalog verwenden, um Ihrem ausführenden Konto Berechtigungen für KeyVault zu erteilen. Weitere Einzelheiten zum Festlegen von Berechtigungen für Key Vault finden Sie unter [Gewähren des Zugriffs auf einen Schlüsseltresor für Anwendungen](../key-vault/general/group-permissions-for-apps.md).
 
-## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Beheben von Fehlkonfigurationsproblemen bei ausführenden Konten
+## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>Beheben von Fehlkonfigurationsproblemen bei ausführenden Konten
 
 Einige Konfigurationselemente, die für ein ausführendes oder ein klassisches ausführendes Konto erforderlich sind, können eventuell gelöscht oder während der anfänglichen Einrichtung nicht ordnungsgemäß erstellt worden sein. Mögliche Instanzen für Fehlkonfigurationen können sein:
 
@@ -489,5 +489,5 @@ Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/develop/app-objects-and-service-principals.md).
-* Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/develop/app-objects-and-service-principals.md)
+* [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md)

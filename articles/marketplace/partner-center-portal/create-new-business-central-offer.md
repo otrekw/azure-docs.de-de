@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: c7618bd4408f07b70e2f9fffe23e38ba968e7210
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 04de89624dd0e6857e96327bb408cf8700a1f6a2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792393"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848880"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -42,7 +42,7 @@ Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jed
 Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
 - Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
-- Sobald Sie auf **Erstellen** geklickt haben, kann der Angebotsalias nicht mehr geändert werden.
+- Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
 Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
@@ -67,11 +67,11 @@ Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversi
 
 #### <a name="contact-me"></a>Kontakt mit mir aufnehmen
 
-Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management). 
+Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Kundenleads](#customer-leads).
 
 ### <a name="test-drive"></a>Testversion
 
-Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen, was zu einer höheren Konversionsrate und der Generierung von aussichtsreichen Leads führt. [Erfahren Sie mehr über Testversionen.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Weitere Informationen zu Testversionen finden Sie [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
 
 Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen. Konfigurieren Sie die Umgebung für die Testversion wie im Abschnitt [Technische Konfiguration der Testversion](#test-drive-technical-configuration) weiter unten in diesem Artikel beschrieben.
 
@@ -94,7 +94,7 @@ Sie können zwischen folgenden Optionen wählen:
 - [Testversion: Marketing und Best Practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [PDF mit Übersicht zu Testversionen](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (Stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
 
-## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
@@ -137,30 +137,15 @@ Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. D
 
 ### <a name="short-description"></a>Kurze Beschreibung
 
-Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die in den Marketplace-Suchergebnissen verwendet werden kann.
+Geben Sie eine kurze Beschreibung Ihres Angebots an (bis zu 100 Zeichen). Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein. 
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Einige Tipps zum Verfassen Ihrer Beschreibung:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Fügen Sie folgende Elemente in Ihr Wertversprechen ein:
-  - Beschreibung des Produkts
-  - Benutzertyp, der von dem Produkt profitiert
-  - Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt
-- Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
-- Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
-- Verwenden Sie ggf. HTML-Tags, um Ihre Beschreibung zu formatieren und Sie ansprechender zu gestalten.
-
-Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
-
-![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
-
-| <center>Textformat ändern | <center>Aufzählungszeichen oder Nummerierung hinzufügen | <center>Texteinzug hinzufügen oder entfernen |
-| --- | --- | --- |
-| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 ### <a name="search-keywords"></a>Suchbegriffe
 
@@ -305,7 +290,7 @@ Eine Bereitstellungsvorlage, die alle Azure-Ressourcen enthält, aus denen Ihre 
 
     **Kalt**: Dieser Instanztyp stellt die Gesamtzahl von Instanzen dar, die pro Region bereitgestellt werden können. Bei Instanzen des Typs „Kalt“ muss die Bereitstellung der gesamten Resource Manager-Vorlage für die Testversion durchgeführt werden, wenn der Kunde die Testversion anfordert. Daher dauert das Laden von Instanzen des Typs *Kalt* weitaus länger als das Laden von Instanzen des Typs *Heiß*. Sie müssen jedoch nur für die Dauer der Testversion bezahlen. Instanzen vom Typ „Kalt“ werden *nicht* wie Instanzen vom Typ *Heiß* stets im Azure-Abonnement ausgeführt.
 
-- **Test drive Azure Resource Manager template** (Azure Resource Manager-Vorlage für Testversion): Laden Sie die ZIP-Datei mit Ihrer Azure Resource Manager-Vorlage hoch.  Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
+- **Azure Resource Manager-Vorlage für Testversion:** Laden Sie die ZIP-Datei mit Ihrer Azure Resource Manager-Vorlage hoch.  Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
 
 - **Dauer der Testversion** (erforderlich): Geben Sie die Dauer in Stunden ein, für die die Testversion aktiv bleiben soll. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet. Verwenden Sie nur ganze Zahlen (z. B. „2“ Stunden ist zulässig, „1,5“ hingegen nicht).
 

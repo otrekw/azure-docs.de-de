@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Verwenden von Azure Files und Azure AD DS
           href: create-profile-container-adds.md
-    - name: Erstellen von Dateifreigaben für Profilcontainer
-      href: create-file-share.md
+        - name: Verwenden von Azure Files und AD DS
+          href: create-file-share.md
     - name: Konfigurieren von Hostpooleinstellungen
       items:
         - name: RDP-Eigenschaften

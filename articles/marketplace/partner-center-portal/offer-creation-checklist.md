@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281339"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850010"
 ---
 # <a name="saas-offer-creation-checklist"></a>Prüfliste für die Erstellung von SaaS-Angeboten
 
@@ -58,7 +58,7 @@ Auf der Seite „Angebotseinrichtung“ können Sie verschiedene Kanäle und Ver
 | Kanäle  | Optional. Standardwert: Nicht im CSP-Kanal (Handelspartner) registriert.  |
 | Testversion | Optional. Standardwert: Keine Testversion aktiviert.  |
 | Typ der Testversion | Erforderlich, wenn eine Testversion aktiviert ist. Standardwert: Keine Auswahl. Optionen: Azure Resource Manager, Dynamics 365 for Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, Logik-App, Power BI.  |
-| Leadverwaltung – Verbindung mit einem CRM-System | Erforderlich, wenn der Verkauf über Microsoft erfolgt oder in der Angebotsliste die Option „Kontakt mit mir aufnehmen“ aufgeführt ist. Standardwert: Kein CRM-System verbunden. CRM-Optionen: Azure-Tabelle, Azure-Blob, Dynamics CRM Online, HTTPS-Endpunkt, Marketo, Salesforce  |
+| Kundenleads: Herstellen einer Verbindung mit einem CRM-System | Erforderlich, wenn der Verkauf über Microsoft erfolgt oder in der Angebotsliste die Option „Kontakt mit mir aufnehmen“ aufgeführt ist. Standardwert: Kein CRM-System verbunden. CRM-Optionen: Azure-Tabelle, Azure-Blob, Dynamics CRM Online, HTTPS-Endpunkt, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Eigenschaftenseite
 

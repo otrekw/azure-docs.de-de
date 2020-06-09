@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857654"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847972"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace
 
@@ -59,7 +59,7 @@ Diese Seite enthält Links zum Durchführen von Vorgängen für dieses Angebot a
 
 Führen Sie die unten angegebenen Schritte aus, um Ihr Angebot einzurichten.
 
-### <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentlichen, können Sie es optional mit Ihrem CRM-System (Customer Relationship Management) verbinden. Dadurch empfangen Sie Kontaktinformationen zum Kunden, sobald jemand sein Interesse an Ihrem Produkt bekundet oder es verwendet.
 
@@ -146,44 +146,15 @@ Geben Sie eine detailliertere Beschreibung Ihres Angebots. Sie kann bis zu 256 
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Schließen Sie eine oder mehrere der folgenden Informationen in die Beschreibung ein:
+IoT Edge-Modulangebote müssen am Ende der Beschreibung einen Absatz zu den mindestens zu erfüllenden Hardwareanforderungen beinhalten, etwa:
 
-- Den Nutzen und die wichtigsten Vorteile Ihres Angebots
-- Zuordnungen zu Kategorien oder Branchen oder beidem
-- Möglichkeit zu In-App-Käufen
-- Alle erforderlichen Bekanntmachungen
+- Mindestanforderungen für Hardware: Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher
 
-IoT Edge-Modulangebote müssen am Ende der Beschreibung einen Absatz zu den mindestens zu erfüllenden Hardwareanforderungen beinhalten. Beispiel:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-*Mindestanforderungen für Hardware: Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher*
-
-Hier folgen einige Tipps zum Verfassen Ihrer Beschreibung:
-
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich den Nutzen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
-    - Beschreibung des Angebots.
-    - Typ von Benutzern, die von dem Produkt profitieren.
-    - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-- Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
-- Verwenden Sie möglichst branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
-
-Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors. Mit dem Rich-Text-Editor können Sie Zahlen, Aufzählungspunkte, fette und kursive Formatierung und Einzüge hinzufügen, um die Lesbarkeit Ihrer Beschreibung zu verbessern.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Darstellung des Rich-Text-Editors." border="false":::
-
-- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text, und wählen ein Textformat aus, wie in diesem Screenshot dargestellt:
-
-     :::image type="content" source="media/text-editor3.png" alt-text="Darstellung des Formatvorlagen-Steuerelement für Text im Rich-Text-Editor." border="false":::
-
-- Um dem Text eine nummerierte Liste oder eine Liste mit Aufzählungszeichen hinzuzufügen, verwenden die in diesem Screenshot dargestellten Optionen:
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="Darstellung der Steuerelemente für Aufzählungen und Listen mit Aufzählungspunkten im Rich-Text-Editor." border="false":::
-
-- Um dem Text Einzüge hinzuzufügen bzw. sie aus ihm zu entfernen, verwenden Sie die in diesem Screenshot dargestellten Optionen:
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Veranschaulicht die Einzugssteuerelemente im Rich-Text-Editor." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>URL zur Datenschutzrichtlinie
 

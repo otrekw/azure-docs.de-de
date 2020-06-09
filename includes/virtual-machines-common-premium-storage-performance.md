@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204635"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821487"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -82,7 +82,7 @@ Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung wäh
 | Warteschlangenlänge | | | |
 
 > [!NOTE]
->  Es empfiehlt sich, diese Zahlen basierend auf dem erwarteten zukünftigen Wachstum Ihrer Anwendung zu skalieren. Es ist stets eine gute Idee, für Wachstum im Voraus zu planen, da es schwieriger sein könnte, die Infrastruktur zur Verbesserung der Leistung später zu ändern.
+> Es empfiehlt sich, diese Zahlen basierend auf dem erwarteten zukünftigen Wachstum Ihrer Anwendung zu skalieren. Es ist stets eine gute Idee, für Wachstum im Voraus zu planen, da es schwieriger sein könnte, die Infrastruktur zur Verbesserung der Leistung später zu ändern.
 
 Wenn Sie eine vorhandene Anwendung haben, die in Storage Premium verschoben werden soll, erstellen Sie für diese Anwendung zunächst die obige Prüfliste. Erstellen Sie anschließend einen Prototyp der Anwendung in Storage Premium, und entwerfen Sie die Anwendung basierend auf den Leitlinien unter *Optimieren der Anwendungsleistung* weiter unten in diesem Dokument. Im nächsten Artikel werden die Tools beschrieben, die Sie verwenden können, um die Leistungsindikatoren zu erfassen.
 
@@ -94,11 +94,11 @@ Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher u
 
 | Leistungsindikator | BESCHREIBUNG | Systemmonitor | iostat |
 | --- | --- | --- | --- |
-| **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s  <br> Schreibvorgänge/s |tps  <br> r/s  <br>  w/s |
-| **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit  <br>  % Schreibzeit |r/s  <br>  w/s |
-| **Durchsatz** |Menge der Daten, die pro Sekunde auf dem Datenträger gelesen oder geschrieben wurde. |Byte gelesen/s  <br> Byte geschrieben/s |kB_read/s <br> kB_wrtn/s |
-| **Latenz** |Zeitaufwand für das Ausführen einer E/A-Anforderung an den Datenträger. |Mittlere Sek./Lesevorgänge  <br>  Mittlere Sek./Schreibvorgänge |await  <br>  svctm |
-| **E/A-Größe** |Größe der an die Speicherdatenträger gesendeten E/A-Anforderungen. |Mittlere Bytes/Lesevorgang  <br>  Mittlere Bytes/Schreibvorgang |avgrq-sz |
+| **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s <br> Schreibvorgänge/s |tps <br> r/s <br> w/s |
+| **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit <br> % Schreibzeit |r/s <br> w/s |
+| **Durchsatz** |Menge der Daten, die pro Sekunde auf dem Datenträger gelesen oder geschrieben wurde. |Byte gelesen/s <br> Byte geschrieben/s |kB_read/s <br> kB_wrtn/s |
+| **Latenz** |Zeitaufwand für das Ausführen einer E/A-Anforderung an den Datenträger. |Mittlere Sek./Lesevorgänge <br> Mittlere Sek./Schreibvorgänge |await <br> svctm |
+| **E/A-Größe** |Größe der an die Speicherdatenträger gesendeten E/A-Anforderungen. |Mittlere Bytes/Lesevorgang <br> Mittlere Bytes/Schreibvorgang |avgrq-sz |
 | **Warteschlangenlänge** |Anzahl der ausstehenden E/A-Anforderungen, die vom Speicherdatenträger gelesen oder auf diesen geschrieben werden sollen. |Aktuelle Warteschlangenlänge |avgqu-sz |
 | **Max. Arbeitsspeicher** |Für die reibungslose Ausführung der Anwendung erforderlicher Arbeitsspeicher |Zugesicherte verwendete Bytes (%) |vmstat verwenden |
 | **Max. CPU** |Für die reibungslose Ausführung der Anwendung erforderliche CPU-Größe |% Prozessorzeit |%util |
@@ -164,7 +164,7 @@ Es folgt ein Beispiel, wie Sie IOPS bzw. Durchsatz/Bandbreite für Ihre Anwendun
 Um eine IOPS-Rate und Bandbreite zu erzielen, die höher als der Maximalwert eines einzelnen Storage Premium-Datenträgers ist, verwenden Sie mehrere Premium-Datenträger in einem Stripeset. Fügen Sie z. B. zwei P30-Datenträger zu einem Stripeset zusammen, um in dieser Kombination eine IOPS-Rate von 10.000 oder einen Durchsatz von 400 MB pro Sekunde zu erzielen. Wie im nächsten Abschnitt erläutert, müssen Sie eine VM-Größe wählen, die die IOPS-Rate und den Durchsatz der kombinierten Datenträger unterstützt.
 
 > [!NOTE]
->  Wenn Sie entweder die IOPS-Rate oder den Durchsatz erhöhen, sollten Sie sicherstellen, dass Sie dabei nicht das Durchsatz- oder IOPS-Limit des Datenträgers oder der VM überschreiten.
+> Wenn Sie entweder die IOPS-Rate oder den Durchsatz erhöhen, sollten Sie sicherstellen, dass Sie dabei nicht das Durchsatz- oder IOPS-Limit des Datenträgers oder der VM überschreiten.
 
 Führen Sie zum Überprüfen der Auswirkungen der E/A-Größe auf die Anwendungsleistung in Ihrer VM und auf Ihren Datenträgern Benchmarktools aus. Erstellen Sie mehrere Testläufe, und wählen Sie für jeden Lauf eine andere E/A-Größe, um die Auswirkungen zu prüfen. Ausführlichere Informationen finden Sie im am Ende dieses Artikels verlinkten Artikel zu Benchmarks.
 
@@ -176,18 +176,18 @@ Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl v
 
 | Größe des virtuellen Computers | CPU-Kerne | Arbeitsspeicher | VM-Datenträgergrößen | Maximal Anzahl Datenträger | Cachegröße | IOPS | Limits für Bandbreite, Cache und E/A |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |Betriebssystem = 1023 GB  <br>  Lokales SSD = 224 GB |32 |576 GB |50.000 IOPS  <br>  512 MB pro Sekunde |4\.000 IOPS und 33 MB pro Sekunde |
-| Standard_GS5 |32 |448 GB |Betriebssystem = 1023 GB  <br>  Lokales SSD = 896 GB |64 |4\.224 GB |80.000 IOPS  <br>  2.000 MB pro Sekunde |5\.000 IOPS und 50 MB pro Sekunde |
+| Standard_DS14 |16 |112 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB pro Sekunde |4\.000 IOPS und 33 MB pro Sekunde |
+| Standard_GS5 |32 |448 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 896 GB |64 |4\.224 GB |80.000 IOPS <br> 2.000 MB pro Sekunde |5\.000 IOPS und 50 MB pro Sekunde |
 
 Eine vollständige Übersicht mit allen verfügbaren Azure-VM-Größen finden Sie unter [Windows VM-Größen](../articles/virtual-machines/windows/sizes.md) oder [Linux VM-Größen](../articles/virtual-machines/linux/sizes.md). Wählen Sie eine VM-Größe, die Ihre Anforderungen an die Anwendungsleistung erfüllen und entsprechend skaliert werden kann. Berücksichtigen Sie darüber hinaus folgende wichtige Aspekte bei der Wahl der VM-Größe.
 
 *Skalierungslimits*  
- Die maximalen IOPS-Limits pro VM und Datenträger sind unterschiedlich und voneinander unabhängig. Stellen Sie sicher, dass die Anwendung die IOPS innerhalb der Limits der VM sowie der angefügten Storage Premium-Datenträger unterstützt. Andernfalls wird die Anwendungsleistung gedrosselt.
+Die maximalen IOPS-Limits pro VM und Datenträger sind unterschiedlich und voneinander unabhängig. Stellen Sie sicher, dass die Anwendung die IOPS innerhalb der Limits der VM sowie der angefügten Storage Premium-Datenträger unterstützt. Andernfalls wird die Anwendungsleistung gedrosselt.
 
 Beispiel: Angenommen, eine Anwendungsanforderung ist ein IOPS-Wert von maximal 4.000. Um dies zu erreichen, stellen Sie einen P30-Datenträger in einer VM der DS1-Serie bereit. Der P30-Datenträger kann bis zu 5.000 IOPS bieten. Die VM der DS1-Serie ist jedoch auf 3.200 IOPS beschränkt. Daher wird die Anwendungsleistung gemäß dem VM-Limit auf 3.200 IOPS verringert. Um dies zu vermeiden, wählen eine VM- und Datenträgergröße, die beide Anwendungsanforderungen erfüllt.
 
 *Betriebskosten*  
- In vielen Fällen ist es möglich, dass die Gesamtbetriebskosten bei der Verwendung von Storage Premium niedriger als bei der Verwendung von Storage Standard sind.
+In vielen Fällen ist es möglich, dass die Gesamtbetriebskosten bei der Verwendung von Storage Premium niedriger als bei der Verwendung von Storage Standard sind.
 
 Nehmen wir als Beispiel eine Anwendung, die 16.000 IOPS benötigt. Um diese Leistung zu erzielen, benötigen Sie eine Azure-IaaS-VM vom Typ „Standard\_D14“, die bei Verwenden von 32 Standardspeicher-Datenträgern mit je 1 TB eine maximale IOPS-Rate von 16.000 bietet. Jeder Storage Standard-Datenträger mit 1 TB kann maximal 500 IOPS erzielen. Die geschätzten Kosten für diese VM pro Monat liegen bei 1.570 $. Die monatliche Kosten der 32 Storage Standard-Datenträger betragen 1.638 $. Die geschätzten monatlichen Gesamtkosten betragen 3.208 $.
 
@@ -216,17 +216,17 @@ Azure Storage Premium bietet verschiedene Größen, sodass Sie eine wählen kön
 Die zu wählende Anzahl von Datenträgern hängt von der gewählten Datenträgergröße ab. Zum Erfüllen Ihrer Anwendungsanforderung können Sie entweder einen einzelnen P50- oder mehrere P10-Datenträger verwenden. Berücksichtigen Sie bei Ihrer Wahl die nachstehenden Aspekte.
 
 *Skalierungslimits (IOPS und Durchsatz)*  
- Die IOPS- und Durchsatzlimits der einzelnen Premium-Datenträgergrößen sind unterschiedlich und unabhängig von den VM-Skalierungslimits. Vergewissern Sie sich, dass die gesamte IOPS- und Durchsatzrate der Datenträger innerhalb der Skalierungslimits der gewählten VM-Größe liegen.
+Die IOPS- und Durchsatzlimits der einzelnen Premium-Datenträgergrößen sind unterschiedlich und unabhängig von den VM-Skalierungslimits. Vergewissern Sie sich, dass die gesamte IOPS- und Durchsatzrate der Datenträger innerhalb der Skalierungslimits der gewählten VM-Größe liegen.
 
 Beispiel: Angenommen, eine Anwendungsanforderung hat einen Durchsatz von maximal 250 MB/s, und Sie verwenden eine VM vom Typ DS4 mit einem einzelnen P30-Datenträger. Die VM vom Typ DS4 kann einen Durchsatz von bis zu 256 MB/s bieten. Ein einzelner P30-Datenträger weist jedoch eine Durchsatzbeschränkung von 200 MB/s auf. Die Anwendung wird daher aufgrund der Beschränkung des Datenträgers auf 200 MB/s beschränkt. Um diese Beschränkung zu umgehen, stellen Sie für die VM mehr als einen Datenträger bereit, oder ändern Sie die Größe Ihrer Datenträger in P40 oder P50.
 
 > [!NOTE]
->  Leseanforderungen, die aus dem Cache erfüllt werden, bleiben bei der IOPS- und Durchsatzleistung des Datenträgers unberücksichtigt und unterliegen deshalb keinen Datenträgerlimits. Für den Cache gelten separate IOPS- und Durchsatzlimits pro VM.
+> Leseanforderungen, die aus dem Cache erfüllt werden, bleiben bei der IOPS- und Durchsatzleistung des Datenträgers unberücksichtigt und unterliegen deshalb keinen Datenträgerlimits. Für den Cache gelten separate IOPS- und Durchsatzlimits pro VM.
 >
 > Beispielsweise erfolgen Ihre Lese- und Schreibvorgänge anfänglich mit 60 MB/s bzw. 40 MB/s. Mit der Zeit füllt sich der Cache auf, sodass immer mehr Leseanforderungen aus dem Cache erfüllt werden. Dadurch erhalten Sie einen höheren Schreibdurchsatz vom Datenträger.
 
 *Anzahl der Datenträger*  
- Bestimmen Sie die benötigte Anzahl der Datenträger, indem Sie die Anwendungsanforderungen prüfen. Für jede VM gilt auch ein Limit für die Anzahl der Datenträger, die an die VM angefügt werden können. In der Regel ist dies die doppelte Anzahl der Kerne. Stellen Sie sicher, dass die gewählte VM-Größe die erforderliche Anzahl von Datenträgern unterstützt.
+Bestimmen Sie die benötigte Anzahl der Datenträger, indem Sie die Anwendungsanforderungen prüfen. Für jede VM gilt auch ein Limit für die Anzahl der Datenträger, die an die VM angefügt werden können. In der Regel ist dies die doppelte Anzahl der Kerne. Stellen Sie sicher, dass die gewählte VM-Größe die erforderliche Anzahl von Datenträgern unterstützt.
 
 Wie schon erwähnt, bieten Storage Premium-Datenträger eine höhere Leistung als Storage Standard-Datenträger. Wenn Sie also Ihre Anwendung aus einer Azure IaaS-VM mit Storage Standard zu Storage Premium migrieren, benötigen Sie wahrscheinlich weniger Premium-Datenträger, um für Ihre Anwendung dieselbe oder eine höhere Leistung zu erzielen.
 
@@ -237,7 +237,7 @@ Hochleistungs-VMs mit Azure Storage Premium arbeiten mit einer mehrschichtigen C
 > [!WARNING]
 > Die Zwischenspeicherung von Datenträgern wird nicht für Datenträger mit einer Größe von 4 TiB und höher unterstützt. Wenn mehrere Datenträger an Ihre VM angefügt sind, unterstützt jeder Datenträger mit 4 TiB oder weniger das Zwischenspeichern.
 >
-> Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern.
+> Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern. Wenn diese Empfehlungen nicht befolgt werden, kann dies zu einer Beschädigung der Daten führen.
 
 Weitere Informationen zur Funktionsweise von BlobCache finden Sie im Blogbeitrag [Inside Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) .
 
@@ -257,13 +257,13 @@ Es folgen die empfohlenen Cacheeinstellungen für Datenträger:
 | ReadWrite |Konfigurieren Sie „host-cache“ nur dann mit „ReadWrite“, wenn Ihre Anwendung zwischengespeicherte Daten bei Bedarf ordnungsgemäß auf beständige Datenträger schreiben kann. |
 
 *ReadOnly*  
- Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger können Sie für Ihre Anwendung eine niedrige Leselatenz und einen sehr hohe Leserate hinsichtlich IOPS und Durchsatz erzielen. Hierfür gibt es zwei Gründe:
+Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger können Sie für Ihre Anwendung eine niedrige Leselatenz und einen sehr hohe Leserate hinsichtlich IOPS und Durchsatz erzielen. Hierfür gibt es zwei Gründe:
 
 1. Aus dem Cache erfüllte Leseanforderungen, der sich im Arbeitsspeicher der VM und auf dem lokalen SSD-Laufwerk befindet, sind wesentlich schneller als Lesevorgänge vom Datenträger, der sich in Azure Blob Storage befindet.  
 1. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen.
 
 *ReadWrite*  
- Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
+Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
 
 *None*  
 Die Option **None** wird aktuell nur für reguläre Datenträger unterstützt. Für Betriebssystemdatenträger wird sie nicht unterstützt. Wenn Sie **None** für einen Betriebssystemdatenträger festlegen, wird die Einstellung intern überschrieben und auf **ReadOnly** festgelegt.
@@ -336,7 +336,7 @@ Wenn beispielsweise eine von Ihrer Anwendung generierte E/A-Anweisung größer a
 Wählen Sie abhängig vom Workload Ihrer Anwendung eine geeignete Stripegröße aus. Wählen Sie für zufällige kleine E/A-Anforderungen eine kleinere Stripegröße. Wählen Sie hingegen für große sequenzielle E/A-Anforderungen eine größere Stripegröße. Ermitteln Sie Empfehlungen für die Stripegröße für die Anwendung, die Sie in Storage Premium ausführen. Für SQL Server konfigurieren Sie die Stripegröße mit 64 KB für OLTP-Workloads und 256 KB für Data Warehouse-Workloads. Weitere Informationen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server in Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) .
 
 > [!NOTE]
->  Bei einer VM der DS-Serie können Sie ein Stripeset mit maximal 32 Storage Premium-Datenträgern und bei einer VM der GS-Serie mit maximal 64 Storage Premium-Datenträgern bilden.
+> Bei einer VM der DS-Serie können Sie ein Stripeset mit maximal 32 Storage Premium-Datenträgern und bei einer VM der GS-Serie mit maximal 64 Storage Premium-Datenträgern bilden.
 
 ## <a name="multi-threading"></a>Multithreading
 
@@ -363,20 +363,20 @@ Standardanwendungen lassen meist nicht das Ändern der Warteschlangenlänge so, 
 Einige Programme bieten Einstellungen zum Beeinflussen der Warteschlangenlänge. Die SQL Server-Einstellung „Max. Grad an Parallelität“ (MAXDOP) wurde beispielsweise im vorherigen Abschnitt vorgestellt. MAXDOP ist eine Möglichkeit, Warteschlangenlänge und Multithreading zu beeinflussen, obwohl dadurch der SQL Server-Wert der Warteschlangenlänge nicht direkt geändert wird.
 
 *Hohe Warteschlangenlänge*  
- Bei einer hohen Warteschlangenlänge werden mehr Vorgänge auf dem Datenträger in die Schlange gestellt. Der Datenträger kennt die nächste Anforderungen in seiner Warteschlange vorzeitig. Daher kann der Datenträger Vorgänge im Voraus planen und sie in einer optimalen Sequenz verarbeiten. Da die Anwendung mehr Anforderungen zum Datenträger überträgt, kann der Datenträger mehr parallele E/A-Vorgänge verarbeiten. Schlussendlich erzielt die Anwendung dadurch mehr IOPS. Da die Anwendung mehr Anforderungen verarbeitet, erhöht sich auch der Gesamtdurchsatz der Anwendung.
+Bei einer hohen Warteschlangenlänge werden mehr Vorgänge auf dem Datenträger in die Schlange gestellt. Der Datenträger kennt die nächste Anforderungen in seiner Warteschlange vorzeitig. Daher kann der Datenträger Vorgänge im Voraus planen und sie in einer optimalen Sequenz verarbeiten. Da die Anwendung mehr Anforderungen zum Datenträger überträgt, kann der Datenträger mehr parallele E/A-Vorgänge verarbeiten. Schlussendlich erzielt die Anwendung dadurch mehr IOPS. Da die Anwendung mehr Anforderungen verarbeitet, erhöht sich auch der Gesamtdurchsatz der Anwendung.
 
 In der Regel erzielt eine Anwendung einen maximalen Durchsatz bei 8-16 und mehr ausstehenden E/A-Vorgängen pro angefügtem Datenträger. Wenn die Warteschlangenlänge den Wert 1 hat, überträgt die Anwendung nicht genügend E/A-Vorgänge an das System, sodass in einem bestimmten Zeitraum weniger davon verarbeitet werden. Das bedeutet weniger Durchsatz.
 
 Beispiel: Wenn in SQL Server der MAXDOP-Wert für eine Abfrage auf 4 festgelegt wird, erkennt SQL Server, dass bis zu vier Kerne verwendet werden können, um die Abfrage auszuführen. SQL Server bestimmt den besten Wert für die Warteschlangenlänge und die Anzahl der Kerne für die Abfrageausführung.
 
 *Optimale Warteschlangenlänge*  
- Eine sehr hohe Warteschlangenlänge hat jedoch auch Nachteile. Wenn der Wert zu hoch ist, versucht die Anwendung, eine sehr hohe IOPS-Rate zu erzielen. Außer wenn die Anwendung über beständige Datenträger mit ausreichend bereitgestellten IOPS verfügt, kann sich dies negativ auf die Anwendungslatenz auswirken. Die folgende Formel zeigt die Beziehung zwischen IOPS, Latenz und Warteschlangenlänge.  
+Eine sehr hohe Warteschlangenlänge hat jedoch auch Nachteile. Wenn der Wert zu hoch ist, versucht die Anwendung, eine sehr hohe IOPS-Rate zu erzielen. Außer wenn die Anwendung über beständige Datenträger mit ausreichend bereitgestellten IOPS verfügt, kann sich dies negativ auf die Anwendungslatenz auswirken. Die folgende Formel zeigt die Beziehung zwischen IOPS, Latenz und Warteschlangenlänge.  
     ![](media/premium-storage-performance/image6.png)
 
 Die Warteschlangenlänge darf nicht auf einen beliebig hohen Wert festgelegt werden. Wichtig ist ein optimaler Wert, der der Anwendung genügend IOPS bieten kann, ohne für mehr Latenz zu sorgen. Wenn z. B. die Anwendungslatenz 1 Millisekunde sein muss, ist die erforderliche Warteschlangenlänge zum Erzielen von 5.000 IOPS wie folgt: WL = 5000 x 0,001 = 5.
 
 *Warteschlangenlänge für Stripesetvolume*  
- Für ein Stripesetvolume muss die Warteschlangenlänge so hoch sein, dass jeder Datenträger über eine individuelle Spitzenwarteschlangenlänge verfügt. Nehmen wir als Beispiel eine Anwendung mit dem Wert 2 für die Warteschlangenlänge und mit vier Datenträgern im Stripeset. Die beiden E/A-Anforderungen werden an zwei Datenträger gerichtet, während die restlichen inaktiv bleiben. Konfigurieren Sie deshalb die Warteschlangenlänge so, dass alle Datenträger ausgelastet werden. Folgende Formel veranschaulicht, wie Sie die Warteschlangenlänge von Stripesetvolumes bestimmen.  
+Für ein Stripesetvolume muss die Warteschlangenlänge so hoch sein, dass jeder Datenträger über eine individuelle Spitzenwarteschlangenlänge verfügt. Nehmen wir als Beispiel eine Anwendung mit dem Wert 2 für die Warteschlangenlänge und mit vier Datenträgern im Stripeset. Die beiden E/A-Anforderungen werden an zwei Datenträger gerichtet, während die restlichen inaktiv bleiben. Konfigurieren Sie deshalb die Warteschlangenlänge so, dass alle Datenträger ausgelastet werden. Folgende Formel veranschaulicht, wie Sie die Warteschlangenlänge von Stripesetvolumes bestimmen.  
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Drosselung
@@ -384,3 +384,4 @@ Die Warteschlangenlänge darf nicht auf einen beliebig hohen Wert festgelegt wer
 Azure Storage Premium stellt abhängig von den gewählten VM- und Datenträgergrößen die angegebene IOPS- und Durchsatzrate bereit. Immer wenn die Anwendung versucht, eine IOPS- oder Durchsatzrate über diese Limits der VM oder des Datenträgers hinaus zu nutzen, erfolgt eine Drosselung durch Storage Premium. Dies zeigt sich in Form von Leistungseinbußen in Ihrer Anwendung. Folgen sind höhere Latenz, weniger Durchsatz oder weniger IOPS. Wenn Storage Premium keine Drosselung vornimmt, kann Ihre Anwendung vollständig ausfallen, sobald die zur Verfügung stehenden Ressourcen überschritten werden. Um also Leistungsprobleme aufgrund der Drosselung zu vermeiden, stellen Sie Ihrer Anwendung stets ausreichend Ressourcen zur Verfügung. Berücksichtigen Sie, was zuvor in den Abschnitt „VM-Größen“ und „Datenträgergrößen“ erörtert wurde. Benchmarktests sind die beste Möglichkeit, um herauszufinden, welche Ressourcen Sie zum Hosten der Anwendung benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+

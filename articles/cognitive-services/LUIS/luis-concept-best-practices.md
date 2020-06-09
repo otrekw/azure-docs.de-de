@@ -2,14 +2,14 @@
 title: Bewährte Methoden für das Entwickeln von LUIS-Apps
 description: Erfahren Sie, wie Sie mit bewährten Methoden die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589804"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683762"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App:
@@ -31,13 +31,27 @@ Die folgende Liste enthält bewährte Methoden für LUIS-Apps:
 
 |Sie sollten|Sie sollten auf keinen Fall|
 |--|--|
-|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Features zu Absichten](#do-add-features-to-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
+|[Planen Ihres Schemas](#do-plan-your-schema)|[Erstellen und Veröffentlichen ohne vorherige Planung](#dont-publish-too-quickly)|
+|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Features zu Absichten](#do-add-features-to-intents)<br>
+[Verwenden von durch maschinelles Lernen erworbenen Entitäten](#do-use-machine-learned-entities) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
 |[Anstreben einer Balance zwischen zu allgemeinen und zu spezifischen Absichten](#do-find-sweet-spot-for-intents)|[Verwenden von LUIS als Trainingsplattform](#dont-use-luis-as-a-training-platform)|
 |[Iteratives Aufbauen der App mit Versionen](#do-build-your-app-iteratively-with-versions)<br>[Erstellen von Entitäten zur Modellaufschlüsselung](#do-build-for-model-decomposition)|[Hinzufügen sehr vieler Beispieläußerungen im gleichen Format und Ignorieren anderer Formate](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Hinzufügen von Mustern in späteren Iterationen](#do-add-patterns-in-later-iterations)|[Kombinieren der Definition von Absichten und Entitäten](#dont-mix-the-definition-of-intents-and-entities)|
 |[Verwenden Sie für alle Absichten die gleiche Menge an Äußerungen](#balance-your-utterances-across-all-intents), mit Ausnahme der Absicht „None“.<br>[Hinzufügen von Beispieläußerungen zur Absicht „None“](#do-add-example-utterances-to-none-intent)|[Erstellen von Ausdruckslisten mit allen möglichen Werten](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Verwenden des Vorschlagfeatures für das aktive Lernen](#do-leverage-the-suggest-feature-for-active-learning)|[Hinzufügen von zu vielen Mustern](#dont-add-many-patterns)|
 |[Überwachen der Leistung Ihrer App mit Batchtests](#do-monitor-the-performance-of-your-app)|[Trainieren und Veröffentlichen jeder einzelnen hinzugefügten Beispieläußerung](#dont-train-and-publish-with-every-single-example-utterance)|
+
+## <a name="do-plan-your-schema"></a>Planen Sie Ihr Schema.
+
+Machen Sie sich zunächst Gedanken dazu, was und wo Sie die App verwenden möchten, bevor Sie mit der Erstellung Ihres App-Schemas beginnen. Je gründlicher und spezifischer Ihre Planung, desto besser Ihre App.
+
+* Untersuchen der Zielbenutzer
+* Definieren von End-to-End-Personas für Ihre App: Stimme, Avatar, Problembehandlung (proaktiv, reaktiv)
+* Identifizieren von Benutzerinteraktionen (Text, Sprache) und der Kanäle; Übergabe an vorhandene Lösungen oder Erstellung einer neuen Lösung für die App
+* End-to-End-User Journey
+    * Was soll die App tun und was nicht? * Welche Priorität haben die gewünschten Funktionen der App?
+    * Was sind die hauptsächlichen Anwendungsfälle?
+* Erfassen von Daten: [Informationen zum Erfassen und Aufbereiten von Daten](data-collection.md)
 
 ## <a name="do-define-distinct-intents"></a>Definieren Sie unterschiedliche Absichten
 Stellen Sie sicher, dass sich das Vokabular der einzelnen Absichten nicht mit dem anderer Absichten überschneidet. Wenn Sie z.B. eine App planen, die Reisebuchungen wie Flüge oder Hotels verarbeiten soll, können Sie diese Themenbereiche als separate Absichten oder als dieselbe Absicht mit separaten Entitäten für bestimmte Daten innerhalb der Äußerung planen.
@@ -60,6 +74,14 @@ Features dienen zum Beschreiben von Konzepten für eine Absicht. Bei einem Featu
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit eine solche Überlappung nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein.
 
+## <a name="do-use-machine-learned-entities"></a>Verwenden Sie durch maschinelles Lernen erworbene Entitäten.
+
+Durch maschinelles Lernen erworbene Entitäten sind auf Ihre App zugeschnitten und erfordern eine erfolgreiche Bezeichnung. Wenn Sie keine furch maschinelles Lernen erworbenen Entitäten verwenden, verwenden Sie möglicherweise das falsche Tool.
+
+Durch maschinelles Lernen erworbene Entitäten können andere Entitäten als Features verwenden. Diese anderen Entitäten können benutzerdefinierte Entitäten sein (beispielsweise RegEx-Entitäten oder Listenentitäten). Sie können aber auch vorgefertigte Entitäten als Features verwenden.
+
+Informationen zu effektiven, durch maschinelles Lernen erworbenen Entitäten finden Sie [hier](luis-concept-entity-types.md#effective-machine-learned-entities).
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Bauen Sie Ihre App iterativ mit Versionen auf
@@ -79,9 +101,9 @@ Die Modellaufschlüsselung folgt dem typischen Prozess von:
 
 Nachdem Sie die Absicht erstellt und Beispieläußerungen hinzugefügt haben, wird im folgenden Beispiel die Entitätsaufschlüsselung beschrieben.
 
-Beginnen Sie mit der Identifizierung der vollständigen Datenkonzepte, die Sie in einer Äußerung extrahieren möchten. Dies ist Ihre durch maschinelles Lernen erworbene Entität. Schlüsseln Sie anschließend den Ausdruck in seine Teile auf. Dies schließt die Identifizierung von untergeordneten Entitäten und Features ein.
+Beginnen Sie mit der Identifizierung der vollständigen Datenkonzepte, die Sie in einer Äußerung extrahieren möchten. Dies ist Ihre Machine Learning-Entität. Schlüsseln Sie anschließend den Ausdruck in seine Teile auf. Dies schließt die Identifizierung von untergeordneten Entitäten und Features ein.
 
-Wenn Sie beispielsweise eine Adresse extrahieren möchten, könnte die oberste durch maschinelles Lernen erworbene Entität `Address` heißen. Identifizieren Sie beim Erstellen der Adresse einige der untergeordneten Entitäten wie etwa die Anschrift, die Stadt, das Bundesland und die Postleitzahl.
+Wenn Sie beispielsweise eine Adresse extrahieren möchten, könnte die oberste Machine Learning-Entität `Address` heißen. Identifizieren Sie beim Erstellen der Adresse einige der untergeordneten Entitäten wie etwa die Anschrift, die Stadt, das Bundesland und die Postleitzahl.
 
 Schlüsseln Sie diese Elemente wie folgt weiter auf:
 * Fügen Sie ein erforderliches Feature der Postleitzahl als Entität vom Typ „regulärer Ausdruck“ hinzu.
@@ -122,13 +144,21 @@ Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endpoint-utterances.md) r
 
 Reservieren Sie eine separate Menge von Äußerungen, die nicht als [Beispieläußerungen](luis-concept-utterance.md) oder Endpunktäußerungen verwendet werden. Optimieren Sie die App immer weiter mit Ihrem Testsatz. Passen Sie den Testsatz an die tatsächlichen Benutzeräußerungen an. Verwenden Sie diesen Testsatz, um die einzelnen Iterationen oder Versionen der App zu bewerten.
 
+## <a name="dont-publish-too-quickly"></a>Überstürzen Sie die Veröffentlichung nicht.
+
+Wenn Sie Ihre App zu schnell (sprich: ohne [ordnungsgemäße Planung](#do-plan-your-schema)) veröffentlichen, kann dies zu diversen Problemen führen. Im Anschluss folgen einige Beispiele:
+
+* Die Leistung Ihrer App lässt in der Praxis zu wünschen übrig.
+* Das Schema (Absichten und Entitäten) ist nicht angemessen, und falls Sie auf der Grundlage dieses Schemas Client-App-Logik entwickelt haben, muss diese möglicherweise komplett neu geschrieben werden. Dies führt zu unerwarteten Verzögerungen und zusätzlichen Kosten für das Projekt.
+* Äußerungen, die Sie dem Modell hinzufügen, führen möglicherweise zu einer Bevorzugung des Beispieläußerungssatzes, was schwer zu debuggen und zu identifizieren ist. Dies erschwert außerdem die Entfernung von Mehrdeutigkeiten, nachdem Sie sich auf ein bestimmtes Schema festgelegt haben.
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Fügen Sie Absichten nur wenige Beispieläußerungen hinzu.
 
 Nachdem die Anwendung veröffentlicht wurde, fügen Sie im Entwicklungslebenszyklus-Prozess nur Äußerungen aus dem aktiven Lernen hinzu. Wenn sich die Äußerungen zu ähnlich sind, fügen Sie ein Muster hinzu.
 
 ## <a name="dont-use-few-or-simple-entities"></a>Verwenden Sie nicht wenige oder einfache Entitäten
 
-Entitäten werden zum Zweck der Datenextrahierung und -vorhersage erstellt. Es ist entscheidend, dass jede Absicht über durch maschinelles Lernen erworbene Entitäten verfügt, die die in der Absicht enthaltenen Daten beschreiben. Dies hilft LUIS beim Vorhersagen der Absicht, selbst wenn Ihre Clientanwendung die extrahierte Entität nicht verwenden muss.
+Entitäten werden zum Zweck der Datenextrahierung und -vorhersage erstellt. Es ist entscheidend, dass jede Absicht über Machine Learning-Entitäten verfügt, die die in der Absicht enthaltenen Daten beschreiben. Dies hilft LUIS beim Vorhersagen der Absicht, selbst wenn Ihre Clientanwendung die extrahierte Entität nicht verwenden muss.
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Verwenden Sie LUIS nicht als Trainingsplattform
 
