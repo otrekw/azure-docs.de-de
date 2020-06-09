@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426502"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651939"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -156,16 +156,16 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
  
 2. Erstellen Sie die Deltaabfrage. 
    
-   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_** . Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
+   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. Die Abfrage muss außerdem das **Wasserzeichen** von der SQL Server-Seite hinzufügen, um sicherzustellen, dass alle Aktualisierungen im Deltazeitraum ordnungsgemäß erfasst werden. Die Verwendung der Deltaabfrage ohne **Wasserzeichen** kann zu einem fehlerhaften Verweisdataset führen.  
 
    Für Datensätze, die aktualisiert wurden, übernimmt die temporale Tabelle die Buchführung durch Erfassen eines Einfüge- und Löschvorgangs. Die Stream Analytics-Runtime wendet dann die Ergebnisse auf die an die vorhergehende Momentaufnahme gerichtete Deltaabfrage an, um die Verweisdaten auf dem neuesten Stand zu halten. Ein Beispiel der Deltaabfrage wird unten gezeigt:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as _watermark_, 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as _watermark_, 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

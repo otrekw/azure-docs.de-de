@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 01/23/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80419180"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821519"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -30,7 +30,7 @@ In der Vorschauversion werden diese Funktionen unterstützt:
 - Die Integration mit dem Azure-Katalog mit freigegebenen Images ermöglicht es Ihnen, Images global zu verteilen, zu versionieren und zu skalieren, und bietet Ihnen ein System für die Imageverwaltung.
 - Für die Integration in bestehende Image Buildpipelines, rufen Sie einfach Image Builder aus Ihrer Pipeline auf, oder verwenden Sie die einfache Vorschauversion der Azure DevOps-Task von Image Builder.
 - Migrieren Sie eine bestehende Pipeline zur Imageanpassung zu Azure. Verwenden Sie Ihre vorhandenen Skripts, Befehle und Prozesse, um Images anzupassen.
-- Erstellung von Images im VHD-Format.
+- Erstellung von Images im VHD-Format zur Unterstützung von Azure Stack.
  
 
 ## <a name="regions"></a>Regions
@@ -55,8 +55,7 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Windows 2016
 - Windows 2019
 
-Die Unterstützung für RHEL-ISOs wird eingestellt. Weitere Informationen finden Sie in der Vorlagendokumentation.
-
+Unterstützung für RHEL ISOs wird nicht mehr geboten.
 ## <a name="how-it-works"></a>Funktionsweise
 
 
@@ -73,33 +72,22 @@ Der Azure Image Builder ist ein vollständig verwalteter Azure-Dienst, der für 
 1. Erstellen Sie die Imagevorlage als eine JSON-Datei an. Diese.json-Datei enthält Informationen über die Imagequelle, Anpassungen und Verteilung. Im [GitHub-Repository für Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) finden Sie zahlreiche Beispiele.
 1. Durch Senden an den Dienst wird in der von Ihnen angegebenen Ressourcengruppe ein Image-Vorlagenartefakt erstellt. Im Hintergrund lädt der Image Builder das Quellimage oder ISO und bei Bedarf Skripts herunter. Diese werden in einer separaten Ressourcengruppe gespeichert, die automatisch in Ihrem Abonnement im folgenden Format erstellt wird: IT_\<Zielressourcengruppe>_\<Vorlagenname>. 
 1. Sobald die Imagevorlage erstellt ist, können Sie mit den Zusammenstelle des Images beginnen. Im Hintergrund verwendet der Image Builder die Vorlagen- und Quelldateien, um eine VM (Standardgröße: Standard_D1_v2), ein Netzwerk, eine öffentliche IP-Adresse, NSG und einen Speicher in der Ressourcengruppe IT_\<DestinationResourceGroup>_\<TemplateName> zu erstellen.
-1. Im Rahmen der Imageerstellung verteilt Image Builder das Bild entsprechend der Vorlage und löscht dann die zusätzlichen Ressourcen in der Ressourcengruppe IT_\<Zielressourcengruppe>_\<Vorlagenname>, die für den Prozess erstellt wurde.
+1. Im Rahmen der Imageerstellung verteilt Image Builder das Image entsprechend der Vorlage und löscht dann die zusätzlichen Ressourcen in der Ressourcengruppe IT_\<Zielressourcengruppe>_\<Vorlagenname>, die für den Prozess erstellt wurde.
 
 
 ## <a name="permissions"></a>Berechtigungen
+Wenn Sie sich für die (AIB) registrieren, wird dem AIB-Dienst die Berechtigung zum Erstellen, Verwalten und Löschen einer Stagingressourcengruppe (IT_ *) und zum Hinzufügen von Ressourcen erteilt, die für die Imageerstellung erforderlich sind. Dies erfolgt dadurch, dass im Rahmen einer erfolgreichen Registrierung ein AIB-Dienstprinzipalname (Service Principal Name, SPN) in Ihrem Abonnement verfügbar gemacht wird.
 
-Damit Azure VM Image Builder die Images entweder an die verwalteten Images oder an einen Azure-Katalog mit freigegebenen Images verteilen kann, müssen Sie die Berechtigungen „Mitwirkender“ für den Dienst „Azure Virtual Machine Image Builder“ (App-ID: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) in den Ressourcengruppen angeben. 
+Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Shared Image Gallery verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater Container erforderlich.
 
-Wenn Sie ein vorhandenes benutzerdefiniertes Image oder eine benutzerdefinierte Imageversion verwenden, benötigt der Azure Image Builder mindestens Lesezugriff auf diese Ressourcengruppen.
+Zunächst müssen Sie der Dokumentation zum [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) folgen, um eine Identität zu erstellen.
 
-Sie können den Zugriff über die Azure-Befehlszeilenschnittstelle zuweisen:
+Nachdem Sie über die Identität verfügen, müssen Sie ihr Berechtigungen erteilen. Dazu können Sie eine benutzerdefinierte Azure-Rollendefinition verwenden und ihr dann die benutzerseitig zugewiesene verwaltete Identität zur Verwendung zuweisen.
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
-```
+Berechtigungen werden ausführlicher [hier](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements) erläutert, und die Implementierung ist aus den Beispielen ersichtlich.
 
-Sie können den Zugriff mit PowerShell zuweisen:
-
-```azurePowerShell-interactive
-New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
-```
-
-
-Wenn das Dienstkonto nicht gefunden wird, kann dies bedeuten, dass das Abonnement, in dem Sie die Rollenzuweisung hinzufügen, noch nicht für den Ressourcenanbieter registriert ist.
-
+> [!Note]
+> Bisher würden Sie für AIB den AIB-SPN verwenden und diesem Berechtigungen für die Imageressourcengruppen erteilen. Wir geben dieses Modell auf, um zukünftige Funktionen zu ermöglichen. Vom 26. Mai 2020 an akzeptiert der Image Builder keine Vorlagen mehr, die nicht über eine benutzerseitig zugewiesene Identität verfügen, vorhandene Vorlagen müssen mit einer [Benutzeridentität](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity) erneut an den Dienst übermittelt werden. In den Beispielen hier wurde bereits gezeigt, wie Sie eine benutzerseitig zugewiesene Identität erstellen und sie einer Vorlage hinzufügen. Weitere Informationen finden Sie in dieser [Dokumentation](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) zu dieser Änderung und Updates zu Releases.
 
 ## <a name="costs"></a>Kosten
 Bei der Erstellung, dem Aufbau und der Speicherung von Images mit Azure Image Builder fallen einige Computing-, Netzwerk- und Speicherkosten an. Diese Kosten sind mit Kosten beim manuellen Erstellen von benutzerdefinierten Images vergleichbar. Für die Ressourcen werden Ihre üblichen Azure-Preisen abgerechnet. 
@@ -113,5 +101,4 @@ Azure Image Builder verteilt das Image an die von Ihnen ausgewählten Regionen. 
 ## <a name="next-steps"></a>Nächste Schritte 
  
 Um den Azure Image Builder auszuprobieren, lesen Sie die Artikel zum Erstellen von [Linux](../articles/virtual-machines/linux/image-builder.md)- oder [Windows](../articles/virtual-machines/windows/image-builder.md)-Images.
- 
  

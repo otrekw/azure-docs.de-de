@@ -4,24 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Es wird beschrieben, wie VNet-Datenverkehr von Azure weitergeleitet wird und wie Sie das Routing von Azure anpassen können.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 manager: ''
-editor: v-miegge
-tags: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop
-ms.reviewer: kumud
-ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.author: aldomel
+ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477880"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727116"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -170,7 +167,7 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
 
 Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie dem [Gatewaysubnetz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routingtabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls ist die ordnungsgemäße Funktion des Gateways gefährdet. Ausführliche Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports) in der Frage *Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?* .
 
-Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter).
 
 ## <a name="routing-example"></a>Routingbeispiel
 

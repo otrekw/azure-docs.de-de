@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679316"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652231"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -39,6 +39,7 @@ Für den Inhalt der Datei sollte das folgende JSON-Schema erfüllt sein:
         "generateCollisionMesh" : { "type" : "boolean", "default" : true },
         "unlitMaterials" : { "type" : "boolean", "default" : false },
         "fbxAssumeMetallic" : { "type" : "boolean", "default" : true },
+        "deduplicateMaterials" : { "type" : "boolean", "default" : true },
         "axis" : {
             "type" : "array",
             "items" : {
@@ -78,6 +79,10 @@ Wenn dies nicht das beabsichtigte Verhalten ist, sollte dieser Parameter auf „
 ### <a name="material-overrides"></a>Materialüberschreibungen
 
 * `material-override`: Dieser Parameter ermöglicht die Verarbeitung von Materialien, damit sie [während der Konvertierung angepasst werden können](override-materials.md).
+
+### <a name="material-de-duplication"></a>Deduplizierung von Materialien
+
+* `deduplicateMaterials`: Dieser Parameter aktiviert oder deaktiviert die automatische Deduplizierung von Materialien, die die gleichen Eigenschaften und Texturen aufweisen. Die Deduplizierung erfolgt nach der Verarbeitung von Materialüberschreibungen. Der Webhook ist standardmäßig aktiviert.
 
 ### <a name="color-space-parameters"></a>Farbraumparameter
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086316"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726960"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
 
@@ -20,6 +20,7 @@ Sie können über das Azure-Portal oder mit PowerShell mehrere virtuelle Compute
 
 Vor dem Erstellen eines neuen virtuellen Computers müssen Sie [ein verwaltetes VM-Image erstellen](capture-image-resource.md), das als Quellimage verwendet werden soll, und auf dem Image jedem Benutzer, der darauf zugreifen soll, Lesezugriff gewähren. 
 
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Shared Image Gallerys](shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
 
 ## <a name="use-the-portal"></a>Verwenden des Portals
 

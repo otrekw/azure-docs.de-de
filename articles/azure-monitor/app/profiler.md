@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121196"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778556"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilerstellung für Live-Azure App Service-Apps mit Application Insights
 
@@ -63,9 +63,9 @@ Wenn Sie Profiler für andere Clouds aktivieren möchten, können Sie die folgen
 
 ## <a name="disable-profiler"></a>Deaktivieren von Profiler
 
-Wenn Sie Profiler für eine einzelne Instanz einer App beenden oder neu starten möchten, wechseln Sie unter **Webaufträge** zur App-Ressource. Wenn Sie Profiler löschen möchten, wechseln Sie zu **Erweiterungen**.
+Wenn Sie Profiler für die Instanz einer einzelnen App beenden oder neu starten möchten, können Sie unter **WebJobs** den Webauftrag mit dem Namen „ApplicationInsightsProfiler3“ beenden. Auch wenn der Profiler wie oben beschrieben mithilfe des Schalters auf der Application Insights-Seite deaktiviert wurde, wird der Profilerprozess weiterhin ausgeführt. Der Profiler prüft, ob er aktiviert ist. Wenn er deaktiviert ist, wechselt er für einen Zeitraum in den Ruhemodus, bevor er erneut geprüft wird. Bei Deaktivierung führt er keinerlei Profilerstellung aus. Wenn Sie diesen Webauftrag deaktivieren, wird der Profilerprozess gar nicht ausgeführt, auch nicht um zu überprüfen, ob er aktiviert ist.
 
-![Deaktivieren von Profiler für einen Webauftrag][disable-profiler-webjob]
+  ![Deaktivieren von Profiler für einen Webauftrag][disable-profiler-webjob]
 
 Es wird empfohlen, Profiler für alle Apps zu aktivieren, um Leistungsprobleme möglichst schnell zu ermitteln.
 

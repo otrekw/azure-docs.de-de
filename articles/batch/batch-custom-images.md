@@ -1,30 +1,30 @@
 ---
 title: Bereitstellen eines benutzerdefinierten Pools aus einem verwalteten Image
 description: Erstellen Sie einen Batch-Pool über eine verwaltete Imageressource, um Serverknoten mit den Softwarekomponenten und Daten für Ihre Anwendung bereitzustellen.
-ms.topic: article
-ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117317"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847989"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines verwalteten Images zum Erstellen eines VM-Pools
 
-Zum Erstellen eines benutzerdefinierten Images für die virtuellen Computer des Batch-Pools können Sie entweder [Shared Image Gallery](batch-sig-images.md) oder eine *verwaltete Imageressource* verwenden.
+Zum Erstellen eines benutzerdefinierten Images für die virtuellen Computer des Batch-Pools können Sie ein verwaltetes Image zum Erstellen einer [Shared Image Gallery](batch-sig-images.md) verwenden. Die ausschließliche Verwendung eines verwalteten Images wird ebenfalls unterstützt, jedoch nur für API-Versionen bis einschließlich 2019-08-01.
 
-> [!TIP]
+> [!IMPORTANT]
 > In den meisten Fällen sollten Sie benutzerdefinierte Images mithilfe von Shared Image Gallery erstellen. Durch die Verwendung von Shared Image Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern. Weitere Informationen finden Sie unter [Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Eine verwaltete Imageressource**: Um einen Pool von virtuellen Computern mithilfe eines benutzerdefinierten Images zu erstellen, müssen Sie eine verwaltete Imageressource in demselben Azure-Abonnement und in derselben Region wie das Batch-Konto besitzen oder erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden. Weitere Informationen und Schritte zum Vorbereiten eines verwalteten Images finden Sie im folgenden Abschnitt.
+- **Eine verwaltete Imageressource**: Um einen Pool von virtuellen Computern mithilfe eines benutzerdefinierten Images zu erstellen, müssen Sie eine verwaltete Imageressource in demselben Azure-Abonnement und in derselben Region wie das Batch-Konto besitzen oder erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
   - Verwenden Sie ein eindeutiges benutzerdefiniertes Image für jeden von Ihnen erstellten Pool.
-  - Geben Sie die **Ressourcen-ID** des Images im Format `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` an, wenn Sie mithilfe der Batch-APIs einen Pool mit dem Image erstellen möchten. Verwenden Sie den **Namen** des Images, wenn Sie das Portal nutzen möchten.  
+  - Geben Sie die **Ressourcen-ID** des Images im Format `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` an, wenn Sie mithilfe der Batch-APIs einen Pool mit dem Image erstellen möchten.
   - Die verwaltete Imageressource sollte während der Lebensdauer des Pools vorhanden sein, damit der Pool zentral hochskaliert werden kann. Nach dem Löschen des Pools kann sie entfernt werden.
 
-- **Authentifizierung über Azure Active Directory (AAD)** : Die Batch-Client-API muss die AAD-Authentifizierung verwenden. Die Azure Batch-Unterstützung für AAD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.
+- **Azure Active Directory-Authentifizierung (Azure AD)** . Die Batch-Client-API muss die Azure AD-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.
 
 ## <a name="prepare-a-custom-image"></a>Vorbereiten eines benutzerdefinierten Images
 
@@ -34,16 +34,14 @@ In Azure können Sie ein verwaltetes Image über folgende Komponenten vorbereite
 - Einen generalisierten virtuellen Azure-Computer mit verwalteten Datenträgern
 - Eine generalisierte lokale VHD, die in die Cloud hochgeladen wurde
 
-Es wird empfohlen, für die zuverlässige Skalierung von Batch-Pools mit einem benutzerdefinierten Image ein verwaltetes Image *nur* mit der ersten Methode zu erstellen: Momentaufnahmen der Datenträger des virtuellen Computers. Informationen zum Vorbereiten eines virtuellen Computers, zum Erstellen einer Momentaufnahme und zum Erstellen eines Images auf der Grundlage der Momentaufnahme finden Sie in den folgenden Schritten.
+Es wird empfohlen, für die zuverlässige Skalierung von Batch-Pools mit einem verwalteten Image das verwaltete Image *nur* mit der ersten Methode zu erstellen: Momentaufnahmen der Datenträger des virtuellen Computers. In den folgenden Schritten wird gezeigt, wie Sie einen virtuellen Computer vorbereiten, eine Momentaufnahme erstellen und ein verwaltetes Image auf der Grundlage der Momentaufnahme erstellen.
 
 ### <a name="prepare-a-vm"></a>Vorbereiten eines virtuellen Computers
 
 Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie ein von Batch unterstütztes Azure Marketplace-Erstanbieterimage als Basisimage für Ihr verwaltetes Image verwenden. Nur Images von Erstanbietern können als Basisimage verwendet werden. Eine vollständige Liste der von Azure Batch unterstützten Azure Marketplace-Imageverweisen finden Sie im Artikel zum Vorgang zum [Auflisten der Knoten-Agent-SKUs](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus).
 
 > [!NOTE]
-> Sie können kein Image von Drittanbietern verwenden, das über zusätzliche Lizenz- und Kaufbedingungen zu Ihrem Basisimage verfügt. Informationen zu diesen Marketplace-Images finden Sie in der Anleitung für [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-)- oder [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-)-VMs.
+> Sie können kein Image von Drittanbietern verwenden, das über zusätzliche Lizenz- und Kaufbedingungen zu Ihrem Basisimage verfügt. Informationen zu diesen Marketplace-Images finden Sie in der Anleitung für [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms)- oder [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms)-VMs.
 
 - Stellen Sie sicher, dass der virtuelle Computer mit einem verwalteten Datenträger erstellt wird. Dies ist die Standardeinstellung für den Speicher, wenn Sie einen virtuellen Computer erstellen.
 - Installieren Sie auf dem virtuellen Computer keine Azure-Erweiterungen wie die benutzerdefinierte Skripterweiterung. Wenn das Image eine vorinstallierte Erweiterung enthält, treten in Azure beim Bereitstellen des Batch-Pools unter Umständen Probleme auf.
@@ -59,29 +57,70 @@ Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
 
 Verwenden Sie zum Erstellen eines verwalteten Images auf der Grundlage einer Momentaufnahme Azure-Befehlszeilentools, etwa den Befehl [az image create](/cli/azure/image). Sie können ein Image erstellen, indem Sie eine Momentaufnahme des Betriebssystemdatenträgers und optional Momentaufnahmen der Datenträger angeben.
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Erstellen eines Pools über ein benutzerdefiniertes Image im Portal
+## <a name="create-a-pool-from-a-custom-image"></a>Erstellen eines Pools aus einem benutzerdefinierten Image
 
-Wenn Sie Ihr benutzerdefiniertes Image gespeichert haben und dessen Ressourcen-ID oder Namen kennen, erstellen Sie auf der Grundlage dieses Images einen Batch-Pool. Die folgenden Schritte veranschaulichen, wie Sie mit dem Azure-Portal einen Pool erstellen.
+Nachdem Sie die Ressourcen-ID des verwalteten Images gefunden haben, erstellen Sie einen benutzerdefinierten Imagepool aus diesem Image. In den folgenden Schritten wird gezeigt, wie Sie einen benutzerdefinierten Imagepool mit dem Batch-Dienst oder dem Batch Management erstellen.
 
 > [!NOTE]
-> Wenn Sie den Pool mit einer der Batch-APIs erstellen, stellen Sie sicher, dass die Identität, die Sie für die AAD-Authentifizierung verwenden, über Berechtigungen für die Imageressource verfügt. Weitere Informationen finden Sie unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md).
+> Stellen Sie sicher, dass die Identität, die Sie für die Azure AD-Authentifizierung verwenden, über Berechtigungen für die Imageressource verfügt. Weitere Informationen finden Sie unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md).
 >
 > Die Ressource für das verwaltete Image muss während der gesamten Lebensdauer des Pools vorhanden sein. Wenn die zugrunde liegende Ressource gelöscht wird, kann der Pool nicht skaliert werden.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Das Konto muss sich in dem gleichen Abonnement und der gleichen Region wie die Ressourcengruppe befinden, die das benutzerdefinierte Image enthält.
-2. Wählen Sie links im Fenster **Einstellungen** die Menüoption **Pools** aus.
-3. Wählen Sie im Fenster **Pools** den Befehl **Hinzufügen** aus.
-4. Wählen Sie im Fenster **Pool hinzufügen** die Option **Benutzerdefiniertes Image (Linux/Windows)** in der Dropdownliste **Imagetyp** aus. Wählen Sie aus der Dropdownliste **Benutzerdefiniertes VM-Image** den Namen des Abbilds (Kurzform der Ressourcen-ID) aus.
-5. Wählen Sie **Verleger/Angebot/SKU** für Ihr benutzerdefiniertes Image aus.
-6. Geben Sie die übrigen erforderlichen Einstellungen, einschließlich **Knotengröße**, **Ziel für dedizierte Knoten** und **Knoten mit niedriger Priorität**, sowie alle gewünschten optionalen Einstellungen an.
+### <a name="batch-service-net-sdk"></a>Batch-Dienst .NET SDK
 
-    Für ein benutzerdefiniertes Image im Microsoft Windows Server Datacenter 2016 wird das Fenster **Pool hinzufügen** z. B. so angezeigt:
+```csharp
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
+{
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
+}
 
-    ![Hinzufügen eines Pools aus dem benutzerdefinierten Windows-Image](media/batch-custom-images/add-pool-custom-image.png)
-  
-Um festzustellen, ob ein vorhandener Pool auf einem benutzerdefinierten Image basiert, überprüfen Sie die **Betriebssystem**-Eigenschaft im Abschnitt mit der Ressourcenzusammenfassung im Fenster **Pool**. Wenn der Pool aus einem benutzerdefinierten Image erstellt wurde, wird er auf **Benutzerdefiniertes VM-Image** festgelegt.
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        virtualMachineImageId: "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image definition name}");
+}
 
-Alle benutzerdefinierten Images, die einem Pool zugeordnet sind, werden im Fenster **Eigenschaften** des Pools angezeigt.
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
+```
+
+### <a name="batch-management-rest-api"></a>Batch Management-REST-API
+
+REST-API-URI
+
+```http
+ PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
+```
+
+Anforderungstext
+
+```json
+ {
+   "properties": {
+     "vmSize": "{VM size}",
+     "deploymentConfiguration": {
+       "virtualMachineConfiguration": {
+         "imageReference": {
+           "id": "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image name}"
+         },
+         "nodeAgentSkuId": "{Node Agent SKU ID}"
+       }
+     }
+   }
+ }
+```
 
 ## <a name="considerations-for-large-pools"></a>Überlegungen zu großen Pools
 
@@ -113,4 +152,5 @@ Weitere Informationen zur Verwendung von Packer zum Erstellen eines virtuellen C
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
+- Erfahren Sie, wie sie mit der [Shared Image Gallery](batch-sig-images.md) einen benutzerdefinierten Pool erstellen können.
+- Eine ausführliche Übersicht über Batch finden Sie unter [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md).

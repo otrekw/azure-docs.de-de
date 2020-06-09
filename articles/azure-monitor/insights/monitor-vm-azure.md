@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: 2cb53d0c88d8c29da2bd8bf52d6536555d56c76e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283938"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654371"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten
 ## <a name="differences-from-other-azure-resources"></a>Unterschiede zu anderen Azure-Ressourcen
 In dem Artikel [Überwachen eines virtuellen Azure-Computers mit Azure Monitor](monitor-azure-resource.md) wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen. Mit den folgenden Unterschieden können Sie die gleichen Überwachungsdaten von Azure-VMs erfassen und nutzen:
 
-- [Plattformmetriken](../platform/data-platform-metrics.md) werden automatisch für virtuelle Computer gesammelt, aber nur für den [VM-Host](#monitoring-data). Sie benötigen einen Agent, um Leistungsdaten aus dem Gastbetriebssystem zu sammeln. 
+-  [Plattformmetriken](../platform/data-platform-metrics.md) werden automatisch für virtuelle Computer gesammelt, aber nur für den [VM-Host](#monitoring-data). Sie benötigen einen Agent, um Leistungsdaten aus dem Gastbetriebssystem zu sammeln. 
 - Virtuelle Computer generieren keine [Ressourcenprotokolle](../platform/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Sie verwenden einen Agent, um Protokolldaten aus dem Gastbetriebssystem zu sammeln.
 - Sie können [Diagnoseeinstellungen](../platform/diagnostic-settings.md) für eine VM erstellen, um Computerplattformmetriken an andere Ziele wie Speicher und Event Hubs zu senden, aber Sie können diese Diagnoseeinstellungen nicht im Azure-Portal konfigurieren. 
 
@@ -121,7 +121,6 @@ az monitor diagnostic-settings create \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace
-
 ```
 
 ## <a name="monitoring-in-the-azure-portal"></a>Überwachen im Azure-Portal 
@@ -149,12 +148,13 @@ Nachdem Sie die Sammlung von Überwachungsdaten für einen virtuellen Computer k
 ## <a name="analyzing-metric-data"></a>Analysieren von Metrikdaten
 Sie können Metriken für virtuelle Computer mit dem Metrik-Explorer analysieren, indem Sie im Menü des virtuellen Computers **Metriken** öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../platform/metrics-getting-started.md). 
 
-Zwei Namespaces werden von virtuellen Computern für Metriken verwendet:
+Drei Namespaces werden von virtuellen Computern für Metriken verwendet:
 
-| Namespace | BESCHREIBUNG |
-|:---|:---|
-| Host für virtuelle Computer | Hostmetriken werden automatisch für alle virtuellen Azure-Computer gesammelt. Eine ausführliche Liste der Metriken finden Sie unter [Microsoft.Compute/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). |
-| VM-Gast | Metriken für das Gastbetriebssystem, die von virtuellen Computern mit installierter Diagnoseerweiterung gesammelt und zum Senden an die Azure Monitor-Senke konfiguriert wurden. |
+| Namespace | BESCHREIBUNG | Anforderung |
+|:---|:---|:---|
+| Host für virtuelle Computer | Hostmetriken werden automatisch für alle virtuellen Azure-Computer gesammelt. Eine ausführliche Liste der Metriken finden Sie unter [Microsoft.Compute/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Werden automatisch gesammelt, ohne dass eine Konfiguration erforderlich ist. |
+| Gast (klassisch) | Eingeschränkte Gruppe von Leistungsdaten aus Gastbetriebssystem und Anwendung. Im Metrik-Explorer, aber nicht in anderen Azure Monitor-Features wie Metrikwarnungen verfügbar.  | [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) ist installiert. Daten werden aus dem Azure-Speicher gelesen.  |
+| VM-Gast | Leistungsdaten aus Gastbetriebssystem und Anwendung sind für alle Azure Monitor-Features über Metriken verfügbar. | Für Windows ist die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) mit aktivierter Azure Monitor-Senke installiert. Für Linux ist der [Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) installiert. |
 
 ![Metriken](media/monitor-vm-azure/metrics.png)
 

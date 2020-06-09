@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838857"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655852"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -96,16 +96,26 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 
 Für Azure Disk Encryption muss das „dm-crypt“-Modul und das „vfat“-Modul im System vorhanden sein. Wenn das „vfat“-Modul aus dem Standardimage entfernt oder dort deaktiviert wird, kann das System nicht mehr das Schlüsselvolume lesen und damit auch nicht den Schlüssel abrufen, der zum Entsperren der Datenträger bei nachfolgenden Neustarts erforderlich ist. Schritte zum Härten des Systems, die das vfat-Modul aus dem System entfernen, sind nicht mit Azure Disk Encryption kompatibel. 
 
-Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „/etc/fstab“ aufgelistet werden. Verwenden Sie für diesen Eintrag einen persistenten Blockgerätenamen, da Gerätenamen im Format „/dev/sdX“ beim Neustart, insbesondere nach Anwendung der Verschlüsselung, nicht zuverlässig mit demselben Datenträger verknüpft werden können. Weitere Informationen zu diesem Verhalten finden Sie unter: [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](troubleshoot-device-names-problems.md)
+Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „/etc/fstab“ aufgelistet werden. Verwenden Sie die Option "nofail" beim Erstellen von Einträgen, und wählen Sie einen permanenten Blockgerätenamen aus (da Gerätenamen im Format „/dev/sdX“ möglicherweise nicht über Neustarts hinweg mit demselben Datenträger verknüpft sind, insbesondere nach der Verschlüsselung. Weitere Informationen zu diesem Verhalten finden Sie unter: [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](troubleshoot-device-names-problems.md)).
 
 Stellen Sie sicher, dass die Einstellungen für „/etc/fstab“ ordnungsgemäß für die Einbindung konfiguriert sind. Um diese Einstellungen zu konfigurieren, führen Sie den Befehl „mount -a“ aus, oder starten Sie die VM neu, und lösen Sie das Einbinden so erneut aus. Wenn der Vorgang abgeschlossen wurde, sehen Sie sich die Ausgabe des Befehls „lsblk“ an, um zu überprüfen, ob das Laufwerk noch eingebunden ist. 
+
 - Wenn die Datei „/etc/fstab“ das Laufwerk vor der Aktivierung der Verschlüsselung nicht ordnungsgemäß einbindet, kann auch Azure Disk Encryption es nicht richtig einbinden.
 - Azure Disk Encryption verschiebt die Einbindungsinformationen aus „/etc/fstab“ in die eigene Konfigurationsdatei als Teil des Verschlüsselungsprozesses. Der Eintrag fehlt in „/etc/fstab“, nachdem die Verschlüsselung des Datenlaufwerks abgeschlossen wurde.
 - Stellen Sie vor der Verschlüsselung sicher, dass alle Dienste und Prozesse beendet wurden, die in bereitgestellten Datenträgern schreiben oder diese deaktivieren könnten, um zu verhindern, dass sie nach einem Neustart neu gestartet werden. Die Dienste und Prozesse könnten Dateien auf diesen Partitionen öffnen. So wird verhindert, dass sie nach der Verschlüsselungsprozedur nochmals bereitgestellt werden und die Verschlüsselung dadurch fehlschlägt. 
 - Nach dem Neustart dauert es einige Zeit, bis Azure Disk Encryption die neu verschlüsselten Datenträger eingebunden hat. Sie sind nach einem Neustart nicht sofort verfügbar. Der Prozess benötigt Zeit, um die verschlüsselten Laufwerke zu starten, zu entsperren und dann einzubinden, bevor sie für andere Prozesse verfügbar sind. Dies kann je nach Systemeigenschaften mehr als eine Minute nach dem Neustart dauern.
 
-Ein Beispiel für Befehle, die zum Einbinden der Datenträger und zum Erstellen der erforderlichen Einträge in „/etc/fstab“ verwendet werden können, finden Sie im [CLI-Skript für die Voraussetzungen für Azure Disk Encryption](https://github.com/ejarvi/ade-cli-getting-started) (Zeilen 244–248) und im [PowerShell-Skript für die Voraussetzungen für Azure Disk Encryption](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts). 
+Hier finden Sie ein Beispiel für die Befehle, die zum Einbinden der Datenträger und zum Erstellen der erforderlichen „/etc/fstab“-Einträge verwendet werden:
 
+```bash
+UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
+UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+mkdir /data0
+mkdir /data1
+echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
+echo "UUID=$UUID1 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
+mount -a
+```
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
 Die Linux-VMs müssen die folgenden Anforderungen an die Konfiguration des Netzwerkendpunkts erfüllen, um Azure Disk Encryption zu aktivieren:

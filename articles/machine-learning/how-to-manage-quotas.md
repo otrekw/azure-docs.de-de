@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 03/05/2020
-ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/08/2020
+ms.custom: contperfq4
+ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756607"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680388"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
+# <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie mehr über vorkonfigurierte Grenzwerte für Azure-Ressourcen in Ihrem Abonnement. Außerdem finden Sie Anweisungen dazu, wie Sie für jeden Ressourcentyp Kontingenterhöhungen anfordern. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen.
+In diesem Artikel erfahren [Azure Machine Learning](overview-what-is-azure-ml.md)-Benutzer mehr über vorkonfigurierte Grenzwerte für Azure-Ressourcen in ihrem Abonnement. Außerdem finden Sie Anweisungen dazu, wie Sie für jeden Ressourcentyp Kontingenterhöhungen anfordern. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen.
 
-Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Azure Machine Learning-Ressourcen gewisse Grenzwerte. Diese Grenzwerte reichen von Obergrenzen für die Anzahl von Arbeitsbereichen bis hin zu Grenzwerten für die tatsächlich zugrunde liegenden Computeressourcen, die für das Modelltraining oder Rückschluss/Bewertung verwendet werden. 
+Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Azure Machine Learning-Ressourcen gewisse Grenzwerte. Diese Grenzwerte reichen von Obergrenzen für die Anzahl von [Arbeitsbereichen](concept-workspace.md) bis hin zu Grenzwerten für die tatsächlich zugrunde liegenden Computeressourcen, die für das Modelltraining oder Rückschluss/Bewertung verwendet werden. 
 
 Berücksichtigen Sie diese Grenzwerte beim Entwerfen und Skalieren Ihrer Azure Machine Learning-Ressourcen für Produktionsworkloads. Wenn Ihr Cluster beispielsweise nicht die Zielanzahl von Knoten erreicht, haben Sie möglicherweise den Grenzwert für das Kernkontingent von Azure Machine Learning Compute für Ihr Abonnement erreicht. Wenn Sie ein Limit oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine gebührenfreie Onlinekundensupport-Anforderung öffnen. Die Limits können aufgrund von Azure-Kapazitätseinschränkungen nicht über den Wert unter „Maximales Limit“ in den folgenden Tabellen angehoben werden. Falls die Spalte „Maximales Limit“ nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Limits.
 
@@ -48,10 +49,10 @@ Bei Kernen virtueller Computer gilt ein regionaler Gesamtgrenzwert und ein regio
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Eine detailliertere und aktuelle Liste der Kontingentgrenzen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zu Azure-weiten Kontingenten.
+Eine detailliertere und aktuelle Liste der Kontingentgrenzen finden Sie im [Artikel zu Azure-weiten Kontingenten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-In Azure Machine Learning Compute gibt es eine Standardkontingentgrenze für die Anzahl von Kernen und eindeutigen Computeressourcen, die pro Region in einem Abonnement zulässig sind. Dieses Kontingent ist getrennt von dem oben genannten Kontingent für VM-Kerne. Die Kerngrenzen werden nicht von den beiden Ressourcentypen geteilt, da es sich bei AmlCompute um einen verwalteten Dienst handelt, der Ressourcen in einem Modell des Typs „Gehostet im Auftrag von“ bereitstellt.
+In [Azure Machine Learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) gibt es eine Standardkontingentgrenze für die Anzahl von Kernen und eindeutigen Computeressourcen, die pro Region in einem Abonnement zulässig sind. Dieses Kontingent ist getrennt von dem oben genannten Kontingent für VM-Kerne. Die Kerngrenzen werden nicht von den beiden Ressourcentypen geteilt, da es sich bei AmlCompute um einen verwalteten Dienst handelt, der Ressourcen in einem Modell des Typs „Gehostet im Auftrag von“ bereitstellt.
 
 Verfügbare Ressourcen:
 + Für dedizierte Kerne pro Region gilt ein Standardgrenzwert von 24 bis 300, je nach Typ Ihres Abonnementangebots, wobei für die Angebotstypen EA und CSP höhere Standardwerte gelten.  Die Anzahl dedizierter Kerne pro Abonnement kann erhöht werden und ist je nach VM-Familie unterschiedlich. Bestimmte spezialisierte VM-Familien wie die Serien NCv2, NCv3 oder ND beginnen mit einem Standardwert von null Kernen. Wenden Sie sich an den Azure-Support, indem Sie eine Kontingentanfrage stellen und Optionen zur Erhöhung erörtern.
@@ -76,7 +77,7 @@ Verfügbare Ressourcen:
 <sup>2</sup> Aufträge auf einem Knoten niedriger Priorität können jederzeit vorzeitig beendet werden, wenn eine Kapazitätseinschränkung auftritt. Es empfiehlt sich, ein Auswerten von Prüfpunkten in Ihrem Auftrag zu implementieren.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
-Für Azure Machine Learning-Pipelines gibt es eine Kontingentbeschränkung für die Anzahl der Schritte in einer Pipeline und für die Anzahl der auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Region in einem Abonnement.
+Für [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) gibt es eine Kontingentbeschränkung für die Anzahl der Schritte in einer Pipeline und für die Anzahl der auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Region in einem Abonnement.
 - Die maximal zulässige Anzahl von Schritten in einer Pipeline beträgt 30.000.
 - Die maximale Anzahl der Summe aus zeitplanbasierten Ausführungen und Blobpulls für durch Blogs ausgelöste Zeitpläne veröffentlichter Pipelines pro Abonnement und Monat beträgt 100.000.
 
@@ -97,7 +98,7 @@ Es gibt eine Beschränkung für die Anzahl von Speicherkonten pro Region sowie i
 
 ## <a name="workspace-level-quota"></a>Kontingent auf Arbeitsbereichsebene
 
-Um die Ressourcenzuordnungen für Amlcompute zwischen verschiedenen Arbeitsbereichen besser zu verwalten, haben wir eine Funktion eingeführt, mit der Sie Kontingente auf Abonnementebene (nach VM-Familie) verteilen und auf Arbeitsbereichsebene konfigurieren können. Das Standardverhalten ist, dass für alle Arbeitsbereiche das gleiche Kontingent wie für das Kontingent auf Abonnementebene für jede VM-Familie gilt. Wenn jedoch die Anzahl der Arbeitsbereiche zunimmt und Workloads unterschiedlicher Priorität beginnen, sich dieselben Ressourcen zu teilen, wünschen sich die Benutzer einen Weg, die Kapazität besser gemeinsam zu nutzen und Probleme aufgrund von Ressourcenkonflikten zu vermeiden. Azure Machine Learning bietet mit seinem verwalteten Compute-Angebot eine Lösung, indem Benutzern ermöglicht wird, ein maximales Kontingent für eine bestimmte VM-Familie in jedem Arbeitsbereich festzulegen. Dies entspricht der Verteilung Ihrer Kapazität auf die einzelnen Arbeitsbereiche, und die Benutzer können auch eine übermäßige Zuordnung vornehmen, um die maximale Auslastung zu erhöhen. 
+Um die Ressourcenzuordnungen für Azure Machine Learning Compute-Ziel (Amlcompute) zwischen verschiedenen [Arbeitsbereichen](concept-workspace.md) besser zu verwalten, haben wir eine Funktion eingeführt, mit der Sie Kontingente auf Abonnementebene (nach VM-Familie) verteilen und auf Arbeitsbereichsebene konfigurieren können. Das Standardverhalten ist, dass für alle Arbeitsbereiche das gleiche Kontingent wie für das Kontingent auf Abonnementebene für jede VM-Familie gilt. Wenn jedoch die Anzahl der Arbeitsbereiche zunimmt und Workloads unterschiedlicher Priorität beginnen, sich dieselben Ressourcen zu teilen, wünschen sich die Benutzer einen Weg, die Kapazität besser gemeinsam zu nutzen und Probleme aufgrund von Ressourcenkonflikten zu vermeiden. Azure Machine Learning bietet mit seinem verwalteten Compute-Angebot eine Lösung, indem Benutzern ermöglicht wird, ein maximales Kontingent für eine bestimmte VM-Familie in jedem Arbeitsbereich festzulegen. Dies entspricht der Verteilung Ihrer Kapazität auf die einzelnen Arbeitsbereiche, und die Benutzer können auch eine übermäßige Zuordnung vornehmen, um die maximale Auslastung zu erhöhen. 
 
 Um Kontingente auf Arbeitsbereichsebene festzulegen, wechseln Sie zu einem beliebigen Arbeitsbereich in Ihrem Abonnement und klicken im linken Bereich auf **Nutzung + Kontingente**. Klicken Sie dann auf die Registerkarte **Kontingente konfigurieren**, um die Kontingente anzuzeigen. Erweitern Sie eine beliebige VM-Familie, und legen Sie einen Kontingentgrenzwert für jeden Arbeitsbereich fest, der unter dieser VM-Familie aufgeführt ist. Beachten Sie, dass Sie keinen negativen Wert oder einen Wert höher als das Kontingent auf Abonnementebene festlegen können. Außerdem wird, wie Sie feststellen können, standardmäßig allen Arbeitsbereichen das gesamte Abonnementkontingent zugewiesen, um die volle Nutzung des zugeordneten Kontingents zu ermöglichen.
 
@@ -105,7 +106,7 @@ Um Kontingente auf Arbeitsbereichsebene festzulegen, wechseln Sie zu einem belie
 
 
 > [!NOTE]
-> Dies ist ein ausschließliches Feature der Enterprise Edition. Wenn Sie in Ihrem Abonnement einen Arbeitsbereich mit Basic Edition und einen mit Enterprise Edition haben, können Sie dieses Feature nur zum Festlegen von Kontingenten für Ihre Enterprise-Arbeitsbereiche nutzen. Für Ihre Basic-Arbeitsbereiche gilt weiterhin das Kontingent auf Abonnementebene, was das Standardverhalten ist.
+> Dies ist ein ausschließliches Feature der Enterprise Edition. Wenn Sie in Ihrem Abonnement einen Arbeitsbereich mit [Basic Edition und einen mit Enterprise Edition](overview-what-is-azure-ml.md#sku) haben, können Sie dieses Feature nur zum Festlegen von Kontingenten für Ihre Enterprise-Arbeitsbereiche nutzen. Für Ihre Basic-Arbeitsbereiche gilt weiterhin das Kontingent auf Abonnementebene, was das Standardverhalten ist.
 >
 > Sie benötigen Berechtigungen auf Abonnementebene, um das Kontingent auf Arbeitsbereichsebene festzulegen. Dieses wird erzwungen, damit einzelne Arbeitsbereichsbesitzer ihre Kontingente nicht bearbeiten oder erhöhen und anfangen, auf die für einen anderen Arbeitsbereich reservierten Ressourcen überzugreifen. Daher empfiehlt sich ein Abonnementadministrator, um diese Kontingente zuzuordnen und auf die einzelnen Arbeitsbereiche zu verteilen.
 
@@ -113,13 +114,7 @@ Um Kontingente auf Arbeitsbereichsebene festzulegen, wechseln Sie zu einem belie
 
 ## <a name="view-your-usage-and-quotas"></a>Anzeigen von Nutzungsdaten und Kontingenten
 
-Über das Azure-Portal können Sie sich ganz einfach Ihre Kontingente für verschiedene Ressourcen wie virtuelle Computer, Speicher und Netzwerke anzeigen lassen.
-
-1. Wählen Sie im linken Bereich **Alle Dienste** und dann unter der Kategorie „Allgemein“ **Abonnements** aus.
-
-1. Wählen Sie in der Liste der Abonnements das Abonnement aus, dessen Kontingent Sie suchen.
-
-   **Es gibt einen Nachteil**, insbesondere für die Anzeige des Azure Machine Learning Compute-Kontingents. Wie bereits erwähnt, gilt das Kontingent unabhängig von dem Computekontingent für Ihr Abonnement.
+Azure Machine Learning Compute wird getrennt von anderen Azure-Ressourcenkontingenten in Ihrem Abonnement verwaltet. Um dieses Kontingent anzuzeigen, müssen Sie einen Drilldown in Machine Learning-Dienste ausführen.  
 
 1. Wählen Sie im linken Bereich die Option **Machine Learning-Dienst** aus, und wählen Sie dann einen beliebigen Arbeitsbereich in der angezeigten Liste aus.
 
@@ -132,13 +127,27 @@ Um Kontingente auf Arbeitsbereichsebene festzulegen, wechseln Sie zu einem belie
 
     + **Arbeitsbereichsansicht:** In dieser Ansicht können Sie die Nutzung von Kernkontingenten nach Arbeitsbereich anzeigen, sie nach VM-Familie erweitern und sie nach den tatsächlichen Clusternamen weiter ausdehnen. Diese Ansicht ist optimal, um schnell zu den Details der Kernnutzung durch einen bestimmten Arbeitsbereich zu gelangen, um die Aufteilung nach VM-Familien und weiter nach den zugrunde liegenden Clustern für jede dieser Familien einzusehen.
 
+Über das Azure-Portal können Sie sich ganz einfach Ihre Kontingente für verschiedene andere Azure-Ressourcen wie virtuelle Computer, Speicher und Netzwerke anzeigen lassen.
+
+1. Wählen Sie im linken Bereich **Alle Dienste** und dann unter der Kategorie „Allgemein“ **Abonnements** aus.
+
+1. Wählen Sie in der Liste der Abonnements das Abonnement aus, dessen Kontingent Sie suchen.
+
 ## <a name="request-quota-increases"></a>Anfordern der Kontingenterhöhung
 
 Wenn Sie ein Limit oder ein Kontingent über den Standardgrenzwert anheben möchten, [können Sie eine gebührenfreie Onlinekundensupport-Anforderung öffnen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/).
 
-Die Limits können nicht über den Wert unter „Maximales Limit“ in den Tabellen angehoben werden. Falls kein maximales Limit angegeben ist, gelten für die entsprechende Ressource keine anpassbaren Limits. In [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) wird der Vorgang zur Kontingenterhöhung im Detail beschrieben.
+Die Limits können nicht über den Wert unter „Maximales Limit“ in den Tabellen angehoben werden. Falls kein maximales Limit angegeben ist, gelten für die entsprechende Ressource keine anpassbaren Limits. [Weitere Informationen finden Sie in der schrittweisen Anleitung zur Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 Wenn Sie eine Kontingenterhöhung anfordern, müssen Sie den Dienst auswählen, für den Sie die Kontingenterhöhung anfordern (z. B. Machine Learning Service-Kontingent, Containerinstanzen oder Speicherkontingente). Zusätzlich können Sie für Azure Machine Learning Compute auf die Schaltfläche **Kontingent anfordern** klicken, während Sie das Kontingent entsprechend den obigen Schritten anzeigen.
 
 > [!NOTE]
 > Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Einschränkungs- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade einer kostenlosen Azure-Testversion auf nutzungsbasierte Bezahlung](../billing/billing-upgrade-azure-subscription.md) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen finden Sie in diesen Artikeln:
+
++ [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md)
+
++ [Informationen zum Erhöhen des Kontingents](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)

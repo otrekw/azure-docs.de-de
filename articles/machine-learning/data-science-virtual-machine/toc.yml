@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: Erstellen einer Data Science Virtual Machine-Instanz für Ubuntu
       href: dsvm-ubuntu-intro.md
+- name: Tutorials
+  items:
+    - name: Erstellen einer DSVM-Instanz mit einer ARM-Vorlage
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: Konzepte
   items:
     - name: Deep Learning und KI-Frameworks

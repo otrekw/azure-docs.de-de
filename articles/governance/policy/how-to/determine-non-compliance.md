@@ -1,14 +1,14 @@
 ---
 title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
-ms.date: 04/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182581"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684230"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -115,7 +115,7 @@ Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf de
 
 Beginnen Sie, indem Sie die Schritte zum Anzeigen der Konformitätsdetails der Richtlinien im obigen Abschnitt ausführen.
 
-Klicken Sie im Bereich **Kompatibilitätsdetails** auf den Link **Zuletzt ausgewertete Ressource**.
+Klicken Sie im Bereich „Kompatibilitätsdetails“ auf den Link **Zuletzt ausgewertete Ressource**.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Anzeigen von Details zur Definition „auditIfNotExists“" border="false":::
 

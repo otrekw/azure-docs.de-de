@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228074"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848040"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
 Azure Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt.
@@ -72,7 +72,7 @@ Abhängig von Ihrer Partitionsschlüsselauswahl wird möglicherweise diese _Warn
 
 Es ist wichtig, eine Partitionsschlüsseleigenschaft zu wählen, die eine Reihe von unterschiedlichen Werten hat und es Ihnen ermöglicht, Ihre Workload gleichmäßig auf diese Werte zu verteilen. Als natürliches Artefakt der Partitionierung werden Anfragen mit dem gleichen Partitionsschlüssel durch den maximalen Durchsatz einer einzelnen Partition begrenzt. 
 
-Die Speichergröße für Dokumente mit dem gleichen Partitionsschlüssel ist auf 10 GB beschränkt. Ein idealer Partitionsschlüssel ist einer, der häufig als Filter in Ihren Abfragen erscheint und genügend Kardinalität besitzt, um sicherzustellen, dass Ihre Lösung skalierbar ist.
+Die Speichergröße für Dokumente mit dem gleichen Partitionsschlüssel ist auf 20 GB beschränkt. Ein idealer Partitionsschlüssel ist einer, der häufig als Filter in Ihren Abfragen erscheint und genügend Kardinalität besitzt, um sicherzustellen, dass Ihre Lösung skalierbar ist.
 
 Ein Partitionsschlüssel ist auch die Grenze für Transaktionen in gespeicherten Prozeduren und Triggern für Azure Cosmos DB. Sie sollten den Partitionsschlüssel so auswählen, dass Dokumente, die gemeinsam in Transaktionen auftreten, denselben Partitionsschlüsselwert haben. Der Artikel [Partitionierung in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) bietet ausführlichere Informationen zur Auswahl eines Partitionsschlüssels.
 

@@ -10,17 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bb32418a9f6f556c3bcdfbdf8a70a10c4588218
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137359"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646149"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen in Azure Machine Learning konfigurieren und trainieren. 
+In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) konfigurieren und trainieren. 
+
+Falls Sie wenig Erfahrung mit Code haben, lesen Sie das [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md) für ein Zeitreihenvorhersagebeispiel mit automatisiertem maschinellen Lernen im [Azure Machine Learning-Studio](https://ml.azure.com/).
 
 Das Konfigurieren eines Vorhersagemodells ähnelt zwar der Einrichtung eines Standard-Regressionsmodells mit automatisiertem maschinellem Lernen, die Verwendung von Zeitreihendaten erfordert jedoch bestimmte Konfigurationsoptionen und Vorverarbeitungsschritte. 
 
@@ -40,7 +42,6 @@ Features, die aus den Trainingsdaten extrahiert werden, spielen eine wichtige Ro
 
 ## <a name="time-series-and-deep-learning-models"></a>Zeitreihen- und Deep Learning-Modelle
 
-
 Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
 
 Deep Learning-Modelle weisen drei intrinsische Funktionen auf:
@@ -51,7 +52,6 @@ Deep Learning-Modelle weisen drei intrinsische Funktionen auf:
 Mit größeren Daten können Deep Learning-Modelle wie ForecastTCN von Microsoft die Scores des resultierenden Modells verbessern. Erfahren Sie, wie Sie [Ihr Experiment für Deep Learning konfigurieren](#configure-a-dnn-enable-forecasting-experiment).
 
 Automatisiertes maschinelles Lernen bietet Benutzern sowohl native Zeitreihen- als auch Deep Learning-Modelle als Teil des Empfehlungssystems. 
-
 
 Modelle| BESCHREIBUNG | Vorteile
 ----|----|---
@@ -112,7 +112,7 @@ Die ROCV (Kreuzvalidierung mit rollierendem Ursprung) wird bei der Zeitreihenvor
 
 ![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
 
-Mit dieser Strategie wird die Datenintegrität von Zeitreihen beibehalten und das Risiko von Datenlecks vermieden. Die ROCV wird automatisch für Vorhersageaufgaben verwendet, indem die Trainings- und Validierungsdaten gemeinsam übergeben und die Anzahl der Teilmengen für die Kreuzvalidierung mithilfe von `n_cross_validations` festgelegt wird. 
+Mit dieser Strategie wird die Datenintegrität von Zeitreihen beibehalten und das Risiko von Datenlecks vermieden. Die ROCV wird automatisch für Vorhersageaufgaben verwendet, indem die Trainings- und Validierungsdaten gemeinsam übergeben und die Anzahl der Teilmengen für die Kreuzvalidierung mithilfe von `n_cross_validations` festgelegt wird. Erfahren Sie mehr darüber, wie das automatisierte maschinelle Lernen die Kreuzvalidierung anwendet, um eine [Überanpassung von Modellen zu verhindern](concept-manage-ml-pitfalls.md#prevent-over-fitting).
 
 ```python
 automl_config = AutoMLConfig(task='forecasting',

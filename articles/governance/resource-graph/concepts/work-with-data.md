@@ -3,12 +3,12 @@ title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
 ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064739"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681073"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -37,7 +37,10 @@ In der [REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)
 
 Das jeweils _restriktivste_ Steuerelement hat Vorrang. Wenn in einer Abfrage beispielsweise die Operatoren **top** oder **limit** verwendet werden und sich dabei mehr Datensätze als bei **First** ergeben, entspricht die maximale Anzahl der zurückgegebenen Datensätze der durch **First** vorgegebenen Anzahl. Wenn **top** oder **limit** kleiner ist als **First**, wird als Datensatzgruppe jeweils der kleinere Wert der durch **top** oder **limit** konfigurierten Werte zurückgegeben.
 
-Für **First** ist derzeit _5000_ als maximal zulässiger Wert festgelegt.
+**First** weist derzeit einen maximal zulässigen Wert von _5000_ auf, der durch [Auslagerungsergebnisse](#paging-results) mit jeweils _1000_ Datensätzen erreicht wird.
+
+> [!IMPORTANT]
+> Wenn **First** für einen größeren Wert als _1000_ Datensätze konfiguriert ist, muss die Abfrage das **id**-Feld **projizieren**, damit die Paginierung funktioniert. Wenn es in der Abfrage fehlt, wird die Antwort nicht [ausgelagert](#paging-results), und die Ergebnisse sind auf _1000_ Datensätze beschränkt.
 
 ## <a name="skipping-records"></a>Überspringen von Datensätzen
 

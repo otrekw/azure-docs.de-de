@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758559"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715867"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
@@ -52,7 +52,7 @@ Geplante Ereignisse werden übermittelt an:
 
 - Eigenständige virtuelle Computer
 - Alle VMs in einem Clouddienst
-- Alle VMs in einer Verfügbarkeitsgruppe
+- Alle VMs in einer Verfügbarkeitsgruppe/Verfügbarkeitszone. 
 - Alle VMs in einer Gruppe für die Skalierungsgruppenplatzierung 
 
 Überprüfen Sie deshalb anhand des Felds `Resources` in einem Ereignis, welche VMs betroffen sein werden.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585401"
+ms.locfileid: "83647504"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -80,7 +80,7 @@ Bei Azure Stream Analytics-Aufträgen kann die Ausgabe in eine SQL-Pooltabelle i
 
 Die SQL-Pooltabelle muss vorhanden sein, bevor Sie sie Ihrem Stream Analytics-Auftrag als Ausgabe hinzufügen können. Das Schema der Tabelle muss den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. 
 
-Wenn Sie Azure Synapse als Ausgabe verwenden möchten, müssen Sie sicherstellen, dass Sie das Speicherkonto konfiguriert haben. Navigieren Sie zu den Speicherkontoeinstellungen, um das Speicherkonto zu konfigurieren. Es sind nur die Speicherkontotypen zulässig, die Tabellen unterstützen: „Allgemein V2“ und „Allgemein V1“.   
+Wenn Sie Azure Synapse als Ausgabe verwenden möchten, müssen Sie sicherstellen, dass Sie das Speicherkonto konfiguriert haben. Navigieren Sie zu den Speicherkontoeinstellungen, um das Speicherkonto zu konfigurieren. Es sind nur die Speicherkontotypen zulässig, die Tabellen unterstützen: „Allgemein V2“ und „Allgemein V1“. Wählen Sie nur den Standard-Tarif aus. Der Premium-Tarif wird nicht unterstützt.   
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Azure Synapse Analytics-Ausgabe.
 

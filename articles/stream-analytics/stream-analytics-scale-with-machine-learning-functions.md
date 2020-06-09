@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929042"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835579"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
@@ -140,7 +140,7 @@ Beim Skalieren eines Stream Analytics-Auftrags mit Machine Learning-Funktionen s
 2. Die tolerierte Latenz für den ausgeführten Stream Analytics-Auftrag (und somit die Batchgröße der Machine Learning-Webdienstanforderungen)
 3. Die bereitgestellten Stream Analytics-Streamingeinheiten (SUs) und die Anzahl von Machine Learning-Webdienstanforderungen (zusätzliche funktionsbezogene Kosten)
 
-Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, ist das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) eine hervorragende Ressource, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
+Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, ist die [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) eine hervorragende Ressource, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Stream Analytics finden Sie unter:

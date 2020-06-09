@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651856"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -36,7 +36,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Überprüfung durchgeführt 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Für die Active Directory-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.6.2 oder höher auf jedem Computer installiert sein, auf dem der Log Analytics-Agent für Windows (auch als Microsoft Monitoring Agent (MMA) bezeichnet) installiert ist.  Der Agent wird von System Center 2016 – Operations Manager, Operations Manager 2012 R2 sowie Azure Monitor verwendet.
-* Die Lösung unterstützt Domänencontroller unter Windows Server 2008 und 2008 R2, Windows Server 2012 und 2012 R2 sowie Windows Server 2016.
+* Die Lösung unterstützt Domänencontroller unter Windows Server 2008 und 2008 R2, Windows Server 2012 und 2012 R2, Windows Server 2016 sowie Windows Server 2019.
 * Ein Log Analytics-Arbeitsbereich zum Hinzufügen der Active Directory-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal. Es ist keine zusätzliche Konfiguration erforderlich.
 
   > [!NOTE]

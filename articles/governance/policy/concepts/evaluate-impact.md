@@ -1,14 +1,14 @@
 ---
 title: Auswerten der Auswirkung einer neuen Azure Policy-Definition
 description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtliniendefinition in Ihre Azure-Umgebung zu befolgen ist.
-ms.date: 09/23/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187748"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684301"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Auswerten der Auswirkung einer neuen Azure Policy-Definition
 
@@ -33,8 +33,7 @@ Aus diesem Grund sollten Ihre Richtliniendefinitionen so präzise wie möglich d
 
 ## <a name="audit-existing-resources"></a>Überwachen vorhandener Ressourcen
 
-Bevor Sie mit Ihrer neuen Richtliniendefinition neue oder aktualisierte Ressourcen verwalten, ist es am besten zu prüfen, wie sie eine begrenzte Teilmenge vorhandener Ressourcen, z. B. eine Testressourcengruppe, auswertet. Verwenden Sie den [Erzwingungsmodus](./assignment-structure.md#enforcement-mode)
-_Deaktiviert_ (DoNotEnforce) bei Ihrer Richtlinienzuweisung, um zu verhindern, dass die [Auswirkung](./effects.md) ausgelöst oder Einträge im Aktivitätsprotokoll erstellt werden.
+Bevor Sie mit Ihrer neuen Richtliniendefinition neue oder aktualisierte Ressourcen verwalten, ist es am besten zu prüfen, wie sie eine begrenzte Teilmenge vorhandener Ressourcen, z. B. eine Testressourcengruppe, auswertet. Verwenden Sie den [Erzwingungsmodus](./assignment-structure.md#enforcement-mode) _Deaktiviert_ (DoNotEnforce) bei Ihrer Richtlinienzuweisung, um zu verhindern, dass die [Auswirkung](./effects.md) ausgelöst oder Einträge im Aktivitätsprotokoll erstellt werden.
 
 Dieser Schritt bietet Ihnen die Möglichkeit, die Complianceergebnisse der neuen Richtlinie für vorhandene Ressourcen auszuwerten, ohne den Workflow zu beeinträchtigen. Überprüfen Sie, dass keine konformen Ressourcen als nicht konform gekennzeichnet sind (_False Positive_) und dass alle Ressourcen, von denen Sie erwarten, dass sie nicht konform sind, korrekt gekennzeichnet sind.
 Nachdem die anfängliche Teilmenge der Ressourcen wie erwartet überprüft wurde, erweitern Sie die Auswertung langsam auf alle vorhandenen Ressourcen.

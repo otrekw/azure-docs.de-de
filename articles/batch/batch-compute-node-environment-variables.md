@@ -1,15 +1,14 @@
 ---
 title: Umgebungsvariablen der Aufgabenlaufzeit
 description: Anleitung und Referenz zu Umgebungsvariablen für Aufgabenlaufzeit für Azure Batch-Analysen.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: labrenne
-ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117334"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745332"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 
@@ -49,7 +48,7 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 | AZ_BATCH_JOB_ID                 | Die ID des Auftrags, zu dem der Task gehört. | Alle Tasks mit Ausnahme des Starttasks. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | Der vollständige Pfad des [Taskverzeichnisses][files_dirs] für die Auftragsvorbereitung auf dem Knoten. | Alle Tasks mit Ausnahme des Starttasks und Auftragsvorbereitungstasks. Nur verfügbar, wenn der Auftrag mit einem Auftragsvorbereitungstask konfiguriert ist. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Der vollständige Pfad des [Taskarbeitsverzeichnisses][files_dirs] für die Auftragsvorbereitung auf dem Knoten. | Alle Tasks mit Ausnahme des Starttasks und Auftragsvorbereitungstasks. Nur verfügbar, wenn der Auftrag mit einem Auftragsvorbereitungstask konfiguriert ist. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | IP-Adresse und Port des Computeknotens, auf dem der Haupttasks eines [Tasks mit mehreren Instanzen][multi_instance] ausgeführt wird. | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | IP-Adresse und Port des Computeknotens, auf dem der Haupttasks eines [Tasks mit mehreren Instanzen][multi_instance] ausgeführt wird. Verwenden Sie den hier angegebenen Port nicht für MPI- oder NCCL-Kommunikation – er ist für den Azure Batch-Dienst reserviert. Verwenden Sie stattdessen die Variable MASTER_PORT, indem Sie sie entweder mit einem über das Befehlszeilenargument eingegebenen Wert festlegen (Port 6105 ist eine gute Standardwahl), oder indem Sie den von AML festgelegten Wert verwenden, wenn dieser verfügbar ist. | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | Die ID des Knotens, dem der Task zugewiesen ist | Alle Tasks. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Wenn `true`, ist der aktuelle Knoten ein dedizierter-Knoten. Bei `false` handelt es sich um einen [Knoten mit niedriger Priorität](batch-low-pri-vms.md). | Alle Tasks. | `true` |
 | AZ_BATCH_NODE_LIST              | Die Liste mit den Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind (im Format `nodeIP;nodeIP`). | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4;10.0.0.5` |

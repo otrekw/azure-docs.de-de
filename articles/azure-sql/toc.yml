@@ -447,7 +447,7 @@
             - name: Verwenden von Resource Health bei Konnektivitätsproblemen
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: Migrieren von DTU zu einem virtuellen Kern
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: Skalieren von Datenbankressourcen
               href: database/single-database-scale.md
             - name: Skalieren von Poolressourcen

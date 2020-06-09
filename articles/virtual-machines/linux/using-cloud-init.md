@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 1f0395956fa6977be5d1d6f4f4faf06b84c094d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79465038"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827317"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren von virtuellen Computern (VMs) oder VM-Skalierungsgruppen während der Bereitstellung in Azure erläutert. Diese cloud-init-Konfigurationen werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -44,6 +44,7 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 ### <a name="canonical"></a>Canonical
 | Herausgeber/Version| Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
+|Canonical 20.04 |UbuntuServer |18.04-LTS |latest |ja | ja |
 |Canonical 18.04 |UbuntuServer |18.04-LTS |latest |ja | ja |
 |Canonical 16.04|UbuntuServer |16.04-LTS |latest |ja | ja |
 |Canonical 14.04|UbuntuServer |14.04.5-LTS |latest |ja | ja |
@@ -52,19 +53,26 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 | Herausgeber/Version | Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja – Unterstützung ab Paketversion: *18.2-1.el7_6.2*|
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle RHEL 7.7-Images cloud-init unterstützen, wird dies Mitte 2020 entfernt und eine entsprechende Mitteilung erfolgen) | Ja – Unterstützung ab Paketversion: *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-RAW | –| Nein – Image-Updates bis Ende April 2020 abgeschlossen| Ja – Unterstützung ab Paketversion: *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-LVM | –| Nein – Image-Updates bis Ende April abgeschlossen| Ja – Unterstützung ab Paketversion: *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7,7 | –| Nein – Image-Updates bis Ende April abgeschlossen | Ja – Unterstützung ab Paketversion: *18.5-3.el7*|
-|RedHat 7.7 |rhel-byos | rhel-lvm77 | –|Nein – Image-Updates bis Ende April abgeschlossen  | Ja – Unterstützung ab Paketversion: *18.5-3.el7*|
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle RHEL 7.7-Images cloud-init unterstützen, wird es am 1. September 2020 entfernt ) | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 7.7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | Nein – Image-Updates sind im Gang und sollen bis Ende Mai abgeschlossen sein | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 7.7 (Gen2)|RHEL | 77-gen2 | 7.7.2020051913 | Nein – Image-Updates sind im Gang und sollen bis Ende Mai abgeschlossen sein | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | Nein – Image-Updates sind im Gang und sollen bis Ende Mai abgeschlossen sein | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | Nein – Image-Updates sind im Gang und sollen bis Ende Mai abgeschlossen sein | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | Nein – Image-Updates sind im Gang und sollen bis Ende Mai abgeschlossen sein  | Ja – Unterstützung ab Paketversion: *18.5-6.el7*|
+|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle RHEL 8.1-Images cloud-init unterstützen, wird es am 1. August 2020 entfernt ) | Nein, ETA für vollständigen Support ist Juni 2020|
+|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle RHEL 8.1-Images cloud-init unterstützen, wird es am 1. August 2020 entfernt ) | Nein, ETA für vollständigen Support ist Juni 2020 |
+
+Images von RedHat:RHEL 7.8 und 8.2 (Gen1 und Gen2) werden mithilfe von cloud-init bereitgestellt.
 
 ### <a name="centos"></a>CentOS
 
 | Herausgeber/Version | Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle CentOS 7.7-Images cloud-init unterstützen, wird dies Mitte 2020 entfernt und eine entsprechende Mitteilung erfolgen) | Ja – Unterstützung ab Paketversion: *18.5-3.el7.centos*|
+|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |Ja (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle CentOS 7.7-Images cloud-init unterstützen, wird es am 1. September 2020 entfernt ) | Ja – Unterstützung ab Paketversion: *18.5-3.el7.centos*|
 
-* CentOS 7. 7-Images, die cloud-init-fähig sein werden, werden hier im Februar 2020 aktualisiert. 
+* Cloud-init-fähige CentOS 7.7-Images werden hier im Juni 2020 aktualisiert 
+* CentOS 7.8-Images werden mithilfe von cloud-init bereitgestellt.
+
 
 ### <a name="oracle"></a>Oracle
 
@@ -72,8 +80,15 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| Vorschauimage (beachten Sie, dass es sich um ein Vorschauimage handelt, und sobald alle Oracle 7.7-Images cloud-init unterstützen, wird dies Mitte 2020 entfernt und eine entsprechende Mitteilung erfolgen) | Nein, in der Vorschauversion, das Paket ist: *18.5-3.0.1.el7*
 
-### <a name="debian--suse-sles"></a>Debian und SuSE SLES
-Wir arbeiten derzeit an einer Vorschau auf die Unterstützung und erwarten Updates im Februar und März 2020.
+### <a name="suse-sles"></a>SUSE Linux Enterprise Server (SLES)
+| Herausgeber/Version | Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|SUSE Linux Enterprise Server (SLES) 15 SP1 |suse |sles-15-sp1-basic |cloud-init-preview| Ausführliche Informationen finden Sie im [SUSE cloud-init-Blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/). | Nein, als Vorschauversion. |
+|SUSE Linux Enterprise Server (SLES) 15 SP1 |suse |sles-15-sp1-basic |gen2-cloud-init-preview| Ausführliche Informationen finden Sie im [SUSE cloud-init-Blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/). | Nein, als Vorschauversion. |
+
+
+### <a name="debian"></a>Debian
+Wir arbeiten derzeit an einer Vorschau auf die Unterstützung und erwarten Updates im Juni 2020.
 
 Derzeit unterstützt Azure Stack die Bereitstellung von cloud-init-fähigen Images.
 

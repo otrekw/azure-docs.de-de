@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628741"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831890"
 ---
 # <a name="troubleshoot-input-connections"></a>Problembehandlung für Eingangsverbindungen
 
@@ -141,7 +141,7 @@ Erstellen Sie für Abfragen, bei denen drei oder mehr Eingaben mit der gleichen 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

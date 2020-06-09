@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099545"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779778"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -135,9 +135,9 @@ Jedes Ereignis erfolgt dem Zeitplan nach, basierend auf dem Ereignistyp, eine Mi
 ### <a name="event-scope"></a>Ereignisbereich     
 Geplante Ereignisse werden übermittelt an:
  - Eigenständige virtuelle Computer
- - Alle virtuellen Computer in einem Clouddienst      
- - Alle virtuellen Computer in einer Verfügbarkeitsgruppe      
- - Alle virtuellen Computer in einer Skalierungsgruppen-Platzierungsgruppe         
+ - Alle virtuellen Computer in einem Clouddienst     
+ - Alle virtuellen Computer in einer Verfügbarkeitsgruppe     
+ - Alle virtuellen Computer in einer Skalierungsgruppen-Platzierungsgruppe (einschließlich Batch)       
 
 Daher sollten Sie das Feld `Resources` in einem Ereignis überprüfen, um zu ermitteln, welche VMs betroffen sein werden. 
 

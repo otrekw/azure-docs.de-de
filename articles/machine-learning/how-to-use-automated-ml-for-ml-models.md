@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257231"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653852"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -159,7 +159,7 @@ Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleic
 
 ## <a name="advanced-featurization-options"></a>Erweiterte Optionen bei der Featurebereitstellung
 
-Automatisiertes maschinelles Lernen bietet eine Vorverarbeitung und automatische Schutzmaßnahmen für Daten, damit Sie potenzielle Probleme mit Ihren Daten identifizieren und verwalten können. 
+Automatisiertes maschinelles Lernen bietet eine Vorverarbeitung und automatische Schutzmaßnahmen für Daten, damit Sie potenzielle Probleme mit Ihren Daten identifizieren und verwalten können, z. B. [Überanpassung und Unausgeglichenheit von Daten](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
 
 ### <a name="preprocessing"></a>Preprocessing (Vorverarbeitung)
 

@@ -5,12 +5,12 @@ description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: ca0b6d4acd48dde0ea381ab37080fb6af1fb936c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854225"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683196"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ Das folgende Beispielskript:
 * Erstellt einen Azure AD-Dienstprinzipal (Azure Active Directory) für die Verwendung mit dem AKS-Cluster.
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
-    * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`. Hinweis: Calico könnte entweder mit `--network-plugin azure` oder mit `--network-plugin kubenet` verwendet werden.
+    * Die _Azure-Netzwerkrichtlinienoption_ wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`. Hinweis: Calico könnte entweder mit `--network-plugin azure` oder mit `--network-plugin kubenet` verwendet werden.
 
 Beachten Sie, dass Sie anstelle eines Dienstprinzipals eine verwaltete Identität für Berechtigungen verwenden können. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
@@ -146,7 +146,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Verweigern sämtlichen eingehenden Datenverkehrs zu einem Pod
 
-Bevor Sie Regeln zum Zulassen bestimmten Netzwerkdatenverkehrs definieren, erstellen Sie zuerst eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Diese Richtlinie bietet Ihnen einen Ausgangspunkt, um nur den gewünschten Datenverkehr auf die Whitelist zu setzen. Sie können auch deutlich erkennen, dass Datenverkehr bei Anwendung der Netzwerkrichtlinie verworfen wird.
+Bevor Sie Regeln zum Zulassen bestimmten Netzwerkdatenverkehrs definieren, erstellen Sie zuerst eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Diese Richtlinie bietet Ihnen einen Ausgangspunkt, um mit der Erstellung einer Zulassungsliste zu beginnen, die nur den gewünschten Datenverkehr zulässt. Sie können auch deutlich erkennen, dass Datenverkehr bei Anwendung der Netzwerkrichtlinie verworfen wird.
 
 Für die Beispielanwendungsumgebung und die Regeln für den Netzwerkdatenverkehr erstellen wir zunächst einen Namespace mit dem Namen *development* zur Ausführung der Beispielpods:
 
@@ -474,9 +474,9 @@ Weitere Informationen zu Richtlinien finden Sie unter [Network Policies][kuberne
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
 [calico-support]: https://www.tigera.io/tigera-products/calico/
-[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

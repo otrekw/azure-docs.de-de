@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746081"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266524"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
 
@@ -105,7 +105,7 @@ Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
 
 7. Geben Sie auf der Registerkarte **Lieferadresse** Ihren Vor- und Nachnamen, den Namen und die Postanschrift des Unternehmens sowie eine gültige Telefonnummer an. Klicken Sie auf **Adresse überprüfen**. Der Dienst überprüft anhand der Lieferadresse die Verfügbarkeit des Diensts. Wenn der Dienst für die angegebene Lieferadresse verfügbar ist, erhalten Sie eine entsprechende Benachrichtigung.
 
-   Nach der Verarbeitung der Bestellung erhalten Sie eine E-Mail-Benachrichtigung. Weitere Informationen zum selbstverwalteten Versand finden Sie unter [Verwenden des selbstverwalteten Versands](data-box-disk-portal-customer-managed-shipping.md).
+   Nach der Verarbeitung der Bestellung erhalten Sie eine E-Mail-Benachrichtigung. Wenn Sie den selbstverwalteten Versand ausgewählt haben, finden Sie weitere Informationen unter [Verwenden des selbstverwalteten Versands](data-box-disk-portal-customer-managed-shipping.md).
 
     ![Angeben der Lieferadresse](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. Geben Sie in den **Benachrichtigungsdetails** E-Mail-Adressen an. Der Dienst sendet E-Mail-Benachrichtigungen in Bezug auf Aktualisierungen des Auftragsstatus an die angegebenen E-Mail-Adressen.

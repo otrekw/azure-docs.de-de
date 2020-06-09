@@ -133,6 +133,8 @@
           href: upgrade-cluster.md
         - name: Verwenden einer Betriebszeit-SLA
           href: uptime-sla.md
+        - name: Aktualisieren des Knotenimages (Vorschau)
+          href: node-image-upgrade.md
         - name: Verarbeiten von Betriebssystemupdates für Knoten
           href: node-updates-kured.md
         - name: Konfigurieren eines AKS-Clusters

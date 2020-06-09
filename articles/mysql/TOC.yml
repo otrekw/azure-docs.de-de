@@ -132,6 +132,8 @@
           href: concepts-query-performance-insight.md
         - name: Leistungsempfehlungen
           href: concepts-performance-recommendations.md
+        - name: Serverparameter
+          href: concepts-server-parameters.md
     - name: Entwicklung
       items:
         - name: Kompatibilität von Treibern und Tools

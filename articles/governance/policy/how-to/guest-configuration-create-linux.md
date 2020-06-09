@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Linux
 description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Linux erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024981"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654867"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -31,7 +31,14 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Das Erstellen eines Gastkonfigurationsartefakts, das automatisierte Testen des Artefakts, das Erstellen einer Richtliniendefinition und das Veröffentlichen der Richtlinie kann mit dem Modul für Gastkonfigurationen in PowerShell vollständig automatisiert werden. Das Modul kann auf einem Computer installiert werden, auf dem Windows, macOS oder Linux mit PowerShell 6.2 oder höher lokal oder mit [Azure Cloud Shell](https://shell.azure.com) oder dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) ausgeführt wird.
+Mit dem Modul „Gastkonfiguration“ wird die Erstellung von benutzerdefinierten Inhalten automatisiert. Dazu gehört Folgendes:
+
+- Erstellen eines Inhaltsartefakts für die Gastkonfiguration (ZIP-Datei)
+- Durchführen eines automatisierten Tests des Artefakts
+- Erstellen einer Richtliniendefinition
+- Veröffentlichen der Richtlinie
+
+Das Modul kann auf einem Computer installiert werden, auf dem Windows, macOS oder Linux mit PowerShell 6.2 oder höher lokal oder mit [Azure Cloud Shell](https://shell.azure.com) oder dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) ausgeführt wird.
 
 > [!NOTE]
 > Die Kompilierung von Konfigurationen wird unter Linux nicht unterstützt.
@@ -275,6 +282,14 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
+> [!Note]
+> Das neueste Gastkonfigurationsmodul enthält neue Parameter:
+> - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
+>   - Weitere Informationen finden Sie im Abschnitt [Filtern von Richtlinien der Gastkonfiguration mit Tags](#filtering-guest-configuration-policies-using-tags).
+> - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
+>   - Wenn der Parameter nicht hinzugefügt wird, wird standardmäßig „Gastkonfiguration“ als Kategorie verwendet.
+> Diese Features befinden sich derzeit in der Vorschauphase. Hierfür ist Version  1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+
 Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`.
 Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
@@ -386,6 +401,38 @@ Zum Freigeben einer Aktualisierung der Richtliniendefinition sind zwei Felder zu
 - **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
+
+
+### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtern von Richtlinien der Gastkonfiguration mit Tags
+
+> [!Note]
+> Dieses Feature befindet sich derzeit in der Vorschauphase. Hierfür ist Version  1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+
+Die mit Cmdlets im Gastkonfigurationsmodul erstellten Richtlinien können optional einen Filter für Tags enthalten. Der Parameter **-Tag** von `New-GuestConfigurationPolicy` unterstützt ein Array mit Hashtabellen, die die einzelnen Tageinträge enthalten. Die Tags werden dem Abschnitt `If` der Richtliniendefinition hinzugefügt und können nicht per Richtlinienzuweisung geändert werden.
+
+Unten ist ein Beispielcodeausschnitt einer Richtliniendefinition angegeben, mit der nach Tags gefiltert wird.
+
+```json
+"if": {
+  "allOf" : [
+    {
+      "allOf": [
+        {
+          "field": "tags.Owner",
+          "equals": "BusinessUnit"
+        },
+        {
+          "field": "tags.Role",
+          "equals": "Web"
+        }
+      ]
+    },
+    {
+      // Original Guest Configuration content will follow
+    }
+  ]
+}
+```
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Optional: Signieren von Paketen für Gastkonfigurationen
 

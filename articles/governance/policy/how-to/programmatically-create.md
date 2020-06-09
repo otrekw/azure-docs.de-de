@@ -1,14 +1,14 @@
 ---
 title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
-ms.date: 01/31/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231182"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682119"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -133,10 +133,10 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    Ersetzen Sie „{subscriptionId}“ durch die ID Ihres Abonnements oder „{managementGroupId}“ durch die ID Ihrer [Verwaltungsgruppe](../../management-groups/overview.md).
@@ -162,7 +162,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtlinienzuweisung zu erstellen 
 1. Erstellen Sie die Richtlinienzuweisung, indem Sie den folgenden Aufruf verwenden:
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
    Ersetzen Sie die in &lt;&gt; gesetzten Angaben durch Ihre eigenen Werte.
@@ -207,8 +207,8 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
    `az policy definition creation` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
 
-   - **--subscription** zum Speichern in einem anderen Abonnement. Dieser Parameter erfordert einen _GUID-Wert_ für die Abonnement-ID oder einen _Zeichenfolgenwert_ für den Namen des Abonnements.
-   - **--management-group** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
+   - **subscription** zum Speichern in einem anderen Abonnement. Dieser Parameter erfordert einen _GUID-Wert_ für die Abonnement-ID oder einen _Zeichenfolgenwert_ für den Namen des Abonnements.
+   - **management-group** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
 
 1. Verwenden Sie den folgenden Befehl, um eine Richtlinienzuweisung zu erstellen. Ersetzen Sie die in &lt;&gt; gesetzten Angaben durch Ihre eigenen Werte.
 
@@ -216,7 +216,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   Die Parameter **--scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **--scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
+   Der Parameter **scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
    - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`

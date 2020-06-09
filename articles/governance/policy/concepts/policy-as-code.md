@@ -1,14 +1,14 @@
 ---
 title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187731"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684271"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -99,7 +99,7 @@ Verwenden Sie nach dem Bereitstellen der Zuweisung das Policy SDK zum [Abrufen v
 Wenn die Validierung der Zuweisung den Erwartungen entspricht, besteht der nächste Schritt darin, mögliche Korrekturmaßnahmen zu überprüfen.
 Richtlinien, die entweder [deployIfNotExists](./effects.md#deployifnotexists) oder [modify](./effects.md#modify) verwenden, können in einen Korrekturtask umgewandelt werden und nicht konforme Ressourcen korrigieren.
 
-Hierfür müssen Sie als Erstes der Richtlinienzuweisung die Rollenzuweisung erteilen, die in der Richtliniendefinition definiert ist. Diese Rollenzuweisung gewährt der Identität, die über die Richtlinienzuweisung verwaltet wird, ausreichende Rechte, um die erforderlichen Änderungen vorzunehmen, damit die Ressource konform wird.
+Zum Korrigieren von Ressourcen müssen Sie als Erstes der Richtlinienzuweisung die Rollenzuweisung erteilen, die in der Richtliniendefinition definiert ist. Diese Rollenzuweisung gewährt der Identität, die über die Richtlinienzuweisung verwaltet wird, ausreichende Rechte, um die erforderlichen Änderungen vorzunehmen, damit die Ressource konform wird.
 
 Sobald die Richtlinienzuweisung über die entsprechenden Rechte verfügt, verwenden Sie das Policy SDK, um den Korrekturtask für einen Satz von Ressourcen auszulösen, die bekanntermaßen nicht konform sind. Für diese Korrekturtasks sollten drei Tests ausgeführt werden, bevor das Verfahren fortgesetzt wird:
 
@@ -111,7 +111,7 @@ Indem Sie sowohl die aktualisierten Ergebnisse der Richtlinienauswertung als auc
 
 ### <a name="update-to-enforced-assignments"></a>Aktualisieren von erzwungenen Zuweisungen
 
-Wenn alle Validierungsvorgänge abgeschlossen sind, aktualisieren Sie die Zuweisung so, dass sich der **enforcementMode** in _aktiviert_ ändert. Diese Änderung sollte zunächst in derselben, weit von der Produktionsumgebung entfernten Umgebung durchgeführt werden. Sobald die erwartungsgemäße Funktionsweise dieser Umgebung überprüft wurde, kann die Änderung auf die nächste Umgebung und dann weiter ausgedehnt werden, bis die Richtlinie in Produktionsressourcen bereitgestellt ist.
+Wenn alle Validierungsvorgänge abgeschlossen sind, aktualisieren Sie die Zuweisung so, dass sich der **enforcementMode** in _aktiviert_ ändert. Es wird empfohlen, diese Änderung zunächst in derselben, weit von der Produktionsumgebung entfernten Umgebung durchzuführen. Sobald die erwartungsgemäße Funktionsweise dieser Umgebung überprüft wurde, kann die Änderung auf die nächste Umgebung und dann weiter ausgedehnt werden, bis die Richtlinie in Produktionsressourcen bereitgestellt ist.
 
 ## <a name="process-integrated-evaluations"></a>Verarbeiten von integrierten Auswertungen
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/10/2020
+ms.date: 05/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aa3096f43952c047620b310412b27c434fc5fb06
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792155"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682603"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -55,6 +55,9 @@ In der lokalen Umgebung mussten Sie sich nur selten Gedanken über die E/A-Subsy
 - Aktivieren der Schreibaktivität mit mindestens 250 MB/s in **/hana/data** bei E/A-Größen von 16 MB und 64 MB
 
 Da für DBMS-Systeme (und somit auch für SAP HANA) eine geringe Speicherlatenz wichtig ist, behalten sie Daten im Arbeitsspeicher. Der kritische Pfad beim Speichern sind in der Regel die Schreibvorgänge in das Transaktionsprotokoll der DBMS-Systeme. Aber auch Vorgänge wie das Schreiben von Sicherungspunkten oder das Laden von Daten in den Arbeitsspeicher nach der Wiederherstellung nach einem Systemabsturz können wichtig sein. Daher ist für die Volumes **/hana/data** und **/hana/log** die Verwendung von Azure Premium-Datenträgern **zwingend** erforderlich. Um den minimalen Durchsatz von **/hana/log** und **/hana/data** zu erreichen, wie er von SAP gewünscht ist, müssen Sie mithilfe von MDADM oder LVM über mehrere Azure Storage Premium-Datenträger ein RAID 0-Volume erstellen und die RAID-Volumes als die Volumes **/hana/data** und **/hana/log** verwenden. 
+
+> [!IMPORTANT]
+>Die drei SAP HANA FileSystems „/data“, „/log“ und „/shared“ dürfen nicht in einer Standard- oder Root-Volumegruppe platziert werden.  Es wird dringend empfohlen, den Anweisungen des Linux-Anbieters zu folgen, die normalerweise besagen, einzelne Volumegruppen für „/data“, „/log“ und „/shared“ zu erstellen.
 
 **Empfehlung: Als Stripegrößen für RAID 0 wird Folgendes empfohlen:**
 

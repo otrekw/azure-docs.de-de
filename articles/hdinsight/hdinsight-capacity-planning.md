@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886992"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714745"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -84,7 +84,6 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 
 > [!NOTE]  
 > Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher, z.B. Azure Database oder [Apache Oozie](https://oozie.apache.org/).
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Isolieren von Clusterauftragsfehlern
 
@@ -92,40 +91,7 @@ Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen 
 
 ## <a name="quotas"></a>Kontingente
 
-Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie keine neuen Cluster bereitstellen. Oder skalieren Sie bestehende Cluster durch Hinzufügen weiterer Workerknoten auf. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen.
-
-Führen Sie die folgenden Schritte aus, um die verfügbaren Kerne zu überprüfen:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Navigieren Sie zur Seite **Übersicht** für den HDInsight-Cluster.
-3. Wählen Sie im linken Menü **Kontingentgrenzen** aus.
-
-   Auf der Seite werden die Anzahl der verwendeten Kerne, die Anzahl der verfügbaren Kerne und die Gesamtanzahl der Kerne angezeigt.
-
-Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie unten links auf der Seite **Hilfe und Support** aus.
-1. Wählen Sie **Neue Supportanfrage** aus.
-1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
-
-   - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
-   - **Abonnement**: Das zu ändernde Abonnement.
-   - **Kontingenttyp**: **HDInsight**
-
-     ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. Klicken Sie auf **Weiter: Lösungen >>** .
-1. Geben Sie auf der Seite **Details** eine Beschreibung des Problems ein, wählen Sie den Schweregrad des Problems, Ihre bevorzugte Kontaktmethode und weitere Pflichtfelder aus.
-1. Klicken Sie auf **Weiter: Bewerten + erstellen >>** .
-1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
-
-> [!NOTE]  
-> Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Whitelist-Anforderung](https://aka.ms/canaryintwhitelist).
-
-Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
-
-Es gibt einige feste Kontingentgrenzen. Ein einzelnes Azure-Abonnement kann z. B. höchstens 10.000 Kerne aufweisen. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Weitere Informationen zur Verwaltung von Abonnementkontingenten finden Sie unter [Anfordern einer Erhöhung von Kontingenten](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

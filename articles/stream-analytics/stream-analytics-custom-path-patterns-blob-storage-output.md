@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426379"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747635"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -77,10 +77,10 @@ Die folgenden Formatbezeichnertoken können einzeln oder in Kombination verwende
 |{datetime:MM}|Monat von 01 bis 12|01|
 |{datetime:M}|Monat von 1 bis 12|1|
 |{datetime:dd}|Tag von 01 bis 31|02|
-|{datetime:d}|Tag von 1 bis 12|2|
+|{datetime:d}|Tag von 1 bis 31|2|
 |{datetime:HH}|Stunde im 24-Stunden-Format, von 00 bis 23|10|
-|{datetime:mm}|Minuten von 00 bis 24|06|
-|{datetime:m}|Minuten von 0 bis 24|6|
+|{datetime:mm}|Minuten von 00 bis 60|06|
+|{datetime:m}|Minuten von 0 bis 60|6|
 |{datetime:ss}|Sekunden von 00 bis 60|08|
 
 Wenn Sie keine benutzerdefinierten DateTime-Muster verwenden möchten, können Sie das Token {date} und/oder {time} zum Pfadpräfix hinzufügen, um eine Dropdownliste mit integrierten DateTime-Formaten zu generieren.

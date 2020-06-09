@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801007"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738817"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -201,9 +201,9 @@ Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./../
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von SMS-Aktionen verfügen.
 
 > [!NOTE]
-> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, wird SMS für Ihr Land nicht unterstützt.  Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird. In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen SMS-Anbieter mit Unterstützung in Ihrem Land anruft.  
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Länder-/Regionscode nicht auswählen können, wird SMS für Ihr Land bzw. Ihre Region nicht unterstützt.  Wenn Ihr Länder-/Regionscode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land bzw. Ihre Region hinzugefügt wird. In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen SMS-Anbieter mit Unterstützung in Ihrem Land bzw. Ihrer Region anruft.  
 
-Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
+Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
   
 
 ### <a name="voice"></a>Sprache
@@ -212,9 +212,9 @@ Weitere wichtige Informationen finden Sie im Artikeln zu [Ratenlimits](./../../a
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sprachaktionen verfügen.
 
 > [!NOTE]
-> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, werden Sprachanrufe für Ihr Land nicht unterstützt. Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird.  In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen Anbieter von Sprachanrufen mit Unterstützung in Ihrem Land anruft.  
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Länder-/Regionscode nicht auswählen können, werden Sprachanrufe für Ihr Land bzw. Ihre Region nicht unterstützt. Wenn Ihr Länder-/Regionscode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land bzw. Ihre Region hinzugefügt wird.  In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen Anbieter von Sprachanrufen mit Unterstützung in Ihrem Land bzw. Ihrer Region anruft.  
 
-Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
+Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
 
 ### <a name="webhook"></a>Webhook
 Webhooks werden mit den folgenden Regeln abgerufen. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn der HTTP-Statuscode 408, 429, 503 oder 504 zurückgegeben wird oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite Wiederholungsversuch erfolgt nach 100 Sekunden. Nach zwei Ausfällen wird der Endpunkt 30 Minuten lang von keiner Aktionsgruppe aufgerufen. 

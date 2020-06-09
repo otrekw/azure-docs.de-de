@@ -3,12 +3,12 @@ title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
 ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78927493"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654449"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -30,6 +30,7 @@ Resource Graph stellt mehrere Tabellen für die Daten bereit, die in Bezug auf R
 |ResourceContainers |Umfasst die Ressourcentypen und Daten des Abonnements (in der Vorschauphase – `Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
 |AdvisorResources |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
 |AlertsManagementResources |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
+|HealthResources |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth`_in Zusammenhang stehen_. |
 |MaintenanceResources |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
 |SecurityResources |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
 

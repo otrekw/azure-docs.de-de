@@ -1,7 +1,6 @@
 ---
-title: CLI-Erweiterung
-titleSuffix: Azure Machine Learning
-description: Hier erhalten Sie Informationen zur Azure Machine Learning-CLI-Erweiterung für die Azure CLI. Die Azure CLI ist ein plattformübergreifendes Befehlszeilenhilfsprogramm, das das Arbeiten mit Ressourcen in der Azure-Cloud ermöglicht. Die Machine Learning-Erweiterung ermöglicht Ihnen das Arbeiten mit Azure Machine Learning. Die ML-CLI erstellt und verwaltet Ressourcen wie Ihren Arbeitsbereich, Datenspeicher, Datasets, Pipelines, Modelle und Bereitstellungen.
+title: Installieren und Verwenden der Azure Machine Learning-CLI
+description: Erfahren Sie, wie Sie die Azure Machine Learning-CLI-Erweiterung installieren und verwenden, um Ressourcen wie Ihren Arbeitsbereich, Datenspeicher, Datasets, Pipelines, Modelle und Bereitstellungen zu erstellen und zu verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618067"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659793"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit Azure Machine Learning. Sie ermöglicht Ihnen die Automatisierung Ihrer Machine Learning-Aktivitäten. Die folgende Liste enthält einige Beispielaktionen, die Sie mit der CLI-Erweiterung ausführen können:

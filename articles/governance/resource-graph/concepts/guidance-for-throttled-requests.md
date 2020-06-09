@@ -1,14 +1,14 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
 description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 12/02/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229738"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682060"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654527"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST  
 
@@ -817,7 +817,7 @@ Die zurückgegebene **Path** -Eigenschaft enthält die SAS-URL.
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie Dateien mithilfe der Azure Storage-REST-APIs herunterladen.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? erforderlich. erforderlich. erforderlich.
+> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` erforderlich. erforderlich. erforderlich.
 
 Weitere Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [REST-API für den Blobdienst](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 

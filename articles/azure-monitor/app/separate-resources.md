@@ -1,18 +1,18 @@
 ---
-title: Trennen von Telemetriedaten in Azure Application Insights
+title: 'Entwerfen der Application Insights-Bereitstellung: Eine oder mehrere Ressourcen?'
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562150"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773693"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>Wie viele Application Insights-Ressourcen soll ich bereitstellen?
 
-Wenn Sie die nächste Version einer Webanwendung entwickeln, möchten Sie die [Application Insights](../../azure-monitor/app/app-insights-overview.md)-Telemetriedaten der neuen Version nicht mit denen der bereits veröffentlichten Version verwechseln. Um Verwirrung zu vermeiden, senden Sie die Telemetriedaten aus verschiedenen Entwicklungsphasen mit separaten Instumentierungsschlüsseln (ikeys) an getrennte Application Insights-Ressourcen. Um das Ändern des Instrumentierungsschlüssels beim Fortschreiten einer Version von einer Phase zur nächsten zu erleichtern, kann es sinnvoll sein, den ikey im Code statt in der Konfigurationsdatei zu platzieren. 
+Wenn Sie die nächste Version einer Webanwendung entwickeln, möchten Sie die [Application Insights](../../azure-monitor/app/app-insights-overview.md)-Telemetriedaten der neuen Version nicht mit denen der bereits veröffentlichten Version verwechseln. Um Verwirrung zu vermeiden, senden Sie die Telemetriedaten aus verschiedenen Entwicklungsphasen mit separaten Instumentierungsschlüsseln (ikeys) an getrennte Application Insights-Ressourcen. Um das Ändern des Instrumentierungsschlüssels beim Fortschreiten einer Version von einer Phase zur nächsten zu erleichtern, kann es sinnvoll sein, den ikey im Code statt in der Konfigurationsdatei zu platzieren.
 
 (Wenn Ihr System ein Azure-Clouddienst ist, gibt es [eine weitere Methode zum Festlegen von separaten iKeys](../../azure-monitor/app/cloudservices.md).)
 
@@ -22,7 +22,7 @@ Wenn Sie Application Insights-Überwachung für Ihre Web App einrichten, erstell
 
 Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfügbar sind. Wenn vollständig getrennte Komponenten an dieselbe Application Insights-Ressource berichten, ist es möglicherweise nicht sinnvoll, diese Metriken für Dashboards/Warnungen zu verwenden.
 
-### <a name="use-a-single-application-insights-resource"></a>Verwenden einer einzelnen Application Insights-Ressource
+### <a name="when-to-use-a-single-application-insights-resource"></a>Verwenden einer einzelnen Application Insights-Ressource
 
 -   Für Anwendungskomponenten, die gemeinsam bereitgestellt werden. Normalerweise von einem einzelnen Team entwickelt und von der gleichen Gruppe von DevOps/ITOps-Benutzern verwaltet.
 -   Wenn es sinnvoll ist, KPIs (Key Performance Indicators), wie z. B. Antwortzeiten, Fehlerraten in Dashboards usw., standardmäßig für alle Komponenten zu aggregieren (Sie können auf der Metriken-Explorer-Benutzeroberfläche eine Segmentierung nach Rollenname auswählen).
@@ -138,7 +138,7 @@ Wenn das Webmodul Application Insights über die Buildinformationen verfügt, f�
 Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild aus Visual Studio.
 
 ### <a name="release-annotations"></a>Versionsanmerkungen
-Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.
+Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

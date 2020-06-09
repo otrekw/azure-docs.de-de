@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826824"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171071"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Aktivieren von „Änderungsnachverfolgung und Bestand“ über das Azure-Portal
 
@@ -61,8 +61,4 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ausführliche Informationen zur Verwendung des Features finden Sie unter [Verwalten der Änderungsnachverfolgung und des Bestands](change-tracking-file-contents.md).
-* Informationen zu Bereichskonfigurationen finden Sie unter [Einschränken des Bereitstellungsumfangs für „Änderungsnachverfolgung und Bestand“](automation-scope-configurations-change-tracking.md).
-* Unter [Ermitteln der auf Ihren VMs installierten Software](automation-tutorial-installed-software.md) erfahren Sie, wie Sie mithilfe des Features in Ihrer Umgebung installierte Software identifizieren können.
-* Falls Sie Ihr Automation-Konto beim Aktivieren des Features nicht in einen Log Analytics-Arbeitsbereich integrieren möchten, lesen Sie [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto](automation-unlink-workspace-change-tracking.md).
-* Nach Abschluss der Änderungsbereitstellung für virtuelle Computer können Sie sie wie unter [Entfernen von VMs aus Änderungsnachverfolgung und Bestand](automation-remove-vms-from-change-tracking.md) beschrieben entfernen.
 * Informationen zur Behandlung allgemeiner Probleme mit dem Feature finden Sie unter [Behandeln von Problemen mit Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652183"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -99,6 +99,10 @@ Details dazu finden Sie in den Artikeln zum Anpassen der Modelle für [Personen]
 Ja. Klicken Sie in der Bibliotheksanzeige auf die Schaltfläche **Video bearbeiten** oder in der Playeranzeige auf die Schaltfläche **In Editor öffnen**, um zur Registerkarte **Projekte** zu gelangen. Sie können ein neues Projekt erstellen und weitere Videos aus Ihrer Bibliothek hinzufügen, um sie gemeinsam zu bearbeiten. Wenn Sie damit fertig sind, können Sie das Video rendern und herunterladen. 
 
 Wenn Sie Erkenntnisse zu Ihrem neuen Video erhalten möchten, indizieren Sie es mit Video Indexer. Es wird dann mit den Erkenntnissen in Ihrer Bibliothek angezeigt.
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>Kann ich mehrere Audiodatenströme oder Kanäle indizieren?
+
+Wenn mehrere Audiodatenströme vorhanden sind, nimmt Video Indexer den ersten Datenstrom an, auf den er trifft, und verarbeitet nur diesen. In jedem Audiodatenstrom, den der Video Indexer verarbeitet, nimmt er die verschiedenen Kanäle an (sofern vorhanden) und verarbeitet sie gemeinsam als Monosignal. Zur Bearbeitung von Datenströmen/Kanälen können Sie vor der Indizierung ffmpeg-Befehle auf die Datei anwenden.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Welche Vereinbarung zum Servicelevel (SLA) gilt für Video Indexer?
 

@@ -1,14 +1,14 @@
 ---
 title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025219"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684282"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -18,7 +18,8 @@ Mit Azure Policy können Sie nicht nur Azure-Ressourcen überprüfen und [korrig
 - Die Konfiguration oder das Vorhandensein der Anwendung
 - Umgebungseinstellungen
 
-Derzeit wird für die meisten Richtlinien der Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen auf dem Computer durchgeführt. Es werden keine Konfigurationen angewendet. Eine Ausnahme ist hierbei eine integrierte Richtlinie, die [weiter unten beschrieben ist](#applying-configurations-using-guest-configuration).
+Derzeit wird für die meisten Richtlinien der Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen auf dem Computer durchgeführt.
+Es werden keine Konfigurationen angewendet. Eine Ausnahme ist hierbei eine integrierte Richtlinie, die [weiter unten beschrieben ist](#applying-configurations-using-guest-configuration).
 
 ## <a name="resource-provider"></a>Ressourcenanbieter
 
@@ -28,11 +29,10 @@ Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbie
 
 Zur Überprüfung von Einstellungen auf einem Computer wird eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen.
 
-> [!Important]
-> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
-> Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung im gewünschten Umfang bereitzustellen:
->   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> [!IMPORTANT]
+> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung im gewünschten Umfang bereitzustellen: 
+>  - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>Für die Erweiterung festgelegte Grenzwerte
 
@@ -51,12 +51,12 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 
 ### <a name="validation-frequency"></a>Validierungshäufigkeit
 
-Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Nachdem eine Gastzuweisung empfangen wurde, werden die Einstellungen für diese Konfiguration alle 15 Minuten überprüft.
-Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, wenn die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dieses Update bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration auf dem Computer ausgelöst.
+Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Nachdem eine Gastzuweisung empfangen wurde, werden die Einstellungen für diese Konfiguration alle 15 Minuten erneut überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, wenn die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dieses Update bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration auf dem Computer ausgelöst.
 
 ## <a name="supported-client-types"></a>Unterstützte Clienttypen
 
-Gastkonfigurationsrichtlinien enthalten die neuen Versionen. Ältere Versionen von Betriebssystemen, die im Azure Marketplace verfügbar sind, werden ausgeschlossen, wenn der Gastkonfigurations-Agent nicht kompatibel ist. In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme aufgeführt:
+Gastkonfigurationsrichtlinien enthalten die neuen Versionen. Ältere Versionen von Betriebssystemen, die im Azure Marketplace verfügbar sind, werden ausgeschlossen, wenn der Guest Configuration-Agent nicht kompatibel ist.
+In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme aufgeführt:
 
 |Herausgeber|Name|Versionen|
 |-|-|-|
@@ -76,10 +76,9 @@ Windows Server Nano Server wird in keiner Version unterstützt.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
 
-Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden.
-Der [Diensttag](../../../virtual-network/service-tags-overview.md) „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
+Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Der [Diensttag](../../../virtual-network/service-tags-overview.md) „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
 
-## <a name="azure-managed-identity-requirements"></a>Anforderungen für verwaltete Azure-Identitäten
+## <a name="managed-identity-requirements"></a>Anforderungen für verwaltete Identitäten
 
 Die **DeployIfNotExists**-Richtlinien, die die Erweiterung zu virtuellen Computern hinzufügen, aktivieren auch eine systemseitig zugewiesene verwaltete Identität, sofern noch keine vorhanden ist.
 
@@ -88,7 +87,7 @@ Die **DeployIfNotExists**-Richtlinien, die die Erweiterung zu virtuellen Compute
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**. 
+Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**.
 
 Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
@@ -112,7 +111,8 @@ Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative 
 
 Eine Initiative in Azure Policy bietet die Möglichkeit, Betriebssystemeinstellungen anhand einer „Baseline“ zu überwachen. Die Definition _\[Vorschau\]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen_ enthält einen Satz von Regeln, die der Active Directory-Gruppenrichtlinie basieren.
 
-Die meisten Einstellungen sind als Parameter verfügbar. Mithilfe von Parametern können Sie anpassen, was überwacht werden soll. Passen Sie die Richtlinie an Ihre Anforderungen an, oder ordnen Sie die Richtlinie Drittanbieterinformationen (z. B. branchenspezifischen Standards) zu.
+Die meisten Einstellungen sind als Parameter verfügbar. Mithilfe von Parametern können Sie anpassen, was überwacht werden soll.
+Passen Sie die Richtlinie an Ihre Anforderungen an, oder ordnen Sie die Richtlinie Drittanbieterinformationen (z. B. branchenspezifischen Standards) zu.
 
 Einige Parameter unterstützen einen ganzzahligen Wertebereich. Beispielsweise könnte mit der Einstellung „Maximales Kennwortalter“ die effektive „Gruppenrichtlinie“-Einstellung überwacht werden. Der Bereich „1,70“ würde sicherstellen, dass Benutzer ihre Kennwörter mindestens alle 70 Tage, aber nicht früher als nach einem Tag ändern müssen.
 
@@ -126,7 +126,7 @@ Beim Zuweisen von Definitionen, die mit _Konfigurieren_ beginnen, müssen Sie au
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Zuweisen von Richtlinien zu Computern außerhalb von Azure
 
-Die für die Gastkonfiguration verfügbaren Überwachungsrichtlinien umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**. Alle Computer, die in [Azure Arc für Server](../../../azure-arc/servers/overview.md) integriert sind und sich im Geltungsbereich der Zuweisung befinden, werden automatisch eingeschlossen.
+Die für die Gastkonfiguration verfügbaren Überwachungsrichtlinien umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**. Alle Computer, die in [Azure Arc für Server](../../../azure-arc/servers/overview.md) integriert sind und sich im Geltungsbereich der Richtlinienzuweisung befinden, werden automatisch eingeschlossen.
 
 ### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 

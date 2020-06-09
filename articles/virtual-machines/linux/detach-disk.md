@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036373"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830003"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
@@ -106,12 +106,10 @@ Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuelle
 ## <a name="detach-a-data-disk-using-the-portal"></a>Trennen eines Datenträgers im Portal
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
-2. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus, und klicken Sie auf **Beenden**, um die Zuordnung der VM aufzuheben.
-3. Klicken Sie im Bereich für den virtuellen Computer auf **Datenträger**.
-4. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
-5. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Detach button image](./media/detach-disk/detach.png)).
-5. Nachdem der Datenträger entfernt wurde, klicken Sie oben auf dem Bereich auf „Speichern“.
-6. Klicken Sie im Bereich für den virtuellen Computer auf **Übersicht** und dann oben im Bereich auf die Schaltfläche **Starten**, um die VM neu zu starten.
+1. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Datenträger**.
+1. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Bearbeiten** aus.
+1. Klicken Sie auf dem Blatt **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Schaltfläche „Trennen“](./media/detach-disk/detach.png)).
+1. Klicken Sie, nachdem der Datenträger entfernt wurde, oben auf dem Blatt auf **Speichern**.
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
 

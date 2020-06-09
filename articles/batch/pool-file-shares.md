@@ -1,14 +1,14 @@
 ---
 title: Azure-Dateifreigabe für Azure Batch-Pools
 description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computeknoten in einen Linux- oder Windows-Pool in Azure Batch einbinden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115447"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780281"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 
@@ -172,6 +172,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Optionen zum Lesen und Schreiben von Daten in Batch finden Sie in der [Übersicht über Batch-Features](batch-api-basics.md) und unter [Persistente Aufträge und Aufgabenausgabe](batch-task-output.md).
-
+* Weitere Optionen zum Lesen und Schreiben von Daten in Batch finden Sie unter [Persistente Aufträge und Aufgabenausgabe](batch-task-output.md).
 * Weitere Informationen finden Sie auch im [Batch Shipyard](https://github.com/Azure/batch-shipyard)-Toolkit, das [Shipyard-Rezepte](https://github.com/Azure/batch-shipyard/tree/master/recipes) enthält, mit denen Dateisysteme für Batch-Containerworkloads bereitgestellt werden können.
