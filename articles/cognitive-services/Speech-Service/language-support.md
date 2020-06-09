@@ -101,7 +101,7 @@ Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](
 
 |Gebietsschema  | Sprache            | Geschlecht | Name der Stimme | Stilunterstützung |
 |--|--|--|--|--|
-| `de-DE` | Deutsch (Deutschland)                | `Female` | "de-DE-KatjaNeural"      | Allgemein |
+| `de-DE` | Deutsch (Deutschland)                | `Female` | „de-DE-KatjaNeural"      | Allgemein |
 | `en-AU` | Englisch (Australien)             | `Female` | „en-AU-NatashaNeural“    | Allgemein |
 | `en-CA` | Englisch (Kanada)                | `Female` | „en-CA-ClaraNeural“      | Allgemein |
 | `en-GB` | English (UK)                    | `Female` | „en-GB-LibbyNeural“      | Allgemein |
@@ -118,7 +118,7 @@ Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](
 | `nb-NO` | Norwegisch                       | `Female` | „nb-NO-IselinNeural“     | Allgemein |
 | `pt-BR` | Portugiesisch (Brasilien)             | `Female` | „pt-BR-FranciscaNeural“  | Allgemein |
 | `tr-TR` | Türkisch                         | `Female` | „tr-TR-EmelNeural“       | Allgemein |
-| `zh-CN` | Chinesisch (Mandarin, vereinfacht)  | `Female` | "zh-CN-XiaoxiaoNeural"   | Allgemein, mehrere Stimmstile verfügbar |
+| `zh-CN` | Chinesisch (Mandarin, vereinfacht)  | `Female` | „zh-CN-XiaoxiaoNeural"   | Allgemein, mehrere Stimmstile verfügbar |
 |         |                                 | `Female` | „zh-CN-XiaoyouNeural“    | Kinderstimme, optimiert für das Erzählen von Geschichten |
 |         |                                 | `Male`   | „zh-CN-YunyangNeural“    | Optimiert für das Vorlesen von Nachrichten, mehrere Stimmstile verfügbar |
 |         |                                 | `Male`   | „zh-CN-YunyeNeural“      | Optimiert für das Erzählen von Geschichten |

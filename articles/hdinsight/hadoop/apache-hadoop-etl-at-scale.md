@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745131"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020080"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -106,9 +106,9 @@ Die Flexibilität von HBase hängt von der Anzahl der Knoten im HDInsight-Cluste
 
 Azure bietet drei relationale PaaS-Datenbanken:
 
-- [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) ist eine Implementierung von Microsoft SQL Server. Weitere Informationen zur Leistung finden Sie unter [Optimieren der Leistung bei Azure SQL-Datenbank](../../sql-database/sql-database-performance-guidance.md).
-- [Azure Database for MySQL](../../mysql/overview.md) ist eine Implementierung von Oracle MySQL.
-- [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) ist eine Implementierung von PostgreSQL.
+* [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) ist eine Implementierung von Microsoft SQL Server. Weitere Informationen zur Leistung finden Sie unter [Optimieren der Leistung bei Azure SQL-Datenbank](../../azure-sql/database/performance-guidance.md).
+* [Azure Database for MySQL](../../mysql/overview.md) ist eine Implementierung von Oracle MySQL.
+* [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) ist eine Implementierung von PostgreSQL.
 
 Erhöhen Sie die Anzahl der CPUs, und erweitern Sie den Arbeitsspeicher, um diese Produkte hochzuskalieren.  Sie können sich auch entschließen, Premium-Datenträger mit den Produkten zu verwenden, um eine bessere E/A-Leistung zu erzielen.
 

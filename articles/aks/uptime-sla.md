@@ -4,12 +4,13 @@ description: Erfahren Sie mehr über das optionale Betriebszeit-SLA-Angebot für
 services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: references_regions
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683222"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299552"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS): Betriebszeit-SLA
 
@@ -25,18 +26,6 @@ Kunden können nach wie vor unbegrenzt kostenlose Cluster mit einem Servicelevel
 ## <a name="sla-terms-and-conditions"></a>SLA-Geschäftsbedingungen
 
 Die Betriebszeit-SLA ist ein kostenpflichtiges Feature und wird pro Cluster aktiviert. Die Preise für die Betriebszeit-SLA werden durch die Anzahl der separaten Cluster und nicht durch die Größe der einzelnen Cluster bestimmt. Weitere Informationen finden Sie unter [Preisdetails zur Betriebszeit-SLA](https://azure.microsoft.com/pricing/details/kubernetes-service/).
-
-## <a name="region-availability"></a>Regionale Verfügbarkeit
-
-Betriebszeit-SLA ist in den folgenden Regionen verfügbar:
-
-* Australien (Osten)
-* Kanada, Mitte
-* East US
-* USA (Ost) 2
-* USA Süd Mitte
-* Südostasien
-* USA, Westen 2
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
