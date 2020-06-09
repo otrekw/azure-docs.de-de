@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren mehrerer Tabellen mithilfe von PowerShell
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank-Instanz kopiert werden.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer SQL Server-Datenbank in eine Azure SQL-Datenbank-Instanz kopiert werden.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410010"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194524"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden von Daten aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank-Instanz
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank-Instanz geladen werden.    
+In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer SQL Server-Datenbank in eine Azure SQL-Datenbank-Instanz geladen werden.    
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -69,12 +69,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als Quelldatenspeicher. 
-* **Azure SQL-Datenbank**. Sie verwenden eine SQL-Datenbank als Senkendatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md). 
+* **SQL Server**. In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als Quelldatenspeicher. 
+* **Azure SQL-Datenbank**. Sie verwenden eine SQL-Datenbank als Senkendatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Erstellen von Quelltabellen in Ihrer SQL Server-Datenbank
 
-1. Öffnen Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), und stellen Sie eine Verbindung mit Ihrer lokalen SQL Server-Datenbank her.
+1. Öffnen Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), und stellen Sie eine Verbindung mit Ihrer SQL Server-Datenbank her.
 
 2. Klicken Sie im **Server-Explorer (SSMS)** oder im **Bereich „Verbindungen“ (Azure Data Studio)** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage** aus.
 
@@ -113,7 +113,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Erstellen von Zieltabellen in Ihrer Azure SQL-Datenbank-Instanz
 
-1. Öffnen Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), und stellen Sie eine Verbindung mit Ihrer lokalen SQL Server-Datenbank her.
+1. Öffnen Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), und stellen Sie eine Verbindung mit Ihrer SQL Server-Datenbank her.
 
 2. Klicken Sie im **Server-Explorer (SSMS)** oder im **Bereich „Verbindungen“ (Azure Data Studio)** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage** aus.
 
@@ -289,11 +289,11 @@ Beachten Sie folgende Punkte:
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
-Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihre lokale SQL Server-Datenbank und Azure SQL-Datenbank-Instanz. 
+Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihre SQL Server-Datenbank und Azure SQL-Datenbank. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Erstellen des mit SQL Server verknüpften Diensts
 
-In diesem Schritt verknüpfen Sie die lokale SQL Server-Datenbank mit der Data Factory.
+In diesem Schritt verknüpfen Sie Ihre SQL Server-Datenbank mit der Data Factory.
 
 1. Erstellen Sie im Ordner „C:\ADFTutorials\IncCopyMultiTableTutorial“ (erstellen Sie die lokalen Ordner, sofern noch nicht vorhanden) eine JSON-Datei mit dem Namen **SqlServerLinkedService.json** mit folgendem Inhalt. Wählen Sie basierend auf der Authentifizierung, die Sie zum Herstellen einer Verbindung mit SQL Server verwenden, den richtigen Abschnitt aus.  
 

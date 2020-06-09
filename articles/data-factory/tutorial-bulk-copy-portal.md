@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: f8b72037046d05b39587c2fd57794b4109a85ae3
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418778"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249177"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 
@@ -58,7 +58,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 **Vorbereiten der Azure SQL-Quelldatenbank**:
 
-Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, indem Sie den Anweisungen im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) folgen. In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in Azure Synapse Analytics (ehemals SQL DW) kopiert.
+Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, indem Sie den Anweisungen im Artikel [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) folgen. In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in Azure Synapse Analytics (ehemals SQL DW) kopiert.
 
 **Vorbereiten der Azure Synapse Analytics-Senke (ehemals SQL DW)** :
 
@@ -68,11 +68,12 @@ Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, ind
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-Dienste für den Zugriff auf SQL-Server
 
-Gewähren Sie den Azure-Diensten sowohl für SQL-Datenbank als auch für Azure Synapse Analytics (ehemals SQL DW) den Zugriff auf SQL Server. Stellen Sie sicher, dass die Einstellung **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für Ihre Azure SQL Server-Instanz auf **EIN** festgelegt ist. Mit dieser Einstellung wird dem Data Factory-Dienst erlaubt, Daten aus Ihrer Azure SQL-Datenbank-Instanz zu lesen und in Azure Synapse Analytics (ehemals SQL DW) zu schreiben. 
+Gewähren Sie den Azure-Diensten sowohl für SQL-Datenbank als auch für Azure Synapse Analytics (ehemals SQL DW) den Zugriff auf SQL Server. Stellen Sie sicher, dass die Einstellung **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für Ihren Server auf **EIN** festgelegt ist. Mit dieser Einstellung wird dem Data Factory-Dienst erlaubt, Daten aus Ihrer Azure SQL-Datenbank-Instanz zu lesen und in Azure Synapse Analytics (ehemals SQL DW) zu schreiben. 
 
-Um diese Einstellung zu überprüfen und zu aktivieren, navigieren Sie auf Ihrer Azure SQL Server-Instanz zu „Sicherheit“ > „Firewalls und virtuelle Netzwerke“ und legen die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** fest.
+Wenn Sie diese Einstellung überprüfen und aktivieren möchten, navigieren Sie zu Ihrem Server >„Sicherheit“ > „Firewalls und virtuelle Netzwerke“, und legen Sie die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** fest.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Klicken Sie links im Azure-Portal-Menü auf **Ressource erstellen** > **Analytics** > **Data Factory**. 
@@ -114,7 +115,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
 
     a. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
     
-    b. Wählen Sie unter **Servername** Ihre Azure SQL Server-Instanz aus.
+    b. Wählen Sie unter **Servername** Ihren Server aus.
     
     c. Wählen Sie unter **Datenbankname** Ihre Azure SQL-Datenbank aus. 
     
@@ -135,7 +136,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
    
     a. Geben Sie unter **Name** den Namen **AzureSqlDWLinkedService** ein.
      
-    b. Wählen Sie unter **Servername** Ihre Azure SQL Server-Instanz aus.
+    b. Wählen Sie unter **Servername** Ihren Server aus.
      
     c. Wählen Sie unter **Datenbankname** Ihre Azure SQL-Datenbank aus. 
      
@@ -212,7 +213,8 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
 1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
 
     ![Menü für neue Pipeline](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. Geben Sie auf der Registerkarte **Allgemein** als Name **IterateAndCopySQLTables** an. 
+ 
+1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IterateAndCopySQLTables** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 1. Wechseln Sie zur Registerkarte **Parameter**, und führen Sie die folgenden Aktionen durch: 
 

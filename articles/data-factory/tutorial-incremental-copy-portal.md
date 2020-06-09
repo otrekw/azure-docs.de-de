@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409335"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249092"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus einer Azure SQL-Datenbank in Azure Blob Storage mithilfe des Azure-Portals
 
@@ -65,7 +65,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md).
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md).
 * **Azure Storage**. Sie verwenden den Blobspeicher als Senkendatenspeicher. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen „adftutorial“. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Erstellen einer Datenquelltabelle in Ihrer SQL-Datenbank
@@ -182,7 +182,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 1. Klicken Sie auf der Seite **Erste Schritte** der Data Factory-Benutzeroberfläche auf die Kachel **Pipeline erstellen**.
 
    ![Seite „Erste Schritte“ der Data Factory-Benutzeroberfläche](./media/doc-common-process/get-started-page.png)    
-3. Geben Sie im **Eigenschaftenfenster** auf der Seite **Allgemein** für die Pipeline den Namen **IncrementalCopyPipeline** ein.
+3. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IncrementalCopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.
 
@@ -196,7 +196,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 8. Wählen Sie unter **Verknüpfter Dienst** die Option **Neu** aus, und führen Sie dann die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
-    2. Wählen Sie unter **Servername** Ihre Azure SQL Server-Instanz aus.
+    2. Wählen Sie unter **Servername** Ihren Server aus.
     3. Wählen Sie in der Dropdownliste den **Datenbanknamen** aus.
     4. Geben Sie **Benutzername** & **Kennwort** ein.
     5. Klicken Sie zum Testen der Verbindung mit der Azure SQL-Datenbank auf **Verbindung testen**.
@@ -398,7 +398,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 > * Überwachen der zweiten Pipelineausführung
 > * Überprüfen der Ergebnisse der zweiten Ausführung
 
-In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle einer SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine SQL-Datenbank kopieren.
+In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle einer SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer SQL Server-Datenbank in SQL-Datenbank kopieren.
 
 > [!div class="nextstepaction"]
 >[Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-portal.md)

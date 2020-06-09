@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418693"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118164"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -41,7 +41,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * *Azure Storage-Konto*. Sie verwenden den Blob Storage als *Quelldatenspeicher*. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, lesen Sie die Informationen unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md).
-* *Azure SQL-Datenbank*. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-single-database-get-started.md) weitere Informationen.
+* *Azure SQL-Datenbank*. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) weitere Informationen.
 * *Visual Studio*. In der exemplarischen Vorgehensweise in diesem Artikel wird Visual Studio 2019 verwendet.
 * *[Azure SDK für .NET](/dotnet/azure/dotnet-tools)*
 * *Azure Active Directory-Anwendung*. Falls Sie noch nicht über eine Azure Active Directory-Anwendung verfügen, lesen Sie den Abschnitt [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) des Artikels [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md). Kopieren Sie die folgenden Werte zur Verwendung in späteren Schritten: **Anwendungs-ID (Client)** , **Authentifizierungsschlüssel** und **Verzeichnis-ID (Mandant)** . Weisen Sie die Anwendung gemäß der Anleitung im gleichen Artikel der Rolle **Mitwirkender** zu.
@@ -81,7 +81,7 @@ Erstellen Sie als Nächstes eine SQL-Senkentabelle:
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Gewähren Sie Azure-Diensten den Zugriff auf SQL Server. Lassen Sie für Ihre Azure SQL Server-Instanz den Zugriff auf Azure-Dienste zu, damit der Data Factory-Dienst Daten in diese Instanz schreiben kann. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
+2. Gewähren Sie Azure-Diensten den Zugriff auf SQL-Datenbank. Lassen Sie für Ihren Server den Zugriff auf Azure-Dienste zu, damit der Data Factory-Dienst Daten in SQL-Datenbank schreiben kann. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
 
     1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihre SQL Server-Instanz zu verwalten. Suchen Sie nach **SQL-Server**, und wählen Sie die entsprechende Option aus.
 

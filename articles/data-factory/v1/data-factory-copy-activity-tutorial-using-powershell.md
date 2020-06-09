@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73682859"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119265"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Erstellen einer Data Factory-Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
@@ -189,7 +189,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory
 1. Erstellen Sie im Ordner „C:\ADFGetStartedPSH“ eine JSON-Datei mit dem Namen „AzureSqlLinkedService.json“ und dem unten angegebenen Inhalt:
 
     > [!IMPORTANT]
-    > Ersetzen Sie &lt;servername&gt;, &lt;databasename&gt;&lt;username@servername&gt; und &lt;password&gt; durch die Namen von Azure SQL-Server, -Datenbank, -Benutzerkonto und -Kennwort.
+    > Ersetzen Sie &lt;servername&gt;, &lt;databasename&gt;, &lt;username@servername&gt; und &lt;password&gt; durch die Namen Ihres Servers, Ihrer Datenbank, Ihr Benutzerkonto und Ihr Kennwort.
     
     ```json
     {
@@ -218,7 +218,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory
     ProvisioningState : Succeeded
     ```
 
-   Vergewissern Sie sich, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren SQL-Datenbank-Server aktiviert ist. Führen Sie zum Prüfen und Aktivieren die folgenden Schritte aus:
+   Bestätigen Sie, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Server auf „ein“ festgelegt ist. Führen Sie zum Prüfen und Aktivieren die folgenden Schritte aus:
 
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
     1. Klicken Sie links auf **Weitere Dienste >** und in der Kategorie **DATENBANKEN** dann auf **SQL Server**.

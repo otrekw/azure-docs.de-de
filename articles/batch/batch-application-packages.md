@@ -1,15 +1,15 @@
 ---
-title: Installieren von Anwendungspaketen auf Serverknoten
+title: Bereitstellen von Anwendungspaketen für Computeknoten
 description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115617"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780309"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -67,8 +67,8 @@ Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzel
 ## <a name="upload-and-manage-applications"></a>Hochladen und Verwalten von Anwendungen
 Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal][portal] oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird zunächst gezeigt, wie ein Speicherkonto verknüpft wird. Anschließend wird besprochen, wie Sie Anwendungen und Pakete hinzufügen und mit dem Portal verwalten.
 
-### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos 
-Damit Sie Anwendungspakete verwenden können, müssen Sie zuerst ein [Azure Storage-Konto](batch-api-basics.md#azure-storage-account) mit Ihrem Batch-Konto verknüpfen. Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal auf **Anwendungen** klicken.
+### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos
+Damit Sie Anwendungspakete verwenden können, müssen Sie zuerst ein [Azure Storage-Konto](accounts.md#azure-storage-accounts) mit Ihrem Batch-Konto verknüpfen. Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal auf **Anwendungen** klicken.
 
 
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md) finden Sie unter [Umgebungseinstellungen für Tasks](batch-api-basics.md#environment-settings-for-tasks) weitere Informationen zu Umgebungseinstellungen für Computeknoten.
-> 
-> 
+> Weitere Informationen zu Umgebungseinstellungen für Computeknoten finden Sie unter [Umgebungseinstellungen für Tasks](jobs-and-tasks.md#environment-settings-for-tasks). 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualisieren der Anwendungspakete eines Pools
 Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, können Sie ein neues Paket für den Pool angeben. Wenn Sie einen neuen Paketverweis für einen Pool angeben, gilt Folgendes:

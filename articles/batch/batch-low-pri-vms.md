@@ -2,24 +2,24 @@
 title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Priorität
 description: Erfahren Sie, wie Sie VMs mit niedriger Priorität bereitstellen, um die Kosten von Azure Batch-Workloads zu verringern.
 author: mscurrell
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116042"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780200"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
 Azure Batch bietet virtuelle Computer (VMs) mit niedriger Priorität, um die Kosten für Batch-Workloads zu verringern. Durch VMs mit niedriger Priorität werden neue Typen von Batchworkloads möglich, indem eine große Menge an Computeleistung zu sehr niedrigen Kosten bereitgestellt wird.
- 
+
 VMs mit niedriger Priorität nutzen überschüssige Kapazitäten in Azure. Wenn Sie VMs mit niedriger Priorität in Pools angeben, kann Azure Batch diesen Überschuss nutzen, sobald er zur Verfügung steht.
- 
+
 Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Möglicherweise stehen diese VMs für eine Zuweisung gerade nicht zur Verfügung, und sie können jederzeit vorzeitig entfernt werden, je nach der verfügbaren Kapazität. Aus diesem Grund sind VMs mit niedriger Priorität am besten für bestimmte Arten von Workloads geeignet. Verwenden Sie VMs mit niedriger Priorität für Batch und asynchrone Verarbeitungsworkloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele VMs verteilt wird.
- 
+
 VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deutlich günstigeren Preis angeboten. Ausführliche Preisinformationen finden Sie unter [Preise für Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
@@ -28,7 +28,6 @@ VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deu
 > Azure Batch-Pools unterstützen in wenigen Monaten Spot-VMs und sind dann mit neuen Versionen der [Batch-APIs und -Tools](https://docs.microsoft.com/azure/batch/batch-apis-tools) allgemein verfügbar. Sobald die Unterstützt für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt. 
 >
 > Spot-VMs werden für [Clouddienstkonfigurations](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)-Pools nicht unterstützt. Um Spot-VMs verwenden zu können, müssen Clouddienstpools zu [VM-Konfigurations](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)pools migriert werden.
-
 
 ## <a name="use-cases-for-low-priority-vms"></a>Anwendungsfälle für VMs mit niedriger Priorität
 
@@ -72,8 +71,7 @@ Azure Batch stellt verschiedene Funktionen bereit, die die vorteilhafte Nutzung 
     Das Kontingent für VMs mit niedriger Priorität ist höher als bei dedizierten VMs, da VMs mit niedriger Priorität weniger kosten. Weitere Informationen finden Sie im Artikel [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> VMs mit niedriger Priorität werden derzeit für Batch-Konten, die im Modus [Benutzerabonnement](batch-api-basics.md#account) erstellt wurden, nicht unterstützt.
->
+> VMs mit niedriger Priorität werden derzeit für Batch-Konten, die im Modus [Benutzerabonnement](accounts.md) erstellt wurden, nicht unterstützt.
 
 ## <a name="create-and-update-pools"></a>Erstellen und Aktualisieren von Pools
 
@@ -183,6 +181,6 @@ Metriken im Azure-Portal anzeigen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) an. Diese enthält wichtige Informationen für Entwickler, die sich auf die Verwendung von Batch vorbereiten möchten. Der Artikel enthält ausführliche Informationen zu Batch-Dienstressourcen wie Pools, Knoten, Aufträgen und Aufgaben sowie zu den zahlreichen API-Funktionen, die beim Erstellen der Batch-Anwendung verwendet werden können.
+* Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
 * Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
 * Beginnen Sie mit der Planung der Umstellung von VMs mit niedriger Priorität auf Spot-VMs. Wenn Sie VMs mit niedriger Priorität mit **Clouddienstkonfigurations**-Pools verwenden, planen Sie, auf **VM-Konfigurations**pools umzusteigen.

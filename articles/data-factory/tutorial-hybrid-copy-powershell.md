@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 70bc79470cd72ce01007265c6c1236c951ddd7d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eec9c197f0bc17a5237a05e198b12cb769da89d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81411438"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194577"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
+# <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer SQL Server-Datenbank in Azure Blob Storage
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
+In diesem Tutorial verwenden Sie Azure PowerShell zum Erstellen einer Data Factory-Pipeline, mit der Daten aus einer SQL Server-Datenbank in Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
 
 > [!NOTE]
 > Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Weitere Informationen finden Sie unter [Einführung in Azure Data Factory](introduction.md).
@@ -48,7 +48,7 @@ Damit Sie Data Factory-Instanzen erstellen können, muss dem Benutzerkonto, mit 
 Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen und dann **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanleitungen zum Hinzufügen eines Benutzers zu einer Rolle, finden Sie im Artikel [Verwalten des Zugriffs mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 und 2017
-In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als *Quelldatenspeicher*. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus dieser lokalen SQL Server-Datenbank (Quelle) in Azure Blob Storage (Senke). Anschließend erstellen Sie eine Tabelle mit dem Namen **emp** in Ihrer SQL Server-Datenbank und fügen einige Einträge in die Tabelle ein.
+In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als *Quelldatenspeicher*. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus dieser SQL Server-Datenbank (Quelle) in Azure Blob Storage (Senke). Anschließend erstellen Sie eine Tabelle mit dem Namen **emp** in Ihrer SQL Server-Datenbank und fügen einige Einträge in die Tabelle ein.
 
 1. Starten Sie SQL Server Management Studio. Falls die Installation auf Ihrem Computer noch nicht vorhanden ist, helfen Ihnen die Informationen unter [Herunterladen von SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) weiter.
 
@@ -76,7 +76,7 @@ In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als *Quelldate
 
 
 ### <a name="azure-storage-account"></a>Azure-Speicherkonto
-Sie verwenden in diesem Tutorial ein allgemeines Azure-Speicherkonto (Azure Blob Storage) als Ziel/Senke-Datenspeicher. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-account-create.md) weiter. Die Pipeline in der Data Factory, die Sie in diesem Tutorial erstellen, kopiert Daten aus der lokalen SQL Server-Datenbank (Quelle) in diese Azure Blob Storage-Instanz (Senke). 
+Sie verwenden in diesem Tutorial ein allgemeines Azure-Speicherkonto (Azure Blob Storage) als Ziel/Senke-Datenspeicher. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-account-create.md) weiter. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus der SQL Server-Datenbank (Quelle) in diese Azure Blob Storage-Instanz (Senke). 
 
 #### <a name="get-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
 In diesem Tutorial verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos. Beschaffen Sie den Namen und Schlüssel Ihres Speicherkontos, indem Sie wie folgt vorgehen:
@@ -309,7 +309,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
     Notieren Sie sich alle obigen Werte zur späteren Verwendung in diesem Tutorial.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher und Computedienste mit der Data Factory zu verknüpfen. In diesem Tutorial verknüpfen Sie Ihr Azure-Speicherkonto und die lokale SQL Server-Instanz mit dem Datenspeicher. Die verknüpften Dienste enthalten die Verbindungsinformationen, die der Data Factory-Dienst zur Verbindungsherstellung zur Laufzeit verwendet.
+Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher und Computedienste mit der Data Factory zu verknüpfen. In diesem Tutorial verknüpfen Sie Ihr Azure-Speicherkonto und die SQL Server-Instanz mit dem Datenspeicher. Die verknüpften Dienste enthalten die Verbindungsinformationen, die der Data Factory-Dienst zur Verbindungsherstellung zur Laufzeit verwendet.
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Erstellen eines verknüpften Azure Storage-Diensts (Ziel/Senke)
 In diesem Schritt verknüpfen Sie Ihr Azure-Speicherkonto mit der Data Factory.
@@ -317,7 +317,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure-Speicherkonto mit der Data Factory.
 1. Erstellen Sie im Ordner *C:\ADFv2Tutorial* eine JSON-Datei mit dem Namen *AzureStorageLinkedService.json* und folgendem Code. Erstellen Sie den Ordner *ADFv2Tutorial*, falls er noch nicht vorhanden ist.  
 
     > [!IMPORTANT]
-    > Ersetzen Sie vor dem Speichern der Datei \<accountName> und \<accountKey> durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Sie haben sich diese Angaben im Abschnitt [Voraussetzungen](#get-storage-account-name-and-account-key) notiert.
+    > Ersetzen Sie \<accountName> und \<accountKey> durch den Namen und Schlüssel Ihres Azure-Speicherkontos, bevor Sie die Datei speichern. Sie haben sich diese Angaben im Abschnitt [Voraussetzungen](#get-storage-account-name-and-account-key) notiert.
 
    ```json
     {
@@ -355,7 +355,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure-Speicherkonto mit der Data Factory.
     Wenn Sie einen Fehler vom Typ „Datei nicht gefunden“ erhalten, sollten Sie das Vorhandensein der Datei überprüfen, indem Sie den Befehl `dir` ausführen. Entfernen Sie für den Dateinamen die Erweiterung *.txt* (z.B. „AzureStorageLinkedService.json.txt“), falls vorhanden, und führen Sie den PowerShell-Befehl dann erneut aus.
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>Erstellen und Verschlüsseln einen verknüpftes SQL Server-Diensts (Quelle)
-In diesem Schritt verknüpfen Sie die lokale SQL Server-Instanz mit der Data Factory.
+In diesem Schritt verknüpfen Sie Ihre SQL Server-Instanz mit der Data Factory.
 
 1. Erstellen Sie im Ordner *C:\ADFv2Tutorial* eine JSON-Datei mit dem Namen *SqlServerLinkedService.json*, indem Sie den folgenden Code verwenden:
 
@@ -414,7 +414,7 @@ In diesem Schritt verknüpfen Sie die lokale SQL Server-Instanz mit der Data Fac
     > [!IMPORTANT]
     > - Wählen Sie basierend auf der Authentifizierung, die Sie zum Herstellen einer Verbindung mit Ihrer SQL Server-Instanz verwenden, den Abschnitt aus.
     > - Ersetzen Sie **\<integration runtime name>** durch den Namen Ihrer Integration Runtime.
-    > - Ersetzen Sie vor dem Speichern der Datei **\<servername>** , **\<databasename>** , **\<username>** und **\<password>** durch die Werte Ihrer SQL Server-Instanz.
+    > - Ersetzen Sie **\<servername>** , **\<databasename>** , **\<username>** und **\<password>** durch die Werte Ihrer SQL Server-Instanz, bevor Sie die Datei speichern.
     > - Wenn Ihr Benutzerkonto- oder Servername einen umgekehrten Schrägstrich (\\) enthält, ist es erforderlich, ein Escapezeichen (\\) voranzustellen. Verwenden Sie beispielsweise *mydomain\\\\myuser*.
 
 1. Führen Sie zum Verschlüsseln der sensiblen Daten (Benutzername, Kennwort usw.) das `New-AzDataFactoryV2LinkedServiceEncryptedCredential`-Cmdlet aus.  
@@ -432,7 +432,7 @@ In diesem Schritt verknüpfen Sie die lokale SQL Server-Instanz mit der Data Fac
 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-In diesem Schritt erstellen Sie Eingabe- und Ausgabedatasets. Diese stehen für Eingabe- und Ausgabedaten für den Kopiervorgang, bei dem Daten aus der lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden.
+In diesem Schritt erstellen Sie Eingabe- und Ausgabedatasets. Sie stellen Eingabe- und Ausgabedaten für den Kopiervorgang dar, bei dem Daten aus der SQL Server-Datenbank in Azure Blob Storage kopiert werden.
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Erstellen eines Datasets für die SQL Server-Quelldatenbank
 In diesem Schritt definieren Sie ein Dataset, das Daten in der SQL Server-Datenbankinstanz darstellt. Das Dataset ist vom Typ „SqlServerTable“. Es verweist auf den mit SQL Server verknüpften Dienst, den Sie im vorherigen Schritt erstellt haben. Der verknüpfte Dienst enthält die Verbindungsinformationen, die der Data Factory-Dienst zum Herstellen einer Verbindung mit Ihrer SQL Server-Instanz zur Laufzeit verwendet. Dieses Dataset gibt die SQL-Tabelle in der Datenbank mit den Daten an. In diesem Tutorial enthält die Tabelle **emp** die Quelldaten.

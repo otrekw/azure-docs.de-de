@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren mehrerer Tabellen mithilfe des Azure-Portals
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank kopiert werden.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer SQL Server-Datenbank in eine Azure SQL-Datenbank-Instanz kopiert werden.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: ba934d8eeadcd3d3e89d5d9f6115c258206c2d13
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419254"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247256"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
+In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer SQL Server-Datenbank in eine Azure SQL-Datenbank geladen werden.    
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -68,12 +68,12 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als Quelldatenspeicher. 
-* **Azure SQL-Datenbank**. Sie verwenden eine SQL-Datenbank als Senkendatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md). 
+* **SQL Server**. In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als Quelldatenspeicher. 
+* **Azure SQL-Datenbank**. Sie verwenden eine SQL-Datenbank als Senkendatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Erstellen von Quelltabellen in Ihrer SQL Server-Datenbank
 
-1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit Ihrer lokalen SQL Server-Datenbank her.
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der SQL Server-Datenbank her.
 
 1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage**.
 
@@ -269,7 +269,7 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 1. Wählen Sie **Selbstgehostet** aus, und klicken Sie auf **Weiter**. 
 1. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Erstellen**. 
 
-1. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
+1. Klicken Sie auf **Klicken Sie hier, um das Express-Setup für diesen Computer zu starten** im Abschnitt **Option 1: Express-Setup**. 
 
    ![Klicken auf den Link für das Express-Setup](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
@@ -281,10 +281,10 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 1. Vergewissern Sie sich, dass **MySelfHostedIR** in der Liste mit den Integration Runtimes angezeigt wird.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihre lokale SQL Server-Datenbank und Azure SQL-Datenbank. 
+Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihre SQL Server-Datenbank und Azure SQL-Datenbank. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Erstellen des mit SQL Server verknüpften Diensts
-In diesem Schritt verknüpfen Sie die lokale SQL Server-Datenbank mit der Data Factory.
+In diesem Schritt verknüpfen Sie Ihre SQL Server-Datenbank mit der Data Factory.
 
 1. Wechseln Sie im Fenster **Verbindungen** von der Registerkarte **Integration Runtimes** zur Registerkarte **Verknüpfte Dienste**, und klicken Sie auf **+ Neu**.
 
@@ -310,7 +310,7 @@ Im letzten Schritt erstellen Sie einen verknüpften Dienst, um Ihre SQL Server-Q
 1. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein. 
-    1. Wählen Sie unter **Servername** in der Dropdownliste den Namen Ihrer Azure SQL Server-Instanz aus. 
+    1. Wählen Sie unter **Servername** in der Dropdownliste den Namen Ihres Servers aus. 
     1. Wählen Sie unter **Datenbankname** die Azure SQL-Datenbank aus, in der Sie zur Erfüllung der erforderlichen Voraussetzungen die Elemente „customer_table“ und „project_table“ erstellt haben. 
     1. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die Azure SQL-Datenbank hat. 
     1. Geben Sie unter **Kennwort** das **Kennwort** für den Benutzer ein. 
@@ -388,7 +388,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 
 1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
 
-1. Geben Sie auf der Registerkarte **Allgemein** unter **Name** den Namen **IncrementalCopyPipeline** ein. 
+1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IncrementalCopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.  
 
 1. Führen Sie auf der Registerkarte **Parameter** die folgenden Schritte aus: 
 
@@ -398,7 +398,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und konditionelle Abschnitte), und ziehen Sie die **ForEach**-Aktivität auf die Oberfläche des Pipeline-Designers. Geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
 
-1. Wechseln Sie zur Registerkarte **Einstellungen**, und geben Sie unter `@pipeline().parameters.tableList`Elemente**die Zeichenfolge** ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
+1. Wechseln Sie zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
 
     ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
@@ -469,7 +469,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     1. Wählen Sie die Option **Import parameter** (Importparameter). 
     1. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | Name | type | value | 
+        | Name | type | Wert | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

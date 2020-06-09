@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76906292"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220286"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
@@ -69,7 +69,7 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
    | Resource group | Es empfiehlt sich, im Rahmen der IoT Edge-Schnellstartanleitungen und -Tutorials die gleiche Ressourcengruppe für alle Ihre Testressourcen zu verwenden. Beispielsweise **IoTEdgeResources**. |
    | Name | Geben Sie einen eindeutigen Namen für Ihr Speicherkonto an. |
-   | Position | Wählen Sie einen Standort in Ihrer Nähe aus. |
+   | Standort | Wählen Sie einen Standort in Ihrer Nähe aus. |
 
 1. Behalten Sie in den restlichen Feldern die Standardwerte bei, und wählen Sie **Überprüfen und erstellen** aus.
 
@@ -86,7 +86,7 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
    | Auftragsname | Geben Sie einen Namen für Ihren Auftrag an. Beispielsweise **IoTEdgeJob** |
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
-   | Position | Wählen Sie einen Standort in Ihrer Nähe aus. |
+   | Standort | Wählen Sie einen Standort in Ihrer Nähe aus. |
    | Hosting-Umgebung | Wählen Sie **Edge** aus. |
 
 1. Klicken Sie auf **Erstellen**.
@@ -169,7 +169,7 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist das Modul **Sim
    1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
    1. Geben Sie **SimulatedTemperatureSensor** als Name ein.
    1. Geben Sie als Bild-URI **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** ein.
-   1. Behalten Sie die restlichen Einstellungen unverändert bei, und wählen Sie **Speichern** aus.
+   1. Behalten Sie die anderen Einstellungen unverändert bei, und wählen Sie **Hinzufügen** aus.
 
 1. Fügen Sie Ihren Azure Stream Analytics Edge-Auftrag wie folgt hinzu:
 
@@ -187,7 +187,7 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist das Modul **Sim
 
    Das Stream Analytics-Modul hat standardmäßig den gleichen Namen wie der Auftrag, auf dem es basiert. Der Modulname kann bei Bedarf auf dieser Seite geändert werden, dies ist jedoch nicht erforderlich.
 
-1. Wählen Sie **Abbrechen** oder **Speichern** aus.
+1. Wählen Sie **Aktualisieren** oder **Abbrechen** aus.
 
 1. Notieren Sie sich den Namen Ihres Stream Analytics-Moduls, da Sie ihn im nächsten Schritt benötigen, und wählen Sie dann **Weiter: Routen** aus, um den Vorgang fortzusetzen.
 

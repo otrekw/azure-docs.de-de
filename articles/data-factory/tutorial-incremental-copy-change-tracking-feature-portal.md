@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren von Daten mithilfe der Änderungsnachverfolgung
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank kopiert werden.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer SQL Server-Datenbank in eine Azure SQL-Datenbank-Instanz kopiert werden.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 842531b7f4bdd3690258262b32a42a19366c1830
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415424"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196294"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung
 
@@ -42,7 +42,7 @@ In einer Datenintegrationslösung ist das inkrementelle Laden von Daten nach anf
 Hier sind die Schritte des typischen End-to-End-Workflows zum inkrementellen Laden von Daten per Technologie für die Änderungsnachverfolgung angegeben.
 
 > [!NOTE]
-> Diese Technologie wird sowohl von Azure SQL-Datenbank als auch von SQL Server unterstützt. In diesem Tutorial wird Azure SQL-Datenbank als Quelldatenspeicher verwendet. Sie können auch eine lokale SQL Server-Instanz verwenden.
+> Diese Technologie wird sowohl von Azure SQL-Datenbank als auch von SQL Server unterstützt. In diesem Tutorial wird Azure SQL-Datenbank als Quelldatenspeicher verwendet. Sie können auch eine SQL Server-Instanz verwenden.
 
 1. **Initial loading of historical data** (Erstes Laden von Verlaufsdaten) (einmalige Ausführung):
     1. Aktivieren Sie die Technologie für die Änderungsnachverfolgung in der Quellinstanz von Azure SQL-Datenbank.
@@ -70,11 +70,11 @@ In diesem Tutorial erstellen Sie zwei Pipelines, mit denen die folgenden beiden 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) die Schritte zum Erstellen einer solchen Datenbank.
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) die Schritte zum Erstellen einer solchen Datenbank.
 * **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Erstellen Sie eine Datenquelletabelle in Ihrer Azure SQL-Datenbank
-1. Starten Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer Azure SQL Server-Instanz her.
+1. Starten Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit SQL-Datenbank her.
 2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf Ihre **Datenbank**, und wählen Sie **Neue Abfrage**.
 3. Führen Sie den folgenden SQL-Befehl für Ihre Azure SQL-Datenbank aus, um eine Tabelle mit dem Namen `data_source_table` als Quelldatenspeicher zu erstellen.  
 
@@ -216,8 +216,8 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
 3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     1. Geben Sie in das Feld **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
-    2. Wählen Sie im Feld **Servername** Ihre Azure SQL Server-Instanz aus.
-    4. Wählen Sie im Feld **Datenbankname** Ihre Azure SQL-Datenbank aus.
+    2. Wählen Sie im Feld **Servername** Ihren Server aus.
+    4. Wählen Sie im Feld **Datenbankname** Ihre Datenbank aus.
     5. Geben Sie im Feld **Benutzername** den Namen des Benutzers ein.
     6. Geben Sie im Feld **Kennwort** das Kennwort für den Benutzer ein.
     7. Klicken Sie auf **Verbindung testen**, um die Verbindung zu testen.

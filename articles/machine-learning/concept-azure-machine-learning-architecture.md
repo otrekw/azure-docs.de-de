@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871475"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683043"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -48,7 +48,7 @@ Verwenden Sie diese Tools für Azure Machine Learning:
 + Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) verwenden.
 + Automatisieren Sie Ihre Machine Learning-Aktivitäten mit der [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
 + Verwenden Sie den [Azure Machine Learning-Designer (Vorschauversion)](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung.
-
++ Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
 > [!NOTE]
 > In diesem Artikel werden von Azure Machine Learning genutzte Begriffe und Konzepte definiert, aber keine Begriffe und Konzepte für Azure Platform. Weitere Informationen zur Azure Platform-Terminologie finden Sie im [Microsoft Azure-Glossar](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).

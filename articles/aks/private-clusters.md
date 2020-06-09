@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610937"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849687"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -103,12 +103,13 @@ Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ih
 * Verfügbarkeitszonen werden derzeit für bestimmte Regionen unterstützt, wie am Anfang dieses Dokuments beschrieben. 
 * [Die Einschränkungen des Azure Private Link-Diensts][private-link-service] gelten für private Cluster.
 * Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk
-* Keine standardmäßige Unterstützung für die Azure DevOps-Integration mit privaten Clustern
+* Keine Unterstützung für Azure DevOps Microsoft-gehostete Agents mit privaten Clustern. Erwägen Sie die Verwendung von [selbstgehosteten Agents][devops-agents]. 
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
 * Keine aktuelle Unterstützung für Azure Dev Spaces
 * Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster
 * Das Löschen oder Ändern des privaten Endpunkts im Kundensubnetz führt dazu, dass der Cluster nicht mehr funktioniert. 
 * Azure Monitor wird für Livedaten von Containern derzeit nicht unterstützt.
+* Betriebszeit-SLA wird derzeit nicht unterstützt.
 
 
 <!-- LINKS - internal -->
@@ -120,4 +121,4 @@ Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ih
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-
+[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
