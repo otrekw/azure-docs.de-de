@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592388"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683012"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -111,6 +111,18 @@ Der Designer ermöglicht es Ihnen, Modelle über eine Drag & Drop-Schnittstelle 
 + [Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](how-to-designer-sample-classification-churn.md)
 + [Klassifizierung mit benutzerdefiniertem R-Skript: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
 + [Textklassifizierung: Wikipedia SP 500-Dataset](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>Many Models Solution Accelerator (Projektmappenbeschleuniger für viele Modelle)
+
+Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
+
+Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann in den folgenden Szenarien z. B. zu verbesserten Ergebnissen führen:
+
+* Vorhersage der Umsätze für jedes einzelne Geschäft
+* Vorausschauende Wartung für Hunderte von Ölquellen
+* Anpassen einer Erfahrung für einzelne Benutzer
+
+Weitere Informationen finden Sie auf GitHub unter [Many Models Solution Accelerator](https://aka.ms/many-models) (Projektmappenbeschleuniger für viele Modelle).
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 

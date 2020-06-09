@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: designer
+ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037625"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654927"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +83,7 @@ Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der in
 
 ![Moduleigenschaften](./media/concept-designer/properties.png)
 
-Unterstützung bei der Navigation durch die Bibliothek der verfügbaren Machine Learning-Algorithmen finden Sie unter [Algorithmen und Module: Referenzübersicht](algorithm-module-reference/module-reference.md).
+Unterstützung bei der Navigation durch die Bibliothek der verfügbaren Machine Learning-Algorithmen finden Sie unter [Algorithmen und Module: Referenzübersicht](algorithm-module-reference/module-reference.md). Hilfe bei der Auswahl eines Algorithmus finden Sie unter [Azure Machine Learning – Cheat Sheet für Algorithmen](algorithm-cheat-sheet.md).
 
 ## <a name="compute-resources"></a><a name="compute"></a> Computeressourcen
 
@@ -91,9 +92,10 @@ Verwenden Sie Computeressourcen aus Ihrem Arbeitsbereich, um Ihre Pipeline auszu
 | Computeziel | Training | Bereitstellung |
 | ---- |:----:|:----:|
 | Azure Machine Learning Compute | ✓ | |
+| Azure Machine Learning-Computeinstanz | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Computeziele sind an Ihren [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) angefügt. Sie verwalten Ihre Computeziele in Ihrem Arbeitsbereich in [Azure Machine Learning Studio (klassisch)](https://ml.azure.com).
+Computeziele sind an Ihren [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) angefügt. Ihre Computeziele verwalten Sie in Ihrem Arbeitsbereich im [Azure Machine Learning-Studio](https://ml.azure.com).
 
 ## <a name="deploy"></a>Bereitstellen
 

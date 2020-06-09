@@ -1,24 +1,22 @@
 ---
-title: Erstellen von Lösungen mit Visual Studio-Vorlagen – Azure Batch | Microsoft-Dokumentation
+title: Erstellen von Projektmappen mit Visual Studio-Vorlagen
 description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117521"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779517"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
 Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor** für Batch enthalten Code zum Implementieren und Ausführen Ihrer rechenintensiven Workloads in Batch mit dem geringstmöglichen Aufwand. In diesem Dokument werden diese Vorlagen beschrieben, und es enthält eine Anleitung zur Verwendung.
 
 > [!IMPORTANT]
-> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md) und [Übersicht über Batch-Features für Entwickler](batch-api-basics.md).
-> 
-> 
+> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie in [Grundlagen von Azure Batch](batch-technical-overview.md) und [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md). 
 
 ## <a name="high-level-overview"></a>Allgemeine Übersicht
 Sie können die Auftrags-Manager- und Aufgabenprozessorvorlagen verwenden, um zwei nützliche Komponenten zu erstellen:
@@ -69,7 +67,7 @@ Die Auftrags-Manager-Vorlage dient Ihnen als Hilfe beim Implementieren einer Auf
 * Übermitteln der Aufgaben zur Ausführung in Batch
 
 > [!NOTE]
-> Weitere Informationen zu Auftrags-Manager-Aufgaben finden Sie unter [Übersicht über Batch-Features für Entwickler](batch-api-basics.md#job-manager-task).
+> Weitere Informationen zu den Aufgaben eines Auftrags-Managers finden Sie unter [Aufträge und Aufgaben](jobs-and-tasks.md#job-manager-task).
 > 
 > 
 
@@ -188,7 +186,7 @@ Eine Auftrags-Manager-Aufgabe, die mit der Auftrags-Manager-Vorlage implementier
 
 Wenn für eine Auftrags-Manager-Aufgabe ein Fehler auftritt, kann es sein, dass dem Dienst vor dem Auftreten des Fehlers noch einige Aufgaben hinzugefügt wurden. Diese Tasks werden wie gewohnt ausgeführt. Eine Beschreibung dieses Codepfads finden Sie oben unter „Fehler bei der Auftragsteilung“.
 
-Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie unter [Fehlerbehandlung](batch-api-basics.md#error-handling).
+Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie unter [Fehlerbehandlung](error-handling.md).
 
 ### <a name="client-considerations"></a>Clientaspekte
 In diesem Abschnitt werden einige Anforderungen an die Clientimplementierung beschrieben, die erfüllt sein müssen, wenn ein Auftrags-Manager basierend auf dieser Vorlage aufgerufen wird. Ausführliche Informationen zur Übergabe von Parametern und Umgebungseinstellungen finden Sie unter [Übergeben von Parametern und Umgebungsvariablen aus dem Clientcode](#pass-environment-settings) .

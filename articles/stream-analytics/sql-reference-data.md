@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651939"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021686"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -40,7 +40,7 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
    ![SQL-Datenbank-Verweiskonfiguration](./media/sql-reference-data/sql-input-config.png)
 
-3. Testen Sie die Momentaufnahmenabfrage im SQL-Abfrage-Editor. Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](../sql-database/sql-database-connect-query-portal.md).
+3. Testen Sie die Momentaufnahmenabfrage im SQL-Abfrage-Editor. Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](../azure-sql/database/connect-query-portal.md).
 
 ### <a name="specify-storage-account-in-job-config"></a>Angeben des Speicherkontos in der Auftragskonfiguration
 
@@ -69,7 +69,7 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
 ### <a name="create-a-sql-database-table"></a>Erstellen einer SQL-Datenbanktabelle
 
-Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Nähere Informationen finden Sie unter [Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS](../sql-database/sql-database-design-first-database.md).
+Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Nähere Informationen finden Sie unter [Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS](../azure-sql/database/design-first-database-tutorial.md).
 
 Die im folgenden Beispiel verwendete Beispieltabelle wurde aus der folgenden Anweisung erstellt:
 
@@ -129,7 +129,7 @@ Bevor Sie den Auftrag in Azure bereitstellen, können Sie die Abfragelogik lokal
 
 ## <a name="delta-query"></a>Deltaabfrage
 
-Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL-Datenbank](../sql-database/sql-database-temporal-tables.md) empfohlen.
+Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL-Datenbank](../azure-sql/temporal-tables.md) empfohlen.
 
 1. Erstellen Sie eine temporale Tabelle in Azure SQL-Datenbank.
    

@@ -1,15 +1,15 @@
 ---
-title: Ausführen von Aufgaben unter Benutzerkonten – Azure Batch
-description: Es ist hilfreich, das Benutzerkonto, unter dem eine Aufgabe ausgeführt werden soll, konfigurieren zu können. Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
-ms.topic: article
+title: Ausführen von Aufgaben unter Benutzerkonten
+description: Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980285"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779491"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
@@ -40,7 +40,7 @@ Sowohl automatische als auch benannte Benutzerkonten haben Lese-/Schreibzugriff 
 
 Wenn eine Aufgabe unter dem gleichen Konto ausgeführt wird, das für die Ausführung einer Startaufgabe verwendet wurde, verfügt die Aufgabe über Lese-/Schreibzugriff auf das Startverzeichnis der Aufgabe. Ebenso verfügt eine Aufgabe über Lese-/Schreibzugriff auf das Verzeichnis der Auftragsvorbereitungsaufgabe, wenn die Aufgabe unter dem gleichen Konto ausgeführt wird, das für die Ausführung einer Auftragsvorbereitungsaufgabe verwendet wurde. Wenn eine Aufgabe unter einem anderen Konto als die Startaufgabe oder Auftragsvorbereitungsaufgabe ausgeführt wird, verfügt die Aufgabe nur über Lesezugriff auf das entsprechende Verzeichnis.
 
-Weitere Informationen zum Zugriff auf Dateien und Verzeichnisse aus einer Aufgabe heraus finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#files-and-directories).
+Weitere Informationen zum Zugreifen auf Dateien und Verzeichnisse über eine Aufgabe finden Sie unter [Dateien und Verzeichnisse](files-and-directories.md).
 
 ## <a name="elevated-access-for-tasks"></a>Erhöhte Zugriffsrechte für Aufgaben 
 
@@ -322,4 +322,5 @@ Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
+* Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
+* Erfahren Sie mehr über [Dateien und Verzeichnisse](files-and-directories.md) in Azure Batch.
