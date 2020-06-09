@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74787368"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831924"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
 
@@ -137,9 +137,9 @@ Sie können auf eine Swagger-Datei verweisen, die nicht gehostet wird oder nicht
 
 1. [Laden Sie die Swagger-Datei in den Blobcontainer hoch](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), entweder mit dem [Azure-Portal](https://portal.azure.com) oder [Azure Storage-Explorer](https://storageexplorer.com/).
 
-1. Um auf die Datei im Blobcontainer zu verweisen, verwenden Sie einen HTTPS-Link, der diesem Format entspricht, das Groß-/Kleinschreibung unterscheidet:
+1. Um auf die Datei im Blobcontainer zu verweisen, rufen Sie die HTTPS-URL im folgenden Format (Beachtung der Groß-/Kleinschreibung) aus Azure Storage-Explorer ab:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

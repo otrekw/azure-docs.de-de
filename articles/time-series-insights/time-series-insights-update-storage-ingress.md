@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189180"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779180"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -79,6 +79,17 @@ Folgende Best Practices werden empfohlen:
 
 * Informieren Sie sich unter [Gestalten von JSON für Abfragen](./time-series-insights-update-how-to-shape-events.md) über die Optimierung und Gestaltung Ihrer JSON-Daten sowie über die aktuellen Einschränkungen der Vorschau.
 
+* Verwenden Sie die Streamingerfassung nur für Daten in Quasi-Echtzeit und für aktuelle Daten. Das Streamen historischer Daten wird nicht unterstützt.
+
+#### <a name="historical-data-ingestion"></a>Erfassung historischer Daten
+
+Die Streamingpipeline kann in der Vorschauversion von Azure Time Series Insights aktuell nicht zum Importieren historischer Daten verwendet werden. Wenn Sie ältere Daten in Ihre Umgebung importieren möchten, beachten Sie die folgenden Richtlinien:
+
+* Streamen Sie Livedaten und historische Daten nicht parallel. Die Erfassung unsortierter Daten wirkt sich nachteilig auf die Abfrageleistung aus.
+* Erfassen Sie historische Daten in zeitlicher Reihenfolge, um die bestmögliche Leistung zu erzielen.
+* Bleiben Sie innerhalb der unten angegebenen Ratengrenzwerte für den Erfassungsdurchsatz.
+* Deaktivieren Sie den warmen Speicher, wenn das Alter der Daten den Aufbewahrungszeitraum Ihres warmen Speichers übersteigt.
+
 ### <a name="ingress-scale-and-preview-limitations"></a>Dateneingangsvolumen und Einschränkungen der Vorschauversion
 
 Unten sind die Eingangseinschränkungen von Azure Time Series Insights Preview beschrieben.
@@ -101,7 +112,7 @@ Standardmäßig kann Time Series Insights Preview eingehende Daten mit einer Rat
  
 * **Beispiel 1:**
 
-    Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Hierfür wird ein IoT Hub mit vier Partitionen als Time Series Insights-Ereignisquelle genutzt.
+    Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Hierfür wird eine IoT Hub-Instanz mit vier Partitionen als Time Series Insights-Ereignisquelle genutzt.
 
     * Die Erfassungsrate für die Time Series Insights-Umgebung lautet: **100.000 Geräte · 200 Byte/Ereignis · (3/60 Ereignis/s) = 1 MBit/s**.
     * Die Erfassungsrate pro Partition wäre 0,25 Mbit/s.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732370"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745616"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -125,7 +125,7 @@ Im nächsten Schritt wird ein App Service-Plan erstellt. Mit einem App Service-P
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) zwei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
@@ -178,7 +178,7 @@ Nachdem Sie einige Ressourcen erstellt haben, erstellen Sie nun einen Bot. Wir b
 Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere Möglichkeiten, einen Bot bereitzustellen, in diesem Tutorial wird er direkt über Visual Studio veröffentlicht.
 
 > [!NOTE]
-> Alternativ können Sie einen Bot mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) und über [Bereitstellungsvorlagen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates) bereitstellen.
+> Alternativ können Sie einen Bot mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) und über [Bereitstellungsvorlagen](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot) bereitstellen.
 
 1. Öffnen Sie in Visual Studio den Echobot, der zur Verwendung mit dem Direct Line Speech-Kanal konfiguriert ist:
 
@@ -207,7 +207,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
 1. Überprüfen Sie hier, ob die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal drei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -248,7 +248,7 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollten nun vier Ressourcen angezeigt werden:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -389,7 +389,7 @@ Sehen Sie sich im Quellcode des Windows-Sprachassistent-Clients in den folgenden
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(Optional:) Ändern von Sprache und Stimme des Bots
 
-Der Bot, den Sie erstellt haben, lauscht und antwortet in englischer Sprache, mit einer standardmäßigen Sprachausgabe in amerikanischem Englisch. Sie sind jedoch nicht auf die Verwendung von Englisch oder eine Standardstimme beschränkt. In diesem Abschnitt erfahren Sie, wie Sie die Sprache ändern, auf die der Bot lauscht und in der er antwortet. Außerdem lernen Sie, wie Sie eine andere Stimme für diese Sprache auswählen können.
+Der Bot, den Sie erstellt haben, lauscht und antwortet in englischer Sprache, mit einer standardmäßigen Sprachausgabe in US-amerikanischem Englisch. Sie sind jedoch nicht auf die Verwendung von Englisch oder eine Standardstimme beschränkt. In diesem Abschnitt erfahren Sie, wie Sie die Sprache ändern, auf die der Bot lauscht und in der er antwortet. Außerdem lernen Sie, wie Sie eine andere Stimme für diese Sprache auswählen können.
 
 ### <a name="change-the-language"></a>Ändern der Sprache
 

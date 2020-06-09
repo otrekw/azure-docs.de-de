@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: cdd3c12f0312697e2190d7a94285de19c2d375fc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837378"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653083"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics: Versionshinweise
 
@@ -41,7 +41,20 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+## <a name="may-2020"></a>Mai 2020
 
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Workloadisolation (allgemeine Verfügbarkeit)**|Die [Workloadisolation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) ist nun allgemein verfügbar.  Über [Arbeitsauslastungsgruppen](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) können Ressourcen reserviert und abgegrenzt werden.  Außerdem können Abfragetimeouts konfiguriert werden, um Endlosabfragen abzubrechen.|
+|**Workloadverwaltungsportal (Vorschauversion)**| Benutzer können ihre Workloadverwaltungseinstellungen über das Azure-Portal konfigurieren und verwalten.  Außerdem können [Arbeitsauslastungsgruppen](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) und [Workloadklassifizierer](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) mit Wichtigkeit konfiguriert werden.|
+|**ALTER WORKLOAD GROUP**|Der Befehl [ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) kann nun verwendet werden.  Mit „ALTER“ können Sie die Konfiguration einer vorhandenen [Arbeitsauslastungsgruppe](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) ändern.|
+|**Automatische Schemaerkennung für Parquet-Dateien mit dem COPY-Befehl**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Schemaerkennung beim Laden von Parquet-Dateien unterstützt. Durch den Befehl wird automatisch das Parquet-Dateischema erkannt und vor dem Laden die Tabelle erstellt.|
+|**Laden komplexer Parquet-Datentypen mit dem COPY-Befehl**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt das Laden komplexer Parquet-Typen unterstützt. Sie können komplexe Typen wie Karten und Listen in Zeichenfolgenspalten laden.|
+|**Automatische Komprimierungserkennung für Parquet-Dateien mit dem COPY-Befehl**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Erkennung der Komprimierungsmethode für die Parquet-Dateien unterstützt.|
+|**Weitere Ladeempfehlungen**|[Ladeempfehlungen](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations) stehen jetzt für Synapse SQL zur Verfügung. Erhalten Sie proaktive Benachrichtigungen, wenn Sie Ihre Dateien für maximalen Durchsatz aufteilen, Ihr Speicherkonto am gleichen Ort wie Ihren SQL-Pool platzieren oder die Batchgröße bei Verwendung von Ladehilfsprogrammen wie SQLBulkCopy-API oder BCP erhöhen sollten.|
+|**Per T-SQL aktualisierbare Verteilungsspalte (allgemeine Verfügbarkeit)**|Benutzer können nun in der Verteilungsspalte gespeicherten Daten aktualisieren. Ausführliche Informationen finden Sie im [Leitfaden für das Entwerfen verteilter Tabellen im Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute).|
+|**T-SQL: Aktualisieren/Löschen auf der Grundlage einer Verknüpfung (allgemeine Verfügbarkeit)**|Aktualisieren und Löschen auf der Grundlage von Ergebnissen einer Verknüpfung mit einer anderen Tabelle sind nun verfügbar. Ausführliche Informationen finden Sie in der Dokumentation zu [Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) und [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest).|
+|**T-SQL PREDICT (Vorschauversion)**|Sie können jetzt Machine Learning-Modelle in Ihrem Data Warehouse vorhersagen, sodass keine umfangreichen und komplexen Datenverschiebungen mehr nötig sind. Die T-SQL-PREDICT-Funktion basiert auf einem offenen Modellframework und erstellt Vorhersagen anhand der Daten und des Machine Learning-Modells als Eingabe. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="april-2020"></a>April 2020
 

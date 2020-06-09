@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176089"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869718"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -275,7 +275,7 @@ Azure-Dateisynchronisierung kann nicht mit NTFS EFS (NTFS Encrypted File System)
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 
 > [!NOTE]
-> Die Unterstützung für TLS 1.0 und 1.1 im Azure-Dateisynchronisierungsdienst wird im August 2020 entfernt. Alle unterstützten Versionen des Azure-Dateisynchronisierungs-Agents verwenden standardmäßig bereits TLS 1.2. Die Verwendung einer früheren Version von TLS kann auftreten, wenn TLS 1.2 auf dem Server deaktiviert wurde oder ein Proxy verwendet wird. Wenn Sie einen Proxy verwenden, sollten Sie die Proxykonfiguration überprüfen. Alle Regionen für den Azure-Dateisynchronisierungsdienst, die nach dem 01.05.2020 hinzugefügt werden, unterstützen ausschließlich TLS 1.2. Die Unterstützung für TLS 1.0 und 1.1 wird in den vorhandenen Regionen im August 2020 entfernt.  Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
+> Die Unterstützung für TLS 1.0 und 1.1 im Azure-Dateisynchronisierungsdienst wird am 1. August 2020 entfernt. Alle unterstützten Versionen des Azure-Dateisynchronisierungs-Agents verwenden standardmäßig bereits TLS 1.2. Die Verwendung einer früheren Version von TLS kann auftreten, wenn TLS 1.2 auf dem Server deaktiviert wurde oder ein Proxy verwendet wird. Wenn Sie einen Proxy verwenden, sollten Sie die Proxykonfiguration überprüfen. Alle Regionen für den Azure-Dateisynchronisierungsdienst, die nach dem 01.05.2020 hinzugefügt werden, unterstützen ausschließlich TLS 1.2. Die Unterstützung für TLS 1.0 und 1.1 wird in den vorhandenen Regionen am 1. August 2020 entfernt.  Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
 
 Der Azure-Dateisynchronisierungs-Agent kommuniziert mit dem Speichersynchronisierungsdienst und der Azure-Dateifreigabe unter Verwendung des Azure-Dateisynchronisierungs-REST-Protokolls und des FileREST-Protokolls. Beide Protokolle verwenden immer HTTPS über Port 443. Die Azure-Dateisynchronisierung sendet keine unverschlüsselten Anforderungen über HTTP. 
 

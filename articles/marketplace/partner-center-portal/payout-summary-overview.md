@@ -1,18 +1,18 @@
 ---
 title: 'Übersicht über die Auszahlungszusammenfassung: Azure Marketplace'
-description: Die Zahlungsübersicht enthält Einzelheiten zu dem Betrag, den Sie mit Ihrem Angebot eingenommen haben. Aus ihr geht auch hervor, wann und in welcher Höhe Sie Zahlungen erhalten.
+description: Die Auszahlungszusammenfassung enthält Einzelheiten zu den Beträgen, die Sie mit Ihrem Angebot eingenommen haben. Aus ihr geht auch hervor, wann und in welcher Höhe Sie Zahlungen erhalten.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782547"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746202"
 ---
 # <a name="payout-summary-overview"></a>Übersicht über die Auszahlungszusammenfassung
 
@@ -64,13 +64,13 @@ Informationen zu Zahlungsplänen finden Sie im Abschnitt [Zahlungspläne](./payo
 
 Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transaktionsverlauf“ angezeigt wird, herunterladen. Hierzu zählen Einnahmetyp, Datum, zugehöriger Transaktionsbetrag, Kunde, Produkt und andere Transaktionsdetails im Zusammenhang mit dem Incentives-Programm.
 
-| Spaltenname | Beschreibung |
+| Spaltenname | BESCHREIBUNG |
 | --- | --- |
 | earningId | Eindeutiger Bezeichner für jede Einnahme |
 | participantID | Primäre Identität des Partners, der unter dem Programm die Einnahme erzielt |
 | participantIdType | Programm-ID für Incentive-Programme und Verkäufer, wenn das Programm für Store-Programme und den Azure Marketplace vorgesehen ist. |
 | participantName | Name des Partners, der die Einnahme erzielt |
-| partnerCountryCode | Standort/Land des Partners, der die Einnahme erzielt |
+| partnerCountryCode | Standort/Land/Region des Partners, der die Einnahmen erzielt |
 | programName | Name des Incentive-/Store-Programms |
 | transactionId | Eindeutige ID für die Transaktion |
 | transactionCurrency | Währung, in der die ursprüngliche Kundentransaktion ausgeführt wurde (nicht die Währung für den Partnerstandort) |
@@ -113,15 +113,15 @@ Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transa
 | storeFee | Der Betrag, der von Microsoft als Gebühr für die Bereitstellung der App oder des Add-Ons im kommerziellen Marketplace einbehalten wird. |
 | transactionPaymentMethod | Vom Kunden für die Transaktion verwendetes Zahlungsmittel (beispielsweise Kreditkarte, Abrechnung des Mobilfunkanbieters oder PayPal) |
 | tpan | Drittanbieter-Werbenetzwerk |
-| customerCountry | Land des Kunden |
+| customerCountry | Land/Region des Kunden |
 | CustomerCity | Stadt des Kunden |
 | customerState | Bundesland/Kanton des Kunden |
 | customerzip | Postleitzahl des Kunden |
 | Mandanten-ID | ID des Mandanten |
 | externalReferenceId | Eindeutige ID für das Programm |
 | externalReferenceIdLabel | Beschriftung der eindeutigen ID |
-| transactionCountryCode | Code des Landes, in dem die Transaktion erfolgt ist |
-| taxCountry | Land des Kunden |
+| transactionCountryCode | Code des Landes/der Region, in dem/der die Transaktion erfolgt ist |
+| taxCountry | Land/Region des Kunden |
 | taxState | Bundesland/Kanton des Kunden |
 | taxCity | Ort des Kunden |
 | taxzipcode | Postleitzahl des Kunden |
@@ -132,7 +132,7 @@ Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transa
 | AssetId | Eindeutige ID für die Kundenbestellungen für Ihren Marketplace-Dienst. Stellt die Kaufpositionen dar. Es kann mehrere Assets geben. |
 | OrderId | Bezieht sich auf die Rechnung eines Kunden |
 | LineItemId | Einzelne Position in der Rechnung eines Kunden |
-| Land des Kunden | Der vom Kunden angegebene Ländername. Kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land unterscheiden. |
+| Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Dieser kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. |
 | Kunden EmailAddress | Die vom Kunden angegebene E-Mail-Adresse. Kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden. |
 | SkuId | Die bei Veröffentlichung definierte SKU-ID. Ein Angebot kann mehrere SKUs enthalten, aber eine SKU kann nur einem einzigen Angebot zugeordnet werden. |
 

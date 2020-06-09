@@ -8,15 +8,15 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189819"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772963"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Log Analytics-Agent Absturzabbilddateien in den Arbeitsbereich.
+Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
 
 Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie Integritäts- und Bedrohungsschutz bereitzustellen. 
 
@@ -223,9 +223,8 @@ Sie können die automatische Bereitstellung in Ressourcen jederzeit deaktivieren
 
 Wenn die automatische Bereitstellung deaktiviert ist, wird der Abschnitt mit der standardmäßigen Arbeitsbereichskonfiguration nicht angezeigt.
 
-Wenn Sie die automatische Bereitstellung deaktivieren, nachdem sie aktiviert war:
--   werden Agents auf neuen virtuellen Computern nicht bereitgestellt.
--   beendet Security Center die Sammlung von Daten im Standardarbeitsbereich.
+Wenn Sie die automatische Bereitstellung deaktivieren, nachdem sie zuerst aktiviert war, werden Agents nicht auf neuen virtuellen Computern bereitgestellt.
+
  
 > [!NOTE]
 >  Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Informationen zum Entfernen der OMS-Erweiterungs finden Sie unter [Wie entferne ich durch Security Center installierte OMS-Erweiterungen?](faq-data-collection-agents.md#remove-oms).

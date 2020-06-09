@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614828"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845983"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection für Azure Cosmos DB (Vorschau)
 
@@ -36,9 +36,13 @@ Advanced Threat Protection für Azure Cosmos DB erkennt Anomalien bei Aktivität
 
 - **Ungewöhnliche Datenextraktion**: Diese Warnung wird ausgelöst, wenn ein Client eine ungewöhnliche Menge an Daten von einem Azure Cosmos DB-Konto extrahiert. Dies kann das Symptom einer Datenexfiltration sein, die durchgeführt wird, um alle im Konto gespeicherten Daten in einen externen Datenspeicher zu übertragen.
 
-## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection
 
-### <a name="set-up-atp-using-the-portal"></a>Einrichten von ATP unter Verwendung des Portals
+
+## <a name="configure-advanced-threat-protection"></a>Konfigurieren von Advanced Threat Protection
+
+Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die in den folgenden Abschnitten beschrieben werden.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com/).
 
@@ -51,14 +55,14 @@ Advanced Threat Protection für Azure Cosmos DB erkennt Anomalien bei Aktivität
     * Klicken Sie auf die Option **Advanced Threat Protection**, um sie zu aktivieren (**EIN**).
     * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
 
-### <a name="set-up-atp-using-rest-api"></a>Einrichten von ATP mithilfe der REST-API
+### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
 Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Azure Cosmos DB-Konto zu erstellen, zu aktualisieren oder abzurufen.
 
 * [Advanced Threat Protection – Create (Erstellen)](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Advanced Threat Protection – Get (Abrufen)](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>Einrichten von ATP mithilfe von Azure PowerShell
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie die folgenden PowerShell-Cmdlets:
 
@@ -66,12 +70,12 @@ Verwenden Sie die folgenden PowerShell-Cmdlets:
 * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+### <a name="arm-template"></a>[ARM-Vorlage](#tab/arm-template)
 
-Verwenden Sie zum Einrichten von Cosmos DB mit aktiviertem Advanced Threat Protection eine Azure Resource Manager-Vorlage.
+Verwenden Sie zum Einrichten von Cosmos DB mit aktivierter Advanced Threat Protection-Instanz eine ARM-Vorlage (Azure Resource Manager).
 Weitere Informationen finden Sie unter [Create a CosmosDB Account with Advanced Threat Protection](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/) (Erstellen eines Cosmos DB-Kontos mit Advanced Threat Protection).
 
-### <a name="using-azure-policy"></a>Verwenden von Azure Policy
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Verwenden Sie eine Azure-Richtlinie, um Advanced Threat Protection für Cosmos DB zu aktivieren.
 
@@ -90,6 +94,9 @@ Verwenden Sie eine Azure-Richtlinie, um Advanced Threat Protection für Cosmos 
 
 
 1. Geben Sie die anderen Parameter ein, und klicken Sie auf **Zuweisen**.
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>Verwalten von ATP-Sicherheitswarnungen
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731178"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657142"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -129,11 +129,24 @@ Für Spring Boot-Version 2.2 fügen Sie die folgende Abhängigkeit zur POM-Datei
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>Andere erforderliche Abhängigkeiten
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Weitere empfohlene Abhängigkeiten zum Aktivieren von Azure Spring Cloud-Funktionen
 
-Zur Aktivierung der integrierten Features von Azure Spring Cloud muss Ihre Anwendung die folgenden Abhängigkeiten enthalten. Dadurch wird sichergestellt, dass Ihre Anwendung sich selbst korrekt mit den einzelnen Komponenten konfiguriert.
+Wenn Sie die integrierten Funktionen von Azure Spring Cloud (von Dienstregistrierung bis hin zu verteilter Ablaufverfolgung) aktivieren möchten, müssen Sie außerdem die folgenden Abhängigkeiten in Ihre Anwendung aufnehmen. Sie können einige dieser Abhängigkeiten löschen, wenn Sie keine entsprechenden Funktionen für die spezifischen Apps benötigen.
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient-Anmerkung
+### <a name="service-registry"></a>Dienstregistrierung
+
+Schließen Sie die Abhängigkeit `spring-cloud-starter-netflix-eureka-client` in die Datei „pom.xml“ ein, um den verwalteten Dienst für die Azure-Dienstregistrierung zu verwenden:
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+Der Endpunkt des Dienstregistrierungsservers wird automatisch in Form von Umgebungsvariablen mit Ihrer App eingefügt. Anwendungen können sich selbst beim Dienstregistrierungsserver registrieren und andere abhängige Microservices ermitteln.
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient-Anmerkung
 
 Fügen Sie dem Quellcode der Anwendung die folgende Anmerkung hinzu.
 ```java
@@ -159,20 +172,7 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Abhängigkeit für die Dienstregistrierung
-
-Schließen Sie die Abhängigkeit `spring-cloud-starter-netflix-eureka-client` in die Datei „pom.xml“ ein, um den verwalteten Dienst für die Azure-Dienstregistrierung zu verwenden:
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-Der Endpunkt des Dienstregistrierungsservers wird automatisch in Form von Umgebungsvariablen mit Ihrer App eingefügt. Anwendungen können sich selbst beim Dienstregistrierungsserver registrieren und andere abhängige Microservices ermitteln.
-
-### <a name="distributed-configuration-dependency"></a>Abhängigkeit für die verteilte Konfiguration
+### <a name="distributed-configuration"></a>Verteilte Konfiguration
 
 Schließen Sie zum Aktivieren der verteilten Konfiguration die folgende Abhängigkeit vom Typ `spring-cloud-config-client` in den Abhängigkeitenabschnitt der Datei „pom.xml“ ein:
 
@@ -186,7 +186,7 @@ Schließen Sie zum Aktivieren der verteilten Konfiguration die folgende Abhängi
 > [!WARNING]
 > Geben Sie nicht `spring.cloud.config.enabled=false` in Ihrer Bootstrapkonfiguration an. Andernfalls kann die Anwendung nicht mehr mit dem Konfigurationsserver verwendet werden.
 
-### <a name="metrics-dependency"></a>Metrikabhängigkeit
+### <a name="metrics"></a>Metriken
 
 Schließen Sie die Abhängigkeit `spring-boot-starter-actuator` in den Abhängigkeitenabschnitt der Datei „pom.xml“ ein:
 
@@ -199,7 +199,7 @@ Schließen Sie die Abhängigkeit `spring-boot-starter-actuator` in den Abhängig
 
  Metriken werden in regelmäßigen Abständen von den JMX-Endpunkten gepullt. Die Metriken können über das Azure-Portal visualisiert werden.
 
-### <a name="distributed-tracing-dependency"></a>Abhängigkeit für die verteilte Ablaufverfolgung
+### <a name="distributed-tracing"></a>Verteilte Ablaufverfolgung
 
 Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleuth` und `spring-cloud-starter-zipkin` in den Abhängigkeitenabschnitt der Datei „pom.xml“ ein:
 

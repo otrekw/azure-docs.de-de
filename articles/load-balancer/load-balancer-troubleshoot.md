@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7c5e00f2e5565393ff46dbb06b30991ebcfc01f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590263"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873702"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -127,6 +127,16 @@ Wenn die auf der Back-End-VM eines Load Balancers gehostete Anwendung versucht, 
 Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine der teilnehmenden Back-End-VMs versucht, auf das Front-End des internen Load Balancers zuzugreifen, treten möglicherweise Fehler auf, wenn der Flow der Ausgangs-VM zugeordnet wird. Dieses Szenario wird nicht unterstützt. Überprüfen Sie die [Beschränkungen](concepts.md#limitations) für eine ausführliche Beschreibung.
 
 **Auflösung:** Es gibt mehrere Möglichkeiten, die Blockierung für dieses Szenarios aufzuheben, einschließlich der Verwendung eines Proxys. Evaluieren Sie Application Gateway oder andere Proxys von Drittanbietern (z.B. nginx oder haproxy). Weitere Informationen zu Application Gateway finden Sie unter [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
+
+**Details:** Interne Lastenausgleichsmodule führen für ausgehende Verbindungen keine Übersetzung für das Front-End eines internen Lastenausgleichsmoduls durch, da sich beide im privaten IP-Adressraum befinden. Über öffentliche Load Balancer werden [ausgehende Verbindungen](load-balancer-outbound-connections.md) von privaten IP-Adressen im virtuellen Netzwerk mit öffentlichen IP-Adressen bereitgestellt. Bei internen Load Balancern wird mit diesem Ansatz die potenzielle SNAT-Portüberlastung in einem eindeutigen internen IP-Adressraum vermieden, für den die Übersetzung nicht erforderlich ist.
+
+Hierbei ergibt sich die folgende Nebenwirkung: Wenn ein von einem virtuellen Computer ausgehender Flow in den Back-End-Pool versucht, einen Flow zum Front-End der internen Load Balancer-Instanz im Pool auszuführen _und_ sich selbst zugewiesen ist, stimmen die beiden Verzweigungen des Flows nicht überein. Aufgrund dieser fehlenden Übereinstimmung tritt für den Flow ein Fehler auf. Der Flow ist erfolgreich, wenn er nicht dem virtuellen Computer im Back-End-Pool zugeordnet ist, die den Flow zum Front-End erstellt hat.
+
+Wenn der Flow sich selbst zugeordnet ist, geht der ausgehende Flow zum Front-End scheinbar vom virtuellen Computer und der zugehörige eingehende Flow scheinbar vom virtuellen Computer an sich selbst aus. Aus Sicht des Gastbetriebssystems stimmen die eingehenden und ausgehenden Bestandteile desselben Flows innerhalb des virtuellen Computers nicht überein. Der TCP-Stack erkennt nicht, dass es sich bei diesen Hälften um Teile desselben Flows handelt. Die Quelle und das Ziel stimmen nicht überein. Wenn der Flow keinem anderen virtuellen Computer im Back-End-Pool zugeordnet ist, stimmen die Teile des Flows überein, und der virtuelle Computer kann auf den Flow antworten.
+
+Das Symptom für dieses Szenario sind zeitweilige Verbindungstimeouts, die auftreten, wenn der Flow zu demselben Back-End zurückkehrt, vom dem er ursprünglich stammt. Zu den häufig genutzten Problemumgehungen gehören das Einfügen einer Proxyebene hinter dem internen Load Balancer und das Verwenden von DSR-Stilregeln (Direct Server Return). Weitere Informationen finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](load-balancer-multivip-overview.md).
+
+Sie können eine interne Load Balancer-Instanz mit dem Proxy eines Drittanbieters kombinieren oder die interne [Application Gateway](../application-gateway/application-gateway-introduction.md)-Instanz für Proxyszenarien mit HTTP/HTTPS verwenden. Es ist zwar möglich, zum Beheben dieses Problems einen öffentlichen Load Balancer zu nutzen, aber das sich ergebende Szenario ist anfällig für [SNAT-Auslastung](load-balancer-outbound-connections.md#snat). Nutzen Sie diesen zweiten Ansatz nur, wenn eine sorgfältige Verwaltung durchgeführt werden kann.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Symptom: Der Back-End-Port für die vorhandene LB-Regel eines Lastenausgleichs, der eine VM-Skalierungsgruppe im Back-End-Pool bereitgestellt hat, kann nicht geändert werden. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Ursache: Der Back-End-Port kann nicht für eine Lastenausgleichsregel geändert werden, die von einem Integritätstest für den Lastenausgleich verwendet wird, auf den von der VM-Skalierungsgruppe verwiesen wird.

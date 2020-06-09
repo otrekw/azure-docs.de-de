@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131295"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659835"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -52,9 +52,8 @@ Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalte
 | Parameter | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `language` | Identifiziert die gesprochene Sprache, die erkannt wird. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text). | Erforderlich |
-| `format` | Gibt das Ergebnisformat an. Zulässige Werte sind `simple` und `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Detaillierte Antworten enthalten mehrere Ergebnisse mit Zuverlässigkeitswerten und vier unterschiedliche Darstellungen. Die Standardeinstellung ist `simple`. | Optional |
+| `format` | Gibt das Ergebnisformat an. Zulässige Werte sind `simple` und `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Ausführliche Antworten enthalten vier verschiedene Darstellungen des Anzeigetexts. Die Standardeinstellung ist `simple`. | Optional |
 | `profanity` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `raw` (Obszönitäten sind im Ergebnis enthalten). Die Standardeinstellung ist `masked`. | Optional |
-| `pronunciationScoreParams` | Gibt die Parameter für das Anzeigen von Aussprachebewertungen in Erkennungsergebnissen an, mit denen die Aussprachequalität der Spracheingabe mit Indikatoren für Genauigkeit, Flüssigkeit, Vollständigkeit usw. bewertet wird. Dieser Parameter ist base64-codierter JSON-Code, der viele ausführliche Parameter enthält. Informationen zum Erstellen dieses Parameters finden Sie unter [Parameter für die Aussprachebewertung](#pronunciation-assessment-parameters). | Optional |
 | `cid` | Wenn Sie das [Custom Speech-Portal](how-to-custom-speech.md) zum Erstellen von benutzerdefinierten Modellen verwenden, können Sie benutzerdefinierte Modelle über ihre **Endpunkt-ID** verwenden, die Sie auf der Seite **Bereitstellung** finden. Verwenden Sie die **Endpunkt-ID** als Argument für den Parameter `cid` der Abfragezeichenfolge. | Optional |
 
 ## <a name="request-headers"></a>Anforderungsheader
@@ -65,6 +64,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Ihr Abonnementschlüssel des Spracherkennungsdiensts. | Entweder dieser Header oder `Authorization` ist erforderlich. |
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Entweder dieser Header oder `Ocp-Apim-Subscription-Key` ist erforderlich. |
+| `Pronunciation-Assessment` | Gibt die Parameter für das Anzeigen von Aussprachebewertungen in Erkennungsergebnissen an, mit denen die Aussprachequalität der Spracheingabe mit Indikatoren für Genauigkeit, Flüssigkeit, Vollständigkeit usw. bewertet wird. Dieser Parameter ist base64-codierter JSON-Code, der viele ausführliche Parameter enthält. Informationen zum Erstellen dieses Headers finden Sie unter [Parameter für die Aussprachebewertung](#pronunciation-assessment-parameters). | Optional |
 | `Content-type` | Beschreibt das Format und den Codec der bereitgestellten Audiodaten. Zulässige Werte sind `audio/wav; codecs=audio/pcm; samplerate=16000` und `audio/ogg; codecs=opus`. | Erforderlich |
 | `Transfer-Encoding` | Gibt an, dass segmentierte Audiodaten anstatt einer einzelnen Datei gesendet werden. Verwenden Sie diesen Header nur, wenn Sie Audiodaten segmentieren. | Optional |
 | `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Spracherkennungsdienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
@@ -75,9 +75,9 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in einem der in der folgenden Tabelle aufgeführten Formate vorliegen:
 
 | Format | Codec | Bitrate | Samplingrate  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16 Bit  | 16 kHz, mono |
-| OGG    | OPUS  | 16 Bit  | 16 kHz, mono |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 KBit/s | 16 kHz, mono |
+| OGG    | OPUS  | 256 KBit/s | 16 kHz, mono |
 
 >[!NOTE]
 >Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig das WAV-Format mit dem PCM-Codec sowie [weitere Formate](how-to-use-codec-compressed-audio-input-streams.md).
@@ -106,13 +106,16 @@ Unten finden Sie ein JSON-Beispiel mit den Parametern für die Aussprachebewertu
 }
 ```
 
-Der folgende Beispielcode zeigt, wie die Parameter für die Aussprachebewertung in den URL-Abfrageparameter integriert werden:
+Der folgende Beispielcode zeigt, wie die Parameter für die Aussprachebewertung in den Header `Pronunciation-Assessment` integriert werden:
 
 ```csharp
-var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
-var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
-var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
+var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+>[!NOTE]
+>Das Feature für die Aussprachebewertung ist derzeit nur in den Regionen `westus` und `eastasia` verfügbar. Es steht außerdem zurzeit nur für die Sprache `en-US` zur Verfügung.
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -126,6 +129,12 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
 Expect: 100-continue
+```
+
+Sie können den unten angegebenen Header hinzufügen, um die Aussprachebewertung zu aktivieren. Informationen zum Erstellen dieses Headers finden Sie unter [Parameter für die Aussprachebewertung](#pronunciation-assessment-parameters).
+
+```HTTP
+Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
 ## <a name="http-status-codes"></a>HTTP-Statuscodes
@@ -200,9 +209,10 @@ Das `RecognitionStatus`-Feld kann diese Werte enthalten:
 > [!NOTE]
 > Wenn die Audiodaten nur aus Obszönitäten bestehen und der `profanity`-Abfrageparameter auf `remove` festgelegt ist, gibt der Dienst kein Sprachergebnis zurück.
 
-Das Format `detailed` enthält die gleichen Daten wie das Format `simple` sowie `NBest`, eine Liste alternativer Interpretationen desselben Erkennungsergebnisses. Diese Ergebnisse werden abnehmend nach Wahrscheinlichkeit geordnet. Der erste Eintrag ist identisch mit den Haupterkennungsergebnis.  Bei Verwendung des Formats `detailed` wird `DisplayText` als `Display` für jedes Ergebnis in der `NBest`-Liste angegeben.
+Das Format `detailed` enthält zusätzliche Formen erkannter Ergebnisse.
+Bei Verwendung des Formats `detailed` wird `DisplayText` als `Display` für jedes Ergebnis in der `NBest`-Liste angegeben.
 
-Jedes Objekt in der `NBest`-Liste enthält:
+Das Objekt in der `NBest`-Liste kann Folgendes enthalten:
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|
@@ -244,13 +254,6 @@ Eine typische Antwort für die `detailed` Erkennung:
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }

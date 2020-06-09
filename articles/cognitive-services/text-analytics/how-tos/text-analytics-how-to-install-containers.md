@@ -11,17 +11,17 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702132"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
 > [!NOTE]
-> * Der Container für Standpunktanalyse v3 ist nun allgemein verfügbar. Die Container für Schlüsselbegriffserkennung und Sprachenerkennung sind als [nicht geschlossene öffentliche Vorschau](../../cognitive-services-gating-process.md) verfügbar.
+> * Der Container für Standpunktanalyse v3 ist nun allgemein verfügbar. Die Container für Schlüsselbegriffserkennung und Sprachenerkennung sind als nicht geschlossene öffentliche Vorschau verfügbar.
 > * Entitätsverknüpfung und NER stehen derzeit nicht als Container zur Verfügung.
 
 Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung auszuführen und eignen sich hervorragend für Ihre spezifischen Anforderungen bezüglich Sicherheit und Datengovernance. Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. 

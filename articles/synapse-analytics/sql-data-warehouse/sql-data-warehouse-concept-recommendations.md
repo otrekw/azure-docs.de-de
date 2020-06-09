@@ -11,18 +11,18 @@ ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607747"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653030"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-Empfehlungen
 
 In diesem Artikel werden die Synapse SQL-Empfehlungen beschrieben, die durch Azure Advisor bereitgestellt werden.  
 
-SQL Analytics bietet Empfehlungen, um sicherzustellen, dass Ihr Data Warehouse-Workload für Leistung konsistent optimiert wird. Empfehlungen sind in den [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eng integriert, um Sie direkt im [Azure-Portal](https://aka.ms/Azureadvisor) mit bewährten Methoden vertraut zu machen. SQL Analytics sammelt Telemetrie- und Oberflächenempfehlungen für Ihre aktive Workload in einem täglichen Rhythmus. Die unterstützten Empfehlungsszenarien werden im Folgenden zusammen mit der Anwendung empfohlener Aktionen beschrieben.
+Synapse SQL bietet Empfehlungen, um sicherzustellen, dass Ihre Data Warehouse-Workload im Hinblick auf die Leistung konsistent optimiert wird. Empfehlungen sind in den [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eng integriert, um Sie direkt im [Azure-Portal](https://aka.ms/Azureadvisor) mit bewährten Methoden vertraut zu machen. Synapse SQL sammelt täglich Telemetrie- und Oberflächenempfehlungen für Ihre aktive Workload. Die unterstützten Empfehlungsszenarien werden im Folgenden zusammen mit der Anwendung empfohlener Aktionen beschrieben.
 
 Sie können noch heute [Ihre Empfehlungen überprüfen](https://aka.ms/Azureadvisor)! 
 

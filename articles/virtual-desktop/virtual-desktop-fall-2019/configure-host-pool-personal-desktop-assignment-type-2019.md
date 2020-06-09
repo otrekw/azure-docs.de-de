@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614127"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827470"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
@@ -75,6 +75,18 @@ Um einen Benutzer einem bestimmten Sitzungshost zuzuweisen, führen Sie das folg
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>Entfernen einer Benutzerzuweisung
+
+Eine Benutzerzuweisung kann beispielsweise entfernt werden, wenn der Benutzer den persönlichen Desktop nicht mehr benötigt oder das Unternehmen verlassen hat oder wenn Sie den Desktop für eine andere Person wiederverwenden möchten.
+
+Aktuell muss zum Entfernen der Benutzerzuweisung für einen persönlichen Desktop der Sitzungshost vollständig entfernt werden. Führen Sie zum Entfernen des Sitzungshosts das folgende Cmdlet aus:
+
+```powershell
+Remove-RdsSessionHost
+```
+
+Wenn Sie den Sitzungshost wieder dem Hostpool mit persönlichen Desktops hinzufügen möchten, deinstallieren Sie Windows Virtual Desktop auf dem entsprechenden Computer, und führen Sie dann die unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell-2019.md) beschriebenen Schritte aus, um den Sitzungshost erneut zu registrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

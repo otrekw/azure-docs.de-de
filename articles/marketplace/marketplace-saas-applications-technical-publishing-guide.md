@@ -1,6 +1,6 @@
 ---
-title: Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen
-description: Schrittanleitung und Prüflisten für die Veröffentlichung von SaaS-Anwendungen im Azure Marketplace
+title: 'Leitfaden zur Veröffentlichung von SaaS-Anwendungen: Kommerzieller Microsoft-Marketplace'
+description: Hier werden die Anforderungen und Ressourcen für die Veröffentlichung von SaaS-Anwendungsangeboten in Microsoft AppSource und Azure Marketplace vorgestellt.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117232"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657827"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
-SaaS-Anwendungen können im Marketplace mit drei verschiedenen Aktionsaufrufen veröffentlicht werden: „Kontakt mit mir aufnehmen“, „Jetzt testen“ und „Jetzt kaufen“. Dieser Leitfaden erläutert diese drei Optionen einschließlich der jeweiligen Anforderungen. 
+Sie können SaaS-Anwendungen im kommerziellen Marketplace mit drei verschiedenen Aktionsaufrufen veröffentlichen: „Kontakt mit mir aufnehmen“, „Jetzt testen“ und „Jetzt kaufen“. Dieser Artikel erläutert diese drei Optionen einschließlich der jeweiligen Anforderungen. 
 
 ## <a name="offer-overview"></a>Angebotsübersicht  
 
@@ -28,7 +28,7 @@ SaaS-Anwendungen sind in Microsoft AppSource und Azure Marketplace verfügbar.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
-| **Kontaktaufnahme** | Ja | Nein  |  
+| **Kontaktaufnahme** | Ja | Nein |  
 | **Power BI/Dynamics** | Ja | Ja (Azure AD-Integration) |  
 | **SaaS-Apps**| Ja | Ja (Azure AD-Integration) |     
 

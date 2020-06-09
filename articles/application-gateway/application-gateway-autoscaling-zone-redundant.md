@@ -7,16 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 28a909c3b4011b55fb3fb67d9d64ab57a310cb86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207259"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739480"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
-Application Gateway und Web Application Firewall (WAF) sind auch in einer Standard_v2- und WAF_v2-SKU verfügbar. Die v2-SKU bietet Leistungsverbesserungen und zusätzliche Unterstützung für wichtige neue Features wie automatische Skalierung und Zonenredundanz sowie Unterstützung für statische VIPs. Vorhandene Features in der Standard- and WAF-SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt mit dem [Vergleich](#differences-with-v1-sku) aufgeführt sind.
+Application Gateway und Web Application Firewall (WAF) sind auch in einer Standard_v2- und WAF_v2-SKU verfügbar. Die v2-SKU bietet Leistungsverbesserungen und zusätzliche Unterstützung für wichtige neue Features wie automatische Skalierung und Zonenredundanz sowie Unterstützung für statische VIPs. Vorhandene Features in der Standard- and WAF-SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt mit dem [Vergleich](#differences-from-v1-sku) aufgeführt sind.
 
 Die neue v2-SKU enthält die folgenden Verbesserungen:
 
@@ -132,8 +133,16 @@ Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
 
 Application Gateway und WAF können für die Skalierung in zwei Modi konfiguriert werden:
 
-- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, weil das Gateway nicht mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung ausgeführt werden muss. Sie müssen eine Mindestanzahl und optional eine Höchstanzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Jede Instanz zählt als 10 zusätzliche reservierte Kapazitätseinheiten. Bei 0 wird keine Kapazität reserviert. Dieser Wert dient ausschließlich zur automatischen Skalierung. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird weiterhin die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20.
+- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, weil das Gateway nicht mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung ausgeführt werden muss. Sie müssen eine Mindestanzahl und optional eine Höchstanzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Jede Instanz entspricht in etwa zehn zusätzlichen reservierten Kapazitätseinheiten. Bei 0 wird keine Kapazität reserviert. Dieser Wert dient ausschließlich zur automatischen Skalierung. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird nur die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20.
 - **Manuell**: Sie können alternativ auch den manuellen Modus auswählen, in dem das Gateway nicht automatisch skaliert wird. Wenn in diesem Modus mehr Datenverkehr vorliegt, als von Application Gateway oder WAF verarbeitet werden kann, kann dies zu einem Datenverlust führen. Beim manuellen Modus ist die Angabe der Anzahl von Instanzen obligatorisch. Die Anzahl der Instanzen kann zwischen 1 und 125 variieren.
+
+## <a name="autoscaling-and-high-availability"></a>Automatische Skalierung und Hochverfügbarkeit
+
+Azure Application Gateway-Instanzen werden immer hochverfügbar bereitgestellt. Der Dienst setzt sich aus mehreren Instanzen zusammen, die entweder gemäß der Konfiguration (bei deaktivierter automatischer Skalierung) oder unter Berücksichtigung der Anwendungslast (bei aktivierter automatischer Skalierung) erstellt werden. Beachten Sie, dass aus Benutzersicht nicht unbedingt ein Einblick in die einzelnen Instanzen, sondern lediglich in den Application Gateway-Dienst als Ganzes möglich ist. Sollte in einer bestimmten Instanz ein Problem auftreten und die Instanz nicht mehr funktionieren, wird von Azure Application Gateway auf transparente Weise eine neue Instanz erstellt.
+
+Beachten Sie, dass der Dienst auch dann noch hochverfügbar ist, wenn Sie die automatische Skalierung mit null Mindestinstanzen konfigurieren. Dies ist immer im Festpreis enthalten.
+
+Die Erstellung einer neuen Instanz kann jedoch etwas dauern (etwa sechs oder sieben Minuten). Zur Vermeidung dieser Downtime können Sie daher die Mindestanzahl von Instanzen auf „2“ festlegen (idealerweise mit Verfügbarkeitszonenunterstützung). Dadurch sind im Normalfall mindestens zwei Instanzen in Azure Application Gateway vorhanden. Sollte nun in einer dieser Instanzen ein Problem auftreten, wird während der Erstellung einer neuen Instanz von der anderen Instanz versucht, den Datenverkehr zu bewältigen. Beachten Sie, dass von einer Azure Application Gateway-Instanz etwa zehn Kapazitätseinheiten unterstützt werden können. Daher empfiehlt es sich gegebenenfalls, die Einstellung für die Mindestanzahl von Instanzen für die automatische Skalierung abhängig von Ihrer üblichen Datenverkehrsmenge auf einen höheren Wert als „2“ festzulegen.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Funktionsvergleich zwischen v1 SKU und v2 SKU
 
@@ -163,7 +172,9 @@ In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestel
 > [!NOTE]
 > Die v2-SKU mit automatischer Skalierung unterstützt nun [Standardintegritätstests](application-gateway-probe-overview.md#default-health-probe), um die Integrität aller Ressourcen im Back-End-Pool automatisch zu überwachen und solche Back-End-Elemente zu markieren, die als fehlerhaft gelten. Der Standardintegritätstest wird automatisch für Back-Ends konfiguriert, die keine benutzerdefinierte Testkonfiguration aufweisen. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways](application-gateway-probe-overview.md).
 
-## <a name="differences-with-v1-sku"></a>Unterschiede im Vergleich zur v1-SKU
+## <a name="differences-from-v1-sku"></a>Unterschiede zur v1-SKU
+
+In diesem Abschnitt werden die Features und Einschränkungen der v2-SKU beschrieben, die sich von denen der v1-SKU unterscheiden.
 
 |Unterschied|Details|
 |--|--|

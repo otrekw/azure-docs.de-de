@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/14/2020
+ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383029"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652383"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Übersicht über Azure HDInsight 4.0
 
@@ -95,6 +95,9 @@ Es gibt keinen unterstützten Upgradepfad von früheren Versionen von HDInsight 
 * Shellinterpreter in Apache Zeppelin wird in Spark- und Interactive Query-Clustern nicht unterstützt.
 * Sie können LLAP in einem Spark-LLAP-Cluster nicht *deaktivieren*. Sie können LLAP nur ausschalten.
 * Azure Data Lake Storage Gen2 kann Jupyter Notebooks nicht in einem Spark-Cluster speichern.
+* Apache Pig wird standardmäßig in Tez ausgeführt. Sie können diese Einstellung jedoch in MapReduce ändern.
+* Die Spark SQL Ranger-Integration für Zeilen- und Spaltensicherheit ist veraltet.
+* Spark 2.4 und Kafka 2.1 sind in HDInsight 4.0 verfügbar. Spark 2.3 und Kafka 1.1 werden daher nicht mehr unterstützt. In HDInsight 4.0 wird die Verwendung von Spark 2.4 und Kafka 2.1 oder höheren Versionen empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691656"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744774"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analysieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Power BI
 In diesem Artikel erfahren Sie, wie Sie in Azure Data Lake Storage Gen1 gespeicherte Daten mithilfe von Power BI Desktop analysieren und visualisieren.
@@ -81,10 +81,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
         ![Kreisdiagramm](./media/data-lake-store-power-bi/pie-chart.png "Erstellen von Visualisierungen")
 16. Indem Sie aus den Filtern auf Seitenebene ein bestimmtes Land bzw. eine bestimmte Region auswählen, können Sie die Anzahl von Fahrern in jeder Stadt des ausgewählten Landes bzw. der ausgewählten Region anzeigen. Wählen Sie z.B. auf der Registerkarte **Visualisierungen** unter **Filter auf Seitenebene** als Land **Brasilien** aus.
     
-    ![Auswählen eines Lands](./media/data-lake-store-power-bi/select-country.png "Auswählen eines Lands/einer Region")
+    ![Auswählen eines Lands/einer Region](./media/data-lake-store-power-bi/select-country.png "Auswählen eines Lands/einer Region")
 17. Das Kreisdiagramm wird automatisch aktualisiert und zeigt die Fahrer in den brasilianischen Städten an.
     
-    ![Fahrer in einem Land](./media/data-lake-store-power-bi/driver-per-country.png "Fahrer pro Land/Region")
+    ![Fahrer in einem Land/einer Region](./media/data-lake-store-power-bi/driver-per-country.png "Fahrer pro Land/Region")
 18. Klicken Sie im Menü **Datei** auf **Speichern**, um die Visualisierung als Power BI Desktop-Datei zu speichern.
 
 ## <a name="publish-report-to-power-bi-service"></a>Veröffentlichen des Berichts im Power BI-Dienst

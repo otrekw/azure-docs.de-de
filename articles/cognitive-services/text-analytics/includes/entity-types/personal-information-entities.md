@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77086904"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778183"
 ---
 ## <a name="personal-information-entity-types"></a>Entitätstypen für personenbezogene Informationen:
 
@@ -164,7 +164,7 @@ Sprachen:
 | Kreditkarte                | Kreditkartennummern                                                       |
 | IBAN-Code                  | IBAN-Codes in Zahlungsanweisungen.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Behördliche und landesspezifische Informationen zur Identifikation
+#### <a name="government-and-countryregion-specific-identification"></a>Behördliche und landes-/regionsspezifische Informationen zur Identifikation
 
 Die nachstehenden Entitäten werden nach Land/Region gruppiert und aufgeführt:
 
