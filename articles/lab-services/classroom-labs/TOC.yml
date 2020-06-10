@@ -42,6 +42,8 @@
               href: class-type-ethical-hacking.md
             - name: Datenbankverwaltung
               href: class-type-database-management.md
+            - name: 'Azure SQL-Datenbank: Verwaltung und Entwicklung'
+              href: class-type-sql-server.md
             - name: "Python und Jupyter\_Notebook-Instanzen"
               href: class-type-jupyter-notebook.md
             - name: Entwicklung mobiler Apps mit Android Studio
@@ -74,6 +76,8 @@
           href: allow-lab-creator-pick-lab-location.md
         - name: Herstellen einer Verbindung mit einem virtuellen Peernetzwerk
           href: how-to-connect-peer-virtual-network.md
+        - name: Erstellen eines Labs mit einer freigegebenen Ressource
+          href: how-to-create-a-lab-with-shared-resource.md
         - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
           href: how-to-attach-detach-shared-image-gallery.md
         - name: Hinzufügen zusätzlicher Besitzer zu einem Classroom-Lab

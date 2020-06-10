@@ -4,16 +4,19 @@
   items:
     - name: Was ist Azure Blueprint?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Schnellstarts
   expanded: true
   items:
     - name: Erstellen einer Blaupause – Portal
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Erstellen einer Blaupause – PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Erstellen einer Blaupause – Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Erstellen einer Blaupause – Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Erstellen einer Blaupause – REST-API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: Verweis
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Azure SDK für .NET
@@ -285,7 +290,7 @@
     - name: 'GitHub: Azure Blueprints-Beispiele'
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Microsoft Q&A (Fragen und Antworten) für Azure Blueprints
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: YouTube-Kanal zu Governance
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 'Azure Friday: Übersicht über Azure Blueprints'

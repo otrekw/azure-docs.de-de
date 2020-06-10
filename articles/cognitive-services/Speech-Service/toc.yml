@@ -462,6 +462,8 @@
       items:
         - name: Was ist Sprechererkennung?
           href: speaker-recognition-overview.md
+        - name: Grundlagen zur Sprechererkennung
+          href: speaker-recognition-basics.md
     - name: Verweis
       items:
         - name: REST-APIs

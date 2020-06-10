@@ -3,7 +3,7 @@ title: QnA Maker-Dokumentation
 summary: Hier erhalten Sie Informationen zum QnA Maker-Dienst und erfahren, wie die Wissensdatenbanken dieses Diensts Ihre Fragen und Antworten verarbeiten.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/18/2019
+  ms.date: 06/08/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker-Dokumentation
   description: QnA Maker ist ein cloudbasierter API-Dienst, mit dem eine Frage-und-Antwort-Ebene im Konversationsstil für Ihre Daten erstellt wird. Mit QnA Maker können Sie einen Frage-und-Antwort-Dienst auf der Grundlage Ihrer teilweise strukturierten Inhalte bereitstellen. Bei solchen Inhalten kann es sich beispielsweise um FAQ-Dokumente, URLs und Produkthandbücher handeln. Mit dem QnA Maker-Dienst werden die von Ihren Benutzern in natürlicher Sprache gestellten Fragen beantwortet, indem aus den Fragen und Antworten in Ihrer Wissensdatenbank die bestmögliche Antwort zugewiesen wird.
-  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
+  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83651162"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84628033"
 landingContent:
 - title: Informationen zu QnA Maker
   linkLists:
@@ -66,8 +66,8 @@ landingContent:
     links:
     - text: 'Schnellstart: Mit Postman oder cURL'
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: 'Schnellstart: Verwenden von REST und C#'
-      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: 'Schnellstart: Verwenden von Rest und cURL'
+      url: quickstarts/quickstart-rest-curl.md
     - text: 'Schnellstart: Verwenden des SDK'
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
@@ -94,8 +94,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 'Portal: Erstellen eines QnA-Bots'
+    - text: 'Portal: Erstellen eines Azure Bot Service-Bots'
       url: tutorials/create-qna-bot.md
+    - text: 'Power Apps: Erstellen eines QnA Maker-basierten Bots'
+      url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - text: 'Bot Framework: Verteilung zwischen LUIS- und QnA Maker-Apps'
+      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
     - text: Andere Botbeispiele
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Verweis

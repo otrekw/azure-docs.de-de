@@ -15,6 +15,10 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in Python
           href: tutorial-python-windows-virtual-machine.md
+    - name: Azure Kubernetes Service
+      items:
+        - name: Integrieren von Azure Key Vault mit Kubernetes
+          href: key-vault-integrate-kubernetes.md
     - name: Herstellen einer Verbindung zwischen Key Vault und einer Web-App mit einer verwalteten Identität und .NET
       href: tutorial-net-create-vault-azure-web-app.md
 - name: Beispiele
