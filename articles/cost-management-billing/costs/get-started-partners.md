@@ -3,17 +3,17 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997127"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554561"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -152,7 +152,7 @@ In amortisierten Ansichten und für tatsächlichen Koste für reservierte Instan
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analysieren von Kosten mithilfe der Kostenanalyse
 
-Partner mit Zugriff auf Abrechnungsbereiche im Partnermandanten können Kosten in der Kostenanalyse für einen bestimmten Kunden oder für eine Rechnung untersuchen und analysieren. In der Ansicht [Kostenanalyse](quick-acm-cost-analysis.md) können Sie auch [Ansichten speichern](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) und Daten in [CSV- und PNG-Dateien](quick-acm-cost-analysis.md#automation-and-offline-analysis) exportieren.
+Partner mit Zugriff auf Abrechnungsbereiche im Partnermandanten können Kosten in der Kostenanalyse für einen bestimmten Kunden oder für eine Rechnung untersuchen und analysieren. In der Ansicht [Kostenanalyse](quick-acm-cost-analysis.md) können Sie auch [Ansichten speichern](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) und Daten in [CSV- und PNG-Dateien](quick-acm-cost-analysis.md#download-usage-data) exportieren.
 
 Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung im Kundenmandanten Zugriff auf ein Abonnement gewährt wurde, können auch Einzelhandelskosten für Abonnements im Kundenmandanten analysieren, Ansichten speichern und Daten in CSV- und PNG-Dateien exportieren.
 

@@ -1,6 +1,6 @@
 ---
-title: 'CLI-Beispiel: Wiederherstellen einer Azure SQL-Datenbank aus einer Sicherung'
-description: Azure CLI-Beispielskript zum Wiederherstellen des früheren Zustands einer Azure SQL-Einzeldatenbank auf der Grundlage automatischer Sicherungen
+title: 'Azure CLI: Wiederherstellen einer Sicherung'
+description: Azure CLI-Beispielskript zum Wiederherstellen eines früheren Zustands einer Datenbank in Azure SQL-Datenbank aus automatischen Sicherungen
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774272"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022623"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Wiederherstellen des früheren Zustands einer Azure SQL-Einzeldatenbank per CLI
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Einzeldatenbank in Azure SQL-Datenbank mit der CLI
 
-Mit diesem Azure CLI-Beispielskript wird ein bestimmter früherer Zustand einer Azure SQL-Datenbank wiederhergestellt.  
+Mit diesem Azure CLI-Beispiel wird ein bestimmter früherer Zustand einer Einzeldatenbank in Azure SQL-Datenbank wiederhergestellt.  
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -60,4 +60,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

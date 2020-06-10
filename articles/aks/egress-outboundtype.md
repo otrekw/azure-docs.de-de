@@ -3,45 +3,27 @@ title: Anpassen von benutzerdefinierten Routen (UDR) in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie benutzerdefinierte ausgehende Routen in Azure Kubernetes Service (AKS) definieren.
 services: container-service
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/05/2020
+ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677892"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310868"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route (Vorschau)
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route
 
-Der von einem AKS-Cluster ausgehende Datenverkehr kann an verschiedene Szenarien angepasst werden. Standardmäßig stellt AKS eine Lastenausgleichsressource mit einer Standard-SKU bereit, die für ausgehenden Datenverkehr eingerichtet und verwendet werden kann. Das Standardsetup erfüllt aber möglicherweise nicht alle Anforderungen in allen Szenarien, wenn öffentliche IP-Adressen nicht zulässig oder zusätzliche Hops für den ausgehenden Datenverkehr erforderlich sind.
+Der von einem AKS-Cluster ausgehende Datenverkehr kann an verschiedene Szenarien angepasst werden. Standardmäßig stellt AKS eine standardmäßige SKU-Lastenausgleichsressource bereit, die für ausgehenden Datenverkehr eingerichtet und verwendet wird. Das Standardsetup erfüllt aber möglicherweise nicht alle Anforderungen in allen Szenarien, wenn öffentliche IP-Adressen nicht zulässig oder zusätzliche Hops für den ausgehenden Datenverkehr erforderlich sind.
 
 In diesem Artikel wird beschrieben, wie Sie die ausgehende Route eines Clusters an verschiedene Netzwerkszenarien anpassen, wenn beispielsweise öffentliche IP-Adressen nicht zulässig sind und der Cluster hinter einem virtuellen Netzwerkgerät platziert werden muss.
 
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service-Prinzip und auf Aktivierungsbasis zur Verfügung. Vorschauversionen werden *wie besehen* und *wie verfügbar* bereitgestellt und sind von den Vereinbarungen zum Service Level (SLA) und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauversionen werden teilweise vom Kundensupport auf Grundlage der *bestmöglichen Leistung* abgedeckt. Daher sind die Funktionen nicht für den Einsatz in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
->
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
-> * [Häufig gestellte Fragen zum Azure-Support](faq.md)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure CLI, Version 2.0.81 oder höher
-* Azure CLI Preview-Erweiterung, Version 0.4.28 oder höher
 * API-Version `2020-01-01` oder höher
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Installieren der neuesten AKS-Vorschauerweiterung für die Azure CLI
-Um den Typ des ausgehenden Datenverkehrs für einen privaten Cluster festzulegen, benötigen Sie Version 0.4.18 oder höher der AKS-Vorschauerweiterung für die Azure CLI. Installieren Sie die AKS-Vorschauerweiterung für die Azure CLI, indem Sie den Befehl „az extension add“ verwenden und dann mit dem folgenden Befehl „az extension update“ nach verfügbaren Updates suchen:
-
-```azure-cli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="limitations"></a>Einschränkungen
-* Während der Vorschau kann `outboundType` nur zum Zeitpunkt der Clustererstellung definiert werden. Eine spätere Aktualisierung ist nicht möglich.
-* Während der Vorschau müssen AKS-Cluster mit `outboundType` Azure CNI verwenden. Kubenet ist konfigurierbar. Die Verwendung erfordert manuelle Zuordnungen der Routingtabelle zum AKS-Subnetz.
+* „OutboundType“ kann nur zum Zeitpunkt der Clustererstellung definiert werden, und eine spätere Aktualisierung ist nicht möglich.
 * Für `outboundType` sind AKS-Cluster erforderlich, bei denen `vm-set-type` als `VirtualMachineScaleSets` und `load-balancer-sku` als `Standard` festgelegt ist.
 * Wenn Sie `outboundType` auf den Wert `UDR` festlegen, wird eine benutzerdefinierte Route mit gültiger ausgehender Konnektivität für den Cluster benötigt.
 * Durch Festlegung von `outboundType` auf den Wert `UDR` wird impliziert, dass die IP-Quelladresse des eingehenden Datenverkehrs zum Routing an den Lastenausgleich **nicht** der IP-Zieladresse des vom Cluster ausgehenden Datenverkehrs entspricht.
@@ -53,11 +35,14 @@ Ein AKS-Cluster kann mit einem eindeutigen `outboundType` als Lastenausgleich od
 > [!IMPORTANT]
 > Der ausgehende Typ betrifft nur den ausgehenden Datenverkehr Ihres Clusters. Weitere Informationen finden Sie unter [Einrichten von Eingangscontrollern](ingress-basic.md).
 
+> [!NOTE]
+> Sie können Ihre eigene [Routingtabelle][byo-route-table] mit UDR und Kubenet-Netzwerken verwenden.
+
 ### <a name="outbound-type-of-loadbalancer"></a>Ausgehender Typ von loadBalancer
 
-Wenn `loadBalancer` festgelegt ist, führt AKS das folgende Setup automatisch durch. Ein Lastenausgleich wird für ausgehenden Datenverkehr über eine von AKS zugewiesene öffentliche IP-Adresse verwendet. Ein ausgehender Typ von `loadBalancer` unterstützt Kubernetes-Dienste vom Typ `loadBalancer`, die ausgehenden Datenverkehr von der Lastenausgleichsressource erwarten, der vom AKS-Ressourcenanbieter erstellt wurde.
+Wenn `loadBalancer` festgelegt ist, führt AKS die folgende Konfiguration automatisch durch. Ein Lastenausgleich wird für ausgehenden Datenverkehr über eine von AKS zugewiesene öffentliche IP-Adresse verwendet. Ein ausgehender Typ von `loadBalancer` unterstützt Kubernetes-Dienste vom Typ `loadBalancer`, die ausgehenden Datenverkehr von der Lastenausgleichsressource erwarten, der vom AKS-Ressourcenanbieter erstellt wurde.
 
-Das folgende Setup wird von AKS durchgeführt.
+Die folgende Konfiguration wird von AKS durchgeführt.
    * Für ausgehenden Datenverkehr vom Cluster wird eine öffentliche IP-Adresse bereitgestellt.
    * Die öffentliche IP-Adresse ist der Lastenausgleichsressource zugewiesen.
    * Für Agent-Knoten im Cluster werden Back-End-Pools für den Lastenausgleich eingerichtet.
@@ -173,9 +158,9 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>Erstellen und Einrichten einer Azure Firewall-Instanz mit einer benutzerdefinierten Route
+## <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>Erstellen und Einrichten einer Azure Firewall-Instanz mit einer benutzerdefinierten Route
 
-Für Azure Firewall müssen Eingangs- und Ausgangsregeln konfiguriert werden. Die Firewall dient hauptsächlich dazu, es Organisationen zu ermöglichen, differenzierte Regeln für ein- und ausgehenden Datenverkehr in den und aus dem AKS-Cluster einzurichten.
+Für Azure Firewall müssen Eingangs- und Ausgangsregeln konfiguriert werden. Die Firewall dient hauptsächlich dazu, Organisationen das Konfigurieren von differenzierten Regeln für ein- und ausgehenden Datenverkehr in den und aus dem AKS-Cluster zu ermöglichen.
 
 ![Firewall und benutzerdefinierte Routen](media/egress-outboundtype/firewall-udr.png)
 
@@ -198,7 +183,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC
 
 Die erstellte IP-Adresse kann jetzt dem Firewall-Front-End zugewiesen werden.
 > [!NOTE]
-> Das Einrichten der öffentlichen IP-Adresse für Azure Firewall kann einige Minuten dauern.
+> Das Einrichten der öffentlichen IP-Adresse für die Azure Firewall-Instanz kann einige Minuten dauern.
 > 
 > Wenn für den unten stehenden Befehl wiederholt Fehler zurückgegeben werden, löschen Sie die vorhandene Firewall und die zugewiesene IP-Adresse. Stellen Sie dann die öffentliche IP-Adresse und Azure Firewall gleichzeitig über das Portal bereit.
 
@@ -217,7 +202,13 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
+> [!Note]
+> Wenn Sie den sicheren Zugriff auf den AKS-API-Server mit [autorisierten IP-Adressbereichen](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verwenden, müssen Sie die öffentliche IP-Adresse der Firewall zum autorisierten IP-Adressbereich hinzufügen.
+
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Erstellen einer benutzerdefinierten Route mit einem Hop zu Azure Firewall
+
+> [!IMPORTANT]
+> Für den ausgehenden Typ „UDR“ muss in der Routingtabelle eine Route für das Ziel 0.0.0.0/0 und den nächsten Hop des virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) vorhanden sein.
 
 Azure führt für Datenverkehr automatisch das Routing zwischen Azure-Subnetzen, virtuellen Netzwerken und lokalen Netzwerken durch. Wenn Sie das Standardrouting von Azure ändern möchten, erstellen Sie eine Routingtabelle.
 
@@ -321,7 +312,7 @@ Schließlich kann der AKS-Cluster in dem vorhandenen Subnetz bereitgestellt werd
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
 ```
 
-Wir definieren den ausgehenden Typ so, dass er der im Subnetz vorhandenen benutzerdefinierten Route folgt. So kann AKS die Einrichtung und Bereitstellung einer IP-Adresse für die Lastenausgleichsressource überspringen, und der Lastenausgleich kann jetzt strikt intern erfolgen.
+Definieren Sie den ausgehenden Typ so, dass er der im Subnetz vorhandenen benutzerdefinierten Route folgt. Dadurch kann AKS die Einrichtung und Bereitstellung einer IP-Adresse für die Lastenausgleichsressource überspringen, und der Lastenausgleich kann jetzt strikt intern erfolgen.
 
 Das AKS-Feature für [vom API-Server autorisierte IP-Adressbereiche](api-server-authorized-ip-ranges.md) kann hinzugefügt werden, um den Zugriff des API-Servers auf den öffentlichen Endpunkt der Firewall zu beschränken. Das Feature für autorisierte IP-Adressbereiche ist im Diagramm als die Netzwerksicherheitsgruppe dargestellt, die zum Zugriff auf die Steuerungsebene passiert werden muss. Wenn Sie das Feature für autorisierte IP-Adressbereiche verwenden, um den API-Serverzugriff einzuschränken, müssen Ihre Entwicklertools eine Jumpbox für das virtuelle Netzwerk der Firewall verwenden, oder Sie müssen alle Entwicklerendpunkte zum autorisierten IP-Adressbereich hinzufügen.
 
@@ -345,7 +336,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>Ermöglichen des Entwicklerzugriffs auf den API-Server
 
-Da für den Cluster autorisierte IP-Adressbereiche eingerichtet wurden, müssen Sie die IP-Adressen Ihrer Entwicklertools zur AKS-Clusterliste mit genehmigten IP-Adressen hinzufügen, um auf den API-Server zugreifen zu können. Eine andere Möglichkeit besteht darin, in einem separaten Subnetz innerhalb des virtuellen Netzwerks von Azure Firewall eine Jumpbox mit den erforderlichen Tools zu konfigurieren.
+Da für den Cluster autorisierte IP-Adressbereiche eingerichtet wurden, müssen Sie die IP-Adressen Ihrer Entwicklertools zur AKS-Clusterliste der genehmigten IP-Adressbereiche hinzufügen, um auf den API-Server zugreifen zu können. Eine andere Möglichkeit besteht darin, in einem separaten Subnetz innerhalb des virtuellen Netzwerks von Azure Firewall eine Jumpbox mit den erforderlichen Tools zu konfigurieren.
 
 Mit dem folgenden Befehl fügen Sie dem Bereich der genehmigten IP-Adressen eine weitere Adresse hinzu.
 
@@ -364,7 +355,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
-### <a name="setup-the-internal-load-balancer"></a>Einrichten des internen Lastenausgleichs
+### <a name="set-up-the-internal-load-balancer"></a>Einrichten des internen Lastenausgleichs
 
 AKS stellt mit dem Cluster eine Lastenausgleichsressource bereit, die als [interner Lastenausgleich](internal-lb.md) eingerichtet werden kann.
 
@@ -542,3 +533,4 @@ Weitere Informationen finden Sie auch unter [Erstellen, Ändern oder Löschen ei
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

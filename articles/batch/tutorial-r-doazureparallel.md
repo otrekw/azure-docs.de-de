@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117096"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418176"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Tutorial: Ausführen einer parallelen R-Simulation mit Azure Batch 
 
