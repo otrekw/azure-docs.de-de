@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117094"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317656"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -29,6 +29,7 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * Windows Server 2012 (nur 64 Bit)
 * Windows Server 2012 R2 (nur 64 Bit)
 * Windows Server 2016 (nur 64 Bit)
+* Windows Server 2019 (nur 64 Bit)
 * Windows 10
 * Mac OS X-Version 10.11 oder höher
 * Linux (StrongSwan)
@@ -115,7 +116,7 @@ $gw.VPNClientConfiguration = $null`
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
 ```
 
-#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"

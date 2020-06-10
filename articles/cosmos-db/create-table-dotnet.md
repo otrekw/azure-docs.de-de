@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: df26021a3718c17d72f0fdb25588487043918732
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084106"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218173"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App per .NET SDK und Azure Cosmos DB 
 
@@ -66,7 +66,8 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
 
-> ![TIPP] Eine ausführlichere exemplarische Vorgehensweise finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](table-storage-how-to-use-dotnet.md).
+> [!TIP]
+> Eine ausführlichere exemplarische Vorgehensweise mit einem ähnlichen Code finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](table-storage-how-to-use-dotnet.md).
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Öffnen der Beispielanwendung in Visual Studio
 
@@ -75,6 +76,26 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
    ![Öffnen der Projektmappe](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
 2. Navigieren Sie zu dem Ordner, in dem Sie die Beispielanwendung geklont haben, und öffnen Sie die Datei „TableStorage.sln“.
+
+## <a name="review-the-code"></a>Überprüfen des Codes
+
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit dem Abschnitt zum [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) in diesem Dokument fortfahren.
+
+* Der folgende Code zeigt, wie eine Tabelle in Azure Storage erstellt wird:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
+
+* Der folgende Code zeigt, wie Daten in die Tabelle eingefügt werden:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
+
+* Der folgende Code zeigt, wie Daten aus der Tabelle abgefragt werden:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+
+* Der folgende Code zeigt, wie Daten aus der Tabelle gelöscht werden:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 

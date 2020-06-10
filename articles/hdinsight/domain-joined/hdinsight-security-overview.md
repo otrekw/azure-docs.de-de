@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780078"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996311"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -43,7 +43,7 @@ In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Dom�
 
 In den meisten Unternehmen hat es sich bewährt, dass nicht jeder Mitarbeiter Vollzugriff auf alle Unternehmensressourcen hat. Analog dazu kann der Administrator für die Clusterressourcen Richtlinien für die rollenbasierte Zugriffssteuerung definieren. Diese Aktion ist nur in den ESP-Clustern verfügbar.
 
-Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren. Die Konfigurationen sichern Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit Apache Range-Plug-Ins. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
+Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren. Die Konfigurationen sichern Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit Apache Ranger-Plug-Ins ab. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
 
 So kann der Administrator etwa [Apache Ranger](https://ranger.apache.org/) zum Festlegen von Zugriffssteuerungsrichtlinien für Hive konfigurieren. Mit dieser Funktion wird die Filterung auf Zeilen- und Spaltenebene (Datenmaskierung) sichergestellt. Zudem werden die sensiblen Daten für nicht autorisierte Benutzer gefiltert.
 

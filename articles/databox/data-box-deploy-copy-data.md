@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1730317296c672eb9347986ec41fdba25427408e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200488"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219109"
 ---
-::: zone target="docs" 
+::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Tutorial: Kopieren von Daten in eine Azure Data Box über SMB
 
@@ -35,10 +35,10 @@ In diesem Tutorial wird beschrieben, wie Sie über die lokale Webbenutzeroberfl�
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Voraussetzungen
 > * Herstellen einer Verbindung mit der Data Box
 > * Kopieren von Daten auf die Data Box
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,15 +47,16 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 1. Sie haben die Schritte unter [Tutorial: Einrichten der Azure Data Box](data-box-deploy-set-up.md) ausgeführt.
 2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt.
 3. Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
-    - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
-    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, verwenden Sie eine 1-GbE-Datenverbindung, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
+   * Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
+   * Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, verwenden Sie eine 1-GbE-Datenverbindung, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
 
 ## <a name="connect-to-data-box"></a>Herstellen einer Verbindung mit der Data Box
 
 Je nach ausgewähltem Speicherkonto erstellt Data Box bis zu:
-- Drei Freigaben für jedes verknüpfte Speicherkonto für GPv1 und GPv2
-- Eine Freigabe für Storage Premium
-- Eine Freigabe für das Blob Storage-Konto
+
+* Drei Freigaben für jedes verknüpfte Speicherkonto für GPv1 und GPv2
+* Eine Freigabe für Storage Premium
+* Eine Freigabe für das Blob Storage-Konto
 
 Unter Blockblob- und Seitenblobfreigaben sind Entitäten der ersten Ebene Container, und Entitäten der zweiten Ebene sind Blobs. Unter Freigaben für Azure Files sind Entitäten erster Ebene Freigaben. Entitäten zweiter Ebene sind Dateien.
 
@@ -85,7 +86,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     - Azure-Blockblob: `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure-Seitenblob: `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Azure-Dateien: `\\10.126.76.172\devicemanagertest1_AzFile`
-    
+
 4. Geben Sie das Kennwort für die Freigabe ein, wenn Sie dazu aufgefordert werden. Das folgende Beispiel zeigt das Herstellen einer Verbindung mit einer Freigabe über den obigen Befehl.
 
     ```
@@ -100,7 +101,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
     Die Freigaben sollten jetzt als Ordner angezeigt werden.
     
-    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+    ![Herstellen einer Verbindung mit der Freigabe über den Datei-Explorer 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
     
@@ -113,7 +114,7 @@ Wenn Sie einen Linux-Client verwenden, stellen Sie mit folgendem Code die SMB-Fr
 Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Bevor Sie mit dem Kopieren der Daten beginnen, sollten Sie folgende Aspekte beachten:
 
 * Stellen Sie sicher, dass Sie die Daten in Freigaben kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in die Freigabe für Blockblobs. Kopieren Sie die VHDs in einen Seitenblob. Wenn das Datenformat nicht mit dem entsprechenden Freigabetyp übereinstimmt, tritt später beim Hochladen der Daten in Azure ein Fehler auf.
-*  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
+* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
 * Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 * Wir empfehlen Folgendes:
   * Sie verwenden SMB und NFS nicht gleichzeitig.
@@ -121,7 +122,9 @@ Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopier
 
   In diesen Fällen lässt sich das endgültige Ergebnis nicht im Vorhinein bestimmen.
 * Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den die Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
-* Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
+
+> [!IMPORTANT]
+> Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
 
 Nachdem Sie eine Verbindung mit der SMB-Freigabe hergestellt haben, beginnen Sie mit dem Kopieren der Daten. Sie können jedes SMB-kompatible Dateikopiertool (beispielsweise Robocopy) verwenden, um Ihre Daten zu kopieren. Mit Robocopy können mehrere Kopieraufträge initiiert werden. Verwenden Sie den folgenden Befehl:
     
@@ -203,7 +206,6 @@ Das folgende Beispiel zeigt die Ausgabe des Robocopy-Befehls zum Kopieren von Da
         Files :        17        17         0         0         0         0
         Bytes :     3.9 k     3.9 k         0         0         0         0          
     C:\Users>
-       
 
 Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim Kopieren der Daten.
 
@@ -211,13 +213,12 @@ Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim 
 |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
 |    Data Box         |    2 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    3 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen <br> 24 Threads pro Sitzung    |
 
-
 Weitere Informationen zum Robocopy-Befehl finden Sie unter [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy und einige Beispiele).
 
 Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Falls während des Kopierprozesses Fehler auftreten, laden Sie zur Problembehandlung die Fehlerdateien herunter. Weitere Informationen finden Sie unter [Anzeigen von Fehlerprotokollen beim Kopieren von Daten auf die Data Box](data-box-logs.md#view-error-log-during-data-copy). Eine detaillierte Liste von Fehlern beim Datenkopiervorgang finden Sie unter [Behandeln von Problemen bei der Data Box](data-box-troubleshoot.md).
 
 Um die Datenintegrität zu gewährleisten, wird inline eine Prüfsumme berechnet, während die Daten kopiert werden. Überprüfen Sie nach Abschluss des Kopiervorgangs den belegten Speicherplatz und den freien Speicherplatz auf Ihrem Gerät.
-    
+
    ![Überprüfen des freien und belegten Speicherplatzes im Dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
@@ -230,6 +231,8 @@ Achten Sie in jedem Fall darauf, dass die Namen der Freigaben und Ordner sowie d
 
 ## <a name="copy-data-via-smb"></a>Kopieren von Daten über SMB
 
+So kopieren Sie Daten über SMB
+
 1. Verwenden Sie bei Verwendung eines Windows-Hosts den folgenden Befehl, um eine Verbindung mit den SMB-Freigaben herzustellen:
 
     `\\<IP address of your device>\ShareName`
@@ -240,6 +243,8 @@ Achten Sie in jedem Fall darauf, dass die Namen der Freigaben und Ordner sowie d
 Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten in eine Azure Data Box über SMB](data-box-deploy-copy-data.md).
 
 ## <a name="copy-data-via-nfs"></a>Kopieren von Daten über NFS
+
+So kopieren Sie Daten über NFS
 
 1. Verwenden Sie bei Verwendung eines NFS-Hosts den folgenden Befehl, um die NFS-Freigaben in Ihre Data Box einzubinden:
 
@@ -252,6 +257,8 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Dat
 
 ## <a name="copy-data-via-rest"></a>Kopieren von Daten über REST
 
+So kopieren Sie Daten über REST
+
 1. Wenn Sie Daten unter Verwendung von Data Box-Blobspeicher über REST-APIs kopieren möchten, können Sie eine Verbindung über *HTTP* oder *HTTPS* herstellen.
 2. Daten können mithilfe von AzCopy in Data Box-Blobspeicher kopiert werden.
 
@@ -259,12 +266,16 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Dat
 
 ## <a name="copy-data-via-data-copy-service"></a>Kopieren von Daten per Datenkopierdienst
 
-1. Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihrer Data Box zu **Verwalten > Daten kopieren > Erstellen**. 
+So kopieren Sie Daten per Datenkopierdienst
+
+1. Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihrer Data Box zu **Verwalten > Daten kopieren > Erstellen**.
 2. Füllen Sie die Parameter aus, und erstellen Sie einen Auftrag.
 
 Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten in Azure Data Box mithilfe des Datenkopierdiensts](data-box-deploy-copy-data-via-copy-service.md).
 
 ## <a name="copy-data-to-managed-disks"></a>Kopieren von Daten auf verwaltete Datenträger
+
+So kopieren Sie Daten auf verwaltete Datenträger
 
 1. Bei der Bestellung des Data Box-Geräts müssen Sie verwaltete Datenträger als Speicherziel ausgewählt haben.
 2. Sie können über SMB- oder NFS-Freigaben eine Verbindung mit der Data Box herstellen.
@@ -274,7 +285,6 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Verwenden von Da
 
 ::: zone-end
 
-
 ::: zone target="docs"
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -282,10 +292,10 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Verwenden von Da
 In diesem Tutorial haben Sie Informationen zu Azure Data Box-Themen erhalten, darunter die folgenden:
 
 > [!div class="checklist"]
+>
 > * Voraussetzungen
 > * Herstellen einer Verbindung mit der Data Box
 > * Kopieren von Daten auf die Data Box
-
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Data Box zurück an Microsoft senden.
 
@@ -293,4 +303,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Data Bo
 > [Zurücksenden der Azure Data Box an Microsoft](./data-box-deploy-picked-up.md)
 
 ::: zone-end
-

@@ -1,6 +1,6 @@
 ---
-title: 'CLI-Beispiel: Failovergruppe – Verwaltete Azure SQL-Datenbank-Instanz'
-description: Enthält ein Azure CLI-Beispielskript, mit dem Sie eine verwaltete Azure SQL-Datenbank-Instanz erstellen, die Datenbank einer Failovergruppe hinzufügen und das Failover testen können.
+title: 'CLI-Beispiel: Failovergruppe – Azure SQL Managed Instance'
+description: Enthält ein Azure CLI-Beispielskript, mit dem Sie eine Azure SQL Managed Instance erstellen, einer Failovergruppe hinzufügen und das Failover testen können.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,16 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8ffe40662ffaf8a1fb35a3d31acfaea78ea0fbeb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9efb4e222e74f97a4f3d88639b02a86a3a6d660
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061915"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115428"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Hinzufügen einer verwalteten Azure SQL-Datenbank-Instanz zu einer Failovergruppe per CLI
+# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Hinzufügen einer Azure SQL Managed Instance zu einer Failovergruppe mit der CLI
 
-Mit diesem Azure CLI-Beispielskript werden zwei verwaltete Instanzen erstellt und einer Failovergruppe hinzugefügt. Anschließend wird das Failover von der primären verwalteten Instanz zur sekundären verwalteten Instanz getestet.
+Mit diesem Azure CLI-Beispielskript werden zwei verwaltete Instanzen erstellt und einer Failovergruppe hinzugefügt. Anschließend wird das Failover von der primären verwalteten Instanz auf die sekundäre verwaltete Instanz getestet.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -52,13 +52,13 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | Befehle für Subnetze des virtuellen Netzwerks |
 | [az network nsg](/cli/azure/network/nsg) | Befehle für Netzwerksicherheitsgruppen |
 | [az network route-table](/cli/azure/network/route-table) | Befehle für Routingtabellen |
-| [az sql mi](/cli/azure/sql/mi) | Befehle für verwaltete Instanzen |
+| [az sql mi](/cli/azure/sql/mi) | Befehle für SQL Managed Instance |
 | [az network public-ip](/cli/azure/network/public-ip) | Befehle für öffentliche IP-Adressen von Netzwerken |
 | [az network vnet-gateway](/cli/azure/network/vnet-gateway) | Befehle für Gateways für virtuelle Netzwerke |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Befehle für Failovergruppen von verwalteten Instanzen |
+| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Befehle für Failovergruppen von SQL Managed Instance |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

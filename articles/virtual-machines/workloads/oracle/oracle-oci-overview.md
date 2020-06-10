@@ -11,15 +11,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660568"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299875"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure
 
@@ -35,10 +35,7 @@ Wenn Sie Oracle-Lösungen vollständig in der Azure-Infrastruktur bereitstellen 
 
 Mit cloudübergreifender Konnektivität können Sie die branchenführenden Anwendungen von Oracle sowie Ihre eigenen benutzerdefinierten Anwendungen auf virtuellen Azure-Computern ausführen und gleichzeitig von den Vorteilen gehosteter Datenbankdienste in OCI profitieren. 
 
-> [!IMPORTANT]
-> Oracle zertifiziert diese Anwendungen für die Ausführung in Azure, wenn die Azure/Oracle Cloud Interconnect-Lösung bis Mai 2020 verwendet wird.
-
-Zu den Anwendungen, die Sie in einer cloudübergreifenden Konfiguration ausführen können, zählen unter anderem:
+Ab Mai 2020 sind die folgenden Anwendungen in einer cloudübergreifenden Konfiguration zertifiziert:
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

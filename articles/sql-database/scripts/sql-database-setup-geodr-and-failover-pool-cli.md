@@ -1,22 +1,22 @@
 ---
-title: 'CLI-Beispiel: Aktive Georeplikation für im Pool zusammengefasste Azure SQL-Datenbank'
+title: 'Azure CLI: Konfigurieren der aktiven Georeplikation für einen Pool für elastische Datenbanken'
 description: Azure CLI-Beispielskript zum Einrichten der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067359"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019382"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Verwenden der CLI zum Konfigurieren der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank
 
@@ -62,4 +62,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

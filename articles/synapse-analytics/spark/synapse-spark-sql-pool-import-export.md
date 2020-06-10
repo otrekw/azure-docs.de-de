@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739276"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020862"
 ---
 # <a name="introduction"></a>Einführung
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 Die „import“-Anweisungen sind nicht erforderlich. Sie werden für die Notebookumgebung vorab importiert.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Übertragen von Daten in einen oder aus einem SQL-Pool auf dem logischen Server (DW-Instanz), der an den Arbeitsbereich angefügt wurde
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Übertragen von Daten zu oder von einem mit dem Arbeitsbereich verbundenen SQL-Pool
 
 > [!NOTE]
 > **Importe sind in der Notebookumgebung nicht erforderlich.**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 Die Authentifizierung bei Storage und SQL Server ist abgeschlossen.
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Übertragen von Daten in einen oder aus einem SQL-Pool bzw. in eine oder aus einer Datenbank auf einem logischen Server außerhalb des Arbeitsbereichs
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Übertragen von Daten in einen oder aus einem SQL-Pool bzw. in eine oder aus einer Datenbank außerhalb des Arbeitsbereichs
 
 > [!NOTE]
 > Importe sind in der Notebookumgebung nicht erforderlich.

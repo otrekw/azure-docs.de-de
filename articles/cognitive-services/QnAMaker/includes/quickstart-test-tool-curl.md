@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203959"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237718"
 ---
 In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -77,9 +77,11 @@ Verwenden Sie die Wissensdatenbank aus der vorherigen Schnellstartanleitung, um 
     }
     ```
 
-    Wenn ein Frage-Antwort-Satz nicht mit dem Suchbegriff, dafür aber mit dem Filter übereinstimmt, wird er nicht ausgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
+    Wenn ein Frage-Antwort-Paar nicht mit dem Suchbegriff, aber mit dem Filter übereinstimmt, wird es nicht zurückgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
 
 ## <a name="use-debug-query-property"></a>Verwenden der Abfrageeigenschaft „debug“
+> [!NOTE]
+>Es wird nicht empfohlen, die debug-Eigenschaft für Abhängigkeiten zu verwenden. Diese Eigenschaft wurde hinzugefügt, um dem Produktteam bei der Problembehandlung zu helfen.
 
 Anhand von Debuginformationen können Sie besser nachvollziehen, wie die zurückgegebene Antwort ermittelt wurde. Dies ist zwar hilfreich, aber nicht unbedingt erforderlich. Wenn Sie eine Antwort mit Debuginformationen generieren möchten, fügen Sie die Eigenschaft `debug` hinzu:
 

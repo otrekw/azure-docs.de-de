@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/25/2020
 ms.author: aahi
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80240121"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605475"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek
 
@@ -32,7 +33,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+> * Die neueste stabile Version der Textanalyse-Clientbibliothek ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
 
@@ -43,7 +44,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Diese Schnellstartanleitung gilt nur für Version `3.0-preview` der Textanalyse-Clientbibliothek. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+> * Die neueste stabile Version der Textanalyse-Clientbibliothek ist `3.0`.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -53,7 +54,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+> * Die neueste stabile Version der Textanalyse-Clientbibliothek ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
 > * Diese Version der Textanalyse-Clientbibliothek können Sie auch [in Ihrem Browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md) ausführen.
@@ -65,7 +66,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+> * Die neueste stabile Version der Textanalyse-Clientbibliothek ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten. 
 

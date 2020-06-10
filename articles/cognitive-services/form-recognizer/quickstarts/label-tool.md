@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871380"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141890"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -143,7 +143,8 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
     > * Beschriften Sie Werte so, wie sie im Formular vorkommen. Versuchen Sie nicht, einen Wert mit zwei unterschiedlichen Tags in zwei Teile zu unterteilen. Ein Adressfeld sollte beispielsweise auch dann nur mit einem Tag beschriftet werden, wenn es über mehrere Zeilen verläuft.
     > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
     > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
-    > * Wählen Sie zum Löschen eines angewandten Tags das Rechteck in der Dokumentansicht aus, und drücken Sie die ENTF-TASTE.
+    > * Verwenden Sie die Schaltflächen rechts neben dem **+** -Zeichen, um Ihre Tags zu suchen, umzubenennen, neu anzuordnen und zu löschen.
+    > * Um ein angewendetes Tag zu entfernen, ohne das Tag selbst zu löschen, wählen Sie das Tagrechteck in der Dokumentansicht aus und drücken die Taste ENTF.
 
 ![Haupt-Editor-Fenster des Tools für die Beschriftung von Beispielen](../media/label-tool/main-editor.png)
 

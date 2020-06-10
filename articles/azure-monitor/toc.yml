@@ -155,6 +155,8 @@
           displayname: VM
     - name: Verwalten und Konfigurieren
       items:
+        - name: Bedarfsorientiertes Bereitstellen
+          href: platform/deploy-scale.md
         - name: Berechtigungen und Sicherheit für Rollen
           href: platform/roles-permissions-security.md
         - name: IP-Adressen

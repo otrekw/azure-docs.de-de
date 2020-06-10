@@ -7,16 +7,18 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46236355ca569c28ed9418f9c341a1510c1335b1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114066"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Anwendung eines Rabatts für Reservierungen auf Azure SQL-Datenbanken
 
 Nachdem Sie eine reservierte Azure SQL-Datenbank-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf SQL-Datenbank-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt die Computekosten Ihrer SQL-Datenbank-Instanz ab. Ihnen werden die regulären Gebühren für Software, Speicher und Netzwerke berechnet. Die Lizenzkosten für SQL-Datenbank-Instanzen können Sie mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) abdecken.
+
+Beachten Sie, dass Reservierungsrabatte nicht für „Azure SQL-Datenbank – serverlos“ gelten.
 
 Weitere Informationen zu reservierten VM-Instanzen finden Sie unter [Grundlegendes zum Rabatt für Azure-Reservierungen auf virtuelle Computer](../manage/understand-vm-reservation-charges.md).
 
@@ -38,7 +40,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte SQL-Dat
 
 - Szenario 2: Sie führen zwei SQL-Datenbank-Instanzen mit 8 Kernen jeweils eine Stunde lang aus. Der Reservierungsrabatt für 16 Kerne wird auf die Computenutzung für beide SQL-Datenbank-Instanzen mit 8 Kernen angewendet.
 - Szenario 3: Sie führen von 13 bis 13:30 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Beide Instanzen sind durch den Reservierungsrabatt abgedeckt.
-- Szenario 3: Sie führen von 13 bis 13:45 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
+- Szenario 4: Sie führen von 13 bis 13:45 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](understand-reserved-instance-usage-ea.md).
 
@@ -52,7 +54,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 
 - [Was sind Azure-Reservierungen?](save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../sql-database/sql-database-reserved-capacity.md)
+- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../azure-sql/database/reserved-capacity-overview.md)
 - [Verwalten von Azure-Reservierungen](manage-reserved-vm-instance.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md)

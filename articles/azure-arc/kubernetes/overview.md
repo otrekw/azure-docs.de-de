@@ -6,31 +6,33 @@ ms.date: 05/19/2020
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
-description: ''
+description: Dieser Artikel enthält eine Übersicht zu Kubernetes mit Azure Arc-Aktivierung.
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 3b3b184ff7b18e05dfeb1052c0d6b4aa406a8787
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: references_regions
+ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665275"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309933"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Was ist Kubernetes mit Azure Arc-Aktivierung (Vorschau)?
+# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Was ist die Vorschauversion von Kubernetes mit Azure Arc-Aktivierung?
 
-Sie können Kubernetes-Cluster innerhalb oder außerhalb von Azure mit Azure Arc-Aktivierung für Kubernetes (Vorschau) anfügen und konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt wird, wird es im Azure-Portal angezeigt und weist eine Azure Resource Manager-ID sowie eine verwaltete Identität auf. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten. 
+Sie können Kubernetes-Cluster innerhalb oder außerhalb von Azure mit der Vorschauversion von Kubernetes mit Azure Arc-Aktivierung anfügen und konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt ist, wird er im Azure-Portal angezeigt. Er verfügt dann über eine Azure Resource Manager-ID und eine verwaltete Identität. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten. 
 
+Zum Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure muss ein Clusteradministrator entsprechende Agents bereitstellen. Diese Agents werden in einem Kubernetes-Namespace namens `azure-arc` ausgeführt und sind Kubernetes-Standardbereitstellungen. Die Agents sind verantwortlich für die Konnektivität mit Azure, die Erfassung von Azure Arc-Protokollen und -Metriken sowie die Überwachung von Konfigurationsanforderungen. 
 
-Zum Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure muss ein Clusteradministrator entsprechende Agents bereitstellen. Diese Agents werden in einem Kubernetes-Namespace namens `azure-arc` ausgeführt und sind Kubernetes-Standardbereitstellungen. Die Agents sind verantwortlich für die Konnektivität mit Azure, die Erfassung von Azure Arc-Protokollen und -Metriken sowie die Überwachung von Konfigurationsanforderungen.  
+Kubernetes mit Azure Arc-Aktivierung unterstützt branchenübliches SSL zum Absichern von Daten während der Übertragung. Die Daten werden außerdem im Ruhezustand verschlüsselt in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
  
  > [!NOTE]
-> Kubernetes mit Azure Arc-Aktivierung befindet sich in der Vorschauversion und wird für Workloads in Produktionsumgebungen nicht empfohlen. 
+> Kubernetes mit Azure Arc-Aktivierung befindet sich in der Vorschauphase. Sie sollte nicht für Produktionsworkloads verwendet werden. 
 
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien 
+## <a name="supported-scenarios"></a>Unterstützte Szenarios 
 
-Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien: 
+Kubernetes mit Azure Arc-Aktivierung unterstützt diese Szenarien: 
 
-* Verbinden von außerhalb von Azure ausgeführtem Kubernetes für Bestand, Gruppierung und Kennzeichnung 
+* Verbinden von außerhalb von Azure ausgeführtem Kubernetes für Bestand, Gruppierung und Kennzeichnung
 
 * Bereitstellen von Anwendungen und Anwenden der Konfiguration mithilfe der GitOps-basierten Konfigurationsverwaltung 
 
@@ -41,12 +43,11 @@ Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien:
  
 ## <a name="supported-regions"></a>Unterstützte Regionen 
 
-Kubernetes mit Azure Arc-Aktivierung wird derzeit in den folgenden Regionen unterstützt: 
+Kubernetes mit Azure Arc-Aktivierung wird derzeit in diesen Regionen unterstützt: 
 
 * East US 
 * Europa, Westen 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verbinden eines Clusters](./connect-cluster.md)
+* [Herstellen einer Verbindung mit einem Cluster](./connect-cluster.md)

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700321"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020771"
 ---
 # <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -164,9 +164,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 > [!NOTE]
-> Die Erstellung von Datenbankbenutzern auf der Grundlage einer Anmeldung bei einem SQL-Datenbank-Server wird unter anderem für Benutzer verwendet, die Zugriff auf mehrere Datenbanken benötigen. Da eigenständige Datenbankbenutzer individuelle Entitäten sind, werden für jede Datenbank ein eigener Benutzer und ein eigenes Kennwort vorgehalten. Diese Vorgehensweise kann erheblichen Mehraufwand verursachen, da sich Benutzer die Kennwörter für alle Datenbanken merken müssen, und nicht mehr praktikabel sein, wenn mehrere Kennwörter für zahlreiche Datenbanken geändert werden müssen. Bei der Verwendung von SQL Server-Anmeldenamen und Hochverfügbarkeit (aktive Georeplikation und Failovergruppen) müssen die SQL Server-Anmeldenamen jedoch manuell auf jedem Server festgelegt werden. Andernfalls wird der Datenbankbenutzer nach einem Failover nicht mehr der Serveranmeldung zugeordnet, und er kann nach dem Failover nicht auf die Datenbank zugreifen. 
+> Die Erstellung von Datenbankbenutzern auf der Grundlage einer Anmeldung bei einem Server wird unter anderem für Benutzer verwendet, die Zugriff auf mehrere Datenbanken benötigen. Da eigenständige Datenbankbenutzer individuelle Entitäten sind, werden für jede Datenbank ein eigener Benutzer und ein eigenes Kennwort vorgehalten. Diese Vorgehensweise kann erheblichen Mehraufwand verursachen, da sich Benutzer die Kennwörter für alle Datenbanken merken müssen, und nicht mehr praktikabel sein, wenn mehrere Kennwörter für zahlreiche Datenbanken geändert werden müssen. Bei der Verwendung von SQL Server-Anmeldenamen und Hochverfügbarkeit (aktive Georeplikation und Failovergruppen) müssen die SQL Server-Anmeldenamen jedoch manuell auf jedem Server festgelegt werden. Andernfalls wird der Datenbankbenutzer nach einem Failover nicht mehr der Serveranmeldung zugeordnet, und er kann nach dem Failover nicht auf die Datenbank zugreifen. 
 
-Weitere Informationen zum Konfigurieren von Anmeldungen für die Georeplikation finden Sie unter [Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen zum Konfigurieren von Anmeldungen für die Georeplikation finden Sie unter [Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover](../../azure-sql/database/active-geo-replication-security-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="configuring-the-database-level-firewall"></a>Konfigurieren der Firewall auf Datenbankebene
 

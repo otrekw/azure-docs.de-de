@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381518"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167263"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -22,7 +22,7 @@ Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung
 In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 > [!NOTE]
-> Azure Resource Graph hebt mit der neuen Oberfläche zum Durchsuchen aller Ressourcen und dem [Änderungsverlauf](../policy/how-to/determine-non-compliance.md#change-history-preview) mit 
+> Azure Resource Graph hebt mit der neuen Oberfläche zum Durchsuchen aller Ressourcen und dem [Änderungsverlauf](../policy/how-to/determine-non-compliance.md#change-history) mit 
 > _visuellem Diff_ von Azure Policy die Suchleiste des Azure-Portals auf eine neue Höhe. Sie dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
@@ -79,16 +79,17 @@ Weitere Informationen finden Sie in der [Anleitung für gedrosselte Anforderunge
 
 ## <a name="running-your-first-query"></a>Ausführen Ihrer ersten Abfrage
 
-Der Azure Resource Graph-Explorer im Azure-Portal ermöglicht die Ausführung von Resource Graph-Abfragen direkt im Azure-Portal. Heften Sie die Ergebnisse als dynamische Diagramme an, um dynamische Echtzeitinformationen für den Portalworkflow bereitzustellen. Weitere Informationen finden Sie unter [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](first-query-portal.md) (Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers).
+Der Azure Resource Graph-Explorer im Azure-Portal ermöglicht die Ausführung von Resource Graph-Abfragen direkt im Azure-Portal. Heften Sie die Ergebnisse als dynamische Diagramme an, um dynamische Echtzeitinformationen für den Portalworkflow bereitzustellen. Weitere Informationen finden Sie unter [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](./first-query-portal.md) (Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers).
 
-Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShell, das Azure SDK für .NET und vieles mehr. Die Abfrage ist für alle Sprachen gleich strukturiert. Lesen Sie, wie Sie Resource Graph mit einer der folgenden Komponenten aktivieren:
+Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShell, das Azure SDK für Python u. v. m. Die Abfrage ist für alle Sprachen gleich strukturiert. Lesen Sie, wie Sie Resource Graph mit einer der folgenden Komponenten aktivieren:
 
-- [Azure-Portal und Resource Graph-Explorer](first-query-portal.md) 
-- [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension)
-- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+- [Azure-Portal und Resource Graph-Explorer](./first-query-portal.md) 
+- [Azure-Befehlszeilenschnittstelle](./first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
+- [Python](./first-query-python.md#add-the-resource-graph-library)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
-- Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
-- Führen Sie Ihre erste Abfrage mit [Azure PowerShell](first-query-powershell.md) aus.
+- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
+- Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](./samples/starter.md).
+- Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](./samples/advanced.md).

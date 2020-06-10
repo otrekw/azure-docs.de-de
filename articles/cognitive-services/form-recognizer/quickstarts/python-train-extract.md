@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118084"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141907"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python
 
@@ -27,6 +27,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
 - Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Die Dateitypen Ihrer Formulare können unterschiedlich sein, sie müssen jedoch den gleichen Dokumenttyp aufweisen. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung werden Remotedokumente verwendet, auf die über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync).
+
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -66,7 +70,7 @@ Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer 
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,

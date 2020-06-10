@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 39ebdb6937b03d72365e9d3785af9571ebb66186
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836055"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204071"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Aktivieren der Updateverwaltung über ein Runbook
 
@@ -103,9 +103,6 @@ Sie müssen die Updateverwaltung für eine Azure-VM aktiviert haben, um dieses R
 
 * Informationen zum Planen eines Runbooks finden Sie unter [Verwalten von Zeitplänen in Azure Automation](shared-resources/schedules.md).
 * Wie Sie die Updateverwaltung für VMs verwenden, erfahren Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).
-* Informationen zu Bereichskonfigurationen finden Sie unter [Arbeiten mit Bereichskonfigurationen](automation-scope-configurations-update-management.md).
-* Wenn Sie den Log Analytics-Arbeitsbereich nicht mehr benötigen, lesen Sie die Informationen unter [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto für die Updateverwaltung](automation-unlink-workspace-update-management.md).
-* Informationen zum Löschen von VMs aus der Updateverwaltung finden Sie unter [Entfernen virtueller Computer aus der Updateverwaltung](automation-remove-vms-from-update-management.md).
 * Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](troubleshoot/update-management.md).
 * Informationen zum Behandeln von Problemen mit dem Windows Update-Agent finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](troubleshoot/update-agent-issues.md).
-* Informationen zum Behandeln von Problemen mit dem Linux Update-Agent finden Sie unter [Beheben von Problemen mit dem Linux-Update-Agent](troubleshoot/update-agent-issues-linux.md).
+* Informationen zum Behandeln von Problemen mit dem Linux-Update-Agent finden Sie unter [Beheben von Problemen mit dem Linux-Update-Agent](troubleshoot/update-agent-issues-linux.md).

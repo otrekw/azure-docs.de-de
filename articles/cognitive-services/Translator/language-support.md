@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996073"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434286"
 ---
 # <a name="language-and-region-support-for-translator"></a>Sprach- und Regionsunterstützung für Translator
 
@@ -74,10 +74,11 @@ Von Translator werden die folgenden Sprachen für die Übersetzung von Texten un
 |Irisch | `ga`| Neuronal
 |Italienisch|    `it`    |    Neuronal|
 |Japanisch|    `ja`    |    Neuronal|
-|Kannada|`kn`| Neuronal
+|Kannada|`kn`| Neuronal|
+|Kasachisch |`kk`| Neuronal|
 |Suaheli|    `sw`    |    Statistisch|
-|Klingonisch|    `tlh`    |    Statistisch|
-|Klingonisch (plqaD)|    `tlh-Qaak`    |    Statistisch|
+|Klingonisch|    `tlh-Latn`    |    Statistisch|
+|Klingonisch (plqaD)|    `tlh-Piqd`    |    Statistisch|
 |Koreanisch    |`ko`    |    Neuronal|
 |Lettisch|    `lv`    |    Neuronal|
 |Litauisch|    `lt`    |    Neuronal|
@@ -130,20 +131,20 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
-| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latein `Latn` |
+| Gujarati | `gu`  | Gujarati `Gujr` | <--> | Latein `Latn` |
 | Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
 | Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Latein `Latn` |
-| Malayalam | `ml` | Malayalam `Mlym` | --> | Latein `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Latein `Latn` |
+| Kannada | `kn` | Kannada `Knda` | <--> | Latein `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | <--> | Latein `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | <--> | Latein `Latn` |
 | Oriya | `or` | Oriya `Orya` | <--> | Latein `Latn` |
 | Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
 | Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
 | Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
-| Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
-| Thailändisch | `th` | Thailändisch `Thai` | --> | Latein `Latn` |
+| Tamilisch | `ta` | Tamilisch `Taml` | <--> | Latein `Latn` |
+| Telugu | `te` | Telugu `Telu` | <--> | Latein `Latn` |
+| Thailändisch | `th` | Thailändisch `Thai` | <--> | Latein `Latn` |
 
 ## <a name="dictionary"></a>Wörterbuch
 
@@ -177,7 +178,7 @@ Das Wörterbuch unterstützt die Übertragung der folgenden Sprachen in das oder
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
 | Suaheli      | `sw`          |
-| Klingonisch      | `tlh`          |
+| Klingonisch      | `tlh-Latn`          |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |

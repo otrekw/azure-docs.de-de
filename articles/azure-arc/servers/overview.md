@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648042"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449480"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Was ist Azure Arc für Server (Vorschauversion)?
 
@@ -37,9 +37,10 @@ Von Azure Arc für Server (Vorschauversion) werden folgende Szenarien mit verbun
 
 Azure Arc für Server (Vorschauversion) wird nur in bestimmten Regionen unterstützt:
 
+- EastUS
 - WestUS2
 - Europa, Westen
-- WestAsia
+- SoutheastAsia
 
 In den meisten Fällen sollte der Standort, den Sie beim Erstellen des Installationsskripts auswählen, die Azure-Region sein, die dem Standort Ihres Computers geografisch am nächsten ist. Ruhende Daten werden innerhalb der geografischen Azure-Region gespeichert, in der sich die von Ihnen angegebene Region befindet, was ggf. auch Auswirkungen auf die Wahl der Region hat, wenn Data Residency-Anforderungen erfüllt werden müssen. Wenn die Azure-Region, mit der Ihr Computer verbunden ist, von einem Ausfall betroffen ist, wird der verbundene Computer zwar nicht beeinträchtigt, es kann jedoch sein, dass Verwaltungsvorgänge mit Azure nicht abgeschlossen werden können. Wenn Sie über mehrere Standorte mit einem geografisch redundanten Dienst verfügen, empfiehlt es sich, die Computer an den einzelnen Standorten jeweils mit einer anderen Azure-Region zu verbinden, um im Falle eines regionalen Ausfalls von der Resilienz zu profitieren.
 

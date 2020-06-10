@@ -1,25 +1,28 @@
 ---
 title: 'Schnellstart: Cassandra-API mit Python – Azure Cosmos DB'
 description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe der Apache Cassandra-API von Azure Cosmos DB eine Profilanwendung mit Python erstellen.
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/18/2020
+ms.custom: tracking-python
+ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134663"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559845"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem Python-SDK und Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  

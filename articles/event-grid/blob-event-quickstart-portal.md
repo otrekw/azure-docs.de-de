@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605814"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310484"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal
 
@@ -86,12 +86,18 @@ Vor dem Abonnieren der Ereignisse für den Blobspeicher erstellen wir zunächst 
 Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen.
 
 1. Navigieren Sie im Portal zu dem zuvor erstellten Azure Storage-Konto. Wählen Sie im linken Menü die Option **Alle Ressourcen** und anschließend Ihr Speicherkonto aus. 
-2. Wählen Sie auf der Seite **Speicherkonto** im linken Menü die Option **Ereignisse** aus.
+2. Wählen Sie auf der Seite **Speicherkonto** im linken Menü die Option **Ereignisse** aus. 
 1. Wählen Sie **Weitere Optionen** und dann **Webhook**. Sie verwenden einen Webhook für den Endpunkt, um Ereignisse an Ihre Viewer-App zu senden. 
 
    ![Auswählen von „Webhook“](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Führen Sie auf der Seite **Ereignisabonnement erstellen** die folgenden Schritte aus: 
     1. Geben Sie unter **Name** einen Namen für das Ereignisabonnement an.
+    2. Geben Sie unter **Name** einen Namen für das **Systemthema** ein. 
+
+       ![Eingeben von Namen für das Ereignisabonnement und das Systemthema](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
+
+       > [!NOTE]
+       > Wenn Sie zuvor ein Abonnement für ein Ereignis erstellt haben, das durch Azure-Quellen ausgelöst wurde, hat der Event Grid-Dienst automatisch ein Systemthema mit einem zufällig generierten Namen erstellt. Nun können Sie über dieses Textfeld einen Namen für das Systemthema angeben. Sie können diese Systemthemaressource verwenden, um Metriken und Diagnoseprotokolle zu ermitteln.
     2. Wählen Sie unter **Endpunkttyp** die Option **Webhook** aus. 
 
        ![Auswählen des Endpunkttyps „Webhook“](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

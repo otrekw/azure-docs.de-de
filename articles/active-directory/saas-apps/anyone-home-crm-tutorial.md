@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221264"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509184"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Anyone Home CRM
 
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Anyone Home CRM](mailto:lightson@anyonehome.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Anyone Home CRM](mailto:support@anyonehome.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -126,11 +126,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-anyone-home-crm-sso"></a>Konfigurieren des einmaligen Anmeldens in Anyone Home CRM
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Anyone Home CRM** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Anyone Home CRM](mailto:lightson@anyonehome.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Anyone Home CRM** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Anyone Home CRM](mailto:support@anyonehome.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-anyone-home-crm-test-user"></a>Erstellen des Anyone Home CRM-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Anyone Home CRM einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Anyone Home CRM-Supportteam](mailto:lightson@anyonehome.com) zusammen, um die Benutzer der Anyone Home CRM-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Anyone Home CRM einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Anyone Home CRM-Supportteam](mailto:support@anyonehome.com) zusammen, um die Benutzer der Anyone Home CRM-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

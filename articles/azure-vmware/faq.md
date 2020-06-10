@@ -4,12 +4,12 @@ description: Enthält Antworten auf einige der häufig gestellten Fragen zu Azur
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873321"
+ms.locfileid: "84112687"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Häufig gestellte Fragen zur Vorschauversion von Azure VMware Solution (AVS)
 
@@ -67,34 +67,7 @@ Am bereits vorhandenen Dienst Azure VMware Solution by CloudSimple ändert sich 
 
 Ja, Azure VMware Solution unterstützt die Migration mithilfe von vertrauten VMware-Tools wie HCX. Kunden, die sich für eine Migration zur neuen Lösung interessieren, sollten sich an ihr Microsoft-Kontoteam wenden, um mehr über verschiedene Optionen und den verfügbaren Support zu erfahren.
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Wie beantrage ich eine Erhöhung des Hostkontingents für eine vorhandene Azure VMware Solution-Instanz?**
 
-Sie können eine Erhöhung des Kontingents beantragen, indem Sie [eine Supportanfrage stellen](..\azure-portal\supportability\how-to-create-azure-support-request.md). Das Kontingentverwaltungsteam prüft Ihren Antrag und genehmigt ihn innerhalb von drei Geschäftstagen.  
-
-> [!IMPORTANT]
-> Stellen Sie sicher, dass Sie den [Ressourcenanbieter **Microsoft.AVS** im Azure-Portal registriert haben](tutorial-create-private-cloud.md), damit Sie eine Erhöhung des Kontingents beantragen können.  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> Informationen zu weiteren Möglichkeiten für die Ressourcenanbieterregistrierung finden Sie unter [Azure-Ressourcenanbieter und -typen](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types).
-
-1. Erstellen Sie im Azure-Portal unter **Hilfe und Support** eine **Neue Supportanfrage**, und geben Sie die folgenden Informationen für das Ticket an:
-   - **Problemtyp:** Technisch
-   - **Abonnement:** Ihre Abonnement-ID
-   - **Dienst:**  Azure VMware Solution 
-   - **Zusammenfassung:** Kontingenterhöhung
-   - **Problemtyp:** Capacity Management Issues (Kapazitätsverwaltungsprobleme)
-   - **Problemuntertyp:** Customer Request for Additional Host Quota/Capacity (Kundenanfrage für zusätzliches Hostkontingent/zusätzliche Hostkapazität)
-
-1. Geben Sie in der Beschreibung des Supporttickets auf der Registerkarte Details Folgendes an:
-   - Anzahl von zusätzlichen Knoten   
-   - Knoten-SKU
-   - Region
-
-   > [!NOTE] 
-   > Standardmäßig werden mindestens vier Knoten bereitgestellt.
-
-1. Klicken Sie auf **Überprüfen + erstellen**, um die Anfrage zu stellen.
 
 ## <a name="compute-network-and-storage"></a>Compute, Netzwerk und Speicher
 
@@ -233,6 +206,35 @@ Unterstützung von AVS wird von Microsoft bereitgestellt. Bitte beachten Sie, da
 **Welche Konten benötige ich zum Erstellen einer privaten AVS-Cloud?**
 
 Sie benötigen ein Azure-Konto in einem Azure-Abonnement.
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Wie beantrage ich eine Erhöhung des Hostkontingents für eine Azure-VMware-Lösung?**
+
+Sie können eine Erhöhung des Kontingents beantragen, indem Sie [eine Supportanfrage stellen](..\azure-portal\supportability\how-to-create-azure-support-request.md). Das Kontingentverwaltungsteam prüft Ihren Antrag und genehmigt ihn innerhalb von drei Geschäftstagen.  
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie den Ressourcenanbieter **Microsoft.AVS** im Azure-Portal registriert haben, damit Sie eine Erhöhung des Kontingents beantragen können.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Informationen zu weiteren Möglichkeiten für die Ressourcenanbieterregistrierung finden Sie unter [Azure-Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+
+1. Erstellen Sie im Azure-Portal unter **Hilfe und Support** eine **Neue Supportanfrage**, und geben Sie die folgenden Informationen für das Ticket an:
+   - **Problemtyp:** Technisch
+   - **Abonnement:** Ihre Abonnement-ID
+   - **Dienst:**  Azure VMware Solution 
+   - **Zusammenfassung:** Kontingenterhöhung
+   - **Problemtyp:** Capacity Management Issues (Kapazitätsverwaltungsprobleme)
+   - **Problemuntertyp:** Customer Request for Additional Host Quota/Capacity (Kundenanfrage für zusätzliches Hostkontingent/zusätzliche Hostkapazität)
+
+1. Geben Sie in der Beschreibung des Supporttickets auf der Registerkarte Details Folgendes an:
+   - Anzahl von zusätzlichen Knoten   
+   - Knoten-SKU
+   - Region
+
+   > [!NOTE] 
+   > Standardmäßig werden mindestens vier Knoten bereitgestellt.
+
+1. Klicken Sie auf **Überprüfen + erstellen**, um die Anfrage zu stellen.
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Beispiel: Sichern einer Azure SQL-Datenbank'
+title: 'Azure CLI: Sichern einer Datenbank in Azure SQL-Datenbank'
 description: Azure CLI-Beispielskript zum Sichern einer Azure SQL-Einzeldatenbank in einem Azure-Speichercontainer
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 68af42bd83565243dad5d48f227fa5cef3115cf6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 605b2690f85ea8c800e6485b0eb998b795ea9d10
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061865"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022708"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Verwenden der CLI zum Sichern einer Azure SQL-Einzeldatenbank in einem Azure-Speichercontainer
 
-In diesem Azure CLI-Beispiel wird eine Azure SQL-Datenbank in einem Azure-Speichercontainer gesichert.  
+In diesem Azure CLI-Beispiel wird eine Datenbank in SQL-Datenbank in einem Azure Storage-Container gesichert.  
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -60,4 +60,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

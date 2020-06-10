@@ -8,18 +8,19 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066383"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341234"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
@@ -39,12 +40,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
-| **\<VNET-Name>** | myVNet          |
-| **\<Regionsname>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
-| **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 192.168.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | USA (Ost) 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -99,7 +100,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
     | Name | Geben Sie **myPublicIP** ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **myResourceGroupNAT** aus. |
-    | Position | Wählen Sie **USA, Osten 2** aus.|
+    | Standort | Wählen Sie **USA, Osten 2** aus.|
 
 3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 

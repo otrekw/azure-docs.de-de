@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 660e77e130d5546d29730680c5863e25c052e5d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652663"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234845"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet für Azure Synapse Analytics
 
@@ -27,14 +27,14 @@ Im Cheatsheet für Azure Synapse Analytics werden Schritt für Schritt die grund
 > [!div class="mx-imgBorder"]
 >![Architektur von Synapse](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>Konzepte
-| Substantive und Verben                         | Funktionsbeschreibung       |
+## <a name="terminology"></a>Begriff
+| Begriff                         | Definition      |
 |:---                                 |:---                 |
 | **Synapse-Arbeitsbereich (Vorschauversion)** | Eine sicherungsfähige Zusammenarbeitsgrenze für cloudbasierte Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe. |
 | **Synapse SQL**   | Ermöglicht das Ausführen von Analysen mit Pools oder On-Demand-Funktionen.  |
 | **SQL-Pool**   | In einem Arbeitsbereich können null bis n bereitgestellte SQL-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Jeder SQL-Pool verfügt über eine zugeordnete Datenbank. Ein SQL-Pool kann manuell oder automatisch skaliert, angehalten und fortgesetzt werden. Ein SQL-Pool kann zwischen 100 DWU und 30.000 DWU skaliert werden.       |
 | **SQL On-Demand (Vorschauversion)**   | Verteiltes, für große Datenmengen konzipiertes Datenverarbeitungssystem, mit dem Sie T-SQL-Abfragen für Daten in einem Data Lake ausführen können. Da es sich hierbei um ein serverloses System handelt, muss keine Infrastruktur verwaltet werden.       |
-|**Apache Spark** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
+|**Apache Spark für Synapse** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
 | **Apache Spark-Pool (Vorschauversion)**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
 | **Spark-Anwendung**  |   Besteht aus einem Treiberprozess und einem Satz von Executorprozessen. Eine Spark-Anwendung wird in einem Spark-Pool ausgeführt.            |
 | **Spark-Sitzung**  |   Einheitlicher Einstiegspunkt einer Spark-Anwendung. Ermöglicht die Interaktion mit den verschiedenen Funktionen von Spark sowie mit einer kleineren Anzahl von Konstrukten. Zum Ausführen eines Notebooks muss eine Sitzung erstellt werden. Eine Sitzung kann so konfiguriert werden, dass sie in einer bestimmten Anzahl von Executors mit einer bestimmten Größe ausgeführt wird. Eine Notebooksitzung ist standardmäßig für die Ausführung in zwei Executors mittlerer Größe konfiguriert. |

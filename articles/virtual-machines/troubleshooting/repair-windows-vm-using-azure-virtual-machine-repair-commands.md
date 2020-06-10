@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 6520d508a025aeeecf0c1890224a0691eae09f74
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b754c9e02567939569bf2ef59359dbb2614a6647
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774424"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219890"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Windows-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
@@ -72,20 +72,19 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM. Die Ressourcengruppe und der VM-Name, die in allen Schritten verwendet werden, gelten für die nicht funktionale VM.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Führen Sie `az vm repair run` aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt.  Wenn in dem von Ihnen verwendeten Leitfaden zur Problembehandlung eine Ausführungs-ID (run-id) angegeben ist, verwenden Sie sie hier. Andernfalls können Sie mit `az vm repair list-scripts` verfügbare Reparaturskripts anzeigen.
+4. Führen Sie `az vm repair run` aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt. Wenn in dem von Ihnen verwendeten Leitfaden zur Problembehandlung eine Ausführungs-ID (run-id) angegeben ist, verwenden Sie sie hier. Andernfalls können Sie mit `az vm repair list-scripts` verfügbare Reparaturskripts anzeigen. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird.
 
    ```azurecli-interactive
-
-   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
+   az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
 
-5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
+5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

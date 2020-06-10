@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: da40deb4df55a63f5fecc380500a507b374ca63d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9029082a275905bbdb9efe0cefa05337c9969a2f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711141"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219907"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
@@ -66,7 +66,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM. Die Ressourcengruppe und der VM-Name, die in allen Schritten verwendet werden, gelten für die nicht funktionale VM.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -74,7 +74,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
 4. Führen Sie alle erforderlichen Reparaturschritte auf der erstellten Reparatur-VM aus, und fahren Sie dann mit Schritt 5 fort.
 
-5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
+5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht. Die Ressourcengruppe und der VM-Name, die hier verwendet werden, gelten für die nicht funktionale VM, die in Schritt 3 verwendet wird.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

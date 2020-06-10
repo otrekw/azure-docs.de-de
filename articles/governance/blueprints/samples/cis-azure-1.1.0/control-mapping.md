@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 description: Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“ zu Azure Policy.
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863959"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167229"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -192,14 +192,14 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4.4. Sicherstellen, dass „Advanced Data Security“ für eine SQL Server-Instanz auf „Ein“ festgelegt ist
 
-Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass auf Computern mit SQL Server und auf verwalteten SQL-Instanzen Advanced Data Security aktiviert ist.
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass Advanced Data Security auf Servern mit SQL-Datenbank und verwalteten SQL-Instanzen aktiviert ist.
 
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5. Sicherstellen, dass „Bedrohungstypen für Erkennung“ auf „Alle“ festgelegt ist
 
-Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Advanced Threat Protection auf Computern mit SQL Server und auf verwalteten SQL-Instanzen richtig konfiguriert ist.
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Advanced Threat Protection auf Servern mit SQL-Datenbank und verwalteten SQL-Instanzen ordnungsgemäß konfiguriert ist.
 
 - Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für SQL Server auf „Alle“ festgelegt werden.
 - Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen auf „Alle“ festgelegt werden.
@@ -232,7 +232,7 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4.10. Sicherstellen, dass die TDE-Schutzvorrichtung der SQL Server-Instanz mit BYOK (also unter Verwendung eines eigenen Schlüssels) verschlüsselt ist
 
-Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass die TDE-Schutzvorrichtung für Computer mit SQL Server und verwaltete SQL-Instanzen mit Ihrem eigenen Schlüssel verschlüsselt ist.
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass die TDE-Schutzvorrichtung für Server mit SQL-Datenbank und verwalteten SQL-Instanzen mit Ihrem eigenen Schlüssel verschlüsselt ist.
 
 - Die TDE-Schutzvorrichtung in SQL Server sollte mit Ihrem eigenen Schlüssel verschlüsselt werden.
 - Die TDE-Schutzvorrichtung verwalteter SQL-Instanzen sollte mit Ihrem eigenen Schlüssel verschlüsselt werden.

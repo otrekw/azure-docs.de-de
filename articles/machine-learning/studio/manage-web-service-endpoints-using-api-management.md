@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80473455"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114824"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von (klassischen) Azure Machine Learning Studio-Webdiensten mit API Management
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Übersicht
 Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer (klassischen) Azure Machine Learning Studio-Webdienste mit API Management.
@@ -153,7 +151,7 @@ Operationen können direkt aus dem Entwicklerportal aufgerufen werden. Dies ist 
 
 4. Geben Sie als **Anforderungsparameter** Ihren **Arbeitsbereich** und **Dienst** sowie „2.0“ als **apiversion** und „true“ für **details** ein. Sie finden Ihren **Arbeitsbereich** und **Dienst** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
-   Klicken Sie für **Anforderungsheader** auf **Header hinzufügen**, und geben Sie „Content-Type“ und „application/json“ ein. Klicken Sie erneut auf **Header hinzufügen**, und geben Sie „Authorization“ und „Bearer *\<Ihr API-Schlüssel des Diensts\>* “ ein. Sie finden Ihren API-Schlüssel im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
+   Klicken Sie für **Anforderungsheader** auf **Header hinzufügen**, und geben Sie „Content-Type“ und „application/json“ ein. Klicken Sie erneut auf **Header hinzufügen**, und geben Sie „Authorization“ und „Bearer *\<your service API-KEY\>* “ ein. Sie finden Ihren API-Schlüssel im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
    Geben Sie unter **Anforderungstext** den Text `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` ein.
 
@@ -217,7 +215,7 @@ Klicken Sie auf **Yes** , um das Experiment zu veröffentlichen.
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Testen des Webdiensts
-Ein Azure ML-Webdienst besteht aus RRS-Endpunkten (Request/Response Service, Anforderungs-/Antwortdienst) und BES-Endpunkten (Batch Execution Service, Batchausführungsdienst). RRS dient zur synchronen Ausführung. BES dient zur asynchronen Auftragsausführung. Um Ihren Webdienst mit dem unten aufgeführten Python-Beispielcode zu testen, müssen Sie möglicherweise das Azure-SDK für Python herunterladen und installieren (siehe [Installieren von Python und SDK](/azure/developer/python/azure-sdk-install)).
+Ein Azure ML-Webdienst besteht aus RRS-Endpunkten (Request/Response Service, Anforderungs-/Antwortdienst) und BES-Endpunkten (Batch Execution Service, Batchausführungsdienst). RRS dient zur synchronen Ausführung. BES dient zur asynchronen Auftragsausführung. Um Ihren Webdienst mit dem unten aufgeführten Python-Beispielcode zu testen, müssen Sie möglicherweise das Azure-SDK für Python herunterladen und installieren (siehe: [Installieren von Python](/azure/developer/python/azure-sdk-install)).
 
 Sie benötigen auch den **Arbeitsbereich**, den **Dienst** und den **API-Schlüssel** Ihres Experiments für den unten stehenden Beispielcode. Sie finden den Arbeitsbereich und den Dienst, indem Sie im Webdienstdashboard für Ihr Experiment entweder auf **Anforderung/Antwort** oder **Batchausführung** klicken.
 

@@ -967,8 +967,6 @@
                   items:
                     - name: Befehlszeilenschnittstelle für virtuelle Azure SQL-Computer
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Vorlage im Azure-Portal
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Azure-Schnellstartvorlagen
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Mehrere Regionen

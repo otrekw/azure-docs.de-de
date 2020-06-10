@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9224b361adff8bfc53ca2f31dccb2519591dc7e5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743372"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021805"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Einrichten des PowerShell-Moduls für Windows Virtual Desktop
 
@@ -66,7 +66,8 @@ Wenn Sie das Standardabonnement ändern möchten, nachdem Sie sich angemeldet ha
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-Mithilfe des Cmdlets Out-GridView können Sie auch eine Auswahl aus einer Liste treffen:
+Mithilfe des Out-GridView-Cmdlets können Sie auch eine Auswahl aus einer Liste treffen:
+
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```

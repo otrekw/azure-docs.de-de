@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421104"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310256"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines
 
@@ -34,22 +34,32 @@ Bei einer Produktionsbereitstellung in einem Azure Synapse-Arbeitsbereich empfi
 
 1. Erstellen Sie eine Sicherheitsgruppe namens `Synapse_WORKSPACENAME_Users`.
 2. Erstellen Sie eine Sicherheitsgruppe namens `Synapse_WORKSPACENAME_Admins`.
-3. Fügen Sie `Synapse_WORKSPACENAME_Admins` zu `ProjectSynapse_WORKSPACENAME_Users` hinzu.
+3. `Synapse_WORKSPACENAME_Admins` zu `Synapse_WORKSPACENAME_Users` hinzugefügt
+
+> [!NOTE]
+> Informationen zum Erstellen einer Sicherheitsgruppe finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+>
+> Informationen zum Hinzufügen einer Sicherheitsgruppe über eine andere Sicherheitsgruppe finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal).
+>
+> WORKSPACENAME – Sie sollten diesen Teil durch Ihren tatsächlichen Arbeitsbereichsnamen ersetzen.
 
 ### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Schritt 2: Vorbereiten des ADLS Gen2-Standardkontos
 
-Beim Bereitstellen Ihres Arbeitsbereichs mussten Sie für den Arbeitsbereich ein ADLSGEN2-Konto und einen Container für das Dateisystem auswählen.
+Beim Bereitstellen Ihres Arbeitsbereichs mussten Sie ein [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)-Konto und einen Container für das Dateisystem auswählen, damit der Arbeitsbereich verwendet werden konnte.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Navigieren Sie zum ADLSGEN2-Konto.
+2. Navigieren Sie zum Azure Data Lake Storage Gen2-Konto.
 3. Navigieren Sie zu dem Container (Dateisystem), den Sie für den Azure Synapse-Arbeitsbereich ausgewählt haben.
 4. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 5. Weisen Sie die folgenden Rollen zu:
-   1. **Leser**: `Synapse_WORKSPACENAME_Users`
-   2. **Besitzer von Speicherblobdaten**: `Synapse_WORKSPACENAME_Admins`
-   3. **Mitwirkender an Storage-Blobdaten**: `Synapse_WORKSPACENAME_Users`
-   4. **Besitzer von Speicherblobdaten**: `WORKSPACENAME`
-  
+   1. **Leser** für: `Synapse_WORKSPACENAME_Users`
+   2. **Besitzer von Speicherblobdaten** für: `Synapse_WORKSPACENAME_Admins`
+   3. **Mitwirkender an Speicherblobdaten** für: `Synapse_WORKSPACENAME_Users`
+   4. **Besitzer von Speicherblobdaten** für: `WORKSPACENAME`
+
+> [!NOTE]
+> WORKSPACENAME – Sie sollten diesen Teil durch Ihren tatsächlichen Arbeitsbereichsnamen ersetzen.
+
 ### <a name="step-3-configure-the-workspace-admin-list"></a>Schritt 3: Konfigurieren der Arbeitsbereichsadministratorliste
 
 1. Navigieren Sie zur [**Webbenutzeroberfläche von Azure Synapse**](https://web.azuresynapse.net).
@@ -62,14 +72,22 @@ Beim Bereitstellen Ihres Arbeitsbereichs mussten Sie für den Arbeitsbereich ein
 2. Navigieren Sie zu Ihrem Arbeitsbereich.
 3. Navigieren Sie zu **Einstellungen** > **Active Directory-Administrator**.
 4. Klicken Sie auf **Administrator festlegen**.
-5. Wählen Sie `Synapse_WORKSPACENAME_Admins` aus.
+5. `Synapse_WORKSPACENAME_Admins` auswählen
 6. Klicken Sie auf **Auswählen**.
 7. Klicken Sie auf **Speichern**.
+
+> [!NOTE]
+> WORKSPACENAME – Sie sollten diesen Teil durch Ihren tatsächlichen Arbeitsbereichsnamen ersetzen.
 
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Schritt 5: Hinzufügen und Entfernen von Benutzern und Administratoren zu bzw. aus Sicherheitsgruppen
 
 1. Fügen Sie Benutzer, die Administratorzugriff benötigen, `Synapse_WORKSPACENAME_Admins` hinzu.
 2. Fügen Sie alle anderen Benutzer `Synapse_WORKSPACENAME_Users` hinzu.
+
+> [!NOTE]
+> Informationen zum Hinzufügen eines Benutzers als Mitglied zu einer Sicherheitsgruppe finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal)
+> 
+> WORKSPACENAME – Sie sollten diesen Teil durch Ihren tatsächlichen Arbeitsbereichsnamen ersetzen.
 
 ## <a name="access-control-to-data"></a>Zugriffssteuerung für Daten
 
@@ -82,9 +100,13 @@ Die Zugriffssteuerung für die zugrunde liegenden Daten ist in drei Bereiche unt
 ## <a name="access-control-to-sql-databases"></a>Zugriffssteuerung für SQL-Datenbanken
 
 > [!TIP]
-> Die folgenden Schritte müssen für **jede** SQL-Datenbank ausgeführt werden, um Benutzern Zugriff auf alle SQL-Datenbanken zu gewähren.
+> Die folgenden Schritte müssen für **jede** SQL-Datenbank ausgeführt werden, um dem Benutzer Zugriff auf alle SQL-Datenbanken zu gewähren, außer in Abschnitt [Berechtigung auf Serverebene](#server-level-permission), wo Sie dem Benutzer eine Systemadministratorrolle zuweisen können.
 
-### <a name="sql-on-demand"></a>SQL On-Demand
+### <a name="sql-on-demand"></a>SQL On-Demand
+
+In diesem Abschnitt finden Sie Beispiele dafür, wie Sie Benutzern eine Berechtigung für eine bestimmte Datenbank oder uneingeschränkte Berechtigungen für einen Server erteilen können.
+
+#### <a name="database-level-permission"></a>Berechtigung auf Datenbankebene
 
 Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff auf eine **einzelne** SQL On-Demand-Datenbank zu gewähren:
 
@@ -93,7 +115,7 @@ Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff 
     ```sql
     use master
     go
-    CREATE LOGIN [John.Thomas@microsoft.com] FROM EXTERNAL PROVIDER;
+    CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
     go
     ```
 
@@ -102,7 +124,7 @@ Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff 
     ```sql
     use yourdb -- Use your DB name
     go
-    CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
+    CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
 
 3. Fügen Sie den Benutzer den Mitgliedern der angegebenen Rolle hinzu:
@@ -110,8 +132,20 @@ Führen Sie die Schritte des folgenden Beispiels aus, um einem Benutzer Zugriff 
     ```sql
     use yourdb -- Use your DB name
     go
-    alter role db_owner Add member john -- Type USER name from step 2
+    alter role db_owner Add member alias -- Type USER name from step 2
     ```
+
+> [!NOTE]
+> Ersetzen Sie den Alias durch den Alias des Benutzers, dem Sie Zugriff gewähren möchten, und die Domäne durch die zu verwendende Unternehmensdomäne.
+
+#### <a name="server-level-permission"></a>Berechtigung auf Serverebene
+
+Führen Sie den Schritt des folgenden Beispiels aus, um einem Benutzer Vollzugriff auf **alle** SQL On-Demand-Datenbanken zu gewähren:
+
+```sql
+CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+```
 
 ### <a name="sql-pools"></a>SQL-Pools
 
@@ -173,4 +207,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über den Zugriff und die Steuerung in Synapse SQL finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines](../sql/access-control.md). Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx). Weitere Informationen zu Datenbankrollen finden Sie im Artikel zu [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx).
+Eine Übersicht über die vom Synapse-Arbeitsplatz verwaltete Identität finden Sie unter [Azure Synapse-Arbeitsbereich – verwaltete Identität](../security/synapse-workspace-managed-identity.md). Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx). Weitere Informationen zu Datenbankrollen finden Sie im Artikel zu [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx).

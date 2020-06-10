@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007544"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171553"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -55,8 +55,7 @@ Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie d
 
 Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie dem Projekt einen geeigneten Namen, und wählen Sie den **Beschriftungsaufgabentyp** aus.
 
-![Assistent zum Erstellen von Beschriftungsprojekten](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Assistent zum Erstellen von Bezeichnungsprojekten":::
 
 * Wählen Sie **Bildklassifizierung mit mehreren Klassen** für Projekte aus, in denen nur eine *einzige Klasse* aus einer Reihe von Klassen auf ein Bild angewendet werden soll.
 * Wählen Sie **Bildklassifizierung mit mehreren Beschriftungen** für Projekte aus, in denen *eine oder mehrere* Beschriftungen aus einer Reihe von Klassen auf ein Bild angewendet werden sollen. Ein Foto eines Hunds z. B. kann sowohl mit *Hund* als auch mit *Tag* beschriftet werden.

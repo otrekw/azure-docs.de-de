@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201324"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322769"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 In diesem Tutorial werden folgende Aktionen für eine Angular-Single-Page-Webanwendung (SPA) beschrieben:
 - Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten

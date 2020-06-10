@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677925"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021437"
 ---
 # <a name="about-azure-remote-rendering"></a>Informationen zu Azure Remote Rendering
 
@@ -22,7 +22,11 @@ ms.locfileid: "80677925"
 
 ![Beispielmodell](../media/arr-engine.png)
 
-Unabhängige Geräte verfügen über eingeschränkte Rechenleistung zum Rendern von komplexen Modellen. Für viele Anwendungen ist es aber nicht akzeptabel, die Qualität der visuellen Darstellung zu reduzieren.
+Unabhängige Geräte verfügen über eingeschränkte Rechenleistung zum Rendern von komplexen Modellen. Für viele Anwendungen ist es aber nicht akzeptabel, die Qualität der visuellen Darstellung zu reduzieren. Der folgende bietet einen Vergleich des vollständig detaillierten Modells mit einem Modell, das mit einem gängigen Inhaltserstellungstool vereinfacht wurde:
+
+![Beispielmodell](./media/engine-model-decimated.png)
+
+Das reduzierte Modell besteht aus ungefähr 200.000 Dreiecken (einschließlich der detaillierten inneren Teile) im Vergleich zu mehr als 18 Millionen Dreiecken im Originalmodell.
 
 Bei *Remote Rendering* wird dieses Problem gelöst, indem die zu rendernde Workload auf High-End-GPUs in der Cloud verschoben wird. Mit einem in der Cloud gehosteten Grafikmodul wird das Bild gerendert, als Videostream codiert und in dieser Form an das Zielgerät gestreamt.
 

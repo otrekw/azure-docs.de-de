@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647521"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117590"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Speichern von Abfrageergebnissen im Speicher mithilfe von SQL On-Demand (Vorschauversion) und Azure Synapse Analytics
 
@@ -22,17 +22,16 @@ In diesem Artikel erfahren Sie, wie Abfrageergebnisse mithilfe von SQL On-Deman
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Lesen Sie zunächst die unten angegebenen Artikel, und stellen Sie sicher, dass die Voraussetzungen erfüllt sind:
+Im ersten Schritt **erstellen Sie eine Datenbank**, in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen zum Lesen von Daten verwendet werden.
 
-- [Erstmalige Einrichtung](query-data-storage.md#first-time-setup)
-- [Voraussetzungen](query-data-storage.md#prerequisites)
+Befolgen Sie die Anweisungen in diesem Artikel, um Datenquellen, datenbankgestützte Anmeldeinformationen und externe Dateiformate zu erstellen, die zum Schreiben von Daten in den Ausgabespeicher verwendet werden.
 
 ## <a name="create-external-table-as-select"></a>CREATE EXTERNAL TABLE AS SELECT
 
 Sie können mithilfe der CETAS-Anweisung (CREATE EXTERNAL TABLE AS SELECT) die Abfrageergebnisse im Speicher speichern.
 
 > [!NOTE]
-> Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird. Haben Sie noch keine Datenbank erstellt, lesen Sie die Informationen unter [Erstmalige Einrichtung](query-data-storage.md#first-time-setup). Sie müssen „LOCATION“ für die externe MyDataSource-Datenquelle so ändern, dass auf einen Speicherort verwiesen wird, für den Sie über Schreibberechtigungen verfügen. 
+> Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird.
 
 ```sql
 USE [mydbname];
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 Sie können die mithilfe von CETAS erstellte externe Tabelle wie eine reguläre externe Tabelle verwendet werden.
 
 > [!NOTE]
-> Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird. Haben Sie noch keine Datenbank erstellt, lesen Sie die Informationen unter [Erstmalige Einrichtung](query-data-storage.md#first-time-setup).
+> Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird.
 
 ```sql
 USE [mydbname];

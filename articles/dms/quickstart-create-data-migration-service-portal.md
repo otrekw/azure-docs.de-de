@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873542"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187540"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Database Migration Service-Instanz über das Azure-Portal
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Instanz von Azure Database Migration Service zu erstellen.  Nachdem Sie die Instanz erstellt haben, können Sie diese zum Migrieren von Daten aus einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank verwenden.
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Instanz von Azure Database Migration Service zu erstellen.  Nachdem Sie die Instanz erstellt haben, können Sie sie zum Migrieren von Daten von SQL Server zu Azure SQL-Datenbank verwenden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

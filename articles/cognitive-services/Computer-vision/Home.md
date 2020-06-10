@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131746"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117512"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen zurückgeben, je nachdem, welche visuellen Features für Sie von Interesse sind. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild nicht jugendfreie Inhalte enthält, oder alle menschlichen Gesichter in einem Bild finden.
+Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen anhand der für sie interessanten visuellen Features zurückgeben. Beispielsweise kann durch maschinelles Sehen ermittelt werden, ob ein Bild nicht jugendfreie Inhalte aufweist, oder es können bestimmte Marken oder Objekte oder menschliche Gesichter gesucht werden.
 
-Sie können maschinelles Sehen in Ihrer Anwendung entweder über ein natives SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+Sie können maschinelles Sehen in Ihrer Anwendung über ein Clientbibliothek-SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Maschinelles Sehen für Digital Asset Management (DAM)
 
@@ -32,7 +32,7 @@ Das maschinelle Sehen kann viele DAM-Szenarien (Digital Asset Management) unters
 
 ## <a name="analyze-images-for-insight"></a>Analysieren von Bildern, um Erkenntnisse zu gewinnen
 
-Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkennen und Erkenntnisse zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt.
+Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt.
 
 | Aktion | Beschreibung |
 | ------ | ----------- |
@@ -50,7 +50,7 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 
 ## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
 
-Mit der [Lese-API](concept-recognizing-text.md#read-api) des maschinellen Sehens können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet unsere neuesten Modelle und kann für Text auf bzw. mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Derzeit werden nur die Sprachen Englisch und Spanisch unterstützt.
+Mit der [Lese-API](concept-recognizing-text.md#read-api) für maschinelles Sehen können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet die neuesten Modelle und kann für Text mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Derzeit funktioniert sie für sieben verschiedene Sprachen (siehe [Sprachunterstützung](./language-support.md)).
 
 Sie können auch die [OCR](concept-recognizing-text.md#ocr-optical-character-recognition-api)-API (Optical Character Recognition, optische Zeichenerkennung) verwenden, um gedruckten Text in verschiedenen Sprachen zu extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
 

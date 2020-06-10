@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 08/06/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: e0d2d2ea99822c95b9fab73642db37430771c583
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82083763"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217939"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Node.js und Azure Cosmos DB
 
@@ -70,8 +70,68 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-> ![TIPP] Eine ausführlichere exemplarische Vorgehensweise finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](table-storage-how-to-use-nodejs.md). 
+> [!TIP]
+> Eine ausführlichere exemplarische Vorgehensweise mit einem ähnlichen Code finden Sie im Artikel mit dem [Beispiel für die Cosmos DB-Tabellen-API](table-storage-how-to-use-nodejs.md). 
 
+## <a name="review-the-code"></a>Überprüfen des Codes
+
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit dem Abschnitt zum [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) in diesem Dokument fortfahren.
+
+* Der folgende Code zeigt, wie eine Tabelle in Azure Storage erstellt wird:
+
+  ```javascript
+  storageClient.createTableIfNotExists(tableName, function (error, createResult) {
+    if (error) return callback(error);
+
+    if (createResult.isSuccessful) {
+      console.log("1. Create Table operation executed successfully for: ", tableName);
+    }
+  }
+
+  ```
+
+* Der folgende Code zeigt, wie Daten in die Tabelle eingefügt werden:
+
+  ```javascript
+  var customer = createCustomerEntityDescriptor("Harp", "Walter", "Walter@contoso.com", "425-555-0101");
+
+  storageClient.insertOrMergeEntity(tableName, customer, function (error, result, response) {
+    if (error) return callback(error);
+
+    console.log("   insertOrMergeEntity succeeded.");
+  }
+  ```
+
+* Der folgende Code zeigt, wie Daten aus der Tabelle abgefragt werden:
+
+  ```javascript
+  console.log("6. Retrieving entities with surname of Smith and first names > 1 and <= 75");
+
+  var storageTableQuery = storage.TableQuery;
+  var segmentSize = 10;
+
+  // Demonstrate a partition range query whereby we are searching within a partition for a set of entities that are within a specific range. 
+  var tableQuery = new storageTableQuery()
+      .top(segmentSize)
+      .where('PartitionKey eq ?', lastName)
+      .and('RowKey gt ?', "0001").and('RowKey le ?', "0075");
+  
+  runPageQuery(tableQuery, null, function (error, result) {
+  
+      if (error) return callback(error);
+  
+  ```
+
+* Der folgende Code zeigt, wie Daten aus der Tabelle gelöscht werden:
+
+  ```javascript
+  storageClient.deleteEntity(tableName, customer, function entitiesQueried(error, result) {
+      if (error) return callback(error);
+  
+      console.log("   deleteEntity succeeded.");
+  }
+  ```
+  
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 

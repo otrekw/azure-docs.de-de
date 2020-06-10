@@ -2,29 +2,30 @@
 title: include file
 description: include file
 services: event-hubs
-author: sethmanheim
+author: spelluru
 ms.service: event-hubs
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75901707"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317504"
 ---
 In der folgenden Tabelle finden Sie die Kontingente und Grenzwerte, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-Die folgenden Limits sind gängige Werte für die Tarife „Basic“, „Standard“ und „Dedicated“. 
+Die folgenden Limits sind gängige Werte für die Tarife „Basic“ und „Standard“. 
 
-| Begrenzung | `Scope` | Notizen | value |
+| Begrenzung | `Scope` | Notizen | Wert |
 | --- | --- | --- | --- |
 | Anzahl von Event Hubs-Namespaces pro Abonnement |Subscription |- |100 |
 | Anzahl von Event Hubs pro Namespace |Namespace |Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
 | Anzahl von Partitionen pro Event Hub |Entität |- |32 |
-| Maximale Größe eines Event Hub-Namens |Entität |- |50 Zeichen |
+| Maximale Größe eines Event Hub-Namens |Entität |- | 256 Zeichen |
+| Maximale Größe eines Consumergruppennamens |Entität |- | 256 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |Entität |- |5 |
 | Maximale Durchsatzeinheiten |Namespace |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und es wird eine [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) ausgelöst. Um eine höhere Anzahl von Durchsatzeinheiten für den Tarif „Standard“ anzufordern, erstellen Sie eine [Supportanfrage](/azure/azure-portal/supportability/how-to-create-azure-support-request). [Zusätzliche Durchsatzeinheiten](../articles/event-hubs/event-hubs-auto-inflate.md) sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
 | Anzahl von Autorisierungsregeln pro Namespace |Namespace|Nachfolgende Anforderungen zur Erstellung von Autorisierungsregeln werden abgelehnt.|12 |

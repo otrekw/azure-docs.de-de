@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683354"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248531"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 
@@ -143,12 +143,13 @@ In den Einstellungen des verknüpften Diensts haben Sie das Azure Storage-Konto
     f. Klicken Sie auf **OK**.   
 
     ![Festlegen der Eigenschaften für „OutputDataset“](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline 
 In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Aktivität, die das Eingabe- und Ausgabedataset verwendet. Die Copy-Aktivität kopiert Daten aus der in den Einstellungen des Eingabedatasets angegebenen Datei in die Datei, die in den Einstellungen des Ausgabedatasets angegeben ist. Wenn das Eingabedataset nur einen Ordner (nicht den Dateinamen) angibt, kopiert die Copy-Aktivität alle Dateien im Quellordner ans Ziel. 
 
 1. Klicken Sie auf die Schaltfläche **+** (Plus) und dann auf **Pipeline**. 
 
-1. Geben Sie auf der Registerkarte **Allgemein** für **Name** den Namen **CopyPipeline** ein. 
+1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **CopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & Transform** (Verschieben und transformieren). Ziehen Sie die **Copy Data**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. Sie können in der Toolbox **Aktivitäten** auch nach Aktivitäten suchen. Geben Sie unter **Name** den Namen **CopyFromBlobToBlob** ein.
    ![Erstellen einer Aktivität zum Kopieren von Daten](./media/quickstart-create-data-factory-portal/copy-activity.png)

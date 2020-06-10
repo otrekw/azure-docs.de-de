@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086095"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021652"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit Synapse SQL
 
@@ -22,7 +22,7 @@ Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen eine
 Mit der Azure AD-Authentifizierung können Sie zur Vereinfachung der Berechtigungsverwaltung die Benutzeridentitäten zentral verwalten, die Zugriff auf Azure Synapse haben. Daraus ergeben sich u. a. die folgenden Vorteile:
 
 - Sie bietet eine Alternative zur regulären Benutzernamen- und Kennwortauthentifizierung.
-- Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Datenbankserver hinweg Einhalt geboten.
+- Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Server hinweg Einhalt geboten.
 - Über eine zentrale Stelle wird eine Kennwortrotation ermöglicht.
 - Kunden können Berechtigungen mithilfe von externen Gruppen (Azure AD) verwalten.
 - Durch das Aktivieren der integrierten Windows-Authentifizierung und andere von Azure Active Directory unterstützte Authentifizierungsformen wird das Speichern von Kennwörtern überflüssig.

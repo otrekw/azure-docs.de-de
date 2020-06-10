@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Senden von Warnungen an OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: Abrufen von Integritätsereignissen mit REST
-      href: service-health-rest.md
     - name: Konfigurieren von Warnungen für Ereignisse zur Ressourcenintegrität
       href: resource-health-alert-arm-template-guide.md
 - name: Verweis

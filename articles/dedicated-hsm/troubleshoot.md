@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80337219"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310103"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -120,7 +120,7 @@ Gehen Sie beim Konfigurieren des Netzwerks auf dem HSM mit Bedacht vor.  Das HSM
 
 ### <a name="hsm-device-reboot"></a>Neustart des HSM-Geräts
 
-Für einige Konfigurationsänderungen muss das HSM aus- und wieder eingeschaltet bzw. neu gestartet werden. Bei den von Microsoft durchgeführten Tests des HSM in Azure wurde ermittelt, dass es in einigen Fällen beim Neustart zu einem Hängen des Vorgangs kommen kann. Zur Behebung muss im Azure-Portal eine Supportanfrage erstellt werden, um einen „harten Neustart“ durchführen zu lassen. Die Erledigung kann hierbei bis zu 48 Stunden dauern, weil es sich um einen manuellen Prozess in einem Azure-Rechenzentrum handelt.  Stellen Sie zur Vermeidung dieser Situation sicher, dass Sie den Neustartpatch direkt von Thales verwenden. Unter [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) im Downloadabschnitt zu Thales Luna Network HSM 7.2 finden Sie einen empfohlenen Patch zur Beseitigung des Hängens beim Neustart. (Hinweis: Sie müssen im Thales-Supportportal registriert sein, um den Download durchführen zu können.)
+Für einige Konfigurationsänderungen muss das HSM aus- und wieder eingeschaltet bzw. neu gestartet werden. Bei von Microsoft durchgeführten Tests des HSM in Azure stellte sich heraus, dass ein Neustart in einigen Fällen zum Ausbleiben einer Reaktion führen kann. Zur Behebung muss im Azure-Portal eine Supportanfrage erstellt werden, um einen „harten Neustart“ durchführen zu lassen. Die Erledigung kann hierbei bis zu 48 Stunden dauern, weil es sich um einen manuellen Prozess in einem Azure-Rechenzentrum handelt.  Stellen Sie zur Vermeidung dieser Situation sicher, dass Sie den Neustartpatch direkt von Thales verwenden. Unter [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) im Downloadabschnitt zu Thales Luna Network HSM 7.2 finden Sie einen empfohlenen Patch zur Beseitigung des Hängens beim Neustart. (Hinweis: Sie müssen im Thales-Supportportal registriert sein, um den Download durchführen zu können.)
 
 ### <a name="ntls-certificates-out-of-sync"></a>Fehlende Synchronisierung von NTLS-Zertifikaten
 Unter Umständen verliert ein Client die Konnektivität mit einem HSM, wenn ein Zertifikat abläuft oder bei Konfigurationsaktualisierungen überschrieben wurde. Die Clientkonfiguration für den Zertifikataustausch sollte für jedes HSM neu angewendet werden.

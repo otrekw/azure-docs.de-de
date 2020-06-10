@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883812"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308488"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
@@ -73,4 +73,4 @@ Um mit dem Erstellen von Apps zu beginnen, die sich bei sozialen und lokalen Kon
 
 * [Registrieren einer App](quickstart-register-app.md) und Integrieren mit Microsoft Identity Platform. 
 * Informationen zu den [Authentifizierungsgrundlagen](authentication-scenarios.md)
-* Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
+* Weitere Informationen über die Beziehung zwischen Abonnements und einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

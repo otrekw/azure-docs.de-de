@@ -1,22 +1,22 @@
 ---
 title: 'Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal'
-description: In diesem Schnellstart erfahren Sie, wie Sie Frage-Antwort-Sätze mit Metadaten hinzufügen, damit Ihre Benutzer die richtige Antwort auf ihre Frage finden können.
+description: In diesem Schnellstart erfahren Sie, wie Sie Frage-Antwort-Paare mit Metadaten hinzufügen, damit Ihre Benutzer die richtige Antwort auf ihre Frage finden können.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873692"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266575"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal
 
-Fügen Sie nach der Erstellung einer Wissensdatenbank Frage-Antwort-Sätze (Question and Answer, QnA) mit Metadaten zum Filtern der Antwort hinzu. Die Fragen in der folgenden Tabelle hängen alle mit Azure-Diensteinschränkungen zusammen, wobei sich aber jede auf einen anderen Azure-Dienst bezieht.
+Fügen Sie nach der Erstellung einer Wissensdatenbank Frage-Antwort-Paare (Question and Answer, QnA) mit Metadaten zum Filtern der Antwort hinzu. Die Fragen in der folgenden Tabelle hängen alle mit Azure-Diensteinschränkungen zusammen, wobei sich aber jede auf einen anderen Azure-Dienst bezieht.
 
 <a name="qna-table"></a>
 
-|Set|Fragen|Antwort|Metadaten|
+|Paar|Fragen|Antwort|Metadaten|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ Sobald Metadaten zu einem Frage-Antwort-Paar hinzugefügt wurden, kann die Clien
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Hinzufügen zusätzlicher Fragen mit alternativen Formulierungen
 
-Die aktuelle Wissensdatenbank enthält die Frage-Antwort-Paare für die QnA Maker-Problembehandlung. Diese Sätze wurden erstellt, als die URL während des Erstellungvorgangs zur Wissensdatenbank hinzugefügt wurde.
+Die aktuelle Wissensdatenbank enthält die Frage-Antwort-Paare für die QnA Maker-Problembehandlung. Diese Paare wurden erstellt, als die URL während des Erstellungvorgangs der Wissensdatenbank hinzugefügt wurde.
 
 Beim Importieren dieser URL wurde nur eine Frage mit einer Antwort erstellt. Fügen Sie in diesem Verfahren weitere Fragen hinzu.
 
-1. Verwenden Sie auf der Seite **Edit** (Bearbeiten) das Suchfeld über den Frage-Antwort-Sätzen, um die Frage `How large a knowledge base can I create?` zu suchen.
+1. Verwenden Sie auf der Seite **Bearbeiten** das Suchfeld über den Frage-Antwort-Paaren, um nach der Frage `How large a knowledge base can I create?` zu suchen.
 
 1. Wählen Sie in der Spalte **Question** (Frage) die Option **+ Add alternative phrasing** (Alternative Formulierung hinzufügen) aus, und fügen Sie anschließend die neuen Formulierungen hinzu, die in der folgenden Tabelle angegeben sind.
 
@@ -70,9 +70,9 @@ Beim Importieren dieser URL wurde nur eine Frage mit einer Antwort erstellt. Fü
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Hinzufügen von Metadaten zum Filtern der Antworten
 
-Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Clientanwendung gefilterte Antworten anfordern. Dieser Filter wird angewendet, bevor [die erste und zweite Rangfolge](../concepts/query-knowledge-base.md#ranker-process) angewendet wird.
+Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Paar kann Ihre Clientanwendung gefilterte Antworten anfordern. Dieser Filter wird angewendet, bevor [die erste und zweite Rangfolge](../concepts/query-knowledge-base.md#ranker-process) angewendet wird.
 
-1. Fügen Sie den zweiten Frage-Antwort-Satz ohne Metadaten aus der [ersten Tabelle in dieser Schnellstartanleitung](#qna-table) hinzu, und fahren Sie dann mit den folgenden Schritten fort:
+1. Fügen Sie das zweite Frage-Antwort-Paar ohne Metadaten aus der [ersten Tabelle in diesem Schnellstart](#qna-table) hinzu, und fahren Sie dann mit den folgenden Schritten fort.
 
 1. Wählen Sie **View options** (Optionen anzeigen) und anschließend **Show metadata** (Metadaten anzeigen) aus.
 
@@ -85,7 +85,7 @@ Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Client
 1. Fügen Sie für die gleichen zwei Metadatentags Metadatenpaare hinzu:
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     Sie haben jetzt zwei Fragen mit denselben Metadatentags mit unterschiedlichen Werten.
 
