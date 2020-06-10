@@ -7,14 +7,14 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969053"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141737"
 ---
-# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Schnelle Schritte: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
+# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder Linux-Host, dem Windows-Subsystem für Linux und anderen Tools ausführen, die OpenSSH unterstützen. 
 
@@ -65,10 +65,16 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 Stellen Sie sicher, dass Sie keine nachstehenden Leerzeichen kopieren, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel für die Verwendung im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Um einen öffentlichen Schlüssel in macOS zu kopieren, können Sie die Datei des öffentlichen Schlüssels per Pipe an `pbcopy` übergeben. Unter Linux können Sie auf ähnliche Weise die Datei des öffentlichen Schlüssels per Pipe an Programme wie `xclip` übergeben.
 
-Der öffentliche Schlüssel, den Sie in Ihrer Linux-VM in Azure ablegen, wird standardmäßig in „~/.ssh/id_rsa.pub“ gespeichert, sofern Sie den Speicherort nicht bei der Erstellung der Schlüsselpaars geändert haben. Um die [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel zu verwenden, geben Sie den Wert und optional den Speicherort dieses öffentlichen Schlüssels mithilfe des Befehls [az vm create](/cli/azure/vm#az-vm-create) mit der Option `--ssh-key-values` an. Ersetzen Sie im folgenden Befehl *VMname*, *RGname* und *keyFile* durch Ihre eigenen Werte:
+Der öffentliche Schlüssel, den Sie in Ihrer Linux-VM in Azure ablegen, wird standardmäßig in „~/.ssh/id_rsa.pub“ gespeichert, sofern Sie den Speicherort nicht bei der Erstellung der Schlüsselpaars geändert haben. Um die [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel zu verwenden, geben Sie den Wert und optional den Speicherort dieses öffentlichen Schlüssels mithilfe des Befehls [az vm create](/cli/azure/vm#az-vm-create) mit der Option `--ssh-key-values` an. Ersetzen Sie im folgenden Befehl *myVM*, *myResourceGroup*, *UbuntuLTS*, *azureuser* und *mysshkey.pub* mit ihren eigenen Werten:
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
 Wenn Sie mehrere SSH-Schlüssel mit dem virtuellen Computer verwenden möchten, können Sie diese in eine durch Leerzeichen getrennte Liste eingeben, z. B. `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`.

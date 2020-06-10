@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714609"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141958"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Text und Layoutinformationen mit der Formularerkennungs-REST-API und Python
 
@@ -27,6 +27,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
 - Ein Formulardokument. Sie können für diesen Schnellstart Bilddateien aus dem [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) herunterladen.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird ein lokal gespeichertes Dokument verwendet. Informationen zum Verwenden von Remotedateien, auf die über URLs zugegriffen wird, finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync).
+
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 

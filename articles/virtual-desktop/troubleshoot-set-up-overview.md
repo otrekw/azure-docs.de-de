@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612502"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203855"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Problembehandlung: Übersicht, Feedback und Support
 
@@ -53,6 +53,7 @@ Verwenden Sie die folgende Tabelle, um Probleme zu identifizieren und zu beheben
 | Lizenzierungsmeldungen oder -fehler                                                          | Wenn Probleme mit einer bestimmten Anwendung oder einem Produkt verknüpft sind, wenden Sie sich an das Team, das für das betreffende Produkt zuständig ist. |
 | Probleme mit Authentifizierungsmethoden von Drittanbietern | Überprüfen Sie, ob Ihr Drittanbieter Windows Virtual Desktop-Szenarios unterstützt, und kontaktieren Sie ihn bezüglich bekannter Probleme. |
 | Probleme beim Verwenden von Log Analytics für Windows Virtual Desktop | Erstellen Sie bei Problemen mit dem Diagnoseschema [eine Azure-Supportanfrage](https://azure.microsoft.com/support/create-ticket/).<br><br>Wählen Sie für Abfragen, Visualisierungen oder andere Probleme in Log Analytics unter „Log Analytics“ den entsprechenden Problemtyp aus. |
+| Probleme beim Verwendung von M365-Apps | Wenden Sie sich über eine der [M365 Admin Center-Hilfeoptionen](/microsoft-365/admin/contact-support-for-business-products/) an das M365 Admin Center. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

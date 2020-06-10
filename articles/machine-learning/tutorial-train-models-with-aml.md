@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60f539dfad4f5f3942be92f35b84cc42968f95a0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115566"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220739"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,7 +107,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 Unter Verwendung von Azure Machine Learning Compute, einem verwalteten Dienst, können Datenanalysten Machine Learning-Modelle in Clustern von virtuellen Azure-Computern trainieren. Beispiele hierfür sind unter anderem VMs mit GPU-Unterstützung. In diesem Tutorial erstellen Sie Azure Machine Learning Compute als Trainingsumgebung. Sie übermitteln Python-Code, der auf diesem virtuellen Computer ausgeführt wird, weiter unten in diesem Tutorial. 
 
-Mit dem folgenden Code werden die Computecluster für Sie erstellt, sofern sie in Ihrem Arbeitsbereich noch nicht vorhanden sind.
+Mit dem folgenden Code werden die Computecluster für Sie erstellt, sofern sie in Ihrem Arbeitsbereich noch nicht vorhanden sind. Ein Cluster wird eingerichtet, der auf 0 herunterskaliert wird, wenn er nicht verwendet wird, und der auf maximal vier Knoten hochskaliert werden kann. 
 
  **Die Erstellung des Computeziels dauert etwa fünf Minuten.** Wenn die Computeressource bereits im Arbeitsbereich enthalten ist, wird sie vom Code verwendet, und der Erstellungsvorgang wird übersprungen.
 

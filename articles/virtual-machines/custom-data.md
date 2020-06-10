@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759140"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259115"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Benutzerdefinierte Daten und cloud-init auf virtuellen Azure-Computern
 
@@ -84,7 +84,7 @@ Informationen zum Troubleshooting bei der Ausführung benutzerdefinierter Daten 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kann ich benutzerdefinierte Daten nach dem Erstellen der VM aktualisieren?
-Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden. Für VMSS können Sie benutzerdefinierte VMSS-Daten jedoch über die REST-API aktualisieren. (Dies gilt nicht für PS- oder AZ CLI-Clients.) Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
+Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden. Für VMSS können Sie benutzerdefinierte VMSS-Daten jedoch über die [REST-API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) aktualisieren. (Dies gilt nicht für PS- oder AZ CLI-Clients.) Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
 * Vorhandene Instanzen in der VMSS erhalten die aktualisierten benutzerdefinierten Daten erst, wenn Sie das Reimaging durchführen.
 * Vorhandene Instanzen in der VMSS, die aktualisiert werden, erhalten nicht die aktualisierten benutzerdefinierten Daten.
 * Neue Instanzen erhalten die neuen benutzerdefinierten Daten.

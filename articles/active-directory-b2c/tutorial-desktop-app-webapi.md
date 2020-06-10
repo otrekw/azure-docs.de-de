@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183375"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298845"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C
 
@@ -51,17 +51,11 @@ Um eine geschützte Web-API über eine native Clientanwendung aufzurufen, müsse
 
 Im vorbereitenden Tutorial haben Sie eine native Clientanwendung mit dem Namen *nativeapp1* registriert. In den folgenden Schritten wird die Registrierung der nativen Anwendung mit den API-Bereichen konfiguriert, die Sie im vorherigen Abschnitt für *webapi1* verfügbar gemacht haben. Dadurch kann die Desktopanwendung ein Zugriffstoken von Azure AD B2C abrufen, mit dem die Web-API bereichsbezogenen Zugriff auf ihre Ressourcen überprüfen und gewähren kann. Die Codebeispiele für die Desktopanwendung und die Web-API werden später im Tutorial konfiguriert und ausgeführt.
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche **App-Registrierungen** oder unsere alte Benutzeroberfläche **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregtraining)
 
-1. Wählen Sie **Anwendungen** und dann *nativeapp1* aus.
-1. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-1. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
-1. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche aus, die Sie zuvor definiert haben. Beispiel: *demo.read* und *demo.write*
-1. Klicken Sie auf **OK**.
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
-
-1. Wählen Sie **App-Registrierungen (Vorschau)** und anschließend die native Clientanwendung aus, die Zugriff auf die API erhalten soll. Beispiel: *nativeapp1*.
+1. Wählen Sie **App-Registrierungen** und anschließend die native Clientanwendung aus, die Zugriff auf die API erhalten soll. Beispiel: *nativeapp1*.
 1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
 1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
 1. Wählen Sie die Registerkarte **Meine APIs** aus.
@@ -72,6 +66,14 @@ Im vorbereitenden Tutorial haben Sie eine native Clientanwendung mit dem Namen *
 1. Wählen Sie das derzeit angemeldete Administratorkonto aus, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde.
 1. Wählen Sie **Akzeptieren** aus.
 1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für beide Bereiche unter **Status** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
+
+1. Wählen Sie **Anwendungen (Legacy)** und dann *nativeapp1* aus.
+1. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
+1. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
+1. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche aus, die Sie zuvor definiert haben. Beispiel: *demo.read* und *demo.write*
+1. Klicken Sie auf **OK**.
 
 * * *
 

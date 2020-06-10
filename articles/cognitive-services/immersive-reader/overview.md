@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052382"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267272"
 ---
 # <a name="what-is-immersive-reader"></a>Worum handelt es sich beim plastischen Reader?
 
@@ -61,6 +61,6 @@ Der plastische Reader ist eine eigenständige Webanwendung, die beim Aufruf mit 
 
 Erste Schritte mit dem plastischen Reader:
 
-* Wechseln Sie zum [Schnellstart](./quickstart.md).
+* Nutzen Sie die [Schnellstarts](./quickstarts/client-libraries.md?pivots=programming-language-csharp).
 * Schauen Sie sich das [SDK für den plastischen Reader auf GitHub](https://github.com/microsoft/immersive-reader-sdk) an.
 * Lesen Sie die [Referenz für das SDK für den plastischen Reader](./reference.md).

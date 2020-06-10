@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 5d995e9a5cdb6fc18532e0c3533959e9feece908
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310214"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021244"
 ---
 # <a name="tutorial-working-with-remote-entities-in-unity"></a>Tutorial: Verwenden von Remoteentitäten in Unity
 
@@ -192,7 +192,7 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Weisen Sie dieses Skript keinem Spielobjekt zu, da es programmgesteuert durch den unten stehenden Code zugewiesen wird.
+> Weisen Sie dieses Skript keinem Unity-Spielobjekt zu, da es programmgesteuert durch den unten stehenden Code zugewiesen wird.
 
 Als Nächstes müssen wir unsere Komponente *RemoteRaycaster* erweitern, um die Komponente *RemoteModelEntity* dem zuvor gewählten Objekt hinzuzufügen.
 

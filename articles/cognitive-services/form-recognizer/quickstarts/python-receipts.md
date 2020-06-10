@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118767"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141924"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python
 
@@ -26,7 +26,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Eine URL für ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Beispielbild](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) verwenden.
+- Eine URL für ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird ein Remotebeleg verwendet, auf den über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -459,7 +462,7 @@ Der Knoten `"recognitionResults"` enthält den gesamten erkannten Text. Der Text
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie die REST-API für die Formularerkennung mit Python verwendet, um den Inhalt eines Verkaufsbelegs zu extrahieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
+In dieser Schnellstartanleitung haben Sie die REST-API für die Formularerkennung mit Python verwendet, um den Inhalt eines Verkaufsbelegs zu extrahieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
 > [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

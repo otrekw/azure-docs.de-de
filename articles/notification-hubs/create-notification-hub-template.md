@@ -10,20 +10,20 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743530"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996668"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Benachrichtigungshubs mithilfe einer Azure Resource Manager-Vorlage
 
 Azure Notification Hubs bietet eine benutzerfreundliche, horizontal skalierbare Push-Engine, mit der Sie von einem beliebigen (cloudbasierten oder lokalen) Back-End aus Benachrichtigungen an eine beliebige Plattform (iOS, Android, Windows, Kindle usw.) senden können. Weitere Informationen zu diesem Dienst finden Sie unter [Was ist Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-Dieser Schnellstart verwendet eine Azure Resource Manager-Vorlage, um einen Azure Notification Hubs-Namespace sowie einen darin enthaltenen Benachrichtigungshub namens „MyHub“ zu erstellen.
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Diese Schnellstartanleitung verwendet eine Azure Resource Manager-Vorlage, um einen Azure Notification Hubs-Namespace sowie einen darin enthaltenen Benachrichtigungs-Hub namens **MyHub** zu erstellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -32,8 +32,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Keine.
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>Erstellen eines Notification Hubs-Namespace und eines Benachrichtigungshubs
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -48,7 +46,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage akzeptiert den Namen eines Notification Hubs-Namespace als Parameter. Die Vorlage erstellt dann einen Namespace mit diesem Namen sowie einen Benachrichtigungshub mit dem Namen **MyHub** innerhalb dieses Namespace.
 
-[![In Azure bereitstellen](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
