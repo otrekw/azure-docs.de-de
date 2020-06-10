@@ -1,6 +1,6 @@
 ---
-title: 'CLI-Beispiel: Kopieren einer Azure SQL-Datenbank auf einen neuen Server'
-description: Kopieren einer SQL-Datenbank auf einen neuen Server mit einem Azure CLI-Beispielskript
+title: 'Azure CLI: Kopieren einer Datenbank in Azure SQL-Datenbank auf einen neuen Server'
+description: Azure CLI-Beispielskript zum Kopieren einer Datenbank in Azure SQL-Datenbank auf einen neuen Server
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067474"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022691"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>Kopieren einer SQL-Datenbank auf einen neuen Server per CLI
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Verwenden der CLI zum Kopieren einer Datenbank in Azure SQL-Datenbank auf einen neuen Server
 
 In diesem Azure CLI-Skriptbeispiel wird eine Kopie einer vorhandenen Datenbank auf einem neuen Server erstellt.
 
@@ -61,4 +61,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

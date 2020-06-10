@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678651"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300588"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Tutorial: Einrichten eines ganz neuen Unity-Projekts
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ihre Kontoinformationen (Konto-ID, Kontoschlüssel, Abonnement-ID). Falls Sie über kein Konto verfügen, [erstellen Sie ein Konto](../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(herunterladen)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Aktuelle Version von Visual Studio 2019 [(herunterladen)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Die aktuellste Version von Visual Studio 2019 [(Download)](https://visualstudio.microsoft.com/vs/older-downloads/). 
+* [Visual Studio-Tools für Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Insbesondere sind die folgenden *Workloadinstallationen* obligatorisch:
+  * **Desktopentwicklung mit C++**
+  * **Entwicklung für die universelle Windows-Plattform (UWP)**
 * Git [(herunterladen)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(herunterladen)](https://unity3d.com/get-unity/download)
   * Installieren Sie in Unity diese Module:
@@ -77,7 +80,7 @@ Nachdem Sie das Manifest geändert und gespeichert haben, wird Unity automatisch
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Stellen Sie sicher, dass Sie über die neueste Version des Pakets verfügen.
 
 Die folgenden Schritte stellen sicher, dass das Projekt die neueste Version des Remoterenderingpakets verwendet.
-1. Wählen Sie das Paket im Fenster „Project“ (Projekt) aus, und klicken Sie auf das Symbol „Paket“: ![Auswählen des Paketsymbols](media/package-icons.png)
+1. Wählen Sie das Paket im Fenster „Project“ (Projekt) aus, und klicken Sie auf das :::no-loc text="package":::-Symbol: ![Auswählen des Paketsymbols](media/package-icons.png)
 1. Klicken Sie im Inspector auf „View in Package Manager“ (In Paket-Manager anzeigen): ![Package Inspector](media/package-properties.png) (Paket-Inspektor).
 1. Überprüfen Sie auf der Seite mit dem Paket-Manager für das Remoterenderingpaket, ob die Schaltfläche „Update“ (Aktualisieren) verfügbar ist. Falls ja, wird das Paket durch Klicken auf diese Schaltfläche in die neueste verfügbare Version geändert: ![Das ARR-Paket im Paket-Manager](media/package-manager.png)
 1. Mitunter kann das Aktualisieren des Pakets zu Fehlern in der Konsole führen. Wenn dies auftritt, schließen Sie das Projekt und öffnen es erneut.
@@ -90,11 +93,11 @@ Wählen Sie den Knoten **Main Camera** (Hauptkamera) aus.
 
     ![Zurücksetzen der Kameratransformation](media/camera-reset-transform.png)
 
-1. Legen Sie **Clear flags** (Kennzeichnungen löschen) auf *Solid Color* (Volltonfarbe) fest.
+1. Festlegen von **:::no-loc text="Clear flags":::** auf *:::no-loc text="Solid Color":::*
 
-1. Legen Sie **Background** (Hintergrund) auf *Black* (Schwarz) fest.
+1. Festlegen von **:::no-loc text="Background":::** auf *:::no-loc text="Black":::*
 
-1. Legen Sie **Clipping Planes** (Clippingebenen) auf *Near (Nahe) = 0,3* und *Far (Entfernt) = 20* fest. Das bedeutet, dass beim Rendern Geometrien beschnitten werden, die näher als 30 cm oder entfernter als 20 Meter sind.
+1. Legen Sie **:::no-loc text="Clipping Planes":::** auf *Near = 0.3* (nah) und *Far = 20* (weit) fest. Das bedeutet, dass beim Rendern Geometrien beschnitten werden, die näher als 30 cm oder entfernter als 20 Meter sind.
 
     ![Unity-Kameraeigenschaften](media/camera-properties.png)
 
@@ -553,7 +556,7 @@ Fügen Sie den folgenden Code in das Skript *RemoteRendering* ein, und entfernen
 #endif
 ```
 
-So testen Sie diese Funktionalität
+So testen Sie diese Funktionalität:
 
 1. Klicken Sie in Unity auf **Play** (Wiedergeben).
 1. Öffnen Sie eine Sitzung:

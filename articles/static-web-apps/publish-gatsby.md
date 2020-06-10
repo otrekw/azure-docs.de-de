@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593378"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299312"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Gatsby-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -95,7 +95,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _Ressourcengruppe_ die Option **Neu** aus. Geben Sie unter _Name für neue Ressourcengruppe_ den Namen **gatsby-static-web-app** ein, und wählen Sie **OK** aus.
 
-1. Geben Sie als Nächstes im Feld **Name** einen global eindeutigen Namen für Ihre App ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`. Dieser Wert wird als URL-Präfix für Ihre statische Web-App im Format `https://<YOUR_APP_NAME>.azurestaticapps.net` verwendet.
+1. Geben Sie anschließend einen Namen für Ihre App im Feld **Name** ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`.
 
 1. Wählen Sie unter _Region_ eine verfügbare Region in Ihrer Nähe aus.
 

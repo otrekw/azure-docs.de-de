@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774457"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019842"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Wiederherstellen einer Datenbank einer verwalteten Instanz in einer anderen geografischen Region per CLI
 
@@ -28,7 +28,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Informationen zu einem vorhandenen Paar mit verwalteten Instanzen finden Sie unter [Verwenden der Azure CLI zum Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-create-configure-managed-instance-cli.md).
+Informationen zu einem vorhandenen Paar mit verwalteten Instanzen finden Sie unter [Verwenden der Azure CLI zum Erstellen einer Azure SQL Managed Instance](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -64,4 +64,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

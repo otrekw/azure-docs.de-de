@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud und die Wiedergabe aus der Cloud auszuführen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 92367634a2f5785ecbb102db1e03f3d5f12d744e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300823"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456605"
 ---
 # <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
 
 1. Bearbeiten Sie unter dem Knoten „GraphTopologySet“ Folgendes:
 
-    `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
 1. Bearbeiten Sie anschließend unter den Knoten GraphInstanceSet und GraphTopologyDelete
 

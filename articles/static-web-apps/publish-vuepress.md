@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: bd9eaad0c141eda815da159e3c13d6c51f5e6200
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593598"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297994"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer VuePress-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -110,8 +110,8 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue Static Web Apps-Anwen
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Klicken Sie auf **Ressource erstellen**.
-1. Suchen Sie nach **Statische Web-Apps**.
-1. Klicken Sie auf **Statische Web-Apps (Vorschau)** .
+1. Suchen Sie nach **Static Web Apps**.
+1. Klicken Sie auf **Static Web Apps (Vorschau)** .
 1. Klicken Sie auf **Erstellen**
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Erstellen einer statischen Web-App (Vorschau) im Portal":::
@@ -120,7 +120,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue Static Web Apps-Anwen
 
 1. Wählen Sie unter _Ressourcengruppe_ die Option **Neu** aus. Geben Sie unter _Name für neue Ressourcengruppe_ den Namen **vuepress-static-app** ein, und wählen Sie **OK** aus.
 
-1. Geben Sie als Nächstes im Feld **Name** einen global eindeutigen Namen für Ihre App ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`. Dieser Wert wird als URL-Präfix für Ihre statische App im Format `https://<APP_NAME>.azurestaticapps.net` verwendet.
+1. Geben Sie anschließend einen Namen für Ihre App im Feld **Name** ein. Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `-`.
 
 1. Wählen Sie unter _Region_ eine verfügbare Region in Ihrer Nähe aus.
 
