@@ -4,13 +4,13 @@ description: In diesem Node.js-REST-basierten Schnellstart wird Schritt für Sch
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 9031c320b055c0a7191655d6531eaa31d9cc8bb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851564"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342781"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Node.js
 

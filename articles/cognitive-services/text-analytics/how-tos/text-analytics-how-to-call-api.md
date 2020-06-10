@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218552"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561028"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
-Aufrufe der **Textanalyse-API** sind HTTP POST/GET-Aufrufe, die Sie in jeder Sprache formulieren können. In diesem Artikel verwenden wir REST und [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), um wesentliche Konzepte zu demonstrieren.
+Aufrufe der **Textanalyse-API** sind HTTP POST/GET-Aufrufe, die Sie in jeder Sprache formulieren können. In diesem Artikel verwenden wir REST und [Postman](https://www.postman.com/downloads/), um wesentliche Konzepte zu demonstrieren.
 
 Jede Anforderung muss Ihren Zugriffsschlüssel und einen HTTP-Endpunkt enthalten. Der Endpunkt gibt die Region an, die Sie bei der Registrierung ausgewählt haben, die Dienst-URL und eine in der Anforderung verwendete Ressource: `sentiment`, `keyphrases`, `languages` und `entities`. 
 
