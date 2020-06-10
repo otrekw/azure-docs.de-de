@@ -3,17 +3,17 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an eine Azure-F
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI oder das Portal, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Als Endpunkt wird eine Azure-Funktion verwendet.'
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80292154"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557857"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Schnellstart: Weiterleiten von benutzerdefinierten Ereignissen an eine Azure-Funktion mit Event Grid
 

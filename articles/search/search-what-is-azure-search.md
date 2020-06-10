@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891553"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466220"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
@@ -68,7 +68,7 @@ Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenari
 |-------------------|----------|
 | Tools für Prototyperstellung und Überprüfung | Im Portal können Sie den [**Datenimport-Assistenten**](search-import-data-portal.md) zum Konfigurieren von Indexern, den Index-Designer zum Einrichten eines Index und den [**Suchexplorer**](search-explorer.md) zum Testen von Abfragen und Optimieren von Bewertungsprofilen verwenden. Sie können außerdem einen beliebigen Index öffnen, um sein Schema anzuzeigen. |
 | Überwachung und Diagnose | Durch [**Aktivieren der Überwachungsfunktionen**](search-monitor-usage.md) können neben den Metriken, die im Portal immer angezeigt werden, zusätzliche Metriken verwendet werden. Metriken zu Abfragen pro Sekunde, Latenz und Drosselung werden erfasst und in Portalseiten protokolliert, ohne dass hierzu eine zusätzliche Konfiguration erforderlich ist.|
-| Serverseitige Verschlüsselung | Die [**von Microsoft verwaltete Verschlüsselung ruhender Daten**](search-security-overview.md#encrypted-transmission-and-storage) ist in der internen Speicherebene integriert und unwiderruflich. Optional können Sie die Standardverschlüsselung durch [**von Kunden verwaltete Verschlüsselungsschlüssel**](search-security-manage-encryption-keys.md) ergänzen. Mithilfe von Schlüsseln, die Sie in Azure Key Vault erstellen und verwalten, können Indizes und Synonymzuordnungen in Azure Cognitive Search verschlüsselt werden. |
+| Serverseitige Verschlüsselung | Die [**von Microsoft verwaltete Verschlüsselung ruhender Daten**](search-security-overview.md#encrypted-transmissions-and-storage) ist in der internen Speicherebene integriert und unwiderruflich. Optional können Sie die Standardverschlüsselung durch [**von Kunden verwaltete Verschlüsselungsschlüssel**](search-security-manage-encryption-keys.md) ergänzen. Mithilfe von Schlüsseln, die Sie in Azure Key Vault erstellen und verwalten, können Indizes und Synonymzuordnungen in Azure Cognitive Search verschlüsselt werden. |
 | Infrastruktur | Die **hoch verfügbare Plattform** macht den Suchdienst äußerst zuverlässig. [Azure Cognitive Search bietet eine SLA von 99,9 Prozent](https://azure.microsoft.com/support/legal/sla/search/v1_0/) (bei ordnungsgemäßer Skalierung).<br/><br/> Azure Cognitive Search ist eine **vollständig verwaltete und skalierbare** End-to-End-Lösung, für die keinerlei Infrastrukturverwaltungsaufwand anfällt. Eine zweidimensionale Skalierung ermöglicht die Anpassung des Diensts an Ihre Anforderungen, um mehr Dokumentspeicher, ein höheres Abfrageaufkommen oder beides zu bewältigen.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Verwendung von Azure Cognitive Search
