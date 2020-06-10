@@ -3,12 +3,13 @@ title: 'Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks – Azure No
 description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebooks (Vorschauversion) erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75660816"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561754"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 

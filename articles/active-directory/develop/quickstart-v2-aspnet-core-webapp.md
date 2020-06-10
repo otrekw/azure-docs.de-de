@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112710"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456809"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
@@ -156,7 +156,7 @@ Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Ident
 > Zur Vereinfachung dieser Schnellstartanleitung wird `ValidateIssuer = false` festgelegt. In echten Anwendungen müssen Sie den Aussteller überprüfen.
 > Informationen dazu finden Sie in den Beispielen.
 >
-> Beachten Sie auch die `Configure`-Methode, die zwei wichtige Methoden enthält: `app.UserCookiePolicy()` und `app.UseAuthentication()`.
+> Beachten Sie auch die `Configure`-Methode, die zwei wichtige Methoden enthält: `app.UseCookiePolicy()` und `app.UseAuthentication()`.
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
