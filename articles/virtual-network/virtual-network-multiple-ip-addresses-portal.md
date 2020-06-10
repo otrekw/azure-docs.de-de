@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820e50d9fe60b76639bf74067129e65c7394ff4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146612"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194207"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals
 
@@ -52,8 +52,8 @@ Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adress
 
 Führen Sie die folgenden Schritte aus, um eine neue private IP-Adresse hinzuzufügen:
 
-1. Führen Sie die Schritte im Abschnitt [Grundlegende Schritte](#coreadd) in diesem Artikel aus.
-2. Klicken Sie auf **Hinzufügen**. Erstellen Sie in dem angezeigten Bereich **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4* mit *10.0.0.7* als *statische* private IP-Adresse, und klicken Sie dann auf **OK**.
+1. Führen Sie die Schritte im Abschnitt [Grundlegende Schritte](#coreadd) in diesem Artikel aus, und stellen Sie sicher, dass Sie sich im Abschnitt **IP-Konfigurationen** der VM-Netzwerkschnittstelle befinden.  Überprüfen Sie das als Standard angezeigte Subnetz (z. B. 10.0.0.0/24).
+2. Klicken Sie auf **Hinzufügen**. Erstellen Sie im angezeigten Bereich **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4* mit einer neuen *statischen* privaten IP-Adresse, indem Sie eine neue Zahl für das letzte Oktet auswählen, und klicken Sie dann auf **OK**.  (Für das Subnetz 10.0.0.0/24 wäre *10.0.0.7* z. B. eine mögliche IP-Adresse.)
 
     > [!NOTE]
     > Wenn Sie eine statische IP-Adresse hinzufügen möchten, müssen Sie eine nicht verwendete, gültige Adresse im Subnetz angeben, mit dem die NIC verbunden ist. Wenn die ausgewählte Adresse nicht verfügbar ist, wird im Portal ein „X“ für die IP-Adresse angezeigt, und Sie müssen eine andere Adresse auswählen.

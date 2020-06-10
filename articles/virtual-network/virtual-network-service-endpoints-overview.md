@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509498"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220436"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtual Network-Dienstendpunkte
 
-Virtual Network-Dienstendpunkte (VNET) erweitern den privaten Adressraum Ihres virtuellen Netzwerks. Die Endpunkte erweitern auch die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem VNET an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
+Der Virtual Network (VNet)-Dienstendpunkt bietet eine sichere und direkte Verbindung mit Azure-Diensten über eine optimierte Route über das Azure-Backbonenetzwerk. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Dienstendpunkte ermöglichen es privaten IP-Adressen im VNet, den Endpunkt eines Azure-Diensts zu erreichen, ohne dass eine öffentliche IP-Adresse im VNet benötigt wird.
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar. Die *Microsoft.\** -Ressource ist in Klammern angegeben. Aktivieren Sie diese Ressource über die Subnetzseite, während Sie die Dienstendpunkte für Ihren Dienst konfigurieren:
 
 **Allgemein verfügbar**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft.Storage*): Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Database for PostgreSQL-Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
 - **[Azure Database for MySQL-Server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
@@ -147,8 +147,8 @@ Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – h
 
 - [Konfigurieren von VNET-Dienstendpunkten](tutorial-restrict-network-access-to-resources.md)
 - [Sichern eines Azure Storage-Kontos in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Sichern eines Azure SQL Data Warehouse in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Sichern eines Azure SQL Data Warehouse in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-Dienstintegration in virtuellen Netzwerken](virtual-network-for-azure-services.md)
 - [Richtlinien für VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

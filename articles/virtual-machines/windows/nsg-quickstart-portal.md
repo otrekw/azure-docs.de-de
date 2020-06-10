@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81865486"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170035"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -25,47 +25,45 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 1. Suchen Sie nach der Ressourcengruppe für den virtuellen Computer, und wählen Sie diese aus. Wählen Sie **Hinzufügen** aus, suchen Sie dann nach **Netzwerksicherheitsgruppe**, und wählen Sie diese Option aus.
 
-2. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
     Das Fenster **Netzwerksicherheitsgruppe erstellen** wird geöffnet.
 
     ![Erstellen einer Netzwerksicherheitsgruppe](./media/nsg-quickstart-portal/create-nsg.png)
 
-2. Geben Sie einen Namen für Ihre Netzwerksicherheitsgruppe ein. 
+1. Geben Sie einen Namen für Ihre Netzwerksicherheitsgruppe ein. 
 
-3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine, und wählen Sie dann einen Speicherort aus.
+1. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine, und wählen Sie dann einen Speicherort aus.
 
-4. Wählen Sie **Erstellen** aus, um die Netzwerksicherheitsgruppe zu erstellen.
+1. Wählen Sie **Erstellen** aus, um die Netzwerksicherheitsgruppe zu erstellen.
 
 ## <a name="create-an-inbound-security-rule"></a>Erstellen einer Eingangssicherheitsregel
 
 1. Wählen Sie Ihre neue Netzwerksicherheitsgruppe aus. 
 
-2. Wählen Sie **Eingangssicherheitsregeln** aus, und wählen Sie dann **Hinzufügen** aus.
+1. Wählen Sie **Eingangssicherheitsregeln** im linken Menü und dann **Hinzufügen** aus.
 
-    ![Hinzufügen einer Eingangsregel](./media/nsg-quickstart-portal/add-inbound-rule.png)
+    ![Wechsel zur Seite "Erweitert"](./media/nsg-quickstart-portal/advanced.png)
 
-3. Wählen Sie **Erweitert**aus. 
+1. Wechseln Sie auf der Seite **Eingehende Sicherheitsregel hinzufügen** oben auf der Seite von **Grundlegend** zu **Erweitert**. 
 
-4. Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. **HTTP**, aus. Sie können auch **Benutzerdefiniert** auswählen, wenn Sie einen bestimmten zu verwendenden Port angeben möchten. 
+1. Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. **HTTP**, aus. Sie können auch **Benutzerdefiniert** auswählen, wenn Sie einen bestimmten zu verwendenden Port angeben möchten. 
 
-5. Ändern Sie optional die **Priorität** oder den **Namen**. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden: je niedriger der numerische Wert, desto früher wird die Regel angewendet.
+1. Ändern Sie optional die **Priorität** oder den **Namen**. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden: je niedriger der numerische Wert, desto früher wird die Regel angewendet.
 
-6. Wählen Sie **Hinzufügen** aus, um die Regel zu erstellen.
+1. Wählen Sie **Hinzufügen** aus, um die Regel zu erstellen.
 
 ## <a name="associate-your-network-security-group-with-a-subnet"></a>Zuordnen Ihrer Netzwerksicherheitsgruppe zu einem Subnetz
 
 Im letzten Schritt muss die Netzwerksicherheitsgruppe einem Subnetz oder einer bestimmten Netzwerkschnittstelle zugeordnet werden. In diesem Beispiel ordnen wir die Netzwerksicherheitsgruppe einem Subnetz zu. 
 
-1. Wählen Sie **Subnetze** aus, und wählen Sie dann **Zuordnen** aus.
+1. Wählen Sie im Menü auf der linken Seite **Subnetze** und dann **Zuordnen** aus.
 
-    ![Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz](./media/nsg-quickstart-portal/associate-subnet.png)
-
-2. Wählen Sie das virtuelle Netzwerk und dann das gewünschte Subnetz aus.
+1. Wählen Sie das virtuelle Netzwerk und dann das gewünschte Subnetz aus.
 
     ![Zuordnen einer Netzwerksicherheitsgruppe zu einem virtuellen Netzwerk](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-    Alle virtuellen Computer, die Sie mit diesem Subnetz verbinden, sind jetzt über Port 80 erreichbar.
+1. Wählen Sie **OK**, wenn der Vorgang abgeschlossen ist.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 

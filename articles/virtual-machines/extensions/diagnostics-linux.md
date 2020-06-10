@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289174"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118554"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -49,13 +49,28 @@ Diese Installationsanweisungen konfigurieren mithilfe einer [herunterladbare Bei
 
 Die herunterladbare Konfiguration ist nur ein Beispiel. Passen Sie sie an Ihre eigenen Bedürfnisse an.
 
+### <a name="supported-linux-distributions"></a>Unterstützte Linux-Distributionen
+
+Die Linux-Diagnoseerweiterung unterstützt die folgenden Distributionen und Versionen. Die Liste der Distributionen und Versionen gilt nur für von Azure unterstützte Images von Linux-Anbietern. BYOL- und BYOS-Images von Drittanbietern, wie Appliances, werden im Allgemeinen für die Linux-Diagnoseerweiterung nicht unterstützt.
+
+Eine Distribution, die nur Hauptversionen auflistet, z. B. Debian 7, wird auch für alle Nebenversionen unterstützt. Wird eine bestimmte Nebenversion angegeben, wird nur diese angegebene Version unterstützt. Wenn "+" angefügt ist, werden Nebenversionen, die gleich oder höher als die angegebene Version sind, unterstützt.
+
+Unterstützte Distributionen und Versionen:
+
+- Ubuntu 18.04, 16.04, 14.04
+- CentOS 7, 6.5+
+- Oracle Linux 7, 6.4+
+- OpenSUSE 13.1+
+- SUSE Linux Enterprise Server 12
+- Debian 9, 8, 7
+- RHEL 7, 6.7+
+
 ### <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) aus, um ihn zu aktualisieren.
 * **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
 * Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes Speicherkonto in diesem Abonnement zum Speichern der Daten.
-* Eine Liste der unterstützten Linux-Distributionen finden Sie unter https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions.
 
 ### <a name="sample-installation"></a>Beispielinstallation
 

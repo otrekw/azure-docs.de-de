@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834406"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259285"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Slack
 
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Slack-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 > [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+> Wenn Sie in einem Mandanten mehr als eine Slack-Instanz integrieren müssen, kann der Bezeichner für jede Anwendung eine Variable sein.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -93,20 +93,24 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Slack](https://slack.com/help/contact), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    
+    > [!NOTE]
+    > Der Wert für **Bezeichner (Entitäts-ID)** kann eine Variable sein, wenn Sie mehr als eine Slack-Instanz in den Mandanten integrieren müssen. Verwenden Sie das Muster `https://<DOMAIN NAME>.slack.com`. In diesem Szenario müssen Sie außerdem die Kopplung mit einer anderen Einstellung in Slack durchführen, indem Sie denselben Wert verwenden.
 
 1. Die Slack-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
     ![image](common/edit-attribute.png)
 
-1. Darüber hinaus wird in der Slack-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen. Besitzen die Benutzer keine E-Mail-Adresse, ordnen Sie **emailaddress** dem Attribut **user.userprincipalname** zu.
+1. Darüber hinaus wird in der Slack-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen. Außerdem müssen Sie das `email`-Attribut hinzufügen. Wenn der Benutzer keine E-Mail-Adresse hat, ordnen Sie **emailaddress** zu **user.userprincipalname** und **email** zu **user.userprincipalname** zu.
 
     | Name | Quellattribut |
     | -----|---------|
     | emailaddress | user.userprincipalname |
+    | email | user.userprincipalname |
     | | |
 
-> [!NOTE]
-    > Um die Konfiguration des Dienstanbieters einzurichten, müssen Sie auf der Seite mit der SAML-Konfiguration auf **Erweitern** neben **Erweiterte Optionen** klicken. Geben Sie im Feld **Aussteller des Dienstanbieters** die Arbeitsbereichs-URL ein. Der Standardwert ist „slack.com“. 
+   > [!NOTE]
+   > Um die Konfiguration des Dienstanbieters einzurichten, müssen Sie auf der Seite mit der SAML-Konfiguration auf **Erweitern** neben **Erweiterte Optionen** klicken. Geben Sie im Feld **Aussteller des Dienstanbieters** die Arbeitsbereichs-URL ein. Der Standardwert ist „slack.com“. 
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -166,15 +170,18 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b.  Fügen Sie in das Textfeld **Aussteller des Identitätsanbieters** den Wert vom **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c.  Öffnen Sie das heruntergeladene Zertifikat in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Öffentliches Zertifikat** ein.
+    c.  Öffnen Sie die heruntergeladene Zertifikatsdatei in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend im Textfeld **Öffentliches Zertifikat** ein.
 
     d. Konfigurieren Sie die oben genannten drei Einstellungen gemäß den Anforderungen Ihres Slack-Teams. Weitere Informationen zu den Einstellungen finden Sie hier im **SSO-Konfigurationshandbuch für Slack**. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. Klicken Sie auf **Erweitern**, und geben Sie `https://slack.com` in das Textfeld **Aussteller des Identitätsanbieters** ein.
+    e. Klicken Sie auf **Erweitern**, und geben Sie `https://slack.com` im Textfeld **Aussteller des Dienstanbieters** ein.
 
     f.  Klicken Sie auf **Konfiguration speichern**.
+    
+    > [!NOTE]
+    > Wenn Sie mehr als eine Slack-Instanz in Azure AD integrieren müssen, legen Sie `https://<DOMAIN NAME>.slack.com` auf **Aussteller des Dienstanbieters** fest, damit eine Kopplung mit der Einstellung **Bezeichner** in der Azure-Anwendung erfolgen kann.
 
 ### <a name="create-slack-test-user"></a>Erstellen eines Slack-Testbenutzers
 
