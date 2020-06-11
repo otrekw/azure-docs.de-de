@@ -13,6 +13,7 @@
     - name: 'Erstellen eines privaten Endpunkts: Azure CLI'
       href: create-private-endpoint-cli.md
     - name: 'Erstellen eines privaten Endpunkts: ARM-Vorlage'
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: 'Erstellen eines Private Link-Diensts: Portal'
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: 'Erstellen eines Private Link-Diensts: Azure CLI'
       href: create-private-link-service-cli.md
     - name: 'Erstellen eines Private Link-Diensts: ARM-Vorlage'
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: Konzepte
   items:
