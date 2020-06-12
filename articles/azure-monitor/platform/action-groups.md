@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738817"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170459"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -118,7 +118,7 @@ Mithilfe der Aktion „Aktionsgruppenwebhook“ können Sie Azure Active Directo
     > Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) sein, um dieses Skript ausführen zu können.
     
     - Ändern Sie den Connect-AzureAD-Befehl des PowerShell-Skripts so, dass Ihre Azure AD-Mandanten-ID verwendet wird.
-    - Ändern Sie die $myAzureADApplicationObjectId-Variable des PowerShell-Skripts so, dass die Objekt-ID Ihrer Azure AD-Anwendung verwendet wird.
+    - Ändern Sie die Variable „$myAzureADApplicationObjectId“ des PowerShell-Skripts, um die Objekt-ID Ihrer Azure AD-Anwendung zu verwenden.
     - Führen Sie das geänderte Skript aus.
     
 1. Konfigurieren Sie die Aktion für den sicheren Aktionsgruppen-Webhook.
@@ -245,7 +245,7 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von We
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Erfahren Sie mehr über den [ITSM-Connector](../../azure-monitor/platform/itsmc-overview.md).
+* Weitere Informationen zum ITSM-Connector finden Sie [hier](../../azure-monitor/platform/itsmc-overview.md).
 * Weitere Informationen zu [Ratenlimits](../../azure-monitor/platform/alerts-rate-limiting.md) für Warnungen.
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

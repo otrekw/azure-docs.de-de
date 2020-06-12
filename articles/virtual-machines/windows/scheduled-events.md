@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779778"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297920"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -49,7 +49,7 @@ Der Azure-Metadatendienst macht Informationen zu ausgeführten virtuellen Comput
 ### <a name="endpoint-discovery"></a>Endpunktermittlung
 Für virtuelle Computer in VNETs ist der Metadatendienst über eine statische, nicht routingfähige IP-Adresse (`169.254.169.254`) verfügbar. Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird (Standard für Clouddienste und klassische virtuelle Computer), ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
@@ -58,6 +58,8 @@ Der Dienst Geplante Ereignisse ist versionsspezifisch. Versionen sind obligatori
 
 | Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - |
+| 2019-08-01 | Allgemeine Verfügbarkeit | All | <li> EventSource-Unterstützung hinzugefügt |
+| 01.04.2019 | Allgemeine Verfügbarkeit | All | <li> Unterstützung der Ereignisbeschreibung hinzugefügt |
 | 2019-01-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für EventType „Terminate“ von VM-Skalierungsgruppen hinzugefügt |
 | 2017-11-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
 | 2017-08-01 | Allgemeine Verfügbarkeit | All | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
@@ -86,7 +88,7 @@ Sie können geplante Ereignisse abfragen, indem Sie einfach folgenden Aufruf aus
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01 -H @{"Metadata"="true"}
 ```
 
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
@@ -102,6 +104,8 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
             "NotBefore": {timeInUTC},
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -117,6 +121,8 @@ DocumentIncarnation ist ein ETag und bietet eine einfache Möglichkeit, um zu un
 | Ressourcen| Liste von Ressourcen, auf die sich dieses Ereignis auswirkt. Diese Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | Ereignisstatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ähnliche Statusangaben werden niemals bereitgestellt. Das Ereignis wird nicht mehr zurückgegeben, nachdem es abgeschlossen ist.
 | NotBefore| Zeit, nach der dieses Ereignis gestartet werden kann <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
+| BESCHREIBUNG | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
+| EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wurde durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereigniszeitplanung
 Jedes Ereignis erfolgt dem Zeitplan nach, basierend auf dem Ereignistyp, eine Mindestzeitspanne in der Zukunft. Diese Zeit ist in der `NotBefore`-Eigenschaft eines Ereignisses angegeben. 

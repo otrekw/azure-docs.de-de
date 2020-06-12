@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 69d4b1d6c67dc63347ec4fb8043427ddf0a42ae1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7fccd60ef0312748287d4103d8754bce944d4df6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702111"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266456"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -133,12 +133,14 @@ Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computere
 
 Sie können eine systemseitig erstellte Conda-Umgebung, eine bereits vorhandene Python-Umgebung oder einen Docker-Container verwenden. Zur Ausführung auf einem Docker-Container muss die Docker-Engine auf der VM ausgeführt werden. Diese Funktion ist besonders nützlich, wenn Sie eine cloudbasierte Entwicklungs-/Experimentierumgebung nutzen möchten, die Ihnen mehr Flexibilität bietet als Ihr lokaler Computer.
 
-Verwenden Sie in diesem Szenario die Data Science Virtual Machine (DSVM) als Azure-VM. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm).
+Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als virtuellen Azure-Computer. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm).
 
 1. **Erstellen**: Erstellen Sie eine DSVM, bevor Sie si zum Trainieren Ihres Modells verwenden. Informationen zum Erstellen dieser Ressource finden Sie in [Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
     > [!WARNING]
-    > Azure Machine Learning unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
+    > Von Azure Machine Learning werden nur virtuelle Computer unterstützt, auf denen **Ubuntu** ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
+    > 
+    > Von Azure Machine Learning wird außerdem vorausgesetzt, dass der virtuelle Computer über eine __öffentliche IP-Adresse__ verfügt.
 
 1. **Anfügen**: Wenn Sie einen vorhandenen virtuellen Computer als Computeziel anfügen möchten, müssen Sie die Ressourcen-ID, den Benutzernamen und das Kennwort für den virtuellen Computer angeben. Die Ressourcen-ID des virtuellen Computers kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des virtuellen Computers im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
 
@@ -182,9 +184,12 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
 
 1. **Erstellen**:  Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Training Ihres Modells verwenden. Informationen zum Erstellen von Spark in einem HDInsight-Cluster finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
 
+    > [!WARNING]
+    > Von Azure Machine Learning wird vorausgesetzt, dass der HDInsight-Cluster über eine __öffentliche IP-Adresse__ verfügt.
+
     Beim Erstellen des Clusters müssen Sie einen SSH-Benutzernamen und ein Kennwort angeben. Notieren Sie diese Werte, da Sie sie benötigen, wenn Sie HDInsight als Computeziel verwenden.
     
-    Nach Erstellen des Clusters stellen Sie eine Verbindung mit dem Hostnamen \<clustername>-ssh.azurehdinsight.net her, wobei \<clustername> der Name ist, den Sie für den Cluster angegeben haben. 
+    Stellen Sie nach der Erstellung des Clusters eine Verbindung mit dem Hostnamen „\<clustername>-ssh.azurehdinsight.net“ her, wobei \<clustername> der Name ist, den Sie für den Cluster angegeben haben. 
 
 1. **Anfügen**: Wenn Sie einen HDInsight-Cluster als Computeziel anfügen möchten, müssen Sie den die Ressourcen-ID, den Benutzernamen und das Kennwort für den HDInsight-Cluster angeben. Die Ressourcen-ID des HDInsight-Clusters kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des HDInsight-Clusters im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
 

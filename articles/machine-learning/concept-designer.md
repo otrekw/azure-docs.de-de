@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.custom: designer
-ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654927"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167059"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,10 +38,10 @@ Der Designer verwendet Ihren Azure Machine Learning-[Arbeitsbereich](concept-wor
 Der Designer bietet Ihnen einen visuellen Zeichenbereich zum Erstellen, Testen und Bereitstellen von Machine Learning-Modellen. Folgendes ist mit dem Designer möglich:
 
 + Platzieren von [Datasets](#datasets) und [Modulen](#module) auf der Canvas per Drag & Drop-Verfahren
-+ Verbinden der Module miteinander, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
++ Verbinden der Module, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
 + Übermitteln einer [Pipelineausführung](#pipeline-run) mithilfe der Computeressourcen in Ihrem Azure Machine Learning-Arbeitsbereich
 + Konvertieren Ihrer **Trainingspipelines** in die **Rückschlusspipelines**
-+ [Veröffentlichen](#publish) Ihrer Pipelines in einen REST-**Pipelineendpunkt** zum Übermitteln neuer Pipelineausführungen mit unterschiedlichen Parametern und Datasets
++ [Veröffentlichen](#publish) Ihrer Pipelines an einem REST-basierten **Pipelineendpunkt**, um eine neue Pipeline zu übermitteln, die mit anderen Parametern und Datasets ausgeführt wird
     + Veröffentlichen einer **Trainingspipeline**, um beim Ändern von Parametern und Datasets eine einzelnen Pipeline zum Trainieren mehrerer Modelle nochmal zu verwenden
     + Veröffentlichen einer **Batchrückschlusspipeline**, um Vorhersage zu neuen Daten zu treffen, indem ein zuvor trainiertes Modell verwendet wird
 + [Bereitstellen](#deploy) einer **Echtzeit-Rückschlusspipeline** für einen Echtzeitendpunkt, um in Echtzeit Vorhersagen zu neuen Daten zu treffen
@@ -50,7 +50,7 @@ Der Designer bietet Ihnen einen visuellen Zeichenbereich zum Erstellen, Testen u
 
 ## <a name="pipeline"></a>Pipeline
 
-Eine [Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) besteht aus Datasets und Analysemodulen, die Sie miteinander verbinden. Pipelines haben viele Verwendungsmöglichkeiten: Sie können eine Pipeline erstellen, die ein einzelnes Modell trainiert, oder eine, die mehrere Modelle trainiert. Sie können eine Pipeline erstellen, die Vorhersagen in Echtzeit oder im Batch erstellt, oder eine, die nur Daten bereinigt. Mit Pipelines können Sie Ihre Arbeit wiederverwenden und Ihre Projekte organisieren.
+Eine [Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) besteht aus verbundenen Datasets und Analysemodulen. Pipelines haben viele Verwendungsmöglichkeiten: Sie können eine Pipeline erstellen, die ein einzelnes Modell trainiert, oder eine, die mehrere Modelle trainiert. Sie können eine Pipeline erstellen, die Vorhersagen in Echtzeit oder als Batch erstellt, oder eine, die nur Daten bereinigt. Mit Pipelines können Sie Ihre Arbeit wiederverwenden und Ihre Projekte organisieren.
 
 ### <a name="pipeline-draft"></a>Pipelineentwurf
 
@@ -73,7 +73,7 @@ Pipelineausführungen werden in [Experimenten](concept-azure-machine-learning-ar
 
 ## <a name="datasets"></a>Datasets
 
-Ein Azure Machine Learning-Dataset erleichtert Ihnen den Zugriff auf Ihre Daten und die Arbeit damit. Im Designer sind einige Beispieldatasets enthalten, mit denen Sie experimentieren können. Sie können bei Bedarf weitere Datasets [registrieren](how-to-create-register-datasets.md).
+Ein Azure Machine Learning-Dataset erleichtert Ihnen den Zugriff auf Ihre Daten und die Arbeit damit. Im Designer sind mehrere Beispieldatasets enthalten, mit denen Sie experimentieren können. Sie können bei Bedarf weitere Datasets [registrieren](how-to-create-register-datasets.md).
 
 ## <a name="module"></a>Modul
 
@@ -138,4 +138,3 @@ Sie können vorhandene Experimente für die grafische Benutzeroberfläche und We
 
 * Die Grundlagen von Predictive Analytics und maschinellem Lernen werden hier erläutert: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
 * Erfahren Sie, wie Sie vorhandene [Designer-Beispiele](samples-designer.md) ändern, um sie an Ihre Anforderungen anzupassen.
-

@@ -2,13 +2,13 @@
 title: Fortlaufender Export von Telemetriedaten aus Application Insights | Microsoft Docs
 description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Speicher, die Sie anschließendes daraus herunterladen.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744859"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147969"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -34,8 +34,6 @@ Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatu
 
 * Verwenden von [VNET-/Azure Storage-Firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in Verbindung mit Azure Blob Storage.
 
-* [Unveränderlicher Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) für Azure Blob Storage.
-
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Erstellen eines fortlaufenden Exports
@@ -53,7 +51,8 @@ Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatu
 
 4. Erstellen Sie einen Container im Speicher, oder wählen Sie einen aus.
 
-Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten nur Daten, die nach dem Erstellen des Exportvorgangs eingehen.
+> [!NOTE]
+> Nach der Erstellung Ihres Exports werden neu erfasste Daten an Azure Blob Storage übertragen. Beim fortlaufenden Export werden nur neue Telemetriedaten übertragen, die nach der Aktivierung des fortlaufenden Exports erstellt/erfasst werden. Daten, die bereits vor der Aktivierung des fortlaufenden Exports vorhanden waren, werden nicht exportiert, und es gibt keine Möglichkeit, zuvor erstellte Daten rückwirkend mithilfe des fortlaufenden Exports zu exportieren.
 
 Es kann etwa eine Stunde dauern, bis Daten im Speicher angezeigt werden.
 

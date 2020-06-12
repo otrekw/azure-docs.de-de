@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652231"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147941"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -74,7 +74,7 @@ Der abschließende Skalierungsfaktor wird auf die Scheitelpunkte der Geometrie u
 Die Zentrierung ist wichtig, wenn das Quellmodell gegenüber dem Ursprung weit versetzt wurde. In diesem Fall können Probleme mit der Gleitkommagenauigkeit nämlich zu Artefakten beim Rendering führen.
 
 * `opaqueMaterialDefaultSidedness`: Vom Renderingmodul wird vorausgesetzt, dass undurchsichtige Materialien doppelseitig sind.
-Wenn dies nicht das beabsichtigte Verhalten ist, sollte dieser Parameter auf „SingleSided“ (Einseitig) festgelegt werden. Weitere Informationen finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
+Wenn dies nicht das beabsichtigte Verhalten ist, sollte dieser Parameter auf „SingleSided“ (Einseitig) festgelegt werden. Weitere Informationen zu Rendering vom Typ :::no-loc text="single sided"::: finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Materialüberschreibungen
 
@@ -90,7 +90,7 @@ Vom Renderingmodul wird erwartet, dass sich die Farbwerte im linearen Raum befin
 Wenn ein Modell mit dem Gamma-Raum definiert wird, sollten diese Optionen auf „true“ festgelegt werden.
 
 * `gammaToLinearMaterial`: Dient zum Konvertieren der Materialfarben aus dem Gamma-Raum in den linearen Raum.
-* `gammaToLinearVertex`: Dient zum Konvertieren der Scheitelpunktfarben aus dem Gamma-Raum in den linearen Raum.
+* `gammaToLinearVertex`: Dient zum Konvertieren der :::no-loc text="vertex":::-Farben aus dem Gamma-Raum in den linearen Raum.
 
 > [!NOTE]
 > Für FBX-Dateien sind diese Einstellungen standardmäßig auf `true` festgelegt. Für alle anderen Dateitypen wird `false` als Standardwert verwendet.
@@ -127,12 +127,12 @@ Im Modus `none` fällt der geringste Runtime-Mehraufwand an, und es werden etwas
 
 * `axis`: Dient zum Außerkraftsetzen der Einheitenvektoren des Koordinatensystems. Die Standardwerte lauten wie folgt: `["+x", "+y", "+z"]`. Theoretisch verfügt das FBX-Format über einen Header, in dem diese Vektoren definiert sind, und diese Informationen werden vom Konvertierungsmodul zum Transformieren der Szene verwendet. Vom glTF-Format wird auch ein festes Koordinatensystem definiert. In der Praxis enthalten einige Objekte entweder fehlerhafte Informationen im Header oder wurden mit einer anderen Koordinatensystemkonvention gespeichert. Mit dieser Option können Sie das Koordinatensystem außer Kraft setzen, um dies zu lösen. Beispiel: Mit `"axis" : ["+x", "+z", "-y"]` werden die Z- und die Y-Achse vertauscht, und die „Händigkeit“ des Koordinatensystems wird beibehalten, indem die Richtung der Y-Achse invertiert wird.
 
-### <a name="vertex-format"></a>Scheitelpunktformat
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::-Format
 
-Es ist möglich, das Scheitelpunktformat für ein Gittermodell anzupassen, um auf Kosten der Genauigkeit Arbeitsspeicher zu sparen. Ein geringerer Speicherbedarf ermöglicht Ihnen das Laden größerer Modelle oder das Erzielen einer besseren Leistung. Je nach Ihren Daten kann ein falsches Format aber erhebliche Auswirkungen auf die Renderingqualität haben.
+Es ist möglich, das :::no-loc text="vertex":::-Format für ein Gittermodell anzupassen, um auf Kosten der Genauigkeit Arbeitsspeicher zu sparen. Ein geringerer Speicherbedarf ermöglicht Ihnen das Laden größerer Modelle oder das Erzielen einer besseren Leistung. Je nach Ihren Daten kann ein falsches Format aber erhebliche Auswirkungen auf die Renderingqualität haben.
 
 > [!CAUTION]
-> Eine Änderung des Scheitelpunktformats sollte nur das letzte Mittel sein, wenn im Speicher für die Modelle nicht mehr genug Platz ist oder wenn die höchstmögliche Leistung erreicht werden soll. Durch Änderungen kann es leicht zu Artefakten beim Rendern kommen – sowohl offensichtlicher als auch subtiler Art. Wenn Sie nicht wissen, worauf Sie achten müssen, sollten Sie die Standardeinstellung nicht ändern.
+> Eine Änderung des :::no-loc text="vertex":::-Formats sollte nur das letzte Mittel sein, wenn im Speicher für die Modelle nicht mehr genug Platz ist oder wenn die höchstmögliche Leistung erreicht werden soll. Durch Änderungen kann es leicht zu Artefakten beim Rendern kommen – sowohl offensichtlicher als auch subtiler Art. Wenn Sie nicht wissen, worauf Sie achten müssen, sollten Sie die Standardeinstellung nicht ändern.
 
 Die folgenden Anpassungen sind möglich:
 
@@ -159,11 +159,11 @@ Der folgende `vertex`-Abschnitt in der `.json`-Datei ist optional. Für jeden Te
 
 Wenn Sie für eine Komponente die Einstellung `NONE` erzwingen, ist sichergestellt, dass das Ausgabegittermodell nicht über den entsprechenden Datenstrom verfügt.
 
-#### <a name="component-formats-per-vertex-stream"></a>Komponentenformate pro Scheitelpunkt-Datenstrom
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>Komponentenformate pro :::no-loc text="vertex":::-Datenstrom
 
 Die folgenden Formate sind für die jeweiligen Komponenten zulässig:
 
-| Scheitelpunktkomponente | Unterstützte Formate (Fett = Standardeinstellung) |
+| :::no-loc text="Vertex":::-Komponente | Unterstützte Formate (Fett = Standardeinstellung) |
 |:-----------------|:------------------|
 |position| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, NONE |
@@ -178,7 +178,7 @@ Die folgenden Formate sind für die jeweiligen Komponenten zulässig:
 
 Für die Formate gilt der folgende Speicherbedarf:
 
-| Format | BESCHREIBUNG | Byte pro Scheitelpunkt |
+| Format | Beschreibung | Bytes pro „:::no-loc text="vertex":::“ |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Vollständige Gleitkommagenauigkeit mit zwei Komponenten|8
 |16_16_FLOAT|Halbe Gleitkommagenauigkeit mit zwei Komponenten|4
@@ -197,11 +197,56 @@ Für die Formate gilt der folgende Speicherbedarf:
 
 #### <a name="example"></a>Beispiel
 
-Angenommen, Sie verfügen über ein Fotogrammetriemodell, bei dem die Beleuchtung in die Texturen integriert ist. Zum Rendern des Modells werden hierbei nur die Scheitelpunktpositionen und Texturkoordinaten benötigt.
+Angenommen, Sie verfügen über ein Fotogrammetriemodell, bei dem die Beleuchtung in die Texturen integriert ist. Zum Rendern des Modells werden hierbei nur die :::no-loc text="vertex":::-Positionen und Texturkoordinaten benötigt.
 
-Standardmäßig wird vom Konvertierungsmodul vorausgesetzt, dass Sie für ein Modell ggf. irgendwann PBR-Materialien nutzen. Daher werden für Sie Daten vom Typ `normal`, `tangent` und `binormal` generiert. Die Speichernutzung pro Scheitelpunkt beträgt daher `position` (12 Byte) + `texcoord0` (8 Byte) + `normal` (4 Byte) + `tangent` (4 Byte) + `binormal` (4 Byte) = 32 Byte. Größere Modelle dieses Typs können ohne Weiteres mehrere Millionen Scheitelpunkte aufweisen. Dies führt zu Modellen, die mehrere Gigabyte an Arbeitsspeicher belegen können. Diese hohen Datenmengen wirken sich auf die Leistung aus, und unter Umständen ist nicht genügend Arbeitsspeicher vorhanden.
+Standardmäßig wird vom Konvertierungsmodul vorausgesetzt, dass Sie für ein Modell ggf. irgendwann PBR-Materialien nutzen. Daher werden für Sie Daten vom Typ `normal`, `tangent` und `binormal` generiert. Die Speichernutzung pro Scheitelpunkt beträgt daher `position` (12 Byte) + `texcoord0` (8 Byte) + `normal` (4 Byte) + `tangent` (4 Byte) + `binormal` (4 Byte) = 32 Byte. Größere Modelle dieses Typs können ohne Weiteres mehrere Millionen Scheitelpunkte (:::no-loc text="vertices":::) aufweisen. Dies führt zu Modellen, die mehrere Gigabytes an Arbeitsspeicher belegen können. Diese hohen Datenmengen wirken sich auf die Leistung aus, und unter Umständen ist nicht genügend Arbeitsspeicher vorhanden.
 
-Da Sie wissen, dass Sie für das Modell niemals eine dynamische Beleuchtung benötigen und dass alle Texturkoordinaten im Bereich `[0; 1]` liegen, können Sie `normal`, `tangent` und `binormal` auf `NONE` und `texcoord0` auf die halbe Genauigkeit (`16_16_FLOAT`) festlegen, sodass sich nur 16 Byte pro Scheitelpunkt ergeben. Indem Sie die Gittermodelldaten halbieren, können Sie größere Modelle laden und ggf. die Leistung steigern.
+Da Sie wissen, dass Sie für das Modell niemals eine dynamische Beleuchtung benötigen und dass alle Texturkoordinaten im Bereich `[0; 1]` liegen, können Sie `normal`, `tangent` und `binormal` auf `NONE` und `texcoord0` auf die halbe Genauigkeit (`16_16_FLOAT`) festlegen, sodass sich nur 16 Bytes pro Scheitelpunkt (:::no-loc text="vertex":::) ergeben. Indem Sie die Gittermodelldaten halbieren, können Sie größere Modelle laden und ggf. die Leistung steigern.
+
+## <a name="memory-optimizations"></a>Arbeitsspeicheroptimierungen
+
+Der Arbeitsspeicherbedarf geladener Inhalte kann zu einem Engpass im Renderingsystem werden. Eine zu große Arbeitsspeichernutzlast kann die Renderingleistung beeinträchtigen oder dazu führen, dass das Modell gar nicht geladen wird. In diesem Absatz werden einige wichtige Strategien zur Verringerung des Speicherbedarfs erläutert.
+
+### <a name="instancing"></a>Instanziierung
+
+Bei der Instanziierung werden Meshes für Teile mit unterschiedlichen räumlichen Transformationen wiederverwendet, sodass nicht jeder Teil auf seine eigene individuelle Geometrie verweist. Die Instanziierung hat erhebliche Auswirkungen auf den Speicherbedarf.
+Anwendungsfälle für die Instanziierung wären beispielsweise die Schrauben in einem Motorenmodell oder Stühle in einem Architekturmodell.
+
+> [!NOTE]
+> Die Instanziierung kann den Arbeitsspeicherbedarf (und somit die Ladezeiten) erheblich verbessern. Die Verbesserungen bei der Renderingleistung sind jedoch zu vernachlässigen.
+
+Die Instanziierung wird vom Konvertierungsdienst berücksichtigt, wenn Teile in der Quelldatei entsprechend markiert sind. Bei der Konvertierung erfolgt jedoch keine zusätzliche tiefgreifende Analyse der Meshdaten, um wiederverwendbare Teile zu identifizieren. Somit sind das Inhaltserstellungstool und dessen Exportpipeline für eine ordnungsgemäße Instanziierung entscheidend.
+
+Um zu testen, ob Instanziierungsinformationen bei der Konvertierung erhalten bleiben, können Sie sich einfach das Element `numMeshPartsInstanced` in der [Ausgabestatistik](get-information.md#example-info-file) ansehen. Ist der Wert für `numMeshPartsInstanced` größer Null, werden Meshes instanzübergreifend gemeinsam genutzt.
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>Beispiel: Instanziierungseinrichtung in 3DS Max
+
+[Autodesk 3DS Max](https://www.autodesk.de/products/3ds-max) verfügt über unterschiedliche Modi zum Klonen von Objekten. Diese heißen **`Copy`** , **`Instance`** und **`Reference`** und weisen jeweils ein anderes Verhalten hinsichtlich der Instanziierung in der exportierten Datei vom Typ `.fbx` auf.
+
+![Klonen in 3DS Max](./media/3dsmax-clone-object.png)
+
+* **`Copy`** : In diesem Modus wird das Mesh geklont. Es findet also keine Instanziierung statt (`numMeshPartsInstanced` = 0).
+* **`Instance`** : Von den beiden Objekten wird das gleiche Mesh verwendet. Es erfolgt also eine Instanziierung (`numMeshPartsInstanced` = 1).
+* **`Reference`** : Da auf die Geometrien unterschiedliche Modifizierer angewendet werden können, wird vom Exportprogramm ein konservativer Ansatz gewählt, und es findet keine Instanziierung statt (`numMeshPartsInstanced` = 0).
+
+
+### <a name="depth-based-composition-mode"></a>Tiefenbasierter Kompositionsmodus
+
+Falls der Arbeitsspeicher ein kritischer Faktor ist, konfigurieren Sie den Renderer mit dem [Modus „DepthBasedComposition“](../../concepts/rendering-modes.md#depthbasedcomposition-mode). In diesem Modus wird die GPU-Nutzlast auf mehrere GPUs verteilt.
+
+### <a name="decrease-vertex-size"></a>Verringern der Scheitelpunktgröße
+
+Wie im Abschnitt [Bewährte Methoden für Änderungen des Komponentenformats](configure-model-conversion.md#best-practices-for-component-format-changes) erläutert, lässt sich der Speicherbedarf durch Anpassen des Scheitelpunktformats verringern. Diese Option sollte jedoch das letzte Mittel sein.
+
+### <a name="texture-sizes"></a>Texturgrößen
+
+Die Texturdatenmenge kann abhängig von der Art des Szenarios den für Meshdaten genutzten Arbeitsspeicher übersteigen. Dies kann beispielsweise bei Fotogrammetriemodellen der Fall sein.
+In der Konvertierungskonfiguration gibt es keine Möglichkeit zum automatischen Herunterskalieren von Texturen. Bei Bedarf muss die Texturskalierung als clientseitiger Vorverarbeitungsschritt durchgeführt werden. Im Konvertierungsschritt wird jedoch ein geeignetes [Texturkomprimierungsformat](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11) ausgewählt:
+
+* `BC1` für nicht transparente Farbtexturen
+* `BC7` für Quellfarbtexturen mit Alphakanal
+
+Da der Speicherbedarf beim Format `BC7` doppelt so hoch ist wie beim Format `BC1`, muss darauf geachtet werden, dass von den Eingabetexturen nicht unnötig ein Alphakanal bereitgestellt wird.
 
 ## <a name="typical-use-cases"></a>Typische Anwendungsfälle
 
@@ -215,7 +260,7 @@ Es gibt bestimmte Klassen von Anwendungsfällen, die für bestimmte Optimierunge
 
 * Beim Verschieben von Teilen bedeutet dies in der Regel auch, dass Sie Unterstützung für Raycasting oder andere [räumliche Abfragen](../../overview/features/spatial-queries.md) benötigen, damit Sie diese Teile überhaupt auswählen können. Falls Sie keine Verschiebungen durchführen möchten, ist die Wahrscheinlichkeit dagegen hoch, dass Sie hierfür auch keine räumlichen Abfragen nutzen müssen. Aus diesem Grund können Sie das Flag `generateCollisionMesh` deaktivieren. Diese Umschaltung hat eine erhebliche Auswirkung die Konvertierungsdauer, die Ladedauer und auch auf den Aktualisierungsaufwand pro Frame während der Runtime.
 
-* Wenn für die Anwendung keine [Schnittebenen](../../overview/features/cut-planes.md) (Cut planes) verwendet werden, sollte das Flag `opaqueMaterialDefaultSidedness` deaktiviert werden. Dies führt normalerweise zu einem Leistungszuwachs von 20 bis 30 %. Schnittebenen können weiter genutzt werden, aber beim Betrachten der inneren Teile eines Objekts sind keine rückwärtigen Flächen vorhanden, die ggf. störend wirken können. Weitere Informationen finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
+* Wenn für die Anwendung keine [Schnittebenen](../../overview/features/cut-planes.md) (Cut planes) verwendet werden, sollte das Flag `opaqueMaterialDefaultSidedness` deaktiviert werden. Dies führt normalerweise zu einem Leistungszuwachs von 20 bis 30 %. Schnittebenen können weiter genutzt werden, aber beim Betrachten der inneren Teile eines Objekts sind keine rückwärtigen Flächen vorhanden, die ggf. störend wirken können. Weitere Informationen zu Rendering vom Typ :::no-loc text="single sided"::: finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="use-case-photogrammetry-models"></a>Anwendungsfall: Fotogrammetriemodelle
 

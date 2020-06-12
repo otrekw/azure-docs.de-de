@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715867"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299518"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
@@ -52,7 +52,7 @@ Geplante Ereignisse werden übermittelt an:
 
 - Eigenständige virtuelle Computer
 - Alle VMs in einem Clouddienst
-- Alle VMs in einer Verfügbarkeitsgruppe/Verfügbarkeitszone. 
+- Alle VMs in einer Verfügbarkeitsgruppe
 - Alle VMs in einer Gruppe für die Skalierungsgruppenplatzierung 
 
 Überprüfen Sie deshalb anhand des Felds `Resources` in einem Ereignis, welche VMs betroffen sein werden.
@@ -60,7 +60,7 @@ Geplante Ereignisse werden übermittelt an:
 ### <a name="endpoint-discovery"></a>Endpunktermittlung
 Für virtuelle Computer in VNETs ist der Metadatendienst über eine statische, nicht routingfähige IP-Adresse (`169.254.169.254`) verfügbar. Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird (Standard für Clouddienste und klassische virtuelle Computer), ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
@@ -69,6 +69,8 @@ Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind 
 
 | Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - | 
+| 2019-08-01 | Allgemeine Verfügbarkeit | All | <li> EventSource-Unterstützung hinzugefügt |
+| 01.04.2019 | Allgemeine Verfügbarkeit | All | <li> Unterstützung der Ereignisbeschreibung hinzugefügt |
 | 2019-01-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für EventType „Terminate“ von VM-Skalierungsgruppen hinzugefügt |
 | 2017-11-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
 | 2017-08-01 | Allgemeine Verfügbarkeit | All | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
@@ -98,7 +100,7 @@ Sie können geplante Ereignisse abfragen, indem Sie den folgenden Aufruf ausfüh
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
@@ -113,7 +115,9 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -128,6 +132,8 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 | Ressourcen| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
+| Beschreibung | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
+| EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wurde durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereigniszeitplanung
 Jedes Ereignis wird, basierend auf dem Ereignistyp, mit einer minimalen Vorlaufzeit geplant. Diese Zeit ist in der `NotBefore`-Eigenschaft eines Ereignisses angegeben. 
@@ -197,9 +203,14 @@ def handle_scheduled_events(data):
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
         notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
             print("+ Scheduled Event. This host " + this_host +
-                " is scheduled for " + eventtype + " not before " + notbefore)
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 

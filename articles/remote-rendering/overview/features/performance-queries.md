@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757465"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022793"
 ---
 # <a name="server-side-performance-queries"></a>Serverseitige Leistungsabfragen
 
@@ -18,7 +18,7 @@ Eine gute Renderingleistung auf dem Server ist für stabile Bildfrequenzen und e
 
 Die größte Auswirkung auf die Renderingleistung haben die Modelleingabedaten. Sie können die Eingabedaten wie unter [Konfigurieren der Modellkonvertierung](../../how-tos/conversion/configure-model-conversion.md) beschrieben optimieren.
 
-Auch die clientseitige Anwendungsleistung kann einen Engpass darstellen. Wir empfehlen Ihnen, eine [Ablaufverfolgung für die Leistung](../../how-tos/performance-tracing.md) durchzuführen, um die clientseitige Leistung eingehend zu analysieren.
+Auch die clientseitige Anwendungsleistung kann einen Engpass darstellen. Es empfiehlt sich, eine [Ablaufverfolgung für die Leistung](../../how-tos/performance-tracing.md) (:::no-loc text="performance trace":::) durchzuführen, um die clientseitige Leistung eingehend zu analysieren.
 
 ## <a name="clientserver-timeline"></a>Zeitachse für Client/Server
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 625c1ea474693732ab19e82de4730d2f8c971979
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736125"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117488"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -196,15 +196,15 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 ### <a name="data-featurization"></a>Merkmalerstellung für Daten
 
-In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization).
+In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](how-to-configure-auto-features.md#), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren.
 
-Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `featurization` aktivieren. In der folgenden Tabelle sind die akzeptierten Einstellungen für die Featurebereitstellung in der [AutoMLConfig-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) aufgeführt.
+Beim Konfigurieren Ihrer Experimente im Objekt `AutoMLConfig` können Sie die Einstellung `featurization` aktivieren/deaktivieren. In der folgenden Tabelle sind die akzeptierten Einstellungen für die Featurebereitstellung in der [AutoMLConfig-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) aufgeführt.
 
 |Konfiguration der Featurebereitstellung | BESCHREIBUNG |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](how-to-configure-auto-features.md#featurization) automatisch durchgeführt werden. **Standardeinstellung**|
 |`"featurization": 'off'`| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|
-|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch durchgeführt werden.|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-features.md#customize-featurization).|
 
 > [!NOTE]
 > Die Schritte zur Featurebereitstellung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Schritte zur Featurebereitstellung automatisch auf Ihre Eingabedaten angewendet.
@@ -361,7 +361,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatisierte Featureentwicklung
 
-Beachten Sie die Liste der Vorverarbeitung und [automatisierten Featureentwicklung](concept-automated-ml.md#preprocess) bei `"featurization": 'auto'`.
+Beachten Sie die Liste der Vorverarbeitung und [automatisierten Featureentwicklung]() bei `"featurization": 'auto'`.
 
 Betrachten Sie dieses Beispiel:
 + Es gibt vier Eingabemerkmale: A (numerisch), B (numerisch), C (numerisch), D (DateTime)
@@ -430,36 +430,9 @@ Verwenden Sie diese 2 APIs im ersten Schritt des angepassten Modells, um mehr zu
    |Dropped|Gibt an, ob das Eingabefeature gelöscht oder verwendet wurde.|
    |EngineeringFeatureCount|Anzahl von Features, die über automatisierte Featureentwicklungstransformationen generiert wurden.|
    |Transformationen|Liste der Transformationen, die zum Generieren entwickelter Features auf Eingabefeatures angewendet wurden.|
-   
-### <a name="customize-feature-engineering"></a>Anpassen von Featureentwicklung
-Wenn Sie Featureentwicklung anpassen möchten, geben Sie  `"featurization": FeaturizationConfig` an.
-
-Die unterstützte Anpassung umfasst Folgendes:
-
-|Anpassung|Definition|
-|--|--|
-|Aktualisierung eines Spaltenzwecks (column_pupose)|Überschreiben des Featuretyps für die angegebene Spalte.|
-|Aktualisierung von Transformationsparametern (transformer_params) |Aktualisieren der Parameter für den angegebenen Transformator. Unterstützt derzeit „Imputer“ (Mittelwert, häufigster Wert und medianer Wert) und „HashOneHotEncoder“.|
-|Löschen von Spalten (drop_columns) |Spalten, die aus der Featureverwendung gelöscht werden sollen.|
-|Blockieren von Transformatoren (blocked_transformers)| Blockieren von Transformatoren, die für die Featurebereitstellung verwendet werden.|
-
-Erstellen Sie das FeaturizationConfig-Objekt mit API-Aufrufen:
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skalierung/Normalisierung und Algorithmus mit Hyperparameterwerten:
 
-Um die Skalierung/Normalisierung- und Algorithmus/Hyperparameter-Werte für eine Pipeline zu verstehen, verwenden Sie „fitted_model.steps“. [Erfahren Sie mehr über Skalierung/Normalisierung des Durchsatzes](concept-automated-ml.md#preprocess). Hier ist eine Beispielausgabe:
+Um die Skalierung/Normalisierung- und Algorithmus/Hyperparameter-Werte für eine Pipeline zu verstehen, verwenden Sie „fitted_model.steps“. [Erfahren Sie mehr über Skalierung/Normalisierung des Durchsatzes](). Hier ist eine Beispielausgabe:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

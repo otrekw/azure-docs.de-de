@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677785"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300925"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -75,11 +75,13 @@ Beachten Sie beim Verwenden der Knotenressourcengruppe, dass Folgendes nicht mö
 * Angeben eines anderen Abonnements für die Knotenressourcengruppe
 * Ändern des Namens der Knotenressourcengruppe, nachdem der Cluster erstellt wurde
 * Angeben von Namen für die verwalteten Ressourcen innerhalb der Knotenressourcengruppe
-* Ändern oder Löschen von Tags verwalteter Ressourcen innerhalb der Knotenressourcengruppe (Weitere Informationen finden Sie im nächsten Abschnitt.)
+* Ändern oder Löschen von Azure erstellter Tags für verwaltete Ressourcen innerhalb der Knotenressourcengruppe (Weitere Informationen finden Sie im nächsten Abschnitt.)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kann ich Tags und andere Eigenschaften der AKS-Ressourcen in der Knotenressourcengruppe ändern?
 
-Wenn Sie die in Azure erstellten Tags und andere Ressourceneigenschaften in der Knotenressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags erstellen und ändern. Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Durch Ändern der Ressourcen unter der Knotenressourcengruppe im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
+Wenn Sie die in Azure erstellten Tags und andere Ressourceneigenschaften in der Knotenressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags erstellen und von Endbenutzern erstellte Tags ändern. Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Hierzu können Sie Azure-Richtlinien erstellen, die auf die verwaltete Ressourcengruppe ausgerichtet sind.
+
+**Von Azure erstellte Tags** für Ressourcen unter der Knotenressourcengruppe im AKS-Cluster dürfen dagegen nicht geändert werden, da dies zu einer Verletzung des Servicelevelziels (Service-Level Objective, SLO) führt. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Können Zulassungscontroller hinzugefügt oder entfernt werden?
 

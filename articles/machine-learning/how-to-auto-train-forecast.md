@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 4bb32418a9f6f556c3bcdfbdf8a70a10c4588218
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bfb53893031300926944ca97a760aec199f699c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646149"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266439"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Automatisiertes maschinelles Lernen bietet Benutzern sowohl native Zeitreihen- a
 
 Modelle| BESCHREIBUNG | Vorteile
 ----|----|---
-Prophet (Vorschauversion)|Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. | Schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen
+Prophet (Vorschauversion)|Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. Wenn Sie dieses Modell nutzen möchten, installieren Sie es mithilfe von `pip install fbprophet` lokal. | Schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen
 Auto-ARIMA (Vorschauversion)|Die ARIMA-Methode (autoregressiver integrierter gleitender Mittelwert) erzielt die optimale Leistung, wenn die Daten stationär sind. Das bedeutet, dass die statistischen Eigenschaften wie der Mittelwert und Varianz für das gesamte Dataset konstant sind. Wenn Sie beispielsweise eine Münze werfen, ist Ihre Wahrscheinlichkeit für Kopf 50 %, ganz egal, ob Sie die Münze heute, morgen oder im nächsten Jahr werfen.| Dies eignet sich für univariate Reihen, da vergangene Werte für die Vorhersage zukünftiger Werte verwendet werden.
 ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für die aufwändigsten Vorhersageaufgaben konzipiert wurde und nicht lineare lokale und globale Trends in Ihren Daten sowie Beziehungen zwischen Zeitreihen erfasst.|Es kann komplexe Trends in Ihren Daten nutzen und problemlos auf die größten Datasets skaliert werden.
 

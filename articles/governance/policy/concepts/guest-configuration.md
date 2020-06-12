@@ -3,16 +3,16 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684282"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259149"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
-Mit Azure Policy können Sie nicht nur Azure-Ressourcen überprüfen und [korrigieren](../how-to/remediate-resources.md), sondern auch Einstellungen auf einem Computer. Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
+Von Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
 
 - Die Konfiguration des Betriebssystems
 - Die Konfiguration oder das Vorhandensein der Anwendung
@@ -46,8 +46,8 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 
 |Betriebssystem|Überprüfungstool|Notizen|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Wenn sich Ruby und Python nicht auf dem Computer befinden, werden diese Komponenten von der Guest Configuration-Erweiterung installiert. |
+|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Wird mittels Sideloading in einen Ordner quergeladen, der nur von Azure Policy verwendet wird. Verursacht keinen Konflikt mit Windows PowerShell DSC. PowerShell Core wird nicht zum Systempfad hinzugefügt.|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Installiert Chef InSpec (Version 2.2.61) am Standardspeicherort und wird dem Systempfad hinzugefügt. Abhängigkeiten für das InSpec-Paket einschließlich Ruby und Python werden ebenfalls installiert. |
 
 ### <a name="validation-frequency"></a>Validierungshäufigkeit
 
@@ -87,7 +87,7 @@ Die **DeployIfNotExists**-Richtlinien, die die Erweiterung zu virtuellen Compute
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**.
+Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**. Mit den Richtliniendefinitionen von **DeployIfNotExists** werden Abhängigkeiten für die Durchführung von Überprüfungen auf den einzelnen Computern verwaltet.
 
 Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
