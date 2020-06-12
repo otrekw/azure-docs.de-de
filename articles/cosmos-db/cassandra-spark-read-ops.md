@@ -2,20 +2,20 @@
 title: Lesen von Daten in Cassandra-API-Tabellen mithilfe von Spark
 titleSufix: Azure Cosmos DB
 description: In diesem Artikel wird beschrieben, wie Sie Daten in Cassandra-API-Tabellen in Azure Cosmos DB lesen.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60893398"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309719"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Lesen von Daten in Azure Cosmos DB-Cassandra-API-Tabellen mithilfe von Spark
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Anwenden von Filtern
 
-Die Prädikatweitergabe wird derzeit nicht unterstützt. Die unten aufgeführten Beispiele stellen die clientseitige Filterung dar. 
+Sie können Prädikate per Pushdown in die Datenbank verlagern, um Spark-Abfragen mit besserer Optimierung zu ermöglichen. Ein Prädikat ist eine Bedingung für eine Abfrage, für die „true“ oder „false“ zurückgegeben wird. Normalerweise ist sie in der WHERE-Klausel enthalten. Bei einem Pushdown eines Prädikats werden die Daten in der Datenbankabfrage gefiltert, um die Anzahl von aus der Datenbank abgerufenen Einträgen zu reduzieren und die Abfrageleistung zu verbessern. Standardmäßig werden gültige WHERE-Klauseln von der Spark-Dataset-API automatisch per Pushdown in die Datenbank verlagert. 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+Der Abschnitt „PushedFilters“ des physischen Plans enthält den Pushdownfilter „GreaterThan“. 
+
+![Partitionen](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>RDD-API
 

@@ -1,27 +1,119 @@
 ---
 title: Sprachunterstützung – Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: 'Eine Liste der von der Textanalyse-API unterstützten natürlichen Sprachen. In diesem Artikel wird erläutert, welche Sprachen für die einzelnen Vorgänge unterstützt werden: Standpunktanalyse, Schlüsselbegriffserkennung, Spracherkennung und Entitätserkennung.'
+description: Eine Liste der von der Textanalyse-API unterstützten natürlichen Sprachen. In diesem Artikel wird beschrieben, welche Sprachen für die einzelnen Vorgänge unterstützt werden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0e71ffcc88a85caf4b76c34940293663c4acf66
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218544"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142162"
 ---
-# <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
+# <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
-In diesem Artikel wird erläutert, welche Sprachen für die einzelnen Vorgänge unterstützt werden: Standpunktanalyse, Schlüsselbegriffserkennung, Spracherkennung und Erkennung der benannten Entität.
+> [!IMPORTANT]
+> Version 3.x der Textanalyse-API ist derzeit in den folgenden Regionen nicht verfügbar: „Indien, Mitte“, „Fairfax“, „VAE, Norden“, „Südafrika, Norden“, „China, Norden 2“, „China, Osten“.
 
-## <a name="language-detection"></a>Spracherkennung
+
+#### <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment-analysis)
+
+| Sprache              | Sprachcode | v2-Unterstützung | v3-Unterstützung | Ab Modellversion 3: |              Notizen |
+|:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
+| Chinesisch (vereinfacht)    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` wird ebenfalls akzeptiert. |
+| Chinesisch (traditionell)   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
+| Dänisch               |     `da`      |     ✓      |            |                            |                    |
+| Niederländisch                 |     `nl`      |     ✓      |            |                            |                    |
+| Englisch               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Finnisch               |     `fi`      |     ✓      |            |                            |                    |
+| Französisch                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Deutsch                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Griechisch                 |     `el`      |     ✓      |            |                            |                    |
+| Italienisch               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Japanisch              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Koreanisch                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
+| Norwegisch (Bokmål)   |     `no`      |     ✓      |            |                            |                    |
+| Polnisch                |     `pl`      |     ✓      |            |                            |                    |
+| Portugiesisch (Portugal) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` wird ebenfalls akzeptiert. |
+| Russisch               |     `ru`      |     ✓      |            |                            |                    |
+| Spanisch               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Schwedisch               |     `sv`      |     ✓      |            |                            |                    |
+| Türkisch               |     `tr`      |     ✓      |            |                            |                    |
+
+### <a name="opinion-mining-v31-preview-only"></a>Opinion Mining (nur v3.1-preview)
+
+| Sprache              | Sprachcode | Ab Modellversion 3: |              Notizen |
+|:----------------------|:-------------:|:------------------------------------:|-------------------:|
+| Englisch               |     `en`      |              2020-04-01              |                    |
+
+
+#### <a name="named-entity-recognition-ner"></a>[Erkennung benannter Entitäten (NER)](#tab/named-entity-recognition)
+
+> [!NOTE]
+> * Für NER v3 wird derzeit nur Englisch unterstützt. Wenn Sie NER v3 mit einer anderen Sprache aufrufen, gibt die API Ergebnisse für v2.1 zurück, sofern die Sprache in Version 2.1 unterstützt wird.
+> * Bei v2.1 wird der vollständige Satz mit den verfügbaren Entitäten nur für die Sprachen Englisch, Chinesisch (Vereinfacht), Französisch, Deutsch und Spanisch zurückgegeben.  Für die anderen unterstützten Sprachen werden die Entitäten für „Person“, „Standort“ und „Organisation“ zurückgegeben.
+
+| Sprache               | Sprachcode | v2.1-Unterstützung | v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
+|:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
+| Arabisch                |     `ar`      |     ✓      |            |                                 |                    |
+| Tschechisch                 |     `cs`      |     ✓      |            |                                 |                    |
+| Chinesisch (vereinfacht)     |   `zh-hans`   |     ✓      |            |                                 | `zh` wird ebenfalls akzeptiert. |
+| Chinesisch (traditionell)   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Dänisch                |     `da`      |     ✓      |            |                                 |                    |
+| Niederländisch                 |     `nl`      |     ✓      |            |                                 |                    |
+| Englisch                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
+| Finnisch               |     `fi`      |     ✓      |            |                                 |                    |
+| Französisch                 |     `fr`      |     ✓      |            |                                 |                    |
+| Deutsch                 |     `de`      |     ✓      |            |                                 |                    |
+| Hebräisch                |     `he`      |     ✓      |            |                                 |                    |
+| Ungarisch             |     `hu`      |     ✓      |            |                                 |                    |
+| Italienisch               |     `it`      |     ✓      |            |                                 |                    |
+| Japanisch              |     `ja`      |     ✓      |            |                                 |                    |
+| Koreanisch                |     `ko`      |     ✓      |            |                                 |                    |
+| Norwegisch (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` wird ebenfalls akzeptiert. |
+| Polnisch                |     `pl`      |     ✓      |            |                                 |                    |
+| Portugiesisch (Portugal) |    `pt-PT`    |     ✓      |            |                                 | `pt` wird ebenfalls akzeptiert. |
+| Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| Russisch              |     `ru`      |     ✓      |            |                                 |                    |
+| Spanisch               |     `es`      |     ✓      |            |                                 |                    |
+| Schwedisch               |     `sv`      |     ✓      |            |                                 |                    |
+| Türkisch               |     `tr`      |     ✓      |            |                                 |                    |
+
+#### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/key-phrase-extraction)
+
+| Sprache              | Sprachcode | v2-Unterstützung | v3-Unterstützung | Ab Modellversion 3 verfügbar: |       Notizen        |
+|:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
+| Niederländisch                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Englisch               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Finnisch               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Französisch                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Deutsch                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Italienisch               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Japanisch              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Koreanisch                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Norwegisch (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` wird ebenfalls akzeptiert. |
+| Polnisch                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Portugiesisch (Portugal) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` wird ebenfalls akzeptiert. |
+| Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Russisch               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Spanisch               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Schwedisch               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+
+#### <a name="entity-linking"></a>[Entitätsverknüpfung](#tab/entity-linking)
+
+| Sprache | Sprachcode | v2-Unterstützung | v3-Unterstützung | Ab Modellversion 3 verfügbar: | Notizen |
+|:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
+| Englisch  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Spanisch  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
+
+#### <a name="language-detection"></a>[Sprachenerkennung](#tab/language-detection)
 
 Die Textanalyse-API kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen erkennen.  Die Spracherkennung gibt das „Skript“ einer Sprache zurück. Für den englischen Satz „I have a dog“ wird beispielsweise `en` anstelle von `en-US` zurückgegeben. Der einzige Sonderfall tritt im Chinesischen auf. Für diese Sprache gibt die Spracherkennungsfunktion `zh_CHS` oder `zh_CHT` zurück, wenn sie das Skript anhand des verfügbaren Texts ermitteln kann. In Situationen, in denen kein bestimmtes Skript für ein Dokument auf Chinesisch ermittelt werden kann, wird nur `zh` zurückgegeben.
 
@@ -29,55 +121,8 @@ Für dieses Feature wird keine genaue Liste mit Sprachen veröffentlicht. Es kan
 
 Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerkennung ausprobieren, um zu sehen, ob sie einen Code zurückgibt. Die Antwort bei Sprachen, die nicht erkannt werden können, lautet `unknown`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Standpunktanalyse, Schlüsselbegriffserkennung und Erkennung der benannten Entität.
-
-Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätserkennung ist die Liste der unterstützten Sprachen selektiver, da die Analysetools auf die sprachlichen Regeln zusätzlicher Sprachen ausgelegt sind. In Named Entity Recognition v2 ist die Unterstützung des vollständigen Satzes von [Entitätstypen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) derzeit auf die folgenden Sprachen begrenzt: 
-* Englisch
-* Chinesisch (vereinfacht)
-* Französisch
-* Deutsch
-* Spanisch
-
-Nur die als `Person`, `Location` und `Organization` benannten Entitäten werden für die anderen Sprachen zurückgegeben.
-
-## <a name="language-list-and-status"></a>Liste und Status der Sprachen
-
-Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmählich in die allgemein verfügbare Version integriert werden. Die beiden Versionen sind unabhängig voneinander und vom Textanalysedienst im Allgemeinen. Sprachen können selbst dann noch ausschließlich für die Vorschauversion verfügbar sein, wenn eine Version der Textanalyse-API allgemein verfügbar ist.
-
-> [!NOTE]
-> Ausführliche Informationen zur Sprachunterstützung für die öffentliche Vorschauversion von Named Entity Recognition (NER) v3 finden Sie unter [benannte Entitätstypen](named-entity-types.md).
-
-| Sprache              | Sprachcode | Stimmung | Schlüsselwörter | Erkennung benannter Entitäten | Entitätsverknüpfung |       Notizen        |
-|:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
-| Arabisch                |     `ar`      |           |             |           ✔ \*           |                |                    |
-| Tschechisch                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chinesisch (vereinfacht)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` wird ebenfalls akzeptiert.                   |
-| Chinesisch (traditionell)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
-| Dänisch                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Niederländisch                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Englisch               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
-| Finnisch               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Französisch                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| Deutsch                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| Griechisch                 |     `el`      |   ✔ \*    |             |                          |                |                    |
-| Ungarisch             |     `hu`      |           |             |           ✔ \*           |                |                    |
-| Italienisch               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Japanisch              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Koreanisch                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Norwegisch (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` wird ebenfalls akzeptiert.                   |
-| Polnisch                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Portugiesisch (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` wird ebenfalls akzeptiert. |
-| Portugiesisch (Brasilien)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
-| Russisch               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Spanisch               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
-| Schwedisch               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Türkisch               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
-
-\* Die Sprachunterstützung befindet sich in der Vorschauversion.
-
-\** Ebenfalls verfügbar in den öffentlichen Vorschauversionen der [Standpunktanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) und/oder [Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+---
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Dokumentationsseite zu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
-[Produktseite zu Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
+* [Worum handelt es sich bei der Textanalyse-API?](overview.md)   

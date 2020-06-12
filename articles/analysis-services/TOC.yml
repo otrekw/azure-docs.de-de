@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle
           href: analysis-services-addservprinc-admins.md
+        - name: Verschieben zwischen Regionen
+          href: move-between-regions.md
     - name: Modell
       items:
         - name: Tabellenmodellierung

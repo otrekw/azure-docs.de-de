@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942951"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021856"
 ---
 # <a name="azure-sql-database-security-features"></a>Sicherheitsfeatures für Azure SQL-Datenbank    
 Azure SQL-Datenbank stellt einen relationalen Datenbankdienst in Azure bereit. Zum Schutz von Kundendaten und zum Bereitstellen verlässlicher Sicherheitsfeatures, die Kunden von einem relationalen Datenbankdienst erwarten, verfügt SQL-Datenbank über eigene Sicherheitsfunktionen. Diese Funktionen bauen auf den Steuerelementen auf, die von Azure geerbt werden.
@@ -31,13 +31,13 @@ Azure SQL-Datenbank stellt einen relationalen Datenbankdienst in Azure bereit. Z
 Azure SQL-Datenbank unterstützt nur das TDS-Protokoll (Tabular Data Stream), das erfordert, dass ausschließlich über den Standardport TCP/1433 auf die Datenbank zugegriffen werden kann.
 
 ### <a name="azure-sql-database-firewall"></a>Firewall von Azure SQL-Datenbank
-Um die Kundendaten zu schützen, bietet Azure SQL-Datenbank eine Firewallfunktion, die standardmäßig jeglichen Zugriff auf den SQL-Datenbank-Server verhindert (wie unten gezeigt).
+Um Kundendaten zu schützen, bietet Azure SQL-Datenbank eine Firewallfunktion, die standardmäßig jeglichen Zugriff auf SQL-Datenbank verhindert (wie unten gezeigt).
 
 ![Firewall von Azure SQL-Datenbank](./media/infrastructure-sql/sql-database-firewall.png)
 
 Die Gatewayfirewall kann Adressen einschränken, wodurch Kunden zulässige IP-Adressbereich differenziert kontrollieren können. Die Firewall gewährt Zugriff basierend auf der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 
-Kunden können die Firewall über ein Verwaltungsportal oder programmgesteuert mithilfe der REST-API für die Azure SQL-Datenbank-Verwaltung konfigurieren. Standardmäßig verweigert die Firewall des Azure SQL-Datenbank-Gateways allen Kunden den TDS-Zugriff auf Azure SQL-Datenbank-Instanzen. Kunden müssen den Zugriff mithilfe von Zugriffssteuerungslisten konfigurieren, um Azure SQL-Datenbank-Verbindungen anhand von Quell- und Zieladressen, Protokollen und Portnummern zuzulassen.
+Kunden können die Firewall über ein Verwaltungsportal oder programmgesteuert mithilfe der REST-API für die Azure SQL-Datenbank-Verwaltung konfigurieren. Standardmäßig verweigert die Firewall des Azure SQL-Datenbank-Gateways allen Kunden den TDS-Zugriff auf Azure SQL-Datenbank. Kunden müssen den Zugriff mithilfe von Zugriffssteuerungslisten konfigurieren, um Azure SQL-Datenbank-Verbindungen anhand von Quell- und Zieladressen, Protokollen und Portnummern zuzulassen.
 
 ### <a name="dosguard"></a>DoSGuard
 DoS-Angriffe (Denial of Service) werden durch einen SQL-Datenbank-Gatewaydienst namens DoSGuard reduziert. DoSGuard überwacht aktiv fehlgeschlagene Anmeldungen von IP-Adressen. Wenn mehrere fehlerhafte Anmeldungen von einer spezifischen IP-Adresse innerhalb eines bestimmten Zeitraums auftreten, wird der IP-Adresse der Zugriff auf alle Ressourcen im Dienst für einen vordefinierten Zeitraum blockiert.
@@ -62,9 +62,9 @@ Da der Fabric Controller (FC) der zentrale Orchestrator von Azure-Fabric ist, si
 ### <a name="vlan-isolation"></a>VLAN-Isolation
 Das Azure-Produktionsnetzwerk ist in drei primäre VLAN-Netzwerke logisch getrennt:
 
-- Haupt-VLAN: Dient zum Verbinden von nicht vertrauenswürdigen Kundenknoten.
+- Haupt-VLAN: Dient zum Verbinden nicht vertrauenswürdiger Kundenknoten.
 - FC-VLAN: Enthält vertrauenswürdige FCs und unterstützende Systeme.
-- Geräte-VLAN: Enthält vertrauenswürdige Netzwerkgeräte und andere Infrastrukturgeräte.
+- Geräte-VLAN: Enthält vertrauenswürdige Netzwerk- und andere Infrastrukturgeräte.
 
 ### <a name="packet-filtering"></a>Paketfilterung
 Die IP-Filter und Softwarefirewalls, die im Stammbetriebssystem und im Gastbetriebssystem der Knoten implementiert sind, erzwingen Einschränkungen der Konnektivität und verhindern nicht autorisierten Datenverkehr zwischen virtuellen Computern.

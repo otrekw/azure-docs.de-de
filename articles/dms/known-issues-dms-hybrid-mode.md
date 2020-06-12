@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649601"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196279"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Bekannte Probleme/Migrationseinschränkungen beim Verwenden des Hybridmodus
 
@@ -93,10 +93,10 @@ Wenn Sie keinen Zugriff mehr auf den Workercomputer haben, können Sie die Regis
 
 In den Abschnitten unten werden szenariospezifische Probleme im Zusammenhang mit der Verwendung des Azure Database Migration Service-Hybridmodus zum Durchführen einer Onlinemigration beschrieben.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Onlinemigration zur einer verwalteten Microsoft Azure SQL-Datenbank-Instanz
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Onlinemigration zu Azure SQL Managed Instance
 
 **Hohe CPU-Auslastung**
 
-**Problem:** Bei Onlinemigrationen zu einer verwalteten SQL-Datenbank-Instanz wird auf dem Computer, auf dem der Hybridworker ausgeführt wird, eine hohe CPU-Auslastung angezeigt, wenn zu viele Sicherungen vorhanden sind oder die Sicherungen zu groß sind.
+**Problem:** Bei Onlinemigrationen zu SQL Managed Instance wird auf dem Computer, auf dem der Hybridworker ausgeführt wird, eine hohe CPU-Auslastung angezeigt, wenn zu viele Sicherungen vorhanden sind oder die Sicherungen zu groß sind.
 
 **Lösung**: Um dieses Problem zu beheben, verwenden Sie komprimierte Sicherungen, teilen Sie die Migration so, dass sie mehrere Freigaben verwendet, oder skalieren Sie den Computer, auf dem der Hybridworker ausgeführt wird, hoch.

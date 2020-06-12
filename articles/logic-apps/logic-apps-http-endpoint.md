@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005505"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170272"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von HTTPS-Endpunkten in Azure Logic Apps
 
@@ -214,6 +214,9 @@ Wenn Sie Parameterwerte über die URL des Endpunkts annehmen möchten, haben Sie
 
    * 2\. Position: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
+> [!NOTE]
+> Wenn Sie das Hash- oder Nummernzeichen ( **#** ) im URI verwenden möchten, nutzen Sie stattdessen diese codierte Version: `%25%23`.
+
 <a name="relative-path"></a>
 
 ### <a name="accept-values-through-a-relative-path"></a>Akzeptieren von Werten durch einen relativen Pfad
@@ -257,6 +260,9 @@ Wenn Sie Parameterwerte über die URL des Endpunkts annehmen möchten, haben Sie
    Der Browser gibt eine Antwort mit dem folgenden Text zurück: `Postal Code: 123456`.
 
    ![Antwort vom Senden der Anforderung an die Rückruf-URL](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+> [!NOTE]
+> Wenn Sie das Hash- oder Nummernzeichen ( **#** ) im URI verwenden möchten, nutzen Sie stattdessen diese codierte Version: `%25%23`.
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Aufrufen einer Logik-App über eine Endpunkt-URL
 

@@ -9,12 +9,12 @@ ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310678"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308063"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Festlegen Ihrer Azure-Portaleinstellungen
 
@@ -79,7 +79,7 @@ Das Design, das Sie auswählen, wirkt sich auf die Hintergrund- und Schriftartfa
 
    ![Screenshot mit Azure-Portaleinstellungen mit hervorgehobenen Designs](./media/set-preferences/theme.png)
 
-Sie können stattdessen eines der Designs mit hohem Kontrast auswählen. Die Einstellungen für hohen Kontrast erleichtern die Lesbarkeit des Azure-Portals für Benutzer mit eingeschränktem Sehvermögen und überschreiben alle anderen Designs. Weitere Informationen finden Sie unter [Aktivieren von hohem Kontrast oder Ändern des Designs](azure-portal-change-theme-high-contrast.md).
+Sie können stattdessen eines der Designs mit hohem Kontrast auswählen. Die Einstellungen für hohen Kontrast erleichtern die Lesbarkeit des Azure-Portals für Benutzer mit einer Sehbehinderung und überschreiben alle anderen Designs. Weitere Informationen finden Sie unter [Aktivieren von hohem Kontrast oder Ändern des Designs](azure-portal-change-theme-high-contrast.md).
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Aktivieren oder Deaktivieren von Popupbenachrichtigungen
 
