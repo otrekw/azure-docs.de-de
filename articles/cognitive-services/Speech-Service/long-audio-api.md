@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587339"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310596"
 ---
 # <a name="long-audio-api-preview"></a>API für lange Audioinhalte (Vorschau)
 
@@ -48,7 +48,7 @@ Stellen Sie bei der Vorbereitung Ihrer Textdatei Folgendes sicher:
   * Bei Nur-Text wird jeder Absatz durch Drücken der **EINGABETASTE** getrennt – [Beispiel für die Eingabe von Nur-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) anzeigen
   * Bei SSML-Text wird jede SSML-Komponente als Absatz betrachtet. SSML-Elemente sollen durch verschiedene Absätze getrennt werden – [Beispiel für die Eingabe von SSML-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) anzeigen.
 > [!NOTE]
-> Bei Chinesisch (Festland), Chinesisch (Hongkong), Chinesisch (Taiwan), Japanisch und Koreanisch zählt jedes Wort als zwei Zeichen. 
+> Bei Chinesisch (Festland), Chinesisch (Hongkong SAR), Chinesisch (Taiwan), Japanisch und Koreanisch zählt jedes Wort als zwei Zeichen. 
 
 ## <a name="submit-synthesis-requests"></a>Übermitteln von Syntheseanforderungen
 
@@ -56,7 +56,7 @@ Nach dem Vorbereiten des Eingabeinhalts befolgen Sie die Anweisungen unter [Schn
 
 Die **HTTP-Statuscodes** weisen auf häufige Fehler hin.
 
-| API | HTTP-Statuscode | Beschreibung | Vorschlag |
+| API | HTTP-Statuscode | BESCHREIBUNG | Vorschlag |
 |-----|------------------|-------------|----------|
 | Erstellen | 400 | Die Stimmensynthese ist in dieser Region nicht aktiviert. | Verwenden Sie einen Speech-Abonnementschlüssel mit einer unterstützten Region. |
 |        | 400 | Nur das **Standard**-Speech-Abonnement für diese Region ist gültig. | Ändern Sie den Speech-Abonnementschlüssel in den Tarif „Standard“. |

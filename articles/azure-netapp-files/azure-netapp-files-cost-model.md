@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70995116"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142145"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodell für Azure NetApp Files 
 
@@ -50,6 +50,8 @@ Die folgende Abbildung veranschaulicht diese Konzepte.
 ## <a name="overage-in-capacity-consumption"></a>Überschreitung der Kapazitätsnutzung  
 
 Wenn die insgesamt genutzte Kapazität eines Pools dessen bereitgestellte Kapazität überschreitet, sind Datenschreibvorgänge weiterhin zulässig.  Wenn nach Ablauf der Karenzzeit (eine Stunde) die genutzte Kapazität des Pools seine bereitgestellte Kapazität immer noch überschreitet, wird die Poolgröße automatisch in Schritten von 1 TiB erhöht, bis die bereitgestellte Kapazität größer als die gesamte genutzte Kapazität ist.  Wenn beispielsweise in der obigen Abbildung das Volume 3 weiter wächst und die tatsächliche Nutzung 1,2 TiB erreicht, wird der Pool nach Ablauf der Karenzzeit automatisch auf 5 TiB verkleinert.  Das Ergebnis ist, dass die bereitgestellten Poolkapazität (5 TiB) die genutzte Kapazität (4,2 TiB) überschreitet.  
+
+Der Kapazitätspool wird zwar automatisch vergrößert, um die Anforderungen des Volumes zu erfüllen, aber nicht automatisch verkleinert, wenn die Volumegröße abnimmt. Wenn Sie den Kapazitätspool verkleinern möchten, nachdem die Volumegröße abgenommen hat (etwa nach der Datenbereinigung eines Volumes), müssen Sie die Größe des Kapazitätspools manuell _verringern_.
 
 ## <a name="manual-changes-of-the-pool-size"></a>Manuelle Änderungen der Poolgröße  
 

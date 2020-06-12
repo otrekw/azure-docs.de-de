@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995869"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Benutzerdefinierte Azure Functions-Handler (Vorschau)
 
@@ -20,9 +20,9 @@ Benutzerdefinierte Handler sind schlanke Webserver, die Ereignisse vom Functions
 
 Benutzerdefinierte Handler eignen sich am besten für Situationen, in denen Sie Folgendes ausführen möchten:
 
-- Implementieren einer Functions-App in einer Sprache, die über die offiziell unterstützten Sprachen hinausgeht.
-- Implementieren einer Functions-App in einer Sprachversion oder Laufzeit, die standardmäßig nicht unterstützt wird.
-- Ausüben präziser Kontrolle über die App-Ausführungsumgebung.
+- Implementieren einer Funktions-App in einer Sprache, die nicht offiziell unterstützt wird
+- Implementieren einer Funktions-App in einer Sprachversion oder Laufzeit, die standardmäßig nicht unterstützt wird
+- Ermöglichen einer präziseren Kontrolle über die Ausführungsumgebung der Funktions-App
 
 Bei benutzerdefinierten Handlern werden alle [Trigger und Eingabe- und Ausgabebindungen](./functions-triggers-bindings.md) über [Erweiterungspakete](./functions-bindings-register.md) unterstützt.
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76261618"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141992"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -31,7 +31,7 @@ Sie können Trigger verwenden, die Antworten von Service Bus erhalten und die Au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange. Diese Elemente und Ihre Logik-App müssen dasselbe Azure-Abonnement verwenden. Wenn Sie nicht über diese Elemente verfügen, informieren Sie sich, wie Sie [Ihren Service Bus-Namespace und eine Warteschlange erstellen](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
@@ -152,11 +152,21 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>Senden von korrelierten Nachrichten in einer bestimmten Reihenfolge
+
+Wenn Sie zusammengehörige Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie das [Muster für einen *sequenziellen Konvoi*](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) verwenden, indem Sie den [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
+
+Beim Erstellen einer Logik-App können Sie die Vorlage für eine **korrelierte geordnete Bereitstellung mit Service Bus-Sitzungen** auswählen, mit der das Muster für einen sequenziellen Konvoi implementiert wird. Weitere Informationen finden Sie im Artikel zum [Senden zusammengehöriger Nachrichten in der richtigen Reihenfolge](../logic-apps/send-related-messages-sequential-convoy.md).
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Der Service Bus-Connector kann bis zu 1.500 eindeutige Sitzungen gleichzeitig von einem Service Bus in den Connectorcache speichern. Wenn die Anzahl der Sitzungen dieses Limit überschreitet, werden alte Sitzungen aus dem Cache entfernt. Weitere Informationen finden Sie unter [Nachrichtensitzungen](../service-bus-messaging/message-sessions.md).
 
-Weitere technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/servicebus/). Weitere Informationen zum Azure Service Bus Messaging finden Sie unter [Was ist Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
+Andere technische Details zu Triggern, Aktionen und Beschränkungen aus der Swagger-Beschreibung des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/servicebus/). Weitere Informationen zum Azure Service Bus Messaging finden Sie unter [Was ist Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
 ## <a name="next-steps"></a>Nächste Schritte
 

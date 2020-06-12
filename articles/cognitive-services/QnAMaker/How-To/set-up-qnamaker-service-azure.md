@@ -2,13 +2,13 @@
 title: Einrichten eines QnA Maker-Diensts – QnA Maker
 description: Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten.
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402992"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235519"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -58,6 +58,7 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
    ![Im neuen QnA Maker-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
+
 
 ## <a name="find-subscription-keys-in-the-azure-portal"></a>Suchen von Abonnementschlüsseln im Azure-Portal
 
@@ -209,6 +210,34 @@ Legen Sie den Leerlauf auf „Immer aktiv“ fest, um zu gewährleisten, dass di
 1. Sie werden gefragt, ob Sie die App neu starten möchten, um die neue Einstellung zu verwenden. Wählen Sie **Weiter**.
 
 Weitere Informationen zum Konfigurieren der allgemeinen App Service-Einstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-general-settings).
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurieren der App Service-Umgebung zum Hosten von QnA Maker App Service
+Die App Service-Umgebung kann verwendet werden, um QnA Maker App Service zu hosten. Sie müssen die folgenden Schritte ausführen, wenn es sich um eine interne App Service-Umgebung handelt:
+1. Erstellen Sie eine App Service-Instanz und einen Azure Search-Dienst.
+2. Machen Sie die App Service-Instanz in einem öffentlichen DNS verfügbar, und setzen Sie das QnA Maker-Diensttag auf eine Whitelist: CognitiveServicesManagement (oder behalten Sie den Internetzugriff bei).
+3. Erstellen Sie mit Azure Resource Manager eine Cognitive Services-Instanz für QnA Maker (Microsoft.CognitiveServices/accounts), und legen Sie den QnA Maker-Endpunkt hierfür auf die App Service-Umgebung fest. 
+
+## <a name="business-continuity-with-traffic-manager"></a>Geschäftskontinuität mit Traffic Manager
+
+Das Hauptziel des Geschäftskontinuitätsplans besteht darin, einen ausfallsicheren Wissensdatenbank-Endpunkt zu erstellen, der sicherstellen kann, dass keine Ausfallzeiten für den Bot oder die ihn verwendende Anwendung entstehen.
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker-Geschäftskontinuitätsplan](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+Das oben dargestellte allgemeine Konzept lautet wie folgt:
+
+1. Richten Sie zwei parallele [QnA Maker-Dienste](set-up-qnamaker-service-azure.md) in [Azure-Regionspaaren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) ein.
+
+1. [Sichern](../../../app-service/manage-backup.md) Sie Ihren primären QnA Maker-App-Dienst, und [stellen](../../../app-service/web-sites-restore.md) Sie ihn bei der Sekundäreinrichtung wieder her. Dadurch wird sichergestellt, dass beide Setups mit demselben Hostnamen und denselben Schlüsseln arbeiten.
+
+1. Halten Sie die primären und sekundären Azure-Suchindizes synchron. Verwenden Sie das [hier](https://github.com/pchoudhari/QnAMakerBackupRestore) aufgeführte GitHub-Beispiel, um zu erfahren, wie Azure-Indizes gesichert und wiederhergestellt werden.
+
+1. Sichern Sie die Application Insights-Daten mithilfe des [fortlaufenden Exports](../../../application-insights/app-insights-export-telemetry.md).
+
+1. Verwenden Sie [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) nach der Einrichtung der primären und sekundären Stapel, um die zwei Endpunkte zu konfigurieren und eine Routingmethode einzurichten.
+
+1. Sie müssten ein TLS-Zertifikat (Transport Layer Security), früher SSL-Zertifikat (Secure Sockets Layer) genannt, für Ihren Traffic Manager-Endpunkt erstellen. [Binden Sie das TLS/SSL-Zertifikat](../../../app-service/configure-ssl-bindings.md) an Ihre App-Dienste.
+
+1. Verwenden Sie dann den Traffic Manager-Endpunkt in Ihrem Bot oder in Ihrer App.
 
 ## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen
 
@@ -219,4 +248,4 @@ Wenn Sie Azure-Ressourcen löschen, die für Ihre QnA Maker-Wissensdatenbanken v
 Erfahren Sie mehr über den [App-Dienst](../../../app-service/index.yml) und den [Suchdienst](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Erstellen und Veröffentlichen einer Wissensdatenbank](../Quickstarts/create-publish-knowledge-base.md)
+> [Erstellen zusammen mit anderen Personen](../how-to/collaborate-knowledge-base.md)

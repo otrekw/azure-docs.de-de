@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592076"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996685"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dieser Artikel enthält die Schritte zum Erstellen, Starten und Überwachen eines Triggers für rollierende Fenster. Allgemeine Informationen zu Triggern und unterstützten Triggertypen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md).
 
-Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe. Ein Trigger für ein rollierendes Fenster hat eine 1:1-Beziehung zu einer Pipeline und kann nur auf eine einzelne Pipeline verweisen.
+Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe. Ein Trigger für ein rollierendes Fenster hat eine 1:1-Beziehung zu einer Pipeline und kann nur auf eine einzelne Pipeline verweisen. Der Trigger für ein rollierendes Fenster ist eine leistungsstärkere Alternative für einen Zeitplantrigger und verfügt über eine Suite mit Funktionen für komplexe Szenarien ([Abhängigkeit von anderen Triggern für ein rollierendes Fenster](#tumbling-window-trigger-dependency), [Erneutes Ausführen eines fehlgeschlagenen Auftrags](tumbling-window-trigger-dependency.md#monitor-dependencies) und [Festlegen der Benutzerwiederholung für Pipelines](#user-assigned-retries-of-pipelines)). Weitere Informationen zum Unterschied zwischen dem Zeitplantrigger und dem Trigger für ein rollierendes Fenster finden Sie [hier](concepts-pipeline-execution-triggers.md#trigger-type-comparison).
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
@@ -102,13 +102,13 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 | **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt, der bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „hour“ festgelegt, wird der Trigger alle drei Stunden ausgeführt. <br/>**Hinweis**: Das minimale Fensterintervall beträgt 5 Minuten. | Integer | Eine positive ganze Zahl | Ja |
 | **startTime**| Das erste Vorkommen, das in der Vergangenheit liegen kann. Das erste Triggerintervall ist (**startTime**, **startTime** + **interval**). | Datetime | Ein DateTime-Wert | Ja |
 | **endTime**| Das letzte Vorkommen, das in der Vergangenheit liegen kann. | Datetime | Ein DateTime-Wert | Ja |
-| **delay** | Der Zeitraum, in dem der Beginn der Datenverarbeitung für das Fenster verzögert wird. Die Ausführung der Pipeline wird nach der erwarteten Ausführungszeit sowie dem **delay**-Wert gestartet. **delay** legt fest, wie lange der Trigger nach Ablauf der fälligen Zeit wartet, bevor er eine neue Ausführung auslöst. Bei **delay** wird nicht das Fenster **startTime** geändert. Ein **delay**-Wert von 00:10:00 impliziert beispielsweise eine Verzögerung von 10 Minuten. | Timespan<br/>(hh:mm:ss)  | Ein Zeitraumwert, wobei der Standardwert 00:00:00 ist. | Nein  |
+| **delay** | Der Zeitraum, in dem der Beginn der Datenverarbeitung für das Fenster verzögert wird. Die Ausführung der Pipeline wird nach der erwarteten Ausführungszeit sowie dem **delay**-Wert gestartet. **delay** legt fest, wie lange der Trigger nach Ablauf der fälligen Zeit wartet, bevor er eine neue Ausführung auslöst. Bei **delay** wird nicht das Fenster **startTime** geändert. Ein **delay**-Wert von 00:10:00 impliziert beispielsweise eine Verzögerung von 10 Minuten. | Timespan<br/>(hh:mm:ss)  | Ein Zeitraumwert, wobei der Standardwert 00:00:00 ist. | Nein |
 | **maxConcurrency** | Die Anzahl der gleichzeitigen Triggerausführungen, die für bereite Fenster ausgelöst werden. Dies gilt beispielsweise für das Abgleichen stündlicher Ausführungen für die gestrigen Ergebnisse in 24 Fenstern. Wenn **maxConcurrency** = 10, werden Triggerereignisse nur für die ersten 10 Fenster ausgelöst (00:00-01:00 – 09:00-10:00). Nachdem die ersten 10 ausgelösten Pipelineausführungen erfolgt sind, werden Triggerausführungen für die nächsten 10 Fenster (10:00-11:00 – 19:00-20:00) ausgelöst. Wenn Sie mit dem Beispiel **maxConcurrency** = 10 fortfahren, erfolgen 10 Pipelineausführungen, sobald 10 Fenster bereit sind. Wenn nur ein Fenster bereit ist, erfolgt nur eine Pipelineausführung. | Integer | Eine ganze Zahl zwischen 1 und 50. | Ja |
-| **retryPolicy: Count** | Die Anzahl der Wiederholungen, bevor die Ausführung der Pipeline als „Failed“ markiert wird  | Integer | Eine ganze Zahl, wobei der Standardwert 0 ist (keine Wiederholungen) | Nein  |
-| **retryPolicy: intervalInSeconds** | Die Verzögerung zwischen den in Sekunden angegebenen Wiederholungsversuchen | Integer | Die Anzahl der Sekunden, wobei der Standardwert 30 ist | Nein  |
-| **dependsOn: type** | Der Typ von TumblingWindowTriggerReference. Erforderlich, wenn eine Abhängigkeit festgelegt ist. | String |  „TumblingWindowTriggerDependencyReference“, „SelfDependencyTumblingWindowTriggerReference“ | Nein  |
-| **dependsOn: size** | Die Größe des abhängigen rollierenden Fensters. | Timespan<br/>(hh:mm:ss)  | Ein positiver Zeitspannenwert, wobei der Standardwert die Fenstergröße des untergeordneten Triggers ist.  | Nein  |
-| **dependsOn: offset** | Der Offset des Abhängigkeitstriggers. | Timespan<br/>(hh:mm:ss) |  Ein Zeitspannenwert, der bei einer Selbstabhängigkeit negativ sein muss. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein   |
+| **retryPolicy: Count** | Die Anzahl der Wiederholungen, bevor die Ausführung der Pipeline als „Failed“ markiert wird  | Integer | Eine ganze Zahl, wobei der Standardwert 0 ist (keine Wiederholungen) | Nein |
+| **retryPolicy: intervalInSeconds** | Die Verzögerung zwischen den in Sekunden angegebenen Wiederholungsversuchen | Integer | Die Anzahl der Sekunden, wobei der Standardwert 30 ist | Nein |
+| **dependsOn: type** | Der Typ von TumblingWindowTriggerReference. Erforderlich, wenn eine Abhängigkeit festgelegt ist. | String |  „TumblingWindowTriggerDependencyReference“, „SelfDependencyTumblingWindowTriggerReference“ | Nein |
+| **dependsOn: size** | Die Größe des abhängigen rollierenden Fensters. | Timespan<br/>(hh:mm:ss)  | Ein positiver Zeitspannenwert, wobei der Standardwert die Fenstergröße des untergeordneten Triggers ist.  | Nein |
+| **dependsOn: offset** | Der Offset des Abhängigkeitstriggers. | Timespan<br/>(hh:mm:ss) |  Ein Zeitspannenwert, der bei einer Selbstabhängigkeit negativ sein muss. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein  |
 
 > [!NOTE]
 > Nach der Veröffentlichung eines Triggers für rollierende Fenster können **Intervall** und **Häufigkeit** nicht mehr bearbeitet werden.
@@ -146,13 +146,19 @@ Sie können die Systemvariablen **WindowStart** und **WindowEnd** des Triggers f
 Um die Systemvariablen **WindowStart** und **WindowEnd** in der Pipelinedefinition zu nutzen, verwenden Sie die Parameter „MyWindowStart“ und „MyWindowEnd“ entsprechend.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Ausführungsreihenfolge von Fenstern in einem Abgleichsszenario
-Wenn mehrere Fenster zur Ausführung anstehen (insbesondere in einem Abgleichsszenario), ist die Reihenfolge der Ausführung von Fenstern deterministisch (von den ältesten bis zu den neuesten Intervallen). Dieses Verhalten kann derzeit nicht geändert werden.
+
+Wenn „startTime“ für den Trigger in der Vergangenheit liegt, generiert der Trigger basierend auf der Formel „M=(CurrentTime - TriggerStartTime)/TriggerSliceSize“ parallel Ausführungen vom Typ „{M} backfill(past)“. Hierbei wird die Triggerparallelität berücksichtigt, bevor die zukünftigen Ausführungen erfolgen. Die Ausführungsreihenfolge für Fenster ist deterministisch, und die ältesten Intervalle werden zuerst ausgeführt. Dieses Verhalten kann derzeit nicht geändert werden.
 
 ### <a name="existing-triggerresource-elements"></a>Vorhandene TriggerResource-Elemente
-Die folgenden Punkte gelten für vorhandene **TriggerResource**-Elemente:
 
-* Wenn der Wert für das **frequency**-Element (oder die Fenstergröße) des Triggers geändert wird, wird der Status der bereits verarbeiteten Fenster *nicht* zurückgesetzt. Der Trigger setzt das Auslösen für die Fenster ab dem letzten ausgeführten Fenster mit der neuen Fenstergröße fort.
+Die folgenden Punkte gelten für Updates von vorhandenen **TriggerResource**-Elementen:
+
+* Der Wert für das **frequency**-Element (bzw. die Fenstergröße) des Triggers und das **interval**-Element können nicht mehr geändert werden, nachdem der Trigger erstellt wurde. Dies ist für die richtige Funktionsweise von erneuten Ausführungen von triggerRun und für Abhängigkeitsauswertungen erforderlich.
 * Wenn der Wert für das **endTime**-Element des Triggers geändert wird (durch Hinzufügen oder Aktualisieren), wird der Status der bereits verarbeiteten Fenster *nicht* zurückgesetzt. Der Trigger berücksichtigt den neuen **endTime**-Wert. Wenn der neue **endTime**-Wert vor den bereits ausgeführten Fenstern liegt, wird der Trigger angehalten. Andernfalls wird der Trigger angehalten, sobald der neue **endTime**-Wert erreicht wird.
+
+### <a name="user-assigned-retries-of-pipelines"></a>Vom Benutzer zugewiesene Pipelinewiederholungen
+
+Bei Pipelineausfällen kann der Trigger für ein rollierendes Fenster versuchen, die Ausführung der referenzierten Pipeline automatisch ohne Benutzereingriff zu wiederholen, indem die gleichen Eingabeparameter verwendet werden. Dies kann mit der Eigenschaft „retryPolicy“ in der Triggerdefinition angegeben werden.
 
 ### <a name="tumbling-window-trigger-dependency"></a>Triggerabhängigkeit für ein rollierendes Fenster
 

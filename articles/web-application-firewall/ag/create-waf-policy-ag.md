@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886924"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014535"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Erstellen von Web Application Firewall-Richtlinien für Application Gateway
 
@@ -97,9 +97,20 @@ Wenn Sie über eine WAF-Richtlinie nur mit benutzerdefinierten Regeln verfügen,
 
 Bearbeitungen der WAF-Richtlinie nur mit benutzerdefinierten Regeln sind deaktiviert. Um WAF-Einstellungen wie das Deaktivieren von Regeln, das Hinzufügen von Ausschlüssen usw. zu bearbeiten, müssen Sie zu einer neuen Firewallrichtlinienressource der obersten Ebene migrieren.
 
-Erstellen Sie dazu eine *Web Application Firewall-Richtlinie*, und ordnen Sie sie Ihren gewünschten Application Gateway-Instanzen und Listenern zu. Diese neue Richtlinie **muss** identisch mit der aktuellen WAF-Konfiguration sein. Das bedeutet, dass Sie jede benutzerdefinierte Regel, jeden Ausschluss, jede deaktivierte Regel usw. in die neu zu erstellende Richtlinie kopieren müssen. Wenn Sie Ihrer Application Gateway-Instanz eine Richtlinie zugeordnet haben, können Sie weiterhin Änderungen an den WAF-Regeln und -Einstellungen vornehmen. Sie können zu diesem Zweck auch Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verknüpfen einer WAF-Richtlinie mit einer vorhandenen Application Gateway-Instanz](associate-waf-policy-existing-gateway.md).
+Erstellen Sie dazu eine *Web Application Firewall-Richtlinie*, und ordnen Sie sie Ihren gewünschten Application Gateway-Instanzen und Listenern zu. Diese neue Richtlinie muss identisch mit der aktuellen WAF-Konfiguration sein. Dies bedeutet, dass Sie jede benutzerdefinierte Regel, jeden Ausschluss, jede deaktivierte Regel usw. in die neu zu erstellende Richtlinie kopieren müssen. Wenn Sie Ihrer Application Gateway-Instanz eine Richtlinie zugeordnet haben, können Sie weiterhin Änderungen an den WAF-Regeln und -Einstellungen vornehmen. Sie können zu diesem Zweck auch Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verknüpfen einer WAF-Richtlinie mit einer vorhandenen Application Gateway-Instanz](associate-waf-policy-existing-gateway.md).
 
 Optional können Sie ein Migrationsskript für die Migration zu einer WAF-Richtlinie verwenden. Weitere Informationen finden Sie unter [Migrieren von Web Application Firewall-Richtlinien mit Azure PowerShell](migrate-policy.md).
+
+## <a name="force-mode"></a>Erzwingungsmodus
+
+Wenn Sie nicht alles in eine Richtlinie kopieren möchten, die mit Ihrer aktuellen Konfiguration identisch ist, können Sie für die WAF den Modus „Erzwingen“ festlegen. Führen Sie den folgenden Azure PowerShell-Code aus, um die WAF in den Erzwingungsmodus zu versetzen. Anschließend können Sie Ihrer WAF eine beliebige WAF-Richtlinie zuordnen. Dies ist auch möglich, wenn diese nicht über die gleichen Einstellungen wie Ihre Konfiguration verfügt. 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+Fahren Sie anschließend mit den Schritten fort, mit denen Sie Ihrem Anwendungsgateway eine WAF-Richtlinie zuordnen. Weitere Informationen finden Sie unter [Zuordnen einer WAF-Richtlinie zu einer vorhandenen Application Gateway-Instanz](associate-waf-policy-existing-gateway.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

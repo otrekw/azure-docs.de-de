@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 1c1b48d3715d838827f88f99fc0849d25677fdcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585742"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218650"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Integration von Security Center in Azure Container Registry
 
@@ -27,7 +27,7 @@ Wenn Sie den Standardtarif von Azure Security Center verwenden, können Sie das 
 
 Immer, wenn ein Image an Ihre Registrierung gepusht wird, überprüft Security Center es automatisch. Zum Auslösen der Überprüfung eines Images müssen Sie es also an Ihr Repository pushen.
 
-Wenn die Überprüfung abgeschlossen ist (in der Regel nach ungefähr 10 Minuten), sind die Ergebnisse in Security Center-Empfehlungen wie folgt verfügbar:
+Wenn die Überprüfung abgeschlossen ist (in der Regel nach ungefähr zehn Minuten, sie kann aber auch bis zu 48 Stunden dauern), sind die Ergebnisse in Security Center-Empfehlungen wie der folgenden verfügbar:
 
 [![Beispiel einer Azure Security Center-Empfehlung über in einem gehosteten Azure Container Registry-Image (ACR) erkannte Sicherheitsrisiken](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
