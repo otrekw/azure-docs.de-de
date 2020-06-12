@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743702"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205125"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -104,7 +104,7 @@ Alle übergeordneten Runbooks enthalten den Parameter `WhatIf`. Bei der Festlegu
 |Runbook | Parameter | BESCHREIBUNG|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wird über das übergeordnete Runbook aufgerufen. Dieses Runbook erstellt für das Auto-Stop-Szenario Warnungen pro Ressource.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: „true“ oder „false“  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> `VMList` ist eine durch Trennzeichen getrennte Liste mit VMs. Beispiel: `vm1, vm2, vm3`.<br> `WhatIf` ermöglicht die Überprüfung der Runbooklogik ohne Ausführung.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: „true“ oder „false“  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> `VMList` ist eine durch Trennzeichen getrennte Liste virtueller Computer (ohne Leerzeichen), z. B. `vm1,vm2,vm3`.<br> `WhatIf` ermöglicht die Überprüfung der Runbooklogik ohne Ausführung.|
 |AutoStop_Disable | Keine | Deaktiviert Auto-Stop-Warnungen und den Standardzeitplan.|
 |AutoStop_VM_Child | WebHookData | Wird über das übergeordnete Runbook aufgerufen. Warnungsregeln rufen dieses Runbook auf, um einen klassischen virtuellen Computer zu beenden.|
 |AutoStop_VM_Child_ARM | WebHookData |Wird über das übergeordnete Runbook aufgerufen. Warnungsregeln rufen dieses Runbook auf, um einen virtuellen Computer zu beenden.  |
@@ -112,7 +112,7 @@ Alle übergeordneten Runbooks enthalten den Parameter `WhatIf`. Bei der Festlegu
 |ScheduledStartStop_Child | VMName <br> Aktion: Starten oder Beenden <br> ResourceGroupName | Wird über das übergeordnete Runbook aufgerufen. Führt für den geplanten Beendigungsvorgang eine Aktion zum Starten oder Beenden aus.|
 |ScheduledStartStop_Child_Classic | VMName<br> Aktion: Starten oder Beenden<br> ResourceGroupName | Wird über das übergeordnete Runbook aufgerufen. Führt für den geplanten Beendigungsvorgang eine Aktion zum Starten oder Beenden für klassische VMs aus. |
 |ScheduledStartStop_Parent | Aktion: Starten oder Beenden <br>VMList <br> WhatIf: „true“ oder „false“ | Das Starten oder Beenden wirkt sich auf alle virtuellen Computer im Abonnement aus. Bearbeiten Sie die Variablen `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` so, dass sie nur für diese Zielressourcengruppen ausgeführt werden. Sie können zudem bestimmte VMs ausschließen, indem Sie die Variable `External_ExcludeVMNames` aktualisieren.|
-|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: „true“ oder „false“<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **sequencestart** und **sequencestop**. Bei diesen Tagnamen wird zwischen Groß- und Kleinschreibung unterschieden. Der Wert des Tags muss eine positive ganze Zahl (1, 2, 3) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br>**Hinweis**: Die VMs müssen sich innerhalb von Ressourcengruppen befinden, die in den Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
+|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: „true“ oder „false“<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **sequencestart** und **sequencestop**. Bei diesen Tagnamen wird zwischen Groß- und Kleinschreibung unterschieden. Der Wert des Tags muss eine Liste positiver ganzer Zahlen (etwa `1,2,3`) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br>**Hinweis**: Die VMs müssen sich innerhalb von Ressourcengruppen befinden, die in den Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
 
 ### <a name="variables"></a>Variables
 
@@ -170,7 +170,7 @@ Wenn Sie diese Funktion mit klassischen VMs verwenden möchten, benötigen Sie e
 Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, beachten Sie folgende Empfehlungen:
 
 * Erstellen Sie mehrere Zeitpläne mit dem übergeordneten Runbook **ScheduledStartStop_Parent**, und geben Sie pro Zeitplan 20 VMs an. 
-* Geben Sie die VM-Namen in den Zeitplaneigenschaften mithilfe des Parameters `VMList` als durch Trennzeichen getrennte Liste an. 
+* Geben Sie die VM-Namen in den Zeitplaneigenschaften mithilfe des Parameters `VMList` als durch Trennzeichen getrennte Liste (ohne Leerzeichen) an. 
 
 Wenn andernfalls der Automatisierungsauftrag für diese Funktion mehr als drei Stunden ausgeführt wird, wird er gemäß dem Limit für [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share) vorübergehend entladen oder angehalten.
 

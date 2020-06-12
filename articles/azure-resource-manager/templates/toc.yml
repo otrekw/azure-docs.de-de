@@ -42,6 +42,8 @@
           href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Databricks
           href: ../../azure-databricks/quickstart-create-databricks-workspace-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Virtueller Computer für Data Science
+          href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Event Grid
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Event Hub
@@ -68,6 +70,8 @@
           href: ../../hdinsight/r-server/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Key Vault
           href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Virtueller Linux-Computer
+          href: ../../virtual-machines/linux/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Load Balancer
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Verwaltete Anwendung
@@ -80,6 +84,10 @@
           href: 'https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json'
         - name: Richtlinie
           href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Private Link-Endpunkt
+          href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: "Private\_Link-Dienst"
+          href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Ressourcendiagramm
           href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
@@ -255,11 +263,11 @@
           href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
-    - name: Anzeigen von Vorlageneigenschaften
+    - name: Entdecken von Vorlageneigenschaften
       items:
         - name: Exportieren der Vorlage
           href: export-template-portal.md
-        - name: Ressourcen anzeigen
+        - name: Ermitteln von Ressourcen
           href: view-resources.md
     - name: Bereitstellen von Vorlagen
       items:

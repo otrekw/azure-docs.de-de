@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890870"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298600"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -192,6 +192,16 @@ Dieser Code verhält sich wie die T-SQL-Funktion ```string_agg()``` und aggregie
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Anzahl von Updates, Upserts, Einfügungen, Löschungen
+Bei Verwendung einer Zeilenänderungstransformation können Sie die Anzahl von Updates, Upserts, Einfügungen und Löschvorgängen zählen, die sich aus den Richtlinien für Zeilenänderungen ergeben. Fügen Sie nach der Zeilenänderung eine Transformation für das Aggregieren hinzu, und fügen Sie das folgende Datenflussskript in die Aggregatdefinition für diese Anzahl ein:
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

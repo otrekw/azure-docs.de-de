@@ -14,11 +14,11 @@
           href: use-gitops-connected-cluster.md
         - name: Verwenden von GitOps mit Helm
           href: use-gitops-with-helm.md
-        - name: Verwenden von Azure Policy
+        - name: Erzwingen von GitOps mithilfe von Azure Policy
           href: use-azure-policy.md
         - name: Azure Monitor für Container
           href: deploy-azure-monitor-for-containers.md
-        - name: "Installieren des Azure\_Policy-Add-Ons"
+        - name: Zugangskontrollrichtlinien mit Azure Policy
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Bereitstellen von IoT-Workloads
           href: deploy-azure-iot-edge-workloads.md

@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: Benutzerflows für die Self-Service-Registrierung (Vorschau)
           href: self-service-sign-up-overview.md
+        - name: API-Connectors für die Self-Service-Registrierung (Vorschauversion)
+          href: api-connectors-overview.md
         - name: Azure AD-Berechtigungsverwaltung
           href: self-service-portal.md
         - name: Aktuelle Einschränkungen
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: Anpassen der Sprache für den Benutzerflow
               href: user-flow-customize-language.md
+            - name: Hinzufügen eines API-Connectors
+              href: self-service-sign-up-add-api-connector.md
+            - name: Hinzufügen eines benutzerdefinierten Genehmigungssystems
+              href: self-service-sign-up-add-approvals.md
         - name: Verwalten von Gastkonten
           items:
             - name: Hinzufügen eines B2B-Benutzers zu einer Rolle

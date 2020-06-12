@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714001"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014331"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -44,12 +44,12 @@ Um zu steuern, in welchen Fällen Benutzer in Anwendungen einwilligen können, w
 
 So konfigurieren Sie die Einstellungen für die Benutzereinwilligung über das Azure-Portal:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Einwilligung und Berechtigungen** > **Einstellungen für Benutzereinwilligung** aus.
 1. Wählen Sie unter **Benutzereinwilligung für Anwendungen** aus, welche Einwilligungseinstellung für alle Benutzer konfiguriert werden soll.
 1. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
 
-![Einstellungen für die Benutzereinwilligung](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Einstellungen für die Benutzereinwilligung":::
 
 > [!TIP]
 > Ziehen Sie in Betracht, den [Workflow für Administratoreinwilligung zu aktivieren](configure-admin-consent-workflow.md), wenn Sie Benutzern das Anfordern einer Überprüfung und Genehmigung einer Anwendung durch einen Administrator ermöglichen möchten, der der Benutzer nicht zustimmen darf (z. B. wenn die Benutzereinwilligung deaktiviert wurde oder die Anwendung Berechtigungen anfordert, die der Benutzer nicht erteilen darf).
@@ -102,7 +102,7 @@ Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unt
 
 In diesem Beispiel haben wir den minimalen Berechtigungssatz klassifiziert, der für einmaliges Anmelden erforderlich ist:
 
-![Berechtigungsklassifizierungen](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="Berechtigungsklassifizierungen":::
 
 > [!TIP]
 > Für die Microsoft Graph-API sind die minimalen Berechtigungen, die für einfaches einmaliges Anmelden erforderlich sind, `openid`, `profile`, `User.Read` und `offline_access`. Mit diesen Berechtigungen kann eine App die Profildetails des angemeldeten Benutzers lesen und diesen Zugriff auch dann beibehalten, wenn der Benutzer die App nicht mehr verwendet.
@@ -192,7 +192,7 @@ Sie können konfigurieren, welche Benutzer Apps in den Zugriff auf die Daten ihr
 
 In diesem Beispiel können alle Gruppenbesitzer einwilligen, dass Apps auf die Daten ihrer Gruppen zugreifen:
 
-![Berechtigungsklassifizierungen](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="Einstellungen für die Gruppenbesitzereinwilligung":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurieren der Gruppenbesitzereinwilligung mithilfe von PowerShell
 

@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828405"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266116"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
 
 Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und [Ihr Kennwort zurücksetzen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register) können.
 
-Wenn Sie Ihr Kennwort kennen, aber es ändern möchten, führen Sie die entsprechenden Schritte aus, die in diesem Artikel in den Abschnitten über das [Ändern des Kennworts](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) aufgeführt sind.
+Wenn Sie Ihr Kennwort kennen und es ändern möchten, führen Sie die Schritte in den Abschnitten zum [Ändern des Kennworts](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) dieses Artikels aus.
 
 >[!Important]
 >Dieser Artikel richtet sich an Benutzer, die versuchen, ein vergessenes oder unbekanntes Kennwort für ein Geschäfts-, Schul- oder Unikonto zurückzusetzen. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) und weitere Artikel zu diesem Thema.
@@ -103,7 +103,7 @@ Wenn Sie nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen können
 
      Sollten Sie weiterhin nicht auf Ihr Konto zugreifen können, wenden Sie sich an den Administrator Ihrer Organisation, um weitere Hilfe zu erhalten.
 
-Nach dem Zurücksetzen des Kennworts erhalten Sie möglicherweise Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<*Ihre Organisation*>“. Wenn Sie eine solche E-Mail erhalten, aber nicht kurz zuvor Ihr Kennwort zurückgesetzt haben, müssen Sie sofort den Administrator Ihrer Organisation kontaktieren.
+Nach dem Zurücksetzen des Kennworts erhalten Sie möglicherweise eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<*your_organization*>“. Wenn Sie eine solche E-Mail erhalten, aber nicht kurz zuvor Ihr Kennwort zurückgesetzt haben, müssen Sie sofort den Administrator Ihrer Organisation kontaktieren.
 
 ## <a name="how-to-change-your-password"></a>Ändern des Kennworts
 

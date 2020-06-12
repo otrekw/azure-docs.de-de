@@ -30,11 +30,15 @@
       href: tutorial-url-redirect-cli.md
     - name: Automatische Skalierung und Zonenredundanz
       href: tutorial-autoscale-ps.md
+    - name: Eingangscontroller-Add-On für AKS (Greenfield)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: Eingangscontroller-Add-On für AKS (Brownfield)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: Beispiele
   items:
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Resource Manager-Vorlagen
       href: resource-manager-template-samples.md
@@ -98,7 +102,7 @@
       items:
         - name: Azure PowerShell
           href: tutorial-manage-web-traffic-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
     - name: Konfigurieren des internen Load Balancers
       items:
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: Eingang für AKS
       items:
-        - name: "Einrichten mit vorhandener Application\_Gateway-Instanz"
+        - name: Eingang für AKS über Helm (Brownfield)
           href: ingress-controller-install-existing.md
-        - name: "Einrichten mit neuer Application\_Gateway-Instanz"
+        - name: Eingang für AKS über Helm (Greenfield)
           href: ingress-controller-install-new.md
+        - name: Deaktivieren und erneutes Aktivieren des AKS-Eingangscontroller-Add-Ons
+          href: ingress-controller-disable-addon.md
         - name: Aktivieren von Cookieaffinität
           href: ingress-controller-cookie-affinity.md
         - name: Aktivieren der Unterstützung mehrerer Namespaces
@@ -162,13 +168,13 @@
       items:
         - name: Azure PowerShell
           href: tutorial-url-route-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: tutorial-url-route-cli.md
     - name: Hosten mehrerer Websites
       items:
         - name: Azure PowerShell
           href: tutorial-multiple-sites-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: tutorial-multiple-sites-cli.md
     - name: Umleiten von Datenverkehr
       items:
@@ -176,7 +182,7 @@
           items:
             - name: Azure PowerShell
               href: redirect-external-site-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: redirect-external-site-cli.md
         - name: HTTP zu HTTPS
           items:
@@ -184,13 +190,13 @@
               href: redirect-http-to-https-portal.md
             - name: Azure PowerShell
               href: redirect-http-to-https-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: redirect-http-to-https-cli.md
         - name: Umleiten von internem Datenverkehr
           items:
             - name: Azure PowerShell
               href: redirect-internal-site-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: redirect-internal-site-cli.md
         - name: Umleiten von Webdatenverkehr mithilfe von Azure PowerShell
           href: tutorial-url-redirect-powershell.md
@@ -240,7 +246,7 @@
   items:
     - name: Eingang für AKS-Anmerkungen
       href: ingress-controller-annotations.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
       href: /powershell/azure/overview

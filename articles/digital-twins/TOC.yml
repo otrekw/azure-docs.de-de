@@ -58,6 +58,8 @@
       href: how-to-create-azure-function.md
     - name: Erfassen von Telemetriedaten aus IoT Hub
       href: how-to-ingest-iot-hub-data.md
+    - name: Integration in Azure Maps
+      href: how-to-integrate-maps.md
 - name: Verweis
   items:
     - name: Azure Digital Twins-REST-APIs

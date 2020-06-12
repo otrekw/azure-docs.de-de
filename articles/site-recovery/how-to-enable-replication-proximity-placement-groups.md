@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847632"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193548"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replizieren von virtuellen Azure-Computern, die in Näherungsplatzierungsgruppen ausgeführt werden
 
@@ -27,6 +27,9 @@ In einem typischen Szenario können Ihre virtuellen Computer in einer Näherungs
 - Der beste Ansatz ist ein Failover/Failback der virtuellen Computer in eine Näherungsplatzierungsgruppe. Wenn die VM während des Failovers/Failbacks jedoch nicht innerhalb der Näherungsplatzierungsgruppe hochgefahren werden kann, wird trotzdem ein Failover/Failback durchgeführt, und virtuelle Computer werden außerhalb einer Näherungsplatzierungsgruppe erstellt.
 -  Wenn eine Verfügbarkeitsgruppe an eine Näherungsplatzierungsgruppe fixiert ist und während des Failover/Failbacks VMs in der Verfügbarkeitsgruppe eine Zuordnungsbeschränkung aufweisen, werden die virtuellen Computer außerhalb sowohl der Verfügbarkeitsgruppe als auch der Näherungsplatzierungsgruppe erstellt.
 -  Site Recovery für Näherungsplatzierungsgruppen wird für nicht verwaltete Datenträger nicht unterstützt.
+
+> [!Note]
+> Das Failback von verwalteten Datenträgern für Szenarien vom Typ „Hyper-V zu Azure“ wird von Azure Site Recovery nicht unterstützt. Daher wird das Failback von der Näherungsplatzierungsgruppe in Azure zu Hyper-V nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
