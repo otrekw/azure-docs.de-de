@@ -97,6 +97,8 @@
           href: budget.md
         - name: Verwenden privater Endpunkte mit Batch-Konten
           href: private-connectivity.md
+        - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
+          href: batch-customer-managed-key.md
     - name: Authentifizierung über Azure AD
       items:
         - name: Azure AD mit Batch-Dienst
