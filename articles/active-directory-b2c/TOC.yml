@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: Einseitig
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: Gewähren des API-Zugriffs
       items:
         - name: ASP.NET

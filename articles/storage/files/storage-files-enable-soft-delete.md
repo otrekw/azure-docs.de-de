@@ -1,23 +1,23 @@
 ---
 title: 'Aktivieren des vorläufigen Löschens: Azure-Dateifreigaben'
-description: Hier erfahren Sie, wie Sie das vorläufige Löschen für Azure-Dateifreigaben aktivieren, um die Wiederherstellung von Daten zu ermöglichen und versehentliches Löschen zu verhindern.
+description: Hier erfahren Sie, wie Sie das vorläufige Löschen (Vorschau) für Azure-Dateifreigaben aktivieren, um die Wiederherstellung von Daten zu ermöglichen und versehentliches Löschen zu verhindern.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 755ccd266b8a88471bf7dbc0d2deb790f35f3457
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 582a3603ad80ec1312429ed7cbd140d4310fadcb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883013"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196195"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
 
-Azure Storage bietet vorläufiges Löschen für Dateifreigaben, damit Sie Ihre Daten leichter wiederherstellen können, wenn diese irrtümlich von einer Anwendung oder von einem anderen Benutzer des Speicherkontos gelöscht wurden. Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern des versehentlichen Löschens von Azure-Dateifreigaben](storage-files-prevent-file-share-deletion.md).
+Azure Storage bietet vorläufiges Löschen für Dateifreigaben (Vorschau), damit Sie Ihre Daten leichter wiederherstellen können, wenn sie von einer Anwendung oder einem anderen Benutzer des Speicherkontos irrtümlich gelöscht wurden. Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern des versehentlichen Löschens von Azure-Dateifreigaben](storage-files-prevent-file-share-deletion.md).
 
 In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Azure-Dateifreigaben eines bereits vorhandenen Speicherkontos aktivieren und verwenden:
 
@@ -97,3 +97,7 @@ Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befe
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zu einer anderen Form von Datenschutz und -wiederherstellung finden Sie in unserem Artikel [Übersicht über Freigabemomentaufnahmen für Azure Files](storage-snapshots-files.md).

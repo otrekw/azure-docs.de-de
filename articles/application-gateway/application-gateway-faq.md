@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: references_regions
+ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873505"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196505"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -211,7 +212,7 @@ Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?
 
-Wenn Sie mehrere Standorte für Application Gateway konfiguriert haben, wird im Feld „Host“ der Name angegeben, an den der Test gesendet werden soll. Verwenden Sie andernfalls „127.0.0.1“. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers. Sein Format ist \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>.
+Wenn Sie mehrere Standorte für Application Gateway konfiguriert haben, wird im Feld „Host“ der Name angegeben, an den der Test gesendet werden soll. Verwenden Sie andernfalls „127.0.0.1“. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers. Das Format lautet:\<protocol\>://\<host\>:\<port\>\<path\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kann ich nur einigen wenigen Quell-IP-Adressen Zugriff auf Application Gateway gewähren?
 
@@ -411,8 +412,6 @@ Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden mö
 
 Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen: ![Application Gateway v2-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Unterstützt das Affinitätscookie von Application Gateway das SameSite-Attribut?
-Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt erstmals ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Das bedeutet, dass das Affinitätscookie von Application Gateway nicht vom Browser in einem Drittanbieterkontext gesendet wird. Zur Unterstützung dieses Szenarios fügt Application Gateway zusätzlich zum vorhandenen Cookie *ApplicationGatewayAffinity* ein weiteres Cookie namens *ApplicationGatewayAffinityCORS* ein.  Diese Cookies sind ähnlich, aber dem Cookie *ApplicationGatewayAffinityCORS* wurden zwei weitere Attribute hinzugefügt: *SameSite=None; Secure*. Diese Attribute behalten persistente Sitzungen selbst bei quellenübergreifenden Anforderungen bei. Weitere Informationen finden Sie im [Abschnitt zur cookiebasierten Affinität](configuration-overview.md#cookie-based-affinity).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

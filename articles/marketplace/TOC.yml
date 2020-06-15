@@ -408,6 +408,8 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Marketplace-Messungsdienst
           items:
+            - name: Anomalieerkennungsdienst
+              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Authentifizierungsstrategien
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Marketplace-Messungsdienst-APIs

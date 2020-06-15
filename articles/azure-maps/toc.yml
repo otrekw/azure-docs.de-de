@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Abdeckung
       items:
+        - name: Abdeckung
+          href: geographic-coverage.md
         - name: Abdeckung durch Geocodierung
           href: geocoding-coverage.md
         - name: Verkehrserschließung

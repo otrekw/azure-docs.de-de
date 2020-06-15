@@ -1,14 +1,14 @@
 ---
 title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
-ms.date: 02/26/2020
+ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 582a4bbc1ec21e231d2a9f1feb1cfef34b3cce37
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0ed5af98644f116622aa44a2503161ce2fd6225b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594269"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729998"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -19,8 +19,9 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 |  |  |
 |---------|---------|
 | [ISM PROTECTED der australischen Regierung](./ism-protected/control-mapping.md) | Stellt Schutzmaßnahmen für die Konformität mit ISM PROTECTED der australischen Regierung bereit. |
+| [Einführung zum Azure Security-Vergleichstest](./azure-security-benchmark.md) | Enthält Leitlinien für die Einhaltung des [Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md). |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Enthält Leitlinien für die Einhaltung von PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
-| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark helfen. |
+| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark helfen. |
 | [DoD-Auswirkungsstufe 4](./dod-impact-level-4/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 4 helfen. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP Moderate“ helfen. |
 | [FedRAMP High](./fedramp-h/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP High“ helfen. |
@@ -30,7 +31,7 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 | [ISO 27001: Gemeinsame Dienste](./iso27001-shared/index.md) | Stellt eine Reihe von konformen Infrastrukturmustern und Schutzmaßnahmen für Richtlinien bereit, die für den ISO 27001-Nachweis hilfreich sind. |
 | [ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload](./iso27001-ase-sql-workload/index.md) | Stellt eine zusätzliche Infrastruktur für das Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](./iso27001-shared/index.md) bereit. |
 | [Medien](./media/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Erfüllung der Anforderungen der Motion Picture Association of America (MPAA) helfen. |
-| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Stellt Leitlinien für die Einhaltung von NIST SP 800-53 R4 bereit. |
+| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | Stellt Leitlinien für die Einhaltung von NIST SP 800-53 R4 bereit. |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | Stellt verschiedene Richtlinien bereit, die Sie bei der Einhaltung von PCI-DSS v3.2.1 unterstützen. |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | Unterstützt Sie bei der Einhaltung von SWIFT CSP-CSCF v2020. |
 | [UK OFFICIAL und UK NHS: Governance](./ukofficial/index.md) | Stellt eine Reihe von konformen Infrastrukturmustern und Schutzmaßnahmen für Richtlinien bereit, die für den UK OFFICIAL- und UK NHS-Nachweis hilfreich sind. |

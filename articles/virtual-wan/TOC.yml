@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: Automatisierungsrichtlinien für Partner
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec-Richtlinien
-      href: virtual-wan-ipsec.md
+    - name: Site-to-Site
+      items:
+        - name: Informationen zu IPsec-Richtlinien
+          href: virtual-wan-ipsec.md
+        - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
+          href: path-selection-multiple-links.md
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
@@ -58,8 +62,6 @@
       items:
         - name: Herstellen einer Standort-zu-Standort-Verbindung
           href: virtual-wan-site-to-site-portal.md
-        - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
-          href: path-selection-multiple-links.md
     - name: Benutzer-VPN (Point-to-Site)
       items:
         - name: Erstellen einer Benutzer-VPN-Verbindung

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800762"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193415"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektreplikation für Blockblobs (Vorschau)
 
@@ -54,7 +54,7 @@ Beim Erstellen einer Replikationsregel werden standardmäßig nur neue Blockblob
 
 Sie können ferner einen oder mehrere Filter als Teil einer Replikationsregel angeben, um Blockblobs anhand eines Präfixes zu filtern. Wenn Sie ein Präfix angeben, werden nur Blobs in den Zielcontainer kopiert, die mit diesem Präfix im Quellcontainer übereinstimmen.
 
-Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Nachdem Sie die Replikationsrichtlinie erstellt haben, wird der Zielcontainer schreibgeschützt. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Sie können jedoch den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn in eine andere Zugriffsebene zu verschieben. Beispielsweise können Sie Blobs im Zielcontainer auf die Archivebene verschieben, um Kosten zu sparen.
+Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Nachdem Sie die Replikationsrichtlinie erstellt haben, wird der Zielcontainer schreibgeschützt. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Sie können jedoch den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn auf die Archivebene zu verschieben. Weitere Informationen zur Archivebene finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
@@ -73,7 +73,9 @@ Während der Vorschauphase fallen keine zusätzlichen Kosten für die Replikatio
 
 ### <a name="prerequisites-for-object-replication"></a>Voraussetzungen für die Objektreplikation
 
-Die Objektreplikation erfordert, dass die folgenden Azure Storage-Funktionen aktiviert sind:
+Die Objektreplikation erfordert, dass die folgenden Azure Storage-Funktionen aktiviert sind: 
+- [Änderungsfeed](storage-blob-change-feed.md)
+- [Versionsverwaltung](versioning-overview.md)
 
 Aktivieren Sie vor dem Konfigurieren der Objektreplikation die erforderlichen Komponenten. Der Änderungsfeed muss für das Quellkonto aktiviert sein, und die Blobversionsverwaltung muss für das Quell- und das Zielspeicherkonto aktiviert sein. Weitere Informationen zum Aktivieren dieser Funktionen finden Sie in den folgenden Artikeln:
 
@@ -157,3 +159,5 @@ Wenn Sie Fragen zur Vorschauversion der Objektreplikation haben oder Feedback ge
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Konfigurieren der Objektreplikation (Vorschau)](object-replication-configure.md)
+- [Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md)
+- [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)
