@@ -52,7 +52,7 @@ JavaScript-Funktionen müssen über [`module.exports`](https://nodejs.org/api/mo
 
 Standardmäßig sucht die Functions-Runtime in `index.js` nach Ihrer Funktion, wobei sich `index.js` im gleichen übergeordneten Verzeichnis befindet wie die entsprechende Datei `function.json`. Im Standardfall sollte Ihre exportierte Funktion der einzige Export aus der zugehörigen Datei oder der Export mit dem Namen `run` oder `index` sein. Um den Dateispeicherort zu konfigurieren und den Namen Ihrer Funktion zu exportieren, lesen Sie weiter unten die Beschreibung zum [Konfigurieren des Einstiegspunkts Ihrer Funktion](functions-reference-node.md#configure-function-entry-point).
 
-An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (also keine `Promise` zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
+An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (also kein Promise-Objekt zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
 
 ```javascript
 // You should include context, other arguments are optional
