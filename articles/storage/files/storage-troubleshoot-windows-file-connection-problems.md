@@ -4,15 +4,15 @@ description: Behandeln von Azure Files-Problemen unter Windows
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383908"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267816"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -348,6 +348,18 @@ Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und b
 6. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist
 
 Wir arbeiten an der Erweiterung dieses Diagnose-Cmdlets, um eine bessere Anleitung zur Problembehandlung zu bieten.
+
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Berechtigungen auf Verzeichnis-/Dateiebene (Windows-ACLs) können nicht mit Windows-Datei-Explorer konfiguriert werden
+
+### <a name="symptom"></a>Symptom
+
+Beim Versuch, Windows-ACLs mit dem Datei-Explorer auf einer bereitgestellten Dateifreigabe zu konfigurieren, treten möglicherweise die folgenden Symptome auf:
+- Nachdem Sie auf der Registerkarte „Sicherheit“ auf „Berechtigung bearbeiten“ geklickt haben, wird der Berechtigungs-Assistent nicht geladen. 
+- Wenn Sie versuchen, einen neuen Benutzer oder eine neue Gruppe auszuwählen, zeigt der Domänenort nicht die richtige AD DS-Domäne an. 
+
+### <a name="solution"></a>Lösung
+
+Wir empfehlen Ihnen, als Problemumgehung die Berechtigungen auf Verzeichnis-/Dateiebene mithilfe des [icacls-Tools](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) zu konfigurieren. 
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

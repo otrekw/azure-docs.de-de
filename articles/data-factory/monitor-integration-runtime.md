@@ -10,12 +10,12 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398965"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113686"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -47,7 +47,7 @@ Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet 
 -------- | ------------- | 
 | Name | Name der Azure-Integrationslaufzeit. |  
 | State | Status der Azure-Integrationslaufzeit. | 
-| Position | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
+| Standort | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
 | DataFactoryName | Name der Data Factory, zu der die Azure-Integrationslaufzeit gehört. | 
 | ResourceGroupName | Name der Ressourcengruppe, zu der die Data Factory gehört.  |
 | BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
@@ -166,14 +166,14 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
 | LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
 | State | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Position | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Standort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
 | MaxParallelExecutionsPerNode | Die Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
-| CatalogServerEndpoint | Der Endpunkt Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz zum Hosten der SSISDB. |
-| CatalogAdminUserName | Der Benutzername des Administrators Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz. Der Data Factory-Dienst verwendet diese Informationen zum Vorbereiten und Verwalten der SSISDB in Ihrem Namen. |
-| CatalogAdminPassword | Das Kennwort des Administrators Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz. |
-| CatalogPricingTier | Der Tarif für die SSISDB, die von Ihrem vorhandenen Azure SQL-Datenbank-Server gehostet wird.  Gilt nicht für die verwaltete Azure SQL-Datenbank-Instanz, die die SSISDB hostet. |
+| CatalogServerEndpoint | Der Endpunkt Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz zum Hosten der SSISDB. |
+| CatalogAdminUserName | Der Benutzername des Administrators Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz. Der Data Factory-Dienst verwendet diese Informationen zum Vorbereiten und Verwalten der SSISDB in Ihrem Namen. |
+| CatalogAdminPassword | Das Kennwort des Administrators Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz. |
+| CatalogPricingTier | Der Tarif für die von der SQL-Datenbank gehostete SSISDB.  Gilt nicht für die verwaltete Azure SQL-Instanz zum Hosten der SSISDB. |
 | VNetId | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Subnet | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | id | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -224,8 +224,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 Weitere Informationen zur Azure-SSIS-Integrationslaufzeit finden Sie in den folgenden Artikeln:
 
 - [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime): Dieser Artikel enthält konzeptionelle Informationen zu Integrationslaufzeiten, die im Allgemeinen die Azure-SSIS-Integrationslaufzeit einschließen. 
-- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
-- [Vorgehensweise: Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Datenbank-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
+- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anleitungen zum Erstellen einer Azure-SSIS IR, und darin wird eine SQL-Datenbank zum Hosten des SSIS-Katalogs verwendet. 
+- [Vorgehensweise: Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anleitungen zur Verwendung einer verwalteten Azure SQL-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit aufskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
 - [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk:](join-azure-ssis-integration-runtime-virtual-network.md). Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-IR mit einem virtuellen Azure-Netzwerk. Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des virtuellen Netzwerks, damit die Azure-SSIS-Integrationslaufzeit dem virtuellen Netzwerk beitreten kann. 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845097"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310885"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -196,8 +196,8 @@ Diese Ressource wird als eine temporäre Identitätsverbindung zwischen Key Vaul
 Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
-- *Cluster* (Standard): Die Abrechnung wird dem Abonnement zugeordnet, das Ihre *Clusterressource* hostet.
-- *Arbeitsbereiche*: Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
+- *Cluster* (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
+- *Arbeitsbereiche*: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](manage-cost-storage.md#log-analytics-dedicated-clusters). 
 
 > [!NOTE]
 > Nachdem Sie die *Clusterressource* erstellt haben, können Sie sie mithilfe der PATCH REST-Anforderung mit *sku*, *keyVaultProperties* oder *billingType* aktualisieren.
@@ -514,7 +514,7 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, 
 
   Wenn sich das Datenvolumen Ihrer zugeordneten Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie eine Ebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und die SKU einschließen sollten:
 
-  **Text**
+  **body**
   ```json
   {
     "sku": {
@@ -532,7 +532,7 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, 
   
   Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Wert für „billingType“ an. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und *billingType* einschließen sollten:
 
-  **Text**
+  **body**
   ```json
   {
     "properties": {

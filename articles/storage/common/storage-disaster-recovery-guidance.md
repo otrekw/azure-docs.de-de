@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857773"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169218"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -26,8 +26,6 @@ Azure Storage unterstützt Kontofailover für georedundante Speicherkonten. Mit 
 Kontofailover ist für die Kontotypen „Universell V1“, „Universell V2“ und Blobspeicher mit Azure Resource Manager-Bereitstellungen verfügbar. Kontofailover wird für alle öffentlichen Regionen unterstützt, ist jedoch zurzeit in unabhängigen oder nationalen Clouds nicht verfügbar.
 
 Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover verbunden sind, und erläutert, wie Sie Ihr Speicherkonto auf die Wiederherstellung mit dem geringstmöglichen Einfluss auf den Kunden vorbereiten können. Weitere Informationen zum Initiieren eines Kontofailovers im Azure-Portal oder mit PowerShell finden Sie unter [Initiieren eines Kontofailovers](storage-initiate-account-failover.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -104,6 +102,8 @@ Die Eigenschaft **Letzte Synchronisierung** gibt an, wann die Daten aus der prim
 
 Als Best Practice sollten Sie Ihre Anwendung so entwerfen, dass Sie anhand der letzten Synchronisierung den zu erwartenden Datenverlust bewerten können. Wenn Sie beispielsweise alle Schreibvorgänge protokollieren, können Sie die Zeit Ihrer letzten Schreibvorgänge mit der letzten Synchronisierung vergleichen, um festzustellen, welche Schreibvorgänge nicht mit der sekundären Region synchronisiert wurden.
 
+Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierung** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Seien Sie vorsichtig, wenn Sie ein Failover zur ursprünglichen primären Region durchführen.
 
 Nachdem Sie das Failover von der primären zur sekundären Region durchgeführt haben, ist Ihr Speicherkonto so konfiguriert, dass es in der neuen primären Region lokal redundant ist. Anschließend können Sie das Konto erneut für Georedundanz konfigurieren. Wenn das Konto nach einem Failover wieder für Georedundanz konfiguriert ist, beginnt die neue primäre Region sofort mit dem Kopieren der Daten in die neue sekundäre Region, die vor dem ursprünglichen Failover die primäre war. Es kann aber einige Zeit dauern, bis bestehende Daten in der primären Region vollständig in die neue sekundäre Region kopiert wurden.
@@ -175,4 +175,5 @@ In extremen Fällen, wenn eine Region durch eine schwerwiegenden Notfall verlore
 
 - [Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen](geo-redundant-design.md)
 - [Initiieren eines Kontofailovers](storage-initiate-account-failover.md)
+- [Überprüfen der Eigenschaft „Zeitpunkt der letzten Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md)
 - [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md)

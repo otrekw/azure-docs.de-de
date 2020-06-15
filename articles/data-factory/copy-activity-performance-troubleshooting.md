@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414142"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299773"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -40,6 +40,7 @@ Als Hilfe ist hier angegeben, für welche Fälle in den Tipps zur Leistungsoptim
 | Bezogen auf den Datenspeicher   | Laden von Daten in **Azure Synpase Analytics (vormals SQL DW)** : Es wird vorgeschlagen, PolyBase oder eine COPY-Anweisung zu verwenden, falls dies nicht bereits genutzt wird. |
 | &nbsp;                | Kopieren von Daten für **Azure SQL-Datenbank**: Wenn für die DTU eine hohe Auslastung besteht, wird ein Upgrade auf einen höheren Tarif vorgeschlagen. |
 | &nbsp;                | Kopieren von Daten für **Azure Cosmos DB**: Wenn für die RU eine hohe Auslastung besteht, wird ein Upgrade auf eine höhere RU vorgeschlagen. |
+|                       | Kopieren von Daten aus **SAP Table**: Es wird vorgeschlagen, beim Kopieren von großen Datenmengen die Partitionsoption des SAP-Connectors zum Aktivieren der parallelen Last und zur Erhöhung der maximalen Partitionsnummer zu nutzen. |
 | &nbsp;                | Erfassen von Daten aus **Amazon Redshift**: Es wird vorgeschlagen, UNLOAD zu verwenden, falls dies nicht bereits genutzt wird. |
 | Drosselung des Datenspeichers | Wenn beim Kopieren vom Datenspeicher einige Lese-/Schreibvorgänge gedrosselt werden, wird vorgeschlagen, die zulässige Anforderungsrate für den Datenspeicher zu überprüfen und zu erhöhen oder die gleichzeitige Arbeitsauslastung zu reduzieren. |
 | Integration Runtime  | Wenn Sie eine **selbstgehostete Integration Runtime (IR)** nutzen und die Kopieraktivität lange in der Warteschlange verbleibt, bis die IR über die verfügbare Ressource für die Ausführung verfügt, wird das horizontale bzw. vertikale Hochskalieren Ihrer IR vorgeschlagen. |
@@ -181,7 +182,7 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Funktion wird in DWUs (Data Warehouse-Einheiten) gemessen. Siehe [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
-* Lokaler SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx).
+* SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx).
 * Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte

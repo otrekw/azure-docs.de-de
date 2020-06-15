@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine identitätsbasierte Authentifizierung ü
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ccaa1945101c252f7dd32be6f9340b51541ed48d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666851"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296633"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
@@ -22,6 +22,7 @@ Eine Übersicht über die Azure AD-Authentifizierung über SMB für Azure-Datei
 
 > [!NOTE]
 > Azure Files unterstützt Kerberos-Authentifizierung mit Azure AD DS mit RC4-HMAC-Verschlüsselung. AES-Kerberos-Verschlüsselung wird noch nicht unterstützt.
+> Azure Files unterstützt die Authentifizierung für Azure AD DS mit vollständiger Synchronisierung mit Azure AD. Wenn Sie die bereichsbezogene Synchronisierung in Azure AD DS aktiviert haben, bei der nur eine begrenzte Gruppe von Identitäten von Azure AD synchronisiert wird, wird die Authentifizierung und Autorisierung nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -115,7 +116,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Wenn Sie die Azure AD-Authentifizierung über SMB mithilfe der Azure-Befehlszeilenschnittstelle aktivieren möchten, installieren Sie die neueste Version der Befehlszeilenschnittstelle (Version 2.0.70 oder höher). Weitere Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 

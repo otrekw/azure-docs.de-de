@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746900"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308879"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -316,7 +316,7 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 
 Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswirkung durch die Richtliniendefinition hilfreich. Aufgrund dieser Flexibilität kann eine einzelne Zuweisung deaktiviert werden, statt alle Zuweisungen dieser Richtlinie zu deaktivieren.
 
-Eine Alternative zur Auswirkung „Deaktiviert“ stellt **enforcementMode dar, der in der Richtlinienzuweisung festgelegt wird.
+Eine Alternative zur Auswirkung „Deaktiviert“ stellt **enforcementMode** dar (wird in der Richtlinienzuweisung festgelegt).
 Wenn für **enforcementMode**  der Wert _Disabled_ festgelegt ist, werden Ressourcen dennoch ausgewertet. Eine Protokollierung, z.B. Aktivitätsprotokolle, und die Richtlinienauswirkung treten nicht auf. Weitere Informationen finden Sie unter [Richtlinienzuweisung – Erzwingungsmodus](./assignment-structure.md#enforcement-mode).
 
 

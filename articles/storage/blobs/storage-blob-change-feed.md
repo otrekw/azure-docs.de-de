@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf22e10bc0a4b969c41d4a377ddba7fcadd9c147
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120418"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193392"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
 
@@ -37,7 +37,7 @@ Die Unterstützung eines Änderungsfeeds eignet sich gut für Szenarien, in dene
 
   - Erstellen von verbundenen Anwendungspipelines, die auf Änderungsereignisse reagieren oder Ausführungen basierend auf erstellten oder geänderten Objekten planen.
   
-Der Änderungsfeed ist ein erforderliches Feature für [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
+Der Änderungsfeed ist ein erforderliches Feature für [Objektreplikation und ](object-replication-overview.md) [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
 > Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in das Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können. 

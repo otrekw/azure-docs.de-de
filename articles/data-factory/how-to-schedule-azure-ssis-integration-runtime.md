@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584024"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117914"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 
@@ -133,7 +133,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
     
 2. Um die dritte Pipeline zu testen, starten Sie SQL Server Management Studio (SSMS). Führen Sie im Fenster **Mit Server verbinden** die folgenden Aktionen aus. 
 
-    1. Geben Sie unter **Servername** die Zeichenfolge **&lt;Ihr Azure SQL-Datenbank-Servername&gt;.database.windows.net** ein.
+    1. Geben Sie unter **Servername** die Zeichenfolge **&lt;Ihr Servername&gt;.database.windows.net** ein.
     2. Wählen Sie **Optionen >>** aus.
     3. Wählen Sie unter **Mit Datenbank verbinden** die Option **SSISDB** aus.
     4. Wählen Sie **Verbinden**. 

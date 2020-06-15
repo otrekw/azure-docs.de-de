@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5dcbd3748215575edb37525e7350bedfb980650c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195211"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193367"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Point-in-Time-Wiederherstellung für Blockblobs (Vorschau)
 
@@ -26,15 +26,13 @@ Informationen zum Aktivieren von Point-in-Time-Wiederherstellung für ein Speich
 
 Zum Aktivieren von Point-in-Time-Wiederherstellung erstellen Sie eine Verwaltungsrichtlinie für das Speicherkonto und geben eine Beibehaltungsdauer an. Während der Beibehaltungsdauer können Sie Blockblobs aus dem aktuellen Zustand in einem Zustand zu einem früheren Zeitpunkt wiederherstellen.
 
-Um eine Point-in-Time-Wiederherstellung zu initiieren, rufen Sie den Vorgang [Restore Blob Ranges](/rest/api/storagerp/storageaccounts/restoreblobranges) auf und geben einen Wiederherstellungspunkt in UTC-Zeit an. Sie können einen lexikografischen Bereich von Container- und Blobnamen angeben, der wieder hergestellt werden soll, oder den Bereich auslassen, um alle Container im Speicherkonto wiederherzustellen. Der Vorgang **Restore Blob Ranges** gibt eine Wiederherstellungs-ID zurück, die den Vorgang eindeutig identifiziert.
+Um eine Point-in-Time-Wiederherstellung zu initiieren, rufen Sie den Vorgang [Restore Blob Ranges](/rest/api/storagerp/storageaccounts/restoreblobranges) auf und geben einen Wiederherstellungspunkt in UTC-Zeit an. Sie können lexikografische Bereiche von Container- und Blobnamen, die wiederhergestellt werden sollen, angeben oder den Bereich weglassen, um alle Container im Speicherkonto wiederherzustellen. Pro Wiederherstellungsvorgang werden bis zu 10 lexikografische Bereiche unterstützt.
 
 Azure Storage analysiert alle Änderungen, die an den angegebenen Blobs zwischen dem angeforderten Wiederherstellungspunkt (angegeben in UTC-Zeit) und dem aktuellen Zeitpunkt vorgenommen wurden. Der Wiederherstellungsvorgang ist atomisch, sodass er entweder bei der Wiederherstellung aller Änderungen vollständig erfolgreich ist oder fehlschlägt. Wenn Blobs vorhanden sind, die nicht wiederhergestellt werden können, schlägt der Vorgang fehl, und Lese- und Schreibvorgänge für die betroffenen Container werden fortgesetzt.
 
-Wenn Sie einen Wiederherstellungsvorgang anfordern, blockiert Azure Storage Datenvorgänge für die Blobs in dem Bereich, der wiederhergestellt wird, für die Dauer des Vorgangs. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
-
 Nur ein Wiederherstellungsvorgang kann für ein Speicherkonto gleichzeitig ausgeführt werden. Ein Wiederherstellungsvorgang kann nicht abgebrochen werden, sobald er ausgeführt wird. Es kann jedoch ein zweiter Wiederherstellungsvorgang ausgeführt werden, um den ersten Vorgang rückgängig zu machen.
 
-Um den Status einer Point-in-Time-Wiederherstellung zu überprüfen, wenden Sie den Vorgang **Get Restore Status** mit der Wiederherstellungs-ID an, die vom Vorgang **Restore Blob Ranges** zurückgegeben wird.
+Der Vorgang **Restore Blob Ranges** gibt eine Wiederherstellungs-ID zurück, die den Vorgang eindeutig identifiziert. Um den Status einer Point-in-Time-Wiederherstellung zu überprüfen, wenden Sie den Vorgang **Get Restore Status** mit der Wiederherstellungs-ID an, die vom Vorgang **Restore Blob Ranges** zurückgegeben wird.
 
 Beachten Sie die folgenden Einschränkungen für Wiederherstellungsvorgänge:
 
@@ -42,6 +40,11 @@ Beachten Sie die folgenden Einschränkungen für Wiederherstellungsvorgänge:
 - Ein Blob mit einer aktiven Leasedauer kann nicht wiederhergestellt werden. Wenn ein Blob mit einer aktiven Leasedauer in den Bereich der wiederherzustellenden Blobs eingeschlossen ist, schlägt der Wiederherstellungsvorgang atomisch fehl.
 - Momentaufnahmen werden nicht im Rahmen eines Wiederherstellungsvorgangs erstellt oder gelöscht. Nur das Basisblob wird in seinem vorherigen Zustand wiederhergestellt.
 - Wenn ein Blob innerhalb des Zeitraums zwischen dem aktuellen Moment und dem Wiederherstellungspunkt zwischen den heißen und kalten Speicherebenen verschoben wurde, wird das Blob auf der vorherigen Ebene wiederhergestellt. Ein Blob, das in die Archivebene verschoben wurde, wird jedoch nicht wiederhergestellt.
+
+> [!IMPORTANT]
+> Wenn Sie einen Wiederherstellungsvorgang ausführen, blockiert Azure Storage Datenvorgänge für die Blobs in den wiederhergestellten Bereichen für die Dauer des Vorgangs. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Aus diesem Grund werden Vorgänge wie das Auflisten von Containern im Azure-Portal während des Wiederherstellungsvorgangs möglicherweise nicht erwartungsgemäß ausgeführt.
+>
+> Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 
 > [!CAUTION]
 > Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Delete Container](/rest/api/storageservices/delete-container) während der Vorschau der Point-in-Time-Wiederherstellung aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie während der Vorschau die einzelnen Blobs, anstatt einen Container zu löschen, wenn Sie sie möglicherweise wiederherstellen möchten.
@@ -90,8 +93,9 @@ Für die Vorschau gelten die folgenden Einschränkungen:
 
 ### <a name="register-for-the-preview"></a>Registrieren für die Vorschau
 
-Um sich für die Vorschau zu registrieren, führen Sie die folgenden Befehle in Azure PowerShell aus:
+Wenn Sie sich für die Vorschau registrieren möchten, führen Sie die folgenden Befehle aus:
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
 # Register for the point-in-time restore preview
 Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
@@ -100,24 +104,47 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
 # Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
+Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+```azurecli
+az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
+az feature register --namespace Microsoft.Storage --name Changefeed
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
 
 ### <a name="check-registration-status"></a>Überprüfen des Registrierungsstatus
 
 Führen Sie die folgenden Befehle aus, um den Status Ihrer Registrierung zu überprüfen:
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName RestoreBlobRanges
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
+    
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName Versioning
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
+```
+
+---
+
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 

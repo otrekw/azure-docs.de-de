@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414696"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118835"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory
 
@@ -30,27 +30,27 @@ Wenn beim Bereitstellen oder Aufheben der Bereitstellung von SSIS IR Probleme a
 
 Bei dem Fehlercode „InternalServerError“ hat der Dienst vorübergehende Probleme, und Sie sollten den Vorgang später wiederholen. Wenden Sie sich an das Azure Data Factory-Supportteam, wenn auch bei der Wiederholung des Vorgangs Probleme auftreten.
 
-Andernfalls können drei wesentliche externe Abhängigkeiten Fehler verursachen: ein Azure SQL-Datenbank-Server bzw. eine verwaltete Azure SQL-Datenbank-Instanz, ein benutzerdefiniertes Setupskript oder die Konfiguration eines virtuellen Netzwerks.
+Andernfalls können drei wichtige externe Abhängigkeiten Fehler verursachen: Azure SQL-Datenbank oder eine verwaltete Azure SQL-Instanz, ein benutzerdefiniertes Setupskript und eine Konfiguration von virtuellen Netzwerken.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Probleme mit dem Azure SQL-Datenbank-Server oder der verwalteten Instanz
+## <a name="sql-database-or-sql-managed-instance-issues"></a>Probleme bei SQL-Datenbank oder verwalteter SQL-Instanz
 
-Ein Azure SQL-Datenbank-Server oder eine verwaltete Azure SQL-Datenbank-Instanz ist erforderlich, wenn Sie SSIS IR mit einer SSIS-Katalogdatenbank bereitstellen. SSIS IR muss auf den Azure SQL-Datenbank-Server oder die verwaltete Azure SQL-Datenbank-Instanz zugreifen können. Außerdem sollte das Konto des Azure SQL-Datenbank-Servers oder der verwalteten Azure SQL-Datenbank-Instanz über die Berechtigung zum Erstellen einer SSIS-Katalogdatenbank (SSISDB) verfügen. Wenn ein Fehler auftritt, wird im Data Factory-Portal ein Fehlercode mit einer detaillierten SQL-Ausnahmemeldung angezeigt. Anhand der Informationen in der folgenden Aufstellung können Sie die Fehlercodes beheben.
+SQL-Datenbank oder eine verwaltete SQL-Datenbank-Instanz ist erforderlich, wenn Sie SSIS IR mit einer SSIS-Katalogdatenbank bereitstellen. Die SSIS IR muss auf SQL-Datenbank oder die verwaltete SQL-Instanz zugreifen können. Außerdem muss das Anmeldekonto für SQL-Datenbank oder die verwaltete SQL-Instanz über die Berechtigung zum Erstellen einer SSIS-Katalogdatenbank (SSISDB) verfügen. Wenn ein Fehler auftritt, wird im Data Factory-Portal ein Fehlercode mit einer detaillierten SQL-Ausnahmemeldung angezeigt. Anhand der Informationen in der folgenden Aufstellung können Sie die Fehlercodes beheben.
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 Dieses Problem tritt möglicherweise auf, wenn Sie eine neue SSIS IR bereitstellen oder wenn IR ausgeführt wird. Wenn dieser Fehler während der IR-Bereitstellung auftritt, wird in der Fehlermeldung möglicherweise eine detaillierte SqlException-Meldung angezeigt, die eines der folgenden Probleme angibt:
 
-* Ein Problem mit der Netzwerkverbindung. Überprüfen Sie, ob der Hostname der SQL Server-Instanz oder der verwalteten Instanz zugänglich ist. Vergewissern Sie sich außerdem, dass der SSIS IR-Zugriff auf den Server nicht durch eine Firewall oder eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
+* Ein Problem mit der Netzwerkverbindung. Überprüfen Sie, ob der Hostname für SQL-Datenbank oder die verwaltete SQL-Instanz verfügbar ist. Vergewissern Sie sich außerdem, dass der SSIS IR-Zugriff auf den Server nicht durch eine Firewall oder eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
 * Während der SQL-Authentifizierung ist bei der Anmeldung ein Fehler aufgetreten. Das angegebene Konto kann sich nicht bei der SQL Server-Datenbank anmelden. Achten Sie darauf, das richtige Benutzerkonto anzugeben.
 * Während der Microsoft Azure Active Directory-Authentifizierung (Azure AD) (verwaltete Identität) ist bei der Anmeldung ein Fehler aufgetreten. Fügen Sie einer AAD-Gruppe die verwaltete Identität Ihrer Factory hinzu, und stellen Sie sicher, dass die verwaltete Identität Zugriffsberechtigungen auf den Katalogdatenbankserver hat.
 * Verbindungstimeout. Dieser Fehler wird immer durch eine sicherheitsbezogene Konfiguration verursacht. Wir empfehlen Folgendes:
   1. Erstellen Sie einen neuen virtuellen Computer.
   1. Binden Sie den virtuellen Computer in das gleiche virtuelle Microsoft Azure-Netzwerk wie IR ein, sofern sich IR in einem virtuellen Netzwerk befindet.
-  1. Installieren Sie SSMS, und überprüfen Sie den Status des Azure SQL-Datenbank-Servers bzw. der verwalteten Azure SQL-Datenbank-Instanz.
+  1. Installieren Sie SSMS, und überprüfen Sie den Status von SQL-Datenbank oder der verwalteten SQL-Instanz.
 
-Beheben Sie bei anderen Problemen das entsprechende in der detaillierten SqlException-Meldung angezeigte Problem. Wenn weiterhin Probleme auftreten, wenden Sie sich an das Supportteam für den Azure SQL-Datenbank-Server oder die verwaltete SQL-Datenbank-Instanz.
+Beheben Sie bei anderen Problemen das entsprechende in der detaillierten SqlException-Meldung angezeigte Problem. Wenn weiterhin Probleme auftreten, wenden Sie sich an das Supportteam für SQL-Datenbank oder die verwaltete SQL-Instanz.
 
-Wenn der Fehler während der Ausführung von IR angezeigt wird, verhindern Änderungen an der Netzwerksicherheitsgruppe oder der Firewall wahrscheinlich, dass der SSIS IR-Workerknoten auf den Azure SQL-Datenbank-Server oder die verwaltete Azure SQL-Datenbank-Instanz zugreifen kann. Entsperren Sie den SSIS IR-Workerknoten, sodass der Zugriff auf den Azure SQL-Datenbank-Server oder die verwaltete Azure SQL-Datenbank-Instanz ermöglicht wird.
+Wenn der Fehler während der Ausführung von IR angezeigt wird, verhindern Änderungen an der Netzwerksicherheitsgruppe oder der Firewall wahrscheinlich, dass der SSIS IR-Workerknoten auf SQL-Datenbank oder die verwaltete SQL-Instanz zugreifen kann. Entsperren Sie den SSIS IR-Workerknoten, damit er auf Azure-Datenbank oder die verwaltete SQL-Instanz zugreifen kann.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ Lösungsvorschläge:
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Dieser Fehler bedeutet, dass der Azure SQL-Datenbank-Server oder die verwaltete Azure SQL-Datenbank-Instanz bereits über eine SSISDB-Datenbank verfügt und diese von einer anderen IR verwendet wird. Sie müssen einen anderen Azure SQL-Datenbank-Server oder eine andere verwaltete Azure SQL Database-Instanz bereitstellen oder die vorhandene SSISDB-Datenbank löschen und die neue IR neu starten.
+Dieser Fehler bedeutet, dass SQL-Datenbank oder die verwaltete SQL-Instanz bereits über eine SSISDB-Datenbank verfügt und von einer anderen IR verwendet wird. Sie müssen entweder eine andere SQL-Datenbank-Instanz oder eine andere verwaltete SQL-Instanz bereitstellen oder aber die vorhandene SSISDB löschen und die neue IR neu starten.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 Dieser Fehler kann aus einem der folgenden Gründe auftreten:
 
 * Das Benutzerkonto, das für die SSIS IR konfiguriert ist, hat keine Berechtigung zum Erstellen der Datenbank. Sie können dem Benutzer die Berechtigung zum Erstellen der Datenbank erteilen.
-* Beim Erstellen der Datenbank tritt ein Timeout auf, z. B. ein Ausführungstimeout oder ein Timeout bei Datenbankvorgängen. Wiederholen Sie den Vorgang zu einem späteren Zeitpunkt. Wenn die Probleme weiterhin auftreten, wenden Sie sich an das Supportteam für den Azure SQL-Datenbank-Server oder die verwaltete SQL-Datenbank-Instanz.
+* Beim Erstellen der Datenbank tritt ein Timeout auf, z. B. ein Ausführungstimeout oder ein Timeout bei Datenbankvorgängen. Wiederholen Sie den Vorgang zu einem späteren Zeitpunkt. Wenn diese Wiederholung nicht funktioniert, wenden Sie sich an das Supportteam für SQL-Datenbank oder die verwaltete SQL-Instanz.
 
-Überprüfen Sie bei anderen Problemen die SqlException-Fehlermeldung, und beheben Sie das entsprechende in den Fehlerdetails aufgeführte Problem. Wenn weiterhin Probleme auftreten, wenden Sie sich an das Supportteam für den Azure SQL-Datenbank-Server oder die verwaltete SQL-Datenbank-Instanz.
+Überprüfen Sie bei anderen Problemen die SqlException-Fehlermeldung, und beheben Sie das entsprechende in den Fehlerdetails aufgeführte Problem. Wenn weiterhin Probleme auftreten, wenden Sie sich an das Supportteam für SQL-Datenbank oder die verwaltete SQL-Instanz.
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Diese Art von Fehlermeldung sieht wie folgt aus: „Ungültiger Objektname ‚catalog.catalog_properties‘.“ In diesem Fall verfügen Sie entweder bereits über eine Datenbank mit dem Namen „SSISDB“, die jedoch nicht mit SSIS IR erstellt wurde, oder die Datenbank befindet sich in einem ungültigen Zustand, der durch Fehler in der letzten SSIS IR-Bereitstellung verursacht wurde. Sie können die vorhandene Datenbank mit dem Namen „SSISDB“ löschen oder einen neuen Azure SQL-Datenbank-Server oder eine neue verwaltete Azure SQL-Datenbank-Instanz für die IR konfigurieren.
+Diese Art von Fehlermeldung sieht wie folgt aus: „Ungültiger Objektname ‚catalog.catalog_properties‘.“ In diesem Fall verfügen Sie entweder bereits über eine Datenbank mit dem Namen „SSISDB“, die jedoch nicht mit SSIS IR erstellt wurde, oder die Datenbank befindet sich in einem ungültigen Zustand, der durch Fehler in der letzten SSIS IR-Bereitstellung verursacht wurde. Sie können die vorhandene Datenbank „SSISDB“ löschen oder aber eine neue SQL-Datenbank-Instanz oder verwaltete SQL-Instanz für die IR konfigurieren.
 
 ## <a name="custom-setup-issues"></a>Probleme beim benutzerdefinierten Setup
 

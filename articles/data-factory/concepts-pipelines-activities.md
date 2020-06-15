@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: ad4ffa71480a5af06c31872cbafcaab7719c55e0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c3af10d2a88e6d18a7317a2e7e4106cf14132a1e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418336"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194293"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 
@@ -28,7 +28,7 @@ In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Az
 ## <a name="overview"></a>Übersicht
 Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen, und anschließen einen Zuordnungsdatenfluss starten, um die Protokolldaten zu analysieren. Die Pipeline ermöglicht die Verwaltung der Aktivitäten als Gruppe, anstatt jede Aktivität separat zu verwalten. Die Aktivitäten müssen nicht einzeln bereitgestellt und geplant werden. Stattdessen können Sie die Pipeline bereitstellen und planen.
 
-Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie anschließend eine Datenfluss- oder Databricks-Notebook-Aktivität, um Daten aus dem Blobspeicher zu verarbeiten und in einen Azure Synapse Analytics-Pool zu transformieren, auf dessen Grundlage Business Intelligence-Berichterstellungslösungen erstellt werden.
+Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise mit einer Kopieraktivität Daten aus einer SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie anschließend eine Datenfluss- oder Databricks-Notebook-Aktivität, um Daten aus dem Blobspeicher zu verarbeiten und in einen Azure Synapse Analytics-Pool zu transformieren, auf dessen Grundlage Business Intelligence-Berichterstellungslösungen erstellt werden.
 
 Data Factory verfügt über drei Gruppen von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](control-flow-web-activity.md). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
