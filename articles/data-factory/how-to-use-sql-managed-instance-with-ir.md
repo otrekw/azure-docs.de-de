@@ -1,6 +1,6 @@
 ---
-title: Verwenden von verwalteten Azure SQL-Datenbank-Instanzen mit Azure SQL Server Integration Services (SSIS) in Azure Data Factory
-description: Erfahren Sie, wie Sie verwaltete Azure SQL-Datenbank-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory verwenden.
+title: Verwenden von verwalteten Azure SQL-Instanzen mit Azure SQL Server Integration Services (SSIS) in Azure Data Factory
+description: Erfahren Sie, wie Sie verwaltete Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory verwenden.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663538"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195384"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Datenbank-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workloads (SSIS) nun in die Azure-Cloud verschieben. SSIS-Projekte und -Pakete können Sie in Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz mit gängigen Tools wie SQL Server Management Studio (SSMS) bereitstellen, ausführen und verwalten. In diesem Artikel werden die folgenden spezifischen Bereiche bei der Verwendung einer verwalteten Azure SQL-Datenbank-Instanz mit der Azure-SSIS Integration Runtime (IR) hervorgehoben:
+Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workloads (SSIS) nun in die Azure-Cloud verschieben. SSIS-Projekte und -Pakete können Sie in Azure SQL-Datenbank oder einer verwalteten SQL-Instanz mit gängigen Tools wie SQL Server Management Studio (SSMS) bereitstellen, ausführen und verwalten. In diesem Artikel werden die folgenden spezifischen Bereiche bei der Verwendung einer verwalteten Azure SQL-Instanz mit der Azure-SSIS Integration Runtime (IR) hervorgehoben:
 
-- [Bereitstellen einer Azure-SSIS IR mit SSIS-Katalog (SSISDB), die auf einer verwalteten Azure SQL-Datenbank-Instanz gehostet wird](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [Bereitstellen einer Azure-SSIS IR mit SSIS-Katalog (SSISDB), die auf einer verwalteten Azure SQL-Instanz gehostet wird](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Ausführen von SSIS-Paketen mit einem Agent-Auftrag einer verwalteten Azure SQL-Datenbankinstanz](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Bereinigen von SSISDB-Protokollen mit einem Agent-Auftrag einer verwalteten Azure SQL-Datenbankinstanz](#clean-up-ssisdb-logs)
-- [Azure-SSIS IR-Failover mit verwalteter Azure SQL-Datenbank-Instanz](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Migrieren von lokalen SSIS-Workloads zu SSIS in ADF mit einer verwalteten Azure SQL-Datenbank-Instanz als Datenbank-Workloadziel](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Azure-SSIS IR-Failover bei einer verwalteten Azure SQL-Instanz](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Migrieren von lokalen SSIS-Workloads zu SSIS in ADF mit einer verwalteten Azure SQL-Instanz als Datenbank-Workloadziel](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>Bereitstellen einer Azure-SSIS IR mit SSISDB, die auf einer verwalteten Azure SQL-Datenbank-Instanz gehostet wird
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Bereitstellen einer Azure-SSIS IR mit SSISDB, die auf einer verwalteten Azure SQL-Instanz gehostet wird
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. [Aktivieren Sie Azure Active Directory (Azure AD) für verwaltete Azure SQL-Datenbank-Instanzen](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance), wenn Sie sich für die Azure Active Directory-Authentifizierung entscheiden.
+1. [Aktivieren Sie Azure Active Directory (Azure AD) für verwaltete Azure SQL-Instanzen](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance), wenn Sie sich für die Azure Active Directory-Authentifizierung entscheiden.
 
 1. Wählen Sie aus, wie die verwaltete SQL-Instanz verbunden werden soll – über einen privaten oder einen öffentlichen Endpunkt:
 
@@ -44,13 +44,13 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
             - Im selben virtuellen Netzwerk wie die verwaltete SQL-Instanz mit **unterschiedlichen Subnetzen**.
             - In einem anderen virtuellen Netzwerk als die verwaltete SQL-Instanz über Peering virtueller Netzwerke (das aufgrund von Einschränkungen für globales VNET-Peering auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen den virtuellen Netzwerken.
 
-            Weitere Informationen zu Verbindungen von verwalteten SQL-Instanzen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            Weitere Informationen zu Verbindungen von verwalteten SQL-Instanzen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Instanz](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Konfigurieren Sie das virtuelle Netzwerk](#configure-virtual-network).
 
     - Über einen öffentlichen Endpunkt
 
-        Verwaltete Azure SQL-Datenbank-Instanzen können Konnektivität über [öffentliche Endpunkte](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) bereitstellen. Eingangs- und Ausgangsanforderungen, die erfüllt werden müssen, um Datenverkehr zwischen verwalteten SQL-Instanzen und der Azure-SSIS IR zuzulassen:
+        Verwaltete Azure SQL-Instanzen können Konnektivität über [öffentliche Endpunkte](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) bereitstellen. Eingangs- und Ausgangsanforderungen, die erfüllt werden müssen, um Datenverkehr zwischen verwalteten SQL-Instanzen und der Azure-SSIS IR zuzulassen:
 
         - Wenn sich die Azure-SSIS IR nicht in einem virtuellen Netzwerk befindet (bevorzugt)
 
@@ -91,7 +91,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
         Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressourcengruppe erstellen wie das virtuelle Netzwerk. Diese Ressourcen umfassen Folgendes:
         - Einen Azure-Lastenausgleich mit dem Namen *\<Guid>-azurebatch-cloudserviceloadbalancer*
-        - Eine Netzwerksicherheitsgruppe mit dem Namen „*\<GUID>-azurebatch-cloudservicenetworksecuritygroup“
+        - Eine Netzwerksicherheitsgruppe mit dem Namen *\<Guid>-azurebatch-cloudservicenetworksecuritygroup
         - Eine öffentliche Azure-IP-Adresse mit dem Namen „-azurebatch-cloudservicepublicip“
 
         Diese Ressourcen werden beim Start Ihrer Azure-SSIS IR erstellt. Sie werden gelöscht, wenn die Azure-SSIS IR beendet wird. Damit Ihre Azure-SSIS IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden.
@@ -147,7 +147,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
     ![catalog-public-endpoint](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Weitere Informationen zum Aktivieren der Azure AD-Authentifizierung finden Sie unter [Aktivieren von Azure AD in der verwalteten Azure SQL-Datenbank-Instanz](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+    Weitere Informationen zum Aktivieren der Azure AD-Authentifizierung finden Sie unter [Aktivieren von Azure AD in der verwalteten Azure SQL-Instanz](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Binden Sie die Azure-SSIS IR ggf. in ein virtuelles Netzwerk ein.
 

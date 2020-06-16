@@ -3,12 +3,12 @@ title: Hinzufügen von Bewertungstools in Azure Migrate
 description: Hier erfahren Sie, wie Sie Bewertungstools in Azure Migrate hinzufügen.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901062"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195636"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.
 2. Wählen Sie das Bewertungsszenario aus, das Sie verwenden möchten:
 
     - Wählen Sie **Server bewerten und migrieren**, um Computer und Workloads zu ermitteln und für die Migration zu Azure zu bewerten.
-    - Wählen Sie die Option **Datenbanken bewerten und migrieren**, um lokale SQL-Computer zu bewerten.
+    - Um lokale SQL Server-Datenbanken zu bewerten, wählen Sie die Option **Datenbanken bewerten und migrieren** aus.
     - Wählen Sie die Option **Web-Apps bewerten und migrieren**, um lokale Web-Apps zu bewerten.
 
     ![Bewertungsszenario](./media/how-to-assess/assess-scenario.png)

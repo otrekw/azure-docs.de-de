@@ -4,44 +4,46 @@ description: Erfahren Sie, wie Sie das vorläufige Löschen für Azure-Dateifrei
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 96e3d5001d11455337ae092776a1a4c5c3738012
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6ee38dd6f9a2e254c57d6f79c09eee7bccfcd0aa
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83882933"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204683"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben
 
-Azure Storage bietet jetzt für Dateifreigaben vorläufiges Löschen. Dadurch können Sie Ihre Daten leichter wiederherstellen, wenn diese irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht wurden.
+Azure Storage bietet jetzt für Dateifreigaben vorläufiges Löschen (Vorschau). Dadurch können Sie Ihre Daten leichter wiederherstellen, wenn diese irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht wurden.
 
-## <a name="how-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens
+## <a name="how-soft-delete-preview-works"></a>Funktionsweise des vorläufigen Löschens von Blobs (Vorschau)
 
-Falls aktiviert, ermöglicht Ihnen vorläufiges Löschen das Speichern und Wiederherstellen Ihrer Dateifreigaben, nachdem sie gelöscht wurden. Wenn Daten gelöscht werden, gehen sie in einen vorläufig gelöschten Zustand über, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden.
+Wenn vorläufiges Löschen für Azure-Dateifreigaben aktiviert ist und eine Dateifreigabe gelöscht wird, wechselt sie in einen vorläufig gelöschten Zustand, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden.
 
-Vorläufiges Löschen kann für neue oder vorhandene Dateifreigaben aktiviert werden. Da vorläufiges Löschen auch abwärtskompatibel ist, müssen Sie keine Änderungen an Ihren Anwendungen vornehmen, um in den Genuss der Schutzvorteile dieses Features zu kommen. 
+Vorläufiges Löschen kann entweder für neue oder vorhandene Dateifreigaben aktiviert werden. Da vorläufiges Löschen auch abwärtskompatibel ist, müssen Sie keine Änderungen an Ihren Anwendungen vornehmen, um in den Genuss der Schutzvorteile dieses Features zu kommen. 
+
+Um eine Dateifreigabe mit aktiviertem vorläufigen Löschen vor dem Ablaufdatum dauerhaft zu löschen, müssen Sie das Löschen der Freigabe rückgängig machen, vorläufiges Löschen deaktivieren und dann die Freigabe erneut löschen. Anschließend müssen Sie vorläufiges Löschen reaktivieren, da alle anderen Dateifreigaben in diesem Speicherkonto anfällig für ein versehentliches Löschen sind, solange vorläufiges Löschen deaktiviert ist.
 
 Bei vorläufig gelöschten Premium-Dateifreigaben wird das Dateifreigabekontingent (die bereitgestellte Größe einer Dateifreigabe) bei der Berechnung des gesamten Speicherkontokontingents bis zum Ablaufdatum der vorläufig gelöschten Freigabe genutzt, an dem die Freigabe vollständig gelöscht wird.
 
-### <a name="availability"></a>Verfügbarkeit
+## <a name="availability"></a>Verfügbarkeit
 
-Vorläufiges Löschen für Azure-Dateifreigaben ist für alle Speicherebenen, Speicherkontotypen und alle Regionen verfügbar, in denen Azure Files angeboten wird.
+Vorläufiges Löschen für Azure-Dateifreigaben (Vorschau) ist für alle Speicherebenen, Speicherkontotypen und alle Regionen verfügbar, in denen Azure Files angeboten wird.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
-Vorläufiges Löschen für Dateifreigaben wird auf Speicherkontoebene aktiviert. Die Einstellungen für vorläufiges Löschen gelten für alle Dateifreigaben eines Speicherkontos. Wenn Sie ein neues Speicherkonto erstellen, ist vorläufiges Löschen standardmäßig deaktiviert. Vorläufiges Löschen ist auch für vorhandene Speicherkonten standardmäßig deaktiviert. Sie können vorläufiges Löschen jederzeit ein- und ausschalten.
+### <a name="enabling-or-disabling-soft-delete"></a>Aktivieren oder Deaktivieren des vorläufigen Löschens
+
+Weil vorläufiges Löschen für Dateifreigaben auf Speicherkontoebene aktiviert wird, gelten die Einstellungen für vorläufiges Löschen für alle Dateifreigaben eines Speicherkontos. Sie können vorläufiges Löschen jederzeit aktivieren oder deaktivieren. Wenn Sie ein neues Speicherkonto erstellen, ist vorläufiges Löschen für Dateifreigaben standardmäßig deaktiviert. Vorläufiges Löschen ist auch für vorhandene Speicherkonten standardmäßig deaktiviert. Wenn Sie [Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md) für eine Azure-Dateifreigabe konfiguriert haben, wird das vorläufige Löschen für Azure-Dateifreigaben automatisch für das Speicherkonto dieser Freigabe aktiviert.
 
 Wenn Sie vorläufiges Löschen für Dateifreigaben aktivieren, einige Dateifreigaben löschen und dann vorläufiges Löschen deaktivieren, können Sie, wenn die Freigaben in diesem Zeitraum gespeichert wurden, weiterhin auf diese Dateifreigaben zugreifen und sie wiederherstellen. Wenn Sie vorläufiges Löschen aktivieren, müssen Sie auch den Aufbewahrungszeitraum festlegen.
 
-Der Aufbewahrungszeitraum gibt die Zeitspanne an, für die vorläufig gelöschte Datenfreigaben gespeichert werden und zur Wiederherstellung verfügbar sind. Für Dateifreigaben, die explizit gelöscht werden, beginnt der Aufbewahrungszeitraum, wenn die Daten gelöscht werden. Derzeit können Sie vorläufig gelöschte Daten 1 bis 365 Tage aufbewahren.
+### <a name="retention-period"></a>Beibehaltungsdauer
 
-Sie können den Aufbewahrungszeitraum für vorläufiges Löschen jederzeit ändern. Eine Änderung des Aufbewahrungszeitraums gilt nur für Freigaben, die nach erfolgter Änderung des Aufbewahrungszeitraums gelöscht werden. Freigaben, die vor der Änderung des Aufbewahrungszeitraums gelöscht wurden, laufen entsprechend dem Aufbewahrungszeitraum ab, der beim Löschen dieser Daten festgelegt war.
-
-Um eine Dateifreigabe mit aktiviertem vorläufigen Löschen vor dem Ablaufdatum dauerhaft zu löschen, müssen Sie das Löschen der Freigabe rückgängig machen, vorläufiges Löschen deaktivieren und dann die Freigabe erneut löschen. Anschließend müssen Sie vorläufiges Löschen reaktivieren, da alle anderen Dateifreigaben in diesem Speicherkonto anfällig für ein versehentliches Löschen sind, solange vorläufiges Löschen deaktiviert ist.
+Der Aufbewahrungszeitraum ist die Zeitspanne, für die vorläufig gelöschte Datenfreigaben gespeichert werden und zur Wiederherstellung verfügbar sind. Für Dateifreigaben, die explizit gelöscht werden, beginnt der Aufbewahrungszeitraum, wenn die Daten gelöscht werden. Derzeit können Sie einen Aufbewahrungszeitraum zwischen 1 und 365 Tagen angeben. Sie können die Beibehaltungsdauer beim vorläufigen Löschen jederzeit ändern. Eine Änderung des Aufbewahrungszeitraums gilt nur für Freigaben, die nach erfolgter Änderung des Aufbewahrungszeitraums gelöscht werden. Freigaben, die vor der Änderung des Aufbewahrungszeitraums gelöscht wurden, laufen entsprechend dem Aufbewahrungszeitraum ab, der beim Löschen dieser Daten festgelegt war.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 

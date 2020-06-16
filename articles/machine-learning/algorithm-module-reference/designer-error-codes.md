@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833812"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167246"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
@@ -1500,7 +1500,7 @@ Lösung:
 
 
 ## <a name="error-0159"></a>Fehler 0159
- Die Ausnahme tritt auf, wenn das an das Modul übergebene Modellverzeichnis ungültig ist. 
+ Die Ausnahme tritt auf, wenn das Modulmodellverzeichnis ungültig ist. 
 
 |Ausnahmemeldungen|
 |------------------------------------------------------------|

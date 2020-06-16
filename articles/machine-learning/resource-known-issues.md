@@ -1,7 +1,7 @@
 ---
 title: Bekannte Probleme und Problembehandlung
 titleSuffix: Azure Machine Learning
-description: Hier finden Sie eine Liste mit bekannten Problemen, Problemumgehungen und Problembehandlungsinformationen für Azure Machine Learning.
+description: Hier finden Sie Hilfe zum Suchen und Beheben von Fehlern in Azure Machine Learning. Erfahren Sie mehr über bekannte Probleme, Problembehandlung und Problemumgehungen.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -9,19 +9,25 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
+ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 169dd7f71b86c77717226872fecb493a6eb5bf0d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889395"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309848"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
-Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, die beim Verwenden von Azure Machine Learning auftreten können.
+Dieser Artikel hilft Ihnen, bekannte Probleme zu beheben, die beim Verwenden von Azure Machine Learning auftreten können. 
 
-## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+Weitere Informationen zur Problembehandlung finden Sie unter [Nächste Schritte](#next-steps) am Ende dieses Artikels.
+
+> [!TIP]
+> Fehler könnten das Ergebnis von [Ressourcenkontingenten](how-to-manage-quotas.md) sein, die Sie im Rahmen von Azure Machine Learning antreffen könnten. 
+
+## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
 
 Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. So zeigen Sie einige Protokolle an 
 1. Besuchen Sie [Azure Machine Learning-Studio](https://ml.azure.com). 
@@ -34,17 +40,13 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 > Azure Machine Learning protokolliert während des Trainings auch Informationen aus zahlreichen Quellen, wie z. B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Viele dieser Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
 
 
-## <a name="resource-quotas"></a>Ressourcenkontingente
-
-Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), die Ihnen im Rahmen von Azure Machine Learning begegnen können.
-
 ## <a name="installation-and-import"></a>Installation und Import
                            
-* **pip-Installation: Es ist nicht gewährleistet, dass Abhängigkeiten mit der Installation in einer Zeile konsistent sind**: 
+* **pip-Installation: Es ist nicht gewährleistet, dass Abhängigkeiten mit der Installation in einer Zeile konsistent sind:** 
 
    Dies ist eine bekannte Einschränkung von pip, da keine funktionsfähige Abhängigkeitskonfliktauflösung vorhanden ist, wenn Sie die Installation in einer einzigen Zeile ausführen. Es wird nur die erste eindeutige Abhängigkeit untersucht. 
 
-   Im folgenden Code werden sowohl `azure-ml-datadrift` als auch `azureml-train-automl` über eine einzeilige pip-Installation installiert. 
+   Im folgenden Code wird sowohl `azure-ml-datadrift` als auch `azureml-train-automl` über eine einzeilige pip-Installation installiert. 
      ```
        pip install azure-ml-datadrift, azureml-train-automl
      ```
@@ -59,7 +61,7 @@ Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), di
      
 * **Es ist nicht garantiert, dass das Erklärungspaket installiert wird, wenn azureml-train-automl-client installiert wird:** 
    
-   Wenn Sie AutoML remote mit aktivierter Modellerklärung ausführen, wird Ihnen folgende Fehlermeldung angezeigt: „Please install azureml-explain-model package for model explanations“ (Installieren Sie das azureml-explain-model-Paket für Modellerklärungen). Dies ist ein bekanntes Problem. Führen Sie einen der folgenden Schritte durch, um das Problem zu umgehen:
+   Wenn Sie AutoML remote mit aktivierter Modellerklärung ausführen, wird Ihnen folgende Fehlermeldung angezeigt: „Please install azureml-explain-model package for model explanations“ (Installieren Sie das azureml-explain-model-Paket für Modellerklärungen). Dies ist ein bekanntes Problem. Führen Sie als Problemumgehung einen der folgenden Schritte aus:
   
   1. Installieren Sie azureml-explain-model lokal.
    ```
@@ -81,7 +83,7 @@ Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), di
     
 * **Pandas-Fehler: Normalerweise bei AutoML-Experimenten angezeigt:**
    
-   Wenn Sie Ihre Umgebung manuell mithilfe von pip einrichten, fallen Attributfehler (insbesondere von Pandas) auf, da nicht unterstützte Paketversionen installiert werden. Um diese Fehler zu vermeiden, [installieren Sie das AutoML SDK mithilfe von „automl_setup.cmd“](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
+   Wenn Sie Ihre Umgebung manuell mithilfe von pip einrichten, können Ihnen Attributfehler auffallen (insbesondere von Pandas) auf, da nicht unterstützte Paketversionen installiert werden. Um diese Fehler zu vermeiden, [installieren Sie das AutoML SDK mithilfe von „automl_setup.cmd“](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
    
     1. Öffnen Sie eine Anaconda-Eingabeaufforderung, und klonen Sie das GitHub-Repository für eine Reihe von Beispielnotebooks.
 
@@ -191,7 +193,7 @@ Bekannte Probleme:
 
     Wenn Sie [Estimators](concept-azure-machine-learning-architecture.md#estimators) verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten. Wenn Sie Ihr eigenes Azure ML-Umgebungsobjekt besitzen, das das vom Estimator verwendete Standardimage außer Kraft setzen soll, können Sie diese Umgebung über den `environment`-Parameter des Estimatorkonstruktors angeben.
 
-    Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und sklearn. Die Verwendung dieser Estimators stellt sicher, dass die hauptsächlichen Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
+    Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und SKLearn. Die Verwendung dieser Estimators stellt sicher, dass die hauptsächlichen Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
  
     Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
     Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
@@ -218,7 +220,7 @@ Bekannte Probleme:
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-* **Tensor Flow**: Das automatisierte maschinelle Lernen unterstützt derzeit nicht die Tensor Flow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben.
+* **TensorFlow**: Das automatisierte maschinelle Lernen unterstützt derzeit nicht TensorFlow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben.
 
 * **Diagramm mit Experimenten**: Seit dem 12. April werden Diagramme für die binäre Klassifizierung (Genauigkeit und Trefferquote, ROC, Gewinnkurve usw.), die in automatisierten ML-Experimentiterationen angezeigt werden, auf der Benutzeroberfläche nicht richtig gerendert. In Diagrammen werden derzeit invertierte Ergebnisse angezeigt, was dazu führt, dass Modelle mit besserer Leistung mit schlechteren Ergebnissen angezeigt werden. Derzeit wird an einer Lösung gearbeitet.
 
@@ -286,7 +288,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="authentication-errors"></a>Authentifizierungsfehler
 
-Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Computeziel anwenden, erhalten Sie eine der folgenden Fehlermeldungen:
+Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Computeziel anwenden, erhalten Sie eine der folgenden Fehlermeldungen: 
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -297,3 +299,13 @@ Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Compute
 ```
 
 Sie erhalten beispielsweise eine Fehlermeldung, wenn Sie versuchen, ein Computeziel anhand einer ML-Pipeline zu erstellen oder anzuhängen, die zur Remoteausführung übermittelt wird.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Hier finden Sie weitere Artikel zur Problembehandlung in Azure Machine Learning:
+
+* [Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances](how-to-troubleshoot-deployment.md)
+* [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md)
+* [Debugging und Problembehandlung von ParallelRunStep](how-to-debug-parallel-run-step.md)
+* [Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote](how-to-set-up-vs-code-remote.md)
+* [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)

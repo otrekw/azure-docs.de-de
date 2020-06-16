@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758944"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235340"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -206,11 +206,77 @@ Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.avera
 NIC-Lesedurchsatz (MB pro Sekunde) | net.received.average | Berechnung der VM-Größe
 NIC-Schreibdurchsatz (MB pro Sekunde) | net.transmitted.average  |Berechnung der VM-Größe
 
+
+### <a name="installed-apps-metadata"></a>Metadaten installierter Apps
+
+Bei der Anwendungsermittlung werden installierte Anwendungen und Betriebssystemdaten erfasst.
+
+#### <a name="windows-vm-apps-data"></a>Windows-VM-App-Daten
+
+Dies sind die Daten der installierten Anwendung, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten** | **Registrierungsstandort** | **Schlüssel**
+--- | --- | ---
+Anwendungsname  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Anbieter  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Herausgeber
+
+#### <a name="windows-vm-features-data"></a>Daten zu Windows-VM-Features
+
+Dies sind die Daten der Features, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **PowerShell-Cmdlet** | **Eigenschaft**
+--- | --- | ---
+Name  | Get-WindowsFeature  | Name
+Featuretyp | Get-WindowsFeature  | FeatureType
+Parent  | Get-WindowsFeature  | Parent
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows-VM-SQL Server-Metadaten
+
+Dies sind die SQL Server-Metadaten, die von der Appliance von virtuellen Computern gesammelt werden, auf denen Microsoft SQL Server für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **Registrierungsstandort**  | **Schlüssel**
+--- | --- | ---
+Name  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition 
+Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
+Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows-VM-Betriebssystemdaten
+
+Dies sind die Betriebssystemdaten, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+Daten  | WMI-Klasse  | WMI-Klasseneigenschaft
+--- | --- | ---
+Name  | Win32_operatingsystem  | Caption
+Version  | Win32_operatingsystem  | Version
+Aufbau  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux-VM-App-Daten
+
+Dies sind die Daten der installierten Anwendung, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Basierend auf dem Betriebssystem der VM werden einer oder mehrere der Befehle ausgeführt. Diese Daten werden an Azure gesendet.
+
+Daten  | Get-Help
+--- | --- 
+Name | rpm, dpkg-query, snap
+Version | rpm, dpkg-query, snap
+Anbieter | rpm, dpkg-query, snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux-VM-Betriebssystemdaten
+
+Dies sind die Betriebssystemdaten, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **Befehl** 
+--- | --- | ---
+Name <br/> version | Erfasst aus mindestens einer der folgenden Dateien:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Aufbau | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Metadaten zu App-Abhängigkeiten
 
 Die Abhängigkeitsanalyse ohne Agent sammelt Verbindungs- und Prozessdaten.
 
-#### <a name="connection-data"></a>Verbindungsdaten
+#### <a name="windows-vm-app-dependencies-data"></a>Windows-VM-App-Abhängigkeitendaten
 
 Hier sind die Verbindungsdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 
@@ -224,7 +290,7 @@ TCP-Verbindungsstatus | netstat
 Prozess-ID | netstat
 Anzahl der aktiven Verbindungen | netstat
 
-#### <a name="process-data"></a>Verarbeiten von Daten
+
 Hier sind die Prozessdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 
 **Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
@@ -233,7 +299,7 @@ Prozessname | Win32_Process | ExecutablePath
 Prozessargumente | Win32_Process | CommandLine
 Anwendungsname | Win32_Process | Parameter „VersionInfo.ProductName“ der ExecutablePath-Eigenschaft
 
-#### <a name="linux-vm-data"></a>Linux-VM-Daten
+#### <a name="linux-vm-app-dependencies-data"></a>Linux-VM-App-Abhängigkeitendaten
 
 Hier sind die Verbindungs- und Prozessdaten, die die Appliance von jedem virtuellen Linux-Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 

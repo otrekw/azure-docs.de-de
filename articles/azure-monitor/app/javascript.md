@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854982"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266987"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -139,7 +139,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
 | enableRequestHeaderTracking | false | Bei „true“ werden AJAX- und Fetch-Anforderungsheader nachverfolgt.Der Standardwert ist „false“.
 | enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
-| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt.
+| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
 
 ## <a name="single-page-applications"></a>Single-Page-Webanwendungen
 

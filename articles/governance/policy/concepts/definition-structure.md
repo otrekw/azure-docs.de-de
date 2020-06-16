@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 04/03/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746981"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205023"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -17,14 +17,15 @@ Erfahren Sie mehr über [Bedingungen](#conditions).
 
 Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
-Das Richtliniendefinitionsschema finden Sie hier: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+Das Richtliniendefinitionsschema finden Sie hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
-- Modus
-- parameters
 - Anzeigename
 - description
+- Modus
+- metadata
+- parameters
 - Richtlinienregel
   - Logische Auswertung
   - Wirkung
@@ -34,7 +35,13 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 ```json
 {
     "properties": {
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "mode": "all",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,7 +68,22 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 }
 ```
 
-Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index.md) verfügbar.
+Integrierte Richtlinien und Muster von Azure Policy finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
+
+## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
+
+Sie verwenden **displayName** und **description**, um die Richtliniendefinition zu bestimmen und den Kontext für ihre Verwendung anzugeben. **displayName** hat eine maximale Länge von _128_ Zeichen, und **description** hat eine maximale Länge von _512_ Zeichen.
+
+> [!NOTE]
+> Während der Erstellung oder Aktualisierung einer Richtliniendefinition werden **ID**, **Typ**und **Name** durch JSON-externe Eigenschaften definiert und sind in der JSON-Datei nicht erforderlich. Wenn Sie die Richtliniendefinition über das SDK abrufen, werden die Eigenschaften **ID**, **Typ** und **Name** als Teil der JSON-Datei zurückgegeben, sie sind jedoch schreibgeschützte Informationen, die nur die Richtliniendefinition betreffen.
+
+## <a name="type"></a>type
+
+Die **type-** Eigenschaft kann zwar nicht festgelegt werden, aber es gibt drei Werte, die vom SDK zurückgegeben und im Portal angezeigt werden:
+
+- `Builtin`: Diese Richtliniendefinitionen werden von Microsoft bereitgestellt und verwaltet.
+- `Custom`: Alle von Kunden erstellten Richtliniendefinitionen haben diesen Wert.
+- `Static`: Gibt eine Richtliniendefinition zur [Einhaltung gesetzlicher Bestimmungen](./regulatory-compliance.md) mit Microsoft **Ownership** an. Die Complianceergebnisse für diese Richtliniendefinitionen sind die Ergebnisse von Drittanbieterüberwachungen in der Microsoft-Infrastruktur. Im Azure-Portal wird dieser Wert manchmal als **Von Microsoft verwaltet** angezeigt. Weitere Informationen dazu finden Sie unter [Gemeinsame Verantwortung in der Cloud](../../../security/fundamentals/shared-responsibility.md).
 
 ## <a name="mode"></a>Mode
 
@@ -82,7 +102,7 @@ Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle üb
 
 `indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Ausgenommen hiervon sind **Ressourcengruppen** und **Abonnements**. Richtliniendefinitionen zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe oder ein Abonnement sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` oder `Microsoft.Resources/subscriptions` abzielen. Ein Beispiel finden Sie unter [Azure Policy-Muster: Tags – Beispiel 1](../samples/pattern-tags.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Ressourcenanbietermodi (Vorschau)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Ressourcenanbietermodi (Vorschau)
 
 Die folgenden Ressourcenanbietermodi werden derzeit in der Vorschauphase unterstützt:
 
@@ -92,6 +112,20 @@ Die folgenden Ressourcenanbietermodi werden derzeit in der Vorschauphase unterst
 
 > [!NOTE]
 > Ressourcenanbietermodi unterstützen in der Vorschauphase nur integrierte Richtliniendefinitionen und keine Initiativen.
+
+## <a name="metadata"></a>Metadaten
+
+In der optionalen `metadata`-Eigenschaft werden Informationen zur Richtliniendefinition gespeichert. Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte in `metadata` definieren. Es gibt jedoch einige _allgemeine_ Eigenschaften, die von Azure Policy und integrierten Richtlinien verwendet werden.
+
+### <a name="common-metadata-properties"></a>Allgemeine Metadateneigenschaften
+
+- `version` (Zeichenfolge): Verfolgt Details zur Version des Inhalts einer Richtliniendefinition nach.
+- `category` (Zeichenfolge): Legt fest, unter welcher Kategorie im Azure-Portal die Richtliniendefinition angezeigt wird.
+- `preview` (boolescher Wert): Flag mit einem der Werte TRUE oder FALSE für den Fall, dass sich die Richtliniendefinition in der _Vorschauphase_ befindet.
+- `deprecated` (Boolescher Wert): Flag mit einem der Werte TRUE oder FALSE für den Fall, dass die Richtliniendefinition als _veraltet_ markiert wurde.
+
+> [!NOTE]
+> Der Azure Policy-Dienst verwendet die Eigenschaften `version`, `preview` und `deprecated`, um den Grad der Änderung einer integrierten Richtliniendefinition oder Initiative und einen Status zu übermitteln. Das Format von `version` ist `{Major}.{Minor}.{Patch}`. Bestimmte Zustände, z. B. _veraltet_ oder _Vorschau_, werden der `version`-Eigenschaft angehängt oder in eine andere Eigenschaft als **boolescher** Wert eingefügt. Weitere Informationen zu der Methodik, mit der Azure Policy die Versionen integrierter Richtlinien verwaltet, finden Sie unter [Built-in versioning](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md) (Versionsverwaltung für integrierte Richtlinien).
 
 ## <a name="parameters"></a>Parameter
 
@@ -105,17 +139,11 @@ Parameter funktionieren beim Erstellen von Richtlinien genauso. Sie können die 
 
 Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition verwendet werden:
 
-- **name:** Der Name des Parameters. Wird in der Richtlinienregel von der Bereitstellungsfunktion `parameters` verwendet. Weitere Informationen finden Sie unter [Verwenden eines Parameterwerts](#using-a-parameter-value).
+- `name`: Der Name des Parameters. Wird in der Richtlinienregel von der Bereitstellungsfunktion `parameters` verwendet. Weitere Informationen finden Sie unter [Verwenden eines Parameterwerts](#using-a-parameter-value).
 - `type`: Bestimmt, ob der Parameter eine **Zeichenfolge**, ein **Array**, ein **Objekt**, ein **boolescher Wert**, eine **ganze Zahl** oder vom Typ **float** oder **datetime** ist.
 - `metadata`: Definiert untergeordnete Eigenschaften, die hauptsächlich vom Azure-Portal verwendet werden, um benutzerfreundliche Informationen anzuzeigen:
   - `description`: Die Erläuterung des Zwecks des Parameters. Kann verwendet werden, um Beispiele zulässiger Werte bereitzustellen.
   - `displayName`: Der Anzeigename des Parameters im Portal.
-  - `version`: (Optional) Verfolgt Details zur Version des Inhalts einer Richtliniendefinition nach.
-
-    > [!NOTE]
-    > Der Azure Policy-Dienst verwendet die Eigenschaften `version`, `preview` und `deprecated`, um den Grad der Änderung einer integrierten Richtliniendefinition oder Initiative und einen Status zu übermitteln. Das Format von `version` ist `{Major}.{Minor}.{Patch}`. Bestimmte Zustände, z. B. _veraltet_ oder _Vorschau_, werden der `version`-Eigenschaft angehängt oder in eine andere Eigenschaft als **boolescher** Wert eingefügt.
-
-  - `category`: (Optional) Bestimmt, unter welcher Kategorie im Azure-Portal die Richtliniendefinition angezeigt wird.
   - `strongType`: (Optional) Wird verwendet, wenn die Richtliniendefinition über das Portal zugewiesen wird. Bietet eine kontextbezogene Liste. Weitere Informationen finden Sie unter [strongType](#strongtype).
   - `assignPermissions`: (Optional) Legen Sie diesen Wert auf _true_ fest, damit das Azure-Portal während der Richtlinienzuweisung Rollenzuweisungen erstellt. Diese Eigenschaft ist hilfreich, wenn Sie Berechtigungen außerhalb des Zuweisungsbereichs zuweisen möchten. Es gibt eine Rollenzuordnung pro Rollendefinition in der Richtlinie (oder pro Rollendefinition in allen Richtlinien der Initiative). Der Parameterwert muss eine gültige Ressource oder ein gültiger Bereich sein.
 - `defaultValue`: (Optional) Legt den Wert des Parameters in einer Zuweisung fest, wenn kein Wert angegeben ist.
@@ -180,13 +208,6 @@ Für den Definitionsspeicherort gilt Folgendes:
 
 - **Abonnement:** Die Richtlinie kann nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
 - **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition mehreren Abonnements zuordnen möchten, muss der Speicherort eine Verwaltungsgruppe sein, die diese Abonnements enthält.
-
-## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
-
-Sie verwenden **displayName** und **description**, um die Richtliniendefinition zu bestimmen und den Kontext für ihre Verwendung anzugeben. **displayName** hat eine maximale Länge von _128_ Zeichen, und **description** hat eine maximale Länge von _512_ Zeichen.
-
-> [!NOTE]
-> Während der Erstellung oder Aktualisierung einer Richtliniendefinition werden **ID**, **Typ**und **Name** durch JSON-externe Eigenschaften definiert und sind in der JSON-Datei nicht erforderlich. Wenn Sie die Richtliniendefinition über das SDK abrufen, werden die Eigenschaften **ID**, **Typ** und **Name** als Teil der JSON-Datei zurückgegeben, sie sind jedoch schreibgeschützte Informationen, die nur die Richtliniendefinition betreffen.
 
 ## <a name="policy-rule"></a>Richtlinienregel
 
@@ -713,88 +734,9 @@ Diese Beispielregel überprüft alle Übereinstimmungen von **IpRules\[\*\].valu
 
 Weitere Informationen finden Sie unter [Auswerten eines Alias mit Stern [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="initiatives"></a>Initiativen
-
-Mithilfe von Initiativen können Sie mehrere verwandte Richtliniendefinitionen gruppieren, um Zuweisungen und das Verwalten zu vereinfachen, indem Sie mit einer Gruppe als einzelnes Element arbeiten. Beispielsweise können Sie zusammengehörige Richtliniendefinitionen zum Markieren in einer einzelnen Initiative gruppieren. Anstatt jede Richtlinie einzeln zuzuweisen, wenden Sie die Initiative an.
-
-> [!NOTE]
-> Sobald eine Initiative zugewiesen wurde, können die Parameter der Initiativenebene nicht mehr geändert werden. Aus diesem Grund wird empfohlen, bei der Definition des Parameters einen **defaultValue** festzulegen.
-
-Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung der Tags `costCenter` und `productName` erstellt werden kann. Es werden zwei integrierte Richtlinien verwendet, um den Standardtagwert anzuwenden.
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen finden Sie unter [Struktur der Initiativendefinition](./initiative-definition-structure.md).
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).

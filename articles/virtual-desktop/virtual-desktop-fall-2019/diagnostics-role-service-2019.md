@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657251"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235562"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifizieren und Diagnostizieren von Problemen
 
@@ -161,7 +161,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 
 |Numerischer Code|Fehlercode|Vorgeschlagene Lösung|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|Der Benutzer ist kein Mitglied von Azure Active Directory. Befolgen Sie die Anweisungen unter [Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center), um ihn hinzuzufügen.|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|Der Benutzer ist kein Mitglied von Active Directory. Befolgen Sie die Anweisungen unter [Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center), um ihn hinzuzufügen.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Der Sitzungshost ist nicht richtig in Active Directory eingebunden.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Bei der Verbindungsherstellung ist ein Fehler aufgetreten, weil der Sitzungshost nicht verfügbar ist. Überprüfen Sie die Integrität des Sitzungshosts.|
 |-2146233088|ConnectionFailedClientDisconnect|Wenn dieser Fehler häufig angezeigt wird, sollten Sie sicherstellen, dass der Computer des Benutzers mit dem Netzwerk verbunden ist.|
@@ -172,6 +172,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |8|ConnectionBroken|Die Verbindung zwischen dem Client und dem Gateway oder Server wurde getrennt. Sofern dieser Vorgang nicht unerwartet auftritt, ist keine Aktion erforderlich.|
 |14|UnexpectedNetworkDisconnect|Die Verbindung mit dem Netzwerk wurde getrennt. Bitten Sie den Benutzer, die Verbindung wiederherzustellen.|
 |24|ReverseConnectFailed|Der virtuelle Hostcomputer verfügt nicht über eine direkte Sichtlinie zum RD-Gateway. Stellen Sie sicher, dass die IP-Adresse des Gateways aufgelöst werden kann.|
+|1322|ConnectionFailedNoMappingOfSIDinAD|Der Benutzer ist kein Mitglied von Active Directory. Befolgen Sie die Anweisungen unter [Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center), um ihn hinzuzufügen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

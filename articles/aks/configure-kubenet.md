@@ -3,14 +3,14 @@ title: Konfigurieren von kubenet-Netzwerken in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie kubenet-Netzwerke (grundlegend) in Azure Kubernetes Service (AKS) konfigurieren, um einen AKS-Cluster in einem vorhandenen virtuellen Netzwerk und Subnetz bereitzustellen.
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120911"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309667"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create]*Mitwirkender*-Berechtigungen für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<App-ID>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
+Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create]*Mitwirkender*-Berechtigungen für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<appId>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Erstellen eines AKS-Clusters im virtuellen Netzwerk
 
-Sie haben jetzt ein virtuelles Netzwerk und Subnetz erstellt sowie Berechtigungen für einen Dienstprinzipal zur Verwendung dieser Netzwerkressourcen erstellt und zugewiesen. Erstellen Sie nun mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster in Ihrem virtuellen Netzwerk und Subnetz. Definieren Sie wie in der Ausgabe des vorherigen Befehls Ihre eigene Dienstprinzipal- *\<>* und Ihr eigenes *\<Kennwort>* , um den Dienstprinzipal zu erstellen.
+Sie haben jetzt ein virtuelles Netzwerk und Subnetz erstellt sowie Berechtigungen für einen Dienstprinzipal zur Verwendung dieser Netzwerkressourcen erstellt und zugewiesen. Erstellen Sie nun mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster in Ihrem virtuellen Netzwerk und Subnetz. Definieren Sie wie in der Ausgabe des vorherigen Befehls Ihre eigene Dienstprinzipal- *\<appId>* und Ihr eigenes *\<password>* , um den Dienstprinzipal zu erstellen.
 
 Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozesses definiert:
 
@@ -195,7 +195,22 @@ az aks create \
     --client-secret <password>
 ```
 
-Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und Routingtabelle erstellt. Diese Netzwerkressourcen werden von der AKS-Steuerungsebene verwaltet. Die Netzwerksicherheitsgruppe wird automatisch den virtuellen NICs auf Ihren Knoten zugeordnet. Die Routingtabelle wird automatisch dem Subnetz des virtuellen Netzwerks zugeordnet. Regeln für Netzwerksicherheitsgruppen und Routingtabellen werden beim Erstellen und Verfügbarmachen von Diensten automatisch aktualisiert.
+Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und Routingtabelle automatisch erstellt. Diese Netzwerkressourcen werden von der AKS-Steuerungsebene verwaltet. Die Netzwerksicherheitsgruppe wird automatisch den virtuellen NICs auf Ihren Knoten zugeordnet. Die Routingtabelle wird automatisch dem Subnetz des virtuellen Netzwerks zugeordnet. Regeln für Netzwerksicherheitsgruppen und Routingtabellen werden beim Erstellen und Verfügbarmachen von Diensten automatisch aktualisiert.
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>Einbinden Ihres eigenen Subnetzes und Ihrer eigenen Routingtabelle mit kubenet
+
+Mit kubenet muss eine Routingtabelle in Ihren Clustersubnetzen vorhanden sein. AKS unterstützt das Einbinden Ihres eigenen vorhandenen Subnetzes und Ihrer Routingtabelle.
+
+Wenn Ihr benutzerdefiniertes Subnetz keine Routingtabelle enthält, erstellt AKS eine für Sie und fügt Regeln hinzu. Wenn Ihr benutzerdefiniertes Subnetz beim Erstellen des Clusters eine Routingtabelle enthält, bestätigt AKS die vorhandene Routingtabelle während der Clustervorgänge und aktualisiert Regeln für Cloudanbietervorgänge entsprechend.
+
+Einschränkungen:
+
+* Vor der Erstellung des Clusters müssen Berechtigungen zugewiesen werden. Stellen Sie sicher, dass Sie einen Dienstprinzipal mit Schreibberechtigungen für das benutzerdefinierte Subnetz und die benutzerdefinierte Routingtabelle verwenden.
+* Verwaltete Identitäten werden derzeit nicht mit benutzerdefinierten Routentabellen in kubenet unterstützt.
+* Vor dem Erstellen des AKS-Clusters muss dem Subnetz eine benutzerdefinierte Routingtabelle zugeordnet werden. Diese Routingtabelle kann nicht aktualisiert werden, und alle Routingregeln müssen der ursprünglichen Routingtabelle hinzugefügt oder daraus entfernt werden, bevor Sie den AKS-Cluster erstellen.
+* Alle Subnetze in einem virtuellen AKS-Netzwerk müssen mit der gleichen Routingtabelle verknüpft sein.
+* Jeder AKS-Cluster muss eine eindeutige Routingtabelle verwenden. Eine Routingtabelle mit mehreren Clustern kann nicht wiederverwendet werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

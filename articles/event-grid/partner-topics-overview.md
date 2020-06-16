@@ -7,20 +7,20 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 4546874b8a6cd8a7e45c3e6957a5181d66c7433f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690036"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170952"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Partnerthemen in Azure Event Grid (Vorschau)
-Mit dem Feature „Partnerthemen“ können Sie Ereignisquellen von Drittanbietern direkt mit Event Grid verbinden. Diese Integration ermöglicht Ihnen, Ereignisse von Partnern auf dieselbe Weise wie Ereignisse von Azure-Diensten zu abonnieren. 
+Mit Partnerthemen können Sie Ereignisquellen von Drittanbietern direkt mit Azure Event Grid verbinden. Diese Integration ermöglicht Ihnen, Ereignisse von Partnern auf dieselbe Weise wie Ereignisse von Azure-Diensten zu abonnieren. 
 
 ## <a name="available-partners"></a>Verfügbare Partner
-Der erste Partner, der über Event Grid-Partnerthemen verfügbar ist, ist Auth0. Das [Partnerthema Auth0](auth0-overview.md) ermöglicht Ihnen die Herstellung einer Verbindung Ihrer Auth0- und Azure-Konten. Die Integration ermöglicht Ihnen, in Echtzeit auf Auth0-Ereignisse zu reagieren, diese zu protokollieren und zu überwachen.
+Der erste Partner, der über Event Grid-Partnerthemen verfügbar ist, ist Auth0. Sie können mit dem [Partnerthema Auth0](auth0-overview.md) eine Verbindung mit Ihren Auth0- und Azure-Konten herstellen. Die Integration ermöglicht Ihnen, in Echtzeit auf Auth0-Ereignisse zu reagieren, diese zu protokollieren und zu überwachen.
 
-[Probieren Sie es noch heute aus](auth0-how-to.md), indem Sie sich bei Ihrem Auth0-Konto anmelden und eine Event Grid-Integration vornehmen. Nachdem Sie in Auth0 auf „Create“ (Erstellen) geklickt haben, sehen Sie in Ihrem Azure-Konto ein ausstehendes Auth0-Thema. Klicken Sie auf „Aktivieren“. Anschließend können Sie Abonnements für Event Grid erstellen, um Ihre Ereignisse wie jede andere Ereignisquelle weiterzuleiten, zu filtern und zu übermitteln.
+[Um es auszuprobieren](auth0-how-to.md), melden Sie sich bei Ihrem Auth0-Konto an und erstellen eine Event Grid-Integration. Nachdem Sie in Auth0 **Erstellen** ausgewählt haben, sehen Sie in Ihrem Azure-Konto ein ausstehendes Auth0-Thema. Wählen Sie **Aktivieren** aus. Anschließend können Sie Abonnements für Event Grid erstellen, um Ihre Ereignisse wie jede andere Ereignisquelle weiterzuleiten, zu filtern und zu übermitteln.
 
 ## <a name="pricing"></a>Preise
 Partnerthemen werden zum gleichen Tarif wie Systemthemen in Rechnung gestellt.
@@ -34,5 +34,5 @@ Die zur Unterstützung dieser Produkteinführung geschaffene Infrastruktur ermö
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Auth0-Partnerthema](auth0-overview.md)
-- [Verwenden des Auth0-Partnerthemas](auth0-how-to.md)
+- [Integrieren von Azure Event Grid mit Auth0](auth0-how-to.md)
 - [Registrieren als Event Grid-Partner](partner-onboarding-overview.md)

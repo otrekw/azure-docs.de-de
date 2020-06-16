@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140925"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637531"
 ---
 > [!NOTE]
 > Um `PHI` zu ermitteln, verwenden Sie den `domain=phi`-Parameter und die Modellversion `2020-04-01` oder höher.
@@ -40,8 +40,8 @@ Die folgenden Entitätskategorien werden beim Senden von Anforderungen an den `/
 | Datetime | Date | Kalenderdatumsangaben | `2019-10-01` | Wird auch mit `domain=phi`zurückgegeben |
 | Menge | – | Zahlen und numerische Mengen. | `2019-10-01` |  |
 | Menge | Age | Altersangaben | `2019-10-01` | | |
-| Internationale Klassifikation der Krankheiten (ICD-10-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, neunte Revision   | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
-| Internationale Klassifikation der Krankheiten (ICD-10-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, zehnte Revision    | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
+| Internationale Klassifikation der Krankheiten (ICD-10-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, neunte Revision   | `2020-04-01` | |
+| Internationale Klassifikation der Krankheiten (ICD-10-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, zehnte Revision    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-Informationen
 

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744120"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193558"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -195,7 +195,37 @@ Ja. In folgenden Artikeln erfahren Sie mehr über die Drosselung der Bandbreite:
 * [Kapazitätsplanung für die Replikation von VMware-VMs und physischen Servern](site-recovery-plan-capacity-vmware.md)
 * [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kann ich die Replikation mit App-Konsistenz auf Linux-Servern aktivieren? 
+Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit den „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery während des Vorgangs für die App-Konsistenz verwendet. Dies kann mithilfe folgender Schritte ermöglicht werden.
 
+1. Melden Sie sich beim Computer als Root-Benutzer an.
+2. Wechseln Sie in das Installationsverzeichnis des Mobilitäts-Agent von Azure Site Recovery. Der Standardwert ist „/usr/local/ASR“.<br>
+    `# cd /usr/local/ASR`
+3. Wechseln Sie im Installationsverzeichnis in „VX/Scripts“.<br>
+    `# cd VX/scripts`
+4. Erstellen Sie ein Bash-Shellskript mit dem Namen „customscript.sh“ mit Ausführungsberechtigungen für den Root-Benutzer.<br>
+    a. Das Skript sollte die Befehlszeilenoptionen „--pre“ und „--post“ (beachten Sie die doppelten Bindestriche) unterstützen.<br>
+    b. Wenn das Skript mit der „--pre“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung einfrieren, und wenn es mit der „--post“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung reaktivieren.<br>
+    c. Eine Beispielvorlage –<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Fügen Sie die Eingabe-/Ausgabebefehle zum Einfrieren und Reaktivieren in „--pre“- und „--post“-Schritten für Anwendungen hinzu, die App-Konsistenz erfordern. Sie können wahlweise ein weiteres Skript hinzufügen, das diese Befehle angibt, und von „customscript.sh“ aus mit „--pre“- und „--post“-Option aufrufen.
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Wie greife ich nach einem Failover in Azure auf die virtuellen Azure-Computer zu?

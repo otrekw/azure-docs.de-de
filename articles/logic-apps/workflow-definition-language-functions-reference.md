@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/29/2020
+ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646011"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204853"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -120,6 +120,9 @@ Für die Arbeit mit Sammlungen (in der Regel Arrays, Zeichenfolgen und manchmal 
 ## <a name="logical-comparison-functions"></a>Logische Vergleichsfunktionen
 
 Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+> [!NOTE]
+> Wenn Sie logische Funktionen oder Bedingungen zum Vergleichen von Werten verwenden, werden NULL-Werte in leere Zeichenfolgenwerte (`""`) konvertiert. Das Verhalten der Bedingungen unterscheidet sich, wenn Sie eine leere Zeichenfolge anstelle eines NULL-Werts für den Vergleich verwenden. Weitere Informationen finden Sie unter [string](#string). 
 
 | Logische Vergleichsfunktion | Aufgabe |
 | --------------------------- | ---- |
@@ -3820,13 +3823,17 @@ string(<value>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Any | Der zu konvertierende Wert |
+| <*value*> | Ja | Any | Der zu konvertierende Wert. Wenn dieser Wert NULL ist oder NULL ergibt, wird der Wert in einen leeren Zeichenfolgenwert (`""`) konvertiert. <p><p>Wenn Sie z. B. einer nicht vorhandenen Eigenschaft, auf die Sie mit dem `?`-Operator zugreifen können, eine Zeichenfolgenvariable zuweisen, wird der NULL-Wert in eine leere Zeichenfolge konvertiert. Das Vergleichen eines NULL-Werts ist jedoch nicht mit dem Vergleich einer leeren Zeichenfolge identisch. |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*string-value*> | String | Die Zeichenfolgenversion des angegebenen Werts |
+| <*string-value*> | String | Die Zeichenfolgenversion des angegebenen Werts. Wenn der *value*-Parameter NULL ist oder NULL ergibt, wird dieser Wert als leerer Zeichenfolgenwert (`""`) zurückgegeben. |
 ||||
+
+
+
+
 
 *Beispiel 1*
 

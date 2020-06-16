@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849364"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267884"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -49,7 +49,7 @@ Mit der Serverbewertung können nicht nur Computer, sondern auch die auf Compute
 
 **VMware** | **Details**
 --- | ---
-**Virtuelle VMware-Computer** | Die Bewertung wird für alle Windows- und Linux-Betriebssysteme unterstützt.
+**Virtuelle VMware-Computer** | Alle Betriebssysteme können für die Migration ausgewertet werden. 
 **vCenter Server** | Computer, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden.
 **Berechtigungen (Bewertung)** | Schreibgeschütztes vCenter Server-Konto
 **Berechtigungen (App-Ermittlung)** | vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für **„Virtuelle Computer“ > „Gastvorgänge“** .

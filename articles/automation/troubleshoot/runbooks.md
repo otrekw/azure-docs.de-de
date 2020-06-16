@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744312"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266065"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -50,7 +50,7 @@ Wenn während der Ausführung von Runbooks in Azure Automation Fehler auftreten,
 
 1. Führen Sie diesen Schritt aus, wenn der Runbookauftrag oder die Umgebung auf dem Hybrid Runbook Worker nicht reagiert.
 
-    Wenn Sie Ihre Runbooks nicht in Azure Automation, sondern auf einem Hybrid Runbook Worker ausführen, ist möglicherweise eine [Problembehandlung für den Hybrid Worker selbst](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker) erforderlich.
+    Wenn Sie Ihre Runbooks nicht in Azure Automation, sondern auf einem Hybrid Runbook Worker ausführen, ist möglicherweise eine [Problembehandlung für den Hybrid Worker selbst](hybrid-runbook-worker.md) erforderlich.
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Szenario: Fehler beim Runbook. Fehler „Keine Berechtigung“ oder „Unzulässig 403“ wird angezeigt.
 
@@ -64,7 +64,7 @@ Ausführende Konten verfügen unter Umständen nicht über die gleichen Berechti
 
 ### <a name="resolution"></a>Lösung
 
-Vergewissern Sie sich, dass Ihr ausführendes Konto über [Berechtigungen für den Zugriff auf alle Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) verfügt, die in Ihrem Skript verwendet werden.
+Vergewissern Sie sich, dass Ihr ausführendes Konto über [Berechtigungen für den Zugriff auf alle Ressourcen](../../role-based-access-control/role-assignments-portal.md) verfügt, die in Ihrem Skript verwendet werden.
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Szenario: Fehler beim Anmelden beim Azure-Konto
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um den Fehler zu ermitteln:
    Connect-AzAccount –Credential $Cred
    ```
 
-1. Wenn die Authentifizierung lokal fehlschlägt, haben Sie Ihre Azure Active Directory (Azure AD)-Anmeldeinformationen nicht ordnungsgemäß eingerichtet. Informationen zur richtigen Einrichtung des Azure AD-Kontos finden Sie im Blogbeitrag [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) (Authentifizieren in Azure mit Azure Active Directory).
+1. Wenn die Authentifizierung lokal fehlschlägt, haben Sie Ihre Azure Active Directory (Azure AD)-Anmeldeinformationen nicht ordnungsgemäß eingerichtet. Informationen zur richtigen Einrichtung des Azure AD-Kontos finden Sie im Artikel [Authentifizieren bei Azure mithilfe von Azure AD](../automation-use-azure-ad.md).
 
 1. Wenn es sich um einen vorübergehenden Fehler zu handeln scheint, versuchen Sie, eine Wiederholungslogik zu Ihrer Authentifizierungsroutine hinzuzufügen, um die Authentifizierung zuverlässiger zu gestalten.
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Ursache
 
-Dieser Fehler kann auftreten, wenn Sie kein ausführendes Konto verwenden oder wenn das ausführende Konto abgelaufen ist. Weitere Informationen finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](https://docs.microsoft.com/azure/automation/manage-runas-account).
+Dieser Fehler kann auftreten, wenn Sie kein ausführendes Konto verwenden oder wenn das ausführende Konto abgelaufen ist. Weitere Informationen finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](../manage-runas-account.md).
 
 Dieser Fehler hat zwei Hauptursachen:
 
@@ -274,7 +274,7 @@ Falls für Ihr Azure-Konto die mehrstufige Authentifizierung eingerichtet ist, k
 
 ### <a name="resolution"></a>Lösung
 
-Informationen zum Verwenden eines Zertifikats mit Cmdlets für das klassische Azure-Bereitstellungsmodell finden Sie unter [Erstellen und Hinzufügen eines Zertifikats zum Verwalten von Azure-Diensten](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Informationen zur Verwendung eines klassischen ausführenden Kontos mit Cmdlets für das klassische Azure-Bereitstellungsmodell finden Sie unter [Erstellen eines klassischen ausführenden Kontos](../automation-create-standalone-account.md#create-a-classic-run-as-account). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Szenario: Runbookfehler mit der Meldung „Eine Aufgabe wurde abgebrochen“
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Ursache
 
-Dieser Fehler kann auftreten, wenn das Runbook vor dem Aufruf von `Add-AzAccount` zum Hinzufügen des Automation-Kontos nicht die richtigen Schritte durchführt. Ein Beispiel für einen der erforderlichen Schritte ist die Anmeldung mit einem ausführenden Konto. Die richtigen Vorgänge zur Verwendung in Ihrem Runbook finden Sie unter [Ausführen von Runbooks in Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+Dieser Fehler kann auftreten, wenn das Runbook vor dem Aufruf von `Add-AzAccount` zum Hinzufügen des Automation-Kontos nicht die richtigen Schritte durchführt. Ein Beispiel für einen der erforderlichen Schritte ist die Anmeldung mit einem ausführenden Konto. Die richtigen Vorgänge zur Verwendung in Ihrem Runbook finden Sie unter [Ausführen von Runbooks in Azure Automation](../automation-runbook-execution.md).
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Szenario: Objektverweis wurde nicht auf eine Objektinstanz festgelegt
 
@@ -652,16 +652,16 @@ Mögliche Ursachen für dieses Problem:
 
 #### <a name="not-using-a-run-as-account"></a>Fehlende Verwendung eines ausführenden Kontos
 
-Führen Sie [Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) aus, um sicherzustellen, dass Sie ein ausführendes Konto für den Zugriff auf Key Vault verwenden.
+Führen Sie [Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) aus, um sicherzustellen, dass Sie ein ausführendes Konto für den Zugriff auf Key Vault verwenden.
 
 #### <a name="insufficient-permissions"></a>Unzureichende Berechtigungen
 
-[Fügen Sie Berechtigungen zu Key Vault hinzu](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault), um sicherzustellen, dass Ihr ausführendes Konto über ausreichende Berechtigungen für den Zugriff auf Key Vault verfügt.
+[Fügen Sie Berechtigungen zu Key Vault hinzu](../manage-runas-account.md#add-permissions-to-key-vault), um sicherzustellen, dass Ihr ausführendes Konto über ausreichende Berechtigungen für den Zugriff auf Key Vault verfügt.
 
 ## <a name="recommended-documents"></a>Empfohlene Dokumente
 
 * [Ausführen von Runbooks in Azure Automation](../automation-runbook-execution.md)
-* [Starten eines Runbooks in Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Starten eines Runbooks in Azure Automation](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

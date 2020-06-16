@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983668"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267915"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -35,7 +35,7 @@ Zum Bewerten von physischen Servern erstellen Sie ein Azure Migrate-Projekt, und
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
 | **Berechtigungen**           | **Windows:** Sie benötigen auf allen Windows-Servern, die Sie ermitteln möchten, ein Domänenadministratorkonto oder ein lokales Administratorkonto. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
-| **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Serverbetriebssysteme, die von Azure unterstützt werden, mit Ausnahme von Windows Server 2003 und SUSE Linux.<br/><br/> Windows 10- und Windows 8-Clientbetriebssysteme. |
+| **Betriebssystem** | Alle Betriebssysteme können für die Migration ausgewertet werden. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance

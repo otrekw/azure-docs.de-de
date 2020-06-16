@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 0dea516ea6b938b91fc4b9b833979bcecc285339
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714966"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249160"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -158,6 +158,14 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
       }
       ```
 
+1. Gehen Sie folgendermaßen vor, um zu überprüfen, ob der eingehende Aufruf einen Anforderungstext enthält, der dem angegebenen Schema entspricht:
+
+   1. Klicken Sie auf der Titelleiste des Anforderungstriggers auf die Schaltfläche mit den Auslassungspunkten ( **...** ).
+   
+   1. Aktivieren Sie in den Einstellungen des Triggers die **Schemavalidierung**, und wählen Sie **Fertig** aus.
+   
+      Wenn der Anforderungstext des eingehenden Aufrufs nicht mit dem Schema identisch ist, gibt der Trigger eine `HTTP 400 Bad Request`-Fehlermeldung zurück.
+
 1. Öffnen Sie zum Hinzufügen weiterer Eigenschaften die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
 
    | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
@@ -185,6 +193,9 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
    Dieser Schritt generiert die URL, die zum Senden der Anforderung verwendet werden soll, durch die die Logik-App ausgelöst wird. Um diese URL zu kopieren, wählen Sie das Kopiersymbol neben der URL aus.
 
    ![URL zum Auslösen Ihrer Logik-App](./media/connectors-native-reqres/generated-url.png)
+
+   > [!NOTE]
+   > Wenn Sie das Hash- oder Nummernzeichen ( **#** ) im URI verwenden möchten, wenn Sie einen Aufruf an den Anforderungstrigger senden, nutzen Sie stattdessen diese codierte Version: `%25%23`.
 
 1. Zum Starten Ihrer Logik-App senden Sie eine HTTP POST-Methode an die generierte URL.
 

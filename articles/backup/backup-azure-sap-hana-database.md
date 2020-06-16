@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20086516dc37538474a31c7735e9b2d3b1a3d5b2
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745429"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248565"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -25,8 +25,11 @@ In diesem Artikel wird Folgendes behandelt:
 > * Ausführen eines bedarfsgesteuerten Sicherungsauftrag
 
 >[!NOTE]
+>[Erste Schritte](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+
+>[!NOTE]
 >**Die Workloads für vorläufiges Löschen für SQL Server auf virtuellen Azure-Computern und vorläufiges Löschen für SAP HANA auf virtuellen Azure-Computern** sind jetzt als Vorschauversion verfügbar.<br>
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
+>Schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com), um sich für die Vorschauversion zu registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

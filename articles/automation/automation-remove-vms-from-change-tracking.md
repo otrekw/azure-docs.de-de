@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 22cb49c414e21e5c47330f2c67fc2cf30e3364b2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836667"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169453"
 ---
-# <a name="remove-vms-from-change-tracking-and-inventory"></a>Entfernen von VMs aus Änderungsnachverfolgung und Bestand
+# <a name="remove-vms-from-change-tracking-and-inventory"></a>Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
 
 Wenn Sie die Bereitstellung von Änderungen an VMs in Ihrer Umgebung abgeschlossen haben, können Sie die VMs aus dem Feature [Änderungsnachverfolgung und Bestand](change-tracking.md) entfernen.
+
+## <a name="to-remove-your-vms"></a>So entfernen Sie Ihre VMs
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** oder **Bestand** aus.
 
@@ -24,7 +26,7 @@ Wenn Sie die Bereitstellung von Änderungen an VMs in Ihrer Umgebung abgeschloss
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Greifen Sie in Ihrem Log Analytics-Arbeitsbereich unter **Allgemein** auf die gespeicherten Suchvorgänge zu.
+3. Greifen Sie in Ihrem Log Analytics-Arbeitsbereich unter **Allgemein** auf die gespeicherten Suchvorgänge für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-ChangeTracking` zu.
 
 4. Klicken Sie für die gespeicherte Suche `MicrosoftDefaultComputerGroup` auf die Auslassungspunkte rechts neben dem Eintrag, und wählen Sie **Bearbeiten** aus. 
 

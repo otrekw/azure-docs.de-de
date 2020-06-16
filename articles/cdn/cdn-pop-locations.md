@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 385814677a868c0e631bd13bad3308609b174ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d8bca97cfaa3aff3cb3ca5a5eb9019f96576626e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800096"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309015"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -50,4 +50,3 @@ Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Abrufen der aktuellen IP-Adressen für Whitelists finden Sie unter [Azure CDN-Edgeknoten-API](https://docs.microsoft.com/rest/api/cdn/edgenodes).
-

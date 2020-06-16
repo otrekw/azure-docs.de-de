@@ -4,23 +4,24 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 05/25/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4c48a2fad927812cc45543243b48a2df81acf73b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846952"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295438"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)
 
 > [!Note]
 > Mit der Vorschauaktualisierung haben wir die Funktion für den Schutz vor Datenexfiltration freigegeben.
-> Die Vorschauversion ist in den Regionen „USA, Osten“ und „USA, Westen 2“ für alle PremiumV2 Windows- und Linux-Web-Apps sowie elastische Premiumfunktionen verfügbar. 
+>
+> Die Vorschauversion ist in allen öffentlichen Regionen für PremiumV2 Windows- und Linux-Web-Apps sowie elastische Premiumfunktionen verfügbar. 
 
 Sie können private Endpunkte für Ihre Azure-Web-App verwenden, um Clients in Ihrem privaten Netzwerk den sicheren Zugriff auf die App über Private Link zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihres virtuellen Azure-Netzwerks. Der Netzwerkdatenverkehr zwischen einem Client in Ihrem privaten Netzwerk und der Web-App wird über das virtuelle Netzwerk und Private Link im Microsoft-Backbonenetzwerk geleitet, sodass keine Verfügbarmachung im öffentlichen Internet erfolgt.
 

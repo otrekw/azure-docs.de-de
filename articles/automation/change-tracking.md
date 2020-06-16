@@ -1,16 +1,16 @@
 ---
 title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
-description: In diesem Artikel wird das Feature Änderungsnachverfolgung und Bestand beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
+description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835103"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117540"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -28,8 +28,6 @@ Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand i
 
 Änderungsnachverfolgung und Bestand rufen ihre Daten aus Azure Monitor ab. Virtuelle Computer, die mit Log Analytics-Arbeitsbereichen verbunden sind, verwenden Log Analytics-Agents, um Daten zu Änderungen an installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor. Azure Monitor wendet Logik auf die empfangenen Daten an, zeichnet sie auf und macht sie verfügbar. 
 
-Änderungsnachverfolgung und Bestand ermöglichen die Funktionsbereiche Änderungsnachverfolgung und Bestand in Azure Automation. Da beide Bereiche denselben Log Analytics-Agent verwenden, ist der Prozess zum Hinzufügen eines virtuellen Computers in beiden Funktionsbereichen identisch. 
-
 > [!NOTE]
 > Wenn Sie Änderungsnachverfolgung und Bestand verwenden möchten, müssen sich alle virtuellen Computer im gleichen Abonnement und in der gleichen Region wie das Automation-Konto befinden.
 
@@ -43,7 +41,7 @@ Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand i
 Weitere Einschränkungen:
 
 * Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
-* Wenn Sie im 30-minütigen Sammlungszyklus mehr als 2500 Dateien erfassen, werden Änderungsnachverfolgung und Bestand möglicherweise beeinträchtigt.
+* Wenn Sie im 30-minütigen Sammlungszyklus mehr als 2.500 Dateien erfassen, wird „Änderungsnachverfolgung und Bestand“ möglicherweise beeinträchtigt.
 * Wenn der Netzwerkverkehr hoch ist, kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
 * Wenn Sie eine Konfiguration ändern, während ein Computer heruntergefahren ist, stellt der Computer möglicherweise Änderungen bereit, die zur vorherigen Konfiguration gehören.
 
@@ -54,7 +52,7 @@ Folgende Probleme treten derzeit mit Änderungsnachverfolgung und Bestand auf:
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziell unterstützten Versionen des Windows-Betriebssystems sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Außerdem wird eine Reihe von Linux-Betriebssystemen unterstützt. Weitere Informationen finden Sie unter [Übersicht über den Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -86,7 +84,18 @@ Sie können auf eine Änderung oder ein Ereignis klicken, um die zugehörigen De
 
 Sie können jede Änderung hinzufügen, ändern oder entfernen. Wie aus dem Beispiel unten hervorgeht, wurde der Starttyp des Diensts von „Manuell“ in „Automatisch“ geändert.
 
-![Details der Änderungsnachverfolgung](./media/change-tracking/change-tracking-details.png)
+![Details zu „Änderungsnachverfolgung und Bestand“](./media/change-tracking/change-tracking-details.png)
+
+## <a name="fim-support-in-azure-security-center"></a>FIM-Unterstützung in Azure Security Center
+
+Änderungsnachverfolgung und Bestand nutzt die [Überwachung der Dateiintegrität (File Integrity Monitoring, FIM) von Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring). FIM überwacht nur Dateien und Registrierungen. Die vollständige Lösung Änderungsnachverfolgung und Bestand überwacht darüber hinaus Folgendes:
+
+- Softwareänderungen
+- Microsoft-Dienste
+- Linux-Daemons
+
+> [!NOTE]
+> Das Aktivieren der vollständigen Funktion „Änderungsnachverfolgung“ und „Bestand“ kann zusätzliche Gebühren verursachen. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/). FIM kann aus der [Liste der installierten Überwachungslösungen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) gelöscht werden, die im Azure-Portal verfügbar sind. Siehe [Entfernen einer Überwachungslösung](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
 
 ## <a name="tracking-of-file-changes"></a>Nachverfolgung von Dateiänderungen
 
@@ -94,24 +103,23 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 
 ## <a name="tracking-of-file-content-changes"></a>Nachverfolgen von Änderungen am Dateiinhalt
 
-Änderungsnachverfolgung und Bestand ermöglicht Ihnen, den Inhalt einer Windows- oder Linux-Datei vor und nach einer Dateiänderung anzuzeigen. Für jede Dateiänderung speichert Änderungsnachverfolgung und Bestand den Inhalt der Datei in einem [Azure Storage-Konto](../storage/common/storage-create-storage-account.md). Wenn Sie die Datei nachverfolgen, können Sie ihren Inhalt vor oder nach einer Änderung anzeigen. Sie können den Inhalt inline oder nebeneinander anzeigen. 
+„Änderungsnachverfolgung und Bestand“ ermöglicht Ihnen, den Inhalt einer Windows- oder Linux-Datei anzuzeigen. Für jede Dateiänderung speichert Änderungsnachverfolgung und Bestand den Inhalt der Datei in einem [Azure Storage-Konto](../storage/common/storage-create-storage-account.md). Wenn Sie eine Datei nachverfolgen, können Sie ihren Inhalt vor oder nach einer Änderung anzeigen. Der Inhalt der Datei kann entweder inline oder nebeneinander angezeigt werden. 
 
 ![Anzeigen von Änderungen in einer Datei](./media/change-tracking/view-file-changes.png)
 
 ## <a name="tracking-of-registry-keys"></a>Nachverfolgen von Registrierungsschlüsseln
 
-Änderungsnachverfolgung und Bestand ermöglicht die Überwachung von Änderungen an Registrierungsschlüsseln. Die Überwachung dient dem Ermitteln von Erweiterungspunkten, an denen Code von Drittanbietern und Schadsoftware aktiv werden können. In der folgenden Tabelle sind vorkonfigurierte (aber nicht aktivierte) Registrierungsschlüssel aufgeführt. Um diese Schlüssel nachzuverfolgen, müssen Sie jeden einzeln aktivieren.
+„Änderungsnachverfolgung und Bestand“ ermöglicht die Überwachung von Änderungen an Windows-Registrierungsschlüsseln. Die Überwachung dient dem Ermitteln von Erweiterungspunkten, an denen Code von Drittanbietern und Schadsoftware aktiv werden können. In der folgenden Tabelle sind vorkonfigurierte (aber nicht aktivierte) Registrierungsschlüssel aufgeführt. Um diese Schlüssel nachzuverfolgen, müssen Sie jeden einzeln aktivieren.
 
 > [!div class="mx-tdBreakAll"]
 > |Registrierungsschlüssel | Zweck |
 > | --- | --- |
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit **explorer.exe** ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Überwacht Skripts, die beim Start ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Überwacht Skripts, die beim Herunterfahren ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Überwacht Schlüssel, die geladen werden, bevor sich der Benutzer bei seinem Windows-Konto anmeldet. Der Schlüssel wird für 32-Bit-Anwendungen verwendet, die auf 64-Bit-Computern ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Überwacht Änderungen an Anwendungseinstellungen.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit **explorer.exe** ausgeführt werden.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Überwacht gängige Autostart-Einträge, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit **explorer.exe** ausgeführt werden.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Überwacht Kontextmenühandler, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit **explorer.exe** ausgeführt werden.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Überwacht Kopierhookhandler, die sich direkt bei Windows-Explorer einklinken und in der Regel In-Process mit **explorer.exe** ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Überwacht die Symboloverlayhandler-Registrierung.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Überwacht die Symboloverlayhandler-Registrierung für 32-Bit-Anwendungen, die auf 64-Bit-Computern ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Überwacht neue Browserhilfsobjekt-Plug-Ins für Internet Explorer. Wird für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation verwendet.
@@ -120,25 +128,17 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Überwacht, ob neue Internet Explorer-Erweiterungen vorliegen, z. B. benutzerdefinierte Toolmenüs und benutzerdefinierte Symbolleisten-Schaltflächen für 32-Bit-Anwendungen, die auf 64-Bit-Computern ausgeführt werden.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc. Ähnlich dem Abschnitt „[drivers]“ in der Datei **system.ini**.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc für 32-Bit-Anwendungen, die auf 64-Bit-Computern ausgeführt werden. Ähnlich dem Abschnitt „[drivers]“ in der Datei **system.ini**.
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Überwacht die Liste der bekannten oder häufig verwendeten System-DLL-Dateien. Dieses System verhindert, dass schwache Anwendungsverzeichnisberechtigungen durch Infiltration mit Trojanerversionen von System-DLLs ausgenutzt werden.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Überwacht die Liste der bekannten oder häufig verwendeten System-DLL-Dateien. Überwachung verhindert, dass schwache Anwendungsverzeichnisberechtigungen durch Infiltration mit Trojanerversionen von System-DLLs ausgenutzt werden.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Überwacht die Liste der Pakete, die Ereignisbenachrichtigungen von **winlogon.exe**, dem interaktiven Anmeldungsunterstützungsmodell für Windows, empfangen können.
-
-## <a name="support-for-file-integrity-monitoring-in-azure-security-center"></a>Unterstützung der Überwachung der Dateiintegrität in Azure Security Center
-
-Änderungsnachverfolgung und Bestand nutzt die [Überwachung der Dateiintegrität (File Integrity Monitoring, FIM) von Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring). FIM überwacht nur Dateien und Registrierungen. Die vollständige Lösung Änderungsnachverfolgung und Bestand überwacht darüber hinaus Folgendes:
-
-- Softwareänderungen
-- Microsoft-Dienste
-- Linux-Daemons
 
 ## <a name="recursion-support"></a>Rekursionsunterstützung
 
 Änderungsnachverfolgung und Bestand unterstützt Rekursion, sodass Sie Platzhalter angeben können, um die Nachverfolgung über Verzeichnisse hinweg zu vereinfachen. Die Rekursion bietet auch Umgebungsvariablen, mit denen Sie Dateien in mehreren Umgebungen mit unterschiedlichen oder dynamischen Laufwerknamen nachverfolgen können. Die folgende Liste enthält allgemeine Informationen, mit denen Sie beim Konfigurieren der Rekursion vertraut sein sollten:
 
 * Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
-* Platzhalter können nur im letzten Segment eines Pfads verwendet werden, z. B. **C:\Ordner\\Datei*** oder **/etc/*.conf**.
+* Platzhalter können Sie nur im letzten Segment eines Pfads verwenden, z. B. **C:\Ordner\\Datei*** oder **/etc/*.conf**.
 * Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, verläuft die Überprüfung zwar erfolgreich, doch bei der Ausführung tritt ein Fehler für den Pfad auf.
-* Vermeiden Sie allgemeine Pfadnamen beim Festlegen des Pfads, da diese Art von Einstellung dazu führen kann, dass zu viele Ordner durchlaufen werden müssen.
+* Sie sollten allgemeine Pfadnamen beim Festlegen des Pfads vermeiden, da diese Art von Einstellung dazu führen kann, dass zu viele Ordner durchlaufen werden müssen.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Datensammlung durch Änderungsnachverfolgung und Bestand
 
@@ -165,11 +165,11 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 |Dienste|250|
 |Daemons|250|
 
-Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von Änderungsnachverfolgung und Bestand erfassten Daten in einem Nutzungsdiagramm sehen. Sie können diese Datenansicht verwenden, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).  
+Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
 
 ### <a name="microsoft-service-data"></a>Daten zu Microsoft-Diensten
 
-Die Standardsammelhäufigkeit für Microsoft-Dienste beträgt 30 Minuten. Sie können die Häufigkeit mithilfe eines Schiebereglers auf der Registerkarte **Microsoft-Dienste** unter **Einstellungen bearbeiten** konfigurieren. 
+Die Standardsammelhäufigkeit für Microsoft-Dienste beträgt 30 Minuten. Sie können die Häufigkeit mithilfe eines Schiebereglers auf der Registerkarte **Microsoft-Dienste** unter **Einstellungen bearbeiten** konfigurieren.
 
 ![Schieberegler für Microsoft-Dienste](./media/change-tracking/windowservices.png)
 
@@ -180,7 +180,7 @@ Zum Optimieren der Leistung verfolgt der Log Analytics-Agent ausschließlich Än
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Unterstützung für Warnungen zum Konfigurationszustand
 
-Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen bei Änderungen am Konfigurationszustand Ihrer Hybridumgebung. Es sind viele hilfreiche Aktionen verfügbar, die als Reaktion auf Warnungen ausgelöst werden können, z. B. Aktionen in Azure Functions, Automation-Runbooks, Webhooks. Warnungen zu Änderungen an der Datei **C:\windows\system32\drivers\etc\hosts** für einen Computer sind eine gute Anwendung von Warnungen für Daten von Änderungsnachverfolgung und Bestand. Es gibt noch viele weitere Szenarien für Warnungen, einschließlich der in der nächsten Tabelle definierten Abfrageszenarien. 
+Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen bei Änderungen am Konfigurationszustand Ihrer Hybridumgebung. Es sind viele hilfreiche Aktionen verfügbar, die als Reaktion auf Warnungen ausgelöst werden können, z. B. Aktionen in Azure Functions, Automation-Runbooks, Webhooks. Warnungen zu Änderungen an der Datei **c:\windows\system32\drivers\etc\hosts** für einen Computer sind eine gute Anwendung von Warnungen für Daten von „Änderungsnachverfolgung und Bestand“. Es gibt noch viele weitere Szenarien für Warnungen, einschließlich der in der nächsten Tabelle definierten Abfrageszenarien. 
 
 |Abfrage  |BESCHREIBUNG  |
 |---------|---------|
@@ -195,10 +195,7 @@ Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zum Arbeiten mit Änderungsnachverfolgung und Bestand finden Sie unter [Verwalten von Änderungsnachverfolgung und Bestand](change-tracking-file-contents.md).
-* Informationen zum Aktivieren des Features aus einem Runbook finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook](automation-enable-changes-from-runbook.md).
 * Informationen zum Aktivieren des Features über ein Automation-Konto finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto](automation-enable-changes-from-auto-acct.md).
-* Informationen zum Aktivieren des Features durch das Durchsuchen des Azure-Portals finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über das Azure-Portal](automation-onboard-solutions-from-browse.md).
+* Informationen zum Aktivieren des Features durch das Durchsuchen des Azure-Portals finden Sie unter [Aktivieren von „Änderungsnachverfolgung und Bestand“ über das Azure-Portal](automation-onboard-solutions-from-browse.md).
+* Informationen zum Aktivieren des Features aus einem Runbook finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook](automation-enable-changes-from-runbook.md).
 * Informationen zum Aktivieren des Features über eine Azure-VM finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer](automation-enable-changes-from-vm.md).
-* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md) weitere Informationen.
-* Informationen zum Behandeln von Problemen bei diesem Feature finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

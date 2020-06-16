@@ -5,20 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 796cf18ae4dbab50eb7f968bda065ae0351f2ae8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836650"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169405"
 ---
-# <a name="remove-vms-from-update-management"></a>Entfernen von VMs aus der Updateverwaltung
-
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+# <a name="remove-vms-from-update-management"></a>Entfernen virtueller Computer aus der Updateverwaltung
 
 Wenn Sie die Bereitstellung von Änderungen an VMs in Ihrer Umgebung abgeschlossen haben, können Sie die VMs aus dem Feature [Updateverwaltung](automation-update-management.md) entfernen.
+
+## <a name="to-remove-your-vms"></a>So entfernen Sie Ihre VMs
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
 
@@ -28,7 +26,7 @@ Wenn Sie die Bereitstellung von Änderungen an VMs in Ihrer Umgebung abgeschloss
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Greifen Sie in Ihrem Log Analytics-Arbeitsbereich unter **Allgemein** auf die gespeicherten Suchvorgänge zu.
+3. Greifen Sie in Ihrem Log Analytics-Arbeitsbereich unter **Allgemein** auf die gespeicherten Suchvorgänge für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates` zu.
 
 4. Klicken Sie für die gespeicherte Suche `MicrosoftDefaultComputerGroup` auf die Auslassungspunkte rechts neben dem Eintrag, und wählen Sie **Bearbeiten** aus. 
 

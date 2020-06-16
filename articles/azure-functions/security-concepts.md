@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744067"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259421"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -58,11 +58,11 @@ Der Geltungsbereich von Systemschlüsseln wird von der Erweiterung bestimmt, gil
 
 In der folgenden Tabelle wird der Zweck der verschiedenen Arten von Zugriffsschlüsseln verglichen:
 
-| Aktion                                        | Geltungsbereich                    | Gültige Schlüssel         |
+| Aktion                                        | `Scope`                    | Gültige Schlüssel         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Funktion ausführen                            | Spezifische Funktion        | Funktion           |
 | Funktion ausführen                            | Beliebige Funktion             | Funktion oder Host   |
-| Administratorendpunkt aufrufen                        | Funktions-App             | Host (nur Master) |
+| Administratorendpunkt aufrufen                        | Funktionen-App             | Host (nur Master) |
 | Durable Task-Erweiterungs-APIs aufrufen              | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 | Erweiterungsspezifischen Webhook (intern) aufrufen | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 
@@ -103,7 +103,7 @@ Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten für 
 
 Es ist verlockend, einen Platzhalter zu nutzen, der allen Websites den Zugriff auf Ihren Endpunkt ermöglicht. Damit wird jedoch der Zweck von CORS verfehlt, der darin besteht, Cross-Site Scripting-Angriffe zu verhindern. Fügen Sie stattdessen einen separaten CORS-Eintrag für die Domäne jeder Web-App hinzu, die auf Ihren Endpunkt zugreifen muss. 
 
-### <a name="managing-secrets"></a>Verwalten geheimer Schlüssel 
+### <a name="managing-secrets"></a>Verwaltung geheimer Schlüssel 
 
 Um eine Verbindung mit den verschiedenen Diensten und Ressourcen herstellen zu können, die für die Ausführung Ihres Codes benötigt werden, müssen Funktions-Apps auf Geheimnisse zugreifen können, wie z. B. Verbindungszeichenfolgen und Dienstschlüssel. In diesem Abschnitt wird beschrieben, wie Sie die für Ihre Funktionen erforderlichen Geheimnisse speichern können.
 

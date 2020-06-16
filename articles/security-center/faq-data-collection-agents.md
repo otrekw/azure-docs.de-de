@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849041"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996243"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -65,6 +65,14 @@ Der Speicherort des standardmäßigen Arbeitsbereichs hängt von Ihrer Azure-Reg
 - Bei virtuellen Computern in Japan befindet sich der Arbeitsbereich in Japan.
 - Bei virtuellen Computern in China befindet sich der Arbeitsbereich in China.
 - Bei virtuellen Computern in Australien befindet sich der Arbeitsbereich in Australien.
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Welche Daten erfasst der Log Analytics-Agent?
+
+Eine vollständige Liste der vom Agent überwachten Anwendungen und Dienste finden Sie unter [Was wird von Azure Monitor überwacht?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+
+> [!IMPORTANT]
+> Wenn Sie die Protokollierung aktiviert und eine sehr aktive Ressource zum Protokollieren ausgewählt haben (z. B. das Protokoll auf *ausführlich* festgelegt haben), könnte dies bei einigen Diensten wie Azure-Firewall erhebliche Auswirkungen auf die Speicheranforderungen Ihres Log Analytics-Arbeitsbereichs haben. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kann ich die von Security Center erstellten Standardarbeitsbereiche löschen?
@@ -201,9 +209,17 @@ So entfernen Sie den Agent manuell:
 
 ## <a name="how-do-i-disable-data-collection"></a>Wie deaktiviere ich Datensammlung?
 
-Die automatische Bereitstellung ist standardmäßig deaktiviert. Sie können die automatische Bereitstellung in Ressourcen jederzeit deaktivieren, indem Sie diese Einstellung in der Sicherheitsrichtlinie deaktivieren. Die automatische Bereitstellung wird dringend empfohlen, um Sicherheitswarnungen und -empfehlungen zu Systemupdates, zu Sicherheitsrisiken für das Betriebssystem und zu Endpoint Protection zu erhalten.
+Die automatische Bereitstellung wird dringend empfohlen, um Sicherheitswarnungen und -empfehlungen zu Systemupdates, zu Sicherheitsrisiken für das Betriebssystem und zu Endpoint Protection zu erhalten. Standardmäßig ist die automatische Bereitstellung deaktiviert.
 
-Um die Datensammlung zu deaktivieren, [melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie auswählen** aus. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten. Wenn Sie ein Abonnement auswählen, wird **Sicherheitsrichtlinie – Datensammlung** geöffnet. Wählen Sie unter **Automatische Bereitstellung** die Option **Aus** aus.
+Wenn Sie sie aktiviert haben, aber jetzt deaktivieren möchten:
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center**, und wählen Sie **Sicherheitsrichtlinie** aus.
+
+1. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
+
+    **Sicherheitsrichtlinie – Datensammlung** wird geöffnet.
+
+1. Wählen Sie unter **Automatische Bereitstellung** die Option **Aus** aus.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Wie aktiviere ich die Datensammlung?
@@ -233,9 +249,6 @@ Um die Daten zu sammeln, muss jede VM und jeder Server über HTTPS mit dem Inter
 Der Agent beansprucht eine äußerst geringe Menge von Systemressourcen und sollten nur eine geringe Auswirkung auf die Leistung haben. Weitere Informationen zu Auswirkungen auf die Leistung, zum Agent und zur Erweiterung finden Sie unter [Planungs- und Betriebshandbuch](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
-## <a name="where-is-my-data-stored"></a>Wo werden meine Daten gespeichert?
-
-Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-Arbeitsbereich, der mit Ihrem Abonnement verknüpft ist, oder in einem neuen Arbeitsbereich gespeichert. Weitere Informationen finden Sie unter [Datensicherheit](security-center-data-security.md).
 
 
 <!--Image references-->

@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816495"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299667"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -74,11 +74,17 @@ Ein Beispiel: Ihre internen virtuellen Netzwerke VNet1 und VNet2 sollen eine Ver
 
 Erstellen Sie als Erstes eine Ressource für einen Azure Monitor Private Link-Bereich.
 
-1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, und suchen Sie nach **Azure Monitor Private Link-Bereich**. 
-2. Klicken Sie auf **Create** (Erstellen). 
-3. Wählen Sie ein Abonnement und eine Ressourcengruppe aus. 
-4. Benennen Sie den Azure Monitor Private Link-Bereich. Der Name sollte verdeutlichen, zu welchem Zweck und in welcher Sicherheitsgrenze der Bereich verwendet wird, sodass Sicherheitsgrenzen nicht versehentlich verletzt werden. Beispiel: „AppServerProdTelem“. 
+1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, und suchen Sie nach **Azure Monitor Private Link-Bereich**.
+
+   ![Suchen des Azure Monitor-Private Link-Bereichs](./media/private-link-security/ampls-find-1c.png)
+
+2. Klicken Sie auf **Create** (Erstellen).
+3. Wählen Sie ein Abonnement und eine Ressourcengruppe aus.
+4. Benennen Sie den Azure Monitor Private Link-Bereich. Der Name sollte verdeutlichen, zu welchem Zweck und in welcher Sicherheitsgrenze der Bereich verwendet wird, sodass Sicherheitsgrenzen nicht versehentlich verletzt werden. Beispiel: „AppServerProdTelem“.
 5. Klicken Sie auf **Überprüfen und erstellen**. 
+
+   ![Erstellen des Azure Monitor-Private Link-Bereichs](./media/private-link-security/ampls-create-1d.png)
+
 6. Warten Sie die Überprüfung ab, und klicken Sie dann auf **Erstellen**.
 
 ## <a name="connect-azure-monitor-resources"></a>Verbinden von Azure Monitor-Ressourcen
@@ -188,7 +194,7 @@ In privaten Netzwerken müssen die neuesten Versionen von Windows- und Linux-Age
 
 **Log Analytics-Windows-Agent**
 
-Verwenden Sie die Log Analytics-Agent-Version 18.20.18038.0 oder höher.
+Verwenden Sie die Log Analytics-Agent-Version 10.20.18038.0 oder höher.
 
 **Log Analytics-Linux-Agent**
 
@@ -201,7 +207,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Um Azure Monitor-Portalfunktionalität wie Application Insights und Log Analytics zu verwenden, müssen Sie den Zugriff auf die Erweiterungen für Azure-Portal und Azure Monitor in den privaten Netzwerken zulassen. Fügen Sie die [Diensttags](../../firewall/service-tags.md) für **AzureActiveDirectory**, **AzureResourceManager**, **AzureFrontDoor.FirstParty** und **AzureFrontdoor.Frontend** zu Ihrer Firewall hinzu.
+Um Azure Monitor-Portalfunktionalität wie Application Insights und Log Analytics zu verwenden, müssen Sie den Zugriff auf die Erweiterungen für Azure-Portal und Azure Monitor in den privaten Netzwerken zulassen. Fügen Sie [Diensttags](../../firewall/service-tags.md) für **AzureActiveDirectory**, **AzureResourceManager**, **AzureFrontDoor.FirstParty** und **AzureFrontdoor.Frontend** Ihrer Firewall hinzu.
 
 ### <a name="programmatic-access"></a>Programmgesteuerter Zugriff
 
@@ -224,3 +230,6 @@ Damit der Log Analytics-Agent Lösungspakete herunterladen kann, fügen Sie die 
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Ausgehend
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Ausgehend
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- Erfahren Sie mehr über [privaten Speicher](private-storage.md).

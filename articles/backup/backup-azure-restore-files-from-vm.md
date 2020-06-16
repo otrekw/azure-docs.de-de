@@ -3,12 +3,13 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: references_regions
+ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757975"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195752"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -228,7 +229,7 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 
 - `download.microsoft.com`
 - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (für öffentliche Azure-Gebiete)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Für Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (für Azure US Government)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de` (für Azure Deutschland)

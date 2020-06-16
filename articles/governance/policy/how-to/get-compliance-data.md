@@ -3,12 +3,12 @@ title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747087"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204836"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -148,6 +148,9 @@ Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** Ressour
 _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **Nicht konform** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen, die **konform** sind, geteilt durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform**. Daher lautet der Gesamtwert für die Ressourcenkonformität 95 % (19 von 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Beispiel für Richtlinienkonformität auf der Seite „Konformität“" border="false":::
+
+> [!NOTE]
+> Die Einhaltung gesetzlicher Bestimmungen in Azure Policy ist eine Funktion in der Vorschauversion. Complianceeigenschaften von SDK und Seiten im Portal unterscheiden sich für aktivierte Initiativen. Weitere Informationen finden Sie unter [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md).
 
 ## <a name="portal"></a>Portal
 

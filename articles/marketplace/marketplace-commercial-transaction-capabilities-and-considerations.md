@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800049"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298209"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -53,7 +53,7 @@ Je nach verwendeter Transaktionsoption fallen folgende Softwarelizenzgebühren a
 - **Kostenlos**: Keine Kosten für Softwarelizenzen.
 - **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
 - **Nutzungsbasierte Bezahlung**: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
-- **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps und verwaltete Azure-Apps.
+- **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps (monatlich oder jährlich) und verwaltete Azure-Apps (monatlich).
 - **Kostenlose Testversion der Software**: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Preise für die Modelle „Kostenlos“ und „BYOL“ (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz)

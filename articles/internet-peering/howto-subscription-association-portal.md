@@ -3,23 +3,23 @@ title: Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
 titleSuffix: Azure
 description: Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 9feefa8801892a668784ed7406f46dba2afd69da
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683962"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266949"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
 
-Vor dem Einreichen einer Peeringanforderung sollten Sie zunächst mithilfe der unten dargestellten Schritte Ihre ASN dem Azure-Abonnement zuordnen.
+Als Internetdienstanbieter oder Internet Exchange-Anbieter sollten Sie vor dem Einreichen einer Peeringanforderung zunächst Ihre ASN mithilfe der unten dargestellten Schritte einem Azure-Abonnement zuordnen.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe der [PowerShell](howto-subscription-association-powershell.md) ausführen.
+Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShell](howto-subscription-association-powershell.md) ausführen.
 
 ## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>Erstellen einer PeerAsn zum Zuordnen Ihrer ASN zum Azure-Abonnement
 
@@ -55,8 +55,7 @@ Registrieren Sie sich in Ihrem Abonnement für den Peeringressourcenanbieter, in
     > ![Registrierung abgeschlossen](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn erstellen
-Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie eine neue PeerAsn-Ressource zum Zuordnen einer ASN (Autonome Systemnummer) zu einem Azure-Abonnement erstellen. Sie können einem Abonnement mehrere ASNs zuordnen, indem Sie zur Seite [PeerAsn zuordnen](https://go.microsoft.com/fwlink/?linkid=2129592) für jede ASN navigieren, die Sie zuordnen möchten.
-
+Als Internetdienstanbieter oder Internet Exchange-Anbieter können Sie eine neue PeerAsn-Ressource zum Zuordnen einer ASN (Autonome Systemnummer) zu einem Azure-Abonnement auf der Seite [Peer-ASN zuordnen](https://go.microsoft.com/fwlink/?linkid=2129592) erstellen. Sie können einem Abonnement mehrere ASNs zuordnen, indem Sie eine a **PeerAsn** für jede ASN erstellen, die Sie zuordnen möchten.
 
 1. Füllen Sie auf der Seite **Peer-ASN zuordnen** auf der Registerkarte **Grundlagen** die Felder wie unten dargestellt aus.
 

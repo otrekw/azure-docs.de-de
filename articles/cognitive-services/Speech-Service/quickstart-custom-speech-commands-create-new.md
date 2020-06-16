@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschauversion) – Speech-Dienst'
+title: 'Schnellstart: Erstellen einer App für benutzerdefinierte Befehle (Vorschau) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erstellen und testen Sie eine gehostete Anwendung für benutzerdefinierte Befehle.
+description: In diesem Artikel erstellen und testen Sie eine gehostete Anwendung für benutzerdefinierte Befehle (Vorschau). Die Anwendung verarbeitet Äußerungen.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: donkim
-ms.openlocfilehash: f31d7279b73bab7aefda4c4b6570500d05cb89d7
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872529"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142349"
 ---
-# <a name="quickstart-create-a-custom-commands-app-preview"></a>Schnellstart: Erstellen einer App für benutzerdefinierte Befehle (Vorschau)
+# <a name="quickstart-create-a-custom-commands-preview-app"></a>Schnellstart: Erstellen einer App für benutzerdefinierte Befehle (Vorschau)
 
 In diesem Schnellstart erfahren Sie, wie Sie eine Anwendung für benutzerdefinierte Befehle erstellen und testen.
-Die erstellte Anwendung verarbeitet Äußerungen wie „Schalte den Fernseher ein“ und antwortet mit einer einfachen Nachricht „OK, schalte Fernseher ein“.
+Die Anwendung verarbeitet Äußerungen wie „Schalte den Fernseher ein“ und antwortet mit einer einfachen Nachricht wie „OK, schalte Fernseher ein“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,48 +32,50 @@ Die erstellte Anwendung verarbeitet Äußerungen wie „Schalte den Fernseher ei
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Wechseln Sie zum Speech Studio für benutzerdefinierte Befehle.
 
-1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Speech Studio](https://speech.microsoft.com/).
+1. Wechseln Sie in einem Webbrowser zu [Speech Studio](https://speech.microsoft.com/).
 1. Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden.
 
-   - Die Standardansicht ist Ihre Liste der Speech-Abonnements.
-     > [!NOTE]
-     > Wenn die Seite „Abonnement auswählen“ nicht angezeigt wird, können Sie dorthin navigieren, indem Sie „Speech-Ressourcen“ aus dem Einstellungsmenü in der oberen Leiste auswählen.
+   Die Standardansicht ist Ihre Liste der Speech-Abonnements.
+    > [!NOTE]
+    > Wenn die Seite „Abonnement auswählen“ nicht angezeigt wird, können Sie dorthin navigieren, indem Sie **Speech-Ressourcen** aus dem Einstellungenmenü am oberen Rand des Bildschirms auswählen.
 
 1. Wählen Sie Ihr Speech-Abonnement und dann **Zu Studio wechseln** aus.
 1. Wählen Sie **Benutzerdefinierte Befehle** aus.
 
-     - Die Standardansicht ist eine Liste der Anwendungen für benutzerdefinierte Befehle, die in Ihrem ausgewählten Abonnement vorhanden sind.
+     Die Standardansicht ist eine Liste der Anwendungen für benutzerdefinierte Befehle, die in Ihrem ausgewählten Abonnement vorhanden sind.
 
 ## <a name="create-a-custom-commands-project"></a>Erstellen eines Projekts für benutzerdefinierte Befehle
 
-1. Wählen Sie **Neues Projekt** aus, um ein neues Projekt zu erstellen.
+1. Wählen Sie **Neues Projekt** aus, um ein Projekt zu erstellen.
 
    > [!div class="mx-imgBorder"]
    > ![Erstellen eines Projekts](media/custom-speech-commands/create-new-project.png)
 
-1. Geben Sie den Projektnamen ein.
-1. Wählen Sie in der Dropdownliste eine Sprache aus.
-1. Wählen Sie in der Dropdownliste eine Erstellungsressource aus. Sind keine gültigen Erstellungsressourcen vorhanden, erstellen Sie eine, indem Sie auf **Neue LUIS-Erstellungsressource erstellen** klicken.
+1. Geben Sie in das Feld **Name** einen Projektnamen ein.
+1. Wählen Sie in der Liste **Sprache** eine Sprache aus.
+1. Wählen Sie in der Liste **LUIS-Erstellungsressource** eine Erstellungsressource aus. Sind keine gültigen Erstellungsressourcen vorhanden, erstellen Sie eine, indem Sie **Neue LUIS-Erstellungsressource erstellen** auswählen.
 
    > [!div class="mx-imgBorder"]
    > ![Erstellen einer Ressource](media/custom-speech-commands/create-new-resource.png)
 
-   - Geben Sie den Ressourcennamen und die Ressourcengruppe ein.
-   - Wählen Sie in der Dropdownliste Werte für Speicherort und Preisstufe aus.
+   1. Geben Sie im Feld **Ressourcenname** den Namen der Ressource ein.
+   1. Wählen Sie in der Liste **Ressourcengruppe** eine Ressourcengruppe aus.
+   1. Wählen Sie in der Liste **Standort** einen Standort aus.
+   1. Wählen Sie in der Liste **Tarif** einen Tarif aus.
 
       > [!NOTE]
-      > Sie können Ressourcengruppen erstellen, indem Sie den gewünschten Ressourcengruppennamen in das Feld „Ressourcengruppe“ eingeben. Die Ressourcengruppe wird erstellt, wenn **Erstellen** ausgewählt wird.
+      > Sie können eine Ressourcengruppe erstellen, indem Sie einen Ressourcengruppennamen in das Feld **Ressourcengruppe** eingeben. Die Ressourcengruppe wird erstellt, wenn Sie **Erstellen** auswählen.
 
-1. Wählen Sie als nächstes **Erstellen** aus, um das Projekt zu erstellen.
-1. Wählen Sie nach der Erstellung Ihr Projekt aus.
+1. Klicken Sie auf **Erstellen**.
+1. Sobald das Projekt erstellt ist, wählen Sie es aus.
 
-    - Ihre Ansicht sollte jetzt eine Übersicht über Ihre neu erstellte Anwendung für benutzerdefinierte Befehle darstellen.
+    Sie sollten jetzt eine Übersicht über Ihre neue Anwendung für benutzerdefinierte Befehle sehen.
 
 ## <a name="update-luis-resources-optional"></a>Aktualisieren von LUIS-Ressourcen (optional)
 
-Sie können im Fenster „Neues Projekt“ die festgelegte Erstellungsressource aktualisieren und eine Vorhersageressource festlegen. Die Vorhersageressource wird zur Erkennung verwendet, sobald Ihre Anwendung für benutzerdefinierte Befehle veröffentlicht ist. Für die Entwicklungs- und Testphasen benötigen Sie keine Vorhersageressource.
+Sie können die ausgewählte Erstellungsressource im Fenster **Neues Projekt** aktualisieren und eine Vorhersageressource festlegen. Die Vorhersageressource wird zur Erkennung verwendet, wenn Ihre Anwendung für benutzerdefinierte Befehle veröffentlicht ist. Während der Entwicklungs- und Testphasen benötigen Sie keine Vorhersageressource.
 
-1. Wählen Sie im linken Bereich **Einstellungen** aus, und navigieren Sie dann zum Abschnitt **LUIS-Ressourcen** im mittleren Bereich.
+1. Wählen Sie im linken Bereich **Einstellungen** aus, und wählen Sie dann im mittleren Bereich **LUIS-Ressourcen** aus.
 1. Wählen Sie eine Vorhersageressource aus, oder erstellen Sie eine, indem Sie **Neue Ressource erstellen** auswählen.
 1. Wählen Sie **Speichern** aus.
     
@@ -82,26 +84,26 @@ Sie können im Fenster „Neues Projekt“ die festgelegte Erstellungsressource 
 
 
 > [!NOTE]
-> Da die Erstellungsressource nur 1.000 Anforderungen von Vorhersage-Endpunkten pro Monat unterstützt, ist das Festlegen einer LUIS-Vorhersageressource vor dem Veröffentlichen Ihrer Anwendung für benutzerdefinierte Befehle obligatorisch.
+> Da die Erstellungsressource nur 1.000 Anforderungen von Vorhersage-Endpunkten pro Monat unterstützt, müssen Sie vor dem Veröffentlichen Ihrer Anwendung für benutzerdefinierte Befehle eine LUIS-Vorhersageressource festlegen.
 
 
-## <a name="create-a-new-command"></a>Erstellen eines neuen Befehls
+## <a name="create-a-command"></a>Erstellen eines Befehls
 
 Erstellen wir einen einfachen Befehl, der eine einzelne Äußerung `turn on the tv` akzeptiert und mit der Nachricht `Ok, turning on the tv` antwortet.
 
-1. Erstellen Sie einen neuen Befehl, indem Sie das `+ New command`-Symbol auswählen, das oben im äußerst linken Abschnitt angezeigt wird. Es wird ein neues Popupfenster mit dem Titel **Neuer Befehl** angezeigt.
-1. Geben Sie den Wert für das Feld **Name** als `TurnOn` ein.
+1. Erstellen Sie einen Befehl, indem Sie oben im linken Bereich **Neuer Befehl** auswählen. Das Fenster **Neuer Befehl** wird geöffnet.
+1. Geben Sie in das Feld **Name** **TurnOn** ein.
 1. Klicken Sie auf **Erstellen**.
 
-Im mittleren Bereich werden die verschiedenen Eigenschaften eines Befehls aufgelistet:
+Im mittleren Bereich werden die Eigenschaften des Befehls aufgelistet:
 
 
 | Konfiguration            | BESCHREIBUNG                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Beispielsätze | Beispieläußerungen, die der Benutzer äußern kann, um diesen Befehl auszulösen.                                                                 |
-| Parameter       | Informationen, die zur Vervollständigung des Befehls erforderlich sind.                                                                                |
-| Vervollständigungsregeln | Die Aktionen, die zur Erfüllung des Befehls durchzuführen sind. Beispielsweise, um dem Benutzer zu antworten oder mit einem anderen Webdienst zu kommunizieren. |
-| Interaktionsregeln   | Zusätzliche Regeln für den Umgang mit spezifischeren oder komplexeren Situationen.                                                              |
+| **Beispielsätze** | Beispieläußerungen, die der Benutzer äußern kann, um diesen Befehl auszulösen.                                                                 |
+| **Parameter**       | Informationen, die zur Vervollständigung des Befehls erforderlich sind.                                                                                |
+| **Vervollständigungsregeln** | Aktionen, die zur Erfüllung des Befehls durchgeführt werden. Beispielsweise, um dem Benutzer zu antworten oder mit einem anderen Webdienst zu kommunizieren. |
+| **Interaktionsregeln**   | Zusätzliche Regeln für den Umgang mit spezifischeren oder komplexeren Situationen.                                                              |
 
 
 > [!div class="mx-imgBorder"]
@@ -110,41 +112,41 @@ Im mittleren Bereich werden die verschiedenen Eigenschaften eines Befehls aufgel
 
 ### <a name="add-example-sentences"></a>Hinzufügen von Beispielsätzen
 
-Lassen Sie uns mit dem Beispielsatzabschnitt beginnen und ein Beispiel dafür bereitstellen, was der Benutzer sagen kann.
+Beginnen wir mit dem Abschnitt **Beispielsätze**. Wir geben Ihnen ein Beispiel für mögliche Äußerungen des Benutzers.
 
-1. Wählen Sie im mittleren Bereich den Abschnitt **Beispielsätze** aus, und fügen Sie im äußerst rechten Bereich Beispiele hinzu:
+1. Wählen Sie im mittleren Bereich **Beispielsätze** aus. 
+1. Fügen Sie im rechten Bereich Beispiele hinzu:
 
     ```
     turn on the tv
     ```
 
-1. Wählen Sie das `Save`-Symbol aus, das oben in diesem Bereich angezeigt wird.
+1. Wählen Sie oben im Bereich **Speichern** aus.
 
-Im Moment verfügen wir über keine Parameter, sodass wir zu dem Abschnitt mit den **Vervollständigungsregeln** übergehen können.
+Im Moment verfügen wir nicht über Parameter, sodass wir zum Abschnitt mit **Vervollständigungsregeln** übergehen können.
 
 ### <a name="add-a-completion-rule"></a>Hinzufügen einer Vervollständigungsregel
 
-Fügen Sie jetzt eine Vervollständigungsregel mit der folgenden Konfiguration hinzu. Diese Regel zeigt dem Benutzer an, dass ein Vervollständigungsvorgang durchgeführt wird.
+Fügen Sie nun eine Vervollständigungsregel mit der folgenden Konfiguration hinzu. Diese Regel teilt dem Benutzer mit, dass ein Vervollständigungsvorgang durchgeführt wird.
 
 
-| Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
+| Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
-| Regelname  | ConfirmationResponse                  | Ein Name, der den Zweck der Regel beschreibt.          |
-| Bedingungen | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
-| Aktionen    | SpeechResponse „OK, schalte Fernseher ein“ | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+| **Name**  | **ConfirmationResponse**                  | Ein Name, der den Zweck der Regel beschreibt.          |
+| **Bedingungen** | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
+| **Aktionen**    | **Sprachantwort senden -> OK, schalte Fernseher ein** | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
 
-1. Erstellen Sie eine neue Vervollständigungsregel, indem Sie das `+Add`-Symbol oben im mittleren Bereich auswählen.
-1. Geben Sie einen Wert im Abschnitt **Name** an.
-1. Hinzufügen einer Aktion
-   1. Erstellen Sie eine neue Aktion, indem Sie im Abschnitt **Aktionen** **Neue Aktion hinzufügen** auswählen.
-   1. Wählen Sie im Popup **Neue Aktion** in den Dropdownoptionen für **Typ** `Send speech response` aus.
-   1. Wählen Sie `Simple editor` für das Feld **Antwort** aus.
-       - Geben Sie im Feld **Erste Variation** den Wert für die Antwort als `Ok, turning on the tv` ein.
+1. Erstellen Sie eine neue Vervollständigungsregel, indem Sie oben im mittleren Bereich **Hinzufügen** auswählen.
+1. Geben Sie im Feld **Name** einen Namen ein.
+1. Hinzufügen einer Aktion.
+   1. Erstellen Sie eine Aktion, indem Sie im Abschnitt **Aktionen** **Neue Aktion hinzufügen** auswählen.
+   1. Wählen Sie im Fenster **Aktion bearbeiten** in der Liste **Typ** die Option **Sprachantwort senden** aus.
+   1. Wählen Sie unter **Antwort** die Option **Einfacher Editor** aus. Geben Sie im Feld **Erste Variation** die Option **OK, schalte Fernseher ein** ein.
 
    > [!div class="mx-imgBorder"]
-   > ![Erstellen einer Sprachantwort](media/custom-speech-commands/create-speech-response-action.png)
+   > ![Erstellen einer Antwort](media/custom-speech-commands/create-speech-response-action.png)
 
-1. Klicken Sie auf **Speichern**, um die Regel zu speichern.
+1. Wählen Sie **Speichern** aus, um die Regel zu speichern.
 1. Wählen Sie wieder im Abschnitt **Vervollständigungsregeln** **Speichern** aus, um alle Änderungen zu speichern. 
 
 > [!div class="mx-imgBorder"]
@@ -155,16 +157,16 @@ Fügen Sie jetzt eine Vervollständigungsregel mit der folgenden Konfiguration h
 ## <a name="try-it-out"></a>Ausprobieren
 
 Testen Sie das Verhalten über den Testchatbereich.
-1. Wählen Sie das `Train`-Symbol aus, das oben im rechen Bereich angezeigt wird.
-1. Nachdem das Training abgeschlossen ist, wählen Sie `Test` aus. Es wird ein neues Fenster **Testen Ihrer Anwendung** angezeigt.
-    - Sie geben ein: Schalte den Fernseher ein
-    - Erwartete Antwort: OK, schalte Fernseher ein
+1. Klicken Sie oben im rechten Bereich auf **Trainieren**.
+1. Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus. Es wird ein neues Fenster **Testen Ihrer Anwendung** angezeigt.
+    - Geben Sie **Schalte den Fernseher ein** ein.
+    - Erwartete Antwort: **OK, schalte Fernseher ein**
 
 
 > [!div class="mx-imgBorder"]
-> ![Testen mit Webchat](media/custom-speech-commands/create-basic-test-chat.png)
+> ![Testen des Verhaltens](media/custom-speech-commands/create-basic-test-chat.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
+> [Schnellstart: Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau) mit Parametern](./quickstart-custom-speech-commands-create-parameters.md)

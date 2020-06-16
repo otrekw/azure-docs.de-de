@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735870"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247273"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -187,7 +187,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     Verwenden Sie für die SSRS-Konfiguration die folgenden Werte:
     * Dienstkonto: „Integriertes Konto verwenden“ sollte „Netzwerkdienst“ lauten.
     * Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_\<SQLInstanceName>“ lauten.
-    * Datenbank: „DatabaseName“ sollte „ReportServer$\<SQLInstanceName>“ lauten.
+    * Datenbank: „DatabaseName“ sollte ReportServer$\<SQLInstanceName> lauten.
     * Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_\<SQLInstanceName>“ lauten.
 
     Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
@@ -311,8 +311,8 @@ Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugrif
 Wählen Sie bei Verwendung von ExpressRoute-Microsoft-Peering die folgenden Dienste/Regionen aus:
 
 * Azure Active Directory (12076:5060)
-* Microsoft Azure-Region (gemäß dem Standort Ihres Recovery Services-Tresors)
-* Azure Storage (gemäß dem Standort Ihres Recovery Services-Tresors)
+* Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
+* Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
 
 Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 

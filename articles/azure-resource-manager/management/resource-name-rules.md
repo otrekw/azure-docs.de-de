@@ -3,12 +3,12 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758893"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170578"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -81,9 +81,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | locks | Zuweisungsbereich | 1-90 | Alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern.<br><br>Darf nicht mit einem Punkt enden. |
-> | policyassignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1–260 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
-> | policydefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1–260 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
-> | policySetDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1–260 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden.  |
+> | policyAssignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
+> | policyDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
+> | policySetDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden.  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 

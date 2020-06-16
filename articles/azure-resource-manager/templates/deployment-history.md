@@ -3,17 +3,19 @@ title: Bereitstellungsverlauf
 description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgänge mit dem Portal, mit PowerShell, mit der Azure-Befehlszeilenschnittstelle (CLI) und der REST-API anzeigen.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816283"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117848"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 
-Mit Azure Resource Manager können Sie Ihren Bereitstellungsverlauf anzeigen und bestimmte Vorgänge in früheren Bereitstellungen untersuchen. Ihnen werden die bereitgestellten Ressourcen angezeigt, und Sie erhalten Informationen zu etwaigen Fehlern.
+Mit Azure Resource Manager können Sie den Bereitstellungsverlauf anzeigen. Sie können bestimmte Vorgänge in früheren Bereitstellungen überprüfen und sehen, welche Ressourcen bereitgestellt wurden. Dieser Verlauf enthält Informationen zu Fehlern.
+
+Der Bereitstellungsverlauf einer Ressourcengruppe ist auf 800 Bereitstellungen beschränkt. Wenn Sie den Grenzwert fast erreicht haben, werden Bereitstellungen automatisch aus dem Verlauf gelöscht. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 
 Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
 
@@ -117,7 +119,7 @@ Jede Bereitstellung kann mehrere Vorgänge umfassen. Um weiter Informationen zu 
 
 1. Wählen Sie in der Zusammenfassung für eine Bereitstellung **Vorgangsdetails** aus.
 
-    ![Auswählen von Bereitstellungsvorgängen](./media/deployment-history/get-operation-details.png)
+    ![Auswählen von Vorgangsdetails](./media/deployment-history/get-operation-details.png)
 
 1. Es werden die ausführlichen Informationen zu dem Bereitstellungsschritt angezeigt. Wenn ein Fehler auftritt, enthalten die Details die Fehlermeldung.
 
@@ -210,6 +212,6 @@ Die Antwort enthält eine Fehlermeldung.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
-* Weitere Informationen zur Verwendung der Aktivitätsprotokolle für die Überwachung anderer Arten von Aktionen finden Sie unter [Anzeigen von Aktivitätsprotokolle zum Verwalten von Azure-Ressourcen](../management/view-activity-logs.md).
+* Weitere Informationen zur Verwaltung von Bereitstellungen im Verlauf finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 * Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](deploy-powershell.md).
 
