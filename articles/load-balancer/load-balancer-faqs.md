@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005155"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014926"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -32,6 +32,9 @@ Weitere Informationen zu ARM-Vorlagen für allgemeine Bereitstellungen finden Si
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>Wie unterscheiden sich NAT-Regeln für eingehenden Datenverkehr von Lastenausgleichsregeln?
 NAT-Regeln werden verwendet, um eine Back-End-Ressource anzugeben, an die Datenverkehr weitergeleitet werden soll. Beispielsweise das Konfigurieren eines bestimmten Load Balancer-Ports zum Senden von RDP-Datenverkehr an eine bestimmte VM. Lastenausgleichsregeln werden verwendet, um einen Pool mit Back-End-Ressourcen anzugeben, an die Datenverkehr weitergeleitet werden soll, damit die Last instanzenübergreifend verteilt wird. Beispielsweise kann eine Lastenausgleichsregel TCP-Pakete an Port 80 des Load Balancers über einen Pool von Webservern weiterleiten.
+
+## <a name="what-is-ip-1686312916"></a>Was ist IP 168.63.129.16?
+Die virtuelle IP-Adresse für den Host, der als Load Balancer für die Azure-Infrastruktur gekennzeichnet ist und als Ausgangspunkt für die Integritätstests von Azure dient. Beim Konfigurieren von Back-End-Instanzen müssen diese Datenverkehr von dieser IP-Adresse zulassen, um erfolgreich auf Integritätstests reagieren zu können. Diese Regel interagiert nicht mit dem Zugriff auf das Load Balancer-Front-End. Sie können diese Regel außer Kraft setzen, wenn Sie den Azure Load Balancer nicht verwenden. Weitere Informationen zu Diensttags finden Sie [hier](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Ihre Frage oben nicht aufgeführt wird, senden Sie uns Feedback zu dieser Seite mit Ihrer Frage. Dadurch wird ein Issue auf GitHub für das Produktteam erstellt, um sicherzustellen, dass alle wichtigen Fragen unserer Kunden beantwortet werden.

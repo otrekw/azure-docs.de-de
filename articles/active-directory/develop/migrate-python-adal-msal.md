@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c587a9fc0b3c59e5a9a3c9c04f51bca71667dd8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128043"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140547"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Leitfaden für die Migration von ADAL zu MSAL für Python
 
@@ -77,30 +77,48 @@ In MSAL (Microsoft Authentication Library) wird das Konzept der Aktualisierungst
 
 Der folgende Code hilft Ihnen beim Migrieren Ihrer von einer anderen OAuth2-Bibliothek (einschließlich, aber nicht beschränkt auf ADAL Python) verwalteten Aktualisierungstoken, damit diese von MSAL für Python verwaltet werden. Ein Grund für die Migration dieser Aktualisierungstoken besteht darin, zu verhindern, dass sich vorhandene Benutzer beim Migrieren Ihrer App zu MSAL für Python erneut anmelden müssen.
 
-Als Methode zum Migrieren eines Aktualisierungstokens wird MSAL für Python verwendet, um mithilfe des vorherigen Aktualisierungstokens ein neues Zugriffstoken abzurufen. Wenn das neue Aktualisierungstoken zurückgegeben wird, speichert MSAL für Python es im Cache. Hier finden Sie ein Beispiel für die Vorgehensweise:
+Als Methode zum Migrieren eines Aktualisierungstokens wird MSAL für Python verwendet, um mithilfe des vorherigen Aktualisierungstokens ein neues Zugriffstoken abzurufen. Wenn das neue Aktualisierungstoken zurückgegeben wird, speichert MSAL für Python es im Cache.
+Ab MSAL Python 1.3.0 stellen wir zu diesem Zweck in MSAL eine API bereit.
+Siehe hierzu den folgenden Codeausschnitt, der [einem Beispiel für die abgeschlossene Migration von Aktualisierungstoken mit MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.3.0/sample/migrate_rt.py#L28-L67) entnommen wurde.
 
 ```python
-from msal import PublicClientApplication
+import msal
+def get_preexisting_rt_and_their_scopes_from_elsewhere():
+    # Maybe you have an ADAL-powered app like this
+    #   https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/1.2.3/sample/device_code_sample.py#L72
+    # which uses a resource rather than a scope,
+    # you need to convert your v1 resource into v2 scopes
+    # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
+    # You may be able to append "/.default" to your v1 resource to form a scope
+    # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-def get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    raise NotImplementedError("You will need to implement this by yourself")
+    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # powered by some 3rd-party auth library, and persist its tokens somehow.
 
-app = PublicClientApplication(..., token_cache=...)
+    # Either way, you need to extract RTs from there, and return them like this.
+    return [
+        ("old_rt_1", ["scope1", "scope2"]),
+        ("old_rt_2", ["scope3", "scope4"]),
+        ]
 
-for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    # Assuming the old scope could be a space-delimited string.
-    # MSAL expects a list, like ["scope1", "scope2"].
-    scopes = old_scope.split()
-        # If your old refresh token came from ADAL for Python, which uses a resource rather than a scope,
-        # you need to convert your v1 resource into v2 scopes
-        # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
-        # You may be able to append "/.default" to your v1 resource to form a scope
-        # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    result = app.client.obtain_token_by_refresh_token(old_rt, scope=scopes)
-    # When this call returns the new token(s), a new refresh token is issued by the Microsoft identity platform and MSAL for Python
-    # stores it in the token cache.
+# We will migrate all the old RTs into a new app powered by MSAL
+app = msal.PublicClientApplication(
+    "client_id", authority="...",
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# We choose a migration strategy of migrating all RTs in one loop
+for old_rt, scopes in get_preexisting_rt_and_their_scopes_from_elsewhere():
+    result = app.acquire_token_by_refresh_token(old_rt, scopes)
+    if "error" in result:
+        print("Discarding unsuccessful RT. Error: ", json.dumps(result, indent=2))
+
+print("Migration completed")
 ```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720502"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195071"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Phase „Datenerfassung und -auswertung“ des Team Data Science-Prozesses
 
@@ -55,7 +55,7 @@ TDSP verfügt über das automatisierte Hilfsprogramm [IDEAR](https://github.com/
 Wenn Sie mit der Qualität der bereinigten Daten zufrieden sind, versuchen Sie im nächsten Schritt, die den Daten zugrunde liegenden Muster besser zu verstehen. Durch diese Datenanalyse können Sie ein geeignetes Vorhersagemodell für Ihr Ziel auswählen und entwickeln. Suchen Sie nach Belegen für die Beziehungen der Daten mit dem Ziel. Überprüfen Sie, ob ausreichend Daten für die nächsten Modellierungsschritte vorhanden sind. Auch dieser Prozess ist häufig iterativ. Unter Umständen müssen Sie nach neuen Datenquellen mit genaueren bzw. relevanteren Daten suchen, um das DataSet zu erweitern, das im vorherigen Schritt ursprünglich identifiziert wurde. 
 
 ### <a name="set-up-a-data-pipeline"></a>Einrichten einer Datenpipeline
-Zusätzlich zur ersten Erfassung und Bereinigung der Daten müssen Sie normalerweise einen Prozess einrichten, um neue Daten zu bewerten oder die Daten im Rahmen des ständigen Lernprozesses regelmäßig zu aktualisieren. Die Bewertung kann mit einer Datenpipeline oder einem Workflow abgeschlossen werden. Der Artikel [Verschieben von Daten aus einer lokalen SQL Server-Instanz nach Azure SQL-Datenbank mit Azure Data Factory](move-sql-azure-adf.md) enthält ein Beispiel für das Einrichten einer Pipeline mit [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
+Zusätzlich zur ersten Erfassung und Bereinigung der Daten müssen Sie normalerweise einen Prozess einrichten, um neue Daten zu bewerten oder die Daten im Rahmen des ständigen Lernprozesses regelmäßig zu aktualisieren. Die Bewertung kann mit einer Datenpipeline oder einem Workflow abgeschlossen werden. Der Artikel [Verschieben von Daten aus einer SQL Server-Instanz nach Azure SQL-Datenbank mit Azure Data Factory](move-sql-azure-adf.md) enthält ein Beispiel für das Einrichten einer Pipeline mit [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
 In dieser Phase entwickeln Sie eine Lösungsarchitektur der Datenpipeline. Sie entwickeln die Pipeline parallel mit der nächsten Phase des Data Science-Projekts. Abhängig von Ihren geschäftlichen Anforderungen und den Einschränkungen Ihrer vorhandenen Systeme, in die diese Lösung integriert wird, kann es sich bei der Pipeline um eine der folgenden Möglichkeiten handeln: 
 

@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d86a0df5265418a28e1fe68de0dc2cd601e71f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416058"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015590"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Schützen einer Datenbank in Azure Synapse
 
@@ -33,11 +33,11 @@ In diesem Artikel werden die Grundlagen zum Schützen Ihres Synapse SQL-Pools er
 
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewallregeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen.
+Firewallregeln werden vom [logischen SQL-Server](../../azure-sql/database/logical-servers.md) und den zugehörigen Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen.
 
-Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie vom lokalen Computer aus auf einen SQL-Pool zugreifen möchten, stellen Sie sicher, dass von der Firewall im Netzwerk und auf dem lokalen Computer ausgehende Kommunikation über den TCP-Port 1433 zugelassen wird.  
+Eine bewährte Methode besteht darin, die von der Firewall auf Serverebene zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie vom lokalen Computer aus auf einen SQL-Pool zugreifen möchten, stellen Sie sicher, dass von der Firewall im Netzwerk und auf dem lokalen Computer ausgehende Kommunikation über den TCP-Port 1433 zugelassen wird.  
 
-Azure Synapse Analytics verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Azure Synapse Analytics verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Verbindungen mit Ihrem SQL-Pool sind standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
@@ -45,11 +45,11 @@ Verbindungen mit Ihrem SQL-Pool sind standardmäßig verschlüsselt.  Das Änder
 
 Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Pools unterstützen derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie mit Azure Active Directory.
 
-Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
+Bei der Erstellung des Servers für die Datenbank haben Sie eine Serveradministratoranmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
 
 Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist.
 
-Um einen authentifizierten SQL Server-Benutzer zu erstellen, stellen Sie mit den Anmeldeinformationen des Serveradministrators eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung.  Es ist eine gute Idee, auch einen Benutzer in der Masterdatenbank zu erstellen. Das Erstellen eines Benutzers in der Masterdatenbank ermöglicht einem Benutzer, sich mit Tools wie SSMS ohne Angabe eines Datenbanknamens anzumelden.  Außerdem kann er mit dem Objekt-Explorer alle Datenbanken auf einer SQL Server-Instanz anzeigen.
+Um einen authentifizierten SQL Server-Benutzer zu erstellen, stellen Sie mit den Anmeldeinformationen des Serveradministrators eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung.  Es ist eine gute Idee, auch einen Benutzer in der Masterdatenbank zu erstellen. Das Erstellen eines Benutzers in der Masterdatenbank ermöglicht einem Benutzer, sich mit Tools wie SSMS ohne Angabe eines Datenbanknamens anzumelden.  Außerdem kann er mit dem Objekt-Explorer alle Datenbanken auf einem Server anzeigen.
 
 ```sql
 -- Connect to master database and create a login
@@ -66,7 +66,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 Um einem Benutzer die Berechtigung zu erteilen, zusätzliche Vorgänge wie das Erstellen von Anmeldedaten oder neuer Datenbanken auszuführen, weisen Sie dem Benutzer die Rollen `Loginmanager` und `dbmanager` in der Masterdatenbank zu.
 
-Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Weitere Informationen zum Herstellen einer Verbindung mithilfe von Azure Active Directory finden Sie unter [Herstellen einer Verbindung mithilfe der Azure Active Directory-Authentifizierung](sql-data-warehouse-authentication.md).
+Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](../../azure-sql/database/logins-create-manage.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Weitere Informationen zum Herstellen einer Verbindung mithilfe von Azure Active Directory finden Sie unter [Herstellen einer Verbindung mithilfe der Azure Active Directory-Authentifizierung](sql-data-warehouse-authentication.md).
 
 ## <a name="authorization"></a>Authorization
 
@@ -92,13 +92,13 @@ Im folgenden Beispiel wird Lesezugriff für ein benutzerdefiniertes Schema ertei
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Die Verwaltung von Datenbanken und logischen Servern über das Azure-Portal oder mit der Azure Resource Manager-API wird durch die Rollenzuweisungen Ihres Portal-Benutzerkontos gesteuert. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Die Verwaltung von Datenbanken und Servern über das Azure-Portal oder mit der Azure Resource Manager-API wird durch die Rollenzuweisungen Ihres Portal-Benutzerkontos gesteuert. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Verschlüsselung
 
 Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu wird die Verschlüsselung und Entschlüsselung Ihrer ruhenden Daten ausgeführt. Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird.
 
-In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft tauscht diese Zertifikate mindestens alle 90 Tage automatisch untereinander. Der verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Server eindeutig. Microsoft tauscht diese Zertifikate mindestens alle 90 Tage automatisch untereinander. Der verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Sie können Ihre Datenbank mit dem [Azure-Portal](sql-data-warehouse-encryption-tde.md) oder mit [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) verschlüsseln.
 

@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234542"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116549"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -41,9 +41,9 @@ Azure SQL-Analyse ist eine reine Cloudüberwachungslösung, die das Streaming vo
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-Analyse – Optionen
 
-In der folgenden Tabelle sind die unterstützten Optionen für zwei Versionen des Azure SQL-Analyse-Dashboards beschrieben: eine für Einzel- bzw. Pooldatenbanken und Pools für elastische Datenbanken, und die andere für verwaltete Instanzen und Instanzdatenbanken.
+In der folgenden Tabelle werden unterstützte Optionen für zwei Versionen des Dashboards der Azure SQL-Analyse beschrieben: eine für Azure SQL-Datenbank und die andere für Datenbanken einer verwalteten Azure SQL-Instanz.
 
-| Option für Azure SQL-Analyse | BESCHREIBUNG | Unterstützung für Einzel- und Pooldatenbanken und Pools für elastische Datenbanken | Unterstützung für verwaltete Instanzen und Instanzdatenbanken |
+| Option für Azure SQL-Analyse | BESCHREIBUNG | Unterstützung für SQL-Datenbank | Unterstützung für verwaltete SQL-Instanz |
 | --- | ------- | ----- | ----- |
 | Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. | Ja | Ja |
 | Einblicke | Stellt einen hierarchischen Drilldown in die Leistung in Intelligent Insights bereit. | Ja | Ja |
@@ -62,7 +62,7 @@ Fügen Sie Azure SQL-Analyse (Vorschau) mithilfe des unter [Hinzufügen von Azur
 
 Nachdem Sie die Azure SQL-Analyse-Lösung in Ihrem Arbeitsbereich erstellt haben, müssen Sie **jede Ressource konfigurieren**, für die Sie zur Überwachung die zugehörigen Diagnosetelemetriedaten an Azure SQL-Analyse streamen möchten. Befolgen Sie dazu die detaillierten Anweisungen auf dieser Seite:
 
-- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../sql-database/sql-database-metrics-diag-logging.md).
+- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 Die oben abgebildete Seite enthält auch Anweisungen zum Aktivieren der Unterstützung für die Überwachung mehrerer Azure-Abonnements über einen einzelnen Azure SQL-Analysearbeitsbereich als zentrale Konsole.
 
@@ -72,13 +72,13 @@ Wenn Sie Azure SQL-Analyse Ihrem Arbeitsbereich hinzufügen, wird die Kachel „
 
 ![Zusammenfassungskachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Nach dem Laden wird auf der Kachel die Anzahl von Einzel- und Pooldatenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und verwaltete Instanzdatenbanken angezeigt, von denen Diagnosetelemetriedaten für Azure SQL-Analyse empfangen werden.
+Nach dem Laden wird auf der Kachel die Anzahl von Datenbanken und Pools für elastische Datenbanken in SQL-Datenbank sowie verwaltete Instanzen und Instanzdatenbanken in einer verwalteten SQL-Instanz angezeigt, von denen Diagnosetelemetriedaten für Azure SQL-Analyse empfangen werden.
 
 ![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL-Analyse enthält zwei separate Ansichten: eine für die Überwachung von Einzel-/Pooldatenbanken und Pools für elastische Datenbanken, und die andere für die Überwachung von verwalteten Instanzen und Instanzdatenbanken.
+Azure SQL-Analyse bietet zwei separate Ansichten: eine zur Überwachung der SQL-Datenbank und die andere zur Überwachung der verwalteten SQL-Instanz.
 
-Zum Anzeigen des Überwachungsdashboards von Azure SQL-Analyse für Einzel- und Pooldatenbanken und Pools für elastische Datenbanken klicken Sie auf den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards von Azure SQL-Analyse für verwaltete Instanzen und Instanzdatenbanken klicken Sie auf den unteren Bereich der Kachel.
+Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für die SQL-Datenbank klicken Sie auf den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für die verwaltete SQL-Instanz klicken Sie auf den unteren Bereich der Kachel.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Anzeigen von Azure SQL Analytics-Daten
 
@@ -86,7 +86,7 @@ Das Dashboard umfasst die Übersicht über alle Datenbanken, die aus verschieden
 
 Wenn einige Metriken oder Protokolle nicht nach Azure Monitor gestreamt werden, werden die Kacheln in Azure SQL-Analyse nicht mit Überwachungsinformationen gefüllt.
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>Ansicht für Einzel- und Pooldatenbanken und Pools für elastische Datenbanken
+### <a name="sql-database-view"></a>Ansicht der SQL-Datenbank
 
 Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Überwachungsdashboard angezeigt.
 
@@ -98,7 +98,7 @@ Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Pers
 
 Jede Perspektive in dieser Ansicht enthält Zusammenfassungen zu den Ebenen für Abonnement, Server, Pool für elastische Datenbanken und Datenbank. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
 
-### <a name="managed-instance-and-instances-databases-view"></a>Ansicht für verwaltete Instanzen und Instanzdatenbanken
+### <a name="sql-managed-instance-view"></a>Ansicht der verwalteten SQL-Instanz
 
 Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Überwachungsdashboard angezeigt.
 
@@ -106,13 +106,13 @@ Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Übe
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-Nach dem Auswählen der Ansicht für verwaltete Instanzen werden Details zur Auslastung der verwalteten Instanz, darin enthaltene Datenbanken und Telemetriedaten zu den für die gesamte Instanz ausgeführten Abfragen angezeigt.
+Nach dem Auswählen der Ansicht der verwalteten SQL-Instanz werden Details zur Auslastung der verwalteten Instanz, darin enthaltene Datenbanken und Telemetriedaten zu den für die gesamte Instanz ausgeführten Abfragen angezeigt.
 
 ![Azure SQL-Analyse – Zeitlimits](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights-Bericht
 
-[Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) von Azure SQL-Datenbank informiert Sie über die Leistung all Ihrer Azure SQL-Datenbanken. Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden.
+[Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) von Azure SQL-Datenbank informiert Sie über die Leistung all Ihrer Azure SQL-Datenbanken. Alle erfassten Intelligent Insights-Daten können visuell dargestellt und über die Insights Perspektive aufgerufen werden.
 
 ![Azure SQL-Analyse – Insights](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +170,7 @@ Nachdem die neue Rolle erstellt wurde, weisen Sie sie allen Benutzern zu, denen 
 
 ## <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
 
-Die Datenanalyse in Azure SQL-Analyse basiert auf der [Log Analytics-Sprache](../log-query/get-started-queries.md) für Ihre benutzerdefinierten Abfragen und Berichte. Eine Beschreibung der von der Datenbankressource für benutzerdefinierte Abfragen gesammelten Daten finden Sie unter [Verfügbare Metriken und Protokolle](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+Die Datenanalyse in Azure SQL-Analyse basiert auf der [Log Analytics-Sprache](../log-query/get-started-queries.md) für Ihre benutzerdefinierten Abfragen und Berichte. Eine Beschreibung der von der Datenbankressource für benutzerdefinierte Abfragen gesammelten Daten finden Sie unter [Verfügbare Metriken und Protokolle](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
 
 Automatisierte Warnungen in Azure SQL-Analyse basieren auf dem Schreiben einer Log Analytics-Abfrage, die eine Warnung auslöst, wenn eine Bedingung erfüllt ist. Im Folgenden finden Sie mehrere Beispiele für Log Analytics-Abfragen, für die in Azure SQL-Analyse Warnungen eingerichtet werden können.
 
@@ -178,7 +178,7 @@ Automatisierte Warnungen in Azure SQL-Analyse basieren auf dem Schreiben einer L
 
 Sie können problemlos [Warnungen](../platform/alerts-metric.md) mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Im Folgenden finden Sie einige nützliche [Protokollabfragen](../log-query/log-query-overview.md), die Sie mit einer Protokollwarnung verwenden können:
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Hohe CPU-Auslastung für Azure SQL-Datenbank
+#### <a name="high-cpu"></a>Hohe CPU-Auslastung
 
 ```
 AzureMetrics
@@ -194,7 +194,7 @@ AzureMetrics
 > - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an Azure SQL-Analyse streamen.
 > - Ersetzen Sie den MetricName-Wert „cpu_percent“ durch „dtu_consumption_percent“ um stattdessen hohe DTU-Ergebnisse zu erhalten.
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Hohe CPU-Auslastung in Pools für elastische Datenbanken in Azure SQL-Datenbank
+#### <a name="high-cpu-on-elastic-pools"></a>Hohe CPU-Auslastung der Pools für elastische Datenbanken
 
 ```
 AzureMetrics
@@ -210,7 +210,7 @@ AzureMetrics
 > - Voraussetzung für die Einrichtung dieser Warnung ist, dass überwachte Datenbanken grundlegende Metriken an Azure SQL-Analyse streamen.
 > - Ersetzen Sie den MetricName-Wert „cpu_percent“ durch „dtu_consumption_percent“ um stattdessen hohe DTU-Ergebnisse zu erhalten.
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Durchschnittlicher Speicherverbrauch für Azure SQL-Datenbank in der letzten Stunde bei über 95%
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>Speicher im Durchschnitt über 95 % in der letzten Stunde
 
 ```
 let time_range = 1h;
@@ -254,9 +254,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>Erstellen von Warnungen für verwaltete Instanzen
+### <a name="creating-alerts-for-sql-managed-instance"></a>Erstellen von Warnungen für verwaltete SQL-Instanz
 
-#### <a name="managed-instance-storage-is-above-90"></a>Speicherverbrauch der verwalteten Instanz bei über 90 %
+#### <a name="storage-is-above-90"></a>Speicher liegt über 90 %
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +272,7 @@ AzureDiagnostics
 > - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an Azure SQL-Analyse aktiviert ist.
 > - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) für die Abfrage vorhanden sind, die angeben, dass die Bedingung in der verwalteten Instanz vorhanden ist. Die Ausgabe ist der prozentuale Speicherverbrauch auf der verwalteten Instanz.
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Durchschnittlicher CPU-Verbrauch der verwalteten Instanz in der letzten Stunde über 95 %
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Durchschnittliche CPU-Auslastung über 95 % in der letzten Stunde
 
 ```
 let cpu_percentage_threshold = 95;

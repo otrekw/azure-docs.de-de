@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9870b239ca0501e63df3d800b8e4847cb0f390ac
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860935"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266847"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 
@@ -532,26 +532,26 @@ Dies ist das zurückgegebene Ergebnis mit dem optionalen „D“-Format: `"Tuesd
 
 ### <a name="and"></a>and
 
-Überprüft, ob für sämtliche Ausdrücke der Wert „TRUE“ festgelegt ist.
-Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind, oder gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist.
+Überprüft, ob für beide Ausdrücke der Wert „true“ festgelegt ist.
+Gibt „true“ zurück, wenn beide Ausdrücke gleich „true“ sind, oder gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist.
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| true oder false | Boolean | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn beide Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
 ||||
 
 *Beispiel 1*
 
-In diesen Beispielen wird überprüft, ob alle angegebenen booleschen Werte gleich „true“ sind:
+In diesen Beispielen wird überprüft, ob beide angegebenen booleschen Werte gleich „true“ sind:
 
 ```
 and(true, true)
@@ -567,7 +567,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 *Beispiel 2*
 
-In diesen Beispielen wird überprüft, ob die angegebenen Ausdrücke gleich „true“ sind:
+In diesen Beispielen wird überprüft, ob beide angegebenen Ausdrücke gleich „true“ sind:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -2389,20 +2389,20 @@ Dies sind die zurückgegebenen Ergebnisse:
 ### <a name="or"></a>oder
 
 Überprüft, ob mindestens ein Ausdruck gleich „true“ ist.
-Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist, oder gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ ist.
+Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist, oder gibt „false“ zurück, wenn beide Ausdrücke gleich „false“ sind.
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| true oder false | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
+| true oder false | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn beide Ausdrücke gleich „false“ sind. |
 ||||
 
 *Beispiel 1*

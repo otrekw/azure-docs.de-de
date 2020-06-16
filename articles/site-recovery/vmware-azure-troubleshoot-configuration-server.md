@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478309"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246882"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -52,6 +52,8 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
     b. Öffnen Sie die Datei „Installation_Directory/Vx/bin/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **stop_services** aus.
     c. Öffnen Sie die Datei „Installation_Directory/Fx/uninstall.sh“, und kommentieren Sie den gesamten Abschnitt aus, der versucht, den Fx-Dienst zu beenden.
     d. [Deinstallieren](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) Sie den Mobilitäts-Agent. Starten Sie nach der erfolgreichen Deinstallation das System neu, und versuchen Sie, den Mobilitäts-Agent erneut zu installieren.
+
+8. Stellen Sie sicher, dass die mehrstufige Authentifizierung nicht für das Benutzerkonto aktiviert ist. Die mehrstufige Authentifizierung für das Benutzerkonto wird von Azure Site Recovery derzeit nicht unterstützt. Registrieren Sie den Konfigurationsserver, ohne dass die mehrstufige Authentifizierung für das Benutzerkonto aktiviert ist.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Installationsfehler: Fehler beim Laden von Konten.
 
@@ -203,7 +205,7 @@ In der Regel liegt hier ein Fehler an Port 443 vor. Führen Sie die folgenden Sc
 
 Um zu überprüfen, ob der Masterziel-Agent eine TCP-Sitzung für die IP des Konfigurationsservers erstellen kann, suchen Sie in den Masterziel-Agent-Protokollen nach einer Ablaufverfolgung ähnlich der folgenden:
 
-TCP \<hier IP durch CS-IP ersetzen>: 52739 \<hier IP durch CS-IP ersetzen>: 443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // Ersetzen Sie IP hier mit CS IP
 

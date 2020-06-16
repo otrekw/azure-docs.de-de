@@ -7,17 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480010"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248735"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Flow
 Mit [Azure Logic Apps](/azure/logic-apps/) und [Power Automate](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
 
 Beispielsweise können Sie eine Logik-App zum Verwenden von Azure Monitor-Protokolldaten in einer E-Mail-Benachrichtigung aus Office 365, zum Erstellen eines Fehlers in Azure DevOps oder zum Posten einer Slack-Nachricht nutzen.  Sie können einen Workflow auslösen, indem Sie einen einfachen Zeitplan oder eine Aktion in einem verbundenen Dienst verwenden, z.B. bei Erhalt einer E-Mail oder eines Tweets. 
+
+## <a name="connector-limits"></a>Grenzwerte des Connectors
+Der Connector für Azure Monitor-Protokolle weist folgende Grenzwerte auf:
+* Maximale Datengröße: 16 MB
+* Maximale Größe von Antworten auf Abfragen: 100 MB
+* Maximale Anzahl von Datensätzen: 500.000
+* Maximales Abfragetimeout: 110 Sekunden
+
+Abhängig von der Größe Ihrer Daten und der verwendeten Abfrage kann der Connector seine Grenzwerte erreichen und fehlschlagen. Sie können solche Fälle umgehen, wenn Sie die Wiederholung von Triggern so anpassen, dass sie häufiger ausgeführt werden und weniger Daten abfragen. Sie können Abfragen verwenden, bei denen Ihre Daten aggregiert werden, um weniger Datensätze und Spalten zurückzugeben.
 
 ## <a name="actions"></a>Aktionen
 In der folgenden Tabelle werden die Aktionen beschrieben, die mit dem Connector für die Azure Monitor-Protokolle möglich sind. Beide ermöglichen Ihnen, eine Protokollabfrage auf einen Log Analytics-Arbeitsbereich oder eine Application Insights-Anwendung anzuwenden. Der Unterschied besteht darin, wie die Daten zurückgegeben werden.
@@ -26,7 +35,7 @@ In der folgenden Tabelle werden die Aktionen beschrieben, die mit dem Connector 
 > Der Connector für Azure Monitor-Protokolle ersetzt den [Azure Log Analytics-Connector](https://docs.microsoft.com/connectors/azureloganalytics/) und [Azure Application Insights-Connector](https://docs.microsoft.com/connectors/applicationinsights/). Dieser Konnektor bietet die gleiche Funktionalität wie die anderen und ist die bevorzugte Methode zum Anwenden einer Abfrage auf einen Log Analytics-Arbeitsbereich oder eine Application Insights-Anwendung.
 
 
-| Aktion | Beschreibung |
+| Aktion | BESCHREIBUNG |
 |:---|:---|
 | [Abfrage ausführen und Ergebnisse auflisten](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Gibt jede Zeile als eigenes Objekt zurück. Verwenden Sie diese Aktion, wenn Sie im weiteren Verlauf des Workflows mit jeder Zeile einzeln arbeiten möchten. Auf die Aktion folgt in der Regel eine [FOR EACH-Aktivität](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
 | [Abfrage ausführen und Ergebnisse visualisieren](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Gibt alle Zeilen im Resultset als einzelnes formatiertes Objekt zurück. Wählen Sie diese Aktion, wenn Sie das Resultset zusammen im restlichen Workflow verwenden wollen, z. B. wenn Sie die Ergebnisse in einer E-Mail senden möchten.  |
@@ -57,7 +66,7 @@ Klicken Sie auf **+ Neuer Schritt**, um eine Aktion hinzuzufügen, die nach der 
 
 ![Aktion „Azure Monitor-Protokolle“](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
-Klicken Sie auf **Azure Log Analytics – Abfrage ausführen und Ergebnisse visualisieren**.
+Klicken Sie auf **Azure Log Analytics – Run query and visualize results** (Azure Log Analytics – Abfrage ausführen und Ergebnisse visualisieren).
 
 ![Aktion „Abfrage ausführen und Ergebnisse visualisieren“](media/logicapp-flow-connector/select-query-action-visualize.png)
 

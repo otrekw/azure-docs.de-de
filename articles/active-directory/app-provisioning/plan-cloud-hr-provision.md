@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593300"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014433"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -81,10 +81,11 @@ Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 ode
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Zugriff eines globalen Azure AD-Administrators zum Konfigurieren des Bereitstellungs-Agents von Azure AD Connect
+- Azure AD-[Hybrididentitätsadministrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) zum Konfigurieren des Bereitstellungs-Agents von Azure AD Connect
+- Die Rolle „Azure AD-[Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)“, um die Bereitstellungs-App im Azure-Portal zu konfigurieren
 - Eine Test- und Produktionsinstanz der HR-Cloud-App
 - Administratorberechtigungen in der HR-Cloud-App zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
-- Ein Server mit mindestens Windows Server 2012 und .NET 4.7.1 Runtime zum Hosten des [Bereitstellungs-Agents von Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=847801) für die Benutzerbereitstellung in Azure Active Directory
+- Ein Server mit mindestens Windows Server 2012 und .NET 4.7.1 Runtime zum Hosten des Bereitstellungs-Agents von Azure AD Connect für die Benutzerbereitstellung in Active Directory
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) für die Synchronisierung von Benutzern zwischen Azure Active Directory und Azure AD
 
 ### <a name="training-resources"></a>Schulungsressourcen
@@ -248,7 +249,7 @@ Standardmäßig wird das Attribut in der HR-Cloud-App, das die eindeutige Mitarb
 
 Sie können mehrere übereinstimmende Attribute festlegen und geeignete Prioritäten zuweisen. Sie werden nach der Rangfolge für den Abgleich ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
-Sie können auch die [Standardattributzuordnungen anpassen](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types) und z. B. vorhandene Attributzuordnungen ändern oder löschen. Sie können auch je nach geschäftlichem Bedarf neue Attributzuordnungen erstellen. Weitere Informationen finden Sie im Tutorial zur HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
+Sie können auch die [Standardattributzuordnungen anpassen](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types) und z. B. vorhandene Attributzuordnungen ändern oder löschen. Sie können auch je nach geschäftlichem Bedarf neue Attributzuordnungen erstellen. Weitere Informationen finden Sie im Tutorial zur HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
 
 ### <a name="determine-user-account-status"></a>Bestimmen des Benutzerkontostatus
 
@@ -285,7 +286,7 @@ Erfassen Sie die folgenden Anforderungen, wenn Sie den Prozess für Einstellunge
 | | Welche Stichtage werden für die Verarbeitung der Benutzerkündigung berücksichtigt? |
 | | Wie wirken sich Umwandlungen von Mitarbeitern und vorübergehend Beschäftigten auf bestehende Azure Active Directory-Konten aus? |
 
-Je nach Ihren Anforderungen können Sie die Zuordnungen an Ihre Integrationsziele anpassen. Weitere Informationen finden Sie im Tutorial zur jeweiligen HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
+Je nach Ihren Anforderungen können Sie die Zuordnungen an Ihre Integrationsziele anpassen. Weitere Informationen finden Sie im Tutorial zur jeweiligen HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
 
 ### <a name="generate-a-unique-attribute-value"></a>Generieren von eindeutigen Attributwerten
 
@@ -365,7 +366,9 @@ Es kann passieren, dass die Implementierung der HR-Cloud-App-Benutzerbereitstell
 
 Wählen Sie die HR-Cloud-App aus, die Ihren Lösungsanforderungen entspricht.
 
-**Workday**: Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in Workday vornehmen.
+**Workday**: Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse, Benutzername und Telefonnummer in Workday vornehmen.
+
+**SAP SuccessFactors**: Informationen zum Importieren von Workerprofilen von SuccessFactors in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von SAP SuccessFactors für die automatische Benutzerbereitstellung](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in SuccessFactors vornehmen.
 
 ## <a name="manage-your-configuration"></a>Verwalten Ihrer Konfiguration
 

@@ -3,12 +3,12 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131976"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234607"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -70,7 +70,7 @@ Sicherungsvorüberprüfungen überprüfen die Konfiguration Ihrer virtuellen Com
 Sicherungsvorüberprüfungen werden im Rahmen der geplanten Sicherungsvorgänge für Ihre virtuellen Azure-Computer ausgeführt. Sie werden mit einer der folgenden Statusoptionen abgeschlossen:
 
 * **Erfolgreich**: Dieser Status gibt an, dass die Konfiguration Ihres virtuellen Computers zu erfolgreichen Sicherungen führen sollte und keine Korrekturmaßnahmen erforderlich sind.
-* **Warnung**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *möglicherweise* zu Sicherungsfehlern führt. Es werden *empfohlene* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So kann es beispielsweise zu zeitweiligen Sicherungsfehlern kommen, wenn nicht der aktuelle VM-Agent installiert ist. In diesem Fall wird ein Warnungsstatus angegeben.
+* **Warnung:** Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *möglicherweise* zu Sicherungsfehlern führt. Es werden *empfohlene* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So kann es beispielsweise zu zeitweiligen Sicherungsfehlern kommen, wenn nicht der aktuelle VM-Agent installiert ist. In diesem Fall wird ein Warnungsstatus angegeben.
 * **Kritisch**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *sicher* zu Sicherungsfehlern führt, und es werden *erforderliche* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So führt beispielsweise ein Netzwerkproblem, das durch eine Aktualisierung der NSG-Regeln eines virtuellen Computers verursacht wird, dazu, dass Sicherungen nicht erfolgreich sind, da der virtuelle Computer nicht mit dem Azure Backup-Dienst kommunizieren kann. In diesem Fall wird ein kritischer Status angegeben.
 
 Führen Sie die folgenden Schritte aus, um alle Probleme zu beheben, die von den Sicherungsvorüberprüfungen für VM-Sicherungen in Ihrem Recovery Services-Tresor gemeldet werden.

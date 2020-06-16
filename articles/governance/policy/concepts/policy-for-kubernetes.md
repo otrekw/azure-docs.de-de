@@ -3,12 +3,12 @@ title: 'Vorschau: Informationen zu Azure Policy für Kubernetes'
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten. Hierbei handelt es sich um eine Previewfunktion.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828626"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221158"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster (Vorschauversion)
 
@@ -36,11 +36,14 @@ Gehen Sie wie folgt vor, um Azure Policy zu aktivieren und mit Ihrem Kubernetes-
    - [Kubernetes mit Azure Arc-Aktivierung](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS-Engine](#install-azure-policy-add-on-for-aks-engine)
 
+   > [!NOTE]
+   > Informationen zu häufigen Problemen bei der Installation finden Sie unter [Problembehandlung – Azure Policy-Add-On](../troubleshoot/general.md#add-on-installation-errors).
+
 1. [Machen Sie sich mit der Azure Policy-Sprache für Kubernetes vertraut.](#policy-language)
 
 1. [Weisen Sie Ihrem Kubernetes-Cluster eine integrierte Definition zu.](#assign-a-built-in-policy-definition)
 
-1. [Warten Sie auf die Validierung.](#policy-evaluation)
+1. [Warten auf die Validierung](#policy-evaluation)
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Installieren des Azure Policy-Add-Ons für AKS
 
@@ -203,7 +206,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 1. Öffnen Sie Ports für das Add-On. Vom Azure Policy-Add-On werden die folgenden Domänen und Ports verwendet, um Richtliniendefinitionen und Zuweisungen abzurufen und um die Konformität des Clusters an Azure Policy zu melden:
 
-   |Domäne |Port |
+   |Domain |Port |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -393,7 +396,7 @@ Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitio
 1. Weisen Sie der Richtlinienzuweisung einen **Namen** und eine **Beschreibung** zu, die Sie zur einfachen Identifizierung verwenden können.    
 
 1. Legen Sie die [Richtlinienerzwingung](./assignment-structure.md#enforcement-mode) auf einen der folgenden Werte    
-   fest:   
+   .   
 
    - **Aktiviert**: Erzwingen Sie die Richtlinie auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden verweigert.    
 

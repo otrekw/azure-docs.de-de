@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743665"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140479"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -27,7 +27,7 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 ## <a name="migration-limitations"></a>Einschränkungen bei der Migration
 
 - Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10.
-- Bei der VMware-Migration ohne Agents können Sie bis zu 100 Replikationsvorgänge gleichzeitig ausführen.
+- Bei der VMware-Migration ohne Agent können Sie bis zu 300 Replikationsvorgänge gleichzeitig ausführen.
 
 ## <a name="agentless-vmware-servers"></a>VMware-Server ohne Agent
 
@@ -60,7 +60,7 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.
 **IPv6** | Wird nicht unterstützt.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Premium) in Azure migriert werden.
-**Gleichzeitige Replikation** | 100 virtuelle Computer pro vCenter Server. Bei mehr als 100 virtuellen Computern sind diese in Batches von 100 zu migrieren.
+**Gleichzeitige Replikation** | 300 virtuelle Computer pro vCenter Server. Bei mehr virtuellen Computern sind diese in Batches von 300 zu migrieren.
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Azure Migrate-Appliance ohne Agent 

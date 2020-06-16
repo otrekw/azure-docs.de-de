@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/26/2020
 ms.author: egeaney
-ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590892"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310834"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Übersetzerverschlüsselung für ruhende Daten
 
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um kundenseitig verwaltete Schlüssel f�
 2. Aktivieren Sie die verwaltete Identität im Azure-Portal, und fügen Sie Ihre Informationen zum vom Kunden verwalteten Schlüssel hinzu.
 3. Erstellen Sie einen neuen Arbeitsbereich im benutzerdefinierten Translator, und ordnen Sie diese Abonnementinformationen zu.
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk-regions.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>Aktivieren von vom Kunden verwalteten Schlüsseln
 

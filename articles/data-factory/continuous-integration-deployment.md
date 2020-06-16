@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772861"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268038"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -570,27 +570,7 @@ Denken Sie daran, die Data Factory-Skripts vor und nach dem Bereitstellungstask 
 
 Wenn Sie Git nicht konfiguriert haben, können Sie über die Option **Export ARM Template** (ARM-Vorlage exportieren) in der Liste **ARM-Vorlage** auf die verknüpften Vorlagen zugreifen.
 
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Ausschließen von Azure-SSIS Integration Runtimes aus CI/CD
-
-Wenn Ihre Entwicklungsfactory Azure-SSIS Integration Runtime enthält, können Sie alle Azure-SSIS Integration Runtimes aus dem CI/CD-Prozess im nachstehenden Szenario ausschließen:
-
-- Die Azure-SSIS Integration Runtime-Infrastruktur (Azure-SSIS IR) ist komplex und variiert in jeder Umgebung.  
-- Azure-SSIS IR wird für jede Umgebung mit demselben Namen manuell eingerichtet. Andernfalls tritt bei der Veröffentlichung ein Fehler auf, wenn eine Aktivität je nach Azure-SSIS IR vorliegt.
-
-So schließen Sie Azure-SSIS Integration Runtime aus:
-
-1. Fügen Sie dem Stammordner im Branch für die Zusammenarbeit eine „publish_config.json“-Datei hinzu, sofern diese noch nicht vorhanden ist.
-1. Fügen Sie die folgende Einstellung zu „publish_config.json“ hinzu: 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-Bei der Veröffentlichung aus dem Branch für die Zusammenarbeit werden Azure-SSIS Integration Runtimes aus der generierten Resource Manager-Vorlage ausgeschlossen.
-
-## <a name="hotfix-production-branch"></a>Hotfix für den Produktionsbranch
+## <a name="hotfix-production-environment"></a>Hotfix für Produktionsumgebung
 
 Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu behebender Fehler vorhanden ist, Sie den aktuellen Kollaborationsbranch aber nicht bereitstellen können, müssen Sie unter Umständen einen Hotfix verwenden. Dieser Ansatz wird als Quick Fix Engineering oder QFE bezeichnet.
 
@@ -631,7 +611,7 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 - Standardmäßig ist für Data Factory ein Cherrypicking von Commits oder die selektive Veröffentlichung von Ressourcen nicht zulässig. Veröffentlichungen umfassen alle in der Data Factory vorgenommenen Änderungen.
 
     - Data Factory-Entitäten sind voneinander abhängig. Beispielsweise hängen Trigger von Pipelines ab, während Pipelines von Datasets und anderen Pipelines abhängig sind. Die selektive Veröffentlichung einer Teilmenge von Ressourcen kann ggf. zu unerwartetem Verhalten und Fehlern führen.
-    - In den seltenen Fällen, in denen Sie eine selektive Veröffentlichung durchführen müssen, können Sie die Verwendung eines Hotfix erwägen. Weitere Informationen finden Sie unter [Hotfix für den Produktionsbranch](#hotfix-production-branch).
+    - In den seltenen Fällen, in denen Sie eine selektive Veröffentlichung durchführen müssen, können Sie die Verwendung eines Hotfix erwägen. Weitere Informationen finden Sie unter [Hotfix für Produktionsumgebung](#hotfix-production-environment).
 
 -   Sie können nicht aus privaten Branches veröffentlichen.
 

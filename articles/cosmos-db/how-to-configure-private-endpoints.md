@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697881"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116661"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
@@ -618,9 +618,11 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 * Wenn Sie keine Firewallregeln konfigurieren, kann standardmäßig der gesamte Datenverkehr auf ein Azure Cosmos-Konto zugreifen.
 
-* Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert.
+* Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert. Wenn ein privater Endpunkt in einem Subnetz konfiguriert ist, in dem auch der Dienstendpunkt konfiguriert ist:
+  * Datenverkehr zu dem vom privaten Endpunkt zugeordneten Datenbankkonto wird über den privaten Endpunkt geleitet.
+  * Datenverkehr zu anderen Datenbankkonten aus dem Subnetz wird über den Dienstendpunkt geleitet.
 
-* Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, ist das Azure Cosmos-Konto nur über die privaten Endpunkte zugänglich. Wenn Sie keinen öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren, ist das Konto nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte für das gesamte Netzwerk offen.
+* Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, ist das Azure Cosmos-Konto nur über die privaten Endpunkte zugänglich. Wenn Sie keinen öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren, ist das Konto nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte für das gesamte Netzwerk offen, es sei denn, PublicNetworkAccess wurde deaktiviert (siehe Abschnitt unten).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Blockieren des Zugriffs auf öffentliche Netzwerke während der Kontoerstellung
 

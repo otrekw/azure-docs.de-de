@@ -55,7 +55,7 @@ Wenn Sie über nicht verwaltete Datenträger verfügen, die nicht an einen virtu
 
 1. Klicken Sie auf **Löschen**.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Screenshot: Blatt mit einem nicht verwalteten Datenträger mit Hervorhebung von „Löschen".":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Screenshot: Blatt mit einem nicht verwalteten Datenträger mit Hervorhebung von Löschen.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

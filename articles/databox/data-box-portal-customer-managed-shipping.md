@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c26f50d858d316cab0d4533187494e023cea5071
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748929"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266167"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal
 
@@ -41,7 +41,7 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 3. Nachdem Sie Ihre Lieferadresse angegeben haben, müssen Sie sie überprüfen und dann Ihre Bestellung abschließen.
    ![Selbst verwalteter Versand](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Sobald das Gerät vorbereitet wurde, können Sie eine Abholung planen.
+4. Sobald das Gerät vorbereitet ist und Sie eine E-Mail-Benachrichtigung dafür erhalten, können Sie eine Abholung planen.
 
    Wechseln Sie in Ihrer Azure Data Box-Bestellung zu **Übersicht**, und wählen Sie **Abholung planen** aus.
 
@@ -57,7 +57,7 @@ Beim Aufgeben einer Data Box-Bestellung können Sie die Option für selbst verwa
 
    ![Anzeigen Ihres Autorisierungscodes](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Notieren Sie sich diesen **Autorisierungscode**. Gemäß den Sicherheitsanforderungen muss bei der Planung von Abholung und Abgabe der Name der Person mitgeteilt werden, die diese beiden Schritte ausführen wird.
+   Notieren Sie sich diesen **Autorisierungscode**. Gemäß den Sicherheitsanforderungen muss bei der Planung der Abholung der Name der Person angegeben werden, die das Gerät abholt.
 
    Darüber hinaus müssen Sie Details zu der Person angeben, die zur Abholung in das Rechenzentrum kommen wird. Sie oder Ihre Kontaktperson müssen einen amtlichen Lichtbildausweis mit sich führen, der im Rechenzentrum überprüft wird.
 

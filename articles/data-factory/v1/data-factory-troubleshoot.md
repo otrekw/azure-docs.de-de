@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931585"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195901"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
@@ -29,7 +29,7 @@ Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung vo
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Error: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
 Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie folgendermaßen vor:
 
 1. Starten Sie Azure PowerShell.
@@ -61,10 +61,10 @@ Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder e
     Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche „Menü öffnen“ (drei waagerechte Striche oben rechts), klicken Sie auf „Add-Ons“, suchen Sie nach dem Stichwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
 * Verwenden Sie den Link **Manuelles Setup** , der im Portal auf dem gleichen Blatt angezeigt wird. Mit dieser Vorgehensweise laden Sie die Installationsdatei herunter und führen Sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank
+### <a name="problem-fail-to-connect-to-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit SQL Server
 Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problem: Eingabeslices haben dauerhaft den Status „Waiting“
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problem: Eingabeslices haben dauerhaft den Status „Warten“.
 Die Slices können sich aus verschiedenen Gründen im Status **Warten** befinden. Einer der häufigsten Gründe ist, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Diese Eigenschaft weist darauf hin, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
 Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external** . Sie können optional **externalData*** angeben, wenn Sie „external“ auf „true“ festlegen.

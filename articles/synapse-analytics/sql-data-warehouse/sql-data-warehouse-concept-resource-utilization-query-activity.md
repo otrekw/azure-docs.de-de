@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653019"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012907"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Überwachen der Ressourcennutzung und Abfrageaktivität in Azure Synapse Analytics
 
@@ -49,7 +49,7 @@ Im Azure-Portal stehen die folgenden Metriken für Synapse SQL zur Verfügung. D
 Beim Anzeigen von Metriken und Festlegen von Warnungen zu berücksichtigende Aspekte:
 
 - Die verwendete DWU stellt nur eine **allgemeine Darstellung der Nutzung** im SQL-Pool dar und soll nicht als umfassender Indikator der Auslastung dienen. Um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll, sollten Sie alle Faktoren berücksichtigen, die von DWU betroffen sein können, etwa Parallelität, Arbeitsspeicher, tempdb und adaptive Cachekapazität. Es wird empfohlen, [ihre Workload mit verschiedenen DWU-Einstellungen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) auszuführen, um zu ermitteln, was für Ihre Geschäftsziele am besten funktioniert.
-- Fehlerhafte und erfolgreiche Verbindungen werden für ein bestimmtes Data Warehouse gemeldet – nicht für den logischen Server.
+- Fehlerhafte und erfolgreiche Verbindungen werden für ein bestimmtes Data Warehouse gemeldet – nicht für den Server selbst.
 - Der Prozentsatz des Arbeitsspeichers spiegelt die Auslastung auch dann wider, wenn sich das Data Warehouse im Leerlauf befindet – er gibt nicht die Speichernutzung durch die aktive Workload wieder. Verwenden Sie diese Metrik zusammen mit anderen (tempdb, Gen2-Cache), und verfolgen Sie sie, um eine ganzheitliche Entscheidung darüber zu treffen, ob eine Skalierung auf zusätzliche Cache Kapazität die Workloadleistung entsprechend Ihren Anforderungen steigert.
 
 ## <a name="query-activity"></a>Abfrageaktivität

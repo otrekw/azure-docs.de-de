@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
+ms.date: 05/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 8253b784a427ceb3842b6b4d585c52a2c30e0c4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 608ff7366acf655b12b5a1eb0faf540249c0c1f7
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592422"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204700"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
-In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
+In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
 
 ## <a name="scenarios"></a>Szenarien
 Im Folgenden sehen Sie ein paar der Szenarien, die von diesem Feature unterstützt werden: 
@@ -30,11 +30,7 @@ Im Folgenden sehen Sie ein paar der Szenarien, die von diesem Feature unterstüt
 - Ein Lab-Kontoadministrator fügt dem Lab-Konto einen Katalogs mit freigegebenen Images an. Ein Lab-Ersteller (Kursleiter) speichert das angepasste Image seines Labs im Katalog mit freigegebenen Images. Andere Lab-Ersteller können dann dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Labs zu erstellen. 
 
     Wenn ein Image in eine Shared Image Gallery gespeichert wird, repliziert Azure Lab Services das gespeicherte Image in andere Regionen, die in derselben [Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) verfügbar sind. Dadurch wird sichergestellt, dass das Image für Labs verfügbar ist, die in anderen Regionen innerhalb derselben Geografie erstellt wurden. Das Speichern von Images in einer Shared Image Gallery führt zu zusätzlichen Kosten, einschließlich der Kosten für alle replizierten Images. Diese Kosten entstehen zusätzlich zu den Kosten für die Azure Lab Services-Nutzung. Weitere Informationen zu Preisen der Shared Image Gallery finden Sie unter [Shared Image Gallery – Preise]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
-
-    > [!NOTE]
-    > Azure Lab Services unterstützt die Erstellung von Vorlagen-VMs auf Grundlage von **generalisierten** und von **spezialisierten** Images in einem Katalog mit freigegebenen Images. 
-
-
+    
 ## <a name="prerequisites"></a>Voraussetzungen
 - Erstellen Sie mithilfe von [Azure PowerShell](../../virtual-machines/windows/shared-images.md) oder über die [Azure-Befehlszeilenschnittstelle](../../virtual-machines/linux/shared-images.md) einen Katalog mit freigegebenen Images.
 - Sie haben den Katalog mit freigegebenen Images an das Lab-Konto angefügt. Schrittweise Anweisungen finden Sie unter [Anfügen oder Trennen eines Katalogs mit freigegebenen Images](how-to-attach-detach-shared-image-gallery.md).
@@ -56,17 +52,19 @@ Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Lab-Konto
 
     ![Export erfolgreich](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-    > [!NOTE]
-    > Nachdem Sie das Image in dem Katalog mit freigegebenen Images gespeichert haben, können Sie dieses Image beim Erstellen eines anderen Labs aus dem Katalog verwenden. 
-    > 
-    > Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter [Katalog mit freigegebenen Images: Übersicht](../../virtual-machines/windows/shared-images.md). 
+    Nachdem Sie das Image in dem Katalog mit freigegebenen Images gespeichert haben, können Sie dieses Image beim Erstellen eines anderen Labs aus dem Katalog verwenden. Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter [Katalog mit freigegebenen Images: Übersicht](../../virtual-machines/windows/shared-images.md). 
 
-    
+    > [!IMPORTANT]
+    > Wenn Sie in Azure Lab Services ein [Vorlagenimage eines Labs in einem Katalog mit freigegebenen Images speichern](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery), wird das Image als ein **spezialisiertes Image** in den Katalog hochgeladen. Bei [spezialisierten Images](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) werden computerspezifische Informationen und Benutzerprofile beibehalten. Sie können weiterhin ein generalisiertes Image direkt in den Katalog außerhalb von Azure Lab Services hochladen.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Verwenden eines Images aus dem Katalog mit freigegebenen Images
 Lehrer/Dozenten können beim Erstellen eines neuen Labs ein benutzerdefiniertes Image aus dem Katalog mit freigegebenen Images als Vorlage auswählen.
 
 ![Verwenden eines VM-Images aus dem Katalog](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
+> [!NOTE]
+> Sie können eine Vorlagen-VM basierend auf **generalisierten** und **spezialisierten** Images in Azure Lab Services erstellen. 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md).
+Weitere Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries).

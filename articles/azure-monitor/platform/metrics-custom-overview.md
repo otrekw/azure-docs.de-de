@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837310"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299824"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -30,7 +30,7 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
 - Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model-and-rentention"></a>Preismodell und Aufbewahrung
+## <a name="pricing-model-and-retention"></a>Preismodell und Aufbewahrung
 
 Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). Bestimmte Preisdetails für alle Metriken, einschließlich benutzerdefinierter Metriken, und Metrikabfragen finden Sie auf dieser Seite. Zusammenfassend fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Doch für benutzerdefinierte Metriken werden Kosten anfallen, sobald sie die Phase der allgemeinen Verfügbarkeit erreichen. Metrik-API-Abfragen verursachen Kosten.
 
@@ -196,6 +196,7 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 |USA (Mitte)      | https:\//centralus.monitoring.azure.com |
 |Kanada, Mitte | https:\//canadacentral.monitoring.azure.comc
 |East US| https:\//eastus.monitoring.azure.com/ |
+|USA (Ost) 2 | https:\//eastus2.monitoring.azure.com/
 | **Europa** | |
 |Nordeuropa    | https:\//northeurope.monitoring.azure.com/ |
 |Europa, Westen     | https:\//westeurope.monitoring.azure.com/ |

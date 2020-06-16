@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641607"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112777"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Erkenntnisse und Berichterstellung zum bedingten Zugriff
 
@@ -98,6 +98,23 @@ Zeigen Sie die Aufschlüsselung der Benutzer und Anmeldungen für die jeweiligen
 Sie können unten im Dashboard auch die Anmeldungen eines bestimmten Benutzers überprüfen. Die Abfrage auf der linken Seite zeigt die häufigsten Benutzer an. Wenn Sie einen Benutzer auswählen, wird die Abfrage nach rechts gefiltert.  
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Warum schlagen Abfragen aufgrund eines Berechtigungsfehlers fehl?
+
+Um auf die Arbeitsmappe zuzugreifen, benötigen Sie die richtigen Berechtigungen für Azure AD und den Log Analytics-Arbeitsbereich. Um zu testen, ob Sie über die richtigen Berechtigungen für den Arbeitsbereich verfügen, führen Sie eine Log Analytics-Beispielabfrage aus:
+
+1. Melden Sie sich beim **Azure-Portal** an.
+1. Navigieren Sie zu **Azure Active Directory** > **Protokolle**.
+1. Geben Sie `SigninLogs` im Abfragefeld ein, und wählen Sie **Ausführen** aus.
+1. Wenn die Abfrage keine Ergebnisse zurückgibt, wurde der Arbeitsbereich möglicherweise nicht ordnungsgemäß konfiguriert. 
+
+![Problembehandlung bei fehlgeschlagenen Abfragen](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Weitere Informationen zum Streamen von Azure AD Anmeldeprotokollen in einen Log Analytics-Arbeitsbereich finden Sie im Artikel [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Warum ist der Parameter für Richtlinien für bedingten Zugriff leer?
+
+Die Liste der Richtlinien wird anhand der Richtlinien generiert, die für das letzte Anmeldeereignis ausgewertet wurden. Wenn es in Ihrem Mandanten keine aktuellen Anmeldungen gibt, müssen Sie möglicherweise einige Minuten warten, bis die Arbeitsmappe die Liste der Richtlinien für bedingten Zugriff lädt. Dies kann unmittelbar nach dem Konfigurieren von Log Analytics passieren oder länger dauern, wenn ein Mandant über keine aktuelle Anmeldeaktivität verfügt.
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>Warum dauert das Laden der Arbeitsmappe so lange?  
 

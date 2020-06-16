@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: In diesem Artikel wird das Einrichten eines Azure Kubernetes Service-Clusters für Azure Dev Spaces beschrieben.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873548"
+ms.locfileid: "83995886"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Einrichten eines Clusters für Azure Dev Spaces
 
@@ -18,7 +18,7 @@ Azure Dev Spaces bietet Ihnen mehrere Möglichkeiten, Kubernetes-Anwendungen sch
 
 ## <a name="prepare-your-aks-cluster"></a>Vorbereiten Ihres AKS-Clusters
 
-Vergewissern Sie sich bei der Vorbereitung des AKS-Clusters für Dev Spaces, dass sich der Cluster in einer Region befindet, die [in Azure Dev Spaces unterstützt wird][supported-regions], und dass Kubernetes 1.10.3 oder höher ausgeführt wird. Um Azure Dev Spaces in Ihrem Cluster über das Azure-Portal zu aktivieren, navigieren Sie zu Ihrem Cluster, klicken Sie auf *Dev Spaces*, ändern Sie *Dev Spaces verwenden* in *Ja*, und klicken Sie auf *Speichern*. Sie können Azure Dev Spaces auch über die Azure-Befehlszeilenschnittstelle aktivieren, indem Sie `az aks use-dev-spaces` ausführen.
+Vergewissern Sie sich bei der Vorbereitung des AKS-Clusters für Dev Spaces, dass sich der Cluster in einer Region befindet, die [in Azure Dev Spaces unterstützt wird][supported-regions], und dass Kubernetes 1.10.3 oder höher ausgeführt wird. Sie können Azure Dev Spaces über die Azure-Befehlszeilenschnittstelle aktivieren, indem Sie `az aks use-dev-spaces` ausführen.
 
 Ein Beispiel für das Einrichten eines AKS-Clusters für Dev Spaces finden Sie in der [Schnellstart für die Entwicklung im Team][quickstart-team].
 

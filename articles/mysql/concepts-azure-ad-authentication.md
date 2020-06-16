@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635287"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142077"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -74,6 +74,7 @@ Nachdem Sie sich über Active Directory authentifiziert haben, rufen Sie ein Tok
 
 ## <a name="additional-considerations"></a>Weitere Überlegungen
 
+- Azure Active Directory-Authentifizierung ist nur für MySQL 5.7 und höher verfügbar.
 - Es kann immer nur ein einzelner Azure AD-Administrator für einen Azure Database for MySQL-Server konfiguriert werden.
 - Nur ein Azure AD-Administrator für MySQL kann zunächst über ein Azure Active Directory-Konto eine Verbindung mit Azure Database for MySQL herstellen. Der Active Directory-Administrator kann weitere Azure AD-Datenbankbenutzer konfigurieren.
 - Wenn ein Benutzer aus Azure AD gelöscht wird, kann dieser Benutzer sich nicht mehr bei Azure AD authentifizieren, und daher ist es nicht mehr möglich, ein Zugriffstoken für diesen Benutzer abzurufen. In diesem Fall ist es nicht möglich, mit diesem Benutzer eine Verbindung mit dem Server herzustellen, obwohl der entsprechende Benutzer weiterhin in der Datenbank vorhanden ist.

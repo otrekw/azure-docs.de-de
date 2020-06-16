@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: ab2165cb6b48e58a7adca7093f7ff82d10495066
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739480"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196483"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -45,7 +45,7 @@ Bei der v2-SKU basiert das Preismodell auf der Nutzung und ist nicht mehr an die
 - **Festpreis**: Dies ist der Preis pro Stunde (oder Teil einer Stunde) für die Bereitstellung eines Standard_v2- oder WAF_v2-Gateways. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist.
 - **Preis nach Kapazitätseinheit**: Dies sind die nutzungsbasierten Kosten, die zusätzlich zu den Fixkosten berechnet werden. Die Gebühr für Kapazitätseinheiten wird ebenfalls für volle oder teilweise Stunden berechnet. Die Kapazitätseinheit setzt sich aus drei Größen zusammen: Compute-Einheit, permanente Verbindungen und Durchsatz. Die Compute-Einheit ein Maß für die genutzte Prozessorkapazität. Faktoren, die sich auf die Compute-Einheit auswirken, sind TLS-Verbindungen/Sekunde, URL-Rewrite-Berechnungen und Verarbeitung von WAF-Regeln. Permanente Verbindung ist ein Maß für eingerichtete TCP-Verbindungen mit Application Gateway in einem bestimmten Abrechnungsintervall. Der Durchsatz ist die durchschnittliche Anzahl von Megabits pro Sekunde, die vom System in einem bestimmten Abrechnungsintervall verarbeitet werden.  Die Abrechnung erfolgt für alles, was die reservierte Instanzanzahl übersteigt, auf Kapazitätseinheitsebene.
 
-Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit oder 2500 permanente Verbindungen oder 2,22 MBit/s Durchsatz.
+Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit, 2500 permanente Verbindungen und 2,22 MBit/s Durchsatz.
 
 Leitfaden für Compute-Einheit:
 

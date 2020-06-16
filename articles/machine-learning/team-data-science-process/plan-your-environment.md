@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76710324"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267939"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
@@ -75,7 +75,7 @@ Erwägen Sie den Einsatz von Azure Data Factory (ADF), wenn Daten kontinuierlich
 * ein Hybridszenario für sowohl lokale als auch cloudbasierte Ressourcen
 * ein Szenario, in dem die Daten durch die Geschäftslogik im Zuge der Migration transaktiert, modifiziert oder geändert werden.
 
-Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory](move-sql-azure-adf.md).
+Weitere Informationen finden Sie unter [Verschieben von Daten von einer SQL Server-Datenbank zu SQL Azure mithilfe von Azure Data Factory](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Wie viele Daten werden in Azure verschoben?
 
@@ -145,12 +145,12 @@ Es gibt viele Optionen für Tools, Sprachen und Entwicklungsumgebungen. Achten S
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Welche Tools sollen Sie für die Datenanalyse verwendet werden?
 
-* [Microsoft Azure Powershell](/powershell/azure/overview): eine Skriptsprache zum Verwalten von Azure-Ressourcen
+* [Microsoft Azure PowerShell](/powershell/azure/overview): eine Skriptsprache zum Verwalten von Azure-Ressourcen
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter-Notebooks](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

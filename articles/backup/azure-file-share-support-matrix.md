@@ -3,26 +3,27 @@ title: Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-Dateifreigaben.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: references_regions
+ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684627"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193866"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben
 
 Sie können den [Azure Backup-Dienst](https://docs.microsoft.com/azure/backup/backup-overview) verwenden, um Azure-Dateifreigaben zu sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen bei der Sicherung von Azure-Dateifreigaben mit Azure Backup.
 
-## <a name="supported-geos"></a>Unterstützte geografische Räume
+## <a name="supported-regions"></a>Unterstützte Regionen
 
-Die Sicherung von Azure-Dateifreigaben ist in den folgenden geografischen Räumen verfügbar:
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Regionen mit allgemeiner Verfügbarkeit für die Sicherung von Azure-Dateifreigaben
 
-**Regionen mit allgemeiner Verfügbarkeit:**<br>
-Australien, Südosten (ASE); Kanada, Mitte (CNC); USA, Westen-Mitte (WCUS); USA, Süden-Mitte (SCUS); USA, Westen 2 (WUS 2); Indien, Süden (INS); USA, Norden-Mitte (NCUS); Japan, Osten (JPE); Brasilien, Süden (BRS); Asien, Südosten (SEA); Schweiz, Westen (SZW); VAE, Mitte (UAC); Norwegen, Osten (NWE); Indien, Westen (INW); Australien, Mitte (ACL); Korea, Mitte (KRC); Japan, Westen (JPW); Südafrika, Norden (SAN); Vereinigtes Königreich, Süden (UKS); Vereinigtes Königreich, Westen (UKW); Korea, Süden (KRS); Europa, Norden (NE); Deutschland, Norden (GN); Norwegen, Westen (NWW); Südafrika, Westen (SAW); Schweiz, Norden (SZN); Deutschland, Westen-Mitte (GWC); VAE, Norden (UAN); Frankreich, Mitte (FRC); Indien, Mitte (INC); Kanada, Osten (CNE); Asien, Osten (EA); Australien, Osten (AE); USA, Mitte (CUS); USA, Westen (WUS); US Gov Arizona (UGA); US Gov Texas (UGT); US Gov Virginia (UGV); US DoD, Mitte (UDC); US DoD, Osten (UDE)
+Die Sicherung von Azure-Dateifreigaben ist in allen Regionen verfügbar **mit Ausnahme von**: „Deutschland, Mitte (Sovereign)“, „Deutschland, Nordosten (Sovereign)“, „China, Osten“, „China, Osten 2“, „China, Norden“, „China, Norden 2“, „US Gov Iowa“
 
-**Unterstützte Regionen (im Rahmen der Vorschau, aber noch nicht allgemein verfügbar):**<br>
-USA, Osten (EUS); USA, Osten 2 (EUS2); Europa, Westen (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>Unterstützte Regionen für Schutz vor versehentlichem Löschen
+
+USA, Westen-Mitte
 
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 

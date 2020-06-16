@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36d580b7659325d4bf5f13889f774ddaa2ab0702
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594249"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259268"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Einrichten der lokalen Entwicklung für Azure Static Web Apps (Vorschau)
 
@@ -64,7 +64,7 @@ Die Live Server-Erweiterung für Visual Studio Code verfügt über einen Webserv
 
 #### <a name="create-a-repository"></a>Erstellen eines Repositorys
 
-1. Navigieren Sie zu [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate), und erstellen Sie mit dieser Vorlage ein neues GitHub-Projekt mit dem Namen **vanilla-api**.
+1. Stellen Sie sicher, dass Sie bei GitHub angemeldet sind. Navigieren Sie zu [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate), und erstellen Sie mit dieser Vorlage ein neues GitHub-Projekt namens **vanilla-api**.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub-Fenster für neues Repository":::
 
@@ -195,7 +195,7 @@ Weitere Informationen zum Konfigurieren von Umgebungsdateien für Front-End-Java
 
 1. Drücken Sie **F1**, um die Befehlspalette zu öffnen.
 
-1. Geben Sie **Live Server** ein, und wählen Sie **Live Server: Mit Live Server öffnen** aus.
+1. Geben Sie **Live Server** ein, und wählen Sie **Live Server: Mit Live-Server öffnen** aus.
 
 1. Aktualisieren Sie die Anwendung, die unter `http://locahost:3000` ausgeführt wird. Im Browser wird jetzt die Meldung angezeigt, die von der API zurückgegeben wurde.
 

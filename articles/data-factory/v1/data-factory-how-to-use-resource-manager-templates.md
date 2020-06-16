@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460731"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194459"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460731"
 ## <a name="overview"></a>Übersicht
 Wenn Sie Azure Data Factory für die Integration Ihrer Daten verwenden, kann es vorkommen, dass Sie dasselbe Muster in verschiedenen Umgebungen verwenden oder dass Sie innerhalb einer Lösung wiederholt denselben Task implementieren. Diese Szenarios lassen sich mithilfe von Vorlagen einfach implementieren und verwalten. Vorlagen in Azure Data Factory sind ideal für Szenarios, bei denen Wiederverwendbarkeit und Wiederholungen möglich sind.
 
-Nehmen wir an, ein Unternehmen verfügt weltweit über 10 Produktionsanlagen. Die Protokolle jeder einzelnen Anlage werden separat in einer lokalen SQL Server-Datenbank gespeichert. Das Unternehmen möchte in der Cloud ein einzelnes Data Warehouse für Ad-hoc-Analysen erstellen. Außerdem sollen in Entwicklungs-, Test- und Produktionsumgebungen zwar dieselbe Logik, aber unterschiedliche Konfigurationen verwendet werden.
+Nehmen wir an, ein Unternehmen verfügt weltweit über 10 Produktionsanlagen. Die Protokolle jeder einzelnen Anlage werden in einer separaten SQL Server-Datenbank gespeichert. Das Unternehmen möchte in der Cloud ein einzelnes Data Warehouse für Ad-hoc-Analysen erstellen. Außerdem sollen in Entwicklungs-, Test- und Produktionsumgebungen zwar dieselbe Logik, aber unterschiedliche Konfigurationen verwendet werden.
 
 In diesem Fall muss eine Aufgabe zwar in derselben Umgebung, jedoch mit unterschiedlichen Werten für jede der 10 Data Factorys wiederholt werden. Es findet eine **Wiederholung** statt. Die Verwendung von Vorlagen ermöglicht die Abstraktion dieses generischen Ablaufs (= in den Pipelines aller Data Factorys finden dieselben Aktivitäten statt). Jedoch wird für jede Produktionsanlage eine eigene Parameterdatei verwendet.
 
@@ -34,11 +34,11 @@ Das Unternehmen möchte diese 10 Data Factorys darüber hinaus mehrfach in versc
 ## <a name="templating-with-azure-resource-manager"></a>Verwenden von Vorlagen in Azure Resource Manager
 [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 
-## <a name="tutorials"></a>Lernprogramme
+## <a name="tutorials"></a>Tutorials
 Schritt-für-Schritt-Anleitungen zum Erstellen von Data Factory-Entitäten mithilfe von Resource Manager-Vorlagen finden Sie in den folgenden Tutorials:
 
-* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Tutorial: Create a pipeline to process data by using Azure Resource Manager template (Tutorial: Erstellen einer Pipeline zum Verarbeiten von Daten mithilfe einer Azure Resource Manager-Vorlage)](data-factory-build-your-first-pipeline.md)
+* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)
+* [Tutorial: Create a pipeline to process data by using Azure Resource Manager template](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen einer Pipeline zum Verarbeiten von Daten mithilfe einer Azure Resource Manager-Vorlage)
 
 ## <a name="data-factory-templates-on-github"></a>Data Factory-Vorlagen auf GitHub
 Sehen Sie sich die folgenden Azure-Schnellstartvorlagen auf GitHub an:

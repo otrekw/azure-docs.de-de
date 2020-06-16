@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 66043ae4f569e4151be829ca361232accb2f0ebd
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681700"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219382"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure-Sicherheitsbaseline für Azure Databricks
 
@@ -404,7 +404,7 @@ Hinweis: Für Azure Databricks-Diagnoseprotokolle ist der Azure Databricks Pr
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**Leitfaden**: Azure AD enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben. Sie können auch SCIM-APIs und Azure Databricks-Diagnoseprotokolle implementieren, um den Benutzerzugriff zu überprüfen. Sie können auch SCIM-APIs und Azure Databricks-Diagnoseprotokolle verwenden, um den Benutzerzugriff zu überprüfen.
+**Leitfaden**: Azure AD enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben. Sie können auch SCIM-APIs und Azure Databricks-Diagnoseprotokolle implementieren, um den Benutzerzugriff zu überprüfen.
 
 Überprüfen und verwalten Sie außerdem regelmäßig den Benutzerzugriff in der Azure Databricks-Verwaltungskonsole.
 
@@ -798,7 +798,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 * [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -968,7 +968,7 @@ Führen Sie eine Vorabprüfung aller Dateien durch, die in Ihre Azure Databrick
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Durchführen vollständiger Systemsicherungen und Sichern aller von Kunden verwalteten Schlüssel
 
-**Leitfaden**: Sichern Sie kundenseitig verwaltete Schlüssel im Zusammenhang mit Ihren Azure Databricks-Implementierungen in Azure Key Vault. Sie können auch die REST-API und die Befehlszeilenschnittstelle verwenden, um eine tägliche Sicherung von Databricks-Konfigurationen zu erstellen. Sie können auch die REST-API/Befehlszeilenschnittstelle verwenden, um eine tägliche Sicherung von Databricks-Konfigurationen zu erstellen.
+**Leitfaden**: Sichern Sie kundenseitig verwaltete Schlüssel im Zusammenhang mit Ihren Azure Databricks-Implementierungen in Azure Key Vault. Sie können auch die REST-API und/oder CLI verwenden, um eine tägliche Sicherung von Databricks-Konfigurationen zu erstellen.
 
 * [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

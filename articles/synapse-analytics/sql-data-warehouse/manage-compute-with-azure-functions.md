@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631966"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014892"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Verwalten von Computeressourcen mit Azure Functions im SQL-Pool von Azure Synapse Analytics
 
@@ -29,7 +29,7 @@ Zum Nutzen einer Azure-Funktions-App mit SQL-Pool müssen Sie ein [Dienstprinzip
 Sie benötigen die folgenden Informationen, um die Vorlage bereitzustellen:
 
 - Name der Ressourcengruppe, in der sich Ihre SQL-Pool-Instanz befindet
-- Name des logischen Servers, auf dem sich Ihre SQL-Pool-Instanz befindet
+- Name des Servers, auf dem sich Ihre SQL-Pool-Instanz befindet
 - Name Ihrer SQL-Pool-Instanz
 - Mandanten-ID (Verzeichnis-ID) Ihrer Azure Active Directory-Instanz
 - Abonnement-ID
@@ -101,7 +101,7 @@ Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Mit diesen
 
    ![Erstellen einer neuen Funktion](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Wählen Sie unter „Sprache“ die Option *JavaScript* und dann *TimerTrigger*.
+2. Wählen Sie als Sprache *JavaScript* und dann *TimerTrigger* aus.
 
    ![Erstellen einer neuen Funktion](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Mit diesen
 
 5. Legen Sie Ihre Vorgangsvariable wie folgt auf das gewünschte Verhalten fest:
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"

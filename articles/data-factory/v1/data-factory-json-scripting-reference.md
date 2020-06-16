@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3492f917be8116d0eed0c7ec03ed8aa9ff506520
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cc316636c3f708d4b3ef81a22f57dab9b140d2fa
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346596"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195951"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -2446,15 +2446,15 @@ Weitere Informationen finden Sie im Artikel zum [SAP HANA-Connector](data-factor
 ## <a name="sql-server"></a>SQL Server
 
 ### <a name="linked-service"></a>Verknüpfter Dienst
-Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um eine lokale SQL Server-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit der lokalen SQL Server-Datenbank verknüpften Dienst spezifisch sind.
+Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um eine SQL Server-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
-| connectionString |Geben Sie "connectionString"-Informationen an, die zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank mithilfe der SQL Server- oder Windows-Authentifizierung benötigt werden. |Ja |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank verwenden soll. |Ja |
+| connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. |Ja |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der SQL Server-Datenbank verwenden soll. |Ja |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\username**. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 
@@ -2481,7 +2481,7 @@ Sie können Anmeldeinformationen mithilfe des Cmdlets **New-AzDataFactoryEncrypt
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>Beispiel: JSON-Code für die Windows-Authentifizierung
 
-Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom Gateway genutzt, um die Identität des angegebenen Benutzerkontos zu übernehmen und eine Verbindung mit der lokalen SQL Server-Datenbank herzustellen. Andernfalls stellt das Gateway direkt im Sicherheitskontext des Gateways (mit dessen Startkonto) eine Verbindung mit der SQL Server-Instanz her.
+Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom Gateway genutzt, um die Identität des angegebenen Benutzerkontos zu übernehmen und eine Verbindung mit der SQL Server-Datenbank herzustellen. Andernfalls stellt das Gateway direkt im Sicherheitskontext des Gateways (mit dessen Startkonto) eine Verbindung mit der SQL Server-Instanz her.
 
 ```json
 {
@@ -5001,15 +5001,15 @@ Das folgende Beispiel enthält eine JSON-Definition für einen mit Azure Data La
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline.
 
 ### <a name="linked-service"></a>Verknüpfter Dienst
-Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um eine lokale SQL Server-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit der lokalen SQL Server-Datenbank verknüpften Dienst spezifisch sind.
+Sie erstellen einen verknüpften Dienst des Typs **OnPremisesSqlServer**, um eine SQL Server-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
-| connectionString |Geben Sie "connectionString"-Informationen an, die zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank mithilfe der SQL Server- oder Windows-Authentifizierung benötigt werden. |Ja |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank verwenden soll. |Ja |
+| connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. |Ja |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der SQL Server-Datenbank verwenden soll. |Ja |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\username**. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 
@@ -5036,7 +5036,7 @@ Sie können Anmeldeinformationen mithilfe des Cmdlets **New-AzDataFactoryEncrypt
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>Beispiel: JSON-Code für die Windows-Authentifizierung
 
-Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom Gateway genutzt, um die Identität des angegebenen Benutzerkontos zu übernehmen und eine Verbindung mit der lokalen SQL Server-Datenbank herzustellen. Andernfalls stellt das Gateway direkt im Sicherheitskontext des Gateways (mit dessen Startkonto) eine Verbindung mit der SQL Server-Instanz her.
+Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom Gateway genutzt, um die Identität des angegebenen Benutzerkontos zu übernehmen und eine Verbindung mit der SQL Server-Datenbank herzustellen. Andernfalls stellt das Gateway direkt im Sicherheitskontext des Gateways (mit dessen Startkonto) eine Verbindung mit der SQL Server-Instanz her.
 
 ```json
 {

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f51f6867d773c906d2df24c7e61ad897a4304f6
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75863841"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258884"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Time Series Insights in Power BI
 
@@ -74,7 +74,7 @@ Erste Schritte:
        [![Warm Storage-Warnung](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage**{3}{4}konfigurieren.
+       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage**konfigurieren.
 
 1. Wählen Sie **Abfrage in Zwischenablage kopieren** aus.
 1. Starten Sie jetzt Power BI Desktop.
@@ -111,8 +111,10 @@ Nachdem Sie die Daten jetzt in Power BI importiert haben, ist es an der Zeit, ei
     [![Auswählen der Ansicht „Bericht“](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  Wählen Sie in der Spalte **Visualisierungen** das gewünschte visuelle Element aus. Wählen Sie z. B. **Liniendiagramm** aus. Dadurch wird Ihrem Canvas ein leeres Liniendiagramm hinzugefügt.
- 
-1.  Wählen Sie in der Liste **Felder** die Option **Zeitstempel** aus, und ziehen Sie sie in das Feld **Achse**, um Elemente entlang der X-Achse anzuzeigen.
+
+1.  Wählen Sie in der Liste **Felder** die Option **_Timestamp** aus, und ziehen Sie sie in das Feld **Achse**, um Elemente entlang der X-Achse anzuzeigen. Stellen Sie sicher, dass als Wert für die **Achse** zu **_Timestamp** gewechselt wird (Standard ist **Datumshierarchie**).
+
+    [![Auswählen der Ansicht „Bericht“](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  Wählen Sie erneut in der Liste **Felder** die Option **TimeSeriesId** aus, und ziehen Sie sie in das Feld **Werte**, um Elemente entlang der Y-Achse anzuzeigen.
 

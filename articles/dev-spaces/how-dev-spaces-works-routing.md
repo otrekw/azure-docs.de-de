@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert, und die Funktionsweise von Routing
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241240"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307417"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Funktionsweise von Routing mit Azure Dev Spaces
 
@@ -64,12 +64,12 @@ Wird *azureuser* verwendet, werden alle Anforderungen an *serviceA* an die aktua
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Einige Beispiele für die Verwendung von Routing für schnelle Iterationen und die schnelle Entwicklung in Azure Dev Spaces finden Sie unter [Funktionsweise beim Verbinden Ihres Entwicklungscomputers mit Ihrem Entwicklungsbereich ][how-it-works-connect], [Funktionsweise von Remotedebuggen Ihres Codes mit Azure Dev Spaces ][how-it-works-remote-debugging] und [GitHub-Aktionen und Azure Kubernetes Service][pr-flow].
+Einige Beispiele für die Verwendung von Routing für schnelle Iterationen und die schnelle Entwicklung in Azure Dev Spaces finden Sie unter [Funktionsweise des lokalen Prozesses mit Kubernetes][how-it-works-local-process-kubernetes], [Funktionsweise von Remotedebuggen Ihres Codes mit Azure Dev Spaces ][how-it-works-remote-debugging] und [GitHub Actions und Azure Kubernetes Service][pr-flow].
 
 Informationen zu den ersten Schritten bei der Verwendung von Routing mit Azure Dev Spaces für die Teamentwicklung finden Sie im Schnellstart [Teamentwicklung in Azure Dev Spaces][quickstart-team].
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

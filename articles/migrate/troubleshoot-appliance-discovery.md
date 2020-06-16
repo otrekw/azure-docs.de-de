@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677320"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235458"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -144,6 +144,23 @@ Wenn ermittelte virtuelle Computer nicht im Portal angezeigt werden oder die VM-
 
 Wenn Sie virtuelle Computer löschen und sie weiterhin im Portal angezeigt werden, warten Sie 30 Minuten. Wenn sie weiterhin angezeigt werden, aktualisieren Sie sie wie oben beschrieben.
 
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Error: Die hochgeladene Datei weist nicht das erwartete Format auf
+In einigen Tools sind regionale Einstellungen festgelegt, durch die die CSV-Datei mit Semikolon als Trennzeichen erstellt wird. Ändern Sie die Einstellungen so, dass das Trennzeichen ein Komma ist.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Ich habe eine CSV-Datei importiert, sehe aber, dass die Ermittlung ausgeführt wird
+Dieser Status wird angezeigt, wenn das Hochladen Ihrer CSV-Datei aufgrund eines Überprüfungsfehlers fehlgeschlagen ist. Versuchen Sie, die CSV-Datei erneut zu importieren. Sie können den Fehlerbericht des vorherigen Hochladevorgangs herunterladen und der Anleitung zur Fehlerbehebung in der Datei folgen, um die Fehler zu beheben. Der Fehlerbericht kann im Abschnitt „Importdetails“ auf der Seite „Computer ermitteln“ heruntergeladen werden.
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Es werden auch nach dem Aktualisieren der Gastanmeldeinformationen keine Anwendungsdetails angezeigt
+Die Anwendungsermittlung wird alle 24 Stunden ausgeführt. Wenn die Details sofort angezeigt werden sollen, führen Sie die folgenden Schritte zur Aktualisierung aus. Je nach Anzahl der ermittelten VMs kann dies einige Minuten dauern.
+
+1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
+2. Wählen Sie unter **Verwalten** die Option **Agent-Integritätsdiagnose** aus.
+3. Wählen Sie **Agent aktualisieren** aus.
+4. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen sehen.
+
+## <a name="unable-to-export-application-inventory"></a>Anwendungsbestand kann nicht exportiert werden
+Stellen Sie sicher, dass der Benutzer, der den Bestand aus dem Portal herunterlädt, über die Berechtigung „Mitwirkender“ für das Abonnement verfügt.
+
 ## <a name="common-app-discovery-errors"></a>Häufige Fehler bei der App-Ermittlung
 
 Azure Migrate unterstützt die Erkennung von Anwendungen, Rollen und Features mithilfe von Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. Die App-Ermittlung wird derzeit nur für VMware unterstützt. [Erfahren Sie mehr](how-to-discover-applications.md) über die Anforderungen und Schritte bei der Einrichtung der App-Ermittlung.
@@ -152,25 +169,26 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 
 **Fehler** | **Ursache** | **Aktion**
 --- | --- | --- | ---
-10000: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-10001: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Interner Fehler – in der Appliance fehlen einige Dateien. | Wenden Sie sich an den Microsoft Support.
-10002: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-10003: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-10004: „Installierte Anwendungen für <Windows-/Linux->Computer können nicht ermittelt werden“. |  In der Appliance wurden keine Anmeldeinformationen für den Zugriff auf <Windows-/Linux->Computer angegeben.| Fügen Sie der Appliance entsprechende Anmeldeinformationen mit Zugriff auf die <Windows-/Linux->Computer hinzu.
-10005: „Der Zugriff auf den lokalen Server ist nicht möglich“. | Die Anmeldeinformationen für den Zugriff könnten falsch sein. | Aktualisieren Sie die Anmeldeinformationen für die Appliance, um sicherzustellen, dass Sie mit ihnen auf den betreffenden Computer zugreifen können. 
-10006: „Der Zugriff auf den lokalen Server ist nicht möglich“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist.|  Verwenden Sie nur die App-Ermittlung für Windows/Linux.
+10000: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
+10001: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Interner Fehler – in der Appliance fehlen einige Dateien. | Wenden Sie sich an den Microsoft Support.
+10002: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+10003 „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+10004: „Installierte Anwendungen für <Windows-/Linux->Computer können nicht ermittelt werden.“ |  In der Appliance wurden keine Anmeldeinformationen für den Zugriff auf <Windows-/Linux->Computer angegeben.| Fügen Sie der Appliance entsprechende Anmeldeinformationen mit Zugriff auf die <Windows-/Linux->Computer hinzu.
+10005: „Der Zugriff auf den lokalen Server ist nicht möglich.“ | Die Anmeldeinformationen für den Zugriff könnten falsch sein. | Aktualisieren Sie die Anmeldeinformationen für die Appliance, um sicherzustellen, dass Sie mit ihnen auf den betreffenden Computer zugreifen können. 
+10006: „Der Zugriff auf den lokalen Server ist nicht möglich.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist.|  Verwenden Sie nur die App-Ermittlung für Windows/Linux.
 10007: „Die abgerufenen Metadaten können nicht verarbeitet werden.“ | Dieser interne Fehler trat beim Deserialisieren von JSON auf. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
-9000/9001/9002: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf dem betreffenden Computer, oder installieren Sie diese Tools erneut. Überprüfen Sie dann, ob sie funktionieren.
-9003: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-9004: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn die VM ausgeschaltet ist. | Stellen Sie für die Ermittlung sicher, dass die VM eingeschaltet ist.
+9000/9001/9002: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf dem betreffenden Computer, oder installieren Sie diese Tools erneut. Überprüfen Sie dann, ob sie funktionieren.
+9003: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
+9004: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn die VM ausgeschaltet ist. | Stellen Sie für die Ermittlung sicher, dass die VM eingeschaltet ist.
 9005: „Die auf der VM installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-9006/9007: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+9006/9007: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
 9008: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-9009: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Dies kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
-9010: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+9009: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Dies kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
+9010: „Die VM ist ausgeschaltet.“ | Die VM wurde ausgeschaltet.  | Stellen Sie sicher, dass die VM eingeschaltet ist.
 9011: „Die vom Gast herunterzuladende Datei wurde auf der Gast-VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
 9012: „Die Ergebnisdatei umfasst keine Inhalte.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
 9013: „Für jede Anmeldung bei der VMware-VM wird ein neues temporäres Profil erstellt.“ | Für jede Anmeldung bei der VM wird ein neues temporäres Profil erstellt. | Stellen Sie sicher, dass der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
+9014: „Die Metadaten können nicht aus dem Gast-VM-Dateisystem abgerufen werden.“ | Beim Herstellen einer Verbindung mit dem ESXi-Host ist ein Problem aufgetreten. | Stellen Sie sicher, dass die Appliance eine Verbindung mit Port 443 auf dem ESXi-Host herstellen kann, auf dem die VM ausgeführt wird.
 9015: „Aufgrund unzureichender Berechtigungen für vCenter konnte keine Verbindung mit VMware-VMs hergestellt werden.“ | Die Rolle „Gastvorgänge“ ist für das vCenter-Benutzerkonto nicht aktiviert. | Stellen Sie sicher, dass die Rolle „Gastvorgänge“ für das vCenter-Benutzerkonto aktiviert ist.
 9016: „Es kann keine Verbindung mit VMware-VMs hergestellt werden, da der Gastvorgänge-Agent über keine Daten verfügt.“ | Die VMware-Tools sind nicht ordnungsgemäß installiert oder nicht auf dem neuesten Stand. | Stellen Sie sicher, dass die VMware-Tools ordnungsgemäß installiert und auf dem neuesten Stand sind.
 9017: „Die Datei mit den ermittelten Metadaten wurde auf der VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125756"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258809"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -64,7 +64,7 @@ Bei der Weiterleitung werden Nachrichten mit Filtern auf vorhersehbare Weise auf
 
 
 > [!NOTE]
-> Zurzeit können Sie im Azure-Portal keine Filterregeln für Abonnements angeben. Sie können alle unterstützten SDKs oder Azure Resource Manager Vorlagen verwenden, um Abonnementregeln zu definieren. 
+> Da das Azure-Portal jetzt die Service Bus Explorer-Funktionen unterstützt, können Abonnementfilter über das Portal erstellt oder bearbeitet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Beispiele an: 
