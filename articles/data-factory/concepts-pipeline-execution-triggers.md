@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562201"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997008"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 
@@ -236,14 +236,14 @@ Damit der Zeitplantrigger die Ausführung der Pipeline startet, verwenden Sie in
 Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten Schemaelemente im Zusammenhang mit der Wiederholung und Zeitplanung eines Triggers:
 
 | JSON-Eigenschaft | BESCHREIBUNG |
-|:--- |:--- |
+| --- | --- |
 | **startTime** | Ein Datums-/Uhrzeitwert. Bei allgemeinen Zeitplänen gilt der Wert der **startTime**-Eigenschaft für das erste Vorkommen. Bei komplexen Zeitplänen wird der Trigger frühestens beim festgelegten **startTime**-Wert gestartet. |
 | **endTime** | Enddatum und -uhrzeit für den Trigger. Der Trigger wird am angegebenen Enddatum und der Enduhrzeit beendet. Der Wert für die Eigenschaft darf nicht in der Vergangenheit liegen. <!-- This property is optional. --> |
 | **timeZone** | Die Zeitzone. Derzeit wird nur die UTC-Zeitzone unterstützt. |
 | **recurrence** | Ein recurrence-Objekt, das die Wiederholungsregeln für den Trigger angibt. Das recurrence-Objekt unterstützt die Elemente **frequency**, **interval**, **endTime**, **count** und **schedule**. Wenn ein recurrence-Objekt definiert ist, ist das **frequency**-Element erforderlich. Die anderen Elemente des recurrence-Objekts sind optional. |
 | **frequency** | Die Einheit der Häufigkeit, mit welcher der Trigger wiederholt wird. Zu den unterstützten Werten gehören „minute“, „hour“, „day“, „week“ und „month“. |
 | **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt. Der **frequency**-Wert bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „week“ festgelegt, wird der Trigger alle drei Wochen ausgeführt. |
-| **schedule** | Der Wiederholungszeitplan für den Trigger. Die Wiederholung eines Triggers mit einem festgelegten **frequency**-Wert wird auf der Grundlage eines Wiederholungszeitplans angepasst. Die **schedule**-Eigenschaft enthält Anpassungen für die Wiederholung auf der Grundlage von Minuten, Stunden, Wochentagen, Monatstagen und Wochennummer.
+| **schedule** | Der Wiederholungszeitplan für den Trigger. Die Wiederholung eines Triggers mit einem festgelegten **frequency**-Wert wird auf der Grundlage eines Wiederholungszeitplans angepasst. Die **schedule**-Eigenschaft enthält Anpassungen für die Wiederholung auf der Grundlage von Minuten, Stunden, Wochentagen, Monatstagen und Wochennummer. |
 
 ### <a name="schedule-trigger-example"></a>Beispiel für Zeitplantrigger
 
@@ -282,18 +282,18 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 ### <a name="schema-defaults-limits-and-examples"></a>Schemastandards, Einschränkungen und Beispiele
 
 | JSON-Eigenschaft | type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| --- | --- | --- | --- | --- | --- |
 | **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Objekt (object) | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | number | Nein  | 1 | 1 bis 1.000 | `"interval":10` |
+| **interval** | number | Nein | 1 | 1 bis 1.000 | `"interval":10` |
 | **endTime** | Zeichenfolge | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | Objekt (object) | Nein  | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | Objekt (object) | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft
 Die folgende Tabelle zeigt, wie die **startTime**-Eigenschaft eine Triggerausführung steuert:
 
 | startTime-Wert | Wiederholung ohne Zeitplan | Wiederholung mit Zeitplan |
-|:--- |:--- |:--- |
+| --- | --- | --- |
 | **Startuhrzeit in der Vergangenheit** | Berechnet die erste zukünftige Ausführungszeit nach der Startzeit und nimmt die Ausführung zu diesem Zeitpunkt vor.<br /><br />Führt weitere Ausführungen aus, die auf der Grundlage der letzten Ausführungszeit berechnet wurden.<br /><br />Betrachten Sie das Beispiel nach dieser Tabelle. | Der Trigger startet _frühestens_ zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird.<br /><br />Berechnet weitere Ausführungen auf Grundlage des Wiederholungszeitplans. |
 | **Startzeit in der Zukunft oder aktuelle Uhrzeit** | Wird einmalig zur angegebenen Startzeit ausgeführt.<br /><br />Führt weitere Ausführungen aus, die auf der Grundlage der letzten Ausführungszeit berechnet wurden. | Der Trigger startet _frühestens_ zur angegebenen Startzeit. Das erste Vorkommen basiert auf dem Zeitplan, der auf der Grundlage der Startzeit berechnet wird.<br /><br />Berechnet weitere Ausführungen auf Grundlage des Wiederholungszeitplans. |
 
@@ -315,20 +315,17 @@ Bei Angabe mehrerer **schedule**-Elemente werden die Zeitplaneinstellungen in ab
 Die folgende Tabelle enthält eine ausführliche Beschreibung der **schedule**-Elemente:
 
 | JSON-Element | BESCHREIBUNG | Gültige Werte |
-|:--- |:--- |:--- |
-| **minutes** | Minuten der Stunde, zu denen der Trigger ausgeführt wird |– Integer<br />– Array mit ganzen Zahlen|
-| **hours** | Stunden des Tages, zu denen der Trigger ausgeführt wird |– Integer<br />– Array mit ganzen Zahlen|
-| **weekDays** | Tage der Woche, an denen der Trigger ausgeführt wird Der Wert kann nur bei wöchentlicher Häufigkeit angegeben werden.|<br />– „Monday“<br />– „Tuesday“<br />– „Wednesday“<br />– „Thursday“<br />– „Friday“<br />– „Saturday“<br />– „Sunday“<br />– Array von Tageswerten (die maximale Arraygröße ist 7)<br /><br />Bei Tageswerten wird nicht zwischen Groß- und Kleinschreibung unterschieden.|
-| **monthlyOccurrences** | Tage des Monats, an denen der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |Array mit **monthlyOccurrence**-Objekten: `{ "day": day, "occurrence": occurrence }`<br />– Das **day**-Attribut ist der Tag der Woche, an dem der Trigger ausgeführt wird. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**-Wert `{Sunday}` bedeutet jeden Sonntag des Monats. Das **day**-Attribut ist erforderlich.<br />– Das **occurrence**-Attribut ist das Vorkommen des angegebenen **day**-Attributs innerhalb des Monats. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**- und **occurrence**-Wert `{Sunday, -1}` bedeutet den letzten Sonntag des Monats. Das **occurrence**-Attribut ist optional.|
-| **monthDays** | Tag des Monats, an dem der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |– Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31<br />– Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31<br />– Array von Werten|
+| --- | --- | --- |
+| **minutes** | Minuten der Stunde, zu denen der Trigger ausgeführt wird |– Integer<br />– Array mit ganzen Zahlen |
+| **hours** | Stunden des Tages, zu denen der Trigger ausgeführt wird |– Integer<br />– Array mit ganzen Zahlen |
+| **weekDays** | Tage der Woche, an denen der Trigger ausgeführt wird Der Wert kann nur bei wöchentlicher Häufigkeit angegeben werden.|<br />– „Monday“<br />– „Tuesday“<br />– „Wednesday“<br />– „Thursday“<br />– „Friday“<br />– „Saturday“<br />– „Sunday“<br />– Array von Tageswerten (die maximale Arraygröße ist 7)<br /><br />Bei Tageswerten wird nicht zwischen Groß- und Kleinschreibung unterschieden. |
+| **monthlyOccurrences** | Tage des Monats, an denen der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |Array mit **monthlyOccurrence**-Objekten: `{ "day": day, "occurrence": occurrence }`<br />– Das **day**-Attribut ist der Tag der Woche, an dem der Trigger ausgeführt wird. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**-Wert `{Sunday}` bedeutet jeden Sonntag des Monats. Das **day**-Attribut ist erforderlich.<br />– Das **occurrence**-Attribut ist das Vorkommen des angegebenen **day**-Attributs innerhalb des Monats. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**- und **occurrence**-Wert `{Sunday, -1}` bedeutet den letzten Sonntag des Monats. Das **occurrence**-Attribut ist optional. |
+| **monthDays** | Tag des Monats, an dem der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |– Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31<br />– Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31<br />– Array von Werten |
 
 ## <a name="tumbling-window-trigger"></a>Trigger für ein rollierendes Fenster
 Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
 
 Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
-
-> [!NOTE]
-> Mit der Ausführung des Triggers für ein rollierendes Fenster *wird gewartet, bis die ausgelöste Pipelineausführung* beendet ist. Der Ausführungszustand gibt den Status der ausgelösten Pipelineausführung wieder. Wenn beispielsweise eine ausgelöste Pipelineausführung abgebrochen wird, wird die entsprechende Ausführung des Triggers für ein rollierendes Fenster als abgebrochen gekennzeichnet. Dies unterscheidet sich vom „Fire-and-Forget“-Verhalten (Auslösen und Vergessen) des Zeitplantriggers, das als erfolgreich gekennzeichnet wird, sofern eine Pipelineausführung gestartet wurde.
 
 ## <a name="event-based-trigger"></a>Ereignisbasierter Trigger
 
@@ -342,7 +339,7 @@ Dieser Abschnitt enthält Beispiele für Wiederholungszeitpläne. Der Schwerpunk
 In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt ist, und der **frequency**-Wert gemäß der Zeitplandefinition richtig ist. Beispielsweise können nicht gleichzeitig der **frequency**-Wert „day“ und die Änderung **monthDays** im **schedule**-Objekt angegeben werden. Diese Arten von Beschränkungen sind in der Tabelle im vorherigen Abschnitt beschrieben.
 
 | Beispiel | BESCHREIBUNG |
-|:--- |:--- |
+| --- | --- |
 | `{"hours":[5]}` | Ausführung täglich um 05:00 Uhr. |
 | `{"minutes":[15], "hours":[5]}` | Ausführung täglich um 05:15 Uhr. |
 | `{"minutes":[15], "hours":[5,17]}` | Ausführung täglich um 05:15 und 17:15 Uhr. |
@@ -373,15 +370,18 @@ In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt
 ## <a name="trigger-type-comparison"></a>Vergleich von Triggertypen
 Der Trigger für ein rollierendes Fenster und der Zeitplantrigger basieren jeweils auf Zeit-Heartbeats. Inwiefern unterscheiden sie sich?
 
+> [!NOTE]
+> Mit der Ausführung des Triggers für ein rollierendes Fenster *wird gewartet, bis die ausgelöste Pipelineausführung* beendet ist. Der Ausführungszustand gibt den Status der ausgelösten Pipelineausführung wieder. Wenn beispielsweise eine ausgelöste Pipelineausführung abgebrochen wird, wird die entsprechende Ausführung des Triggers für ein rollierendes Fenster als abgebrochen gekennzeichnet. Dies unterscheidet sich vom „Fire-and-Forget“-Verhalten (Auslösen und Vergessen) des Zeitplantriggers, das als erfolgreich gekennzeichnet wird, sofern eine Pipelineausführung gestartet wurde.
+
 In der folgenden Tabelle werden der Trigger für ein rollierendes Fenster und der Zeitplantrigger verglichen:
 
-|  | Trigger für ein rollierendes Fenster | Zeitplantrigger |
-|:--- |:--- |:--- |
+| Element | Trigger für ein rollierendes Fenster | Zeitplantrigger |
+| --- | --- | --- |
 | **Abgleichsszenarien** | Unterstützt. Pipelineausführungen können für Fenster in der Vergangenheit geplant werden. | Wird nicht unterstützt. Pipelineausführungen können nur in Zeiträumen ab der aktuellen Zeit und der Zukunft ausgeführt werden. |
 | **Zuverlässigkeit** | 100 % zuverlässig. Pipelineausführungen können für alle Fenster ab einem festgelegten Datum ohne Lücken geplant werden. | Weniger zuverlässig. |
 | **Wiederholungsfunktion** | Unterstützt. Für fehlgeschlagene Pipelineausführungen gilt standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder eine vom Benutzer in der Triggerdefinition angegebene Richtlinie. Eine Wiederholung erfolgt automatisch, wenn Pipelineausführungen aufgrund von Parallelitäts-/Server-/Einschränkungsgrenzwerten (d. h. mit den Statuscodes „400: Benutzerfehler“, „429: Zu viele Anforderungen“ und „500: Interner Serverfehler“) fehlschlagen. | Wird nicht unterstützt. |
 | **Concurrency** | Unterstützt. Benutzer können Parallelitätsgrenzwerte für den Trigger explizit festlegen. Zwischen 1 und 50 parallele ausgelöste Pipelineausführungen sind zulässig. | Wird nicht unterstützt. |
-| **Systemvariablen** | Unterstützt die Verwendung der Systemvariablen **WindowStart** und **WindowEnd**. Benutzer haben Zugriff auf `triggerOutputs().windowStartTime` und `triggerOutputs().windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` und `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Wird nicht unterstützt. |
+| **Systemvariablen** | Neben @trigger().scheduledTime und @trigger().startTime wird auch die Verwendung der Systemvariablen **WindowStart** und **WindowEnd** unterstützt. Benutzer haben Zugriff auf `triggerOutputs().windowStartTime` und `triggerOutputs().windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` und `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Es werden nur die Standardvariablen @trigger().scheduledTime und @trigger().startTime unterstützt. |
 | **Beziehung zwischen Pipeline und Trigger** | Unterstützt eine 1:1-Beziehung. Nur eine Pipeline kann ausgelöst werden. | Unterstützt m:m-Beziehungen. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten. |
 
 ## <a name="next-steps"></a>Nächste Schritte

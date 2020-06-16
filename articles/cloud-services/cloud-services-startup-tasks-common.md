@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233802"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310124"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
@@ -483,7 +483,7 @@ Die Rolle wird nur gestartet, wenn die **errorlevel** -Werte aller simple-Startt
 Ein Fehlen von `EXIT /B 0` am Ende einer Startbatchdatei ist eine häufige Ursache, wenn Rollen nicht gestartet werden.
 
 > [!NOTE]
-> Ich habe festgestellt, dass geschachtelte Batchdateien bei Verwendung des `/B`-Parameters manchmal hängenbleiben. Sie müssen sicherstellen, dass dieses Problem nicht auftritt, wenn eine andere Batchdatei die aktuelle Batchdatei aufruft, beispielsweise bei Verwendung des [Protokollwrappers](#always-log-startup-activities). In diesem Fall können Sie den `/B`-Parameter weglassen.
+> Ich habe festgestellt, dass geschachtelte Batchdateien bei Verwendung des `/B`-Parameters manchmal nicht mehr reagieren. Sie müssen sicherstellen, dass dieses Problem nicht auftritt, wenn eine andere Batchdatei die aktuelle Batchdatei aufruft, beispielsweise bei Verwendung des [Protokollwrappers](#always-log-startup-activities). In diesem Fall können Sie den `/B`-Parameter weglassen.
 > 
 > 
 
@@ -512,6 +512,3 @@ Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-ta
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

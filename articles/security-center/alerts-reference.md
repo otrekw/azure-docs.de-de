@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: ed44d6ad5c7594552e14aea0a16d3d23c99806fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f5ae8b2b2b2be578b76f4b54866dd1b7ed3e92d8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745086"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267459"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -398,8 +398,7 @@ Die von Security Center unterstützten Kill Chain-Absichten basieren auf dem [M
 
 |Intent|BESCHREIBUNG|
 |------|-------|
-|**PreAttack**|Bei einem PreAttack kann es sich entweder um einen Versuch handeln, unabhängig von böswilligen Absichten auf eine bestimmte Ressource zuzugreifen, oder um einen fehlgeschlagenen Versuch, Zugriff auf ein Zielsystem zu erlangen, um Informationen vor deren Ausnutzung zu sammeln. Dieser Schritt wird normalerweise als Versuch von außerhalb des Netzwerks erkannt, das Zielsystem zu scannen und einen Einstiegspunkt zu identifizieren. </br>Weitere Informationen zur PreAttack-Phase finden Sie auf der [MITRE-Seite](https://attack.mitre.org/matrices/pre/).|
-|**InitialAccess**|InitialAccess ist die Phase, in der es einem Angreifer gelingt, auf der angegriffenen Ressource Fuß zu fassen. Diese Phase ist für Computehosts und Ressourcen wie Benutzerkonten, Zertifikate usw. relevant. Bedrohungsakteure können die Ressource nach dieser Phase oft steuern.|
+|**PreAttack**|Bei einem PreAttack kann es sich entweder um einen Versuch handeln, unabhängig von böswilligen Absichten auf eine bestimmte Ressource zuzugreifen, oder um einen fehlgeschlagenen Versuch, Zugriff auf ein Zielsystem zu erlangen, um Informationen vor deren Ausnutzung zu sammeln. Dieser Schritt wird normalerweise als Versuch von außerhalb des Netzwerks erkannt, das Zielsystem zu scannen und einen Einstiegspunkt zu identifizieren. </br>Weitere Informationen zur PreAttack-Phase finden Sie auf der [MITRE-Seite](https://attack.mitre.org/matrices/pre/).||**InitialAccess**|InitialAccess ist die Phase, in der es einem Angreifer gelingt, auf der angegriffenen Ressource Fuß zu fassen. Diese Phase ist für Computehosts und Ressourcen wie Benutzerkonten, Zertifikate usw. relevant. Bedrohungsakteure können die Ressource nach dieser Phase oft steuern.|
 |**Persistenz**|Als „Persistenz“ wird ein Zugriff, eine Aktion oder eine Konfigurationsänderung in einem System bezeichnet, der bzw. die einem Bedrohungsakteur dauerhafte Präsenz in diesem System ermöglicht. Bedrohungsakteure müssen den Zugriff häufig über Unterbrechungen (z.B. Systemneustarts, Verlust von Anmeldeinformationen oder andere Fehler, aufgrund derer ein Remotezugriffstool neu gestartet werden muss) hinweg beibehalten oder eine alternative Hintertür schaffen, um wieder Zugriff zu erhalten.|
 |**PrivilegeEscalation**|„Rechteausweitung“ ist das Ergebnis von Aktionen, mit denen ein Angreifer eine höhere Berechtigungsebene für ein System oder ein Netzwerk erhält. Bestimmte Tools oder Aktionen erfordern eine höhere Berechtigungsebene und sind wahrscheinlich an vielen Punkten während eines Vorgangs erforderlich. Benutzerkonten, die über Berechtigungen für den Zugriff auf bestimmte Systeme verfügen oder bestimmte Funktionen ausführen, die für Angreifer erforderlich sind, um Ihr Ziel zu erreichen, können auch als „Rechteausweitung“ angesehen werden.|
 |**DefenseEvasion**|Das „Umgehen von Verteidigungsmaßnahmen“ umfasst Techniken, die ein Angreifer verwenden kann, um eine Erkennung zu vermeiden oder andere Abwehrmaßnahmen zu umgehen. Manchmal sind diese Aktionen identisch mit (oder Variationen von) Techniken aus anderen Kategorien, die Angreifern den zusätzlichen Vorteil bieten, einen bestimmten Schutz oder eine bestimmte Abwehrmaßnahmen zu untergraben.|

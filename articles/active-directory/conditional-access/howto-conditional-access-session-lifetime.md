@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230794"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220701"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -50,6 +50,10 @@ Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardko
 - Teams-Webclient
 - Dynamics CRM Online
 - Azure-Portal
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Anmeldehäufigkeit und mehrstufige Authentifizierung
+
+Die Anmeldehäufigkeit wurde bisher nur für die einstufige Authentifizierung auf Geräten angewendet, die in Azure AD oder Azure AD Hybrid eingebunden und bei Azure AD registriert waren. Für unsere Kunden gab es keine einfache Möglichkeit, die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf diesen Geräten zu erzwingen. Aufgrund des Kundenfeedbacks wird die Anmeldehäufigkeit jetzt auch auf die mehrstufige Authentifizierung angewendet.
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Anmeldehäufigkeit von Benutzern und Geräteidentitäten
 

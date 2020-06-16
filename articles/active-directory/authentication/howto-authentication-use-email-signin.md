@@ -10,24 +10,24 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: ed317039e683ef36054d5ace612e09ca75dfa11e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837309"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220719"
 ---
-# <a name="sign-in-to-azure-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure per E-Mail-Adresse als alternativer Anmelde-ID (Vorschauversion)
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure Active Directory per E-Mail-Adresse als alternative Anmelde-ID (Vorschauversion)
 
-Viele Organisationen möchten es Benutzern ermöglichen, sich mit denselben Anmeldeinformationen bei Azure anzumelden, die sie auch für ihre lokale Verzeichnisumgebung verwenden. Bei diesem Ansatz, der als Hybridauthentifizierung bezeichnet wird, müssen sich Benutzer nur eine Kombination von Anmeldeinformationen merken.
+Viele Organisationen möchten es Benutzern ermöglichen, sich mit denselben Anmeldeinformationen bei Azure Active Directory (Azure AD) anzumelden, die sie auch für ihre lokale Verzeichnisumgebung verwenden. Bei diesem Ansatz, der als Hybridauthentifizierung bezeichnet wird, müssen sich Benutzer nur eine Kombination von Anmeldeinformationen merken.
 
 Einige Organisationen sind aus folgenden Gründen nicht auf die Hybridauthentifizierung umgestiegen:
 
 * Standardmäßig wird der Benutzerprinzipalname (User Principal Name, UPN) von Azure Active Directory (Azure AD) auf den gleichen UPN wie für das lokale Verzeichnis festgelegt.
-* Wenn Sie den Azure AD-UPN ändern, stimmen lokale und Azure-Umgebung nicht mehr überein, was zu Problemen mit bestimmten Anwendungen und Diensten führen kann.
-* Aufgrund von geschäftlichen oder Konformitätsgründen möchte die Organisation den lokalen UPN nicht für die Anmeldung bei Azure verwenden.
+* Wenn Sie den Azure AD-UPN ändern, stimmen lokale und Azure AD-Umgebung nicht mehr überein, was zu Problemen mit bestimmten Anwendungen und Diensten führen kann.
+* Aufgrund von betrieblichen oder Compliancegründen möchte die Organisation den lokalen UPN nicht für die Anmeldung bei Azure AD verwenden.
 
-Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie nun Azure AD konfigurieren, damit Benutzer sich mit einer E-Mail-Adresse als alternativer Anmelde-ID in ihrer verifizierten Domäne bei Azure anmelden können. Wenn *Contoso* beispielsweise in *Fabrikam*umbenannt wird, kann jetzt die E-Mail-Adresse als alternative Anmelde-ID anstelle des alten UPN `balas@contoso.com` verwendet werden. Für den Zugriff auf eine Anwendung oder Dienste melden sich Benutzer mit ihrer zugewiesenen E-Mail-Adresse wie `balas@fabrikam.com` bei Azure an.
+Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie nun Azure AD konfigurieren, damit Benutzer sich mit einer E-Mail-Adresse als alternativer Anmelde-ID in ihrer verifizierten Domäne anmelden können. Wenn *Contoso* beispielsweise in *Fabrikam*umbenannt wird, kann jetzt die E-Mail-Adresse als alternative Anmelde-ID anstelle des alten UPN `balas@contoso.com` verwendet werden. Für den Zugriff auf eine Anwendung oder Dienste melden sich Benutzer mit ihrer zugewiesenen E-Mail-Adresse wie `balas@fabrikam.com` bei Azure AD an.
 
 |     |
 | --- |
@@ -36,17 +36,15 @@ Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie nu
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Übersicht über Ansätze für die Anmeldung bei Azure AD
 
-Benutzerprinzipalnamen (User Principal Names, UPNs) sind eindeutige Bezeichner für ein Benutzerkonto in Ihrem lokalen Verzeichnis und in Azure AD. Jedes Benutzerkonto in einem Verzeichnis wird durch einen UPN wie `balas@contoso.com` dargestellt. Wenn Sie eine lokale Active Directory Domain Services-Umgebung (AD DS) mit Azure AD synchronisieren, muss der Azure AD-UPN standardmäßig so festgelegt werden, dass er dem lokalen UPN entspricht.
+Für die Anmeldung bei Azure AD geben Benutzer einen Namen ein, der ihr Konto eindeutig identifiziert. Bisher konnte nur der Azure AD-UPN als Anmeldename verwendet werden.
 
-In vielen Organisationen ist es kein Problem, den lokalen UPN und den Azure AD-UPN auf den gleichen Namen festzulegen. Wenn sich Benutzer bei Azure-Anwendungen und -Diensten anmelden, verwenden sie ihren Azure AD-UPN. Allerdings können einige Organisationen aufgrund von Geschäftsrichtlinien oder Beeinträchtigungen der Benutzerfreundlichkeit keine übereinstimmenden UPNs für die Anmeldung verwenden.
+Für Organisationen, bei denen der lokale UPN der bevorzugten E-Mail-Adresse für Anmeldungen des Benutzers entspricht, war dieser Ansatz perfekt geeignet. In diesen Organisationen kann der Azure AD-UPN auf denselben Wert wie der lokale UPN festgelegt werden, und die Anmeldung erfolgt für Benutzer überall gleich.
 
-Organisationen, die keine übereinstimmenden UPNs in Azure AD verwenden können, haben mehrere Möglichkeiten:
+In manchen Organisationen wird der lokale UPN jedoch als Anmeldename verwendet. In lokalen Umgebungen können Sie die lokale AD DS-Instanz so konfigurieren, dass Anmeldungen mit einer alternativen Anmelde-ID möglich sind. Es ist nicht möglich, den Azure AD-UPN auf denselben Wert wie den lokalen UPN festzulegen, da sich Benutzer in Azure AD dann mit diesem Wert anmelden müssten.
 
-* Ein Ansatz besteht darin, den Azure AD-UPN entsprechend den geschäftlichen Anforderungen auf einen anderen Wert festzulegen, z. B. `balas@fabrikam.com`.
-    * Allerdings sind nicht alle Anwendungen und Dienste mit der Verwendung unterschiedlicher Werte für den lokalen UPN und den Azure AD-UPN kompatibel.
-* Ein besserer Ansatz besteht darin sicherzustellen, dass Azure AD- und lokale UPNs auf denselben Wert festgelegt sind, und Azure AD so konfigurieren, dass Benutzer sich mit Ihrer E-Mail-Adresse als alternativer Anmelde-ID bei Azure anmelden können.
+Die typische Umgehung für dieses Problem besteht darin, den Azure AD-UPN auf die E-Mail-Adresse festzulegen, mit der sich der Benutzer anmelden möchte. Dieser Ansatz funktioniert, führt jedoch zu unterschiedlichen UPNs zwischen lokalen Azure AD-Instanzen und Azure AD selbst. Außerdem ist diese Konfiguration nicht mit allen Microsoft 365-Workloads kompatibel.
 
-Mit der E-Mail-Adresse als alternativer Anmelde-ID können sich Benutzer weiterhin bei Azure anmelden, indem sie ihren UPN eingeben, sie können sich aber auch mit ihrer E-Mail-Adresse anmelden. Um dies zu unterstützen, definieren Sie eine E-Mail-Adresse im *ProxyAddresses*-Attribut des Benutzers im lokalen Verzeichnis. Dieses *ProxyAddress*-Attribut unterstützt eine oder mehrere E-Mail-Adressen.
+Ein anderer Ansatz besteht darin, die UPNs für Azure AD und die lokalen UPNs zu synchronisieren, damit sie denselben Wert aufweisen, und Azure AD dann so zu konfigurieren, dass Benutzer sich mit einer verifizierten E-Mail-Adresse in Azure AD anmelden können. Dazu definieren Sie mindestens eine E-Mail-Adresse im *ProxyAddresses*-Attribut des Benutzers im lokalen Verzeichnis. Das *ProxyAddresses*-Attribut wird dann mithilfe von Azure AD Connect automatisch mit Azure AD synchronisiert.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Synchronisieren von Anmelde-E-Mail-Adressen mit Azure AD
 

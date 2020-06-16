@@ -3,12 +3,12 @@ title: Beispiele für Azure Resource Manager-Vorlagen
 description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen von Azure Container Instances in verschiedenen Konfigurationen.
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981649"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299756"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-Vorlagen für Azure Container Instances
 
@@ -30,7 +30,7 @@ Informationen zu Bereitstellungsoptionen finden Sie im Abschnitt [Bereitstellung
 | **Netzwerk** ||
 | [Container mit verfügbar gemachtem UDP][net-udp] | Stellt einen Windows- oder Linux-Container bereit, der einen UDP-Port verfügbar macht. |
 | [Linux-Container mit öffentlicher IP-Adresse][net-publicip] | Stellt einen einzelnen Linux-Container bereit, auf den über eine öffentliche IP-Adresse zugegriffen werden kann. |
-| [Bereitstellen einer Containergruppe mit einem virtuellen Netzwerk (Vorschauversion)][net-vnet] | Stellt ein neues virtuelles Netzwerk, Subnetz, Netzwerkprofil und eine neue Containergruppe bereit. |
+| [Bereitstellen einer Containergruppe mit einem virtuellen Netzwerk][net-vnet] | Stellt ein neues virtuelles Netzwerk, Subnetz, Netzwerkprofil und eine neue Containergruppe bereit. |
 | **Azure-Ressourcen** ||
 | [Erstellen eines Azure Storage-Kontos und einer Files-Freigabe][az-files] | Verwendet die Azure CLI in einer Containerinstanz zum Erstellen eines Speicherkontos und einer Azure Files-Freigabe.
 

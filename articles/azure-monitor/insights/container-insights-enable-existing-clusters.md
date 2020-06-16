@@ -3,12 +3,12 @@ title: Überwachen eines bereitgestellten Azure Kubernetes Service-Clusters | Mi
 description: Erfahren Sie, wie Sie die Überwachung eines Azure Kubernetes Service-Clusters (AKS) mit Azure Monitor für bereits in Ihrem Abonnement bereitgestellte Container aktivieren.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234538"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264201"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -16,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichte
 
 Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Terraform
 * [Von Azure Monitor aus](#enable-from-azure-monitor-in-the-portal) oder [direkt von dem AKS-Cluster aus](#enable-directly-from-aks-cluster-in-the-portal) im Azure-Portal
 * Mit der [bereitgestellten Azure Resource Manager-Vorlage](#enable-using-an-azure-resource-manager-template) mithilfe des Azure PowerShell-Cmdlets `New-AzResourceGroupDeployment` oder mit der Azure CLI.
@@ -110,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um die Überwachung Ihres AKS-Clusters i
 
 3. Wählen Sie auf der Seite **Überwachung – Container** die Option **Nicht überwachte Cluster** aus.
 
-4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren**.   
+4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren**.
 
 5. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.  
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird.

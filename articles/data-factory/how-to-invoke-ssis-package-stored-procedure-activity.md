@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 7a935fa4c4e91cf8adcd6df467ac56eeecaf46c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605934"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114523"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität einer gespeicherten Prozedur in Azure Data Factory
 
@@ -29,7 +29,7 @@ In diesem Artikel wird das Ausführen eines SSIS-Pakets in einer Azure Data Fact
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank 
-Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist. Alternativ können Sie eine verwaltete Azure SQL-Datenbank-Instanz verwenden.
+In der in diesem Artikel ausgelegten exemplarischen Vorgehensweise wird Azure SQL-Datenbank zum Hosten des SSIS-Katalogs verwendet. Alternativ können Sie eine Azure SQL Managed Instance verwenden.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Erstellen einer Azure SSIS Integration Runtime
 Erstellen Sie eine Azure-SSIS Integration Runtime, falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen von SSIS-Paketen](tutorial-create-azure-ssis-runtime-portal.md).
@@ -134,7 +134,7 @@ In diesem Abschnitt lösen Sie eine Pipelineausführung aus, und überwachen die
 
     ![Aktivitätsausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. Sie können auf Ihrem Azure SQL-Server die folgende **Abfrage** für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
+4. Sie können die folgende **Abfrage** für die SSISDB-Datenbank in SQL-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
 
     ```sql
     select * from catalog.executions
@@ -353,7 +353,7 @@ Im vorherigen Schritt wurde die Pipeline auf Anforderung aufgerufen. Alternativ 
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    Sie können in Ihrem Azure SQL Server die folgende Abfrage für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
+    Sie können die folgende Abfrage für die SSISDB-Datenbank in SQL-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
 
     ```sql
     select * from catalog.executions

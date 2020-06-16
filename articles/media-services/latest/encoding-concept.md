@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366575"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220164"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
@@ -98,7 +98,10 @@ Die folgenden Voreinstellungen werden derzeit unterstützt:
 
 - **EncoderNamedPreset.AACGoodQualityAudio**: Erzeugt eine einzelne MP4-Datei, die nur mit 192 KBit/s codierte Stereo-Audiodaten enthält.
 - **EncoderNamedPreset.AdaptiveStreaming** (empfohlen): Weitere Informationen finden Sie unter [Automatisches Generieren einer Reihe von Bitraten-/Auflösungspaaren](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset.ContentAwareEncodingExperimental**: Stellt eine experimentelle Voreinstellung für die inhaltsbezogene Codierung zur Verfügung. Anhand der eingegebenen Inhalte versucht der Dienst, automatisch die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Die zugrunde liegenden Algorithmen werden im Laufe der Zeit weiter entwickelt. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Experimentelle Voreinstellung für inhaltsbezogene Codierung](content-aware-encoding.md).
+- **EncoderNamedPreset.ContentAwareEncoding**: Stellt eine experimentelle Voreinstellung für die inhaltsbezogene Codierung zur Verfügung. Anhand der eingegebenen Inhalte versucht der Dienst, automatisch die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Die zugrunde liegenden Algorithmen werden im Laufe der Zeit weiter entwickelt. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Inhaltsbezogene Codierung](content-aware-encoding.md).
+
+  > [!NOTE]
+  > Achten Sie darauf, **ContentAwareEncoding**, nicht „ContentAwareEncodingExperimental“ zu verwenden.
 - **EncoderNamedPreset.H264MultipleBitrate1080p**: Erzeugt einen Satz aus acht MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 6.000 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 1080p und reduziert sich auf 360p.
 - **EncoderNamedPreset.H264MultipleBitrate720p**: Erzeugt einen Satz aus sechs MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 3.400 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 720p und reduziert sich auf 360p.
 - **EncoderNamedPreset.H264MultipleBitrateSD**: Erzeugt einen Satz aus fünf MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 1.600 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 480p und reduziert sich auf 360p.

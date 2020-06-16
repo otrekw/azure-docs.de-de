@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226138"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248582"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -167,7 +167,7 @@ Zum Schutz Ihrer Daten bietet Azure Backup ein Feature für vorläufiges Lösche
 
 * Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-) Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen bedarfsgesteuerten Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt).
 * Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß der Aufbewahrungsdauer bereinigt, die in der Sicherungsrichtlinie festgelegt wurde.
-* Benutzern wird empfohlen, die Sicherungselemente zu löschen, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement/die Daten für die Löschressourcen nicht mehr benötigt wird bzw. werden, weil der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer gemäß den geltenden Preisen für die Sicherung eine Gebühr berechnet wird.
+* Benutzern wird empfohlen, Sicherungselemente zu löschen, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement oder die Daten für die Löschressourcen nicht mehr benötigt werden, da der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer gemäß den geltenden Preisen für die Sicherung eine Gebühr berechnet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648111"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197066"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronisieren Ihres GitHub-Repositorys auf App Configuration
 
@@ -92,7 +92,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>Synchronisieren mehrerer Dateien in einer Aktion 
 
-Wenn Ihre Konfiguration auf mehrere Dateien verteilt ist, können Sie das Muster unten verwenden, um eine Synchronisierung auszulösen, wenn eine der Dateien geändert wird. In diesem Muster wird die glob-Bibliothek unter https://www.npmjs.com/package/glob verwendet. 
+Wenn Ihre Konfiguration auf mehrere Dateien verteilt ist, können Sie das Muster unten verwenden, um eine Synchronisierung auszulösen, wenn eine der Dateien geändert wird. In diesem Muster wird die glob-Bibliothek unter https://www.npmjs.com/package/glob verwendet. Beachten Sie Folgendes: Wenn der Name der Konfigurationsdatei ein Komma enthält, können Sie einen umgekehrten Schrägstrich als Escapezeichen für das Komma verwenden. 
 
 ```json
 on:

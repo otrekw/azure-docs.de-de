@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Onlinemigration von SQL Server zu einer verwalteten SQL-Instanz'
 titleSuffix: Azure Database Migration Service
-description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von SQL Server zu einer Instanz von Azure SQL Managed Instance durchführen.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 236c68b3c26049073d3e6e942ce2a6be8b7f4fde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298907"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187954"
 ---
-# <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)
+# <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
-Mit Azure Database Migration Service können Sie die Datenbanken aus einer lokalen SQL Server-Instanz mit minimaler Ausfallzeit zu einer [verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance.md) migrieren. Informationen zu weiteren Methoden, für die etwas manueller Aufwand erforderlich ist, finden Sie im Artikel [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-migrate.md).
+Mit Azure Database Migration Service können Sie die Datenbanken von einer SQL Server-Instanz mit minimaler Downtime zu [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) migrieren. Informationen zu weiteren Methoden, die einen gewissen manuellen Aufwand erfordern, finden Sie im Artikel [Migration einer SQL Server-Instanz zu Azure SQL Managed Instance](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md).
 
-In diesem Tutorial migrieren Sie mithilfe von Azure Database Migration Service die Datenbank **Adventureworks2012** mit minimaler Ausfallzeit von einer lokalen SQL Server-Instanz zu einer verwalteten SQL-Datenbank-Instanz.
+In diesem Tutorial migrieren Sie mithilfe von Azure Database Migration Service die Datenbank **Adventureworks2012** mit minimaler Downtime von einer lokalen SQL Server-Instanz zu einer Instanz von SQL Managed Instance.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Führen Sie die Migrationsübernahme durch, wenn Sie bereit sind.
 
 > [!IMPORTANT]
-> Für die Onlinemigration von SQL Server zu einer verwalteten SQL-Datenbank-Instanz mithilfe von Azure Database Migration Service müssen Sie die vollständige Datenbanksicherung und nachfolgende Protokollsicherungen auf der SMB-Netzwerkfreigabe bereitstellen, die der Dienst zum Migrieren Ihrer Datenbanken verwenden kann. Azure Database Migration Service initiiert keine Sicherungen, sondern verwendet für die Migration vorhandene Sicherungen, die Sie im Rahmen Ihres Notfallwiederherstellungsplans möglicherweise bereits besitzen.
+> Für die Onlinemigration von SQL Server zu SQL Managed Instance mithilfe von Azure Database Migration Service müssen Sie die vollständige Datenbanksicherung und nachfolgende Protokollsicherungen auf der SMB-Netzwerkfreigabe bereitstellen, die der Dienst zum Migrieren Ihrer Datenbanken verwenden kann. Azure Database Migration Service initiiert keine Sicherungen, sondern verwendet für die Migration vorhandene Sicherungen, die Sie im Rahmen Ihres Notfallwiederherstellungsplans möglicherweise bereits besitzen.
 > Achten Sie darauf, [Sicherungen mit der Option WITH CHECKSUM](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017) zu erstellen. Stellen Sie außerdem sicher, dass einem einzelnen Sicherungsmedium nicht mehrere Sicherungen (d. h. vollständige Sicherungen und Protokollfragmentsicherungen) hinzugefügt werden. Speichern Sie jede Sicherung in einer separaten Sicherungsdatei. Des Weiteren können Sie komprimierte Sicherungen verwenden, um die Wahrscheinlichkeit von potenziellen Problemen bei der Migration großer Sicherungen zu verringern.
 
 > [!NOTE]
@@ -48,13 +48,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In diesem Artikel wird eine Onlinemigration von SQL Server zu einer verwalteten SQL-Datenbank-Instanz beschrieben. Informationen zur Offlinemigration finden Sie unter [Tutorial: Migrieren von SQL Server zu einer verwalteten SQL-Datenbank-Instanz mithilfe von DMS (offline)](tutorial-sql-server-to-managed-instance.md).
+In diesem Artikel wird die Onlinemigration von SQL Server zu einer Instanz von SQL Managed Instance beschrieben. Informationen zur Offlinemigration finden Sie unter [Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (offline)](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bereitstellt. [Lernen Sie die Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service kennen.](https://aka.ms/dmsnetworkformi) Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
+* Erstellen Sie ein virtuelles Microsoft Azure-Netzwerk für Azure Database Migration Service mithilfe des Azure Resource Manager-Bereitstellungsmodells, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bereitstellt. [Erfahren Sie mehr über Netzwerktopologien für SQL Managed Instance-Migrationen mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
     > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des Setups des virtuellen Netzwerks die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
@@ -77,7 +77,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die SQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 1433).
 * Bei der Ausführung mehrerer benannter SQL Server-Instanzen mit dynamischen Ports empfiehlt es sich, den SQL-Browser-Dienst zu aktivieren und den Zugriff auf den UDP-Port 1434 durch Ihre Firewalls zuzulassen, sodass Azure Database Migration Service eine Verbindung mit einer benannten Instanz auf Ihrem Quellserver herstellen kann.
 * Wenn Sie eine Firewallappliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration sowie auf Dateien über SMB-Port 445 zugreifen kann.
-* Eine Anleitung zum Erstellen einer verwalteten SQL-Datenbank-Instanz finden Sie im Artikel [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/sqldbmi).
+* Eine Anleitung zum Erstellen einer verwalteten SQL-Instanz finden Sie im Artikel [Erstellen einer verwalteten SQL-Instanz im Azure-Portal](https://aka.ms/sqldbmi).
 * Stellen Sie sicher, dass die zum Herstellen einer Verbindung zwischen der SQL Server-Quellinstanz und der verwalteten Zielinstanz verwendeten Anmeldungen Mitglieder der Serverrolle „sysadmin“ sind.
 * Stellen Sie eine SMB-Netzwerkfreigabe bereit, die alle vollständigen Datenbanksicherungsdateien Ihrer Datenbank sowie nachfolgende Sicherungsdateien des Transaktionsprotokolls enthält, die Azure Database Migration Service für die Datenbankmigration verwenden kann.
 * Stellen Sie sicher, dass das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, über Schreibberechtigungen für die Netzwerkfreigabe verfügt, die Sie erstellt haben, und dass das Computerkonto für den Quellserver über Lese-/Schreibzugriff auf dieselbe Freigabe verfügt.
@@ -85,7 +85,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Erstellen Sie eine Azure Active Directory-Anwendungs-ID, die den Anwendungs-ID-Schlüssel generiert, den Azure Database Migration Service für die Verbindungsherstellung mit der verwalteten Azure-Datenbank-Zielinstanz und mit dem Azure Storage-Container verwenden kann. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
   > [!NOTE]
-  > Azure Database Migration Service erfordert die Berechtigung „Mitwirkender“ für das Abonnement für die angegebene Anwendungs-ID. Alternativ können Sie auch benutzerdefinierte Rollen erstellen, die die speziellen Berechtigungen gewähren, die Azure Database Migration Service erfordert. Eine schrittweise Anleitung zur Verwendung benutzerdefinierter Rollen finden Sie im Artikel [Benutzerdefinierte Rollen für die Onlinemigration von SQL Server zur verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance).
+  > Azure Database Migration Service erfordert die Berechtigung „Mitwirkender“ für das Abonnement für die angegebene Anwendungs-ID. Alternativ können Sie auch benutzerdefinierte Rollen erstellen, die die speziellen Berechtigungen gewähren, die Azure Database Migration Service erfordert. Eine Schrittanleitung zur Verwendung benutzerdefinierter Rollen finden Sie im Artikel [Benutzerdefinierte Rollen für die Onlinemigration von SQL Server zu SQL Managed Instance](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance).
 
 * Erstellen Sie oder notieren Sie sich die **Standardleistungsstufe** (Azure Storage-Konto), die es dem DMS-Dienst ermöglicht, die Datenbanksicherungsdateien hochzuladen und für die Datenbankmigration zu verwenden.  Achten Sie darauf, das Azure Storage-Konto in der gleichen Region zu erstellen, in der auch die Azure Database Migration Service-Instanz erstellt wird.
 
@@ -119,11 +119,11 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 5. Wählen Sie ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie eins.
 
-    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die verwaltete SQL-Datenbank-Zielinstanz.
+    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die SQL Managed Instance-Zielinstanz.
 
     Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
-    Weitere Einzelheiten finden Sie im Artikel [Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
+    Weitere Einzelheiten finden Sie im Artikel [Netzwerktopologien für SQL Managed Instance-Migrationen mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
 
 6. Wählen Sie eine SKU aus dem Premium-Tarif aus.
 
@@ -148,7 +148,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
 3. Wählen Sie **+ Neues Migrationsprojekt** aus.
 
-4. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Projektnamen ein, und wählen Sie im Textfeld **Quellservertyp** die Option **SQL Server** und im Textfeld **Zielservertyp** die Option **Verwaltete Azure SQL-Datenbank-Instanz** aus. Wählen Sie außerdem für **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
+4. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Projektnamen ein, und wählen Sie im Textfeld **Quellservertyp** die Option **SQL Server** und im Textfeld **Zielservertyp** die Option **Verwaltete Azure SQL-Instanz** aus. Wählen Sie außerdem für **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
 
    ![Erstellen eines Azure Database Migration Service-Projekts](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
@@ -174,21 +174,21 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
    ![Auswählen von Quelldatenbanken](media/tutorial-sql-server-to-managed-instance-online/dms-source-database1.png)
 
     > [!IMPORTANT]
-    > Wenn Sie SQL Server Integration Services (SSIS) verwenden, unterstützt DMS die Migration der Katalogdatenbank für Ihre SSIS-Projekte/-Pakete (SSISDB) von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz derzeit nicht. Sie können SSIS jedoch in Azure Data Factory (ADF) bereitstellen und Ihre SSIS-Projekte/-Pakete in der Ziel-SSISDB erneut bereitstellen, die von der verwalteten Azure SQL-Datenbank-Instanz gehostet wird. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
+    > Wenn Sie SQL Server Integration Services (SSIS) verwenden, bietet DMS aktuell keine Unterstützung für die Migration der Katalogdatenbank für Ihre SSIS-Projekte/-Pakete (SSISDB) von SQL Server zu SQL Managed Instance. Sie können SSIS jedoch in Azure Data Factory (ADF) bereitstellen und Ihre SSIS-Projekte/-Pakete in der Ziel-SSISDB neu bereitstellen, die von SQL Managed Instance gehostet wird. Weitere Informationen zur Migration von SSIS-Paketen finden Sie im Artikel [Migrieren von SQL Server Integration Services-Paketen in Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
 5. Wählen Sie **Speichern** aus.
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 
-1. Geben Sie auf dem Bildschirm **Zieldetails für die Migration** die **Anwendungs-ID** und den **Schlüssel** an, die bzw. den die DMS-Instanz für die Verbindungsherstellung mit der verwalteten Azure SQL-Datenbank-Zielinstanz und dem Azure Storage-Konto verwenden kann.
+1. Geben Sie auf dem Bildschirm **Zieldetails für die Migration** die **Anwendungs-ID** und den **Schlüssel** an, die bzw. den die DMS-Instanz für die Verbindungsherstellung mit der Zielinstanz von SQL Managed Instance und dem Azure Storage-Konto verwenden kann.
 
     Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
-2. Wählen Sie das **Abonnement** aus, das die verwaltete Azure SQL-Datenbank-Zielinstanz enthält, und wählen Sie dann die Zielinstanz aus.
+2. Wählen Sie das **Abonnement** aus, das die Zielinstanz von SQL Managed Instance enthält, und wählen Sie dann die Zielinstanz aus.
 
-    Falls Sie die verwaltete Azure SQL-Datenbank-Instanz noch nicht bereitgestellt haben, klicken Sie auf den [Link](https://aka.ms/SQLDBMI), um Unterstützung bei der Bereitstellung der Instanz zu erhalten. Wenn die verwaltete Azure SQL-Datenbank-Instanz bereit ist, kehren Sie zu diesem spezifischen Projekt zurück, um die Migration auszuführen.
+    Falls Sie die verwaltete SQL-Instanz noch nicht bereitgestellt haben, wählen Sie den [Link](https://aka.ms/SQLDBMI) aus, um Unterstützung bei der Bereitstellung der Instanz zu erhalten. Wenn die Instanz von SQL Managed Instance bereit ist, kehren Sie zu diesem spezifischen Projekt zurück, um die Migration durchzuführen.
 
-3. Geben Sie den **SQL-Benutzer** und das **Kennwort** für die Verbindungsherstellung mit der verwalteten Azure SQL-Datenbank-Instanz an.
+3. Geben Sie den **SQL-Benutzer** und das **Kennwort** für die Verbindungsherstellung mit SQL Managed Instance an.
 
     ![Auswählen des Ziels](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
@@ -246,7 +246,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
 ## <a name="performing-migration-cutover"></a>Durchführen der Migrationsübernahme
 
-Nachdem die vollständige Datenbanksicherung in der verwalteten SQL-Datenbank-Zielinstanz wiederhergestellt wurde, steht die Datenbank für die Durchführung einer Migrationsübernahme zur Verfügung.
+Nachdem die vollständige Datenbanksicherung für die Zielinstanz von SQL Managed Instance wiederhergestellt wurde, steht die Datenbank für die Durchführung einer Migrationsübernahme zur Verfügung.
 
 1. Wenn Sie die Onlinedatenmigration abschließen möchten, klicken Sie auf **Übernahme starten**.
 
@@ -260,12 +260,12 @@ Nachdem die vollständige Datenbanksicherung in der verwalteten SQL-Datenbank-Zi
 
     ![Vorbereiten des Abschlusses der Übernahme](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
-5. Wenn als Status der Datenmigration **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen verwalteten Azure SQL-Datenbank-Zielinstanz her.
+5. Wenn als Status der Datenmigration **Abgeschlossen** angezeigt wird, stellen Sie eine Verbindung zwischen Ihren Anwendungen und der neuen Instanz von SQL Managed Instance her.
 
     ![Übernahme abgeschlossen](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Tutorial, in dem gezeigt wird, wie Sie eine Datenbank mit dem T-SQL-Befehl RESTORE zu einer verwalteten Instanz migrieren können, finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
-* Informationen zur verwalteten Instanz finden Sie unter [Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität](../sql-database/sql-database-managed-instance.md).
-* Informationen zum Verbinden von Apps mit einer verwalteten Instanz finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+* Informationen zur verwalteten Instanz finden Sie unter [Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+* Informationen zum Verbinden von Apps mit einer verwalteten Instanz finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/connect-application-instance.md).

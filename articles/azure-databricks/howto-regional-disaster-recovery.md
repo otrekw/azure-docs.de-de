@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161935"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016932"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
@@ -31,7 +31,7 @@ Diese Architektur hat unter anderem den Vorteil, dass Benutzer Azure Databricks 
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Erstellen einer Topologie für die regionale Notfallwiederherstellung
 
-Wie Sie der obigen Architekturbeschreibung entnehmen können, umfasst eine Big Data-Pipeline mit Azure Databricks mehrere Komponenten. Dazu zählen unter anderem Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
+Wie aus der obigen Beschreibung der Architektur hervorgeht, gibt es eine Vielzahl von Komponenten für Big Data-Pipelines mit Azure Databricks:  Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
 
 Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erstellen möchten, gehen Sie wie folgt vor:
 
@@ -150,7 +150,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -308,7 +308,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Notfallwiederherstellung für Ihr Azure-Ökosystem
 
-Wenn Sie andere Azure-Dienste verwenden, achten Sie darauf, bewährte Methoden für die Notfallwiederherstellung auch für diese Dienste zu implementieren. Wenn Sie z. B. eine externe Hive-Metastore-Instanz verwenden möchten, sollten Sie die Notfallwiederherstellung für [Azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md) und/oder [, Azure Database for MySQL ](../mysql/concepts-business-continuity.md) berücksichtigen. Allgemeine Informationen zur Notfallwiederherstellung finden Sie unter [Notfallwiederherstellung für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Wenn Sie andere Azure-Dienste verwenden, achten Sie darauf, bewährte Methoden für die Notfallwiederherstellung auch für diese Dienste zu implementieren. Wenn Sie z. B. eine externe Hive-Metastore-Instanz verwenden möchten, sollten Sie die Notfallwiederherstellung für [Azure SQL-Datenbank](../azure-sql/database/disaster-recovery-guidance.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md) und/oder [Azure Database for MySQL ](../mysql/concepts-business-continuity.md) berücksichtigen. Allgemeine Informationen zur Notfallwiederherstellung finden Sie unter [Notfallwiederherstellung für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

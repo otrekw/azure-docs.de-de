@@ -1,6 +1,6 @@
 ---
-title: Planen der Ausführung von SSIS-Paketen mit einem Agent für die verwaltete Azure SQL-Datenbank-Instanz
-description: Erfahren Sie, wie Sie Ausführungen von SSIS-Paketen mit einem Agent für die verwaltete Azure SQL-Datenbank-Instanz planen.
+title: Ausführen von SSIS-Paketen mit dem Azure SQL Managed Instance-Agent
+description: Erfahren Sie, wie Sie SSIS-Pakete mit dem Azure SQL Managed Instance-Agent ausführen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,30 +9,28 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628485"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191071"
 ---
-# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>Planen der Ausführung von SSIS-Paketen mit einem Agent für die verwaltete Azure SQL-Datenbank-Instanz
+# <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Ausführen von SSIS-Paketen mit dem Azure SQL Managed Instance-Agent
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+In diesem Artikel wird beschrieben, wie Sie ein SSIS-Paket (SQL Server Integration Services) mit dem Agent einer verwalteten Azure SQL-Datenbankinstanz ausführen. Dieses Feature bietet ein ähnliches Verhalten wie bei der Planung von SSIS-Paketen mit dem SQL Server-Agent in Ihrer lokalen Umgebung.
 
-In diesem Artikel wird beschrieben, wie Sie ein SSIS-Paket (SQL Server Integration Services) mit dem Agent einer verwalteten Azure SQL-Datenbank-Instanz ausführen. Dieses Feature bietet ein ähnliches Verhalten wie bei der Planung von SSIS-Paketen mit dem SQL Server-Agent in Ihrer lokalen Umgebung.
-
-Mit diesem Feature können Sie SSIS-Pakete ausführen, die in der SSISDB in einer verwalteten Azure SQL-Datenbank-Instanz oder einem Dateisystem wie Azure Files gespeichert sind.
+Mit diesem Feature können Sie SSIS-Pakete ausführen, die in SSISDB in einer Instanz von SQL Managed Instance oder einem Dateisystem wie Azure Files gespeichert sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Laden Sie die neueste Version von SQL Server Management Studio (SSMS) [herunter](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), bei der es sich um Version 18.5 handelt, und installieren Sie sie, wenn Sie dieses Feature verwenden möchten.
 
-Sie müssen auch eine [Azure-SSIS Integration Runtime](tutorial-create-azure-ssis-runtime-portal.md) in Azure Data Factory bereitstellen. Dabei wird eine verwaltete Azure SQL-Datenbank-Instanz als Endpunktserver verwendet. 
+Sie müssen auch eine [Azure-SSIS Integration Runtime](tutorial-create-azure-ssis-runtime-portal.md) in Azure Data Factory bereitstellen. Dabei wird eine Instanz von SQL Managed Instance als Endpunktserver verwendet. 
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>Ausführen eines SSIS-Pakets in SSISDB
-In diesem Verfahren verwenden Sie den Agent für die verwaltete Azure SQL-Datenbank-Instanz zum Aufrufen eines SSIS-Pakets, das in SSISDB gespeichert ist.
+Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Aufrufen eines SSIS-Pakets, das in SSISDB gespeichert ist.
 
-1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit der verwalteten Azure SQL-Datenbank-Instanz her.
+1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit einer Instanz von SQL Managed Instance her.
 1. Erstellen Sie einen neuen Agent-Auftrag und einen neuen Auftragsschritt. Klicken Sie unter **SQL Server-Agent** mit der rechten Maustaste auf den Ordner **Aufträge**, und wählen Sie dann **Neuer Auftrag** aus.
 
    ![Auswahl zum Erstellen eines neuen Agent-Auftrags](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -42,7 +40,7 @@ In diesem Verfahren verwenden Sie den Agent für die verwaltete Azure SQL-Datenb
    ![Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
 1. Wählen Sie auf der Registerkarte **Paket** als Paketquellentyp die Option **SSIS-Katalog** aus.
-1. Da sich die SSISDB in einer verwalteten Azure SQL-Datenbank-Instanz befindet, müssen Sie keine Authentifizierung angeben.
+1. Da sich SSISDB in einer Instanz von SQL Managed Instance befindet, müssen Sie keine Authentifizierung angeben.
 1. Geben Sie ein SSIS-Paket aus der SSISDB an.
 
    ![Registerkarte „Paket“ mit Auswahl für den Paketquellentyp](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
@@ -60,9 +58,9 @@ In diesem Verfahren verwenden Sie den Agent für die verwaltete Azure SQL-Datenb
 
 
 ## <a name="run-an-ssis-package-in-the-file-system"></a>Ausführen eines SSIS-Pakets im Dateisystem
-In diesem Verfahren verwenden Sie den Agent für die verwaltete Azure SQL-Datenbank-Instanz zum Ausführen eines SSIS-Pakets, das im Dateisystem gespeichert ist.
+Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Ausführen eines SSIS-Pakets, das im Dateisystem gespeichert ist.
 
-1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit der verwalteten Azure SQL-Datenbank-Instanz her.
+1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit einer Instanz von SQL Managed Instance her.
 1. Erstellen Sie einen neuen Agent-Auftrag und einen neuen Auftragsschritt. Klicken Sie unter **SQL Server-Agent** mit der rechten Maustaste auf den Ordner **Aufträge**, und wählen Sie dann **Neuer Auftrag** aus.
 
    ![Auswahl zum Erstellen eines neuen Agent-Auftrags](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -105,13 +103,14 @@ In diesem Verfahren verwenden Sie den Agent für die verwaltete Azure SQL-Datenb
 
 
 ## <a name="cancel-ssis-package-execution"></a>Abbrechen der SSIS-Paketausführung
-Um die Paketausführung über einen Auftrag des Agents einer verwalteten Azure SQL-Datenbank-Instanz abzubrechen, sollten Sie die unten angegebenen Schritte ausführen, anstatt den Agent-Auftrag direkt zu beenden:
+Um die Paketausführung über einen Auftrag des SQL Managed Instance-Agents abzubrechen, führen Sie die folgenden Schritte aus, anstatt den Agent-Auftrag direkt zu beenden:
 
 1. Suchen Sie in **msdb.dbo.sysjobs** nach der **jobId** Ihres SQL-Agents.
 1. Verwenden Sie die folgende Abfrage, um anhand der Auftrags-ID nach der entsprechenden **executionId** von SSIS zu suchen:
    ```sql
-   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
+   Wenn sich Ihre SSIS-Pakete in SSISDB befinden, verwenden Sie **ssisdb.internal.execution_parameter_values** als Tabelle für die Auftragsausführung. Wenn sich Ihre SSIS-Pakete im Dateisystem befinden, verwenden Sie **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Klicken Sie mit der rechten Maustaste auf den SSISDB-Katalog, und wählen Sie dann **Aktive Vorgänge** aus.
 
    ![„Aktive Vorgänge“ im Kontextmenü für den SSISDB-Katalog](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

@@ -3,18 +3,18 @@ title: Ausführen einer Notfallwiederherstellung virtueller Computer
 description: In diesem Artikel wird gezeigt, wie Sie eine Notfallwiederherstellung virtueller Computer mithilfe von AVS durchführen.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739842"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148156"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Ausführen einer Notfallwiederherstellung virtueller Computer mithilfe von Azure VMware Solution
 
-In diesem Artikel wird der Prozess zum Durchführen einer Notfallwiederherstellung Ihrer virtuellen Computer mit der VMware HCX-Lösung (Hybrid Cloud Extension) und der Verwendung einer privaten Azure VMware Solution-Cloud als Wiederherstellungs- oder Zielstandort beschrieben.
+In diesem Artikel wird das Verfahren zum Durchführen einer Notfallwiederherstellung Ihrer virtuellen Computer mit der VMware HCX-Lösung (Hybrid Cloud Extension) und unter Verwendung einer privaten Azure VMware Solution-Cloud als Wiederherstellungs- oder Zielstandort beschrieben.
 
-VMware HCX bietet verschiedene Vorgänge, die eine genaue Kontrolle und Granularität in Replikationsrichtlinien ermöglichen. Die verfügbaren Vorgänge umfassen:
+VMware HCX bietet verschiedene Vorgänge, die eine genaue Kontrolle und präzise Steuerung in Replikationsrichtlinien ermöglichen. Die verfügbaren Vorgänge umfassen:
 
 - Reverse (Umkehren) – nach dem Eintreten eines Notfalls. Durch Reverse wird Standort B der Quellstandort und Standort A, an dem sich die geschützte VM nun befindet.
 
@@ -144,7 +144,7 @@ Die Replikation kann im Abschnitt „Details“ der einzelnen virtuellen Compute
 
 ## <a name="disaster-recovery-plan-automation"></a>Automatisierung des Plans zur Notfallwiederherstellung
 
-VMware HCX verfügt derzeit über keinen integrierten Mechanismus zum Erstellen und Automatisieren eines Plans für die Notfallwiederherstellung. Diese Funktion ist in HCX nicht verfügbar. Es wird jedoch eine Reihe von REST-APIs bereitgestellt, einschließlich APIs für den Notfallwiederherstellungsvorgang.
+VMware HCX verfügt derzeit nicht über einen integrierten Mechanismus zum Erstellen und Automatisieren eines Plans für die Notfallwiederherstellung. Diese Funktion ist in HCX nicht verfügbar. Es wird jedoch eine Reihe von REST-APIs bereitgestellt, einschließlich APIs für den Notfallwiederherstellungsvorgang.
 
 Auf die API-Spezifikation kann in HCX Manager in der URL zugegriffen werden.
 

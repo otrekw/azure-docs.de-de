@@ -4,12 +4,12 @@ description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikw
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855042"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248820"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -34,7 +34,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache statische Metrikwarnung mit Sch
 
 Ab dem Zeitpunkt der Erstellung der Warnungsregel wird der Monitor jede Minute ausgeführt, der dann die Metrikwerte der letzten fünf Minuten betrachtet und überprüft, ob der Durchschnitt dieser Werte 70 übersteigt. Wenn die Bedingung erfüllt ist, d. h. der durchschnittliche Wert für „CPU in Prozent“ überschreitet für die letzten fünf Minuten den Wert 70, löst die Warnungsregel eine aktivierte Benachrichtigung aus. Wenn Sie eine E-Mail- oder Webhook-Aktion in der Aktionsgruppe konfiguriert haben, die der Warnungsregel zugeordnet ist, erhalten Sie für beide eine aktivierte Benachrichtigung.
 
-Wenn Sie mehrere Bedingungen in einer Regel verwenden, werden die Bedingungen mit „and“ verbunden.  Das heißt, die Warnung wird ausgelöst, wenn alle Bedingungen in der Warnung als wahr bewertet werden, und aufgelöst, wenn eine der Bedingungen nicht mehr erfüllt ist. Beispiele für diese Art von Warnung wären die Benachrichtigungen „CPU höher als 90%“ und „Länge der Warteschlange beträgt über 300 Elemente“. 
+Wenn Sie mehrere Bedingungen in einer Regel verwenden, werden die Bedingungen mit „and“ verbunden. Das heißt, eine Warnung wird ausgelöst, wenn alle Bedingungen in der Warnungsregel als wahr bewertet werden, und aufgelöst, wenn eine der Bedingungen nicht mehr erfüllt ist. Ein Beispiel für diese Art von Warnungsregel wäre die Überwachung einer Azure-VM und die Ausgabe einer Warnung, wenn sowohl „Prozentualer CPU-Anteil ist höher als 90 %“ als auch „Warteschlange enthält mehr als 300 Elemente“ eintritt.
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Warnungsregel mit dem dynamischen Bedingungstyp
 

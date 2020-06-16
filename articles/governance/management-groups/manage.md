@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747474"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259404"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -205,7 +205,7 @@ Wenn eine Verwaltungsgruppe oder ein Abonnement verschoben und einer anderen Ver
 Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
 
 - Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
-  - Beispiel für eine integrierte Rolle **Besitzer**
+  - Beispiel für eine integrierte Rolle: **Besitzer**
 - Verwaltungsgruppen-Schreibzugriff auf die übergeordnete Zielverwaltungsgruppe.
   - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
 - Verwaltungsgruppen-Schreibzugriff auf die bestehende übergeordnete Verwaltungsgruppe.

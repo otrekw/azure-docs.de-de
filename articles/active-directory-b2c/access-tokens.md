@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a659d8929f845b1c58bd64f628b2d3f47a96674e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635447"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297529"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwend
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Erstellen Sie einen Benutzerflow](tutorial-create-user-flows.md), damit sich Benutzer bei Ihrer Anwendung registrieren und anmelden können.
-- Wenn dies noch nicht erfolgt ist, [fügen Sie Ihrem Azure Active Directory B2C-Mandanten eine Web-API-Anwendung hinzu](add-web-application.md).
+- Wenn dies noch nicht erfolgt ist, [fügen Sie Ihrem Azure Active Directory B2C-Mandanten eine Web-API-Anwendung hinzu](add-web-api-application.md).
 
 ## <a name="scopes"></a>Bereiche
 

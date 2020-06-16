@@ -4,18 +4,18 @@ description: Application Insights führt eine intelligente Analyse Ihrer App-Tel
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697179"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016847"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) analysiert die Leistung Ihrer Webanwendung automatisch und kann Sie vor potenziellen Problemen warnen. Sie lesen diese Information möglicherweise, weil Sie eine Benachrichtigung der intelligenten Erkennung erhalten haben.
 
-Für diese Funktion müssen Sie lediglich Ihre App für Application Insights (auf [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md) oder [Node.js](../../azure-monitor/app/nodejs.md) und in [Webseitencode](../../azure-monitor/app/javascript.md)) konfigurieren. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten generiert.
+Für dieses Feature müssen Sie lediglich Ihre App in der von Ihnen [unterstützten Sprache](../../azure-monitor/app/platforms.md) für Application Insights konfigurieren. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten generiert.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Wann erhalte ich eine Benachrichtigung der intelligenten Erkennung?
 

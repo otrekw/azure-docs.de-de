@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592235"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995784"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
@@ -27,14 +27,14 @@ Jede Übersetzungsanforderung ist auf 5.000 Zeichen in allen von Ihnen verwende
 
 In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang von Translator aufgeführt.
 
-| Vorgang | Maximale Größe des Arrayelements |   Maximale Anzahl von Arrayelementen |  Maximale Anforderungsgröße (Zeichen) |
+| Vorgang | Maximale Größe des Arrayelements |    Maximale Anzahl von Arrayelementen |    Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
-| Translate | 5\.000 | 100   | 5\.000 |
-| Transliterate | 5\.000 | 10    | 5\.000 |
-| Detect | 10.000 | 100 |   50.000 |
-| BreakSentence | 10.000    | 100 | 50.000 |
-| Wörterbuchsuche| 100 |  10  | 1\.000 |
-| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
+| Translate | 5\.000    | 100    | 5\.000 |
+| Transliterate | 5\.000    | 10    | 5\.000 |
+| Detect | 10.000 |    100 |    50.000 |
+| BreakSentence | 10.000    | 100 |    50.000 |
+| Wörterbuchsuche| 100 |    10    | 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|    2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 

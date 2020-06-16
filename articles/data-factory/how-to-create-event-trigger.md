@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 56d80571253d95d28c839ed81b6e1ce6dda9dc46
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ebcdb37652e8bdf23e8403e7f152ce1f41607c61
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652403"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263447"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 
 > [!NOTE]
-> Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+> Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Sie müssen dazu in der Lage sein, die Aktion *Microsoft.EventGrid/eventSubscriptions/* * auszuführen. Diese Aktion ist Teil der integrierten Rolle EventGrid-EventSubscription-Mitwirkender.
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
@@ -50,7 +50,7 @@ In diesem Abschnitt wird gezeigt, wie Sie über die Benutzeroberfläche von Azur
 1. Wählen Sie aus der Dropdownliste für die Azure-Abonnements Ihr Storage-Konto aus, oder geben Sie die Ressourcen-ID des Storage-Kontos ein. Wählen Sie den Container aus, in dem die Ereignisse auftreten sollen. Die Containerauswahl ist optional, aber beachten Sie, dass die Auswahl aller Container zu einer hohen Anzahl von Ereignissen führen kann.
 
    > [!NOTE]
-   > Der Trigger (Ereignisauslöser) unterstützt derzeit nur Azure Data Lake Storage Gen2-Speicherkonten und universelle Speicherkonten der Version 2. Aufgrund einer Einschränkung von Azure Event Grid unterstützt Azure Data Factory nur maximal 500 Trigger pro Storage-Konto.
+   > Der Trigger (Ereignisauslöser) unterstützt derzeit nur Azure Data Lake Storage Gen2-Speicherkonten und universelle Speicherkonten der Version 2. Sie benötigen mindestens die *Besitzer*-Zugriffsberechtigungen für das Speicherkonto.  Aufgrund einer Einschränkung von Azure Event Grid unterstützt Azure Data Factory nur maximal 500 Trigger pro Storage-Konto.
 
 1. Sie können die Eigenschaften **Blob path begins with** (Blobpfad beginnt mit) und **Blob path ends with** (Blobpfad endet mit) verwenden, um die Container, Ordner und Blobnamen anzugeben, für die Ereignisse empfangen werden sollen. Es muss mindestens eine dieser Eigenschaften für den Trigger definiert werden. Für die Eigenschaften **Blob-Pfad beginnt mit** und **Blob-Pfad endet mit** können Sie eine Vielzahl von Mustern verwenden, wie in den Beispielen im weiteren Verlauf dieses Artikels dargestellt.
 

@@ -5,19 +5,19 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 7d9f8ccb4273d1378c4826dea420c4edca2f8ac3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536578"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263347"
 ---
-# <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
+# <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Informationen dazu, wie Sie die Authentifizierung mit lokalen Active Directory Domain Services für Azure-Dateifreigaben (Vorschau) aktivieren, finden Sie unter [Aktivieren der Authentifizierung mit lokalen Active Directory Domain Services über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
+Informationen dazu, wie Sie die Authentifizierung mit lokalen Active Directory Domain Services für Azure-Dateifreigaben aktivieren, finden Sie unter [Aktivieren der Authentifizierung mit lokalen Active Directory Domain Services über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
 
 Informationen zum Aktivieren der Azure AD DS-Authentifizierung für Azure-Dateifreigaben finden Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung in Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
@@ -42,7 +42,7 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
 - **Lokale Active Directory Domain Services (AD DS)**
 
-    Durch die Integration von lokalen Active Directory Domain Services (AD DS) und Azure Files (Vorschau) werden Methoden zum Speichern von Verzeichnisdaten bereitgestellt und die Daten Netzwerkbenutzern und Administratoren zur Verfügung gestellt. Sicherheit ist in AD DS über die Anmeldeauthentifizierung und die Zugriffssteuerung für Objekte im Verzeichnis integriert. Mit einer einzigen Netzwerkanmeldung können Administratoren Verzeichnisdaten und die Organisation im gesamten Netzwerk verwalten, und autorisierte Netzwerkbenutzer können überall im Netzwerk auf Ressourcen zugreifen. AD DS wird häufig von Unternehmen in lokalen Umgebungen eingeführt, und AD DS-Anmeldeinformationen werden als Identität für die Zugriffssteuerung verwendet. Weitere Informationen finden Sie unter [Active Directory Domain Services – Übersicht](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+    Durch die Integration von lokalen Active Directory Domain Services (AD DS) und Azure Files werden Methoden zum Speichern von Verzeichnisdaten bereitgestellt und die Daten Netzwerkbenutzern und Administratoren zur Verfügung gestellt. Sicherheit ist in AD DS über die Anmeldeauthentifizierung und die Zugriffssteuerung für Objekte im Verzeichnis integriert. Mit einer einzigen Netzwerkanmeldung können Administratoren Verzeichnisdaten und die Organisation im gesamten Netzwerk verwalten, und autorisierte Netzwerkbenutzer können überall im Netzwerk auf Ressourcen zugreifen. AD DS wird häufig von Unternehmen in lokalen Umgebungen eingeführt, und AD DS-Anmeldeinformationen werden als Identität für die Zugriffssteuerung verwendet. Weitere Informationen finden Sie unter [Active Directory Domain Services – Übersicht](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 -   **Rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)**
 
@@ -54,11 +54,11 @@ Die identitätsbasierte Authentifizierung und Unterstützung für Windows-ACLs i
 
 ### <a name="replace-on-premises-file-servers"></a>Ersatz für lokale Dateiserver
 
-Das als veraltet Markieren und Ersetzen weit verteilter lokaler Dateiserver ist ein häufiges Problem, auf das jedes Unternehmen bei der IT-Modernisierung stößt. Hier sind Azure-Dateifreigaben mit der Authentifizierung mit lokalen AD DS (Vorschau) am besten geeignet, sofern Sie die Daten zu Azure Files migrieren können. Eine komplette Migration ermöglicht es Ihnen, die Vorteile der Hochverfügbarkeit und Skalierbarkeit zu nutzen und gleichzeitig clientseitige Änderungen zu minimieren. Sie bietet eine nahtlose Migration für Endbenutzer, sodass sie weiterhin mit denselben Anmeldeinformationen und über ihre vorhandenen, in die Domäne eingebundenen Computer auf ihre Daten zugreifen können.
+Das als veraltet Markieren und Ersetzen weit verteilter lokaler Dateiserver ist ein häufiges Problem, auf das jedes Unternehmen bei der IT-Modernisierung stößt. Hier sind Azure-Dateifreigaben mit der Authentifizierung mit lokalen AD DS am besten geeignet, sofern Sie die Daten zu Azure Files migrieren können. Eine komplette Migration ermöglicht es Ihnen, die Vorteile der Hochverfügbarkeit und Skalierbarkeit zu nutzen und gleichzeitig clientseitige Änderungen zu minimieren. Sie bietet eine nahtlose Migration für Endbenutzer, sodass sie weiterhin mit denselben Anmeldeinformationen und über ihre vorhandenen, in die Domäne eingebundenen Computer auf ihre Daten zugreifen können.
 
 ### <a name="lift-and-shift-applications-to-azure"></a>Lift & Shift von Anwendungen in Azure
 
-Wenn Sie Anwendungen per Lift & Shift in die Cloud verlagern, soll das Authentifizierungsmodell für Ihre Daten beibehalten werden. Da wir die identitätsbasierte Zugriffssteuerung auf Azure-Dateifreigaben ausweiten, entfällt die Notwendigkeit, Ihre Anwendung auf moderne Authentifizierungsmethoden umzustellen und die Cloudeinführung zu beschleunigen. Azure-Dateifreigaben bieten die Möglichkeit, Azure AD DS oder lokale AD DS (Vorschau) für die Authentifizierung zu integrieren. Wenn Sie vorhaben, vollumfänglich cloudnativ zu werden, und minimalen Aufwand für die Verwaltung von Cloudinfrastrukturen betreiben möchten, ist Azure AD DS als vollständig verwalteter Domänendienst besser geeignet. Wenn Sie vollständige Kompatibilität mit den AD DS-Funktionen benötigen, sollten Sie in Erwägung ziehen, Ihre AD DS-Umgebung durch das Selbsthosting von Domänencontrollern auf VMs in die Cloud zu erweitern. In beiden Fällen bieten wir Ihnen die Flexibilität, die Domänendienste entsprechend Ihren Geschäftsanforderungen auszuwählen.
+Wenn Sie Anwendungen per Lift & Shift in die Cloud verlagern, soll das Authentifizierungsmodell für Ihre Daten beibehalten werden. Da wir die identitätsbasierte Zugriffssteuerung auf Azure-Dateifreigaben ausweiten, entfällt die Notwendigkeit, Ihre Anwendung auf moderne Authentifizierungsmethoden umzustellen und die Cloudeinführung zu beschleunigen. Azure-Dateifreigaben bieten die Möglichkeit, Azure AD DS oder lokale AD DS für die Authentifizierung zu integrieren. Wenn Sie vorhaben, vollumfänglich cloudnativ zu werden, und minimalen Aufwand für die Verwaltung von Cloudinfrastrukturen betreiben möchten, ist Azure AD DS als vollständig verwalteter Domänendienst besser geeignet. Wenn Sie vollständige Kompatibilität mit den AD DS-Funktionen benötigen, sollten Sie in Erwägung ziehen, Ihre AD DS-Umgebung durch das Selbsthosting von Domänencontrollern auf VMs in die Cloud zu erweitern. In beiden Fällen bieten wir Ihnen die Flexibilität, die Domänendienste entsprechend Ihren Geschäftsanforderungen auszuwählen.
 
 ### <a name="backup-and-disaster-recovery-dr"></a>Sicherung und Notfallwiederherstellung
 
@@ -66,17 +66,18 @@ Wenn Sie Ihren primären Dateispeicher lokal betreiben, können Azure-Dateifreig
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-In der folgenden Tabelle werden die unterstützten Authentifizierungsszenarien für Azure-Dateifreigaben für Azure AD DS und lokale AD DS (Vorschau) zusammengefasst. Es wird empfohlen, den Domänendienst auszuwählen, den Sie für Ihre Clientumgebung für die Integration mit Azure Files eingeführt haben. Wenn Sie AD DS (Vorschau) bereits lokal oder in Azure eingerichtet haben und Ihre Geräte in die AD-Domäne eingebunden sind, sollten Sie sich für die Authentifizierung von Azure-Dateifreigaben mit AD DS (Vorschau) entscheiden. Wenn Sie Azure AD DS (allgemein verfügbar) bereits eingeführt haben, sollten Sie dies auch für die Authentifizierung von Azure-Dateifreigaben verwenden.
+In der folgenden Tabelle werden die unterstützten Authentifizierungsszenarien für Azure-Dateifreigaben für Azure AD DS und lokale AD DS zusammengefasst. Es wird empfohlen, den Domänendienst auszuwählen, den Sie für Ihre Clientumgebung für die Integration mit Azure Files eingeführt haben. Wenn Sie AD DS bereits lokal oder in Azure eingerichtet haben und Ihre Geräte in die AD-Domäne eingebunden sind, sollten Sie sich für die Authentifizierung von Azure-Dateifreigaben mit AD DS entscheiden. Wenn Sie Azure AD DS bereits eingeführt haben, sollten Sie dies auch für die Authentifizierung von Azure-Dateifreigaben verwenden.
 
 
-|Azure AD DS-Authentifizierung  | Authentifizierung mit lokalen AD DS (Vorschau)  |
+|Azure AD DS-Authentifizierung  | Lokale Azure AD DS-Authentifizierung  |
 |---------|---------|
-|Ihre in Azure AD DS eingebundenen Windows-Computer können mit Azure AD-Anmeldeinformationen über SMB auf Azure-Dateifreigaben zugreifen.     |In lokale AD DS eingebundene Windows-Computer können mit Anmeldeinformationen für lokale AD DS, die über SMB mit Azure AD synchronisiert werden, auf Azure-Dateifreigaben zugreifen.         |
+|Ihre in Azure AD DS eingebundenen Windows-Computer können mit Azure AD-Anmeldeinformationen über SMB auf Azure-Dateifreigaben zugreifen.     |In lokale AD DS oder Azure AD DS eingebundene Windows-Computer können mit Anmeldeinformationen für lokale AD DS, die über SMB mit Azure AD synchronisiert werden, auf Azure-Dateifreigaben zugreifen. Ihr Client muss über eine Sichtverbindung zu Ihrem AD DS verfügen.        |
 
-### <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
+### <a name="restrictions"></a>Beschränkungen
 
 - Die Authentifizierung mit Azure AD DS und lokalen AD DS unterstützt keine Authentifizierung für Computerkonten. Stattdessen können Sie die Verwendung eines Dienstanmeldekontos in Erwägung ziehen.
-- Die Authentifizierung mit Azure AD DS unterstützt keine Authentifizierung für Geräte, die in Azure AD eingebunden sind.
+- Für in Azure AD eingebundene Geräte oder Azure AD registrierte Geräte werden weder die Azure AD DS-Authentifizierung noch die lokale AD DS Authentifizierung unterstützt.
+- Azure-Dateifreigaben unterstützen nur die identitätsbasierte Authentifizierung bei einem der folgenden Domänendienst, entweder bei [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) oder einer [lokalen Active Directory Domain Services-Instanz (AD DS)](#ad-ds).
 
 ## <a name="advantages-of-identity-based-authentication"></a>Vorteile der identitätsbasierten Authentifizierung
 Die identitätsbasierte Authentifizierung für Azure Files bietet mehrere Vorteile gegenüber der Authentifizierung mit einem gemeinsam verwendeten Schlüssel:
@@ -92,19 +93,37 @@ Die identitätsbasierte Authentifizierung für Azure Files bietet mehrere Vortei
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Azure-Dateifreigaben unterstützen die Kerberos-Authentifizierung für die Integration von Azure AD DS oder lokalen AD DS (Vorschau). Bevor Sie die Authentifizierung für Azure-Dateifreigaben aktivieren können, müssen Sie zunächst Ihre Domänenumgebung einrichten. Bei der Azure AD DS-Authentifizierung sollten Sie Azure AD Domain Services aktivieren und die VMs, über die auf Dateidaten zugegriffen werden soll, in die Domäne einbinden. Ihre in die Domäne eingebundene VM muss sich im selben virtuellen Netzwerk (VNET) wie Azure AD DS befinden. Für die Authentifizierung mit lokalen AD DS (Vorschau) müssen Sie entsprechend Ihren Domänencontroller einrichten und Ihre Computer oder VMs in die Domäne einbinden.
+Azure-Dateifreigaben nutzen das Kerberos-Protokoll für die Authentifizierung mit lokalen AD DS- oder Azure AD DS-Instanzen. Wenn eine Identität, die mit einem Benutzer oder mit einer auf einem Client ausgeführten Anwendung verknüpft ist, versucht, auf Daten in Azure-Dateifreigaben zuzugreifen, wird die Anforderung zur Authentifizierung der Identität an den Domänendienst (entweder AD DS oder Azure AD DS) gesendet. Wenn die Authentifizierung erfolgreich ist, wird ein Kerberos-Token zurückgegeben. Der Client sendet eine Anforderung mit dem Kerberos-Token, und dieses Token wird von den Azure-Dateifreigaben zur Autorisierung der Anforderung verwendet. Azure-Dateifreigaben erhalten nur das Kerberos-Token, nicht die Anmeldeinformationen für den Zugriff.
 
-Wenn eine Identität, die mit einer auf einer VM ausgeführten Anwendung verknüpft ist, versucht, auf Daten in Azure-Dateifreigaben zuzugreifen, wird die Anforderung an Azure AD DS gesendet, um die Identität zu authentifizieren. Wenn die Authentifizierung erfolgreich ist, wird von Azure AD DS ein Kerberos-Token zurückgegeben. Die Anwendung sendet eine Anforderung mit dem Kerberos-Token, und dieses Token wird von den Azure-Dateifreigaben zur Autorisierung der Anforderung verwendet. Die Azure-Dateifreigaben empfangen nur das Token. Die Azure AD DS-Anmeldeinformationen werden nicht beibehalten. Die Authentifizierung mit lokalen AD DS funktioniert auf ähnliche Weise, wobei AD DS das Kerberos-Token bereitstellt.
+Bevor Sie die identitätsbasierte Authentifizierung für Azure-Dateifreigaben aktivieren können, müssen Sie zunächst Ihre Domänenumgebung einrichten.
 
-![Screenshot mit Diagramm der Azure AD-Authentifizierung über SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
+### <a name="ad-ds"></a>AD DS
+
+Für die Authentifizierung mit lokalen AD DS müssen Sie Ihren AD-Domänencontroller einrichten und Ihre Computer oder VMs in die Domäne einbinden. Sie können Ihre Domänencontroller auf Azure-VMs oder lokal hosten. In jedem Fall müssen Ihre in die Domäne eingebundenen Clients über eine Sichtverbindung zu Ihrem Domänendienst verfügen, d. h. sie müssen sich im Unternehmensnetzwerk oder im virtuellen Netzwerk (VNET) Ihres Domänendiensts befinden.
+
+Das folgende Diagramm stellt die lokale AD DS-Authentifizierung für Azure-Dateifreigaben über SMB dar. Die lokale AD DS-Instanz muss mithilfe Azure AD Connect-Synchronisierung mit Azure AD synchronisiert werden. Nur Hybridbenutzer, die sowohl in der lokalen AD DS-Instanz als auch in Azure AD vorhanden sind, können authentifiziert und für den Zugriff auf Azure-Dateienfreigaben autorisiert werden. Dies liegt daran, dass die Berechtigung auf Freigabeebene mit der in Azure AD dargestellten Identität konfiguriert ist, wo die Berechtigung auf Verzeichnis-/Dateibene damit in AD DS erzwungen wird. Stellen Sie sicher, dass Sie die Berechtigungen mit demselben Hybridbenutzer ordnungsgemäß konfigurieren.
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagramm":::
+
+### <a name="azure-ad-ds"></a>Azure AD DS
+
+Bei der Azure AD DS-Authentifizierung sollten Sie Azure AD Domain Services aktivieren und die VMs, über die auf Dateidaten zugegriffen werden soll, in die Domäne einbinden. Ihre in die Domäne eingebundene VM muss sich im selben virtuellen Netzwerk (VNET) wie Azure AD DS befinden. 
+
+Das folgende Diagramm stellt den Workflow für Azure AD DS-Authentifizierung für Azure-Dateifreigaben über SMB dar. Es folgt einem ähnlichen Muster wie die lokale AD DS-Authentifizierung für Azure-Dateifreigaben. Es gibt zwei wesentliche Unterschiede:
+
+- Zunächst müssen Sie die Identität nicht in Azure AD DS erstellen, um das Speicherkonto darzustellen. Dies wird vom Aktivierungsprozess im Hintergrund vorgenommen.
+
+- Zweitens können alle in Azure AD vorhandenen Benutzer authentifiziert und autorisiert werden Dies können ausschließlich Cloud- oder Hybridbenutzer sein. Die Synchronisierung von Azure AD mit Azure AD DS wird von der Plattform verwaltet, ohne dass eine Benutzerkonfiguration erforderlich ist. Der Client muss zwar mit Azure AD DS in die Domäne eingebunden werden, kann jedoch nicht Azure AD verknüpft oder registriert werden. 
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagramm":::
 
 ### <a name="enable-identity-based-authentication"></a>Aktivieren der identitätsbasierten Authentifizierung
 
-Sie können die identitätsbasierte Authentifizierung mit Azure AD DS oder lokalen AD DS (Vorschau) für Azure-Dateifreigaben in Ihren neuen und vorhandenen Speicherkonten aktivieren. Nur ein Domänendienst kann für die Authentifizierung des Dateizugriffs im Speicherkonto verwendet werden. Dies betrifft dann alle Dateifreigaben im Konto. Eine ausführliche Anleitung zum Einrichten Ihrer Dateifreigaben für die Authentifizierung mit Azure AD DS finden Sie in unserem Artikel [Aktivieren der Azure Active Directory Domain Services-Authentifizierung für Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md), und eine Anleitung für lokale AD DS (Vorschau) finden Sie in unserem weiteren Artikel [Aktivieren der Authentifizierung mit lokalen Active Directory Domain Services über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
+Sie können die identitätsbasierte Authentifizierung mit Azure AD DS oder lokalen AD DS für Azure-Dateifreigaben in Ihren neuen und vorhandenen Speicherkonten aktivieren. Nur ein Domänendienst kann für die Authentifizierung des Dateizugriffs im Speicherkonto verwendet werden. Dies betrifft dann alle Dateifreigaben im Konto. Eine ausführliche Anleitung zum Einrichten Ihrer Dateifreigaben für die Authentifizierung mit Azure AD DS finden Sie in unserem Artikel [Aktivieren der Azure Active Directory Domain Services-Authentifizierung für Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md), und eine Anleitung für lokale AD DS finden Sie in unserem weiteren Artikel [Aktivieren der Authentifizierung mit lokalen Active Directory Domain Services über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurieren von Freigabeberechtigungen für Azure Files
 
-Sobald die Authentifizierung mit Azure AD DS oder lokalen AD DS (Vorschau) aktiviert ist, können Sie integrierte RBAC-Rollen für Azure AD-Identitäten verwenden oder benutzerdefinierte Rollen konfigurieren und allen Dateifreigaben in Ihren Speicherkonten Zugriffsrechte zuweisen. Mit der zugewiesenen Berechtigung kann die gewährte Identität ausschließlich auf die Freigabe zugreifen, aber nicht auf andere Elemente – auch nicht auf das Stammverzeichnis. Sie müssen immer noch separat Berechtigungen auf Verzeichnis- oder Dateiebene für Azure-Dateifreigaben konfigurieren.
+Sobald die Authentifizierung mit Azure AD DS oder lokalen AD DS aktiviert ist, können Sie integrierte RBAC-Rollen für Azure AD-Identitäten verwenden oder benutzerdefinierte Rollen konfigurieren und allen Dateifreigaben in Ihren Speicherkonten Zugriffsrechte zuweisen. Mit der zugewiesenen Berechtigung kann die gewährte Identität ausschließlich auf die Freigabe zugreifen, aber nicht auf andere Elemente – auch nicht auf das Stammverzeichnis. Sie müssen immer noch separat Berechtigungen auf Verzeichnis- oder Dateiebene für Azure-Dateifreigaben konfigurieren.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurieren von Berechtigungen auf Verzeichnis- oder Dateiebene für Azure Files
 

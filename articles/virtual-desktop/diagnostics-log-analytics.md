@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195906"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234552"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Verwenden von Log Analytics für die Diagnosefunktion
 
@@ -118,6 +118,9 @@ Sie können auf Log Analytics-Arbeitsbereiche über das Azure-Portal oder über 
 
 5. Sie sind für die Abfrage von Diagnosedaten bereit. Alle Diagnosetabellen verfügen über das Präfix „WVD“.
 
+>[!NOTE]
+>Detailliertere Informationen zu in Azure Monitor-Protokollen gespeicherten Tabellen finden Sie im [Azure Monitor-Datenverweis](https://docs.microsoft.com/azure/azure-monitor/reference/). Alle Tabellen im Zusammenhang mit dem Windows Virtual Desktop werden mit „WVD“ bezeichnet.
+
 ## <a name="cadence-for-sending-diagnostic-events"></a>Intervall für das Senden von Diagnoseereignissen
 
 Diagnoseereignisse werden nach Abschluss an Log Analytics gesendet.
@@ -180,6 +183,7 @@ WVDFeeds
 So suchen Sie alle Verbindungen für einen einzelnen Benutzer: 
 
 ```kusto
+WVDConnections
 |where UserName == "userupn" 
 |take 100 
 |sort by TimeGenerated asc, CorrelationId 
@@ -238,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+So ermitteln Sie das Auftreten eines Fehlers für alle Benutzer:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+Führen Sie diese Abfrage aus, um Apps abzufragen, die Benutzer geöffnet haben:
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->Die wichtigste Tabelle für die Problembehandlung ist „WVDErrors“. Verwenden Sie diese Abfrage, um zu ermitteln, welche Probleme bei Benutzeraktivitäten wie Verbindungen oder Feeds auftreten, wenn ein Benutzer die Liste der Apps oder Desktops abonniert. In der Tabelle werden Verwaltungsfehler sowie Probleme bei der Hostregistrierung angezeigt.
->
->Wenn Sie während der öffentlichen Vorschau Unterstützung beim Beheben eines Problems benötigen, stellen Sie sicher, dass Sie in der Supportanfrage die CorrelationID zum Fehler angeben. Achten Sie außerdem darauf, dass der Wert für den Dienstfehler immer „ServiceError = ‚false‘“ lautet. Der Wert „false“ bedeutet, dass das Problem durch einen Verwaltungsvorgang auf Ihrer Seite behoben werden kann. Bei „ServiceError = ‚true‘“ muss das Problem eskaliert und Microsoft gemeldet werden.
+>- Wenn ein Benutzer den vollständigen Desktop öffnet, wird die Nutzung der App in der Sitzung nicht als Prüfpunkte in der WVDCheckpoints-Tabelle verfolgt.
+>- Die ResourcesAlias-Spalte in der WVDConnections-Tabelle zeigt, ob ein Benutzer eine Verbindung mit einem vollständigen Desktop oder einer veröffentlichten App hergestellt hat. In der Spalte wird nur die erste App angezeigt, die während der Verbindung geöffnet wurde. Alle veröffentlichten Apps, die der Benutzer öffnet, werden in WVDCheckpoints nachverfolgt.
+>- Die WVDErrors-Tabelle enthält Verwaltungsfehler, Probleme bei der Hostregistrierung und andere Probleme, die aufgetreten sind, während der Benutzer eine Liste von Apps oder Desktops abonniert.
+>- Mit WVDErrors können Sie Probleme identifizieren, die von Administratoraufgaben gelöst werden können. Der Wert für ServiceError lautet für diese Art von Problemen immer „false“. Bei „ServiceError = ‚true‘“ muss das Problem eskaliert und Microsoft gemeldet werden. Stellen Sie sicher, dass Sie die CorrelationID für die auftretenden Fehler angeben.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

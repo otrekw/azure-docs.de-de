@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758978"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021329"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchische Zustandsüberschreibung
 
@@ -27,23 +27,23 @@ Nehmen Sie als Beispiel das Modell eines Autos: Sie möchten, dass das gesamte A
 
 Die festgelegten Zustände, die überschrieben werden können, sind die folgenden:
 
-* **Hidden**: Entsprechende Gittermodelle im Szenendiagramm werden ausgeblendet oder angezeigt.
-* **Tönungsfarbe:** Ein gerendertes Objekt kann mit einzelnen Farben und Sättigung getönt werden. Im Bild unten ist die Felge eines Rads getönt dargestellt.
+* **`Hidden`** : Entsprechende Gittermodelle im Szenendiagramm werden ausgeblendet oder angezeigt.
+* **`Tint color`** : Ein gerendertes Objekt kann mit einzelnen Farben und Sättigung getönt werden. Im Bild unten ist die Felge eines Rads getönt dargestellt.
   
   ![Farbtönung](./media/color-tint.png)
 
-* **Durchsichtig:** Die Geometrie wird semitransparent gerendert, um beispielsweise die inneren Teile eines Objekts anzuzeigen. Die folgende Abbildung zeigt das gesamte Auto, das mit Ausnahme des roten Bremssattels im durchsichtigen Modus gerendert wird:
+* **`See-through`** : Die Geometrie wird semitransparent gerendert, um beispielsweise die inneren Teile eines Objekts anzuzeigen. Die folgende Abbildung zeigt das gesamte Auto, das mit Ausnahme des roten Bremssattels im durchsichtigen Modus gerendert wird:
 
   ![Durchsichtig](./media/see-through.png)
 
   > [!IMPORTANT]
   > Der durchsichtige Effekt funktioniert nur, wenn der [Renderingmodus](../../concepts/rendering-modes.md) *TileBasedComposition* verwendet wird.
 
-* **Ausgewählt:** Die Geometrie wird mit einer [Auswahlgliederung](outlines.md) gerendert.
+* **`Selected`** : Die Geometrie wird mit einer [Auswahlgliederung](outlines.md) gerendert.
 
   ![Auswahlgliederung](./media/selection-outline.png)
 
-* **DisableCollision**: Die Geometrie ist von [räumlichen Abfragen](spatial-queries.md) ausgenommen. Das Flag **Ausgeblendet** deaktiviert keine Konflikte, deshalb werden diese beiden Flags häufig zusammen festgelegt.
+* **`DisableCollision`** : Die Geometrie ist von [räumlichen Abfragen](spatial-queries.md) ausgenommen. Das **`Hidden`** -Flag wirkt sich nicht auf das Kollisionsstatus-Flag aus, deshalb werden diese beiden Flags häufig zusammen festgelegt.
 
 ## <a name="hierarchical-overrides"></a>Hierarchische Überschreibungen
 
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>Tönungsfarbe
 
-Das Überschreiben der Tönungsfarbe ist etwas Besonderes, da es sowohl den Zustand „ on/off/inherit“ (an, aus, erben) als auch eine Tönungsfarbeneigenschaft gibt. Der Alpha-Teil der Tönungsfarbe definiert die Sättigung des Tönungseffekts: Wenn der Wert auf 0,0 festgelegt ist, ist keine Tönung sichtbar. Wenn der Wert auf 1,0 festgelegt ist, wird das Objekt mit reiner Farbe dargestellt. Für Zwischenwerte wird die endgültige Farbe mit der Tönungsfarbe gemischt. Die Tönungsfarbe kann auf Pro-Frame-Basis geändert werden, um eine Farbanimation zu erreichen.
+Das Überschreiben der `tint color` ist etwas Besonderes, da es sowohl den Zustand „ on/off/inherit“ (an, aus, erben) als auch eine Tönungsfarbeneigenschaft gibt. Der Alpha-Teil der Tönungsfarbe definiert die Sättigung des Tönungseffekts: Wenn der Wert auf 0,0 festgelegt ist, ist keine Tönung sichtbar. Wenn der Wert auf 1,0 festgelegt ist, wird das Objekt mit reiner Farbe dargestellt. Für Zwischenwerte wird die endgültige Farbe mit der Tönungsfarbe gemischt. Die Tönungsfarbe kann auf Pro-Frame-Basis geändert werden, um eine Farbanimation zu erreichen.
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 

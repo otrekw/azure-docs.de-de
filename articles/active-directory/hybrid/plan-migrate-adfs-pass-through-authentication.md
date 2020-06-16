@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528641"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219048"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -25,6 +25,9 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Organisationsdomänen von Activ
 
 > [!NOTE]
 > Das Ändern der Authentifizierungsmethode erfordert Planung, Tests und potenzielle Ausfallzeiten. Das [gestaffelte Rollout](how-to-connect-staged-rollout.md) ist eine alternative Möglichkeit zum Testen und schrittweisen Migrieren von der Verbund- zur Cloudauthentifizierung mithilfe der Passthrough-Authentifizierung.
+> 
+> Wenn Sie einen gestaffelten Rollout planen, sollten Sie daran denken, die Features für den gestaffelten Rollout zu deaktivieren, nachdem Sie den Übergang abgeschlossen haben.  Weitere Informationen finden Sie unter [Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts](how-to-connect-staged-rollout.md).
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Voraussetzungen für die Migration zur Passthrough-Authentifizierung
 

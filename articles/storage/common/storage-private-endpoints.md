@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f79e257eb61cebe000ed9ab831a4da4a5748132
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299055"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267833"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -82,8 +82,8 @@ Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speiche
 | Name                                                  | type  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Öffentlicher Endpunkt des Speicherdiensts\>                   |
-| \<Öffentlicher Endpunkt des Speicherdiensts\>                   | Ein     | \<Öffentliche IP-Adresse des Speicherdiensts\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | Ein     | \<storage service public IP address\>                 |
 
 Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET über den öffentlichen Endpunkt mithilfe der Speicherfirewall verweigern oder steuern.
 
@@ -137,7 +137,7 @@ Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
-Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden auf den privaten Endpunkt angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppenregeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt, sondern nur auf andere Endpunkte (z. B. NIC) angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

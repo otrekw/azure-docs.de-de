@@ -1,26 +1,25 @@
 ---
 title: In Azure Functions unterstützte Sprachen
-description: Erfahren Sie, welche Sprachen für allgemeine Verfügbarkeit und welche experimentell und in Vorschauversionen unterstützt werden.
+description: Erfahren Sie, welche Sprachen unterstützt werden (GA) und welche sich in der Vorschau befinden sowie wie die Entwicklung mit Functions auf andere Sprachen ausgeweitet werden kann.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994900"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
-In diesem Artikel werden die Unterstützungsebenen für Sprachen erläutert, die Sie mit Azure Functions verwenden können.
+In diesem Artikel werden die Unterstützungsebenen für Sprachen erläutert, die Sie mit Azure Functions verwenden können. Außerdem werden Strategien zum Erstellen von Funktionen in Sprachen beschrieben, die nicht nativ unterstützt werden.
 
 ## <a name="levels-of-support"></a>Unterstützungsebenen
 
-Es gibt drei Unterstützungsebenen:
+Es gibt zwei Unterstützungsebenen:
 
 * **Allgemein verfügbar (generally available, GA)** : Vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen.
 * **Vorschau**: Noch nicht unterstützt, die Erreichung der allgemeinen Verfügbarkeit wird aber für die Zukunft erwartet.
-* **Experimentell**: Nicht unterstützt und möglicherweise in der Zukunft wieder aufgegeben; die eventuelle Erreichung des Vorschaustatus oder der allgemeinen Verfügbarkeit ist nicht garantiert.
 
 ## <a name="languages-by-runtime-version"></a>Sprachen nach Runtimeversion 
 
@@ -28,15 +27,11 @@ Es sind [drei Versionen der Azure Functions-Runtime](functions-versions.md) verf
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimentelle Sprachen
+## <a name="custom-handlers-preview"></a>Benutzerdefinierte Handler (Vorschau) 
 
-Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen.
+Benutzerdefinierte Handler sind einfache Webserver, die Ereignisse vom Azure Functions-Host empfangen. Jede Sprache, die HTTP-Primitive unterstützt, kann einen benutzerdefinierten Handler implementieren. Dies bedeutet, dass benutzerdefinierte Handler zum Erstellen von Funktionen in Sprachen verwendet werden können, die nicht offiziell unterstützt werden. Weitere Informationen finden Sie unter [Benutzerdefinierte Azure Functions-Handler (Vorschau)](functions-custom-handlers.md).
 
-Verwenden Sie keine experimentellen Funktionen für Bereiche, die für Sie sehr wichtig sind, da es dafür keinen offiziellen Support gibt. Für Probleme mit experimentellen Sprachen sollten keine Supportfälle erstellt werden. 
-
-Für höhere Runtime-Versionen werden keine experimentellen Sprachen unterstützt. Die Unterstützung für neue Sprachen wird nur hinzugefügt, wenn die Sprache in der Produktion unterstützt werden kann. 
-
-### <a name="language-extensibility"></a>Spracherweiterbarkeit
+## <a name="language-extensibility"></a>Spracherweiterbarkeit
 
 Ab Version 2.x ist die Runtime auf [Spracherweiterbarkeit](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility) ausgelegt. Die Sprachen JavaScript und Java in der Runtime 2.x verfügen über diese Erweiterbarkeit.
 

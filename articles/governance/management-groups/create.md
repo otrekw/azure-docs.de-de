@@ -3,12 +3,12 @@ title: Erstellen von Verwaltungsgruppen zum Organisieren von Ressourcen – Azur
 description: Hier erfahren Sie, wie Sie Azure-Verwaltungsgruppen zum Verwalten mehrerer Ressourcen über das Portal, mithilfe von Azure PowerShell oder mithilfe der Azure CLI erstellen.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381589"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220761"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
@@ -29,9 +29,7 @@ Sie können die Verwaltungsgruppe im Portal, mit einer [Resource Manager-Vorlage
 
 1. Klicken Sie auf **Alle Dienste** > **Verwaltung und Governance**.
 
-1. Wählen Sie **Kostenverwaltung und Abrechnung** aus.
-
-1. Wählen Sie auf der Seite „Kostenverwaltung und Abrechnung: Verwaltungsgruppen“ die Option **Verwaltungsgruppen** aus.
+1. Wählen Sie **Verwaltungsgruppen** aus.
 
 1. Wählen Sie **+ Verwaltungsgruppe hinzufügen** aus.
 

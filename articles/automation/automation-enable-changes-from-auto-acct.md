@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 13f17ed9d165e368d2e9d9cde694408b600006cc
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826841"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171122"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto
 
@@ -36,10 +36,6 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 2. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um „Änderungsnachverfolgung und Bestand“ zu aktivieren. Die Einrichtung dauert bis zu 15 Minuten.
 
     ![Aktivieren der Lösung für Änderungsnachverfolgung und Bestand](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
-
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Überprüfen der Bereichskonfiguration
-
-Von „Änderungsnachverfolgung und Bestand“ wird eine Bereichskonfiguration innerhalb des Arbeitsbereichs verwendet, um die Zielcomputer für Änderungen anzugeben. Die Bereichskonfiguration enthält mindestens eine gespeicherte Suche oder eine Gruppe von gespeicherten Suchen, um den Bereich des Features auf bestimmte Computer zu begrenzen. Weitere Informationen finden Sie unter [Einschränken des Bereitstellungsumfangs für „Änderungsnachverfolgung und Bestand“](automation-scope-configurations-change-tracking.md).
 
 ## <a name="enable-azure-vms"></a>Aktivieren von Azure-VMs
 
@@ -79,9 +75,5 @@ Manuell installierte Computer oder Computer, von denen bereits Berichte für Ihr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu dem Feature finden Sie unter [Verwalten der Änderungsnachverfolgung und des Bestands](change-tracking-file-contents.md).
-* Informationen zu Bereichskonfigurationen finden Sie unter [Einschränken des Bereitstellungsumfangs für „Änderungsnachverfolgung und Bestand“](automation-scope-configurations-change-tracking.md).
-* Unter [Ermitteln der auf Ihren VMs installierten Software](automation-tutorial-installed-software.md) erfahren Sie, wie Sie mithilfe des Features in Ihrer Umgebung installierte Software identifizieren können.
-* Falls Sie Ihr Automation-Konto beim Aktivieren des Features nicht in einen Log Analytics-Arbeitsbereich integrieren möchten, lesen Sie [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto](automation-unlink-workspace-change-tracking.md).
-* Nach Abschluss der Änderungsbereitstellung für virtuelle Computer können Sie sie wie unter [Entfernen von VMs aus Änderungsnachverfolgung und Bestand](automation-remove-vms-from-change-tracking.md) beschrieben entfernen.
+* Informationen zum Arbeiten mit dem Feature finden Sie unter [Verwalten der Änderungsnachverfolgung und des Bestands](change-tracking-file-contents.md).
 * Informationen zur Behandlung allgemeiner Probleme mit dem Feature finden Sie unter [Behandeln von Problemen mit Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

@@ -3,12 +3,12 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537405"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204717"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -26,6 +26,10 @@ In diesem Artikel wird Folgendes erläutert:
 
 - Stellen Sie sicher, dass eine für die Sicherung unterstützte vCenter-/ESXi-Version ausgeführt wird. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) in der Unterstützungsmatrix.
 - Stellen Sie sicher, dass Sie Azure Backup Server eingerichtet haben. Falls Sie dies noch nicht getan haben, [führen Sie diese Aufgabe aus](backup-azure-microsoft-azure-backup.md), bevor Sie beginnen. Azure Backup Server sollte mit den neuesten Updates ausgeführt werden.
+- Stellen Sie sicher, dass die folgenden Netzwerkports geöffnet sind:
+    - TCP 443 zwischen MABS und vCenter
+    - TCP 443 und TCP 902 zwischen MABS und dem ESXi-Host
+
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Erstellen einer sichere Verbindung mit dem vCenter-Server
 

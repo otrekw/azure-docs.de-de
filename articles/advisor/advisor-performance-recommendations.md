@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 description: Nutzen Sie den Advisor, um die Leistung Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787939"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196415"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor ermittelt Traffic Manager-Profile mit einer längeren Gültigkeits
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Verbessern der Datenbankleistung mit SQL DB Advisor
 
-Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure SQL Database Advisor sind integriert, um Ihnen Empfehlungen zum Verbessern der Leistung Ihrer SQL Azure-Datenbank zu bieten. SQL Database Advisor bewertet die Leistung durch eine Analyse des Nutzungsverlaufs Ihrer SQL Azure-Datenbank. Anschließend werden Empfehlungen gegeben, die für die typische Workload der Datenbank am besten geeignet sind.
+Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure SQL Database Advisor sind integriert, um Ihnen Empfehlungen zum Verbessern der Leistung Ihrer Datenbank zu bieten. SQL Database Advisor bewertet die Leistung Ihrer Datenbank durch eine Analyse des Nutzungsverlaufs. Anschließend werden Empfehlungen gegeben, die für die typische Workload der Datenbank am besten geeignet sind.
 
 > [!NOTE]
 > Um Empfehlungen zu erhalten, muss eine Datenbank ungefähr eine Woche lang genutzt werden, und innerhalb dieser Woche müssen durchweg Aktivitäten erfolgen. SQL Database Advisor kann leichter für einheitliche Abfragemuster als für zufällige Aktivitätsspitzen optimiert werden.
@@ -80,11 +80,11 @@ In einer Azure-Region können maximal 250 Speicherkonten pro Abonnement unterst
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Erwägen, die Größe Ihrer VNet Gateway-SKU zu erhöhen, um eine intensive P2S-Nutzung zu unterstützen
 
-Jede Gateway-SKU kann nur eine vorgegebene Anzahl gleichzeitiger P2S-Verbindungen unterstützen. Wenn Ihre Verbindungsanzahl den Grenzwert Ihres Gateways fast erreicht hat, können weitere Verbindungsversuche fehlschlagen. Durch Erhöhen der Größe Ihres Gateways können Sie mehr gleichzeitige P2S-Benutzer unterstützen.Advisor gibt dazu Empfehlungen und schlägt entsprechende Schritte vor.
+Jede Gateway-SKU kann nur eine vorgegebene Anzahl gleichzeitiger P2S-Verbindungen unterstützen. Wenn Ihre Verbindungsanzahl den Grenzwert Ihres Gateways fast erreicht hat, können weitere Verbindungsversuche fehlschlagen. Wenn Sie die Größe Ihres Gateways erhöhen, können Sie gleichzeitig mehr P2S-Benutzer unterstützen. Advisor stellt hierfür Empfehlungen und Schritte bereit.
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Erwägen, die Größe Ihrer VNet Gateway-SKU zu erhöhen, um eine hohe CPU-Auslastung zu unterstützen
 
-Bei hohem Datenverkehr kann das VPN-Gateway Pakete aufgrund hoher CPU-Auslastung verwerfen. Sie sollten ein Upgrade Ihrer VPN Gateway-SKU erwägen, da Ihr VPN ständig mit hoher CPU-Auslastung ausgeführt wird.Durch Erhöhen der Größe Ihres VPN-Gateways stellen Sie sicher, dass Verbindungen nicht aufgrund hoher CPU-Auslastung verworfen werden. Advisor empfiehlt, wie dieses Problem proaktiv angegangen werden kann. 
+Bei hohem Datenverkehr kann das VPN-Gateway Pakete aufgrund hoher CPU-Auslastung verwerfen. Sie sollten ein Upgrade Ihrer VPN Gateway-SKU in Erwägung ziehen, da Ihr VPN dauerhaft ausgeführt wurde. Wenn Sie die Größe der VPN Gateway-Instanz erhöhen, wird sichergestellt, dass Verbindungen aufgrund hoher CPU-Auslastung nicht ausfallen. Advisor empfiehlt, wie dieses Problem proaktiv angegangen werden kann. 
 
 ## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Erhöhen der Batchgröße beim Laden, um Durchsatz, Datenkomprimierung und Abfrageleistung zu verbessern
 

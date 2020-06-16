@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806319"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636125"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -97,7 +97,7 @@ Eine typische Lösung verwendet die folgenden Dienste:
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) wird verwendet, um den SAS-URI (Shared Access Signatures) für jede Aufzeichnung zu erstellen und die HTTP POST-Anforderung zum Starten einer Transkription auszulösen. Darüber hinaus werden mit Azure Functions Anforderungen zum Abrufen und Löschen von Transkriptionen mit der Batch-Transkriptions-API erstellt.
 
 Die oben genannten Technologien werden von uns intern zur Unterstützung von Microsoft-Kundenanrufen im Batchmodus verwendet.
-![Batch-Architektur](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Technologien zur Unterstützung von Microsoft-Kundenanrufen im Batchmodus":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Echtzeittranskription für Callcenterdaten
 

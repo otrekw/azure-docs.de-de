@@ -1,28 +1,32 @@
 ---
 title: Azure Firewall –Private SNAT-IP-Adressbereiche
-description: Sie können private IP-Adressbereiche so konfigurieren, dass die Firewall Datenverkehr nicht per SNAT an diese Adressen weiterleitet.
+description: Sie können IP-Adressbereiche für SNAT konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28ec61c4aefeacb8014e0a5d48d0259cf7fcf7f3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064809"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267023"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall –Private SNAT-IP-Adressbereiche
 
-Azure Firewall bietet kein SNAT mit Netzwerkregeln, wenn die Ziel-IP-Adresse ein privater IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Anwendungsregeln werden immer mithilfe eines [transparenten Proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) unabhängig von der Ziel-IP-Adresse angewendet.
+Azure Firewall bietet eine SNAT für sämtlichen ausgehenden Datenverkehr an öffentliche IP-Adressen. Azure Firewall bietet standardmäßig kein SNAT mit Netzwerkregeln, wenn die Ziel-IP-Adresse ein privater IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Anwendungsregeln werden immer mithilfe eines [transparenten Proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) unabhängig von der Ziel-IP-Adresse angewendet.
+
+Diese Logik funktioniert gut, wenn Sie Datenverkehr direkt an das Internet weiterleiten. Wenn Sie jedoch [Tunnelerzwingung](forced-tunneling.md) aktiviert haben, wird der Internet-gebundene Datenverkehr an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet übersetzt, wodurch die Quelle vor Ihrer lokalen Firewall verborgen wird.
 
 Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter. Sie können Azure Firewall jedoch so konfigurieren, dass Ihr öffentlicher IP-Adressbereich **nicht** per SNAT weitergeleitet wird.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen
+Wenn Sie Azure Firewall so konfigurieren möchten, dass SNAT unabhängig von der Ziel-IP-Adresse niemals angewendet wird, verwenden Sie **0.0.0.0/0** als privaten IP-Adressbereich. Mit dieser Konfiguration kann Azure Firewall niemals Datenverkehr direkt an das Internet weiterleiten. Wenn Sie die Firewall so konfigurieren möchten, dass SNAT unabhängig von der Ziel-Adresse immer angewendet wird, verwenden Sie **255.255.255.255/32** als privaten IP-Adressbereich.
 
-Sie können mithilfe von Azure PowerShell einen IP-Adressbereich angeben, den die Firewall nicht per SNAT weiterleiten wird.
+## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – Azure PowerShell
+
+Sie können mithilfe von Azure PowerShell private IP-Adressbereiche für die Firewall angeben.
 
 ### <a name="new-firewall"></a>Neue Firewall
 
@@ -55,6 +59,20 @@ Sie können im Abschnitt `additionalProperties` Folgendes hinzufügen:
                 },
 ```
 
+## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>Konfigurieren von privaten SNAT-IP-Adressbereichen – Azure-Portal
+
+Sie können mithilfe des Azure-Portals private IP-Adressbereiche für die Firewall angeben.
+
+1. Wählen Sie Ihre Ressourcengruppe und dann Ihre Firewall aus.
+2. Wählen Sie auf der Seite **Übersicht** die Option **Private IP-Bereiche** aus und dann den Standardwert **IANA RFC 1918**.
+
+   Die Seite **Präfixe privater IP-Adressen bearbeiten** wird geöffnet:
+
+   :::image type="content" source="media/snat-private-range/private-ip.png" alt-text="Präfixe privater IP-Adressen bearbeiten":::
+
+1. Standardmäßig ist **IANAPrivateRanges** konfiguriert.
+2. Bearbeiten Sie die privaten IP-Adressbereiche für Ihre Umgebung, und wählen Sie dann **Speichern** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie eine [Azure Firewall bereitstellen und konfigurieren](tutorial-firewall-deploy-portal.md).
+- Erfahren Sie mehr über die [Azure Firewall-Tunnelerzwingung](forced-tunneling.md).

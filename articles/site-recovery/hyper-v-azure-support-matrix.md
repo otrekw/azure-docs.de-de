@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420831"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249143"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -32,7 +32,7 @@ Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung 
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-Hyper-V (Ausführung ohne Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md). 
+Hyper-V (Ausführung ohne Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md). <br/><br/> Hinweis: In der Server Core-Version von Windows Server 2019 wird Failback nicht unterstützt.
 Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2019-Hosts in Virtual Machine Manager 2019 verwaltet werden. Ebenso sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Hinweis: Ein Failback auf einen alternativen Standort wird für Windows Server 2019-Hosts nicht unterstützt.
 
 

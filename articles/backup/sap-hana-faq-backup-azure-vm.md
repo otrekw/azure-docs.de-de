@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuelle
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701013"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248803"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -86,6 +86,10 @@ Stellen Sie sicher, dass die Option **Überschreiben erzwingen** beim Wiederhers
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Warum wird der Fehler „Quell- und Zielsystem für die Wiederherstellung sind inkompatibel“ angezeigt?
 
 Lesen Sie den SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu ermitteln, welche Wiederherstellungstypen derzeit unterstützt werden.
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Kann ich eine Sicherung einer laufenden Datenbank auf SLES verwenden, um sie in einem RHEL Hana-System wiederherzustellen, oder umgekehrt?
+
+Ja, Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen und umgekehrt. Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen jedoch sicherstellen, dass sowohl HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, für die Wiederherstellung gemäß SAP kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

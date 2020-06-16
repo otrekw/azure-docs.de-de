@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70139260"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019910"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -62,7 +62,7 @@ Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Da
 3. Klicken Sie auf dem Blatt **Beispielpipelines** auf das **Beispiel**, das Sie bereitstellen möchten.
 
     ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
-4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der Azure SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
+4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der logische SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
 
     ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
 5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
@@ -80,7 +80,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
 
 * Visual Studio 2013 oder Visual Studio 2015
 * Laden Sie das Azure-SDK für Visual Studio 2013 oder Visual Studio 2015 herunter. Navigieren Sie zur [Azure-Downloadseite](https://azure.microsoft.com/downloads/), und klicken Sie auf **VS 2013** oder **VS 2015** im Abschnitt **.NET**.
-* Laden Sie das neueste Azure Data Factory-Plug-In für Visual Studio herunter: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) oder [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Bei Verwendung von Visual Studio 2013 können Sie das Plug-In auch wie folgt aktualisieren: Klicken Sie im Menü auf **Extras** -> **Erweiterungen und Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory-Tools für Visual Studio** -> **Aktualisieren**.
+* Laden Sie das neueste Azure Data Factory-Plug-In für Visual Studio herunter: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) oder [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Wenn Sie Visual Studio 2013 verwenden, können Sie das Plug-In auch aktualisieren, indem Sie die folgenden Schritte ausführen: Klicken Sie im Menü auf **Tools** -> **Erweiterungen und Updates** -> **Online** -> **Visual Studio-Katalog** -> **Microsoft Azure Data Factory-Tools für Visual Studio** -> **Aktualisieren**.
 
 ### <a name="use-data-factory-templates"></a>Verwenden von Data Factory-Vorlagen
 1. Klicken Sie im Menü auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.

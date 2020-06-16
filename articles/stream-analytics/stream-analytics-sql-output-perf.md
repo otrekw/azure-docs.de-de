@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: e0fcbec2e502088024805ebc1f02007c09a12c9d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839112"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192510"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 
 In diesem Artikel werden Tipps zum Erzielen einer höheren Durchsatzleistung bei Schreibvorgängen erörtert, wenn Sie Daten mit Azure Stream Analytics in SQL Azure-Datenbank laden.
 
-Bei der SQL-Ausgabe in Azure Stream Analytics werden parallele Schreibvorgänge als Option unterstützt. Diese Option ermöglicht [vollständig parallele](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) Auftragstopologien, in denen mehrere Ausgabepartitionen gleichzeitig in die Zieltabelle schreiben. Allerdings reicht das Aktivieren dieser Option in Azure Stream Analytics möglicherweise nicht aus, um einen höheren Durchsatz zu erzielen, weil sie erheblich von Ihrer SQL Azure-Datenbank-Konfiguration und vom Tabellenschema abhängt. Die Auswahl von Indizes, Gruppierungsschlüssel, Indexfüllfaktor und Komprimierung besitzt Auswirkungen auf die Dauer von Tabellenladevorgängen. Weitere Informationen zum Optimieren der SQL Azure-Datenbank, um die Abfrage- und Ladeleistung basierend auf internen Benchmarks zu verbessern, finden Sie unter [Optimieren der Leistung bei Azure SQL-Datenbank](../sql-database/sql-database-performance-guidance.md). Die Reihenfolge der Schreibvorgänge ist beim parallelen Schreiben in der SQL Azure-Datenbank nicht gewährleistet.
+Bei der SQL-Ausgabe in Azure Stream Analytics werden parallele Schreibvorgänge als Option unterstützt. Diese Option ermöglicht [vollständig parallele](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) Auftragstopologien, in denen mehrere Ausgabepartitionen gleichzeitig in die Zieltabelle schreiben. Allerdings reicht das Aktivieren dieser Option in Azure Stream Analytics möglicherweise nicht aus, um einen höheren Durchsatz zu erzielen, weil sie erheblich von Ihrer Datenbankkonfiguration und vom Tabellenschema abhängt. Die Auswahl von Indizes, Gruppierungsschlüssel, Indexfüllfaktor und Komprimierung besitzt Auswirkungen auf die Dauer von Tabellenladevorgängen. Weitere Informationen zum Optimieren Ihrer Datenbank, um die Abfrage- und Ladeleistung basierend auf internen Benchmarks zu verbessern, finden Sie unter [Leistungsoptimierungen bei Anwendungen und Datenbanken in Azure SQL-Datenbank und Azure SQL Managed Instance](../azure-sql/database/performance-guidance.md). Die Reihenfolge der Schreibvorgänge ist beim parallelen Schreiben in SQL Azure-Datenbank nicht gewährleistet.
 
 Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mit denen Sie den Durchsatz Ihrer Lösung insgesamt verbessern können.
 

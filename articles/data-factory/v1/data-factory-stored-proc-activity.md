@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931626"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113718"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -114,7 +114,7 @@ Nachdem Sie die Data Factory erstellt haben, können Sie einen mit Azure SQL ver
    ![Neuer Datenspeicher](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
 
-   1. Ersetzen Sie `<servername>` durch den Namen des Azure SQL-Datenbank-Servers.
+   1. Ersetzen Sie `<servername>` durch den Namen Ihres Servers.
    2. Ersetzen Sie `<databasename>` durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben.
    3. Ersetzen Sie `<username@servername>` durch das Benutzerkonto, das über Zugriff auf die Datenbank verfügt.
    4. Ersetzen Sie `<password>` durch das Kennwort für das Benutzerkonto.

@@ -6,184 +6,53 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/06/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 32e80c50ff6f543679852cbd7e5ce9bda92d01e1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778243"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140924"
 ---
-## <a name="general-entity-types"></a>Allgemeine Entitätstypen:
-
-### <a name="person"></a>Person
-
-Erkennen von Personennamen in Text.
-
-Sprachen:
-* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
-
-| Name des Untertyps | BESCHREIBUNG                                                      | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------------------------------|---------------------------------------|
-| –          | Erkannte Personennamen, beispielsweise `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
-
-### <a name="persontype"></a>PersonType
-Von einer Person eingenommene Position oder Rolle.
-
-Sprachen:
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                                                                | Erst ab dieser Modellversion verfügbar |
-|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| –          | Berufe, z. B. `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
-
-### <a name="location"></a>Standort
-
-Natürliche und von Menschen hergestellte Wahrzeichen, Strukturen, geografische Merkmale und geopolitische Entitäten.
-
-Sprachen:
-
-* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
-
-| Name des Untertyps              | BESCHREIBUNG                                                                              | Erst ab dieser Modellversion verfügbar |
-|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| –                       | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitische Entität (GPE) – nur Englisch| Städte, Länder, Regionen, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
-
-### <a name="organization"></a>Organization  
-
-Erkannte Organisationen, Unternehmen, Agenturen und andere Personengruppen. Beispiel: Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen. Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. 
-
-Sprachen: 
-
-* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
-
-| Name des Untertyps | BESCHREIBUNG                                                                                             | Erst ab dieser Modellversion verfügbar |
-|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| –          | Organisationen, z. B. `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`, `VOA` | `2019-10-01`                           |
-
-### <a name="event"></a>Ereignis  
-
-Historische Ereignisse, gesellschaftliche Ereignisse und Naturereignisse.  
-
-Sprachen: 
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                                            | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------------------------------------|----------------------------------------|
-| –          | Ereignisse wie `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
-
-### <a name="product"></a>Produkt  
-
-Physische Objekte verschiedener Kategorien.  
-
-Sprachen: 
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                                                        | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| –          | Beispiel: `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox`. | `2020-02-01`                           |
-| Computing    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
-
-### <a name="skill"></a>Skill  
-
-Eine Entität, die eine Funktion oder ein Fachwissen beschreibt.  
-
-Sprachen: 
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                                                 | Erst ab dieser Modellversion verfügbar |
-|--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| –          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
-
-### <a name="phone-number"></a>Rufnummer
-
-Telefonnummern (nur US-Telefonnummern) 
-
-Sprachen:
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                    | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------------|----------------------------------------|
-| –          | US-Telefonnummern, z. B. `(312) 555-0176` | `2019-10-01`                           |
-
-### <a name="email"></a>Email
-
-E-Mail-Adresse. 
-
-Sprachen:
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                      | Erst ab dieser Modellversion verfügbar |
-|--------------|--------------------------------------------------|----------------------------------------|
-| –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2019-10-01`                           |
-
-### <a name="url"></a>URL
-
-Internet-URLs.
-
-Sprachen:
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                                          | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------------------|----------------------------------------|
-| –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2019-10-01`                           |
-
-### <a name="ip-address"></a>IP-Adresse
-
-Internetprotokolladresse
-
-Sprachen:
-
-* Öffentliche Vorschau: `English`
-
-| Name des Untertyps | BESCHREIBUNG                              | Erst ab dieser Modellversion verfügbar |
-|--------------|------------------------------------------|----------------------------------------|
-| –          | Netzwerkadresse, z. B. `10.0.0.101` | `2019-10-01`                           |
-
-###  <a name="datetime"></a>Datetime
-
-Datums- und Uhrzeitentitäten 
-
-* Erst ab dieser Modellversion verfügbar `2019-10-01`
-
-Sprachen:
-
-* Öffentliche Vorschau: `Chinese-Simplified`, `English`, `French`, `German` und `Spanish`
-
-| Name des Untertyps    | Beispiele                     |
-|-------------|------------------------------|
-| –         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
-| Date  | `May 2nd, 2017`, `05/02/2017`       |
-| Time     | `8:15`, `6AM`              |
-| DateRange    | `August 2nd to August 5th`         |
-| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
-| Duration | `2.5 minutes`, `one and a half hours`         |
-| Set | `every Saturday`         |
-
-###  <a name="quantity"></a>Menge
-
-Zahlen und numerische Mengen. 
-
-* Erst ab dieser Modellversion verfügbar `2019-10-01`
-
-Sprachen:
-
-* Öffentliche Vorschau: `Chinese-Simplified`, `English`, `French`, `German` und `Spanish`
-
-| Name des Untertyps    | Beispiele                     |
-|-------------|------------------------------|
-| Number         | `6`, `six`                   |
-| Prozentwert  | `50%`, `fifty percent`       |
-| Ordinal     | `2nd`, `second`              |
-| Age         | `90 day old`, `30 years old` |
-| Währung    | `$10.99`, `&euro;30.00`           |
-| Dimension   | `10 miles`, `40 cm`          |
-| Temperatur | `32 degrees`, `10°C`         |
+Die folgenden Entitätskategorien werden beim Senden von Anforderungen an den `/entities/recognition/general`-Endpunkt zurückgegeben.
+
+| Category   | Unterkategorie | BESCHREIBUNG                          | Ab Modellversion                                                    | Notizen |
+|------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
+| Person     | –         | Namen von Personen  | `2019-10-01`  | Wird auch von NER v2.1 zurückgegeben |
+| PersonType | –         | Von einer Person eingenommene Position oder Rolle | `2020-02-01` | |
+|Standort    | –         | Natürliche und von Menschen hergestellte Wahrzeichen, Gebäude, geografische Merkmale und geopolitische Entitäten     |  `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+|Standort     | Geopolitische Entität (GPE)        | Städte, Länder/Regionen, Staaten      | `2020-02-01` | |
+|Standort     | Strukturell                       | Von Menschen geschaffene Strukturen | `2020-04-01` | |
+|Standort     | Geografisch       | Geografische und natürliche Merkmale wie Flüsse, Ozeane und Wüsten |  `2020-04-01` | |
+|Organization  | – | Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen  | `2019-10-01` | Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. Wird auch von NER v2.1 zurückgegeben |
+|Organization | Medizin | Medizinische Unternehmen und Gruppen | `2020-04-01` |  |
+|Organization | Börse | Börsengruppen | `2020-04-01` | |
+| Organization | Sport | Sportbezogene Organisationen | `2020-04-01` |  |
+| Ereignis  | – | Historische Ereignisse, gesellschaftliche Ereignisse und Naturereignisse | `2020-02-01` |  |
+| Ereignis  | Kultur | Kulturveranstaltungen und Feiertage | `2020-04-01` | |
+| Ereignis  | Natural | Naturereignisse | `2020-04-01` |  |
+| Ereignis  | Sport | Sportveranstaltungen  | `2020-04-01` | |
+| Produkt | – | Physische Objekte verschiedener Kategorien. | `2020-02-01` | |
+| Produkt | Rechenergebnisse | Rechenergebnisse |  `2020-02-01 ` | |
+| Skill | – | Eine Funktion, Kenntnis oder ein Fachwissen | `2020-02-01` |  |
+| Adresse | – | Vollständige Postanschrift  | `2020-04-01` |  |
+| PhoneNumber | – | Telefonnummern (nur US- und EU-Telefonnummern) | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Email | – | E-Mail-Adressen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| URL | – | URLs zu Websites | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben  |
+| IP | – | Netzwerk-IP-Adressen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | – | Datums- und Uhrzeitangaben | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben | 
+| Datetime | Date | Kalenderdatumsangaben | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | Time | Tageszeiten | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | DateRange | Datumsbereiche | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | TimeRange | Uhrzeitbereiche | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | Duration | Zeitspannen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Datetime | Set | Festgelegte Wiederholungszeiten |  `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | – | Zahlen und numerische Mengen. | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben  |
+| Menge | Number | Zahlen. | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | Prozentwert | Prozentangaben| `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | Ordinal | Ordinalzahlen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | Age | Altersangaben | `2019-10-01` |  Wird auch von NER v2.1 zurückgegeben |
+| Menge | Währung | Währungen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | Dimension | Abmessungen und Maße | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |
+| Menge | Temperatur | Temperaturen | `2019-10-01` | Wird auch von NER v2.1 zurückgegeben |

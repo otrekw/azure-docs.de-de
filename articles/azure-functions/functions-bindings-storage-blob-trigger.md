@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: c594f269d32bc87b2389c430343f6480e97bc5f6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084956"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142247"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
 Der Blobspeichertrigger startet eine Funktion, wenn ein neues oder aktualisiertes Blob erkannt wird. Der Blobinhalt wird als [Eingabe für die Funktion](./functions-bindings-storage-blob-input.md) bereitgestellt.
 
-Der Azure Blob Storage-Trigger erfordert ein allgemeines Speicherkonto. Um ein Blobkonto zu verwenden, oder wenn Ihre Anwendung spezielle Anforderungen hat, überprüfen Sie die Alternativen zur Verwendung dieses Triggers.
+Der Azure Blob Storage-Trigger erfordert ein universelles Speicherkonto. V2-Speicherkonten mit [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md) werden ebenfalls unterstützt. Um ein Blobkonto zu verwenden, oder wenn Ihre Anwendung spezielle Anforderungen hat, überprüfen Sie die Alternativen zur Verwendung dieses Triggers.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](./functions-bindings-storage-blob.md).
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 2b23ffec76de3fa644abe3b65876a60c65c05eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686004"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116386"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrieren von lokalen SSIS-Workloads zu SSIS in ADF
 
@@ -24,7 +24,7 @@ ms.locfileid: "81686004"
 
 ## <a name="overview"></a>Übersicht
 
-Wenn Sie Ihre Datenbankworkloads von SQL Server lokal zu Azure-Datenbankdiensten migrieren (und zwar Azure SQL-Datenbank oder eine verwaltete Azure SQL-Datenbank-Instanz), müssen Ihre ETL-Workloads in SSIS (SQL Server Integration Services) als einer der primären Dienste mit Mehrwert ebenfalls migriert werden.
+Wenn Sie Ihre Datenbankworkloads von SQL Server lokal zu Azure-Datenbankdiensten migrieren (und zwar Azure SQL-Datenbank oder Azure SQL Managed Instance), müssen Ihre ETL-Workloads in SSIS (SQL Server Integration Services) als einer der primären Dienste mit Mehrwert ebenfalls migriert werden.
 
 Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) unterstützt die Ausführung von SSIS-Paketen. Sobald Azure-SSIS IR bereitgestellt wurde, können Sie vertraute Tools wie SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) und Befehlszeilenprogramme wie „dtinstall/dtutil/dtexec“ verwenden, um Ihre Pakete in Azure bereitzustellen und auszuführen. Weitere Informationen finden Sie unter [Azure SSIS per Lift & Shift migrieren – Übersicht](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
@@ -57,14 +57,14 @@ Rufen Sie [DMA](https://docs.microsoft.com/sql/dma/dma-overview) ab, und [führe
 
 In Abhängigkeit von den [Speichertypen](#four-storage-types-for-ssis-packages) von SSIS-Quellpaketen und dem Migrationsziel der Datenbankworkloads können die Schritte zum Migrieren von **SSIS-Paketen** und **SQL Server-Agentaufträgen** variieren, die die Ausführung von SSIS-Paketen planen. Es gibt zwei Szenarien:
 
-- [**Azure SQL-Datenbank – Verwaltete Instanz** als Datenbankworkloadziel](#azure-sql-database-managed-instance-as-database-workload-destination)
+- [**Azure SQL Managed Instance** als Datenbankworkloadziel](#azure-sql-managed-instance-as-database-workload-destination)
 - [**Azure SQL-Datenbank** als Datenbankworkloadziel](#azure-sql-database-as-database-workload-destination)
 
-### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>**Azure SQL-Datenbank – Verwaltete Instanz** als Datenbankworkloadziel
+### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>**Azure SQL Managed Instance** als Datenbankworkloadziel
 
 | **Paketspeichertyp** |Batchmigration von SSIS-Paketen|Batchmigration von SSIS-Aufträgen|
 |-|-|-|
-|SSISDB|[Migrieren von **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[Migrieren von SSIS-Aufträgen zu einem Agent einer verwalteten Azure SQL-Datenbank-Instanz](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|SSISDB|[Migrieren von **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[Migrieren von SSIS-Aufträgen zu einem Azure SQL Managed Instance-Agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
 |Dateisystem|Stellen Sie sie in Dateifreigaben/Azure Files über „dtinstall/dtutil/manual copy“ erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrieren mit dem [SSIS-Auftragsmigrations-Assistenten in SSMS](how-to-migrate-ssis-job-ssms.md) <li>Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportieren Sie sie über SSMS/dtutil in Dateisysteme/Dateifreigaben/Azure Files. Weitere Informationen finden Sie unter [Exportieren von SSIS-Paketen](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Paketspeicher|Exportieren Sie sie über SSMS/dtutil in Dateisystme/Dateifreigaben/Azure Files, oder stellen Sie sie in Dateifreigaben/Azure Files über dtinstall/dtutil/manuelle Kopie erneut bereit, oder bewahren Sie sie in Dateisystemen für den Zugriff über VNet/Selbstgehostete IR. Weitere Informationen finden Sie unter „dtutil-Hilfsprogramm“. Weitere Informationen finden Sie unter [dtutil-Hilfsprogramm](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertieren Sie sie mithilfe von Skripts/SSMS/ADF-Portal in ADF-Pipelines/-Aktivitäten/-Trigger. Weitere Informationen finden Sie unter [SSMS-Zeitplanungsfunktion](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
@@ -83,7 +83,7 @@ In Abhängigkeit von den [Speichertypen](#four-storage-types-for-ssis-packages) 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Datenbankmigrations-Assistent](https://docs.microsoft.com/sql/dma/dma-overview)
 - [Migrieren von SSIS-Workloads per Lift & Shift in die Cloud](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [Migrieren von SSIS-Paketen zu einer verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [Migrieren von SSIS-Paketen zu Azure SQL Managed Instance](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Erneutes Bereitstellen von Paketen für Azure SQL-Datenbank](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>Nächste Schritte

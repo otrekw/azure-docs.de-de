@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74951852"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018836"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Erfahren Sie, wie Apache Sqoop in HDInsight zum Importieren und Exportieren von Daten zwischen einem HDInsight-Cluster und einer Azure SQL-Datenbank verwendet werden kann.
+Erfahren Sie, wie Sie Apache Sqoop in HDInsight zum Importieren und Exportieren von Daten zwischen einem HDInsight-Cluster und Azure SQL-Datenbank verwenden.
 
 Auch wenn Apache Hadoop die beste Wahl für die Verarbeitung unstrukturierter und halbstrukturierter Daten wie z.B. Protokolle und Dateien ist, besteht oft auch Bedarf für die Verarbeitung strukturierter Daten, die in relationalen Datenbanken gespeichert werden.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) ist ein Tool zum Übertragen von Daten zwischen Hadoop-Clustern und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Apache Hive transformieren und sie anschließend wieder in ein RDBMS exportieren. In diesem Artikel verwenden Sie eine SQL Server-Datenbank als relationale Datenbank.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) ist ein Tool zum Übertragen von Daten zwischen Hadoop-Clustern und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Apache Hive transformieren und sie anschließend wieder in ein RDBMS exportieren. In diesem Artikel verwenden Sie Azure SQL-Datenbank für Ihre relationale Datenbank.
 
 > [!IMPORTANT]  
 > Im Artikel wird eine Testumgebung für die Datenübertragung eingerichtet. Sie wählen dann eine Datenübertragungsmethode für diese Umgebung aus einer der Methoden im Abschnitt [Ausführen von Sqoop-Aufträgen](#run-sqoop-jobs) weiter unten aus.
@@ -46,14 +46,14 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
   
   | Feld | Datentyp |
   | --- | --- |
-  | clientid |string |
-  | querytime |string |
-  | market |string |
-  | deviceplatform |string |
-  | devicemake |string |
-  | devicemodel |string |
-  | state |string |
-  | country |string |
+  | clientid |Zeichenfolge |
+  | querytime |Zeichenfolge |
+  | market |Zeichenfolge |
+  | deviceplatform |Zeichenfolge |
+  | devicemake |Zeichenfolge |
+  | devicemodel |Zeichenfolge |
+  | state |Zeichenfolge |
+  | country |Zeichenfolge |
   | querydwelltime |double |
   | sessionid |BIGINT |
   | sessionpagevieworder |BIGINT |
@@ -78,11 +78,11 @@ Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal 
 
 2. Geben Sie die folgenden Eigenschaften ein:
 
-    |Feld |value |
+    |Feld |Wert |
     |---|---|
     |Subscription |Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.|
     |Resource group |Wählen Sie in der Dropdownliste Ihre Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe.|
-    |Location |Wählen Sie in der Dropdownliste eine Region aus.|
+    |Standort |Wählen Sie in der Dropdownliste eine Region aus.|
     |Clustername |Geben Sie einen Namen für den Hadoop-Cluster ein. Verwenden Sie nur Kleinbuchstaben.|
     |Benutzername für Clusteranmeldung |Behalten Sie den vorgegebenen Wert `admin` bei.|
     |Kennwort für Clusteranmeldung |Geben Sie ein Kennwort ein.|
@@ -93,9 +93,9 @@ Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal 
     |„_artifacts“-Speicherort | Verwenden Sie den Standardwert, sofern Sie nicht eine eigene BACPAC-Datei an einem anderen Speicherort verwenden möchten.|
     |SAS-Token für „_artifacts“-Speicherort |Lassen Sie dieses Feld leer.|
     |BACPAC-Dateiname |Verwenden Sie den Standardwert, sofern Sie nicht eine eigene BACPAC-Datei verwenden möchten.|
-    |Location |Verwenden Sie den Standardwert.|
+    |Standort |Verwenden Sie den Standardwert.|
 
-    Der Azure SQL Server-Name lautet `<ClusterName>dbserver`. Der Datenbankname lautet `<ClusterName>db`. Der Name des Standardspeicherkontos lautet `e6qhezrh2pdqu`.
+    Der Name des [logischen SQL-Servers](../../azure-sql/database/logical-servers.md) lautet `<ClusterName>dbserver`. Der Datenbankname lautet `<ClusterName>db`. Der Name des Standardspeicherkontos lautet `e6qhezrh2pdqu`.
 
 3. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 
@@ -113,7 +113,7 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
+* Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
 * Batchverarbeitung: Wenn Sie in Linux-basiertem HDInsight zum Ausführen von Einfügevorgängen den Schalter `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -121,5 +121,5 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 Sie haben nun gelernt, wie Sie Sqoop verwenden. Weitere Informationen finden Sie unter:
 
 * [Verwenden von Apache Hive mit HDInsight](../hdinsight-use-hive.md)
-* [Hochladen von Daten in HDInsight:](../hdinsight-upload-data.md) Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
+* [Hochladen von Daten in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
 * [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop](./apache-hadoop-use-sqoop-mac-linux.md)

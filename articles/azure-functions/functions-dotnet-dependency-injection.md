@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739140"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195516"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -251,7 +251,7 @@ public class HttpTrigger
 Weitere Informationen zum Arbeiten mit Optionen finden Sie unter [Optionsmuster in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
 
 > [!WARNING]
-> Vermeiden Sie es, Werte aus Dateien wie *local.settings.json* oder *appsettings.{Umgebung}.json* im Verbrauchsplan zu lesen. Werte, die aus diesen Dateien im Zusammenhang mit Triggerverbindungen gelesen werden, sind bei der Skalierung der App nicht verfügbar, da die Hostinginfrastruktur keinen Zugriff auf die Konfigurationsinformationen hat.
+> Vermeiden Sie es, Werte aus Dateien wie *local.settings.json* oder *appsettings.{Umgebung}.json* im Verbrauchsplan zu lesen. Mit Triggerverbindungen zusammenhängende Werte, die aus diesen Dateien gelesen werden, sind bei der Skalierung der App nicht verfügbar, da die Hostinginfrastruktur keinen Zugriff auf die Konfigurationsinformationen hat, während der Skalierungscontroller neue Instanzen der App erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

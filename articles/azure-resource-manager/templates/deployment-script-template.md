@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708005"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168572"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Verwenden von Bereitstellungsskripts in Vorlagen (Vorschauversion)
 
@@ -60,7 +60,7 @@ Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen 
   read resourceGroupName &&
   echo "Enter the managed identity name:" &&
   read idName &&
-  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  az identity show -g $resourceGroupName -n $idName --query id
   ```
 
   # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -166,7 +166,7 @@ Für die folgende Vorlage wurde eine Ressource mit dem Typ `Microsoft.Resources/
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, müssen Zeichenfolgen innerhalb der Bereitstellungsskripts stattdessen in einfache Anführungszeichen eingeschlossen werden. Das Escapezeichen für PowerShell ist **&#92;** . Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen. Sehen Sie sich den Standardwert des Parameters an.
+> Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, muss für Zeichenfolgen innerhalb der Bereitstellungsskripts **&#92;** als Escapezeichen verwendet werden, oder sie müssen in einfache Anführungszeichen eingeschlossen werden. Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen.
 
 Das Skript akzeptiert einen Parameter und gibt den Parameterwert aus. **DeploymentScriptOutputs** wird zum Speichern von Ausgaben verwendet.  Im Abschnitt „outputs“ zeigt die Zeile **value** an, wie auf die gespeicherten Werte zugegriffen wird. `Write-Output` wird zum Debuggen verwendet. Informationen zum Zugreifen auf die Ausgabedatei finden Sie unter [Debuggen von Bereitstellungsskripts](#debug-deployment-scripts).  Beschreibungen der Eigenschaften finden Sie unter [Beispielvorlagen](#sample-templates).
 
@@ -306,7 +306,20 @@ Wählen Sie im Portal die Option **Ausgeblendete Typen anzeigen** aus, um die de
 
 Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird das Speicherkonto zusammen mit der Containerinstanz vom Skriptdienst automatisch erstellt. Die Voraussetzungen für die Verwendung eines vorhandenen Speicherkontos:
 
-- Unterstützte Speicherkontotypen: Universell V2, Universell V1 und FileStorage. Premium-SKUs werden nur von FileStorage-Konten unterstützt. Weitere Informationen finden Sie unter [Speicherkontentypen](../../storage/common/storage-account-overview.md).
+- Unterstützte Speicherkontotypen:
+
+    | SKU             | Unterstützte Typen     |
+    |-----------------|--------------------|
+    | Premium_LRS     | FileStorage        |
+    | Premium_ZRS     | FileStorage        |
+    | Standard_GRS    | Storage, StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Storage, StorageV2 |
+    | Standard_RAGRS  | Storage, StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    Diese Kombinationen unterstützen Dateifreigaben.  Weitere Informationen finden Sie unter [Erstellen einer Azure-Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md) und [Speicherkontoübersicht](../../storage/common/storage-account-overview.md).
 - Firewallregeln für Speicherkonten werden noch nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../../storage/common/storage-network-security.md).
 - Die vom Benutzer zugewiesene verwaltete Identität des Bereitstellungsskripts muss über Berechtigungen zum Verwalten des Speicherkontos verfügen, was das Lesen, Erstellen und Löschen von Dateifreigaben umfasst.
 

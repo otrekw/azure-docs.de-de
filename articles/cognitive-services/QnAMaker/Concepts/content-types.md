@@ -4,12 +4,12 @@ description: Zu den Inhaltstypen gehören viele strukturierte Standarddokumente 
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2569832f7f87ed7b8fccbc44e431fa45495ba67
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650196"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996107"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>Inhaltstypen von Dokumenten, die Sie einer Wissensdatenbank hinzufügen können
 Zu den Inhaltstypen gehören viele strukturierte Standarddokumente wie PDF, DOC und TXT.
@@ -49,4 +49,4 @@ Erfahren Sie mehr über die [Formatierungsrichtlinien](../reference-document-for
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, welche Informationen in einem [Frage-Antwort-Satz (QnA)](question-answer-set.md) gespeichert sind.
+Erfahren Sie, welche Informationen in einem [Frage-Antwort-Paar (QnA)](question-answer-set.md) gespeichert sind.

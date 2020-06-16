@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57e4451f67a75e9101f21d449152d9c6f42aaf02
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028391"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216614"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -25,10 +25,14 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Organisationsdomänen von Activ
 
 > [!NOTE]
 > Das Ändern der Authentifizierungsmethode erfordert Planung, Tests und potenzielle Ausfallzeiten. Das [gestaffelte Rollout](how-to-connect-staged-rollout.md) ist eine alternative Möglichkeit zum Testen und schrittweisen Migrieren von der Verbund- zur Cloudauthentifizierung mithilfe der Kennworthashsynchronisierung.
+>
+> Wenn Sie einen gestaffelten Rollout verwenden möchten, sollten Sie daran denken, die Features für den gestaffelten Rollout zu deaktivieren, nachdem Sie den Übergang abgeschlossen haben.  Weitere Informationen finden Sie unter [Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts](how-to-connect-staged-rollout.md).
+
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>Voraussetzungen für die Migration zur Kennworthashsynchronisierung
 
 Für die Migration von AD FS zur Kennworthashsynchronisierung gelten die folgenden Voraussetzungen.
+
 
 ### <a name="update-azure-ad-connect"></a>Aktualisieren von Azure AD Connect
 

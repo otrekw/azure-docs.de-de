@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838657"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119380"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -106,7 +106,7 @@ Logic Apps bietet integrierte Aktionen zum Ausführen Ihres eigenen Codes im Wor
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API-Symbol][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | Aufrufen von Azure-Funktionen, die benutzerdefinierte Codeausschnitte (C# oder Node.js) aus Ihren Logik-Apps ausführen. | [![API-Symbol][inline-code-icon]<br>**Inlinecode**][azure-functions-doc] | Hinzufügen und Ausführen von JavaScript-Codeausschnitten in Ihren Logik-Apps. |
+| [![API-Symbol][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | Aufrufen von Azure-Funktionen, die benutzerdefinierte Codeausschnitte (C# oder Node.js) aus Ihren Logik-Apps ausführen. | [![API-Symbol][inline-code-icon]<br>**Inlinecode**][inline-code-doc] | Hinzufügen und Ausführen von JavaScript-Codeausschnitten in Ihren Logik-Apps. |
 |||||
 
 ### <a name="control-workflow"></a>Steuern des Workflows
@@ -388,6 +388,7 @@ Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Co
 [http-response-doc]: ./connectors-native-reqres.md "Antworten auf HTTP-Anforderungen aus Ihren Logik-Apps"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "Aufrufen von REST-Endpunkten aus Ihren Logik-Apps"
 [http-webhook-doc]: ./connectors-native-webhook.md "Warten auf bestimmte Ereignisse von HTTP- oder HTTPS-Endpunkten"
+[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md "Hinzufügen und Ausführen von JavaScript-Codeausschnitten in Ihren Logik-Apps"
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "Integrieren von Logik-Apps in geschachtelte Workflows"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "Auswählen und Filtern von Arrays mit der Abfrageaktion"
 [schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "Ausführen von Logik-Apps, basierend auf einem Zeitplan"

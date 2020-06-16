@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742770"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264365"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
-Der [Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps enthält APIs, die verschiedene Funktionen bieten. Die API für die Adresssuche wird z. B. für die Suche nach Points of Interest (POI) oder Daten rund um einen bestimmten Ort verwendet. 
+Der Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) enthält APIs, die verschiedene Funktionen bieten, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und anderen geografischen Informationen unterstützen. Mithilfe der [API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) können Benutzer beispielsweise nach einer Adresse oder einem Point of Interest (POI) suchen.
 
 In diesem Artikel wird erläutert, wie Sie beim Aufrufen von Daten aus dem Suchdienst von Azure Maps vernünftige Methoden anwenden können. Sie lernen Folgendes:
 
@@ -33,7 +33,7 @@ Um die Azure Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Azure Maps
 Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 > [!TIP]
-> Um den Suchdienst abzufragen, können Sie die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwenden. Sie können aber auch jede beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
+> Sie können die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwenden, um den Suchdienst abzufragen. Sie können aber auch jede beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Bewährte Methoden zur Geocodierung von Adressen
 
@@ -61,7 +61,7 @@ Um die Ergebnisse geografisch in den für Ihren Benutzer relevanten Bereich zu l
 
 #### <a name="fuzzy-search-parameters"></a>Parameter der Fuzzysuche
 
-Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) zu verwenden, wenn Sie Ihre Benutzereingaben für eine Suchabfrage nicht kennen. Die API kombiniert POI-Suche und Geocodierung zu einer kanonischen *einzeiligen Suche*: 
+Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) zu verwenden, wenn Sie Ihre Benutzereingaben für eine Suchabfrage nicht kennen. Beispielsweise kann die Eingabe des Benutzers eine Adresse oder der POI-Typ sein, wie z. B. *Einkaufszentrum*. Die API kombiniert POI-Suche und Geocodierung zu einer kanonischen *einzeiligen Suche*: 
 
 * Die Parameter `minFuzzyLevel` und `maxFuzzyLevel` helfen, relevante Übereinstimmungen zurückzugeben, selbst wenn die Abfrageparameter nicht genau mit den vom Benutzer gewünschten Informationen übereinstimmen. Um die Leistung zu maximieren und ungewöhnliche Ergebnisse zu verringern, legen Sie Suchabfragen auf die Standardwerte `minFuzzyLevel=1` und `maxFuzzyLevel=2` fest. 
 
@@ -85,7 +85,7 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverser Geocode und Filter für einen Geografieentitätstyp
 
-Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
+Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Sie möchten beispielsweise das Flächenpolygon für eine Stadt abrufen. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
 
 Die resultierende Antwort enthält die Geografie-ID und den passenden Entitätstyp. Wenn Sie mehr als eine Entität angeben, gibt der Endpunkt die *kleinste verfügbare Entität* zurück. Sie können die zurückgegebene Geometrie-ID verwenden, um die Geometrie der Geografie über den [Dienst „Polygonsuche“](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) abzurufen.
 

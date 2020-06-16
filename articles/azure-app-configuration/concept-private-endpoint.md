@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366767"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205057"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Verwenden privater Endpunkte für Azure App Configuration
 
@@ -47,17 +47,13 @@ Beim Erstellen eines privaten Endpunkts müssen Sie den App Configuration-Speich
 Azure basiert auf der DNS-Auflösung zum Weiterleiten von Verbindungen vom VNET zum Konfigurationsspeicher über einen privaten Link. Sie können Verbindungszeichenfolgen im Azure-Portal schnell finden, indem Sie Ihren App Configuration-Speicher und anschließend **Einstellungen** > **Zugriffsschlüssel** auswählen.  
 
 > [!IMPORTANT]
-> Verwenden Sie die Verbindungszeichenfolge, die Sie für einen öffentlichen Endpunkt verwenden würden, um eine Verbindung mit Ihrem App Configuration-Speicher über private Endpunkte herzustellen. Stellen Sie keine Verbindung mit dem Speicherkonto über die URL der Unterdomäne `privatelink` her.
+> Verwenden Sie die Verbindungszeichenfolge, die Sie für einen öffentlichen Endpunkt verwenden würden, um eine Verbindung mit Ihrem App Configuration-Speicher über private Endpunkte herzustellen. Stellen Sie die Verbindung mit dem Speicher nicht mithilfe der `privatelink`-URL der Unterdomäne her.
 
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 
 Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Ressourceneintrag für den Konfigurationsspeicher auf einen Alias in einer Unterdomäne mit dem Präfix `privatelink` aktualisiert. Azure erstellt außerdem eine [private DNS-Zone](../dns/private-dns-overview.md), die der Unterdomäne `privatelink` entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
 
-Wenn Sie die Endpunkt-URL von außerhalb des VNET auflösen, wird diese in den öffentlichen Endpunkt des Speichers aufgelöst. Bei Auflösung aus dem VNET, das den privaten Endpunkt hostet, wird die Endpunkt-URL in den privaten Endpunkt aufgelöst.
-
-Sie können den Zugriff für Clients außerhalb des VNET über den öffentlichen Endpunkt mithilfe des Azure Firewall-Diensts kontrollieren.
-
-Diese Vorgehensweise ermöglicht den Zugriff auf den Speicher **mithilfe derselben Verbindungszeichenfolge** für Clients in dem VNET, das die privaten Endpunkte hostet, als auch Clients außerhalb des VNET.
+Wenn Sie die Endpunkt-URL innerhalb des virtuellen Netzwerks auflösen, das den privaten Endpunkt hostet, wird sie in den privaten Endpunkt des Speichers aufgelöst. Wenn Sie sie außerhalb des virtuellen Netzwerks auflösen, wird die Endpunkt-URL in den öffentlichen Endpunkt aufgelöst. Wenn Sie einen privaten Endpunkt erstellen, wird der öffentliche Endpunkt deaktiviert.
 
 Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für den Dienstendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Konfigurieren Sie den DNS-Server so, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für `AppConfigInstanceA.privatelink.azconfig.io` mit der IP-Adresse des privaten Endpunkts.
 

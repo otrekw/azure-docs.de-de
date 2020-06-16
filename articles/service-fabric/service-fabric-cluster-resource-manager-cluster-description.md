@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229406"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259472"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
 Der Clusterressourcen-Manager ist ein Feature von Azure Service Fabric, das verschiedene Methoden zum Beschreiben eines Clusters bereitstellt:
@@ -83,9 +83,9 @@ Das folgende Diagramm zeigt drei Upgradedomänen, die auf drei Fehlerdomänen ve
 
 Die Verwendung einer größeren Anzahl von Upgradedomänen hat Vor- und Nachteile. Mit einer größeren Anzahl von Upgradedomänen wird jeder Schritt des Upgrades präziser und wirkt sich daher auf eine kleinere Anzahl von Knoten oder Diensten aus. Da weniger Dienste auf einmal verschoben werden müssen, sind weniger Systemänderungen erforderlich. Dies bewirkt meist eine Verbesserung der Zuverlässigkeit, da ein kleinerer Bereich des Diensts von Problemen betroffen ist, die während des Upgrades auftreten. Eine höhere Anzahl von Upgradedomänen bedeutet auch, dass Sie einen geringeren verfügbaren Puffer auf anderen Knoten vorhalten müssen, um die Auswirkungen des Upgrades verarbeiten zu können. 
 
-Wenn Sie beispielsweise über fünf Upgradedomänen verfügen, verarbeiten die Knoten jeder Domäne ca. 20 % des Datenverkehrs. Wenn Sie diese Upgradedomäne für ein Upgrade außer Betrieb nehmen müssen, muss diese Last üblicherweise verlagert werden können. Da Sie über vier verbleibende Upgradedomänen verfügen, muss jede von ihnen ca. fünf Prozent des Gesamtdatenverkehrs aufnehmen können. Eine höhere Anzahl von Upgradedomänen bedeutet, dass Sie einen kleineren Puffer auf den Knoten im Cluster benötigen. 
+Wenn Sie beispielsweise über fünf Upgradedomänen verfügen, verarbeiten die Knoten jeder Domäne ca. 20 % des Datenverkehrs. Wenn Sie diese Upgradedomäne für ein Upgrade außer Betrieb nehmen müssen, muss diese Last üblicherweise verlagert werden können. Da Sie über vier verbleibende Upgradedomänen verfügen, muss jede von ihnen ca. 25 % des Gesamtdatenverkehrs aufnehmen können. Eine höhere Anzahl von Upgradedomänen bedeutet, dass Sie einen kleineren Puffer auf den Knoten im Cluster benötigen.
 
-Angenommen, Sie verfügen nun über zehn Upgradedomänen. In diesem Fall muss jede Upgradedomäne nur etwa zehn Prozent des Gesamtdatenverkehrs verarbeiten. Wenn ein Upgrade schrittweise im Cluster ausgeführt wird, benötigt jede Domäne nur Kapazitäten für ca. 1,1 % des Gesamtdatenverkehrs. Eine größere Anzahl von Upgradedomänen ermöglicht Ihnen den Betrieb Ihrer Knoten mit höherer Auslastung, da weniger Reservekapazität erforderlich ist. Dasselbe gilt für Fehlerdomänen.  
+Angenommen, Sie verfügen nun über zehn Upgradedomänen. In diesem Fall muss jede Upgradedomäne nur etwa zehn Prozent des Gesamtdatenverkehrs verarbeiten. Wenn ein Upgrade den Cluster nach und nach durchläuft, benötigt jede Domäne nur Kapazitäten für ca. 11 % des Gesamtdatenverkehrs. Eine größere Anzahl von Upgradedomänen ermöglicht Ihnen den Betrieb Ihrer Knoten mit höherer Auslastung, da weniger Reservekapazität erforderlich ist. Dasselbe gilt für Fehlerdomänen.  
 
 Der Nachteil bei der Verwendung vieler Upgradedomänen ist, dass Upgrades oft länger dauern. Service Fabric wartet nach der Fertigstellung einer Upgradedomäne einen kurzen Zeitraum und führt Überprüfungen durch, bevor mit dem Upgrade der nächsten Domäne begonnen wird. Diese Verzögerungen ermöglichen es, etwaige durch das Upgrade bewirkte Probleme zu erkennen, bevor mit dem Upgradevorgang fortgefahren wird. Dieser Kompromiss ist akzeptabel, da dadurch verhindert wird, dass sich negative Änderungen jeweils auf einen zu großen Teil des Diensts auswirken.
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82710213"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996039"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Verwalten und Ermitteln von Daten in Azure Blob Storage mit Blob Index (Vorschau)
 
@@ -70,7 +70,7 @@ Die unten aufgeführten Einschränkungen gelten für Blobindextags:
 - Tagschlüssel müssen zwischen 1 und 128 Zeichen umfassen
 - Tagwerte müssen zwischen 0 und 256 Zeichen umfassen
 - Bei Tagschlüsseln und -werten wird die Groß-/Kleinschreibung beachtet
-- Tagschlüssel und -werte unterstützen lediglich Zeichenfolgendatentypen. Zahlen oder Sonderzeichen werden als Zeichenfolgen gespeichert
+- Tagschlüssel und -werte unterstützen lediglich Zeichenfolgendatentypen. Zahlen, Datumsangaben, Uhrzeitangaben oder Sonderzeichen werden als Zeichenfolgen gespeichert
 - Tagschlüssel und -werte müssen den folgenden Benennungsregeln entsprechen:
   - Alphanumerische Zeichen: a-z, A-Z, 0-9
   - Sonderzeichen: Leerzeichen, Pluszeichen, Minuszeichen, Punkt, Doppelpunkt, Gleichheitszeichen, Unterstrich, Schrägstrich
@@ -103,9 +103,16 @@ In der Tabelle unten sind alle zulässigen Operatoren für FindBlobsByTags aufge
 |     >      |  Größer als |  "Date" > '2018-06-18' |
 |     >=     |  Größer oder gleich | "Priority" >= '5' | 
 |     <      |  Kleiner als    | "Age" < '32' |
-|     <=     |  Kleiner oder gleich   | "Company" <= 'Contoso' |
+|     <=     |  Kleiner oder gleich  | "Company" <= 'Contoso' |
 |    AND     |  Logisches AND  | "Rank" >= '010' AND "Rank" < '100' |
 | @container |  Eingrenzung auf einen bestimmten Container   | @container = 'videofiles' AND "status" = 'done' |
+
+> [!NOTE]
+> Wenn Sie Tags festlegen und abfragen, sollten Ihnen die lexikografische Reihenfolge bekannt sein.
+> - Zahlen kommen vor Buchstaben. Zahlen werden basierend auf der ersten Ziffer sortiert.
+> - Großbuchstaben kommen vor Kleinbuchstaben.
+> - Symbole sind keine Standardzeichen. Einige Symbole kommen vor numerischen Werten. Andere Symbole kommen vor oder nach Buchstaben.
+>
 
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Bedingte Blobvorgänge mit Blob Index-Tags
 In REST-Versionen ab 2019-10-10 unterstützen die meisten [Blob-Dienst-APIs](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) jetzt den bedingten Header „x-ms-if-tags“. Mit diesem Header ist ein Vorgang nur dann erfolgreich, wenn die angegebene Blobindexbedingung erfüllt ist. Wenn die Bedingung nicht erfüllt ist, wird folgender Fehler ausgegeben: `error 412: The condition specified using HTTP conditional header(s) is not met`.
@@ -121,7 +128,7 @@ In der Tabelle unten sind alle zulässigen Operatoren für Bedingungsvorgänge a
 |     >      |  Größer als |  "Date" > '2018-06-18' |
 |     >=     |  Größer oder gleich | "Priority" >= '5' | 
 |     <      |  Kleiner als    | "Age" < '32' |
-|     <=     |  Kleiner oder gleich   | "Company" <= 'Contoso' |
+|     <=     |  Kleiner oder gleich  | "Company" <= 'Contoso' |
 |    AND     |  Logisches AND  | "Rank" >= '010' AND "Rank" < '100' |
 |     oder     |  Logisches OR   | "Status" = 'Done' OR "Priority" >= '05' |
 
@@ -246,9 +253,11 @@ Die aktuellen Preise für Blob Index gelten für die öffentliche Vorschau und k
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionale Verfügbarkeit und Unterstützung von Speicherkonten
 
-Blob Index ist derzeit nur für GPv2-Konten (Universell V2) verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Blob Index ist derzeit nur für GPv2-Knoten (General Purpose v2) verfügbar, bei denen der hierarchische Namespace (HNS) deaktiviert ist. GPV1-Konten (General Purpose v1) werden nicht unterstützt. Sie können ein GPv1-Konto jedoch auf ein GPv2-Konto aktualisieren. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Die öffentliche Vorschau von Blob Index ist derzeit nur in den folgenden Regionen verfügbar:
+- Kanada, Mitte
+- Kanada, Osten
 - Frankreich, Mitte
 - Frankreich, Süden
 
@@ -276,7 +285,7 @@ az provider register --namespace 'Microsoft.Storage'
 In diesem Abschnitt sind bekannte Probleme und Bedingungen in der aktuellen öffentlichen Vorschauversion von Blob Index beschrieben. Wie bei den meisten Vorschauversionen sollte dieses Feature bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden, da sich Verhaltensweisen möglicherweise ändern.
 
 -   Um die Vorschauversion von Blob Index in den unterstützten Regionen zu verwenden, müssen Sie zuerst Ihr Abonnement registrieren.
--   Aktuell werden nur GPv2-Konten mit der Vorschau unterstützt. Blob-, BlockBlobStorage- und HNS-aktivierte DataLake Gen2-Konten werden derzeit nicht mit Blob Index unterstützt.
+-   Aktuell werden nur GPv2-Konten mit der Vorschau unterstützt. Blob-, BlockBlobStorage- und HNS-aktivierte DataLake Gen2-Konten werden derzeit nicht mit Blob Index unterstützt. GPv1-Konten werden nicht unterstützt.
 -   Beim Hochladen von Seitenblobs mit Indextags werden die Tags derzeit nicht persistent gespeichert. Sie müssen die Tags nach dem Hochladen eines Seitenblobs festlegen.
 -   Wenn die Filterung auf einen einzelnen Container beschränkt ist, kann @container nur übergeben werden, wenn alle Indextags im Filterausdruck Gleichheitsprüfungen sind (Schlüssel=Wert). 
 -   Wenn der Bereichsoperator mit der AND-Bedingung verwendet wird, muss derselbe Indextag-Schlüsselname angeben werden (Age > ‘013’ AND Age < ‘100’).
@@ -290,6 +299,9 @@ In diesem Abschnitt sind bekannte Probleme und Bedingungen in der aktuellen öff
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Kann ich Blob Index zum Filtern und Abfragen von Inhalten in meinen Blobs verwenden? 
 Nein, Blob Index-Tags können verwendet werden, um nach bestimmten Blobs zu suchen. Wenn Sie die Inhalte Ihrer Blobs durchsuchen müssen, verwenden Sie die Abfragebeschleunigung oder Azure Search.
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Gibt es spezielle Überlegungen in Bezug auf Blob Index-Tagwerte?
+Blob Index-Tags unterstützen nur String-Datentypen, und bei Abfragen werden Ergebnisse in lexikografischer Reihenfolge zurückgegeben. Zahlen sollten mit Nullen aufgefüllt werden. Datums- und Uhrzeitangaben sollten in einem mit ISO 8601 kompatiblen Format gespeichert werden.
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Sind Blob Index-Tags mit Azure Resource Manager-Tags verwandt?
 Nein, mit Azure Resource Manager-Tags lassen sich Ressourcen der Steuerungsebene organisieren (Abonnements, Ressourcengruppen und Speicherkonten). Blob Index-Tags bieten Funktionen zur Objektverwaltung und -ermittlung für Ressourcen der Datenebene (z. B. Blobs innerhalb eines Speicherkontos).

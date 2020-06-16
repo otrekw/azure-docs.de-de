@@ -3,12 +3,12 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007619"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231432"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -89,9 +89,9 @@ Es müssen zwei obligatorische DNS-Zonen erstellt werden:
     - `privatelink.blob.core.windows.net`
     - `privatelink.queue.core.windows.net`
 
-    | **Zone**                           | **Dienst** | **Details zu Abonnement und Ressourcengruppe**                  |
+    | **Zone**                           | **Service** | **Details zu Abonnement und Ressourcengruppe**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: Dasjenige, in dem der private Endpunkt erstellt werden muss**Ressourcengruppe**: Entweder die Ressourcengruppe des VNET oder die des privaten Endpunkts |
+    | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: Dasjenige, in dem der private Endpunkt erstellt werden muss **RG**: Entweder die Ressourcengruppe des VNET oder die des privaten Endpunkts |
     | `privatelink.queue.core.windows.net` | Warteschlange       | **Ressourcengruppe**: Entweder die Ressourcengruppe des VNET oder die des privaten Endpunkts |
 
     ![Erstellen einer privaten DNS-Zone](./media/private-endpoints/create-private-dns-zone.png)
@@ -104,13 +104,13 @@ Für die Dienstkommunikation können Kunden ihre privaten Endpunkte mit privaten
 
 Wenn Sie eine separate private DNS-Zone in Azure erstellen möchten, können Sie dazu die gleichen Schritte wie bei der Erstellung obligatorischer DNS-Zonen befolgen. Die Benennungs- und Abonnementdetails sind nachstehend aufgeführt:
 
-| **Zone**                                                     | **Dienst** | **Details zu Abonnement und Ressourcengruppe**                  |
+| **Zone**                                                     | **Service** | **Details zu Abonnement und Ressourcengruppe**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Hinweis**: *geo* bezieht sich hier auf den Regionscode. Zum Beispiel stehen *wcus* und *ne* für „USA, Westen-Mitte“ und „Europa, Norden“. | Azure Backup      | **Abonnement**: Dasjenige, in dem der private Endpunkt erstellt werden muss**Ressourcengruppe**: Beliebige Ressourcengruppe im Abonnement |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Hinweis**: *geo* bezieht sich hier auf den Regionscode. Zum Beispiel stehen *wcus* und *ne* für „USA, Westen-Mitte“ und „Europa, Norden“. | Backup      | **Abonnement**: Dasjenige, in dem der private Endpunkt erstellt werden muss **RG**: Beliebige Ressourcengruppe im Abonnement |
 
 Regionscodes finden Sie in [dieser Liste](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx).
 
-Informationen zu Benennungskonventionen für URLs in nationalen Clouds:
+Informationen zu Benennungskonventionen für URLs in nationalen Regionen:
 
 - [China](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [Deutschland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
@@ -123,7 +123,7 @@ Die zuvor erstellten DNS-Zonen müssen nun mit dem virtuellen Netzwerk verbunden
 1. Navigieren Sie zu Ihrer DNS-Zone (die Sie im vorherigen Schritt erstellt haben) und dann auf der linken Leiste zu **VNET-Verknüpfungen**. Klicken Sie dort auf die Schaltfläche **+Hinzufügen**.
 1. Geben Sie die erforderlichen Details ein. Die Felder **Abonnement** und **Virtuelles Netzwerk** müssen mit entsprechenden Angaben zum virtuellen Netzwerk Ihrer Server ausgefüllt werden. Die anderen Felder müssen unverändert bleiben.
 
-    ![Hinzufügen einer VNET-Verknüpfung](./media/private-endpoints/add-virtual-network-link.png)
+    ![Hinzufügen einer virtuellen Netzwerkverknüpfung](./media/private-endpoints/add-virtual-network-link.png)
 
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>Erteilen von Berechtigungen für den Tresor zum Erstellen erforderlicher privater Endpunkte
 
@@ -496,7 +496,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Sie müssen drei private DNS-Zonen erstellen und diese mit Ihrem virtuellen Netzwerk verknüpfen.
 
-| **Zone**                                                     | **Dienst** |
+| **Zone**                                                     | **Service** |
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
@@ -546,25 +546,25 @@ DNS-Zone für den Warteschlangendienst (`privatelink.queue.core.windows.net`):
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-F. Kann ich einen privaten Endpunkt für einen vorhandenen Azure Backup-Tresor erstellen?<br>
+Q. Kann ich einen privaten Endpunkt für einen vorhandenen Azure Backup-Tresor erstellen?<br>
 A. Nein, private Endpunkte können nur für neue Azure Backup-Tresore erstellt werden. Daher durfte der Tresor zu keiner Zeit Elemente enthalten, die durch ihn geschützt wurden. Vor der Einrichtung privater Endpunkte können keine Versuche erfolgen, Elemente im Tresor zu schützen.
 
-F. Ich habe versucht, ein Element in meinem Tresor zu schützen, was aber nicht gelang, und der Tresor enthält immer noch keine geschützten Elemente. Kann ich private Endpunkte für diesen Tresor erstellen?<br>
+Q. Ich habe versucht, ein Element in meinem Tresor zu schützen, was aber nicht gelang, und der Tresor enthält immer noch keine geschützten Elemente. Kann ich private Endpunkte für diesen Tresor erstellen?<br>
 A. Nein, mit dem Tresor darf in der Vergangenheit nicht versucht worden sein, Elemente darin zu schützen.
 
-F. Ich habe einen Tresor, der private Endpunkte für Sicherung und Wiederherstellung nutzt. Kann ich später private Endpunkte für diesen Tresor hinzufügen oder entfernen, auch wenn ich Sicherungselemente darin geschützt habe?<br>
+Q. Ich habe einen Tresor, der private Endpunkte für Sicherung und Wiederherstellung nutzt. Kann ich später private Endpunkte für diesen Tresor hinzufügen oder entfernen, auch wenn ich Sicherungselemente darin geschützt habe?<br>
 A. Ja. Wenn Sie bereits private Endpunkte für einen Tresor und geschützte Sicherungselemente darin erstellt haben, können Sie später je nach Bedarf private Endpunkte hinzufügen oder entfernen.
 
-F. Kann der private Endpunkt für Azure Backup auch für Azure Site Recovery genutzt werden?<br>
+Q. Kann der private Endpunkt für Azure Backup auch für Azure Site Recovery genutzt werden?<br>
 A. Nein, der private Endpunkt für Backup kann nur für Azure Backup genutzt werden. Sie müssen einen neuen privaten Endpunkt für Azure Site Recovery erstellen, sofern vom Dienst unterstützt.
 
-F. Ich habe einen der Schritte in diesem Artikel versäumt und das Schützen meiner Datenquelle fortgesetzt. Kann ich weiterhin private Endpunkte verwenden?<br>
+Q. Ich habe einen der Schritte in diesem Artikel versäumt und das Schützen meiner Datenquelle fortgesetzt. Kann ich weiterhin private Endpunkte verwenden?<br>
 A. Wenn Sie die Schritte im Artikel nicht befolgen und Elemente weiterhin schützen, kann dies dazu führen, dass der Tresor private Endpunkte nicht nutzen kann. Es wird daher empfohlen, sich auf diese Checkliste zu beziehen, bevor Sie mit dem Schützen von Elementen fortfahren.
 
-F. Kann ich meinen eigenen DNS-Server verwenden, anstatt die private DNS-Zone in Azure oder eine integrierte private DNS-Zone zu nutzen?<br>
+Q. Kann ich meinen eigenen DNS-Server verwenden, anstatt die private DNS-Zone in Azure oder eine integrierte private DNS-Zone zu nutzen?<br>
 A. Ja, Sie können Ihre eigenen DNS-Server verwenden. Stellen Sie jedoch sicher, dass alle erforderlichen DNS-Einträge wie in diesem Abschnitt beschrieben hinzugefügt werden.
 
-F. Muss ich zusätzliche Schritte auf meinem Server durchführen, nachdem ich den in diesem Artikel beschriebenen Prozess befolgt habe?<br>
+Q. Muss ich zusätzliche Schritte auf meinem Server durchführen, nachdem ich den in diesem Artikel beschriebenen Prozess befolgt habe?<br>
 A. Nachdem Sie den in diesem Artikel beschriebenen Prozess befolgt haben, müssen Sie keine weiteren Schritte unternehmen, um private Endpunkte für Sicherung und Wiederherstellung zu nutzen.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: bd67c3b7eed6b3ce3730bd48cda69d85aa276df4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 9a6fab9b98029eeefdd4649b0949a1a61da8b0c1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930589"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168827"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -65,12 +65,13 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 | --- | --- |
 |Azure Virtual Machines-Bereitstellung (Dienst)|[Bereitstellen von Zertifikaten auf virtuellen Computern über eine vom Kunden verwaltete Key Vault-Instanz](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Azure Resource Manager-Vorlagenbereitstellung (Dienst)|[Übergeben sicherer Werte während der Bereitstellung](../../azure-resource-manager/templates/key-vault-parameter.md).|
+|Azure Application Gateway V2-SKU|[TLS-Terminierung mit Key Vault-Zertifikaten](/azure/application-gateway/key-vault-certs)|
 |Azure Disk Encryption-Volumeverschlüsselung (Dienst)|Zulassen des Zugriffs auf den BitLocker-Schlüssel (virtueller Windows-Computer) oder die DM-Passphrase (virtueller Linux-Computer) und den Schlüssel für die Schlüsselverschlüsselung bei der Bereitstellung virtueller Computer. Dies aktiviert die [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Zulassen der Sicherung und Wiederherstellung von relevanten Schlüsseln und Geheimnissen während der Azure Virtual Machines-Sicherung mithilfe von [Azure Backup](../../backup/backup-introduction-to-azure-backup.md).|
 |Exchange Online und SharePoint Online|Zulassen des Zugriffs auf den Kundenschlüssel für die Azure Storage Service-Dienstverschlüsselung mit [Kundenschlüssel](/microsoft-365/compliance/customer-key-overview).|
 |Azure Information Protection|Zulassen des Zugriffs auf den Mandantenschlüssel für [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Bereitstellen eines Azure-Web-App-Zertifikats über Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL-Datenbank|[Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Data Warehouse](../../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
+|Azure SQL-Datenbank|[Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Data Warehouse](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Datenverschlüsselung in Azure Data Lake Store](../../data-lake-store/data-lake-store-encryption.md) mit von Kunden verwalteten Schlüsseln.|
 |Azure Databricks|[Ein schneller, einfacher und kollaborativer Analysedienst auf Basis von Apache Spark](../../azure-databricks/what-is-azure-databricks.md)|

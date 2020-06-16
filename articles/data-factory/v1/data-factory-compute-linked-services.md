@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb913434d7aab3ceadbbf19d7a95000abf6776c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236414"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022009"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -49,7 +49,7 @@ Die Liste der unterstützten HDInsight-Versionen wird von Microsoft mit den neue
 Nach dem 15. Dezember 2017:
 
 - Sie können keine Linux-basierten HDInsight-Cluster der Version 3.3 (oder einer älteren Version) mit einem bedarfsgesteuerten verknüpften HDInsight-Dienst in der Data Factory-Version 1 mehr erstellen. 
-- Wenn die Eigenschaften [**osType** und **Version**](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory-Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<neueste HDI-Standardversion\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux** geändert.
+- Wenn die [Eigenschaften **osType** und **Version**](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux** geändert.
 
 Nach dem 31. Juli 2018:
 
@@ -213,7 +213,7 @@ Wenn Sie Haupt- und Workerknoten mit der Größe „D4“ erstellen möchten, ge
 
 Sollten Sie für diese Eigenschaften einen falschen Wert festgelegt haben, erscheint unter Umständen die folgende Meldung:
 
-  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: "Fehler". Nachricht: "PreClusterCreationValidationFailure" 
+  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. 
   
 Sollte diese Meldung angezeigt werden, vergewissern Sie sich, dass Sie die Cmdlet- und API-Namen aus der Tabelle unter [Größen für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/sizes.md) verwenden.  
 
@@ -268,7 +268,7 @@ Sie können einen verknüpften Batch-Dienst erstellen, um einen Batch-Pool mit v
 
 Wenn Sie noch nicht mit der Verwendung des Batch-Diensts vertraut sind, haben Sie folgende Möglichkeiten:
 
-* Machen Sie sich mit den [Grundlagen von Azure Batch](../../batch/batch-technical-overview.md) vertraut.
+* Machen Sie sich mit den [Grundlagen von Azure Batch](../../azure-sql/database/sql-database-paas-overview.md) vertraut.
 * Informieren Sie sich über das Cmdlet [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx). Dieses Cmdlet dient zum Erstellen eines Batch-Kontos. Sie können das Batch-Konto aber auch über das [Azure-Portal](../../batch/batch-account-create-portal.md) erstellen. Ausführliche Informationen zur Verwendung dieses Cmdlets finden Sie unter [Using Azure PowerShell to Manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) (Verwenden von Azure PowerShell zum Verwalten eines Azure Batch-Kontos).
 * Informieren Sie sich über das Cmdlet [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx). Dieses Cmdlet dient zum Erstellen eines Batch-Pools.
 
@@ -289,7 +289,7 @@ Wenn Sie noch nicht mit der Verwendung des Batch-Diensts vertraut sind, haben Si
 }
 ```
 
-Fügen Sie für die Eigenschaft **accountName** Folgendes an den Namen Ihres Batch-Kontos an: **.\<Regionsname\>** . Beispiel:
+Fügen Sie für die **accountName**-Eigenschaft die Zeichenfolge **.\<region name\>** an den Namen Ihres Batch-Kontos an. Beispiel:
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -416,7 +416,7 @@ Der Autorisierungscode, den Sie mit der Schaltfläche **Autorisieren** generiert
 
 Wenn das Authentifizierungstoken abläuft, wird möglicherweise folgende Fehlermeldung angezeigt: 
 
-  Fehler beim Anmeldevorgang: invalid_grant - AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
+  Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z
 
 Die folgende Tabelle enthält Ablaufzeiten nach Benutzerkontotyp: 
 

@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583113"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116611"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -49,7 +49,7 @@ Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungspr
 
 Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-add-on-premises-application.md).
 
-## <a name="maintenance"></a>Wartung 
+## <a name="maintenance"></a>Wartung
 
 Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
 
@@ -175,9 +175,9 @@ und Windows-Leistungsindikatoren.
 
 ![Hinzufügen von Leistungsindikatoren zum Connector mit dem Leistungsmonitor](./media/application-proxy-connectors/performance-monitor.png)
 
-Die Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails.
+Die Connectors verfügen über **Administratorprotokolle** und **Sitzungsprotokolle**. Das **Administratorprotokoll** enthält wichtige Ereignisse und die dazugehörigen Fehler. Das **Sitzungsprotokoll** enthält alle Transaktionen und die dazugehörigen Verarbeitungsdetails.
 
-Um die Protokolle anzuzeigen, wechseln Sie zur Ereignisanzeige, öffnen Sie das Menü **Ansicht**, und aktivieren Sie die Option **Analytische und Debugprotokolle einblenden**. Aktivieren Sie die Protokolle, um mit dem Erfassen von Ereignissen zu beginnen. Diese Protokolle werden nicht im Webanwendungsproxy in Windows Server 2012 R2 angezeigt, da die Connectors auf einer neueren Version basieren.
+Zum Anzeigen der Protokolle öffnen Sie die **Ereignisanzeige**, und navigieren Sie dann zu **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector**. Damit das **Sitzungsprotokoll** im Menü **Ansicht** angezeigt wird, klicken Sie auf **Analytische und Debugprotokolle einblenden**. Das **Sitzungsprotokoll** dient in der Regel zur Problembehandlung und ist standardmäßig definiert. Aktivieren Sie das Protokoll, um mit der Erfassung von Ereignissen zu beginnen, und deaktivieren Sie es, wenn Sie es nicht mehr benötigen.
 
 Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Connector besteht aus zwei Windows-Diensten: dem eigentlichen Connector und dem Updatedienst. Beide Dienste müssen immer ausgeführt werden.
 

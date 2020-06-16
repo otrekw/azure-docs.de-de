@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196262"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247664"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -208,7 +208,7 @@ Ja. Die Daten in Azure sind im Ruhezustand verschlüsselt.
 
 Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt.
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
 
 Bei Verwendung des Azure Backup-Agents muss der Verschlüsselungsschlüssel mindestens 16 Zeichen lang sein. Bei virtuellen Azure-Computern gibt es keine Längenbegrenzung für Schlüssel, die von Azure Key Vault verwendet werden.
 

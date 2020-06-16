@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330718"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267102"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung
 
@@ -183,7 +183,7 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die [Node.js-Schnellstartanleitung](./quickstart-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Node.js bietet.
+* Sehen Sie sich die [Node.js-Schnellstartanleitung](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Node.js bietet.
 * Sehen Sie sich das [Python-Tutorial](./tutorial-python.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Python bietet.
 * Schauen Sie sich das [Swift-Tutorial](./tutorial-ios-picture-immersive-reader.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Swift bietet.
 * Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.

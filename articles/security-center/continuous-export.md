@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158967"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299943"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Exportieren von Sicherheitswarnungen und -empfehlungen
 
@@ -26,6 +26,21 @@ Mit diesen Tools können Sie folgende Aktionen ausführen:
 * Fortlaufender Export in Log Analytics-Arbeitsbereiche
 * Fortlaufender Export in Azure Event Hubs (für Integrationen mit Drittanbieter-SIEMs)
 * Export in das CSV-Format (einmalig)
+
+
+
+
+## <a name="availability"></a>Verfügbarkeit
+
+- Status des Release: **Allgemein verfügbar**
+- Erforderliche Rollen und Berechtigungen:
+    - **Leser** für das Abonnement, das die Exportkonfiguration enthält
+    - **Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)
+    - Außerdem sind Schreibberechtigungen für die Zielressource erforderlich
+- Clouds: 
+    - ✔ Kommerzielle Clouds
+    - ✔ US Gov
+    - ✘ China Gov, andere Gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports

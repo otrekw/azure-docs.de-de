@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410119"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309780"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -160,7 +160,7 @@ Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutz
 > Dies bedeutet, dass ein Benutzer, der getrennt wird, nicht abgemeldet wird. Die Möglichkeit, bei der Trennung eine Abmeldung zu erzwingen (mithilfe von SIGHUP oder einem ähnlichen Mechanismus), ist noch nicht implementiert. Für Windows ist in der SAC ein automatisches Timeout aktiviert. Für Linux können Sie die Timeouteinstellung für das Terminal konfigurieren.
 
 ## <a name="accessibility"></a>Barrierefreiheit
-Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Zu diesem Zweck haben wir sichergestellt, dass auch Personen mit Seh- und Hörbehinderung sowie Personen, die möglicherweise keine Maus nutzen können, auf die serielle Konsole zugreifen können.
+Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Zu diesem Zweck haben wir sichergestellt, dass auch Personen mit Sehschwäche oder beeinträchtigtem Gehör sowie Personen, die möglicherweise keine Maus verwenden können, auf die serielle Konsole zugreifen können.
 
 ### <a name="keyboard-navigation"></a>Tastaturnavigation
 Verwenden Sie die **TAB**-Taste auf der Tastatur, um im Azure-Portal in der seriellen Konsolenschnittstelle zu navigieren. Auf dem Bildschirm wird hervorgehoben, wo Sie sich gerade befinden. Um den Fokus vom seriellen Konsolenbereich zu entfernen, drücken Sie **STRG**+**F6** auf der Tastatur.

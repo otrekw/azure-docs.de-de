@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607383"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296356"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
@@ -231,3 +231,5 @@ Dieser Abschnitt basiert auf [Erstellen eines Profilcontainers für einen Hostpo
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können FSLogix-Profilcontainer verwenden, um eine Benutzerprofilfreigabe einzurichten. Informationen zur Erstellung von Benutzerprofilfreigaben mit Ihren neuen Containern finden Sie unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md).
+
+Sie können auch eine Azure Files-Dateifreigabe erstellen, in dem Sie Ihr FSLogix-Profil speichern können. Weitere Informationen finden Sie unter [Erstellen einer Azure Files-Dateifreigabe mit einem Domänencontroller](create-file-share.md).

@@ -7,25 +7,25 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 2a7e2b9f731dbf05dfeb2ac01f1ae258c5250827
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758825"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170000"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als Azure Event Grid-Partner
 
-In diesem Artikel wird beschrieben, wie Sie Event Grid-Partnerressourcen privat verwenden und zu einem öffentlich verfügbaren Partnerthementyp werden.
+In diesem Artikel wird beschrieben, wie Sie Azure Event Grid-Partnerressourcen privat verwenden und zu einem öffentlich verfügbaren Partnerthementyp werden.
 
-Sie benötigen keine besondere Berechtigung, um mit der Verwendung der mit dem Veröffentlichen von Ereignissen als Event Grid-Partner verknüpften Event Grid-Ressourcentypen zu beginnen. Tatsächlich können Sie diese heute sowohl zum privaten Veröffentlichen von Ereignissen in Ihren Azure-Abonnements als auch zum Testen des Ressourcenmodells verwenden, wenn Sie überlegen, Partner zu werden.
+Sie benötigen keine besondere Berechtigung, um mit der Verwendung der mit dem Veröffentlichen von Ereignissen als Event Grid-Partner verknüpften Event Grid-Ressourcentypen zu beginnen. Tatsächlich können Sie diese heute zum privaten Veröffentlichen von Ereignissen in Ihren Azure-Abonnements und zum Testen des Ressourcenmodells verwenden, wenn Sie überlegen, Partner zu werden.
 
-## <a name="becoming-an-event-grid-partner"></a>Registrieren als Event Grid-Partner
+## <a name="become-an-event-grid-partner"></a>Registrieren als Event Grid-Partner
 
-Wenn Sie daran interessiert sind, ein öffentlicher Event Grid-Partner zu werden, füllen Sie zunächst [dieses Formular](https://aka.ms/gridpartnerform) aus, und kontaktieren Sie dann das Event Grid-Team per E-Mail an [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com).
+Wenn Sie daran interessiert sind, ein öffentlicher Event Grid-Partner zu werden, beginnen Sie mit dem Ausfüllen [dieses Formulars](https://aka.ms/gridpartnerform). Wenden Sie sich dann an das Event Grid-Team unter [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com).
 
 ## <a name="how-partner-topics-work"></a>Funktionsweise von Partnerthemen
-Partnerthemen verwenden die vorhandene Architektur, die von Event Grid bereits zum Veröffentlichen von Ereignissen von Azure-Ressourcen wie Storage und IoT Hub verwendet wird, und stellen diese Tools zur freien Verwendung öffentlich zur Verfügung. Standardmäßig können Sie diese Tools nur in Ihrem Azure-Abonnement verwenden. Wenn Sie Ihre Ereignisse öffentlich verfügbar machen möchten, füllen Sie das Formular oben aus, und [wenden Sie sich an das Event Grid-Team](mailto:gridpartner@microsoft.com).
+Partnerthemen verwenden die vorhandene Architektur, die von Event Grid bereits zum Veröffentlichen von Ereignissen von Azure-Ressourcen wie Azure Storage und Azure IoT Hub verwendet wird, und stellen diese Tools zur freien Verwendung öffentlich zur Verfügung. Standardmäßig können Sie diese Tools nur in Ihrem Azure-Abonnement verwenden. Wenn Sie Ihre Ereignisse öffentlich verfügbar machen möchten, füllen Sie das Formular aus, und [wenden Sie sich an das Event Grid-Team](mailto:gridpartner@microsoft.com).
 
 Mit Partnerthemen können Sie Ereignisse in Azure Event Grid für die Nutzung durch mehrere Mandanten veröffentlichen.
 
@@ -34,24 +34,24 @@ Mit Partnerthemen können Sie Ereignisse in Azure Event Grid für die Nutzung du
 #### <a name="partner-flow"></a>Ablauf für Partner
 
 1. Erstellen Sie einen Azure-Mandanten, falls Sie noch keinen besitzen.
-1. Erstellen Sie mithilfe der CLI eine neue `partnerRegistration` für Event Grid. Diese Ressource umfasst Informationen wie Anzeigename, Beschreibung, Setup-URI usw.
+1. Verwenden der Azure-CLI zum Erstellen einer neuen Event Grid-`partnerRegistration`. Diese Ressource umfasst Informationen wie Anzeigename, Beschreibung, Setup-URI usw.
 
     ![Erstellen eines Partnerthemas](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Erstellen Sie in jeder Region, in der Sie Ereignisse veröffentlichen, mindestens ein `partnerNamespaces`-Element. Dabei stellt der Event Grid-Dienst einen Veröffentlichungsendpunkt (z. B. `https://contoso.westus-1.eventgrid.azure.net/api/events`) und Zugriffsschlüssel bereit.
+1. Erstellen Sie in jeder Region, in der Sie Ereignisse veröffentlichen möchten, mindestens einen Partnernamespace. Der Event Grid-Dienst stellt einen Veröffentlichungsendpunkt (z. B. `https://contoso.westus-1.eventgrid.azure.net/api/events`) und Zugriffsschlüssel zur Verfügung.
 
-    ![Erstellen eines Partnernamespace](./media/partner-onboarding-how-to/create-partner-namespace.png)
+    ![Erstellen von Partnernamespaces](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
 1. Bieten Sie Kunden die Möglichkeit, in Ihrem System anzugeben, dass sie an einem Partnerthema interessiert sind.
 1. Teilen Sie dem Event Grid-Team mit, dass Sie Ihren Partnerthementyp veröffentlichen möchten.
 
 #### <a name="customer-flow"></a>Ablauf für Kunden
 
-1. Ihr Kunde notiert im Azure-Portal die Azure-Abonnement-ID und die Ressourcengruppe, in der das Partnerthema erstellt werden soll.
+1. Ihr Kunde besucht das Azure-Portal, um die Azure-Abonnement-ID und die Ressourcengruppe zu notieren, in der er das Partnerthema erstellen möchte.
 1. Der Kunde fordert über Ihr System ein Partnerthema an. Daraufhin erstellen Sie einen Ereignistunnel in Ihrem Partnernamespace.
 1. Event Grid erstellt im Azure-Abonnement und der Ressourcengruppe des Kunden ein Partnerthema mit dem Status **Ausstehend**.
 
-    ![Erstellen eines Ereigniskanals](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+    ![Erstellen von Ereigniskanälen](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
 
 1. Der Kunde aktiviert das Partnerthema über das Azure-Portal. Ereignisse können nun von Ihrem Dienst zum Azure-Abonnement des Kunden gelangen.
 
@@ -59,17 +59,18 @@ Mit Partnerthemen können Sie Ereignisse in Azure Event Grid für die Nutzung du
 
 ## <a name="resource-model"></a>Ressourcenmodell
 
-Im Folgenden finden Sie das Ressourcenmodell für Partnerthemen.
+
+Das folgende Ressourcenmodell ist für Partnerthemen vorgesehen.
 
 ### <a name="partner-registrations"></a>Partnerregistrierungen
 * Ressource: `partnerRegistrations`
 * Verwendet von: Partner
-* Beschreibung: Diese Ressource erfasst die globalen Metadaten des SaaS-Partners (z. B. Name, Anzeigename, Beschreibung, Setup-URI).
+* Beschreibung: Diese Ressource erfasst die globalen Metadaten des SaaS-Partners (Software-as-a-Service), z. B. Name, Anzeigename, Beschreibung, Setup-URI.
     
-    Das Erstellen/Aktualisieren einer Partnerregistrierung ist ein Self-Service-Vorgang für die Partner. Diese Self-Service-Funktion ermöglicht Partnern das Erstellen und Testen des gesamten End-to-End-Ablaufs.
+    Das Erstellen oder Aktualisieren einer Partnerregistrierung ist ein Self-Service-Vorgang für die Partner. Diese Self-Service-Funktion ermöglicht Partnern das Erstellen und Testen des gesamten End-to-End-Ablaufs.
     
     Nur von Microsoft genehmigte Partnerregistrierungen können von Kunden entdeckt werden.
-* Umfang: Die Erstellung erfolgt im Azure-Abonnement des Partners. Die Metadaten sind für Kunden sichtbar, sobald sie veröffentlicht wurden.
+* Umfang: Die Erstellung erfolgt im Azure-Abonnement des Partners. Metadaten sind für Kunden sichtbar, nachdem sie veröffentlicht wurden.
 
 ### <a name="partner-namespaces"></a>Partnernamespaces
 * Ressource: partnerNamespaces
@@ -80,13 +81,13 @@ Im Folgenden finden Sie das Ressourcenmodell für Partnerthemen.
 ### <a name="event-channel"></a>Ereigniskanal
 * Ressource: `partnerNamespaces/eventChannels`
 * Verwendet von: Partner
-* Beschreibung: Die Ereignistunnel stellen eine Spiegelung des Partnerthemas des Kunden dar. Wenn Sie einen Ereignistunnel erstellen und das Azure-Abonnement und die Ressourcengruppe des Kunden in den Metadaten angeben, signalisieren Sie Event Grid, ein Partnerthema für den Kunden zu erstellen. Event Grid gibt einen ARM-Aufruf aus, um im Abonnement des Kunden ein entsprechendes Partnerthema zu erstellen. Das Partnerthema wird mit dem Status „Ausstehend“ erstellt. Zwischen jedem Ereignistunnel und Partnerthema besteht eine 1-1-Verknüpfung.
+* Beschreibung: Die Ereignistunnel stellen eine Spiegelung des Partnerthemas des Kunden dar. Wenn Sie einen Ereignistunnel erstellen und das Azure-Abonnement und die Ressourcengruppe des Kunden in den Metadaten angeben, signalisieren Sie Event Grid, ein Partnerthema für den Kunden zu erstellen. Event Grid gibt einen ARM-Aufruf aus, um im Abonnement des Kunden ein entsprechendes Partnerthema zu erstellen. Das Partnerthema wird mit dem Status „Ausstehend“ erstellt. Es gibt eine 1:1-Verbindung zwischen den einzelnen Ereignistunneln und den Partnerthemen.
 * Umfang: Diese Ressource befindet sich im Abonnement des Partners.
 
 ### <a name="partner-topics"></a>Partnerthemen
 * Ressource: `partnerTopics`
 * Verwendet von: Kunden
-* Beschreibung: Partnerthemen ähneln benutzerdefinierten Themen und Systemthemen in Event Grid. Jedes Partnerthema wird einer bestimmten „Quelle“ (z. B. `Contoso:myaccount`) und einem bestimmten Partnerthementyp (z. B. „Contoso“) zugeordnet. Kunden erstellen Ereignisabonnements im Partnerthema, um Ereignisse an verschiedene Ereignishandler weiterzuleiten.
+* Beschreibung: Partnerthemen ähneln benutzerdefinierten Themen und Systemthemen in Event Grid. Jedes Partnerthema wird einer bestimmten Quelle (z. B. `Contoso:myaccount`) und einem bestimmten Partnerthementyp (z. B. Contoso) zugeordnet. Kunden erstellen Ereignisabonnements im Partnerthema, um Ereignisse an verschiedene Ereignishandler weiterzuleiten.
 
     Kunden können diese Ressource nicht direkt erstellen. Die einzige Möglichkeit zum Erstellen eines Partnerthemas ist ein Partnervorgang, bei dem ein Ereignistunnel erstellt wird.
 * Umfang: Diese Ressource befindet sich im Abonnement des Kunden.
@@ -94,11 +95,11 @@ Im Folgenden finden Sie das Ressourcenmodell für Partnerthemen.
 ### <a name="partner-topic-types"></a>Partnerthementypen
 * Ressource: `partnerTopicTypes`
 * Verwendet von: Kunden
-* Beschreibung: Partnerthementypen sind mandantenweite Ressourcentypen, mit denen Kunden die Liste der genehmigten Partnerthementypen ermitteln können. Die URL sieht wie folgt aus: https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Beschreibung: Partnerthementypen sind mandantenweite Ressourcentypen, mit denen Kunden die Liste der genehmigten Partnerthementypen ermitteln können. Die URL sieht wie folgt aus: https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes).
 * Umfang: Global
 
-## <a name="publishing-events-to-event-grid"></a>Veröffentlichen von Ereignissen in Event Grid
-Wenn Sie einen Partnernamespace in einer Azure-Region erstellen, erhalten Sie einen regionalen Endpunkt und entsprechende Authentifizierungsschlüssel. Veröffentlichen Sie an diesem Endpunkt Batches von Ereignissen für alle Kundenereignistunnel in diesem Namespace. Azure Event Grid ordnet jedes Ereignis basierend auf dem Feld „Quelle“ im Ereignis dem entsprechenden Partnerthema oder den entsprechenden Partnerthemen zu.
+## <a name="publish-events-to-event-grid"></a>Veröffentlichen von Ereignissen in Event Grid
+Wenn Sie einen Partnernamespace in einer Azure-Region erstellen, erhalten Sie einen regionalen Endpunkt und entsprechende Authentifizierungsschlüssel. Veröffentlichen Sie an diesem Endpunkt Batches von Ereignissen für alle Kundenereignistunnel in diesem Namespace. Azure Event Grid ordnet jedes Ereignis basierend auf dem Quellfeld im Ereignis den entsprechenden Partnerthemen zu.
 
 ### <a name="event-schema-cloudevents-v10"></a>Ereignisschema: CloudEvents v1.0
 Veröffentlichen Sie mithilfe des CloudEvents 1.0-Schemas Ereignisse in Azure Event Grid. Event Grid unterstützt sowohl den strukturierten Modus als auch den Batchmodus. CloudEvents 1.0 ist das einzige unterstützte Ereignisschema für Partnernamespaces.
@@ -106,9 +107,9 @@ Veröffentlichen Sie mithilfe des CloudEvents 1.0-Schemas Ereignisse in Azure Ev
 ### <a name="example-flow"></a>Beispielablauf
 
 1.  Der Veröffentlichungsdienst führt eine HTTP POST-Anforderung auf `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` aus.
-2.  Schließen Sie einen Headerwert namens aeg-sas-key in die Anforderung ein, der einen Schlüssel für die Authentifizierung enthält. Dieser Schlüssel wird während der Erstellung des Partnernamespaces bereitgestellt. Ein gültiger Headerwert ist beispielsweise aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==.
-3.  Legen Sie für den Content-Type-Header Folgendes fest: application/cloudevents-batch+json; charset=UTF-8.
-4.  Führen Sie eine HTTP POST-Anforderung mit einem Batch von Ereignissen der entsprechenden Region auf die oben genannte Veröffentlichungs-URL aus. Beispiel:
+1.  Schließen Sie einen Headerwert namens aeg-sas-key in die Anforderung ein, der einen Schlüssel für die Authentifizierung enthält. Dieser Schlüssel wird während der Erstellung des Partnernamespaces bereitgestellt. Ein gültiger Headerwert ist beispielsweise aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==.
+1.  Legen Sie für den Content-Type-Header Folgendes fest: „application/cloudevents-batch+json; charset=UTF-8a“.
+1.  Führen Sie eine HTTP POST-Anforderung mit einem Batch von Ereignissen der entsprechenden Region auf die Veröffentlichungs-URL aus. Beispiel:
 
 ``` json
 [
@@ -153,7 +154,7 @@ Nach dem Veröffentlichen am Endpunkt des Partnernamespaces erhalten Sie eine An
 | Falscher Endpunkt                 | 404 – Nicht gefunden         |
 | Array oder Ereignis überschreitet Größengrenzwerte | 413 Nutzlast zu groß |
 
-## <a name="reference"></a>Verweis
+## <a name="references"></a>References
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
@@ -171,7 +172,7 @@ Nach dem Veröffentlichen am Endpunkt des Partnernamespaces erhalten Sie eine An
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Übersicht über Partnerthemen](partner-topics-overview.md)
+- [Partnerthemen in Azure Event Grid (Vorschau)](partner-topics-overview.md)
 - [Onboarding-Formular für Partnerthemen](https://aka.ms/gridpartnerform)
 - [Auth0-Partnerthema](auth0-overview.md)
 - [Verwenden des Auth0-Partnerthemas](auth0-how-to.md)

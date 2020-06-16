@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722625"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629022"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
-Das Training einer Spracherkennung kann die Erkennungsgenauigkeit für das Microsoft-Basismodell verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt. Je mehr domäneninterne Datasets Sie bereitstellen (Daten, die sich darauf beziehen, was Benutzer sagen und was erwartungsgemäß erkannt wird), desto genauer wird Ihr Modell sein, was zu einer besseren Erkennung führt. Denken Sie daran, dass Sie durch die Eingabe von unabhängigen Daten in Ihr Training die Genauigkeit Ihres Modells reduzieren oder beeinträchtigen können.
+Das Training einer Spracherkennung kann die Erkennungsgenauigkeit für das Microsoft-Basismodell verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu verfeinern und zu trainieren.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Lösen von Genauigkeitsproblemen durch Training
 
@@ -39,7 +39,7 @@ Wenn Sie mit Ihrem Modell auf Erkennungsprobleme stoßen, kann die Verwendung vo
 Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsdaten. Unter [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md) finden Sie schrittweise Anweisungen zum Vorbereiten von menschenmarkierten Transkriptionen und zugehörigem Text (Äußerungen und Aussprache). Nachdem Sie Trainingsdaten hochgeladen haben, folgen Sie diesen Anweisungen, um mit dem Trainieren Ihres Modells zu beginnen:
 
 1. Melden Sie sich beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an.
-2. Navigieren Sie zu **Spracherkennung > Custom Speech > Training**.
+2. Navigieren Sie zu **Spracherkennung > Custom Speech > [Projektname] > Training**.
 3. Klicken Sie auf **Modell trainieren**.
 4. Geben Sie als Nächstes einen **Namen** und eine **Beschreibung** für Ihr Training ein.
 5. Wählen Sie aus dem Dropdownmenü für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Das neueste Modell ist in der Regel die beste Wahl.

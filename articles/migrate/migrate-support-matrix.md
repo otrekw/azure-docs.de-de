@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c1ed127834b826488d02b39304dd943866171441
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746848"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193572"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -40,7 +40,7 @@ Azure Migrate-Servermigration | Nicht verfügbar | Dient zum Migrieren von [VMwa
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| Dient zum Bewerten von VMware-VMs, Hyper-V-VMs, physischen Servern und Public Cloud-Workloads. | Nicht verfügbar
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Dient zum Bewerten und Migrieren von VMware-VMs, Hyper-V-VMs, physischen Servern und Public Cloud-Workloads. |  Dient zum Migrieren von VMware-VMs, Hyper-V-VMs, physischen Servern und Public Cloud-Workloads.
 [Device42](https://go.microsoft.com/fwlink/?linkid=2097158) | Dient zum Bewerten von VMware-VMs, Hyper-V-VMs, physischen Servern und Public Cloud-Workloads.| Nicht verfügbar
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Dient zum Bewerten von lokalen SQL Server-Datenbanken. | Nicht verfügbar
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Überprüfen von SQL Server-Datenbanken | Nicht verfügbar
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Nicht verfügbar | Dient zum Migrieren von SQL Server, Oracle, MySQL, PostgreSQL und MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Dient zum Bewerten der Virtual Desktop Infrastructure (VDI). | Nicht verfügbar
 [Movere](https://www.movere.io/) | Dient zum Bewerten von VMWare-VMs, Hyper-V-VMs, Xen-VMs, physischen Computern, Arbeitsstationen (z. B. VDI) und Public Cloud-Workloads. | Nicht verfügbar

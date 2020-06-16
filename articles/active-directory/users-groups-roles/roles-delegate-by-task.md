@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779959"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299467"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -153,7 +153,7 @@ Hinzufügen von SharePoint Online-Websites zum Katalog | Globaler Administrator
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Lizenz zuweisen | Benutzeradministrator | 
-Erstellen einer Gruppe | Benutzeradministrator | 
+Erstellen einer Gruppe | Gruppenadministrator | Benutzeradministrator
 Erstellen, Aktualisieren oder Löschen der Zugriffsüberprüfung einer Gruppe oder einer App | Benutzeradministrator | 
 Verwalten des Gruppenablaufs | Benutzeradministrator | 
 Verwalten von Gruppeneinstellungen | Gruppenadministrator | Benutzeradministrator | 
@@ -164,6 +164,7 @@ Widerrufen von Lizenzen | Lizenzadministrator | Benutzeradministrator
 Aktualisieren der Gruppenmitgliedschaft | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
 Aktualisieren von Gruppenbesitzern | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
 Aktualisieren von Gruppeneigenschaften | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
+Gruppe löschen | Gruppenadministrator | Benutzeradministrator
 
 ## <a name="identity-protection"></a>Schutz der Identität (Identity Protection)
 
@@ -273,6 +274,8 @@ Lesen aller Konfigurationen | Standardbenutzerrolle (siehe [Dokumentation](https
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Konfigurieren von Authentifizierungsmethoden | Globaler Administrator | 
+Konfigurieren des Kennwortschutzes | Sicherheitsadministrator
+Konfigurieren von Smart Lockout | Sicherheitsadministrator
 Lesen aller Konfigurationen | Globaler Leser | 
 
 ## <a name="security---conditional-access"></a>Sicherheit: bedingter Zugriff

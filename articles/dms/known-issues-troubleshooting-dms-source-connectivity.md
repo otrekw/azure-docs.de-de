@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297100"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196334"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Problembehandlung von DMS-Fehlern beim Herstellen einer Verbindung mit Quelldatenbanken
 
@@ -30,7 +30,7 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer SQL Server-Que
 | Fehler         | Ursache und Problembehandlungsdetails |
 | ------------- | ------------- |
 | SQL-Verbindungsfehler. Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server. Der Server wurde nicht gefunden, oder auf ihn kann nicht zugegriffen werden. Stellen Sie sicher, dass der Instanzname richtig ist und dass SQL Server für Remoteverbindungen konfiguriert ist.<br> | Dieser Fehler tritt auf, wenn der Dienst den Quellserver nicht finden kann. Um das Problem zu beheben, lesen Sie den Artikel [Fehler beim Verbinden mit der SQL Server-Quellinstanz bei Verwendung eines dynamischen Ports oder einer benannten Instanz](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
-| **Fehler53**: SQL-Verbindungsfehler. (Auch Fehlercodecodes 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Dieser Fehler tritt auf, wenn der Dienst keine Verbindung mit dem Quellserver herstellen kann. Um das Problem zu beheben, ziehen Sie die folgenden Ressourcen zu Rate, und versuchen Sie es dann erneut. <br><br>  [Interaktiver Benutzerleitfaden für die Behandlung des Konnektivitätsproblems](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Voraussetzungen für die Migration von SQL Server zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Voraussetzungen für die Migration von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **Fehler53**: SQL-Verbindungsfehler. (Auch Fehlercodecodes 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Dieser Fehler tritt auf, wenn der Dienst keine Verbindung mit dem Quellserver herstellen kann. Um das Problem zu beheben, ziehen Sie die folgenden Ressourcen zu Rate, und versuchen Sie es dann erneut. <br><br>  [Interaktiver Benutzerleitfaden für die Behandlung des Konnektivitätsproblems](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Voraussetzungen für die Migration von SQL Server zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Voraussetzungen für die Migration von SQL Server zu Azure SQL Managed Instance](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **Fehler 18456**: Fehler bei der Anmeldung.<br> | Dieser Fehler tritt auf, wenn der Dienst keine Verbindung mit der Quelldatenbank mit den angegebenen T-SQL-Anmeldeinformationen herstellen kann. Um das Problem zu beheben, überprüfen Sie die eingegebenen Anmeldeinformationen. Sie können auch [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) oder die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente verwenden und es dann erneut versuchen. |
 | Ein falsch formatierter AccountName-Wert „{0}“ wurde bereitgestellt. Das erwartete Format für AccountName ist Domänenname\Benutzername.<br> | Dieser Fehler tritt auf, wenn der Benutzer Windows-Authentifizierung ausgewählt, aber den Benutzernamen in einem ungültigen Format angibt. Um das Problem zu beheben, geben Sie entweder den Benutzernamen im richtigen Format für Windows-Authentifizierung an, oder wählen Sie **SQL-Authentifizierung** aus. |
 

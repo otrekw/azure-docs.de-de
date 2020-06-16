@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456978"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310273"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Beheben von Problemen, die beim Anwenden von Artefakten auf einem virtuellen Azure DevTest Labs-Computer auftreten
 Das Anwenden von Artefakten auf einem virtuellen Computer kann aus verschiedenen Gründen fehlschlagen. Dieser Artikel stellt Ihnen einige der Methoden vor, die Sie beim Identifizieren möglicher Ursachen unterstützen.
@@ -57,8 +57,9 @@ Probleme mit virtuellen Computern, die unter Verwendung von DevTest Labs und des
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Symptome, Ursachen und mögliche Lösungen 
 
-### <a name="artifact-appears-to-hang"></a>Artefakt scheint nicht mehr zu reagieren   
-Ein Artefakt scheint so lange nicht mehr zu reagieren, bis ein vordefiniertes Timeout abgelaufen ist, und das Artefakt wird als **Fehlerhaft** markiert.
+### <a name="artifact-appears-to-stop-responding"></a>Artefakt reagiert nicht mehr
+
+Ein Artefakt scheint so lange nicht mehr zu reagieren, bis ein vordefiniertes Timeout abgelaufen ist und das Artefakt als **Fehlerhaft** markiert wird.
 
 Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei welchem Vorgang es nicht mehr reagiert. Ein Artefakt kann während der Ausführung bei jedem der folgenden Schritte blockiert werden:
 
@@ -67,11 +68,11 @@ Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei
     - Suchen Sie unter diesen Einträgen nach Fehlern. Manchmal wird der Fehler nicht entsprechend gekennzeichnet, und Sie müssen jeden Eintrag untersuchen.
     - Überprüfen Sie bei der Untersuchung der Details der einzelnen Einträge den Inhalt der JSON-Nutzlast. Am Ende dieses Dokuments wird möglicherweise ein Fehler angezeigt.
 - **Beim Versuch, das Artefakt auszuführen**. Die Ursache können Netzwerk- oder Speicherprobleme sein. Weitere Informationen finden Sie im entsprechenden Abschnitt weiter unten in diesem Artikel. Dies kann auch durch die Art und Weise erfolgen, in der das Skript erstellt wird. Beispiel:
-    - Ein PowerShell-Skript verfügt über **erforderliche Parameter**, aber einer der Parameter kann keinen Wert an das Skript übergeben, weil Sie dem Benutzer erlauben, den Parameterwert leer zu lassen, oder weil kein Standardwert für die Eigenschaft in der Definitionsdatei „artifactfile.json“ vorhanden ist. Das Skript reagiert nicht mehr, da es auf Benutzereingaben wartet.
+    - Ein PowerShell-Skript verfügt über **erforderliche Parameter**, aber einer der Parameter kann keinen Wert an das Skript übergeben, weil Sie dem Benutzer erlauben, den Parameterwert leer zu lassen, oder weil kein Standardwert für die Eigenschaft in der Definitionsdatei „artifactfile.json“ vorhanden ist. Das Skript reagiert nicht mehr, weil es auf eine Benutzereingabe wartet.
     - Ein PowerShell-Skript **erfordert Benutzereingaben** als Teil der Ausführung. Skripts müssen so geschrieben werden, dass sie ohne Benutzereingriff unbeaufsichtigt funktionieren.
 - **VM-Agent benötigt lange, bis er bereit ist**. Beim ersten Start der VM oder beim ersten Installieren der benutzerdefinierten Skripterweiterung, um die Anforderung zum Anwenden von Artefakten zu erfüllen, muss die VM möglicherweise entweder ein Upgrade des VM-Agents durchführen oder darauf warten, dass der VM-Agent initialisiert wird. Möglicherweise sind Dienste vorhanden, von denen der VM-Agent abhängig ist, deren Initialisierung lange dauert. In diesen Fällen finden Sie Informationen zur weiteren Problembehandlung unter [Übersicht über den Agent für virtuelle Azure-Computer](../virtual-machines/extensions/agent-windows.md).
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>So überprüfen Sie, ob das Artefakt aufgrund des Skripts nicht mehr reagiert
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>So überprüfen Sie, ob das Artefakt aufgrund des Skripts nicht mehr reagiert
 
 1. Melden Sie sich beim entsprechenden virtuellen Computer an.
 2. Kopieren Sie das Skript lokal auf den virtuellen Computer, oder suchen Sie es auf dem virtuellen Computer unter `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`. Dies ist der Speicherort, in den Artefaktskripts heruntergeladen werden.
@@ -83,7 +84,7 @@ Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei
 > 
 > Weitere Informationen zum Schreiben eigener Artefakte finden Sie im Dokument [AUTHORING.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md).
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>So überprüfen Sie, ob das Artefakt aufgrund des VM-Agents nicht mehr reagiert
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>So überprüfen Sie, ob das Artefakt aufgrund des VM-Agents nicht mehr reagiert
 1. Melden Sie sich beim entsprechenden virtuellen Computer an.
 2. Navigieren Sie im Datei-Explorer zu **C:\WindowsAzure\logs**.
 3. Suchen und öffnen Sie die Datei **WaAppAgent.log**.
@@ -119,7 +120,7 @@ Der oben angegebene Fehler würde im Abschnitt **Bereitstellungsmeldung** auf de
 ### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>So stellen Sie sicher, dass die Kommunikation mit dem Azure Storage-Dienst nicht blockiert wird:
 
 - **Überprüfung auf hinzugefügte Netzwerksicherheitsgruppen (NSGs)** . Möglicherweise wurde eine Abonnementrichtlinie hinzugefügt, durch die NSGs in allen virtuellen Netzwerken automatisch konfiguriert werden. Dies wirkt sich auch auf das standardmäßige virtuelle Netzwerk des Labs (sofern verwendet) oder auf ein anderes virtuelles Netzwerk aus, das in Ihrem Lab konfiguriert ist und für die Erstellung von VMs verwendet wird.
-- **Überprüfen Sie das Speicherkonto des Standard-Labs** (also das erste Speicherkonto, das beim Erstellen des Labs erstellt wurde, dessen Name in der Regel mit dem Buchstaben „a“ beginnt und mit einer mehrstelligen Zahl endet, d.h. a\<labname\>#).
+- **Überprüfen Sie das Speicherkonto des Standard-Labs** (also das erste Speicherkonto, das beim Erstellen des Labs erstellt wurde, dessen Name in der Regel mit dem Buchstaben „a“ beginnt und auf eine mehrstelligen Zahl endet, d. h. a\<labname\>#).
     1. Navigieren Sie zur Ressourcengruppe des Labs.
     2. Suchen Sie die Ressource vom Typ **Speicherkonto**, deren Name mit der Konvention übereinstimmt.
     3. Navigieren Sie zur Speicherkontoseite mit dem Titel **Firewalls und virtuelle Netzwerke**.
@@ -137,4 +138,3 @@ Es gibt weitere weniger häufige mögliche Fehlerquellen. Stellen Sie sicher, da
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn keiner dieser Fehler aufgetreten ist und Sie weiterhin keine Artefakte anwenden können, können Sie einen Azure-Supportincident einreichen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
-

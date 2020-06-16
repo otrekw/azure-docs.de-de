@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106575"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248548"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
 
@@ -59,7 +59,7 @@ Die Sicherheitsempfehlungen und -überwachung werden entsprechend den in Azure S
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Wie kann ich eine Sicherheitsrichtlinie ändern?
-Damit Sie eine Sicherheitsrichtlinie ändern können, müssen Sie Sicherheitsadministrator oder Besitzer bzw. Mitwirkender dieses Abonnements sein.
+Zum Ändern einer Sicherheitsrichtlinie müssen Sie ein **Sicherheitsadministrator** oder **Besitzer** des Abonnements sein.
 
 Weitere Informationen dazu, wie eine Sicherheitsrichtlinie konfiguriert wird, finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md).
 

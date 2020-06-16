@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961479"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195276"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -116,8 +116,9 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
         - Die Datenänderungsrate erhöht sich oder bleibt hoch, abhängig von der Auslastung des virtuellen Computers oder der zugehörigen Apps.
         - Die durchschnittliche Datenänderung des Quelldatenträgers beläuft sich für den Standardspeicher für Site Recovery auf 2 MB/s. [Weitere Informationen](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Darüber hinaus können Sie [Skalierbarkeitsziele überprüfen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
-8. Führen Sie den [Bereitstellungsplaner](hyper-v-deployment-planner-run.md) aus.
-9. Sehen Sie die Empfehlungen für das [Netzwerk](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) und den [Speicher](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) durch.
+8. Stellen Sie bei Verwendung eines Linux-basierten Servers sicher, auf dem Server App-Konsistenz zu aktivieren. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)
+9. Führen Sie den [Bereitstellungsplaner](hyper-v-deployment-planner-run.md) aus.
+10. Sehen Sie die Empfehlungen für das [Netzwerk](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) und den [Speicher](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) durch.
 
 
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS-Fehler innerhalb des Hyper-V-Hosts
@@ -129,7 +130,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 
 2. Um VSS-Momentaufnahmen für den virtuellen Computer zu generieren, überprüfen Sie, ob Hyper-V Integration Services auf dem virtuellen Computer installiert sind und ob der Backup-Integrationsdienst (VSS) aktiviert ist.
     - Stellen Sie sicher, dass der Integration Services-VSS-Dienst bzw. die Daemons auf dem Gastcomputer ausgeführt werden und den Status **OK** aufweisen.
-    - Dies können Sie in einer PowerShell-Sitzung mit erhöhten Rechten auf dem Hyper-V-Host mit dem Befehl **Get-VMIntegrationService -VMName\<VMName>-Name VSS** überprüfen. Außerdem können Sie diese Informationen über die Anmeldung bei dem virtuellen Gastcomputer abrufen. [Weitere Informationen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)
+    - Dies können Sie in einer PowerShell-Sitzung mit erhöhten Rechten auf dem Hyper-V-Host mit dem Befehl **Get-VMIntegrationService -VMName\<VMName>-Name VSS** überprüfen. Außerdem können Sie diese Informationen durch Anmelden bei der Gast-VM abrufen. [Weitere Informationen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)
     - Stellen Sie sicher, dass die Backup/VSS-Integrationsdienste auf dem virtuellen Computer ausgeführt werden und fehlerfrei sind. Starten Sie andernfalls diese Dienste und den Hyper-V-Volumeschattenkopie-Anfordererdienst auf dem Hyper-V-Hostserver neu.
 
 ### <a name="common-errors"></a>Häufige Fehler

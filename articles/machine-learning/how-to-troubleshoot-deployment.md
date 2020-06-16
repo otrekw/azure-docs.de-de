@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zur Problembehandlung bei der Bereitstellung
+title: Problembehandlung für Docker-Bereitstellungen
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Kubernetes Service und Azure Container Instances mit Azure Machine Learning umgehen, lösen und beheben können.
 services: machine-learning
@@ -10,31 +10,17 @@ author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: contperfq4
+ms.openlocfilehash: f65b263bb90356a4d739ebc963458cc7e992863c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873380"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307944"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problembehandlung bei der Docker-Bereitstellung von Modellen mit Azure Kubernetes Service und Azure Container Instances 
 
-Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning umgehen oder beheben können.
-
-Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System eine Reihe von Aufgaben aus.
-
-Der empfohlene und aktuellste Ansatz für die Modellimplementierung erfolgt über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter. In diesem Fall erstellt unser Dienst während der Bereitstellungsphase ein Docker-Basisimage für Sie und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
-
-1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
-
-2. Definieren der Rückschlusskonfiguration:
-    1. Erstellen Sie ein [Environment](how-to-use-environments.md)-Objekt auf der Grundlage der Abhängigkeiten, die Sie in der YAML-Datei für die Umgebung angeben, oder verwenden Sie eine unserer bezogenen Umgebungen.
-    2. Erstellen Sie eine Rückschlusskonfiguration (InferenceConfig-Objekt) auf der Grundlage der Umgebung und des Bewertungsskripts.
-
-3. Stellen Sie das Modell im ACI-Dienst (Azure Container Instance) oder in AKS (Azure Kubernetes Service) bereit.
-
-Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Modellverwaltung](concept-model-management-and-deployment.md).
+Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning behandeln, beheben oder umgehen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,6 +31,22 @@ Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Mo
 * Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
 
     Verwenden Sie den Befehl `docker run hello-world` über ein Terminal oder eine Befehlszeile, um Ihre Docker-Installation zu überprüfen. Informationen zur Installation von Docker oder zur Problembehandlung bei Docker-Fehlern finden Sie in der [Docker-Dokumentation](https://docs.docker.com/).
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Schritte für die Docker-Bereitstellung von Machine Learning-Modellen
+
+Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System eine Reihe von Aufgaben aus.
+
+Der empfohlene Ansatz für die Modellimplementierung erfolgt über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter. In diesem Fall erstellt der Dienst während der Bereitstellungsphase ein Docker-Basisimage und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
+
+1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
+
+2. Definieren der Rückschlusskonfiguration:
+    1. Erstellen Sie ein [Environment](how-to-use-environments.md)-Objekt auf der Grundlage der Abhängigkeiten, die Sie in der YAML-Datei für die Umgebung angeben, oder verwenden Sie eine unserer bezogenen Umgebungen.
+    2. Erstellen Sie eine Rückschlusskonfiguration (InferenceConfig-Objekt) auf der Grundlage der Umgebung und des Bewertungsskripts.
+
+3. Stellen Sie das Modell im ACI-Dienst (Azure Container Instance) oder in AKS (Azure Kubernetes Service) bereit.
+
+Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Modellverwaltung](concept-model-management-and-deployment.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -124,7 +126,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Beachten Sie, dass Sie beim Definieren einer eigenen YAML-Datei zur Conda-Spezifikation „azureml-defaults“ mit einer Version größer gleich 1.0.45 als Pip-Abhängigkeit auflisten müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
+Wenn Sie Ihre eigene YAML-Datei für die Conda-Spezifikation definieren, müssen Sie „azureml-defaults“ mit einer Version größer gleich 1.0.45 als Pip-Abhängigkeit auflisten. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
 
 An diesem Punkt können Sie mit dem Dienst wie gewohnt arbeiten. Der folgende Code zeigt beispielsweise, wie Daten an den Dienst gesendet werden:
 

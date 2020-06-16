@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588648"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996997"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
-Benutzerdefinierter Translator ist ein Feature des Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie Translator (nur Version 3) zum Übersetzen verwenden.
+Benutzerdefinierter Translator ist ein Feature des Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie Translator (nur Version 3) zum Übersetzen verwenden.
 
 Das Feature kann mit [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) auch zum Anpassen der Sprachübersetzung verwendet werden.
 
@@ -49,12 +49,12 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 
 |   | **Hub** | **Benutzerdefinierter Translator**|
 |:-----|:----:|:----:|
-|Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
-| Version der Text-API  | Nur V2   | Nur V3 |
-| SMT-Anpassung | Ja   | Nein |
-| NMT-Anpassung | Nein    | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
-| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja  | Ja |
+|Status des Anpassungsfeatures    | Allgemeine Verfügbarkeit    | Allgemeine Verfügbarkeit |
+| Version der Text-API    | Nur V2    | Nur V3 |
+| SMT-Anpassung    | Ja    | Nein |
+| NMT-Anpassung    | Nein    | Ja |
+| Neue einheitliche Anpassung der Sprachdienste    | Nein    | Ja |
+| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja    | Ja |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 

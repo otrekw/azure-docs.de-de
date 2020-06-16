@@ -3,13 +3,13 @@ title: Partnerlösungen zur Integration in Azure Monitor
 description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und wie Sie auf die jeweilige Dokumentation zur Integration der Lösungen zugreifen können.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854939"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248970"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -106,7 +106,8 @@ Grafana ist eine Open Source-Anwendung, mit der Sie Metrikdaten von Zeitreihen v
 
 ![InfluxData-Logo](./media/partners/Influxdata.png)
 
-InfluxData, der Entwickler von InfluxDB, liefert eine moderne Open Source-Plattform, die von Grund auf für die Analyse von Metriken und Ereignissen (Zeitreihendaten) für DevOps- und IoT-Anwendungen entwickelt wurde. Unabhängig davon, ob die Daten von Personen, Sensoren oder Maschinen stammen, ermöglicht es InfluxData Entwicklern, Überwachungs-, Analyse- und IoT-Anwendungen der nächsten Generation schneller und einfacher zu erstellen und zu skalieren, um schnell einen echten Geschäftswert zu liefern. Zu den mehr als 420 Kunden von InfluxData mit Sitz in San Francisco gehören Cisco, eBay, IBM und Siemens.
+InfluxData ist der Ersteller von InfluxDB, der Open-Source-Zeitreihendatenbank. Unsere Technologie wurde speziell für die Verarbeitung großer Mengen von zeitgestempelten Daten entwickelt, die von IoT-Geräten, Anwendungen, Netzwerken, Containern und Computern erzeugt werden. Wir haben es uns zur Aufgabe gemacht, Entwickler und Organisationen wie IBM, Visa, Siemens, Tesla und die NASA dabei zu unterstützen, Echtzeitdaten zu speichern und zu analysieren, damit sie transformative Überwachungs-, Analyse- und IoT-Anwendungen schneller und in größerem Umfang entwickeln können. Die Funktionen von Microsoft Azure Monitor zur Erfassung von Metriken und Ereignissen können mit Telegraf Agent von InfluxData erweitert werden, sodass Microsoft-Benutzer von einer führenden Zeitreihen-Datenbanklösung profitieren und die immer zahlreicher werdenden Open-Source-Beiträge zu Telegraf nutzen können.
+
 
 [Zur Dokumentation.][influxdata-doc]
 

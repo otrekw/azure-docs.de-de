@@ -3,20 +3,21 @@ title: Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 description: In diesem Artikel werden Azure-Clouds und -Regionen behandelt, in denen Azure Media Services v3 verfügbar ist.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382969"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196242"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -32,6 +33,19 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 | [StandardEncoderPreset](encoding-concept.md) | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
 | [LiveEvents](live-streaming-overview.md) | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
+
+## <a name="feature-availability-in-preview"></a>Featureverfügbarkeit in der Vorschauversion
+
+[LiveTranscription](live-transcription.md) ist in den folgenden Regionen verfügbar:
+
+- Asien, Südosten
+- Europa, Westen
+- Nordeuropa
+- East US
+- USA (Mitte)
+- USA Süd Mitte
+- USA, Westen 2
+- Brasilien Süd
 
 ## <a name="regionsgeographieslocations"></a>Regionen/Geografien/Standorte
 

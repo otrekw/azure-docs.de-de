@@ -5,13 +5,13 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77154777"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309814"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Abrufen von Images aus einer Azure-Containerregistrierung per Pull in einem Kubernetes-Cluster
 
@@ -40,10 +40,10 @@ Erstellen Sie mit dem folgenden `kubectl`-Befehl ein Geheimnis für Imagepullvor
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 Dabei gilt:
 
@@ -51,7 +51,7 @@ Dabei gilt:
 | :--- | :--- |
 | `secret-name` | Name des Geheimnisses für Imagepullvorgänge, z. B. *acr-secret* |
 | `namespace` | Kubernetes-Namespace, in dem das Geheimnis eingefügt werden soll. <br/> Nur erforderlich, wenn das Geheimnis in einem anderen Namespace als dem Standardnamespace eingefügt werden soll. |
-| `container-registry-name` | Name der Azure-Containerregistrierung |
+| `container-registry-name` | Name Ihrer Azure-Containerregistrierung, z. B. *myregistry*<br/><br/>`--docker-server` ist der vollqualifizierte Name des Registrierungsanmeldeservers.  |
 | `service-principal-ID` | ID des Dienstprinzipals, der in Kubernetes für den Zugriff auf die Registrierung verwendet wird |
 | `service-principal-password` | Kennwort des Dienstprinzipals |
 
@@ -63,18 +63,18 @@ Nach dem Erstellen des Geheimnisses für Imagepullvorgänge können Sie es verwe
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-In diesem Beispiel ist `your-awesome-app:v1` der Name des aus der Azure-Containerregistrierung zu pullenden Images und `acr-secret` der Name des für den Zugriff auf die Registrierung erstellten Geheimnisses für Pullvorgänge. Wenn Sie den Pod bereitstellen, pullt Kubernetes das Image automatisch aus der Registrierung, wenn es nicht bereits im Cluster vorhanden ist.
+In diesem Beispiel ist `my-awesome-app:v1` der Name des aus der Azure-Containerregistrierung zu pullenden Images und `acr-secret` der Name des für den Zugriff auf die Registrierung erstellten Geheimnisses für Pullvorgänge. Wenn Sie den Pod bereitstellen, pullt Kubernetes das Image automatisch aus der Registrierung, wenn es nicht bereits im Cluster vorhanden ist.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

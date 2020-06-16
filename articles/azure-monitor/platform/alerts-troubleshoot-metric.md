@@ -1,0 +1,197 @@
+---
+title: Behandeln von Problemen mit Azure-Metrikwarnungen
+description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrikwarnungen und mögliche Lösungen behandelt.
+author: harelbr
+ms.author: harelbr
+ms.topic: reference
+ms.date: 04/28/2020
+ms.subservice: alerts
+ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84302662"
+---
+# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
+
+In diesem Artikel werden häufige Probleme mit [Metrikwarnungen](alerts-metric-overview.md) in Azure Monitor sowie Lösungen zu diesen erläutert.
+
+Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](alerts-overview.md).
+
+## <a name="metric-alert-should-have-fired-but-didnt"></a>Metrikwarnung wurde fälschlicherweise nicht ausgelöst 
+
+Wenn Sie der Meinung sind, dass eine Metrikwarnung hätte ausgelöst werden sollen, dies aber nicht der Fall war und sie nicht im Azure-Portal angezeigt wird, versuchen Sie Folgendes:
+
+1. **Konfiguration:** Überprüfen Sie die Konfiguration der Metrikwarnungsregel, um sicherzustellen, dass sie richtig konfiguriert ist:
+    - Stellen Sie sicher, dass die Einstellungen für **Aggregationstyp**, **Aggregationsgranularität (Zeitraum)** und **Schwellenwert** oder **Sensitivität** wie gewünscht konfiguriert sind.
+    - Überprüfen Sie bei einer Regel, die dynamische Schwellwerte verwendet, ob die erweiterten Einstellungen konfiguriert sind, da **Anzahl von Verstößen** ein Filtern von Warnungen bewirken kann und die Option **Vor dem folgenden Datum liegende Daten ignorieren** sich darauf auswirken kann, wie die Schwellenwerte berechnet werden.
+
+       > [!NOTE] 
+       > Dynamische Schwellwerte werden erst nach mindestens 3 Tagen und 30 Metrikproben aktiv.
+
+2. **Ausgelöst aber keine Benachrichtigung:** Überprüfen Sie die Liste der [ausgelösten Warnungen](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) auf die ausgelöste Warnung. Wenn die Warnung in der Liste angezeigt wird, Sie aber ein Problem mit einigen ihrer Aktionen oder Benachrichtigungen haben, finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-troubleshoot#action-or-notification-on-my-alert-did-not-work-as-expected) weitere Informationen.
+
+3. **Bereits aktiv:** Überprüfen Sie, ob für die Metrikzeitreihe, für die Sie eine Warnung erwarten, bereits eine Warnung ausgelöst wurde. Metrikwarnungen sind zustandsbehaftet. Das bedeutet: Nachdem eine Warnung für eine bestimmte Metrikzeitreihe ausgelöst wurde, werden erst wieder Warnungen für diese Zeitreihe ausgelöst, wenn das Problem nicht mehr vorliegt. Durch diese Entwurfsentscheidung wird Stördatenverkehr reduziert. Die Warnung wird automatisch gelöst, wenn die Warnungsbedingung bei drei aufeinanderfolgenden Auswertungen nicht erfüllt wird.
+
+4. **Verwendete Dimensionen:** Falls Sie einige [Dimensionswerte für eine Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions) ausgewählt haben, überwacht die Warnungsregel jede einzelne Metrikzeitreihe (definiert gemäß einer Kombination von Dimensionswerten) auf das Erreichen des Schwellenwerts. Konfigurieren Sie für die Metrik eine weitere Warnungsregel, ohne Dimensionen auszuwählen, um auch die aggregierten Metrikzeitreihen (ohne Auswahl von Dimensionen) zu überwachen.
+
+5. **Aggregation und Zeitgranularität:** Wenn Sie die Metrik mithilfe von [Metrikdiagrammen](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics) visualisieren, stellen Sie Folgendes sicher:
+    * Die ausgewählte **Aggregation** im Metrikdiagramm entspricht dem **Aggregationstyp** in Ihrer Warnungsregel.
+    * Die ausgewählte **Zeitgranularität** entspricht dem Wert der **Aggregationsgranularität (Zeitraum)** in Ihrer Warnungsregel (nicht auf „Automatisch“ festgelegt).
+
+## <a name="metric-alert-fired-when-it-shouldnt-have"></a>Metrikwarnung wurde fälschlicherweise ausgelöst
+
+Wenn Sie der Meinung sind, dass Ihre Metrikwarnung fälschlicherweise ausgelöst wurde, können Ihnen die folgenden Schritte bei der Lösung des Problems helfen.
+
+1. Suchen Sie in der Liste der [ausgelösten Warnungen](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) nach der ausgelösten Warnung, und klicken Sie darauf, um die Details anzuzeigen. Überprüfen Sie die Informationen unter **Why did this alert fire?** (Warum wurde diese Warnung ausgelöst?), um das Metrikdiagramm, den **Metrikwert** und den **Schwellenwert** für den Zeitpunkt anzuzeigen, zu dem die Warnung ausgelöst wurde.
+
+    > [!NOTE] 
+    > Wenn Sie den Bedingungstyp „Dynamische Schwellenwerte“ verwenden und der Meinung sind, dass die verwendeten Schwellenwerte nicht stimmen, können Sie uns über das Stirnrunzeln-Symbol Feedback zukommen lassen. Dieses Feedback beeinflusst die Forschung zu Machine Learning-Algorithmen und hilft bei der Verbesserung der zukünftigen Erkennung.
+
+2. Wenn Sie mehrere Dimensionswerte für eine Metrik ausgewählt haben, wird die Warnung ausgelöst, wenn eine **beliebige** Metrikzeitreihe (definiert gemäß einer Kombination von Dimensionswerten) den Schwellenwert erreicht. Weitere Informationen zur Verwendung von Dimensionen in Metrikwarnungen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions).
+
+3. Überprüfen Sie die Konfiguration der Warnungsregel, um sicherzustellen, dass sie richtig konfiguriert ist:
+    - Stellen Sie sicher, dass die Einstellungen für **Aggregationstyp**, **Aggregationsgranularität (Zeitraum)** und **Schwellenwert** oder **Sensitivität** wie gewünscht konfiguriert sind.
+    - Überprüfen Sie bei einer Regel, die dynamische Schwellwerte verwendet, ob die erweiterten Einstellungen konfiguriert sind, da **Anzahl von Verstößen** ein Filtern von Warnungen bewirken kann und die Option **Vor dem folgenden Datum liegende Daten ignorieren** sich darauf auswirken kann, wie die Schwellenwerte berechnet werden.
+
+   > [!NOTE]
+   > Dynamische Schwellwerte werden erst nach mindestens 3 Tagen und 30 Metrikproben aktiv.
+
+4. Stellen Sie Folgendes sicher, wenn Sie die Metrik mit dem [Metrikdiagramm](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics) visualisieren:
+    - Die ausgewählte **Aggregation** im Metrikdiagramm entspricht dem **Aggregationstyp** in Ihrer Warnungsregel.
+    - Die ausgewählte **Zeitgranularität** entspricht dem Wert der **Aggregationsgranularität (Zeitraum)** in Ihrer Warnungsregel (nicht auf „Automatisch“ festgelegt).
+
+5. Gehen Sie wie folgt vor, wenn neue Warnungen ausgelöst werden, während bereits ausgelöste Warnungen zur Überwachung der gleichen Kriterien vorhanden (und noch nicht behoben) sind: Überprüfen Sie, ob die *autoMitigate*-Eigenschaft für die Warnungsregel auf **false** festgelegt wurde. Diese Eigenschaft kann nur per REST/PowerShell/CLI konfiguriert werden. Überprüfen Sie daher das zum Bereitstellen der Warnungsregel verwendete Skript. In diesem Fall gilt Folgendes: Ausgelöste Warnungen werden von der Warnungsregel nicht automatisch behoben, und eine ausgelöste Warnung muss vor dem erneuten Auslösen nicht unbedingt behoben werden.
+
+
+## <a name="cant-find-metric-to-alert-on---virtual-machines"></a>Metrik für Warnung kann nicht gefunden werden (virtuelle Computer) 
+
+Wenn Sie Warnungen für Gastmetriken auf virtuellen Computern verwenden möchten (für Arbeitsspeicher oder Speicherplatz), vergewissern Sie sich, dass Sie die Diagnoseeinstellungen für das Senden von Daten an eine Azure Monitor-Senke eingerichtet haben:
+    * [Für virtuelle Windows-Computer](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
+    * [Für virtuelle Linux-Computer](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
+    
+> [!NOTE] 
+> Wenn Sie für Gastmetriken das Senden zu einem Log Analytics-Arbeitsbereich konfiguriert haben, werden die Metriken unter der Log Analytics-Arbeitsbereichsressource angezeigt. Die Daten werden dann **erst** angezeigt, nachdem eine Warnungsregel für deren Überwachung erstellt wurde. Führen Sie hierzu die Schritte zum [Konfigurieren der Metrikwarnung für Protokolle](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs#configuring-metric-alert-for-logs) aus.
+
+## <a name="cant-find-the-metric-to-alert-on"></a>Metrik für Warnung kann nicht gefunden werden
+
+Wenn Sie eine Warnung für eine bestimmte Metrik anzeigen möchten, jedoch keine Metriken für die Ressource angezeigt werden, [überprüfen Sie, ob der Ressourcentyp für Metrikwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-near-real-time) unterstützt wird.
+Wenn einige Metriken für die Ressource angezeigt werden, eine bestimmte Metrik jedoch nicht gefunden werden kann, [überprüfen Sie, ob diese Metrik verfügbar ist](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Wenn dies der Fall ist, sehen Sie in der Metrikbeschreibung nach, ob diese nur in bestimmten Versionen oder Editionen der Ressource verfügbar ist.
+
+## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Metrikdimension für Warnung kann nicht gefunden werden
+
+Wenn Sie Warnungen für [spezifische Dimensionswerte einer Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions) ausgeben möchten und diese nicht finden können, sollten Sie den folgenden Hinweis beachten:
+
+1. Es kann einige Minuten dauern, bis die Dimensionswerte in der Liste **Dimensionswerte** angezeigt werden.
+1. Die angezeigten Dimensionswerte basieren auf Metrikdaten, die in den letzten drei Tagen erfasst wurden.
+1. Wenn der Dimensionswert noch nicht ausgegeben wurde, klicken Sie auf „+“, um einen benutzerdefinierten Wert hinzuzufügen.
+1. Wenn Sie für alle möglichen Werte einer Dimension (einschließlich zukünftiger Werte) eine Warnung ausgeben möchten, aktivieren Sie das Kontrollkästchen „Auswählen *“.
+
+## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Metrikwarnungsregeln sind für eine gelöschte Ressource weiterhin definiert 
+
+Wenn eine Azure-Ressource gelöscht wird, werden die zugehörigen Metrikwarnungsregeln nicht automatisch gelöscht. So löschen Sie Warnungsregeln, die einer gelöschten Ressource zugeordnet sind:
+
+1. Öffnen Sie die Ressourcengruppe, in der die gelöschte Ressource definiert war.
+1. Aktivieren Sie in der Liste mit den Ressourcen das Kontrollkästchen **Ausgeblendete Typen anzeigen**.
+1. Filtern Sie die Liste nach dem Typ **microsoft.insights/metricalerts**.
+1. Wählen Sie die relevanten Warnungsregeln aus, und klicken Sie anschließend auf **Löschen**.
+
+## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikwarnungen immer anzeigen, wenn meine Bedingung erfüllt wird
+
+Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden keine zusätzlichen Warnungen ausgelöst, wenn für eine angegebene Zeitreihe bereits eine Warnung ausgelöst wurde. Wenn Sie eine bestimmte Metrikwarnungsregel als zustandslos konfigurieren und bei jeder Auswertung, bei der die Warnungsbedingung erfüllt ist, eine Warnung erhalten möchten, erstellen Sie die Warnungsregel programmgesteuert (also beispielsweise per [Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates), [PowerShell](https://docs.microsoft.com/powershell/module/az.monitor/?view=azps-3.6.1), [REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate), [CLI](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)), und legen Sie die Eigenschaft *autoMitigate* auf FALSE fest.
+
+> [!NOTE] 
+> Durch die Konfiguration einer Metrikwarnungsregel als zustandslos wird verhindert, dass ausgelöste Warnungen gelöst werden. Daher verbleiben die ausgelösten Warnungen, selbst wenn die Bedingung nicht mehr erfüllt ist, bis zum Ablauf der Beibehaltungsdauer von 30 Tagen im ausgelösten Zustand.
+
+
+## <a name="metric-alert-rules-quota-too-small"></a>Kontingent für Metrikwarnungsregeln zu klein
+
+Für die zulässige Anzahl von Metrikwarnungsregeln pro Abonnement gelten [Kontingentgrenzen](https://docs.microsoft.com/azure/azure-monitor/service-limits).
+
+Wenn Sie die Kontingentgrenze erreicht haben, helfen möglicherweise die folgenden Schritte bei der Problembehebung:
+1. Löschen oder deaktivieren Sie Metrikwarnungsregeln, die nicht mehr verwendet werden.
+
+2. Gehen Sie zur Verwendung von Metrikwarnungsregeln über, die mehrere Ressourcen überwachen. Diese Funktion ermöglicht das Überwachen mehrerer Ressourcen mit nur einer Warnungsregel, sodass nur diese eine auf das Kontingent angerechnet wird. Weitere Informationen zu dieser Funktion und den unterstützten Ressourcentypen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
+
+3. Wenn die Kontingentgrenze erhöht werden muss, stellen Sie eine Supportanfrage mit den folgenden Informationen:
+
+    - Abonnement-ID(s), für die die Kontingentgrenze erhöht werden muss
+    - Ressourcentyp für die Erhöhung des Kontingents: **Metrikwarnungen** oder **Metrikwarnungen (klassisch)**
+    - Angeforderte Kontingentgrenze
+
+## <a name="check-total-number-of-metric-alert-rules"></a>Überprüfen der Gesamtanzahl von Metrikwarnungsregeln
+
+Führen Sie die folgenden Schritte durch, um den derzeitigen Verbrauch durch Metrikwarnungsregeln zu überprüfen.
+
+### <a name="from-the-azure-portal"></a>Über das Azure-Portal
+
+1. Öffnen Sie den Bildschirm **Warnungen**, und klicken Sie auf **Warnungsregeln verwalten**.
+2. Filtern Sie mit dem Dropdown-Steuerelement **Abonnement** nach dem betreffenden Abonnement.
+3. Stellen Sie sicher, dass Sie NICHT nach einer bestimmten Ressourcengruppe, einem Ressourcentyp oder einer Ressource filtern.
+4. Wählen Sie im Dropdown-Steuerelement **Signaltyp** die Option **Metriken** aus.
+5. Vergewissern Sie sich, dass das Dropdown-Steuerelement **Status** auf **Aktiviert** festgelegt ist.
+6. Die Gesamtanzahl von Metrikwarnungsregeln wird oberhalb der Liste mit Regeln angezeigt.
+
+### <a name="from-api"></a>Über eine API
+
+- PowerShell: [Get-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- REST-API: [Auflisten nach Abonnement](https://docs.microsoft.com/rest/api/monitor/metricalerts/listbysubscription)
+- Azure CLI: [az monitor metrics alert list](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+
+## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Verwalten von Warnungsregeln mithilfe von Resource Manager-Vorlagen, der REST-API, PowerShell oder der Azure CLI
+
+Wenn beim Erstellen, Aktualisieren, Abrufen oder Löschen von Metrikwarnungen mithilfe von Resource Manager-Vorlagen, der REST-API, PowerShell oder der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) Probleme auftreten, lassen sich diese unter Umständen mit den folgenden Schritten beheben.
+
+### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+
+- Sehen Sie sich die Liste mit den [häufigen Azure-Bereitstellungsfehlern](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) an, und führen Sie die Problembehandlung entsprechend durch.
+- Lesen Sie die [Beispiele zu Azure Resource Manager-Vorlagen für Metrikwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates), um sicherzustellen, dass alle Parameter korrekt übergeben werden.
+
+### <a name="rest-api"></a>REST-API
+
+Überprüfen Sie den [Leitfaden zur REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts/), um sicherzustellen, dass alle Parameter ordnungsgemäß übergeben werden.
+
+### <a name="powershell"></a>PowerShell
+
+Stellen Sie sicher, dass Sie die richtigen PowerShell-Cmdlets für Metrikwarnungen verwenden:
+
+- PowerShell-Cmdlets für Metrikwarnungen sind im [Az.Monitor-Modul](https://docs.microsoft.com/powershell/module/az.monitor/?view=azps-3.6.1) verfügbar.
+- Stellen Sie sicher, dass Sie die auf „V2“ endenden Cmdlets für neue (nicht klassische) Metrikwarnungen verwenden (z. B. [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/Add-AzMetricAlertRuleV2?view=azps-3.6.1)).
+
+### <a name="azure-cli"></a>Azure CLI
+
+Stellen Sie sicher, dass Sie die richtigen CLI-Befehle für Metrikwarnungen verwenden:
+
+- CLI-Befehle für Metrikwarnungen beginnen mit `az monitor metrics alert`. Informationen zur Syntax finden Sie in der [Azure CLI-Referenz](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest).
+- Sie können sich das [Beispiel zur Nutzung der CLI für Metrikwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#with-azure-cli) ansehen.
+- Stellen Sie zum Verwenden von Warnungen für benutzerdefinierte Metriken sicher, dass Sie dem Metriknamen den relevanten Metriknamespace als Präfix voranstellen: NAMESPACE.METRIK
+
+### <a name="general"></a>Allgemein
+
+- Im Falle eines Fehlers vom Typ `Metric not found` haben Sie folgende Möglichkeiten:
+
+   - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite zu unterstützten Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) und nicht den **Metrikanzeigenamen** verwenden.
+
+   - Bei einer benutzerdefinierten Metrik: Vergewissern Sie sich, dass die Metrik bereits ausgegeben wird (Sie können keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen, die noch nicht vorhanden ist). Stellen Sie zudem sicher, dass Sie den Namespace der benutzerdefinierten Metrik angeben (ein Beispiel für eine ARM-Vorlage finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)).
+
+- Stellen Sie bei der Erstellung von [Metrikwarnungen in Protokollen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs) sicher, dass die entsprechenden Abhängigkeiten enthalten sind. Eine Beispielvorlage finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs#resource-template-for-metric-alerts-for-logs).
+
+- Wenn Sie eine Warnungsregel erstellen, die mehrere Kriterien enthält, beachten Sie die folgenden Einschränkungen:
+
+   - Innerhalb jedes Kriteriums kann jeweils nur ein Wert pro Dimension ausgewählt werden.
+   - „\*“ kann nicht als Dimensionswert verwendet werden.
+   - Wenn Metriken, die in verschiedenen Kriterien konfiguriert sind, die gleiche Dimension unterstützen, muss auf die gleiche Weise explizit ein konfigurierter Dimensionswert für alle diese Metriken festgelegt werden (ein Beispiel für eine Resource Manager-Vorlage finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria)).
+
+
+## <a name="no-permissions-to-create-metric-alert-rules"></a>Keine Berechtigungen zum Erstellen von Metrikwarnungsregeln
+
+Zum Erstellen einer Metrikwarnungsregel benötigen Sie die folgenden Berechtigungen:
+
+- Leseberechtigung für die Zielressource der Warnungsregel
+- Schreibberechtigung für die Ressourcengruppe, in der die Warnungsregel erstellt wird (wenn Sie die Warnungsregel über das Azure-Portal erstellen, wird die Warnungsregel in derselben Ressourcengruppe erstellt, in der sich die Zielressource befindet).
+- Leseberechtigung für jede Aktionsgruppe, die der Warnungsregel zugeordnet ist (falls zutreffend)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Allgemeine Informationen zur Problembehandlung bei Warnungen und Benachrichtigungen finden Sie unter [Behandeln von Problemen bei Azure Monitor-Warnungen](alerts-troubleshoot.md).

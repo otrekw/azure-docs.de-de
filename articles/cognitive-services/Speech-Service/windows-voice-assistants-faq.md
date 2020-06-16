@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997289"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457008"
 ---
 # <a name="samples-and-faqs"></a>Beispiele und FAQs
 

@@ -1,14 +1,14 @@
 ---
 title: Delegierte Azure-Ressourcenverwaltung
 description: Angebote für verwaltete Dienste gestatten Dienstanbietern, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 04/01/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548421"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219073"
 ---
 # <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
 
@@ -40,7 +40,7 @@ Generell funktioniert die delegierte Azure-Ressourcenverwaltung wie folgt:
 3. Nachdem das Onboarding des Kunden durchgeführt wurde, können sich autorisierte Benutzer bei Ihrem Dienstanbietermandanten anmelden und Verwaltungsaufgaben im vorgegebenen Kundenumfang, basierend auf dem von Ihnen definierten Zugriff, durchführen.
 
 > [!NOTE]
-> Die Delegierung eines Abonnements zwischen zwei Mandanten in separaten Clouds wird nicht unterstützt.
+> Sie können delegierte Ressourcen verwalten, die sich in unterschiedlichen [Regionen](../../availability-zones/az-overview.md#regions) befinden. Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Unterstützung für delegierte Azure-Ressourcenverwaltung
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.custom: mqtt
-ms.openlocfilehash: 68186e777051e77deca7b6e5891eb392cac23260
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 20bbd3fbc7623f01e60acbd08eed0c09b7e1a26d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729036"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117571"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
 
@@ -116,6 +116,11 @@ Azure IoT Hub Service SDK für Python:
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 Azure IoT Hub Service SDK für C: 
+
+Das Azure IoT-Dienst-SDK für C befindet sich nicht mehr in der aktiven Entwicklung.
+Wir werden weiterhin wichtige Fehler wie z. B. Abstürze, Datenbeschädigungen und Sicherheitsrisiken beheben. Es werden jedoch KEINE neuen Features hinzugefügt oder Fehler behoben, die nicht von Bedeutung sind.
+
+Die Unterstützung des Azure IoT-Dienst-SDK ist in den Sprachen der höheren Ebene ([C#](https://github.com/Azure/azure-iot-sdk-csharp), [Java](https://github.com/Azure/azure-iot-sdk-java), [Node](https://github.com/Azure/azure-iot-sdk-node) und [Python](https://github.com/Azure/azure-iot-sdk-python)) verfügbar.
 
 * Download über [apt-get, MBED, Arduino-IDE oder NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Quellcode](https://github.com/Azure/azure-iot-sdk-c)

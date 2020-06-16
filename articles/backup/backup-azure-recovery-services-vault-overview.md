@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597948"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248905"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -20,7 +20,7 @@ Innerhalb eines Azure-Abonnements können Sie bis zu 500 Recovery Services-Treso
 
 Wenn Sie weiterhin Sicherungstresore besitzen, werden sie automatisch auf Recovery Services-Tresore aktualisiert. Bis November 2017 werden alle Sicherungstresore auf Recovery Services-Tresore aktualisiert sein.
 
-Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azure, wohingegen Sicherungstresore auf dem Azure Service Manager-Modell beruhen. Beim Upgrade eines Sicherungstresors auf einen Recovery Services-Tresor bleiben die Sicherungsdaten während und nach dem Upgradevorgang intakt. Recovery Services-Tresore bieten Funktionen, die nicht für Sicherungstresore verfügbar sind. Hierzu zählen z.B. Folgende:
+Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azure, Sicherungstresore beruhten hingegen auf dem Azure Service Manager-Modell. Beim Upgrade eines Sicherungstresors auf einen Recovery Services-Tresor bleiben die Sicherungsdaten während und nach dem Upgradevorgang intakt. Recovery Services-Tresore bieten Funktionen, die nicht für Sicherungstresore verfügbar sind. Hierzu zählen z.B. Folgende:
 
 - **Erweiterte Funktionen zum Schutz von Sicherungsdaten**: Durch Recovery Services-Tresore bietet Azure Backup Sicherheitsfunktionen zum Schutz von Cloudsicherungen. Mit diesen Sicherheitsfunktionen wird sichergestellt, dass Sie Ihre Sicherungen schützen und Daten sicher wiederherstellen können, selbst wenn Produktions- und Sicherungsserver kompromittiert sind. [Weitere Informationen](backup-azure-security-feature.md)
 

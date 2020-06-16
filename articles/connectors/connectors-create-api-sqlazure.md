@@ -7,16 +7,16 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402598"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191487"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für SQL Server oder Azure SQL-Datenbank mithilfe von Azure Logic Apps
 
-In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector funktioniert sowohl für [lokale SQL Server-Instanzen](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für die [cloudbasierte Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector kann sowohl für [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) verwendet werden.
 
 Sie können Logik-Apps erstellen, deren Ausführung durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgelöst wird. Ihre Logik-Apps können auch Daten abrufen, einfügen und löschen sowie SQL-Abfragen und gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen über die hinzugefügten Elemente sendet.
 
@@ -26,7 +26,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Eine [SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) oder eine [Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md)
+* Eine [SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) oder eine [Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md)
 
   Ihre Tabellen müssen Daten enthalten, damit Ihre Logik-App beim Aufrufen von Vorgängen Ergebnisse zurückgeben kann. Wenn Sie eine Azure SQL-Datenbank erstellen, können Sie die enthaltenen Beispieldatenbanken verwenden.
 

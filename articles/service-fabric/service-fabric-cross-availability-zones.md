@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609977"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259370"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -140,6 +140,10 @@ Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendun
 
 >[!NOTE]
 > Die Standardvorlage verweist auf eine Netzwerksicherheitsgruppe, die standardmäßig den gesamten ausgehenden Datenverkehr gestattet. Der eingehende Datenverkehr ist auf die Ports beschränkt, die für Vorgänge zur Service Fabric-Verwaltung erforderlich sind. Die Regeln der Netzwerksicherheitsgruppe können an Ihre Anforderungen angepasst werden.
+
+>[!NOTE]
+> Jeder Service Fabric-Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl.
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Aktivieren von Zonen für eine VM-Skalierungsgruppe
 Um eine Zone zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.

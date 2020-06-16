@@ -3,12 +3,12 @@ title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Do
 description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980846"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204751"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -90,7 +90,10 @@ Für Webseiten erfasst das JavaScript SDK von Application Insights AJAX-Aufrufe 
 
 Für SQL-Aufrufe wird der Name des Servers und der Datenbank immer erfasst und als Name der erfassten `DependencyTelemetry` gespeichert. Es gibt ein zusätzliches Feld namens „data“, das den vollständigen Text der SQL-Abfrage enthalten kann.
 
-Für ASP.NET Core-Anwendungen ist kein zusätzlicher Schritt erforderlich, um die vollständige SQL-Abfrage abzurufen.
+Bei ASP.NET Core-Anwendungen ist es jetzt erforderlich, die SQL-Textsammlung mithilfe von folgender Option zu abonnieren
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
 Für ASP.NET-Anwendungen wird die vollständige SQL-Abfrage mithilfe der Bytecodeinstrumentierung erfasst, für die eine Instrumentierungs-Engine erforderlich ist, oder indem das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) anstelle der System.Data.SqlClient-Bibliothek verwendet wird. Zudem sind zusätzliche plattformspezifische Schritte nötig, die unten beschrieben werden.
 

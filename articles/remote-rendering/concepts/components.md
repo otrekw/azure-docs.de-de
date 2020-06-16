@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758740"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021669"
 ---
 # <a name="components"></a>Komponenten
 
 Azure Remote Rendering verwendet das Muster [Entitätskomponentensystem](https://en.wikipedia.org/wiki/Entity_component_system). Während [Entitäten](entities.md) die Position und die hierarchische Komposition von Objekten darstellen, sind Komponenten für das Implementieren von Verhalten verantwortlich.
 
-Die am häufigsten verwendeten Komponententypen sind [Gittermodellkomponenten](meshes.md), die der Renderingpipeline Gittermodelle hinzufügen. Analog dazu werden [Lichtkomponenten](../overview/features/lights.md) verwendet, um Beleuchtung hinzuzufügen, und [Schnittebenenkomponenten](../overview/features/cut-planes.md) werden genutzt, um Gittermodelle aufzuschneiden.
+Die am häufigsten verwendeten Komponententypen sind [:::no-loc text="mesh components":::](meshes.md), die der Renderingpipeline Gittermodelle hinzufügen. Analog dazu werden [Lichtkomponenten](../overview/features/lights.md) verwendet, um Beleuchtung hinzuzufügen, und [Schnittebenenkomponenten](../overview/features/cut-planes.md) werden genutzt, um Gittermodelle aufzuschneiden.
 
 Alle diese Komponenten verwenden die Transformation (Position, Drehung, Maßstab) der Entität, an die sie angefügt sind, als ihren Bezugspunkt.
 

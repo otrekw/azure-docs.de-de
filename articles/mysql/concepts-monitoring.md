@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 2de04bbb1523151ac566b78bf99eba34c437fccd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee9fe44844cd7263075c9dfe0acea8558f325525
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537090"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267665"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Überwachen in Azure Database for MySQL
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MySQL bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL). Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Liste der Metriken
@@ -73,7 +73,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ide
 Eine ausführliche Beschreibung der Schritte zum Erstellen von **Service Health-Warnungen** finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> Benachrichtigungen zu geplanten Wartungen befinden sich derzeit in der Vorschauphase
+> Benachrichtigungen für geplante Wartungen sind derzeit in allen Regionen **mit Ausnahme von** „USA, Westen-Mitte“ als Vorschau verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

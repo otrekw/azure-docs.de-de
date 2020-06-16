@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 5629ddfe496ef1abd071ab579c885cbe1adeb344
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592094"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267085"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
@@ -219,6 +219,10 @@ az cosmosdb show \
     -g $resourceGroupName \
     --query keyVaultKeyUri
 ```
+
+## <a name="error-handling"></a>Fehlerbehandlung
+
+Wenn bei der Verwendung von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) in Azure Cosmos DB Fehler auftreten, gibt Azure Cosmos DB die Fehlerdetails zusammen mit einem HTTP-Unterstatuscode in der Antwort zurück. Mit diesem Unterstatuscode können Sie die Grundursache des Problems debuggen. Eine Liste der unterstützten HTTP-Unterstatuscodes finden Sie im Artikel [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7664ce89c01c543544bc576c5eee3fd288d323d5
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659835"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248514"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -115,7 +115,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
 >[!NOTE]
->Das Feature für die Aussprachebewertung ist derzeit nur in den Regionen `westus` und `eastasia` verfügbar. Es steht außerdem zurzeit nur für die Sprache `en-US` zur Verfügung.
+>Das Feature für die Aussprachebewertung ist derzeit nur in den Regionen `westus`, `eastasia` und `centralindia` verfügbar. Es steht außerdem zurzeit nur für die Sprache `en-US` zur Verfügung.
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 

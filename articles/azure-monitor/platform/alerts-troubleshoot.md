@@ -6,18 +6,25 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: beb47f961c6f24453bd49aa5807c9d801fc199a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132323"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300772"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Behandeln von Problemen bei Azure Monitor-Warnungen 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Behandeln von Problemen bei Azure Monitor-Warnungen
 
-In diesem Artikel werden gängige Probleme bei Azure Monitor-Warnungen behandelt.
+In diesem Artikel werden gängige Probleme bei Azure Monitor-Warnungen und -Benachrichtigungen erläutert.
 
 Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](alerts-overview.md).
+
+Wenn bei Ihnen das Problem besteht, dass eine Warnung entweder nicht erwartungsgemäß ausgelöst wird oder unerwartet ausgelöst wird, finden Sie in den untenstehenden Artikeln weitere Informationen. Alle ausgelösten Warnungen können im Azure-Portal angezeigt werden.
+
+- [Troubleshooting für Probleme mit Metrikwarnungen in Azure Monitor](alerts-troubleshoot-metric.md)  
+- [Troubleshooting für Probleme mit Protokollwarnungen in Azure Monitor](alerts-troubleshoot-metric.md)
+
+Wenn die Warnung laut der Informationen im Azure-Portal wie beabsichtigt ausgelöst wird, die entsprechenden Benachrichtigungen jedoch nicht angezeigt werden, finden Sie im vorliegenden Artikel weitere Informationen für ein Troubleshooting dieses Problems.
 
 ## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>Eine Aktion oder Benachrichtigung für meine Warnung funktioniert nicht erwartungsgemäß
 
@@ -25,11 +32,11 @@ Wenn eine ausgelöste Warnung im Azure-Portal angezeigt wird, Sie aber ein Probl
 
 ## <a name="did-not-receive-expected-email"></a>Erwartete E-Mail ist nicht eingegangen
 
-Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-Portal angezeigt wird, aber Sie haben die konfigurierte E-Mail nicht empfangen: 
+Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-Portal angezeigt wird, aber Sie haben die konfigurierte E-Mail nicht empfangen:
 
-1. **Wurde die E-Mail aufgrund einer [Aktionsregel](alerts-action-rules.md) unterdrückt?** 
+1. **Wurde die E-Mail aufgrund einer [Aktionsregel](alerts-action-rules.md) unterdrückt?**
 
-    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](action-groups.md) untersuchen: 
+    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](action-groups.md) untersuchen:
 
     ![Verlauf mit unterdrückten Aktionsregeln bei einer Warnung](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -44,20 +51,20 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.com
 
-    Es ist üblich, dass interne Mailinglisten oder Verteilerlisten E-Mails von externen E-Mail-Adressen blockieren. Sie müssen die oben genannten E-Mail-Adressen auf die Whitelist setzen.  
-    Zum Testen können Sie eine herkömmliche geschäftliche E-Mail-Adresse (keine Mailingliste) zur Aktionsgruppe hinzufügen und überprüfen, ob Warnungen bei ihr eintreffen. 
+    Es ist üblich, dass interne Mailinglisten oder Verteilerlisten E-Mails von externen E-Mail-Adressen blockieren. Sie müssen E-Mails von den obigen E-Mail-Adressen zulassen.  
+    Zum Testen können Sie eine herkömmliche geschäftliche E-Mail-Adresse (keine Mailingliste) zur Aktionsgruppe hinzufügen und überprüfen, ob Warnungen bei ihr eintreffen.
 
-1. **Wurde die E-Mail von meinen Posteingangsregeln oder einem Spamfilter verarbeitet?** 
+1. **Wurde die E-Mail von meinen Posteingangsregeln oder einem Spamfilter verarbeitet?**
 
     Stellen Sie sicher, dass keine Eingangsregeln vorliegen, die diese E-Mails löschen oder in einen separaten Ordner verschieben. Beispielsweise könnten Eingangsregeln spezifische Absender oder Wörter im Betreff abfangen.
 
     Überprüfen Sie außerdem:
-    
-      - die Spameinstellungen Ihres E-Mail-Clients (z. B. Outlook, Gmail).
-      - die Absenderbeschränkungen/Spameinstellungen/Quarantäneeinstellungen Ihres E-Mail-Servers (z. B. Exchange, Office 365, G-Suite).
-      - die Einstellungen Ihres E-Mail-Sicherheitsgeräts, sofern eines vorliegt (z. B. Barracuda, Cisco). 
 
-1. **Haben Sie sich versehentlich von der Aktionsgruppe abgemeldet?** 
+   - die Spameinstellungen Ihres E-Mail-Clients (z. B. Outlook, Gmail).
+      - die Absenderbeschränkungen/Spameinstellungen/Quarantäneeinstellungen Ihres E-Mail-Servers (z. B. Exchange, Office 365, G-Suite).
+      - die Einstellungen Ihres E-Mail-Sicherheitsgeräts, sofern eines vorliegt (z. B. Barracuda, Cisco).
+
+1. **Haben Sie sich versehentlich von der Aktionsgruppe abgemeldet?**
 
     Die Warnungs-E-Mails enthalten einen Link zum Kündigen des Abonnements der Aktionsgruppe. Sie können einen der folgenden Schritte ausführen, um zu überprüfen, ob Sie versehentlich Ihr Abonnement der Aktionsgruppe gekündigt haben:
 
@@ -71,7 +78,7 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
 
     Sie können entweder den in der Bestätigungs-E-Mail für die Abonnementkündigung enthaltenen Link verwenden oder die E-Mail-Adresse aus der Aktionsgruppe entfernen und wieder hinzufügen, um sie wieder zu abonnieren. 
  
-1. **Haben Sie aufgrund zu vieler E-Mails an eine einzige E-Mail-Adresse eine Mengenbeschränkung erhalten?** 
+1. **Haben Sie aufgrund zu vieler E-Mails an eine einzige E-Mail-Adresse eine Mengenbeschränkung erhalten?**
 
     Es besteht die [Beschränkung](alerts-rate-limiting.md), dass pro Stunde nicht mehr als 100 E-Mails bei einer E-Mail-Adresse eingehen dürfen. Wenn Sie diesen Schwellenwert überschreiten, werden weitere E-Mail-Benachrichtigungen gelöscht.  Überprüfen Sie, ob Sie eine Nachricht erhalten haben, die angibt, dass eine vorübergehende Mengenbeschränkung für Ihre E-Mail-Adresse festgelegt wurde: 
  
@@ -83,7 +90,7 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
 
 Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-Portal angezeigt wird, aber Sie haben die konfigurierte SMS, den Sprachanruf oder die Pushbenachrichtigung nicht empfangen: 
 
-1. **Wurde die Aktion aufgrund einer [Aktionsregel](alerts-action-rules.md) unterdrückt?** 
+1. **Wurde die Aktion aufgrund einer [Aktionsregel](alerts-action-rules.md) unterdrückt?**
 
     Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](action-groups.md) untersuchen: 
 
@@ -93,14 +100,14 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
  
 1. **SMS/Sprachanruf:  Ist die angegebene Telefonnummer richtig?**
 
-   Überprüfen Sie die SMS-Aktion auf Tippfehler im Ländercode und der Telefonnummer. 
+   Überprüfen Sie die SMS-Aktion auf Tippfehler im Ländercode und der Telefonnummer.
  
-1. **SMS/Sprachanruf: Liegt eine Mengenbeschränkung vor?** 
+1. **SMS/Sprachanruf: Liegt eine Mengenbeschränkung vor?**
 
-    Für SMS und Sprachanrufe gilt eine Beschränkung von nicht mehr als einer Benachrichtigung alle fünf Minuten pro Telefonnummer. Wenn Sie diesen Schwellenwert überschreiten, werden die Benachrichtigungen gelöscht. 
+    Für SMS und Sprachanrufe gilt eine Beschränkung von nicht mehr als einer Benachrichtigung alle fünf Minuten pro Telefonnummer. Wenn Sie diesen Schwellenwert überschreiten, werden die Benachrichtigungen gelöscht.
 
-      - Sprachanruf: Überprüfen Sie Ihren Anrufverlauf auf vorangegangene Anrufe von Azure in den letzten fünf Minuten. 
-      - SMS: Überprüfen Sie Ihren SMS-Verlauf auf eine Nachricht mit dem Hinweis, dass für Ihre Telefonnummer eine Beschränkung besteht. 
+      - Sprachanruf: Überprüfen Sie Ihren Anrufverlauf auf vorangegangene Anrufe von Azure in den letzten fünf Minuten.
+      - SMS: Überprüfen Sie Ihren SMS-Verlauf auf eine Nachricht mit dem Hinweis, dass für Ihre Telefonnummer eine Beschränkung besteht.
 
     Wenn Sie eine große Menge an Benachrichtigungen ohne Mengenbeschränkung erhalten möchten, sollten Sie eine andere Aktion in Betracht ziehen, z. B. einen Webhook, eine Logik-App, eine Azure-Funktion oder Automation-Runbooks. Für keine der genannten Optionen besteht eine Mengenbeschränkung. 
  
@@ -110,19 +117,19 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
 
 1. **Haben Sie die Benachrichtigungen versehentlich auf Ihrem Mobiltelefon blockiert?**
 
-   Die meisten Mobiltelefone bieten die Möglichkeit, Anrufe oder SMS von spezifischen Telefonnummern oder kurzen Codes oder die Pushbenachrichtigungen von bestimmten Apps (z. B. der mobilen Azure-App) zu blockieren. Überprüfen Sie Dokumentation für das Betriebssystem und Modell Ihres Mobilgeräts, um zu erfahren, wie Sie überprüfen können, ob Sie die Benachrichtigungen auf Ihrem Gerät versehentlich blockiert haben. Alternativ können Sie dies auch mit einem anderen Mobilgerät und einer anderen Telefonnummer testen. 
+   Die meisten Mobiltelefone bieten die Möglichkeit, Anrufe oder SMS von spezifischen Telefonnummern oder kurzen Codes oder die Pushbenachrichtigungen von bestimmten Apps (z. B. der mobilen Azure-App) zu blockieren. Überprüfen Sie Dokumentation für das Betriebssystem und Modell Ihres Mobilgeräts, um zu erfahren, wie Sie überprüfen können, ob Sie die Benachrichtigungen auf Ihrem Gerät versehentlich blockiert haben. Alternativ können Sie dies auch mit einem anderen Mobilgerät und einer anderen Telefonnummer testen.
 
 ## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>Eine Andere Art von Aktion wurde erwartet, aber nicht ausgelöst 
+   
+Wenn eine ausgelöste Warnung im Portal angezeigt wird, deren konfigurierte Aktion jedoch nicht ausgelöst wurde, führen Sie die folgenden Schritte aus:
 
-Wenn eine ausgelöste Warnung im Portal angezeigt wird, deren konfigurierte Aktion jedoch nicht ausgelöst wurde, führen Sie die folgenden Schritte aus: 
+1. **Wurde die Aktion aufgrund einer Aktionsregel unterdrückt?**
 
-1. **Wurde die Aktion aufgrund einer Aktionsregel unterdrückt?** 
-
-    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](action-groups.md) untersuchen: 
+    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](action-groups.md) untersuchen:
 
     ![Verlauf mit unterdrückten Aktionsregeln bei einer Warnung](media/alerts-troubleshoot/history-action-rule.png)
  
-    Wenn dies nicht beabsichtigt ist, können Sie die Aktionsregel ändern, deaktivieren oder löschen. 
+    Wenn dies nicht beabsichtigt ist, können Sie die Aktionsregel ändern, deaktivieren oder löschen.
 
 1. **Wurde ein Webhook nicht ausgelöst?**
 
@@ -132,7 +139,7 @@ Wenn eine ausgelöste Warnung im Portal angezeigt wird, deren konfigurierte Akti
 
     1. **Funktioniert Ihr Webhookendpunkt ordnungsgemäß?**
 
-       Überprüfen Sie, ob der von Ihnen konfigurierte Webhookendpunkt korrekt ist und ob der Endpunkt ordnungsgemäß funktioniert. Überprüfen Sie Ihre Webhookprotokolle, oder instrumentieren Sie den Code so, dass Sie Untersuchungen anstellen können (protokollieren Sie beispielsweise die eingehende Nutzlast). 
+       Überprüfen Sie, ob der von Ihnen konfigurierte Webhookendpunkt korrekt ist und ob der Endpunkt ordnungsgemäß funktioniert. Überprüfen Sie Ihre Webhookprotokolle, oder instrumentieren Sie den Code so, dass Sie Untersuchungen anstellen können (protokollieren Sie beispielsweise die eingehende Nutzlast).
 
     1. **Rufen Sie Slack oder Microsoft Teams auf?**  
     Jeder dieser Endpunkte erwartet ein spezifischen JSON-Format. Befolgen Sie [diese Anweisungen](action-groups-logic-app.md), um stattdessen eine Logik-App-Aktion zu konfigurieren.
@@ -226,7 +233,7 @@ Führen Sie die folgenden Schritte aus, um diese zu ermitteln:
 
 1. Scrollen Sie in den Warnungsfeldern der ersten Registerkarte (Registerkarte „Zusammenfassung“) nach unten, bis Sie die ID finden, und kopieren Sie diese. Das Feld enthält außerdem die Schaltfläche „In Zwischenablage kopieren“, die Sie verwenden können.  
 
-    ![Warnungs-ID suchen](media/alerts-troubleshoot/get-alert-id.png)
+    ![Suchen nach der Warnungs-ID](media/alerts-troubleshoot/get-alert-id.png)
 
 ## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>Problem beim Erstellen, Aktualisieren oder Löschen von Aktionsregeln im Azure-Portal
 

@@ -5,30 +5,67 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/27/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b6d08dd2073de80ac0f7fd08f510d9cda80545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143236"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194059"
 ---
-# <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Richtlinien und Einschränkungen für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
+# <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
-In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen beschrieben, die Benutzerkonten in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) zugeordnet sind.
+In Azure Active Directory (Azure AD) definiert eine Kennwortrichtlinie Einstellungen wie die Kennwortkomplexität, die Länge oder das Alter. Außerdem definiert eine Richtlinie zulässige Zeichen und die Länge für Benutzernamen.
+
+Wenn ein Kennwort in Azure AD mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) geändert oder zurückgesetzt wird, erfolgt eine Überprüfung anhand der Kennwortrichtlinie. Wenn das Kennwort nicht die Richtlinienanforderungen erfüllt, wird der Benutzer aufgefordert, es erneut zu versuchen. Für Azure-Administratoren gelten einige Einschränkungen bei der Verwendung der SSPR, die für reguläre Benutzerkonten nicht gelten.
+
+In diesem Artikel werden die Einstellungen und Komplexitätsanforderungen für Kennwortrichtlinien im Zusammenhang mit Benutzerkonten in Ihrem Azure AD-Mandanten sowie die Verwendung von PowerShell zum Überprüfen oder Festlegen von Kennwortablaufeinstellungen beschrieben.
+
+## <a name="username-policies"></a><a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Richtlinien für Benutzernamen
+
+Jedes Konto, das sich bei Azure AD anmeldet, muss über ein eindeutiges, diesem Konto zugeordnetes Benutzerprinzipalnamen-Attribut (UPN, User Principal Name) verfügen. In Hybridumgebungen mit einer lokalen Active Directory Domain Services-Umgebung (AD DS), die über Azure AD Connect mit Azure AD synchronisiert wird, ist der Azure AD-UPN standardmäßig auf den lokalen UPN festgelegt.
+
+In der folgenden Tabelle sind die Richtlinien für Benutzernamen aufgeführt, die sowohl für lokale AD DS-Konten, die mit Azure AD synchronisiert werden, als auch für Benutzerkonten gelten, die ausschließlich in der Cloud verwendet und direkt in Azure AD erstellt werden:
+
+| Eigenschaft | UserPrincipalName-Richtlinien |
+| --- | --- |
+| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Unzulässige Zeichen |<ul> <li>Jedes\@\"-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
+| Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem \@\"-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem \@\"-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
+
+## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD-Kennwortrichtlinien
+
+Eine Kennwortrichtlinie wird auf alle Benutzerkonten angewandt, die direkt in Azure AD erstellt und verwaltet werden. Diese Kennwortrichtlinie kann nicht geändert werden, Sie können jedoch [benutzerdefinierte gesperrte Kennwörter für den Azure AD-Kennwortschutz konfigurieren](tutorial-configure-custom-password-protection.md).
+
+Die Kennwortrichtlinien betreffen keine Benutzerkonten, die über Azure AD Connect aus einer lokalen AD DS-Umgebung synchronisiert werden.
+
+Die folgenden Optionen für Kennwortrichtlinien sind definiert:
+
+| Eigenschaft | Requirements (Anforderungen) |
+| --- | --- |
+| Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>Leerraum</li></ul> |
+| Unzulässige Zeichen | Unicode-Zeichen |
+| Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 256 Zeichen.</li><li>Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
+| Zeitraum bis zum Ablauf des Kennworts (maximales Kennwortalter) |<ul><li>Standardwert: **90** Tage</li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
+| Benachrichtigung bei Ablauf des Kennworts (wenn Benutzer über den Ablauf des Kennworts benachrichtigt werden) |<ul><li>Standardwert: **14** Tage (bevor das Kennwort abläuft)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
+| Kennwortablauf (Kennwort läuft nie ab) |<ul><li>Standardwert: **false** (gibt an, dass Kennwörter ein Ablaufdatum aufweisen).</li><li>Der Wert kann mit dem Cmdlet `Set-MsolUser` für einzelne Benutzerkonten konfiguriert werden.</li></ul> |
+| Verlauf der Kennwortänderungen | Das letzte Kennwort *kann nicht* erneut verwendet werden, wenn der Benutzer ein Kennwort ändert. |
+| Verlauf der Kennwortzurücksetzungen | Das letzte Kennwort *kann* erneut verwendet werden, wenn der Benutzer ein vergessenes Kennwort zurücksetzt. |
+| Kontosperrung | Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. [Smart Lockout](howto-password-smart-lockout.md) verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht. |
 
 ## <a name="administrator-reset-policy-differences"></a>Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern
 
-**Microsoft erzwingt eine starke standardmäßige *Zwei-Gate*-Kennwortzurücksetzungsrichtlinie für jede Azure-Administratorrolle**. Diese Richtlinie kann sich von der Richtlinie unterscheiden, die Sie für Ihre Benutzer definiert haben, und diese Richtlinie kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
+Microsoft erzwingt eine starke standardmäßige *Zwei-Gate*-Kennwortzurücksetzungs-Richtlinie für jede Azure-Administratorrolle. Diese Richtlinie kann sich von der Richtlinie unterscheiden, die Sie für Ihre Benutzer definiert haben, und diese Richtlinie kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
 
-Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden**.
+Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden.
 
-Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. *E-Mail-Adresse*, *Authentifikator-App* oder *Telefonnummer*. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
+Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z. B. E-Mail-Adresse, Authentifikator-App oder Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Alle folgenden Administratorrollen sind betroffen:
   * Helpdesk-Administrator
@@ -65,95 +102,73 @@ Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Elemen
 * für Ihren Azure AD-Mandanten wurde keine benutzerdefinierte Domäne konfiguriert, weshalb die Standarddomäne * *.onmicrosoft.com* verwendet wird. Die Standarddomäne * *.onmicrosoft.com* wird nicht für die Verwendung in der Produktion empfohlen.
 * Azure AD Connect synchronisiert keine Identitäten.
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
+## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Richtlinien zum Kennwortablauf
 
-Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges, diesem Konto zugeordnetes Benutzerprinzipalnamen-Attribut (UPN, User Principal Name) verfügen. In der folgenden Tabelle sind die Richtlinien aufgeführt, die sowohl für lokale Active Directory Domain Services-Benutzerkonten, die mit der Cloud synchronisiert werden, als auch für Benutzerkonten, die ausschließlich in der Cloud verwendet werden, gelten:
+Ein *globaler Administrator* oder *Benutzeradministrator* kann mit dem [Microsoft Azure AD-Modul für Windows PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) festlegen, dass Benutzerkennwörter nicht ablaufen.
 
-| Eigenschaft | UserPrincipalName-Richtlinien |
-| --- | --- |
-| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
-| Unzulässige Zeichen |<ul> <li>Jedes\@\"-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
-| Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem \@\"-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem \@\"-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
-
-## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Kennwortrichtlinien, die nur für Cloudbenutzerkonten gelten
-
-Die folgende Tabelle beschreibt die Kennwortrichtlinieneinstellungen, die auf die in Azure AD erstellten und verwalteten Benutzerkonten angewendet werden können:
-
-| Eigenschaft | Requirements (Anforderungen) |
-| --- | --- |
-| Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>Leerraum</li></ul> |
-| Unzulässige Zeichen | Unicode-Zeichen |
-| Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 256 Zeichen.</li><li>Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
-| Zeitraum bis zum Ablauf des Kennworts (maximales Kennwortalter) |<ul><li>Standardwert: **90** Tage</li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
-| Benachrichtigung bei Ablauf des Kennworts (wenn Benutzer über den Ablauf des Kennworts benachrichtigt werden) |<ul><li>Standardwert: **14** Tage (bevor das Kennwort abläuft)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
-| Kennwortablauf (Kennwort läuft nie ab) |<ul><li>Standardwert: **false** (gibt an, dass Kennwörter ein Ablaufdatum aufweisen).</li><li>Der Wert kann mit dem Cmdlet `Set-MsolUser` für einzelne Benutzerkonten konfiguriert werden.</li></ul> |
-| Verlauf der Kennwortänderungen | Das letzte Kennwort *kann nicht* erneut verwendet werden, wenn der Benutzer ein Kennwort ändert. |
-| Verlauf der Kennwortzurücksetzungen | Das letzte Kennwort *kann* erneut verwendet werden, wenn der Benutzer ein vergessenes Kennwort zurücksetzt. |
-| Kontosperrung | Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. [Smart Lockout](howto-password-smart-lockout.md) verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht. |
-
-## <a name="set-password-expiration-policies-in-azure-ad"></a>Festlegen von Kennwortablaufrichtlinien in Azure AD
-
-Ein *globaler Administrator* oder *Benutzeradministrator* für einen Microsoft-Clouddienst kann mit dem *Microsoft Azure AD-Modul für Windows PowerShell* festlegen, dass Benutzerkennwörter nicht ablaufen. Sie können auch Windows PowerShell-Cmdlets verwenden, um die Konfiguration zu entfernen, die angibt, dass Kennwörter nie ablaufen, oder um Benutzerkennwörter anzuzeigen, für die festgelegt ist, dass sie nie ablaufen.
+Sie können auch PowerShell-Cmdlets verwenden, um die Konfiguration für niemals ablaufende Kennwörter zu entfernen oder um anzuzeigen, für welche Benutzerkennwörter festgelegt ist, dass sie nie ablaufen.
 
 Diese Anleitung gilt für andere Anbieter wie Intune und Office 365, die ebenfalls auf Azure AD als Identitäts- und Verzeichnisdienste zurückgreifen. Kennwortablauf ist der einzige Teil der Richtlinie, der geändert werden kann.
 
 > [!NOTE]
-> Nur Kennwörter für Benutzerkonten, die nicht über die Verzeichnissynchronisierung synchronisiert werden, können so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Nur Kennwörter für Benutzerkonten, die nicht über Azure AD Connect synchronisiert werden, können so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
-## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
+### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
 
-Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). [Verbinden Sie es anschließend mit Ihrem Azure AD-Mandanten](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples). Nachdem das Modul installiert wurde, können Sie jedes Feld mit den folgenden Schritten konfigurieren.
+Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](/powershell/module/Azuread/?view=azureadps-2.0). [Verbinden Sie es anschließend mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+
+Nachdem das Modul installiert wurde, können Sie jede Aufgabe nach Bedarf mit den folgenden Schritten abschließen.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 
-1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-1. Führen Sie einen der folgenden Befehle aus:
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
-   * Um festzustellen, ob für das Kennwort eines einzelnen Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem UPN (z. B. *aprilr\@contoso.onmicrosoft.com*) oder der Benutzer-ID des Benutzers aus, den Sie überprüfen möchten:
+   * Führen Sie das folgende Cmdlet aus, um zu ermitteln, ob für das Kennwort eines einzelnen Benutzers festgelegt ist, dass es nie abläuft. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*:
 
-   ```powershell
-   Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
-   ```
+       ```powershell
+       Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+       ```
 
    * Um die Einstellung **Kennwort läuft nie ab** für alle Benutzer anzuzeigen, führen Sie das folgende Cmdlet aus:
 
-   ```powershell
-   Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
-   ```
+       ```powershell
+       Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+       ```
 
 ### <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft
 
-1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-1. Führen Sie einen der folgenden Befehle aus:
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
-   * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet mit UPN oder Benutzer-ID des Benutzers aus:
+   * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet aus. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*.
 
-   ```powershell
-   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
-   ```
+       ```powershell
+       Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
+       ```
 
    * Um für die Kennwörter aller Benutzer in der Organisation festzulegen, dass sie ablaufen, verwenden Sie das folgende Cmdlet:
 
-   ```powershell
-   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
-   ```
+       ```powershell
+       Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
+       ```
 
 ### <a name="set-a-password-to-never-expire"></a>Festlegen, dass ein Kennwort nicht abläuft
 
-1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
-1. Führen Sie einen der folgenden Befehle aus:
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
-   * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet mit UPN oder Benutzer-ID des Benutzers aus:
+   * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet aus. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*.
 
-   ```powershell
-   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
-   ```
+       ```powershell
+       Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
+       ```
 
    * Um für die Kennwörter aller Benutzer in der Organisation festzulegen, dass sie nie ablaufen, verwenden Sie das folgende Cmdlet:
 
-   ```powershell
-   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
-   ```
+       ```powershell
+       Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
+       ```
 
    > [!WARNING]
    > Kennwörter, die auf `-PasswordPolicies DisablePasswordExpiration` festgelegt sind, altern trotzdem entsprechend dem `pwdLastSet`-Attribut. Entsprechend dem `pwdLastSet`-Attribut ergibt sich, wenn Sie das Ablaufen in `-PasswordPolicies None` ändern, dass jedes Kennwort, dessen `pwdLastSet` älter als 90 Tage ist, vom Benutzer bei seiner nächster Anmeldung geändert werden muss. Diese Änderung kann eine große Anzahl von Benutzern betreffen.

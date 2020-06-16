@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868382"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263226"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -68,7 +68,9 @@ _Effektive Berechtigungen_ sind die Berechtigungen, über die Ihre App verfügt,
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect-Bereiche
 
-Die Microsoft Identity Platform-Implementierung von OpenID Connect bietet einige klar definierte Bereiche, die für keine bestimmte Ressource gelten: `openid`, `email`, `profile` und `offline_access`. Die OpenID Connect-Bereiche `address` und `phone` werden nicht unterstützt.
+Die Microsoft Identity Platform-Implementierung von OpenID Connect bietet einige klar definierte Bereiche, die ebenfalls auf der Microsoft Graph-Instanz gehostet werden: `openid`, `email`, `profile` und `offline_access`. Die OpenID Connect-Bereiche `address` und `phone` werden nicht unterstützt.
+
+Bei der Anforderung der OIDC-Bereiche und eines Tokens erhalten Sie ein Token zum Aufrufen des [UserInfo-Endpunkts](userinfo.md).
 
 ### <a name="openid"></a>openid
 

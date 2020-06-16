@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022179"
 ---
 # <a name="late-stage-reprojection"></a>LSR (Late State Reprojection)
 
@@ -24,7 +24,7 @@ Beide LSR-Modi verbessern die Hologrammstabilität, auch wenn sie jeweils Einsch
 
 ## <a name="choose-lsr-mode-in-unity"></a>Auswählen des LSR-Modus in Unity
 
-Wechseln Sie im Unity-Editor zu *Datei > Buildeinstellungen*. Wählen Sie unten links *Player-Einstellungen* aus, und überprüfen Sie dann unter *Player > XR-Einstellungen > Virtual Reality SDKs > Windows Mixed Reality*, ob **Tiefenpufferfreigabe aktivieren** aktiviert ist:
+Wechseln Sie im Unity-Editor zu *:::no-loc text="File > Build Settings":::* . Wählen Sie links unten *:::no-loc text="Player Settings":::* aus, und überprüfen Sie dann unter *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* , ob **:::no-loc text="Enable Depth Buffer Sharing":::** aktiviert ist:
 
 ![Flag für aktivierte Tiefenpufferfreigabe](./media/unity-depth-buffer-sharing-enabled.png)
 

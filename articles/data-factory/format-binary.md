@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 05/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 4560560b3677030a66e277e96eb552d39f5c82c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7fd5cb3c6c8a991a8b5ef9b6460e9dce35dd873
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416337"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298583"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binärformat in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | type             | Die „type“-Eigenschaft des Datasets muss auf **Binär** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
 | compression | Gruppe von Eigenschaften zum Konfigurieren der Dateikomprimierung. Konfigurieren Sie diesen Abschnitt, wenn Sie während der Aktivitätsausführung eine Komprimierung/Dekomprimierung durchführen möchten. | Nein |
-| type | Der zum Lesen und Schreiben von Binärdateien verwendete Codec für die Komprimierung. <br>Zulässige Werte sind **bzip2**, **gzip**, **deflate** und **ZipDeflate**, die beim Speichern der Datei verwendet werden können.<br>Hinweis: Bei der Verwendung der Kopieraktivität zum Dekomprimieren einer oder mehrerer ZipDeflate-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher werden Dateien in den folgenden Ordner extrahiert: `<path specified in dataset>/<folder named as source zip file>/`. | Nein       |
+| type | Der zum Lesen und Schreiben von Binärdateien verwendete Codec für die Komprimierung. <br>Zulässige Werte sind **bzip2**, **gzip**, **deflate** und **ZipDeflate**, die beim Speichern der Datei verwendet werden können.<br>**Beachten Sie**, dass bei der Verwendung der Kopieraktivität zum Dekomprimieren der **ZipDeflate**-Dateien und bei Schreibvorgängen in den dateibasierten Senkendatenspeicher Dateien standardmäßig in den Ordner `<path specified in dataset>/<folder named as source zip file>/` extrahiert werden. Verwenden Sie in diesem Fall `preserveZipFileNameAsFolder` für die [Quelle der Kopieraktivität](#binary-as-source), um zu steuern, ob der Name der ZIP-Datei als Ordnerstruktur beibehalten werden soll.| Nein       |
 | level | Das Komprimierungsverhältnis. Wenden Sie es an, wenn das Dataset in der Senke der Kopieraktivität verwendet wird.<br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
 
 Nachfolgend sehen Sie ein Beispiel für ein binäres Dataset in Azure Blob Storage:
@@ -77,7 +77,43 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die „type“-Eigenschaft der Quelle für die Kopieraktivität muss auf **BinarySource** festgelegt werden. | Ja      |
+| formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Leseeinstellungen für Binärdateien** finden Sie in der Tabelle unten. | Nein       |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
+
+Unterstützte **Leseeinstellungen für Binärdateien** unter `formatSettings`:
+
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | Der Typ von „formatSettings“ muss auf **BinaryReadSettings** festgelegt werden. | Ja      |
+| compressionProperties | Hierbei handelt es sich um eine Eigenschaftengruppe, die festlegt, wie Daten für einen bestimmten Codec dekomprimiert werden können. | Nein       |
+| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`* ) | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt außerdem an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll. Wenn die Eigenschaft auf „True“ festgelegt wird (Standardeinstellung), werden entzippte Dateien von Data Factory in `<path specified in dataset>/<folder named as source zip file>/` geschrieben. Lautet der Wert „False“, werden entzippte Dateien von Data Factory direkt in `<path specified in dataset>` geschrieben.  | Nein |
+
+```json
+"activities": [
+    {
+        "name": "CopyFromBinary",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "BinarySource",
+                "storeSettings": {
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true
+                },
+                "formatSettings": {
+                    "type": "BinaryReadSettings",
+                    "compressionProperties": {
+                        "type": "ZipDeflateReadSettings",
+                        "preserveZipFileNameAsFolder": false
+                    }
+                }
+            },
+            ...
+        }
+        ...
+    }
+]
+```
 
 ### <a name="binary-as-sink"></a>„Binär“ als Senke
 

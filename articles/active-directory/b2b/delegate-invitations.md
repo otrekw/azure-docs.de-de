@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa2b5f17af466d5ea2b6e3ba942fafc24cc94713
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591283"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204258"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -48,6 +48,9 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
    - **Gäste können einladen:** Wenn Sie Gästen erlauben möchten, andere Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
    - **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschau):** Weitere Informationen zum Einmalkennungsfeature finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)](one-time-passcode.md).
    - **Einschränkungen für die Zusammenarbeit:** Weitere Informationen dazu, wie Sie Einladungen für bestimmte Domains erlauben oder verbieten können, finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md).
+   
+   > [!NOTE]
+   > Wenn **Mitglieder können einladen** auf **Nein** festgelegt ist und **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist, können Benutzer mit der Rolle **Gasteinladender** weiterhin Gäste einladen.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Zuweisen der Rolle „Gasteinladender“ an einen Benutzer
 
@@ -66,5 +69,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 - [Hinzufügen von Gastbenutzern der B2B-Zusammenarbeit ohne Einladung](add-user-without-invite.md)
 - [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](add-guest-to-role.md)
-
 

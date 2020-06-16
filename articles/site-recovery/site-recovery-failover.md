@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mit Azure Site Recovery das Failover auf
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471267"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309967"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Ausführen eines Failovers vom lokalen Standort nach Azure
 
@@ -52,6 +52,7 @@ Führen Sie den Wiederherstellungsplan wie folgt aus:
 4. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus.
 
     - **Aktuell**: Verwenden Sie den neuesten Punkt. Hierbei werden alle Daten verarbeitet, die an den Site Recovery-Dienst gesendet wurden, und für jede VM wird ein Wiederherstellungspunkt erstellt. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+    Beachten Sie, dass die Protokollverarbeitung nicht mehr möglich ist, wenn die Quellregion ausfällt. Sie müssen daher ein Failover auf den letzten verarbeiteten Wiederherstellungspunkt ausführen. Weitere Informationen finden Sie im nächsten Punkt.
    - **Letzte Verarbeitung**: Verwenden Sie diese Option, um ein Failover der VMs auf den letzten Wiederherstellungspunkt auszuführen, der von Site Recovery bereits verarbeitet wurde. Sie können den letzten verarbeiteten Wiederherstellungspunkt in der VM unter **Letzte Wiederherstellungspunkte** sehen. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
    - **Letzter anwendungskonsistenter Zeitpunkt**: Verwenden Sie diese Option, um ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt auszuführen, der von Site Recovery verarbeitet wurde.
    - **Letzte Verarbeitung mit mehreren VMs**:  Mit dieser Option führen virtuelle Computer, die Teil einer Replikationsgruppe sind, ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch. Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist.

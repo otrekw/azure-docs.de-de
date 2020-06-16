@@ -7,17 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 83207c70b147e4f0d416f47a6b12f9826f49f2db
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583772"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267765"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Erstellen eines privaten Endpunkts mit Azure PowerShell
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. 
 
-In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen SQL-Datenbank-Server mit einem privaten Azure-Endpunkt unter Verwendung von Azure PowerShell erstellen. Anschließend können Sie vom virtuellen Computer sicher auf den SQL-Datenbank-Server zugreifen.
+In diesem Schnellstart erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen logischen SQL-Server mit einem privaten Azure-Endpunkt mit Azure PowerShell erstellen. Anschließend können Sie vom virtuellen Computer sicher auf SQL-Datenbank zugreifen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>Erstellen einer SQL-Datenbank-Server-Instanz 
+## <a name="create-a-logical-sql-server"></a>Erstellen eines logischen SQL-Servers 
 
-Erstellen Sie einen SQL-Datenbank-Server mit dem Befehl New-AzSqlServer. Denken Sie daran, dass der Name Ihres SQL-Datenbank-Servers innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
+Erstellen Sie mit dem Befehl „New-AzSqlServer“ einen logischen SQL-Server. Denken Sie daran, dass der Name Ihres Servers innerhalb von Azure eindeutig sein muss, und ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
-Privater Endpunkt für den SQL-Datenbank-Server in Ihrem virtuellen Netzwerk mit [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+Privater Endpunkt für den Server in Ihrem virtuellen Netzwerk mit [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurieren der privaten DNS-Zone 
-Erstellen Sie eine private DNS-Zone für die SQL-Datenbank-Server-Domäne, und erstellen Sie eine Zuordnungsverknüpfung mit dem virtuellen Netzwerk: 
+Erstellen Sie eine private DNS-Zone für die SQL-Datenbank-Domäne, erstellen Sie eine Zuordnungsverknüpfung mit dem virtuellen Netzwerk, und erstellen Sie eine DNS-Zonengruppe, um den privaten Endpunkt der privaten DNS-Zone zuzuordnen.
 
 ```azurepowershell
 
@@ -153,19 +153,11 @@ $link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup"
   -ZoneName "privatelink.database.windows.net"`
   -Name "mylink" `
   -VirtualNetworkId $virtualNetwork.Id  
- 
-$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  `
--ResourceGroupName "myResourceGroup" -Ttl 600 `
--PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
-} 
-} 
+
+$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
+
+$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
+ -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
 ``` 
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
@@ -195,7 +187,7 @@ mstsc /v:<publicIpAddress>
 3. Klicken Sie auf **OK**. 
 4. Sie erhalten möglicherweise eine Zertifikatwarnung. Ist dies der Fall, wählen Sie **Ja** oder **Weiter** aus. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
+## <a name="access-sql-database-privately-from-the-vm"></a>Privates Zugreifen auf SQL-Datenbank über die VM
 
 1. Öffnen Sie auf dem Remotedesktop von myVM PowerShell.
 2. Geben Sie `nslookup myserver.database.windows.net` ein. Denken Sie daran, `myserver` durch Ihren SQL-Servernamen zu ersetzen.
@@ -211,7 +203,7 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
     
-3. Installieren Sie SQL Server Management Studio.
+3. Installieren Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
 4. Geben Sie unter **Mit Server verbinden** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
@@ -228,7 +220,7 @@ mstsc /v:<publicIpAddress>
 8. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
-Wenn Sie die Nutzung von privatem Endpunkt, SQL-Datenbank-Server und der VM abgeschlossen haben, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup), um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen:
+Wenn Sie die Nutzung von privatem Endpunkt, SQL-Datenbank und der VM abgeschlossen haben, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup), um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

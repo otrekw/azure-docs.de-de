@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Beispiel – Aktivieren von BYOK-TDE: verwaltete Azure SQL-Datenbank-Instanz'
+title: 'CLI-Beispiel: Aktivieren von BYOK-TDE: Azure SQL Managed Instance'
 description: Erfahren Sie, wie eine verwaltete Azure SQL-Datenbank-Instanz mithilfe von PowerShell für die Verwendung von Transparent Data Encryption (TDE) zur Verschlüsselung ruhender Daten in einem BYOK-Szenario konfiguriert wird.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061730"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019347"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Verwalten von Transparent Data Encryption in einer verwalteten Instanz mithilfe eines eigenen Azure Key Vault-Schlüssels
 
-In diesem Azure CLI-Skriptbeispiel wird Transparent Data Encryption (TDE) mit einem kundenseitig verwalteten Schlüssel für eine verwaltete Azure SQL-Datenbank-Instanz unter Verwendung eines Schlüssels aus Azure Key Vault konfiguriert. Dieses Szenario wird häufig als „Bring Your Own Key“ (BYOK) für TDE bezeichnet. Weitere Informationen zu TDE mit einem kundenseitig verwalteten Schlüssel finden Sie unter [Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung](../transparent-data-encryption-byok-azure-sql.md).
+In diesem Azure CLI-Skriptbeispiel wird Transparent Data Encryption (TDE) mit einem kundenseitig verwalteten Schlüssel für eine verwaltete Azure SQL-Datenbank-Instanz unter Verwendung eines Schlüssels aus Azure Key Vault konfiguriert. Dieses Szenario wird häufig als „Bring Your Own Key“ (BYOK) für TDE bezeichnet. Weitere Informationen zu TDE mit einem kundenseitig verwalteten Schlüssel finden Sie unter [Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung](../../azure-sql/database/transparent-data-encryption-byok-overview.md).
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Informationen zu einer vorhandenen verwalteten Instanz finden Sie unter [Verwenden der Azure CLI zum Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-create-configure-managed-instance-cli.md).
+Informationen zu einer vorhandenen verwalteten Instanz finden Sie unter [Verwenden der Azure CLI zum Erstellen einer Instanz von Azure SQL Managed Instance](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -65,4 +65,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../sql-database-cli-samples.md).
+Zusätzliche SQL-Datenbank-CLI-Skriptbeispiele finden Sie in der [Azure SQL-Datenbank-Dokumentation](../../azure-sql/database/az-cli-script-samples-content-guide.md).

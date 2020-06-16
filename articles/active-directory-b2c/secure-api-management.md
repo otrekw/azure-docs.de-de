@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638481"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298872"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -35,23 +35,23 @@ Sie benötigen die folgenden Ressourcen, bevor Sie mit den Schritten in diesem A
 
 Wenn Sie eine API in Azure API Management mit Azure AD B2C sichern, benötigen Sie mehrere Werte für die [eingehende Richtlinie](../api-management/api-management-howto-policies.md), die Sie in APIM erstellen. Notieren Sie sich zuerst die Anwendungs-ID einer Anwendung, die Sie zuvor in Ihrem Azure AD B2C-Mandanten registriert haben. Wenn Sie die Anwendung verwenden, die Sie in den Voraussetzungen erstellt haben, verwenden Sie die Anwendungs-ID für *webbapp1*.
 
-Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendungs-ID abzurufen. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche für **App-Registrierungen** oder unsere alte Benutzeroberfläche für **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregtraining)
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie unter **Verwalten** die Option **Anwendungen**.
-1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
-
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** und dann die Registerkarte **Anwendungen mit Besitzer** aus.
+1. Klicken Sie erst auf **App-Registrierungen** und dann auf die Registerkarte **Anwendungen mit Besitzer**.
 1. Notieren Sie den Wert in der Spalte **Anwendungs-ID (Client)** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
+
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Klicken Sie unter **Verwalten** auf die Option **Applications (Legacy)** (Anwendungen (Legacy)).
+1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
 
 * * *
 
@@ -88,7 +88,7 @@ Nun können Sie die eingehende Richtlinie, mit der API-Aufrufe überprüft werde
 1. Klicken Sie auf **APIs**.
 1. Wählen Sie die API aus, die Sie mit Azure AD B2C sichern möchten.
 1. Klicken Sie auf die Registerkarte **Entwurf**.
-1. Wählen Sie unter **Eingehende Verarbeitung** **\</\>** aus, um den Richtliniencode-Editor zu öffnen.
+1. Wählen Sie unter **Inbound processing** (Eingehende Verarbeitung) **\</\>** aus, um den Richtliniencode-Editor zu öffnen.
 1. Platzieren Sie das folgende `<validate-jwt>`-Tag in der `<inbound>`-Richtlinie.
 
     1. Aktualisieren Sie den `url`-Wert im `<openid-config>`-Element durch die bekannte Konfigurations-URL Ihrer Richtlinie.

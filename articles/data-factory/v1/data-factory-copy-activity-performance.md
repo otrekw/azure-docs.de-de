@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527383"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196106"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -366,8 +366,8 @@ Wenn die zu kopierenden Daten sehr umfangreich sind, können Sie Ihre Geschäfts
 
 Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für die Data Factory gleichzeitig eine Verbindung mit dem gleichen Datenspeicher herstellen muss. Eine hohe Anzahl gleichzeitiger Kopieraufträge kann zu einer Drosselung eines Datenspeichers sowie zu einer Beeinträchtigung der Leistung, zu internen Wiederholungsversuchen bei Kopieraufträgen und in einigen Fällen zu Fehlern bei der Ausführung führen.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Beispielszenario: Kopieren aus einer lokalen SQL Server-Instanz in Blob Storage
-**Szenario:** Es wird eine Pipeline erstellt, um Daten aus einer lokalen SQL Server-Instanz im CSV-Format in Blob Storage zu kopieren. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Beispielszenario: Kopieren von einer SQL Server-Datenbank in Blob Storage
+**Szenario:** Eine Pipeline wird zum Kopieren von Daten im CSV-Format aus einer SQL Server-Datenbank in Blob Storage erstellt. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
 
 **Test und Analyse**: Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
 

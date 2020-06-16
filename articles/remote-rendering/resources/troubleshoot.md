@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844562"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018819"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -29,7 +29,7 @@ Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, in Routern usw.) die fo
 * **8266 (TCP + UDP):** für die Datenübertragung erforderlich
 * **5000 (TCP)** , **5433 (TCP)** , **8443 (TCP)** : für [ArrInspector](tools/arr-inspector.md) erforderlich
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Fehler „Getrennt: VideoFormatNotAvailable“
+## <a name="error-disconnected-videoformatnotavailable"></a>Fehler „`Disconnected: VideoFormatNotAvailable`“
 
 Vergewissern Sie sich, dass Ihre GPU-Hardware Videodecodierung unterstützt. Weitere Informationen finden Sie unter [Entwicklungs-PC](../overview/system-requirements.md#development-pc).
 
@@ -37,7 +37,7 @@ Wenn Sie an einem Laptop mit zwei GPUs arbeiten, kann es vorkommen, dass die GPU
 
 ## <a name="h265-codec-not-available"></a>H.265-Codec nicht verfügbar
 
-Der Server kann aus zwei Gründen die Verbindung mit dem Fehler **Codec nicht verfügbar** ablehnen.
+Der Server kann aus zwei Gründen die Verbindung mit dem Fehler `codec not available` ablehnen.
 
 **Der H.265-Codec ist nicht installiert:**
 
@@ -107,7 +107,7 @@ Wenn diese beiden Schritte nicht hilfreich waren, müssen Sie herausfinden, ob d
 
 Weitere Informationen finden Sie bei den spezifischen [VM-Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
 
-**Das Modell befindet sich nicht im Ansichtsfrustum:**
+**Das Modell befindet sich nicht im Kamerafrustum:**
 
 In vielen Fällen wird das Modell ordnungsgemäß dargestellt, befindet sich jedoch außerhalb des Kamerafrustums. Ein häufiger Grund dafür ist, dass das Modell mit einem Pivot deutlich außerhalb des Mittelpunkts exportiert wurde, sodass es von der Entfernungsclippingebene der Kamera abgeschnitten wird. Es hilft, den Begrenzungsrahmen des Modells programmgesteuert abzufragen und mit Unity als Linienrahmen zu visualisieren oder die entsprechenden Werte im Debugprotokoll auszugeben.
 
@@ -142,7 +142,7 @@ Bei diesem Begrenzungsfeld können zwei Probleme auftreten, die zu unsichtbarer 
 
 **Die Unity-Renderpipeline enthält nicht die Renderhooks:**
 
-Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framezusammenstellung mit dem Video und die Neuprojektion durchzuführen. Um zu überprüfen, ob diese Hooks vorhanden sind, öffnen Sie das Menü *Window > Analysis > Frame debugger* (Fenster > Analyse > Framedebugger). Aktivieren Sie ihn, und stellen Sie sicher, dass zwei Einträge für `HolographicRemotingCallbackPass` in der Pipeline vorhanden sind:
+Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framezusammenstellung mit dem Video und die Neuprojektion durchzuführen. Öffnen Sie das Menü *:::no-loc text="Window > Analysis > Frame debugger":::* , um zu überprüfen, ob diese Hooks vorhanden sind. Aktivieren Sie ihn, und stellen Sie sicher, dass zwei Einträge für `HolographicRemotingCallbackPass` in der Pipeline vorhanden sind:
 
 ![Unity-Framedebugger](./media/troubleshoot-unity-pipeline.png)
 

@@ -3,12 +3,12 @@ title: 'Anwendungsupgrade: Weiterführende Themen'
 description: Dieser Artikel behandelt einige weiterführende Themen in Bezug auf Upgrades von Service Fabric-Anwendungen.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414504"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263090"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric-Anwendungsupgrade: Erweiterte Themen
 
@@ -22,7 +22,7 @@ Entsprechend können im Rahmen eines Upgrades Diensttypen auch aus einer Anwendu
 
 Bei geplanten Ausfallzeiten für zustandslose Instanzen (z. B. Anwendungs-/Clusterupgrades oder Knotendeaktivierung) können Verbindungen abgebrochen werden, weil der verfügbar gemachte Endpunkt nach dem Ausfall der Instanz entfernt wird und hierdurch das Schließen der Verbindung erzwungen wird.
 
-Um dies zu vermeiden, konfigurieren Sie das Feature *RequestDrain* (Vorschauversion). Zu diesem Zweck fügen Sie in der Dienstkonfiguration eine *Instanzschließungs-Verzögerungsdauer* hinzu, um das Entladen beim Empfangen von Anforderungen von anderen Diensten im Cluster zuzulassen, und verwenden Sie zum Aktualisieren von Endpunkten einen Reverseproxy oder API-Auflösung mit dem Benachrichtigungsmodell. Dadurch wird sichergestellt, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* die Verzögerung vor dem Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden beim Starten der Verzögerung von einer Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden, die ausfällt.
+Um dies zu vermeiden, konfigurieren Sie das Feature *RequestDrain*, indem Sie der Dienstkonfiguration eine *Verzögerung beim Schließen von Instanzen* hinzufügen, um vorhandene Anforderungen aus dem auszugleichenden Cluster an den verfügbar gemachten Endpunkten zuzulassen. Dies wird dadurch erreicht, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* die Verzögerung vor dem Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden beim Starten der Verzögerung von einer Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden, die ausfällt. Diese Anforderungen könnten von Clients stammen, die [Reverseproxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) oder Auflösungs-APIs des Dienstendpunkts mit dem Benachrichtigungsmodell ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) zum Aktualisieren der Endpunkte verwenden.
 
 ### <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -31,7 +31,7 @@ Es gibt mehrere Möglichkeiten, die Verzögerung auf der Dienstseite zu konfigur
  * Geben Sie **beim Erstellen eines neuen Diensts** eine `-InstanceCloseDelayDuration` an:
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **Wenn Sie den Dienst im Abschnitt für die Standardeinstellungen im Anwendungsmanifest definieren**, weisen Sie die `InstanceCloseDelayDurationSeconds`-Eigenschaft zu:
@@ -46,6 +46,33 @@ Es gibt mehrere Möglichkeiten, die Verzögerung auf der Dienstseite zu konfigur
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **Geben Sie beim Erstellen oder Aktualisieren eines vorhandenen Diensts über die ARM-Vorlage** den `InstanceCloseDelayDuration`-Wert an (unterstützte API-Mindestversion: 2019-11-01-preview):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>Clientkonfiguration
@@ -63,15 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-Die Verzögerungsdauer gilt nur für die aufgerufene Upgradeinstanz und ändert die Konfigurationen einzelner Dienst Verzögerungen nicht anderweitig. Beispielsweise können Sie diese Option verwenden, um eine Verzögerung von `0` anzugeben, um vorkonfigurierte Upgradeverzögerungen zu überspringen.
+Die außer Kraft gesetzte Verzögerungsdauer gilt nur für die aufgerufene Upgradeinstanz und ändert die Konfigurationen einzelner Dienst Verzögerungen nicht anderweitig. Beispielsweise können Sie diese Option verwenden, um eine Verzögerung von `0` anzugeben, um vorkonfigurierte Upgradeverzögerungen zu überspringen.
 
 > [!NOTE]
-> Die Einstellung zum Entladen von Anforderungen wird für Anforderungen von Azure Load Balancer nicht berücksichtigt. Die Einstellung wird nicht berücksichtigt, wenn der aufrufende Dienst beschwerdebasierte Auflösung verwendet.
+> * Die Einstellungen zum Ausgleichen von Anforderungen können nicht verhindern, dass der Azure Load Balancer neue Anforderungen an die Endpunkte sendet, auf die der Ausgleich angewendet wird.
+> * Ein beschwerdebasierter Auflösungsmechanismus wird nicht zu einem eleganten Ausgleich von Anforderungen führen, da er nach einem Fehler eine Dienstauflösung auslöst. Wie bereits beschrieben, sollte dies stattdessen erweitert werden, um die Änderungsbenachrichtigungen für den Endpunkt mit [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription) zu abonnieren.
+> * Die Einstellungen werden nicht berücksichtigt, wenn es sich um ein Upgrade ohne Auswirkungen handelt, d. h. wenn die Replikate während des Upgrades nicht heruntergefahren werden.
 >
 >
 
 > [!NOTE]
-> Dieses Feature kann in vorhandenen Diensten mit dem oben erwähnten Cmdlet „Update-ServiceFabricService“ konfiguriert werden, wenn die Clustercodeversion 7.1.xxx oder höher lautet.
+> Dieses Feature kann in vorhandenen Diensten mit dem oben erwähnten Cmdlet „Update-ServiceFabricService“ oder der ARM-Vorlage konfiguriert werden, wenn die Clustercodeversion 7.1.xxx oder höher lautet.
 >
 >
 

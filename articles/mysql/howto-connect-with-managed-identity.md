@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663268"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141720"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zu Azure Database for MySQL mithilfe von verwalteten Identitäten
 
@@ -22,6 +22,9 @@ In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Id
 > * Erstellen eines Benutzers in der Datenbank, der die benutzerseitig zugewiesene Identität der VM darstellt
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Abfragen Azure Database for MySQL-Servers mithilfe dieses Tokens
 > * Implementieren des Tokenabrufs in einer C#-Beispielanwendung
+
+> [!IMPORTANT]
+> Das Herstellen von Verbindungen mit verwalteten Identitäten ist nur für MySQL 5.7 und höher verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

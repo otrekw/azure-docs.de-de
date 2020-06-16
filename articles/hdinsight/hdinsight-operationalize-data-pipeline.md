@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75922664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022827"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -51,11 +51,11 @@ Für diese Pipeline müssen eine Azure SQL-Datenbank und ein HDInsight Hadoop-Cl
 
 ### <a name="provision-azure-sql-database"></a>Bereitstellen einer Azure SQL-Datenbank
 
-1. Erstellen Sie eine Azure SQL-Datenbank-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-single-database-get-started.md).
+1. Erstellen Sie eine Azure SQL-Datenbank-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Um sicherzustellen, dass Ihr HDInsight-Cluster auf die verbundene Azure SQL-Datenbank zugreifen kann, konfigurieren Sie Firewallregeln für die Azure SQL-Datenbank, sodass Azure-Dienste und -Ressourcen auf den Server zugreifen können. Sie können diese Option im Azure-Portal aktivieren. Wählen Sie hierzu **Serverfirewall festlegen** und anschließend unter **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für den Azure SQL-Datenbank-Server oder die Azure SQL-Datenbank die Option **EIN** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+1. Um sicherzustellen, dass Ihr HDInsight-Cluster auf die verbundene Azure SQL-Datenbank zugreifen kann, konfigurieren Sie Firewallregeln für die Azure SQL-Datenbank, sodass Azure-Dienste und -Ressourcen auf den Server zugreifen können. Sie können diese Option im Azure-Portal aktivieren. Wählen Sie hierzu **Serverfirewall festlegen** und anschließend unter **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für die Azure SQL-Datenbank die Option **EIN** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
-1. Führen Sie mit dem [Abfrage-Editor](../sql-database/sql-database-single-database-get-started.md#query-the-database) die folgenden SQL-Anweisungen aus, um die Tabelle `dailyflights` zu erstellen, in der die zusammengefassten Daten aus jeder Ausführung der Pipeline gespeichert werden.
+1. Führen Sie mit dem [Abfrage-Editor](../azure-sql/database/single-database-create-quickstart.md#query-the-database) die folgenden SQL-Anweisungen aus, um die Tabelle `dailyflights` zu erstellen, in der die zusammengefassten Daten aus jeder Ausführung der Pipeline gespeichert werden.
 
     ```sql
     CREATE TABLE dailyflights

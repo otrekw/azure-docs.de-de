@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208515"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195348"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Erstellen mehrerer Webdienst-Endpunkte von einem Experiment mit Machine Learning Studio (Classic) und PowerShell
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio (klassisch) mit nur einem Experiment durchführen.
 
@@ -52,7 +50,7 @@ Beachten Sie, dass dem Modul **Train Model** das Modul **Web Service Output** hi
 Wenn dieses Experiment als Webdienst bereitgestellt wird, gibt der Endpunkt, der dieser Ausgabe zugeordnet ist, das trainierte Modell als ILEARNER-Datei zurück.
 
 Beachten Sie auch, dass Sie einen Webdienstparameter einrichten, der die URL definiert, die vom **Import Data**-Modul verwendet wird. Dies ermöglicht Ihnen die Verwendung des Parameters zum Angeben individueller Trainingsdatasets, um das Modell für jeden Standort zu trainieren.
-Es gibt weitere Möglichkeiten, wie Sie dies umsetzen könnten. Sie können eine SQL-Abfrage mit einem Webdienstparameter verwenden, um Daten aus einer SQL Azure-Datenbank abzurufen. Oder Sie können das **Web Service Input**-Modul verwenden, um das Dataset an den Webdienst zu übergeben.
+Es gibt weitere Möglichkeiten, wie Sie dies umsetzen könnten. Sie können eine SQL-Abfrage mit einem Webdienstparameter verwenden, um Daten aus einer Datenbank in Azure SQL-Datenbank abzurufen. Oder Sie können das **Web Service Input**-Modul verwenden, um das Dataset an den Webdienst zu übergeben.
 
 ![Ein trainiertes Modellmodul mit Ausgabe an ein Webdienstausgabemodul](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

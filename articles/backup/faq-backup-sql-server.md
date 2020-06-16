@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226002"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248259"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -52,7 +52,7 @@ Der Standardwert von „DefaultBackupTasksThreshold“ ist **20**.
  Zwar ist diese Methode hilfreich, wenn die Sicherungsanwendung viele Ressourcen verbraucht, der [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) von SQL Server stellt jedoch eine allgemeinere Möglichkeit zur Angabe von Grenzwerten für die Menge an CPU, physischer E/A und Speicher dar, den eingehende Anwendungsanforderungen nutzen können.
 
 > [!NOTE]
-> Auf der Benutzeroberfläche können Sie trotzdem jederzeit entsprechend viele Sicherungen einplanen, aber sie werden – gemäß dem obigen Beispiel – in einem gleitenden Fenster verarbeitet, z. B. mit der Anzahl 5.
+> Über die Benutzeroberfläche können Sie dennoch jederzeit entsprechend viele Sicherungen planen. Diese werden allerdings in einem gleitenden Fenster verarbeitet mit z. B. immer 5 Sicherungen gleichzeitig wie im obigen Beispiel.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kann ich eine vollständige Sicherung aus einem sekundären Replikat ausführen?
 
@@ -92,7 +92,7 @@ Wenn Sie **Sicherung beenden mit „Daten löschen“** durchführen, werden kei
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Welches Verhalten ergibt sich, wenn ich den Namen der Datenbank ändere, nachdem sie geschützt wurde?
 
-Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Diese Situation wird vom Dienst so behandelt, als ob die Datenbank nicht gefunden wurde, und für die Sicherungen tritt ein Fehler auf.
+Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Diese Situation wird vom Dienst folglich so behandelt, als sei die Datenbank nicht gefunden worden, und für die Sicherungen tritt ein Fehler auf.
 
 Sie können die umbenannte Datenbank auswählen und den Schutz dafür konfigurieren. Falls auf der Instanz der automatische Schutz aktiviert ist, wird die umbenannte Datenbank automatisch erkannt und geschützt.
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744164"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267153"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bedrohungsschutz in Azure Security Center
 
@@ -162,11 +162,15 @@ Weitere Informationen finden Sie unter
 
 ## <a name="threat-protection-for-azure-storage"></a>Bedrohungsschutz für Azure Storage <a name="azure-storage"></a>
 
-Advanced Threat Protection für Storage erkennt ungewöhnliche und möglicherweise schädliche Versuche, auf Speicherkonten zuzugreifen oder sie unbefugt zu nutzen. Dank dieser Schutzebene können Sie auch ohne fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Ihre Systeme für die Sicherheitsüberwachung verwalten.
+Advanced Threat Protection für Azure Storage erkennt ungewöhnliche und möglicherweise schädliche Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Dank dieser Schutzebene können Sie auch ohne fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Ihre Systeme für die Sicherheitsüberwachung verwalten. 
 
-Advanced Threat Protection für Azure Storage ist derzeit nur für [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) verfügbar. 
+Sicherheitswarnungen werden ausgelöst, wenn verdächtige Aktivitäten in Ihrem Speicherkonto auftreten oder anomales Verhalten erkannt wird. Verdächtige Aktivitäten können das Hochladen eines Blobs umfassen, das möglicherweise Schadsoftware enthält. Warnungen vor anormalem Verhalten enthalten Änderungen des Zugriffsmusters für ein Speicherkonto.
 
-Dieser Dienst ist in allen öffentlichen Clouds der US-Regierungsbehörden verfügbar, aber keinen anderen unabhängigen oder Azure Government-Cloudregionen.
+Diese Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen.
+
+Threat Protection für Azure Storage ist derzeit nur für [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) verfügbar. 
+
+Dieser Dienst ist in allen öffentlichen Clouds der US-Regierungsbehörden verfügbar, aber keinen anderen unabhängigen oder Azure Government-Cloudregionen. 
 
 Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 

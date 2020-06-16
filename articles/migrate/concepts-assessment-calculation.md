@@ -2,13 +2,13 @@
 title: Bewertungen mit der Azure Migrate-Serverbewertung
 description: Erfahren Sie mehr über Bewertungen mit der Azure Migrate-Serverbewertung.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769920"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171003"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Bewertungen in „Azure Migrate: Migrate-Serverbewertung
 
@@ -110,7 +110,7 @@ Eigenschaft | Details
 **Zielstandort** | Der Standort, zu dem die Migration durchgeführt werden soll. Die Serverbewertung unterstützt derzeit die folgenden Azure-Zielregionen:<br/><br/> „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“„Deutschland, Mitte“, „Deutschland, Nordosten“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
 **Zielspeicherdatenträger (übernommene Größe)** | Der Typ der Datenträger, die für die Speicherung in Azure verwendet werden sollen. <br/><br/> Geben Sie den Zielspeicherdatenträger als verwalteten Premium-, verwalteten SSD Standard- oder verwalteten HDD Standard-Datenträger an.
 **Zielspeicherdatenträger (leistungsbasierte Größenanpassung)** | Geben Sie den Zielspeicherdatenträger als automatischen, verwalteten Premium-, verwalteten HDD Standard- oder verwalteten SSD Standard-Datenträger an.<br/><br/> **Automatisch**: Die Datenträgerempfehlung erfolgt basierend auf den Leistungsdaten der Datenträger (IOPS und Durchsatz).<br/><br/>**Premium oder Standard**:  Für die Bewertung wird eine Datenträger-SKU innerhalb des ausgewählten Speichertyps empfohlen.<br/><br/> Wenn Sie eine Einzelinstanz-VM-SLA (Vereinbarung zum Servicelevel) von 99,9 % erreichen möchten, sollten Sie verwaltete Premium-Datenträger in Betracht ziehen. Dadurch wird sichergestellt, dass für alle Datenträger in der Bewertung verwaltete Premium-Datenträger empfohlen werden.<br/><br/> Azure Migrate unterstützt für die Migrationsbewertung ausschließlich verwaltete Datenträger.
-**Azure Reserved Virtual Machine Instances** | Geben Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) an, damit diese bei Kostenschätzungen in der Bewertung berücksichtigt werden.<br/><br/> Azure Migrate unterstützt Azure Reserved VM Instances derzeit nur bei Angeboten mit nutzungsbasierter Bezahlung.
+**Azure Reserved VM Instances** | Geben Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) an, damit diese bei Kostenschätzungen in der Bewertung berücksichtigt werden.<br/><br/> Wenn reservierte Instanzen ausgewählt sind, behalten Sie die Standardeinstellungen für „Rabatt (%)“ und „VM-Betriebszeit“ bei.<br/><br/> Azure Migrate unterstützt Azure Reserved VM Instances derzeit nur bei Angeboten mit nutzungsbasierter Bezahlung.
 **Größenkriterien** | Für die Anpassung der Azure-VM-Größe.<br/><br/> Sie können die Größe übernehmen oder die leistungsbasierte Größenanpassung verwenden.
 **Leistungsverlauf** | Wird bei der leistungsbasierten Größenanpassung verwendet. Der Leistungsverlauf gibt den Zeitraum für die Bewertung von Leistungsdaten an.
 **Perzentilwert der Nutzung** | Wird bei der leistungsbasierten Größenanpassung verwendet. Der Perzentilwert der Nutzung gibt den für die Größenanpassung zu verwendenden Perzentilwert der Leistungsstichprobe an.
@@ -121,6 +121,8 @@ Eigenschaft | Details
 **Rabatt (%)** | Abonnementspezifische Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
 **VM-Betriebszeit** | Die Dauer in Tagen pro Monat sowie Stunden pro Tag für Azure-VMs, die nicht dauerhaft ausgeführt werden. Die Kostenschätzungen basieren auf dieser Dauer.<br/><br/> Die Standardwerte sind 31 Tage pro Monat und 24 Stunden pro Tag.
 **Azure-Hybridvorteil** | Gibt an, ob Sie über Software Assurance verfügen und den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) nutzen können. Wenn für diese Einstellung der Standardwert „Ja“ festgelegt ist, werden für Windows-VMs die Azure-Preise für andere Betriebssysteme als Windows berücksichtigt.
+**EA-Abonnement** | Mit dieser Eigenschaft wird festgelegt, dass ein EA-Abonnement (Enterprise Agreement) für die Kostenschätzung verwendet wird. Dabei wird der Rabatt berücksichtigt, der für das Abonnement gilt. <br/><br/> Behalten Sie die Standardeinstellungen für die Eigenschaften „reservierte Instanzen“, „Rabatt (%)“ und „VM-Betriebszeit“ bei.
+
 
 Sehen Sie sich die [bewährten Methoden](best-practices-assessment.md) für die Erstellung einer Bewertung mit der Serverbewertung an.
 

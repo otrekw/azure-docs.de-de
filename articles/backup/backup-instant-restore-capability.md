@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: fc29d1ac4c2e4c22ce6e6f8356927e768dc274e3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597653"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248276"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -48,7 +48,7 @@ Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Fea
 * Es handelt sich dabei um ein unidirektionales Upgrade: Das Upgrade für sofortige Wiederherstellung kann nicht rückgängig gemacht werden.
 
 >[!NOTE]
->Mit diesem Upgrade für die sofortige Wiederherstellung wird die Aufbewahrungsdauer für Momentaufnahmen für alle Kunden (**sowohl neue als auch bestehende**) auf einen Standardwert von zwei Tagen festgelegt. Sie können die Dauer aber auch nach Bedarf auf einen beliebigen Wert zwischen ein und fünf Tagen festlegen.
+>Mit diesem Upgrade für die sofortige Wiederherstellung wird die Aufbewahrungsdauer für Momentaufnahmen für alle Kunden (**sowohl neue als auch bestehende**) auf einen Standardwert von zwei Tagen festgelegt. Sie können die Dauer aber auch nach Bedarf auf einen beliebigen Wert zwischen einem und fünf Tagen festlegen.
 
 ## <a name="cost-impact"></a>Kostenauswirkung
 
@@ -110,7 +110,7 @@ Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif2) nur zu
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraum noch vorhanden?
 
-Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen entworfenen Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
+Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen Version der Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden sein muss, falls alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ich benötige keine sofortige Wiederherstellung. Kann ich sie deaktivieren?
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499097"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267629"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
@@ -60,7 +60,7 @@ Beide Failoveroptionen bieten die folgende Recovery Point Objectiv (RPO):
 Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwartet, dass alle Vorgänge des Geräts und der Back-End-Anwendungen ohne manuellen Eingriff fortgesetzt werden. Dies bedeutet, dass Ihre Gerät-zu-Cloud-Nachrichten weiterhin funktionieren sollten und die gesamte Geräteregistrierung intakt ist. Ereignisse, die über Event Grid ausgegeben werden, können über dieselben zuvor konfigurierten Abonnements genutzt werden, solange diese Event Grid-Abonnements weiterhin verfügbar sind.
 
 > [!CAUTION]
-> - Der mit Event Hub kompatible Name und Endpunkt des integrierten IoT Hub-Ereignisendpunkts werden nach dem Failover geändert, und konfigurierte Consumergruppen werden entfernt. (Dies ist ein Fehler, der vor Mai 2020 behoben wird.) Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, sollten Sie [die IoT Hub-Verbindungszeichenfolge verwenden](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den mit Event Hub kompatiblen Namen und Endpunkt in Ihrer Anwendung direkt verwenden, müssen Sie zum Fortfahren [die von ihnen verwendete Consumergruppe neu konfigurieren und den neuen mit Event Hub kompatiblen Endpunkt nach dem Failover abrufen](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint). Wenn Sie für die Verbindung des integrierten Endpunkts Azure Functions oder Azure Stream Analytics verwenden, müssen Sie möglicherweise einen **Neustart** durchführen.
+> - Der Event Hub-kompatible Namen und Endpunkt des im IoT Hub integrierten Endpunkts ändern sich nach dem Failover. Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, sollten Sie [die IoT Hub-Verbindungszeichenfolge verwenden](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den mit Event Hub kompatiblen Namen und Endpunkt in Ihrer Anwendung direkt verwenden, müssen Sie zum Fortfahren [den neuen mit Event Hub kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) nach dem Failover abrufen. Wenn Sie für die Verbindung des integrierten Endpunkts Azure Functions oder Azure Stream Analytics verwenden, müssen Sie möglicherweise einen **Neustart** durchführen.
 >
 > - Beim Routing zum Speicher sollten die Blobs oder Dateien aufgelistet und anschließend durchlaufen werden, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. 
 

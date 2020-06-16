@@ -1,24 +1,24 @@
 ---
-title: Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Azure-Region mit dem Azure-Portal
-description: Verwenden einer Azure Resource Manager-Vorlage, um eine öffentliche Azure-IP-Adresse mit dem Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
+title: Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Azure-Region mit dem Azure-Portal
+description: In diesem Artikel erhalten Sie Informationen zum Verwenden einer Vorlage, um eine öffentliche Azure-IP-Konfiguration mit dem Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147823"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235401"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Region mit dem Azure-Portal
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Region mit dem Azure-Portal
 
-Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen öffentlichen Azure-IP-Adressen aus einer Region in eine andere verschieben möchten. Beispielsweise könnte es sein, dass Sie für Testzwecke eine öffentliche IP-Adresse mit derselben Konfiguration und demselben Tarif erstellen möchten. Möglicherweise möchten Sie eine öffentliche IP-Adresse auch im Rahmen der Planung einer Notfallwiederherstellung in eine andere Region verschieben.
+Es gibt verschiedene Szenarios, in denen Sie Ihre vorhandenen öffentlichen Azure-IP-Konfigurationen aus einer Region in eine andere verschieben sollten. Beispielsweise könnte es sein, dass Sie für Testzwecke eine öffentliche IP-Adresse mit derselben Konfiguration und demselben Tarif erstellen möchten. Möglicherweise sollten Sie eine öffentliche IP-Konfiguration auch im Rahmen der Planung einer Notfallwiederherstellung in eine andere Region verschieben.
 
-Öffentliche Azure-IP-Adressen sind regionsspezifisch und können nicht aus einer Region in eine andere verschoben werden. Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration einer öffentlichen IP-Adresse zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie die öffentliche IP-Adresse in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen.  Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+**Öffentliche Azure-IP-Adressen sind regionsspezifisch und können nicht aus einer Region in eine andere verschoben werden.** Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration einer öffentlichen IP-Adresse zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie die öffentliche IP-Adresse in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen.  Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

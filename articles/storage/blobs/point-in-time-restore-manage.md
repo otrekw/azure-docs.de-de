@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118209"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170102"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Aktivieren und Verwalten der Point-in-Time-Wiederherstellung für Blockblobs (Vorschau)
 
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Ausführen eines Wiederherstellungsvorgangs
 
-Um einen Wiederherstellungsvorgang zu initiieren, müssen Sie den Befehl Restore-AzStorageBlobRange aufrufen und dabei den Wiederherstellungspunkt als **DateTime**-Wert (in UTC) angeben. Sie können mindestens einen lexikografischen Bereich von Blobs angeben, der wieder hergestellt werden soll, oder den Bereich auslassen, um alle Blobs in allen Containern im Speicherkonto wiederherzustellen. Der Wiederherstellungsvorgang kann mehrere Minuten dauern.
+Um einen Wiederherstellungsvorgang zu initiieren, müssen Sie den Befehl Restore-AzStorageBlobRange aufrufen und dabei den Wiederherstellungspunkt als **DateTime**-Wert (in UTC) angeben. Sie können lexikografische Bereiche von Blobs zum Wiederherstellen angeben oder keinen Bereich angeben, um alle Blobs in allen Containern im Speicherkonto wiederherzustellen. Pro Wiederherstellungsvorgang werden bis zu 10 lexikografische Bereiche unterstützt. Der Wiederherstellungsvorgang kann mehrere Minuten dauern.
 
 Beachten Sie die folgenden Regeln, wenn Sie einen Bereich von Blobs für die Wiederherstellung angeben:
 
 - Das für den Startbereich und den Endbereich angegebene Containermuster muss mindestens drei Zeichen umfassen. Der Schrägstrich (/), der zum Trennen eines Containernamens von einem Blobnamen verwendet wird, wird bei diesem Mindestwert nicht berücksichtigt.
-- Pro Wiederherstellungsvorgang kann nur ein Bereich angegeben werden.
+- Pro Wiederherstellungsvorgang können bis zu 10 Bereiche angegeben werden.
 - Platzhalterzeichen werden nicht unterstützt. Sie werden als Standardzeichen behandelt.
 - Sie können Blobs in den `$root`- und `$web`-Containern wiederherstellen, indem Sie sie explizit in einem Bereich angeben, der an einen Wiederherstellungsvorgang übergeben wird. Die `$root`- und `$web`-Container werden nur wiederhergestellt, wenn sie explizit angegeben werden. Andere Systemcontainer können nicht wiederhergestellt werden.
+
+> [!IMPORTANT]
+> Wenn Sie einen Wiederherstellungsvorgang ausführen, blockiert Azure Storage für die Dauer dieses Vorgangs Datenvorgänge für die Blobs in den Bereichen, die wiederhergestellt werden. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Aus diesem Grund werden Vorgänge wie das Auflisten von Containern im Azure-Portal während des Wiederherstellungsvorgangs möglicherweise nicht erwartungsgemäß ausgeführt.
+>
+> Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 
 ### <a name="restore-all-containers-in-the-account"></a>Wiederherstellen aller Container im Konto
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>Wiederherstellen mehrerer Bereiche von Blockblobs
 
-Wenn Sie mehrere Bereiche von Blockblobs wiederherstellen möchten, geben Sie ein Array von Bereichen für den `-BlobRestoreRange`-Parameter an. Im folgenden Beispiel wird der gesamte Inhalt von *container1* und *container4* wiederhergestellt:
+Wenn Sie mehrere Bereiche von Blockblobs wiederherstellen möchten, geben Sie ein Array von Bereichen für den `-BlobRestoreRange`-Parameter an. Pro Wiederherstellungsvorgang werden bis zu 10 Bereiche unterstützt. Im folgenden Beispiel wird durch die Angabe zweier Bereiche der gesamte Inhalt von *container1* und *container4* wiederhergestellt:
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2

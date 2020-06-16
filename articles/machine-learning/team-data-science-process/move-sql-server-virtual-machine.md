@@ -1,6 +1,6 @@
 ---
 title: 'Verschieben von Daten auf einen virtuellen SQL Server-Computer: Team Data Science-Prozess'
-description: Verschieben von Daten aus Flatfiles oder von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer
+description: Verschieben von Daten aus Flatfiles oder von einer lokalen SQL Server-Instanz zu SQL Server auf einer Azure-VM
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721369"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194369"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
 
@@ -174,18 +174,18 @@ Sie können auch die folgenden Migrationsstrategien verwenden:
 Diese Optionen werden im Folgenden beschrieben:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer
-Der **Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer** ist eine einfache und empfohlene Möglichkeit zum Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer. Ausführliche Schritte sowie eine Erläuterung weitere Alternativen finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
+Der **Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer** ist eine einfache und empfohlene Möglichkeit zum Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer. Ausführliche Schritte sowie eine Erläuterung weitere Alternativen finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exportieren in eine Flatfile
 Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen verschiedene Vorgehensweisen zur Verfügung, die unter [Massenimport und -export von Daten [SQL Server]](https://msdn.microsoft.com/library/ms175937.aspx) beschrieben werden. In diesem Dokument wird als Beispiel BPC (Bulk Copy Program) beschrieben. Nachdem die Daten in eine Flatfile exportiert wurden, können sie mit einem Massenimport auf einen anderen SQL Server importiert werden.
 
-1. Exportieren Sie die Daten vom lokalen SQL Server folgendermaßen mit dem Dienstprogramm BPC in eine Datei:
+1. Exportieren Sie die Daten von der lokalen SQL Server-Instanz folgendermaßen mit dem Hilfsprogramm bcp in eine Datei:
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. Erstellen Sie die Datenbank und die Tabelle auf der SQL Server-VM in Azure mithilfe der Befehle `create database` und `create table` für das in Schritt 1 exportierte Tabellenschema.
 3. Erstellen Sie eine Formatdatei zur Beschreibung des Tabellenschemas der zu exportierenden/importierenden Daten. Einzelheiten zur Formatdatei finden Sie unter [Erstellen einer Formatdatei (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
-    Generieren der Formatdatei bei Ausführung von bcp auf dem SQL Server-Computer:
+    Generieren der Formatdatei bei Ausführung von bcp auf dem SQL Server-Computer
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
@@ -203,16 +203,16 @@ Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen
 SQL Server unterstützt:
 
 1. [Funktionen zur Datenbanksicherung und -wiederherstellung](https://msdn.microsoft.com/library/ms187048.aspx) (sowohl in einer lokalen Datei als auch per bacpac-Export in ein Blob) und [Datenebenenanwendungen](https://msdn.microsoft.com/library/ee210546.aspx) (mit bacpac).
-2. Die Möglichkeit, SQL Server-VMs in Azure direkt mit einer kopierten Datenbank oder der Kopie einer vorhandenen SQL Azure-Datenbank zu erstellen. Weitere Informationen finden Sie unter [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Die Möglichkeit, SQL Server-VMs in Azure direkt mit einer kopierten Datenbank zu erstellen oder eine vorhandenen Datenbank in SQL-Datenbank zu kopieren. Weitere Informationen finden Sie unter [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Einen Screenshot der Optionen für das Sichern/Wiederherstellen von Datenbanken in SQL Server Management Studio finden Sie unten.
 
 ![SQL Server-Importtool][1]
 
 ## <a name="resources"></a>Ressourcen
-[Migrieren einer Datenbank zu SQL Server auf einem virtuellen Azure-Computer](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Migrieren einer Datenbank zu SQL Server auf einem virtuellen Azure-Computer](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Übersicht zu SQL Server auf virtuellen Azure-Computern](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Übersicht zu SQL Server auf virtuellen Azure-Computern](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

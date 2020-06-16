@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7622b6b5855850a0150f43863fa117828e23d4bd
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698875"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197196"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz (VNET)
 
@@ -22,7 +22,7 @@ In diesem Artikel wird die Servereigenschaft **AlwaysUseGateway** von Azure Anal
 
 Beim Zugriff auf Ihre Datenquellen über ein VNET muss Ihr Azure Analysis Services-Server mit diesen Datenquellen in Ihrer eigenen Umgebung eine Verbindung herstellen, als ob sie lokal wären. Sie können die Servereigenschaft **AlwaysUseGateway** so konfigurieren, dass der Server angewiesen wird, auf alle Datenquellen über ein [lokales Gateway](analysis-services-gateway.md) zuzugreifen. 
 
-Datenquellen einer verwalteten Azure SQL-Datenbank-Instanz werden im Azure-VNET mit einer privaten IP-Adresse ausgeführt. Wenn für die-Instanz der öffentliche Endpunkt aktiviert ist, ist kein Gateway erforderlich. Wenn der öffentliche Endpunkt nicht aktiviert ist, ist ein lokales Datengateway erforderlich, und die AlwaysUseGateway-Eigenschaft muss auf TRUE festgelegt werden.
+Azure SQL Managed Instance-Datenquellen werden in einem Azure-VNET mit einer privaten IP-Adresse ausgeführt. Wenn für die-Instanz der öffentliche Endpunkt aktiviert ist, ist kein Gateway erforderlich. Wenn der öffentliche Endpunkt nicht aktiviert ist, ist ein lokales Datengateway erforderlich, und die AlwaysUseGateway-Eigenschaft muss auf TRUE festgelegt werden.
 
 > [!NOTE]
 > Diese Eigenschaft ist nur wirksam, wenn ein [lokales Datengateway](analysis-services-gateway.md) installiert und konfiguriert ist. Das Gateway kann sich im VNET befinden.

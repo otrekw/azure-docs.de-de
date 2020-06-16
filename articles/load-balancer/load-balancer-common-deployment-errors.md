@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658640"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221011"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Troubleshooting gängiger Azure-Bereitstellungsfehler mit Azure Load Balancer
 
@@ -28,6 +28,7 @@ In diesem Artikel werden einige häufige Azure Load Balancer-Bereitstellungsfehl
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| Die SKUs für öffentliche IP-Adressen und die Load Balancer-SKUs müssen übereinstimmen. Stellen Sie sicher, dass die Azure Load Balancer-SKU und die SKU für öffentliche IP-Adressen übereinstimmen. Für Produktionsworkloads wird die Standard-SKU empfohlen. Weitere Informationen zu den [Unterschieden bei SKUs](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | VM-Skalierungsgruppen werden standardmäßig als Load Balancer Basic festgelegt, wenn die SKU nicht angegeben wird oder die Bereitstellung ohne öffentliche Standard-IP-Adressen erfolgt. Stellen Sie die VM-Skalierungsgruppe mit öffentlichen Standard-IP-Adressen auf den einzelnen Instanzen erneut bereit, um sicherzustellen, dass Load Balancer Standard ausgewählt ist, oder wählen Sie einfach beim Bereitstellen einer VM-Skalierungsgruppe über das Azure-Portal eine Load Balancer Standard-Instanz aus. |
 |MaxAvailabilitySetsInLoadBalancerReached | Der Back-End-Pool einer Load Balancer-Instanz kann maximal 150 Verfügbarkeitsgruppen enthalten. Wenn Sie für Ihre VMs im Back-End-Pool nicht explizit Verfügbarkeitsgruppen definiert haben, wird jede VM in einer eigenen Verfügbarkeitsgruppe platziert. Das Bereitstellen von 150 eigenständigen VMs impliziert also das Vorhandensein von 150 Verfügbarkeitsgruppen und somit das Erreichen des Limits. Sie können als Problemumgehung eine Verfügbarkeitsgruppe bereitstellen und ihr weitere VMs hinzufügen. |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | Für den Load Balancer der SKU "Basic" müssen sich die Netzwerkschnittstelle und der Load Balancer in der gleichen Verfügbarkeitsgruppe befinden. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| Für einen bestimmten Lastenausgleichstyp (intern, öffentlich) mit demselben Back-End-Port und Protokoll, auf den dieselbe VM-Skalierungsgruppe verweist, kann es nicht mehrere Regeln geben. Aktualisieren Sie Ihre Regel, um diese Erstellung einer doppelten Regel zu ändern. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| Für einen bestimmten Lastenausgleichstyp (intern, öffentlich) mit demselben Back-End-Port und Protokoll, auf den dieselbe VM-Skalierungsgruppe verweist, kann es nicht mehrere Regeln geben. Aktualisieren Sie Ihre Regelparameter, um diese Erstellung einer doppelten Regel zu ändern. |
 |AnotherInternalLoadBalancerExists| Es kann nur eine einzige Load Balancer-Instanz vom Typ „intern“ auf eine Gruppe von VMs/Netzwerkschnittstellen im Load Balancer-Back-End verweisen. Aktualisieren Sie Ihre Bereitstellung, um sicherzustellen, dass nur eine Load Balancer-Instanz desselben Typs erstellt wird. |

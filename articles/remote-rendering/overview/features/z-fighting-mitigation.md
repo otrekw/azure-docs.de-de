@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758808"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022417"
 ---
 # <a name="z-fighting-mitigation"></a>Z-Fighting-Minimierung
 
-Wenn zwei Oberflächen überlappen, ist unklar, welche über der anderen gerendert werden soll. Das Ergebnis unterscheidet sich sogar per Pixel, was zu ansichtsabhängigen Artefakten führt. Daher kann es zu einem sehr offensichtlichem Flimmern der Muster kommen, wenn die Kamera oder das Gittermodell bewegt wird. Diese Artefakte werden als *Z-Fighting* bezeichnet. Bei AR- und VR-Anwendungen wird das Problem verstärkt, da sich am Kopf angebrachte Geräte immer bewegen. Damit Unannehmlichkeiten für Benutzer verhindert werden können, wird die Funktion zur Minderung von Z-Fighting in Azure Remote Rendering zur Verfügung gestellt.
+Wenn zwei Oberflächen überlappen, ist unklar, welche über der anderen gerendert werden soll. Das Ergebnis unterscheidet sich sogar per Pixel, was zu Artefakten führt, die von der Kameraansicht abhängen. Daher kann es zu einem sehr offensichtlichem Flimmern der Muster kommen, wenn die Kamera oder das Gittermodell bewegt wird. Diese Artefakte werden als *Z-Fighting* bezeichnet. Bei AR- und VR-Anwendungen wird das Problem verstärkt, da sich am Kopf angebrachte Geräte immer bewegen. Damit Unannehmlichkeiten für Benutzer verhindert werden können, wird die Funktion zur Minderung von Z-Fighting in Azure Remote Rendering zur Verfügung gestellt.
 
 ## <a name="z-fighting-mitigation-modes"></a>Z-Fighting-Minderungsmodi
 

@@ -1,0 +1,59 @@
+---
+title: Glossarbegriffe
+titleSuffix: Azure SQL
+description: Ein Glossar mit Begriffen zur Arbeit mit Azure SQL-Datenbank, Azure SQL Managed Instance und SQL auf Azure-VMs.
+services: sql-database
+ms.service: sql-database
+ms.subservice: service
+ms.custom: sqldbrb=4
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
+ms.date: 01/22/2020
+ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220804"
+---
+# <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
+[!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
+
+## <a name="azure-sql-database"></a>Azure SQL-Datenbank
+
+|Kontext|Begriff|Weitere Informationen|
+|:---|:---|:---|
+|Azure-Dienst|Azure SQL-Datenbank oder SQL-Datenbank|[Azure SQL-Datenbank](database/sql-database-paas-overview.md)|
+|Kaufmodell|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](database/service-tiers-dtu.md)|
+||vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](database/service-tiers-vcore.md)|
+|Bereitstellungsoption |Einzeldatenbank|[Einzeldatenbanken](database/single-database-overview.md)|
+||Pool für elastische Datenbanken|[Pool für elastische Datenbanken](database/elastic-pool-overview.md)|
+|Dienstebene|Basic, Standard, Premium, Universell, Hyperscale, Unternehmenskritisch|Informationen zu den Dienstebenen im vCore-Modell finden Sie unter [SQL-Datenbank-Dienstebenen](database/service-tiers-vcore.md#service-tiers). Informationen zu Dienstebenen im DTU-Modell finden Sie unter [DTU-Modell](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
+|Computeebene|Serverloses Computing|[Serverloses Computing](database/service-tiers-vcore.md#compute-tiers):
+||Bereitgestelltes Computing|[Bereitgestelltes Computing](database/service-tiers-vcore.md#compute-tiers)
+|Computegeneration|Gen5, M-Serie, Fsv2-Serie|[Hardwaregenerationen](database/service-tiers-vcore.md#hardware-generations)
+|Serverentität| Server |[Logische SQL Server-Instanzen](database/logical-servers.md)|
+|Ressourcentyp|Virtueller Kern|Ein CPU-Kern, der der Computeressource für eine Einzeldatenbank oder einen Pool für elastische Datenbanken bereitgestellt wird. |
+||Computegröße und Speichermenge|Die Computegröße ist die maximale Menge an CPU, Arbeitsspeicher und weiteren nicht speicherbezogenen Ressourcen, die für eine Einzeldatenbank oder einen Pool für elastische Datenbanken zur Verfügung steht.  Die Speichergröße ist der maximal verfügbare Speicherplatz für eine Einzeldatenbank oder einen Pool für elastische Datenbanken. Informationen zu den Größenoptionen im vCore-Modell finden Sie unter [Einzeldatenbanken im vCore-Modell](database/resource-limits-vcore-single-databases.md) und unter [Pools für elastische Datenbanken im vCore-Modell](database/resource-limits-vcore-elastic-pools.md).  (../managed-instance/resource-limits.md).  Informationen zu Größenanpassungsoptionen im DTU-Modell finden Sie unter [Einzeldatenbanken im DTU-Modell](database/resource-limits-dtu-single-databases.md) und [Pools für elastische Datenbanken im DTU-Modell](database/resource-limits-dtu-elastic-pools.md).
+
+## <a name="azure-sql-managed-instance"></a>Verwaltete Azure SQL-Instanz
+
+|Kontext|Begriff|Weitere Informationen|
+|:---|:---|:---|
+|Azure-Dienst|Azure SQL Managed Instance|[SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md)|
+|Kaufmodell|vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](database/service-tiers-vcore.md)|
+|Bereitstellungsoption |Einzelne Instanz|[Einzelne Instanz](managed-instance/sql-managed-instance-paas-overview.md)|
+||Instanzenpool (Vorschau)|[Instanzenpools](managed-instance/instance-pools-overview.md)|
+|Dienstebene|Universell, Unternehmenskritisch|[SQL Managed Instance-Dienstebenen](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
+|Computeebene|Bereitgestelltes Computing|[Bereitgestelltes Computing](database/service-tiers-vcore.md#compute-tiers)|
+|Computegeneration|Gen5|[Hardwaregenerationen](database/service-tiers-vcore.md#hardware-generations)
+|Serverentität|Verwaltete Instanz oder Instanz| Nicht verfügbar, weil SQL Managed Instance selbst als Server fungiert. |
+|Ressourcentyp|Virtueller Kern|Ein CPU-Kern, der der Computeressource für SQL Managed Instance bereitgestellt wird.|
+||Computegröße und Speichermenge|Die Computegröße ist die maximale Menge an CPU, Arbeitsspeicher und weiteren nicht speicherbezogenen Ressourcen für SQL Managed Instance.  Die Speichergröße ist der maximal verfügbare Speicherplatz, der für SQL Managed Instance verfügbar ist.  Informationen zu Größenoptionen finden Sie unter [SQL Managed Instance](managed-instance/resource-limits.md). |
+
+## <a name="sql-on-azure-vm"></a>SQL auf Azure-VM
+
+Weitere Inhalte erforderlich
