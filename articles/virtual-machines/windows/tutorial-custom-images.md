@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791577"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636392"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Tutorial: Erstellen von Windows-VM-Images mit Azure PowerShell
 
@@ -39,7 +39,7 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 
 Der [Katalog mit freigegebenen Images](shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
 
-Shared Image Gallery ermöglicht Ihnen die Freigabe Ihrer benutzerdefinierten VM-Images für andere Benutzer. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
+Mithilfe eines Katalogs mit freigegebenen Images können Sie Ihre benutzerdefinierten VM-Images für andere Benutzer freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
@@ -140,7 +140,7 @@ Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM 
 
-Wenn Sie ein spezialisiertes Image erstellt haben, können Sie eine neue VM oder mehrere neue VMs erstellen. Mithilfe des Cmdlets [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Verwenden Sie zur Nutzung des Images „Set-AzVMSourceImage“, und legen Sie „-Id“ auf die Imagedefinitions-ID (in diesem Fall „$galleryImage.Id“) fest, damit stets die aktuelle Imageversion verwendet wird. 
+Wenn Sie ein spezialisiertes Image erstellt haben, können Sie eine neue VM oder mehrere neue VMs erstellen. Mithilfe des Cmdlets [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Verwenden Sie zur Nutzung des Images `Set-AzVMSourceImage`, und legen Sie `-Id` auf die Imagedefinitions-ID (in diesem Fall „$galleryImage.Id“) fest, damit stets die aktuelle Imageversion verwendet wird. 
 
 Ersetzen Sie bei Bedarf die Ressourcennamen in diesem Beispiel. 
 

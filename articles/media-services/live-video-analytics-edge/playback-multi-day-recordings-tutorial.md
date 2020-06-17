@@ -3,12 +3,12 @@ title: 'Wiedergeben von mehrtägigen Aufzeichnungen: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 0b294769fce58f5aaae82fec590c783e8328d826
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260042"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433658"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Tutorial: Wiedergeben von mehrtägigen Aufzeichnungen  
 
@@ -57,7 +57,7 @@ Im Rahmen des [CVR-Tutorials](continuous-video-recording-tutorial.md) haben Sie 
 }
 ```
 
-Öffnen Sie dann in Visual Studio „src/ams-asset-player“. Dieser Ordner enthält die erforderlichen Dateien für dieses Tutorial. Öffnen Sie die Datei „appSettings.json“, und kopieren Sie den Inhalt in eine neue Datei, „appsettings.Developer.json“. Nehmen Sie an der letztgenannten Datei folgende Änderungen vor:
+Öffnen Sie dann in Visual Studio „src/ams-asset-player“. Dieser Ordner enthält die erforderlichen Dateien für dieses Tutorial. Öffnen Sie die Datei „appsettings.json“, und kopieren Sie den Inhalt in eine neue Datei: „appsettings.development.json“. Nehmen Sie an der letztgenannten Datei folgende Änderungen vor:
 
 ```
   "AMS" : {

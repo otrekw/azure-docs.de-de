@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Einzeldatenbank
-description: Erstellen Sie eine Azure SQL-Einzeldatenbank über das Azure-Portal, PowerShell oder die Azure CLI. Fragen Sie die Datenbank mit dem Abfrage-Editor im Azure-Portal ab.
+description: Erstellen Sie eine Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell oder die Azure CLI. Fragen Sie die Datenbank mit dem Abfrage-Editor im Azure-Portal ab.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 8b4e057fe41bdf76612888e9d4715d7cdee0ce29
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1ae3159365e63159b8ed62c09bc20441ba65d8aa
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053211"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343845"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, ein PowerShell-Skript oder ein Azure CLI-Skript, um eine Azure SQL-Einzeldatenbank zu erstellen. Anschließend fragen Sie die Datenbank mit dem **Abfrage-Editor** im Azure-Portal ab.
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, ein PowerShell-Skript oder ein Azure CLI-Skript, um eine Einzeldatenbank in Azure SQL-Datenbank zu erstellen. Anschließend fragen Sie die Datenbank mit dem **Abfrage-Editor** im Azure-Portal ab.
 
 Eine [Einzeldatenbank](single-database-overview.md) ist die schnellste und einfachste Option für Azure SQL-Datenbank. Sie verwalten eine Einzeldatenbank auf einem [Server](logical-servers.md), der sich in einer [Azure-Ressourcengruppe](../../active-directory-b2c/overview.md) in einer angegebenen Region befindet. In dieser Schnellstartanleitung erstellen Sie eine neue Ressourcengruppe und einen Server für die neue Datenbank.
 
 Sie können eine Einzeldatenbank auf der *bereitgestellten* oder der *serverlosen* Computeebene erstellen. Für eine bereitgestellte Datenbank wird vorab eine festgelegte Menge an Computeressourcen zugeordnet, einschließlich CPU und Arbeitsspeicher, und es werden zwei [Kaufmodelle](purchasing-models.md) verwendet. In dieser Schnellstartanleitung wird eine bereitgestellte Datenbank mit dem [vCore-basierten](service-tiers-vcore.md) Kaufmodell erstellt, aber Sie können auch ein [DTU-basiertes](service-tiers-dtu.md) Modell auswählen.
 
-Die serverlose Computeebene ist nur für das vCore-basierte Kaufmodell verfügbar und umfasst einen automatisch skalierten Bereich mit Computeressourcen, einschließlich CPU und Arbeitsspeicher. Informationen zum Erstellen einer Einzeldatenbank auf der serverlosen Computeebene finden Sie unter [Erstellen einer serverlosen Datenbank](serverless-tier-overview.md#create-new-database-in-serverless-compute-tier).
+Die serverlose Computeebene ist nur für das vCore-basierte Kaufmodell verfügbar und umfasst einen automatisch skalierten Bereich mit Computeressourcen, einschließlich CPU und Arbeitsspeicher. Informationen zum Erstellen einer Einzeldatenbank auf der serverlosen Computeebene finden Sie unter [Erstellen einer serverlosen Datenbank](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier).
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -68,7 +67,7 @@ Behalten Sie die Ressourcengruppe, den Server und die Einzeldatenbank für die n
 
 Wenn Sie die Verwendung dieser Ressourcen beendet haben, können Sie die erstellte Ressourcengruppe löschen. Hierbei werden auch der Server und die darin enthaltene Einzeldatenbank gelöscht.
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[Azure-Portal](#tab/azure-portal)
 
 Löschen Sie **myResourceGroup** und alle zugehörigen Ressourcen wie folgt über das Azure-Portal:
 
@@ -76,7 +75,7 @@ Löschen Sie **myResourceGroup** und alle zugehörigen Ressourcen wie folgt übe
 1. Wählen Sie auf der Ressourcengruppenseite die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie unter **Geben Sie den Ressourcengruppennamen ein** den Namen *myResourceGroup* ein, und wählen Sie anschließend **Löschen** aus.
 
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Führen Sie den folgenden Azure CLI-Befehl für den Namen Ihrer Ressourcengruppe aus, um die Ressourcengruppe und alle zugehörigen Ressourcen zu löschen:
 
@@ -98,5 +97,7 @@ Remove-AzResourceGroup -Name <your resource group>
 
 Führen Sie für Ihre Datenbank die [Verbindungsherstellung und Abfragen](connect-query-content-reference-guide.md) mit unterschiedlichen Tools und Sprachen durch:
 > [!div class="nextstepaction"]
-> [Verbinden und Abfragen mit SQL Server Management Studio](connect-query-ssms.md)
-> [Verbinden und Abfragen mit SQL Server Management Studio](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+> [Verbinden und Abfragen mit SQL Server Management Studio (SSMS)](connect-query-ssms.md)
+>
+> [Verbinden und Abfragen mit Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+ 

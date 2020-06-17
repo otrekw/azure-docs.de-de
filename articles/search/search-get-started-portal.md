@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369453"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488765"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -25,15 +25,17 @@ ms.locfileid: "80369453"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Verwenden Sie den Assistenten **Daten importieren** im Portal sowie die Tools im **Suchexplorer**, wenn Sie in wenigen Minuten mehr über Konzepte erfahren und interessante Abfragen für einen Index schreiben möchten.
+Der **Datenimport**-Assistent ist ein Tool im Azure-Portal, das Sie durch die Erstellung eines Suchindex führt, sodass Sie innerhalb weniger Minuten interessante Abfragen erstellen können. 
 
-Falls die Tools zu viele Einschränkungen mit sich bringen, können Sie eine [codebasierte Einführung in die Programmierung von Azure Cognitive Search in .NET](search-howto-dotnet-sdk.md) lesen oder [Postman zur Erstellung von REST-API-Aufrufen](search-get-started-postman.md) verwenden. 
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Der Assistent verfügt auch über Seiten für die KI-Anreicherung, sodass Sie Text und Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. Die Inhaltsverarbeitung mit KI umfasst optische Zeichenerkennung (Optical Character Recognition, OCR), Schlüsselbegriffserkennung und Entitätsextraktion sowie Bildanalyse.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
+
++ Ein Azure Cognitive Search-Dienst. [Erstellen Sie einen Dienst](search-create-service-portal.md), oder wechseln Sie in Ihrem aktuellen Abonnement [zu einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ### <a name="check-for-space"></a>Überprüfen des Speicherplatzes
 
@@ -51,15 +53,17 @@ Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über d
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Schritt 1: Starten des „Daten importieren“-Assistenten und Erstellen einer Datenquelle
 
-1. Klicken Sie auf dem Dashboard des Azure Cognitive Search-Diensts auf der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und zu füllen.
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. [Suchen Sie Ihren Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Übersichtsseite auf der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und aufzufüllen.
 
    ![Befehl zum Importieren von Daten](media/search-get-started-portal/import-data-cmd.png)
 
-2. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
+1. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
 
    ![Auswählen des Beispieldatasets](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Wechseln Sie zur nächsten Seite.
+1. Wechseln Sie zur nächsten Seite.
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>Schritt 2: Überspringen der Seite „Inhalte anreichern“
 

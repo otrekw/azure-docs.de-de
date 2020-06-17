@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310358"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456526"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Azure Blockchain Service-Mitglieds mithilfe einer Azure Resource Manager-Vorlage
 
@@ -61,6 +61,12 @@ In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 1. Wählen Sie **Kaufen** aus, um die Vorlage bereitzustellen.
 
   Hier wird zum Bereitstellen der Vorlage das Azure-Portal verwendet. Sie können auch Azure PowerShell, die Azure CLI und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md).
+
+## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
+
+Sie können das Azure-Portal verwenden, um Details zum bereitgestellten Azure Blockchain Service-Mitglied anzuzeigen. Navigieren Sie im Portal zu der Ressourcengruppe, die das Azure Blockchain Service-Mitglied enthält. Wählen Sie das von Ihnen erstellte Blockchainmitglied aus.
+
+![Übersichtsdetails zum bereitgestellten Azure Blockchain Service-Mitglied im Azure-Portal](./media/create-member-template/deployed-member.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

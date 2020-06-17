@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266422"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323598"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen eines Azure Database for MariaDB-Servers
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Schnellstart: Erstellen eines Azure Database for MariaDB-Servers mithilfe einer ARM-Vorlage
 
 Azure Database for MariaDB ist ein verwalteter Dienst, mit dem Sie hochverfügbare MariaDB-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In diesem Schnellstart verwenden Sie eine ARM-Vorlage zum Erstellen eines Azure Database for MariaDB-Servers im Azure-Portal, in PowerShell oder in der Azure-Befehlszeilenschnittstelle.
 

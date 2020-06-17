@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/27/2020
-ms.openlocfilehash: 8435704963e832020ecff27a11d00793ad28890c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c8503aee5cefbe197fd63cd6406006a1cdf8afa9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171037"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463149"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-by-using-the-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Azure Databricks-Arbeitsbereichs mit einer Azure Resource Manager-Vorlage
 
@@ -33,13 +33,13 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-databricks-workspace/).
 
-:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53":::
+:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53" highlight="33-46":::
 
-Die in der Vorlage definierte Azure-Ressource lautet „Microsoft.Databricks/workspaces“: Erstellen eines Azure Databricks-Arbeitsbereichs. 
+Die in der Vorlage definierte Azure-Ressource lautet [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces): Erstellen eines Azure Databricks-Arbeitsbereichs.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage einen Azure Databricks-Arbeitsbereich.
 

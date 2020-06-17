@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024636"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343785"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84024636"
 > [!NOTE]
 > Dieses Tutorial befindet sich in der **Public Preview-Phase**. 
 >
-> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie unter [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
+> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie im Artikel [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> - Erstellen einer neuen Ressourcengruppe, einer Verfügbarkeitsgruppe und eines virtuellen Linux-Computers in Azure
+> - Erstellen einer neuen Ressourcengruppe, einer Verfügbarkeitsgruppe und eines virtuellen Linux-Computers
 > - Aktivieren von Hochverfügbarkeit (High Availability, HA)
 > - Erstellen eines Pacemaker-Clusters
 > - Konfigurieren eines Fencing-Agents durch Erstellen eines STONITH-Geräts
@@ -53,7 +53,7 @@ Verwenden Sie den folgenden Befehl, um eine Ressourcengruppe (`<resourceGroupNam
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>Erstellen Sie eine Verfügbarkeitsgruppe.
+## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
 Im nächsten Schritt wird eine Verfügbarkeitsgruppe erstellt. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, und ersetzen Sie dabei `<resourceGroupName>` durch den Namen Ihrer Ressourcengruppe. Wählen Sie einen Namen für `<availabilitySetName>` aus.
 
@@ -531,11 +531,11 @@ Die folgende Ausgabe wird angezeigt.
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>Konfigurieren einer SQL Server-Always On-Verfügbarkeitsgruppe
+## <a name="configure-an-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe
 
 Führen Sie die folgenden Schritte aus, um eine SQL Server-Always On-Verfügbarkeitsgruppe für Ihre virtuellen Computer zu konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von SQL Server-Always On-Verfügbarkeitsgruppen für Hochverfügbarkeit unter Linux](/sql/linux/sql-server-linux-availability-group-configure-ha).
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>Aktivieren von Always On-Verfügbarkeitsgruppen und Neustarten von mssql-server
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>Aktivieren von Always On-Verfügbarkeitsgruppen und Neustarten von mssql-server
 
 Aktivieren Sie Always On-Verfügbarkeitsgruppen auf jedem Knoten, der eine SQL Server-Instanz hostet. Starten Sie dann „mssql-server“ neu. Führen Sie folgendes Skript aus:
 
@@ -566,19 +566,19 @@ Für den Endpunkt der Verfügbarkeitsgruppe wird aktuell keine AD-Authentifizier
 1. Stellen Sie über SSMS oder SQL CMD eine Verbindung mit dem primären Replikat her. Mit den folgenden Befehlen werden auf Ihrem primären SQL Server-Replikat ein Zertifikat (unter `/var/opt/mssql/data/dbm_certificate.cer`) und ein privater Schlüssel (unter `var/opt/mssql/data/dbm_certificate.pvk`) erstellt.
 
     - Ersetzen Sie `<Private_Key_Password>` durch Ihr eigenes Kennwort.
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 Beenden Sie die SQL CMD-Sitzung mithilfe des Befehls `exit`, und kehren Sie zu Ihrer SSH-Sitzung zurück.
  
@@ -631,7 +631,7 @@ Beenden Sie die SQL CMD-Sitzung mithilfe des Befehls `exit`, und kehren Sie zu 
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Erstellen des Datenbankspiegelungs-Endpunkte auf allen Replikaten
 
-Führen Sie das folgende Skript unter Verwendung von SQL CMD oder SSMS in allen SQL-Instanzen aus:
+Führen Sie das folgende Skript unter Verwendung von SQL CMD oder SSMS in allen SQL Server-Instanzen aus:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Erstellen einer SQL Server-Anmeldung für Pacemaker
 
-Erstellen Sie in allen SQL Server-Instanzen eine SQL-Anmeldung für Pacemaker. Mit dem folgenden Transact-SQL-Skript wird eine Anmeldung erstellt.
+Erstellen Sie in allen SQL Server-Instanzen eine SQL Server-Anmeldung für Pacemaker. Mit dem folgenden Transact-SQL-Skript wird eine Anmeldung erstellt.
 
 - Ersetzen Sie `<password>` durch Ihr eigenes komplexes Kennwort.
 
@@ -745,7 +745,7 @@ Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung 
     GO
     ```
 
-1. Führen Sie auf dem primären Replikat sowie auf jedem der sekundären Replikate das folgende Transact-SQL-Skript aus:
+1. Führen Sie auf dem primären Replikat sowie auf jedem sekundären Replikat das folgende Transact-SQL-Skript aus:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-Wenn `synchronization_state_desc` für `db1` den Zustand „SYNCHRONIZED“ (Synchronisiert) angibt, wurden die Replikate synchronisiert. Für die sekundären Replikate wird `db1` im primären Replikat angezeigt.
+Wenn `synchronization_state_desc` für `db1` den Zustand „SYNCHRONIZED“ (SYNCHRONISIERT) angibt, wurden die Replikate synchronisiert. Für die sekundären Replikate wird `db1` im primären Replikat angezeigt.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Erstellen von Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster
 

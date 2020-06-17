@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0438f573c33c71e0f30b7db1909e3649b21010a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086588"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605424"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -33,6 +33,7 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
 4. Wenn Sie vorhandene virtuelle Netzwerke zu Firewalls und VNET-Regeln hinzufügen möchten, klicken Sie auf **+ Vorhandene virtuelle Netzwerke hinzufügen**.
 5. Wählen Sie auf dem angezeigten neuen Blatt das Abonnement, die virtuellen Netzwerke und Subnetze aus, denen Sie Zugriff auf diesen Schlüsseltresor gewähren möchten. Wenn für die von Ihnen ausgewählten virtuellen Netzwerke und Subnetze keine Dienstendpunkte aktiviert sind, bestätigen Sie, dass Sie Dienstendpunkte aktivieren möchten, und wählen Sie **Aktivieren** aus. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
 6. Fügen Sie unter **IP-Netzwerke** IPv4-Adressbereiche hinzu, indem Sie IPv4-Adressbereiche in [CIDR-Notation (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) oder einzelne IP-Adressen eingeben.
+7. Wenn Sie zulassen möchten, dass vertrauenswürdige Microsoft-Dienste die Key Vault-Firewall umgehen, wählen Sie „Ja“ aus. Eine vollständige Liste der aktuellen vertrauenswürdigen Key Vault-Dienste finden Sie unter folgendem Link: [Azure Key Vault – Vertrauenswürdige Dienste](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services).
 7. Wählen Sie **Speichern** aus.
 
 Sie können auch neue virtuelle Netzwerke und Subnetze hinzufügen und dann Dienstendpunkte für die neu erstellten virtuellen Netzwerke und Subnetze aktivieren, indem Sie **+ Neues virtuelles Netzwerk hinzufügen** auswählen. Folgen Sie dann den Anweisungen.

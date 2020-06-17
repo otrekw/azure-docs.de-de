@@ -1,5 +1,5 @@
 ---
-title: Private Link
+title: Azure Private Link
 description: Übersicht über das Feature „Privater Endpunkt“
 author: rohitnayakmsft
 ms.author: rohitna
@@ -9,36 +9,36 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219877"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343998"
 ---
-# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
+# <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../../virtual-network/virtual-networks-overview.md) und Subnetz.
 
 > [!IMPORTANT]
-> Dieser Artikel betrifft Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse). Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
+> Dieser Artikel betrifft Azure SQL-Datenbank und Azure Synapse Analytics (vormals Azure SQL Data Warehouse). Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 
 Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein autorisierter Benutzer (etwa ein Datenbankadministrator) Daten aus einem System extrahieren und an einen anderen Ort oder in ein anderes System außerhalb der Organisation verschieben kann. So kann ein Benutzer beispielsweise Daten in ein Speicherkonto eines Dritten verschieben.
 
-Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit SQL-Datenbank hergestellt wird. Die SQL-Datenbank-Instanz befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
+Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit einer Datenbank in SQL-Datenbank hergestellt wird. Die Datenbank befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
 
 1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](network-access-controls-overview.md).
-1. Lassen Sie nur Datenverkehr für die SQL-Datenbank-Instanz mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](firewall-configure.md).
+1. Lassen Sie nur Datenverkehr für die Datenbank in SQL-Datenbank mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](firewall-configure.md).
 1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/manage-network-security-group.md) und Diensttags:
     - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
     - Geben Sie eine NSG-Regel (mit einer **höheren Priorität**) an, um Datenverkehr für das Diensttag „SQL“ zu verweigern. Dadurch werden Verbindungen mit der SQL-Datenbank-Instanz in allen Regionen verweigert.
 
-Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit SQL-Datenbank-Instanzen in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf eine einzelne SQL-Datenbank-Instanz beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen SQL-Datenbank-Instanzen in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
+Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit einer Datenbank in SQL-Datenbank in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf ein Singleton in SQL-Datenbank beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen Datenbanken in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
 
-Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine SQL-Datenbank-Instanz), aber nicht auf andere Ressourcen zugreifen. 
+Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine Datenbank in SQL-Datenbank), aber nicht auf andere Ressourcen zugreifen. 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>Lokale Konnektivität über privates Peering
 
@@ -49,7 +49,7 @@ Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Einrichten von Private Link für Azure SQL-Datenbank 
 
 ### <a name="creation-process"></a>Erstellungsprozess
-Private Endpunkte können über das Portal, mithilfe von PowerShell oder über die Azure CLI erstellt werden:
+Private Endpunkte können über das Azure-Portal, mithilfe von PowerShell oder über die Azure CLI erstellt werden:
 - [Portal](../../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../../private-link/create-private-endpoint-powershell.md)
 - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](../../private-link/create-private-endpoint-cli.md)
@@ -57,7 +57,7 @@ Private Endpunkte können über das Portal, mithilfe von PowerShell oder über d
 ### <a name="approval-process"></a>Genehmigungsprozess
 Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann der SQL-Administrator die private Endpunktverbindung (Private Endpoint Connection, PEC) mit SQL-Datenbank verwalten.
 
-1. Navigieren Sie im Azure-Portal zu der SQL Server-Ressource, wie im folgenden Screenshot gezeigt:
+1. Navigieren Sie im Azure-Portal zu der Serverressource, wie im folgenden Screenshot gezeigt:
 
     - (1) Wählen Sie im linken Bereich die private Endpunktverbindung aus.
     - (2) Liste mit allen privaten Endpunktverbindungen (Private Endpoint Connections, PECs)
@@ -74,11 +74,11 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Private Link-Anwendungsfälle für Azure SQL-Datenbank 
 
-Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNET, über das mittels Peering verbundene VNET in der gleichen Region oder regionsübergreifend über eine VNET-zu-VNET-Verbindung herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
+Clients können über das gleiche virtuelle Netzwerk, über ein mittels Peering verknüpftes virtuelles Netzwerk in derselben Region oder über eine regionsübergreifende VNET-zu-VNET-Verbindung eine Verbindung mit dem privaten Endpunkt herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
  ![Diagramm: Konnektivitätsoptionen][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>Testen der Konnektivität mit SQL-Datenbank über einen virtuellen Azure-Computer im gleichen virtuellen Netzwerk (VNET)
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Testen der Konnektivität mit SQL-Datenbank über einen virtuellen Azure-Computer im gleichen virtuellen Netzwerk
 
 Für dieses Szenario wird davon ausgegangen, dass Sie einen virtuellen Azure-Computer unter Windows Server 2016 erstellt haben. 
 
@@ -93,7 +93,7 @@ Für dieses Szenario wird davon ausgegangen, dass Sie einen virtuellen Azure-Com
 
 Der [Telnet-Client](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) ist ein Windows-Feature zum Testen der Konnektivität. Je nach Version des Windows-Betriebssystems muss dieses Feature ggf. explizit aktiviert werden. 
 
-Öffnen Sie nach der Installation von Telnet ein Eingabeaufforderungsfenster. Führen Sie den Telnet-Befehl aus, und geben Sie dabei die IP-Adresse und den privaten Endpunkt der SQL-Datenbank-Instanz an:
+Öffnen Sie nach der Installation von Telnet ein Eingabeaufforderungsfenster. Führen Sie den Telnet-Befehl aus, und geben Sie dabei die IP-Adresse und den privaten Endpunkt der Datenbank in SQL-Datenbank an:
 
 ```
 >telnet 10.1.1.5 1433
@@ -159,17 +159,17 @@ where session_id=@@SPID
 Für Verbindungen mit dem privaten Endpunkt wird nur **Proxy** als [Verbindungsrichtlinie](connectivity-architecture.md#connection-policy) unterstützt.
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk (VNET) mit Peering 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk mit Peering 
 
-Konfigurieren Sie das [VNET-Peering](../../virtual-network/tutorial-connect-virtual-networks-powershell.md), um über einen virtuellen Azure-Computer in einem VNET mit Peering eine Verbindung mit der SQL-Datenbank-Instanz herzustellen.
+Konfigurieren Sie das [Peering virtueller Netzwerke](../../virtual-network/tutorial-connect-virtual-networks-powershell.md), um über einen virtuellen Azure-Computer in einem virtuellen Netzwerk mit Peering eine Verbindung mit der SQL-Datenbank-Instanz herzustellen.
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einer VNET-zu-VNET-Umgebung
+## <a name="connecting-from-an-azure-vm-in-virtual-network-to-virtual-network-environment"></a>Herstellen einer Verbindung von einem virtuellen Azure-Computer in einem virtuellen Netzwerk mit einer virtuellen Netzwerkumgebung
 
-Konfigurieren Sie eine [VNET-zu-VNET-VPN-Gatewayverbindung](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), um über einen virtuellen Azure-Computer in einer anderen Region oder in einem anderen Abonnement eine Verbindung mit einer SQL-Datenbank-Instanz herzustellen.
+Konfigurieren Sie eine [VNET-zu-VNET-VPN-Gatewayverbindung](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), um über einen virtuellen Azure-Computer in einer anderen Region oder in einem anderen Abonnement eine Verbindung mit einer Datenbank in SQL-Datenbank herzustellen.
 
 ## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Herstellen einer VPN-Verbindung in einer lokalen Umgebung
 
-Verwenden oder implementieren Sie eine der folgenden Optionen, um in einer lokalen Umgebung eine Verbindung mit der SQL-Datenbank-Instanz herzustellen:
+Verwenden oder implementieren Sie eine der folgenden Optionen, um in einer lokalen Umgebung eine Verbindung mit der Datenbank in SQL-Datenbank herzustellen:
 - [Point-to-Site-Verbindung](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Site-to-Site-VPN-Verbindung](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute-Verbindung](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -177,7 +177,7 @@ Verwenden oder implementieren Sie eine der folgenden Optionen, um in einer lokal
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Herstellen einer Verbindung zwischen Azure Synapse Analytics und Azure Storage unter Verwendung von PolyBase
 
-PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure Synapse Analytics zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen über private Endpunkte, Dienstendpunkte oder IP-basierte Firewalls einschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die [hier](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) angegebenen Schritte aus, um PolyBase-Importszenarien und -Exportszenarien zu ermöglichen, in denen Azure Synapse Analytics eine Verbindung mit Azure Storage (mit VNET-Schutz) herstellt. 
+PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure Synapse Analytics zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von Subnetzen virtueller Netzwerke über private Endpunkte, Dienstendpunkte oder IP-basierte Firewalls einschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die [hier](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) angegebenen Schritte aus, um PolyBase-Importszenarien und -Exportszenarien zu ermöglichen, in denen Azure Synapse Analytics eine Verbindung mit Azure Storage (mit VNET-Schutz) herstellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

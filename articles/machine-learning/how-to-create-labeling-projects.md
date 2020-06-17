@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171553"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629633"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -40,7 +40,6 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-
 * Die zu beschriftenden Daten (entweder in lokalen Dateien oder in Azure Blob Storage).
 * Der Satz von Beschriftungen, die Sie anwenden möchten.
 * Die Anweisungen für die Beschriftung.
@@ -67,6 +66,8 @@ Wählen Sie **Weiter**, wenn Sie bereit sind, fortzufahren.
 
 Wenn Sie bereits ein Dataset mit Ihren Daten erstellt haben, wählen Sie dieses aus der Dropdownliste **Vorhandenes Dataset auswählen** aus. Oder wählen Sie **Dataset erstellen** aus, um einen vorhandenen Azure-Datenspeicher auszuwählen oder lokale Dateien hochzuladen.
 
+> [!NOTE]
+> Ein Projekt darf nicht mehr als 500.000 Bilder enthalten.  Wenn das Dataset mehr umfasst, werden nur die ersten 500.000 Bilder geladen.  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Erstellen eines Datasets aus einem Azure-Datenspeicher
 
@@ -85,8 +86,6 @@ Erstellen eines Datasets aus Dateien, die Sie bereits in einem Azure-Blobspeiche
 1. Wählen Sie **Weiter** aus.
 1. Bestätigen Sie die Informationen. Wählen Sie **Zurück**, um Einstellungen zu ändern, oder **Erstellen**, um das Dataset zu erstellen.
 
-> [!NOTE]
-> Die von Ihnen ausgewählten Daten werden in Ihr Projekt geladen.  Daten, die dem Datenspeicher nach der Projekterstellung hinzugefügt werden, werden in diesem Projekt nicht angezeigt.  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Erstellen eines Datasets aus hochgeladenen Daten
 
@@ -102,6 +101,19 @@ Direktes Hochladen Ihrer Daten:
 1. Bestätigen Sie die Informationen. Wählen Sie **Zurück**, um Einstellungen zu ändern, oder **Erstellen**, um das Dataset zu erstellen.
 
 Die Daten werden in den Standardblobspeicher („workspaceblobstore“) Ihres Machine Learning-Arbeitsbereichs hochgeladen.
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Konfigurieren der inkrementellen Aktualisierung
+
+Wenn Sie dem Dataset neue Bilder hinzufügen möchten, verwenden Sie die inkrementelle Aktualisierung, um Ihrem Projekt diese neuen Bilder hinzuzufügen.   Wenn die **inkrementelle Aktualisierung** aktiviert ist, wird das Dataset auf der Grundlage der Bezeichnungsabschlussrate regelmäßig auf neue Bilder überprüft, die einem Projekt hinzugefügt werden sollen.   Die Überprüfung auf neue Daten wird beendet, wenn das Projekt die Obergrenze von 500.000 Bildern erreicht.
+
+Wenn Sie Ihrem Projekt weitere Bilder hinzufügen möchten, verwenden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um sie in den entsprechenden Ordner im Blobspeicher hochzuladen. 
+
+Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll.
+
+Deaktivieren Sie dieses Kontrollkästchen, wenn neue Bilder, die im Datenspeicher angezeigt werden, nicht dem Projekt hinzugefügt werden sollen.
+
+Den Zeitstempel der letzten Aktualisierung finden Sie auf der Registerkarte **Details** Ihres Projekts im Abschnitt **Inkrementelle Aktualisierung**.
+
 
 ## <a name="specify-label-classes"></a>Angeben von Beschriftungsklassen
 

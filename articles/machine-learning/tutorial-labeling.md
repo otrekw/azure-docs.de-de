@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196514"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628386"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts (Vorschau) für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,12 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
     1. Wählen Sie den Kreis neben dem Namen des Datasets in der Liste aus, z. B. **images-for-tutorial**.
 
 1. Wählen Sie **Weiter** aus, um die Erstellung des Projekts fortzusetzen.
+
+### <a name="incremental-refresh"></a>Inkrementelle Aktualisierung
+
+Wenn Sie dem Dataset neue Bilder hinzufügen möchten, werden diese von der inkrementellen Aktualisierung ermittelt und Ihrem Projekt hinzugefügt.  Wenn Sie diese Funktion aktivieren, sucht das Projekt regelmäßig nach neuen Bildern.  Lassen Sie diese Funktion deaktiviert, da Sie dem Datenspeicher in diesem Tutorial keine neuen Bilder hinzufügen.
+
+Klicken Sie auf **Weiter**, um fortzufahren.
 
 ### <a name="label-classes"></a>Beschriftungsklassen
 

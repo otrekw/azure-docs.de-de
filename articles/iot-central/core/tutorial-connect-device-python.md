@@ -7,12 +7,13 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: tracking-python
+ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758189"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607209"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)
 
@@ -307,8 +308,9 @@ Sie können sehen, wie das Gerät auf Befehle und Eigenschaftsaktualisierungen r
 
 Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Node.js kennengelernt. Vorschläge für die nächsten Schritte:
 
-- In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
-- Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
+* In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
+* Unter [Was sind Gerätevorlagen?](./concepts-device-templates.md) erfahren Sie mehr über die Rolle von Gerätevorlagen beim Implementieren Ihres Gerätecodes.
+* Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
 
 Wenn Sie mit den Tutorials zu IoT Central fortfahren und mehr über das Erstellen einer IoT Central-Lösung erfahren möchten, lesen Sie den folgenden Artikel:
 

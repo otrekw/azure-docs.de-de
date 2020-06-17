@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310484"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457047"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal
 
@@ -92,12 +92,9 @@ Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachv
    ![Auswählen von „Webhook“](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Führen Sie auf der Seite **Ereignisabonnement erstellen** die folgenden Schritte aus: 
     1. Geben Sie unter **Name** einen Namen für das Ereignisabonnement an.
-    2. Geben Sie unter **Name** einen Namen für das **Systemthema** ein. 
+    2. Geben Sie unter **Name** einen Namen für das **Systemthema** ein. Informationen zu Systemthemen finden Sie unter [Übersicht über Systemthemen](system-topics.md).
 
        ![Eingeben von Namen für das Ereignisabonnement und das Systemthema](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > Wenn Sie zuvor ein Abonnement für ein Ereignis erstellt haben, das durch Azure-Quellen ausgelöst wurde, hat der Event Grid-Dienst automatisch ein Systemthema mit einem zufällig generierten Namen erstellt. Nun können Sie über dieses Textfeld einen Namen für das Systemthema angeben. Sie können diese Systemthemaressource verwenden, um Metriken und Diagnoseprotokolle zu ermitteln.
     2. Wählen Sie unter **Endpunkttyp** die Option **Webhook** aus. 
 
        ![Auswählen des Endpunkttyps „Webhook“](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

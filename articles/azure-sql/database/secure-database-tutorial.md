@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267903"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323925"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>Tutorial: Schützen einer Azure SQL-Datenbank-Instanz
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 >
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene
-> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
+> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
 > - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
@@ -42,7 +42,7 @@ Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten zu schützen:
 Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](security-overview.md).
 
 > [!TIP]
-> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen von Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/) informieren.
+> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen Ihrer Datenbank in Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/) informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

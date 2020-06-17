@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053068"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324605"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Schnellstart: Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ In diesem Beispiel wird die gespeicherte Prozedur [sp_execute_external_script](/
 
 Sie können ein R-Skript ausführen, indem Sie es als Argument an die gespeicherte Systemprozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) übergeben.
 
-In den folgenden Schritten führen Sie dieses R-Beispielskript in Ihrer SQL-Datenbank-Instanz aus:
+In den folgenden Schritten führen Sie dieses R-Beispielskript in Ihrer Datenbank aus:
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer SQL-Datenbank her.
+1. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer Datenbank her.
 
-   Wenn Sie Unterstützung beim Herstellen der Verbindung benötigen, nutzen Sie die Informationen in [Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage](connect-query-ssms.md).
+   Wenn Sie Unterstützung beim Herstellen der Verbindung benötigen, nutzen Sie die Informationen in [Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen einer Verbindung mit einer Datenbank in Azure SQL-Datenbank und zum Abfragen der Datenbank](connect-query-ssms.md).
 
 1. Übergeben Sie das vollständige R-Skript an die gespeicherte Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   Falls Sie Fehler erhalten, kann dies daran liegen, dass die öffentliche Vorschauversion von Machine Learning Services (mit R) für Ihre SQL-Datenbank nicht aktiviert ist. Weitere Informationen zu den [Voraussetzungen](#prerequisites) finden Sie oben.
+   Falls Fehler auftreten, kann dies daran liegen, dass die öffentliche Vorschauversion von Machine Learning Services (mit R) für Ihre Datenbank nicht aktiviert ist. Weitere Informationen zu den [Voraussetzungen](#prerequisites) finden Sie oben.
 
    > [!NOTE]
    > Wenn Sie Administrator sind, können Sie externen Code automatisch ausführen. Sie können mit dem folgenden Befehl anderen Benutzern eine Berechtigung erteilen:
@@ -196,7 +196,7 @@ Hier verwenden wir die Standardvariablen für die Ein- und Ausgabe von [sp_execu
 
 ## <a name="check-r-version"></a>Überprüfen der R-Version
 
-Wenn Sie ermitteln möchten, welche Version von R in Ihrer SQL-Datenbank installiert ist, führen Sie das folgende Skript aus.
+Wenn Sie ermitteln möchten, welche Version von R in Ihrer Datenbank installiert ist, führen Sie das folgende Skript aus.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>Auflisten von R-Paketen
 
-Microsoft stellt verschiedene R-Pakete bereit, die mit Machine Learning Services in Ihrer SQL-Datenbank vorinstalliert werden.
+Microsoft stellt verschiedene R-Pakete bereit, die mit Machine Learning Services in Ihrer Datenbank vorinstalliert werden.
 
 Führen Sie folgendes Skript aus, um eine Liste der installierten R-Pakete (einschließlich Version, Abhängigkeiten, Lizenz und Bibliothekspfad) anzuzeigen:
 

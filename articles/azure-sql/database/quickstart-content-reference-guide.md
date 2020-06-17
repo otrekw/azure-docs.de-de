@@ -1,6 +1,6 @@
 ---
 title: Inhaltsreferenz zu Schnellstartanleitungen für Einzeldatenbanken
-description: Hier finden Sie eine Inhaltsreferenz zu allen Schnellstartanleitungen, die Ihnen einen schnellen Einstieg in die Verwendung von Einzeldatenbanken in Azure SQL-Datenbank ermöglichen.
+description: Hier finden Sie eine Inhaltsreferenz zu allen Schnellstartanleitungen, die Ihnen einen schnellen Einstieg in die Verwendung von Einzeldatenbanken in Azure SQL-Datenbank ermöglichen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052903"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338293"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Erste Schritte mit Einzeldatenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Eine [Einzeldatenbank](../index.yml) ist eine vollständig verwaltete PaaS-Datenbank als Dienst (Database-as-a-Service, DbaaS) und eine ideale Speicher-Engine für moderne cloudbasierte Anwendungen. In diesem Abschnitt erfahren Sie, wie Sie schnell eine Einzeldatenbank in Azure SQL-Datenbank konfigurieren und erstellen.
+Eine [Einzeldatenbank](../index.yml) ist eine vollständig verwaltete PaaS-Datenbank als Dienst (Database-as-a-Service, DbaaS) und eine ideale Speicher-Engine für moderne cloudbasierte Anwendungen. In diesem Abschnitt erfahren Sie, wie Sie schnell eine Einzeldatenbank in Azure SQL-Datenbank konfigurieren und erstellen.
 
 ## <a name="quickstart-overview"></a>Schnellstartübersicht
 
@@ -48,8 +48,8 @@ In diesen Schnellstartanleitungen erfahren Sie, wie Sie Ihre Datenbank schnell e
 In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über Azure SQL-Datenbank informieren.
 
 - [Bereitstellen einer Datenbank in SQL-Datenbank zum Speichern von Anwendungsdaten](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Entwickeln und Konfigurieren einer ASP.NET-Anwendung zum Abfragen einer Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Schützen von Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Entwickeln und Konfigurieren einer ASP.NET-Anwendung zum Abfragen einer Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Schützen Ihrer Datenbank in Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -58,4 +58,4 @@ In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über Azure
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden eines Singleton in Azure SQL-Datenbank](how-to-content-reference-guide.md).
 - Sehen Sie sich weitere Beispielskripts für [PowerShell](powershell-script-content-guide.md) und die [Azure-Befehlszeilenschnittstelle](az-cli-script-samples-content-guide.md) an.
 - Informieren Sie sich ausführlicher über die [Verwaltungs-API](single-database-manage.md), die Sie zum Konfigurieren Ihrer Datenbanken verwenden können.
-- [Ermitteln Sie die richtige Azure SQL-Datenbank- oder SQL Managed Instance-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).
+- [Ermitteln Sie die richtige Azure SQL-Datenbank- oder Azure SQL Managed Instance-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

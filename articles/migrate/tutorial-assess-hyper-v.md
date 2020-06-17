@@ -2,14 +2,14 @@
 title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535450"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331762"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -96,12 +96,20 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Für die Applianceversion 2.19.07.30 muss der generierte Hash den folgenden Einstellungen entsprechen:
+3.  Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
 
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - Öffentliche Azure-Cloud:
+
+        **Szenario** | **Download** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8,93 MB) | [Aktuelle Version](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - Azure Government:
+
+        **Szenario*** | **Download** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
 
@@ -129,7 +137,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 
 ## <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) herstellen kann.
+Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 

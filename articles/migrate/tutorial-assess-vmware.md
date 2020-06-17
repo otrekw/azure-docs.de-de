@@ -2,14 +2,14 @@
 title: Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 description: Hier erfahren Sie, wie Sie lokale VMware-VMs mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535365"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331881"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Bewerten virtueller VMware-Computer mit der Serverbewertung
 
@@ -85,18 +85,26 @@ Bei der Azure Migrate-Serverbewertung wird eine einfache Azure Migrate-Applianc
 Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist:
 
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-1. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
+2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
    Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-Für die Version 2.19.07.30 muss der generierte Hash den folgenden Werten entsprechen:
+3. Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+    - Öffentliche Azure-Cloud:
+    
+        **Algorithmus** | **Download** | **SHA256**
+        --- | --- | ---
+        VMware (10,9 GB) | [Aktuelle Version](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+
+    - Azure Goverment:
+    
+        **Algorithmus** | **Download** | **SHA256**
+        --- | --- | ---
+        VMware (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
 
@@ -116,7 +124,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie einen virtuellen C
 
 ## <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) herstellen kann.
+Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
