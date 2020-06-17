@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025065"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343760"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppenlistenern für SQL Server auf virtuellen RHEL-Computern in Azure
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren eines Verfügbarkeitsgruppenlisteners für SQL Server auf virtuellen RHEL-Computern in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > Dieses Tutorial befindet sich in der **Public Preview-Phase**. 
 >
-> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie unter [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
+> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie im Artikel [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen Verfügbarkeitsgruppenlistener für Ihre SQL Server-Instanzen auf virtuellen RHEL-Computern in Azure erstellen. Sie lernen Folgendes:
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen Verfügbarkeitsgruppenlistener für Ihre SQL Server-Instanzen auf virtuellen RHEL-Computern (VMs) in Azure erstellen. Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > - Erstellen eines Lastenausgleichs im Azure-Portal
@@ -37,7 +37,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen Verfügbarke
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Abschluss von [**Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure**](rhel-high-availability-stonith-tutorial.md)
+Abschluss von [Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Erstellen des Lastenausgleichs im Azure-Portal
 
@@ -59,7 +59,7 @@ In der folgenden Anleitung werden die Schritte 1 bis 4 aus dem Abschnitt [Erst
    | --- | --- |
    | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
    | **Typ** |**Intern** |
-   | **Virtuelles Netzwerk** |Das erstellte Standard-VNET sollte den Namen **VM1VNET** haben. |
+   | **Virtuelles Netzwerk** |Das erstellte standardmäßige virtuelle Netzwerk sollte den Namen **VM1VNET** haben. |
    | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. Der Standardwert sollte **VM1Subnet** lauten.|
    | **IP-Adresszuweisung** |**Statisch** |
    | **Private IP-Adresse** |Verwenden Sie die im Cluster erstellte IP-Adresse `virtualip`. |
@@ -123,7 +123,7 @@ Mit den Lastenausgleichsregeln wird konfiguriert, wie der Load Balancer Datenver
 
 2. Klicken Sie auf dem Blatt **Load balancing rules** (Lastenausgleichsregeln) auf **Hinzufügen**.
 
-3. Konfigurieren Sie auf dem Blatt **Lastenausgleichsregeln hinzufügen** die Lastenausgleichsregeln. Verwenden Sie folgende Einstellungen: 
+3. Konfigurieren Sie die Lastenausgleichsregel auf dem Blatt **Lastenausgleichsregeln hinzufügen**. Verwenden Sie folgende Einstellungen: 
 
    | Einstellung | Wert |
    | --- | --- |
@@ -220,7 +220,7 @@ Die Ressourcengruppe verfügt nun also über einen mit allen SQL Server-Compute
 
 ## <a name="test-the-listener-and-a-failover"></a>Testen des Listeners und eines Failovers
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Testen der Protokollierung in SQL Server mit dem Verfügbarkeitsgruppenlistener
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>Testen der Anmeldung bei SQL Server mit dem Verfügbarkeitsgruppenlistener
 
 1. Verwenden Sie SQLCMD, um sich unter Verwendung des Namens des Verfügbarkeitsgruppenlisteners beim primären Knoten von SQL Server anzumelden:
 
@@ -238,7 +238,7 @@ Die Ressourcengruppe verfügt nun also über einen mit allen SQL Server-Compute
 
     Ihre Ausgabe sollte den aktuellen primären Knoten enthalten. Dabei sollte es sich um `VM1` handeln, sofern Sie noch nie ein Failover getestet haben.
 
-    Geben Sie den Befehl `exit` ein, um die SQL-Sitzung zu beenden.
+    Geben Sie den Befehl `exit` ein, um die SQL Server-Sitzung zu beenden.
 
 ### <a name="test-a-failover"></a>Testen eines Failovers
 
@@ -280,7 +280,7 @@ Die Ressourcengruppe verfügt nun also über einen mit allen SQL Server-Compute
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. Überprüfen Sie den Server, mit dem Sie verbunden sind. Führen Sie in SQLCMD den folgenden Befehl aus:
 
@@ -295,4 +295,4 @@ Die Ressourcengruppe verfügt nun also über einen mit allen SQL Server-Compute
 Weitere Informationen zum Lastenausgleich in Azure finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Konfigurieren einer Load Balancer-Instanz für eine Verfügbarkeitsgruppe in Azure auf Azure SQL Server-VMs](../windows/availability-group-load-balancer-portal-configure.md)
+> [Konfigurieren einer Load Balancer-Instanz für eine Verfügbarkeitsgruppe in Azure auf Azure SQL Server-VMs](../windows/availability-group-load-balancer-portal-configure.md)

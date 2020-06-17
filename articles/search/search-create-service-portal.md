@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchdiensts über das Portal'
+title: Erstellen eines Suchdiensts über das Portal
 titleSuffix: Azure Cognitive Search
 description: In diesem Portal-Schnellstart erfahren Sie, wie Sie eine Azure Cognitive Search-Ressource im Azure-Portal einrichten. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: nitinme
@@ -7,17 +7,17 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77209357"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488221"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
-Azure Cognitive Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Azure Cognitive Search kann problemlos in andere Azure-Dienste integriert werden, kann aber auch mit auf Netzwerkservern gehosteten Apps oder mit auf anderen Cloudplattformen ausgeführter Software verwendet werden.
+Azure Cognitive Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Cognitive Search kann problemlos in andere Azure-Dienste integriert werden, aber auch mit auf Netzwerkservern gehosteten Apps oder mit auf anderen Cloudplattformen ausgeführter Software verwendet werden.
 
 In diesem Artikel erfahren Sie, wie Sie eine Ressource im [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -34,8 +34,10 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 ## <a name="find-azure-cognitive-search"></a>Finden der kognitiven Azure-Suche
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
-3. Suchen Sie mithilfe der Suchleiste nach „kognitive Azure-Suche“, oder navigieren über **Web** > **Azure Cognitive Search** (Kognitive Azure-Suche) zu der Ressource.
+
+1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
+
+1. Suchen Sie mithilfe der Suchleiste nach „kognitive Azure-Suche“, oder navigieren über **Web** > **Azure Cognitive Search** (Kognitive Azure-Suche) zu der Ressource.
 
 ![Erstellen einer Ressource im Portal](./media/search-create-service-portal/find-search3.png "Erstellen einer Ressource im Portal")
 
@@ -75,14 +77,20 @@ Anforderungen an Dienstnamen:
 
 ## <a name="choose-a-location"></a>Auswählen eines Standorts
 
-Als Azure-Dienst kann die kognitive Azure-Suche in Rechenzentren auf der ganzen Welt gehostet werden. Sie finden die Liste der unterstützten Regionen in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/). 
-
-Sie können Bandbreitenkosten minimieren oder sogar ganz vermeiden, indem Sie für mehrere Dienste denselben Standort auswählen. Wenn Sie beispielsweise Daten indizieren, die von einem anderen Azure-Dienst (Azure Storage, Azure Cosmos DB, Azure SQL-Datenbank) bereitgestellt werden, können Sie Bandbreitenkosten vermeiden, indem Sie den Dienst für die kognitive Azure-Suche in derselben Region erstellen (wenn Dienste sich in derselben Region befinden, fallen keine Gebühren für ausgehenden Datenverkehr an).
-
-Wenn Sie KI-Anreicherung verwenden, erstellen Sie Ihren Suchdienst in derselben Region wie Cognitive Services. *Die Bereitstellung der kognitiven Azure-Suche und von Cognitive Services in der gleichen Region ist eine Voraussetzung für KI-Erweiterungen.*
+Azure Cognitive Search ist in den meisten Region verfügbar. Sie finden die Liste der unterstützten Regionen in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/).
 
 > [!Note]
-> „Indien, Mitte“ ist zurzeit für neue Dienste nicht verfügbar. Dienste, die bereits in „Indien, Mitte“ bereitgestellt sind, können ohne Einschränkungen hochskaliert werden, und Ihr Dienst wird in dieser Region vollständig unterstützt. Die Einschränkung für diese Region ist vorübergehend und betrifft nur neue Dienste. Wenn die Einschränkung nicht mehr gilt, wird dieser Hinweis wird entfernt.
+> „Indien, Mitte“ und „Vereinigte Arabische Emirate, Norden“ sind zurzeit für neue Dienste nicht verfügbar. Dienste, die bereits in diesen Regionen bereitgestellt sind, können ohne Einschränkungen hochskaliert werden, und Ihr Dienst wird in dieser Region vollständig unterstützt. Die Einschränkungen sind vorübergehend und betreffen nur neue Dienste. Wenn die Einschränkungen nicht mehr gelten, wird dieser Hinweis entfernt.
+
+### <a name="requirements"></a>Requirements (Anforderungen)
+
+ Wenn Sie KI-Anreicherung verwenden, erstellen Sie Ihren Suchdienst in derselben Region wie Cognitive Services. *Die Bereitstellung der kognitiven Azure-Suche und von Cognitive Services in der gleichen Region ist eine Voraussetzung für KI-Erweiterungen.*
+
+ Kunden, die Anforderungen an Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) stellen, sollten ihre Dienste in [Regionspaaren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) erstellen. Wenn Sie beispielsweise in Nordamerika tätig sind, können Sie für jeden Dienst „USA, Osten“ und „USA, Westen“ oder „USA, Norden-Mitte“ und „USA, Süden-Mitte“ auswählen.
+
+### <a name="recommendations"></a>Empfehlungen
+
+Wenn Sie mehrere Azure-Dienste verwenden, wählen Sie eine Region aus, in der auch Ihr Daten- oder Anwendungsdienst gehostet wird. So werden Bandbreitengebühren für ausgehende Daten minimiert oder fallen weg (es fallen keine Gebühren für ausgehende Daten an, wenn sich die Dienste in derselben Region befinden).
 
 ## <a name="choose-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
 
@@ -142,9 +150,11 @@ Die meisten Kunden verwenden nur einen Dienst, der auf einer Ebene bereitgestell
 
 Obwohl die meisten Kunden nur einen Dienst nutzen, kann die Dienstredundanz womöglich nötig sein, wenn die operativen Anforderungen Folgendes enthalten:
 
-* Notfallwiederherstellung (Ausfall des Rechenzentrums). Die kognitive Azure-Suche bietet kein sofortiges Failover bei einem Ausfall. Empfehlungen und Anleitungen finden Sie unter [Dienstverwaltung für Azure Search im Azure-Portal](search-manage.md).
-* Ihre Untersuchung der mehrinstanzenfähigen Modellierung hat ergeben, dass zusätzliche Dienste die optimale Designlösung sind. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search](search-modeling-multitenant-saas-applications.md).
-* Für global bereitgestellte Anwendungen benötigen Sie möglicherweise eine Instanz für die kognitive Azure-Suche in mehreren Regionen, um die Wartezeit des internationalen Datenverkehrs Ihrer Anwendung zu minimieren.
++ [Business Continuity und Disaster Recovery (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Die kognitive Azure-Suche bietet kein sofortiges Failover bei einem Ausfall.
+
++ [Mehrinstanzenfähige Architekturen](search-modeling-multitenant-saas-applications.md) rufen manchmal zwei oder mehr Dienste auf.
+
++ Für global bereitgestellte Anwendungen sind möglicherweise Suchdienste in jeder geografischen Region erforderlich, um die Latenz zu minimieren.
 
 > [!NOTE]
 > Bei der kognitiven Azure-Suche können Sie Index- und Abfragevorgänge nicht trennen. Deshalb sollten Sie auch nie mehrere Dienste für getrennte Workloads erstellen. Ein Index wird immer auf dem Dienst, in dem er erstellt wurde, abgefragt (Sie können keinen Index in einem Dienst erstellen und ihn in einen anderen kopieren).
