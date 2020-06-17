@@ -3,14 +3,14 @@ title: Erstellen von Azure-Funktionen unter Linux mit einem benutzerdefinierten 
 description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem benutzerdefinierten Linux-Image ausgeführt werden.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: dbd42668a0a1821e0ab7a6edc8ad05c79bfebe7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123540"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560916"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -436,7 +436,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 ## <a name="write-to-an-azure-storage-queue"></a>Schreiben in eine Azure Storage-Warteschlange
 
-Mit Azure Functions können Sie Ihre Funktionen mit anderen Azure-Diensten und -Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+Mit Azure Functions können Sie Ihre Funktionen mit anderen Azure-Diensten und -Ressourcen verbinden, ohne dass Sie eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihre Funktion in eine Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 

@@ -3,17 +3,17 @@ title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 06/08/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874499"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560585"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -107,8 +107,7 @@ Wenn Sie die Ausgabenprognose deaktivieren, werden keine projizierten Ausgaben f
 
 Im Allgemeinen können Sie erwarten, dass Daten oder Benachrichtigungen zu verbrauchten Ressourcen innerhalb von 8 bis 12 Stunden angezeigt werden.
 
-
-**Gruppieren nach** allgemeinen Eigenschaften, um Kosten aufzuschlüsseln und die größten Verursacher zu ermitteln. Um beispielsweise nach Ressourcentags zu gruppieren, wählen Sie den Tagschlüssel aus, nach dem Sie gruppieren möchten. Die Kosten werden nach jedem Tagwert aufgeschlüsselt, mit einem Zusatzsegment für Ressourcen, auf die das betreffende Tag nicht angewendet wurde.
+**Gruppieren nach** allgemeinen Eigenschaften, um Kosten aufzuschlüsseln und die größten Verursacher zu ermitteln. Um beispielsweise nach Ressourcentags zu gruppieren, wählen Sie den Tagschlüssel aus, nach dem Sie gruppieren möchten. Die Kosten werden nach jedem Tagwert aufgeschlüsselt, mit einem Zusatzsegment für Ressourcen, auf die das betreffende Tag nicht angewendet wurde.  Weitere Informationen zu Gruppierungs- und Filteroptionen finden Sie unter [Gruppierungs- und Filteroptionen](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter).
 
 Die meisten [Azure-Ressourcen unterstützen die Markierung durch Tags](../../azure-resource-manager/management/tag-support.md). Einige Tags sind aber in Cost Management und für die Abrechnung nicht verfügbar. Darüber hinaus werden Ressourcengruppentags nicht unterstützt. Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* das Tag auf die Ressource angewendet wurde. Tags werden nicht rückwirkend für die Kostenkalkulation angewendet.
 
@@ -142,42 +141,6 @@ Sie können das vollständige Dataset für eine beliebige Ansicht anzeigen. Ausw
 
 ![Daten für die aktuelle Ansicht in einer Tabellenansicht](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
-
-## <a name="understanding-grouping-and-filtering-options"></a>Grundlegendes zu Gruppierungs- und Filteroptionen
-
-Die Kostenanalyse beinhaltet zahlreiche Gruppierungs- und Filteroptionen. Das Video zur [Cost Management-Berichterstellung anhand von Dimensionen und Tags](https://www.youtube.com/watch?v=2Vx7V17zbmk) enthält weitere Informationen zu den Gruppierungs- und Filteroptionen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
-
->[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
-
-In der folgenden Tabelle sind einige der häufigsten Gruppierungs- und Filteroptionen und deren Anwendungsmöglichkeiten aufgeführt.
-
-| Eigenschaft | Verwendung | Notizen |
-| --- | --- | --- |
-| **Verfügbarkeitszonen** | Die AWS-Kosten werden nach Verfügbarkeitszonen unterteilt. | Dies gilt nur für AWS-Bereiche und -Verwaltungsgruppen. Azure-Daten enthalten keine Verfügbarkeitszone und werden als **Nicht zutreffend** angezeigt. |
-| **Abrechnungszeitraum** | Die Kosten für die nutzungsbasierte Zahlung werden nach dem Monat unterteilt, in dem sie berechnet wurden bzw. werden. | Verwenden Sie **Abrechnungszeitraum**, um eine genaue Darstellung der berechneten Kosten für die nutzungsbasierte Zahlung zu erhalten. Fügen Sie vor bzw. nach dem Abrechnungszeitraum zwei zusätzliche Tage ein, wenn Sie nach einem benutzerdefinierten Datumsbereich filtern. Eine Beschränkung auf die genauen Datumsangaben des Abrechnungszeitraums führt dazu, dass die Angaben nicht mit der Rechnung übereinstimmen. Unter dem Abrechnungszeitraum werden die Kosten aller Rechnungen angezeigt. Verwenden Sie die **Rechnungs-ID**, um nach einer bestimmten Rechnung zu filtern. Dies gilt nur für Abonnements mit nutzungsbasierter Zahlung, da die Abrechnung für EA- und MCA-Konten nach Kalendermonaten erfolgt. Für EA/MCA-Konten können Kalendermonate in der Datumsauswahl oder die monatliche Granularität verwendet werden, um dasselbe Ziel zu erreichen. |
-| **Gebührentyp** | Unterteilt nach Kosten für Verbrauch, Einkauf, Erstattung und nicht verwendete Reservierungen. | Reservierungseinkäufe und Erstattungen sind nur verfügbar, wenn die tatsächlichen Kosten verwendet werden (nicht für amortisierte Kosten). Kosten für nicht verwendete Reservierungen sind nur verfügbar, wenn Sie sich die amortisierten Kosten ansehen. |
-| **Abteilung** | Die Kosten werden nach EA-Abteilung unterteilt. | Ist nur für EA und Verwaltungsgruppen verfügbar. Abonnements mit nutzungsbasierter Zahlung verfügen nicht über eine Abteilung, sondern stattdessen wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
-| **Registrierungskonto** | Kosten werden nach EA-Kontobesitzer unterteilt. | Ist nur für EA-Abrechnungskonten, -Abteilungen und -Verwaltungsgruppen verfügbar. Abonnements mit nutzungsbasierter Zahlung verfügen nicht über EA-Registrierungskonten, sondern stattdessen wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
-| **Frequency** | Nach nutzungsbasierten, einmaligen und wiederkehrenden Kosten unterteilt. | |
-| **Rechnungs-ID** | Die Kosten werden nach abgerechneter Rechnung unterteilt. | Für nicht berechnete Gebühren ist noch keine Rechnungs-ID vorhanden. EA-Kosten enthalten keine Rechnungsdetails und werden als **Nicht zutreffend** angezeigt.  |
-| **Verbrauchseinheit** | Kosten werden nach Verbrauchseinheit unterteilt. | Käufe und die Marketplace-Nutzung werden als **Nicht zutreffend** angezeigt. Sehen Sie sich den **Gebührentyp** an, um die Käufe und den **Herausgebertyp** und somit auch die Marketplace-Gebühren zu ermitteln. |
-| **Vorgang** | Die AWS-Kosten werden nach Vorgang unterteilt. | Dies gilt nur für AWS-Bereiche und -Verwaltungsgruppen. Azure-Daten verfügen nicht über einen Vorgang, und hierfür wird **Nicht zutreffend** angezeigt. Verwenden Sie stattdessen **Verbrauchseinheit**. |
-| **Preismodell** | Die Kosten werden nach Bedarf, Reservierung oder Nutzung an einem Ort unterteilt. | Käufe werden als „Bedarfsabhängig“ (**OnDemand**) angezeigt. Bei Anzeige von **Nicht zutreffend** sollten Sie nach **Reservierung** gruppieren. So können Sie ermitteln, ob es sich um eine Reservierung oder eine bedarfsabhängige Nutzung handelt, und **Gebührentyp** verwenden, um die Käufe zu identifizieren.
-| **Anbieter** | Kosten werden nach AWS und Azure unterteilt. | Ist nur für Verwaltungsgruppen verfügbar. |
-| **Herausgebertyp** | Wird nach AWS-, Azure- und Marketplace-Kosten unterteilt. |  |
-| **Reservierung** | Kosten werden nach Reservierung unterteilt. | Alle Nutzungen oder Käufe, die keiner Reservierung zugeordnet sind, werden als **Nicht zutreffend** angezeigt. Gruppieren Sie nach **Herausgebertyp**, um andere Azure-, AWS- oder Marketplace-Käufe zu identifizieren. |
-| **Ressource** | Die Kosten werden nach Ressource unterteilt. | Für Käufe wird **Nicht zutreffend** angezeigt, weil sie auf ein Abrechnungskonto vom Typ „EA“ oder „Nutzungsbasierte Zahlung“ oder eine MCA-Abrechnungsprofilebene angewendet und keiner spezifischen Ressource zugeordnet werden. Gruppieren Sie nach **Herausgebertyp**, um andere Azure-, AWS- oder Marketplace-Käufe zu identifizieren. |
-| **Ressourcengruppe** | Die Kosten werden nach Ressourcengruppe unterteilt. | Käufe, Mandantenressourcen ohne Abonnementzuordnung, Abonnementressourcen ohne Bereitstellung in einer Ressourcengruppe und klassische Ressourcen verfügen nicht über eine Ressourcengruppe. Hierfür wird **Andere**, **Klassische Dienste**, **$system** oder **Nicht zutreffend** angezeigt. |
-| **Ressourcentyp** | Die Kosten werden nach Ressourcentyp unterteilt. | Käufe und klassische Dienste verfügen nicht über einen Azure Resource Manager-Ressourcentyp, und hierfür wird **Andere**, **Klassische Dienste** oder **Nicht zutreffend** angezeigt. |
-| **Ressourcenspeicherort** | Die Kosten werden nach Standort oder Region unterteilt. | Für Käufe und die Marketplace-Nutzung wird ggf. **Nicht zugewiesen**, **Unbekannt**, **Nicht zugeordnet** oder **Nicht zutreffend** angezeigt. |
-| **Dienstname** oder **Kategorie der Verbrauchseinheit** | Die Kosten werden nach Azure-Dienst unterteilt. | Für Käufe und die Marketplace-Nutzung wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
-| **Dienstebene** oder **Unterkategorie der Verbrauchseinheit** | Die Kosten werden nach der Unterklassifizierung der Verbrauchseinheit für die Azure-Nutzung unterteilt. | Für Käufe und die Marketplace-Nutzung wird **Nicht zutreffend** oder **Nicht zugewiesen** angezeigt. |
-| **Abonnement** | Die Kosten werden nach Azure-Abonnement und verknüpftem AWS-Konto unterteilt. | Für Käufe und Mandantenressourcen wird ggf. **Nicht zutreffend** angezeigt. |
-| **Tag** | Die Kosten werden nach Tagwerten für einen bestimmten Tagschlüssel unterteilt. | Tags sind für folgende Elemente nicht verfügbar: Käufe, Mandantenressourcen ohne Zuordnung zu Abonnements, Abonnementressourcen ohne Bereitstellung in einer Ressourcengruppe oder klassische Ressourcen. Beachten Sie, dass einige Dienste keine Tags in Nutzungsdaten enthalten. Erfahren Sie mehr zur [Tagunterstützung für Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
-
-Informationen zu den Bedingungen finden Sie unter [Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren](../understand/understand-usage.md).
-
-
 ## <a name="saving-and-sharing-customized-views"></a>Speichern und Freigeben von benutzerdefinierten Ansichten
 
 Speichern Sie benutzerdefinierte Ansichten, und geben Sie sie für andere Benutzer frei, indem Sie die Kostenanalyse im Dashboard des Azure-Portals anheften oder einen Link zur Kostenanalyse kopieren.
@@ -192,54 +155,12 @@ Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kost
 
 Weitere Informationen zum Gewähren des Zugriffs auf die Kosten für jeden unterstützten Bereich finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
-
-
-## <a name="automation-and-offline-analysis"></a>Automatisierung und Offlineanalyse
+## <a name="download-usage-data"></a>Herunterladen von Nutzungsdaten
 
 Es kann vorkommen, dass Sie die Daten zur weiteren Analyse herunterladen, mit Ihren eigenen Daten zusammenführen oder in Ihre eigenen Systeme integrieren müssen. Cost Management verfügt über verschiedene Optionen. Wenn Sie eine Ad-hoc-Zusammenfassung auf hoher Ebene benötigen (etwa wie bei der Kostenanalyse), erstellen Sie als Ausgangspunkt die erforderliche Ansicht. Laden Sie diese dann herunter, indem Sie **Exportieren** und **Daten in CSV herunterladen** oder **Daten in Excel herunterladen** auswählen. Der Excel-Download liefert zusätzlichen Kontext zu der Ansicht, die Sie zum Generieren des Downloads verwendet haben, z.B. Bereich, Abfragekonfiguration, Summe und Generierungsdatum.
 
 Falls Sie das vollständige nicht aggregierte Dataset benötigen, können Sie es über das Abrechnungskonto herunterladen. Navigieren Sie dann aus der Liste der Dienste im linken Navigationsbereich des Portals zu **Kostenverwaltung und Abrechnung**. Wählen Sie ggf. Ihr Abrechnungskonto aus. Navigieren Sie zu **Nutzung und Gebühren**, und wählen Sie dann das **Downloadsymbol** für den gewünschten Abrechnungszeitraum aus.
 
-Verwenden Sie eine ähnliche Vorgehensweise, um den Empfang von Kostendaten zu automatisieren. Verwenden Sie die [Abfrage-API](/rest/api/cost-management/query) für eine umfassendere Analyse mit dynamischer Filterung, Gruppierung und Aggregation, oder verwenden Sie die [UsageDetails-API](/rest/api/consumption/usageDetails), um das vollständige nicht aggregierte Dataset zu erhalten. Die allgemein verfügbare Version dieser APIs ist 2019-01-01. Verwenden Sie **2019-04-01-preview**, um Zugriff auf die Vorschau der Reservierung und Marketplace-Einkäufe über diese APIs zu erhalten.
-
-Beispielweise zeigt die folgende aggregierte Ansicht die Unterteilung der amortisierten Kosten nach Gebührentyp (Verbrauch, Einkauf oder Erstattung), Herausgebertyp (Azure oder Marketplace), Ressourcengruppe (leer für Einkäufe) und Reservierung (leer, falls nicht zutreffend) an.
-
-```
-POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
-Content-Type: application/json
-
-{
-  "type": "AmortizedCost",
-  "timeframe": "Custom",
-  "timePeriod": { "from": "2019-04-01", "to": "2019-04-30" },
-  "dataset": {
-    "granularity": "None",
-    "aggregation": {
-      "totalCost": { "name": "PreTaxCost", "function": "Sum" }
-    },
-    "grouping": [
-      { "type": "dimension", "name": "ChargeType" },
-      { "type": "dimension", "name": "PublisherType" },
-      { "type": "dimension", "name": "Frequency" },
-      { "type": "dimension", "name": "ResourceGroup" },
-      { "type": "dimension", "name": "SubscriptionName" },
-      { "type": "dimension", "name": "SubscriptionId" },
-      { "type": "dimension", "name": "ReservationName" },
-      { "type": "dimension", "name": "ReservationId" },
-    ]
-  },
-}
-```
-
-Gehen Sie wie folgt vor, wenn Sie die Aggregation nicht benötigen und das vollständige unformatierte Dataset bevorzugen:
-
-```
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
-```
-
-Falls Sie für die Ist-Kosten die Anzeige der Einkäufe benötigen, sobald diese anfallen, können Sie **type**/**metric** in **ActualCost** ändern. Weitere Informationen zu diesen APIs finden Sie in der Dokumentation zur [Query-API](/rest/api/cost-management/query) bzw. [UsageDetails-API](/rest/api/consumption/usageDetails). Beachten Sie, dass die veröffentlichten Dokumente für die allgemein verfügbare Version (GA) gelten. Die Funktionsweise ist für die API-Version *2019-04-01-preview* bis auf das neue „type/metric“-Attribut und die geänderten Eigenschaftennamen aber jeweils gleich. (Unten finden Sie weitere Informationen zu den Eigenschaftennamen.)
-
-Kostenverwaltungs-APIs funktionieren in allen Bereichen über Ressourcen hinweg: Ressourcengruppe, Abonnement und Verwaltungsgruppe über Azure RBAC-Zugriff, EA-Abrechnungskonten (Registrierungen), Abteilungen und Registrierungskonten über Zugriff über das EA-Portal. Weitere Informationen zu Bereichen, z.B. in Bezug auf die Ermittlung Ihrer Bereichs-ID oder des Verwaltungszugriffs, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

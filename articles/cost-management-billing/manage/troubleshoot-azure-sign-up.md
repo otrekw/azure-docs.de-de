@@ -9,91 +9,138 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2f2d690cd22cbd37af46c89b3bd19492ae9034b4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745547"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344084"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
 
-Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Portal oder beim Azure-Kontocenter für ein neues Konto registrieren. Überprüfen Sie Folgendes, bevor Sie mit der Problembehandlung beginnen:
-
-- Die für Ihr Azure-Kontoprofil angegebenen Informationen (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) sind richtig.
-- Die Kreditkarteninformationen sind richtig.
-- Sie verfügen nicht bereits über ein Microsoft-Konto mit denselben Informationen.
+Unter Umständen tritt ein Problem auf, wenn Sie sich beim Microsoft Azure-Portal oder beim Azure-Kontocenter für ein neues Konto registrieren. In dieser Kurzanleitung werden Sie durch den Anmeldevorgang geleitet und einige häufig auftretende Probleme bei den einzelnen Schritten erörtert.
 
 > [!NOTE]
 > Wenn Sie bereits über ein Konto verfügen und Anleitungen zur Behandlung von Anmeldeproblemen suchen, lesen Sie die Informationen unter [Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
 
-## <a name="resolutions"></a>Lösungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Wählen Sie zum Beheben von Fehlern das Problem aus, das auftritt, wenn Sie versuchen, sich bei Azure zu registrieren.
+Überprüfen Sie vor Beginn der Registrierung Folgendes:
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Error: *Die Anmeldung kann aufgrund eines Problems mit Ihrem Konto nicht fortgesetzt werden. Wenden Sie sich an den Abrechnungssupport.*
+- Die Informationen Ihres Azure-Kontoprofils (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) stimmen.
+- Ihre Kreditkarteninformationen stimmen.
+- Sie verfügen nicht bereits über ein Microsoft-Konto mit denselben Informationen.
 
-Gehen Sie folgendermaßen vor, um das Problem zu beheben:
+## <a name="guided-walkthrough-of-azure-sign-up"></a>Exemplarische Vorgehensweisen zur Registrierung bei Azure
 
-1. Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com/Profile) an.
+Die Umgebung zur Registrierung bei Azure besteht aus vier Abschnitten:
 
-2. Wählen Sie **Details bearbeiten** aus.
+- Persönliche Informationen
+- Identitätsüberprüfung per Telefon
+- Identitätsüberprüfung per Karte
+- Vereinbarung
 
-3. Stellen Sie sicher, dass alle Adressfelder ausgefüllt und gültig sind.
+Diese exemplarische Vorgehensweise enthält Beispiele der ordnungsgemäßen Informationen zur Registrierung für ein Azure-Konto. In jedem Abschnitt werden auch einige häufig auftretende Probleme und deren Behebung erläutert.
 
-4. Vergewissern Sie sich bei der Registrierung des Azure-Abonnements, dass die beim Registrieren der Kreditkarte eingegebene Rechnungsadresse mit den Angaben der Bank übereinstimmt.
+## <a name="about-you"></a>Persönliche Informationen
 
-Wenn die Fehlermeldung weiterhin angezeigt wird, verwenden Sie einen anderen Browser für die Registrierung.
+![Persönliche Informationen](./media/troubleshoot-azure-sign-up/1.png)
+ 
+### <a name="common-issues-and-solutions"></a>Bekannte Probleme und Lösungen
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>Statusanzeige hängt im Abschnitt *Identitätsüberprüfung per Karte*.
+#### <a name="you-see-the-message-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Die Meldung „Die Registrierung kann aufgrund eines Problems mit Ihrem Konto nicht fortgesetzt werden. Wenden Sie sich an den Abrechnungssupport“ wird angezeigt.
 
-Um die Identitätsprüfung mithilfe der Karte abzuschließen, müssen Cookies von Drittanbietern in Ihrem Browser zugelassen sein.
+Gehen Sie folgendermaßen vor, um diesen Fehler zu beheben:
 
-![Identitätsüberprüfung per Karte](./media/troubleshoot-azure-sign-up/identify-verification-by-card.png)
+1.  Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com/Profile) an.
+1.  Wählen Sie **Details bearbeiten** aus.
+1.  Stellen Sie sicher, dass alle Adressfelder richtig ausgefüllt sind.
+1.  Vergewissern Sie sich bei der Registrierung für das Azure-Abonnement, dass die beim Registrieren der Kreditkarte eingegebene Rechnungsadresse mit den Angaben der Bank übereinstimmt.
 
-Führen Sie die folgenden Schritte aus, um die Cookie-Einstellungen Ihres Browsers zu aktualisieren.
+Wenn Sie die Fehlermeldung weiterhin erhalten, führen Sie die Registrierung in einem anderen Browser aus.
 
-1. Wenn Sie Chrome verwenden, wählen Sie **Einstellungen** > **Erweiterte Einstellungen anzeigen** > **Datenschutz** > **Inhaltseinstellungen** aus. Deaktivieren Sie **Cookies und Websitedaten von Drittanbietern blockieren**.
+Was gilt für InPrivate-Browsen?
 
-2. Wenn Sie Microsoft Edge verwenden, wählen Sie **Einstellungen** > **erweiterte Einstellungen anzeigen** > **Cookies** > **Keine Cookies blockieren** aus.
-
-3. Aktualisieren Sie die Azure Registrierungsseite, und überprüfen Sie dann, ob das Problem behoben ist.
-
-4. Wenn das Problem durch die Aktualisierung nicht behoben wurde, beenden Sie den Browser, starten Sie ihn neu, und wiederholen Sie den Vorgang anschließend.
-
-### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Das Kreditkartenformular akzeptiert meine Rechnungsadresse nicht.
-
-Ihre Rechnungsadresse muss sich in dem Land oder der Region befinden, das bzw. die Sie im Abschnitt **Informationen zu Ihrer Person** ausgewählt haben. Stellen Sie sicher, dass Sie das richtige Land bzw. die richtige Region auswählen.
-
-### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Keine SMS oder Anrufe während der Kontoüberprüfung für die Registrierung
-
-Der Prozess ist zwar in der Regel schnell, es kann aber bis zu vier Minuten dauern, bis ein Überprüfungscode übermittelt wird. Die zur Überprüfung eingegebene Telefonnummer wird nicht als Kontaktnummer für das Konto gespeichert.
-
-Hier sind einige zusätzlichen Tipps:
-
-- Für den Überprüfungsvorgang per Telefon kann keine VoIP-Telefonnummer (Voice-over-IP) verwendet werden.
-- Überprüfen Sie im Dropdownmenü die eingegebene Telefonnummer einschließlich der Landes-/Ortsvorwahl.
-- Wenn Ihr Telefon keine Textnachrichten (SMS) empfängt, versuchen Sie es mit der Option **Mich anrufen**.
-- Stellen Sie sicher, dass Ihr Telefon Anrufe oder SMS-Nachrichten von einer Telefonnummer aus den USA empfangen kann.
-
-Wenn Sie die Textnachricht oder den Telefonanruf erhalten haben, geben Sie den empfangenen Code in das Textfeld ein.
-
-### <a name="credit-card-declined-or-not-accepted"></a>Kreditkarte abgelehnt bzw. nicht akzeptiert
-
-Virtuelle oder Prepaid-Kreditkarten oder -Debitkarten werden als Zahlungsmittel für Azure-Abonnements nicht akzeptiert. Weitere Informationen zu möglichen Ursachen für die Ablehnung Ihrer Karte finden Sie unter [Kreditkarte oder Debitkarte wird abgelehnt, wenn ich versuche, mich bei Azure zu registrieren](https://support.microsoft.com/help/4042960).
-
-### <a name="free-trial-is-not-available"></a>Kostenlose Testversion ist nicht verfügbar
+#### <a name="free-trial-is-not-available"></a>Kostenlose Testversion nicht verfügbar
 
 Haben Sie bereits einmal ein Azure-Abonnement verwendet? Laut Vereinbarung in den Azure-Nutzungsbedingungen ist die Aktivierung einer kostenlosen Testversion nur für Benutzer eingeschränkt, die neu bei Azure sind. Wenn Sie bereits einen anderen Typ von Azure-Abonnement verwendet haben, können Sie keine kostenlose Testversion aktivieren. Sie könnten sich auch für ein [Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) registrieren.
 
-### <a name="i-saw-a-charge-on-my-free-trial-account"></a>In meinem kostenlosen Testkonto werden Gebühren angezeigt.
+#### <a name="you-see-the-message-you-are-not-eligible-for-an-azure-subscription"></a>Die Meldung „Sie besitzen keine Berechtigung für ein Azure-Abonnement“ wird angezeigt.
 
-Nach der Registrierung wird möglicherweise eine kleine Prüfsperre in Ihrem Kreditkartenkonto angezeigt. Diese Sperre wird innerhalb von 3 bis 5 Tagen entfernt. Wenn Sie Bedenken bezüglich der Verwaltung von Kosten haben, lesen Sie den Abschnitt [Vermeiden unerwarteter Kosten](getting-started.md).
+Um dieses Problem zu beheben, überprüfen Sie, ob die folgenden Punkte zutreffen:
+
+- Die für Ihr Azure-Kontoprofil angegebenen Informationen (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) sind richtig.
+- Die Kreditkarteninformationen sind richtig.
+- Sie verfügen nicht bereits über ein Microsoft-Konto, das dieselben Informationen verwendet.
+
+#### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>Die Meldung „Ihr aktueller Kontotyp wird nicht unterstützt“ wird angezeigt.
+
+Dieses Problem kann auftreten, wenn das Konto in einem [nicht verwalteten Azure AD-Verzeichnis](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) registriert ist und nicht im Azure AD-Verzeichnis Ihrer Organisation vorhanden ist.
+Um dieses Problem zu beheben, registrieren Sie das Azure-Konto unter Verwendung eines anderen Kontos, oder übernehmen Sie das nicht verwaltete AD-Verzeichnis. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover).
+
+## <a name="identity-verification-by-phone"></a>Identitätsüberprüfung per Telefon
+
+![Identitätsüberprüfung per Telefon](./media/troubleshoot-azure-sign-up/2.png)
+ 
+Wenn Sie die Textnachricht oder den Telefonanruf erhalten haben, geben Sie den empfangenen Code in das Textfeld ein.
+
+### <a name="common-issues-and-solutions"></a>Bekannte Probleme und Lösungen
+
+#### <a name="no-verification-text-message-or-phone-call"></a>Weder SMS noch Telefonanruf mit Überprüfungscode
+
+Der Überprüfungsprozess bei der Registrierung ist zwar in der Regel schnell, es kann aber bis zu vier Minuten dauern, bis ein Überprüfungscode übermittelt wird.
+
+Hier sind einige zusätzlichen Tipps:
+
+- Sie können eine beliebige Telefonnummer zur Überprüfung nutzen, solange sie den Anforderungen entspricht. Die zur Überprüfung eingegebene Telefonnummer wird nicht als Kontaktnummer für das Konto gespeichert.
+  - Für den Überprüfungsvorgang per Telefon kann keine VoIP-Telefonnummer (Voice-over-IP) verwendet werden.
+  - Stellen Sie sicher, dass Ihr Telefon Anrufe oder SMS-Nachrichten von einer Telefonnummer aus den USA empfangen kann.
+- Überprüfen Sie im Dropdownmenü die eingegebene Telefonnummer einschließlich Landesvorwahl.
+- Wenn Ihr Telefon keine Textnachrichten (SMS) empfängt, versuchen Sie es mit der Option **Mich anrufen**.
+
+## <a name="identity-verification-by-card"></a>Identitätsüberprüfung per Karte
+
+![Identitätsüberprüfung per Karte](./media/troubleshoot-azure-sign-up/3.png)
+ 
+### <a name="common-issues-and-solutions"></a>Bekannte Probleme und Lösungen
+
+#### <a name="credit-card-declined-or-not-accepted"></a>Kreditkarte abgelehnt bzw. nicht akzeptiert
+
+Virtuelle oder Prepaid-Kreditkarten oder -Debitkarten werden als Zahlungsmittel für Azure-Abonnements nicht akzeptiert. Weitere Informationen zu möglichen Ursachen für die Ablehnung Ihrer Karte finden Sie unter [Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card).
+
+#### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Das Kreditkartenformular akzeptiert meine Rechnungsadresse nicht.
+
+Ihre Rechnungsadresse muss sich in dem Land befinden, das Sie im Abschnitt **Persönliche Informationen** ausgewählt haben. Vergewissern Sie sich, dass Sie das richtige Land angegeben haben.
+
+#### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>Statusanzeige hängt im Abschnitt „Identitätsüberprüfung per Karte“
+
+Um die Identitätsprüfung mithilfe der Karte abzuschließen, müssen Cookies von Drittanbietern in Ihrem Browser zugelassen sein.
+
+Führen Sie die folgenden Schritte aus, um die Cookie-Einstellungen Ihres Browsers zu aktualisieren.
+
+1. Aktualisieren Sie die Cookie-Einstellungen.
+   - Wenn Sie eine **Chrome** verwenden:
+     - Wählen Sie **Einstellungen** > **Erweiterte Einstellungen anzeigen** > **Datenschutz** > **Inhaltseinstellungen** aus. Deaktivieren Sie **Cookies und Websitedaten von Drittanbietern blockieren**.
+
+   - Wenn Sie **Microsoft Edge** verwenden:
+     - Wählen Sie **Einstellungen** > **Erweiterte Einstellungen anzeigen** > **Cookies** > **Keine Cookies blockieren** aus.
+
+1. Aktualisieren Sie die Azure-Registrierungsseite, und überprüfen Sie dann, ob das Problem behoben ist.
+1. Wenn das Problem durch die Aktualisierung nicht behoben wurde, beenden Sie den Browser, starten Sie ihn neu, und wiederholen Sie den Vorgang.
+
+### <a name="i-saw-a-charge-on-my-free-trial-account"></a>In meinem kostenlosen Testkonto werden Gebühren angezeigt
+
+Nach der Registrierung wird möglicherweise eine kurze temporäre Prüfsperre in Ihrem Kreditkartenkonto angezeigt. Diese Sperre wird innerhalb von 3 bis 5 Tagen aufgehoben. Wenn Sie Bedenken bezüglich der Verwaltung von Kosten haben, lesen Sie den Abschnitt [Vermeiden unerwarteter Kosten](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started).
+
+## <a name="agreement"></a>Vereinbarung
+
+Schließen Sie die Vereinbarung ab.
+
+## <a name="other-issues"></a>Andere Probleme
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Ich kann kein Azure-Vorteilsprogramm wie MSDN, BizSpark, BizSparkPlus oder MPN aktivieren
 
 Überprüfen Sie, ob Sie die richtigen Anmeldeinformationen verwenden. Überprüfen Sie anschließend das Vorteilsprogramm, um sich zu vergewissern, dass Sie berechtigt sind.
-
 - MSDN
   - Überprüfen Sie auf der [MSDN-Kontoseite](https://msdn.microsoft.com/subscriptions/manage/default.aspx)Ihren Berechtigungsstatus.
   - Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an das [Kundendienstcenter für MSDN-Abonnements](https://msdn.microsoft.com/library/aa493452.aspx).
@@ -104,37 +151,24 @@ Nach der Registrierung wird möglicherweise eine kleine Prüfsperre in Ihrem Kre
   - Melden Sie sich beim [MPN-Portal](https://mspartner.microsoft.com/Pages/Locale.aspx) an, um Ihren Berechtigungsstatus zu überprüfen. Ihnen stehen ggf. weitere Leistungen zu, wenn Sie über die entsprechenden [Kompetenzen für Cloudplattformen](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx) verfügen.
   - Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an den [MPN-Support](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
 
+
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Ich kann kein neues Azure In Open-Abonnement aktivieren
 
 Um ein Azure In Open-Abonnement zu erstellen, müssen Sie über einen gültigen OSA-Schlüssel (Online Service Activation) verfügen, dem mindestens ein Azure In Open-Token zugeordnet ist. Wenn Sie keinen OSA-Schlüssel haben, wenden Sie sich an einen der unter [Microsoft Pinpoint](https://pinpoint.microsoft.com/) aufgeführten Microsoft-Partner.
-
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Error: *Sie besitzen keine Berechtigung für ein Azure-Abonnement*
-
-Um dieses Problem zu beheben, überprüfen Sie, ob die folgenden Punkte zutreffen:
-
-- Die für Ihr Azure-Kontoprofil angegebenen Informationen (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) sind richtig.
-- Die Kreditkarteninformationen sind richtig.
-- Sie verfügen nicht bereits über ein Microsoft-Konto, das dieselben Informationen verwendet.
-
-### <a name="error-your-current-account-type-is-not-supported"></a>Error: *Ihr aktueller Kontotyp wird nicht unterstützt*
-
-Dieses Problem kann auftreten, wenn das Konto in einem [nicht verwalteten Azure AD-Verzeichnis](../../active-directory/users-groups-roles/directory-self-service-signup.md) registriert ist und nicht im Azure AD-Verzeichnis Ihrer Organisation vorhanden ist.
-
-Um dieses Problem zu beheben, registrieren Sie das Azure-Konto unter Verwendung eines anderen Kontos, oder übernehmen Sie das nicht verwaltete AD-Verzeichnis. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="additional-help-resources"></a>Zusätzliche Hilferessourcen
 
 Weitere Artikel für die Problembehandlung bei Azure-Abrechnung und -Abonnements
 
-- [Karte abgelehnt](troubleshoot-declined-card.md)
-- [Probleme bei der Abonnementanmeldung](troubleshoot-sign-in-issue.md)
-- [Keine Abonnements gefunden](no-subscriptions-found.md)
-- [Enterprise-Kostenansicht deaktiviert](enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Karte abgelehnt](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
+- [Probleme bei der Abonnementanmeldung](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
+- [Keine Abonnements gefunden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
+- [Enterprise-Kostenansicht deaktiviert](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
 
 ## <a name="contact-us-for-help"></a>Setzen Sie sich mit uns in Verbindung, um Hilfe zu erhalten.
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="find-out-more-about-azure-cost-management"></a>Erfahren Sie mehr über Azure Cost Management.
 
-- [Dokumentation zur Azure-Abrechnung](../../billing/index.md)
+- [Dokumentation zu Azure Cost Management und Abrechnung](https://docs.microsoft.com/azure/cost-management-billing)

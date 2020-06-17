@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655517"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555142"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services
 
@@ -31,21 +31,25 @@ Die drei Active Directory-basierten Identitätslösungen haben zwar einen gemein
     * Weitere Informationen zu Azure AD finden Sie in [Was ist Azure Active Directory?][whatis-azuread].
 * **Azure Active Directory Domain Services (Azure AD DS)** : Stellt verwaltete Domänendienste mit vollständig kompatiblen herkömmlichen AD DS-Features bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung.
     * Azure AD DS ist in Azure AD integriert, und Azure AD kann wiederum mit einer lokalen AD DS-Umgebung synchronisiert werden. Dank dieser Option können Anwendungsfälle mit zentraler Identität auf herkömmliche Webanwendungen erweitert werden, die in Azure im Rahmen einer Lift & Shift-Strategie ausgeführt werden.
+    * Weitere Informationen zur Synchronisierung (mit Azure AD und lokal) finden Sie unter [Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Domäne][synchronization].
 
 In diesem Übersichtsartikel wird verglichen und gegenübergestellt, wie diese Identitätslösungen zusammenarbeiten können oder einzeln eingesetzt werden – je nach den Anforderungen Ihrer Organisation.
 
-Für den Einstieg [erstellen Sie eine verwaltete Azure AD DS-Domäne im Azure-Portal][tutorial-create].
+> [!div class="nextstepaction"]
+> [Im ersten Schritt erstellen Sie im Azure-Portal eine verwaltete Azure AD DS-Domäne][tutorial-create].
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS und selbstverwaltete AD DS
 
 Wenn Sie über Anwendungen und Dienste verfügen, die Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, gibt es zwei Möglichkeiten für die Bereitstellung von Active Directory Domain Services in der Cloud:
 
-* Eine *verwaltete* Domäne, die Sie mit Azure Active Directory Domain Services (Azure AD DS) erstellen. Microsoft erstellt und verwaltet die erforderlichen Ressourcen.
+* Eine *verwaltete Domäne*, die Sie mit Azure Active Directory Domain Services (Azure AD DS) erstellen. Microsoft erstellt und verwaltet die erforderlichen Ressourcen.
 * Eine *selbstverwaltete* Domäne, die Sie unter Verwendung von herkömmlichen Ressourcen wie etwa virtuellen Computern (virtual machines, VMs), Windows Server-Gastbetriebssystem und Active Directory Domain Services (AD DS) erstellen und konfigurieren. Anschließend können Sie diese Ressourcen weiter verwalten.
 
 Mit Azure AD DS werden die wichtigen Dienstkomponenten von Microsoft für Sie als Umgebung für *verwaltete* Domänen bereitgestellt und gepflegt. Sie führen die Bereitstellung, die Verwaltung, das Patchen und das Schützen der AD DS-Infrastruktur für Komponenten wie VMs, Windows Server-Betriebssystem oder Domänencontroller (DCs) nicht durch.
 
-Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Für Anwendungen und Dienste, die in der Cloud ausgeführt werden und Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, wird von Azure AD DS eine verwaltete Domänenumgebung mit minimalem Verwaltungsaufwand bereitgestellt.
+Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Das [Erstellen von Gesamtstrukturvertrauensstellungen zwischen Azure AD DS und lokalen Umgebungen (derzeit in der Vorschau)][create-forest-trust] ist nach wie vor möglich.
+
+Für Anwendungen und Dienste, die in der Cloud ausgeführt werden und Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, wird von Azure AD DS eine verwaltete Domänenumgebung mit minimalem Verwaltungsaufwand bereitgestellt. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure AD DS][administration-concepts].
 
 Wenn Sie eine selbstverwaltete AD DS-Umgebung bereitstellen und ausführen, müssen Sie alle zugeordneten Infrastruktur- und Verzeichniskomponenten pflegen. Für eine selbstverwaltete AD DS-Umgebung fällt zusätzlicher Verwaltungsaufwand an, aber Sie können dann weitere Aufgaben durchführen, z. B. eine Erweiterung des Schemas oder die Erstellung von Gesamtstrukturvertrauensstellungen.
 
@@ -94,7 +98,7 @@ Für Geräte kann der Beitritt zu Azure AD mit oder ohne Hybridbereitstellung, d
 
 | **Gerätetyp**                                        | **Geräteplattformen**             | **Mechanismus**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| Persönliche Geräte                                          | Windows 10, iOS, Android, Mac OS | Bei Azure AD registriert    |
+| Persönliche Geräte                                          | Windows 10, iOS, Android, macOS | Bei Azure AD registriert    |
 | Im Besitz der Organisation befindliches Gerät, das nicht in die lokale AD DS-Instanz eingebunden ist | Windows 10                       | In Azure AD eingebunden        |
 | Im Besitz der Organisation befindliches Gerät, das in eine lokale AD DS-Instanz eingebunden ist  | Windows 10                       | Hybrid in Azure AD eingebunden |
 
@@ -115,6 +119,8 @@ Mit in Azure AD DS eingebundenen Geräten können Anwendungen die Kerberos- und
 
 Als Einstieg in Azure AD DS [erstellen Sie eine verwaltete Azure AD DS-Domäne im Azure-Portal][tutorial-create].
 
+Sie können auch mehr über [Verwaltungskonzepte für Benutzerkonten, Kennwörter und Verwaltung in Azure AD DS][administration-concepts] und die [Synchronisierung von Objekten und Anmeldeinformationen in einer verwalteten Domäne][synchronization] erfahren.
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Als Einstieg in Azure AD DS [erstellen Sie eine verwaltete Azure AD DS-Domän
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

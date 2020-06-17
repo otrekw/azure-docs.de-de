@@ -4,20 +4,26 @@ description: Beschreibt Azure HPC Cache, eine Dateizugriffsbeschleuniger-Lösung
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106456"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433694"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Was ist Azure HPC Cache?
 
 Azure HPC Cache beschleunigt den Zugriff auf Ihre Daten für High Performance Computing-Aufgaben (HPC). Aufgrund der Zwischenspeicherung von Dateien in Azure ermöglicht Azure HPC Cache für Ihren vorhandenen Workflow die Skalierbarkeit des Cloud Computing. Dieser Dienst kann auch für Workflows verwendet werden, bei denen Ihre Daten über WAN-Links gespeichert werden, z. B. in der NAS-Umgebung (Network Attached Storage) Ihres lokalen Rechenzentrums.
 
 Azure HPC Cache lässt sich problemlos über das Azure-Portal starten und überwachen. Vorhandene NFS-Speicher oder neue BLOB-Container können Teil des aggregierten Namespace werden. Dies vereinfacht den Clientzugriff, auch wenn Sie das Back-End-Speicherziel ändern.
+
+## <a name="overview-video"></a>Übersichtsvideo
+
+[![Videominiaturansicht: Übersicht über Azure HPC Cache: zum Besuchen der Videoseite klicken](media/video-1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+
+Klicken Sie auf das obige Bild, um sich eine [Kurzübersicht über Azure HPC Cache](https://azure.microsoft.com/resources/videos/hpc-cache-overview/) anzusehen.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 

@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a2430e29acb83945e9893ca4c6e2e0110ef6e007
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298158"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456554"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -76,7 +76,7 @@ Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerro
 
 Das Azure EA-Konto ist eine Organisationseinheit im Azure EA Portal. Sie wird zur Abonnementverwaltung und auch für die Berichterstellung verwendet. Für den Zugriff auf Azure-Dienste und ihre Verwendung müssen Sie ein Konto erstellen oder erstellen lassen.
 
-Weitere Informationen zu Azure-Konten finden Sie unter „Hinzufügen eines Kontos“.
+Weitere Informationen zu Azure-Konten finden Sie unter [Hinzufügen eines Kontos](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test-Angebot
 

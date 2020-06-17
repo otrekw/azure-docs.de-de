@@ -222,6 +222,9 @@
               href: http-application-routing.md
             - name: Verwenden des internen Netzwerks
               href: ingress-internal-ip.md
+            - name: Aktivieren des AGIC-Add-Ons für einen vorhandenen AKS-Cluster
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: Verwenden von TLS mit eigenen Zertifikaten
               href: ingress-own-tls.md
             - name: Verwenden von TLS mit Let's Encrypt
@@ -416,7 +419,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python

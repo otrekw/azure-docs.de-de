@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665792"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417020"
 ---
 # <a name="iot-central-device-development-overview"></a>Übersicht über die Geräteentwicklung für IoT Central
 
@@ -85,7 +85,9 @@ Mithilfe eines der [Azure IoT-Geräte-SDKs](#languages-and-sdks) können Sie das
 - Synchronisieren von Eigenschaftswerten zwischen dem Gerät und IoT Central. Die Gerätevorlage gibt die Eigenschaftsnamen und Datentypen an, damit IoT Central die Informationen anzeigen kann.
 - Befehlshandler für die in der Gerätevorlage angegebenen Befehle implementieren. Die Gerätevorlage gibt die Befehlsnamen und Parameter an, die das Gerät verwenden sollte.
 
-Weitere Informationen finden Sie unter [Erstellen und Verbinden einer Node.js-Clientanwendung](./tutorial-connect-device-nodejs.md) bzw. unter [Erstellen und Verbinden einer Python-Clientanwendung](./tutorial-connect-device-python.md).
+Weitere Informationen zur Aufgabe von Gerätevorlagen finden Sie unter [Was sind Gerätevorlagen?](./concepts-device-templates.md).
+
+Mehr Beispielcode finden Sie unter [Erstellen und Verbinden einer Node.js-Clientanwendung](./tutorial-connect-device-nodejs.md) bzw. unter [Erstellen und Verbinden einer Python-Clientanwendung](./tutorial-connect-device-python.md).
 
 ### <a name="languages-and-sdks"></a>Sprachen und SDKs
 

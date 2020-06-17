@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 84857315e4b6b4375ed5b78520b4c6ff0d66751a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684982"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448681"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
@@ -39,6 +39,8 @@ Die Art der IP-Adresse bestimmt den **Typ** des erstellten Lastenausgleichs. Wen
 
 ![Beispiel für einen mehrstufigen Lastenausgleich](./media/load-balancer-overview/load-balancer.png)
 
+Load Balancer kann über mehrere Front-End-IP-Adressen verfügen. Erfahren Sie mehr zu [mehreren Front-Ends](load-balancer-multivip-overview.md).
+
 ## <a name="backend-pool"></a>Back-End-Pool
 
 Die Gruppe virtueller Computer oder Instanzen in einer VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen.
@@ -57,7 +59,7 @@ Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests def
 - eine Leerlauftimeout auftritt
 - der virtuelle Computer heruntergefahren wird
 
-Load Balancer verfügt über verschiedene Integritätstesttypen für Endpunkte: TCP, HTTP und HTTPS.
+Load Balancer verfügt über verschiedene Integritätstesttypen für Endpunkte: TCP, HTTP und HTTPS. [Erfahren Sie mehr zu Load Balancer-Integritätstests](load-balancer-custom-probe-overview.md).
 
 Vom Load Balancer im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vom Load Balancer im Tarif „Basic“ werden alle TCP-Verbindungen (einschließlich aktiver Verbindungen) beendet.
 
@@ -67,15 +69,32 @@ Mithilfe einer Lastenausgleichsregel wird definiert, wie eingehender Datenverkeh
 
 Wenn Sie z. B. Datenverkehr an Port 80 (oder einen anderen Port) Ihrer Front-End-IP-Adresse an Port 80 aller Ihrer Back-End-Instanzen umleiten möchten, verwenden Sie eine Lastenausgleichsregel, um dies zu erreichen.
 
+### <a name="high-availability-ports"></a>Hochverfügbarkeitsports
+
+Eine mit „protocol - all“ und „port - 0“ konfigurierte Load Balancer-Regel. Dies ermöglicht das Bereitstellen einer einzelnen Regel für den Lastenausgleich aller TCP- und UDP-Datenflüsse, die an allen Ports einer internen Load Balancer Standard-Instanz eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Lösung basiert auf der folgenden Verbindung mit fünf Tupeln: 
+1. Quell-IP-Adresse
+2. Quellport
+3. Ziel-IP-Adresse
+4. Zielport
+5. Protokoll
+
+Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss.
+
+Erfahren Sie mehr über [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
+
 ## <a name="inbound-nat-rules"></a>Eingehende NAT-Regeln
 
 Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, der an eine ausgewählte Kombination aus Front-End-IP-Adresse und -Port gesendet wird, an einen **bestimmten** virtuellen Computer oder eine bestimmte Instanz im Back-End-Pool weiter. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
 
 Beispielsweise, wenn Sie RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines Back-End-Pools verwenden möchten. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
 
+NAT-Regeln für eingehenden Datenverkehr im Kontext von Virtual Machine Scale Sets (VMSS) sind NAT-Pools für eingehenden Datenverkehr. Erfahren Sie mehr zu [Load Balancer-Komponenten und VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
+
 ## <a name="outbound-rules"></a>Ausgangsregeln
 
 Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool identifiziert wurden. Dadurch können Instanzen im Back-End (ausgehend) mit dem Internet oder anderen Endpunkten kommunizieren.
+
+Erfahren Sie mehr zu [ausgehenden Verbindungen und Regeln](load-balancer-outbound-connections.md).
 
 Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstützt.
 
@@ -89,9 +108,6 @@ Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstütz
 - Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Informationen zur [TCP-Zurücksetzung bei Leerlauf](load-balancer-tcp-reset.md).
 - Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md)
-- Informationen zur Verwendung von [Load Balancer mit mehreren Front-End-IP-Konfigurationen](load-balancer-multivip-overview.md).
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
-- Informieren Sie sich über [Testtypen](load-balancer-custom-probe-overview.md#types).
 - Lesen Sie weitere Informationen zu [Load Balancer-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).
 - Erfahren Sie mehr über die Verwendung der [Portweiterleitung](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal).
-- Erfahren Sie mehr über [Load Balancer-Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).

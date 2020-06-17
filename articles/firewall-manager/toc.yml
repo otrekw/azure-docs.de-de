@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: Allgemeiner Bereitstellungsprozess
       href: deployment-overview.md
-    - name: Vertrauenswürdige Sicherheitspartner
+    - name: Sicherheitspartneranbieter
       href: trusted-security-partners.md
     - name: Regelverarbeitungslogik
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: Anleitungen
   items:
-    - name: Bereitstellen vertrauenswürdiger Sicherheitspartner
+    - name: Bereitstellen von Sicherheitspartneranbietern
       href: deploy-trusted-security-partner.md
     - name: 'Migrieren zur Firewallrichtlinie: PowerShell'
       href: migrate-to-policy.md

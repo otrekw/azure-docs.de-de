@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 4a36019f9023490c3aac68dbe7004b053f08e5ec
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: cd696b6aba96b06a7b84722d61eb40bbfa15c0ff
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298821"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447933"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure AD B2C
 
@@ -59,7 +59,8 @@ Zum Aktualisieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie u
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen**, die Registerkarte **Anwendungen mit Besitzer** und dann die Anwendung *webapp1* aus.
-1. Wählen Sie unter **Web** den Link **URI hinzufügen** aus, geben Sie `http://localhost:6420` ein, und wählen Sie dann **Speichern** aus.
+1. Wählen Sie unter **Web** den Link **URI hinzufügen** aus, und geben Sie `http://localhost:6420` ein.
+1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**, und wählen Sie **Speichern** aus.
 1. Wählen Sie **Übersicht**.
 1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt, wenn Sie den Code in der Single-Page-Webanwendung aktualisieren.
 
@@ -97,14 +98,22 @@ Nachdem Sie nun das Beispiel vorliegen haben, können Sie den Code mit dem Namen
     ```javascript
     const msalConfig = {
         auth: {
-            clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
-            authority: "https://your-b2c-tenant.b2clogin.com/your-b2c-tenant.onmicrosoft.com/B2C_1_signupsignin1", // Update with your tenant and user flow names
-            validateAuthority: false
+          clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
+          authority: b2cPolicies.authorities.signUpSignIn.authority,
+          validateAuthority: false
         },
         cache: {
-            cacheLocation: "localStorage",
-            storeAuthStateInCookie: true
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: true
         }
+    };
+
+    const loginRequest = {
+       scopes: ["openid", "profile"],
+    };
+
+    const tokenRequest = {
+      scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
     };
     ```
 

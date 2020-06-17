@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019995"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434180"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -20,6 +20,7 @@ Nachdem Sie eine Azure-Reservierung erworben haben, müssen Sie möglicherweise 
 
 Wenn Sie Azure Reserved Virtual Machine Instances erworben haben, können Sie die Optimierungseinstellung für die Reservierung ändern. Der Reservierungsrabatt kann für virtuelle Computer (Virtual Machines, VMs) in der gleichen Reihe gelten. Sie können aber auch Rechenzentrumskapazität für eine bestimmte VM-Größe reservieren. Versuchen Sie außerdem, die Reservierungen zu optimieren, sodass sie vollständig genutzt werden.
 
+*Die zum Verwalten einer Reservierung erforderliche Berechtigung ist von der Abonnementberechtigung getrennt.*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +56,9 @@ Der Bereich gilt nur für einzelne Abonnements mit nutzungsbasierter Zahlung (An
 
 Sie können die Verwaltung einer Reservierung delegieren, indem Sie den Rollen im Reservierungsauftrag oder in der Reservierung Personen hinzufügen. Standardmäßig verfügen die Person, die den Reservierungsauftrag erteilt, und der Kontoadministrator über die Rolle „Besitzer“ für den Reservierungsauftrag und die Reservierung.
 
-Sie können den Zugriff auf Reservierungsaufträge und Reservierungen unabhängig von den Abonnements verwalten, die den Reservierungsrabatt erhalten. Wenn Sie einer Person die Berechtigung zum Verwalten eines Reservierungsauftrags oder der Reservierung erteilen, erhält diese keine Berechtigung zum Verwalten des Abonnements. Wenn Sie einer Person die Berechtigung erteilen, ein Abonnement im Geltungsbereich der Reservierung zu verwalten, erhält diese Person analog dazu keine Rechte zum Verwalten des Reservierungsauftrags oder der Reservierung.
+Sie können den Zugriff auf Reservierungsaufträge und Reservierungen *unabhängig von den Abonnements verwalten*, die den Reservierungsrabatt erhalten. Wenn Sie einer Person die Berechtigung zum Verwalten eines Reservierungsauftrags oder der Reservierung erteilen, erhält diese keine Berechtigung zum Verwalten des Abonnements. Wenn Sie einer Person die Berechtigung erteilen, ein Abonnement im Geltungsbereich der Reservierung zu verwalten, erhält diese Person analog dazu keine Rechte zum Verwalten des Reservierungsauftrags oder der Reservierung.
 
 Für eine Erstattung oder einen Austausch muss der Benutzer Zugriff auf den Reservierungsauftrag haben. Wenn Sie einem Benutzer Berechtigungen erteilen, empfiehlt es sich, die Berechtigungen für den Reservierungsauftrag und nicht für die Reservierung zu erteilen.
-
 
 So delegieren Sie die Zugriffsverwaltung für eine Reservierung:
 

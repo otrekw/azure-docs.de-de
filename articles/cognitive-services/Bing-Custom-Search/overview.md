@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448740"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434574"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
 
@@ -29,7 +29,7 @@ Die API für die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer m
 |[Benutzerdefinierte Bildersuche](get-images-from-instance.md)     | Ermöglichen Sie Benutzern die Suche nach Bildern aus den Domänen und Websites, die in Ihrer Instanz für die benutzerdefinierte Suche angegeben sind.        |        
 |[Benutzerdefinierte Videosuche](get-videos-from-instance.md)     | Ermöglichen Sie Benutzern die Suche nach Videos aus den Domänen und Websites, die in Ihrer Instanz für die benutzerdefinierte Suche angegeben sind.        |    
 |[Freigeben der Instanz für die benutzerdefinierte Suche](share-your-custom-search.md)     | Geben Sie Ihre Suchinstanz für Mitglieder Ihres Teams frei, um sie gemeinsam bearbeiten und testen zu können.        | 
-|[Konfigurieren einer Benutzeroberfläche für Ihre Anwendungen und Websites](hosted-ui.md)     | Geben Sie Ihre Suchinstanz für Mitglieder Ihres Teams frei, um sie gemeinsam bearbeiten und testen zu können.        | 
+|[Konfigurieren einer Benutzeroberfläche für Ihre Anwendungen und Websites](hosted-ui.md)     | Bietet eine gehostete Benutzeroberfläche, die Sie problemlos als JavaScript-Codeausschnitt in Ihre Webseiten und -anwendungen integrieren können.        | 
 ## <a name="workflow"></a>Workflow
 
 Über das [Portal für die benutzerdefinierte Bing-Suche](https://customsearch.ai) können Sie eine angepasste Suchinstanz erstellen. Mithilfe des Portals können Sie eine Instanz für die benutzerdefinierte Suche erstellen, die angibt, welche Domänen, Websites und Webseiten von Bing durchsucht werden sollen (und welche nicht). Darüber hinaus können Sie im Portal eine Vorschau der Suchumgebung anzeigen, die von der API bereitgestellten Suchrangfolgen anpassen und optional eine durchsuchbare Benutzeroberfläche konfigurieren, die auf Ihren Websites und in Ihren Anwendungen gerendert wird.

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702033"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560872"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Verwenden von OPENROWSET mit SQL On-Demand (Vorschauversion)
 
@@ -107,16 +107,16 @@ Bei den Eingabedateien mit den Zieldaten für die Abfrage stehen zwei Optionen z
 **'unstructured_data_path'**
 
 Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder relativen Pfad handeln:
-- Der absolute Pfad im Format '\<Präfix>://\<Speicherkontopfad>/\<Speicherpfad>' ermöglicht einem Benutzer, die Dateien direkt zu lesen.
+- Der absolute Pfad im Format \<prefix>://\<storage_account_path>/\<storage_path> ermöglicht einem Benutzer, die Dateien direkt zu lesen.
 - Der relative Pfad im Format '<Speicherpfad>' muss mit dem Parameter `DATA_SOURCE` verwendet werden und beschreibt das Dateimuster innerhalb des Speicherorts <Speicherkontopfad>, der in `EXTERNAL DATA SOURCE` definiert ist. 
 
  Nachfolgend sind die relevanten <storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
 
 | Externe Datenquelle       | Präfix | Speicherkontopfad                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<Speicherkonto>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | \<Speicherkonto>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<Speicherkonto>.dfs.core.windows.net              |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
 ||||
 
 '\<storage_path>'

@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten Python-Container f�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 96f7684176df35e9ac085dd2d7a0c576b7266883
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046024"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553251"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -131,7 +131,7 @@ Sie können das Startverhalten des Containers steuern, indem Sie einen benutzerd
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Wenn Sie beispielsweise über eine Flask-App verfügen, deren Hauptmodul *hello.py* lautet, und das Flask-App-Objekt in dieser Datei den Namen `myapp` hat, lautet *\<custom-command>* wie folgt:
+Wenn Sie beispielsweise über eine Flask-App verfügen, deren Hauptmodul *hello.py* ist, und das Flask-App-Objekt in dieser Datei den Namen `myapp` hat, ist *\<custom-command>* wie folgt:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp

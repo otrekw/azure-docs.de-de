@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187293"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561562"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Schnellstart: Exemplarische Vorgehensweise für Event Hubs Capture: Python (azure-eventhub Version 1)
 
@@ -80,7 +80,7 @@ Dieses Skript sendet 200 Ereignisse an Ihren Event Hub. Bei den Ereignissen hand
 
 1. Öffnen Sie Ihren bevorzugten Python-Editor, z.B. [Visual Studio Code][Visual Studio Code].
 2. Erstellen Sie eine neue Datei mit dem Namen *sender.py*. 
-3. Fügen Sie den folgenden Code in *sender.py* ein. Ersetzen Sie die Angaben \<namespace>, \<AccessKeyName>, \<primary key value> und \<eventhub> von Event Hubs durch Ihre eigenen Werte.
+3. Fügen Sie den folgenden Code in *sender.py* ein. Ersetzen Sie Angaben \<namespace>, \<AccessKeyName>, \<primary key value> und \<eventhub> für Event Hubs durch Ihre eigenen Werte.
    
    ```python
    import uuid

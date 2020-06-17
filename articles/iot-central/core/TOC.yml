@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: Neueste Updates
       items:
+        - name: "Updates vom Mai\_2020"
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: Dashboardupdates vom Mai 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: "April\_2020: Neue Features"
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: "April\_2020: Updates"
@@ -182,9 +186,9 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: API-Referenz für IoT Central
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Kundendatenanforderungen
