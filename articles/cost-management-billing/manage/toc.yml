@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Einrichten eines Abrechnungskontos für die Microsoft-Kundenvereinbarung
           href: mca-setup-account.md
-        - name: Anmelden mit Office 365-Konto
-          href: office-365-account-for-azure-subscription.md
-        - name: Registrieren für Office 365 mit einem Azure-Konto
-          href: azure-account-for-office-365-subscription.md
+        - name: "Registrieren mit einem Microsoft\_365-Konto"
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Registrieren für Microsoft 365 mit einem Azure-Konto
+          href: azure-account-for-microsoft-365-subscription.md
         - name: Bezahlen mit strenger Kundenauthentifizierung
           href: open-banking-strong-customer-authentication.md
     - name: Verwalten von Abonnements

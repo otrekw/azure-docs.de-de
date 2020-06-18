@@ -6,7 +6,7 @@
     - name: Was ist Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Gegenüberstellung von Azure Machine Learning und Studio
+    - name: Azure Machine Learning und Studio (klassisch)
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: Architektur und Bestimmungen

@@ -6,6 +6,8 @@
       href: overview.md
     - name: Unterstützte Editionen und Features
       href: features.md
+    - name: Versionshinweise
+      href: release-notes.md
 - name: Schnellstarts
   expanded: true
   items:

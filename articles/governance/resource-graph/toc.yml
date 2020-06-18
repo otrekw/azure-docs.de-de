@@ -10,19 +10,22 @@
   items:
     - name: 'Ausführen Ihrer ersten Abfrage: Azure-Portal'
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: Ausführen Ihrer ersten Abfrage – Azure-Befehlszeilenschnittstelle
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: Ausführen Ihrer ersten Abfrage – PowerShell
+      href: ./first-query-azurecli.md
+    - name: 'Ausführen Ihrer ersten Abfrage: Azure PowerShell'
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: 'Ausführen Ihrer ersten Abfrage: Go'
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: 'Ausführen Ihrer ersten Abfrage: Python'
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: Bereitstellen einer freigegebenen Abfrage – ARM-Vorlage
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: Tutorials
   items:
     - name: Erstellen und Freigeben einer Abfrage im Azure-Portal
