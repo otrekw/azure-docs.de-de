@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d7c813c748d2af60ace71f61ba3efa43a18da00d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67178646"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752167"
 ---
 ## <a name="run-image-from-registry"></a>Ausführen des Images aus der Registrierung
 
 Als Nächstes können Sie das Containerimage `hello-world:v1` per Pull abrufen und mithilfe von [docker run][docker-run] aus Ihrer Containerregistrierung ausführen:
 
 ```
-docker run <acrLoginServer>/hello-world:v1  
+docker run <login-server>/hello-world:v1  
 ```
 
 Beispielausgabe: 

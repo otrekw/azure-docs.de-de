@@ -10,14 +10,14 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636749"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660248"
 ---
-# <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Tutorial: Erstellen einer Data Science Virtual Machine für Ubuntu mit einer Resource Manager-Vorlage
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer Data Science Virtual Machine für Ubuntu mit einer Resource Manager-Vorlage
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit einer Azure Resource Manager-Vorlage eine Data Science Virtual Machine für Ubuntu 18.04 erstellen. Bei Data Science Virtual Machines handelt es sich um cloudbasierte virtuelle Computer, auf denen bereits eine Suite mit Data Science- und Machine Learning-Frameworks und -Tools geladen ist. Bei der Bereitstellung auf GPU-basierten Computeressourcen werden alle Tools und Bibliotheken für die Nutzung der GPU konfiguriert. 
@@ -62,7 +62,7 @@ read
 Wenn Sie den Befehl oben ausführen, geben Sie dies ein:
 
 1. Den Namen der Ressourcengruppe, die Sie erstellen möchten und die die DSVM und die zugehörigen Ressourcen enthalten soll. 
-1. Den Azure-Standort, an dem die Bereitstellung erfolgen soll.
+1. Den Azure-Standort, an dem die Bereitstellung erfolgen soll
 1. Den Authentifizierungstyp, den Sie verwenden möchten (geben Sie die Zeichenfolge `password` oder `sshPublicKey` ein).
 1. Die Anmelde-ID des Administratorkontos (Wert darf nicht `admin` lauten).
 1. Den Wert für das Kennwort oder den öffentlichen SSH-Schlüssel des Kontos.

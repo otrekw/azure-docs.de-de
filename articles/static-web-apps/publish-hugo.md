@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344015"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669901"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -133,9 +133,9 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten.
 
-1. Legen Sie _App-Speicherort_ auf **öffentlich** fest.
+1. Legen Sie _App-Speicherort_ auf **/** fest.
 
-1. Lassen Sie den _Speicherort für App-Artefakte_ leer.
+1. Legen Sie _Speicherort für App-Artefakte_ auf **Öffentlich** fest.
 
    Ein Wert für _API-Speicherort_ ist nicht erforderlich, da Sie hier keine API bereitstellen.
 

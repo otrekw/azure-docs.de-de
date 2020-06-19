@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218876"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710557"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Sprach- und Regionsunterstützung für die Bing-News-Suche-API
 
