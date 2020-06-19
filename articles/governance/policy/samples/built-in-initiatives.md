@@ -1,21 +1,25 @@
 ---
 title: Liste der integrierten Richtlinieninitiativen
 description: Hier finden Sie eine Liste der integrierten Richtlinieninitiativen für Azure Policy. Zu den Kategorien zählen Einhaltung gesetzlicher Bestimmungen, Gastkonfiguration und vieles mehr.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b3b0826e2121e7d609bd4091a162fa1820c1be53
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 41e19426daeaee799f9ad008c820a689fe552ec4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233976"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709137"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Integrierte Azure Policy-Richtlinieninitiativen
 
 Diese Seite enthält einen Index der integrierten Azure Policy-Richtlinieninitiativen.
 
 Die Namen der einzelnen Integrationen sind Links zur Quelle der Initiativendefinitionen im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy). Die Integrationen sind basierend auf der Eigenschaft **category** in den **Metadaten** gruppiert. Verwenden Sie das Menü auf der rechten Seite, um zu einer bestimmten **Kategorie** zu wechseln. Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des Browsers zu nutzen.
+
+## <a name="cosmos-db"></a>Cosmos DB
+
+[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>Gastkonfiguration
 

@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Erstellen einer technischen Azure-VM-Ressource
               items:
+                - name: 'Zertifizierung virtueller Computer: Probleme und Lösungen'
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Erstellen einer technischen Azure-VM-Ressource
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Häufig gestellte Fragen zu technischen Ressourcen für virtuelle Azure-Computer

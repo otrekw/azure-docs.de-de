@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Spark- und Hive-Tools für VSCode
               href: ./hdinsight-for-vscode.md
-            - name: HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake-Tools mit Hortonworks Sandbox
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: Überwachung
           items:
             - name: Verwenden von Azure Monitor-Protokollen
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: Ausführen von benutzerdefinierten Apache Hadoop MapReduce-Programmen
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Entwickeln von C#-MapReduce-Streamingprogrammen'
+                - name: Entwickeln von C#-MapReduce-Streamingprogrammen
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: Entwickeln von Java MapReduce-Programmen
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: Verarbeiten und Analysieren von JSON-Dokumenten
               href: ./hadoop/using-json-in-hive.md
-            - name: 'Verwenden von benutzerdefinierten C#-Funktionen'
+            - name: Verwenden von benutzerdefinierten C#-Funktionen
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Verwenden von Python mit Apache Hive und Apache Pig
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: Entwickeln von Topologien mit Python
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: 'Entwickeln von Topologien mit C#'
+                - name: Entwickeln von Topologien mit C#
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET-Programmierleitfaden
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Streamingpipelines
               items:
-                - name: 'Event Hub und Apache Storm (C# und Java)'
+                - name: Event Hub und Apache Storm (C# und Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Verwalten
           items:
