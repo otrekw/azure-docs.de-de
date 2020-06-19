@@ -114,6 +114,8 @@
         - name: Protokolldatenerfassungszeit
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Streamen von Daten an Event Hubs
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Einblicke
       href: insights/insights-overview.md
     - name: Datensicherheit
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Aktivitätsprotokoll
-          items:
-            - name: Ansicht im Azure-Portal
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Sammeln und Analysieren
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Exportieren (Legacy)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Senden an den Log Analytics-Arbeitsbereich
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Senden an Azure Storage
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Senden an Event Hubs
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Erstellen einer Diagnoseeinstellung
+          href: platform/activity-log.md
+        - name: Ressourcenprotokolle
+          href: platform/resource-logs.md
+        - name: Diagnoseeinstellungen
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Erstellen einer Diagnoseeinstellung mit Resource Manager
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Ändern in das Blobspeicherformat
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Streamen von Daten an Event Hubs
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Übersicht über Protokollabfragen
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: Ressourcengruppen
           href: insights/resource-group-insights.md
+        - name: Problembehandlung für Erkenntnisse
+          href: insights/troubleshoot-workbooks.md
     - name: Lösungen
       items:
         - name: Übersicht
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Plattformprotokolle
       items:
-        - name: Unterstützte Ressourcenprotokolltypen und -kategorien
-          href: platform/resource-logs-categories.md
-        - name: Ressourcenprotokollschemas
-          href: platform/resource-logs-schema.md
         - name: Aktivitätsprotokollschema
           href: platform/activity-log-schema.md
+        - name: Ressourcenprotokollschemas
+          href: platform/resource-logs-schema.md
+        - name: Unterstützte Ressourcenprotokollkategorien
+          href: platform/resource-logs-categories.md
     - name: Diagnoseerweiterungsschemas
       items:
         - name: Windows-Diagnoseerweiterung
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: Einstellung von Datenträgermetriken
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Ändern in das Blobspeicherformat
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

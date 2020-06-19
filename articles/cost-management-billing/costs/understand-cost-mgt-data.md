@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995648"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791281"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -122,6 +122,7 @@ Sollte in Cost Management ein bestimmtes Tag nicht angezeigt werden, überprüfe
 - Wurde das Tag vor mehr als 24 Stunden angewendet? Siehe [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](#cost-and-usage-data-updates-and-retention).
 - Unterstützt der Ressourcentyp Tags? Von den folgenden Ressourcentypen werden keine Tags in Nutzungsdaten unterstützt (Stand: 1. Dezember 2019). Die vollständige Liste der unterstützten Tags finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C-Verzeichnisse
+    - Azure Bastion
     - Azure Firewalls
     - Azure NetApp Files
     - Data Factory

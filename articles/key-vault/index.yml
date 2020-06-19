@@ -13,32 +13,32 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 7a0efa00b4fc881c113e151c6730ca5185ea0349
-  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+  ms.openlocfilehash: 55cf57d283433936b0cba03b67de8726d0ee98c8
+  ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84194434"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84945595"
 highlightedContent:
   items:
   - title: Einführung in Azure Key Vault
     itemType: overview
     url: ./general/overview.md
-  - title: Grundlegende Konzepte
+  - title: Authentifizierung
     itemType: overview
-    url: ./general/basic-concepts.md
+    url: ./general/authentication.md
   - title: Vorläufiges Löschen
     itemType: overview
     url: ./general/overview-soft-delete.md
+  - title: Grundlegende Konzepte
+    itemType: overview
+    url: ./general/basic-concepts.md
   - title: Protokollierung
     itemType: overview
     url: ./general/logging.md
   - title: Drosselung
     itemType: overview
     url: ./general/overview-throttling.md
-  - title: Sicherheitsempfehlungen
-    itemType: overview
-    url: ./general/security-recommendations.md
 conceptualContent:
   items:
   - title: Zertifikate
@@ -63,6 +63,9 @@ conceptualContent:
     - url: ./keys/about-keys.md
       itemType: overview
       text: Informationen zu Schlüsseln
+    - url: ../security/fundamentals/encryption-atrest.md
+      itemType: overview
+      text: Datenverschlüsselung
     - url: ./keys/quick-create-portal.md
       itemType: quickstart
       text: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mit dem Azure-Portal
@@ -131,6 +134,6 @@ conceptualContent:
     - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
       itemType: overview
       text: 'Azure Kubernetes Service: Verwenden von Key Vault-Geheimnissen, Zertifikaten und Schlüsseln in AKS'
-    - url: ../data-factory/store-credentials-in-key-vault.md
+    - url: https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes
       itemType: overview
-      text: 'Azure Data Factory: Verwalten von Anmeldeinformationen in Key Vault'
+      text: 'Azure Databricks: Geheimnisverwaltung mit Key Vault'
