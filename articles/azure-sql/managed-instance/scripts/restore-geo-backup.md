@@ -2,7 +2,7 @@
 title: 'Mit PowerShell: Wiederherstellen einer Geosicherung in der verwalteten Azure SQL-Instanz'
 description: Azure PowerShell-Beispielskript zum Wiederherstellen einer Datenbank einer verwalteten Azure SQL-Instanz aus einer georedundanten Sicherung.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: eeb20f51b22805775ed491267b69d0ba60c90bc3
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 658bedad3b74bf30ba23562ebf025af4781f1034
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220852"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687547"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Wiederherstellen einer Datenbank einer verwalteten Azure SQL-Instanz in einer anderen geografischen Region mithilfe von PowerShell
 

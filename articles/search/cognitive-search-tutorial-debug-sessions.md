@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662233"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886758"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset
 
@@ -173,12 +173,12 @@ Sobald die Ausführung der Debugsitzung abgeschlossen ist, klicken Sie auf die R
 ## <a name="fix-missing-skill-output-values"></a>Korrigieren fehlender Qualifikationsausgabewerte
 
 > [!div class="mx-imgBorder"]
-> ![Fehler und Warnungen](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![Fehler und Warnungen](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 Es fehlen Ausgabewerte von einer Qualifikation. Um die Qualifikation mit dem Fehler zu identifizieren, wechseln Sie zur angereicherten Datenstruktur, suchen Sie den Wertnamen, und schauen Sie sich die Ursprungsquelle an. Im Falle der fehlenden Werte für Organisationen und Standorte handelt es sich um Ausgaben der Qualifikation „#1“. Wenn Sie die Ausdrucksauswertung </> für jeden Pfad öffnen, werden die Ausdrücke als „/document/content/organisations“ bzw. „/document/content/locations“ angezeigt.
 
 > [!div class="mx-imgBorder"]
-> ![Ausdrucksauswertung, Entität „Organisationen“](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![Ausdrucksauswertung, Entität „Organisationen“](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 Die Ausgabe für diese Entitäten ist leer, darf aber nicht leer sein. Welches sind die Eingaben, die zu diesem Ergebnis führen?
 
@@ -187,7 +187,7 @@ Die Ausgabe für diese Entitäten ist leer, darf aber nicht leer sein. Welches s
 1. Öffnen Sie die Ausdrucksauswertung **</>** für die Eingabe (INPUT) „Text“.
 
 > [!div class="mx-imgBorder"]
-> ![Eingabe für die Qualifikation „Text“](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![Eingabe für die Qualifikation „Text“](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 Das angezeigte Ergebnis für diese Eingabe sieht nicht wie eine Texteingabe aus. Es sieht aus wie ein Bild, das von neuen Linien umgeben ist. Das Fehlen von Text bedeutet, dass keine Entitäten identifiziert werden können. Wenn Sie die Hierarchie des Skillsets betrachten, wird der Inhalt zunächst von der Qualifikation „#6“ (OCR) verarbeitet und dann an die Qualifikation „#5“ (Zusammenführung) weitergegeben. 
 
@@ -195,7 +195,7 @@ Das angezeigte Ergebnis für diese Eingabe sieht nicht wie eine Texteingabe aus.
 1. Wählen Sie die Registerkarte **Ausführungen** im rechten Qualifikationsdetailbereich aus, und öffnen Sie die Ausdrucksauswertung **</>** für die Ausgaben (OUTPUTS) „mergedText“.
 
 > [!div class="mx-imgBorder"]
-> ![Ausgabe für Qualifikation „Zusammenführung“](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Ausgabe für Qualifikation „Zusammenführung“](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 Hier wird der Text mit dem Bild gekoppelt. Wenn Sie den Ausdruck „/document/merged_content“ betrachten, ist der Fehler in den Pfaden „Unternehmen“ und „Standorte“ für die Qualifikation „#1“ sichtbar. Anstatt „/document/content“ sollte „/document/merged_content“ für die „Text“-Eingaben verwendet werden.
 
@@ -216,7 +216,7 @@ Nachdem die Ausführung des Indexers abgeschlossen ist, sind die Fehler weiterhi
 1. Öffnen Sie die Ausdrucksauswertung **</>** für die „Organisationen“-Entität.
 
 > [!div class="mx-imgBorder"]
-> ![Ausgabe für „Organisationen“-Entität](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![Ausgabe für „Organisationen“-Entität](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 Die Auswertung des Ergebnisses des Ausdrucks ergibt das richtige Ergebnis. Die Qualifikation dient dazu, den richtigen Wert für die Entität „Organisationen“ zu ermitteln. Die Ausgabezuordnung im Pfad der Entität löst jedoch immer noch einen Fehler aus. Beim Vergleich des Ausgabepfads in der Qualifikation mit dem Ausgabepfad im Fehler, ist die Qualifikation den Ausgaben, Organisationen und Standorten unter dem Knoten „/document/content“ übergeordnet. Die Ausgabefeldzuordnung erwartet hingegen, dass die Ergebnisse dem Knoten „/document/merged_content“ untergeordnet werden. Im vorherigen Schritt wurde die Eingabe von „/document/content“ in „/document/merged_content“ geändert. Der Kontext in den Skilleinstellungen muss geändert werden, um sicherzustellen, dass die Ausgabe mit dem richtigen Kontext erzeugt wird.
 
@@ -228,7 +228,7 @@ Die Auswertung des Ergebnisses des Ausdrucks ergibt das richtige Ergebnis. Die Q
 1. Klicken Sie im Sitzungsfenster im Menü auf **Ausführen**. Dadurch wird eine weitere Ausführung des Skillsets unter Verwendung des Dokuments gestartet.
 
 > [!div class="mx-imgBorder"]
-> ![Kontextkorrektur in Skilleinstellung](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![Kontextkorrektur in Skilleinstellung](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 Alle Fehler wurden behoben.
 

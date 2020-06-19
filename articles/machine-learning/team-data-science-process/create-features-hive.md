@@ -162,7 +162,7 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
     Die typischen Standardwerte sind:
     
    - bei *mapred.min.split.size* 0 (null),
-   - bei *mapred.max.split.size***Long.MAX** und bei 
+   - bei *mapred.max.split.size* **Long.MAX** und bei 
    - *dfs.block.size* 64 MB.
 
      Bei entsprechender Datengröße können Sie durch Festlegen dieser Parameter die Anzahl der verwendeten Mapper optimieren.

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745365"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672662"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
 
@@ -49,6 +49,7 @@ LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützt
 | Sprache | Gebietsschema | Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | \**[Textanalyse](../text-analytics/language-support.md)<br>(Stimmung und<br>Schlüsselwörter)|
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Arabisch (Vorschau, modernes Hocharabisch) |`ar-AR`|❌|❌|❌|❌|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Französisch (Frankreich) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Französisch (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützt
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italienisch |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Koreanisch |`ko-KR` | ✔️ | ❌ | ❌ | Nur *Schlüsselausdruck* |
+| Marathi | `mr-IN`|❌|❌|❌|❌|
 | Portugiesisch (Brasilien) |`pt-BR` | ✔️ | ✔️ | ✔️ | Nicht alle Unterkulturen |
 | Spanisch (Spanien) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spanisch (Mexiko)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| Tamilisch | `ta-IN`|❌|❌|❌|❌|
+| Telugu | `te-IN`|❌|❌|❌|❌|
 | Türkisch | `tr-TR` |✔️| ❌ | ❌ | Nur *Stimmung* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
