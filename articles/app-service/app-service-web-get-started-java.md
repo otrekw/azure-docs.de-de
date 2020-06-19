@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ed46859184dd17141892373943ac43e407b21eb6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300942"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817669"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Windows
 
@@ -48,6 +48,8 @@ cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurieren des Maven-Plug-Ins
+
+Der Prozess zur Bereitstellung in Azure App Service kann Ihre Azure-Anmeldeinformation automatisch aus der Azure CLI übernehmen. Wenn Sie Azure CLI nicht installiert haben, werden Sie vom Maven-Plug-In mit OAuth oder der Geräteanmeldung angemeldet. Überprüfen Sie bei Bedarf die Details zur [Authentifizierung mit Maven-Plug-Ins](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
 Sie können den folgenden maven-Befehl an der Eingabeaufforderung ausführen, um die Bereitstellung zu konfigurieren, indem Sie im ersten Schritt für das **Windows**-Betriebssystem **‚2‘** auswählen, dann die Standardkonfigurationen akzeptieren, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Bestätigen [ja/nein]** angezeigt wird. Drücken Sie dann **‚j‘** , um die Konfiguration abzuschließen. 
 

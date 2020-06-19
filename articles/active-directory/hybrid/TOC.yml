@@ -188,6 +188,8 @@
       items:
         - name: Aktivieren des Geräterückschreibens
           href: how-to-connect-device-writeback.md
+        - name: Aktivieren des Gruppenrückschreibens
+          href: how-to-connect-group-writeback.md
         - name: Geräteoptionen
           href: how-to-connect-device-options.md
         - name: Zusätzliche Features in Azure AD Connect

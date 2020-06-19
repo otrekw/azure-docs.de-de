@@ -194,11 +194,7 @@
         - name: Migrieren von einer zusammengesetzten Entität
           href: migrate-from-composite-entity.md
         - name: Migrieren zur Dokumenterstellungsressource
-          items:
-            - name: Übersicht
-              href: luis-migration-authoring.md
-            - name: Migrationsanleitung
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Migrieren zur V3-API
           href: luis-migration-api-v3.md
     - name: Verwalten der App
@@ -209,11 +205,7 @@
         - name: App- und Versionseinstellungen
           href: how-to-application-settings-portal.md
         - name: Migrieren zur Dokumenterstellungsressource
-          items:
-            - name: Übersicht
-              href: luis-migration-authoring.md
-            - name: Migrationsanleitung
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Ersteller und Mitwirkende
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/13/2020
+ms.date: 06/11/2020
 ms.author: victorh
-ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79366273"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792155"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Was ist Azure Firewall Manager (Vorschau)?
 
@@ -31,7 +31,7 @@ Firewall Manager bietet eine Sicherheitsverwaltung für zwei Netzwerkarchitektur
 
 Einen ausführlichen Vergleich des *geschützten virtuellen Hubs* und des *virtuellen Hubnetzwerks* finden Sie unter [Welche Architekturoptionen gibt es für Azure Firewall Manager?](vhubs-and-vnets.md).
 
-![Firewall Manager](media/overview/firewallmanagerv5.png)
+![Firewall Manager](media/overview/trusted-security-partners.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Features von Azure Firewall Manager (Vorschau)
 
