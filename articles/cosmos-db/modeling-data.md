@@ -68,7 +68,7 @@ Sehen Sie sich jetzt an, wie Sie die gleichen Daten als eigenständige Entität 
         ]
     }
 
-Mit dem oben stehenden Ansatz haben wir den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, etwa ihre Kontaktdaten und Adressen, in ein *einzelnes JSON-Dokument***eingebettet** haben.
+Mit dem oben stehenden Ansatz haben wir den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, etwa ihre Kontaktdaten und Adressen, in ein *einzelnes JSON-Dokument* **eingebettet** haben.
 Da wir nicht auf ein festes Schema beschränkt sind, haben wir darüber hinaus die Flexibilität, z. B. Kontaktdetails in vollständig verschiedenen Formen zu haben.
 
 Das Abrufen eines vollständigen Personendatensatzes aus der Datenbank besteht jetzt aus einem **einzelnen Lesevorgang** eines einzelnen Containers und für ein einzelnes Element. Das Aktualisieren eines Personendatensatzes zusammen mit den Kontaktinformationen und Adressen ist auch ein **einzelner Schreibvorgang** in einem einzelnen Element.
