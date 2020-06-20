@@ -30,9 +30,9 @@
     - name: Verwenden von REST-APIs
       items:
         - name: Abrufen der Absicht
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Ändern des Modells
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Tutorials
   items:
     - name: Erstellen einer zerlegbaren App
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: Migrieren zur V2-API
           href: luis-migration-api-v1-to-v2.md
+    - name: Verwenden von REST-APIs
+      items:
+        - name: Abrufen der Absicht
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Ändern des Modells
+          href: get-started-get-model-rest-apis.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern
