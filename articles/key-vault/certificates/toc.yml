@@ -34,6 +34,8 @@
       href: create-certificate-scenarios.md
     - name: Methoden für die Zertifikaterstellung
       href: create-certificate.md
+    - name: Erstellen einer Zertifikatsignieranforderung
+      href: create-certificate-signing-request.md
 - name: Anleitungen
   items:
     - name: Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle

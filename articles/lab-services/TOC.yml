@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: Szenarien
       items:
-        - name: Verwenden von Labs für das Abhalten von Kursen
+        - name: Verwenden von Lab Services für das Abhalten von Kursen
           href: classroom-labs-scenarios.md
+        - name: Verwenden von Lab Services für einen Hackathon
+          href: hackathon-labs.md
         - name: 'Classroom-Labs: Klassentypen'
           items:
             - name: Übersicht über Klassentypen

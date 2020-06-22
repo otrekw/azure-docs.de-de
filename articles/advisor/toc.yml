@@ -10,7 +10,7 @@
       href: advisor-get-started.md
 - name: Anleitungen
   items:
-    - name: Verbessern der Verfügbarkeit einer Azure-Anwendung
+    - name: Steigern der Zuverlässigkeit einer Azure-Anwendung
       href: advisor-high-availability-recommendations.md
     - name: Besserer Schutz von Ressourcen
       href: advisor-security-recommendations.md

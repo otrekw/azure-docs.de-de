@@ -10,8 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Neueste Updates
       items:
-        - name: "Updates vom Mai\_2020"
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: 'Mai 2020: Auftrags- und Metrikupdates'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: Dashboardupdates vom Mai 2020
           href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: "April\_2020: Neue Features"

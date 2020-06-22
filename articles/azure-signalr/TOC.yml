@@ -25,10 +25,6 @@
   items:
     - name: Erstellen einer serverlosen Echtzeit-App mit Authentifizierung
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Überwachen
-      items:
-        - name: Verwenden von Diagnoseprotokollen zum Überwachen von SignalR Service
-          href: signalr-tutorial-diagnostic-logs.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -51,6 +47,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Referenz zu SignalR Service-Bindungen für Azure Functions
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Upstreameinstellungen
+          href: concept-upstream.md
     - name: Hochverfügbarkeit
       items:
         - name: Resilienz und Notfallwiederherstellung
@@ -81,12 +79,20 @@
           href: howto-private-endpoints.md
         - name: Verwalten der Netzwerkzugriffssteuerung
           href: howto-network-access-control.md
+        - name: Verwenden der verwalteten Identität
+          href: howto-use-managed-identity.md
     - name: Integrieren
       items:
         - name: Azure Functions-Bindungen
           href: signalr-concept-azure-functions.md
         - name: Event Grid-Integration
           href: signalr-howto-event-grid-integration.md
+    - name: Überwachen
+      items:
+        - name: Verwenden von Diagnoseprotokollen zum Überwachen von SignalR Service
+          href: signalr-howto-diagnostic-logs.md
+        - name: Überwachen der Konformität mithilfe von Azure Policy
+          href: signalr-howto-azure-policy.md
 - name: References
   items:
     - name: Azure CLI
