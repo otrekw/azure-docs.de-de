@@ -193,6 +193,8 @@
           items:
             - name: Konfigurationsoptionen
               href: concepts-hyperscale-configuration-options.md
+            - name: Vorauszahlen für eine reservierte Kapazität
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Anleitungen
   items:
     - name: Einzelserver

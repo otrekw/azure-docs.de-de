@@ -410,7 +410,7 @@ Falls Ihre Organisation das Herstellen einer Verbindung mit bestimmten Ressource
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Ausführen von Vorgängen mit Variablen, z.B. Initialisieren, Festlegen, Erhöhen oder Verringern in einzelnen Schritten sowie Anfügen an Arrayvariable oder Zeichenfolgenvariable"
 
 <!--Managed connector doc links-->
-[azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "Erstellen und Verwalten von Automatisierungsaufträgen für Ihre Cloud und lokale Infrastruktur".
+[azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "Erstellen und Verwalten von Automatisierungsaufträgen für Ihre Cloud und lokale Infrastruktur"
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Verwalten von Dateien in Ihrem Blobcontainer mit Azure Blob Storage-Connector"
 [azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Herstellen einer Verbindung mit Azure Cosmos DB, damit Sie auf Dokumente und gespeicherte Prozeduren zugreifen können"
 [azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Überwachen von Ereignissen, die von Event Grid veröffentlicht werden, z. B. bei Änderungen von Azure-Ressourcen oder Drittanbieterressourcen"
