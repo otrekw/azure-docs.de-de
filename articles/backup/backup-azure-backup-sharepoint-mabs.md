@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure mit MABS
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657274"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234789"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 
@@ -68,10 +68,9 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
     * Geben Sie die Administratoranmeldeinformationen für die Farm an. Dieses Konto muss der lokalen Administratorgruppe auf dem WFE-Server angehören. Wenn der Farmadministrator kein lokaler Administrator ist, erteilen Sie auf dem WFE-Server die folgenden Berechtigungen:
 
-        * Erteilen Sie der Gruppe „WSS\_Admin\_WPG“ Vollzugriff auf den MABS-Ordner \(%Program Files%\\Data Protection Manager\\DPM\).
-            -A
+        * Erteilen Sie der Gruppe **WSS_Admin_WPG** Vollzugriff auf den MABS-Ordner (`%Program Files%\Data Protection Manager\DPM\`).
 
-        * Erteilen Sie der Gruppe „WSS\_Admin\_WPG“ Lesezugriff auf den MABS-Registrierungsschlüssel \(HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager\).
+        * Erteilen Sie der Gruppe **WSS_Admin_WPG** Lesezugriff auf den MABS-Registrierungsschlüssel (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`).
 
         Wenn sich die Administratoranmeldeinformationen für die SharePoint-Farm nach dem Ausführen von „ConfigureSharePoint.exe“ ändern, muss „ConfigureSharePoint.exe“ erneut ausgeführt werden.
 
