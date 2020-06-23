@@ -238,8 +238,10 @@
   items:
     - name: API- und Parametererweiterungen
       items:
-        - name: Anforderungen an Zeichnungspakete
+        - name: Anforderungen für Zeichnungspakete
           href: drawing-requirements.md
+        - name: StylesObject für dynamische Karten
+          href: schema-stateset-stylesobject.md
         - name: Fahrzeugnutzungsmodell
           href: consumption-model.md
         - name: GeoJSON-Format erweitern
