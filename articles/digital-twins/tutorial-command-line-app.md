@@ -8,12 +8,12 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 2534b2ef2eec0ca993ee2506dcc285d750ba38ce
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737195"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262338"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
@@ -81,7 +81,7 @@ Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 > Wenn Sie ein eigenes Modell erstellen möchten, können Sie den *Room*-Modellcode in eine neue Datei einfügen, die Sie mit der Erweiterung *.json* im Ordner *AdtSampleApp\SampleClientApp\Models* speichern. Fügen Sie dann zum Experimentieren Eigenschaften und Beziehungen hinzu, um die gewünschten Informationen darzustellen. Sie können sich auch die anderen Beispielmodelle in diesem Ordner ansehen, um sich inspirieren zu lassen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://github.com/Azure-Samples/DTDL-Validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie im Thema zum [ Analysieren und Validieren von Modellen](how-to-use-parser.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie im Thema zum [ Analysieren und Validieren von Modellen](how-to-use-parser.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Erste Schritte mit der Befehlszeilen-App
 
