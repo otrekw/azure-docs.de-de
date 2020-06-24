@@ -37,7 +37,7 @@
       items:
         - name: Lösungsarchitekturen mit Azure NetApp Files
           href: azure-netapp-files-solution-architectures.md
-        - name: Bestimmte Lösungen
+        - name: Vorteile der Verwendung von Azure NetApp Files
           items:
             - name: Vorteile der Verwendung von Azure NetApp Files mit Oracle Database
               href: solutions-benefits-azure-netapp-files-oracle-database.md

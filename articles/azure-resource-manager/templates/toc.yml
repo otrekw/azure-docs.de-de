@@ -14,6 +14,10 @@
       items:
         - name: KI + Machine Learning
           items:
+            - name: Cognitive Search
+              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Cognitive Services
+              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Virtueller Computer für Data Science
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
@@ -40,6 +44,8 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Synapse Analytics
+              href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blockchain
           items:
             - name: Blockchain
@@ -130,8 +136,6 @@
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
-            - name: Cognitive Search
-              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Tutorials
@@ -293,6 +297,14 @@
           href: export-template-portal.md
         - name: Ermitteln von Ressourcen
           href: view-resources.md
+    - name: Überprüfen von Vorlagen
+      items:
+        - name: Was-wäre-wenn-Bereitstellung
+          href: template-deploy-what-if.md
+        - name: Testtoolkit
+          href: test-toolkit.md
+        - name: Testfälle
+          href: test-cases.md
     - name: Bereitstellen von Vorlagen
       items:
         - name: 'Bereitstellen: Portal'
@@ -309,8 +321,6 @@
           href: deploy-rest.md
         - name: Bereitstellen über GitHub
           href: deploy-to-azure-button.md
-        - name: Was-wäre-wenn-Bereitstellung
-          href: template-deploy-what-if.md
         - name: Erneute Bereitstellung bei einem Fehler
           displayName: rollback
           href: rollback-on-error.md

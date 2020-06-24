@@ -394,30 +394,64 @@
       items:
         - name: Was ist ein Sprachassistent?
           href: voice-assistants.md
-    - name: Benutzerdefinierte Befehle (Vorschau)
+    - name: Benutzerdefinierte Befehle
       items:
         - name: Was sind benutzerdefinierte Befehle?
           href: custom-commands.md
         - name: Schnellstarts
           items:
             - name: Erstellen einer App für benutzerdefinierte Befehle
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Erstellen eines benutzerdefinierten Befehls mit Parametern
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Verwenden benutzerdefinierter Befehle mit Custom Voice
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: "Verwenden benutzerdefinierter Befehle mit dem Speech\_SDK"
-              href: quickstart-custom-speech-commands-speech-sdk.md
+              href: quickstart-custom-commands-application.md
         - name: Anleitungen
           items:
-            - name: Ausführen der Befehle eines Clients
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Hinzufügen einer Parameterüberprüfung
-              href: how-to-custom-speech-commands-validations.md
-            - name: Hinzufügen einer Bestätigung
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Hinzufügen einer Korrektur mit einem Schritt
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Entwickeln
+              items:
+                - name: Erstellen einer Anwendung mit einfachen Befehlen
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Hinzufügen von Parametern zu Befehlen
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Hinzufügen von Konfigurationen zu Befehlsparametern
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Hinzufügen von Interaktionsregeln
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integrieren
+              items:
+                - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Senden einer Aktivität an eine Clientanwendung
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Einrichten von Webendpunkten
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Bereitstellen
+              items:
+                - name: Continuous Deployment mit Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Test
+              items:
+                - name: Testen Ihrer App für benutzerdefinierte Befehle
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Debuggen
+              items:
+                - name: Debuggen von Fehlern beim Erstellen der App
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Debuggen von Fehlern beim Ausführen der App
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: References
+              items:
+                - name: Konzepte benutzerdefinierter Befehle
+                  href: custom-commands-references.md
+        - name: Ressourcen
+          items:
+            - name: Beispiele für benutzerdefinierte Befehle (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Beispiele für Sprachassistenten (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Häufig gestellte Fragen zu Sprachassistenten
+              href: faq-voice-assistants.md
+            - name: Sprach-SDK
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Was ist Direct Line Speech?

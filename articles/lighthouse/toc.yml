@@ -69,6 +69,8 @@
         - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel-Integration
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: Kundenaktionen
       items:
         - name: Dienstanbieter anzeigen und verwalten

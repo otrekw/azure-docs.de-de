@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Bleibt bei Windows-Update hängen
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Unerwarteter Neustart oder Fehler
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: Der virtuelle Computer bleibt beim Starten hängen.
           href: troubleshoot-vm-boot-configure-update.md
         - name: Der virtuelle Computer kann aufgrund des Windows-Start-Managers nicht gestartet werden.
