@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: Migrieren physischer Server
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: Bewerten und Migrieren von virtuellen AWS-Computern
+      items:
+        - name: 'Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: Bewerten importierter Server für die Migration
       items:
         - name: Bewerten importierter Server für die Migration
