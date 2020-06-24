@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117266"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212444"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -89,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
+Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
 
 Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 

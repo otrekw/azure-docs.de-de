@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873288"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212665"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
@@ -26,7 +26,7 @@ Wenn Sie manuell bezeichnete Trainingsdaten verwenden möchten, müssen Sie mit 
 
 ## <a name="training-data-tips"></a>Tipps zu Trainingsdaten
 
-Es ist wichtig, ein Dataset zu verwenden, das für das Trainieren optimiert ist. Verwenden Sie die folgenden Tipps, um sicherzustellen, dass Sie die besten Ergebnisse aus dem Vorgang [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) (Benutzerdefiniertes Modell trainieren)-erzielen:
+Es ist wichtig, ein Dataset zu verwenden, das für das Trainieren optimiert ist. Verwenden Sie die folgenden Tipps, um sicherzustellen, dass Sie die besten Ergebnisse aus dem Vorgang [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) (Benutzerdefiniertes Modell trainieren)-erzielen:
 
 * Verwenden Sie nach Möglichkeit textbasierte PDF-Dokumente anstelle von bildbasierten Dokumenten. Gescannte PDF-Dateien werden als Bilder behandelt.
 * Verwenden Sie als ausgefüllte Formulare Exemplare, in denen alle Felder ausgefüllt sind.
@@ -48,7 +48,7 @@ Wenn Sie manuell bezeichnete Daten verwenden möchten, müssen Sie auch die Date
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organisieren Ihrer Daten in Unterordnern (optional)
 
-Standardmäßig werden von der [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)-Aufrufs das folgende Format, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
+Standardmäßig werden von der [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)-Aufrufs das folgende Format, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
 
 ```json
 {

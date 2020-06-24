@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872301"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080180"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Tutorial: Durch KI generierter durchsuchbarer Inhalt aus Azure-Blobs mit dem .NET SDK
 
 Wenn Sie in Azure-Blobspeicher über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. In diesem C#-Tutorial wenden Sie die optische Zeichenerkennung (Optical Character Recognition, OCR) auf Bilder an und führen die Verarbeitung natürlicher Sprache durch, um neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
-In diesem Tutorial werden C# und das [.NET SDK](https://aka.ms/search-sdk) verwendet, um die folgenden Aufgaben durchzuführen:
+In diesem Tutorial werden C# und das [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwendet, um die folgenden Aufgaben durchzuführen:
 
 > [!div class="checklist"]
 > * Beginnen Sie mit Anwendungsdateien und Bildern in Azure-Blobspeicher.
@@ -127,7 +127,7 @@ Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her 
 
 ### <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
-Das [.NET SDK für Azure Cognitive Search](https://aka.ms/search-sdk) umfasst einige wenige Clientbibliotheken, mit denen Sie sowohl Ihre Indizes, Datenquellen, Indexer und Qualifikationsgruppen verwalten als auch Dokumente hochladen und verwalten sowie Abfragen ausführen können, ohne die Details von HTTP und JSON berücksichtigen zu müssen. Alle diese Clientbibliotheken werden als NuGet-Pakete verteilt.
+Das [.NET SDK für Azure Cognitive Search](https://docs.microsoft.com/dotnet/api/overview/azure/search) umfasst einige wenige Clientbibliotheken, mit denen Sie sowohl Ihre Indizes, Datenquellen, Indexer und Qualifikationsgruppen verwalten als auch Dokumente hochladen und verwalten sowie Abfragen ausführen können, ohne die Details von HTTP und JSON berücksichtigen zu müssen. Alle diese Clientbibliotheken werden als NuGet-Pakete verteilt.
 
 Installieren Sie für dieses Projekt Version 9 (oder höher) des NuGet-Pakets `Microsoft.Azure.Search`.
 
