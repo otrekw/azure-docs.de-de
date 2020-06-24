@@ -70,8 +70,6 @@
           href: redirect-overview.md
         - name: Erneutes Generieren von HTTP-Headern
           href: rewrite-http-headers.md
-        - name: Benutzerdefinierte Fehlerseiten
-          href: custom-error.md
     - name: SSL
       items:
         - name: SSL-Terminierung und End-to-End-SSL
@@ -240,6 +238,8 @@
           href: log-analytics.md
         - name: Back-End-Integritätsprobleme
           href: application-gateway-backend-health-troubleshooting.md
+    - name: Benutzerdefinierte Fehlerseiten
+      href: custom-error.md
     - name: Migrieren von v1 zu v2
       href: migrate-v1-v2.md
 - name: Verweis

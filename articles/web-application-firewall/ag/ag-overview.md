@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747769"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212903"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall für Azure Application Gateway
 
 Die Azure Web Application Firewall (WAF) für Application Gateway bietet zentralisierten Schutz vor verbreiteten Exploits und Sicherheitsrisiken für Ihre Webanwendungen. Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Einschleusung von SQL-Befehlen und websiteübergreifendes Skripting gehören zu den häufigsten Angriffen.
 
-Die WAF für Application Gateway basiert auf der Version 3.1, 3.0 oder 2.2.9 des [Kernregelsatzes (Core Rule Set, CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) aus dem Open Web Application Security Project (OWASP). Die WAF wird automatisch aktualisiert und bietet Schutz vor neuen Sicherheitsrisiken, ohne dass zusätzliche Konfiguration erforderlich ist. 
+Die WAF für Application Gateway basiert auf der Version 3.1, 3.0 oder 2.2.9 des [Kernregelsatzes (Core Rule Set, CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) aus dem Open Web Application Security Project (OWASP). Die WAF wird automatisch aktualisiert und bietet Schutz vor neuen Sicherheitsrisiken, ohne dass zusätzliche Konfiguration erforderlich ist. 
 
 Alle unten aufgeführten WAF-Features befinden sich innerhalb einer WAF-Richtlinie. Sie können mehrere Richtlinien erstellen, und diese können einer Application Gateway-Instanz, einzelnen Listenern oder pfadbasierten Routingregeln für eine Application Gateway-Instanz zugeordnet werden. Dadurch können Sie bei Bedarf separate Richtlinien für jede Website hinter Ihrer Application Gateway-Instanz verwenden. Weitere Informationen zu WAF-Richtlinien finden Sie unter [Erstellen von Web Application Firewall-Richtlinien für Application Gateway](create-waf-policy-ag.md).
 

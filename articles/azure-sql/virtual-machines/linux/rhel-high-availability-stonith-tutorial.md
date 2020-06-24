@@ -7,20 +7,18 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343785"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079373"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> Dieses Tutorial befindet sich in der **Public Preview-Phase**. 
->
 > In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie im Artikel [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
 
 In diesem Tutorial lernen Sie Folgendes:

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634932"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079388"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Schnellstart: Erstellen eines Suchindex in .NET
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634932"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Erstellen Sie mithilfe von Visual Studio und dem [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) in C# eine .NET Core-Konsolenanwendung, die einen Azure Cognitive Search-Index erstellt, lädt und abfragt. 
+Erstellen Sie mithilfe von Visual Studio und dem [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) in C# eine .NET Core-Konsolenanwendung, die einen Azure Cognitive Search-Index erstellt, lädt und abfragt. 
 
 In diesem Artikel wird die Erstellung der Anwendung Schritt für Schritt erklärt. Sie könnten auch [die komplette Anwendung herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart), wenn Sie direkt zum Code wechseln möchten.
 
@@ -64,7 +64,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 ### <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
-Das [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) besteht aus einigen Clientbibliotheken, die als NuGet-Pakete verteilt werden.
+Das [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) besteht aus einigen Clientbibliotheken, die als NuGet-Pakete verteilt werden.
 
 Verwenden Sie für dieses Projekt die Version 9 des NuGet-Pakets `Microsoft.Azure.Search` sowie das neueste NuGet-Paket `Microsoft.Extensions.Configuration.Json`.
 
