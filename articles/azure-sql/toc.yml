@@ -664,12 +664,15 @@
     - name: Schnellstarts
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: Erstellen
+        - name: Erstellen einer verwalteten SQL-Instanz
           items:
-            - name: Verwenden des Azure-Portals
+            - name: Azure-Portal
               href: managed-instance/instance-create-quickstart.md
             - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM-Vorlage
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: Erstellen von Instanzenpools
               href: managed-instance/instance-pools-configure.md
         - name: Konfigurieren
