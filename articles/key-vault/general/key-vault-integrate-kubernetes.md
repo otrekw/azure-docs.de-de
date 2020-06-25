@@ -1,92 +1,93 @@
 ---
 title: Integrieren von Azure Key Vault mit Kubernetes
-description: In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie ab und verwenden dann den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung in Kubernetes-Pods.
+description: In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung in Kubernetes-Pods verwenden.
 author: taytran0
 ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e945a30ca1fcd62fdfccd16d4e853540dbf73d8a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636934"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817334"
 ---
-# <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-secret-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
+# <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
-In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie ab und verwenden dann den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung in Kubernetes-Pods.
+In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung der Geheimnisse in Kubernetes-Pods verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Dienstprinzipals
-> * Bereitstellen eines Azure Kubernetes Service-Clusters
-> * Installieren von Helm und des Secrets Store CSI-Treibers
-> * Erstellen einer Azure Key Vault-Instanz und Festlegen von Geheimnissen
-> * Erstellen eines eigenen „SecretProviderClass“-Objekts
-> * Bereitstellen Ihres Pods mit eingebundenen Geheimnissen aus Key Vault
+> * Erstellen eines Dienstprinzipals oder Verwenden von verwalteten Identitäten.
+> * Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure CLI.
+> * Installieren von Helm und des Secrets Store CSI-Treibers.
+> * Erstellen einer Azure Key Vault-Instanz und Festlegen Ihrer Geheimnisse.
+> * Erstellen Ihres eigenen „SecretProviderClass“-Objekts.
+> * Zuweisen Ihres Dienstprinzipals oder Verwenden von verwalteten Identitäten.
+> * Bereitstellen Ihres Pods mit eingebundenen Geheimnissen aus Ihrem Schlüsseltresor.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest), bevor Sie mit diesem Tutorial beginnen.
+* Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest), bevor Sie mit diesem Tutorial beginnen.
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>Erstellen eines Dienstprinzipals oder Verwenden von verwalteten Identitäten
 
 Wenn Sie verwaltete Identitäten verwenden möchten, können Sie mit dem nächsten Abschnitt fortfahren.
 
-Erstellen Sie einen Dienstprinzipal, um zu steuern, auf welche Ressourcen von Ihrer Azure Key Vault-Instanz aus zugegriffen werden kann. Die Zugriffsberechtigungen dieses Dienstprinzipals sind durch die Rollen eingeschränkt, die ihm zugewiesen sind. Mit diesem Feature haben Sie die Kontrolle darüber, wie der Dienstprinzipal Ihre Geheimnisse verwalten kann. Im Beispiel unten lautet der Name des Dienstprinzipals **contosoServicePrincipal**.
+Erstellen Sie einen Dienstprinzipal, um zu steuern, auf welche Ressourcen von Ihrer Azure Key Vault-Instanz aus zugegriffen werden kann. Die Zugriffsberechtigungen dieses Dienstprinzipals sind durch die Rollen eingeschränkt, die ihm zugewiesen sind. Mit diesem Feature haben Sie die Kontrolle darüber, wie der Dienstprinzipal Ihre Geheimnisse verwalten kann. Im folgenden Beispiel lautet der Name des Dienstprinzipals *contosoServicePrincipal*.
 
 ```azurecli
 az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 ```
-Bei diesem Vorgang wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben:
+Daraufhin wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben:
 
-![Image](../media/kubernetes-key-vault-1.png)
+![Screenshot, der die appId und das Kennwort (password) für contosoServicePrincipal anzeigt.](../media/kubernetes-key-vault-1.png)
 
-Kopieren Sie die App-ID (**appID**) und das **Kennwort** (password). Sie benötigen diese Anmeldeinformationen später noch.
+Kopieren Sie die **appId**- und **password**-Anmeldeinformationen zur späteren Verwendung.
 
+## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure CLI
 
+Sie müssen Azure Cloud Shell nicht verwenden. Ihre Eingabeaufforderung (Terminal) mit einer installierten Azure CLI reicht aus. 
 
-## <a name="deploy-an-azure-kubernetes-service-cluster-using-azure-cli"></a>Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure CLI
+Führen Sie die Abschnitte „Erstellen einer Ressourcengruppe“, „Erstellen eines AKS-Clusters“ und „Herstellen einer Verbindung mit dem Cluster“ in [Bereitstellen eines Azure Kubernetes Service-Clusters mithilfe der Azure CLI](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) aus. 
 
-Sie müssen Azure Cloud Shell nicht verwenden. Ihre Eingabeaufforderung (Terminal) mit einer Azure CLI-Installation reicht aus. 
+> [!NOTE] 
+> Wenn Sie beabsichtigen, eine Pod-Identität anstelle eines Dienstprinzipals zu verwenden, stellen Sie sicher, dass Sie sie beim Erstellen des Kubernetes-Clusters aktivieren, wie im folgenden Befehl gezeigt:
+>
+> ```azurecli
+> az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
+> ```
 
-Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough), und arbeiten Sie darin die folgenden Abschnitte durch: **Erstellen einer Ressourcengruppe**, **Erstellen eines AKS-Clusters** und **Herstellen einer Verbindung mit dem Cluster**.
-
-**Hinweis:** Beachten Sie die hier angegebenen Informationen, falls Sie planen, anstelle eines Dienstprinzipals eine Podidentität zu verwenden. Aktivieren Sie sie wie unten gezeigt beim Erstellen des Kubernetes-Clusters:
-
-```azurecli
-az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
-```
-
-1. Führen Sie das [Festlegen Ihrer PATH-Umgebungsvariable](https://www.java.com/en/download/help/path.xml) auf die heruntergeladene Datei „kubectl.exe“ durch.
-1. Überprüfen Sie Ihre Kubernetes-Version mit dem unten angegebenen Befehl. Mit diesem Befehl wird die Client- und die Serverversion ausgegeben. Die Clientversion ist die Datei „kubectl.exe“, die Sie installiert haben, und die Serverversion ist die Azure Kubernetes Services-Instanz, auf der Ihr Cluster ausgeführt wird.
+1. [Legen Sie Ihre PATH-Umgebungsvariable](https://www.java.com/en/download/help/path.xml) auf die heruntergeladene Datei *kubectl.exe* fest.
+1. Überprüfen Sie Ihre Kubernetes-Version, indem Sie den folgenden Befehl verwenden, der die Client- und Serverversion ausgibt. Die Clientversion ist die Datei *kubectl.exe*, die Sie installiert haben, und die Serverversion ist die Azure Kubernetes Services-Instanz (AKS), auf der Ihr Cluster ausgeführt wird.
     ```azurecli
     kubectl version
     ```
-1. Stellen Sie sicher, dass Sie die Kubernetes-Version **v1.16.0** oder höher verwenden. Mit diesem Befehl wird ein Upgrade sowohl für den Kubernetes-Cluster als auch für den Knotenpool durchgeführt. Die Ausführung kann einige Minuten dauern. In diesem Beispiel werden die Ressourcengruppe **contosoResourceGroup** und der Kubernetes-Cluster **contosoAKSCluster** verwendet.
+1. Stellen Sie sicher, dass Ihre Kubernetes-Version 1.1.16.0 oder höher ist. Mit dem folgenden Befehl wird ein Upgrade sowohl für den Kubernetes-Cluster als auch für den Knotenpool durchgeführt. Die Ausführung des Befehls kann einige Minuten dauern. In diesem Beispiel ist die Ressourcengruppe *contosoResourceGroup*, und der Kubernetes-Cluster ist *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Zeigen Sie die Metadaten des von Ihnen erstellten AKS-Clusters mit dem unten angegebenen Befehl an. Kopieren Sie **principalId**, **clientId**, **subscriptionId** und **nodeResourceGroup**.
+1. Um die Metadaten des von Ihnen erstellten AKS-Clusters anzuzeigen, verwenden Sie den folgenden Befehl. Kopieren Sie **principalId**, **clientId**, **subscriptionId** und **nodeResourceGroup** zur späteren Verwendung.
+
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
 
-    Hier ist die Ausgabe mit den beiden hervorgehobenen Parametern angegeben.
+    In der Ausgabe sind beide Parameter hervorgehoben:
     
-    ![Abbildung](../media/kubernetes-key-vault-5.png) ![Abbildung](../media/kubernetes-key-vault-6.png)
+    ![Screenshot der Azure CLI mit hervorgehobenen Werten von „principalId“ und „clientId“](../media/kubernetes-key-vault-2.png) ![Screenshot der Azure CLI mit hervorgehobenen Werten von „subscriptionId“ und „nodeResourceGroup“](../media/kubernetes-key-vault-3.png)
     
-## <a name="install-helm-and-secrets-store-csi-driver"></a>Installieren von Helm und des Secrets Store CSI-Treibers
+## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Installieren von Helm und des Secrets Store CSI-Treibers
 
-Für die Installation des Secrets Store CSI-Treibers müssen Sie [Helm](https://helm.sh/docs/intro/install/) installieren.
+Um den Secrets Store CSI-Treibers zu installieren, müssen Sie zuerst [Helm](https://helm.sh/docs/intro/install/) installieren.
 
-Mit der [Secrets Store CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/charts/csi-secrets-store-provider-azure/README.md)-Treiberschnittstelle können Sie Geheimnisinhalte abrufen, die auf einer Azure Key Vault-Instanz gespeichert sind. Anschließend können Sie die Treiberschnittstelle dann nutzen, um diese Geheimnisinhalte in Kubernetes-Pods einzubinden.
+Mit der [Secrets Store CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/charts/csi-secrets-store-provider-azure/README.md)-Treiberschnittstelle können Sie die Geheimnisse abrufen, die in Ihrer Azure Key Vault-Instanz gespeichert sind. Anschließend können Sie die Treiberschnittstelle nutzen, um die Geheimnisinhalte in Kubernetes-Pods einzubinden.
 
-1. Überprüfen Sie die Helm-Version, und stellen Sie sicher, dass Version 3 oder höher verwendet wird:
+1. Überprüfen Sie die Helm-Version, und stellen Sie sicher, dass es v3 oder höher ist:
     ```azurecli
     helm version
     ```
@@ -97,30 +98,32 @@ Mit der [Secrets Store CSI](https://github.com/Azure/secrets-store-csi-driver-pr
     helm install csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --generate-name
     ```
 
-## <a name="create-an-azure-key-vault-and-set-secrets"></a>Erstellen einer Azure Key Vault-Instanz und Festlegen von Geheimnissen
+## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Erstellen einer Azure Key Vault-Instanz und Festlegen Ihrer Geheimnisse
 
-Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli), um Ihre eigene Key Vault-Instanz zu erstellen und Ihre Geheimnisse festzulegen.
+Befolgen Sie zum Erstellen Ihres eigenen Schlüsseltresors und zum Festlegen Ihrer Geheimnisse die Anleitungen unter [Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli).
 
-**Hinweis:** Es ist nicht erforderlich, Azure Cloud Shell zu verwenden oder eine neue Ressourcengruppe zu erstellen. Es reicht aus, wenn Sie die Ressourcengruppe nutzen, die Sie zuvor für den Kubernetes-Cluster erstellt haben.
+> [!NOTE] 
+> Sie müssen weder Azure Cloud Shell verwenden noch eine neue Ressourcengruppe erstellen. Sie können die Ressourcengruppe verwenden, die Sie zuvor für den Kubernetes-Cluster erstellt haben.
 
-## <a name="create-your-own-secretproviderclass-object"></a>Erstellen eines eigenen „SecretProviderClass“-Objekts
+## <a name="create-your-own-secretproviderclass-object"></a>Erstellen Ihres eigenen „SecretProviderClass“-Objekts
 
-Verwenden Sie [diese Vorlage](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml), um Ihr eigenes benutzerdefiniertes „SecretProviderClass“-Objekt zu erstellen. Hiermit können Sie anbieterspezifische Parameter für den Secrets Store CSI-Treiber bereitstellen. Dieses Objekt ermöglicht den Identitätszugriff auf Ihre Key Vault-Instanz.
+Um Ihr eigenes „SecretProviderClass“-Objekt mit anbieterspezifischen Parametern für den Secrets Store CSI-Treiber zu erstellen, [verwenden Sie diese Vorlage](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml). Dieses Objekt ermöglicht den Identitätszugriff auf Ihren Schlüsseltresor.
 
-Verwenden Sie die bereitgestellte YAML-Beispieldatei für „SecretProviderClass“. Sie fügen die fehlenden Parameter ein. Die folgenden Parameter sind erforderlich:
+Tragen Sie in der YAML-Beispieldatei „SecretProviderClass“ die fehlenden Parameter ein. Die folgenden Parameter sind erforderlich:
 
-1.  **userAssignedIdentityID:** Client-ID des Dienstprinzipals
-1.  **keyvaultName:** Name der Key Vault-Instanz
-1.  **objects:** Dieses Objekt enthält den gesamten Geheimnisinhalt, den Sie einbinden möchten.
-    1.  **objectName:** Name des Geheimnisinhalts
-    1.  **objectType:** Objekttyp (Geheimnis, Schlüssel, Zertifikat)
-1.  **resourceGroup:** Name der Ressourcengruppe
-1.  **subscriptionId:** Abonnement-ID der Key Vault-Instanz
-1.  **tenantID:** Mandanten-ID (Verzeichnis-ID) der Key Vault-Instanz
+* **userAssignedIdentityID**: Die Client-ID des Dienstprinzipals.
+* **keyvaultName**: Der Name Ihres Schlüsseltresors.
+* **objects**: Der Container für den gesamten Geheimnisinhalt, den Sie einbinden möchten.
+    * **objectName**: Der Name des Geheimnisinhalts.
+    * **objectType**: Der Objekttyp (Geheimnis, Schlüssel, Zertifikat).
+* **resourceGroup**: Der Name der Ressourcengruppe.
+* **subscriptionId**: Die Abonnement-ID Ihres Schlüsseltresors.
+* **tenantID**: Die Mandanten-ID oder Verzeichnis-ID Ihres Schlüsseltresors.
 
-Unten ist die aktualisierte Vorlage angegeben. Laden Sie sie als YAML-Datei herunter, und fügen Sie die Informationen in die entsprechenden erforderlichen Felder ein. In diesem Beispiel wird die Key Vault-Instanz **contosoKeyVault5** mit den beiden Geheimnissen **secret1** und **secret2** verwendet.
+Die aktualisierte Vorlage ist im folgenden Code dargestellt. Laden Sie sie als YAML-Datei herunter, und füllen Sie die erforderlichen Felder aus. In diesem Beispiel ist der Schlüsseltresor **contosoKeyVault5**. Er verfügt über zwei Geheimnisse, **secret1** und **secret2**.
 
-**Hinweis:** Bei Verwendung von verwalteten Identitäten muss das Feld**usePodIdentity** auf **true** festgelegt werden. Behalten Sie im Feld **userAssignedIdentityID** die Anführungszeichen ( **""** ) bei, und fügen Sie keinen weiteren Text hinzu. 
+> [!NOTE] 
+> Wenn Sie verwaltete Identitäten verwenden, legen Sie den Wert von **usePodIdentity** auf *true*fest, und legen Sie den Wert von **userAssignedIdentityID** auf ein Paar Anführungszeichen ( **""** ) fest. 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -132,62 +135,64 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If using a Service Principal, use the client id to specify which user assigned managed identity to use. If using a user assigned identity as the VM's managed identity, then specify the identity's client id. If empty, then defaults to use the system assigned identity on the VM
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
                                                              #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the above command will return the Client ID of your service principal
-    keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the Key Vault
+                                                             #     the preceding command will return the client ID of your service principal
+    keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
-                                              #     the above command will displays the Key Vault metadata, which includes the subscription ID, resource group name, Key Vault 
-    cloudName: ""                             # [OPTIONAL for Azure] if not provided, azure environment will default to AzurePublicCloud
+                                              #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
+    cloudName: ""                             # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
           objectName: secret1                 # [REQUIRED] object name
                                               #     az keyvault secret list --vault-name “contosoKeyVault5”
-                                              #     the above command will display a list of secret names from your Key Vault
-          objectType: secret                  # [REQUIRED] object types: secret, key or cert
+                                              #     the above command will display a list of secret names from your key vault
+          objectType: secret                  # [REQUIRED] object types: secret, key, or cert
           objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty
         - |
           objectName: secret2
           objectType: secret
           objectVersion: ""
-    resourceGroup: "contosoResourceGroup"     # [REQUIRED] the resource group name of the Key Vault
-    subscriptionId: "subscriptionID"          # [REQUIRED] the subscription ID of the Key Vault
-    tenantId: "tenantID"                      # [REQUIRED] the tenant ID of the Key Vault
+    resourceGroup: "contosoResourceGroup"     # [REQUIRED] the resource group name of the key vault
+    subscriptionId: "subscriptionID"          # [REQUIRED] the subscription ID of the key vault
+    tenantId: "tenantID"                      # [REQUIRED] the tenant ID of the key vault
 ```
-Unten ist die Konsolenausgabe für „az keyvault show --name contosoKeyVault5“ mit den relevanten hervorgehobenen Metadaten angegeben:
+Die folgende Abbildung zeigt die Konsolenausgabe für **az keyvault show --name contosoKeyVault5** mit den relevanten hervorgehobenen Metadaten:
 
-![Image](../media/kubernetes-key-vault-2.png)
+![Screenshot der Konsolenausgabe für „az keyvault show --name contosoKeyVault5“](../media/kubernetes-key-vault-4.png)
 
 ## <a name="assign-your-service-principal-or-use-managed-identities"></a>Zuweisen Ihres Dienstprinzipals oder Verwenden von verwalteten Identitäten
 
-### <a name="using-service-principal"></a>Verwenden eines Dienstprinzipals
+### <a name="assign-a-service-principal"></a>Zuweisen eines Dienstprinzipals
 
-Gehen Sie bei Verwendung eines Dienstprinzipals wie folgt vor: Sie müssen Ihrem Dienstprinzipal die Berechtigung zum Zugreifen auf Ihre Key Vault-Instanz und zum Abrufen von Geheimnissen erteilen. Weisen Sie die Rolle **„Leser“** zu, und erteilen Sie dem Dienstprinzipal die Berechtigung zum Abrufen ( **„get“** ) von Geheimnissen von Ihrer Key Vault-Instanz, indem Sie die hier angegebenen Schritte ausführen:
+Wenn Sie einen Dienstprinzipal verwenden, gewähren Sie diesem Berechtigungen zum Zugreifen auf Ihren Schlüsseltresor und zum Abrufen von Geheimnissen. Weisen Sie die Rolle *Leser* zu, und gewähren Sie dem Dienstprinzipal Berechtigungen zum Abrufen (*get*) von Geheimnissen aus Ihrem Schlüsseltresor, indem Sie wie folgt vorgehen:
 
-1. Weisen Sie den Dienstprinzipal der vorhandenen Key Vault-Instanz zu. Der Parameter **$AZURE_CLIENT_ID** ist die **appId**, die Sie nach dem Erstellen Ihres Dienstprinzipals kopiert haben.
+1. Weisen Sie Ihren Dienstprinzipal Ihrem vorhandenen Schlüsseltresor zu. Der Parameter **$AZURE_CLIENT_ID** ist die **appId**, die Sie nach dem Erstellen Ihres Dienstprinzipals kopiert haben.
     ```azurecli
     az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
     ```
 
-    Hier ist die Ausgabe des Befehls angegeben: 
+    Die Ausgabe des Befehls ist in der folgenden Abbildung dargestellt: 
 
-    ![Image](../media/kubernetes-key-vault-3.png)
+    ![Screenshot des principalId-Werts](../media/kubernetes-key-vault-5.png)
 
-1. Erteilen Sie dem Dienstprinzipal die Berechtigung zum Abrufen von Geheimnissen:
+1. Gewähren Sie dem Dienstprinzipal Berechtigungen zum Abrufen von Geheimnissen:
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
     ```
 
-1. Sie haben Ihren Dienstprinzipal nun so konfiguriert, dass er über die Berechtigung zum Lesen von Geheimnissen von Ihrer Key Vault-Instanz verfügt. **$AZURE_CLIENT_SECRET** ist das **Kennwort** für Ihren Dienstprinzipal. Fügen Sie die Anmeldeinformationen des Dienstprinzipals als Kubernetes-Geheimnis hinzu, auf das vom Secrets Store CSI-Treiber zugegriffen werden kann:
+1. Sie haben Ihren Dienstprinzipal nun so konfiguriert, dass er über Berechtigungen zum Lesen von Geheimnissen auf Ihrem Schlüsseltresor verfügt. **$AZURE_CLIENT_SECRET** ist das Kennwort für Ihren Dienstprinzipal. Fügen Sie die Anmeldeinformationen des Dienstprinzipals als Kubernetes-Geheimnis hinzu, auf das der Secrets Store CSI-Treiber zugreifen kann:
     ```azurecli
     kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
     ```
 
-**Hinweis:** Es kann sein, dass Sie später beim Bereitstellen des Kubernetes-Pods einen Fehler zu einer ungültigen ID für einen geheimen Clientschlüssel erhalten. Unter Umständen verfügen Sie über eine ältere ID für einen geheimen Clientschlüssel, die abgelaufen ist oder zurückgesetzt wurde. Löschen Sie zum Beheben dieses Problems „secrets-store-creds“ für Ihr Geheimnis, und erstellen Sie diese Informationen mit der aktuellen ID für den geheimen Clientschlüssel neu. Führen Sie den folgenden Befehl aus, um „secrets-store-creds“ zu löschen:
-```azurecli
-kubectl delete secrets secrets-store-creds
-```
+> [!NOTE] 
+> Wenn Sie den Kubernetes Pod bereitstellen und eine Fehlermeldung wegen einer ungültigen geheimen Clientschlüssel-ID erhalten, besitzen Sie möglicherweise eine ältere geheime Clientschlüssel-ID, die abgelaufen ist oder zurückgesetzt wurde. Um dieses Problem zu beheben, löschen Sie Ihr Geheimnis *secrets-store-creds*, und erstellen Sie ein neues mit der aktuellen ID für den geheimen Clientschlüssel. Führen Sie den folgenden Befehl aus, um Ihr *secrets-store-creds* zu löschen:
+>
+> ```azurecli
+> kubectl delete secrets secrets-store-creds
+> ```
 
 Falls Sie die ID des geheimen Clientschlüssels für Ihren Dienstprinzipal vergessen haben, können Sie sie mit dem folgenden Befehl zurücksetzen:
 
@@ -195,10 +200,11 @@ Falls Sie die ID des geheimen Clientschlüssels für Ihren Dienstprinzipal verge
 az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
 ```
 
-### <a name="using-managed-identities"></a>Verwenden von verwalteten Identitäten
+### <a name="use-managed-identities"></a>Verwenden verwalteter Identitäten
 
-Weisen Sie dem AKS-Cluster, den Sie erstellt haben, bei Verwendung von verwalteten Identitäten bestimmte Rollen zu. 
-1. Ihrem AKS-Cluster muss die Rolle [Mitwirkender für verwaltete Identität](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, um eine vom Benutzer zugewiesene verwaltete Identität erstellen, auflisten oder lesen zu können. Stellen Sie sicher, dass die **$clientId** die ID des Kubernetes-Clusters ist.
+Wenn Sie verwaltete Identitäten verwenden, weisen Sie dem AKS-Cluster, den Sie erstellt haben, spezifische Rollen zu. 
+
+1. Ihrem AKS-Cluster muss die Rolle [Mitwirkender für verwaltete Identität](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, um eine vom Benutzer zugewiesene verwaltete Identität erstellen, auflisten oder lesen zu können. Stellen Sie sicher, dass die **$clientId** die clientId des Kubernetes-Clusters ist.
 
     ```azurecli
     az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -213,51 +219,55 @@ Weisen Sie dem AKS-Cluster, den Sie erstellt haben, bei Verwendung von verwaltet
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Erstellen Sie eine Azure AD-Identität. Kopieren Sie die **clientId** und die **principalId**.
+1. Erstellen Sie eine Azure AD-Identität. Kopieren Sie in der Ausgabe die **clientId** und **principalId** zur späteren Verwendung.
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. Weisen Sie die Rolle „Leser“ der Azure AD-Identität zu, die Sie gerade für Ihre Key Vault-Instanz erstellt haben. Erteilen Sie für die Identität anschließend die Berechtigung zum Abrufen von Geheimnissen von Ihrer Key Vault-Instanz. Sie verwenden die **clientId** und **principalId** der eben erstellten Azure-Identität.
+1. Weisen Sie der Azure AD-Identität, die Sie im vorherigen Schritt für Ihren Schlüsseltresor erstellt haben, die Rolle *Leser* zu, und erteilen Sie dann der Identität Berechtigungen, um Geheimnisse aus Ihrem Schlüsseltresor abzurufen. Verwenden Sie die **clientId** und **principalId** aus der Azure AD-Identität.
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     ```
 
-## <a name="deploy-your-pod-with-mounted-secrets-from-key-vault"></a>Bereitstellen Ihres Pods mit eingebundenen Geheimnissen aus Key Vault
+## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>Bereitstellen Ihres Pods mit eingebundenen Geheimnissen aus Ihrem Schlüsseltresor
 
-Mit dem folgenden Befehl wird Ihr „SecretProviderClass“-Objekt konfiguriert:
+Um Ihr „SecretProviderClass“-Objekt zu konfigurieren, führen Sie den folgenden Befehl aus:
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
 ```
 
-### <a name="using-service-principal"></a>Verwenden eines Dienstprinzipals
+### <a name="use-a-service-principal"></a>Verwenden eines Dienstprinzipals
 
-Gehen Sie bei Verwendung eines Dienstprinzipals wie folgt vor: Mit dem folgenden Befehl werden Ihre Kubernetes-Pods mit „SecretProviderClass“ und den von Ihnen konfigurierten Informationen für „secrets-store-creds“ bereitgestellt. Verwenden Sie die Vorlage für die Bereitstellung unter [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml) oder unter [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml).
+Wenn Sie einen Dienstprinzipal verwenden, verwenden Sie den folgenden Befehl, um Ihre Kubernetes-Pods mit der „SecretProviderClass“ und den von Ihnen zuvor konfigurierten „secrets-store-creds“ bereitzustellen. Hier finden Sie die Bereitstellungsvorlagen:
+* Für [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml)
+* Für [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml)
+
 ```azurecli
 kubectl apply -f updateDeployment.yaml
 ```
 
-### <a name="using-managed-identities"></a>Verwenden von verwalteten Identitäten
+### <a name="use-managed-identities"></a>Verwenden verwalteter Identitäten
 
-Gehen Sie bei Verwendung von verwalteten Identitäten wie folgt vor: Erstellen Sie ein **AzureIdentity**-Element in Ihrem Cluster, für das auf die zuvor erstellte Identität verwiesen wird. Erstellen Sie anschließend ein **AzureIdentityBinding**-Element, für das auf das erstellte **AzureIdentity**-Element verwiesen wird. Verwenden Sie die unten angegebene Vorlage. Fügen Sie die entsprechenden Parameterwerte ein, und speichern Sie sie als **podIdentityAndBinding.yaml**.  
+Wenn Sie verwaltete Identitäten verwenden, erstellen Sie eine *AzureIdentity* in Ihrem Cluster, die auf die zuvor von Ihnen erstellte Identität verweist. Erstellen Sie dann eine *AzureIdentityBinding*, die auf die von Ihnen erstellte AzureIdentity verweist. Tragen Sie die Parameter in der folgenden Vorlage ein, und speichern Sie diese dann als *podIdentityAndBinding.yaml*.  
+
 ```yml
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentity
 metadata:
-    name: "azureIdentityName"               # The name of your Azure Idenity
+    name: "azureIdentityName"               # The name of your Azure identity
 spec:
-    type: 0                                 # Set type: 0 for Managed Service Identity
+    type: 0                                 # Set type: 0 for managed service identity
     resourceID: /subscriptions/<SUBID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<AZUREIDENTITYNAME>
-    clientID: "managedIdentityClientId"     # The clientId of your Azure Identity that you created earlier
+    clientID: "managedIdentityClientId"     # The clientId of the Azure AD identity that you created earlier
 ---
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentityBinding
 metadata:
     name: azure-pod-identity-binding
 spec:
-    azureIdentity: "azureIdentityName"      # The name of your Azure Idenity
+    azureIdentity: "azureIdentityName"      # The name of your Azure identity
     selector: azure-pod-identity-binding-selector
 ```
     
@@ -267,7 +277,7 @@ Führen Sie den folgenden Befehl aus, um die Bindung auszuführen:
 kubectl apply -f podIdentityAndBinding.yaml
 ```
 
-Als Nächstes folgt die eigentliche Bereitstellung des Pods. Unten ist die YAML-Datei für die Bereitstellung angegeben, für die die Bindung der Podidentität aus dem letzten Schritt genutzt wird. Speichern Sie diese Datei als **podBindingDeployment.yaml**.
+Als Nächstes stellen Sie den Pod bereit. Der folgende Code ist die YAML-Datei für die Bereitstellung, die die Bindung der Pod-Identität aus dem vorangegangenen Schritt nutzt. Speichern Sie diese Datei als *podBindingDeployment.yaml*.
 
 ```yml
 kind: Pod
@@ -298,36 +308,39 @@ Führen Sie den folgenden Befehl aus, um Ihren Pod bereitzustellen:
 ```azurecli
 kubectl apply -f podBindingDeployment.yaml
 ```
-### <a name="check-status-and-secret-content"></a>Überprüfen des Status und Geheimnisinhalts 
-Zeigen Sie die bereitgestellten Pods wie folgt an:
+
+### <a name="check-the-pod-status-and-secret-content"></a>Überprüfen des Pod-Status und des Geheimnisinhalts 
+
+Um die von Ihnen bereitgestellten Pods anzuzeigen, führen Sie folgenden Befehl aus:
 ```azurecli
 kubectl get pods
 ```
 
-Verwenden Sie den folgenden Befehl, um den Status Ihres Pods zu überprüfen:
+Um den Status ihres Pods zu überprüfen, führen Sie den folgenden Befehl aus:
 ```azurecli
 kubectl describe pod/nginx-secrets-store-inline
 ```
 
-![Image](../media/kubernetes-key-vault-4.png)
+![Screenshot der Azure CLI-Ausgabe, in dem der Zustand des Pods als „Wird ausgeführt“ und alle Ereignisse als „Normal“ angezeigt werden. ](../media/kubernetes-key-vault-6.png)
 
-Der bereitgestellte Pod sollte den Status „Wird ausgeführt“ aufweisen. Unten im Abschnitt „Ereignisse“ sind alle links angezeigten Ereignisse als „Normal“ klassifiziert.
-Nachdem Sie sich vergewissert haben, dass der Pod ausgeführt wird, können Sie überprüfen, ob Ihr Pod die Geheimnisse aus Ihrer Key Vault-Instanz enthält.
+Im Ausgabefenster sollte sich der bereitgestellte Pod im Zustand *Wird ausgeführt* befinden. Unten im Abschnitt **Ereignisse** sind alle Ereignistypen als *Normal* angezeigt.
 
-Zeigen Sie wie folgt alle Geheimnisse des Pods an:
+Nachdem Sie sich vergewissert haben, dass der Pod ausgeführt wird, können Sie überprüfen, ob der Pod die Geheimnisse aus Ihrem Schlüsseltresor enthält.
+
+Um alle im Pod enthaltenen Geheimnisse anzuzeigen, führen Sie den folgenden Befehl aus:
 ```azurecli
 kubectl exec -it nginx-secrets-store-inline -- ls /mnt/secrets-store/
 ```
 
-Rufen Sie den Inhalt eines bestimmten Geheimnisses wie folgt ab:
+Um den Inhalt eines bestimmten Geheimnisses anzuzeigen, führen Sie den folgenden Befehl aus:
 ```azurecli
 kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 ```
 
-Überprüfen Sie den Inhalt des angezeigten Geheimnisses.
+Überprüfen Sie, ob der Inhalt des Geheimnisses angezeigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie sicher, dass Ihre Key Vault-Instanz wiederherstellbar ist:
+Um sicherzustellen, dass Ihr Schlüsseltresor wiederherstellbar ist:
 > [!div class="nextstepaction"]
 > [Aktivieren des vorläufigen Löschens](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)

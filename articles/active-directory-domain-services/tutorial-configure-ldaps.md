@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475865"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733941"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines digitalen Zertifikats für die Verwendung mit Azure AD DS
 > * Aktivieren von Secure LDAP für Azure AD DS
 > * Konfigurieren von Secure LDAP für die Verwendung aus dem öffentlichen Internet
-> * Binden und Testen von Secure LDAP für eine verwaltete Azure AD DS-Domäne
+> * Binden und Testen von Secure LDAP für eine verwaltete Domäne
 
 Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
@@ -41,21 +41,21 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 * Das Tool *LDP.exe* muss auf Ihrem Computer installiert sein.
     * Bei Bedarf [installieren Sie die Remoteserver-Verwaltungstools][rsat] für *Active Directory Domain Services und LDAP*.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-In diesem Tutorial konfigurieren Sie Secure LDAP für die verwaltete Azure AD DS-Domäne über das Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
+In diesem Tutorial konfigurieren Sie Secure LDAP für die verwaltete Domäne im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-certificate-for-secure-ldap"></a>Erstellen eines Zertifikats für Secure LDAP
 
-Bei Secure LDAP wird ein digitales Zertifikat zum Verschlüsseln der Kommunikation verwendet. Dieses digitale Zertifikat wird auf Ihre verwaltete Azure AD DS-Domäne angewendet und ermöglicht es Tools wie *LDP.exe*, beim Abfragen von Daten eine sichere, verschlüsselte Kommunikation zu verwenden. Es gibt zwei Möglichkeiten, um ein Zertifikat für den Zugriff auf die verwaltete Domäne über Secure LDAP zu erstellen:
+Bei Secure LDAP wird ein digitales Zertifikat zum Verschlüsseln der Kommunikation verwendet. Dieses digitale Zertifikat wird auf Ihre verwaltete Domäne angewendet und ermöglicht Tools wie *LDP.exe* eine sichere verschlüsselte Kommunikation beim Abfragen von Daten. Es gibt zwei Möglichkeiten, um ein Zertifikat für den Zugriff auf die verwaltete Domäne über Secure LDAP zu erstellen:
 
 * Ein Zertifikat von einer öffentlichen Zertifizierungsstelle oder einer Unternehmenszertifizierungsstelle.
     * Wenn Ihre Organisation Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, fordern Sie das Zertifikat für Secure LDAP bei dieser öffentlichen Zertifizierungsstelle an. Wenn Sie eine Unternehmenszertifizierungsstelle verwenden, fordern Sie das Zertifikat für Secure LDAP bei der Unternehmenszertifizierungsstelle an.
-    * Eine öffentliche Zertifizierungsstelle funktioniert nur, wenn Sie einen benutzerdefinierten DNS-Namen in Ihrer verwalteten Azure AD DS-Domäne verwenden. Wenn der DNS-Domänenname Ihrer verwalteten Domäne auf *.onmicrosoft.com* endet, können Sie kein digitales Zertifikat erstellen, um Verbindungen mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus. Erstellen Sie in diesem Szenario ein selbstsigniertes Zertifikat, und verwenden Sie es, um sicheres LDAP zu konfigurieren.
+    * Eine öffentliche Zertifizierungsstelle funktioniert nur, wenn Sie einen benutzerdefinierten DNS-Namen in Ihrer verwalteten Domäne verwenden. Wenn der DNS-Domänenname Ihrer verwalteten Domäne auf *.onmicrosoft.com* endet, können Sie kein digitales Zertifikat erstellen, um Verbindungen mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus. Erstellen Sie in diesem Szenario ein selbstsigniertes Zertifikat, und verwenden Sie es, um sicheres LDAP zu konfigurieren.
 * Ein selbstsigniertes Zertifikat, das Sie selbst erstellen.
     * Diese Methode eignet sich gut für Testzwecke und wird in diesem Tutorial vorgestellt.
 
@@ -63,7 +63,7 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 
 * **Vertrauenswürdiger Aussteller**: Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle oder um eine Unternehmenszertifizierungsstelle handeln, die von diesen Computern als vertrauenswürdig eingestuft wird.
 * **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
-* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aaddscontoso.com* heißt, muss als Antragstellername im Zertifikat * *.aaddscontoso.com* angegeben sein.
+* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn der Name Ihrer Domäne z. B. *aaddscontoso.com* lautet, muss als Antragstellername im Zertifikat * *.aaddscontoso.com* angegeben sein.
     * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die TLS-Serverauthentifizierung gültig sein.
@@ -71,7 +71,7 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 Es sind verschiedene Tools verfügbar, mit denen ein selbstsigniertes Zertifikat erstellt werden kann, z. B. OpenSSL, Keytool, MakeCert, Cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] usw. In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
 
 ```powershell
-# Define your own DNS name used by your Azure AD DS managed domain
+# Define your own DNS name used by your managed domain
 $dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
@@ -101,18 +101,18 @@ Thumbprint                                Subject
 
 Zur Verwendung von Secure LDAP wird der Netzwerkdatenverkehr mithilfe einer Public Key-Infrastruktur (PKI) verschlüsselt.
 
-* Ein **privater** Schlüssel wird auf die verwaltete Azure AD DS-Domäne angewendet.
-    * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Azure AD DS-Domäne angewendet und nicht auf Clientcomputer verteilt werden.
+* Ein **privater** Schlüssel wird auf die verwaltete Domäne angewendet.
+    * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Domäne angewendet und nicht auf Clientcomputer verteilt werden.
     * Ein Zertifikat, das den privaten Schlüssel enthält, verwendet das Dateiformat *PFX*.
 * Ein **öffentlicher** Schlüssel wird auf die Clientcomputer angewendet.
     * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
     * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
 
-Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, dass nur geeignete Computer erfolgreich miteinander kommunizieren können. Wenn Sie eine öffentliche Zertifizierungsstelle oder eine Unternehmenszertifizierungsstelle verwenden, wird Ihnen ein Zertifikat ausgestellt, das den privaten Schlüssel enthält und auf eine verwaltete Azure AD DS-Domäne angewendet werden kann. Der öffentliche Schlüssel sollte den Clientcomputern bereits bekannt sein und von diesen als vertrauenswürdig eingestuft werden. In diesen Tutorial haben Sie ein selbstsigniertes Zertifikat mit dem privaten Schlüssel erstellt, daher müssen Sie die entsprechenden privaten und öffentlichen Komponenten exportieren.
+Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, dass nur geeignete Computer erfolgreich miteinander kommunizieren können. Wenn Sie eine öffentliche Zertifizierungsstelle oder eine Unternehmenszertifizierungsstelle verwenden, wird Ihnen ein Zertifikat ausgestellt, das den privaten Schlüssel enthält und auf eine verwaltete Domäne angewendet werden kann. Der öffentliche Schlüssel sollte den Clientcomputern bereits bekannt sein und von diesen als vertrauenswürdig eingestuft werden. In diesen Tutorial haben Sie ein selbstsigniertes Zertifikat mit dem privaten Schlüssel erstellt, daher müssen Sie die entsprechenden privaten und öffentlichen Komponenten exportieren.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Exportieren eines Zertifikats für Azure AD DS
 
-Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwalteten Azure AD DS-Domäne verwenden können, müssen Sie das Zertifikat in eine *PFX*-Zertifikatdatei exportieren, die den privaten Schlüssel enthält.
+Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwalteten Domäne verwenden können, müssen Sie das Zertifikat in eine *PFX*-Zertifikatdatei exportieren, die den privaten Schlüssel enthält.
 
 1. Um das Dialogfeld *Ausführen* zu öffnen, drücken Sie **Windows** + **R**.
 1. Öffnen Sie eine Microsoft Management Console (MMC), indem Sie im Dialogfeld *Ausführen* die Zeichenfolge **mmc** eingeben und auf **OK** klicken.
@@ -133,7 +133,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 1. Der private Schlüssel für das Zertifikat muss exportiert werden. Wenn der private Schlüssel nicht im exportierten Zertifikat enthalten ist, tritt bei der Aktion zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne ein Fehler auf.
 
     Wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option **Ja, privaten Schlüssel exportieren** aus, und klicken Sie auf **Weiter**.
-1. Verwaltete Azure AD DS-Domänen unterstützen nur das Zertifikatdateiformat *PFX*, das den privaten Schlüssel enthält. Exportieren Sie das Zertifikat nicht im Dateiformat *CER* ohne den privaten Schlüssel.
+1. Verwaltete Domänen unterstützen nur das Zertifikatdateiformat *PFX*, das den privaten Schlüssel enthält. Exportieren Sie das Zertifikat nicht im Dateiformat *CER* ohne den privaten Schlüssel.
 
     Wählen Sie auf der Seite **Format der zu exportierenden Datei** als Dateiformat für das zu exportierende Zertifikat die Option **Privater Informationsaustausch – PKCS #12 (.PFX)** aus. Aktivieren Sie das Kontrollkästchen *Wenn möglich, alle Zertifikate im Zertifizierungspfad einbeziehen*:
 
@@ -141,7 +141,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
 1. Da dieses Zertifikat zum Entschlüsseln von Daten verwendet wird, sollten Sie den Zugriff sorgfältig steuern. Zum Schutz des Zertifikats kann ein Kennwort verwendet werden. Ohne das richtige Kennwort kann das Zertifikat nicht auf einen Dienst angewendet werden.
 
-    Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Azure AD DS-Domäne verwendet.
+    Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
 1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds.pfx*. Notieren Sie sich das Kennwort und den Speicherort der *PFX*-Datei, da Sie diese Informationen in den nächsten Schritten benötigen.
 1. Klicken Sie auf der Überprüfungsseite auf **Fertig stellen**, um das Zertifikat in eine *PFX*-Zertifikatdatei zu exportieren. Wenn das Zertifikat erfolgreich exportiert wurde, wird ein Bestätigungsdialogfeld angezeigt.
 1. Lassen Sie die MMC für den nächsten Abschnitt geöffnet.
@@ -160,7 +160,7 @@ Clientcomputer müssen dem Aussteller des Secure LDAP-Zertifikats vertrauen, dam
 1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds-client.cer*.
 1. Klicken Sie auf der Überprüfungsseite auf **Fertig stellen**, um das Zertifikat in eine *CER*-Zertifikatdatei zu exportieren. Wenn das Zertifikat erfolgreich exportiert wurde, wird ein Bestätigungsdialogfeld angezeigt.
 
-Die *CER*-Zertifikatdatei kann jetzt auf Clientcomputer verteilt werden, die der Secure LDAP-Verbindung mit der verwalteten Azure AD DS-Domäne vertrauen müssen. Installieren Sie das Zertifikat jetzt auf dem lokalen Computer.
+Die *CER*-Zertifikatdatei kann jetzt auf Clientcomputer verteilt werden, die der Secure LDAP-Verbindung mit der verwalteten Domäne vertrauen müssen. Installieren Sie das Zertifikat jetzt auf dem lokalen Computer.
 
 1. Öffnen Sie den Datei-Explorer, und navigieren Sie zu dem Speicherort, an dem Sie die *CER*-Zertifikatdatei gespeichert haben, z. B. *C:\Benutzer\Kontoname\azure-ad-ds-client.cer*.
 1. Klicken Sie mit der Maustaste auf die *CER*-Zertifikatdatei, und wählen Sie **Zertifikat installieren** aus.
@@ -174,7 +174,7 @@ Die *CER*-Zertifikatdatei kann jetzt auf Clientcomputer verteilt werden, die der
 
 ## <a name="enable-secure-ldap-for-azure-ad-ds"></a>Aktivieren von Secure LDAP für Azure AD DS
 
-Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Schlüssel enthält, und Sie haben den Clientcomputer so eingerichtet, dass er der Verbindung vertraut. Nun aktivieren Sie Secure LDAP in Ihrer verwalteten Azure AD DS-Domäne. Führen Sie die folgenden Konfigurationsschritte aus, um Secure LDAP in einer verwalteten Azure AD DS-Domäne zu aktivieren:
+Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Schlüssel enthält, und Sie haben den Clientcomputer so eingerichtet, dass er der Verbindung vertraut. Jetzt aktivieren Sie Secure LDAP für Ihre verwaltete Domäne. Führen Sie die folgenden Konfigurationsschritte aus, um Secure LDAP für eine verwaltete Domäne zu aktivieren:
 
 1. Geben Sie im [Azure-Portal](https://portal.azure.com) im Feld **Ressourcen suchen** den Begriff *Domänendienste* ein. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
@@ -191,7 +191,7 @@ Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Sch
 1. Geben Sie das **Kennwort zum Entschlüsseln der PFX-Datei** ein, das Sie in einem vorherigen Schritt beim Exportieren des Zertifikats in eine *PFX*-Datei festgelegt haben.
 1. Klicken Sie auf **Speichern**, um Secure LDAP zu aktivieren.
 
-    ![Aktivieren von Secure LDAP für eine verwaltete Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/enable-ldaps.png)
+    ![Aktivieren von Secure LDAP für eine verwaltete Domäne im Azure-Portal](./media/tutorial-configure-ldaps/enable-ldaps.png)
 
 Sie werden in einer Benachrichtigung darüber informiert, dass Secure LDAP für die verwaltete Domäne konfiguriert wird. Solange dieser Vorgang nicht abgeschlossen ist, können Sie keine anderen Einstellungen für die verwaltete Domäne ändern.
 
@@ -199,9 +199,9 @@ Es dauert einige Minuten, bis Secure LDAP für Ihre verwaltete Domäne aktiviert
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Beschränken des Secure LDAP-Zugriffs über das Internet
 
-Wenn Sie Secure LDAP-Zugriff auf Ihre verwaltete Azure AD DS-Domäne über das Internet zulassen, entsteht ein Sicherheitsrisiko. Auf die verwaltete Domäne kann aus dem Internet über TCP-Port 636 zugegriffen werden. Es empfiehlt sich, den Zugriff auf die verwaltete Domäne auf bestimmte bekannte IP-Adressen für Ihre Umgebung zu beschränken. Zum Beschränken des Zugriffs auf Secure LDAP kann eine Azure-Netzwerksicherheitsgruppen-Regel verwendet werden.
+Wenn Sie Secure LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet zulassen, entsteht ein Sicherheitsrisiko. Auf die verwaltete Domäne kann aus dem Internet über TCP-Port 636 zugegriffen werden. Es empfiehlt sich, den Zugriff auf die verwaltete Domäne auf bestimmte bekannte IP-Adressen für Ihre Umgebung zu beschränken. Zum Beschränken des Zugriffs auf Secure LDAP kann eine Azure-Netzwerksicherheitsgruppen-Regel verwendet werden.
 
-Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Port 636 nur für eine angegebene Gruppe von IP-Adressen zuzulassen. Auf den gesamten restlichen eingehenden Datenverkehr aus dem Internet wird eine standardmäßige *DenyAll*-Regel mit niedrigerer Priorität angewendet, sodass nur die angegebenen Adressen Ihre verwaltete Azure AD DS-Domäne über Secure LDAP erreichen können.
+Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Port 636 nur für eine angegebene Gruppe von IP-Adressen zuzulassen. Auf den gesamten restlichen eingehenden Datenverkehr aus dem Internet wird eine *DenyAll*-Standardregel mit niedrigerer Priorität angewendet, sodass nur die angegebenen Adressen Ihre verwaltete Domäne über Secure LDAP erreichen können.
 
 1. Wählen Sie im Azure-Portal im linken Navigationsbereich *Ressourcengruppen* aus.
 1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und Ihre Netzwerksicherheitsgruppe (z. B. *aaads-nsg*) aus.
@@ -226,9 +226,9 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
 
 ## <a name="configure-dns-zone-for-external-access"></a>Konfigurieren einer DNS-Zone für den externen Zugriff
 
-Wenn der Secure LDAP-Zugriff über das Internet aktiviert wurde, aktualisieren Sie die DNS-Zone, damit die Clientcomputer die verwaltete Domäne finden können. Die *Externe Secure LDAP-IP-Adresse* wird auf der Registerkarte **Eigenschaften** für Ihre verwaltete Azure AD DS-Domäne aufgeführt:
+Wenn der Secure LDAP-Zugriff über das Internet aktiviert wurde, aktualisieren Sie die DNS-Zone, damit die Clientcomputer die verwaltete Domäne finden können. Die *Externe Secure LDAP-IP-Adresse* wird auf der Registerkarte **Eigenschaften** für Ihre verwaltete Domäne aufgeführt:
 
-![Anzeigen der externen Secure LDAP-IP-Adresse für Ihre verwaltete Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
+![Anzeigen der externen Secure LDAP-IP-Adresse für Ihre verwaltete Domäne im Azure-Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
 Konfigurieren Sie Ihren externen DNS-Anbieter, und erstellen Sie einen Hosteintrag wie z. B. *ldaps*, um diesen in diese externe IP-Adresse aufzulösen. Um dieses Szenario zuerst auf Ihrem Computer zu testen, können Sie einen Eintrag in der Windows-Datei „hosts“ erstellen. Zum Bearbeiten der Datei „hosts“ auf Ihrem lokalen Computer öffnen Sie den *Editor* als Administrator. Dort öffnen Sie die hosts-Datei im Ordner *C:\Windows\System32\drivers\etc*.
 
@@ -240,27 +240,27 @@ Durch den folgenden DNS-Beispieleintrag (entweder bei Ihrem externen DNS-Anbiete
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testen von Abfragen in der verwalteten Domäne
 
-Zum Herstellen von Verbindungen und Bindungen mit Ihrer verwalteten Azure AD DS-Domäne sowie für Suchvorgänge über LDAP verwenden Sie das Tool *LDP.exe*. Dieses Tool ist im RSAT-Paket (Remote Server Administration Tools, Remoteserver-Verwaltungstools) enthalten. Weitere Informationen finden Sie unter [Installieren der Remoteserver-Verwaltungstools][rsat].
+Zum Herstellen von Verbindungen und Bindungen mit Ihrer verwalteten Domäne sowie für Suchvorgänge über LDAP verwenden Sie das Tool *LDP.exe*. Dieses Tool ist im RSAT-Paket (Remote Server Administration Tools, Remoteserver-Verwaltungstools) enthalten. Weitere Informationen finden Sie unter [Installieren der Remoteserver-Verwaltungstools][rsat].
 
 1. Öffnen Sie *LDP.exe*, und stellen Sie eine Verbindung mit der verwalteten Domäne her. Wählen Sie **Verbindung** und dann **Verbinden...** aus.
 1. Geben Sie den DNS-Domänennamen Ihrer verwalteten Domäne für Secure LDAP ein, den Sie im vorherigen Schritt erstellt haben (z. B. *ldaps.aaddscontoso.com*). Um Secure LDAP zu verwenden, legen Sie den **Port** auf *636* fest und aktivieren das Kontrollkästchen für **SSL**.
 1. Klicken Sie auf **OK**, um eine Verbindung mit der verwalteten Domäne herzustellen.
 
-Als Nächstes erstellen Sie eine Bindung mit Ihrer verwalteten Azure AD DS-Domäne. Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen ausführen, wenn Sie die Synchronisierung von NTLM-Kennworthashes für Ihre Azure AD DS-Instanz deaktiviert haben. Weitere Informationen zum Deaktivieren der Synchronisierung von NTLM-Kennworthashes finden Sie unter [Schützen Ihrer verwalteten Azure AD DS-Domäne][secure-domain].
+Als Nächstes erstellen Sie eine Bindung mit Ihrer verwalteten Domäne. Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen ausführen, wenn Sie die NTLM-Kennworthashsynchronisierung für Ihre verwaltete Domäne deaktiviert haben. Weitere Informationen zum Deaktivieren der NTLM-Kennworthashsynchronisierung finden Sie unter [Schützen Ihrer verwalteten Domäne][secure-domain].
 
 1. Wählen Sie die Menüoption **Verbindung** und dann die Option **Binden...** aus.
 1. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe *AAD DC-Administratoren* gehört, z. B. *contosoadmin*. Geben Sie das Kennwort des Benutzerkontos und dann Ihre Domäne (z. B. *aaddscontoso.com*) ein.
 1. Wählen Sie als **Bindungstyp** die Option *Bindung mit Anmeldeinformationen* aus.
-1. Klicken Sie auf **OK**, um die Bindung mit Ihrer verwalteten Azure AD DS-Domäne herzustellen.
+1. Wählen Sie **OK** aus, um die Bindung mit Ihrer verwalteten Domäne zu erstellen.
 
-So zeigen Sie die Objekte an, die in Ihrer verwalteten Azure AD DS-Domäne gespeichert sind:
+Gehen Sie wie folgt vor, um die in Ihrer verwalteten Domäne gespeicherten Objekte anzuzeigen:
 
 1. Wählen Sie die Menüoption **Ansicht** aus, und klicken Sie dann auf **Struktur**.
 1. Lassen Sie das Feld *BaseDN* leer, und klicken Sie auf **OK**.
 1. Wählen Sie einen Container aus, z. B. *AADDC Users*, klicken Sie mit der rechten Maustaste auf den Container, und wählen Sie **Suchen** aus.
 1. Lassen Sie die vorab ausgefüllten Felder unverändert, und klicken Sie auf **Ausführen**. Die Ergebnisse der Abfrage werden im rechten Fenster angezeigt, wie in der folgenden Beispielausgabe gezeigt:
 
-    ![Suchen nach Objekten in der verwalteten Azure AD DS-Domäne mit „LDP.exe“](./media/tutorial-configure-ldaps/ldp-query.png)
+    ![Suchen nach Objekten in Ihrer verwalteten Domäne mit „LDP.exe“](./media/tutorial-configure-ldaps/ldp-query.png)
 
 Wenn Sie einen bestimmten Container direkt abfragen möchten, können Sie im Menü **Ansicht > Struktur** einen Wert vom Typ **BaseDN** angeben (z. B. *OU=AADDC Users,DC=AADDSCONTOSO,DC=COM* oder *OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM*). Weitere Informationen zum Formatieren und Erstellen von Abfragen finden Sie unter [Grundlagen zu LDAP-Abfragen][ldap-query-basics].
 
@@ -280,7 +280,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines digitalen Zertifikats für die Verwendung mit Azure AD DS
 > * Aktivieren von Secure LDAP für Azure AD DS
 > * Konfigurieren von Secure LDAP für die Verwendung aus dem öffentlichen Internet
-> * Binden und Testen von Secure LDAP für eine verwaltete Azure AD DS-Domäne
+> * Binden und Testen von Secure LDAP für eine verwaltete Domäne
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Kennworthashsynchronisierung für eine Azure AD-Hybridumgebung](tutorial-configure-password-hash-sync.md)
