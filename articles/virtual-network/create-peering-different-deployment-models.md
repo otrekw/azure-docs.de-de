@@ -53,7 +53,7 @@ Ein Peering in Netzwerken lässt sich mithilfe des Azure-Portals, mit der Azure-
     - **Abonnement**: Wählen Sie Ihr Abonnement aus.
     - **Ressourcengruppe**: Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroup* ein.
     - **Standort**: *USA, Osten*
-4. Klicken Sie auf **+ NEU**. Geben Sie im Feld **Marketplace durchsuchen***Virtuelles Netzwerk* ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+4. Klicken Sie auf **+ NEU**. Geben Sie im Feld **Marketplace durchsuchen** *Virtuelles Netzwerk* ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 5. Wählen Sie auf dem Blatt **Virtuelles Netzwerk** im Feld **Bereitstellungsmodell auswählen** die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**.
 6. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die Werte für die folgenden Einstellungen an, oder wählen Sie sie aus, und klicken Sie anschließend auf **Erstellen**:
     - **Name**: *myVnet2*
@@ -63,7 +63,7 @@ Ein Peering in Netzwerken lässt sich mithilfe des Azure-Portals, mit der Azure-
     - **Abonnement**: Wählen Sie Ihr Abonnement aus.
     - **Ressourcengruppe**: Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.
     - **Standort**: *USA, Osten*
-7. Geben Sie im oben im Portal im Feld **Ressourcen suchen***myResourceGroup* ein. Klicken Sie auf **myResourceGroup**, wenn sie in den Suchergebnissen angezeigt wird. Es öffnet sich ein Blatt für die Ressourcengruppe **myResourceGroup**. Die Ressourcengruppe enthält die beiden virtuellen Netzwerke, die in den vorherigen Schritten erstellt wurden.
+7. Geben Sie im oben im Portal im Feld **Ressourcen suchen** *myResourceGroup* ein. Klicken Sie auf **myResourceGroup**, wenn sie in den Suchergebnissen angezeigt wird. Es öffnet sich ein Blatt für die Ressourcengruppe **myResourceGroup**. Die Ressourcengruppe enthält die beiden virtuellen Netzwerke, die in den vorherigen Schritten erstellt wurden.
 8. Klicken Sie auf **myVNet1**.
 9. Klicken Sie auf dem sich öffnenden Blatt **myVnet1** links in der vertikalen Liste der Optionen auf **Peerings**.
 10. Klicken Sie auf dem sich öffnenden Blatt **myVnet1 – Peerings** auf **+ Hinzufügen**
