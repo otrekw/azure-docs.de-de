@@ -183,7 +183,7 @@
               href: directory-admin-roles-secure.md
             - name: Erstellen von Notfallkonten
               href: directory-emergency-access.md
-        - name: Verwaltungseinheit
+        - name: Verwaltungseinheiten
           items:
             - name: 'Verwaltungseinheiten: Übersicht'
               href: directory-administrative-units.md

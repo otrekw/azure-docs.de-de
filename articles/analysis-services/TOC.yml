@@ -30,9 +30,9 @@
     - name: Automatisierung mit Dienstprinzipalen
       href: analysis-services-service-principal.md
     - name: Clientbibliotheken
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: Kompatibilitätsgrad
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: Herstellen einer Verbindung mit lokalen Datenquellen
       href: analysis-services-gateway.md
     - name: Herstellen einer Verbindung mit Servern
