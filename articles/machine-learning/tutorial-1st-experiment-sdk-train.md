@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558364"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667091"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
@@ -138,7 +138,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Anzeigen der Trainingsergebnisse in Studio
 
-Über den **Link zu Azure Machine Learning Studio** gelangen Sie zur Hauptseite des Experiments. Dort werden alle einzelnen Ausführungen des Experiments angezeigt. Alle benutzerdefiniert protokollierten Werte (in diesem Fall `alpha_value` und `rmse`) werden zu Feldern für die jeweilige Ausführung und stehen für die Diagramme und Kacheln im oberen Bereich der Experimentseite zur Verfügung. Wenn Sie einem Diagramm oder einer Kachel eine protokollierte Metrik hinzufügen möchten, zeigen Sie darauf, klicken Sie auf die Bearbeitungsschaltfläche, und suchen Sie nach der benutzerdefiniert protokollierten Metrik.
+Über den **Link zu Azure Machine Learning Studio** gelangen Sie zur Hauptseite des Experiments. Dort werden alle einzelnen Ausführungen des Experiments angezeigt. Alle benutzerdefiniert protokollierten Werte (in diesem Fall `alpha_value` und `rmse`) werden zu Feldern für die jeweilige Ausführung und stehen für die Diagramme zur Verfügung. Um ein neues Diagramm mit einer protokollierten Metrik zu zeichnen, klicken Sie auf „Diagramm hinzufügen“, und wählen Sie die Metrik aus, die Sie zeichnen möchten.
 
 Wenn Sie Modelle mit mehreren hundert oder tausend separaten Ausführungen trainieren, können Sie auf dieser Seite ganz einfach die einzelnen trainierten Modelle anzeigen und insbesondere nachvollziehen, wie sie trainiert wurden und wie sich Ihre eindeutigen Metriken im Laufe der Zeit verändert haben.
 

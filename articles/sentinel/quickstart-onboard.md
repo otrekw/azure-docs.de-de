@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488119"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771171"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -58,7 +58,7 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
    > - Azure Sentinel kann für Arbeitsbereiche in einer beliebigen [GA-Region von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China und Deutschland (Sovereign) ausgeführt werden. Die von Azure Sentinel generierten Daten (z. B. Vorfälle, Lesezeichen und Warnungsregeln, die möglicherweise einige aus diesen Arbeitsbereichen stammende Kundendaten enthalten) werden entweder in „Europa“ (für Arbeitsbereiche in Europa), in „Australien“ (für Arbeitsbereiche in Australien) oder in „USA, Osten“ (für Arbeitsbereiche in allen anderen Regionen) gespeichert.
 
    >[!IMPORTANT]
-   > - Nachdem Azure Sentinel für einen Arbeitsbereich aktiviert wurde, wird das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements nicht unterstützt. Wenn Sie den Arbeitsbereich verschieben müssen, wenden Sie sich an den Support.
+   > - Nachdem Azure Sentinel für einen Arbeitsbereich aktiviert wurde, wird das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements nicht unterstützt. Wenn Sie den Arbeitsbereich verschieben müssen, wenden Sie sich an [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
 
 1. Wählen Sie **Azure Sentinel hinzufügen** aus.
   

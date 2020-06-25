@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36d6e9ce2ab180c49737230de1f8b528f8da8b40
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085593"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905947"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Tutorial: Erstellen einer Node.js- und MongoDB-App in Azure
 
@@ -183,7 +183,7 @@ Kopieren Sie den Wert von `primaryMasterKey`. Sie benötigen diese Informationen
 
 Erstellen Sie in Ihrem lokalen MEAN.js-Repository im _config/env/_ -Ordner eine Datei mit dem Namen _local-production.js_. _.gitignore_ ist standardmäßig konfiguriert, diese Datei aus dem Repository herauszuhalten. 
 
-Kopieren Sie den folgenden Code in diese Datei ein. Achten Sie darauf, dass Sie die ersten beiden Platzhalter *\<cosmosdb_name>* durch den Namen der Cosmos DB-Datenbank und den Platzhalter *\<primary_master_key>* durch den Schlüssel ersetzen, den Sie im vorherigen Schritt kopiert haben.
+Kopieren Sie den folgenden Code in diese Datei ein. Achten Sie darauf, dass Sie die beiden Platzhalter *\<cosmosdb_name>* durch den Namen Ihrer Cosmos DB-Datenbank und den Platzhalter *\<primary_master_key>* durch den Schlüssel ersetzen, den Sie im vorherigen Schritt kopiert haben.
 
 ```javascript
 module.exports = {
@@ -497,3 +497,8 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der App eine
 
 > [!div class="nextstepaction"] 
 > [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)
+
+Weitere Ressourcen:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren der Node.js-App](configure-language-nodejs.md)

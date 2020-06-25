@@ -4,23 +4,21 @@ description: Erfahren Sie mehr über den Azure Migrate-Dienst.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193597"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771256"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
 Dieser Artikel enthält eine kurze Übersicht über den Azure Migrate-Dienst.
 
-Azure Migrate verfügt über einen zentralisierten Hub für die Bewertung und die Migration von lokalen Servern sowie der lokalen Infrastruktur, Anwendungen und Daten zu Azure.
-
-Azure Migrate enthält die folgenden Features:
+Azure Migrate verfügt über einen zentralisierten Hub für die Bewertung und die Migration von lokalen Servern sowie der lokalen Infrastruktur, Anwendungen und Daten zu Azure. Er bietet Folgendes:
 
 - **Vereinheitlichte Migrationsplattform**: Ein einzelnes Portal zum Starten, Ausführen und Nachverfolgen Ihrer Migration zu Azure
-- **Verfügbare Tools**: Eine Reihe von Tools für Bewertung und Migration. Beispiele hierfür sind Azure Migrate-Serverbewertung Serverbewertung und Azure Migrate: Servermigration. Azure Migrate kann in andere Azure-Dienste und andere Tools und Angebote unabhängiger Softwareanbieter (Independent Software Vendors, ISVs) integriert werden.
+- **Verfügbare Tools**: Eine Reihe von Tools für Bewertung und Migration. Azure Migrate-Tools umfassen Serverbewertung und Azure Migrate: Servermigration. Azure Migrate kann auch in andere Azure-Dienste und -Tools sowie Angebote von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) integriert werden.
 - **Bewertung und Migration**: Im Azure Migrate-Hub können Sie Folgendes bewerten und migrieren:
     - **Server**: Bewerten Sie lokale Server, und migrieren Sie sie zu virtuellen Azure-Computern.
     - **Datenbanken**: Bewerten Sie lokale Datenbanken, und migrieren Sie sie zu Azure SQL-Datenbank oder zu einer verwalteten SQL-Instanz.
@@ -82,15 +80,12 @@ Bei der Serverbewertung wird eine einfache [Azure Migrate-Appliance](migrate-app
 
 Azure Migrate: Servermigration unterstützt Sie bei der Migration zu Azure:
 
-- Lokale VMware-VMs
-- Virtuelle Hyper-V-Computer
-- Physische Server
-- Andere virtualisierte Computer
-- VMs der öffentlichen Cloud
+**Migrieren** | **Details**
+--- | ---
+Lokale VMware-VMs | Migrieren von virtuellen Computern zu Azure mit oder ohne Agents.<br/><br/> Für die Migration ohne Agents wird bei der Servermigration eine Azure Migrate-Appliance verwendet, die Sie lokal bereitstellen. Dabei handelt es sich um denselben Typ von Appliance, den Sie für die Serverbewertung verwenden.<br/><br/> Für die Migration mit Agent verwendet die Serverbewertung eine Replikationsappliance.
+Lokale Hyper-V-VMs | Migrieren von VMs zu Azure.<br/><br/> Die Serverbewertung verwendet Anbieter-Agents, die auf dem Hyper-V-Host für die Migration installiert sind.
+Lokale physische Server | Sie können physische Computer zu Azure migrieren. Sie können auch andere virtualisierte Computer und VMs aus anderen öffentlichen Clouds migrieren, indem Sie sie für den Zweck der Migration als virtuelle Computer behandeln. | Die Serverbewertung verwendet für die Migration eine Replikationsappliance.
 
-Computer können nach der Bewertung oder ohne Bewertung migriert werden.
-
-Für die Migration von VMware-VMs ohne Agent und die Migration von Hyper-V-VMs wird bei der Servermigration eine Azure Migrate-Appliance verwendet, die Sie lokal bereitstellen. Die Appliance wird auch verwendet, wenn Sie die Serverbewertung einrichten. Dies wird im vorherigen Abschnitt beschrieben.
 
 ## <a name="selecting-assessment-and-migration-tools"></a>Auswählen von Bewertungs- und Migrationstools
 

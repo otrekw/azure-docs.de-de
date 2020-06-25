@@ -4,12 +4,12 @@ description: Stellen Sie Ihren ersten benutzerdefinierten Windows-Container in A
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 44ade8b0b218f028cf6f211e37824ffc43a191ac
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047116"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764076"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Ausführen eines benutzerdefinierten Windows-Containers in Azure (Vorschau)
 
@@ -37,7 +37,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Suchen Sie unter **Neues Projekt erstellen** die Option **ASP.NET-Webanwendung (.NET Framework)** für C#, und wählen Sie sie aus. Wählen Sie anschließend **Weiter** aus.
 
-1. Geben Sie der Anwendung unter **Neues Projekt konfigurieren** den Namen _myFirstAzureWebApp_, und wählen Sie dann **Erstellen** aus.
+1. Geben Sie der Anwendung unter **Neues Projekt konfigurieren** den Namen _myfirstazurewebapp_, und wählen Sie dann **Erstellen** aus.
 
    ![Konfigurieren Ihres Web-App-Projekts](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
@@ -61,7 +61,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 ## <a name="publish-to-docker-hub"></a>Veröffentlichen in Docker Hub
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myfirstazurewebapp**, und wählen Sie **Veröffentlichen** aus.
 
 1. Wählen Sie **App Service** und dann **Veröffentlichen** aus.
 
@@ -149,7 +149,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
    </div>
    ```
 
-1. Klicken Sie zum erneuten Bereitstellen in Azure im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie zum erneuten Bereitstellen in Azure im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myfirstazurewebapp**, und wählen Sie **Veröffentlichen** aus.
 
 1. Wählen Sie auf der Seite „Veröffentlichen“ die Option **Veröffentlichen** aus, und warten Sie, bis die Veröffentlichung abgeschlossen ist.
 

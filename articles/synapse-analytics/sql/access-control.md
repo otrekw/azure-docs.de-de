@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310256"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765079"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Verwalten des Zugriffs auf Arbeitsbereiche, Daten und Pipelines
 
@@ -169,14 +169,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzer Zugriff auf eine **ein
 > Wenn Sie die Berechtigung *db_owner* nicht zuweisen möchten, können Sie *db_datareader* und *db_datawriter* für Lese-/Schreibberechtigungen verwenden.
 > Damit ein Spark-Benutzer Daten direkt über Spark aus einem SQL-Pool lesen bzw. in einen SQL-Pool schreiben kann, benötigt er die Berechtigung *db_owner*.
 
-Vergewissern Sie sich im Anschluss an die Benutzererstellung, dass das Speicherkonto von SQL On-Demand abgefragt werden kann:
-
-- Führen Sie den folgenden Befehl aus, und verwenden Sie dabei die **Masterdatenbank** von SQL On-Demand als Ziel:
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+Vergewissern Sie sich im Anschluss an die Benutzererstellung, dass das Speicherkonto von SQL On-Demand abgefragt werden kann.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Zugriffssteuerung für Pipelineausführungen im Arbeitsbereich
 

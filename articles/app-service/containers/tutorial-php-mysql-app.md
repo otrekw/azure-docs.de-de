@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: cf4550bae1433f1e751555cd35f8a1ba78747295
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fdf862b3d87b3afcef9c40296d1e21c82de1902
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085830"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906189"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Erstellen einer PHP- und MySQL-App in Azure App Service unter Linux
 
@@ -565,7 +565,7 @@ Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. B
 
 ## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="manage-the-azure-app"></a>Verwalten der Azure-App
 

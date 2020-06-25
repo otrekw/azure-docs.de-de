@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891491"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052285"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-Beispielskripts
 
@@ -75,6 +75,9 @@ Neben den `.ps1`-Dateien befindet sich das Element `arrconfig.json`, das Sie aus
 
 > [!CAUTION]
 > Ersetzen Sie die umgekehrten Schrägstriche im Pfad „LocalAssetDirectoryPath“, indem Sie doppelte umgekehrte Schrägstriche (\\\\) als Escapezeichen verwenden. Verwenden Sie in allen anderen Pfaden, z. B. „inputFolderPath“ und „inputAssetPath“ reguläre Schrägstriche (/).
+
+> [!CAUTION]
+> Optionale Werte müssen ausgefüllt werden, oder Sie müssen den Schlüssel und den Wert vollständig entfernen. Wenn Sie z. B. nicht den Parameter `"outputAssetFileName"` verwenden, müssen Sie die gesamte Zeile in `arrconfig.json` löschen.
 
 ### <a name="accountsettings"></a>accountSettings
 

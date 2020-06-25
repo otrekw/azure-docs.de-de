@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300588"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659902"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Tutorial: Einrichten eines ganz neuen Unity-Projekts
 
@@ -105,6 +105,7 @@ Wählen Sie den Knoten **Main Camera** (Hauptkamera) aus.
 
 1. Öffnen Sie *Edit > Project Settings...* (Bearbeiten > Projekteinstellungen).
 1. Wählen Sie in der Liste auf der linken Seite „Quality“ (Qualität) aus.
+1. Ändern Sie **Active Quality Level** (Aktive Qualitätsstufe) durch Auswahl in *Low* (Niedrig).
 1. Ändern Sie **Default Quality Level** (Standardqualitätsstufe) in *Low* (Niedrig).
 
     ![Ändern der Qualitätseinstellungen des Projekts](media/settings-quality.png)

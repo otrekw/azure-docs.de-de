@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616547"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783366"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -265,7 +265,7 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 
 ## <a name="enabling-purge-protection"></a>Aktivieren des Bereinigungsschutzes
 
-Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Feature versichert zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist.
+Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Feature versichert zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist. Der Standardaufbewahrungszeitraum beträgt 90 Tage. Das Intervall der Aufbewahrungsrichtlinie kann jedoch während der Erstellung des Schlüsseltresors auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nach der Festlegung kann das Intervall für die Aufbewahrungsrichtlinie nicht mehr geändert werden.
 
 Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Löschen aktiviert ist. 
 
