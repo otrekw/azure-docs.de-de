@@ -58,7 +58,7 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen***HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 
@@ -125,7 +125,7 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen***PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 

@@ -56,7 +56,7 @@ INTO Output
 FROM Input
 ```
 
-Eine **SELECT***-Abfrage projiziert alle Felder eines eingehenden Ereignisses und sendet sie an die Ausgabe. Mit **SELECT-** können Sie auf dieselbe Weise nur erforderliche Felder aus der Eingabe projizieren. Wenn wie in diesem Beispiel nur die Felder *Make* und *Time* eines Fahrzeugs die einzigen erforderlichen Felder sind, die gespeichert werden müssen, können diese Felder in der **SELECT**-Anweisung angegeben werden.
+Eine **SELECT** *-Abfrage projiziert alle Felder eines eingehenden Ereignisses und sendet sie an die Ausgabe. Mit **SELECT-** können Sie auf dieselbe Weise nur erforderliche Felder aus der Eingabe projizieren. Wenn wie in diesem Beispiel nur die Felder *Make* und *Time* eines Fahrzeugs die einzigen erforderlichen Felder sind, die gespeichert werden müssen, können diese Felder in der **SELECT**-Anweisung angegeben werden.
 
 **Eingabe**:
 
