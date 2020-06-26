@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: Enterprise-Kostenansicht deaktiviert
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Abrechnungskonto nicht gefunden
+      href: troubleshoot-account-not-found.md
     - name: Support kontaktieren
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Beispiele

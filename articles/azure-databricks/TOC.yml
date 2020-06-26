@@ -581,6 +581,9 @@
         - name: Einführungsnotebooks
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: Erfassen von Daten in Delta Lake
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: 'Tabelle: Lese-und Schreibvorgänge als Batchvorgang'
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: 'Tabelle: Hilfsprogrammbefehle'
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Referenz zur Delta Lake-API
+        - name: API-Referenz
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: Gleichzeitigkeitssteuerung
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: Optimierungen
-          items:
-            - name: 'Optimierungen: Übersicht'
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Optimieren der Leistung per Dateiverwaltung
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatisches Optimieren
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Optimieren der Leistung per Zwischenspeicherung
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Isolationsgrade
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: Replizieren von MySQL-Tabellen in Delta Lake-Tabellen
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Optimieren der Leistung beim Verknüpfen
-              items:
-                - name: 'Optimieren der Leistung beim Verknüpfen: Übersicht'
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: 'Bereich: Optimierung der Verknüpfung'
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: 'Datenschiefe: Optimierung der Verknüpfung'
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Optimierte Datentransformation
-              items:
-                - name: 'Optimierte Datentransformation: Übersicht'
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Funktionen höherer Ordnung
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Transformieren komplexer Datentypen
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Bewährte Methoden
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: Versionsverwaltung für Tabellen
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Beispiele für Optimierung
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: Bewährte Methoden
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: Häufig gestellte Fragen
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: Zusätzliche Delta-Ressourcen
+        - name: Ressourcen
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Engine
+      items:
+        - name: Übersicht über Delta Engine
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: Optimieren der Leistung per Dateiverwaltung
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: Automatisches Optimieren
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: Optimieren der Leistung per Zwischenspeicherung
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: Isolationsgrade
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: Optimieren der Leistung beim Verknüpfen
+          items:
+            - name: 'Optimieren der Leistung beim Verknüpfen: Übersicht'
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: 'Bereich: Optimierung der Verknüpfung'
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: 'Datenschiefe: Optimierung der Verknüpfung'
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: Optimierte Datentransformation
+          items:
+            - name: 'Optimierte Datentransformation: Übersicht'
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: Funktionen höherer Ordnung
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: Transformieren komplexer Datentypen
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: Versionsverwaltung für Tabellen
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: Beispiele für Optimierung
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: Datenrahmen und Datasets
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (Beta)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics

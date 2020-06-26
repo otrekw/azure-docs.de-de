@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: Erstellen einer neuen Ressource über die Azure CLI
       href: cognitive-services-apis-create-account-cli.md
-    - name: Diagnoseprotokollierung
-      href: diagnostic-logging.md
-    - name: ARM-Vorlage
+    - name: Erstellen einer neuen Ressource mithilfe einer ARM-Vorlage
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: Diagnoseprotokollierung
+      href: diagnostic-logging.md
 - name: Beispiele
   items:
     - name: Azure Policy-Integrationen

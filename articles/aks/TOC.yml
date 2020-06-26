@@ -132,6 +132,8 @@
           href: upgrade-cluster.md
         - name: Verwenden einer Betriebszeit-SLA
           href: uptime-sla.md
+        - name: Verwenden von Näherungsplatzierungsgruppen (Vorschauversion)
+          href: reduce-latency-ppg.md
         - name: Aktualisieren des Knotenimages (Vorschau)
           href: node-image-upgrade.md
         - name: Verarbeiten von Betriebssystemupdates für Knoten
