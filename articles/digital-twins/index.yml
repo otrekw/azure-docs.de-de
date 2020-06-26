@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zur Vorschauversion von Azure Digital Twins
-summary: Wie bei der Microsoft Build 2020 angekündigt wird von Azure Digital Twins eine neue öffentliche Vorschauversion des Diensts vorbereitet. Die vollständige Dokumentation für den neuen Dienst und seine Features finden Sie bald an dieser Stelle. Sie können über den Link unten auch weiterhin auf die Dokumentation für die erste Version von Azure Digital Twins zugreifen.
+summary: Hier erfahren Sie, wie Sie mit Azure Digital Twins eine digitale Darstellung Ihrer Ressourcen, Umgebungen und Geschäftssysteme erstellen, um IoT-Lösungen der nächsten Generation zu entwickeln, die als Modell für die reale Welt dienen.
 metadata:
   title: 'Dokumentation zur Vorschauversion von Azure Digital Twins-Dokumentation: Tutorials, API-Referenz | Microsoft-Dokumentation'
   description: Hier erfahren Sie, wie mithilfe von Azure Digital Twins Personen, Orte und Dinge verbunden sowie IoT-Lösungen mit Raumauswertung erstellt werden.
@@ -10,16 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: c6822c319489eedf1ecdd7d1fddcd19456c35dd9
-  ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+  ms.openlocfilehash: 105a9de63f13a7a6460638ad967be40edd0783a4
+  ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84744016"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85392147"
 landingContent:
-- title: Azure Digital Twins, erste Version
+- title: Über Azure Digital Twins
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Digital Twins?
+      url: overview.md
+- title: Erste Schritte mit den Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Codieren einer Client-App
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Untersuchen der Grundlagen mit einer Beispielclient-App
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Verbinden einer End-to-End-Lösung
+      url: tutorial-end-to-end.md
+- title: Lernen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Benutzerdefinierte Modelle
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitale Zwillinge und der Zwillingsgraph
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Abfragesprache
+      url: concepts-query-language.md
+- title: Entwickeln
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Azure Digital Twins-Instanz
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Authentifizieren einer Clientanwendung
+      url: how-to-authenticate-client.md
+- title: API-Referenz
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Azure Digital Twins-APIs und SDKs
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen benutzerdefinierter SDKs mit AutoRest
+      url: how-to-create-custom-sdks.md
   - linkListType: reference
     links:
-    - text: Dokumentation zu früheren Versionen Azure Digital Twins
-      url: https://docs.microsoft.com/previous-versions/azure/digital-twins/about-digital-twins
+    - text: REST-APIs
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/
