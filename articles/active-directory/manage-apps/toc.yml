@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Links auf der Anwendungsseite funktionieren nicht
               href: application-proxy-page-links-broken-problem.md
-            - name: Für die App zu öffnende Ports
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Kein funktionierender Connector in einer Connectorguppe für meine App
               href: application-proxy-connectivity-no-working-connector.md
             - name: Konfigurieren im Verwaltungsportal
