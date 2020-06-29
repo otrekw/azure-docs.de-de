@@ -219,6 +219,10 @@
           href: troubleshoot.md
         - name: Lösungen für allgemeine Fehler
           href: troubleshoot-common-errors.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen

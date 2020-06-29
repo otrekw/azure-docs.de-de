@@ -2,16 +2,16 @@
 title: Lokale Entwicklung mit dem Azure Cosmos-Emulator
 description: Mit dem Azure Cosmos-Emulator können Sie Ihre Anwendung kostenlos lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849007"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262428"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -76,7 +76,7 @@ Der Azure Cosmos-Emulator wird standardmäßig in `C:\Program Files\Azure Cosmos
 
 Wenn der Azure Cosmos-Emulator gestartet wird, wird er in Ihrem Browser automatisch im Azure Cosmos-Daten-Explorer geöffnet. Die Adresse wird als `https://localhost:8081/_explorer/index.html` angezeigt. Wenn Sie den Explorer schließen und ihn später erneut öffnen möchten, können Sie entweder die URL in Ihrem Browser öffnen oder den Explorer über den Azure Cosmos-Emulator im Windows-Taskleistensymbol starten. Dies ist unten dargestellt.
 
-![Startprogramm für den Daten-Explorer des lokalen Azure Cosmos-Emulators](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Startprogramm für den Daten-Explorer des lokalen Azure Cosmos-Emulators":::
 
 ## <a name="checking-for-updates"></a>Überprüfen auf Updates
 
@@ -270,8 +270,8 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Micros
 | NoUI | Die Emulator-Benutzeroberfläche wird nicht angezeigt. | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
 | NoExplorer | Der Daten-Explorer wird beim Start nicht angezeigt. |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
 | PartitionCount | Legt die maximale Anzahl von partitionierten Containern fest. Weitere Informationen finden Sie unter [Ändern der Anzahl von Containern](#set-partitioncount). | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>: Maximale Anzahl der zulässigen Container mit nur einer Partition. Der Standardwert ist 25. Der zulässige Höchstwert beträgt 250.|
-| DefaultPartitionCount| Gibt die Standardanzahl von Partitionen für einen partitionierten Container an. | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> Der Standardwert ist 25.|
-| AllowNetworkAccess | Ermöglicht Zugriff auf den Emulator über ein Netzwerk. Sie müssen auch „/Key=\<key_string\>“ oder „/KeyFile=\<file_name\>“ übergeben, um Netzwerkzugriff zu ermöglichen. | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> or  Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| DefaultPartitionCount| Gibt die Standardanzahl von Partitionen für einen partitionierten Container an. | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\>er Standardwert ist 25.|
+| AllowNetworkAccess | Ermöglicht Zugriff auf den Emulator über ein Netzwerk. Sie müssen aus „/Key=\<key_string\> or /KeyFile=\<file_name\>“ übergeben, um Netzwerkzugriff zu ermöglichen. | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> oder Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
 | NoFirewall | Firewallregeln nicht anpassen, wenn Option „/AllowNetworkAccess“ verwendet wird. |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
 | GenKeyFile | Generiert einen neuen Autorisierungsschlüssel und speichert ihn in der angegebenen Datei. Der generierte Schlüssel kann mit den Optionen „/Key“ oder „/KeyFile“ verwendet werden. | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<path to key file\> | |
 | Konsistenz | Legt die Standardkonsistenzebene des Kontos fest. | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>: Der Wert muss eine der folgenden [Konsistenzebenen](consistency-levels.md) sein: Sitzung, stark, letztlich oder begrenzte Veraltung. Der Standardwert lautet „Sitzung“. |
@@ -482,7 +482,7 @@ Führen Sie in einer Mac-Umgebung die folgenden Schritte aus:
 
 1. Wählen Sie im Kontextmenü für dieses Element die Option *Element abrufen* und anschließend unter *Vertrauensstellung* > *Bei Verwendung dieses Zertifikats* die Option *Immer vertrauen* aus. 
 
-   ![Auswählen der Option „Element abrufen“ im Kontextmenü für dieses Element und anschließendes Auswählen von „Immer vertrauen“ unter „Vertrauensstellung“ > „Bei Verwendung dieses Zertifikats“](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Auswählen der Option „Element abrufen“ im Kontextmenü für dieses Element und anschließendes Auswählen von „Immer vertrauen“ unter „Vertrauensstellung“ > „Bei Verwendung dieses Zertifikats“":::
 
 Nach diesen Schritten vertraut Ihre Umgebung dem vom Emulator verwendeten Zertifikat, wenn eine Verbindung mit der von `/AllowNetworkAccess` verfügbar gemachten IP-Adresse hergestellt wird.
 

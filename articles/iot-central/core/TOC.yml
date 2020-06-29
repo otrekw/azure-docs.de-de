@@ -151,6 +151,10 @@
               href: howto-manage-preferences.md
             - name: Ein-/Ausschalten des Livechats
               href: howto-show-hide-chat.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
