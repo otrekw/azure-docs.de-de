@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf3f454296acafcff6fe775b07abeb7a253749b5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78299311"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253527"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Tutorial: Überprüfen der Rechnung Ihrer Microsoft Partner-Vereinbarung
 
@@ -69,7 +69,7 @@ Auf der Seite „Alle Transaktionen“ werden die folgenden Informationen angeze
 |Date     | Das Datum der Transaktion  |
 |Rechnungs-ID     | Der Bezeichner für die Rechnung, auf der die Transaktion in Rechnung gestellt wurde. Wenn Sie eine Supportanfrage senden, teilen Sie dem Azure-Support die ID mit, um die Bearbeitung Ihrer Supportanfrage zu beschleunigen. |
 |Transaktionstyp     |  Der Typ der Transaktion, z. B. Erwerb, Stornierung und Nutzungsgebühren  |
-|Produktfamilie     | Die Kategorie des Produkts, z. B. „Compute“ für virtuelle Computer oder „Datenbank“ für Azure SQL-Datenbank|
+|Produktfamilie     | Die Produktkategorie, z. B. „Compute“ für virtuelle Computer oder „Datenbank“ für Azure SQL-Datenbank|
 |Produkt-SDKU     | Ein eindeutiger Code, der die Instanz Ihres Produkts identifiziert |
 |Amount     |  Der Betrag der Transaktion      |
 |Abrechnungsprofil     | Die Transaktion wird auf der Rechnung dieses Abrechnungsprofils angezeigt. |

@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383165"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253705"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
+
+> [!Note]
+> Die Azure-Abrechnungs-APIs für die Enterprise-Berichtstellung werden von Microsoft nicht mehr aktualisiert. Verwenden Sie stattdessen die [Azure-Nutzungs](/rest/api/consumption)-APIs.
+
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
 
 Alle Datums- und Uhrzeitparameter, die für APIs benötigt werden, müssen als kombinierte UTC-Werte (Coordinated Universal Time) angegeben werden. Die von APIs zurückgegebenen Werte werden im UTC-Format angezeigt.
@@ -27,7 +31,7 @@ Alle Datums- und Uhrzeitparameter, die für APIs benötigt werden, müssen als k
 |-|-|
 |Authorization| Geben Sie den Wert im folgenden Format an: **bearer {API_SCHLÜSSEL}** <br/> Beispiel: bearer eyr....09|
 
-## <a name="consumption-apis"></a>APIs zur Nutzung
+## <a name="consumption-based-apis"></a>Nutzungsbasierte APIs
 Ein Swagger-Endpunkt ist [hier](https://consumption.azure.com/swagger/ui/index) für die unten beschriebenen APIs verfügbar, der eine einfache Introspektion der API und die Möglichkeit zum Generieren von Client-SDKs mithilfe von [AutoRest](https://github.com/Azure/AutoRest) oder [Swagger CodeGen](https://swagger.io/swagger-codegen/) ermöglichen sollte. Seit dem 1. Mai 2014 sind Daten über diese API verfügbar.
 
 * **Bilanz und Zusammenfassung**: Die [API für Bilanz und Zusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren.
