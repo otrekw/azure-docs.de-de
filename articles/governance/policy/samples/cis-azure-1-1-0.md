@@ -1,23 +1,25 @@
 ---
 title: Details der Einhaltung gesetzlicher Bestimmungen für CIS Microsoft Azure Foundations Benchmark
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark. Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1e3c2baec1186e29da45c6395123e2f5aab9165a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 214d50c790f9976b96bf29906d4db64a111e859f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736831"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299023"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark
 
-Im folgenden Artikel finden Sie Details dazu, wie die integrierte Azure Policy-Initiative zur Einhaltung gesetzlicher Bestimmungen den **Compliancebereichen** und **Steuerungen** gemäß CIS Microsoft Azure Foundations Benchmark entspricht.
+Der folgende Artikel enthält Details dazu, wie die integrierte Azure Policy-Initiative zur Einhaltung gesetzlicher Bestimmungen den **Compliancebereichen** und **Steuerungen** in CIS Microsoft Azure Foundations Benchmark entspricht.
 Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/). Grundlegendes zum _Besitzer_ finden Sie unter [Azure Policy-Richtliniendefinition](../concepts/definition-structure.md#type) und [Gemeinsame Verantwortung in der Cloud](../../../security/fundamentals/shared-responsibility.md).
 
 Die folgenden Zuordnungen gelten für die Steuerelemente für **CIS Microsoft Azure Foundations Benchmark**. Über den rechten Navigationsbereich können Sie direkt zu einem bestimmten **Steuerungsbereich** springen. Viele der Steuerungen werden über die Definition einer [Azure Policy](../overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiativendefinition öffnen Sie **Policy** im Azure-Portal und wählen dann die Seite **Definitionen** aus.
 Suchen Sie anschließend die integrierte Initiativendefinition zur Einhaltung der gesetzlichen Bestimmungen gemäß **CIS Microsoft Azure Foundations Benchmark 1.1.0**, und wählen Sie sie aus.
+
+Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Microsoft Azure Foundations Benchmark](../../blueprints/samples/cis-azure-1-1-0.md) bereitgestellt.
 
 > [!IMPORTANT]
 > Jede Steuerung unten ist einer oder mehreren [Azure Policy](../overview.md)-Definitionen zugeordnet.
@@ -196,7 +198,7 @@ Suchen Sie anschließend die integrierte Initiativendefinition zur Einhaltung de
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Für die verwaltete SQL-Instanz muss Advanced Data Security aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Hiermit wird jede verwaltete SQL-Instanz ohne Advanced Data Security überwacht. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
+|[Advanced Data Security sollte für SQL Managed Instance aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Hiermit wird jede verwaltete SQL-Instanz ohne Advanced Data Security überwacht. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Für Ihre SQL Server-Instanzen muss Advanced Data Security aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Überwachen von SQL-Servern ohne Advanced Data Security |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
 
 ### <a name="ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>Sicherstellen, dass „AuditActionGroups“ in der Überwachungsrichtlinie für eine SQL Server-Instanz ordnungsgemäß festgelegt ist
@@ -606,7 +608,6 @@ Suchen Sie anschließend die integrierte Initiativendefinition zur Einhaltung de
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Security Center Standard-Tarif muss ausgewählt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |Der Tarif „Standard“ ermöglicht die Bedrohungserkennung für Netzwerke und VMs und stellt Threat Intelligence-Daten, Anomalieerkennung und Verhaltensanalysen in Azure Security Center bereit. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
 
 ## <a name="storage-accounts"></a>Speicherkonten
 
