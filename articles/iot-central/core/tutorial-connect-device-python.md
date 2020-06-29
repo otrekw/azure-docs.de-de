@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5555c176adfb5be78ea73f17bfa01ba87766acc1
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607209"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100399"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)
 
@@ -306,7 +306,7 @@ Sie können sehen, wie das Gerät auf Befehle und Eigenschaftsaktualisierungen r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Node.js kennengelernt. Vorschläge für die nächsten Schritte:
+Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Python kennengelernt. Vorschläge für die nächsten Schritte:
 
 * In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
 * Unter [Was sind Gerätevorlagen?](./concepts-device-templates.md) erfahren Sie mehr über die Rolle von Gerätevorlagen beim Implementieren Ihres Gerätecodes.

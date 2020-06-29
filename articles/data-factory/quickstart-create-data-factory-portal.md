@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248531"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655812"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 
@@ -42,8 +42,6 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
-   
-   ![Auswählen von „Ressource erstellen“ im Menü des Azure-Portals](./media/doc-common-process/create-a-resource.png)
 1. Wählen Sie **Analytics** und dann **Data Factory** aus. 
    
    ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 ## <a name="create-a-linked-service"></a>Erstellen eines verknüpften Diensts
 In dieser Prozedur erstellen Sie einen verknüpften Dienst, der Ihr Azure Storage-Konto mit der Data Factory verbindet. Der verknüpfte Dienste enthält die Verbindungsinformationen, die der Data Factory-Dienst zur Laufzeit zur Verbindungsherstellung verwendet.
 
-1. Wählen Sie **Verbindungen** und anschließend auf der Symbolleiste die Schaltfläche **Neu** aus. (Die Schaltfläche **Verbindungen** befindet sich unten in der linken Spalte unter **Factory Resources** (Factory-Ressourcen)). 
+1. Öffnen Sie im linken Bereich die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub).
 
+1. Wählen Sie auf der Seite „Verknüpfte Dienste“ **+Neu** aus, um einen neuen verknüpften Dienst zu erstellen.
+
+   ![Neuer verknüpfter Dienst](./media/doc-common-process/new-linked-service.png)
+   
 1. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
 1. Führen Sie auf der Seite „New Linked Service (Azure Blob Storage)“ (Neuer verknüpfter Dienst (Azure Blob Storage)) die folgenden Schritte aus: 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3bd9489adaf46e604393fc7059d37443bdd5ec3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73488918"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977910"
 ---
 1. Suchen Sie das virtuelle WAN, das Sie erstellt haben. Wählen Sie auf der Seite „Virtual WAN“ im Abschnitt **Konnektivität** die Option **Hubs** aus.
 2. Wählen Sie auf der Seite „Hubs“ **+ Neuer Hub** aus, um die Seite **Virtuellen Hub erstellen** zu öffnen.
@@ -25,7 +25,7 @@ ms.locfileid: "73488918"
 
    * Region (zuvor als „Standort“ bezeichnet)
    * Name
-   * Privater Adressraum des Hubs. Der minimale Adressraum ist „/24“ zum Erstellen eines Hubs. Dies beinhaltet, dass ein Bereich von „/25“ bis „/32“ bei der Erstellung einen Fehler erzeugt.
+   * Privater Adressraum des Hubs. Der minimale Adressraum ist „/24“ zum Erstellen eines Hubs. Dies beinhaltet, dass ein Bereich von „/25“ bis „/32“ bei der Erstellung einen Fehler erzeugt. Azure Virtual WAN ist ein verwalteter Dienst von Microsoft und erstellt die geeigneten Subnetze im virtuellen Hub für die verschiedenen Gateways/Dienste (z. B. VPN-Gateways, ExpressRoute-Gateways, Benutzer-VPN/Point-to-Site-Gateways, Firewall, Routing usw.). Dabei muss der Benutzer den Subnetzadressraum für die Dienste im virtuellen Hub nicht explizit planen, weil Microsoft dies im Rahmen des Diensts übernimmt.
 4. Klicken Sie auf **Weiter: Site-to-Site**.
 
     ![Site-to-Site](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")

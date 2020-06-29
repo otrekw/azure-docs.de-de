@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747679"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944966"
 ---
 ::: zone target="docs"
 
@@ -159,7 +159,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 ### <a name="in-self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
+Wenn Sie Data Box Disk in Japan, Singapur, Südkorea, Westeuropa oder Indien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihre Bestellung. Durchlaufen Sie die Schritte, die angezeigt werden, wenn Sie **Abholung planen** auswählen. Es sollte ein Autorisierungscode angezeigt werden, der bei der Abgabe der Bestellung verwendet wird.
 

@@ -219,7 +219,7 @@ Das `ServiceEndpoint`-Objekt verfügt über eine `EndpointType`-Eigenschaft mit 
 
 Endpunkte vom Typ `primary` werden als Endpunkte zum Empfangen von Clientdatenverkehr bevorzugt und verfügen meist über zuverlässigere Netzwerkverbindungen. Endpunkte vom Typ `secondary` verfügen meist über weniger zuverlässige Netzwerkverbindungen und werden nur für Datenverkehr vom Server zum Client verwendet, z. B. Broadcastmeldungen. Für Datenverkehr vom Client zum Server werden sie dagegen nicht genutzt.
 
-In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. Für einen App-Server in der Region *USA, Osten* kann der SignalR Service-Endpunkt in derselben Region (also ebenfalls *USA, Osten*) als `primary` und die Endpunkte in anderen Regionen als `secondary` konfiguriert werden. Bei dieser Konfiguration können Dienstendpunkte in anderen Regionen Nachrichten von diesem App-Server in der Region *USA, Osten***empfangen**, aber es werden keine **regionsübergreifenden** Clients an diesen App-Server geleitet. Die Architektur ist in diesem Diagramm dargestellt:
+In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. Für einen App-Server in der Region *USA, Osten* kann der SignalR Service-Endpunkt in derselben Region (also ebenfalls *USA, Osten*) als `primary` und die Endpunkte in anderen Regionen als `secondary` konfiguriert werden. Bei dieser Konfiguration können Dienstendpunkte in anderen Regionen Nachrichten von diesem App-Server in der Region *USA, Osten* **empfangen**, aber es werden keine **regionsübergreifenden** Clients an diesen App-Server geleitet. Die Architektur ist in diesem Diagramm dargestellt:
 
 ![Regionsübergreifende Infrastruktur](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 

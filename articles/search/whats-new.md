@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/08/2020
+ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344202"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736083"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="feature-announcements"></a>Featureankündigungen
+
+### <a name="june-2020"></a>Juni 2020
+
+Azure Machine Learning-Skill ist ein neuer Skilltyp zum Integrieren eines Rückschlussendpunkts aus Azure Machine Learning (AML). Das Portal bietet Unterstützung für die Ermittlung und Integration Ihres Azure Machine Learning-Endpunkts innerhalb eines Cognitive Search-Skillsets. Die Ermittlung erfordert es, dass Ihre Cognitive Search- und AML-Dienste in demselben Abonnement bereitgestellt werden. Wenn Sie sich für die AML-Skill-Vorschau registrieren möchten, [füllen Sie bitte das Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Mai 2020 (Microsoft Build)
 

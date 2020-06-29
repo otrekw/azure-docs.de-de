@@ -56,7 +56,7 @@ In diesem Abschnitt erstellen Sie einen Event Hub-Namespace und fügen diesem Na
  
 4. Wenn die Bereitstellung des Namespace abgeschlossen ist, navigieren Sie zu Ihrer Ressourcengruppe, und suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
 
-5. Wählen Sie im neuen Namespace **+Event Hub&nbsp;** aus. 
+5. Wählen Sie im neuen Namespace **+&nbsp;Event Hub** aus. 
 
 6. Nennen Sie den neuen Event Hub *socialtwitter-eh*. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Sie müssen keine weiteren Optionen für den Event Hub festlegen.
  

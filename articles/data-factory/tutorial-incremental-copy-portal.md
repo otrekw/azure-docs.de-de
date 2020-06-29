@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.date: 06/10/2020
+ms.openlocfilehash: 71fca8f7dd808058e88d5a5ffe9a64e1136ceefc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249092"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736505"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus einer Azure SQL-Datenbank in Azure Blob Storage mithilfe des Azure-Portals
 
@@ -277,7 +277,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   
 
 28. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Azure Data Factory-Dienst, indem Sie die Schaltfläche **Alle veröffentlichen** wählen. Warten Sie, bis eine Meldung angezeigt wird, dass die Veröffentlichung erfolgreich war.
@@ -290,9 +290,9 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
 ## <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
 
-1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Dort wird der Status der Pipelineausführung angezeigt, der von einem manuellen Trigger ausgelöst wurde. Über die Links unter der Spalte **PIPELINENAME** können Sie Ausführungsdetails anzeigen und die Pipeline erneut ausführen.
 
-2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+2. Wenn Sie die der Pipelineausführung zugeordneten Aktivitätsausführungen anzeigen möchten, wählen Sie den Link unter der Spalte **PIPELINENAME** aus. Wenn Sie Details zu den Aktivitätsausführungen anzeigen möchten, wählen Sie unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (das Brillensymbol) aus. Wählen Sie oben **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
 
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
@@ -355,9 +355,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>Überwachen der zweiten Pipelineausführung
 
-1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Dort wird der Status der Pipelineausführung angezeigt, der von einem manuellen Trigger ausgelöst wurde. Über die Links unter der Spalte **PIPELINENAME** können Sie Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
 
-2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+2. Wenn Sie die der Pipelineausführung zugeordneten Aktivitätsausführungen anzeigen möchten, wählen Sie den Link unter der Spalte **PIPELINENAME** aus. Wenn Sie Details zu den Aktivitätsausführungen anzeigen möchten, wählen Sie unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (das Brillensymbol) aus. Wählen Sie oben **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
 
 ## <a name="verify-the-second-output"></a>Überprüfen der zweiten Ausgabe

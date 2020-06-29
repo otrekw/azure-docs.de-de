@@ -1,136 +1,142 @@
 ---
 title: 'Tutorial: Erste Schritte mit Azure Synapse Analytics'
-description: Schrittweise Anleitung zum schnellen Verständnis grundlegender Konzepte in Azure Synapse
+description: In diesem Tutorial werden die grundlegenden Schritte zum Einrichten und Verwenden von Azure Synapse Analytics beschrieben.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: daa8b594b06203c7de9a9b462be469dd71ed2e49
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605407"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791859"
 ---
-# <a name="getting-started-with-azure-synapse-analytics"></a>Erste Schritte mit Azure Synapse Analytics
+# <a name="get-started-with-azure-synapse-analytics"></a>Erste Schritte mit Azure Synapse Analytics
 
-Dieses Dokument führt Sie durch alle grundlegenden Schritte, die zum Einrichten und Verwenden von Azure Synapse Analytics erforderlich sind.
+In diesem Tutorial werden die grundlegenden Schritte zum Einrichten und Verwenden von Azure Synapse Analytics beschrieben.
 
-## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Vorbereiten eines Speicherkontos für die Verwendung mit einem Synapse-Arbeitsbereich
+## <a name="prepare-a-storage-account"></a>Vorbereiten eines Speicherkontos
 
-* Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-* Erstellen Sie mit den folgenden Einstellungen ein neues Speicherkonto:
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Erstellen Sie ein neues Speicherkonto mit den folgenden Einstellungen:
 
     |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|---|
-    |Grundlagen|**Speicherkontoname**| Sie können einen beliebigen Namen vergeben.|In diesem Dokument haben wir es `contosolake` genannt.|
-    |Grundlagen|**Kontoart**|Muss auf `StorageV2` festgelegt werden.||
-    |Grundlagen|**Location**|Sie können einen beliebigen Ort auswählen.| Es wird empfohlen, dass sich Ihr Synapse-Arbeitsbereich und das Azure Data Lake Storage (ADLS) Gen2-Konto in derselben Region befinden.|
-    |Erweitert|**Data Lake Storage Gen2**|`Enabled`| Azure Synapse funktioniert nur mit Speicherkonten, bei denen diese Einstellung aktiviert ist.|
+    |Grundlagen|**Speicherkontoname**| Sie können einen beliebigen Namen vergeben.|In diesem Dokument wird **contosolake** verwendet.|
+    |Grundlagen|**Kontoart**|Muss auf **StorageV2** festgelegt werden.||
+    |Grundlagen|**Location**|Wählen Sie einen beliebigen Standort aus.| Wir empfehlen Ihnen, Ihren Azure Synapse Analytics-Arbeitsbereich und das Azure Data Lake Storage Gen2-Konto in derselben Region anzuordnen.|
+    |Erweitert|**Data Lake Storage Gen2**|**Aktiviert**| Azure Synapse funktioniert nur mit Speicherkonten, bei denen diese Einstellung aktiviert ist.|
+    |||||
 
-1. Nachdem das Speicherkonto erstellt wurde, wählen Sie im linken Navigationsbereich **Zugriffssteuerung (IAM)** aus. Weisen Sie dann die folgenden Rollen zu, oder stellen Sie sicher, dass sie bereits zugewiesen sind. 
+1. Wählen Sie nach dem Erstellen des Speicherkontos im linken Bereich die Option **Zugriffssteuerung (IAM)** aus. Weisen Sie anschließend die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind:
+    1. Weisen Sie sich selbst die Rolle **Besitzer** zu.
+    1. Weisen Sie sich selbst die Rolle **Besitzer von Speicherblobdaten** zu.
+1. Wählen Sie im linken Bereich die Option **Container** aus, und erstellen Sie einen Container.
+1. Sie können dem Container einen beliebigen Namen geben. In diesem Dokument hat der Container den Namen **users**.
+1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene**, und wählen Sie anschließend **Erstellen** aus.
 
-    a. * Weisen Sie sich selbst der Rolle **Besitzer** im Speicherkonto zu. b. * Weisen Sie sich selbst der Rolle **Besitzer von Speicherblobdaten** im Speicherkonto zu.
-
-1. Wählen Sie im linken Navigationsbereich **Container** aus, und erstellen Sie einen Container. Sie können einen beliebigen Namen vergeben. Akzeptieren Sie die standardmäßige **öffentliche Zugriffsebene**. In diesem Dokument rufen wir den Container `users` auf. Klicken Sie auf **Erstellen**. 
-
-Im folgenden Schritt werden Sie Ihren Synapse-Arbeitsbereich so konfigurieren, dass dieses Speicherkonto als „primäres“ Speicherkonto und der Container zur Speicherung von Arbeitsbereichsdaten verwendet wird. Der Arbeitsbereich speichert Daten in Apache Spark-Tabellen und Spark-Anwendungsprotokolle in diesem Konto unter einem Ordner namens `/synapse/workspacename`.
+Im folgenden Schritt konfigurieren Sie Ihren Azure Synapse-Arbeitsbereich so, dass dieses Speicherkonto als „primäres“ Speicherkonto und der Container zur Speicherung von Arbeitsbereichsdaten verwendet wird. Im Arbeitsbereich werden Daten in Apache Spark-Tabellen gespeichert. Die Spark-Anwendungsprotokolle werden im Ordner **/synapse/workspacename** gespeichert.
 
 ## <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
-* Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie am oberen Rand nach `Synapse`.
-* Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
-* Wählen Sie **+ Hinzufügen** aus, um einen Arbeitsbereich mit diesen Einstellungen zu erstellen.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
+1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
+1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich mit diesen Einstellungen zu erstellen:
 
     |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|---|
-    |Grundlagen|**Arbeitsbereichsname**|Sie können einen beliebigen Namen vergeben.| In diesem Dokument verwenden wir `myworkspace`.|
-    |Grundlagen|**Region**|Zuordnen der Region des Speicherkontos|
+    |Grundlagen|**Arbeitsbereichsname**|Sie können einen beliebigen Namen vergeben.| In diesem Dokument wird **myworkspace** verwendet.|
+    |Grundlagen|**Region**|Wählen Sie dieselbe Region wie für das Speicherkonto aus.|
 
 1. Wählen Sie unter **Data Lake Storage Gen 2** das Konto und den Container aus, die Sie zuvor erstellt haben.
+1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Klicken Sie auf **Erstellen**. Ihr Arbeitsbereich steht in wenigen Minuten zur Verfügung.
+## <a name="verify-access-to-the-storage-account"></a>Überprüfen des Zugriffs auf das Speicherkonto
 
-## <a name="verify-the-synapse-workspace-msi-has-access-to-the-storage-account"></a>Überprüfen Sie, ob der MSI des Synapse-Arbeitsbereichs Zugriff auf das Speicherkonto hat.
+Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter Umständen bereits über Zugriff auf das Speicherkonto. Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 
-Dies wurde möglicherweise schon für Sie erledigt. Sie sollten dies in diesem Fall überprüfen.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) und dann das primäre Speicherkonto, das Sie für Ihren Arbeitsbereich ausgewählt haben.
+1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
+1. Weisen Sie die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind. Wir verwenden für die Identität und den Namen des Arbeitsbereichs den gleichen Namen.
+    1. Weisen Sie für die Rolle **Mitwirkender an Storage-Blobdaten** des Speicherkontos **myworkspace** als Identität des Arbeitsbereichs zu.
+    1. Weisen Sie **myworkspace** als Namen für den Arbeitsbereich zu.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und öffnen Sie das primäre Speicherkonto, das Sie für Ihren Arbeitsbereich ausgewählt haben.
-1. Wählen Sie im linken Navigationsbereich auf **Zugriffssteuerung (IAM)** . Weisen Sie dann die folgenden Rollen zu, oder stellen Sie sicher, dass sie bereits zugewiesen sind. 
-    a. Weisen Sie die Arbeitsbereichsidentität der Rolle **Mitwirkender an Storage-Blobdaten** im Speicherkonto zu. Die Arbeitsbereichsidentität trägt denselben Namen wie der Arbeitsbereich. In diesem Dokument lautet der Name `myworkspace`, sodass die Arbeitsbereichsidentität `myworkspaced` ist.
 1. Wählen Sie **Speichern** aus.
-    
-## <a name="launch-synapse-studio"></a>Starten von Synapse Studio
 
-Nachdem Ihr Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
-* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie am Anfang des Abschnitts **Übersicht** den Eintrag **Synapse Studio starten** aus.
-* Wechseln Sie direkt zu https://web.azuresynapse.net, und melden Sie sich bei Ihrem Arbeitsbereich an.
+## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio
+
+Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
+
+* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Wählen Sie oben im Abschnitt **Übersicht** die Option **Synapse Studio starten** aus.
+* Navigieren Sie zu https://web.azuresynapse.net, und melden Sie sich bei Ihrem Arbeitsbereich an.
 
 ## <a name="create-a-sql-pool"></a>Erstellen eines SQL-Pools
 
-1. Wählen Sie in Synapse Studio im linken Navigationsbereich **Verwalten > SQL-Pools** aus.
-1. Wählen Sie **+Neu** aus, und geben Sie diese Einstellungen ein:
+1. Wählen Sie in Synapse Studio im linken Bereich **Verwalten** > **SQL-Pools** aus.
+1. Wählen Sie **Neu** aus, und geben Sie diese Einstellungen ein:
 
     |Einstellung | Vorgeschlagener Wert | 
-    |---|---|
-    |**Name des SQL-Pools**| `SQLDB1`|
-    |**Leistungsstufe**|`DW100C`|
+    |---|---|---|
+    |**Name des SQL-Pools**| **SQLDB1**|
+    |**Leistungsstufe**|**DW100C**|
+    |||
 
-1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.
-1. Ihr SQL-Pool steht in wenigen Minuten zur Verfügung. Wenn Ihr SQL-Pool erstellt wird, wird er einer SQL-Pooldatenbank zugeordnet, die auch als **SQLDB1** bezeichnet wird.
+1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr SQL-Pool steht in wenigen Minuten zur Verfügung. Ihr SQL-Pool ist einer SQL-Pool-Datenbank zugeordnet, die auch als **SQLDB1** bezeichnet wird.
 
 Ein SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Sie können den Pool später anhalten, um die Kosten zu senken.
 
 ## <a name="create-an-apache-spark-pool"></a>Erstellen eines Apache Spark-Pools
 
-1. Wählen Sie in Synapse Studio auf der linken Seite **Verwalten > Apache Spark-Pools** aus.
-1. Wählen Sie **+Neu** aus, und geben Sie diese Einstellungen ein:
+1. Wählen Sie in Synapse Studio im linken Bereich die Option **Verwalten** > **Apache Spark-Pools** aus.
+1. Wählen Sie **Neu** aus, und geben Sie diese Einstellungen ein:
 
     |Einstellung | Vorgeschlagener Wert | 
-    |---|---|
-    |**Name des Apache Spark-Pools**|`Spark1`
-    |**Knotengröße**| `Small`|
+    |---|---|---|
+    |**Name des Apache Spark-Pools**|**Spark1**
+    |**Knotengröße**| **Klein**|
     |**Anzahl von Knoten**| Legen Sie den Mindestwert auf 3 und den Höchstwert auf 3 fest.|
 
-1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.
-1. Ihr Apache Spark-Pool steht in wenigen Sekunden zur Verfügung.
+1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Apache Spark-Pool steht in wenigen Sekunden zur Verfügung.
 
 > [!NOTE]
-> Trotz des Namens ist ein Apache Spark-Pool nicht mit einem SQL-Pool vergleichbar. Es handelt sich nur um ein paar grundlegende Metadaten, die Sie verwenden, um den Synapse-Arbeitsbereich darüber zu informieren, wie mit Spark interagiert werden soll. 
+> Trotz des Namens ist ein Apache Spark-Pool nicht mit einem SQL-Pool vergleichbar. Es handelt sich nur um ein paar grundlegende Metadaten, mit denen Sie den Azure Synapse-Arbeitsbereich darüber informieren, wie mit Spark interagiert werden soll.
 
-Da es sich dabei um Metadaten handelt, können Spark-Pools nicht gestartet oder beendet werden. 
+Da es sich hierbei um Metadaten handelt, können Spark-Pools nicht gestartet oder beendet werden.
 
-Wenn Sie eine Spark-Aktivität in Synapse ausführen, geben Sie einen Spark-Pool an, der verwendet werden soll. Der Pool informiert Synapse, wie viele Spark-Ressourcen verwendet werden sollen. Sie bezahlen nur für die Ressourcen, die verwendet werdet. Wenn Sie die Verwendung des Pools aktiv beenden, erfolgt automatisch ein Timeout der Ressourcen, und sie werden wiederverwendet.
+Wenn Sie eine Spark-Aktivität in Azure Synapse durchführen, geben Sie den zu verwendenden Spark-Pool an. Der Pool informiert Azure Synapse, wie viele Spark-Ressourcen verwendet werden sollen. Sie zahlen nur für die Ressourcen, die Sie verwenden. Wenn Sie die Verwendung des Pools aktiv beenden, erfolgt automatisch ein Timeout für die Ressourcen, und sie werden wiederverwendet.
 
 > [!NOTE]
-> Spark-Datenbanken werden unabhängig von Spark-Pools erstellt. Ein Arbeitsbereich verfügt immer über eine Spark-Datenbank namens **Standard** (default), und Sie können zusätzliche Spark-Datenbanken erstellen.
+> Spark-Datenbanken werden unabhängig von Spark-Pools erstellt. Ein Arbeitsbereich verfügt immer über eine Spark-Datenbank mit dem Namen **default**. Sie können auch zusätzliche Spark-Datenbanken erstellen.
 
 ## <a name="the-sql-on-demand-pool"></a>Der SQL On-Demand-Pool
 
-Jeder Arbeitsbereich verfügt über einen vordefinierten und nicht löschbaren Pool namens **SQL On-Demand**. Der SQL On-Demand-Pool ermöglicht es Ihnen, mit SQL zu arbeiten, ohne einen Synapse SQL-Pool erstellen oder sich darum Gedanken machen zu müssen. Im Gegensatz zu den anderen Arten von Pools basiert die Abrechnung für SQL On-Demand auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Anzahl der Ressourcen, die zum Ausführen der Abfrage verwendet werden.
+Jeder Arbeitsbereich verfügt über einen vordefinierten Pool mit dem Namen **SQL On-Demand**. Dieser Pool kann nicht gelöscht werden. Der Pool „SQL On-Demand“ ermöglicht es Ihnen, mit SQL zu arbeiten, ohne dass Sie einen SQL-Pool in Azure Synapse erstellen oder sich darüber Gedanken machen müssen.
 
-* SQL On-Demand verfügt auch über eigene SQL On-Demand-Datenbanken, die unabhängig von jeglichem SQL On-Demand-Pool vorhanden sind.
-* Aktuell besitzt ein Arbeitsbereich immer genau einen SQL On-Demand-Pool namens **SQL On-Demand**.
+Im Gegensatz zu den anderen Arten von Pools basiert die Abrechnung für SQL On-Demand auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Anzahl von Ressourcen, die zum Ausführen der Abfrage verwendet werden.
+
+* SQL On-Demand verfügt über eigene SQL On-Demand-Datenbanken, die unabhängig von einem SQL On-Demand-Pool vorhanden sind.
+* Ein Arbeitsbereich besitzt immer nur genau einen SQL On-Demand-Pool mit dem Namen **SQL On-Demand**.
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>Laden der NYC Taxi-Beispieldaten in die Datenbank SQLDB1
 
-1. Wählen Sie in Synapse Studio im obersten blauen Menü das **?** - Symbol aus.
-1. Wählen Sie **Erste Schritte > „Erste Schritte“-Hub** aus.
-1. Wählen Sie auf der Karte mit der Bezeichnung **Abfragebeispieldaten** den SQL-Pool namens `SQLDB1` aus.
-1. Wählen Sie **Abfragedaten** aus. Es wird eine Benachrichtigung angezeigt und wieder ausgeblendet, die besagt, dass „Beispieldaten geladen werden“.
-1. Am oberen Rand von Synapse Studio wird eine hellblaue Benachrichtigungsleiste mit dem Hinweis angezeigt, dass Daten in SQLDB1 geladen werden. Warten Sie, bis die Leiste grün wird, und schließen Sie sie dann.
+1. Wählen Sie in Synapse Studio im obersten blauen Menü das Fragezeichen ( **?** ) aus.
+1. Wählen Sie **Erste Schritte** >  **„Erste Schritte“-Hub** aus.
+1. Wählen Sie auf der Karte mit der Bezeichnung **Abfragebeispieldaten** den SQL-Pool mit dem Namen **SQLDB1** aus.
+1. Wählen Sie **Abfragedaten** aus. Es wird kurz eine Benachrichtigung mit dem Hinweis angezeigt, dass die Beispieldaten geladen werden. In einer hellblauen Statusleiste im oberen Bereich von Synapse Studio wird angegeben, dass Daten in SQLDB1 geladen werden.
+1. Schließen Sie die Statusleiste, wenn sich ihre Farbe in Grün geändert hat.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Untersuchen der NYC Taxi-Daten im SQL-Pool
 
 1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
-1. Navigieren Sie zu **SQLDB1 > Tabellen**. Sie werden sehen, dass mehrere Tabellen geladen wurden.
-1. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript > OBERSTE 100 Zeilen auswählen** aus.
-1. Ein neues SQL-Skript wird erstellt und automatisch ausgeführt.
-1. Beachten Sie, dass am oberen Rand des SQL-Skripts **Verbinden mit** automatisch auf den SQL-Pool namens `SQLDB1` festgelegt ist.
+1. Navigieren Sie zu **SQLDB1** > **Tabellen**. Es werden mehrere geladene Tabellen angezeigt.
+1. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
+1. Warten Sie, während ein neues SQL-Skript erstellt und ausgeführt wird.
+1. Beachten Sie, dass am oberen Rand des SQL-Skripts **Verbinden mit** automatisch auf den SQL-Pool mit dem Namen **SQLDB1** festgelegt ist.
 1. Ersetzen Sie den Text des SQL-Skripts durch diesen Code, und führen Sie ihn aus.
 
     ```sql
@@ -143,17 +149,17 @@ Jeder Arbeitsbereich verfügt über einen vordefinierten und nicht löschbaren P
     ORDER BY PassengerCount
     ```
 
-1. Diese Abfrage zeigt, wie die Gesamtzahl der Fahrtstrecken und die durchschnittliche Fahrtstrecke mit der Anzahl der Fahrgäste in Beziehung stehen.
+    Diese Abfrage zeigt, wie die Gesamtzahl der Fahrtstrecken und die durchschnittliche Fahrtstrecke mit der Anzahl der Fahrgäste in Beziehung stehen.
 1. Ändern Sie im Ergebnisfenster des SQL-Skripts die **Ansicht** in **Diagramm**, um eine Visualisierung der Ergebnisse als Liniendiagramm anzuzeigen.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>Laden der NYC Taxi-Beispieldaten in die Spark-Datenbank „nyctaxi“
+## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Laden der NYC Taxi-Daten in die Spark-Datenbank „nyctaxi“
 
-Wir haben Daten in einer Tabelle in `SQLDB1` verfügbar. Nun laden wir sie in eine Spark-Datenbank namens `nyctaxi`.
+In einer Tabelle in **SQLDB1** sind Daten verfügbar. Laden Sie sie in eine Spark-Datenbank mit dem Namen **nyctaxi**.
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**.
-1. Wählen Sie **+** und **Notebook** aus.
-1. Legen Sie am oberen Rand des Notebooks den Wert von **Anfügen an** auf `Spark1` fest.
-1. Wählen Sie **Code hinzufügen** aus, um eine Notebook-Codezelle hinzuzufügen, und fügen Sie den folgenden Text ein:
+1. Wählen Sie **+**  > **Notebook** aus.
+1. Legen Sie am oberen Rand des Notebooks den Wert von **Anfügen an** auf **Spark1** fest.
+1. Wählen Sie **Code hinzufügen** aus, um eine Notebook-Codezelle hinzuzufügen, und fügen Sie dann den folgenden Text ein:
 
     ```scala
     %%spark
@@ -162,15 +168,15 @@ Wir haben Daten in einer Tabelle in `SQLDB1` verfügbar. Nun laden wir sie in ei
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. Navigieren Sie zum Hub **Daten**, klicken Sie mit der rechten Maustaste auf **Datenbanken**, und wählen Sie **Aktualisieren** aus.
-1. Jetzt sollten diese Datenbanken angezeigt werden:
-    - SQLDB1 (SQL-Pool)
-    - nyctaxi (Spark)
-      
+1. Navigieren Sie zum Hub **Daten**, klicken Sie mit der rechten Maustaste auf **Datenbanken**, und wählen Sie dann **Aktualisieren** aus. Die folgenden Datenbanken sollten angezeigt werden:
+
+    - **SQLDB1** (SQL-Pool)
+    - **nyctaxi** (Spark)
+
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysieren der NYC Taxi-Daten mithilfe von Spark und Notebooks
 
 1. Wechseln Sie zurück zu Ihrem Notebook.
-1. Erstellen Sie eine neue Codezelle, geben Sie den folgenden Text ein, und führen Sie die Zelle beispielsweise mit den NYC Taxi-Daten aus, die wir in die Spark-Datenbank `nyctaxi` geladen haben.
+1. Erstellen Sie eine neue Codezelle, und geben Sie den folgenden Text ein. Führen Sie die Zelle anschließend aus, um die NYC Taxi-Daten anzuzeigen, die wir in die Spark-Datenbank **nyctaxi** geladen haben.
 
    ```py
    %%pyspark
@@ -178,7 +184,7 @@ Wir haben Daten in einer Tabelle in `SQLDB1` verfügbar. Nun laden wir sie in ei
    display(df)
    ```
 
-1. Führen Sie den folgenden Code aus, um dieselbe Analyse durchzuführen, die wir zuvor mit dem SQL-Pool `SQLDB1` vorgenommen haben. Dieser Code speichert auch die Ergebnisse der Analyse in einer Tabelle namens `nyctaxi.passengercountstats` und visualisiert die Ergebnisse.
+1. Führen Sie den folgenden Code aus, um dieselbe Analyse durchzuführen, die wir zuvor mit dem SQL-Pool **SQLDB1** vorgenommen haben. Mit diesem Code werden die Ergebnisse der Analyse in einer Tabelle mit dem Namen **nyctaxi.passengercountstats** gespeichert und die Ergebnisse visualisiert.
 
    ```py
    %%pyspark
@@ -196,10 +202,10 @@ Wir haben Daten in einer Tabelle in `SQLDB1` verfügbar. Nun laden wir sie in ei
    ```
 
 1. Wählen Sie in den Zellenergebnissen **Diagramm** aus, um die visualisierten Daten anzuzeigen.
- 
-## <a name="customize-data-visualization-data-with-spark-and-notebooks"></a>Anpassen von Datenvisualisierungsdaten mit Spark und Notebooks
 
-Mit Notebooks können Sie kontrollieren, wie Diagramme gerendert werden. Der folgende Code zeigt ein einfaches Beispiel für die Verwendung der beliebten Bibliotheken `matplotlib` und `seaborn`. Er rendert dieselbe Art von Liniendiagramm, das Sie gesehen haben, als die SQL-Abfragen zuvor ausgeführt wurden.
+## <a name="customize-data-visualization-with-spark-and-notebooks"></a>Anpassen der Datenvisualisierung mit Spark und Notebooks
+
+Sie können mit Notebooks steuern, wie Diagramme gerendert werden. Mit dem folgenden Code wird ein einfaches Beispiel angezeigt. Hierbei werden die gängigen Bibliotheken **matplotlib** und **seaborn** verwendet. Mit dem Code wird die gleiche Art von Liniendiagramm wie bei den zuvor ausgeführten SQL-Abfragen gerendert.
 
 ```py
 %%pyspark
@@ -213,12 +219,12 @@ seaborn.lineplot(x="PassengerCount", y="SumTripDistance" , data = df)
 seaborn.lineplot(x="PassengerCount", y="AvgTripDistance" , data = df)
 matplotlib.pyplot.show()
 ```
-    
+
 ## <a name="load-data-from-a-spark-table-into-a-sql-pool-table"></a>Laden von Daten aus einer Spark-Tabelle in eine SQL-Pooltabelle
 
-Zuvor haben wir Daten aus einer SQL-Pooltabelle `SQLDB1.dbo.Trip` in eine Spark-Tabelle `nyctaxi.trip` kopiert. Anschließend haben wir unter Verwendung von Spark die Daten in der Spark-Tabelle `nyctaxi.passengercountstats` aggregiert. Jetzt kopieren wir die Daten aus `nyctaxi.passengercountstats` in eine SQL-Pooltabelle namens `SQLDB1.dbo.PassengerCountStats`. 
+Weiter oben haben wir Daten aus der SQL-Pooltabelle **SQLDB1.dbo.Trip** in die Spark-Tabelle **nyctaxi.trip** kopiert. Anschließend haben wir mit Spark die Daten in der Spark-Tabelle **nyctaxi.passengercountstats** aggregiert. Nun kopieren wir die Daten aus **nyctaxi.passengercountstats** in eine SQL-Pooltabelle mit dem Namen **SQLDB1.dbo.PassengerCountStats**.
 
-Führen Sie die unten stehende Zelle in Ihrem Notebook aus. Die aggregierte Spark-Tabelle wird zurück in die SQL-Pooltabelle kopiert.
+Führen Sie die folgende Zelle in Ihrem Notebook aus. Hiermit wird die aggregierte Spark-Tabelle zurück in die SQL-Pooltabelle kopiert.
 
 ```scala
 %%spark
@@ -226,45 +232,46 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>Analysieren von NYC Taxi-Daten in Spark-Datenbanken mithilfe von SQL On-Demand 
+## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>Analysieren von NYC Taxi-Daten in Spark-Datenbanken mithilfe von SQL On-Demand
 
-Tabellen in Spark-Datenbanken sind automatisch sichtbar und können automatisch von SQL On-Demand abgefragt werden.
+Tabellen in Spark-Datenbanken sind automatisch sichtbar und können von SQL On-Demand abgefragt werden.
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**, und erstellen Sie ein neues SQL-Skript.
-1. Legen Sie **Verbinden mit** auf **SQL On-Demand** fest. 
+1. Legen Sie **Verbinden mit** auf **SQL On-Demand** fest.
 1. Fügen Sie den folgenden Text in das Skript ein, und führen Sie das Skript aus.
 
     ```sql
     SELECT *
     FROM nyctaxi.dbo.passengercountstats
     ```
+
     > [!NOTE]
-    > Wenn Sie zum ersten Mal eine Abfrage ausführen, die SQL On-Demand verwendet, dauert es ungefähr 10 Sekunden, bis SQL On-Demand SQL-Ressourcen gesammelt hat, die zum Ausführen Ihrer Abfragen benötigt werden. Nachfolgende Abfragen benötigen diese Zeit nicht mehr und sind viel schneller.
+    > Beim erstmaligen Ausführen einer Abfrage mit Verwendung von SQL On-Demand dauert es ungefähr zehn Sekunden, bis SQL On-Demand die SQL-Ressourcen gesammelt hat, die zum Ausführen Ihrer Abfragen benötigt werden. Für nachfolgende Abfragen wird dann deutlich weniger Zeit benötigt.
   
 ## <a name="orchestrate-activities-with-pipelines"></a>Orchestrieren von Aktivitäten mit Pipelines
 
-Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse orchestrieren. In diesem Abschnitt zeigen wir Ihnen, wie einfach dies ist.
+Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse orchestrieren.
 
 1. Navigieren Sie in Synapse Studio zum Hub **Orchestrieren**.
-1. Wählen Sie **+** und dann **Pipeline** aus. Eine neue Pipeline wird erstellt.
-1. Navigieren Sie zum Hub „Entwickeln“, und suchen Sie das Notebook, das Sie zuvor erstellt haben.
+1. Wählen Sie **+**  > **Pipeline** aus, um eine neue Pipeline zu erstellen.
+1. Navigieren Sie zum Hub **Entwickeln**, und suchen Sie nach dem Notebook, das Sie zuvor erstellt haben.
 1. Ziehen Sie dieses Notebook in die Pipeline.
-1. Wählen Sie in der Pipeline **Trigger hinzufügen > Neu/Bearbeiten** aus.
-1. Wählen Sie in **Trigger auswählen** den Befehl **Neu** aus, und legen Sie dann unter „Serie“ fest, dass der Trigger jede 1 Stunde ausgeführt werden soll.
+1. Wählen Sie in der Pipeline **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
+1. Wählen Sie unter **Trigger auswählen** den Befehl **Neu** aus, und legen Sie dann unter **Serie** fest, dass der Trigger jede Stunde ausgeführt werden soll.
 1. Klicken Sie auf **OK**.
-1. Wählen Sie **Alle veröffentlichen** aus, und die Pipeline wird stündlich ausgeführt.
-1. Wenn Sie die Pipeline jetzt ausführen möchten, ohne bis zur nächsten Stunde zu warten, wählen Sie **Trigger hinzufügen > Neu/Bearbeiten** aus.
+1. Wählen Sie **Alle veröffentlichen**. Die Pipeline wird stündlich ausgeführt.
+1. Wählen Sie zum sofortigen Ausführen der Pipeline (ohne bis zur nächsten Ausführung nach einer Stunde zu warten) **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
 
-## <a name="working-with-data-in-a-storage-account"></a>Arbeiten mit Daten in einem Speicherkonto
+## <a name="work-with-data-in-a-storage-account"></a>Arbeiten mit Daten in einem Speicherkonto
 
-Bisher haben wir Szenarien behandelt, bei denen sich Daten in Datenbanken im Arbeitsbereich befunden haben. Nun zeigen wir Ihnen, wie Sie mit Dateien in Speicherkonten arbeiten. In diesem Szenario verwenden wir das primäre Speicherkonto des Arbeitsbereichs und den Container, die wir beim Erstellen des Arbeitsbereichs angegeben haben.
+Bisher haben wir Szenarien behandelt, bei denen sich Daten in Datenbanken im Arbeitsbereich befunden haben. Nun zeigen wir Ihnen, wie Sie mit Dateien in Speicherkonten arbeiten. In diesem Szenario verwenden wir das primäre Speicherkonto des Arbeitsbereichs und den Container gemäß unserer Angabe bei Erstellung des Arbeitsbereichs.
 
-* Der Name des Speicherkontos: `contosolake`
-* Der Name des Containers in dem Speicherkonto: `users`
+* Name des Speicherkontos: **contosolake**
+* Name des Containers im Speicherkonto: **users**
 
-### <a name="creating-csv-and-parquet-files-in-your-storage-account"></a>Erstellen von CSV- und Parquet-Dateien in Ihrem Speicherkonto
+### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Erstellen von CSV- und Parquet-Dateien in Ihrem Speicherkonto
 
-Führen Sie den folgenden Code in einem Notebook aus. Er erstellt eine CSV-Datei und eine Parquet-Datei im Speicherkonto.
+Führen Sie den folgenden Code in einem Notebook aus. Hiermit werden eine CSV-Datei und eine Parquet-Datei im Speicherkonto erstellt.
 
 ```py
 %%pyspark
@@ -274,15 +281,13 @@ df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
 df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 ```
 
-### <a name="analyzing-data-in-a-storage-account"></a>Analysieren von Daten in einem Speicherkonto
+### <a name="analyze-data-in-a-storage-account"></a>Analysieren von Daten in einem Speicherkonto
 
-1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
-1. Wählen Sie **Verknüpft** aus.
-1. Navigieren Sie zu **Speicherkonten > myworkspace (Primär – contosolake)** .
-1. Wählen Sie **Benutzer (Primär)** aus.
-1. Es sollte ein Ordner namens `NYCTaxi` angezeigt werden. Darin sollten die beiden Ordner `PassengerCountStats.csv` und `PassengerCountStats.parquet` angezeigt werden.
-1. Navigieren Sie zum `PassengerCountStats.parquet`-Ordner.
-1. Klicken Sie mit der rechten Maustaste auf die darin enthaltene Datei vom Typ `.parquet`, und wählen Sie **Neues Notebook** aus. Daraufhin wird ein Notebook mit einer Zelle wie der folgenden erstellt:
+1. Navigieren Sie in Synapse Studio zum Hub **Daten**, und wählen Sie **Verknüpft** aus.
+1. Navigieren Sie zu **Speicherkonten** > **myworkspace (Primär – contosolake)** .
+1. Wählen Sie **Benutzer (Primär)** aus. Der Ordner **NYCTaxi** sollte angezeigt werden. Darin sollten die beiden Ordner **PassengerCountStats.csv** und **PassengerCountStats.parquet** angezeigt werden.
+1. Öffnen Sie den Ordner **PassengerCountStats.parquet**. Er sollte eine Parquet-Datei mit einem Namen wie *part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet* enthalten.
+1. Klicken Sie mit der rechten Maustaste auf **.parquet**, und wählen Sie dann die Option **Neues Notebook** aus. Es wird ein Notebook mit einer Zelle der folgenden Art erstellt:
 
     ```py
     %%pyspark
@@ -291,7 +296,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ```
 
 1. Führen Sie die Zelle aus.
-1. Klicken Sie mit der rechten Maustaste auf die darin enthaltene Parquet-Datei, und wählen Sie **Neues SQL-Skript > OBERSTE 100 Zeilen AUSWÄHLEN** aus. Daraufhin wird ein SQL-Skript wie das folgende erstellt:
+1. Klicken Sie mit der rechten Maustaste auf die darin enthaltene Parquet-Datei, und wählen Sie dann **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus. Es wird ein SQL-Skript der folgenden Art erstellt:
 
     ```sql
     SELECT TOP 100 *
@@ -300,81 +305,83 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
         FORMAT='PARQUET'
     ) AS [r];
     ```
-    
-1. In dem Skript wird das Feld **Anfügen an** auf **SQL On-Demand-** festgelegt.
+
+     Im Skript ist das Feld **Anfügen an** auf **SQL On-Demand** festgelegt.
+
 1. Führen Sie das Skript aus.
 
 ## <a name="visualize-data-with-power-bi"></a>Visualisieren von Daten mit Power BI
 
 Aus den NYC Taxi-Daten haben wir aggregierte Datasets in zwei Tabellen erstellt:
-* `nyctaxi.passengercountstats`
-* `SQLDB1.dbo.PassengerCountStats`
+- **nyctaxi.passengercountstats**
+- **SQLDB1.dbo.PassengerCountStats**
 
-Sie können einen Power BI-Arbeitsbereich mit Ihrem Synapse-Arbeitsbereich verknüpfen. Auf diese Weise können Sie problemlos Daten in Ihren Power BI-Arbeitsbereich übernehmen, und Sie können Ihre Power BI-Berichte direkt in Ihrem Synapse-Arbeitsbereich bearbeiten.
+Sie können einen Power BI-Arbeitsbereich mit Ihrem Azure Synapse-Arbeitsbereich verknüpfen. Auf diese Weise können Sie problemlos Daten in Ihren Power BI-Arbeitsbereich einfügen. Sie können Ihre Power BI-Berichte direkt in Ihrem Azure Synapse-Arbeitsbereich bearbeiten.
 
 ### <a name="create-a-power-bi-workspace"></a>Erstellen eines Power BI-Arbeitsbereichs
 
 1. Melden Sie sich bei [powerbi.microsoft.com](https://powerbi.microsoft.com/) an.
-1. Erstellen Sie einen neuen Power BI-Arbeitsbereich namens `NYCTaxiWorkspace1`.
+1. Erstellen Sie einen neuen Power BI-Arbeitsbereich mit dem Namen **NYCTaxiWorkspace1**.
 
-### <a name="link-your-synapse-workspace-to-your-new-power-bi-workspace"></a>Verknüpfen Ihres Synapse-Arbeitsbereichs mit Ihrem neuen Power BI-Arbeitsbereich
+### <a name="link-your-azure-synapse-workspace-to-your-new-power-bi-workspace"></a>Verknüpfen Ihres Azure Synapse-Arbeitsbereichs mit Ihrem neuen Power BI-Arbeitsbereich
 
-1. Navigieren Sie in Synapse Studio zu **Verwalten > Verknüpfte Dienste**.
-1. Wählen Sie **+ Neu** und dann **Verbinden mit Power BI** aus, und legen Sie diese Felder fest:
+1. Wechseln Sie in Synapse Studio zu **Verwalten** > **Verknüpfte Dienste**.
+1. Wählen Sie **Neu** > **Mit Power BI verbinden** aus, und legen Sie dann die folgenden Felder fest:
 
     |Einstellung | Vorgeschlagener Wert | 
     |---|---|
-    |**Name**|`NYCTaxiWorkspace1`|
-    |**Arbeitsbereichsname**|`NYCTaxiWorkspace1`|
-        
+    |**Name**|**NYCTaxiWorkspace1**|
+    |**Arbeitsbereichsname**|**NYCTaxiWorkspace1**|
+
 1. Klicken Sie auf **Erstellen**.
 
-### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>Erstellen eines Power BI-Datasets, das Daten in Ihrem Synapse-Arbeitsbereich verwendet
+### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>Erstellen eines Power BI-Datasets, das Daten in Ihrem Azure Synapse-Arbeitsbereich verwendet
 
-1. Navigieren Sie in Synapse Studio zu **Entwickeln > Power BI**.
-1. Navigieren Sie zu **NYCTaxiWorkspace1 > Power BI-Datasets**, und wählen Sie **Neues Power BI-Dataset** aus.
-1. Zeigen Sie auf die Datenbank `SQLDB1`, und wählen Sie **.pbids-Datei herunterladen** aus.
-1. Öffnen Sie die heruntergeladene `.pbids`-Datei. 
-1. Dadurch wird Power BI Desktop gestartet und automatisch mit `SQLDB1` in Ihrem Synapse-Arbeitsbereich verbunden.
-1. Wenn ein Dialogfeld namens **SQL Server-Datenbank** angezeigt wird: a. Wählen Sie **Microsoft-Konto** aus. 
-    b. Wählen Sie **Anmelden** aus, und melden Sie sich an.
-    c. Wählen Sie **Verbinden**.
-1. Das Dialogfeld **Navigator** wird geöffnet. Überprüfen Sie in diesem Fall die Tabelle **PassengerCountStats**, und wählen Sie **Laden** aus.
-1. Das Dialogfeld **Verbindungseinstellungen** wird angezeigt. Wählen Sie **DirectQuery** und dann **OK** aus.
-1. Wählen Sie die Schaltfläche **Bericht** auf der linken Seite aus.
+1. Wechseln Sie in Synapse Studio zu **Entwickeln** > **Power BI**.
+1. Navigieren Sie zu **NYCTaxiWorkspace1** > **Power BI-Datasets**, und wählen Sie **Neues Power BI-Dataset** aus.
+1. Zeigen Sie auf die Datenbank **SQLDB1**, und wählen Sie **.pbids-Datei herunterladen** aus.
+1. Öffnen Sie die heruntergeladene **.pbids**-Datei. Power BI Desktop wird geöffnet, und es wird automatisch eine Verbindung mit **SQLDB1** in Ihrem Azure Synapse-Arbeitsbereich hergestellt.
+1. Gehen Sie wie folgt vor, wenn ein Dialogfeld mit dem Namen **SQL Server-Datenbank** angezeigt wird:
+    1. Wählen Sie **Microsoft-Konto** aus.
+    1. Wählen Sie **Anmelden** aus, und melden Sie sich bei Ihrem Konto an.
+    1. Wählen Sie **Verbinden**.
+1. Aktivieren Sie nach dem Öffnen des Dialogfelds **Navigator** die Tabelle **PassengerCountStats**, und wählen Sie **Laden** aus.
+1. Wählen Sie nach Anzeige des Dialogfelds **Verbindungseinstellungen** die Option **DirectQuery** > **OK** aus.
+1. Wählen Sie auf der linken Seite die Schaltfläche **Bericht** aus.
 1. Fügen Sie Ihrem Bericht **Liniendiagramm** hinzu.
-    a. Ziehen Sie die Spalte **PasssengerCount** in **Visualisierungen > Achse**. b. Ziehen Sie die Spalten **SumTripDistance** und **AvgTripDistance** in **Visualisierungen > Werte**.
+    1. Ziehen Sie die Spalte **PassengerCount** auf **Visualisierungen** > **Achse**.
+    1. Ziehen Sie die Spalten **SumTripDistance** und **AvgTripDistance** auf **Visualisierungen** > **Werte**.
 1. Wählen Sie auf der Registerkarte **Start** die Option **Veröffentlichen** aus.
-1. Sie werden gefragt, ob Sie Ihre Änderungen speichern möchten. Wählen Sie **Speichern** aus.
-1. Sie werden aufgefordert, einen Dateinamen auszuwählen. Wählen Sie `PassengerAnalysis.pbix` aus und anschließend **Speichern**.
-1. Sie werden aufgefordert, **ein Ziel auszuwählen**. Wählen Sie `NYCTaxiWorkspace1` aus und dann **Auswählen**.
+1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
+1. Wählen Sie den Dateinamen **PassengerAnalysis.pbix** und dann die Option **Speichern** aus.
+1. Wählen Sie unter **Ziel auswählen** die Option **NYCTaxiWorkspace1** aus, und klicken Sie dann auf **Auswählen**.
 1. Warten Sie, bis die Veröffentlichung abgeschlossen ist.
 
 ### <a name="configure-authentication-for-your-dataset"></a>Konfigurieren der Authentifizierung für Ihr Dataset
 
 1. Öffnen Sie [powerbi.microsoft.com](https://powerbi.microsoft.com/), und **melden Sie sich an**.
-1. Wählen Sie links unter **Arbeitsbereiche** den Arbeitsbereich `NYCTaxiWorkspace1` aus.
-1. In diesem Arbeitsbereich sollten Sie ein Dataset namens `Passenger Analysis` sowie einen Bericht mit dem Namen `Passenger Analysis` sehen.
-1. Zeigen Sie auf das Dataset `PassengerAnalysis`, und wählen Sie zuerst das Symbol mit den drei Punkten und dann **Einstellungen** aus.
-1. Legen Sie in **Anmeldeinformationen für Datenquelle** die **Authentifizierung**smethode auf **OAuth2** fest, und wählen Sie **Anmelden** aus.
+1. Wählen Sie auf der linken Seite unter **Arbeitsbereiche** den Arbeitsbereich **NYCTaxiWorkspace1** aus.
+1. Suchen Sie in diesem Arbeitsbereich nach dem Dataset **PassengerAnalysis** und dem Bericht **PassengerAnalysis**.
+1. Zeigen Sie auf das Dataset **PassengerAnalysis**, und wählen Sie die Schaltfläche mit den Auslassungspunkten (...) und dann die Option **Einstellungen** aus.
+1. Legen Sie in **Anmeldeinformationen für Datenquelle** die **Authentifizierungsmethode** auf **OAuth2** fest, und wählen Sie anschließend **Anmelden** aus.
 
 ### <a name="edit-a-report-in-synapse-studio"></a>Bearbeiten eines Berichts in Synapse Studio
 
-1. Wechseln Sie zurück zu Synapse Studio, und wählen Sie **Schließen und aktualisieren** aus. 
-1. Navigieren Sie zum Hub **Entwickeln**. 
-1. Zeigen Sie auf **Power BI**, und klicken Sie auf „Aktualisieren“ für den Knoten **Power BI-Berichte**.
-1. Unter **Power BI** sollte nun Folgendes angezeigt werden: a. * Unter **NYCTaxiWorkspace1 > Power BI-Datasets** ein neues Dataset namens **PassengerAnalysis**.
-    b. * Unter **NYCTaxiWorkspace1 > Power BI-Berichte** ein neuer Bericht namens **PassengerAnalysis**.
-1. Wählen Sie den Bericht **PassengerAnalysis** aus. 
-1. Der Bericht wird geöffnet, und Sie können den Bericht jetzt direkt in Synapse Studio bearbeiten.
+1. Wechseln Sie zurück zu Synapse Studio, und wählen Sie **Schließen und aktualisieren** aus.
+1. Navigieren Sie zum Hub **Entwickeln**.
+1. Zeigen Sie auf **Power BI**, und wählen Sie die Option „Aktualisieren“ für den Knoten **Power BI-Berichte** aus.
+1. Unter **Power BI** sollte Folgendes angezeigt werden:
+    1. Unter **NYCTaxiWorkspace1** > **Power BI-Datasets** ein neues Dataset mit dem Namen **PassengerAnalysis**.
+    1. Unter **NYCTaxiWorkspace1** > **Power BI-Berichte** ein neuer Bericht mit dem Namen **PassengerAnalysis**.
+1. Wählen Sie den Bericht **PassengerAnalysis** aus. Der Bericht wird geöffnet, und Sie können ihn direkt in Synapse Studio bearbeiten.
 
 ## <a name="monitor-activities"></a>Überwachen von Aktivitäten
 
-1. Navigieren Sie in Synapse Studio zum Hub „Überwachen“.
+1. Navigieren Sie in Synapse Studio zum Hub **Überwachen**.
 1. An dieser Stelle können Sie einen Verlauf aller Aktivitäten anzeigen, die im Arbeitsbereich stattfinden, und welche davon jetzt aktiv sind.
-1. Erkunden Sie die **Pipelineausführungen**, **Apache Spark-Anwendungen**und **SQL-Anforderungen**, und Sie können sehen, was Sie bereits im Arbeitsbereich gemacht haben.
+1. Erkunden Sie die **Pipelineausführungen**, **Apache Spark-Anwendungen** und **SQL-Anforderungen**, um zu überprüfen, was Sie im Arbeitsbereich bereits durchgeführt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Azure Synapse Analytics (Vorschau)](overview-what-is.md).
+Informieren Sie sich weiter über [Azure Synapse Analytics (Vorschau für Arbeitsbereiche)](overview-what-is.md).
 

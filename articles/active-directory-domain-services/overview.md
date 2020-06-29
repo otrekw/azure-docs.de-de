@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: c8a29f95e7b987af2b408ec24bc390a7fd162263
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554866"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734553"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Was ist Azure Active Directory Domain Services?
 
-Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos/NTLM-Authentifizierung bereit. Sie können diese Domänendienste nutzen, ohne Domänencontroller in der Cloud bereitstellen, verwalten und patchen zu müssen.
+Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos/NTLM-Authentifizierung bereit. Sie können diese Domänendienste nutzen, ohne Domänencontroller (DCs) in der Cloud bereitstellen, verwalten und patchen zu müssen.
+
+Eine verwaltete Domäne ist ein DNS-Namespace und ein entsprechendes Verzeichnis. Die verwaltete Domäne lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren, sodass Benutzer sich mit ihren vorhandenen Anmeldeinformationen anmelden können. Sie können auch vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu sichern. So können Sie für eine reibungslosere Lift & Shift-Migration lokaler Ressourcen zu Azure sorgen.
 
 Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren. Diese Integration ermöglicht Benutzern, sich bei Diensten und Anwendungen, die mit der verwalteten Domäne verbunden sind, mit ihren vorhandenen Anmeldeinformationen anzumelden. Sie können auch vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen abzusichern. So können Sie für eine reibungslosere Lift & Shift-Migration lokaler Ressourcen zu Azure sorgen.
 
@@ -61,9 +63,9 @@ Mit Azure AD DS entfällt die Notwendigkeit, VPN-Verbindungen zurück zu einer
 
 ## <a name="how-does-azure-ad-ds-work"></a>Wie funktioniert Azure AD DS?
 
-Zum Bereitstellen von Identitätsdiensten erstellt Azure eine AD DS-Instanz in einem virtuellen Netzwerk Ihrer Wahl. Im Hintergrund wird ein Paar von Windows Server-Domänencontrollern erstellt, die auf virtuellen Azure-Computern ausgeführt werden. Sie müssen diese Domänencontroller nicht verwalten, konfigurieren oder aktualisieren. Die Domänencontroller werden von der Azure-Plattform im Rahmen des Azure AD DS-Diensts verwaltet.
+Zum Bereitstellen von Identitätsdiensten erstellt Azure in einem virtuellen Netzwerk Ihrer Wahl eine verwaltete Azure AD DS-Domäne. Im Hintergrund wird ein Paar von Windows Server-Domänencontrollern erstellt, die auf virtuellen Azure-Computern ausgeführt werden. Sie müssen diese Domänencontroller nicht verwalten, konfigurieren oder aktualisieren. Die Domänencontroller werden von der Azure-Plattform im Rahmen des Azure AD DS-Diensts verwaltet.
 
-Die verwaltete Azure AD DS-Domäne ist so konfiguriert, dass sie eine unidirektionale Synchronisierung von Azure AD durchführt, um Zugriff auf einen zentralen Satz Benutzer, Gruppen und Anmeldeinformationen zu bieten. Sie können Ressourcen direkt in der verwalteten Azure AD DS-Domäne erstellen, diese werden aber nicht wieder mit Azure AD synchronisiert. Anwendungen, Dienste und VMs in Azure, die eine Verbindung mit diesem virtuellen Netzwerk herstellen, können gemeinsame AD DS-Features wie Domänenbeitritt, Gruppenrichtlinien, LDAP und Kerberos- bzw. NTLM-Authentifizierung nutzen.
+Die verwaltete Domäne ist so konfiguriert, dass sie eine unidirektionale Synchronisierung von Azure AD durchführt, um Zugriff auf einen zentralen Satz von Benutzern, Gruppen und Anmeldeinformationen zu bieten. Sie können Ressourcen direkt in der verwalteten Domäne erstellen, die aber mit Azure AD nicht erneut synchronisiert werden. Anwendungen, Dienste und VMs in Azure, die eine Verbindung mit diesem virtuellen Netzwerk herstellen, können gemeinsame AD DS-Features wie Domänenbeitritt, Gruppenrichtlinien, LDAP und Kerberos- bzw. NTLM-Authentifizierung nutzen.
 
 In einer Hybridumgebung mit einer lokalen AD DS-Umgebung synchronisiert [Azure AD Connect][azure-ad-connect] Identitätsinformationen mit Azure AD, die dann wiederum mit Azure AD DS synchronisiert werden.
 
@@ -90,7 +92,7 @@ Sehen Sie sich dieses Beispiel der Litware Corporation an, eine hybride Organisa
 * Anwendungen und VMs, die auf virtuellen Computern im virtuellen Azure-Netzwerk bereitgestellt werden, können dann Azure AD DS-Features wie Domänenbeitritt, LDAP-Lesevorgänge, LDAP-Bindung, NTLM- und Kerberos-Authentifizierung sowie Gruppenrichtlinien nutzen.
 
 > [!IMPORTANT]
-> Azure AD Connect sollte nur für die Synchronisierung mit lokalen AD DS-Umgebungen installiert und konfiguriert werden. Die Installation von Azure AD Connect in einer verwalteten Azure AD DS-Domäne zur erneuten Synchronisierung von Objekten mit Azure AD wird nicht unterstützt.
+> Azure AD Connect sollte nur für die Synchronisierung mit lokalen AD DS-Umgebungen installiert und konfiguriert werden. Die Installation von Azure AD Connect in einer verwalteten Domäne zur erneuten Synchronisierung von Objekten mit Azure AD wird nicht unterstützt.
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure AD DS für rein cloudbasierte Organisationen
 
@@ -136,7 +138,7 @@ Einen Vergleich zwischen Azure AD DS und anderen Identitätslösungen sowie In
 * [Vergleichen von Azure AD DS mit Azure AD, Active Directory Domain Services auf Azure-VMs und lokalen Active Directory Domain Services][compare]
 * [Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne][synchronization]
 
-Für den Einstieg [erstellen Sie eine verwaltete Azure AD DS-Domäne im Azure-Portal][tutorial-create].
+Im ersten Schritt [erstellen Sie im Azure-Portal eine verwaltete Domäne][tutorial-create].
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md
