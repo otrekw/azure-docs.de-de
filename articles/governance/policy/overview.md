@@ -1,14 +1,14 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 04/21/2020
+ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097369"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944660"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -158,6 +158,8 @@ In diesem Szenario haben Sie bei der Definition der Initiativparameter für **in
 
 Beim Erstellen von Wertoptionen in einer Initiativdefinition können Sie während der Initiativenzuweisung keinen anderen Wert eingeben, da er nicht Teil der Liste ist.
 
+Weitere Informationen zu den Strukturen von Initiativdefinitionen finden Sie unter [Struktur der Initiativdefinition](./concepts/initiative-definition-structure.md).
+
 ### <a name="assignments"></a>Zuweisungen
 
 Eine Zuweisung ist eine zugewiesene Richtliniendefinition oder -initiative, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer [Verwaltungsgruppe](../management-groups/overview.md) bis zu einer einzelnen Ressource erstrecken. Der Begriff _Bereich_ bezieht sich auf alle Ressourcen, Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Definition zugewiesen ist. Zuweisungen werden von allen untergeordneten Ressourcen geerbt. Dies bedeutet, dass eine auf eine Ressourcengruppe angewendete Definition auch auf die Ressourcen in dieser Ressourcengruppe angewendet wird. Sie können jedoch einen Unterbereich von der Zuweisung ausschließen.
@@ -166,7 +168,7 @@ Im Abonnementbereich können Sie beispielsweise eine Definition zuweisen, die di
 
 Als weiteres Beispiel möchten Sie möglicherweise eine Definition für eine Ressourcentyp-Zulassungsliste auf der Verwaltungsgruppenebene zuweisen. Dann weisen Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zu, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei Azure Policy um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Zuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Definition auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Falls eine Ressource aufgrund einer Zuweisung abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Zuweisung geändert werden.
 
-Weitere Informationen zum Einrichten von Zuweisungen über das Portal finden Sie unter [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung](assign-policy-portal.md). Schritte für [PowerShell](assign-policy-powershell.md) und die [Azure-Befehlszeilenschnittstelle](assign-policy-azurecli.md) sind ebenfalls verfügbar.
+Weitere Informationen zum Einrichten von Zuweisungen über das Portal finden Sie unter [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung](./assign-policy-portal.md). Schritte für [PowerShell](./assign-policy-powershell.md) und die [Azure-Befehlszeilenschnittstelle](./assign-policy-azurecli.md) sind ebenfalls verfügbar. Informationen zur Zuweisungsstruktur finden Sie unter [Zuweisungsstruktur](./concepts/assignment-structure.md).
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Maximale Anzahl von Azure Policy-Objekten
 

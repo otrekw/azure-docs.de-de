@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
 description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
-ms.date: 03/24/2020
+ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190825"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781126"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -78,7 +78,7 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 ## <a name="implement-a-new-custom-policy"></a>Implementieren einer neuen benutzerdefinierten Richtlinie
 
-Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weitere Aktionen mit Azure Policy ausführen. Erstellen Sie als Nächstes eine neue benutzerdefinierte Richtlinie zur Kosteneinsparung, die durch eine Überprüfung sicherstellt, dass in Ihrer Umgebung keine VMs der G-Serie erstellt werden können. Wenn also ein Benutzer in Ihrer Organisation versucht, einen virtuellen Computer aus der G-Serie zu erstellen, wird die Anforderung abgelehnt.
+Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weitere Aktionen mit Azure Policy ausführen. Erstellen Sie als Nächstes eine neue benutzerdefinierte Richtlinie zur Kosteneinsparung, die durch eine Überprüfung sicherstellt, dass in Ihrer Umgebung keine virtuellen Computer der G-Serie erstellt werden können. Wenn also ein Benutzer in Ihrer Organisation versucht, einen virtuellen Computer der G-Serie zu erstellen, wird die Anforderung abgelehnt.
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
@@ -93,8 +93,8 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
      > [!NOTE]
      > Wenn Sie diese Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die die Abonnements enthält, denen Sie die Richtlinie zuweisen. Dasselbe gilt für eine Initiativdefinition.
 
-   - Den Namen der Richtliniendefinition: _*_Require VM SKUs smaller than the G series_ (VM-SKUs müssen kleiner als die G-Serie sein)
-   - Den Zweck der Richtliniendefinition: _This policy definition enforces that all VMs created in this scope have SKUs smaller than the G series to reduce cost._ (Diese Richtliniendefinition dient zur Kostensenkung und bewirkt, dass die SKU von virtuellen Computern, die in diesem Bereich erstellt werden, kleiner als die G-Serie ist.)
+   - Den Namen der Richtliniendefinition: _Require VM SKUs not in the G series_ (VM-SKUs dürfen nicht der G-Serie angehören)
+   - Den Zweck der Richtliniendefinition: _This policy definition enforces that all virtual machines created in this scope have SKUs other than the G series to reduce cost._ (Diese Richtliniendefinition dient zur Kostensenkung und bewirkt, dass alle virtuellen Computer, die in diesem Bereich erstellt werden, andere SKUs als die der G-Serie aufweisen.)
    - Wählen Sie eine der vorhandenen Optionen (etwa _Compute_) aus, oder erstellen Sie für diese Richtliniendefinition eine neue Kategorie.
    - Kopieren Sie den folgenden JSON-Code, und aktualisieren Sie ihn dann Ihren Anforderungen entsprechend mit folgenden Angaben:
       - Richtlinienparameter

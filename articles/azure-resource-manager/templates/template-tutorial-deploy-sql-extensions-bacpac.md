@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018394"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250331"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen
 
@@ -45,7 +45,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-bacpac-file"></a>Vorbereiten einer BACPAC-Datei
 
-Auf [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) ist eine BACPAC-Datei verfügbar. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](../../azure-sql/database/database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
+Auf [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) ist eine BACPAC-Datei verfügbar. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Datenbank aus Azure SQL-Datenbank in eine BACPAC-Datei](../../azure-sql/database/database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
 
 Die BACPAC-Datei muss in einem Azure Storage-Konto gespeichert werden, damit sie mithilfe einer ARM-Vorlage importiert werden kann. Das folgende PowerShell-Skript bereitet die BACPAC-Datei mit den folgenden Schritten vor:
 
@@ -196,7 +196,7 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
         Informationen zur Ressourcendefinition finden Sie in der [Referenz zur SQL-Datenbank-Erweiterung](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-        * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der SQL-Datenbank erstellt werden.
+        * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der Datenbank erstellt werden.
         * **storageKeyType:** Geben Sie die Art des zu verwendenden Speicherschlüssels an. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` sein. Verwenden Sie in diesem Tutorial `StorageAccessKey`.
         * **storageKey:** Geben Sie den Schlüssel für das Speicherkonto an, in dem die BACPAC-Datei gespeichert ist. Bei Verwendung des Speicherschlüsseltyps `SharedAccessKey` muss ein Fragezeichen (?) vorangestellt werden.
         * **storageUri:** Geben Sie die URL der in einem Speicherkonto gespeicherten BACPAC-Datei an.
@@ -241,7 +241,7 @@ Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
 
 Wenn Sie über Ihren Clientcomputer auf den Server zugreifen möchten, müssen Sie eine weitere Firewallregel hinzufügen. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules).
 
-Wählen Sie im Azure-Portal die SQL-Datenbank aus der neu bereitgestellten Ressourcengruppe aus. Wählen Sie **Abfrage-Editor (Vorschau)** aus, und geben Sie dann die Administratoranmeldeinformationen ein. Wie Sie sehen, wurden zwei Tabellen in die Datenbank importiert:
+Wählen Sie im Azure-Portal die Datenbank aus der neu bereitgestellten Ressourcengruppe aus. Wählen Sie **Abfrage-Editor (Vorschau)** aus, und geben Sie dann die Administratoranmeldeinformationen ein. Wie Sie sehen, wurden zwei Tabellen in die Datenbank importiert:
 
 ![Abfrage-Editor (Vorschau)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

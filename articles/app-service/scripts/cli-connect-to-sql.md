@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: aa922930314d630e1aece004bab0c74adaf8eb2f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015487"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250739"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank mithilfe der CLI
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank mithilfe der CLI
 
-Dieses Beispielskript erstellt eine Azure SQL-Datenbank und eine Azure Service-App. Anschließend wird die SQL-Datenbank mithilfe von App-Einstellungen mit der App verknüpft.
+Dieses Beispielskript erstellt eine Datenbank in Azure SQL-Datenbank und eine Azure Service-App. Anschließend wird die Datenbank mithilfe von App-Einstellungen mit der App verknüpft.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

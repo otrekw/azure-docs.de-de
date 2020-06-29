@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610717"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212189"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
 Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einem SQL Data Warehouse verwenden.
@@ -173,7 +173,7 @@ Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWa
 2. Wählen Sie auf der Seite „SQL Data Warehouse“ im linken Menü **Abfrage-Editor (Vorschauversion)** aus. 
 
     ![Seite „SQL Data Warehouse“](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Geben Sie den Namen für **Benutzer** und **Kennwort** für die SQL Server ein, und wählen **OK**. Unter Umständen müssen Sie die Client-IP-Adresse für die Firewall angeben, um sich bei SQL-Server anzumelden. 
+2. Geben Sie den Namen für **Benutzer** und **Kennwort** für die SQL Server ein, und wählen **OK**. Unter Umständen müssen Sie Ihre Client-IP-Adresse der Firewall hinzufügen, um sich bei SQL Server anzumelden. 
 
     ![SQL Server-Authentifizierung](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. Fügen Sie das folgende SQL-Skript ins Abfragefenster ein, und führen Sie es aus: 

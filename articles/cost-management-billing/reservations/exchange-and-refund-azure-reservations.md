@@ -4,35 +4,42 @@ description: Es wird beschrieben, wie Sie für Azure-Reservierungen einen Umtaus
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: 174ed17056bf49b541d55719f4058141e88e7ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e924c46632e37c6d196fae2db729c17a99bbae3b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192109"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765113"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
-Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel erfüllen. Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs umtauschen. Sie können auch eine Rückerstattung für eine Reservierung erhalten, wenn Sie sie nicht mehr benötigen (bis zu 50.000 US-Dollar pro Jahr). Das Maximum für die Rückerstattung gilt für alle Reservierungen im Rahmen Ihrer Vereinbarung mit Microsoft.
+Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel erfüllen. Sie können eine Reservierung in eine andere Reservierung desselben Typs umtauschen. Das heißt, dass Sie eine Reservierung für einen virtuellen Computer in eine Reservierung für eine beliebige Größe oder Region des virtuellen Computers umtauschen können. Ebenso können Sie eine Reservierung für eine SQL-PaaS-Datenbank in eine Reservierung für einen beliebigen Typ oder eine beliebige Region der SQL-PaaS-Datenbank umtauschen. Sie können sich Reservierungen auch zurückerstatten lassen, doch darf die Summe der stornierten Reservierungen einen Betrag von 50.000 US-Dollar in einem rollierenden Zeitfenster von zwölf Monaten nicht überschreiten. Reservierte Azure Databricks-Kapazität, Reservierungen für Azure VMware Solution by CloudSimple, Reservierungen für Azure Red Hat Open Shift, Red Hat-Pläne sowie SUSE Linux-Pläne sind nicht erstattungsfähig.
 
-Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und CSP, werden unterstützt.
+Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und Cloud Solution Provider (CSP), werden unterstützt.
 
-Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umzutauschen oder zurückzuerstatten.
+Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umzutauschen oder zurückzuerstatten. Sie können [Benutzer, die eine Reservierung verwalten können, hinzufügen oder ändern](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
 
-## <a name="exchange-an-existing-reserved-instance"></a>Umtauschen einer vorhandenen reservierten Instanz
+> [!NOTE]
+> Microsoft berechnet derzeit bei Reservierungserstattungen keine Gebühren für die vorzeitige Kündigung. Möglicherweise werden zukünftig Gebühren bei Rückerstattungen fällig. Es ist aktuell noch kein Datum für die Berechnung dieser Gebühr festgelegt.
 
-Sie können Ihre Reservierung mit drei schnellen Schritten im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) umtauschen.
+## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Umtauschen oder Zurückerstatten einer vorhandenen Reservierung
+
+Sie können Ihre Reservierung über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) umtauschen.
 
 1. Wählen Sie die Reservierungen aus, die Sie umtauschen möchten, und klicken Sie auf **Umtausch**.  
-    ![Beispielbild mit Reservierungen, die zurückgegeben werden sollen](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
-2. Wählen Sie das VM-Produkt aus, das Sie erwerben möchten, und geben Sie eine Menge ein. Achten Sie darauf, dass der neue Gesamtbetrag des Kaufs höher als der Umtauschwert ist. [Bestimmen der richtigen Größe vor dem Kauf](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)  
-    ![Beispielbild mit dem VM-Produkt, das per Umtausch erworben werden soll](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
-3. Überprüfen Sie die Transaktion, und schließen Sie sie ab.  
-    ![Beispielbild mit dem VM-Produkt, das per Umtausch erworben werden soll, und Abschluss des Vorgangs](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
+    [![Beispielbild mit Reservierungen, die zurückgegeben werden sollen](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png#lightbox)
+1. Wählen Sie das VM-Produkt aus, das Sie erwerben möchten, und geben Sie eine Menge ein. Achten Sie darauf, dass der neue Gesamtbetrag des Kaufs höher als der Umtauschwert ist. [Bestimmen der richtigen Größe vor dem Kauf](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)  
+    [![Beispielbild mit dem VM-Produkt, das per Umtausch erworben werden soll](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png#lightbox)
+1. Überprüfen Sie die Transaktion, und schließen Sie sie ab.  
+    [![Beispielbild mit dem VM-Produkt, das per Umtausch erworben werden soll, und Abschluss des Vorgangs](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png#lightbox)
 
 Navigieren Sie zum Erhalten einer Erstattung für eine Reservierung zu **Reservierungsdetails**, und klicken Sie auf **Erstattung**.
+
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
+
+Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt. 
 
 ## <a name="how-transactions-are-processed"></a>Verarbeitung von Transaktionen
 
@@ -40,13 +47,13 @@ Zunächst storniert Microsoft die vorhandene Reservierung und erstattet den ents
 
 ### <a name="enterprise-agreement-customers"></a>Enterprise Agreement-Kunden
 
-Ein Geldbetrag wird der finanziellen Verpflichtung für Umtausch und Rückerstattungen hinzugefügt, wenn dies Teil des ursprünglichen Kaufs war. Alle Überschreitungsrechnungen seit den ursprünglichen Käufen werden erneut geöffnet und neu bewertet, um sicherzustellen, dass die finanzielle Verpflichtung verwendet wird. Falls der Zeitraum der finanziellen Verpflichtung für die Nutzung der erworbenen Reservierung nicht mehr aktiv ist, wird das Guthaben dem Zeitraum Ihrer finanziellen Verpflichtung unter dem derzeitigen Enterprise Agreement hinzugefügt. Das Guthaben ist ab dem Datum der Rückerstattung 90 Tage lang gültig. Nicht verwendetes Guthaben verfällt nach 90 Tagen.
+Ein Geldbetrag wird der finanziellen Verpflichtung für Umtausch und Rückerstattungen hinzugefügt, wenn dies Teil des ursprünglichen Kaufs war. Falls der Zeitraum der finanziellen Verpflichtung für die Nutzung der erworbenen Reservierung nicht mehr aktiv ist, wird das Guthaben dem Zeitraum Ihrer finanziellen Verpflichtung unter dem derzeitigen Enterprise Agreement hinzugefügt. Das Guthaben ist ab dem Datum der Rückerstattung 90 Tage lang gültig. Nicht verwendetes Guthaben verfällt nach 90 Tagen.
 
-Falls der ursprüngliche Kauf als Überschreitung durchgeführt wurde, stellt Microsoft eine Gutschrift aus.
+Wenn der ursprüngliche Kauf als Überschreitung erfolgte, werden die Ursprungsrechnung für den Erwerb der Reservierung und alle nachfolgenden Rechnungen erneut geöffnet und angepasst. Microsoft gibt eine Gutschrift für die Rückerstattungen aus.
 
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Nutzungsbasierte Bezahlung und das CSP-Programm
 
-Die ursprüngliche Rechnung für den Kauf der Reservierung wird storniert, und anschließend wird eine neue Rechnung für die Erstattung erstellt. Bei einem Umtausch werden für die neue Rechnung die Erstattung und der neue Kauf angezeigt. Der Erstattungsbetrag wird anhand des Kaufbetrags angepasst. Falls Sie nur eine Erstattung für eine Reservierung durchgeführt haben, verbleibt der anteilige Betrag bei Microsoft, und die Anpassung wird bei einem zukünftigen Kauf einer Reservierung vorgenommen.
+Die ursprüngliche Rechnung für den Kauf der Reservierung wird storniert, und anschließend wird eine neue Rechnung für die Erstattung erstellt. Bei einem Umtausch werden für die neue Rechnung die Erstattung und der neue Kauf angezeigt. Der Erstattungsbetrag wird anhand des Kaufbetrags angepasst. Falls Sie nur eine Erstattung für eine Reservierung durchgeführt haben, verbleibt der anteilige Betrag bei Microsoft, und die Anpassung wird bei einem zukünftigen Kauf einer Reservierung vorgenommen. Wenn Sie eine Reservierung zu Tarifen für die nutzungsbasierte Bezahlung gekauft haben und später zu CSP wechseln, kann die Reservierung zurückgegeben und ohne Strafgebühr erneut erworben werden.
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>Kreditkartenkunden mit nutzungsbasierter Bezahlung
 
@@ -58,24 +65,20 @@ In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückersta
 
 **Umtauschrichtlinien**
 
-- Sie können mehrere vorhandene Reservierungen zurückgeben, um eine neue Reservierung des gleichen Typs zu erwerben. Ein Wechsel des Typs von Reservierungen ist beim Umtausch nicht möglich. Beispielsweise können Sie keine VM-Reservierung zurückgeben, um eine SQL-Reservierung zu erwerben.
+- Sie können mehrere vorhandene Reservierungen zurückgeben, um eine neue Reservierung des gleichen Typs zu erwerben. Ein Wechsel des Typs von Reservierungen ist beim Umtausch nicht möglich. Beispielsweise können Sie keine VM-Reservierung zurückgeben, um eine SQL-Reservierung zu erwerben. Bei einem Umtausch können Sie eine Reservierungseigenschaft ändern, z. B. Familie, Serie, Version, SKU, Region, Menge und Zeitraum.
 - Nur Besitzer von Reservierungen können einen Umtausch verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Ein Umtausch wird als Erstattung und erneuter Kauf verarbeitet. Für die Stornierung und den neuen Kauf werden separate Transaktionen erstellt. Der anteilige Reservierungsbetrag für die zurückgegebenen Reservierungen wird erstattet. Der neue Kauf wird Ihnen vollständig berechnet. Der anteilige Reservierungsbetrag ist der tägliche anteilige Restwert der zurückgegebenen Reservierung.
+- Ein Umtausch wird als Erstattung und erneuter Kauf verarbeitet. Für die Stornierung und den neuen Reservierungserwerb werden separate Transaktionen erstellt. Der anteilige Reservierungsbetrag für die zurückgegebenen Reservierungen wird erstattet. Der neue Kauf wird Ihnen vollständig berechnet. Der anteilige Reservierungsbetrag ist der tägliche anteilige Restwert der zurückgegebenen Reservierung.
 - Sie können Reservierungen auch dann umtauschen oder zurückgeben, wenn das für den Kauf der Reservierung verwendete Enterprise Agreement abgelaufen ist und in Form eines neuen Vertrags verlängert wurde.
-- Bei einem Umtausch können Sie eine Reservierungseigenschaft ändern, z. B. Familie, Serie, Version, SKU, Region, Menge und Zeitraum.
-- Der neue Gesamtbetrag des Kaufs sollte größer oder gleich dem Rückgabebetrag sein.
+- Die Laufzeit der neuen Reservierung sollte gleich oder größer als die verbleibende Laufzeit der zurückgegebenen Reservierung sein. Beispiel: Bei einer dreijährigen Reservierung mit einem Wert von 100 US-Dollar pro Monat, die nach der 18. Zahlung umgetauscht wird, sollte die Laufzeit der neuen Reservierung mindestens einem Wert von 1.800 US-Dollar entsprechen (monatlich oder im Voraus bezahlt).
 - Für die neue Reservierung, die im Rahmen des Umtauschs erworben wird, gilt ein neuer Zeitraum, der ab dem Umtauschzeitpunkt beginnt.
 - Für den Umtausch gibt es keine Strafzahlungen oder jährlichen Grenzwerte.
 
 **Rückerstattungsrichtlinien**
-- Möglicherweise fällt in Zukunft für die vorzeitige Beendigung eine Gebühr in Höhe von zwölf Prozent an. Diese Gebühr wird derzeit nicht berechnet.
-- Ihr Gesamtbetrag für Erstattungen darf innerhalb eines rollierenden Zeitfensters von 12 Monaten den Wert von 50.000 US-Dollar nicht überschreiten.
+
+- Zurzeit werden keine Gebühren für die vorzeitige Kündigung berechnet, doch kann in Zukunft eine Gebühr von 12 % für Stornierungen anfallen.
+- Die stornierte Verpflichtung darf insgesamt in einem rollierenden Zeitfenster von zwölf Monaten den Wert von 50.000 US-Dollar nicht überschreiten. Beispiel: Bei einer dreijährigen Reservierung mit einem Wert von 100 US-Dollar pro Monat, die im 18. Monat zurückerstattet wird, beträgt die stornierte Verpflichtung 1.800 US-Dollar. Nach der Rückerstattung beträgt das neue verfügbare Rückerstattungslimit 48.200 US-Dollar. 365 Tage nach der Erstattung wird das Limit von 48.200 US-Dollar um 1.800 US-Dollar erhöht, und der neue Pool beläuft sich auf 50.000 US-Dollar. Durch jede weitere Reservierungsstornierung wird derselbe Pool verringert, und die gleiche Auffüllungslogik wird angewandt.
 - Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
 - Nur Besitzer von Reservierungsaufträgen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-
-## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
-
-Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
@@ -91,4 +94,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](understand-reserved-instance-usage.md)
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md)
     - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](reserved-instance-windows-software-costs.md)
-    - [Verkaufen Microsoft Azure Reserved Instances](/partner-center/azure-reservations)
+    - [Azure-Reservierungen im CSP-Programm](/partner-center/azure-reservations)

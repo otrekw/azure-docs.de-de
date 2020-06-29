@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837266"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945289"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-Beispiele für Azure Monitor
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
@@ -29,51 +29,51 @@ az login
 
 Nach der Ausführung dieses Befehls müssen Sie sich über die Anweisungen auf dem Bildschirm anmelden. Alle Befehle funktionieren im Kontext Ihres Standardabonnements.
 
-Verwenden Sie den folgenden Befehl, um die Details Ihres aktuellen Abonnements aufzulisten.
+Listen Sie die Details Ihres aktuellen Abonnements auf.
 
 ```azurecli
 az account show
 ```
 
-Verwenden Sie den folgenden Befehl, um den Arbeitskontext in ein anderes Abonnement zu ändern.
+Ändern Sie den Arbeitskontext in ein anderes Abonnement.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Führen Sie den folgenden Befehl aus, um eine Liste mit allen unterstützten Azure Monitor-Befehlen anzuzeigen.
+Zeigen Sie eine Liste mit allen unterstützten Azure Monitor-Befehlen an.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Anzeigen des Aktivitätsprotokolls für ein Abonnement
+## <a name="view-activity-log"></a>Anzeigen des Aktivitätsprotokolls
 
-Führen Sie den folgenden Befehl aus, um eine Liste mit Aktivitätsprotokollereignissen anzuzeigen.
+Zeigen Sie eine Liste von Aktivitätsprotokollereignissen an.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Probieren Sie Folgendes aus, um alle verfügbaren Optionen anzuzeigen:
+Zeigen Sie alle verfügbaren Optionen an.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Beispiel für das Auflisten von Protokollen nach resourceGroup
+Listen Sie Protokolle nach einer Ressourcengruppe auf.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Beispiel für das Auflisten von Protokollen nach Aufrufer
+Listen Sie Protokolle nach Aufrufer auf.
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Beispiel für das Auflisten von Protokollen nach Aufrufer für einen Ressourcentyp innerhalb eines Datumsbereichs
+Listen Sie Protokolle nach Aufrufer für einen Ressourcentyp innerhalb eines Datumsbereichs auf.
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

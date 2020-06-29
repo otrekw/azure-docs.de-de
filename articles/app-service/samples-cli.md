@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535620"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254496"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-Beispiele für Azure App Service
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 |**Schützen einer App**||
 | [Integrieren in Azure Application Gateway](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt mithilfe eines Dienstendpunkts und mithilfe von Zugriffsbeschränkungen eine App Service-App und integriert sie in Application Gateway. |
 |**Verbinden der App mit Ressourcen**||
-| [Verbinden einer App mit einer SQL-Datenbank](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und eine SQL-Datenbank und fügt dann die Datenbank-Verbindungszeichenfolge den App-Einstellungen hinzu. |
+| [Verbinden einer App mit einer SQL-Datenbank](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und eine Datenbank in Azure SQL-Datenbank und fügt dann die Datenbank-Verbindungszeichenfolge den App-Einstellungen hinzu. |
 | [Verbinden einer App mit einem Speicherkonto](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und ein Speicherkonto und fügt dann die Speicherverbindungszeichenfolge den App-Einstellungen hinzu. |
 | [Herstellen einer Verbindung zwischen einer App und einer Azure Cache for Redis-Instanz](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App und eine Azure Cache for Redis-Instanz und fügt den App-Einstellungen anschließend die Redis-Verbindungsdetails hinzu. |
 | [Verbinden einer App mit Cosmos DB](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App und eine Cosmos DB-Instanz und fügt die Cosmos DB-Verbindungsdetails dann den App-Einstellungen hinzu. |

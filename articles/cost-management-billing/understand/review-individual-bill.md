@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: banders
-ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5b0d30d31fbe65360c246282eb2dc2109a541a3f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194142"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888318"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Tutorial: Überprüfen Ihrer individuellen Azure-Rechnung
 
@@ -100,7 +100,7 @@ Der Abschnitt **Nutzungsgebühren** Ihrer Rechnung enthält den Gesamtwert (Kost
 
 ![Nutzungsgebühren (Rechnung)](./media/review-individual-bill/invoice-usage-charges.png)
 
-Filtern Sie in Ihrer CSV-Nutzungsdatei die Spalte *MeterName* nach der entsprechenden Ressource aus Ihrer Rechnung. Addieren Sie dann den Wert *Cost* (Kosten) für Elemente in der Spalte. Hier sehen Sie ein Beispiel.
+Filtern Sie in Ihrer CSV-Nutzungsdatei die Spalte *MeterName* nach der entsprechenden Ressource aus Ihrer Rechnung. Addieren Sie dann den Wert *Cost* (Kosten) für Elemente in der Spalte. Hier sehen Sie ein Beispiel für den Namen der Verbrauchseinheit (P10-Datenträger), der demselben Posten auf der Rechnung entspricht.
 
 ![Nutzungsdatei: Addierter Wert für „MeterName“](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 
