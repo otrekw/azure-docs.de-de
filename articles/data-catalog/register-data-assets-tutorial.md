@@ -6,16 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021601"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255193"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
 
-In diesem Tutorial verwenden Sie das Registrierungstool, um Datenassets aus dem Azure SQL-Datenbank-Beispiel im Katalog zu registrieren. Bei der Registrierung werden wichtige strukturelle Metadaten (z.B. Namen, Typen und Speicherorte) aus der Datenquelle und des darin enthaltenen Assets extrahiert und in den Katalog kopiert. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
+In diesem Tutorial verwenden Sie das Registrierungstool zum Registrieren von Datenassets aus dem Datenbankbeispiel im Katalog. Bei der Registrierung werden wichtige strukturelle Metadaten (z.B. Namen, Typen und Speicherorte) aus der Datenquelle und des darin enthaltenen Assets extrahiert und in den Katalog kopiert. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -39,11 +39,11 @@ Um Data Catalog einzurichten, müssen Sie Besitzer oder Mitbesitzer eines Azure-
 
 ### <a name="register-a-data-source"></a>Registrieren einer Datenquelle
 
-Sie registrieren Datenassets (Tabellen) über ein [Azure SQL-Datenbank-Beispiel](../azure-sql/database/single-database-create-quickstart.md). Sie können aber auch jede unterstützte Datenquelle nutzen, falls Sie es vorziehen, mit Daten zu arbeiten, die vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
+Sie registrieren Datenassets (Tabellen) über ein [Datenbankbeispiel](../azure-sql/database/single-database-create-quickstart.md), können aber auch jede unterstützte Datenquelle nutzen, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
 
-In diesem Tutorial verwenden wir als Name für die Azure SQL-Datenbank *RLSTest*.
+In diesem Tutorial verwenden wir den Datenbanknamen *RLSTest*.
 
-Sie können Datenassets jetzt aus dem Azure SQL-Datenbank-Beispiel registrieren, indem Sie Azure Data Catalog verwenden.
+Sie können Datenassets jetzt mithilfe von Azure Data Catalog aus dem Datenbankbeispiel registrieren.
 
 1. Navigieren Sie zur [Azure Data Catalog-Startseite](http://azuredatacatalog.com), und wählen Sie die Option **Daten veröffentlichen**.
 
@@ -61,13 +61,13 @@ Sie können Datenassets jetzt aus dem Azure SQL-Datenbank-Beispiel registrieren,
 
     ![Azure Data Catalog – Datenquellen](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Geben Sie die SQL Server-Verbindungseigenschaften für Ihr Azure SQL-Datenbank-Beispiel ein, und wählen Sie **VERBINDEN**.
+5. Geben Sie die SQL Server-Verbindungseigenschaften für Ihr Datenbankbeispiel in Azure SQL-Datenbank ein, und wählen Sie **VERBINDEN** aus.
 
    ![Azure Data Catalog – Einstellungen für SQL Server-Verbindung](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. Registrieren Sie die Metadaten Ihres Datenassets. In diesem Beispiel registrieren Sie **Product**-Objekte aus dem Namespace des Azure SQL-Datenbank-Beispiels:
+6. Registrieren Sie die Metadaten Ihres Datenassets. In diesem Beispiel registrieren Sie **Product**-Objekte aus dem Beispielnamespace:
 
-    1. Erweitern Sie in der Struktur **Serverhierarchie** Ihr Azure SQL-Datenbank-Beispiel, und wählen Sie **SalesLT**.
+    1. Erweitern Sie in der Struktur **Serverhierarchie** Ihr Datenbankbeispiel, und wählen Sie **SalesLT** aus.
 
     2. Wählen Sie bei gedrückter STRG-Taste nacheinander die Optionen **Product**, **ProductCategory**, **ProductDescription** und **ProductModel** aus.
 
@@ -85,7 +85,7 @@ Sie können Datenassets jetzt aus dem Azure SQL-Datenbank-Beispiel registrieren,
 
           ![Azure Data Catalog-Tutorial – zu registrierende Objekte](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Wählen Sie **REGISTRIEREN**. Azure Data Catalog registriert Ihre ausgewählten Objekte. In dieser Übung werden die ausgewählten Objekte aus Ihrem Azure SQL-Datenbank-Beispiel registriert. Das Registrierungstool extrahiert Metadaten aus dem Datenasset und kopiert diese Daten in den Azure Data Catalog-Dienst. Die Daten verbleiben an dem Ort, an dem sie sich gerade befinden. Die Daten bleiben unter der Kontrolle der Administratoren und Richtlinien des Ursprungssystems.
+    8. Wählen Sie **REGISTRIEREN**. Azure Data Catalog registriert Ihre ausgewählten Objekte. In dieser Übung werden die ausgewählten Objekte aus Ihrem Datenbankbeispiel registriert. Das Registrierungstool extrahiert Metadaten aus dem Datenasset und kopiert diese Daten in den Azure Data Catalog-Dienst. Die Daten verbleiben an dem Ort, an dem sie sich gerade befinden. Die Daten bleiben unter der Kontrolle der Administratoren und Richtlinien des Ursprungssystems.
 
           ![Azure Data Catalog – registrierte Objekte](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ Sie können Datenassets jetzt aus dem Azure SQL-Datenbank-Beispiel registrieren,
 
         ![Objekte im Azure Data Catalog-Portal](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-In dieser Übung haben Sie Objekte aus dem Azure SQL-Datenbank-Beispiel registriert, sodass sie von allen Benutzern Ihrer Organisation leicht ermittelt werden können.
+In dieser Übung haben Sie Objekte aus dem Datenbankbeispiel für Azure SQL-Datenbank registriert, sodass sie von allen Benutzern in Ihrer Organisation problemlos erkannt werden können.
 
 In der nächsten Übung erfahren Sie, wie Sie registrierte Datenassets ermitteln.
 
@@ -178,7 +178,7 @@ Mit Vergleichsoperatoren können Sie für Eigenschaften mit numerischen Datentyp
 
 3. Drücken Sie die **EINGABETASTE**.
 
-4. Vergewissern Sie sich, dass die Tabellen **Product**, **ProductCategory** und **ProductDescription** sowie die von Ihnen registrierte Azure SQL-Datenbank in den Suchergebnissen angezeigt werden.
+4. Vergewissern Sie sich, dass die Tabellen **Product**, **ProductCategory** und **ProductDescription** sowie die von Ihnen registrierte SQL-Datenbank in den Suchergebnissen angezeigt werden.
 
     ![Azure Data Catalog – Vergleichssuchergebnisse](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ In dieser Übung öffnen Sie Datenassets mithilfe von Verbindungsinformationen i
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-In dieser Übung haben Sie eine Verbindung mit Datenassets hergestellt, die mit Azure Data Catalog ermittelt wurden. Im Azure Data Catalog-Portal können Sie direkt mithilfe der integrierten Clientanwendungen im Menü **Öffnen in** eine Verbindung herstellen. Anhand der Speicherortinformationen in den Assetmetadaten können Sie auch mit jeder anderen Anwendung Ihrer Wahl eine Verbindung herstellen. Beispielsweise können Sie SQL Server Management Studio verwenden, um eine Verbindung mit Azure SQL-Datenbank herzustellen und auf die Daten in den Datenassets zuzugreifen, die Sie in diesem Tutorial registriert haben.
+In dieser Übung haben Sie eine Verbindung mit Datenassets hergestellt, die mit Azure Data Catalog ermittelt wurden. Im Azure Data Catalog-Portal können Sie direkt mithilfe der integrierten Clientanwendungen im Menü **Öffnen in** eine Verbindung herstellen. Anhand der Speicherortinformationen in den Assetmetadaten können Sie auch mit jeder anderen Anwendung Ihrer Wahl eine Verbindung herstellen. Beispielsweise können Sie mithilfe von SQL Server Management Studio eine Verbindung mit Azure SQL-Datenbank herstellen, um auf die Daten in den Datenassets zuzugreifen, die Sie in diesem Tutorial registriert haben.
 
 1. Öffnen Sie **SQL Server Management Studio**.
 

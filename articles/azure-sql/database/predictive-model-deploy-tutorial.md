@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023976"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253816"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Bereitstellen eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In Teil 3 dieses dreiteiligen Tutorials stellen Sie mithilfe von Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) ein in R entwickeltes Vorhersagemodell in einer SQL-Datenbank bereit.
+In Teil 3 dieses dreiteiligen Tutorials stellen Sie mithilfe von Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) ein in R entwickeltes Vorhersagemodell in einer Datenbank in Azure SQL-Datenbank bereit.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Sie erstellen eine gespeicherte Prozedur mit einem eingebetteten R-Skript, das mithilfe des Modells Vorhersagen macht. Da Ihr Modell in der Azure SQL-Datenbank ausgeführt wird, kann es auf einfache Weise anhand von Daten trainiert werden, die in der Datenbank gespeichert sind.
+Sie erstellen eine gespeicherte Prozedur mit einem eingebetteten R-Skript, das mithilfe des Modells Vorhersagen macht. Da das Modell in der Datenbank ausgeführt wird, kann es problemlos mit Daten trainiert werden, die in der Datenbank gespeichert sind.
 
 In diesem Artikel erfahren Sie, wie Sie die folgenden Schritte mithilfe der in Teil 1 und 2 entwickelten R-Skripts ausführen:
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Sie haben erfolgreich ein Modell in Azure SQL-Datenbank erstellt, trainiert und bereitgestellt. Anschließend haben Sie dieses Modell in einer gespeicherten Prozedur verwendet, um Werte basierend auf neuen Daten vorherzusagen.
+Sie haben ein Modell in einer Datenbank in Azure SQL-Datenbank erfolgreich erstellt, trainiert und bereitgestellt. Anschließend haben Sie dieses Modell in einer gespeicherten Prozedur verwendet, um Werte basierend auf neuen Daten vorherzusagen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

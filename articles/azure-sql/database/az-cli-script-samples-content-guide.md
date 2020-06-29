@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658168"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251514"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen 
  
@@ -39,15 +39,15 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen zum Verwalten 
 |---|---|
 |**Erstellen von Datenbanken in Azure SQL-Datenbank**||
 | [Create a single SQL database and configure a firewall rule using PowerShell](scripts/create-and-configure-database-cli.md) (Erstellen einer einzelnen SQL-Datenbank und Konfigurieren einer Firewallregel mit PowerShell) | Erstellt eine Azure SQL-Datenbank-Instanz und konfiguriert eine Firewallregel auf Serverebene. |
-| [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/move-database-between-elastic-pools-cli.md) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | Erstellt Pools für elastische Datenbanken, verschiebt SQL-Pooldatenbanken und ändert Computegrößen. |
+| [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/move-database-between-elastic-pools-cli.md) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | Erstellt Pools für elastische Datenbanken, verschiebt Pooldatenbanken und ändert Computegrößen. |
 |**Skalieren von Datenbanken in Azure SQL-Datenbank**||
 | [Monitor and scale a single SQL database using the Azure CLI](scripts/monitor-and-scale-database-cli.md) (Überwachen und Skalieren einer einzelnen SQL-Datenbank mit Azure CLI) | Skaliert eine Datenbank in Azure SQL-Datenbank nach Abfrage der Größeninformationen für die Datenbank auf eine andere Computegröße. |
 | [Scale an elastic pool in Azure SQL Database using the Azure CLI](scripts/scale-pool-cli.md) (Skalieren eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit Azure CLI) | Skaliert einen Pool für elastische SQL-Datenbanken auf eine andere Computegröße. |
 |**Konfigurieren von Georeplikation und Failover**||
 | [Hinzufügen einer einzelnen Datenbank zu einer Failovergruppe](scripts/add-database-to-failover-group-cli.md)| Erstellt eine Datenbank und eine Failovergruppe, fügt die Datenbank zur Failovergruppe hinzu und testet das Failover auf den sekundären Server. |
 | [Konfigurieren einer Failovergruppe für einen Pool für elastische Datenbanken](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | Erstellt eine Datenbank, fügt die Datenbank zu einem Pool für elastische Datenbanken hinzu, fügt den Pool für elastische Datenbanken zur Failovergruppe hinzu und testet das Failover auf den sekundären Server. |
-| [Konfiguration und Failover einer Einzeldatenbank mithilfe von aktiver Georeplikation](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Konfiguriert die aktive Georeplikation für eine einzelne Azure SQL-Datenbank und führt ein Failover auf das sekundäre Replikat aus. |
-| [Konfiguration und Failover einer Pooldatenbank mithilfe von aktiver Georeplikation](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Konfiguriert die aktive Georeplikation für eine Azure SQL-Datenbank in einem Pool für elastische SQL-Datenbanken und führt ein Failover auf das sekundäre Replikat aus. |
+| [Konfiguration und Failover einer Einzeldatenbank mithilfe von aktiver Georeplikation](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Konfiguriert die aktive Georeplikation für eine Datenbank in Azure SQL-Datenbank und führt ein Failover zum sekundären Replikat aus. |
+| [Konfiguration und Failover einer Pooldatenbank mithilfe von aktiver Georeplikation](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Konfiguriert die aktive Georeplikation für eine Datenbank in Azure SQL-Datenbank in einem Pool für elastische Datenbanken und führt dann ein Failover zum sekundären Replikat aus. |
 | **Überwachung und Bedrohungserkennung** |
 | [Configure SQL Database auditing and threat detection using PowerShell](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md) (Konfigurieren der Überwachung und Bedrohungserkennung für SQL-Datenbank mit PowerShell)| Konfiguriert Richtlinien zur Überwachung und Bedrohungserkennung für eine Datenbank in Azure SQL-Datenbank. |
 | **Sichern, Wiederherstellen, Kopieren und Importieren einer Datenbank**||

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235042"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255431"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Tutorial: Synchronisieren von Daten aus SQL Edge mit Azure Blob Storage unter Verwendung von Azure Data Factory
 
@@ -25,7 +25,7 @@ In diesem Tutorial verwenden Sie Azure Data Factory, um Daten aus einer Tabelle 
 Falls Sie in Ihrer Azure SQL Edge-Bereitstellung noch keine Datenbank oder Tabelle erstellt haben, verwenden Sie eine der folgenden Erstellungsmethoden:
 
 * Verwenden Sie [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) oder [Azure Data Studio](/sql/azure-data-studio/download/) zum Herstellen einer Verbindung mit SQL Edge. Führen Sie ein SQL-Skript zum Erstellen der Datenbank und der Tabelle aus.
-* Erstellen Sie eine SQL-Datenbank und -Tabelle mithilfe von [SQLCMD](/sql/tools/sqlcmd-utility/), indem Sie eine direkte Verbindung mit dem SQL Edge-Modul herstellen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Datenbank-Engine mithilfe von „sqlcmd“](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Erstellen Sie eine Datenbank und Tabelle mithilfe von [SQLCMD](/sql/tools/sqlcmd-utility/), indem Sie eine direkte Verbindung mit dem SQL Edge-Modul herstellen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Datenbank-Engine mithilfe von „sqlcmd“](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
 * Verwenden Sie „SQLPackage.exe“, um eine DAC-Paketdatei im SQL Edge-Container bereitzustellen. Sie können diesen Prozess automatisieren, indem Sie den URI der SqlPackage-Datei als Teil der gewünschten Konfiguration des Moduls angeben. Sie können auch direkt das Clienttool „SqlPackage.exe“ verwenden, um ein DAC-Paket in SQL Edge bereitzustellen.
 
     Weitere Informationen zum Herunterladen von „SqlPackage.exe“ finden Sie unter [Herunterladen und Installieren von „sqlpackage“](/sql/tools/sqlpackage-download/). Im folgenden finden Sie einige Beispielbefehle für „SqlPackage.exe“. Weitere Informationen finden Sie in der Dokumentation zu „SqlPackage.exe“.

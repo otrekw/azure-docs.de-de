@@ -147,7 +147,7 @@
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Authenticate
       items:
-        - name: Aktivieren der lokalen Authentifizierung und Autorisierung
+        - name: "Aktivieren der lokalen AD\_DS-Authentifizierung und -Autorisierung"
           items:
             - name: AD DS-Übersicht
               href: storage-files-identity-auth-active-directory-enable.md

@@ -8,12 +8,12 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737273"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296983"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Erstellen einer End-to-End-Lösung
 
@@ -123,7 +123,7 @@ Füllen Sie die Felder im Fenster *Funktions-App (Windows): Neu erstellen* wie f
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Funktions-App (Windows): Neu erstellen":::
 
-Wählen Sie anschließend **Erstellen** aus.
+Wählen Sie anschließend **Erstellen**.
 
 Sie sollten wieder auf die Seite *Functions-Instanz* gelangen, auf der Ihre neue Funktions-App jetzt unterhalb Ihrer Ressourcengruppe angezeigt wird. Klicken Sie auf *Fertig stellen*.
 
@@ -136,6 +136,8 @@ Vergewissern Sie sich im Bereich *Veröffentlichen*, der im Visual Studio-Fenste
 > [!NOTE]
 > Ggf. wird das folgende Popupfenster angezeigt: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Anmeldeinformationen veröffentlichen" border="false":::
 > Wählen Sie in diesem Fall die Optionen **Attempt to retrieve credentials from Azure** (Versuchtes Abrufen von Anmeldeinformationen aus Azure) und **Speichern** aus.
+>
+> Wenn eine Warnung angezeigt wird, dass *Ihre Version der Functions-Laufzeit mit der in Azure ausgeführten Version nicht übereinstimmt*, folgen Sie den Anweisungen, um ein Upgrade auf die neueste Azure Functions-Laufzeitversion durchzuführen. Dieses Problem kann auftreten, wenn Sie eine ältere Version von Visual Studio als die im Abschnitt *Voraussetzungen* am Anfang dieses Tutorials empfohlene verwenden.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Zuweisen von Berechtigungen zur Funktions-App
 
@@ -258,7 +260,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Speichern Sie die Datei.
+Speichern Sie die Datei .
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 
@@ -399,7 +401,7 @@ Sie sollten verfolgen können, wie die Liveaktualisierung der Temperaturen *von 
 
 Nachdem Sie überprüft haben, dass dies richtig funktioniert, können Sie die Ausführung beider Projekte beenden. Da das Tutorial nun abgeschlossen ist, können Sie auch die Visual Studio-Fenster schließen.
 
-## <a name="review"></a>Zusammenfassung
+## <a name="review"></a>Überprüfung
 
 Hier wird das in diesem Tutorial erstellte Szenario noch einmal zusammengefasst.
 

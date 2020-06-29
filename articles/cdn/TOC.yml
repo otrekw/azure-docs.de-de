@@ -12,8 +12,8 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Erstellen eines Profils und Endpunkts
       href: cdn-create-new-endpoint.md
-    - name: Erstellen eines Profils mit einer Azure Resource Manager-Vorlage
-      href: create-profile-resource-manager-template.md
+    - name: 'Erstellen eines Profils und eines Endpunkts: ARM-Vorlage'
+      href: create-profile-endpoint-template.md
 - name: Tutorials
   items:
     - name: Hinzufügen von Azure CDN zu einer Web-App

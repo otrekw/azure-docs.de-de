@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235017"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254049"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Tutorial: Synchronisieren von Daten zwischen SQL Edge und Azure SQL-Datenbank mithilfe der SQL-Datensynchronisierung
-
 
 In diesem Tutorial erfahren Sie, wie Sie eine *Synchronisierungsgruppe* der Azure SQL-Datensynchronisierung verwenden, um eine inkrementelle Synchronisierung von Daten zwischen Azure SQL Edge und Azure SQL-Datenbank durchzuführen. Die SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere Datenbanken in Azure SQL-Datenbank und SQL Server-Instanzen hinweg synchronisieren können. Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter [Azure SQL-Datensynchronisierung](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md).
 
@@ -29,7 +28,7 @@ Für dieses Tutorial wird ein Windows-Computer benötigt, der mit dem [Data Sync
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Erstellen einer Azure SQL-Datenbank Informationen zum Erstellen einer Azure SQL-Datenbank-Instanz über das Azure-Portal finden Sie unter [Erstellen eines Singletons in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
+* Erstellen Sie eine Datenbank in Azure SQL-Datenbank. Informationen zum Erstellen einer Azure SQL-Datenbank über das Azure-Portal finden Sie unter [Erstellen einer Einzeldatenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
 * Erstellen Sie die erforderlichen Tabellen und die weiteren benötigten Objekte in Ihrer Azure SQL-Datenbank-Bereitstellung.
 
@@ -37,9 +36,9 @@ Für dieses Tutorial wird ein Windows-Computer benötigt, der mit dem [Data Sync
 
 * Registrieren Sie die Azure SQL Edge-Instanz mit Data Sync Agent für die Azure SQL-Datensynchronisierung. Weitere Informationen finden Sie unter [Hinzufügen einer SQL Server-Datenbank](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem).
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>Synchronisieren von Daten zwischen einer Azure SQL-Datenbank und SQL Edge
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>Synchronisieren von Daten zwischen einer Azure SQL-Datenbank und SQL Edge
 
-Das Einrichten der Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer SQL Edge-Instanz mithilfe der SQL-Datensynchronisierung umfasst drei Hauptschritte:  
+Das Einrichten der Synchronisierung zwischen einer Datenbank in Azure SQL-Datenbank und einer SQL Edge-Instanz mithilfe der SQL-Datensynchronisierung umfasst drei Hauptschritte:  
 
 
 1. Verwenden Sie das Azure-Portal, um eine Synchronisierungsgruppe zu erstellen. Weitere Informationen finden Sie unter [Erstellen einer Synchronisierungsgruppe](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group). Sie können eine einzelne *Hub*-Datenbank verwenden, um mehrere Synchronisierungsgruppen zum Synchronisieren von Daten aus verschiedenen SQL Edge-Instanzen mit einer oder mehreren Datenbanken in Azure SQL-Datenbank zu erstellen. 
@@ -48,7 +47,7 @@ Das Einrichten der Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz u
 
 3. Richten Sie die Synchronisierungsgruppe ein, um die Tabellen auszuwählen, die in die Synchronisierung eingeschlossen werden. Weitere Informationen finden Sie unter [Konfigurieren einer Synchronisierungsgruppe](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members).
 
-Nachdem Sie die oben genannten Schritte ausgeführt haben, verfügen Sie über eine Synchronisierungsgruppe, die eine Azure SQL-Datenbank- und eine SQL Edge-Instanz umfasst.
+Nachdem Sie die vorstehenden Schritte ausgeführt haben, verfügen Sie über eine Synchronisierungsgruppe, die eine Datenbank in Azure SQL-Datenbank und eine SQL Edge-Instanz umfasst.
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie in den folgenden Artikeln:
 

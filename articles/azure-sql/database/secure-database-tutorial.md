@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323925"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252915"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -301,7 +301,7 @@ So aktivieren Sie die Überwachung:
     ![Überwachen von Datensätzen](./media/secure-database-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Informationen zur weiteren Anpassung von Überwachungsereignissen mittels PowerShell oder REST-API finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](../../azure-sql/database/auditing-overview.md).
+> Informationen zur weiteren Anpassung von Überwachungsereignissen mittels PowerShell oder REST-API finden Sie unter [SQL-Datenbanküberwachung](../../azure-sql/database/auditing-overview.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung
 
