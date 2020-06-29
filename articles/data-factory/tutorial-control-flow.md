@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022111"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253459"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -48,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Azure Storage-Konto. Sie verwenden Blob Storage als Quelldatenspeicher. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 * Azure Storage-Explorer. Informationen zum Installieren des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/).
-* Azure SQL-Datenbank. Sie verwenden die Datenbank als Senkendatenspeicher. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) weitere Informationen.
+* Azure SQL-Datenbank. Sie verwenden die Datenbank als Senkendatenspeicher. Wenn Sie in Azure SQL-Datenbank keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md).
 * Visual Studio. In diesem Artikel wird Visual Studio 2019 verwendet.
 * Azure .NET SDK. Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/) herunter, und installieren Sie es.
 

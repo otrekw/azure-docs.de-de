@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Azure-Portals zum Erstellen einer Data Factory-Pipeline
-description: Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline verwendet die Kopieraktivität, um Daten aus Azure Blob Storage in eine Azure SQL-Datenbank zu kopieren.
+description: Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline verwendet die Kopieraktivität zum Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248616"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253963"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von Azure Data Factory
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in eine Azure SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > - Falls Sie noch nicht mit Data Factory vertraut sind, ist es ratsam, den Artikel [Einführung in Azure Data Factory](introduction.md) zu lesen.
@@ -41,7 +41,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement**. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * **Azure-Speicherkonto**. Sie verwenden Blob Storage als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md).
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie in Azure SQL-Datenbank noch keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Erstellen eines Blobs und einer SQL-Tabelle
 
@@ -61,7 +61,7 @@ Nun bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen de
 
 #### <a name="create-a-sink-sql-table"></a>Erstellen einer SQL-Senkentabelle
 
-1. Verwenden Sie das folgende SQL-Skript, um die Tabelle **dbo.emp** in Ihrer SQL-Datenbank zu erstellen:
+1. Verwenden Sie das folgende SQL-Skript zum Erstellen der Tabelle **dbo.emp** in Ihrer Datenbank:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -154,7 +154,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 
 1. Geben Sie im Dialogfeld **Neues Dataset** in das Suchfeld „SQL“ ein, um die Connectors zu filtern. Wählen Sie anschließend **Azure SQL-Datenbank** und dann **Weiter** aus. In diesem Tutorial kopieren Sie Daten in eine SQL-Datenbank.
 
-1. Geben Sie im Dialogfeld **Eigenschaften festlegen** als Name **OutputSqlDataset** ein. Klicken Sie in der Dropdownliste **Verknüpfter Dienst** auf **+ Neu**. Einem verknüpften Dienst muss ein Dataset zugewiesen werden. Der verknüpfte Dienst enthält die Verbindungszeichenfolge, die Data Factory zum Herstellen einer Verbindung mit der SQL-Datenbank zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, in die die Quelldaten kopiert werden.
+1. Geben Sie im Dialogfeld **Eigenschaften festlegen** als Name **OutputSqlDataset** ein. Klicken Sie in der Dropdownliste **Verknüpfter Dienst** auf **+ Neu**. Einem verknüpften Dienst muss ein Dataset zugewiesen werden. Der verknüpfte Dienst enthält die Verbindungszeichenfolge, die Data Factory zum Herstellen einer Verbindung mit Azure SQL-Datenbank zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, in die die Quelldaten kopiert werden.
 
 1. Führen Sie im Dialogfeld **New Linked Service (Azure SQL Database)** (Neuer verknüpfter Dienst (Azure SQL-Datenbank)) die folgenden Schritte aus:
 
@@ -162,7 +162,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 
     b. Wählen Sie unter **Servername** Ihre SQL Server-Instanz aus.
 
-    c. Wählen Sie unter **Datenbankname** Ihre SQL-Datenbank aus.
+    c. Wählen Sie unter **Datenbankname** Ihre Datenbank aus.
 
     d. Geben Sie unter **Benutzername** den Namen des Benutzers ein.
 
@@ -209,7 +209,7 @@ In diesem Schritt lösen Sie die im vorherigen Schritt veröffentlichte Pipeline
 
     [![Überwachen der Aktivitätsausführungen](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. Stellen Sie sicher, dass zwei weitere Zeilen zur Tabelle **emp** in der SQL-Datenbank hinzugefügt werden.
+1. Stellen Sie sicher, dass zwei weitere Zeilen zur Tabelle **emp** in der Datenbank hinzugefügt werden.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Auslösen der Pipeline nach einem Zeitplan
 In diesem Zeitplan erstellen Sie einen Zeitplantrigger für die Pipeline. Der Trigger führt die Pipeline nach dem angegebenen Zeitplan aus, etwa stündlich oder täglich. Hier legen Sie fest, dass der Trigger bis zur angegebenen Endzeit (Datum und Uhrzeit) minütlich ausgeführt wird.

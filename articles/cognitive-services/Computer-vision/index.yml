@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 35c37f5b2b307bb1a3d90b9876f148b5a1120490
-  ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+  ms.openlocfilehash: 3f2feec02efebbf6b3736b01151098cbe2bf02ae
+  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83713629"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85413789"
 landingContent:
 - title: Informationen zu maschinellem Sehen
   linkLists:
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: Integrieren intelligenter Funktionen in Ihre Apps mit Maschinelles Sehen-APIs
       url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: Erkennen von gedrucktem und handschriftlichem Text
+- title: Lesen von Text aus Bildern und Dokumenten
   linkLists:
   - linkListType: concept
     links:
-    - text: Erkennung von gedrucktem und handschriftlichem Text
+    - text: Texterkennung
       url: concept-recognizing-text.md
   - linkListType: quickstart
     links:

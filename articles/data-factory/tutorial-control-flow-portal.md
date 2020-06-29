@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560486"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253663"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 
@@ -44,7 +44,7 @@ In diesem Tutorial wird das Azure-Portal verwendet. Andere Mechanismen zur Inter
 
 * **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als **Senkendatenspeicher**. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) die Schritte zum Erstellen einer solchen Datenbank.
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als **Senkendatenspeicher**. Wenn Sie in Azure SQL-Datenbank noch keine Datenbank haben, lesen Sie den Artikel [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank.
 
 ### <a name="create-blob-table"></a>Erstellen Sie eine Blob-Tabelle
 
@@ -206,6 +206,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 13. Wechseln Sie zur Registerkarte **Pipeline**, oder klicken Sie in der Strukturansicht auf die Pipeline. Vergewissern Sie sich, dass unter **Source Dataset** (Quelldataset) die Option **SourceBlobDataset** ausgewählt ist.
 
     ![Quelldataset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Senke**, und klicken Sie für **Sink Dataset** (Senkendataset) auf **+ Neu**. In diesem Schritt erstellen Sie ein Senkendataset für die Kopieraktivität. Die Vorgehensweise ähnelt dabei der Erstellung des Quelldatasets.
 
     ![Schaltfläche für neues Senkendataset](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251509"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory und PowerShell
 
@@ -59,7 +59,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 **Vorbereiten der Azure SQL-Quelldatenbank**:
 
-Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, indem Sie den Anweisungen im Artikel [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) folgen. In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in SQL Data Warehouse kopiert.
+Erstellen Sie eine Datenbank mit den AdventureWorks LT-Beispieldaten in SQL-Datenbank anhand der Informationen aus dem Artikel [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in SQL Data Warehouse kopiert.
 
 **Vorbereiten des Senkenwarehouses Azure SQL Data Warehouse**:
 
@@ -334,7 +334,7 @@ Diese Pipeline verwendet die Liste mit den Tabellen als Parameter. Für jede Tab
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

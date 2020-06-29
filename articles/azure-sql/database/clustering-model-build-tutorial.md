@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024130"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251436"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Clusteringmodells in R mit Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Im zweiten Teil dieser dreiteiligen Tutorialreihe erstellen Sie ein K-Means-Modell in R für das Clustering. Im nächsten Teil dieser Reihe stellen Sie dieses Modell in einer SQL-Datenbank mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) bereit.
+Im zweiten Teil dieser dreiteiligen Tutorialreihe erstellen Sie ein K-Means-Modell in R für das Clustering. Im nächsten Teil dieser Reihe stellen Sie dieses Modell in einer Datenbank in Azure SQL-Datenbank mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) bereit.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ In diesem Artikel lernen Sie Folgendes:
 > * Durchführen des Clustering
 > * Analysieren der Ergebnisse
 
-Im [ersten Teil](clustering-model-prepare-data-tutorial.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering vorbereiten.
+In [Teil 1](clustering-model-prepare-data-tutorial.md) haben Sie gelernt, wie Sie die Daten aus einer Datenbank für das Clustering vorbereiten.
 
-In [Teil 3](clustering-model-deploy-tutorial.md) erlernen Sie das Erstellen einer gespeicherten Prozedur in einer Azure SQL-Datenbank, die Clustering in R basierend auf neuen Daten ausführen kann.
+In [Teil 3](clustering-model-deploy-tutorial.md) erlernen Sie das Erstellen einer gespeicherten Prozedur, die Clustering in R basierend auf neuen Daten ausführen kann.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

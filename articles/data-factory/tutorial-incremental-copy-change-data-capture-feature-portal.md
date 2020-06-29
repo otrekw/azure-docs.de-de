@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325225"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249482"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 
@@ -55,7 +55,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 * **Verwaltete Azure SQL-Datenbank-Instanz**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Falls Sie noch nicht über eine verwaltete Azure SQL-Datenbank-Instanz verfügen, erfahren Sie im Artikel [Schnellstart: Erstellen einer verwalteten Azure SQL-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started), wie Sie eine solche Instanz erstellen.
 * **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen **raw**. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Erstellen Sie eine Datenquelletabelle in Ihrer Azure SQL-Datenbank
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Erstellen einer Datenquellentabelle in Azure SQL-Datenbank
+
 1. Starten Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrem Azure SQL Managed Instance-Server her.
 2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf Ihre **Datenbank**, und wählen Sie **Neue Abfrage**.
 3. Führen Sie den folgenden SQL-Befehl für Ihre Azure SQL Managed Instance-Datenbank aus, um eine Tabelle mit dem Namen `customers` als Quelldatenspeicher zu erstellen:  

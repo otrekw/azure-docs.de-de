@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438912"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248546"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
 > [!div class="op_single_selector"]
@@ -33,11 +33,11 @@ ms.locfileid: "75438912"
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im [Tutorial zur Kopieraktivität](../quickstart-create-data-factory-dot-net.md). 
 
 
-In diesem Tutorial wird gezeigt, wie Sie mithilfe des **Kopier-Assistenten** Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren. 
+In diesem Tutorial wird gezeigt, wie Sie Daten mithilfe des **Kopier-Assistenten** aus einem Azure Blob Storage in Azure SQL-Datenbank kopieren. 
 
 Der **Kopier-Assistent** von Azure Data Factory ermöglicht Ihnen die schnelle Erstellung einer Datenpipeline, die Daten aus einem unterstützten Quelldatenspeicher in einen unterstützten Zieldatenspeicher kopiert. Daher empfehlen wir Ihnen, den Assistenten als ersten Schritt zum Erstellen einer Beispielpipeline für die Datenverschiebung zu verwenden. Eine Liste der Datenspeicher, die als Quellen und Ziele unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats).  
 
-In diesem Tutorial wird gezeigt, wie Sie eine Azure Data Factory erstellen, den Kopier-Assistenten starten und die Schritte zum Angeben von Details zur Datenerfassung bzw. -verschiebung ausführen. Nachdem Sie die Schritte im Assistenten durchgeführt haben, erstellt der Assistent automatisch eine Pipeline mit einer Kopieraktivität, um Daten aus Azure Blob Storage in Azure SQL-Datenbank zu kopieren. Weitere Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
+In diesem Tutorial wird gezeigt, wie Sie eine Azure Data Factory erstellen, den Kopier-Assistenten starten und die Schritte zum Angeben von Details zur Datenerfassung bzw. -verschiebung ausführen. Nachdem Sie die Schritte im Assistenten ausgeführt haben, erstellt der Assistent automatisch eine Pipeline mit einer Kopieraktivität, um Daten aus einem Azure Blob Storage in Azure SQL-Datenbank zu kopieren. Weitere Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie vor dem Durcharbeiten dieses Tutorials die Schritte zur Erfüllung der Voraussetzungen aus, die im Artikel [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aufgeführt sind.
@@ -61,7 +61,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
       - Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
       - Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
           
-        Bei einigen Schritten dieses Lernprogramms wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/overview.md).
+        Bei einigen Schritten in diesem Tutorial wird davon ausgegangen, dass Sie den Namen **ADFTutorialResourceGroup** für die Ressourcengruppe verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/overview.md).
    4. Wählen Sie einen **Standort** für die Data Factory aus.
    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
    6. Klicken Sie auf **Erstellen**.
@@ -119,7 +119,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    5. Geben Sie **Benutzername** und **Kennwort** ein.
    6. Klicken Sie auf **Weiter**.  
       
-      ![Kopiertool: Angeben der Azure SQL-Datenbank](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Kopiertool – Angeben der Azure SQL-Datenbank](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.
     
      ![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
