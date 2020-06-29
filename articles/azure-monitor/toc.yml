@@ -12,6 +12,12 @@
   items:
     - name: Überwachen einer Azure-Ressource
       href: learn/quick-monitor-azure-resource.md
+    - name: Senden eines Aktivitätsprotokolls an einen Arbeitsbereich
+      items:
+        - name: Azure-Portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM-Vorlage
+          href: learn/quick-collect-activity-log-arm.md
     - name: Überwachen virtueller Maschinen
       items:
         - name: Virtuelle Azure-Computer
@@ -455,7 +461,7 @@
             - name: Webhookaktionen
               href: platform/alerts-log-webhook.md
             - name: Behandeln von Problemen mit Protokollwarnungen
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: Warnungsregeln für Aktivitätsprotokolle
           items:
             - name: Warnung bei einem Aktivitätsprotokollereignis
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: Problembehandlung für Warnungen
           href: platform/alerts-troubleshoot.md
+        - name: Warnungen und Regionswechsel
+          href: platform/alerts-resource-move.md
         - name: IT-Dienstverwaltung
           items:
             - name: IT Service Management Connector
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: ASP.NET-Konsole
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Nicht-HTTP-Apps/Hintergrund-Apps
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET-Konsole
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Web-Apps
