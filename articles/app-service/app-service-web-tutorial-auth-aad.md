@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: b95d5d6eb52806e5b43a495b875d30846297c465
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 05cad67290b7f89c127d4417e7b89c48279605d9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592433"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886160"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -94,14 +94,14 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Übertragen von Git an Azure mithilfe von Push
 
-Führen Sie im _lokalen Terminalfenster_ die folgenden Git-Befehle aus, um die Bereitstellung für die Back-End-App durchzuführen. Ersetzen Sie _\<deploymentLocalGitUrl-of-back-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie in [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie [Ihre Anmeldeinformationen für die Bereitstellung](deploy-configure-credentials.md) eingeben (nicht die Anmeldeinformationen, die Sie für die Anmeldung beim Azure-Portal verwenden).
+Führen Sie im _lokalen Terminalfenster_ die folgenden Git-Befehle aus, um die Bereitstellung für die Back-End-App durchzuführen. Ersetzen Sie _\<deploymentLocalGitUrl-of-back-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie unter [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie [Ihre Anmeldeinformationen für die Bereitstellung](deploy-configure-credentials.md) eingeben (nicht die Anmeldeinformationen, die Sie für die Anmeldung beim Azure-Portal verwenden).
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-Führen Sie im lokalen Terminalfenster die folgenden Git-Befehle aus, um den gleichen Code für die Front-End-App bereitzustellen. Ersetzen Sie _\<deploymentLocalGitUrl-of-front-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie in [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben.
+Führen Sie im lokalen Terminalfenster die folgenden Git-Befehle aus, um den gleichen Code für die Front-End-App bereitzustellen. Ersetzen Sie _\<deploymentLocalGitUrl-of-front-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie unter [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben.
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -258,7 +258,7 @@ Wählen Sie **App-Registrierungen** > **Anwendungen mit Besitzer** > **Alle Anwe
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-Wählen Sie **Berechtigung hinzufügen** und anschließend **Von meiner Organisation verwendete APIs** >  **\<Name der Back-End-App>** aus.
+Wählen Sie **Berechtigung hinzufügen** und anschließend **Von meiner Organisation verwendete APIs** >  **\<back-end-app-name>** aus.
 
 Wählen Sie auf der Seite **API-Berechtigungen anfordern** für die Back-End-App **Delegierte Berechtigungen** und **user_impersonation** und anschließend **Berechtigungen hinzufügen** aus.
 
@@ -268,7 +268,7 @@ Wählen Sie auf der Seite **API-Berechtigungen anfordern** für die Back-End-App
 
 Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen für den Zugriff auf die Back-End-App als angemeldeter Benutzer. In diesem Schritt konfigurieren Sie die App Service-Authentifizierung und -Autorisierung, um ein verwendbares Zugriffstoken für den Zugriff auf das Back-End zu erhalten. Für diesen Schritt benötigen Sie die Client-ID des Back-Ends, die Sie unter [Aktivieren der Authentifizierung und Autorisierung für die Back-End-App](#enable-authentication-and-authorization-for-back-end-app) kopiert haben.
 
-Wählen Sie im linken Menü der Front-End-App unter **Entwicklungstools** die Option **Ressourcen-Explorer** und dann **Starten** aus.
+Navigieren Sie zu [Azure-Ressourcen-Explorer](https://resources.azure.com), und suchen Sie in der Ressourcenstruktur nach Ihrer Front-End-Web-App.
 
 Der [Azure-Ressourcen-Explorer](https://resources.azure.com) wird nun mit der in der Ressourcenstruktur ausgewählten Front-End-App geöffnet. Klicken Sie am oberen Rand der Seite auf **Lesen/Schreiben**, um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
 
@@ -352,7 +352,7 @@ Dieser Schritt bezieht sich nicht auf die Authentifizierung und Autorisierung. E
 
 Öffnen Sie _wwwroot/index.html_ im lokalen Repository.
 
-Legen Sie die Variable `apiEndpoint` in Zeile 51 auf die HTTPS-URL Ihrer Back-End-App (`https://<back-end-app-name>.azurewebsites.net`) fest. Ersetzen Sie _\<back-end-app-name>_ durch Ihren App-Namen in App Service.
+Legen Sie die Variable `apiEndpoint` in Zeile 51 auf die HTTPS-URL Ihrer Back-End-App (`https://<back-end-app-name>.azurewebsites.net`) fest. Ersetzen Sie _\<back-end-app-name>_ durch den Namen Ihrer App in App Service.
 
 Öffnen Sie _wwwroot/app/scripts/todoListSvc.js_ im lokalen Repository, und stellen Sie sicher, dass `apiEndpoint` allen API-Aufrufen vorangestellt wird. Ihre Angular.js-App ruft jetzt die Back-End-APIs auf. 
 

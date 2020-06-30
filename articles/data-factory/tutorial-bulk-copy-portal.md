@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561153"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661068"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory im Azure-Portal
 
@@ -108,13 +108,16 @@ In diesem Tutorial verknüpfen Sie Ihre Azure SQL-Datenbank-, Azure Synapse Anal
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Erstellen des verknüpften Quelldiensts Azure SQL-Datenbank
 In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank mit der Data Factory zu verbinden. 
 
-1. Klicken Sie unten im Fenster auf **Verbindungen** und anschließend auf der Symbolleiste auf die Schaltfläche **+ Neu**. (Die Schaltfläche **Verbindungen** befindet sich unten in der linken Spalte unter **Factory Resources** (Factory-Ressourcen)). 
+1. Öffnen Sie im linken Bereich die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub).
 
+1. Wählen Sie auf der Seite „Verknüpfte Dienste“ die Option **+Neu** aus, um einen neuen verknüpften Dienst zu erstellen.
+
+   ![Neuer verknüpfter Dienst](./media/doc-common-process/new-linked-service.png)
 1. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure SQL-Datenbank**, und klicken Sie auf **Weiter**. 
 1. Führen Sie im Fenster **New Linked Service (Azure SQL Database)** (Neuer verknüpfter Dienst (Azure SQL-Datenbank)) die folgenden Schritte aus: 
 
     a. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
-    
+
     b. Wählen Sie unter **Servername** Ihren Server aus.
     
     c. Wählen Sie unter **Datenbankname** Ihre Azure SQL-Datenbank aus. 
@@ -159,7 +162,6 @@ In diesem Tutorial wird Azure Blob Storage als vorläufiger Stagingbereich zur A
     b. Wählen Sie unter **Speicherkontoname** Ihr **Azure Storage-Konto** aus.
     
     c. Klicken Sie auf **Erstellen**.
-
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 In diesem Tutorial werden Quell- und Senkendatasets erstellt, die den Speicherort der Daten angeben. 

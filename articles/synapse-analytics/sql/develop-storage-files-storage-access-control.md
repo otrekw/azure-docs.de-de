@@ -6,15 +6,15 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4e717de82c289aacfba2372e77dc932becaf9a5c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835834"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764178"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -29,7 +29,18 @@ In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie ve
 Ein bei einer SQL On-Demand-Ressource angemeldeter Benutzer muss für den Zugriff auf und die Abfrage von Dateien in Azure Storage autorisiert sein, wenn die Dateien nicht öffentlich verfügbar sind. Sie können drei Autorisierungstypen für den Zugriff auf nicht öffentlichen Speicher verwenden: [Benutzeridentität](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) und [Verwaltete Identität](?tabs=managed-identity).
 
 > [!NOTE]
-> [Azure AD-Pass-Through](#force-azure-ad-pass-through) ist das Standardverhalten, wenn Sie einen Arbeitsbereich erstellen. In diesem Fall müssen Sie nicht für jedes Speicherkonto, auf das über Azure AD-Anmeldungen zugegriffen wird, eigene Anmeldeinformationen erstellen. Sie können [dieses Verhalten deaktivieren](#disable-forcing-azure-ad-pass-through).
+> **Azure AD-Pass-Through** ist das Standardverhalten, wenn Sie einen Arbeitsbereich erstellen.
+
+### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
+
+Die **Benutzeridentität** (auch „Azure AD-Pass-Through“ genannt) ist ein Autorisierungstyp, bei dem die Identität des bei SQL On-Demand angemeldeten Azure AD-Benutzers verwendet wird, um den Datenzugriff zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer die erforderlichen Berechtigungen erteilen. Wie Sie der Tabelle unten entnehmen können, wird diese Art der Autorisierung für den Typ „SQL-Benutzer“ nicht unterstützt.
+
+> [!IMPORTANT]
+> Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können.
+> Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
+>
+> Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
+>
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
@@ -43,49 +54,6 @@ Um ein SAS-Token abzurufen, navigieren Sie zu **Azure-Portal > Speicherkonto > S
 > SAS-Token: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
 Sie müssen datenbankbezogene oder serverbezogene Anmeldeinformationen erstellen, um den Zugriff mit dem SAS-Token zu ermöglichen.
-
-### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
-
-Die **Benutzeridentität** (auch „Pass-Through“ genannt) ist ein Autorisierungstyp, bei dem die Identität des bei SQL On-Demand angemeldeten Azure AD-Benutzers verwendet wird, um den Datenzugriff zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer die erforderlichen Berechtigungen erteilen. Wie Sie der Tabelle oben entnehmen können, wird diese Art der Autorisierung für den Typ „SQL-Benutzer“ nicht unterstützt.
-
-> [!IMPORTANT]
-> Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können.
-> Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
->
-> Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
->
-
-Sie müssen die Azure AD-Pass-Through-Authentifizierung explizit aktivieren, damit Azure AD-Benutzer mithilfe ihrer Identitäten auf den Speicher zugreifen können.
-
-#### <a name="force-azure-ad-pass-through"></a>Erzwingen von Azure AD-Pass-Through
-
-Das Erzwingen von Azure AD-Pass-Through ist ein Standardverhalten, das durch den speziellen CREDENTIAL NAME `UserIdentity` erzielt wird. Dieser wird während der Bereitstellung eines Azure Synapse-Arbeitsbereichs automatisch erstellt. Er erzwingt die Verwendung eines Azure AD-Pass-Through-Vorgangs für jede Abfrage jeder Azure AD-Anmeldung, der auch dann ausgeführt wird, wenn andere Anmeldeinformationen vorhanden sind.
-
-> [!NOTE]
-> Azure AD-Pass-Through ist ein Standardverhalten. Sie müssen nicht für jedes Speicherkonto, auf das von AD-Anmeldungen zugegriffen wird, eigene Anmeldeinformationen erstellen.
-
-Wenn Sie [die Erzwingung von Azure AD-Pass-Through für jede Abfrage deaktiviert haben](#disable-forcing-azure-ad-pass-through) und diese wieder aktivieren möchten, führen Sie Folgendes aus:
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
-Um die Erzwingung von Azure AD-Pass-Through für einen bestimmten Benutzer zu aktivieren, können Sie diesem Benutzer die Berechtigung REFERENCE in der Anmeldeinformation `UserIdentity` erteilen. Das folgende Beispiel aktiviert die Erzwingung von Azure AD-Pass-Through für den Benutzer „user_name“:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
-```
-
-#### <a name="disable-forcing-azure-ad-pass-through"></a>Deaktivieren der Erzwingung von Azure AD-Pass-Through
-
-Sie können die [Erzwingung von Azure AD-Pass-Through für jede Abfrage](#force-azure-ad-pass-through) deaktivieren. Löschen Sie zu diesem Zweck die Anmeldeinformation `Userdentity` mit folgendem Befehl:
-
-```sql
-DROP CREDENTIAL [UserIdentity];
-```
-
-Informationen zum erneuten Aktivieren finden Sie im Abschnitt [Erzwingen von Azure AD-Pass-Through](#force-azure-ad-pass-through).
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
@@ -152,7 +120,7 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 Serverbezogene Anmeldeinformationen werden verwendet, wenn die SQL-Anmeldung die `OPENROWSET`-Funktion ohne `DATA_SOURCE` aufruft, um Dateien in einem Speicherkonto zu lesen. Der Name der serverbezogenen Anmeldeinformation **muss** der URL des Azure-Speichers entsprechen. Eine Anmeldeinformation wird durch Ausführen von [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) hinzugefügt. Sie müssen ein CREDENTIAL NAME-Argument angeben. Dieses muss entweder einem Teil des Pfads oder dem gesamten Pfad zu den Daten in Storage entsprechen (siehe unten).
 
 > [!NOTE]
-> Das Argument FOR CRYPTOGRAPHIC PROVIDER wird nicht unterstützt.
+> Das Argument `FOR CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt.
 
 Der Name der Anmeldeinformation auf Serverebene muss dem vollständigen Pfad zum Speicherkonto (und optional dem Container) im Format `<prefix>://<storage_account_path>/<storage_path>` entsprechen. Die Speicherkontopfade sind in der folgenden Tabelle aufgeführt:
 
@@ -162,10 +130,13 @@ Der Name der Anmeldeinformation auf Serverebene muss dem vollständigen Pfad zum
 | Azure Data Lake Storage Gen1 | https  | <Speicherkonto>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | https  | <Speicherkonto>.dfs.core.windows.net              |
 
-> [!NOTE]
-> Es gibt eine spezielle Anmeldeinformation auf Serverebene, `UserIdentity`, die [Azure AD-Pass-Through erzwingt](?tabs=user-identity#force-azure-ad-pass-through).
-
 Serverbezogene Anmeldeinformationen ermöglichen den Zugriff auf den Azure-Speicher mithilfe der folgenden Authentifizierungstypen:
+
+### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
+
+Azure AD-Benutzer können auf alle Dateien im Azure-Speicher zugreifen, wenn sie über die Rolle `Storage Blob Data Owner`, `Storage Blob Data Contributor` oder `Storage Blob Data Reader` verfügen. Azure AD-Benutzer benötigen keine Anmeldeinformationen für den Zugriff auf den Speicher. 
+
+SQL-Benutzer können nicht Azure AD-Authentifizierung für den Zugriff auf den Speicher verwenden.
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
@@ -180,15 +151,6 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
-
-Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, die es Benutzern ermöglicht, mithilfe der Azure AD-Identität einen Identitätswechsel auszuführen.
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
 Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, die von der `OPENROWSET`-Funktion für den Zugriff auf eine beliebige Datei im Azure-Speicher mit der verwalteten Identität eines Arbeitsbereichs verwendet werden kann.
@@ -200,16 +162,8 @@ WITH IDENTITY='Managed Identity'
 
 ### <a name="public-access"></a>[Öffentlicher Zugriff](#tab/public-access)
 
-Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, die von der `OPENROWSET`-Funktion für den Zugriff auf eine beliebige Datei im öffentlich verfügbaren Azure-Speicher verwendet werden kann. Erstellen Sie diese Anmeldeinformation, um dem SQL-Prinzipal, der die `OPENROWSET`-Funktion ausführt, das Lesen öffentlich verfügbarer Dateien in dem Azure-Speicher zu ermöglichen, der der URL im Anmeldeinformationsnamen entspricht.
+Es ist keine datenbankbezogene Anmeldeinformation für den Zugriff auf öffentlich verfügbare Dateien erforderlich. Erstellen Sie eine [Datenquelle ohne datenbankbezogene Anmeldeinformation](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source), um auf öffentlich verfügbare Dateien im Azure-Speicher zuzugreifen.
 
-Sie müssen <*mystorageaccountname*> durch den tatsächlichen Namen Ihres Speicherkontos und <*mystorageaccountcontainername*> durch den tatsächlichen Namen des Containers ersetzen:
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='SHARED ACCESS SIGNATURE'
-, SECRET = '';
-GO
-```
 ---
 
 ## <a name="database-scoped-credential"></a>Datenbankbezogene Anmeldeinformationen
@@ -218,23 +172,20 @@ Datenbankbezogene Anmeldeinformationen werden verwendet, wenn ein Prinzipal die 
 
 Datenbankbezogene Anmeldeinformationen ermöglichen den Zugriff auf den Azure-Speicher mithilfe der folgenden Authentifizierungstypen:
 
+### <a name="azure-ad-identity"></a>[Azure AD-Identität](#tab/user-identity)
+
+Azure AD-Benutzer können auf alle Dateien im Azure-Speicher zugreifen, wenn sie mindestens über die Rolle `Storage Blob Data Owner`, `Storage Blob Data Contributor` oder `Storage Blob Data Reader` verfügen. Azure AD-Benutzer benötigen keine Anmeldeinformationen für den Zugriff auf den Speicher.
+
+SQL-Benutzer können nicht Azure AD-Authentifizierung für den Zugriff auf den Speicher verwenden.
+
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
 Mit dem folgenden Skript wird eine Anmeldeinformation erstellt, die für den Zugriff auf Dateien im Speicher mit dem in der Anmeldeinformation angegebenen SAS-Token verwendet wird.
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
-GO
-```
-
-### <a name="azure-ad-identity"></a>[Azure AD-Identität](#tab/user-identity)
-
-Mit dem folgenden Skript wird eine datenbankbezogene Anmeldeinformation erstellt, die von [externen Tabellen](develop-tables-external-tables.md) und `OPENROWSET`-Funktionen verwendet wird, die eine Datenquelle mit Anmeldeinformationen verwenden, um mithilfe der eigenen Azure AD-Identität auf Speicherdateien zuzugreifen.
-
-```sql
-CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
-WITH IDENTITY = 'User Identity';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
 
@@ -272,14 +223,17 @@ WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
 Verwenden Sie das folgende Skript, um eine Tabelle zu erstellen, die auf eine öffentlich verfügbare Datenquelle zugreift.
 
 ```sql
-CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
+       WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
 WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [publicData],
+       FILE_FORMAT = [SynapseParquetFormat] )
 ```
 
 Der Datenbankbenutzer kann den Inhalt der Dateien aus der Datenquelle mithilfe einer externen Tabelle oder der [OPENROWSET](develop-openrowset.md)-Funktion lesen, die auf die Datenquelle verweist:
@@ -287,7 +241,9 @@ Der Datenbankbenutzer kann den Inhalt der Dateien aus der Datenquelle mithilfe e
 ```sql
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
+                                DATA_SOURCE = [mysample],
+                                FORMAT=PARQUET) as rows;
 GO
 ```
 
@@ -300,13 +256,13 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
 
-CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity'
 GO
-CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
-GO
-CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+CREATE DATABASE SCOPED CREDENTIAL SasCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
 
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
@@ -316,13 +272,14 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
---,CREDENTIAL = MyIdentity 
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [mysample],
+       FILE_FORMAT = [SynapseParquetFormat] );
 
 ```
 

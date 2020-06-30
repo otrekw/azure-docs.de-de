@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758995"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659928"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Schnellstart: Bereitstellen des Unity-Beispiels für den Desktop
 
@@ -46,7 +46,7 @@ Derzeit werden nur flache Desktop-Apps auf dem Desktop unterstützt. Die VR-Unte
 ## <a name="build-the-sample-project"></a>Erstellen des Beispielprojekts
 
 1. Öffnen Sie *File > Build Settings* (Datei > Buildeinstellungen).
-1. Ändern Sie *Plattform* in **Universelle Windows-Plattform** (**Eigenständige PC** wird ebenfalls unterstützt, aber hier nicht verwendet).
+1. Ändern Sie *Plattform* in **Universelle Windows-Plattform**. (**Eigenständiger PC** wird ebenfalls unterstützt, aber hier nicht verwendet. Siehe [Plattformeinschränkungen](../reference/limits.md#platform-limitations))
 1. Legen Sie *Target Device* (Zielgerät) auf **PC** fest.
 1. Legen Sie *Architecture* (Architektur) auf **x86** fest.
 1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.
@@ -60,7 +60,7 @@ Derzeit werden nur flache Desktop-Apps auf dem Desktop unterstützt. Die VR-Unte
 1. Erstellen Sie die Projektmappe (F7).
 
 > [!WARNING]
-> Wählen Sie unbedingt **x86** aus. **x64** wird derzeit nicht unterstützt. Informationen finden Sie unter [Plattformeinschränkungen](../reference/limits.md#platform-limitations).
+> Wählen Sie unbedingt **x86** aus. **UWP/x64** wird derzeit nicht unterstützt. Informationen finden Sie unter [Plattformeinschränkungen](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Starten des Beispielprojekts
 

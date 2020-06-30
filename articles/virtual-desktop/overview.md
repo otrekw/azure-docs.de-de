@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 61162a0e2e95a08547848f286f2db489f4b9d963
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929824"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737018"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -22,7 +22,7 @@ Bei Windows Virtual Desktop handelt es sich um einen in der Cloud ausgeführten 
 Windows Virtual Desktop in Azure ermöglicht Folgendes:
 
 * Einrichten einer Windows 10-Bereitstellung mit mehreren Sitzungen, die eine vollständige Windows 10-Umgebung mit Skalierbarkeit bietet
-* Virtualisieren von Office 365 ProPlus und Optimieren der Ausführung in virtuellen Szenarien mit mehreren Benutzern
+* Virtualisieren von Microsoft 365 Apps for Enterprise und Optimieren der Ausführung in virtuellen Szenarien mit mehreren Benutzern
 * Bereitstellen virtueller Windows 7-Desktops mit kostenlosen erweiterten Sicherheitsupdates
 * Verwenden bereits vorhandener Remotedesktopdienste (Remote Desktop Services, RDS) und Windows Server-Desktops/-Apps auf einem beliebigen Computer
 * Virtualisieren von Desktops und Apps
@@ -109,11 +109,11 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
-|*.microsoftonline.com|443|Authentifizierung bei MS-Onlinediensten|Keine|
+|*.microsoftonline.com|443|Authentifizierung bei Microsoft Online Services|Keine|
 |*.events.data.microsoft.com|443|Telemetriedienst|Keine|
 |www.msftconnecttest.com|443|Ermittelt, ob das Betriebssystem mit dem Internet verbunden ist.|Keine|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows-Update|Keine|
-|login.windows.net|443|Anmelden bei MS-Onlinediensten, Office 365|Keine|
+|login.windows.net|443|Anmelden von Benutzern bei Microsoft Online Services, Office 365|Keine|
 |*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|Keine|
 |*.digicert.com|443|Überprüfung der Zertifikatsperre|Keine|
 

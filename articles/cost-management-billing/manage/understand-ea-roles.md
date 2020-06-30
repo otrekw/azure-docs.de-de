@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295302"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678017"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
 
@@ -27,6 +27,10 @@ Azure-Kunden mit einem Enterprise Agreement (EA) können zur Verwaltung ihrer Or
 <sup>1</sup> Der Rechnungsempfänger des Konzernvertrags hat diese Rolle.
 
 <sup>2</sup> Der Rechnungsempfänger kann nicht im Azure EA-Portal hinzugefügt oder geändert werden. Er wird der EA-Registrierung basierend auf dem Benutzer hinzugefügt, der auf der Vereinbarungsebene als Rechnungsempfänger eingerichtet ist. Zum Ändern des Rechnungsempfängers muss über einen Partner/Software Advisor eine Anfrage an das regionale Betriebszentrum (Regional Operations Center, ROC) gerichtet werden.
+
+Der erste Registrierungsadministrator, der während der Registrierungsbereitstellung eingerichtet wird, bestimmt den Authentifizierungstyp des Rechnungsempfängerkontos. Wenn der Rechnungsempfänger dem EA Portal als Administrator mit Leseberechtigung hinzugefügt wird, wird für ihn die Microsoft-Kontoauthentifizierung festgelegt. 
+
+Wenn der ursprüngliche Authentifizierungstyp auf „Gemischt“ festgelegt wird, wird das EA als Microsoft-Konto hinzugefügt, und der Rechnungsempfänger besitzt EA-Administratorberechtigungen vom Typ „Schreibgeschützt“. Wenn der EA-Administrator die Microsoft-Kontoautorisierung für einen vorhandenen Rechnungsempfänger nicht genehmigt, kann der EA-Administrator den betreffenden Benutzer löschen und den Kunden bitten, den Benutzer als Administrator mit Leseberechtigung für ein Geschäfts-, Schul-oder Unikonto hinzuzufügen, das nur auf Registrierungsebene im EA Portal festgelegt ist.
 
 Diese Rollen sind spezifisch für die Verwaltung von Azure Enterprise Agreements und ergänzend zu den integrierten Rollen in Azure zum Steuern des Zugriffs auf Ressourcen. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
 

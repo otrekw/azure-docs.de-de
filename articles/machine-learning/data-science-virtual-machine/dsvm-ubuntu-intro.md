@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290508"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254700"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Schnellstart: Einrichten von Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -22,16 +22,18 @@ Schnelle Betriebsbereitschaft mit einer Data Science Virtual Machine-Instanz unt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Erstellen einer Data Science VM-Instanz unter Ubuntu 18.04 benötigen Sie ein Azure-Abonnement. [Testen Sie Azure kostenlos](https://azure.com/free).
-Beachten Sie, dass kostenlose Azure-Konten keine GPU-fähigen VM-SKUs unterstützen.
+
+>[!NOTE]
+>Kostenlose Azure-Konten unterstützen keine GPU-fähigen VM-SKUs.
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Erstellen Ihrer Data Science Virtual Machine für Linux
 
 Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual Machine unter Ubuntu 18.04:
 
-1. Rufen Sie das [Azure-Portal](https://portal.azure.com) auf. Falls Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie ggf. eine entsprechende Aufforderung.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Falls Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie ggf. eine entsprechende Aufforderung.
 1. Suchen Sie nach der Liste mit den virtuellen Computern, indem Sie „Data Science Virtual Machine“ eingeben und „Data Science Virtual Machine – Ubuntu 18.04“ auswählen.
 
-1. Wählen Sie im nachfolgenden Fenster die Option **Erstellen** aus.
+1. Wählen Sie im nächsten Fenster **Erstellen** aus.
 
 1. Sie sollten auf das Blatt „Virtuellen Computer erstellen“ umgeleitet werden.
    
@@ -41,7 +43,7 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
     
        * **Abonnement**: Falls Sie über mehrere Abonnements verfügen, müssen Sie das Abonnement auswählen, unter dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
        * **Ressourcengruppe**: Erstellen Sie eine neue Gruppe, oder verwenden Sie eine bereits vorhandene.
-       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. Unter diesem Namen wird er im Azure-Portal angezeigt.
+       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. Dieser Name wird im Azure-Portal verwendet.
        * **Region**: Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Informieren Sie sich über die [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
        * **Image**: Behalten Sie den Standardwert bei.
        * **Size**: Diese Option sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/linux/sizes.md).
@@ -50,9 +52,9 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
          > [!NOTE]
          > Wenn Sie JupyterHub verwenden möchten, achten Sie darauf, dass „Kennwort“ ausgewählt ist, da JupyterHub *nicht* für die Verwendung von öffentlichen SSH-Schlüsseln konfiguriert ist.
 
-       * **Benutzername**: Geben Sie den Benutzernamen des Administrators ein. Dies ist der Benutzername, den Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden. Er muss nicht mit Ihrem Azure-Benutzernamen identisch sein. Verwenden Sie *keine* Großbuchstaben.
+       * **Benutzername**: Geben Sie den Benutzernamen des Administrators ein. Sie verwenden diesen Benutzernamen, um sich bei Ihrem virtuellen Computer anzumelden. Dieser Benutzername braucht nicht mit Ihrem Azure-Benutzernamen übereinzustimmen. Verwenden Sie *keine* Großbuchstaben.
          
-         > [!NOTE]
+         > [!IMPORTANT]
          > Wenn Sie in Ihrem Benutzernamen Großbuchstaben verwenden, funktioniert JupyterHub nicht, und die Meldung „500 – Interner Serverfehler“ wird angezeigt.
 
        * **Kennwort**: Geben Sie das Kennwort ein, das Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden.    
@@ -76,7 +78,7 @@ Sie können Azure Notebooks auch eine Data Science Virtual Machine zuordnen, um 
 
 ### <a name="ssh"></a>SSH
 
-Nachdem der virtuelle Computer erstellt wurde, können Sie sich mit SSH anmelden, sofern er mit SSH-Zugriff konfiguriert wurde. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool, z. B. [PuTTY](https://www.putty.org), herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Window System), können Sie die X11-Weiterleitung unter PuTTY verwenden.
+Wenn Sie Ihren virtuellen Computer mit der SSH-Authentifizierung konfiguriert haben, können Sie sich mit den Kontoanmeldeinformationen anmelden, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool, z. B. [PuTTY](https://www.putty.org), herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Window System), können Sie die X11-Weiterleitung unter PuTTY verwenden.
 
 > [!NOTE]
 > Der X2Go-Client hat bei Tests besser abgeschnitten als die X11-Weiterleitung. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.
@@ -86,7 +88,7 @@ Nachdem der virtuelle Computer erstellt wurde, können Sie sich mit SSH anmelden
 Die Linux-VM ist schon in der Bereitstellung von X2Go-Server enthalten und zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.
-1. Notieren Sie sich die öffentliche IP-Adresse des virtuellen Computers. Diese finden Sie im Azure-Portal, indem Sie den soeben erstellten virtuellen Computer öffnen.
+1. Notieren Sie sich die öffentliche IP-Adresse des virtuellen Computers. Diese finden Sie im Azure-Portal, indem Sie den erstellten virtuellen Computer öffnen.
 
    ![IP-Adresse des Ubuntu-Computers](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
@@ -99,7 +101,7 @@ Die Linux-VM ist schon in der Bereitstellung von X2Go-Server enthalten und zum A
      * **SSH-Port**: Übernehmen Sie den Standardwert 22.
      * **Sitzungstyp**: Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
    * **Registerkarte „Medien“** : Sie können die Soundunterstützung und die Clientausgabe deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner**: Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
+   * **Freigegebene Ordner**: Verwenden Sie diese Registerkarte, um das Verzeichnis auf dem Clientcomputer hinzuzufügen, das Sie auf dem virtuellen Computer einbinden möchten. 
 
    ![X2go-Konfiguration](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Klicken Sie auf **OK**.
@@ -123,6 +125,9 @@ Die Ubuntu-DSVM führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), e
 
       ![Jupyter-Anmeldung eingeben](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
+>[!NOTE]
+> Wenn Sie in dieser Phase einen 500-Fehler erhalten, haben Sie wahrscheinlich Großbuchstaben in Ihrem Benutzernamen verwendet. Dies ist eine bekannte Interaktion zwischen Jupyter Hub und dem von ihm verwendeten PAMAuthenticator. 
+
    1. Durchsuchen Sie die zahlreichen verfügbaren Beispielnotebooks.
 
 JupyterLab, die nächste Generation von Jupyter-Notebooks, und JupyterHub, sind ebenfalls verfügbar. Für den Zugriff darauf melden Sie sich bei JupyterHub an, und navigieren Sie dann zu der URL „https:\//IP-Ihrer-VM:8000/Benutzer/Ihr-Benutzername/lab“. Ersetzen Sie dabei „Ihr-Benutzername“ durch den Benutzernamen, den Sie beim Konfigurieren des virtuellen Computers gewählt haben. Es kann wieder sein, dass der erste Zugriff auf die Website aufgrund eines Zertifikatfehlers blockiert wird.
@@ -139,6 +144,6 @@ Informieren Sie sich weiter:
 
 * In der exemplarischen Vorgehensweise [Data Science mit einer Linux Data Science Virtual Machine in Azure](linux-dsvm-walkthrough.md) wird veranschaulicht, wie Sie mehrere allgemeine Data Science-Aufgaben mit der hier bereitgestellten Linux-DSVM ausführen. 
 * Entdecken Sie die unterschiedlichen Data Science-Tools der DSVM-Instanz, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch `dsvm-more-info` in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den Tools auf der VM zu erhalten.  
-* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://aka.ms/tdsp)systematisch vollständige Analyselösungen erstellen.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://aka.ms/tdsp) systematisch Analyselösungen erstellen.
 * Besuchen Sie die [Azure AI Gallery](https://gallery.azure.ai/), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure-KI-Dienste verwendet werden.
 * Gehen Sie anhand der entsprechenden [Referenzdokumentation](./reference-ubuntu-vm.md) für diesen virtuellen Computer vor.

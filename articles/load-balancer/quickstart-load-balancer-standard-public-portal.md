@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 99a2de4cd8a19d3f05b9dc37f3bcd08cd84b2e68
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78898830"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052748"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -116,12 +116,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupSLB |
-| **\<VNET-Name>** | myVNet          |
-| **\<Regionsname>**          | Europa, Westen      |
-| **\<IPv4-Adressraum>**   | 10.1.0.0\16          |
-| **\<Subnetzname>**          | myBackendSubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -162,7 +162,7 @@ Die SKUs für öffentliche IP-Adressen und die Load Balancer-SKUs müssen über
     | Verfügbarkeitszone | 2 |3|
     |Öffentliche IP-Adresse| **Standard**-SKU:|**Standard**-SKU:|
     | Öffentliche IP-Adresse – Verfügbarkeitszone| **Zonenredundant** |**Zonenredundant**|
-    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene *myNetworkSecurity-Gruppe* aus.| Wählen Sie die vorhandene *myNetworkSecurity-Gruppe* aus.|
+    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Gruppe *myNetworkSecurityGroup* aus.| Wählen Sie die vorhandene Gruppe *myNetworkSecurityGroup* aus.|
 
  ### <a name="create-nsg-rule"></a>Erstellen der NSG-Regel
 

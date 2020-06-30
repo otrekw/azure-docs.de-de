@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006452"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977903"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -32,7 +32,7 @@ Jedes Gateway verfügt über zwei Instanzen. Die Aufteilung wird durchgeführt, 
 Es gibt zwei Optionen zum Hinzufügen von DNS-Servern für die P2S-Clients.
 
 1. Erstellen Sie für Microsoft ein Supportticket, um Ihre DNS-Server dem Hub hinzufügen zu lassen.
-2. Falls Sie den Azure-VPN-Client für Windows 10 verwenden, können Sie die heruntergeladene XML-Profildatei ändern und vor dem Importieren die Tags **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** hinzufügen.
+2. Falls Sie Azure VPN Client für Windows 10 verwenden, können Sie die heruntergeladene XML-Profildatei ändern und vor dem Importieren die Tags **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** hinzufügen.
 
 ```
 <azvpnprofile>
@@ -212,9 +212,14 @@ Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ �
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Wie wählt der virtuelle Hub in einer Virtual WAN-Instanz den besten Pfad für eine Route von mehreren Hubs aus?
 
 Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen erhält, wird folgende Entscheidungsreihenfolge verwendet:
-1) Routenursprung  a) Netzwerkrouten (von den Gateways virtueller Hubs direkt erhaltene VNET-Präfixe)  b) Hubroutingtabelle (statisch konfigurierte Routen)  c) BGP  d) Routen zwischen Hubs
-2)  Routenmetrik: Virtual WAN gibt ExpressRoute den Vorzug vor VPN. Der ExpressRoute-Peer hat verglichen mit dem VPN-Peer eine höhere Gewichtung.
-3)  AS-Pfadlänge
+1. Längste Präfixübereinstimmung
+2. Lokale Routen zwischen Hubs
+3. Statische Routen über BGP
+4. ExpressRoute (ER) über VPN
+5. AS-Pfadlänge
+
+Die Übertragung zwischen ER und ER erfolgt immer über Global Reach. Wenn die Anforderung über ER bei einem Hub eingeht und VPN und ER in einem Remotehub eingerichtet sind, wird vorzugsweise das VPN verwendet, um einen Endpunkt zu erreichen, der über VPN oder ER im Remotehub verbunden ist.
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 

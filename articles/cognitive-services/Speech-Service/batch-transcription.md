@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208617"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099767"
 ---
 # <a name="what-is-batch-transcription"></a>Was ist die Batch-Transkription?
 
-Bei der Batch-Transkription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen.
+Bei der Batch-Transkription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen. Mit der neuen API der Version 3.0 haben Sie die Möglichkeit, eine oder mehrere Audiodateien zu transkribieren oder einen ganzen Speichercontainer zu verarbeiten.
 
 Die asynchrone Transkription für die Spracherkennung ist nur eine der verfügbaren Funktionen. Mit den REST-APIs für die Batch-Transkription können Sie die folgenden Methoden aufrufen:
 
@@ -27,17 +27,18 @@ Die asynchrone Transkription für die Spracherkennung ist nur eine der verfügba
 
 |    Batch-Transkriptionsvorgang                                             |    Methode    |    REST-API-Aufruf                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    Erstellt eine neue Transkription.                                              |    POST      |    api/speechtotext/v2.0/transcriptions            |
-|    Ruft eine Liste von Transkriptionen für das authentifizierte Abonnement ab.    |    GET       |    api/speechtotext/v2.0/transcriptions            |
-|    Ruft eine Liste der unterstützten Gebietsschemas für Offlinetranskriptionen ab.              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
-|    Aktualisiert die änderbaren Details der durch die ID angegebenen Transkription.    |    PATCH     |    api/speechtotext/v2.0/transcriptions/{id}       |
-|    Löscht die angegebene Transkriptionsaufgabe.                                 |    Delete    |    api/speechtotext/v2.0/transcriptions/{id}       |
-|    Ruft die durch die ID angegebene Transkription ab.                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    Erstellt eine neue Transkription.                                              |    POST      |    speechtotext/v3.0/transcriptions            |
+|    Ruft eine Liste von Transkriptionen für das authentifizierte Abonnement ab.    |    GET       |    speechtotext/v3.0/transcriptions            |
+|    Ruft eine Liste der unterstützten Gebietsschemas für Offlinetranskriptionen ab.              |    GET       |    speechtotext/v3.0/transcriptions/locales    |
+|    Aktualisiert die änderbaren Details der durch die ID angegebenen Transkription.    |    PATCH     |    speechtotext/v3.0/transcriptions/{id}       |
+|    Löscht die angegebene Transkriptionsaufgabe.                                 |    Delete    |    speechtotext/v3.0/transcriptions/{id}       |
+|    Ruft die durch die ID angegebene Transkription ab.                        |    GET       |    speechtotext/v3.0/transcriptions/{id}       |
+|    Ruft die Ergebnisdateien der durch die ID angegebenen Transkription ab.    |    GET       |    speechtotext/v3.0/transcriptions/{id}/files |
 
 
 
 
-Sie können die ausführliche API prüfen und testen. Sie steht als [Swagger-Dokument](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A) unter der Überschrift `Custom Speech transcriptions` zur Verfügung.
+Sie können die ausführliche API prüfen und testen. Sie steht als [Swagger-Dokument](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) zur Verfügung.
 
 Batch-Transkriptionsaufträge werden auf der Grundlage des optimalen Arbeitsaufwands geplant. Zurzeit lässt sich nicht einschätzen, wann ein Auftrag in den Ausführungsstatus wechselt. Bei normaler Systemlast sollte dies innerhalb von Minuten erfolgen. Sobald er ausgeführt wird, wird die aktuelle Transkription schneller als in Audioechtzeit verarbeitet.
 
@@ -54,7 +55,7 @@ Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung u
 
 ### <a name="custom-models"></a>Benutzerdefinierte Modelle
 
-Wenn Sie die Anpassung von Audio- oder Sprachmodellen planen, befolgen Sie die Schritte unter [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md) und [Entwerfen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihre Modell-IDs. Die Modell-ID lässt sich durch Untersuchen der Details des Modells ermitteln. Für den Batch-Transkriptionsdienst ist kein bereitgestellter benutzerdefinierter Endpunkt erforderlich.
+Wenn Sie planen, Modelle anzupassen, befolgen Sie die Schritte unter [Akustische Anpassung](how-to-customize-acoustic-models.md) und [Sprachanpassung](how-to-customize-language-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihren Modellspeicherort. Der Modellspeicherort lässt sich durch Untersuchen der Details des Modells ermitteln (`self`-Eigenschaft). Für den Batch-Transkriptionsdienst ist *kein* bereitgestellter benutzerdefinierter Endpunkt erforderlich.
 
 ## <a name="the-batch-transcription-api"></a>Die Batch-Transkriptions-API
 
@@ -72,25 +73,52 @@ Bei Audiostreams in Stereo sind linker und rechter Kanal während des Transkript
 
 ### <a name="configuration"></a>Konfiguration
 
-Die Konfigurationsparameter werden als JSON angegeben:
+Konfigurationsparameter werden als JSON-Code (eine oder mehrere Einzeldateien) bereitgestellt:
 
 ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to use, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "ProfanityFilterMode": "None | Removed | Tags | Masked",
-    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True | False",
-    "AddSentiment" : "True | False",
-    "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
-  }
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
+
+Konfigurationsparameter werden als JSON-Code (Verarbeitung eines ganzen Speichercontainers) bereitgestellt:
+
+```json
+{
+  "contentContainerUrl": "<SAS URL to the Azure blob container to transcribe>",
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of container using default model for en-US"
+}
+```
+
+Zum Verwenden benutzerdefinierter, trainierter Modelle in Batch-Transkriptionen kann auf diese (wie unten gezeigt) verwiesen werden:
+
+```json
+{
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "model": {
+    "self": "https://westus.api.cognitive.microsoft.com/speechtotext/v3.0/models/{id}"
+  },
+  "displayName": "Transcription of file using default model for en-US"
+}
+```
+
 
 ### <a name="configuration-properties"></a>Konfigurationseigenschaften
 
@@ -105,45 +133,52 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ProfanityFilterMode`
+      `profanityFilterMode`
    :::column-end:::
    :::column span="2":::
       Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind: `None` (deaktiviert den Obszönitätenfilter), `Masked` (Obszönitäten werden durch Sternchen ersetzt), `Removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `Tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `Masked`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `PunctuationMode`
+      `punctuationMode`
    :::column-end:::
    :::column span="2":::
       Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Zulässige Werte sind: `None` (deaktiviert die Interpunktion), `Dictated` (impliziert explizite (gesprochene) Interpunktion), `Automatic` (überlässt dem Decoder die Interpunktion) oder `DictatedAndAutomatic` (verwendet diktierte und automatische Interpunktion). Die Standardeinstellung ist `DictatedAndAutomatic`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddWordLevelTimestamps`
+      `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
       Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren von Zeitstempeln auf Wortebene.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddSentiment`
+      `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      Gibt an, ob die Standpunktanalyse auf die Äußerung angewendet werden soll. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren. Weitere Informationen finden Sie unter [Stimmungsanalyse](#sentiment-analysis).
+      Gibt an, dass die Diarisierungsanalyse für die Eingabe durchgeführt werden soll. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Diarisierung. Außerdem muss `wordLevelTimestampsEnabled` auf „true“ festgelegt werden.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddDiarization`
+      `channels`
    :::column-end:::
    :::column span="2":::
-      Gibt an, dass die Diarisierungsanalyse für die Eingabe durchgeführt werden soll. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Diarisierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.
+      Ein optionales Array von zu verarbeitenden Kanalnummern. Hier kann eine Teilmenge der verfügbaren Kanäle in der Audiodatei zur Verarbeitung angegeben werden (z. B. nur `0`). Wenn keine Angabe erfolgt, werden die Kanäle `0` und `1` standardmäßig transkribiert.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `TranscriptionResultsContainerUrl`
+      `timeToLive`
    :::column-end:::
    :::column span="2":::
-      Optionale URL mit [Dienst-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert.
+      Eine optionale Dauer zum automatischen Löschen von Transkriptionen nach Abschluss der Transkription. `timeToLive` ist bei der Massenverarbeitung von Transkriptionen nützlich, um sicherzustellen, dass sie schließlich gelöscht werden (z. B. `PT12H`). Wenn keine Angabe erfolgt oder die Option auf `PT0H` festgelegt ist, wird die Transkription nicht automatisch gelöscht.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `destinationContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Optionale URL mit [Dienst-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert. Wenn keine Angabe erfolgt, speichert Microsoft die Ergebnisse in einem von Microsoft verwalteten Speichercontainer. Wenn die Transkription durch Aufruf von [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) gelöscht wird, werden die Ergebnisdaten ebenfalls gelöscht.
 :::row-end:::
 
 ### <a name="storage"></a>Storage
@@ -152,65 +187,65 @@ Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft
 
 ## <a name="the-batch-transcription-result"></a>Das Ergebnis der Batch-Transkription
 
-Für Mono-Audioeingangssignale wird eine Transkriptions-Ergebnisdatei erstellt. Für Stereo-Audioeingangssignale werden zwei Transkriptions-Ergebnisdateien erstellt. Jede wiest diese Struktur auf:
+Für jeden Audioeingang wird eine Transkriptions-Ergebnisdatei erstellt. Sie können die Liste der Ergebnisdateien abrufen, indem Sie [Transkriptionsdateien abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles) aufrufen. Diese Methode gibt eine Liste der Ergebnisdateien für diese Transkription zurück. Filtern Sie alle zurückgegebenen Dateien mit `kind` == `Transcription` und `name` == `{originalInputName.suffix}.json`, um die Transkriptionsdatei für eine bestimmte Eingabedatei zu finden.
+
+Jedes Transkriptionsergebnis hat das folgende Format:
 
 ```json
 {
-  "AudioFileResults":[
+  "source": "...",                                                 // the sas url of a given contentUrl or the path relative to the root of a given container
+  "timestamp": "2020-06-16T09:30:21Z",                             // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
+  "durationInTicks": 41200000,                                     // total audio duration in ticks (1 tick is 100 nanoseconds)
+  "duration": "PT4.12S",                                           // total audio duration, ISO 8601 encoded duration
+  "combinedRecognizedPhrases": [                                   // concatenated results for simple access in single string for each channel
     {
-      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
-      "AudioFileUrl": null                                  'always null'
-      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
-      "CombinedResults": [
+      "channel": 0,                                                // channel number of the concatenated results
+      "lexical": "hello world",
+      "itn": "hello world",
+      "maskedITN": "hello world",
+      "display": "Hello world."
+    }
+  ],
+  "recognizedPhrases": [                                           // results for each phrase and each channel individually
+    {
+      "recognitionStatus": "Success",                              // recognition state, e.g. "Success", "Failure"
+      "channel": 0,                                                // channel number of the result
+      "offset": "PT0.07S",                                         // offset in audio of this phrase, ISO 8601 encoded duration 
+      "duration": "PT1.59S",                                       // audio duration of this phrase, ISO 8601 encoded duration
+      "offsetInTicks": 700000.0,                                   // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
+      "durationInTicks": 15900000.0,                               // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
+      
+      // possible transcriptions of the current phrase with confidences
+      "nBest": [
         {
-          "ChannelNumber": null                             'always null'
-          "Lexical": string
-          "ITN": string
-          "MaskedITN": string
-          "Display": string
-        }
-      ]
-      SegmentResults:[                                      'for each individual segment'
-        {
-          "RecognitionStatus": "Success | Failure"
-          "ChannelNumber": null
-          "SpeakerId": null | "1 | 2"                       'null if no diarization
-                                                             or stereo input file, the
-                                                             speakerId as a string if
-                                                             diarization requested for
-                                                             mono audio file'
-          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
-          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
-          "OffsetInSeconds" : number                        'Real number. Two decimal places'
-          "DurationInSeconds" : number                      'Real number. Two decimal places'
-          "NBest": [
+          "confidence": 0.898652852,                               // confidence value for the recognition of the whole phrase
+          "speaker": 1,                                            // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
+          "lexical": "hello world",
+          "itn": "hello world",
+          "maskedITN": "hello world",
+          "display": "Hello world.",
+          
+          // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
+          "words": [
             {
-              "Confidence": number                          'between 0 and 1'
-              "Lexical": string
-              "ITN": string
-              "MaskedITN": string
-              "Display": string
-              "Sentiment":
-                {                                           'this is omitted if sentiment is
-                                                             not requested'
-                  "Negative": number                        'between 0 and 1'
-                  "Neutral": number                         'between 0 and 1'
-                  "Positive": number                        'between 0 and 1'
-                }
-              "Words": [
-                {
-                  "Word": string
-                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
-                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
-                  "OffsetInSeconds": number                 'Real number. Two decimal places'
-                  "DurationInSeconds": number               'Real number. Two decimal places'
-                  "Confidence": number                      'between 0 and 1'
-                }
-              ]
+              "word": "hello",
+              "offset": "PT0.09S",
+              "duration": "PT0.48S",
+              "offsetInTicks": 900000.0,
+              "durationInTicks": 4800000.0,
+              "confidence": 0.987572
+            },
+            {
+              "word": "world",
+              "offset": "PT0.59S",
+              "duration": "PT0.16S",
+              "offsetInTicks": 5900000.0,
+              "durationInTicks": 1600000.0,
+              "confidence": 0.906032
             }
           ]
         }
-      ]
+      ]    
     }
   ]
 }
@@ -227,28 +262,28 @@ Das Ergebnis enthält diese Formen:
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Lexical`
+      `lexical`
    :::column-end:::
    :::column span="2":::
       Die tatsächlich erkannten Wörter
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ITN`
+      `itn`
    :::column-end:::
    :::column span="2":::
       Der erkannte Text in Form von inverser Textnormalisierung. Abkürzungen („Doktor Schmidt“ zu „Dr. Schmidt“), Telefonnummern und weitere Transformationen werden angewendet.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `MaskedITN`
+      `maskedITN`
    :::column-end:::
    :::column span="2":::
       Die ITN-Form mit angewendeter Maskierung von Obszönitäten
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Display`
+      `display`
    :::column-end:::
    :::column span="2":::
       Die Anzeigeform des erkannten Texts. Hinzugefügte Satzzeichen und Groß-/Kleinschreibung sind enthalten.
@@ -258,102 +293,52 @@ Das Ergebnis enthält diese Formen:
 
 Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen. Die Funktion ist für Stereoaufzeichnungen nicht verfügbar.
 
-Alle Transkriptionsausgaben enthalten eine `SpeakerId`. Wenn die Diarisierung nicht verwendet wird, wird `"SpeakerId": null` in der JSON-Ausgabe angezeigt. Bei der Diarisierung werden zwei Stimmen unterstützt, sodass die Sprecher als `"1"` oder `"2"` identifiziert werden.
+Die Ausgabe der Transkription mit aktivierter Diarisierung enthält einen `Speaker`-Eintrag für jeden transkribierten Ausdruck. Wenn die Diarisierung nicht verwendet wird, ist die Eigenschaft `Speaker` in der JSON-Ausgabe nicht vorhanden. Bei der Diarisierung werden zwei Stimmen unterstützt, sodass die Sprecher als `1` oder `2` identifiziert werden.
 
 Wenn Sie Diarisierung anfordern möchten, müssen Sie einfach der HTTP-Anforderung den relevanten Parameter wie unten gezeigt hinzufügen.
 
  ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "AddWordLevelTimestamps" : "True",
-    "AddDiarization" : "True"
-  }
+    "diarizationEnabled": true,
+    "wordLevelTimestampsEnabled": true,
+    "punctuationMode": "DictatedAndAutomatic",
+    "profanityFilterMode": "Masked"
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
 
-Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden.
-
-## <a name="sentiment-analysis"></a>Stimmungsanalyse
-
-Die Funktion zur Stimmungsanalyse schätzt die im Audiosignal ausgedrückte Stimmung ein. Die Stimmung wird durch einen Wert zwischen 0 und 1 für die Stimmungen `Negative`, `Neutral` und `Positive` ausgedrückt. Beispielsweise kann die Stimmungsanalyse in Callcenterszenarien verwendet werden:
-
-- Einblicke in die Kundenzufriedenheit gewinnen
-- Einblicke in die Leistung der Mitarbeiter erhalten (das Team, das Anrufe entgegennimmt)
-- Den exakten Zeitpunkt ermitteln, zu dem ein Anruf ins Negative umschlug
-- Was funktionierte gut, wenn es gelingt, einem negativen Anruf eine positive Wendung zu geben
-- herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
-
-Die Stimmung wird pro Audiosegment auf der Grundlage der lexikalischen Form bewertet. Zum Berechnen der Stimmung wird der gesamte Text im betreffenden Audiosegment bewertet. Es wird keine aggregierte Stimmung für die gesamte Transkription berechnet. Die Standpunktanalyse ist zurzeit nur für Englisch verfügbar.
-
-> [!NOTE]
-> Es wird empfohlen, stattdessen die Textanalyse-API von Microsoft zu verwenden. Diese bietet erweiterte Features, die über die Stimmungsanalyse hinausgehen, zum Beispiel die Schlüsselbegriffserkennung, die automatische Spracherkennung usw. Weitere Informationen und Beispiele finden Sie in der [Dokumentation zur Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
->
-
-Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
-
-```json
-{
-  "AudioFileResults": [
-    {
-      "AudioFileName": "Channel.0.wav",
-      "AudioFileUrl": null,
-      "SegmentResults": [
-        {
-          "RecognitionStatus": "Success",
-          "ChannelNumber": null,
-          "Offset": 400000,
-          "Duration": 13300000,
-          "NBest": [
-            {
-              "Confidence": 0.976174,
-              "Lexical": "what's the weather like",
-              "ITN": "what's the weather like",
-              "MaskedITN": "what's the weather like",
-              "Display": "What's the weather like?",
-              "Words": null,
-              "Sentiment": {
-                "Negative": 0.206194,
-                "Neutral": 0.793785,
-                "Positive": 0.0
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+Zeitstempel auf Wortebene müssen aktiviert werden, wie die Parameter in der obigen Anforderung angeben.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Der Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen über ein `GET` in der [Transkriptionsmethode](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions) abfragen. Halten Sie die zurückgegebenen Informationen in einem vernünftigen Größenrahmen, indem Sie den Parameter `take` (einige Hundert) angeben. [Löschen Sie Transkriptionen](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regelmäßig aus dem Dienst, nachdem Sie die Ergebnisse abgerufen haben. Dadurch stellen Sie schnelle Antworten auf die Aufrufe der Transkriptionsverwaltung sicher.
+Der Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen über ein `GET` unter [Transkriptionen abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions) abfragen. Rufen Sie [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regelmäßig aus dem Dienst auf, nachdem Sie die Ergebnisse abgerufen haben. Alternativ kann die Eigenschaft `timeToLive` auf einen angemessenen Wert festgelegt werden, um eine eventuelle Löschung der Ergebnisse sicherzustellen.
 
 ## <a name="sample-code"></a>Beispielcode
 
 Vollständige Beispiele stehen im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
 
-Sie müssen den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem SAS-URI mit Verweis auf die zu transkribierende Audiodatei und die Modell-IDs anpassen, falls Sie ein benutzerdefiniertes Audio- oder Sprachmodell verwenden möchten.
+Aktualisieren Sie den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem SAS-URI mit Verweis auf die zu transkribierende Audiodatei und den Modellspeicherort, falls Sie ein benutzerdefiniertes Modell verwenden möchten.
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
 Der Beispielcode richtet den Client ein und sendet die Transkriptionsanforderung. Anschließend fragt er die Statusinformationen ab und gibt Details zum Fortschritt der Transkription aus.
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
+[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
 
-Vollständige Informationen zu den vorherigen Aufrufen finden Sie in unserer [Swagger-Dokumentation](https://westus.cris.ai/swagger/ui/index) (in englischer Sprache). Das vollständige hier gezeigte Beispiel finden Sie auf [GitHub](https://aka.ms/csspeech/samples) im Unterverzeichnis `samples/batch`.
+Vollständige Informationen zu den vorherigen Aufrufen finden Sie in unserer [Swagger-Dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) (in englischer Sprache). Das vollständige hier gezeigte Beispiel finden Sie auf [GitHub](https://aka.ms/csspeech/samples) im Unterverzeichnis `samples/batch`.
 
-Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der von Ihnen erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Ergebnisse. `PostTranscriptions` gibt ein Handle zurück, und `GetTranscriptions` verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
+Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der von Ihnen erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Zustände. `PostTranscriptions` gibt ein Handle zurück, und `GetTranscriptions` verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
 
-Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Dienst verwendet die Basismodelle zum Transkribieren der Datei bzw. Dateien. Zum Angeben der Modelle können Sie dieselbe Methode wie bei den Modell-IDs für das Akustikmodell und das Sprachmodell übergeben.
+Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Dienst verwendet das Basismodell zum Transkribieren der Datei bzw. Dateien. Zur Angabe des Modells können Sie derselben Methode die Modellreferenz für das benutzerdefinierte Modell übergeben.
 
 > [!NOTE]
-> Für Basistranskriptionen müssen Sie die ID der Basismodelle nicht deklarieren. Wenn Sie nur eine Sprachmodell-ID (und keine Akustikmodell-ID) angeben, wird automatisch ein entsprechendes Akustikmodell ausgewählt. Wenn Sie nur eine Akustikmodell-ID angeben, wird automatisch ein entsprechendes Sprachmodell ausgewählt.
+> Für Basistranskriptionen müssen Sie die ID des Basismodells nicht deklarieren.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 

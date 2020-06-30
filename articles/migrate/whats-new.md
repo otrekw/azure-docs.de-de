@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Neuerungen und aktuellen Updates des Az
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: db52c8ce5e1b7e25d4af0c570189597e05b86588
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331864"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052330"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
@@ -17,20 +17,22 @@ ms.locfileid: "84331864"
 
 ## <a name="update-june-2020"></a>Update (Juni 2020)
 
-Neue Versionen der Azure Migrate-Appliance.
+- Unterstützung mehrerer Anmeldeinformationen für die Appliance zur Erkennung physischer Server
+- Unterstützung für die Azure-Anmeldung von der Appliance für Mandanten, für die eine Mandanteneinschränkung konfiguriert wurde
+- Folgende neue Versionen der Azure Migrate-Appliance:
 
 ### <a name="azure-public-cloud"></a>Öffentliche Azure-Cloud
 
-**Szenario*** | **Download** | **SHA256**
+**Szenario** | **Download** | **SHA256**
 --- | --- | ---
-Hyper-V (8,93 MB) | [Aktuelle Version](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+Hyper-V (8,93 GB) | [Aktuelle Version](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 VMware (10,9 GB) | [Aktuelle Version](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 Physisch (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
 
 ### <a name="azure-government"></a>Azure Government
 
-**Szenario*** | **Download** | **SHA256**
+**Szenario** | **Download** | **SHA256**
 --- | --- | ---
 Hyper-V (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
 VMware (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de

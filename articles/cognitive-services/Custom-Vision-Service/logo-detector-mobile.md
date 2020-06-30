@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403666"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987873"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 
@@ -28,7 +28,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > - Verbinden Ihrer App mit der Maschinelles Sehen-API von Azure und Custom Vision
 > - Erstellen eines Azure-Dienstprinzipalkontos zum Bereitstellen von Azure-Diensten über die App
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -175,7 +175,7 @@ Gehen Sie folgendermaßen vor, um die App auszuführen:
 
 Wenn Sie alle Schritte dieses Szenarios ausgeführt und die App zum Bereitstellen von Azure-Diensten für Ihr Konto verwendet haben, können Sie als Nächstes zum [Azure-Portal](https://ms.portal.azure.com/) navigieren. Kündigen Sie dort die Dienste, die Sie nicht nutzen möchten.
 
-Wenn Sie die Erstellung eines eigenen Objekterkennungsprojekts mit Custom Vision planen, kann es ratsam sein, das Logoerkennungsprojekt zu löschen, das Sie in diesem Tutorial erstellt haben. In der kostenlosen Testversion von Custom Vision können nur zwei Projekte erstellt werden. Öffnen Sie zum Löschen des Logoerkennungsprojekts auf der [Custom Vision-Website](https://customvision.ai) die Option **Projects** (Projekte), und wählen Sie dann unter **My New Project** (Mein neues Projekt) das Papierkorbsymbol.
+Wenn Sie die Erstellung eines eigenen Objekterkennungsprojekts mit Custom Vision planen, kann es ratsam sein, das Logoerkennungsprojekt zu löschen, das Sie in diesem Tutorial erstellt haben. Im kostenlosen Abonnement von Custom Vision können nur zwei Projekte erstellt werden. Öffnen Sie zum Löschen des Logoerkennungsprojekts auf der [Custom Vision-Website](https://customvision.ai) die Option **Projects** (Projekte), und wählen Sie dann unter **My New Project** (Mein neues Projekt) das Papierkorbsymbol.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

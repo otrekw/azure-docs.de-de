@@ -3,12 +3,12 @@ title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
 description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261620"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817316"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Media Services
 
@@ -23,7 +23,7 @@ Dieser Artikel baut auf dem [Schnellstart zu den ersten Schritten](get-started-d
 * Wenn Sie den [Schnellstart zu den ersten Schritten](get-started-detect-motion-emit-events-quickstart.md) noch nicht abgeschlossen haben, führen Sie die folgenden Schritte aus:
     * [Einrichten von Azure-Ressourcen](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Bereitstellen von Modulen](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Konfigurieren von Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [Konfigurieren von Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
@@ -67,7 +67,7 @@ In diesem Schritt werden alle [Graphtopologien](media-graph-concept.md#media-gra
     
     Die Antwort oben wird erwartet, da keine Graphtopologien erstellt wurden.
 
-### <a name="invoke-graphtopologyset"></a>Aufrufen von GraphTopologySet
+### <a name="invoke-graphtopologyset"></a>Aufrufen von „GraphTopologySet“
 
 Mithilfe der gleichen Schritte wie zum Aufrufen von GraphTopologyList können Sie GraphTopologySet aufrufen, um eine [Graphtopologie](media-graph-concept.md#media-graph-topologies-and-instances) mit dem folgenden JSON-Code als Nutzlast festzulegen. Sie erstellen die Graphtopologie „EVRtoAssetsOnMotionDetecion“.
 
@@ -453,9 +453,9 @@ Innerhalb weniger Sekunden sollte die folgende Antwort im Ausgabefenster angezei
 Beachten Sie die folgenden Eigenschaften in der Antwortnutzlast:
 
 * Der Statuscode lautet „200“ und gibt somit die erfolgreiche Ausführung an.
-* Der Nutzlast sind die Zeitstempel „created“ und „lastModified“ zugewiesen.
+* Die Nutzlast hat die Zeitstempel „created“ und „lastModified“.
 
-### <a name="invoke-graphinstanceset"></a>Aufrufen von GraphInstanceSet
+### <a name="invoke-graphinstanceset"></a>Aufrufen von „GraphInstanceSet“
 
 Erstellen Sie als Nächstes eine Graphinstanz, die auf die obige Graphtopologie verweist. Wie [hier](media-graph-concept.md#media-graph-topologies-and-instances) erläutert, können Sie mit Graphinstanzen Livevideostreams von vielen Kameras mit der gleichen Graphtopologie analysieren.
 
@@ -657,8 +657,8 @@ Beachten Sie in diesen Nachrichten die folgenden Eigenschaften:
 
 * Jede Nachricht enthält einen Abschnitt „body“ und einen Abschnitt „applicationProperties“. Informationen zu diesen Abschnitten finden Sie im Artikel [Erstellen und Lesen von IoT Hub-Nachrichten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 * Die erste Nachricht betrifft das Diagnoseereignis MediaSessionEstablished und gibt an, dass der Knoten der RTSP-Quelle (subject) eine Verbindung mit dem RTSP-Simulator herstellen und der Empfang eines (simulierten) Livefeeds beginnen konnte.
-* „subject“ in applicationProperties verweist auf den Knoten in der Graphtopologie, über den die Nachricht generiert wurde. In diesem Fall stammt die Nachricht vom Knoten der RTSP-Quelle.
-* „eventType“ in applicationProperties gibt an, dass es sich um ein Diagnoseereignis handelt.
+* „subject“ in applicationProperties verweist auf den Knoten in der Graphtopologie, über den die Nachricht generiert wurde. In diesem Fall stammt die Nachricht vom RTSP-Quellknoten.
+* „eventType“ in „applicationProperties“ gibt an, dass es sich um ein Diagnoseereignis handelt.
 * „eventTime“ gibt den Zeitpunkt an, zu dem das Ereignis eingetreten ist.
 * „body“ enthält Daten zum Diagnoseereignis, d. h. die [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)-Nachricht.
 * Die zweite Nachricht betrifft ein Analyseereignis. Sie können überprüfen, ob die Nachricht ungefähr 5 Sekunden nach der Nachricht „MediaSessionEstablished“ gesendet wird. Dies entspricht der Verzögerung zwischen dem Start des Videos und dem Zeitpunkt, zu dem das Fahrzeug durch den Parkplatz fährt.
@@ -770,9 +770,9 @@ Testen Sie im nächsten Schritt Folgendes:
 
 * Rufen Sie GraphInstanceGet wie in den vorherigen Abschnitten beschrieben auf, und überprüfen Sie den Wert für „state“.
 
-### <a name="invoke-graphinstancedelete"></a>Aufrufen von GraphInstanceDelete
+### <a name="invoke-graphinstancedelete"></a>Aufrufen von „GraphInstanceDelete“
 
-Rufen Sie die direkte Methode für GraphInstanceDelete mit der folgenden Nutzlast auf:
+Rufen Sie die direkte Methode für „GraphInstanceDelete“ mit der folgenden Nutzlast auf:
 
 ```
 {

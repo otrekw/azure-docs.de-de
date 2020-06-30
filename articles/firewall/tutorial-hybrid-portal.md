@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298957"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750696"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -54,7 +54,7 @@ Ein Hybridnetzwerk nutzt das Modell der Hub-and-Spoke-Architektur zur Weiterleit
    Darüber hinaus werden Routen zu den mit dem Gateway verbundenen virtuellen Netzwerken oder lokalen Netzwerken über den Gatewaytransit automatisch an die Routingtabellen für die virtuellen Netzwerke mit Peeringbeziehung verteilt. Weitere Informationen finden Sie unter [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
 - Legen Sie für das Peering von VNET-Spoke mit VNET-Hub **UseRemoteGateways** fest. Wenn **UseRemoteGateways** und für das Remotepeering **AllowGatewayTransit** festgelegt ist, verwendet das virtuelle Spoke-Netzwerk Gateways des virtuellen Remotenetzwerks für den Transit.
-- Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall benötigen Sie eine benutzerdefinierte Route (User Defined Route, UDR), die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen.
+- Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall können Sie eine benutzerdefinierte Route (User Defined Route, UDR) verwenden, die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen. Wenn Sie **Routenverteilung des Gateways für virtuelle Netzwerke** aktiviert lassen möchten, definieren Sie unbedingt spezifische Routen für die Firewall, um die Routen außer Kraft zu setzen, die aus einer lokalen Umgebung über BGP veröffentlicht werden.
 - Konfigurieren Sie eine UDR im Hub-Gatewaysubnetz, die auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweist. Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
 
 Informationen zur Erstellung dieser Routen finden Sie in diesem Tutorial im Abschnitt [Erstellen von Routen](#create-the-routes).

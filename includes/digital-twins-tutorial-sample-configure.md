@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611792"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737194"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
@@ -22,7 +22,7 @@ Navigieren sie im entzippten Ordner zu _digital-twins-samples-master/AdtSampleAp
 
 Erstellen Sie in Visual Studio über den Bereich *Projektmappen-Explorer* eine Kopie der Datei _SampleClientApp > **serviceConfig.json.TEMPLATE**_. (Zum Kopieren und Einfügen können Sie das Kontextmenü verwenden.) Benennen Sie die Kopie in *serviceConfig.json* um. Sie dient als voreingestellte JSON-Datei mit den erforderlichen Konfigurationsvariablen zum Ausführen des Projekts.
 
-Wählen Sie die neue Datei aus, um sie im Bearbeitungsfenster zu öffnen. Ändern Sie `tenantId` in Ihre *Verzeichnis-ID*, `clientId` in die *Anwendungs-ID* und `instanceUrl` in die *hostName*-URL der Azure Digital Twins-Instanz (stellen Sie *https://* voran, wie nachfolgend gezeigt):
+Wählen Sie die Datei *serviceConfig.json* aus, um sie im Bearbeitungsfenster zu öffnen. Ändern Sie `tenantId` in Ihre *Verzeichnis-ID*, `clientId` in die *Anwendungs-ID* und `instanceUrl` in die *hostName*-URL der Azure Digital Twins-Instanz (stellen Sie *https://* voran, wie nachfolgend gezeigt):
 
 ```json
 {

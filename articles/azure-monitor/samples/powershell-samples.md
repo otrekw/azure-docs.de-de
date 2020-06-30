@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837244"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945255"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Beispiele zu PowerShell in Azure Monitor
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Abrufen des Aktivitätsprotokolls für ein Abonnement
+## <a name="retrieve-activity-log"></a>Abrufen des Aktivitätsprotokolls
 Verwenden Sie das Cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog).  Im Folgenden sind einige allgemeine Beispiele aufgeführt. Das Aktivitätsprotokoll enthält die letzten 90 Tage der Vorgänge. Wenn Sie ältere Datumsangaben verwenden, führt dies zu einer Fehlermeldung.  
 
 Sehen Sie sich die aktuellen Angaben für Datum bzw. Uhrzeit an, um zu ermitteln, welche Zeiten in den Befehlen unten verwendet werden müssen:

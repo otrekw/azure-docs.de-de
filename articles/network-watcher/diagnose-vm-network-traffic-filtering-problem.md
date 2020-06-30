@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290448"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709214"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
@@ -44,10 +44,10 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |---|---|
     |Name|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten Anforderungen an die Komplexität erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Position| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -59,7 +59,7 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, aktivier
 
 ### <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
-Wenn bereits in mindestens einer Region eine Network Watcher-Instanz aktiviert ist, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort.
+Wenn bereits in mindestens einer Region eine Network Watcher-Instanz aktiviert ist, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort.
 
 1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Aktivieren Sie eine Network Watcher-Instanz in der Region „USA, Osten“, da der virtuelle Computer in einem vorherigen Schritt in dieser Region bereitgestellt wurde. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
@@ -98,19 +98,19 @@ Nachdem Sie nun wissen, welche Sicherheitsregeln den ein- und ausgehenden Datenv
 
 ## <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
 
-1. Überprüfen Sie die geltenden Sicherheitsregeln für die Netzwerkschnittstelle des virtuellen Computers, um zu ermitteln, warum die Regeln in den Schritten 3 bis 5 unter [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) die Kommunikation zulassen oder verhindern. Geben Sie am oberen Rand des Portals den Suchbegriff *myvm* in das Suchfeld ein. Wenn die Netzwerkschnittstelle mit dem Namen **myvm** (bzw. mit dem tatsächlichen Namen Ihrer Netzwerkschnittstelle) in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
+1. Überprüfen Sie die geltenden Sicherheitsregeln für die Netzwerkschnittstelle des virtuellen Computers, um zu ermitteln, warum die Regeln in den Schritten 3 bis 5 unter **Verwenden der IP-Flussüberprüfung** die Kommunikation zulassen oder verhindern. Geben Sie am oberen Rand des Portals den Suchbegriff *myvm* in das Suchfeld ein. Wenn die Netzwerkschnittstelle mit dem Namen **myvm** (bzw. mit dem tatsächlichen Namen Ihrer Netzwerkschnittstelle) in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
 2. Klicken Sie unter **SUPPORT + PROBLEMBEHANDLUNG** auf **Effektive Sicherheitsregeln**, wie in der folgenden Abbildung dargestellt:
 
     ![Effektive Sicherheitsregeln](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    In Schritt 3 von [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) haben Sie gelernt, dass die Kommunikation aufgrund der Regel **AllowInternetOutbound** zugelassen wurde. In der vorherigen Abbildung sehen Sie, dass **Internet** das **ZIEL** für die Regel ist. Der Zusammenhang zwischen 13.107.21.200 (die Adresse, die Sie in Schritt 3 von [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) getestet haben) und **Internet** ist jedoch nicht klar.
+    In Schritt 3 von **Verwenden der IP-Flussüberprüfung** haben Sie gelernt, dass die Kommunikation aufgrund der Regel **AllowInternetOutbound** zugelassen wurde. In der vorherigen Abbildung sehen Sie, dass **Internet** das **ZIEL** für die Regel ist. Der Zusammenhang zwischen 13.107.21.200 (die Adresse, die Sie in Schritt 3 von **Verwenden der IP-Flussüberprüfung** getestet haben) und **Internet** ist jedoch nicht klar.
 3. Wählen Sie die Regel **AllowInternetOutBound** und anschließend **Ziel** aus, wie in der folgenden Abbildung gezeigt:
 
     ![Sicherheitsregelpräfixe](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Da 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus sind in der Abbildung in Schritt 2 keine Regeln mit einer höheren Priorität (niedrigere Zahl) vorhanden, die diese Regel außer Kraft setzen. Schließen Sie den Bereich **Adresspräfixe**. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für die IP-Adresse verweigert.
-4. Beim Ausführen der ausgehenden Überprüfung für 172.131.0.100 in Schritt 4 von [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) haben Sie gelernt, dass die Regel **DefaultOutboundDenyAll** die Kommunikation verweigert hat. Diese Regel entspricht der Regel **DenyAllOutBound** aus der Abbildung in Schritt 2, die **0.0.0.0/0** als **ZIEL** angibt. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, da die Adresse nicht im **ZIEL** einer der anderen **ausgehenden Regeln** aus der Abbildung enthalten ist. Um die ausgehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für die Adresse 172.131.0.100 zulässt.
-5. Beim Ausführen der eingehenden Überprüfung für 172.131.0.100 in Schritt 5 von [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) haben Sie gelernt, dass die Regel **DefaultInboundDenyAll** die Kommunikation verweigert hat. Diese Regel entspricht der Regel **DenyAllInBound** aus der Abbildung in Schritt 2. Die Regel **DenyAllInBound** wird erzwungen, da keine andere Regel mit höherer Priorität vorhanden ist, die für den virtuellen Computer eingehenden Datenverkehr von 172.31.0.100 am Port 80 zulässt. Um die eingehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die eingehenden Datenverkehr von 172.31.0.100 am Port 80 zulässt.
+4. Beim Ausführen der ausgehenden Überprüfung für 172.131.0.100 in Schritt 4 von **Verwenden der IP-Flussüberprüfung** haben Sie gelernt, dass die Regel **DefaultOutboundDenyAll** die Kommunikation verweigert hat. Diese Regel entspricht der Regel **DenyAllOutBound** aus der Abbildung in Schritt 2, die **0.0.0.0/0** als **ZIEL** angibt. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, da die Adresse nicht im **ZIEL** einer der anderen **ausgehenden Regeln** aus der Abbildung enthalten ist. Um die ausgehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für die Adresse 172.131.0.100 zulässt.
+5. Beim Ausführen der eingehenden Überprüfung für 172.131.0.100 in Schritt 5 von **Verwenden der IP-Flussüberprüfung** haben Sie gelernt, dass die Regel **DefaultInboundDenyAll** die Kommunikation verweigert hat. Diese Regel entspricht der Regel **DenyAllInBound** aus der Abbildung in Schritt 2. Die Regel **DenyAllInBound** wird erzwungen, da keine andere Regel mit höherer Priorität vorhanden ist, die für den virtuellen Computer eingehenden Datenverkehr von 172.31.0.100 am Port 80 zulässt. Um die eingehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die eingehenden Datenverkehr von 172.31.0.100 am Port 80 zulässt.
 
 Mit den Überprüfungen in dieser Schnellstartanleitung wurde die Azure-Konfiguration getestet. Wenn die Überprüfungen zwar die erwarteten Ergebnisse zurückgeben, aber weiterhin Netzwerkprobleme auftreten, stellen Sie sicher, dass zwischen Ihrem virtuellen Computer und dem Endpunkt, mit dem Sie kommunizieren, keine Firewall vorhanden ist und das Betriebssystem auf Ihrem virtuellen Computer nicht über eine Firewall verfügt, die die Kommunikation zulässt oder verweigert.
 

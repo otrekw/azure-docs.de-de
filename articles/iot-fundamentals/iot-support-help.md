@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827234"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659621"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Support- und Hilfeoptionen für Azure IoT
 
@@ -29,35 +29,43 @@ Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan 
 * [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure-Portal für die US-Regierung](https://portal.azure.us)
 
+## <a name="post-a-question-on-microsoft-qa"></a>Stellen einer Frage bei Microsoft Q&A (Fragen und Antworten)
+
+Bei [Microsoft Q&A (Fragen und Antworten)](https://aka.ms/azureqa), der bevorzugten Azure-Plattform für Communitysupport, erhalten Sie von Microsoft-Technikern, Azure MVPs (Most Valuable Professionals) oder unserer fachkundigen Community schnell und zuverlässig Antworten auf technische Produktfragen. 
+
+Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage an Microsoft Q&A (Fragen und Antworten). Verwenden Sie für Ihre Frage eins der folgenden Tags:
+
+- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
+- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Azure IoT Hub Device Provisioning Service (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
+- [Azure IoT SDKs](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
+- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
+- [Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+- [Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+
 ## <a name="post-a-question-on-stack-overflow"></a>Stellen einer Frage in Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Wenn Sie umgehend eine Antwort aus der Community benötigen, verwenden Sie Stack Overflow. Stack Overflow ist der bevorzugte Kanal für **entwicklungsbezogene Fragen**. Dort sind Mitglieder der Community und Microsoft-Teammitglieder direkt an der Lösung Ihrer Probleme beteiligt.
+Stellen Sie Entwicklerfragen auf Stack Overflow, um Antworten aus dem umfangreichsten Ökosystem für Community-Entwickler zu erhalten.
 
-Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage in Stack Overflow. Verwenden Sie beim Formulieren der Frage eines der folgenden Tags:
+Verwenden Sie beim Übermitteln einer neuen Frage an Stack Overflow bei der Erstellung der Frage mindestens eins der folgenden Tags:
 
- - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure IoT Central](https://stackoverflow.com/questions/tagged/azure-iot-central)
  - [Azure IoT Edge](https://stackoverflow.com/questions/tagged/azure-iot-edge)
  - [Azure IoT Hub](https://stackoverflow.com/questions/tagged/azure-iot-hub)
- - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure IoT SDKs](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
+ - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
+ - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
-
-## <a name="start-a-conversation-on-the-msdn-forums"></a>Starten einer Unterhaltung in den MSDN-Foren
-
-Diskutieren Sie über Azure-Technologien und -Dienste zur Erstellung von IoT-Lösungen. MSDN ist der bevorzugte Kanal für **lösungsbezogenen Fragen**. Hier helfen Ihnen Communitymitglieder sowie Mitglieder des Microsoft-Teams direkt bei der Wahl der richtigen Lösung für Ihr Projekt.
-
-Sollten Sie über die Suche keine Lösung für Ihr Problem finden, können Sie im entsprechenden Forum eine neue Frage an MSDN übermitteln:
-
-- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
-- [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+ - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Übermitteln von Azure-Feedback
 
@@ -77,6 +85,7 @@ Neue Features können per Azure-Feedback angefordert werden. Sagen Sie uns, wie 
 | Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
 | Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
+| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Erhalten von Informationen zu Updates und neuen Releases
 

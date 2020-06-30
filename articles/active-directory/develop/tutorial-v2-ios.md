@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640573"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904761"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App
 
@@ -48,7 +48,7 @@ Dieses Tutorial gilt für iOS- und macOS-Apps. Bei diesen beiden Plattformen unt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Zum Erstellen der App in diesem Leitfaden ist mindestens Version 11.x von Xcode erforderlich. Sie können XCode von der [iTunes-Website](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode-URL zum Herunterladen") herunterladen.
+- Zum Erstellen der App in diesem Leitfaden ist mindestens Version 11.x von Xcode erforderlich. Sie können XCode aus dem [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode-URL zum Herunterladen") herunterladen.
 - Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Sie können einen Abhängigkeitsmanager verwenden oder die Bibliothek manuell hinzufügen. In den nachstehenden Anweisungen wird die Vorgehensweise erläutert.
 
 In diesem Tutorial wird ein neues Projekt erstellt. Wenn Sie stattdessen das abgeschlossene Tutorial herunterladen möchten, laden Sie den Code herunter:

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72177063"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983464"
 ---
 # <a name="call-the-computer-vision-api"></a>Aufrufen der Maschinelles Sehen-API
 
@@ -25,14 +25,6 @@ In diesem Artikel wird beschrieben, wie die Maschinelles Sehen-API mithilfe der 
 - Abrufen von Tags, einer Beschreibung und Kategorien
 - Abrufen domänenspezifischer Informationen bzw. „Prominenten“
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-- Eine Bild-URL oder ein Pfad zum lokal gespeicherten Bild
-- Unterstützte Eingabemethoden: rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
-- Unterstützte Bildformate: JPEG, PNG, GIF und BMP
-- Bilddateigröße: maximal 4 MB
-- Bildmaße: mindestens 50 &times; 50 Pixel
-  
 In den Beispielen dieses Artikels werden die folgenden Features gezeigt:
 
 * Analysieren eines Bilds zur Rückgabe eines Arrays an Tags und einer Beschreibung
@@ -42,14 +34,22 @@ Die Features bieten die folgenden Optionen:
 
 - **Option 1**: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 - **Option 2**: Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit der [Taxonomie mit 86 Kategorien](../Category-Taxonomy.md)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* Eine Bild-URL oder ein Pfad zum lokal gespeicherten Bild
+* Unterstützte Eingabemethoden: rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
+* Unterstützte Bildformate: JPEG, PNG, GIF und BMP
+* Bilddateigröße: maximal 4 MB
+* Bildmaße: mindestens 50 &times; 50 Pixel
   
 ## <a name="authorize-the-api-call"></a>Autorisieren des API-Aufrufs
 
 Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Parameter mit der Abfragezeichenfolge übergeben oder im Anforderungsheader angegeben werden.
-
-Um einen kostenlosen Testschlüssel zu erhalten, führen Sie einen der folgenden Schritte aus:
-* Navigieren Sie zur Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). 
-* Wechseln Sie zur Seite [Erstellen einer Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), um maschinelles Sehen zu abonnieren.
 
 Sie können den Abonnementschlüssel übergeben, indem Sie eine der folgenden Aktionen ausführen:
 
@@ -180,12 +180,12 @@ Hier sehen Sie ein Beispiel:
 Feld | type | Inhalt
 ------|------|------|
 `Tags`  | `object` | Das Objekt der obersten Ebene für das Array von Tags
-tags[].Name | `string`  | Das Schlüsselwort vom Tags-Klassifizierer
-tags[].Score    | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
-description  | `object` | Das Objekt der obersten Ebene für eine Beschreibung
+tags[].Name | `string`    | Das Schlüsselwort vom Tags-Klassifizierer
+tags[].Score    | `number`    | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+description     | `object`    | Das Objekt der obersten Ebene für eine Beschreibung
 description.tags[] |    `string`    | Die Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
-description.captions[].text | `string`  | Ein Ausdruck, der das Bild beschreibt.
-description.captions[].confidence   | `number`  | Die Zuverlässigkeit für den Ausdruck
+description.captions[].text    | `string`    | Ein Ausdruck, der das Bild beschreibt.
+description.captions[].confidence    | `number`    | Die Zuverlässigkeit für den Ausdruck
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Abrufen und Nachvollziehen der JSON-Ausgabe für domänenspezifische Modelle
 
@@ -239,12 +239,12 @@ Bei domänenspezifischen Modellen mit Option 2 (erweiterte Analyse) wird der Rü
 
 Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Kategorien, die mit einem Unterstrich enden, stimmen mit dieser Kategorie und ihren untergeordneten Kategorien überein (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
 
-Feld   | type  | Inhalt
+Feld    | type    | Inhalt
 ------|------|------|
-categories | `object`   | Das Objekt der obersten Ebene
-categories[].name    | `string` | Der Name aus der Taxonomieliste mit 86 Kategorien
-categories[].score  | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
-categories[].detail  | `object?`      | (Optional) Das Detailobjekt
+categories | `object`    | Das Objekt der obersten Ebene
+categories[].name     | `string`    | Der Name aus der Taxonomieliste mit 86 Kategorien
+categories[].score    | `number`    | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+categories[].detail     | `object?`      | (Optional) Das Detailobjekt
 
 Wenn mehrere Kategorien übereinstimmen (z. B. wenn der 86-Kategorie-Klassifizierer eine Bewertung für „people_“ und „people_young“ zurückgibt, wenn „model=celebrities“), werden die Details an die allgemeinste Übereinstimmung angehängt („people_“ in diesem Beispiel).
 

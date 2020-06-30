@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines NAT-Gateways: Azure-Portal'
+title: 'Tutorial: Erstellen eines NAT-Gateways: Azure-Portal'
 titlesuffix: Azure Virtual Network NAT
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein NAT-Gateway mithilfe des Azure-Portals erstellen.
 services: virtual-network
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341234"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711407"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Tutorial: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network NAT-Dienst verwenden. Sie erstellen ein NAT-Gateway, um ausgehende Konnektivität für einen virtuellen Computer in Azure bereitzustellen. 
+In diesem Tutorial erfahren Sie, wie Sie den Azure Virtual Network NAT-Dienst verwenden. Sie erstellen ein NAT-Gateway, um ausgehende Konnektivität für einen virtuellen Computer in Azure bereitzustellen. 
 
 Falls Sie es vorziehen, können Sie diese Schritte anstatt mit dem Portal auch per [Azure CLI](quickstart-create-nat-gateway-cli.md), [Azure PowerShell](quickstart-create-nat-gateway-powershell.md) oder Bereitstellung einer [ARM-Vorlage](quickstart-create-nat-gateway-powershell.md) ausführen.
 

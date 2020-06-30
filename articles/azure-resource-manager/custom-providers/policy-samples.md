@@ -1,23 +1,23 @@
 ---
 title: Integrierte Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-samples
-ms.openlocfilehash: be617496855a4194bf527019c1374938647e0faa
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9730b99a9ae7af7e615cf1a6c7f187420ab4f13f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234588"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887491"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-custom-resource-providers"></a>Integrierte Azure Policy-Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter
+# <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Integrierte Azure Policy-Definitionen für benutzerdefinierte Azure-Ressourcenanbieter
 
 Diese Seite enthält einen Index der integrierten [Azure Policy](../../governance/policy/overview.md)-Richtliniendefinitionen für benutzerdefinierte Azure-Ressourcenanbieter. Weitere Azure Policy-Integrationen für andere Dienste finden Sie unter [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md).
 
-Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur entsprechenden Richtliniendefinition im Azure-Portal. Verwenden Sie den Link in der Spalte **GitHub**, um die Quelle im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) anzuzeigen.
+Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur entsprechenden Richtliniendefinition im Azure-Portal. Verwenden Sie den Link in der Spalte **Version**, um die Quelle im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) anzuzeigen.
 
 ## <a name="azure-custom-resource-providers"></a>Benutzerdefinierte Azure-Ressourcenanbieter
 

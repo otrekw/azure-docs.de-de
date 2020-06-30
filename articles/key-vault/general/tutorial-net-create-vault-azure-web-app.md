@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997006"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051902"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure-Web-App mit .NET herzustellen
 
@@ -147,7 +147,7 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 Erstellen Sie eine [Azure-Web-App](../../app-service/containers/app-service-linux-intro.md) im App Service-Plan `myAppServicePlan`. 
 
 > [!Important]
-> Eine Azure-Web-App muss genau wie eine Key Vault-Instanz einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „\<your-webapp-name\>“ durch den Namen Ihrer Web-App.
+> Eine Azure-Web-App muss genau wie eine Key Vault-Instanz einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-webapp-name\> durch den Namen Ihrer Web-App.
 
 
 ```azurecli-interactive
@@ -279,6 +279,7 @@ Fügen Sie dem Header die beiden folgenden Zeilen hinzu:
 ```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 ```
 
 Fügen Sie diese Zeilen vor dem Aufruf von `app.UseEndpoints` hinzu, und aktualisieren Sie den URI, sodass er dem Tresor-URI (`vaultUri`) Ihres Schlüsseltresors entspricht. Im folgenden Code wird ['DefaultAzureCredential()'](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) für die Authentifizierung beim Schlüsseltresor verwendet. Dabei wird das Token der verwalteten Anwendungsidentität zur Authentifizierung herangezogen. Darüber hinaus wird das exponentielle Backoff für Wiederholungen verwendet, falls der Schlüsseltresor gedrosselt wird.
@@ -325,7 +326,7 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Anstelle der zuvor angezeigten Nachricht **Hello World** sollte nun der Wert Ihres Geheimnisses angezeigt werden: **Success!**
+Anstelle der zuvor angezeigten Nachricht **Hello World** sollte nun der Wert Ihres Geheimnisses angezeigt werden: **Erfolg!**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

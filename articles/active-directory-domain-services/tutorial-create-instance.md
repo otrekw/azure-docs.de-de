@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer Azure Active Directory Domain Services-Instanz | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal eine Azure Active Directory Domain Services-Instanz erstellen und konfigurieren.
+title: 'Tutorial: Erstellen einer verwalteten Azure Active Directory Domain Services-Domäne | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal eine verwaltete Azure Active Directory Domain Services-Domäne erstellen und konfigurieren.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,24 +9,24 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 7652bacdebec19f8a5d55874cfb903e8748cef4d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 2333ace1b1e9116acf85964fb180f44e0f66e6e7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639720"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733489"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie können diese Domänendienste nutzen, ohne selbst Domänencontroller bereitstellen, verwalten und patchen zu müssen. Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren. Dank dieser Integration können Benutzer sich mit ihren Unternehmensanmeldeinformationen anmelden, und Sie können vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu sichern.
 
-Sie können eine verwaltete Domäne mit den Standardkonfigurationsoptionen für Netzwerk und Synchronisierung erstellen oder [diese Einstellungen manuell festlegen][tutorial-create-instance-advanced]. Dieses Tutorial zeigt Ihnen, wie Sie die Standardoptionen zum Erstellen und Konfigurieren einer Azure AD DS-Instanz im Azure-Portal verwenden.
+Sie können eine verwaltete Domäne mit den Standardkonfigurationsoptionen für Netzwerk und Synchronisierung erstellen oder [diese Einstellungen manuell festlegen][tutorial-create-instance-advanced]. In diesem Tutorial wird gezeigt, wie Sie die Standardoptionen zum Erstellen und Konfigurieren einer verwalteten Azure AD DS-Domäne im Azure-Portal verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Grundlegendes zu den DNS-Anforderungen für eine verwaltete Domäne
-> * Erstellen einer Azure AD DS-Instanz
+> * Erstellen einer verwalteten Domäne
 > * Aktivieren der Kennworthashsynchronisierung
 
 Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
@@ -45,13 +45,13 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 Es ist bei Azure AD DS zwar nicht erforderlich, für den Azure AD-Mandanten die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zu konfigurieren][configure-sspr], es wird jedoch empfohlen. Benutzer können Ihr Kennwort ohne SSPR ändern. SSPR ist jedoch hilfreich, wenn Benutzer ihr Kennwort vergessen haben und es zurücksetzen müssen.
 
 > [!IMPORTANT]
-> Nach der Erstellung einer verwalteten Azure AD DS-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
+> Nach der Erstellung einer verwalteten Domäne können Sie diese nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie beim Bereitstellen der verwalteten Domäne das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-In diesem Tutorial erstellen und konfigurieren Sie eine Azure AD DS-Instanz im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
+In diesem Tutorial erstellen und konfigurieren Sie die verwaltete Domäne im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="create-an-instance"></a>Erstellen einer Instanz
+## <a name="create-a-managed-domain"></a>Erstellen einer verwalteten Domäne
 
 Um den Assistenten zum **Aktivieren von Azure AD Domain Services** zu starten, führen Sie die folgenden Schritte aus:
 
@@ -61,7 +61,7 @@ Um den Assistenten zum **Aktivieren von Azure AD Domain Services** zu starten, f
 1. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
 1. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Klicken Sie auf **Neu erstellen**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 
-Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der Auswahl dieses DNS-Namens sind folgende Aspekte zu berücksichtigen:
+Beim Erstellen einer verwalteten Domäne geben Sie einen DNS-Namen an. Bei der Auswahl dieses DNS-Namens sind folgende Aspekte zu berücksichtigen:
 
 * **Integrierter Domänenname:** Standardmäßig wird der integrierte Domänenname des Verzeichnisses verwendet (das Suffix *.onmicrosoft.com*). Wenn Sie Secure LDAP für den Zugriff auf die verwaltete Domäne über das Internet aktivieren möchten, können Sie kein digitales Zertifikat erstellen, um die Verbindung mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine Zertifizierungsstelle ein Zertifikat aus.
 * **Benutzerdefinierte Domänennamen:** Die gängigste Vorgehensweise besteht darin, einen benutzerdefinierten Domänennamen anzugeben – in der Regel den Namen einer Domäne, die Sie bereits besitzen und die routingfähig ist. Wenn Sie eine routingfähige benutzerdefinierte Domäne verwenden, kann der Datenverkehr ordnungsgemäß und bedarfsgerecht weitergeleitet werden, um Ihre Anwendungen zu unterstützen.
@@ -70,7 +70,7 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 > [!TIP]
 > Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
+> Lautet Ihr vorhandener DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
 > Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
@@ -84,7 +84,7 @@ Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
     * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, verfügt über eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
     * Im virtuellen Azure-Netzwerk ist bereits ein Azure-Clouddienst mit diesem Namen vorhanden.
 
-Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Azure AD DS-Instanz zu erstellen:
+Füllen Sie im Azure-Portal die Felder im Fenster *Grundlagen* aus, um eine verwaltete Domäne zu erstellen:
 
 1. Geben Sie einen **DNS-Domänennamen** für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die oben genannten Punkte.
 1. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
@@ -96,23 +96,23 @@ Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Az
 1. Die **SKU** bestimmt die Leistung, die Sicherungshäufigkeit und die maximale Anzahl von Gesamtstrukturvertrauensstellungen, die Sie erstellen können. Sie können die SKU nach der Erstellung der verwalteten Domäne ändern, wenn es Ihr Unternehmen erfordert oder sich die Anforderungen ändern. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services][concepts-sku].
 
     Wählen Sie für dieses Tutorial die SKU *Standard* aus.
-1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Azure AD DS-Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
+1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
 
     Erstellen Sie für dieses Tutorial eine *Benutzergesamtstruktur*.
 
-    ![Konfigurieren der grundlegenden Einstellungen für eine Azure AD Domain Services-Instanz](./media/tutorial-create-instance/basics-window.png)
+    ![Konfigurieren der grundlegenden Einstellungen für eine verwaltete Azure AD Domain Services-Domäne](./media/tutorial-create-instance/basics-window.png)
 
-Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei Verwendung dieser Erstellungsoption werden folgende Standardwerte konfiguriert:
+Zum schnellen Erstellen einer verwalteten Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei Verwendung dieser Erstellungsoption werden folgende Standardwerte konfiguriert:
 
 * Ein virtuelles Netzwerk mit dem Namen *aadds-vnet* und dem IP-Adressbereich *10.0.2.0/24* wird erstellt.
 * Ein Subnetz mit dem Namen *aadds-subnet* und dem IP-Adressbereich *10.0.2.0/24* wird erstellt.
-* *Alle* Benutzer aus Azure AD werden mit der verwalteten Azure AD DS-Domäne synchronisiert.
+* *Alle* Benutzer aus Azure AD werden mit der verwalteten Domäne synchronisiert.
 
 Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsoptionen zu akzeptieren.
 
 ## <a name="deploy-the-managed-domain"></a>Bereitstellen der verwalteten Domäne
 
-Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um Änderungen vorzunehmen. Sie können auch **eine Vorlage für die Automatisierung herunterladen**, um eine verwaltete Azure AD DS-Domäne mit diesen Konfigurationsoptionen auf konsistente Weise in einem anderen Azure AD-Mandanten erneut bereitzustellen.
+Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um Änderungen vorzunehmen. Wenn Sie eine verwaltete Domäne mit diesen Konfigurationsoptionen auf konsistente Weise für einen anderen Azure AD-Mandanten erneut bereitstellen möchten, können Sie auch **eine Vorlage für die Automatisierung herunterladen**.
 
 1. Wählen Sie zum Erstellen der verwalteten Domäne **Erstellen** aus. Ein Hinweis wird angezeigt, dass bestimmte Konfigurationsoptionen, etwa der DNS-Name oder das virtuelle Netzwerk, nach der Erstellung der verwalteten Azure AD DS-Domäne nicht geändert werden können. Wählen Sie **OK** aus, um fortzufahren.
 1. Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stunde dauern. Es wird eine Benachrichtigung angezeigt, die Sie über den Status Ihrer Azure AD DS-Bereitstellung informiert. Wählen Sie die Benachrichtigung aus, um sich den detaillierten Fortschritt Ihrer Bereitstellung anzusehen.
@@ -120,7 +120,7 @@ Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsopt
     ![Benachrichtigung im Azure-Portal über den Fortschritt der Bereitstellung](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Die Seite wird mit Aktualisierungen zum Bereitstellungsvorgang geladen, u. a. mit der Erstellung neuer Ressourcen in Ihrem Verzeichnis.
-1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz (z. B. *aaddscontoso.com*) aus. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
+1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und dann aus der Liste der Azure-Ressourcen Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
 
     ![Status „Wird bereitgestellt“ der Domäne](./media/tutorial-create-instance/provisioning-in-progress.png)
 
@@ -150,7 +150,7 @@ Nachdem Azure AD DS erfolgreich bereitgestellt wurde, konfigurieren Sie nun da
 Um Benutzer in der verwalteten Domäne authentifizieren zu können, benötigt Azure AD DS Kennworthashes in einem Format, das für die Authentifizierung über NT LAN Manager (NTLM) und Kerberos geeignet ist. Azure AD generiert oder speichert erst dann Kennworthashes in dem für die NTLM- oder Kerberos-Authentifizierung erforderlichen Format, wenn Sie Azure AD DS für Ihren Mandanten aktivieren. Aus Sicherheitsgründen speichert Azure AD Kennwörter nicht als Klartext. Daher kann Azure AD diese NTLM- oder Kerberos-Kennworthashes nicht automatisch auf der Grundlage bereits vorhandener Anmeldeinformationen von Benutzern generieren.
 
 > [!NOTE]
-> Nach entsprechender Konfiguration werden die verwendbaren Kennworthashes in der verwalteten Azure AD DS-Domäne gespeichert. Wenn Sie die verwaltete Azure AD DS-Domäne löschen, werden alle zu diesem Zeitpunkt gespeicherten Kennworthashes ebenfalls gelöscht. Synchronisierte Anmeldeinformationen in Azure AD können nicht wiederverwendet werden, wenn Sie später eine verwaltete Azure AD DS-Domäne erstellen. Sie müssen die Kennworthashsynchronisierung erneut konfigurieren, um die Kennworthashes wieder zu speichern. VMs oder Benutzer, die zuvor in eine Domäne eingebunden wurden, können sich nicht sofort authentifizieren, weil Azure AD die Kennworthashes in der neuen verwalteten Azure AD DS-Domäne generieren und speichern muss. Weitere Informationen finden Sie unter [Prozess der Kennworthashsynchronisierung für Azure AD DS und Azure AD Connect][password-hash-sync-process].
+> Nach entsprechender Konfiguration werden die verwendbaren Kennworthashes in der verwalteten Domäne gespeichert. Wenn Sie die verwaltete Domäne löschen, werden alle zu diesem Zeitpunkt gespeicherten Kennworthashes ebenfalls gelöscht. Synchronisierte Anmeldeinformationen in Azure AD können nicht wiederverwendet werden, wenn Sie später eine verwaltete Domäne erstellen. Sie müssen die Kennworthashsynchronisierung erneut konfigurieren, um die Kennworthashes wieder zu speichern. VMs oder Benutzer, die zuvor in eine Domäne eingebunden wurden, können sich nicht sofort authentifizieren, weil Azure AD die Kennworthashes in der neuen verwalteten Domäne generieren und speichern muss. Weitere Informationen finden Sie unter [Prozess der Kennworthashsynchronisierung für Azure AD DS und Azure AD Connect][password-hash-sync-process].
 
 Zum Generieren und Speichern dieser Kennworthashes müssen für in Azure AD erstellte reine Cloudbenutzerkonten andere Schritte ausgeführt werden als für Benutzerkonten, die mit Azure AD Connect aus Ihrem lokalen Verzeichnis synchronisiert werden. Ein reines Cloudbenutzerkonto ist ein Konto, das in Ihrem Azure AD-Verzeichnis über das Azure-Portal oder mithilfe von Azure AD PowerShell-Cmdlets erstellt wurde. Diese Benutzerkonten werden nicht von einem lokalen Verzeichnis aus synchronisiert. In diesem Tutorial verwenden wir ein einfaches, rein cloudbasiertes Benutzerkonto. Weitere Informationen zu den zusätzlichen Schritten, die für die Verwendung von Azure AD Connect erforderlich sind, finden Sie unter [Synchronisieren von Kennworthashes für Benutzerkonten, die von Ihrem lokalen Active Directory aus in Ihrer verwalteten Domäne synchronisiert werden][on-prem-sync].
 
@@ -180,11 +180,11 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Grundlegendes zu den DNS-Anforderungen für eine verwaltete Domäne
-> * Erstellen einer Azure AD DS-Instanz
+> * Erstellen einer verwalteten Domäne
 > * Hinzufügen von Administratorbenutzern zur Domänenverwaltung
 > * Aktivieren von Benutzerkonten für Azure AD DS und Generieren von Kennworthashes
 
-Konfigurieren Sie ein virtuelles Azure-Netzwerk für Anwendungsworkloads, bevor Sie virtuelle Computer in eine Domäne einbinden und Anwendungen bereitstellen, die die verwaltete Azure AD DS-Domäne verwenden.
+Konfigurieren Sie ein virtuelles Azure-Netzwerk für Anwendungsworkloads, bevor Sie virtuelle Computer in eine Domäne einbinden und Anwendungen bereitstellen, die die verwaltete Domäne verwenden.
 
 > [!div class="nextstepaction"]
 > [Konfigurieren eines virtuellen Azure-Netzwerks für Anwendungsworkloads zur Verwendung der verwalteten Domäne](tutorial-configure-networking.md)

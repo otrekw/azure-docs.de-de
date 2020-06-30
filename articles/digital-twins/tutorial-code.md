@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611484"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737137"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Codieren mit den Azure Digital Twins-APIs
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure IoT Digital Twin-Clientbibliothek für .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
 
@@ -99,8 +102,8 @@ Als Erstes muss sich Ihre App beim Azure Digital Twins-Dienst authentifizieren. 
 
 Für die Authentifizierung benötigen Sie die folgenden Informationen:
 * Die *Verzeichnis-ID (Mandanten-ID)* für Ihr Abonnement
-* Die *Anwendungs-ID (Client-ID)* , die beim Einrichten der Dienstinstanz erstellt wurde
-* Den *hostName*-Wert Ihrer Dienstinstanz
+* Die *Anwendungs-ID (Client-ID)* , die beim Einrichten der Azure Digital Twins-Instanz erstellt wurde
+* Den *Hostnamen* Ihrer Azure Digital Twins-Instanz
 
 >[!TIP]
 > Wenn Sie die *Verzeichnis-ID (Mandanten-ID)* nicht kennen, können Sie sie über diesen Befehl in [Azure Cloud Shell](https://shell.azure.com) abrufen:

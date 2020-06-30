@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91fae982f53af8da359baaff685996c0d1cb57c2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330445"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976556"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Node.js und dem azure-sb-Paket
 In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachrichten mithilfe des Pakets [azure-sb](https://www.npmjs.com/package/azure-sb) an ein Service Bus-Thema zu senden sowie Nachrichten von einem Service Bus-Abonnement zu empfangen. Die Beispiele sind in JavaScript geschrieben und verwenden das [Azure-Modul](https://www.npmjs.com/package/azure) von Node.js, das intern das `azure-sb`-Paket verwendet.
@@ -80,7 +80,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Einrichten einer Service Bus-Verbindung
-Das Azure-Modul liest die Umgebungsvariable `AZURE_SERVICEBUS_CONNECTION_STRING` für die Verbindungszeichenfolge, die Sie weiter oben im Schritt „Abrufen der Anmeldeinformationen“ abgerufen haben. Wenn diese Umgebungsvariable nicht festgelegt wurde, müssen Sie beim Aufrufen von `createServiceBusService` die Kontoinformationen angeben.
+Das Azure-Modul liest die Umgebungsvariable `AZURE_SERVICEBUS_CONNECTION_STRING` für die Verbindungszeichenfolge, die Sie zum Erfüllen der [Voraussetzungen](#prerequisites) abgerufen haben. Wenn Sie Anweisungen zum erneuten Abrufen der Verbindungszeichenfolge benötigen, finden Sie weitere Informationen unter [Abrufen der Verbindungszeichenfolge](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string). Wenn diese Umgebungsvariable nicht festgelegt wurde, müssen Sie beim Aufrufen von `createServiceBusService` die Kontoinformationen angeben.
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen für einen Azure Cloud Service finden Sie unter [Festlegen von Umgebungsvariablen](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76168878"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983619"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
@@ -33,7 +33,10 @@ Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwen
 Bevor Sie die Beispiel-App erkunden können, müssen die folgenden Voraussetzungen erfüllt sein:
 
 * Sie benötigen [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) oder höher.
-* Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. Notieren Sie sich außerdem die Dienstendpunkt-URL.
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 
 ## <a name="get-the-sample-app"></a>Abrufen der Beispiel-App
 
@@ -80,7 +83,6 @@ Sie können die Beispiel-App ausführen, um ihre Interaktion mit Ihnen und der C
    ![Seite „Abonnementschlüsselverwaltung“](../Images/Vision_UI_Subscription.PNG)  
 1. Geben Sie in das Feld **Abonnementschlüssel** Ihren Abonnementschlüssel ein.
 1. Geben Sie unter **Endpunkt** die Endpunkt-URL ein.  
-   Wenn Sie beispielsweise den Abonnementschlüssel aus der kostenlosen Testversion für maschinelles Sehen verwenden, geben Sie die folgende Endpunkt-URL ein: `https://westcentralus.api.cognitive.microsoft.com`.  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Wenn Sie den Abonnementschlüssel und die Endpunkt-URL beim nächsten Ausführen der Beispiel-App nicht eingeben möchten, wählen Sie **Einstellung speichern** aus, damit der Abonnementschlüssel und die Endpunkt-URL auf Ihrem Computer gespeichert werden. Wenn Sie Ihren zuvor gespeicherten Abonnementschlüssel und Ihre Endpunkt-URL löschen möchten, wählen Sie **Einstellung löschen** aus.
 
