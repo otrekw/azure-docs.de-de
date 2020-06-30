@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737194"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262340"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
-Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert. Wenn Sie das Beispielprojekt noch nicht heruntergeladen haben, holen Sie es sich jetzt, indem Sie das [Repository mit den Azure Digital Twins-Beispielen als ZIP-Datei herunterladen](https://github.com/Azure-Samples/digital-twins-samples/archive/master.zip). 
+Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert. Wenn Sie das Beispielprojekt noch nicht heruntergeladen haben, können Sie es jetzt über die Landing Page [Azure Digital Twins (Beispiele)](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) abrufen, indem Sie unterhalb des Titels die Schaltfläche *ZIP herunterladen* auswählen.
 
 Navigieren Sie zu der heruntergeladenen Datei auf Ihrem Computer, und entzippen Sie sie.
 
-Navigieren sie im entzippten Ordner zu _digital-twins-samples-master/AdtSampleApp/_ . Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
+Navigieren Sie dann im entzippten Ordner zu _AdtSampleApp/_ . Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Erstellen Sie in Visual Studio über den Bereich *Projektmappen-Explorer* eine Kopie der Datei _SampleClientApp > **serviceConfig.json.TEMPLATE**_. (Zum Kopieren und Einfügen können Sie das Kontextmenü verwenden.) Benennen Sie die Kopie in *serviceConfig.json* um. Sie dient als voreingestellte JSON-Datei mit den erforderlichen Konfigurationsvariablen zum Ausführen des Projekts.
 

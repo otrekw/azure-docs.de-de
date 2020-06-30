@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84902590"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292124"
 ---
 > [!NOTE]
 > Um `PHI` zu ermitteln, verwenden Sie den `domain=phi`-Parameter und die Modellversion `2020-04-01` oder höher.
@@ -51,7 +51,7 @@ Diese Entitätskategorie beinhaltet identifizierbare Azure-Informationen, Authen
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB-Authentifizierungsschlüssel             | Autorisierungsschlüssel für einen Azure DocumentDB-Server.                           |
 | Verbindungszeichenfolge für Azure-IaaS-Datenbank und Azure SQL | Verbindungszeichenfolge für eine Azure-IaaS-Datenbank (Infrastructure-as-a-Service) und Azure SQL |
-| Azure SQL-Verbindungszeichenfolge           | Verbindungszeichenfolge für eine Azure SQL-Datenbank.                                |
+| Azure SQL-Verbindungszeichenfolge           | Verbindungszeichenfolge für eine Datenbank in Azure SQL-Datenbank.                                |
 | Azure IoT-Verbindungszeichenfolge           | Verbindungszeichenfolge für Azure IoT (Internet of Things).                        |
 | Azure-Veröffentlichungseinstellung: Kennwort        | Kennwort für die Azure-Veröffentlichungseinstellungen.                                        |
 | Azure Redis Cache-Verbindungszeichenfolge   | Verbindungszeichenfolge für eine Azure Redis Cache-Instanz.                             |

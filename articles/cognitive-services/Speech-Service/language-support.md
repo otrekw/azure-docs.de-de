@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636103"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210727"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -27,8 +27,6 @@ Die Sprachunterstützung ist abhängig von der Funktion des Speech-Diensts. In d
 Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). 
 
 Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von **Audio und menschenmarkierten Transkripten** oder **zugehörigem Text (Sätze)** angeboten. Weitere Informationen zur Anpassung finden Sie unter [Was ist Custom Speech?](how-to-custom-speech.md).
-
-Weitere Informationen zur Verbesserung der Aussprache finden Sie unter [Verbessern der Custom Speech-Genauigkeit](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:
@@ -314,6 +312,26 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 | Vietnamesisch              | `vi`          |
 | Walisisch                   | `cy`          |
 | Yukatekisches Maya            | `yua`         |
+
+## <a name="speaker-recognition"></a>Sprechererkennung
+
+In der folgenden Tabelle finden Sie die unterstützten Sprachen für die verschiedenen Sprechererkennungs-APIs. Weitere Informationen zur Sprechererkennung finden Sie in der [Übersicht](speaker-recognition-overview.md).
+
+| Gebietsschema | Sprache | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
+|----|----|----|----|----|
+| de-DE | Englisch (USA) | ja | ja | ja |
+|zh-CN  |Chinesisch (Mandarin, vereinfacht)|    –|    ja|    ja|
+|de-DE  |Deutsch (Deutschland)   |–    |ja    |ja|
+|en-GB  |English (UK)   |–    |ja    |ja|
+|fr-FR  |Französisch (Frankreich)    |–    |ja    |ja|
+|en-AU  |Englisch (Australien)    |–    |ja    |ja|
+|en-CA  |Englisch (Kanada)   |–|   ja|    ja|
+|fr-CA  |Französisch (Kanada)    |–    |ja|   ja|
+|it-IT  |Italienisch|   – |ja|   ja|
+|es-ES| Spanisch (Spanien) |–    |ja|   ja|
+|es-MX  |Spanisch (Mexiko)   |–|   ja|    ja|
+|ja-JP| Japanisch    |–    |ja    |ja|
+|pt-BR| Portugiesisch (Brasilien)|    –|    ja|    ja|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

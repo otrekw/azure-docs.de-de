@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780911"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212495"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Versionshinweise: Speech-Geräte-SDK
 
@@ -42,7 +42,7 @@ In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgefü
 - Windows-Benutzer können `AudioConfig.fromDefaultMicrophoneInput()` oder `AudioConfig.fromMicrophoneInput(deviceName)` verwenden, um das zu verwendende Mikrofon anzugeben.
 - Die Größe der Bibliothek wurde optimiert.
 - Unterstützung für die Erkennung mit mehreren Durchläufen unter Verwendung desselben Sprach-/Absichterkennungsobjekts wurde hinzugefügt.
-- Es wurde ein vereinzelt aufgetretenes Problem behoben, das beim Beenden der Erkennung auftreten konnte.
+- Beheben Sie gelegentlich auftretende Probleme, bei denen der Prozess nicht mehr reagierte, während die Erkennung beendet wurde.
 - Beispiel-Apps enthalten jetzt eine „participants.properties“-Beispieldatei, um das Format der Datei zu veranschaulichen.
 - Die [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)-Komponente wurde auf Version 1.7.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](https://aka.ms/csspeech/whatsnew).
 

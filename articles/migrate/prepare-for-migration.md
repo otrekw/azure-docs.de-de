@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie lokale Computer für die Migration mit
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: a5314e3f06c54921b12c242f884e02073edc773b
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769641"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106371"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -33,7 +33,7 @@ Die Tabelle enthält eine Übersicht über die Ermittlungs-, Bewertungs- und Mig
 
 **Szenario** | **Projekt** | **Ermittlung/Bewertung** | **Migration**
 --- | --- | --- | ---
-**Virtuelle VMware-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen [Azure Migrate-Appliance](common-questions-appliance.md) für VMware können bis zu 10.000 virtuelle VMware-Computer ermittelt werden. | **Migration ohne Agent:** Bis zu 300 virtuelle Computer können gleichzeitig repliziert werden. Ab 50 virtuellen Computern empfiehlt es sich, mehrere Batches zu erstellen, um eine optimale Leistung zu erzielen.<br/><br/> **Agent-basierte Migration:** Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](/agent-based-migration-architecture.md#performance-and-scaling) werden, um viele virtuelle Computer zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
+**Virtuelle VMware-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen [Azure Migrate-Appliance](common-questions-appliance.md) für VMware können bis zu 10.000 virtuelle VMware-Computer ermittelt werden. | **Migration ohne Agent:** Bis zu 300 virtuelle Computer können gleichzeitig repliziert werden. Ab 50 virtuellen Computern empfiehlt es sich, mehrere Batches zu erstellen, um eine optimale Leistung zu erzielen.<br/><br/> **Agent-basierte Migration:** Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](./agent-based-migration-architecture.md#performance-and-scaling) werden, um viele virtuelle Computer zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 **Virtuelle Hyper-V-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen Azure Migrate-Appliance können bis zu 5.000 virtuelle Hyper-V-Computer ermittelt werden. | Für die Hyper-V-Migration wird keine Appliance verwendet. Stattdessen wird auf jedem Hyper-V-Host der Hyper-V-Replikationsanbieter ausgeführt.<br/><br/> Die Replikationskapazität hängt von Leistungsfaktoren wie VM-Änderungsrate und Uploadbandbreite für Replikationsdaten ab.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 **Physische Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 Computer ermittelt und bewertet werden. | Mit einer einzelnen Azure Migrate-Appliance für physische Server können bis zu 250 physische Server ermittelt werden. | Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](/agent-based-migration-architecture.md#performance-and-scaling) werden, um viele Server zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 

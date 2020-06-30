@@ -3,12 +3,12 @@ title: Einrichten eines QnA Maker-Diensts – QnA Maker
 description: Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235519"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214127"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -60,9 +60,9 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
     Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Suchen von Abonnementschlüsseln im Azure-Portal
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Suchen von Erstellungsschlüsseln im Azure-Portal
 
-Sie können Ihre Abonnementschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben.
+Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben. Diese Schlüssel können auch als Abonnementschlüssel bezeichnet werden. 
 
 1. Wechseln Sie im Azure-Portal zur QnA Maker-Ressource, und wählen Sie die Ressource mit dem _Cognitive Services_-Typ aus:
 
@@ -72,7 +72,7 @@ Sie können Ihre Abonnementschlüssel in dem Azure-Portal anzeigen und zurückse
 
     ![Abonnementschlüssel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Suchen von Endpunktschlüsseln im QnA Maker-Portal
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Suchen von Abfrageendpunktschlüsseln im QnA Maker-Portal
 
 Der Endpunkt befindet sich in demselben Bereich wie die Ressource, da die Endpunktschlüssel verwendet werden, um einen Aufruf an die Wissensdatenbank zu senden.
 

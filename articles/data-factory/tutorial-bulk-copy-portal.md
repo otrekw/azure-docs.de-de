@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/22/2020
+ms.openlocfilehash: d7f6da930f797912ef0e91666082aa5654b7f1ab
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661068"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251736"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory im Azure-Portal
 
@@ -58,7 +58,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 **Vorbereiten der Azure SQL-Quelldatenbank**:
 
-Erstellen Sie eine Azure SQL-Datenbank mit Adventure Works LT-Beispieldaten, indem Sie den Anweisungen im Artikel [Erstellen einer Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) folgen. In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in Azure Synapse Analytics (ehemals SQL DW) kopiert.
+Erstellen Sie in SQL-Datenbank eine Datenbank mit den AdventureWorks LT-Beispieldaten anhand der Informationen aus dem Artikel [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). In diesem Tutorial werden alle Tabellen aus der Beispieldatenbank in Azure Synapse Analytics (ehemals SQL DW) kopiert.
 
 **Vorbereiten der Azure Synapse Analytics-Senke (ehemals SQL DW)** :
 
@@ -106,7 +106,7 @@ Sie erstellen verknüpfte Dienste, um Ihre Datenspeicher und Computes mit einer 
 In diesem Tutorial verknüpfen Sie Ihre Azure SQL-Datenbank-, Azure Synapse Analytics- (ehemals SQL DW) und Azure Blob Storage-Datenspeicher mit Ihrer Data Factory. Die Azure SQL-Datenbank ist der Quelldatenspeicher. Azure Synapse Analytics (ehemals SQL DW) ist die Senke bzw. der Zieldatenspeicher. Azure Blob Storage dient zum Bereitstellen der Daten per Staging, bevor sie mit PolyBase in die Azure Synapse Analytics-Instanz (ehemals SQL DW) geladen werden. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Erstellen des verknüpften Quelldiensts Azure SQL-Datenbank
-In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank mit der Data Factory zu verbinden. 
+In diesem Schritt erstellen Sie einen verknüpften Dienst zum Verknüpfen Ihrer Datenbank in Azure SQL-Datenbank mit der Data Factory. 
 
 1. Öffnen Sie im linken Bereich die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub).
 
@@ -120,13 +120,13 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
 
     b. Wählen Sie unter **Servername** Ihren Server aus.
     
-    c. Wählen Sie unter **Datenbankname** Ihre Azure SQL-Datenbank aus. 
+    c. Wählen Sie unter **Datenbankname** Ihre Datenbank aus. 
     
-    d. Geben Sie den **Namen des Benutzers** ein, um eine Verbindung mit der Azure SQL-Datenbank herzustellen. 
+    d. Geben Sie den **Namen des Benutzers** ein, um eine Verbindung mit Ihrer Datenbank herzustellen. 
     
     e. Geben Sie das **Kennwort** für den Benutzer ein. 
 
-    f. Klicken Sie auf **Verbindung testen**, um die Verbindung mit der Azure SQL-Datenbank mit den angegebenen Informationen zu testen.
+    f. Klicken Sie auf **Verbindung testen**, um die Verbindung mit Ihrer Datenbank anhand der angegebenen Informationen zu testen.
   
     g. Klicken Sie auf **Erstellen**, um den verknüpften Dienst zu speichern.
 
@@ -141,13 +141,13 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
      
     b. Wählen Sie unter **Servername** Ihren Server aus.
      
-    c. Wählen Sie unter **Datenbankname** Ihre Azure SQL-Datenbank aus. 
+    c. Wählen Sie unter **Datenbankname** Ihre Datenbank aus. 
      
-    d. Geben Sie den **Benutzernamen** ein, um eine Verbindung mit Azure SQL-Datenbank herzustellen. 
+    d. Geben Sie den **Benutzernamen** ein, um eine Verbindung mit Ihrer Datenbank herzustellen. 
      
     e. Geben Sie das **Kennwort** für den Benutzer ein. 
      
-    f. Klicken Sie auf **Verbindung testen**, um die Verbindung mit der Azure SQL-Datenbank mit den angegebenen Informationen zu testen.
+    f. Klicken Sie auf **Verbindung testen**, um die Verbindung mit Ihrer Datenbank anhand der angegebenen Informationen zu testen.
      
     g. Klicken Sie auf **Erstellen**.
 
@@ -181,7 +181,7 @@ In diesem Tutorial sind die SQL-Quell- und -Zieltabellen in den Datasetdefinitio
     
 1. Geben Sie im Fenster **Eigenschaften festlegen** unter **Name** den Namen **AzureSqlDatabaseDataset** ein. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** aus. Klicken Sie dann auf **OK**.
 
-1. Wechseln Sie zur Registerkarte **Verbindung**, und wählen Sie unter **Tabelle** eine beliebige Tabelle aus. Diese Tabelle ist eine Dummytabelle. Sie geben beim Erstellen einer Pipeline im Quelldataset eine Abfrage ein. Die Abfrage wird verwendet, um Daten aus der Azure SQL-Datenbank zu extrahieren. Alternativ hierzu können Sie auf das Kontrollkästchen **Bearbeiten** klicken und als Tabellenname **dbo.dummyName** eingeben. 
+1. Wechseln Sie zur Registerkarte **Verbindung**, und wählen Sie unter **Tabelle** eine beliebige Tabelle aus. Diese Tabelle ist eine Dummytabelle. Sie geben beim Erstellen einer Pipeline im Quelldataset eine Abfrage ein. Die Abfrage wird zum Extrahieren von Daten aus Ihrer Datenbank verwendet. Alternativ hierzu können Sie auf das Kontrollkästchen **Bearbeiten** klicken und als Tabellenname **dbo.dummyName** eingeben. 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>Erstellen des Datasets für die Azure Synapse Analytics-Senke (ehemals SQL DW)
@@ -189,17 +189,18 @@ In diesem Tutorial sind die SQL-Quell- und -Zieltabellen in den Datasetdefinitio
 1. Klicken Sie im Bereich auf der linken Seite auf **+** (Pluszeichen) und dann auf **Dataset**. 
 1. Wählen Sie im Fenster **Neues Dataset** die Option **Azure Synapse Analytics (ehemals SQL DW)** aus, und klicken Sie auf **Weiter**.
 1. Geben Sie im Fenster **Eigenschaften festlegen** unter **Name** den Namen **AzureSqlDWDataset** ein. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDWLinkedService** aus. Klicken Sie dann auf **OK**.
-1. Wechseln Sie zur Registerkarte **Parameter**, klicken Sie auf **+ Neu**, und geben Sie **DWTableName** als Parameternamen ein. Stellen Sie beim Kopieren (und Einfügen) dieses Namens von der Seite sicher, dass am Ende von **DWTableName** keine **nachgestellte Leerstelle** angefügt ist.
+1. Wechseln Sie zur Registerkarte **Parameter**, klicken Sie auf **+ Neu**, und geben Sie **DWTableName** als Parameternamen ein. Klicken Sie wieder auf **+ Neu**, und geben Sie **DWSchema** als Parameternamen ein. Sorgen Sie beim Kopieren (und Einfügen) dieses Namens von der Seite dafür, dass es am Ende von *DWTableName* und *DWSchema* kein **nachgestelltes Leerzeichen** gibt. 
 1. Wechseln Sie zur Registerkarte **Verbindung**. 
 
-    a. Aktivieren Sie für **Tabelle** die Option **Bearbeiten**. Geben Sie im ersten Eingabefeld für den Tabellennamen **dbo** ein. Wählen Sie dann in das zweite Eingabefeld aus, und klicken Sie unten auf den Link **Dynamischen Inhalt hinzufügen**. 
+    1. Aktivieren Sie für **Tabelle** die Option **Bearbeiten**. Wählen Sie das erste Eingabefeld aus, und klicken Sie unten auf den Link **Dynamischen Inhalt hinzufügen**. Klicken Sie auf der Seite **Dynamischen Inhalt hinzufügen** unter **Parameter** auf **DWSchema**. Dadurch wird das oberste Textfeld `@dataset().DWSchema` für Ausdrücke automatisch gefüllt. Klicken Sie dann auf **Fertig stellen**.  
+    
+        ![Tabellenname für die Datasetverbindung](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![Tabellenname für die Datasetverbindung](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. Wählen Sie das zweite Eingabefeld aus, und klicken Sie unten auf den Link **Dynamischen Inhalt hinzufügen**. Klicken Sie auf der Seite **Dynamischen Inhalt hinzufügen** unter **Parameter** auf **DWTableName**. Dadurch wird das oberste Textfeld `@dataset().DWTableName` für Ausdrücke automatisch gefüllt. Klicken Sie dann auf **Fertig stellen**. 
+    
+    1. Die Eigenschaft **tableName** des Datasets wird auf die Werte festgelegt, die als Argumente für die Parameter **DWSchema** und **DWTableName** übergeben werden. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und übergibt diese einzeln an die Copy-Aktivität. 
+    
 
-    b. Klicken Sie auf der Seite **Dynamischen Inhalt hinzufügen** unter **Parameter** auf **DWTAbleName**. Das oberste Textfeld `@dataset().DWTableName` für Ausdrücke wird automatisch gefüllt. Klicken Sie anschließend auf **Fertig stellen**. Die **tableName**-Eigenschaft des Datasets ist auf den Wert festgelegt, der als Argument für den Parameter **DWTableName** übergeben wird. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und übergibt diese einzeln an die Copy-Aktivität. 
-
-    ![Dataset-Parameter-Generator](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>Erstellen von Pipelines
 In diesem Tutorial werden zwei Pipelines erstellt: **IterateAndCopySQLTables** und **GetTableListAndTriggerCopyData**. 
 
@@ -257,7 +258,8 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
 1. Wechseln Sie zur Registerkarte **Senke**, und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie unter **Sink Dataset** (Senkendataset) die Option **AzureSqlDWDataset**.
-    1. Klicken Sie auf das Eingabefeld für den Wert (VALUE) des Parameters „DWTableName“, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen** aus, geben Sie den Ausdruck `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` als Skript ein, und wählen Sie **Fertig stellen** aus.
+    1. Klicken Sie auf das Eingabefeld für den Wert (VALUE) des Parameters „DWTableName“, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen** aus, geben Sie den Ausdruck `@item().TABLE_NAME` als Skript ein, und wählen Sie **Fertig stellen** aus.
+    1. Klicken Sie auf das Eingabefeld für den Wert (VALUE) des Parameters „DWSchema“, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen** aus, geben Sie den Ausdruck `@item().TABLE_SCHEMA` als Skript ein, und wählen Sie **Fertig stellen** aus.
     1. Wählen Sie als Kopiermethode **PolyBase** aus. 
     1. Deaktivieren Sie die Option **Use Type default** (Typstandard verwenden). 
     1. Klicken Sie auf das Eingabefeld **Pre-copy Script** (Skript für Vorabkopieren), wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie den folgenden Ausdruck als Skript ein, und wählen Sie **Fertig stellen**. 
@@ -282,12 +284,12 @@ Diese Pipeline führt zwei Aktionen aus:
 * Auslösen der Pipeline „IterateAndCopySQLTables“, um den eigentlichen Kopiervorgang der Daten auszuführen.
 
 1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
-1. Ändern Sie auf der Registerkarte **Allgemein** den Namen der Pipeline in **GetTableListAndTriggerCopyData**. 
+1. Ändern Sie im Bereich „Allgemein“ unter **Eigenschaften**  den Namen der Pipeline in **GetTableListAndTriggerCopyData**. 
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Führen Sie anschließend die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** den Namen **LookupTableList** ein. 
-    1. Geben Sie unter **Beschreibung** den Text **Retrieve the table list from Azure SQL database** (Tabellenliste aus Azure SQL-Datenbank abrufen) ein.
+    1. Geben Sie unter **Beschreibung** den Text **Retrieve the table list from my database** (Tabellenliste aus meiner Datenbank abrufen) ein.
 
 1. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus:
 
@@ -310,10 +312,8 @@ Diese Pipeline führt zwei Aktionen aus:
 1. Wechseln Sie zur Registerkarte **Einstellungen** der Aktivität **Execute Pipeline** (Pipeline ausführen), und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie unter **Invoked pipeline** (Aufgerufene Pipeline) die Option **IterateAndCopySQLTables**. 
-    1. Erweitern Sie den Abschnitt **Erweitert**, und deaktivieren Sie das Kontrollkästchen für **Wait on completion** (Auf Abschluss warten).
-    1. Klicken Sie im Abschnitt **Parameter** auf **+ Neu**. 
-    1. Geben Sie **tableList** für den Parameter **Name** ein.
-    1. Klicken Sie auf das Eingabefeld für den Wert, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie `@activity('LookupTableList').output.value` als Wert für den Tabellennamen ein, und wählen Sie **Fertig stellen**. Sie legen die Ergebnisliste der Lookup-Aktivität als Eingabe für die zweite Pipeline fest. Die Ergebnisliste enthält die Liste mit den Tabellen, deren Daten auf das Ziel kopiert werden müssen. 
+    1. Deaktivieren Sie das Kontrollkästchen für **Wait on completion** (Auf Abschluss warten).
+    1. Klicken Sie im Abschnitt **Parameter** auf das Eingabefeld unter VALUE (Wert), wählen Sie unten die Option **Dynamischen Inhalt hinzufügen** aus, geben Sie `@activity('LookupTableList').output.value` als Wert für den Tabellennamen ein, und wählen Sie **Fertigstellen** aus. Sie legen die Ergebnisliste der Lookup-Aktivität als Eingabe für die zweite Pipeline fest. Die Ergebnisliste enthält die Liste mit den Tabellen, deren Daten auf das Ziel kopiert werden müssen. 
 
         ![Execute Pipeline-Aktivität – Seite „Einstellungen“](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 

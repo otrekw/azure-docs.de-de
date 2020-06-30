@@ -205,7 +205,7 @@ Geben Sie die folgenden Werte an, um eine benutzerdefinierte Eigenschaft zum Spe
 
 1. Wählen Sie in der Dropdownliste **Schema** die Option *Zeichenfolge* aus. Mit einem Zeichenfolgentyp können Sie basierend auf der Vorlage eine Zeichenfolge für den Standortnamen einem beliebigen Gerät zuordnen. Beispielsweise können Sie jedem Gerät einen Bereich in einem Laden zuordnen. Optional können Sie den **semantischen Typ** Ihrer Eigenschaft auf *Standort* festlegen. Dadurch wird für das **Schema** automatisch *Geopunkt* verwendet. Damit ist es möglich, einem Gerät GPS-Koordinaten zuzuordnen. 
 
-1. Legen Sie für **Mindestlänge***2* fest. 
+1. Legen Sie für **Mindestlänge** *2* fest. 
 
 1. Stellen Sie die Option **Leerzeichen kürzen** auf **Ein**.
 

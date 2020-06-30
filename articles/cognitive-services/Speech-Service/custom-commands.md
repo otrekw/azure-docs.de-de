@@ -1,7 +1,7 @@
 ---
-title: 'Speech-Dienst: Benutzerdefinierte Befehle (Vorschau)'
+title: Benutzerdefinierte Befehle – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Eine Übersicht der Features, Funktionen und Einschränkungen für Benutzerdefinierte Befehle (Vorschau), einer Lösung zum Erstellen von Sprachanwendungen.
+description: Eine Übersicht der Features, Funktionen und Einschränkungen für „Benutzerdefinierte Befehle“, einer Lösung zum Erstellen von Sprachanwendungen.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266014"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299108"
 ---
-# <a name="what-is-custom-commands-preview"></a>Was sind „Benutzerdefinierte Befehle“ (Vorschauversion)?
+# <a name="what-is-custom-commands"></a>Was sind benutzerdefinierte Befehle?
 
 Sprachanwendungen, wie etwa [Sprachassistenten](voice-assistants.md), hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei oftmals antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde. Geräte stellen eine Verbindung mit Assistenten über das `DialogServiceConnector`-Objekt des Speech SDK her.
 
-**Benutzerdefinierte Befehle (Vorschau)** sind eine optimierte Lösung zum Erstellen von Sprachanwendungen. Es bietet eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringere Komplexität im Vergleich zu anderen Erstellungsoptionen wie [Direct Line Speech](direct-line-speech.md). Diese Vereinfachung geht jedoch mit einer Verringerung der Flexibilität einher. Daher ist Benutzerdefinierte Befehle (Vorschau) am besten geeignet für die Aufgabenerledigung oder Befehl-und-Steuerung-Szenarien (Command-and-Control). Das Feature eignet sich besonders gut für IoT-Geräte (Internet of Things, Internet der Dinge) und monitorlose Geräte.
+Mit **benutzerdefinierten Befehlen** ist es einfach, funktionsreiche Apps mit Sprachsteuerung zu erstellen, die für Voice-First-Interaktionserfahrungen optimiert sind. Sie bieten eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringe Komplexität, sodass Sie sich auf die Entwicklung der besten Lösung für Ihre Szenarien mit Sprachsteuerung konzentrieren können.
 
-Für komplexe dialogorientierte Interaktionen und die Integration mit anderen Lösungen wie der [Lösung für virtuelle Assistenten und der Unternehmensvorlage](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) wird die Verwendung von Direct Line Speech empfohlen.
+Benutzerdefinierte Befehle eignen sich am besten für die Erledigung von Aufgaben oder für Befehl-und-Steuerung-Szenarien (Command-and-Control), besonders gut geeignet für IoT-Geräte (Internet der Dinge), Ambient- und monitorlose Geräte. Beispiele hierfür sind Lösungen für das Hotel- und Gaststättengewerbe, den Einzelhandel und die Automobilindustrie, die es Ihnen ermöglichen, die besten sprachgesteuerten Benutzeroberflächen für Ihre Gäste in Räumen zu schaffen, den Bestand in Ihrem Geschäft zu verwalten und die Funktionalität unterwegs im Auto zu steuern.
 
-Geeignete Kandidaten für Benutzerdefinierte Befehle (Vorschau) verfügen über ein festes Vokabular mit klar definierten Variablensätzen. So sind z. B. Aufgaben zur Gebäudeautomatisierung, wie die Steuerung eines Thermostaten, ideal.
+> [!TIP]
+> Sehen Sie sich unsere Beispieldemos auf unserer Landing Page unter [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) an.
+
+Wenn Sie daran interessiert sind, komplexe Konversations-Apps zu erstellen, sollten Sie das Bot-Framework mit der [Lösung für virtuelle Assistenten](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) ausprobieren. Mit Direct Line Speech können Sie jedem Bot des Bot-Frameworks eine Stimme hinzufügen.
+
+Geeignete Kandidaten für Benutzerdefinierte Befehle verfügen über ein festes Vokabular mit klar definierten Variablensätzen. So sind z. B. Aufgaben zur Gebäudeautomatisierung, wie die Steuerung eines Thermostaten, ideal.
 
    ![Beispiele für Szenarien zur Aufgabenerledigung](media/voice-assistants/task-completion-examples.png "Beispiele für die Aufgabenerledigung")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Erste Schritte mit Benutzerdefinierte Befehle (Vorschau)
+## <a name="getting-started-with-custom-commands"></a>Erste Schritte mit benutzerdefinierten Befehlen
 
-Der erste Schritt zur Verwendung von Benutzerdefinierte Befehle (Vorschau) zur Erstellung einer Sprachanwendung besteht im [Abrufen eines Speech-Abonnementschlüssels](get-started.md) und dem Zugriff auf den Generator für Benutzerdefinierte Befehle (Vorschau) im [Speech Studio](https://speech.microsoft.com). Von dort aus können Sie eine neue Anwendung für Benutzerdefinierte Befehle (Vorschau) erstellen und veröffentlichen, woraufhin eine Anwendung auf dem Gerät mit ihr über das Speech SDK kommunizieren kann.
+Unser Ziel mit benutzerdefinierten Befehlen ist es, Ihre kognitive Belastung zu reduzieren, um all die verschiedenen Technologien zu erlernen und sich auf die Entwicklung Ihrer sprachgesteuerten App zu konzentrieren. Erster Schritt für die Verwendung benutzerdefinierter Befehle zur <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellung einer Azure Speech-Ressource <span class="docon docon-navigate-external x-hidden-focus"></span></a>. Sie können Ihre App für benutzerdefinierte Befehle in Speech Studio erstellen und veröffentlichen. Anschließend kann eine Anwendung auf dem Gerät über das Speech SDK mit ihr kommunizieren.
 
-   ![Erstellungsablauf für Benutzerdefinierte Befehle (Vorschau)](media/voice-assistants/custom-commands-flow.png "Erstellungsablauf für Benutzerdefinierte Befehle (Vorschau)")
+#### <a name="authoring-flow-for-custom-commands"></a>Erstellungsablauf für benutzerdefinierte Befehle
+   ![Erstellungsablauf für benutzerdefinierte Befehle](media/voice-assistants/custom-commands-flow.png "Erstellungsablauf für benutzerdefinierte Befehle")
 
-Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können.
+Befolgen Sie unsere Schnellstartanleitung, damit Ihre erste App für benutzerdefinierte Befehle in weniger als 10 Minuten entsprechenden Code ausführt.
 
-* [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau)](quickstart-custom-speech-commands-create-new.md)
-* [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau) mit Parametern](quickstart-custom-speech-commands-create-parameters.md)
-* [Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle (Vorschau) mit dem Speech SDK, C#](quickstart-custom-speech-commands-speech-sdk.md)
+* [Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen](quickstart-custom-commands-application.md)
 
-Wenn Sie die Schnellstarts durchgearbeitet haben, sollten Sie sich mit unseren Gewusst-wie-Anleitungen vertraut machen.
+Wenn Sie mit der Schnellstartanleitung fertig sind, sehen Sie sich unsere Leitfäden für ausführliche Schritte zum Entwerfen, Entwickeln, Debuggen, Bereitstellen und Integrieren einer Anwendung für benutzerdefinierte Befehle an.
 
-- [Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle](./how-to-custom-speech-commands-validations.md)
-- [Ausführen von Befehlen auf dem Client mit dem Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl](./how-to-custom-speech-commands-confirmations.md)
-- [Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>Erstellen von Sprachassistenten mit benutzerdefinierten Befehlen
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Speech-Diensts](get-started.md)
-* [Wechseln Sie zum Speech Studio, um Benutzerdefinierte Befehle auszuprobieren](https://speech.microsoft.com)
+* [Beispiele finden Sie in unserem Repository für Sprachassistenten auf GitHub](https://aka.ms/speech/cc-samples)
+* [Wechseln Sie zum Speech Studio, um Benutzerdefinierte Befehle auszuprobieren](https://speech.microsoft.com/customcommands)
 * [Abrufen des Speech SDK](speech-sdk.md)

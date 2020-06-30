@@ -3,12 +3,12 @@ title: Bewerten physischer Server für die Migration mit der Azure Migrate-Serve
 description: Es wird beschrieben, wie Sie lokale physische Server mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052202"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080759"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Bewerten physischer Server mit der Azure Migrate-Serverbewertung
 
@@ -80,7 +80,7 @@ Von der Azure Von der Serverbewertung wird eine einfache Appliance ausgeführt.
     - Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
     - Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
     - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
-- Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Auf allen Appliances können Sie beliebig viele physische Server ermitteln. Pro Appliance können maximal 250 Server ermittelt werden.
+- Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Auf allen Appliances können Sie beliebig viele physische Server ermitteln. Pro Appliance können maximal 1000 Server ermittelt werden.
 
 ### <a name="download-the-installer-script"></a>Herunterladen des Installationsskripts
 
