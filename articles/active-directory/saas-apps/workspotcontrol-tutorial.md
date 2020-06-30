@@ -90,7 +90,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Workspot Control zu konfigurieren:
 
-1. Wählen Sie im **Azure-Portal** auf der Anwendungsintegrationsseite für [Workspot Control](https://portal.azure.com/) die Option **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Workspot Control** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -176,7 +176,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer.
 
     1. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon@* yourcompanydomain.extension*** ein. Geben Sie beispielsweise **BrittaSimon@contoso.<i></i>com** ein.
+    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon@* yourcompanydomain.extension** ein*. Geben Sie beispielsweise **BrittaSimon@contoso.<i></i>com** ein.
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
