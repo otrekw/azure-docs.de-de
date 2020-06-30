@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267306"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253612"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden von SSMS zum Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance und Ausführen von Abfragen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
   > [!IMPORTANT]
   > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
 
-Wenn Sie einfach nur einige Ad-hoc-Abfragen ohne SSMS-Installation ausführen möchten, verwenden Sie die Anleitung [Schnellstart: Abfragen einer SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal](connect-query-portal.md).
+Wenn Sie einfach nur einige Ad-hoc-Abfragen ohne SSMS-Installation ausführen möchten, verwenden Sie die Anleitung [Schnellstart: Abfragen einer Datenbank in Azure SQL-Datenbank mithilfe des Abfrage-Editors im Azure-Portal](connect-query-portal.md).
 
 ## <a name="get-server-connection-information"></a>Ermitteln von Serververbindungsinformationen
 

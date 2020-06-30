@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657361"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118448"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrierte Unterstützung von Jupyter-Notebooks in Azure Cosmos DB (Vorschauversion)
 
@@ -19,11 +19,11 @@ Jupyter Notebook ist eine Open-Source-Webanwendung, mit der Sie Dokumente erstel
 
 In Azure Cosmos DB integrierte Jupyter-Notebooks sind direkt in das Azure-Portal und in Ihre Azure Cosmos DB-Konten integriert, sodass Sie bequem und einfach verwendet werden können. Entwickler, Datenanalysten, Techniker und Analysten können die vertraute Oberfläche der Jupyter-Notebooks für Datenuntersuchungen, Datenbereinigungen, Datentransformationen, numerische Simulationen, statistische Modellierung, Datenvisualisierung und maschinelles Lernen verwenden.
 
-![Jupyter-Notebook-Visualisierungen in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png" alt-text="Jupyter-Notebook-Visualisierungen in Azure Cosmos DB":::
 
 Azure Cosmos DB unterstützt sowohl C#- als auch Python-Notebooks für alle APIs einschließlich der Core- (SQL), Cassandra-, Gremlin-, Tabellen-API und der API für MongoDB. Im Notebook können Sie integrierte Befehle und Funktionen nutzen, die das Erstellen von Azure Cosmos DB-Ressourcen, das Hochladen von Daten sowie das Abfragen und Visualisieren Ihrer Daten in Azure Cosmos DB erleichtern. 
 
-![Unterstützung von Jupyter Notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Unterstützung von Jupyter-Notebooks in Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Vorteile von Jupyter-Notebooks
 

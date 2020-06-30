@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743593"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115277"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Tutorial: Erstellen eines Notebooks in Azure Cosmos DB zum Analysieren und Visualisieren der Daten
 
@@ -30,7 +30,7 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
 1. Wechseln Sie zur Registerkarte **Notebooks**, wählen Sie `…` neben **Meine Notebooks** aus, und erstellen Sie ein **neues Notebook**. Wählen Sie **Python 3** als Standardkernel aus.
 
-   ![Erstellen eines neuen Notebooks](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Erstellen eines neuen Notebooks":::
 
 1. Nachdem ein neues Notebook erstellt wurde, können Sie es z. B. in **EinzelhandelsdatenVisualisierung.ipynb** umbenennen.
 
@@ -49,7 +49,7 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
    Wählen Sie zum Ausführen einer Zelle `Shift + Enter` aus, oder markieren Sie die Zelle, und wählen Sie in der Navigationsleiste des Daten-Explorers die Option zum **Ausführen der aktiven Zelle**.
 
-   ![Ausführen der aktiven Zelle](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Ausführen der aktiven Zelle":::
 
    Die Datenbank und der Container werden in Ihrem aktuellen Azure Cosmos-Konto erstellt. Der Container wird mit 400 RU/s bereitgestellt. Nachdem die Datenbank und der Container erstellt wurden, wird die folgende Ausgabe angezeigt. 
 
@@ -60,7 +60,7 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
    Sie können auch die Registerkarte **Daten** aktualisieren und die neu erstellten Ressourcen anzeigen:
 
-   ![Aktualisieren der Registerkarte „Daten“ zum Anzeigen des neuen Containers](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Aktualisieren der Registerkarte „Daten“ zum Anzeigen des neuen Containers":::
 
 1. Als nächstes importieren Sie die Beispieldaten für den Einzelhandel in den Azure Cosmos-Container. Hier sehen Sie das Format eines Elements aus den Einzelhandelsdaten:
 
@@ -135,7 +135,7 @@ Führen Sie in einer neuen Notebookzelle den folgenden Code aus, um die ersten 1
 df_cosmos.head(10)
 ```
 
-![Abfrage ausführen, um die ersten 10 Elemente zu erhalten](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Ausführen der Abfrage, um die ersten 10 Elemente zu erhalten":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Ausführen von Abfragen und Analysieren der Daten
 
@@ -148,7 +148,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    display(df_revenue.head(5))
    ```
 
-   ![Ausgabe: Summe der Gesamtumsätze](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Ausgabe: Summe der Gesamtumsätze":::
 
 * **Abfrage 2:** Öffnen Sie eine neue Notebookzelle, und führen Sie den folgenden Code aus, um eine Liste der fünf meistgekauften Elemente zu erhalten:
 
@@ -159,7 +159,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Fünf meistgekaufte Artikel](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Fünf meistgekaufte Artikel":::
 
 ## <a name="visualize-your-data"></a>Visualisieren Ihrer Daten  
 
@@ -286,7 +286,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    show(p)
    ```
 
-   ![Visualisierung der Kaufkonvertierungsrate](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Visualisierung der Kaufkonvertierungsrate":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

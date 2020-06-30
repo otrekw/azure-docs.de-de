@@ -2,142 +2,83 @@
 title: Migrieren von virtuellen VMware-Computern mit Agent-basierter Servermigration mit Azure Migrate
 description: Hier erfahren, wie Sie eine Agent-basierte Migration virtueller VMware-Computer mit Azure Migrate ausführen.
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b01665e6ddb78ff95714004f4dbe5c97574aa5fb
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535331"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769743"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
-In diesem Artikel erfahren Sie, wie Sie lokale VMware-VMs mithilfe der Agent-basierten Migration des Tools für die Azure Migrate-Servermigration zu Azure migrieren.
+In diesem Artikel wird gezeigt, wie Sie lokale VMware-VMs mithilfe des Tools [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) mit Agent zu Azure migrieren.  Sie können mit der Agent-basierten Migration auch VMware-VMs migrieren. [Vergleichen Sie](server-migrate-overview.md#compare-migration-methods) die Methoden.
 
 
-In diesem Tutorial lernen Sie Folgendes:
+ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Einrichten der Quellumgebung und Bereitstellen einer Azure Migrate-Replikationsappliance für die Agent-basierte Migration
-> * Einrichten der Zielumgebung für die Migration
-> * Richten Sie eine Replikationsrichtlinie ein.
-> * Aktivieren Sie die Replikation.
+> * Vorbereiten von Azure auf die Arbeit mit Azure Migrate
+> * Vorbereiten der Agent-basierten Migration Sie richten ein VMware-Konto ein, damit von Azure Migrate Computer für die Migration ermittelt werden können. Sie richten ein Konto ein, damit der Mobilitätsdienst-Agent auf zu migrierenden Computern installiert werden kann, und bereiten einen Computer vor, der als Replikationsappliance fungiert.
+> * Hinzufügen des Tools für die Azure Migrate-Servermigration
+> * Einrichten der Replikationsappliance
+> * Replizieren von VMs
 > * Führen Sie eine Testmigration aus, um sicherzustellen, dass alles wie erwartet funktioniert.
 > * Durchführen einer vollständigen Migration zu Azure
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Bewertungs- und Migrationsanleitungen für VMware.
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
-
-## <a name="before-you-begin"></a>Voraussetzungen
-
-Es empfiehlt sich, VMware-VMs mit der Azure Migrate-Serverbewertung zu bewerten, bevor Sie die VMs zu Azure migrieren. Gehen Sie zum Erstellen einer Bewertung wie folgt vor:
-
-1. Führen Sie die Schritte des Tutorials [Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure](tutorial-prepare-vmware.md) aus.
-2. Führen Sie anschließend die Schritte [dieses Tutorials](tutorial-assess-vmware.md) aus, um eine Azure Migrate-Appliance für die Bewertung einzurichten und die VMs zu ermitteln und zu bewerten.
-
-
-Wir empfehlen Ihnen zwar, die Bewertung auszuprobieren, aber dies ist nicht unbedingt erforderlich, bevor Sie VMs migrieren.
-
-## <a name="migration-methods"></a>Migrationsmethoden
-
-Sie können VMware-VMs zu Azure migrieren, indem Sie das Tool für die Azure Migrate-Servermigration verwenden. Dieses Tool verfügt über Optionen für die Migration von VMware-VMs:
-
-- Replikation ohne Agent: Migrieren von VMs, ohne dass darauf Software installiert werden muss
-- Agent-basierte Migration oder Replikation: Installieren eines Agents (genauer gesagt: des Mobility Services-Agents) auf der zu replizierenden VM
-
-Verwenden Sie die folgenden Artikel beim Treffen der Entscheidung, ob Sie die Migration mit oder ohne Agent durchführen möchten:
-
-- Informationen zu den VMware-Migrationsoptionen finden Sie [hier](server-migrate-overview.md).
-- [Vergleichen von Migrationsmethoden](server-migrate-overview.md#compare-migration-methods)
-- Eine Anleitung zum Ausprobieren der Migration ohne Agent finden Sie [hier](tutorial-migrate-vmware.md).
-
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüllt sein:
-
-1. [Machen Sie sich mit der Architektur der VMware-Migration vertraut.](migrate-architecture.md)
-2. Vergewissern Sie sich, dass Ihrem Azure-Konto die Rolle „Mitwirkender für virtuelle Computer“ zugewiesen ist, damit Sie über folgende Berechtigungen verfügen:
-
-    - Erstellen einer VM in der ausgewählten Ressourcengruppe
-    - Erstellen einer VM im ausgewählten virtuellen Netzwerk
-    - Schreiben auf einen verwalteten Azure-Datenträger 
-
-3. [Richten Sie ein Azure-Netzwerk ein](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Lokale Computer werden auf verwalteten Azure-Datenträgern repliziert. Wenn Sie für die Migration ein Failover auf Azure durchführen, werden auf der Grundlage dieser verwalteten Datenträger Azure-VMs erstellt und mit einem Azure-Netzwerk verknüpft, das Sie beim Einrichten der Migration angeben.
-
+Bevor Sie mit diesem Tutorial beginnen, sollten Sie sich [über die Agent-basierte VMware-Migrationsarchitektur informieren](migrate-architecture.md).
 
 ## <a name="prepare-azure"></a>Vorbereiten von Azure
 
-Wenn Sie bereits eine Bewertung mit der Azure Migrate-Serverbewertung ausgeführt haben, können Sie die Anweisungen in diesem Abschnitt überspringen, da Sie diese Schritte bereits ausgeführt haben. 
+Führen Sie die Aufgaben in der Tabelle durch, um Azure für die Agent-basierte Migration vorzubereiten.
 
-Falls Sie noch keine Bewertung ausgeführt haben, müssen Sie zunächst Azure-Berechtigungen einrichten, um eine Migration mit der Azure Migrate-Servermigration durchführen zu können.
-
-- **Erstellen eines Projekts:** Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Azure Migrate-Projekts. 
-- **Registrieren der Azure Migrate-Replikationsappliance:** Die Replikationsappliance erstellt und registriert eine Azure Active Directory-App in Ihrem Azure-Konto. Delegieren Sie hierfür die Berechtigungen.
-- **Erstellen eines Schlüsseltresors:** Für die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration erstellt Azure Migrate eine Key Vault-Instanz in der Ressourcengruppe, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Für die Tresorerstellung benötigen Sie Rollenzuweisungsberechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet. 
-
+**Aufgabe** | **Details**
+--- | ---
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum Erstellen eines Projekts Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
+**Überprüfen der Azure-Kontoberechtigungen** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines virtuellen Computers sowie zum Schreiben auf einen verwalteten Azure-Datenträger.
+**Einrichten eines Azure-Netzwerks** | Richten Sie ein Netzwerk ein, dem Azure-VMs nach der Migration beitreten können.
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung
+Falls Sie noch kein Azure Migrate-Projekt besitzen, sollten Sie überprüfen, ob Sie über die erforderlichen Berechtigungen für die Erstellung verfügen.
+
 
 1. Öffnen Sie im Azure-Portal das Abonnement, und wählen Sie **Zugriffssteuerung (IAM)** aus.
 2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
-3. Sie sollten über die Berechtigung **Mitwirkender** oder **Besitzer** verfügen.
+3. Vergewissern Sie sich, dass Sie über die Berechtigung **Mitwirkender** oder **Besitzer** verfügen.
+
     - Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements.
     - Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Rolle zuzuweisen.
+    
+### <a name="assign-azure-account-permissions"></a>Zuweisen der Azure-Kontoberechtigungen
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Zuweisen von Berechtigungen zum Registrieren der Replikationsappliance
+Weisen Sie dem Konto die Rolle „Mitwirkender für virtuelle Computer“ zu, damit Sie über die folgenden Berechtigungen verfügen:
 
-Delegieren Sie bei der Agent-basierten Migration Berechtigungen für die Azure Migrate-Servermigration, um die Erstellung und Registrierung einer Azure AD-App in Ihrem Konto zu ermöglichen. Berechtigungen können wie folgt zugewiesen werden:
-
-- Ein Mandantenadministrator/globaler Administrator kann Benutzern unter dem Mandanten Berechtigungen zum Erstellen und Registrieren von Azure AD-Apps erteilen.
-- Ein Mandantenadministrator/globaler Administrator kann dem Konto die Rolle „Anwendungsentwickler“ (die über die Berechtigungen verfügt) zuweisen.
-
-Beachten Sie Folgendes:
-
-- Die Apps verfügen nur über die oben beschriebenen Zugriffsberechtigungen für das Abonnement.
-- Sie benötigen diese Berechtigungen nur, wenn Sie eine neue Replikationsappliance registrieren. Nach Einrichtung der Replikationsappliance können die Berechtigungen wieder entfernt werden. 
+- Erstellen einer VM in der ausgewählten Ressourcengruppe
+- Erstellen einer VM im ausgewählten virtuellen Netzwerk
+- Schreiben auf einen verwalteten Azure-Datenträger 
 
 
-#### <a name="grant-account-permissions"></a>Erteilen von Kontoberechtigungen
+### <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
-Der Mandantenadministrator/globale Administrator kann Berechtigungen wie folgt erteilen:
+[Richten Sie ein Azure-Netzwerk ein](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Lokale Computer werden auf verwalteten Azure-Datenträgern repliziert. Wenn Sie für die Migration ein Failover zu Azure durchführen, werden aus diesen verwalteten Datenträgern Azure-VMs erstellt und mit dem von Ihnen eingerichteten Azure-Netzwerk verknüpft.
 
-1. In Azure AD muss der globale oder der Mandantenadministrator zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** navigieren.
-2. Der Administrator muss **App-Registrierungen** auf **Ja** festlegen.
+## <a name="prepare-for-migration"></a>Vorbereiten der Migration
 
-    ![Azure AD-Berechtigungen](./media/tutorial-prepare-vmware/aad.png)
+Überprüfen Sie die Supportanforderungen und die Berechtigungen, und bereiten Sie die Bereitstellung einer Replikationsappliance vor. 
 
-> [!NOTE]
-> Dies ist eine Standardeinstellung, die nicht vertraulich ist. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+### <a name="prepare-an-account-to-discover-vms"></a>Vorbereiten eines Kontos für die Ermittlung von VMs
 
-#### <a name="assign-application-developer-role"></a>Zuweisen der Rolle „Anwendungsentwickler“ 
+Die Azure Migrate-Servermigration benötigt Zugriff auf VMware-Server, um die zu migrierenden VMs ermitteln zu können. Erstellen Sie das Konto wie folgt:
 
-Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
-
-## <a name="assign-permissions-to-create-key-vault"></a>Zuweisen von Berechtigungen für die Key Vault-Erstellung
-
-Gehen Sie wie folgt vor, um Rollenzuweisungsberechtigungen für die Ressourcengruppe zuzuweisen, in der sich das Azure Migrate-Projekt befindet:
-
-1. Wählen Sie im Azure-Portal unter der Ressourcengruppe die Option **Zugriffssteuerung (IAM)** aus.
-2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen. Sie benötigen die Berechtigung **Besitzer** (oder die Berechtigungen **Mitwirkender** und **Benutzerzugriffsadministrator**).
-3. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, müssen Sie sie beim Besitzer der Ressourcengruppe anfordern. 
-
-
-## <a name="prepare-on-premises-vmware"></a>Lokales Vorbereiten von VMware
-
-### <a name="prepare-an-account-for-automatic-discovery"></a>Vorbereiten eines Kontos für die automatische Ermittlung
-
-Die Azure Migrate-Servermigration muss auf VMware-Server zugreifen können, um Folgendes zu ermöglichen:
-
-- Automatisches Ermitteln von VMs. Dafür ist mindestens ein Konto mit Lesezugriff erforderlich.
-- Orchestrieren von Replikation, Failover und Failback. Sie benötigen ein Konto, das berechtigt ist, Vorgänge wie das Erstellen und Entfernen von Datenträgern sowie das Einschalten virtueller Computer durchzuführen.
-
-Erstellen Sie das Konto wie folgt:
-
-1. Erstellen Sie zum Verwenden eines dedizierten Kontos eine Rolle auf vCenter-Ebene. Geben Sie der Rolle einen Namen wie **Azure_Site_Recovery**.
+1. Erstellen Sie zum Verwenden eines dedizierten Kontos eine Rolle auf vCenter-Ebene. Geben Sie der Rolle einen Namen, z. B. **Azure_Migrate**.
 2. Weisen Sie der Rolle die Berechtigungen, die in der folgenden Tabelle aufgeführt sind, zu.
 3. Erstellen Sie einen Benutzer auf dem vCenter-Server oder vSphere-Host. Weisen Sie dem Benutzer die Rolle zu.
 
@@ -146,7 +87,7 @@ Erstellen Sie das Konto wie folgt:
 **Aufgabe** | **Rolle/Berechtigungen** | **Details**
 --- | --- | ---
 **VM-Ermittlung** | Mindestens ein Benutzer mit Lesezugriff<br/><br/> Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit dem Objekt **Propagate to child** (An untergeordnetes Element weitergeben) zu.
-**Vollständige Replikation, Failover, Failback** |  Erstellen Sie eine Rolle („Azure_Site_Recovery“) mit den erforderlichen Berechtigungen, und weisen Sie die Rolle dann einem VMware-Benutzer oder einer VMware-Gruppe zu.<br/><br/> Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=Azure_Site_Recovery<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit dem Objekt **Propagate to child** (An untergeordnetes Element weitergeben) zu.
+**Replikation** |  Erstellen Sie eine Rolle („Azure_Site_Recovery“) mit den erforderlichen Berechtigungen, und weisen Sie die Rolle dann einem VMware-Benutzer oder einer VMware-Gruppe zu.<br/><br/> Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=Azure_Site_Recovery<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit dem Objekt **Propagate to child** (An untergeordnetes Element weitergeben) zu.
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Vorbereiten eines Kontos für die Installation des Mobility Services
 
@@ -163,23 +104,43 @@ Bereiten Sie das Konto wie folgt vor:
 3. Bereiten Sie für Linux-VMs ein root-Konto auf dem Linux-Quellserver vor.
 
 
+### <a name="prepare-a-machine-for-the-replication-appliance"></a>Vorbereiten eines Computers für die Replikationsappliance
+
+Die Appliance wird verwendet, um Computer in Azure zu replizieren. Bei der Appliance handelt es sich um eine einzelne hochverfügbare lokale VMware-VM, auf der folgende Komponenten gehostet werden:
+
+- **Konfigurationsserver**: Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
+- **Prozessserver** Der Prozessserver fungiert als Replikationsgateway. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an ein Cachespeicherkonto in Azure. Der Prozessserver installiert auch den Mobility Service-Agent auf VMs, die Sie replizieren möchten, und führt eine automatische Ermittlung der lokalen VMware-VMs durch.
+
+Bereiten Sie die Appliance wie folgt vor:
+
+- [Lesen Sie die Applianceanforderungen](migrate-replication-appliance.md#appliance-requirements). Im Allgemeinen richten Sie die Replikationsappliance als VMware-VM ein, indem Sie eine heruntergeladene OVA-Datei verwenden. Mit der Vorlage wird eine Appliance erstellt, die alle Anforderungen erfüllt.
+- MySQL muss auf der Appliance installiert sein. [Informieren Sie sich über die Installationsmethoden](migrate-replication-appliance.md#mysql-installation).
+- Lesen Sie die Informationen zu den [URLs für die öffentliche Cloud](migrate-replication-appliance.md#url-access) und den [Azure Government-URLs](migrate-replication-appliance.md#azure-government-url-access), auf die der Appliancecomputer Zugriff haben muss.
+- [Informieren Sie sich über die Ports](migrate-replication-appliance.md#port-access), auf die der Replikationsappliance-Computer Zugriff haben muss.
+
+
+
 ### <a name="check-vmware-requirements"></a>Überprüfen der VMware-Anforderungen
 
 Vergewissern Sie sich, dass die VMware-Server und -VMs die Anforderungen für die Migration zu Azure erfüllen. 
 
+1. [Überprüfen](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based) Sie die Anforderungen für VMware-Server.
+2. [Überprüfen](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based) Sie die VM-Anforderungen für die Migration.
+3. Überprüfen Sie die Azure-Einstellungen. Lokale VMs, die Sie zu Azure replizieren möchten, müssen die [Azure-VM-Anforderungen](migrate-support-matrix-vmware-migration.md#azure-vm-requirements) erfüllen.
+4. Auf VMs sind einige Änderungen erforderlich, bevor Sie sie zu Azure migrieren.
+    - Es ist wichtig, diese Änderungen vorzunehmen, bevor Sie mit der Migration beginnen. Wenn Sie den virtuellen Computer migrieren, bevor Sie die Änderung vorgenommen haben, wird der virtuelle Computer in Azure unter Umständen nicht gestartet.
+    - Überprüfen Sie die [Windows](prepare-for-migration.md#windows-machines)- und [Linux](prepare-for-migration.md#linux-machines)-Änderungen, die Sie vornehmen müssen.
 
 > [!NOTE]
 > Die Agent-basierte Migration mit der Azure Migrate-Servermigration basiert auf Features des Azure Site Recovery-Diensts. Einige Anforderungen sind daher ggf. mit der Site Recovery-Dokumentation verknüpft.
 
-1. [Überprüfen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Sie die Anforderungen für VMware-Server.
-2. [Überprüfen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) Sie die VM-Unterstützungsanforderungen für die Migration.
-3. Überprüfen Sie die VM-Einstellungen. Lokale VMs, die Sie zu Azure replizieren möchten, müssen die [Azure-VM-Anforderungen](migrate-support-matrix-vmware-migration.md#azure-vm-requirements) erfüllen.
 
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>Hinzufügen des Tools für die Azure Migrate-Servermigration
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Hinzufügen des Tools für die Azure Migrate-Servermigration
+Falls Sie noch nicht über ein Azure Migrate-Projekt verfügen, sollten Sie es [jetzt einrichten](how-to-add-tool-first-time.md) und das Tool für die Servermigration hinzufügen.
 
-Falls Sie das Tutorial zur Bewertung von VMware-VMs noch nicht absolviert haben, richten Sie ein Azure Migrate-Projekt ein, und fügen Sie anschließend das Tool für die Azure Migrate-Servermigration hinzu:
+Wenn Sie bereits über ein Projekt verfügen, können Sie das Tool wie folgt hinzufügen:
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Azure Migrate**.
 2. Wählen Sie unter **Dienste** die Option **Azure Migrate** aus.
@@ -193,7 +154,7 @@ Falls Sie das Tutorial zur Bewertung von VMware-VMs noch nicht absolviert haben,
 
 1. Klicken Sie unter **Server ermitteln, bewerten und migrieren** auf **Tools hinzufügen**.
 2. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
-3. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Klicken Sie anschließend auf **Weiter**. Beachten Sie die unterstützten geografischen Regionen für die [öffentliche Cloud](migrate-support-matrix.md#supported-geographies-public-cloud) und für [Azure Government](migrate-support-matrix.md#supported-geographies-azure-government)-Clouds.
+3. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Klicken Sie anschließend auf **Weiter**. Beachten Sie die unterstützten geografischen Regionen für [öffentliche](migrate-support-matrix.md#supported-geographies-public-cloud) und [behördliche Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
     ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
@@ -205,16 +166,7 @@ Falls Sie das Tutorial zur Bewertung von VMware-VMs noch nicht absolviert haben,
 
 ## <a name="set-up-the-replication-appliance"></a>Einrichten der Replikationsappliance
 
-Der erste Schritt bei der Migration besteht darin, die Replikationsappliance einzurichten. Bei der Replikationsappliance handelt es sich um eine einzelne hochverfügbare lokale VMware-VM, auf der folgende Komponenten gehostet werden:
-
-- **Konfigurationsserver**: Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
-- **Prozessserver** Der Prozessserver fungiert als Replikationsgateway. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an ein Cachespeicherkonto in Azure. Der Prozessserver installiert auch den Mobility Service-Agent auf VMs, die Sie replizieren möchten, und führt eine automatische Ermittlung der lokalen VMware-VMs durch.
-
-
-Sie können die Replikationsappliance auf verschiedene Weise einrichten.
-
-- Richten Sie sie mit einer heruntergeladenen OVA-Vorlage (Open Virtualization Application) ein. Anschließend importieren Sie die Vorlage in VMware und erstellen die Replikationsappliance-VM. Diese Methode wird in diesem Tutorial verwendet.
-- Richten Sie sie mit einem Skript ein.
+In diesem Verfahren wird beschrieben, wie Sie die Appliance mit einer heruntergeladenen OVA-Vorlage (Open Virtualization Application) einrichten. Falls diese Methode für Sie nicht möglich ist, können Sie die Appliance auch [mit einem Skript](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) einrichten. 
 
 ### <a name="download-the-replication-appliance-template"></a>Herunterladen der Vorlage für die Replikationsappliance
 
@@ -229,14 +181,12 @@ Gehen Sie wie folgt vor, um die Vorlage herunterzuladen:
 4. Wählen Sie unter **Wie möchten Sie die Migration durchführen?** die Option **Mit der Agent-basierten Replikation** aus.
 5. Wählen Sie unter **Zielregion** die Azure-Region aus, zu der Sie die Computer migrieren möchten.
 6. Aktivieren Sie das Kontrollkästchen **Bestätigen Sie, dass die Zielregion für die Migration „<Name der Region>“ lautet**.
-7. Klicken Sie auf **Ressourcen erstellen**. Daraufhin wird im Hintergrund ein Azure Site Recovery-Tresor erstellt.
-    - Nach dem Klicken auf diese Schaltfläche kann die Zielregion für dieses Projekt nicht mehr geändert werden.
-    - Alle anschließenden Migrationen erfolgen zu dieser Region.
+7. Klicken Sie auf **Ressourcen erstellen**. Daraufhin wird im Hintergrund ein Azure Site Recovery-Tresor erstellt. Nachdem Sie auf diese Schaltfläche geklickt haben, können Sie die Zielregion für dieses Projekt nicht mehr ändern, und alle nachfolgenden Migrationen werden zu dieser Region durchgeführt.
 
     ![Erstellen eines Recovery Services-Tresors](./media/tutorial-migrate-vmware-agent/create-resources.png)
 
 8. Wählen Sie unter **Möchten Sie eine neue Replikationsappliance installieren oder ein vorhandenes Setup horizontal hochskalieren?** die Option **Replikationsappliance installieren**.
-9. Klicken Sie auf **Herunterladen**, um die Replikationsappliance herunterzuladen. Daraufhin wird eine OVF-Vorlage heruntergeladen, auf deren Grundlage Sie eine neue VMware-VM erstellen, die die Appliance ausführt.
+9. Klicken Sie auf **Download**. Eine OVF-Vorlage wird heruntergeladen.
     ![Herunterladen der OVA-Vorlage](./media/tutorial-migrate-vmware-agent/download-ova.png)
 10. Notieren Sie sich den Namen der Ressourcengruppe und des Recovery Services-Tresors. Sie werden bei der Appliancebereitstellung benötigt.
 
@@ -257,13 +207,12 @@ Die heruntergeladene OVF-Vorlage muss in VMware importiert werden, um die Replik
    > [!TIP]
    > Wenn Sie einen weiteren Netzwerkadapter hinzufügen möchten, deaktivieren Sie **Power on after deployment** (Nach Bereitstellung einschalten) > **Fertig stellen**. Standardmäßig enthält die Vorlage einen einzelnen Netzwerkadapter. Weitere NICs können nach der Bereitstellung hinzugefügt werden.
 
-### <a name="kick-off-replication-appliance-setup"></a>Starten der Einrichtung der Replikationsappliance
+### <a name="start-appliance-setup"></a>Starten der Einrichtung der Appliance
 
-1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients an.
-2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
-3. Melden Sie sich nach Abschluss der Installation unter Verwendung des Administratorkennworts als Administrator bei der VM an.
-4. Bei der ersten Anmeldung wird innerhalb weniger Sekunden das Setuptool für die Replikationsappliance (Azure Site Recovery-Konfigurationstool) gestartet.
-5. Geben Sie einen Namen ein, um die Appliance bei der Azure Migrate-Servermigration zu registrieren. Klicken Sie dann auf **Weiter**.
+1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren.
+2. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
+3. Melden Sie sich nach Abschluss der Installation unter Verwendung des Administratorkennworts als Administrator bei der VM an. Bei der ersten Anmeldung wird innerhalb weniger Sekunden das Setuptool für die Replikationsappliance (Azure Site Recovery-Konfigurationstool) gestartet.
+5. Geben Sie einen Namen ein, um die Appliance für die Servermigration zu registrieren. Klicken Sie dann auf **Weiter**.
 6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach der Verbindungsherstellung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden.
 7. Warten Sie, bis das Tool eine Azure AD-App zur Identifizierung der Appliance registriert hat. Die Appliance wird neu gestartet.
 1. Melden Sie sich erneut am Computer an. Der Assistent für die Konfigurationsserververwaltung wird innerhalb weniger Sekunden automatisch gestartet.
@@ -272,7 +221,7 @@ Die heruntergeladene OVF-Vorlage muss in VMware importiert werden, um die Replik
 
 Schließen Sie die Einrichtung und Registrierung der Replikationsappliance ab.
 
-1. Wählen Sie im Assistenten für die Konfigurationsserververwaltung die Option **Konnektivität einrichten** aus.
+1. Wählen Sie beim Einrichten der Appliance die Option **Konnektivität einrichten** aus.
 2. Wählen Sie die NIC aus, die die Replikationsappliance für die VM-Ermittlung sowie für eine Pushinstallation des Mobility-Diensts auf Quellcomputern verwendet. (Standardmäßig ist nur eine NIC verfügbar.)
 3. Wählen Sie die NIC aus, die die Replikationsappliance für die Konnektivität mit Azure verwendet. Klicken Sie dann auf **Speichern**. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden.
 4. Falls sich die Appliance hinter einem Proxyserver befindet, müssen Proxyeinstellungen angegeben werden.
@@ -282,7 +231,7 @@ Schließen Sie die Einrichtung und Registrierung der Replikationsappliance ab.
 7. Klicken Sie auf **VMware PowerCLI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt durchführen. Klicken Sie anschließend auf **Weiter**.
 8. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor der Vorgang fortgesetzt wird.
 9. Geben Sie unter **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts ein, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port ein, über den der Server lauscht. Geben Sie einen Anzeigenamen ein, der für den VMware-Server im Tresor verwendet werden soll.
-10. Geben Sie die Anmeldeinformationen für das Konto ein, das Sie für die VMware-Ermittlung [erstellt](#prepare-an-account-for-automatic-discovery) haben. Wählen Sie **Hinzufügen** > **Weiter** aus.
+10. Geben Sie die Anmeldeinformationen für das Konto ein, das Sie für die VMware-Ermittlung [erstellt](#prepare-an-account-to-discover-vms) haben. Wählen Sie **Hinzufügen** > **Weiter** aus.
 11. Geben Sie beim Aktivieren der VM-Replikation unter **Anmeldeinformationen für virtuelle Computer konfigurieren** die Anmeldeinformationen ein, die Sie für die Pushinstallation des Mobility-Diensts [erstellt](#prepare-an-account-for-mobility-service-installation) haben.  
     - Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten.
     - Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.
@@ -292,12 +241,13 @@ Schließen Sie die Einrichtung und Registrierung der Replikationsappliance ab.
 Nachdem die Replikationsappliance registriert wurde, stellt die Azure Migrate-Serverbewertung unter Verwendung der angegebenen Einstellungen eine Verbindung mit VMware-Servern her und ermittelt VMs. Die ermittelten VMs werden unter **Verwalten** > **Ermittelte Elemente** auf der Registerkarte **Sonstiges** angezeigt.
 
 
+
 ## <a name="replicate-vms"></a>Replizieren von VMs
 
-Wählen Sie nun virtuelle Computer für die Migration aus.
+Wählen Sie virtuelle Computer für die Migration aus.
 
 > [!NOTE]
-> Sie können bis zu zehn Computer gleichzeitig replizieren. Müssen Sie mehr Computer replizieren, führen Sie die Replikation in Batches mit jeweils zehn Computern durch.
+> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie eine größere Zahl replizieren müssen, können Sie jeweils Zehnergruppen verwenden.
 
 1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 
@@ -325,7 +275,7 @@ Wählen Sie nun virtuelle Computer für die Migration aus.
     - die Option **Nein** aus, falls Sie den Azure-Hybridvorteil nicht anwenden möchten. Klicken Sie dann auf **Weiter**.
     - Wählen Sie **Ja** aus, wenn Sie über Windows Server-Computer verfügen, die durch aktive Software Assurance- oder Windows Server-Abonnements abgedeckt sind, und den Vorteil auf die zu migrierenden Computer anwenden möchten. Klicken Sie dann auf **Weiter**.
 
-12. Überprüfen Sie unter **Compute** den VM-Namen, die Größe, den Typ des Betriebssystemdatenträgers und die Verfügbarkeitsgruppe. Die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) erfüllen.
+12. Überprüfen Sie unter **Compute** den VM-Namen, die Größe, den Typ des Betriebssystemdatenträgers und die Verfügbarkeitsgruppe. Die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-vmware-migration.md#azure-vm-requirements) erfüllen.
 
     - **VM-Größe**: Bei Verwendung von Bewertungsempfehlungen enthält die Dropdownliste für die VM-Größe die empfohlene Größe. Andernfalls wählt Azure Migrate eine Größe basierend auf der höchsten Übereinstimmung im Azure-Abonnement aus. Alternativ können Sie unter **Azure-VM-Größe** manuell eine Größe auswählen. 
     - **Betriebssystemdatenträger**: Geben Sie den Betriebssystemdatenträger (Startdatenträger) für die VM an. Der Betriebssystemdatenträger enthält den Bootloader und das Installationsprogramm des Betriebssystems. 
@@ -341,21 +291,20 @@ Wählen Sie nun virtuelle Computer für die Migration aus.
 > Sie können die Replikationseinstellungen vor Beginn der Replikation jederzeit unter **Verwalten** > **Aktuell replizierte Computer** aktualisieren. Die Einstellungen können nach dem Beginn der Replikation nicht mehr geändert werden.
 
 
-
-
 ## <a name="track-and-monitor"></a>Nachverfolgen und Überwachen
 
-- Wenn Sie auf **Replizieren** klicken, beginnt die Durchführung des Auftrags „Replikation starten“. 
+1. Verfolgen Sie den Auftragsstatus in den Portalbenachrichtigungen. 
+
+    ![Nachverfolgen des Auftrags](./media/tutorial-migrate-vmware-agent/jobs.png)
+    
+2. Klicken Sie zum Überwachen des Replikationsstatus auf **Server werden repliziert** (in **Azure Migrate: Servermigration**).
+
+    ![Überwachen der Replikation](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
+
+Die Replikation wird wie folgt durchgeführt:
 - Nachdem der Auftrag „Replikation starten“ erfolgreich abgeschlossen wurde, beginnen die Computer mit der ersten Replikation in Azure.
 - Nach Abschluss der ersten Replikation beginnt die Deltareplikation. Inkrementelle Änderungen an lokalen Datenträgern werden regelmäßig auf den Replikatdatenträgern in Azure repliziert.
 
-
-Sie haben die Möglichkeit, den Auftragsstatus über die Portalbenachrichtigungen nachzuverfolgen.
-
-![Nachverfolgen des Auftrags](./media/tutorial-migrate-vmware-agent/jobs.png)
-
-Sie können den Replikationsstatus überwachen, indem Sie auf **Server werden repliziert** klicken (unter **Azure Migrate: Servermigration**).
-![Überwachen der Replikation](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
 
 ## <a name="run-a-test-migration"></a>Ausführen einer Testmigration
 

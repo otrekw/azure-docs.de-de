@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dcd06e1b3c201a10e656b6752cfa60c0c7d39c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765247"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Tutorial: Integrieren von IBM Digital Business Automation on Cloud in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -81,7 +81,21 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
+    
+    a. Klicken Sie auf **Metadatendatei hochladen**.
+
+    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
+
+    c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte **Bezeichner** und **Antwort-URL** im Abschnitt „IBM Digital Business Automation on Cloud“ automatisch aufgefüllt:
+
+    > [!Note]
+    > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
+
+    > [!Note]
+    > Kunden können die Metadatendatei für Ihr Cloud-Abonnement vom [DBAoC DevOps-Team](mailto:supportbpmoncloud@us.ibm.com) erhalten.
+
+1. Wenn Sie keine **Metadatendatei des Dienstanbieters** haben, geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in den folgenden Felder ein, wenn Sie die Anwendung im **IdP**-initiierten Modus konfigurieren möchten:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.automationcloud.ibm.com/isam/sps/<TENANT>/saml20`
 

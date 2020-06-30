@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124462"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262615"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Massenladen mit Synapse SQL
 
@@ -28,7 +28,7 @@ Das Massenladen von Daten unter Verwendung von SQL-Pools ist jetzt ganz einfach 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Für den Zugriff auf den Arbeitsbereich müssen Sie mindestens über die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“ für das ADLS Gen2-Konto verfügen.
+- Dieser Assistent generiert eine COPY-Anweisung, die AAD-Pass-Through für die Autorisierung verwendet. Der [AAD-Benutzer muss Zugriff](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) auf den Arbeitsbereich mindestens über die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“ für das ADLS Gen2-Konto haben.
 
 - Falls Sie als Ziel für den Ladevorgang eine neue Tabelle erstellen, müssen Sie über die erforderlichen [Berechtigungen für die Verwendung der COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) sowie über Berechtigungen für die Tabellenerstellung verfügen.
 

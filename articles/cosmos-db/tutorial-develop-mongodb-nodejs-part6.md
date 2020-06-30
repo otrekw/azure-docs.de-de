@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184774"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118966"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
 
@@ -40,7 +40,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     Wie Sie sehen, wird in Zeile 7 von „routes.js“ die Funktion `getHeroes` in Zeile 5 von **hero.service.js** aufgerufen.  Die gleiche Zuordnung muss für die Post-, Put- und Delete-Funktionen erstellt werden. 
 
-    ![„routes.js“ und „hero.service.js“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code":::
     
     Kümmern wir uns zunächst um den Code für den hero-Dienst. 
 
@@ -88,11 +88,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu `http://localhost:3000`, um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
 
-    ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität":::
 
 7. Fügen Sie einen neuen Helden hinzu, indem Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen) wählen. Geben Sie die ID „999“, den Namen „Fred“ und den Spruch „Hello“ ein, und wählen Sie anschließend **Speichern**. Auf der Registerkarte sehen Sie, dass Sie eine POST-Anforderung für einen neuen Helden gesendet haben. 
 
-    ![Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen":::
 
     Im nächsten Schritt fügen wir der App die Put- und die Delete-Funktion hinzu.
 
@@ -177,11 +177,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     Nun können Sie die ID auf der Registerkarte „Netzwerk“ auswählen, um die Nutzlast anzuzeigen. In der Nutzlast sehen Sie, dass der Spruch jetzt „Bye“ lautet.
 
-    ![Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast"::: 
 
     Sie können auch einen der Helden über die Benutzeroberfläche löschen und sich ansehen, wie lange die Ausführung des Löschvorgangs dauert. Wählen Sie hierzu für den Helden „Fred“ die Schaltfläche „Delete“ (Löschen).
 
-    ![Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen"::: 
 
     Wenn Sie die Seite aktualisieren, wird auf der Registerkarte „Netzwerk“ angezeigt, wie lange das Abrufen der Helden dauert. Die Zeiten sind zwar kurz, vieles hängt jedoch davon ab, wo auf der Welt sich Ihre Daten befinden und ob sie in einer Region in der Nähe Ihrer Benutzer georepliziert werden. Weitere Informationen zur Georeplikation finden Sie im nächsten Tutorial, das in Kürze veröffentlicht wird.
 

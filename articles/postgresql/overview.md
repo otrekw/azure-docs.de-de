@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74481666"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213600"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler. Er basiert auf der Communityversion der Open-Source-[PostgreSQL](https://www.postgresql.org/)-Datenbank-Engine und wird mit zwei Bereitstellungsoptionen angeboten: „Einzelserver“ und „Hyperscale (Citus)“
@@ -52,6 +52,6 @@ Weitere Kontaktmöglichkeiten:
 - Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Auf der Seite mit der [Preisgestaltung](https://azure.microsoft.com/pricing/details/postgresql/) finden Sie Kostenvergleiche und Rechner.
+- Auf der Seite mit der [Preisgestaltung](https://azure.microsoft.com/pricing/details/postgresql/) finden Sie Kostenvergleiche und Rechner. Sowohl die Bereitstellungsoption „Einzelserver“ als auch „Hyperscale (Citus)“ bieten ebenfalls Rabatte für vorausbezahlte reservierte Instanzen. Weitere Informationen finden Sie auf den Seiten zu [RI-Preise für „Einzelserver“](concept-reserved-pricing.md) und [RI-Preise für „Hyperscale“](concepts-hyperscale-reserved-pricing.md).
 - Erstellen Sie Ihre erste [Einzelserverinstanz](./quickstart-create-server-database-portal.md) von Azure Database for PostgreSQL oder [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md)
 - Erstellen Ihrer ersten App in Python, PHP, Ruby, C\#, Java oder Node.js: [Verbindungsbibliotheken](./concepts-connection-libraries.md)

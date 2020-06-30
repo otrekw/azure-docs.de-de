@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652209"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126228"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie
 
@@ -60,10 +60,10 @@ Die Objekt-ID für Anwendungen entspricht dem zugeordneten Dienstprinzipal. Ausf
 
 Es gibt zwei Möglichkeiten zum Abrufen einer Objekt-ID für eine Anwendung.  Die erste Möglichkeit besteht darin, Ihre Anwendung bei Azure Active Directory zu registrieren. Führen Sie dafür die Schritte aus, die unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md) beschrieben sind. Nach Abschluss der Registrierung wird die Objekt-ID als „Anwendungs-ID (Client)“ aufgeführt.
 
-Die zweite Möglichkeit besteht darin, einen Dienstprinzipal in einem Terminalfenster zu erstellen. Verwenden Sie bei der Azure CLI den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac), und geben Sie einen eindeutigen Dienstprinzipalnamen für den Flag „-n“ im Format „http://&lt;Mein-eindeutiger-Dienstprinzipal-Name&gt;“ an.
+Die zweite Möglichkeit besteht darin, einen Dienstprinzipal in einem Terminalfenster zu erstellen. Verwenden Sie bei der Azure CLI den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac), und geben Sie einen eindeutigen Dienstprinzipalnamen für den Flag „-n“ im Format „http://&lt;Mein-eindeutiger-Dienstprinzipalname&gt;“ an.
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 Die Objekt-ID wird in der Ausgabe als `clientID` aufgeführt.
@@ -72,7 +72,7 @@ Verwenden Sie bei Verwendung von Azure PowerShell das Cmdlet [New-AzADServicePri
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 Die Objekt-ID wird in der Ausgabe als `Id` (nicht `ApplicationId`) aufgeführt.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bb711dc67df51edc569f23bd1e6c54eef55012d2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647710"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115386"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -44,7 +44,7 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-
 
 *Die Struktur eines Cosmos DB-Kontos.* Ein Cosmos DB-*Konto* enthält unabhängig von der API oder der Programmiersprache null oder mehr *Datenbanken*, eine *Datenbank* (DB) enthält null oder mehr *Container*, und ein *Container* enthält null oder mehr Elemente, wie im folgenden Diagramm zu sehen:
 
-![Entitäten in einem Azure Cosmos-Konto](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entitäten in einem Azure Cosmos-Konto" border="false":::
 
 Weitere Informationen zu Datenbanken, Containern und Elementen finden Sie [hier](databases-containers-items.md). Einige wichtige Eigenschaften werden auf der Containerebene definiert. Hierzu zählen unter anderem der *bereitgestellte Durchsatz* und der *Partitionsschlüssel*. 
 

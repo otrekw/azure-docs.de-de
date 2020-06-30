@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669901"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297940"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
 
-In diesem Artikel wird gezeigt, wie Sie eine [Hugo](https://gohugo.io/)-Webanwendung erstellen und in [Azure Static Web Apps](overview.md) bereitstellen. Das Ergebnis ist eine neue Azure Static Web Apps-Instanz mit der zugehörigen GitHub Actions-Instanz, mit der Sie steuern können, wie die App erstellt und veröffentlicht wird.
+In diesem Artikel wird gezeigt, wie Sie eine [Hugo](https://gohugo.io/)-Webanwendung erstellen und in [Azure Static Web Apps](overview.md) bereitstellen. Das Ergebnis ist eine neue Azure Static Web Apps-Instanz mit zugehöriger GitHub Actions-Instanz, mit der Sie steuern können, wie die App erstellt und veröffentlicht wird.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -131,7 +131,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozess zum Erstellen der App verwendet werden. Mit den folgenden Einstellungen wird die GitHub Actions-Workflowdatei konfiguriert.
 
-1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten.
+1. Klicken Sie auf die Schaltfläche **Weiter: Erstellen >** , um die Buildkonfiguration zu bearbeiten
 
 1. Legen Sie _App-Speicherort_ auf **/** fest.
 
@@ -144,42 +144,6 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen**, um sicherzustellen, dass alle Details stimmen.
 
 1. Klicken Sie auf **Erstellen**, um mit der Erstellung der Azure Static Web Apps-Instanz zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
-
-1. Navigieren Sie nach Abschluss der Bereitstellung zu Ihrem Terminal, und pullen Sie den Commit mit dem GitHub Actions-Vorgang auf Ihren Computer.
-
-   ```bash
-   git pull
-   ```
-
-1. Öffnen Sie die Hugo-App in einem Text-Editor, und öffnen Sie anschließend die Datei _.github/workflows/azure-pages-<WORKFLOWNAME>.yml_.
-
-1. Ersetzen Sie die Zeile `- uses: actions/checkout@v2` (Zeile 18) durch Folgendes, um die Hugo-Anwendung zu erstellen: Wenn Sie die erweiterte Hugo-Anwendung benötigen, heben Sie die Auskommentierung für `extended: true` auf.
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   Weitere Informationen zum Installieren des GitHub Actions-Runners finden Sie unter [peaceiris/Actions-Hugo](https://github.com/peaceiris/actions-hugo).
-
-1. Committen Sie den aktualisierten Workflow, und übertragen Sie ihn per Push auf GitHub.
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. Warten Sie, bis der GitHub Actions-Vorgang abgeschlossen wurde.
 

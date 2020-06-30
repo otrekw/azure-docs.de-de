@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858156"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114689"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
 
@@ -84,7 +84,7 @@ Nun erfahren Sie, wie Sie ein einfaches „Hallo Welt“-Node.js-Projekt mithilf
 
 1. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu „`http://localhost:3000`“ navigieren.
    
-   ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="Kennenlernen von Node.js – Screenshot der „Hello World“-Anwendung in einem Browserfenster":::
 
    Beenden Sie die Anwendung durch Drücken von STRG+C im Terminalfenster, und wählen Sie **J** aus, um den Batchauftrag zu beenden.
 
@@ -438,7 +438,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie lokal ausführen, inde
 
 1. Nun können Sie die Anwendung auf Ihrem lokalen Computer testen. Führen Sie dazu im Terminal `npm start` aus, um Ihre Anwendung zu starten, und aktualisieren Sie anschließend die Browserseite `http://localhost:3000`. Die Seite sollte wie im folgenden Screenshot aussehen:
    
-    ![Screenshot der Anwendung "Meine Aufgabenliste" in einem Browserfenster](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Screenshot der Anwendung „Meine Aufgabenliste“ in einem Browserfenster":::
 
     > [!TIP]
     > Sollte eine Fehlermeldung mit einem Hinweis auf den Einzug in der Datei „layout.jade“ oder „index.jade“ ausgegeben werden, vergewissern Sie sich, dass die ersten beiden Zeilen der beiden Dateien ohne Leerzeichen linksbündig ausgerichtet sind. Sollten sich vor den ersten beiden Zeilen Leerzeichen befinden, entfernen Sie sie, speichern Sie beide Dateien, und aktualisieren Sie anschließend Ihr Browserfenster. 
@@ -447,7 +447,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie lokal ausführen, inde
 
 3. Die Seite sollte nun das neu erstellte Element in der Aufgabenliste anzeigen.
    
-    ![Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste":::
 
 4. Um eine Aufgabe abzuschließen, aktivieren Sie das Kontrollkästchen in der Spalte „Abschließen“, und wählen Sie anschließend **Aufgaben aktualisieren** aus. Dadurch wird das bereits erstellte Dokument aktualisiert und aus der Ansicht entfernt.
 

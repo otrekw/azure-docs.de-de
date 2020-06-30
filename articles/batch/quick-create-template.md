@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Bat
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a4d2e791d810a55b765669c8e909cf448a68fc99
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266898"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262683"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Batch-Kontos unter Verwendung einer Azure Resource Manager-Vorlage
 
@@ -23,7 +23,7 @@ Sie benötigen ein aktives Azure-Abonnement.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-batch-account-with-storage"></a>Erstellen eines Batch-Kontos mit Storage
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 

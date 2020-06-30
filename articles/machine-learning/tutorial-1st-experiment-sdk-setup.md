@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen Ihres ersten ML-Experiments'
-titleSuffix: Azure Machine Learning
+title: 'Tutorial: Experimentieren in Jupyter-Notebooks (Python)'
+titleSuffix: Machine Learning - Azure
 description: In diesem Tutorial erhalten Sie Informationen zu den ersten Schritten mit dem in Jupyter-Notebooks ausgeführten Azure Machine Learning Python SDK.  In Teil 1 erstellen Sie einen Arbeitsbereich, in dem Sie Experimente und ML-Modelle verwalten.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c0df2459b09eca472c833be2865232c0247210dd
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558390"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106604"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
