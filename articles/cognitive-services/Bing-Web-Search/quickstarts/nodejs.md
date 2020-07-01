@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873962"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611321"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Node.js
 
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Festlegen des Abonnementschlüssels
 
-Dieser Codeausschnitt verwendet die Umgebungsvariable `AZURE_SUBSCRIPTION_KEY` zum Speichern Ihres Abonnementschlüssels. Dies ist eine gute Vorgehensweise, um die versehentliche Offenlegung Ihrer Schlüssel beim Bereitstellen von Code zu verhindern. Informationen zum Suchen Ihres Abonnementschlüssels finden Sie unter [Ihre APIs](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
+Dieser Codeausschnitt verwendet die Umgebungsvariable `AZURE_SUBSCRIPTION_KEY` zum Speichern Ihres Abonnementschlüssels. Dies ist eine gute Vorgehensweise, um die versehentliche Offenlegung Ihrer Schlüssel beim Bereitstellen von Code zu verhindern.
 
 Wenn Sie mit der Verwendung von Umgebungsvariablen nicht vertraut sind oder diese App so schnell wie möglich ausführen möchten, ersetzen Sie `process.env['AZURE_SUBSCRIPTION_KEY']` durch Ihren Abonnementschlüssel in Form einer Zeichenfolge.
 
