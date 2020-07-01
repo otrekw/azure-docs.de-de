@@ -112,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: Lesereplikate
           href: concepts-read-replicas.md
+    - name: Verschieben zwischen Regionen
+      items:
+        - name: Azure-Portal
+          href: howto-move-regions-portal.md
 - name: Anleitungen
   items:
     - name: Verwalten eines Servers

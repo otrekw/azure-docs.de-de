@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: d798b3b35bbe051700c44ee362f8f517adb4a7a3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 5a2b72e87f77d29e62336f0d3b9c2b956ec417e1
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209129"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563062"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python
 
@@ -38,14 +38,14 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 ## <a name="analyze-a-receipt"></a>Analysieren eines Verkaufsbelegs
 
-Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Receipt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** -API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
+Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Receipt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** -API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<your receipt URL>` mit der URL-Adresse eines Verkaufsbelegbilds.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 
     ```python
-    ########### Python Form Recognizer Async Layout #############
+    ########### Python Form Recognizer Async Receipt #############
 
     import json
     import time
@@ -94,7 +94,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 
 ## <a name="get-the-receipt-results"></a>Abrufen der Verkaufsbelegergebnisse
 
-Nachdem Sie die **Analyze Receipt**-API aufgerufen haben, rufen Sie die **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Hierbei wird der Vorgangs-ID-Wert in einem neuen API-Aufruf verwendet. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
+Nachdem Sie die **Analyze Receipt**-API aufgerufen haben, rufen Sie die **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Hierbei wird der Vorgangs-ID-Wert in einem neuen API-Aufruf verwendet. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
 
 ```python
 n_tries = 10
@@ -105,11 +105,11 @@ while n_try < n_tries:
         resp = get(url = get_url, headers = {"Ocp-Apim-Subscription-Key": apim_key})
         resp_json = json.loads(resp.text)
         if resp.status_code != 200:
-            print("GET Layout results failed:\n%s" % resp_json)
+            print("GET Receipt results failed:\n%s" % resp_json)
             quit()
         status = resp_json["status"]
         if status == "succeeded":
-            print("Layout Analysis succeeded:\n%s" % resp_json)
+            print("Receipt Analysis succeeded:\n%s" % resp_json)
             quit()
         if status == "failed":
             print("Analysis failed:\n%s" % resp_json)
@@ -466,4 +466,4 @@ Der Knoten `"recognitionResults"` enthält den gesamten erkannten Text. Der Text
 In dieser Schnellstartanleitung haben Sie die REST-API für die Formularerkennung mit Python verwendet, um den Inhalt eines Verkaufsbelegs zu extrahieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
-> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

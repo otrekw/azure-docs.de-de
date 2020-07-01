@@ -161,6 +161,10 @@
               href: concepts-read-replicas.md
             - name: Logische Decodierung
               href: concepts-logical.md
+        - name: Verschieben zwischen Regionen
+          items:
+            - name: Azure-Portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Nodes

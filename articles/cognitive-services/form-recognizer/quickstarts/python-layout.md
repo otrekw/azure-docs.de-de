@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 8893ebf1288e592131938f39b10e204f98471fa8
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208143"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563083"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Text und Layoutinformationen mit der Formularerkennungs-REST-API und Python
 
@@ -39,7 +39,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 ## <a name="analyze-the-form-layout"></a>Analysieren des Formularlayouts
 
-Um mit der Analyse des Layouts zu beginnen, rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** -API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
+Um mit der Analyse des Layouts zu beginnen, rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<path to your form>` durch den Pfad zu Ihrem lokalen Formulardokument.
@@ -90,7 +90,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 
 ## <a name="get-the-layout-results"></a>Abrufen der Layoutergebnisse
 
-Nachdem Sie die **Analyze Layout**-API aufgerufen haben, rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Dieser Code verwendet den Vorgangs-ID-Wert in einem neuen API-Aufruf. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
+Nachdem Sie die **Analyze Layout**-API aufgerufen haben, rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Dieser Code verwendet den Vorgangs-ID-Wert in einem neuen API-Aufruf. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
 
 ```python
 n_tries = 10
@@ -283,4 +283,4 @@ Vergleichen Sie das folgende Bild einer Rechnung mit der entsprechenden JSON-Aus
 In dieser Schnellstartanleitung haben Sie die Formularerkennungs-REST-API mit Python verwendet, um das Textlayout einer Rechnung zu extrahieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
-> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)

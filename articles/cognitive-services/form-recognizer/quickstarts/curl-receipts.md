@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 03b289bb01285dd13f4456940ce891cf42518253
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d1e0587ae583585b6247aed9997243ec70fcbf03
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206279"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563218"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der REST-API für die Formularerkennung mit cURL
 
@@ -34,7 +34,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 ## <a name="analyze-a-receipt"></a>Analysieren eines Verkaufsbelegs
 
-Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Receipt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** -API mit dem folgenden cURL-Befehl auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Receipt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** -API mit dem folgenden cURL-Befehl auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<your receipt URL>` mit der URL-Adresse eines Verkaufsbelegbilds.
@@ -52,7 +52,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 
 ## <a name="get-the-receipt-results"></a>Abrufen der Verkaufsbelegergebnisse
 
-Nachdem Sie die **Analyze Receipt**-API aufgerufen haben, rufen Sie die **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Nachdem Sie die **Analyze Receipt**-API aufgerufen haben, rufen Sie die **[Get Analyze Receipt Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
 1. Ersetzen Sie `<operationId>` durch die Vorgangs-ID aus dem vorherigen Schritt.
@@ -402,4 +402,4 @@ Der Knoten `"recognitionResults"` enthält den gesamten erkannten Text. Der Text
 In diesem Schnellstart haben Sie die REST-API für die Formularerkennung mit cURL verwendet, um den Inhalt eines Verkaufsbelegs zu extrahieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
-> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
