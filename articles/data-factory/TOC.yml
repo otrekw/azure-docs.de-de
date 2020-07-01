@@ -26,7 +26,7 @@
     - name: Erstellen einer Data Factory – Resource Manager-Vorlage
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 'Sicherheit: Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln'
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
 - name: Tutorials
@@ -576,7 +576,7 @@
         - name: Verwaltete Identität für Data Factory
           href: data-factory-service-identity.md
         - name: Verschlüsselung mit kundenseitig verwalteten Schlüsseln
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Überwachen und Verwalten
       items:
         - name: Visuelle Überwachung

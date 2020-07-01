@@ -222,9 +222,9 @@ Der nächste Codeblock durchläuft die einzelnen erkannten Elemente im Beleg und
 In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
 
 > [!NOTE]
-> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Beschriftung von Beispielen](../../quickstarts/label-tool.md).
+> Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md).
 
-### <a name="train-a-model-without-labels"></a>Trainieren eines Modells ohne Beschriftungen
+### <a name="train-a-model-without-labels"></a>Trainieren eines Modells ohne Bezeichnungen
 
 Trainieren Sie benutzerdefinierte Modelle, sodass alle Felder und Werte in Ihren benutzerdefinierten Formularen erkannt werden, ohne dass Sie die Trainingsdokumente manuell beschriften müssen.
 
@@ -273,9 +273,9 @@ Schließlich gibt die Methode die eindeutige ID des Modells aus.
 }
 ```
 
-### <a name="train-a-model-with-labels"></a>Trainieren eines Modells mit Beschriftungen
+### <a name="train-a-model-with-labels"></a>Trainieren eines Modells mit Bezeichnungen
 
-Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell beschriften. Das Training mit Beschriftungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Beschriftungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Beschriftungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining**-Methode mit dem auf `true` festgelegten Parameter *uselabels* aufrufen.
+Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining**-Methode mit dem auf `true` festgelegten Parameter *uselabels* aufrufen.
 
 ```javascript
 async function TrainModelWithLabelsAsync(
@@ -293,10 +293,10 @@ async function TrainModelWithLabelsAsync(
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Analysieren von Formularen mit einem benutzerdefinierten Modell
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe von Modellen, die Sie mit Ihren eigenen Formularen trainiert haben, Schlüssel-Wert-Informationen und andere Inhalte aus Ihren benutzerdefinierten Formulartypen extrahieren.
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe von Modellen, die Sie mit Ihren eigenen Formularen trainiert haben, Schlüssel-Wert-Informationen und andere Inhalte aus Ihren benutzerdefinierten Formulartypen extrahieren.
 
 > [!IMPORTANT]
-> Um dieses Szenario zu implementieren, müssen Sie bereits ein Modell trainiert haben, sodass Sie dessen ID in der unten stehenden Methode übergeben können. Weitere Informationen finden Sie im Abschnitt [Trainieren eines Modells](#train-a-model-without-labels).
+> Um dieses Szenario zu implementieren, müssen Sie bereits ein Modell trainiert haben, sodass Sie seine ID an die unten stehende Methode übergeben können. Weitere Informationen finden Sie im Abschnitt [Trainieren eines Modells](#train-a-model-without-labels).
 
 Sie verwenden die **beginRecognizeCustomFormsFromUrl**-Methode. Der zurückgegebene Wert ist eine Sammlung aus **RecognizedForm**-Objekten: eines für jede Seite im übermittelten Dokument.
 
@@ -313,7 +313,7 @@ async function AnalyzePdfForm(client, modelId, formUrl)
     const response = poller.getResult();
 ```
 
-Der folgende Code gibt die Analyseergebnisse an der Konsole aus. Der Code gibt jedes erkannte Feld und den zugehörigen Wert sowie eine Konfidenzbewertung aus.
+Der folgende Code gibt die Analyseergebnisse an der Konsole aus. Der Code gibt jedes erkannte Feld und den zugehörigen Wert sowie eine Zuverlässigkeitsbewertung aus.
 
 ```javascript
     console.log("Fields:");
