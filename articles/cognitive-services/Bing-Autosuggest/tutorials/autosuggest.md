@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943143"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603161"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Tutorial: Abrufen von Suchvorschlägen auf einer Webseite
 
@@ -29,7 +29,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Vorschlagssuche-API. Falls Sie keinen besitzen, können Sie im Azure-Portal eine [Bing-Vorschlagssuche-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) erstellen. Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/) verwenden.
+Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Vorschlagssuche-API. Falls Sie keinen besitzen, können Sie im Azure-Portal eine [Bing-Vorschlagssuche-Ressource](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) erstellen.
 
 ## <a name="create-a-new-web-page"></a>Erstellen einer neuen Webseite
 
