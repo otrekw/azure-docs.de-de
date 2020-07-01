@@ -57,7 +57,7 @@ Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit pr
 Sehen Sie sich zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/) zur API für die visuelle Bing-Suche an.
 Diese Demo zeigt, wie Sie schnell eine Suchabfrage anpassen und das Web nach Bildern durchsuchen.
 
-Die Schnellstartanleitungen [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md) ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
+Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
