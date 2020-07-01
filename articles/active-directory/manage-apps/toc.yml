@@ -3,20 +3,14 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei Cloud-App-Verwaltung und einmaligem Anmelden?
+    - name: Worum handelt es sich bei der Anwendungsverwaltung?
       href: what-is-application-management.md
-    - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
-      href: what-is-application-proxy.md
-    - name: Allgemeine App-Verwaltungsszenarien
-      href: common-scenarios.md
-    - name: Was ist die Anwendungsbereitstellung?
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Schnellstarts
   items:
-    - name: Hinzufügen einer Cloud-App aus dem Katalog
-      href: add-application-portal.md
     - name: Anzeigen Ihrer Unternehmensanwendungen
       href: view-applications-portal.md
+    - name: Hinzufügen einer Cloud-App aus dem Katalog
+      href: add-application-portal.md
 - name: Tutorials
   items:
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
@@ -32,6 +26,8 @@
   items:
     - name: Bewährte Methoden für die App-Verwaltung
       href: application-management-fundamentals.md
+    - name: Allgemeine App-Verwaltungsszenarien
+      href: common-scenarios.md
     - name: Cloud-Apps und einmaliges Anmelden
       items:
         - name: Planen der Integration von Cloud-Apps
@@ -80,6 +76,8 @@
       items:
         - name: Anwendungsproxy
           href: application-proxy.md
+        - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
+          href: what-is-application-proxy.md
         - name: Planen der Bereitstellung eines Anwendungsproxys
           href: application-proxy-deployment-plan.md
         - name: Connectors

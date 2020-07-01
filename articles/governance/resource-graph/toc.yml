@@ -8,7 +8,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Ausführen Ihrer ersten Abfrage: Azure-Portal'
+    - name: 'Ausführen Ihrer ersten Abfrage: Portal'
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: Ausführen Ihrer ersten Abfrage – Azure-Befehlszeilenschnittstelle
@@ -26,6 +26,9 @@
     - name: 'Ausführen Ihrer ersten Abfrage: Python'
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 'Erstellen einer freigegebenen Abfrage: Azure CLI'
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: Bereitstellen einer freigegebenen Abfrage – ARM-Vorlage
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md
