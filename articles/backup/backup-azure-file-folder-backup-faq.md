@@ -183,7 +183,7 @@ Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben h
 
 | Ursprünglicher Computer | Passphrase | Verfügbare Optionen |
 | --- | --- | --- |
-| Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** ** > Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** > **Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?

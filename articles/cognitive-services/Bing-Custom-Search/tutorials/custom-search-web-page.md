@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943906"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603348"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -34,7 +34,7 @@ Die folgenden Aufgaben werden beschrieben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Sie müssen im Azure-Portal eine [Ressource für die benutzerdefinierte Bing-Suche erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch), um einen Schlüssel zu erhalten. Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) verwenden.
+- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Sie müssen im Azure-Portal eine [Ressource für die benutzerdefinierte Bing-Suche erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch), um einen Schlüssel zu erhalten.
 - Falls Sie Visual Studio 2017 oder höher noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden.
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
@@ -79,7 +79,7 @@ Um Ergebnisse von bestimmten Websites oder URLs auszuschließen, fügen Sie dies
 
 ## <a name="add-pinned-entries"></a>Hinzufügen angehefteter Einträge
 
-Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. Nur indizierte Webseiten werden in Suchvorgängen angezeigt. Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. Nur indizierte Webseiten werden in Suchvorgängen angezeigt. Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Angeheftet**, und geben Sie die Webseite und den Abfragebegriff der Webseite ein, die als oberstes Ergebnis zurückgegeben werden soll.  
   
@@ -116,7 +116,7 @@ Die benutzerdefinierte Suche stellt eine gehostete Benutzeroberfläche zum Rende
 
    ![Screenshot des Schritts der erweiterten Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben. Informationen zum Abrufen von Schlüsseln finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben.
   
    ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
 

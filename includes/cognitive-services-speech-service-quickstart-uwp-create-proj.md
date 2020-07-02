@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609290"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414356"
 ---
 Zum Erstellen eines Visual Studio-Projekts für die UWP-Entwicklung (Universelle Windows-Plattform) müssen Sie Visual Studio-Entwicklungsoptionen einrichten, das Projekt erstellen, die Zielarchitektur auswählen, Audioaufnahme einrichten und das Speech SDK installieren.
 
@@ -70,7 +70,7 @@ Wählen Sie nun die Architektur Ihrer Zielplattform aus. Suchen Sie auf der Visu
 
 ### <a name="set-up-audio-capture"></a>Einrichten der Audioaufnahme
 
-Lassen Sie dann zu, dass das Projekt Audioeingaben erfasst:
+Lassen Sie zu, dass das Projekt Audioeingaben erfasst:
 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf **Package.appxmanifest**, um das Paketanwendungsmanifest zu öffnen.
 

@@ -2,13 +2,13 @@
 title: 'Tutorial: Language Understanding-Bot C# v4'
 description: Erstellen Sie mithilfe von C# einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Der Bot wird mit Bot Framework, Version 4 und dem Azure Web-App-Bot-Dienst erstellt.
 ms.topic: tutorial
-ms.date: 02/03/2020
-ms.openlocfilehash: 2381f4cba39f81ab593f3149a2708f442156f30d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 06/22/2020
+ms.openlocfilehash: b9da1d1fecbb251ebf27833cc381eb658a9df46b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987994"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445898"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in C#
 
@@ -27,7 +27,6 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
 * [Bot-Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
-
 ## <a name="create-a-web-app-bot-resource"></a>Erstellen einer Web-App-Bot-Ressource
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Neue Ressource erstellen** aus.
@@ -38,10 +37,10 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
 
     |Einstellung|Zweck|Empfohlene Einstellung|
     |--|--|--|
-    |Botname|Ressourcenname|`luis-csharp-bot-` + `<your-name>`, z.B. `luis-csharp-bot-johnsmith`|
+    |Bothandle|Ressourcenname|`luis-csharp-bot-` + `<your-name>`, z.B. `luis-csharp-bot-johnsmith`|
     |Subscription|Abonnement, in dem der Bot erstellt werden soll.|Ihr primäres Abonnement.
     |Resource group|Logische Gruppe von Azure-Ressourcen|Erstellen einer neuen Gruppe zum Speichern aller Ressourcen, die mit diesen Bot verwendet werden; benennen Sie die Gruppe `luis-csharp-bot-resource-group`.|
-    |Position|Azure-Region: muss nicht die gleiche wie die Erstellungs- oder Veröffentlichungsregion von LUIS sein.|`westus`|
+    |Standort|Azure-Region: muss nicht die gleiche wie die Erstellungs- oder Veröffentlichungsregion von LUIS sein.|`westus`|
     |Tarif|Für die Grenzwerte der Dienstanforderungen und die Abrechnung verwendet.|`F0` ist der kostenlose Tarif.
     |App-Name|Der Name wird als Unterdomäne verwendet, wenn Ihr Bot in der Cloud bereitgestellt wird (z.B. personalwesenbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, z.B. `luis-csharp-bot-johnsmith`|
     |Botvorlage|Einstellungen für Bot Framework – siehe nächste Tabelle|
@@ -54,7 +53,6 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
 
     |Einstellung|Zweck|Auswahl|
     |--|--|--|
-    |SDK-Version|Bot-Framework-Version|**SDK v4**|
     |SDK-Sprache|Programmiersprache des Bots|**C#**|
     |Bot|Bottyp|**Basisbot**|
 
@@ -64,6 +62,8 @@ Erstellen Sie mithilfe von C# einen in Language Understanding (LUIS) integrierte
     > [![Erstellen des Web-App-Bots](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
     Warten Sie, bis der Botdienst erstellt wurde, bevor Sie fortfahren.
+
+1. Wählen Sie in der Benachrichtigung `Go to resource` aus, um zur Web-App-Botseite zu gelangen.
 
 ## <a name="the-bot-has-a-language-understanding-model"></a>Der Bot beinhaltet ein Language Understanding-Modell
 
@@ -86,6 +86,7 @@ Bei der Erstellung des Botdiensts wird auch eine neue LUIS-App mit Absichten und
     Über die Testfunktionen können Sie Ihren Bot schnell testen. Laden Sie für umfangreichere Tests, einschließlich Debuggen, den Botcode herunter, und verwenden Sie Visual Studio.
 
 ## <a name="download-the-web-app-bot-source-code"></a>Herunterladen des Quellcodes für den Web-App-Bot
+
 Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und verwenden Sie ihn auf Ihrem lokalen Computer.
 
 1. Wählen Sie im Azure-Portal im Abschnitt **Bot Management** (Botverwaltung) **Erstellen** aus.
@@ -105,6 +106,9 @@ Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und ver
 1. Öffnen Sie zum Senden der Benutzeräußerung an den LUIS-Vorhersageendpunkt die Datei **FlightBookingRecognizer.cs**. Das ist die Stelle, an der in den Bot eingegebene Benutzeräußerungen an LUIS gesendet werden. Die Antwort von LUIS wird über die Methode **RecognizeAsync** zurückgegeben.
 
     ```csharp
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
@@ -142,7 +146,7 @@ Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und ver
                 => await _recognizer.RecognizeAsync<T>(turnContext, cancellationToken);
         }
     }
-    ````
+    ```
 
 1. In **Dialogs > MainDialog.cs** wird die Äußerung erfasst und an „executeLuisQuery“ in der Methode „actStep“ gesendet.
 
@@ -311,21 +315,18 @@ Starten Sie den Bot in Visual Studio 2019. Ein Browserfenster mit der Website de
 
 1. Starten Sie den Bot-Emulator, und wählen Sie **Open Bot** (Bot öffnen) aus.
 1. Geben Sie im Popupdialogfeld **Open a bot** (Bot öffnen) die URL des Bots ein, z. B. `http://localhost:3978/api/messages`. Die Route `/api/messages` ist die Webadresse für den Bot.
-1. Geben Sie die **Microsoft-App-ID** und das **Microsoft-App-Kennwort** ein, die sich in der Datei **appsettings.json** im Stammverzeichnis des heruntergeladenen Botcodes befinden.
-
+1. Geben Sie die **Microsoft-App-ID** und das **Microsoft-App-Kennwort** ein, die sich in der Datei **appsettings.json** im Stammverzeichnis des heruntergeladenen Botcodes befinden. Wählen Sie anschließend **Verbinden** aus.
 
 1. Geben Sie im Bot-Emulator `Book a flight from Seattle to Berlin tomorrow` ein. Daraufhin erhalten Sie die gleiche Antwort für den Basisbot, die Sie auch in einem der vorherigen Abschnitte mit **Test in Web Chat** (Test im Webchat) erhalten haben.
 
     [![Antwort des Basisbots im Emulator](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Wählen Sie **Ja** aus. Der Bot antwortet mit einer Zusammenfassung seiner Aktionen.
-1. Wählen Sie im Protokoll des Bot-Emulators die Zeile mit `Luis Trace` aus. Dadurch wird die JSON-Antwort von LUIS für die Absicht und die Entitäten der Äußerung angezeigt.
+1. Wählen Sie im Protokoll des Bot-Emulators die Zeile mit `<- trace LuisV3 Trace` aus. Dadurch wird die JSON-Antwort von LUIS für die Absicht und die Entitäten der Äußerung angezeigt.
 
     [![Antwort des Basisbots im Emulator](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
-
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5aac12f4da6304e8e14f0b4f1e33ef6257f50c11
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943117"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602787"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
 
@@ -43,8 +43,10 @@ Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine ex
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API. Falls Sie keine besitzen, können Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) und einen [Bing Karten-Basisschlüssel](https://www.microsoft.com/maps/create-a-bing-maps-key) verwenden.
+Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API. Wenn Sie über diese nicht verfügen, müssen Sie sie erstellen:
 
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="app-components"></a>App-Komponenten
 Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:
@@ -352,7 +354,7 @@ Für eine Funktion zum Rendern können die folgenden Parameter angegeben werden:
 
 Die Parameter `index` und `count` können beispielsweise zum Nummerieren von Ergebnissen, zum Generieren von speziellem HTML-Code für den Anfang oder das Ende einer Collection oder zum Einfügen von Zeilenumbrüchen nach einer bestimmten Anzahl von Elementen verwendet werden. Wenn ein Renderer diese Funktionalität nicht benötigt, muss er diese beiden Parameter nicht akzeptieren.
 
-Der `news`-Renderer wird im folgenden JavaScript-Auszug gezeigt.
+Der `news`-Renderer wird im folgenden JavaScript-Auszug gezeigt:
 ```javascript
     // render news story
     news: function (item) {

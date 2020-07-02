@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 597a12353fa573c628162b110f4e08e6d3a69b86
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2c411a0c8ba838bdac8c0e487e5dcc54db522311
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118917"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603399"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Node.js
 
@@ -161,8 +161,7 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Bing-Bildersuche-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
-* [Details zu den Preisen für die Bing-Suche-APIs](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
-* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
-* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
-* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Details zu den Preisen für die Bing-Suche-APIs](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
+* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

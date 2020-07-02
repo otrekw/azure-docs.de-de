@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299482"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513543"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
-Erfahren Sie in diesem Artikel, wie Sie eine Cognitive Services-Ressource mithilfe einer ARM-Vorlage (Azure Resource Manager) erstellen und bereitstellen. Diese Ressource für mehrere Dienste gibt Ihnen folgende Möglichkeiten:
+In diesem Artikel erfahren Sie, wie Sie eine Cognitive Services-Ressource mithilfe einer ARM-Vorlage (Azure Resource Manager-Vorlage) erstellen und bereitstellen. Diese Ressource für mehrere Dienste gibt Ihnen folgende Möglichkeiten:
 * Greifen Sie mit einem einzigen Schlüssel und Endpunkt auf mehrere Azure Cognitive Services zu.
 * Konsolidieren Sie die Abrechnung der von Ihnen verwendeten Dienste.
 

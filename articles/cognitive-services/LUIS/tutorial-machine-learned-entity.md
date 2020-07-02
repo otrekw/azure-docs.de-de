@@ -3,12 +3,12 @@ title: 'Tutorial: Extrahieren strukturierter Daten mit einer Machine Learning-En
 description: Extrahieren strukturierter Daten aus einer Äußerung mithilfe einer Machine Learning-Entität. Fügen Sie untergeordnete Entitäten mit Features hinzu, um die Genauigkeit der Extraktion zu erhöhen.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676174"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611015"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe von Machine Learning-Entitäten in Language Understanding (LUIS)
 
@@ -98,7 +98,7 @@ In den vorherigen Schritten wurden die Entität und die untergeordnete Entität 
 
 1. Wählen Sie im Dropdownmenü **Create new phrase list** (Neue Ausdruckliste erstellen) aus.
 
-1. Geben Sie im Feld **Neue Liste mit Ausdrücken erstellen** den Namen `SizePhraselist` und dann die Werte für `small`, `medium` und `large` ein. Wenn das Feld **Vorschläge** ausgefüllt ist, wählen Sie `extra large` und `xl` aus. Wählen Sie **Speichern** aus, um die neue Ausdrucksliste zu erstellen.
+1. Geben Sie im Feld **Neue Liste mit Ausdrücken erstellen** den Namen `SizePhraselist` und dann die Werte für `small`, `medium` und `large` ein. Wenn das Feld **Vorschläge** ausgefüllt ist, wählen Sie `extra large` und `xl` aus. Wählen Sie **Erstellen** aus, um die neue Ausdrucksliste zu erstellen.
 
     Dieses Ausdruckslistenfeature hilft der untergeordneten Entität `Size` dabei, Wörter mit Bezug zur Größe zu finden, indem Beispielwörter bereitgestellt werden. Diese Ausdrucksliste muss nicht jedes auf die Größe bezogene Wort enthalten, sondern sollte Wörter einbeziehen, die voraussichtlich die Größe angeben.
 
@@ -131,7 +131,7 @@ Das Hinzufügen einer Liste bekannter Größen, die von der Clientanwendung erka
 
 1. Wählen Sie auf der Registerkarte **Schema and features** (Schema und Features) die Entität **Size** (Größe) aus, und wählen Sie dann **+ Add feature** (+ Feature hinzufügen) aus.
 
-1. Wählen Sie in der Dropdownliste den Eintrag **@ SizeList** aus.
+1. Wählen Sie in der Dropdownliste den Eintrag **@ SizeListentity** aus.
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 

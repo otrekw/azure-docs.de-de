@@ -148,7 +148,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
-Wenn Sie die Option **Alle Benutzer und Gruppen synchronisieren** auswählen und einen Wert für das Samanage-Attribut **Rollen** festlegen, muss der Wert unter dem Feld **Standardwert bei NULL (optional) ** im folgenden Format ausgedrückt werden:
+Wenn Sie die Option **Alle Benutzer und Gruppen synchronisieren** auswählen und einen Wert für das Samanage-Attribut **Rollen** festlegen, muss der Wert unter dem Feld **Standardwert bei NULL (optional)** im folgenden Format ausgedrückt werden:
 
 - {„displayName“:„role“}, wobei „role“ der gewünschte Standradwert ist.
 

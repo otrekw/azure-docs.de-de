@@ -68,7 +68,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Dienstendpunkte werden pro Dienst und pro Subnetz aktiviert. Erstellen Sie ein Subnetz, und fügen Sie einen Dienstendpunkt für das Subnetz hinzu.
 
-1. Geben Sie oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen***myVirtualNetwork* ein. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
+1. Geben Sie oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** *myVirtualNetwork* ein. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Hinzufügen eines Subnetzes zum virtuellen Netzwerk Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze** und anschließend auf **+ Subnetz**, wie in der folgenden Abbildung gezeigt:
 
     ![Hinzufügen des Subnetzes](./media/tutorial-restrict-network-access-to-resources/add-subnet.png) 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, tracking-python
-ms.openlocfilehash: c913e6a8f1acf6603fad7a0b93758e5a7678f9a5
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f818030f5fa7c562b4041543cb702d9673648dee
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609198"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603331"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Python
 
@@ -151,7 +151,6 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 > [Tutorial: Einseitige Web-App für die Bing-Bildersuche](../tutorial-bing-image-search-single-page-app.md)
 
 * [Was ist die Bing-Bildersuche-API?](../overview.md)  
-* [Details zu den Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) für die Bing-Suche-APIs. 
-* [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api). 
-* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
-* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+* [Details zu den Preisen für die Bing-Suche-APIs](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
+* [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

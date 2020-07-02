@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Einzelseiten-Web-App für die Bing-Entitätssuche'
+title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943136"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608567"
 ---
-# <a name="tutorial-single-page-web-app"></a>Tutorial: Single-Page-Web-App
+# <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
@@ -58,7 +58,12 @@ In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API und die Bing Karten-API. Falls Sie keine besitzen, können Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) und einen [Bing Karten-Basisschlüssel](https://www.microsoft.com/maps/create-a-bing-maps-key) verwenden.
+Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API und die Bing Karten-API. 
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über ein Azure-Abonnement verfügen:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen Sie eine Ressource für die Bing-Suche"  target="_blank">Erstellen einer Ressource für die Bing-Suche<span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">Erstellen Sie eine Bing Maps-Ressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="app-components"></a>App-Komponenten
 
@@ -86,7 +91,7 @@ Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suche
 ## <a name="managing-subscription-keys"></a>Verwalten von Abonnementschlüsseln
 
 > [!NOTE]
-> Zur Nutzung der Bing-Suche-API und der Bing Karten-API sind Abonnementschlüssel für die App erforderlich. Sie können beispielsweise einen [kostenlosen Bing-Suche-API-Schlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) und einen [Bing Karten-Basisschlüssel](https://www.microsoft.com/maps/create-a-bing-maps-key) verwenden.
+> Zur Nutzung der Bing-Suche-API und der Bing Karten-API sind Abonnementschlüssel für die App erforderlich.
 
 Zum Speichern der Schlüssel wird der persistente Browserspeicher verwendet. Auf diese Weise müssen Sie nicht die Abonnementschlüssel der Bing-Suche-API und der Bing Karten-API im Code hinterlegen. Wenn einer der beiden Schlüssel nicht gespeichert wurde, wird der Benutzer zu dessen Eingabe aufgefordert. Der Schlüssel wird dann zur späteren Verwendung gespeichert. Wird der Schlüssel zu einem späteren Zeitpunkt von der API zurückgewiesen, wird der gespeicherte Schlüssel für ungültig erklärt, und der Benutzer wird bei der nächsten Suche zur Eingabe aufgefordert.
 
@@ -394,7 +399,7 @@ Fehler werden behandelt, indem `renderErrorMessage()` zusammen mit allen bekannt
 
 ## <a name="displaying-search-results"></a>Anzeigen der Suchergebnisse
 
-Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Collection in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
+Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Sammlung in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
 
 In diesem Tutorial wird allerdings die `rankingResponse`-Collection verwendet, um die Reihenfolge der Suchergebnisse festzulegen und diese anzuzeigen. Dieses Objekt verweist auf Elemente in der Sammlung `Entitiess` bzw. `Places`.
 
@@ -520,7 +525,7 @@ Die Funktion zum Rendern von Entitäten führt folgende Vorgänge aus:
 
 Antworten, die von Bing-Suche-APIs gesendet werden, können einen `X-MSEdge-ClientID`-Header enthalten, der mit den nachfolgenden Anforderungen an die API zurückgesendet werden sollte. Wenn mehrere Bing-Suche-APIs genutzt werden, sollte nach Möglichkeit dieselbe Client-ID für alle APIs verwendet werden.
 
-Durch die Bereitstellung des `X-MSEdge-ClientID`-Headers können die Bing-Suche-APIs alle Suchvorgänge eines Benutzers zuordnen, was zwei entscheidende Vorteile mit sich bringt.
+Durch die Bereitstellung des `X-MSEdge-ClientID`-Headers können die Bing-APIs alle Suchvorgänge eines Benutzers zuordnen, was zwei entscheidende Vorteile mit sich bringt.
 
 Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorherigen Suchvorgängen nutzen, um den Benutzern relevantere Ergebnisse anzuzeigen. Wenn ein Benutzer in der Vergangenheit beispielsweise nach Segelbegriffen gesucht hat, können bei einer Suche nach „Anlegestellen“ möglicherweise Informationen zu Anlegestellen für Segelboote zurückgegeben werden.
 
@@ -531,7 +536,7 @@ Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header m
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117512"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554388"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -48,11 +48,9 @@ Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigen
 |**[Generieren einer Miniaturansicht](concept-generating-thumbnails.md)**|Analysieren Sie den Inhalt eines Bilds, um eine geeignete Miniaturansicht für das Bild zu generieren. Die Maschinelles Sehen-API generiert zunächst eine hochwertige Miniaturansicht und analysiert dann die Objekte im Bild, um den *relevanten Bereich* zu bestimmen. Anschließend wird das Bild auf den relevanten Bereich zugeschnitten. Das Seitenverhältnis der generierten Miniaturansicht kann sich bei Bedarf vom Seitenverhältnis des ursprünglichen Bilds unterscheiden.|
 |**[Abrufen des relevanten Bereichs](concept-generating-thumbnails.md#area-of-interest)**|Analysieren Sie den Inhalt eines Bilds, um die Koordinaten des *relevanten Bereichs* zurückzugeben. Anstatt das Bild zuzuschneiden und eine Miniaturansicht zu generieren, gibt maschinelles Sehen die Koordinaten des Begrenzungsrahmens des Bereichs zurück, sodass die aufrufende Anwendung das ursprüngliche Bild nach Bedarf ändern kann.|
 
-## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
+## <a name="detect-text-from-images"></a>Erkennen von Text in Bildern
 
-Mit der [Lese-API](concept-recognizing-text.md#read-api) für maschinelles Sehen können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet die neuesten Modelle und kann für Text mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Derzeit funktioniert sie für sieben verschiedene Sprachen (siehe [Sprachunterstützung](./language-support.md)).
-
-Sie können auch die [OCR](concept-recognizing-text.md#ocr-optical-character-recognition-api)-API (Optical Character Recognition, optische Zeichenerkennung) verwenden, um gedruckten Text in verschiedenen Sprachen zu extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
+Mit den [Texterkennungs-APIs](concept-recognizing-text.md) für maschinelles Sehen können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet die neuesten Modelle und kann für Text mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die zwei Texterkennungs-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md).
 
 ## <a name="moderate-content-in-images"></a>Moderieren von Bildinhalten
 
