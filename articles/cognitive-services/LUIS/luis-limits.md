@@ -3,12 +3,12 @@ title: Grenzwerte – LUIS
 description: Dieser Artikel behandelt die bekannten Einschränkungen von Azure Cognitive Services Language Understanding (LUIS). LUIS weist Begrenzungen in mehreren Bereichen auf. Modellbegrenzungen steuern Absichten, Entitäten und Features in LUIS. Kontingentgrenzen basierend auf dem Schlüsseltyp. Tastenkombinationen steuern die LUIS-Website.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449497"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976981"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Begrenzungen für das LUIS-Modell und die Schlüssel
 LUIS weist Begrenzungen in mehreren Bereichen auf. Der erste ist die [Modellbegrenzung](#model-limits), die Absichten, Entitäten und Features in LUIS steuert. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich von Begrenzungen umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
@@ -37,7 +37,7 @@ Wenn Ihre App die LUIS-Modellbegrenzungen überschreitet, sollten Sie eine [LUIS
 | [Vordefinierte Entitäten](./luis-prebuilt-entities.md) | Keine Begrenzung|
 | [RegEx-Entitäten](./luis-concept-entity-types.md)|20 Entitäten<br>max. 500 Zeichen pro RegEx-Entitätsmuster|
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
-| [Äußerung][utterances] | 500 Zeichen<br><br>Wenn Text länger als dieses Zeichenlimit ist, müssen Sie die Äußerung vor der Eingabe in LUIS segmentieren und die Antworten entsprechend zusammenführen. Es gibt offensichtliche Unterbrechungen, die Sie nutzen können, z. B. Satzzeichen und lange Pausen in der Sprache.|
+| [Äußerung][utterances] | 500 Zeichen<br><br>Wenn Text länger als dieses Zeichenlimit ist, müssen Sie die Äußerung vor der Eingabe in LUIS segmentieren, und Sie erhalten dann einzelne Absichtsantworten pro Segment. Es gibt offensichtliche Unterbrechungen, die Sie nutzen können, z. B. Satzzeichen und lange Pausen in der Sprache.|
 | [Beispiele für Äußerungen][utterances] | 15.000 pro Anwendung – es gibt keine Beschränkung für die Anzahl von Äußerungen pro Absicht<br><br>Wenn Sie die Anwendung mit weiteren Beispielen trainieren möchten, verwenden Sie einen verteilten Modellansatz ([Dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)). Sie trainieren einzelne LUIS-Apps (als untergeordnete Apps der übergeordneten Dispatch-App bezeichnet) mit einer oder mehreren Absichten und abschließend eine Dispatch-App mit Stichproben aus den Äußerungen der einzelnen untergeordneten LUIS-Apps, um die Vorhersageanforderung an die richtige untergeordnete App weiterzuleiten. |
 | [Versionen](luis-concept-version.md)| 100 Versionen pro Anwendung |
 | [Versionsname][luis-how-to-manage-versions] | 128 Zeichen |

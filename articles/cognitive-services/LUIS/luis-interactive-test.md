@@ -1,14 +1,14 @@
 ---
 title: Testen von Apps im LUIS-Portal
 description: Verwenden Sie LUIS (Language Understanding Intelligent Service), um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344151"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677734"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
 
@@ -65,9 +65,25 @@ Im Überprüfungsbereich können Sie die Testäußerung einer Absicht hinzufüge
 
 ## <a name="disable-required-features"></a>Deaktivieren erforderlicher Features
 
-Mit diesem Umschalter können Sie anzeigen, wie die Vorhersage lauten würde, wenn das Feature der Entität nicht erforderlich wäre.
+So können Sie feststellen, ob die trainierte App Ihre Entitäten basierend auf den erforderlichen Features richtig vorhersagt. Die Standardeinstellung besteht in der Anwendung des Features bei Bedarf während der Vorhersage. Mit diesem Umschalter können Sie anzeigen, wie die Vorhersage lauten würde, wenn das Feature der Unterentität nicht erforderlich wäre.
 
-So können Sie feststellen, ob die trainierte App Ihre Entitäten basierend auf den erforderlichen Features richtig vorhersagt. Die trainierte App kann eine maschinell erlernte Entität falsch vorhersagen, wenn die Bezeichnung von Beispieläußerungen fehlerhaft ist oder das erforderliche Feature nicht mit dem Text übereinstimmt.
+### <a name="when-to-disable-required-features"></a>Wann sollte man erforderliche Features deaktivieren
+
+Die trainierte App kann eine durch maschinelles Lernen erworbene Entität auf Grundlage eines der folgenden Aspekte falsch vorhersagen:
+* Fehlerhafte Bezeichnung von Beispieläußerungen.
+* Das erforderliche Feature stimmt nicht mit dem Text überein.
+
+Eine Beispiel ist eine durch maschinelles Lernen erworbene Entität mit den Namen einer Person als Unterentität.
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="Screenshot des durch maschinelles Lernen erworbenen Entitätsschemas im LUIS-Portal mit erforderlichem Feature":::
+
+Eine Beispieläußerung für diese durch maschinelles Lernen erworbene Entität ist: `Assign Bob Jones to work on the new security feature`.
+
+Die Extraktion sollte `security feature` als Ticketbeschreibung und `Bob Jones` als Techniker sein, beides Unterentitäten der Entität `Assign ticket`.
+
+Um der Unterentität bei einer erfolgreichen Vorhersage zu helfen, fügen Sie die vorgefertigte Entität[PersonName](luis-reference-prebuilt-person.md) der Unterentität `engineer` als Feature hinzu. Wenn Sie das Feature erforderlich machen, bedeutet dies, dass die Unterentität nur extrahiert wird, wenn die vorgefertigte Entität „PersonName“ für den Text vorhergesagt wird. Dies bedeutet, dass ein beliebiger Name im Text, der nicht mit der Unterentität „PersonName“ vorhergesagt wird, nicht als bezeichnete Unterentität `engineer` zurückgegeben wird.
+
+Wenn Sie den interaktiven Testbereich verwenden und feststellen, dass eine untergeordnete Entität mit einem erforderlichen Feature nicht vorhersagt, schalten Sie diese Einstellung um, um festzustellen, ob die Unterentität vorhergesagt würde, wenn das Feature nicht erforderlich wäre. Die Unterentität kann wegen der korrekten Bezeichnung von Beispieläußerungen möglicherweise ohne das erforderliche Feature ordnungsgemäß vorhergesagt werden.
 
 ## <a name="view-sentiment-results"></a>Anzeigen von Standpunktergebnissen
 

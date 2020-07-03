@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120809"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986667"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 
-In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Abonnements in verschiedenen Regionen synchronisieren.
+In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Abonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Abonnements in verschiedenen Regionen synchronisieren.
 
 Dieselbe Migrationsstrategie gilt auch für LargePersonGroup- und LargeFaceList-Objekte. Wenn Sie mit den Konzepten in diesem Leitfaden nicht vertraut sind, finden Sie die Definitionen unter [Konzepte der Gesichtserkennung](../concepts/face-recognition.md). In diesem Leitfaden wird die .NET-Clientbibliothek für die Gesichtserkennung mit C# verwendet.
 

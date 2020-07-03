@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a9fac89f529cfefbb8a8d82135838bb96e2689db
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658452"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669816"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische Spracherkennung zur Umwandlung von Sprache in Text
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie `AutoDetectSourceLanguageConfig` zum Ers
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische Spracherkennung mit dem Sprach-SDK
 
-Die automatische Spracherkennung weist zurzeit eine dienstseitige Einschränkung auf zwei Sprachen pro Erkennung auf. Beachten Sie diese Einschränkung bei der Erstellung des `AudoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen erstellen Sie eine `AutoDetectSourceLanguageConfig` und verwenden Sie dann, um einen `SpeechRecognizer` zu erstellen.
+Die automatische Spracherkennung weist zurzeit eine dienstseitige Einschränkung auf vier Sprachen pro Erkennung auf. Beachten Sie diese Einschränkung bei der Erstellung des `AudoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen erstellen Sie eine `AutoDetectSourceLanguageConfig` und verwenden Sie dann, um einen `SpeechRecognizer` zu erstellen.
 
 > [!TIP]
 > Sie können auch ein benutzerdefiniertes Modell angeben, das beim Durchführen der Spracherkennung verwendet werden soll. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten Modells für die automatische Spracherkennung](#use-a-custom-model-for-automatic-language-detection).

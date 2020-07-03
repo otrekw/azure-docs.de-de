@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261770"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780884"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Was ist der Azure-Sprechererkennungsdienst?
 
@@ -27,7 +27,7 @@ Die Sprecherüberprüfung optimiert den Prozess für die Überprüfung einer reg
 
 ### <a name="how-does-speaker-verification-work"></a>Wie funktioniert die Sprecherüberprüfung?
 
-![Wie funktioniert die Sprecherüberprüfung?](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="Sprecherüberprüfungs-Flussdiagramm.":::
 
 Die Sprecherüberprüfung kann entweder textabhängig oder textunabhängig sein. Bei der **textabhängigen** Überprüfung müssen die Sprecher sowohl bei der Registrierung als auch bei der Überprüfung dieselbe Passphrase verwenden. Bei der **textunabhängigen** Überprüfung können Sprecher sowohl bei der Registrierung als auch bei der Überprüfung etwas beliebiges sagen.
 
@@ -56,7 +56,22 @@ Sie steuern, wie lange Daten aufbewahrt werden sollen. Sie können über API-Auf
 
 Wie bei allen Cognitive Services-Ressourcen müssen Entwickler, die den Sprechererkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Sie müssen sicherstellen, dass Sie von den Benutzern die entsprechende Erlaubnis für die Sprechererkennung erhalten haben. Weitere Informationen finden Sie im Microsoft Trust Center auf der  [Seite zu Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) . 
 
+## <a name="common-questions-and-solutions"></a>Häufige Fragen und Lösungen
+
+| Frage | Lösung |
+|---------|----------|
+| Für welche Szenarien kann die Sprechererkennung verwendet werden? | Kundenüberprüfung in Callcentern, sprachbasierter Check-In von Patienten, Besprechungstranskription, Personalisierung von Geräten mit mehreren Benutzern|
+| Was ist der Unterschied zwischen Identifizierung und Überprüfung? | Identifikation ist der Prozess der Erkennung, welches Mitglied aus einer Gruppe von Sprechern spricht. Mit der Überprüfung wird bestätigt, dass ein Sprecher mit einer bekannten oder **registrierten** Stimme übereinstimmt.|
+| Was ist der Unterschied zwischen textabhängiger und textunabhängiger Überprüfung? | Bei der textabhängigen Überprüfung ist eine bestimmte Passphrase für Registrierung und Erkennung erforderlich. Bei der textunabhängigen Überprüfung ist ein längeres Stimmbeispiel für die Registrierung erforderlich, wobei aber ein beliebiger Text gesprochen werden kann, auch während der Erkennung.|
+| Welche Sprachen werden unterstützt? | Englisch, Französisch, Spanisch, Chinesisch, Deutsch, Italienisch, Japanisch und Portugiesisch |
+| Welche Azure-Regionen werden unterstützt? | Sprechererkennung ist ein Vorschaudienst und derzeit nur in der Region „USA, Westen“ verfügbar.|
+| Welche Audioformate werden unterstützt? | Mono 16 Bit, 16 kHz PCM-codiertes WAV |
+| Die Antworten für **Akzeptieren** und **Ablehnen** sind nicht genau, wie optimieren Sie den Schwellenwert? | Da der optimale Schwellenwert je nach Szenario stark schwankt, entscheidet die API einfach auf Grundlage eines Standardschwellenwerts von 0,5, ob „Akzeptiert“ oder „Abgelehnt“ wird. Erfahreneren Benutzern wird empfohlen, die Standardentscheidung außer Kraft zu setzen und das Ergebnis auf Grundlage ihres eigenen Szenarios zu optimieren. |
+| Können Sie einen Sprecher mehrmals registrieren? | Ja, bei der textabhängigen Überprüfung können Sie einen Sprecher bis zu 50-mal registrieren. Bei der textunabhängigen Überprüfung oder der Sprecheridentifikation können Sie die Registrierung mit bis zu 300 Sekunden Audioeingabe durchführen. |
+| Welche Daten werden in Azure gespeichert? | Registrierungsaudiodaten werden im Dienst gespeichert, bis das Stimmprofil [gelöscht](speaker-recognition-basics.md#deleting-voice-profile-enrollments) wird. Erkennungsaudiobeispiele werden nicht aufbewahrt oder gespeichert. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
+> * Lesen Sie den [Artikel zu den Grundlagen](speaker-recognition-basics.md) der Sprechererkennung, um einen Überblick über gängige Entwurfsmuster zu erhalten, die Sie in Ihren Anwendungen verwenden können.
 > * Weitere Informationen finden Sie im [Videotutorial](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) zur textunabhängigen Sprecherüberprüfung.

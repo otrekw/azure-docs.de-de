@@ -2,13 +2,13 @@
 title: Entitätstypen – LUIS
 description: Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Benutzeräußerung. Ein _optionaler_ sekundärer Zweck besteht darin, die Vorhersage der Absicht oder anderer Entitäten zu verstärken, indem die Entität als Feature verwendet wird.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682177"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676487"
 ---
 # <a name="extract-data-with-entities"></a>Extrahieren von Daten mit Entitäten
 
@@ -41,7 +41,9 @@ Entitäten müssen für alle Trainingsäußerungen jeder Absicht eines Modells b
 
 Wenn Ihre Anwendung weiterentwickelt wird und sich neue Datenanforderungen ergeben, können Sie Ihrem LUIS-Modell auch später noch weitere geeignete Entitäten hinzufügen.
 
-## <a name="entity-compared-to-intent"></a>Entität im Vergleich zu Absichten
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>Entität stellt Datenextraktion dar
 
 Die Entität stellt ein Datenkonzept _innerhalb der Äußerung_ dar. Eine Absicht klassifiziert die _gesamte Äußerung_.
 
@@ -53,6 +55,10 @@ Sehen Sie sich die folgenden vier Äußerungen an:
 |Send something|sendSomething|-|Nichts zu extrahieren. Das Modell verfügt über kein erforderliches Feature, um `something` in diesem Kontext zu extrahieren, und es ist kein Empfänger angegeben.|
 |Send Bob a present|sendSomething|`Bob`, `present`|Das Modell extrahiert `Bob` durch Hinzufügen eines erforderlichen Features der vorgefertigten Entität `personName`. Eine durch maschinelles Lernen erworbene Entität wurde genutzt, um `present` zu extrahieren.|
 |Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|Die beiden wichtigen Datenelemente `Bob` und `box of chocolates` wurden von durch maschinelles Lernen erworbenen Entitäten extrahiert.|
+
+## <a name="label-entities-in-all-intents"></a>Entitäten in allen Absichten bezeichnen
+
+Entitäten extrahieren Daten unabhängig von der vorhergesagten Absicht. Stellen Sie sicher, dass Sie _alle_ Beispieläußerungen in allen Absichten bezeichnen. Die `None`-Absicht mit fehlender Entitätsbezeichnung verursacht Verwirrung, auch wenn es weitaus mehr Trainingsäußerungen für die anderen Absichten gäbe.
 
 ## <a name="design-entities-for-decomposition"></a>Entwerfen von Entitäten zur Analyse
 
