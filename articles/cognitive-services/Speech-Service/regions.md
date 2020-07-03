@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218976"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782533"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -74,6 +74,10 @@ Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprachassistenten*
 | Europa, Westen    | `westeurope`         |
 | Nordeuropa   | `northeurope`        |
 | Asien, Südosten | `southeastasia`      |
+
+### <a name="speaker-recognition"></a>Sprechererkennung
+
+Sprechererkennung ist derzeit nur in der Region `westus` verfügbar.
 
 ## <a name="rest-apis"></a>REST-APIs
 

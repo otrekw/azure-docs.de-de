@@ -2,29 +2,70 @@
 title: Features – LUIS
 description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/10/2020
+ms.openlocfilehash: 823c51f0b58481e30ff54814dde03285ad094b9e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742710"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677590"
 ---
 # <a name="machine-learning-ml-features"></a>Machine Learning-Features (ML)
 
-Beim maschinellen Lernen ist ein  **Feature** ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht.
+Beim maschinellen Lernen ist ein  **Feature**  ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht und durch die es lernt.
 
 Features des maschinellen Lernens liefern für LUIS wichtige Hinweise dazu, wo nach Informationen gesucht werden sollte, die für ein Konzept den Unterschied ausmachen. Hierbei handelt es sich um Hinweise, die von LUIS befolgt werden können, aber nicht um feste Regeln.  Diese Hinweise werden zusammen mit den Bezeichnungen genutzt, um Daten finden zu können.
 
- LUIS unterstützt als Features sowohl Ausdruckslisten als auch andere Entitäten:
+## <a name="what-is-a-feature"></a>Was ist ein Feature?
+
+Ein Feature ist ein eindeutiges Merkmal, das als Funktion bezeichnet werden kann: f(x) = y. Das Feature wird verwendet, um zu erfahren, wo in der Beispieläußerung nach dem unterscheidenden Merkmal zu suchen ist. Was wissen Sie bei Erstellung Ihres Schemas über die Beispieläußerung, die das Merkmal anzeigt? Ihre Antwort ist die beste Anleitung zum Erstellen von Features.
+
+## <a name="types-of-features"></a>Typen von Features
+
+ LUIS unterstützt als Features sowohl Ausdruckslisten als auch Modelle:
 * Feature „Ausdrucksliste“
 * Modell (Absicht oder Entität) als Feature
 
 Features sollten als erforderlicher Bestandteil Ihres Schemaentwurfs angesehen werden.
 
+## <a name="how-you-find-features-in-your-example-utterances"></a>Auffinden von Features in Ihren Beispieläußerungen
+
+Da LUIS eine sprachbasierte Anwendung ist, sind die Features textbasiert. Wählen Sie Text aus, der das Merkmal anzeigt, das Sie unterscheiden möchten. Für LUIS ist die kleinste textbasierte Einheit das Token. Für die englische Sprache ist ein Token eine angrenzende Abfolge (ohne Leerzeichen oder Interpunktion) von Buchstaben und Zahlen. Ein Leerzeichen ist kein Token.
+
+Da Leerzeichen und Interpunktionszeichen keine Token sind, konzentrieren Sie sich auf die Texthinweise, die Sie als Features verwenden können. Denken Sie daran, Variationen von Wörtern aufzunehmen, wie:
+* Pluralformen
+* Zeitformen von Verben
+* Abkürzungen
+* Rechtschreibung und falsche Schreibweisen
+
+Muss der Text als unterscheidendes Merkmal Folgendes erfüllen:
+* Genaue Übereinstimmung mit einem Wort oder Ausdruck: Erwägen Sie das Hinzufügen einer regulären Ausdrucksentität oder einer Listenentität als Feature zu der Entität oder Absicht.
+* Übereinstimmung mit einem bekannten Konzept wie Datumsangaben, Uhrzeiten oder Personennamen: Verwenden Sie eine vorgefertigte Entität als Feature für die Entität oder Absicht.
+* Lernen neuer Beispiele im Laufe der Zeit: Verwenden Sie eine Ausdrucksliste mit einigen Beispielen des Konzepts als ein Feature für die Entität oder Absicht.
+
+## <a name="combine-features"></a>Kombinieren von Features
+
+Da es mehrere Möglichkeiten gibt, wie ein Merkmal beschrieben wird, können Sie mehr als ein Feature verwenden, das zur Beschreibung dieses Merkmals oder Konzepts beiträgt. Eine gängige Paarung besteht darin, ein Ausdruckslistenfeature und einen der häufig als Feature verwendeten Entitätstypen zu verwenden: vorgefertigte Entität, reguläre Ausdrucksentität oder Listenentität.
+
+### <a name="ticket-booking-entity-example"></a>Beispiel: Ticketbuchungsentität
+
+Sehen Sie sich als erstes Beispiel eine App für die Buchung eines Flugs mit einer Flugreservierungsabsicht und einer Ticketbuchungsentität an.
+
+Die Ticketbuchungsentität ist eine durch maschinelles Lernen erworbene Entität für das Flugziel. Um den Ort zu extrahieren, ziehen Sie zwei Features zur Hilfe heran:
+* Ausdrucksliste relevanter Wörter wie `plane`, `flight`, `reservation`, `ticket`
+* Vorgefertigte Entität `geographyV2` als Feature der Entität
+
+### <a name="pizza-entity-example"></a>Beispiel: Pizza-Entität
+
+Sehen Sie sich als weiteres Beispiel eine App für die Bestellung einer Pizza mit der Absicht „Pizzabestellung erstellen“ und einer Pizza-Entität an.
+
+Die Pizza-Entität ist eine durch maschinelles Lernen erworbene Entität für die Pizza-Details. Um die Details zu extrahieren, ziehen Sie zwei Features zur Hilfe heran:
+* Ausdrucksliste relevanter Wörter wie `cheese`, `crust`, `pepperoni`, `pineapple`
+* Vorgefertigte Entität `number` als Feature der Entität
+
 ## <a name="a-phrase-list-for-a-particular-concept"></a>Eine Ausdrucksliste für ein bestimmtes Konzept
 
-Eine Ausdrucksliste ist eine Liste mit Wörtern oder Ausdrücken, die für ein bestimmtes Konzept steht.
+Eine Ausdrucksliste ist eine Liste mit Wörtern oder Ausdrücken, die für ein bestimmtes Konzept steht und als Übereinstimmung ohne Berücksichtigung von Groß-/Kleinschreibung auf Tokenebene angewendet wird.
 
 Beim Hinzufügen einer Ausdrucksliste können Sie das Feature wie folgt festlegen:
 * **[Global](#global-features)** . Ein globales Feature gilt für die gesamte App.
@@ -55,6 +96,18 @@ Gehen Sie wie folgt vor, wenn Sie die medizinischen Fachbegriffe extrahieren mö
 * Erstellen Sie zunächst Beispieläußerungen, und bezeichnen Sie die medizinischen Begriffe in diesen Äußerungen.
 * Erstellen Sie anschließend eine Ausdrucksliste mit Beispielen für die Begriffe innerhalb des Themenbereichs. Diese Ausdrucksliste sollte den von Ihnen bezeichneten eigentlichen Begriff und andere Begriffe enthalten, mit denen dasselbe Konzept beschrieben wird.
 * Fügen Sie die Ausdrucksliste der Entität oder untergeordneten Entität hinzu, von der das in der Ausdrucksliste verwendete Konzept extrahiert wird. Das häufigste Szenario ist eine Komponente (untergeordnetes Element) einer Machine Learning-Entität. Wenn die Ausdrucksliste übergreifend auf alle Absichten bzw. Entitäten angewendet werden soll, sollten Sie sie als globale Ausdrucksliste kennzeichnen. Das `enabledForAllModels`-Flag steuert diesen Modellbereich in der API.
+
+### <a name="token-matches-for-a-phrase-list"></a>Tokenübereinstimmungen für eine Ausdrucksliste
+
+Eine Ausdrucksliste wird ohne Berücksichtigung der Groß-/Kleinschreibung auf Tokenebene angewendet. Das folgende Diagramm zeigt, wie eine Ausdrucksliste, die das Wort `Ann` enthält, auf Variationen derselben Zeichen in dieser Reihenfolge angewendet wird.
+
+
+| Tokenvariation von `Ann`. | Ausdruckslistenübereinstimmung, wenn Token gefunden wird |
+|--------------------------|---------------------------------------|
+| ANN<br>aNN<br>           | Ja, das Token ist `Ann`.                  |
+| Ann's                    | Ja, das Token ist `Ann`.                  |
+| Anne                     | Nein, das Token ist `Anne`.                  |
+
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>

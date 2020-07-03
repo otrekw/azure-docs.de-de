@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457098"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753196"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -323,13 +323,16 @@ Wenn im Hauptfenster der App eine Fehlermeldung angezeigt wird, können Sie den 
 
 | Fehler | Vorgehensweise |
 |-------|----------------------|
-|Fehler AuthenticationFailure: Authentifizierungsfehler beim WebSocket-Upgrade (401). Überprüfen Sie, ob der Abonnementschlüssel (oder das Autorisierungstoken) und der Regionsname richtig sind.| Stellen Sie auf der Seite „Einstellungen“ der App sicher, dass Sie den Speech-Abonnementschlüssel und die zugehörige Region richtig eingegeben haben.<br>Vergewissern Sie sich, dass Ihr Sprachschlüssel und der Schlüsselbereich ordnungsgemäß eingegeben wurden. |
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Vor dem Senden einer Meldung konnte keine Verbindung mit dem Bot hergestellt werden. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Der Antwortstatuscode gibt keinen Erfolg an: 500 (InternalServerError)| Im Bot ist im Feld [speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) der Ausgabeaktivität eine neuronale Stimme angegeben, in der Azure-Region, die Ihrem Speech-Abonnementschlüssel zugeordnet ist, werden neuronale Stimmen jedoch nicht unterstützt. Siehe [Standard- und neuronale Stimmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1.000. Fehlerdetails: Maximale Leerlaufzeit der WebSocket-Verbindung wurde überschritten (> 300.000 ms)| Dies ist ein erwarteter Fehler, wenn eine Verbindung mit dem Kanal länger als fünf Minuten geöffnet und inaktiv bleibt. |
+|Fehler (AuthenticationFailure): Authentifizierungsfehler beim WebSocket-Upgrade (401). Überprüfen Sie, ob der Abonnementschlüssel (oder das Autorisierungstoken) und der Regionsname richtig sind.| Stellen Sie auf der Seite „Einstellungen“ der App sicher, dass Sie den Speech-Abonnementschlüssel und die zugehörige Region richtig eingegeben haben.<br>Vergewissern Sie sich, dass Ihr Sprachschlüssel und der Schlüsselbereich ordnungsgemäß eingegeben wurden. |
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Vor dem Senden einer Meldung konnte keine Verbindung mit dem Bot hergestellt werden. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1002 Fehlerdetails: Vom Server wurde Statuscode '503' zurückgegeben, als Statuscode '101' erwartet wurde. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Der Antwortstatuscode gibt keinen Erfolg an: 500 (InternalServerError)| Im Bot ist im Feld [speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) der Ausgabeaktivität eine neuronale Stimme angegeben, in der Azure-Region, die Ihrem Speech-Abonnementschlüssel zugeordnet ist, werden neuronale Stimmen jedoch nicht unterstützt. Siehe [Standard- und neuronale Stimmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.md).
+Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.md). Wenn Sie Ihr Problem nach dem Ausführen aller Schritte in diesem Tutorial trotzdem nicht lösen können, geben Sie ein neues Problem auf der [GitHub-Seite des Sprachassistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues) ein.
 
+#### <a name="a-note-on-connection-time-out"></a>Hinweis zum Verbindungstimeout
+
+Wenn Sie mit einem Bot verbunden sind und innerhalb der letzten 5 Minuten keine Aktivitäten aufgetreten sind, trennt der Dienst die Websocketverbindung mit dem Client und dem Bot automatisch. Dies ist beabsichtigt. In der Statusleiste wird eine Nachricht angezeigt: *„Timeout der aktiven Verbindung, die Verbindung kann bei Bedarf wiederhergestellt werden“* . Sie brauchen nicht die Schaltfläche „Erneut verbinden“ zu aktivieren, drücken Sie einfach die Mikrofontaste, und beginnen Sie zu speichern, geben Sie eine Textnachricht ein, oder sagen Sie das Schlüsselwort (wenn eins festgelegt wurde). Die Verbindung wird automatisch wiederhergestellt.  
 ### <a name="view-bot-activities"></a>Anzeigen von Botaktivitäten
 
 Jeder Bot sendet und empfängt **Aktivitätsnachrichten**. Im Fenster **Aktivitätsprotokoll** des Windows-Sprachassistent-Clients werden für jede Aktivität, die der Client vom Bot empfängt, mit einem Zeitstempel versehene Protokolle angezeigt. Außerdem werden die Aktivitäten angezeigt, die der Client mithilfe der [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)-Methode an den Bot gesendet hat. Wenn Sie ein Protokollelement auswählen, werden die Details der zugeordneten Aktivität im JSON-Format angezeigt.

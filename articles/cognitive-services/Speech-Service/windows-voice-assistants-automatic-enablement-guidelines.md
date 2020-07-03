@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 436367ede4f4be323b5334a201b1c9fb8f7f28e8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997325"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981760"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Datenschutzrichtlinien für Sprachassistenten unter Windows
 
@@ -24,7 +24,7 @@ Es ist wichtig, dass Benutzern klare Informationen darüber gegeben werden, wie 
 Entwickler, die Sprachassistenten unter Windows erstellen, müssen ihre Anwendungen mit klar verständlichen Benutzeroberflächenelementen ausstatten, die die Lauschfunktionen des Assistenten widerspiegeln.
 
 > [!NOTE]
-> Wird das Bereitstellen angemessener Offenlegungs- und Zustimmungsmöglichkeiten für eine Assistentenanwendung versäumt, auch nach Updates der Anwendung, steht der Assistent möglicherweise bis zur Behebung der Datenschutzprobleme nicht mehr zur Verfügung. 
+> Wird das Bereitstellen angemessener Offenlegungs- und Zustimmungsmöglichkeiten für eine Assistentenanwendung versäumt, auch nach Updates der Anwendung, steht der Assistent möglicherweise bis zur Behebung der Datenschutzprobleme nicht mehr zur Verfügung.
 
 ## <a name="minimum-requirements-for-feature-inclusion"></a>Mindestanforderungen für die Featureintegration
 
@@ -33,28 +33,28 @@ Windows-Benutzer können die Verfügbarkeit ihrer Assistentenanwendungen in **`S
  > [!div class="mx-imgBorder"]
  > [![privacy-app-listing](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Eintrag in den Datenschutzeinstellungen der Windows-Sprachaktivierung für eine Assistentenanwendung")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
-Um sich für die Aufnahme in diese Liste zu qualifizieren, muss eine Anwendung diese Voraussetzung erfüllen:
+Um sich für die Aufnahme in diese Liste zu qualifizieren, wenden Sie sich an Microsoft unter winvoiceassistants@microsoft.com, um loszulegen. Standardmäßig müssen Benutzer die Sprachaktivierung für einen neuen Assistenten in **`Settings > Privacy > Voice Activation`** explizit aktivieren, womit eine Anwendung mithilfe von `ms-settings:privacy-voiceactivation` per Protokoll eine Verknüpfung erstellen kann. Eine zulässige Anwendung wird in der Liste angezeigt, sobald Sie ausgeführt wurde und die `Windows.ApplicationModel.ConversationalAgent`-APIs verwendet hat. Ihre Sprachaktivierungseinstellungen können geändert werden, sobald die Anwendung die Einwilligung des Benutzers für die Mikrofonnutzung erhalten hat.
 
-1. Die Benutzer werden an hervorgehobener Stelle darüber informiert, dass die Anwendung nach einem Schlüsselwort lauscht, selbst wenn die Anwendung nicht ausgeführt wird, und wie dieses Schlüsselwort lautet
-1. Es ist eine Beschreibung enthalten, wie die Sprachdaten von Benutzern verwendet werden, einschließlich eines Links oder Verweises auf relevante Datenschutzrichtlinien
-1. Benutzer werden darüber informiert, dass sie ihre Datenschutzeinstellungen über die In-App-Einstellungen hinaus in **`Settings > Privacy > Voice activation`** anzeigen und ändern können; optional kann ein Protokolllink zu `ms-settings:privacy-voiceactivation` für den direkten Zugriff eingeschlossen werden
+Da die Windows-Datenschutzeinstellungen Informationen zur Funktionsweise der Sprachaktivierung umfassen und über eine Standardbenutzeroberfläche zum Kontrollieren der Berechtigung verfügt, sind Offenlegung und Einwilligung beide erfüllt. Der Assistent verbleibt in der zulässigen Liste, solange Folgendes nicht der Fall ist:
 
-Nachdem diese Anforderungen erfüllt wurden und die Genehmigung von Microsoft erteilt wurde, wird eine Assistentenanwendung im der Liste der sprachaktivierten Anwendungen angezeigt, sobald sie durch die `Windows.ApplicationModel.ConversationalAgent`-APIs registriert wurde. Dann haben Benutzer die Möglichkeit, der Anwendung ihre Zustimmung für die Schlüsselwortaktivierung zu erteilen. Standardmäßig sind beide Einstellungen `Off` und erfordern es, dass der Benutzer die Seite „Einstellungen“ aufsucht, um sie manuell zu aktivieren.
+* Fehlleitung oder Fehlinformation des Benutzers über die Sprachaktivierung oder Behandlung von Sprachdaten durch den Assistenten
+* Übermäßige Störung eines anderen Assistenten
+* Verletzen jeglicher anderer relevanter Microsoft-Richtlinien
+
+Wird einer der oben genannten Punkte erkannt, kann Microsoft einen Assistenten aus der zulässigen Liste entfernen, bis die Probleme behoben sind.
 
 > [!NOTE]
 > Unter allen Umständen erfordern Berechtigungen zur Sprachaktivierung die Berechtigung zur Mikrofonverwendung. Wenn eine Assistentenanwendung nicht über Mikrofonzugriff verfügt, ist sie nicht für Sprachaktivierung qualifiziert und wird in den Datenschutzeinstellungen der Sprachaktivierung in deaktiviertem Zustand angezeigt.
 
 ## <a name="additional-requirements-for-inclusion-in-microphone-consent"></a>Zusätzliche Anforderungen für den Einschluss in die Einwilligung zum Mikrofongebrauch
 
-Autoren von Assistenten können die Zustimmung zur Sprachaktivierung für ihre Benutzer einfacher und flüssiger gestalten, indem sie über die oben genannten hinaus weiteren Anforderungen genügen. Nachdem diese erfüllt wurden, ist der Standardwert für die Sprachaktivierungseinstellung einer Assistentenanwendung bei entsperrtem Gerät `On`, nachdem (und erst nachdem) der Anwendung Zugriff auf das Mikrofon erteilt wurde. Dadurch entfällt die Extrarunde über „Einstellungen“ für die Sprachaktivierung eines Assistenten.
+Autoren von Assistenten können die Zustimmung zur Sprachaktivierung für ihre Benutzer einfacher und flüssiger gestalten, indem sie weitere Anforderungen erfüllen, um Offenlegung und Einwilligung adäquat zu erfüllen, ohne noch mal extra zur Seite mit den Einstellungen wechseln zu müssen. Nach der Genehmigung steht die Sprachaktivierung sofort zur Verfügung, sobald ein Benutzer der Assistentenanwendung Berechtigungen für die Mikrofonnutzung erteilt hat. Um sich hierfür zu qualifizieren, muss eine Assistentenanwendung Folgendes ausführen, **bevor** zur Einwilligung für die Mikrofonnutzung aufgefordert wird (z. B. mithilfe der `AppCapability.RequestAccessAsync`-API):
 
-Die zusätzlichen Anforderungen besagen, dass eine Assistentenanwendung diese Punkte erfüllen muss:
+1. Zeigen Sie dem Benutzer an hervorgehobener Stelle deutlich an, dass die Anwendung in der Sprache eines Benutzers nach einem Schlüsselwort lauschen möchte, *auch bei nicht ausgeführter Anwendung*, und um Einwilligung des Benutzers bittet
+1. Beziehen Sie relevante Informationen zu Datennutzungs- und Datenschutzrichtlinien ein, z. B. einen Link zu einer offiziellen Datenschutzerklärung.
+1. Vermeiden Sie im Ablauf der Benutzeroberfläche, mit dem das Verhalten der Audioerfassung offengelegt wird, anweisende oder anleitende Formulierungen in jeder Form (beispielsweise „Klicken Sie bei der folgenden Anforderung auf ‚Ja‘“).
 
-1. **Vor** der Aufforderung zum Erteilen der Zustimmung zur Mikrofonnutzung (beispielsweise mithilfe der `AppCapability.RequestAccessAsync`-API) muss dem Benutzer an hervorgehobener Stelle angezeigt werden, dass die Assistentenanwendung in der Sprache eines Benutzers nach einem Schlüsselwort lauschen möchte, auch bei nicht ausgeführter Anwendung, und um Zustimmung des Benutzers bittet
-2. Es werden alle relevanten Informationen zur Datennutzung und Datenschutzrichtlinien bereitgestellt, **bevor** der Mikrofonzugriff angefordert wird oder die `Windows.ApplicationModel.ConversationalAgent`-APIs verwendet werden
-3. Vermeiden Sie im Ablauf der Benutzeroberfläche, der das Verhalten der Audioerfassung offenlegt und die Berechtigung anfordert, anweisende oder anleitende Formulierungen in jeder Form (beispielsweise „Klicken Sie bei der folgenden Anforderung auf ‚Ja‘“)
-
-Sobald diesen Anforderungen Genüge getan wird, wird eine qualifizierte Assistentenanwendung in der Liste der Anwendungen, die für Sprachaktivierung qualifiziert sind, im Zustand `enabled` angezeigt, sobald der Mikrofonzugriff erteilt wird.
+Wenn eine Anwendung alle oben genannten Punkte erreicht hat, ist Sie berechtigt, die Sprachaktivierungsfunktion in Verbindung mit der Einwilligung in die Mikrofonnutzung zu aktivieren. Wenden Sie sich an winvoiceassistants@microsoft.com, um weitere Informationen zu erhalten und sich eine Erfahrung der ersten Verwendung anzusehen.
 
 > [!NOTE]
 > Die Sprachaktivierung bei gesperrtem Gerät ist nicht für die automatische Aktivierung bei erteilten Mikrofonzugriff qualifiziert. Der Benutzer muss die Datenschutzseite der Sprachaktivierung aufsuchen, um den Zugang für einen Assistenten auch bei gesperrtem Gerät zu aktivieren.
