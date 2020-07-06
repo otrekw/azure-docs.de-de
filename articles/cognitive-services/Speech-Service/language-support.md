@@ -45,7 +45,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-JO` | Arabisch (Jordanien)                   | Ja       | Nein                                                |
 | `ar-KW` | Arabisch (Kuwait)                   | Ja       | Nein                                                |
 | `ar-LB` | Arabisch (Libanon)                  | Ja       | Nein                                                |
-| `ar-PS` | Arabisch (Palästina)                | Ja       | Nein                                                |
+| `ar-PS` | Arabisch (Palästinensische Behörde)                | Ja       | Nein                                                |
 | `ar-QA` | Arabisch (Katar)                    | Ja       | Nein                                                |
 | `ar-SA` | Arabisch (Saudi-Arabien)             | Ja       | Nein                                                |
 | `ar-SY` | Arabisch (Syrien)                    | Ja       | Sprachmodell                                    |
