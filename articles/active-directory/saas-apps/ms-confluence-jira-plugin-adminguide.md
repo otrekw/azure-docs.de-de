@@ -147,7 +147,7 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Sie möchten WebSudo (die sichere Administratorsitzung) deaktivieren**:
 
-  * Für JIRA sind sichere Administratorsitzungen (d.h. Bestätigung des Kennworts vor dem Zugriff auf die Verwaltungsfunktionen) standardmäßig aktiviert. Wenn Sie diese Funktion aus Ihrer JIRA-Instanz entfernen möchten, geben Sie die folgende Zeile in die Datei „jira-config.properties“ ein: `ira.websudo.is.disabled = true`
+  * Für JIRA sind sichere Administratorsitzungen (d.h. Bestätigung des Kennworts vor dem Zugriff auf die Verwaltungsfunktionen) standardmäßig aktiviert. Wenn Sie diese Funktion aus Ihrer JIRA-Instanz entfernen möchten, geben Sie die folgende Zeile in die Datei „jira-config.properties“ ein: `jira.websudo.is.disabled = true`
 
   * Führen Sie für Confluence die Schritte auf der [Support-Website von Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html) aus.
 
