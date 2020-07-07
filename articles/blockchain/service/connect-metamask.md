@@ -4,12 +4,12 @@ description: Stellen Sie mithilfe von MetaMask eine Verbindung mit einem Azure B
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920582"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts
 
@@ -128,9 +128,9 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 
 Im Debugbereich von Remix werden Details zu den Transaktionen in der Blockchain angezeigt:
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![Debugverlauf](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+Die Erstellung des Smart Contracts **simple**, die Transaktion für **simple.add** und der Aufruf von **simple.get** werden dort aufgeführt.
 
 Öffnen Sie zum Anzeigen des Transaktionsverlaufs in MetaMask die Browsererweiterung MetaMask, und suchen Sie im Abschnitt **History** (Verlauf) nach einem Protokoll des bereitgestellten Vertrags und der Transaktionen.
 

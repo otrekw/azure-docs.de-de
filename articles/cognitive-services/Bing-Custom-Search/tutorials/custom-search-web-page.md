@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921939"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -60,11 +60,11 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 Um Ergebnisse von bestimmten Websites oder URLs einzuschließen, fügen Sie diese der Registerkarte **Aktiv** hinzu.
 
-1.       Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
+1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
 
     ![Screenshot der Registerkarte „Aktiv“ des Definitions-Editors](../media/customSrchEditor.png)
 
-2.       Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
+2. Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
 
 ## <a name="add-blocked-entries"></a>Hinzufügen blockierter Einträge
 

@@ -35,7 +35,7 @@ Wenn Sie die Abfrage mit „SQL On-Demand“ ausführen, erhalten Sie die Fehler
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
 > [!NOTE] 
->    Die folgenden Schritte zur Problembehandlung sind für Chromium Edge und Chrome vorgesehen. Sie können andere Browser (z. B. FireFox) mit den gleichen Schritten zur Problembehandlung verwenden, aber das Fenster „Entwicklertool“ kann ein anderes Layout als die hier enthaltenen Screenshots aufweisen. Verwenden Sie nach Möglichkeit NICHT das klassische Edge zur Problembehandlung, da es in bestimmten Situationen ungenaue Informationen anzeigen kann.
+>    Die folgenden Schritte zur Problembehandlung sind für Microsoft Edge (Chromium) und Chrome vorgesehen. Sie können andere Browser (z. B. FireFox) mit den gleichen Schritten zur Problembehandlung verwenden, aber das Fenster „Entwicklertool“ kann ein anderes Layout als die hier enthaltenen Screenshots aufweisen. Verwenden Sie nach Möglichkeit NICHT das klassische Microsoft Edge zur Problembehandlung, da es in bestimmten Situationen ungenaue Informationen anzeigen kann.
 
 Öffnen Sie das Fenster „Diagnoseinformationen“, wählen Sie die Schaltfläche „Diagnose herunterladen“ aus. Behalten Sie die heruntergeladenen Informationen für die Fehlerberichterstellung bei. Sie können stattdessen die „Sitzungs-ID“ kopieren und beim Öffnen des Supporttickets anfügen.
 
@@ -92,7 +92,7 @@ Wenn Sie das Problem melden, können Sie optional einen Screenshot der Registerk
 
 Wenn Sie Screenshots anfügen, geben Sie die Uhrzeit (oder einen geschätzten Zeitraum) an, zu der Sie die Screenshots erstellt haben. Es wird uns bei der Untersuchung des Problems helfen.
 
-Bestimmte Browser unterstützen die Anzeige von Zeitstempeln auf der Registerkarte „Konsole“. Für Chromium Edge/Chrome öffnen Sie das Dialogfeld „Einstellungen“ unter „Entwicklertools“, und aktivieren Sie „Zeitstempel anzeigen“ auf der Registerkarte „Einstellungen“.
+Bestimmte Browser unterstützen die Anzeige von Zeitstempeln auf der Registerkarte „Konsole“. Für Microsoft Edge (Chromium)/Chrome öffnen Sie das Dialogfeld „Einstellungen“ unter „Entwicklertools“, und aktivieren Sie „Zeitstempel anzeigen“ auf der Registerkarte „Einstellungen“.
 
 ![developer-tool-console-settings](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 

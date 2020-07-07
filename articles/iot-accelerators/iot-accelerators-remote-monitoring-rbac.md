@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920710"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -50,7 +50,7 @@ Standardmäßig erhält der Benutzer, der die Lösung bereitgestellt hat, automa
 
 ## <a name="add-or-remove-users"></a>Hinzufügen oder Entfernen von Benutzern
 
-Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal einer Rolle in der Remoteüberwachungslösung einen Benutzer hinzufügen oder aus ihr entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) verwendet, die beim Bereitstellen der Remoteüberwachungslösung erstellt wurde.
+Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal einer Rolle in der Remoteüberwachungslösung einen Benutzer hinzufügen oder aus ihr entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/view-applications-portal.md) verwendet, die beim Bereitstellen der Remoteüberwachungslösung erstellt wurde.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 

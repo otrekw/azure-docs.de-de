@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75612256"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957561"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -27,7 +27,9 @@ Weitere Informationen finden Sie unter [Apache Calcite Avatica Protocol Buffers 
 
 Der Microsoft .NET-Treiber für Apache Phoenix Query Server wird als NuGet-Paket bereitgestellt, das mit dem folgenden Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Instanziieren des neuen PhoenixClient-Objekts
 
@@ -494,7 +496,7 @@ finally
 
 Die Ausgabe der `select`-Anweisungen sollte zum folgenden Ergebnis führen:
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

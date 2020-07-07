@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/03/2020
+ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190308"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954110"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in Azure SQL-Datenbank
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bei der [Azure SQL-Datenbank-Überwachung](auditing-overview.md) werden Datenbankereignisse nachverfolgt und in Überwachungsprotokolle in Ihrem Azure-Speicherkonto geschrieben oder für die Downstreamverarbeitung und -analyse an Event Hub bzw. Log Analytics gesendet.
 
@@ -31,7 +31,7 @@ Bei der [Azure SQL-Datenbank-Überwachung](auditing-overview.md) werden Datenban
 
 Für die Datenbank `Database1` unter `Server1` wäre beispielsweise folgender Pfad gültig:
 
-    Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+`Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel`
 
 Überwachungsprotokolle für [schreibgeschützte Replikate](read-scale-out.md) werden im selben Container gespeichert. Die Verzeichnishierarchie innerhalb des Containers weist das Format `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` auf. Der Name der Blobdatei weist das gleiche Format auf. Die Überwachungsprotokolle für schreibgeschützte Replikate werden im selben Container gespeichert.
 

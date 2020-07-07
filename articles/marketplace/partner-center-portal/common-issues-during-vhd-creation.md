@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724716"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954175"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Allgemeine Probleme bei der VHD-Erstellung
 
@@ -20,7 +20,7 @@ In diesem Artikel mit häufig gestellten Fragen (FAQs) erhalten Sie Informatione
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Wie erstelle ich eine VM über das Azure-Portal, indem ich eine VHD in Premium-Speicher verwende?
 
-Der Azure Marketplace verfügt derzeit nicht über die Unterstützung für die Erstellung von VM-Angeboten aus Images, die sich im verwalteten Speicher oder in Azure Storage Premium befinden. Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+Der Azure Marketplace verfügt derzeit nicht über die Unterstützung für die Erstellung von VM-Angeboten aus Images, die sich im verwalteten Speicher oder in Azure Storage Premium befinden. Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Kann ich virtuelle Computer der 2. Generation für Angebote verwenden?
 
@@ -45,9 +45,9 @@ Die Generierung von Zertifikaten ist unter [Azure-VM-Imagezertifizierung](https:
 
 Bei Verwendung des Azure Resource Manager-Bereitstellungsmodells haben Sie drei Optionen:
 
-* [Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Erstellen eines routenbasierten VPN-Gateways mit Azure PowerShell](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Erstellen eines routenbasierten VPN-Gateways mit Azure PowerShell](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Was sind Microsoft-Supportrichtlinien für die Ausführung von Microsoft-Serversoftware auf Azure-basierten VMs?
 
@@ -75,4 +75,4 @@ Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
 Bei jeder versuchten Erstellung eines Images aus virtuellen Festplatten erhalte ich in Azure PowerShell eine Fehlermeldung mit dem Hinweis, dass die virtuelle Festplatte im Imagerepository bereits als Ressource registriert ist. Ich habe vorher weder ein Image erstellt, noch habe ich ein Image mit diesem Namen in Azure gefunden. Wie löse ich dieses Problem?
 
-Dieses Problem tritt normalerweise auf, wenn Sie eine VM aus einer VHD erstellt haben, die mit einer Sperre versehen ist. Stellen Sie sicher, dass über diese virtuelle Festplatte kein virtueller Computer zugeordnet wird, und wiederholen Sie anschließend den Vorgang. Öffnen Sie ein Supportticket, falls dieses Problem weiterhin besteht. Weitere Informationen finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Dieses Problem tritt normalerweise auf, wenn Sie eine VM aus einer VHD erstellt haben, die mit einer Sperre versehen ist. Stellen Sie sicher, dass über diese virtuelle Festplatte kein virtueller Computer zugeordnet wird, und wiederholen Sie anschließend den Vorgang. Öffnen Sie ein Supportticket, falls dieses Problem weiterhin besteht. Weitere Informationen finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).

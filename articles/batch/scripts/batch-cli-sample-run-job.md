@@ -3,12 +3,12 @@ title: 'Azure CLI-Skriptbeispiel: Ausführen eines Batchauftrags'
 description: Dieses Skript erstellt einen Batch-Auftrag und fügt eine Reihe von Aufgaben zum Auftrag hinzu. Außerdem wird die Überwachung eines Auftrags und seiner Aufgaben veranschaulicht.
 ms.topic: sample
 ms.date: 12/12/2019
-ms.openlocfilehash: ce3c06b4631095df54371ca2417dc45d493a437d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: eefc6cfdc01ddf4b8fe05b3b52360994e5763013
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681839"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957256"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI-Beispiel: Ausführen eines Auftrags und von Aufgaben mit Azure Batch
 
@@ -39,12 +39,12 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Erstellt das Batch-Konto. |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Authentifiziert das angegebene Batch-Konto zur weiteren CLI-Interaktion.  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | Erstellt einen Pool mit Computeknoten.  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-create) | Erstellt einen Batch-Auftrag.  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-create) | Fügt eine Aufgabe zum angegebenen Batch-Auftrag hinzu.  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-set) | Aktualisiert die Eigenschaften eines Batch-Auftrags.  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-show) | Ruft Details eines angegebenen Batch-Auftrags ab.  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | Ruft die Details einer Aufgabe aus dem angegebenen Batch-Auftrag ab.  |
+| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | Erstellt einen Pool mit Computeknoten.  |
+| [az batch job create](/cli/azure/batch/job#az-batch-job-create) | Erstellt einen Batch-Auftrag.  |
+| [az batch task create](/cli/azure/batch/task#az-batch-task-create) | Fügt eine Aufgabe zum angegebenen Batch-Auftrag hinzu.  |
+| [az batch job set](/cli/azure/batch/job#az-batch-job-set) | Aktualisiert die Eigenschaften eines Batch-Auftrags.  |
+| [az batch job show](/cli/azure/batch/job#az-batch-job-show) | Ruft Details eines angegebenen Batch-Auftrags ab.  |
+| [az batch task show](/cli/azure/batch/task#az-batch-task-show) | Ruft die Details einer Aufgabe aus dem angegebenen Batch-Auftrag ab.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

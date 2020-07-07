@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514220"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954688"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC 
 
@@ -242,10 +242,12 @@ Das ProtectionElement SOLLTE vorhanden sein, wenn Common Encryption (CENC) auf V
 > 
 >   Die Syntax der in diesem Abschnitt definierten Felder, festgelegt in ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096), lautet wie folgt:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Hinweis**: Die Kompatibilitätsmarken „ccff“ und „iso8“ zeigen an, dass Fragmente dem „Common Container File Format“ und Common Encryption, [ISO/IEC 23001-7], sowie dem ISO-Basismediendateiformat, 4. Auflage, [ISO/IEC 14496-12], entsprechen.
 
@@ -288,14 +290,18 @@ Das ProtectionElement SOLLTE vorhanden sein, wenn Common Encryption (CENC) auf V
 > 
 >   Präsentationen mit HEVC-Streams SOLLEN Folgendes festlegen:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Hinweis: Boxes: veraltet)
 > 
 >   Präsentationen SOLLEN ebenfalls festlegen:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Streamsammlung: Eine Sammlung von Datenelementen der Streambeschreibung, wie in Abschnitt *3.1.1.1.2* angegeben.
 > 

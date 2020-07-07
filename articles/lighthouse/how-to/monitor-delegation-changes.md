@@ -2,13 +2,13 @@
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
 ms.date: 03/30/2020
-ms.topic: conceptual
-ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.topic: how-to
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919128"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -44,7 +44,7 @@ Da dies ein umfassender Zugriff ist, wird empfohlen, diese Rolle einem Dienstpri
 
 - [Erstellen Sie ein neues Dienstprinzipalkonto](../../active-directory/develop/howto-create-service-principal-portal.md), das nur für diese Funktion verwendet wird, statt diese Rolle einem vorhandenen Dienstprinzipal zuzuweisen, der für andere Automatisierungen verwendet wird.
 - Stellen Sie sicher, dass dieser Dienstprinzipal keinen Zugriff auf delegierte Kundenressourcen hat.
-- [Verwenden Sie ein Zertifikat zum Authentifizieren](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets), und [speichern Sie es sicher in Azure Key Vault](../../key-vault/general/best-practices.md).
+- [Verwenden Sie ein Zertifikat zum Authentifizieren](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in), und [speichern Sie es sicher in Azure Key Vault](../../key-vault/general/best-practices.md).
 - Beschränken Sie die Anzahl der Benutzer, die entsprechenden Zugriff zum Handeln im Namen des Dienstprinzipals haben.
 
 Verwenden Sie eine der folgenden Methoden für die Stammbereichszuweisungen.
@@ -73,7 +73,7 @@ Nachdem Sie das Dienstprinzipalkonto erstellt und die Rolle „Überwachungslese
 
 Nachdem Sie ein neues Dienstprinzipalkonto mit dem Zugriffsrecht der Rolle „Überwachungsleser“ im Stammbereich Ihres Verwaltungsmandanten erstellt haben, können Sie damit Delegierungsaktivitäten in Ihrem Mandanten abfragen und Berichte erstellen. 
 
-[Dieses Azure PowerShell-Skript](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kann verwendet werden, um die Aktivitäten des letzten Tages abzufragen und einen Bericht über alle hinzugefügten oder entfernten Delegierungen (bzw. nicht erfolgreiche Versuche) zu erstellen. Es werden die Daten des [Mandantenaktivitätsprotokolls](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) abgefragt und dann die folgenden Werte erstellt, um über hinzugefügte oder entfernte Delegierungen zu berichten:
+[Dieses Azure PowerShell-Skript](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kann verwendet werden, um die Aktivitäten des letzten Tages abzufragen und einen Bericht über alle hinzugefügten oder entfernten Delegierungen (bzw. nicht erfolgreiche Versuche) zu erstellen. Es werden die Daten des [Mandantenaktivitätsprotokolls](/rest/api/monitor/TenantActivityLogs/List) abgefragt und dann die folgenden Werte erstellt, um über hinzugefügte oder entfernte Delegierungen zu berichten:
 
 - **DelegatedResourceId**: Die ID des delegierten Abonnements oder der delegierten Ressourcengruppe.
 - **CustomerTenantId**: Die ID des Kundenmandanten.

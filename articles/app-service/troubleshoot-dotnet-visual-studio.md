@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857211"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -348,7 +348,9 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
 
     `trace.axd` ist standardmäßig nur lokal verfügbar. Sie können dem `trace`-Element in der Datei *Web.config* die Zeile `localOnly="false"` hinzufügen, um die Datei in einer Remote-App verfügbar zu machen, wie im folgenden Beispiel gezeigt:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
     Das Aktivieren von `trace.axd` in einer Produktions-App wird jedoch aus Sicherheitsgründen nicht empfohlen. In den folgenden Abschnitten finden Sie eine einfachere Möglichkeit zum Lesen von Ablaufverfolgungsprotokollen in einer App Service-App.
 

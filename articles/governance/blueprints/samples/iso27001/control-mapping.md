@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „ISO 27001“
 description: Steuerungszuordnung des ISO 27001-Blaupausenbeispiels. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 501884491dbef85cdf8a29cb5fdcef44a68235a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f4998a84d7079b55e2668a43b7e7359429d54d8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75920570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919209"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Steuerungszuordnung des ISO 27001-Blaupausenbeispiels
 
@@ -28,7 +28,7 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 Klassifizierung von Informationen
 
-Mithilfe des [SQL-Sicherheitsrisikobewertungsdiensts](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) von Azure können Sie sensible Daten finden, die in Ihren Datenbanken gespeichert sind, und erhalten Empfehlungen zur Klassifizierung dieser Daten. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, um zu überwachen, dass während der Überprüfung der SQL-Sicherheitsrisikobewertung identifizierte Sicherheitslücken geschlossen werden.
+Mithilfe des [SQL-Sicherheitsrisikobewertungsdiensts](/azure/sql-database/sql-vulnerability-assessment) von Azure können Sie sensible Daten finden, die in Ihren Datenbanken gespeichert sind, und erhalten Empfehlungen zur Klassifizierung dieser Daten. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, um zu überwachen, dass während der Überprüfung der SQL-Sicherheitsrisikobewertung identifizierte Sicherheitslücken geschlossen werden.
 
 - \[Vorschau\]: Ergebnisse der SQL-Sicherheitsrisikobewertung in Azure Security Center überwachen
 

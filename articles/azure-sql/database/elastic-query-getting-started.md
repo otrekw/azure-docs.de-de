@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036081"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956898"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ Diese Informationen werden für die Verbindung mit dem Shard-Zuordnungs-Manager 
 1. Öffnen Sie SQL Server Management Studio oder SQL Server Data Tools in Visual Studio.
 2. Stellen Sie eine Verbindung mit der ElasticDBQuery-Datenbank her, und führen Sie die folgenden T-SQL-Befehle aus:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     „username“ und „password“ müssen mit den Anmeldeinformationen aus Schritt 3 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](elastic-scale-get-started.md#download-and-run-the-sample-app) im Artikel **Erste Schritte mit den Tools für elastische Datenbanken** übereinstimmen.
 
 ### <a name="external-data-sources"></a>Externe Datenquellen
 Um eine externe Datenquelle zu erstellen, führen Sie den folgenden Befehl für die ElasticDBQuery-Datenbank aus:
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  "CustomerIDShardMap" ist der Name der Shard-Zuordnung, wenn Sie die Shard-Zuordnung und den Shard-Zuordnungs-Manager mithilfe des Beispiels für die Tools für elastische Datenbanken erstellt haben. Wenn Sie jedoch Ihre benutzerdefinierte Konfiguration für dieses Beispiel verwendet haben, sollte dies der Name Shard-Zuordnung sein, den Sie in der Anwendung ausgewählt haben.
 
 ### <a name="external-tables"></a>Externe Tabellen
 Erstellen Sie eine externe Tabelle, die mit der Customers-Tabelle in den Shards übereinstimmt, indem Sie den folgenden Befehl für die ElasticDBQuery-Datenbank ausführen:
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Ausführen einer T-SQL-Abfrage für eine elastische Beispieldatenbank
 Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, können Sie jetzt vollständiges T-SQL in den externen Tabellen verwenden.
 
 Führen Sie die folgende Abfrage für die ElasticDBQuery-Datenbank aus:
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 Sie werden feststellen, dass die Abfrage Ergebnisse aus allen Shards aggregiert und die folgende Ausgabe ausgibt:
 

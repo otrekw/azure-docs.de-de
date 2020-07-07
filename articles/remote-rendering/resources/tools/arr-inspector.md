@@ -20,7 +20,7 @@ ArrInspector ist ein webbasiertes Tool zum Überprüfen einer laufenden Azure Re
 
 ## <a name="connecting-to-the-arrinspector"></a>Herstellen einer Verbindung mit dem ArrInspector
 
-Stellen Sie nach dem Abrufen des Hostnamens Ihres ARR-Servers (der auf `mixedreality.azure.com` endet) eine Verbindung mithilfe von [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) her. Mit dieser Funktion wird eine `StartArrInspector.html` auf dem Gerät erstellt, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Starten von ArrInspector diese Datei in einem Browser (Edge, Firefox oder Chrome) auf einem PC. Die Datei ist nur 24 Stunden lang gültig.
+Stellen Sie nach dem Abrufen des Hostnamens Ihres ARR-Servers (der auf `mixedreality.azure.com` endet) eine Verbindung mithilfe von [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) her. Mit dieser Funktion wird eine `StartArrInspector.html` auf dem Gerät erstellt, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Starten von ArrInspector diese Datei in einem Browser (Microsoft Edge, Firefox oder Chrome) auf einem PC. Die Datei ist nur 24 Stunden lang gültig.
 
 Wenn die App, die `ConnectToArrInspectorAsync` aufruft, bereits auf einem PC ausgeführt wird:
 

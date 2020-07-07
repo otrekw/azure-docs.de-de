@@ -45,7 +45,7 @@ Gehen Sie folgendermaßen vor, um ein Edge-Bereitstellungsmanifest als Paket in 
 
 1. Navigieren Sie auf der Webbenutzeroberfläche für die Remoteüberwachung zur Seite **Pakete**: Seite ![Pakete](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Klicken Sie auf **+ Neues Paket**, wählen Sie **Edge-Manifest** als Pakettyp aus, und klicken Sie auf **Durchsuchen**, um die im vorherigen Abschnitt gespeicherte Datei **deploymentmanifest.json** auszuwählen: ![Manifest auswählen](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Klicken Sie auf **+ Neues Paket**, wählen Sie **Microsoft Edge-Manifest** als Pakettyp aus, und klicken Sie auf **Durchsuchen**, um die im vorherigen Abschnitt gespeicherte Datei **deploymentmanifest.json** auszuwählen: ![Manifest auswählen](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
 1. Klicken Sie auf **Hochladen**, um das Paket zu Ihrer Remoteüberwachungslösung hinzuzufügen: ![Paket hochladen](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
