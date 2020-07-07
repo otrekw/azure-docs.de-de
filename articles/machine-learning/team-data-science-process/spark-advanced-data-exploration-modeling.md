@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83634513"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
@@ -116,7 +116,7 @@ Der Kontext der mit Jupyter-Notebooks bereitgestellten PySpark-Kernel ist vorein
 Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert sind. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
 
 * **%%local** gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
-* **%%sql -o \<Variablenname>** wendet eine Hive-Abfrage auf „sqlContext“ an. Wenn der Parameter „-o“ übergeben wird, wird das Ergebnis der Abfrage im Python-Kontext „%%local“ als Pandas-Dataframe beibehalten.
+* **%%sql -o \<variable name>** wendet eine Hive-Abfrage auf „sqlContext“ an. Wenn der Parameter „-o“ übergeben wird, wird das Ergebnis der Abfrage im Python-Kontext „%%local“ als Pandas-Dataframe beibehalten.
 
 Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“ finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 

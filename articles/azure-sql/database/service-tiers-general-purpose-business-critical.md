@@ -3,8 +3,8 @@ title: Dienstebenen „Universell“ und „Unternehmenskritisch“
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: In diesem Artikel werden die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell erläutert, das von Azure SQL-Datenbank und Azure SQL Managed Instance verwendet wird.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 1783285704870dbcaeac731dc085bddf8851c7be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37dd6881876df010b548a8bb48ca88bb72dab764
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037941"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986602"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ In diesem Artikel werden die Unterschiede zwischen den Dienstebenen, die Speiche
 
 In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Dienstebenen für die neueste Generation (Gen5) beschrieben. Beachten Sie, dass sich die Merkmale der Dienstebenen zwischen SQL-Datenbank und SQL Managed Instance unterscheiden können.
 
-| | Ressourcentyp | Universell |  Hyperscale | Unternehmenskritisch |
+|-| Ressourcentyp | Universell |  Hyperscale | Unternehmenskritisch |
 |:---:|:---:|:---:|:---:|:---:|
 | **Am besten geeignet für** | |  Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung. | OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
 |  **Verfügbar in Ressourcentyp:** ||SQL-Datenbank/SQL Managed Instance | Azure SQL-Einzeldatenbank | SQL-Datenbank/SQL Managed Instance |
@@ -94,7 +94,7 @@ Verwenden Sie [sp_spaceused](https://docs.microsoft.com/sql/relational-databases
 Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Point-in-Time-Wiederherstellung“ (Point in Time Restore, PITR) und [Langzeitaufbewahrung](long-term-retention-overview.md) (Long Term Retention, LTR) von SQL-Datenbank und SQL Managed Instance zu unterstützen. Dieser Speicher wird für jede Datenbank separat zugeordnet und als zwei Arten von getrennten Datenbankgebühren berechnet.
 
 - **PITR**: Einzelne Datenbanksicherungen werden automatisch in den [georedundanten Speicher mit Lesezugriff](../../storage/common/geo-redundant-design.md) (Read-Access Geo-Redundant, RA-GRS) kopiert. Die Speichergröße wird dynamisch erhöht, wenn neue Sicherungen erstellt werden. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Der Speicherverbrauch richtet sich nach der Änderungsrate der Datenbank und nach dem Aufbewahrungszeitraum für Sicherungen. Sie können für jede Datenbank eine separate Aufbewahrungsdauer konfigurieren, die zwischen 7 und 35 Tagen liegt. Eine Mindestspeichermenge, die 100 Prozent (1x) der Datenbankgröße entspricht, wird kostenlos zur Verfügung gestellt. Für die meisten Datenbanken reicht diese Menge aus, um Sicherungen für sieben Tage aufzubewahren.
-- **LTR**: Sie haben auch die Möglichkeit, die Langzeitaufbewahrung von vollständigen Sicherungen für bis zu 10 Jahre zu konfigurieren (dieses Feature ist [in der eingeschränkten öffentlichen Vorschauversion von SQL Managed Instance enthalten](long-term-retention-overview.md#managed-instance-support)). Wenn Sie eine LTR-Richtlinie einrichten, werden diese Sicherungen automatisch im RA-GRS-Speicher gespeichert. Sie können jedoch steuern, wie häufig die Sicherungen kopiert werden. Zur Einhaltung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungszeiträume für wöchentliche, monatliche und/oder jährliche Sicherungen auswählen. Wie viel Speicher für LTR-Sicherungen verwendet wird, richtet sich nach der ausgewählten Konfiguration. Sie können den LTR-Preisrechner verwenden, um die Kosten für LTR-Speicher zu schätzen. Weitere Informationen finden Sie unter dem Thema zur [Langzeitaufbewahrung von SQL-Datenbank](long-term-retention-overview.md).
+- **LTR**: Sie haben auch die Möglichkeit, die Langzeitaufbewahrung von vollständigen Sicherungen für bis zu 10 Jahre zu konfigurieren (dieses Feature ist [in der eingeschränkten öffentlichen Vorschauversion von SQL Managed Instance enthalten](long-term-retention-overview.md#sql-managed-instance-support)). Wenn Sie eine LTR-Richtlinie einrichten, werden diese Sicherungen automatisch im RA-GRS-Speicher gespeichert. Sie können jedoch steuern, wie häufig die Sicherungen kopiert werden. Zur Einhaltung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungszeiträume für wöchentliche, monatliche und/oder jährliche Sicherungen auswählen. Wie viel Speicher für LTR-Sicherungen verwendet wird, richtet sich nach der ausgewählten Konfiguration. Sie können den LTR-Preisrechner verwenden, um die Kosten für LTR-Speicher zu schätzen. Weitere Informationen finden Sie unter dem Thema zur [Langzeitaufbewahrung von SQL-Datenbank](long-term-retention-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

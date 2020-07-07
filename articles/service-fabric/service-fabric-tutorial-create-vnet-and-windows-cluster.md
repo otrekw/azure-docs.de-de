@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell ei
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756039"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611661"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
@@ -73,8 +73,8 @@ In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Windows-Cluster m
 * Geschütztes Zertifikat (in den Vorlagenparametern konfigurierbar).
 * [Reverseproxy](service-fabric-reverseproxy.md) aktiviert.
 * [DNS-Dienst](service-fabric-dnsservice.md) aktiviert.
-* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar).
-* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar).
+* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar).
+* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar).
 * Clientverbindungsendpunkt: 19000 (in den Vorlagenparametern konfigurierbar).
 * HTTP-Gatewayendpunkt: 19080 (in den Vorlagenparametern konfigurierbar).
 

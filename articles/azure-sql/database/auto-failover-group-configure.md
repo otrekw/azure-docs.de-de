@@ -3,7 +3,7 @@ title: Konfigurieren einer Failovergruppe
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Erfahren Sie, wie Sie eine Autofailover-Gruppe für eine Azure SQL-Datenbank (einzeln sowie gepoolt) und eine verwaltete Azure SQL-Instanz über das Azure-Portal, die AZ-CLI und PowerShell konfigurieren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195540"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987129"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -295,7 +295,7 @@ Führen Sie ein Failover für Ihre Failovergruppe auf den sekundären Server und
 1. Wählen Sie im Aufgabenbereich **Failover** aus, um ein Failover für die Failovergruppe mit dem Pool für elastische Datenbanken durchzuführen.
 1. Wählen Sie in der Meldung, dass die TDS-Sitzungen getrennt werden, **Ja** aus.
 
-   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![Failover für die Failovergruppe, die Ihre Datenbank enthält](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben.
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen.

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447559"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -64,7 +64,7 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
   
 5.  Übermitteln Sie die Pipeline. Wenn Sie über eine große Datenmenge verfügen, kann dies eine Weile dauern.
 
-## <a name="results"></a><a name="bkmk_results"></a> Ergebnisse
+## <a name="results"></a>Ergebnisse
 
 Nachdem das Modell trainiert wurde:
 

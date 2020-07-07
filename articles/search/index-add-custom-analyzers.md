@@ -2,29 +2,18 @@
 title: Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren Sie Texttokenizer und Zeichenfilter, die in Volltextsuchabfragen der kognitiven Azure-Suche verwendet werden.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: f0d9576f5275bcfc061ce29740f8d85aff4ccfff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/05/2020
+ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555237"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 

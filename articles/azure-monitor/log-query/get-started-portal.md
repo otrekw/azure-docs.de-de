@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80055468"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798254"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Tutorial: Erste Schritte mit Log Analytics-Abfragen
 
@@ -37,6 +37,7 @@ Die meisten Schritte in diesem Tutorial können Sie [in dieser Demoumgebung](htt
 Sie können auch Ihre eigene Umgebung verwenden, wenn Sie mit Azure Monitor Protokolldaten für mindestens eine Azure-Ressource sammeln. Wählen Sie im linken Navigationsbereich von Azure Monitor **Protokolle** aus, um einen Log Analytics-Arbeitsbereich zu öffnen. 
 
 ## <a name="understand-the-schema"></a>Grundlegendes zum Schema
+ 
 Das *Schema* ist eine Sammlung von Tabellen, die unter einer logischen Kategorie gruppiert sind. Das Demoschema umfasst mehrere Kategorien, die aus Überwachungslösungen stammen. Die Kategorie **LogManagement** enthält beispielsweise Windows- und Syslog-Ereignisse, Leistungsdaten und Agent-Takte.
 
 Die Schematabellen werden auf der Registerkarte **Tabellen** des Log Analytics-Arbeitsbereichs angezeigt. Die Tabellen enthalten Spalten, deren Datentyp durch das Symbol neben dem Spaltennamen angezeigt wird. Beispielsweise enthält die Tabelle **Event** Textspalten wie **Computer** und numerische Spalten wie **EventCategory**.
@@ -50,6 +51,7 @@ Log Analytics wird mit einer neuen leeren Abfrage im **Abfrage-Editor** geöffn
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>Schreiben Sie eine Abfrage.
+
 Für Azure Monitor-Protokollabfragen wird eine Version der Kusto-Abfragesprache verwendet. Abfragen können mit einem Tabellennamen oder einem [search](/azure/kusto/query/searchoperator)-Befehl beginnen. 
 
 Die folgende Abfrage ruft alle Datensätze aus der Tabelle **Event** ab:
@@ -156,6 +158,7 @@ Sie können die Eigenschaften der Ansicht manuell über die Steuerleiste ändern
 Mit dem [render](/azure/kusto/query/renderoperator)-Operator können Sie die bevorzugte Ansicht auch in der Abfrage selbst festlegen.
 
 ## <a name="pin-results-to-a-dashboard"></a>Anheften von Ergebnissen an ein Dashboard
+
 Um eine Ergebnistabelle oder ein Ergebnisdiagramm aus Log Analytics an ein freigegebenes Azure-Dashboard anzuheften, wählen Sie in der oberen Leiste **An Dashboard anheften** aus. 
 
 ![An Dashboard anheften](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Tabellen oder Diagramme, die Sie an ein freigegebenes Dashboard anheften, werden
 - Bei Diagrammen mit vielen separaten Kategorien werden Kategorien mit weniger Daten automatisch in einem Container **Andere** zusammengefasst.
 
 ## <a name="save-load-or-export-queries"></a>Speichern, Laden oder Exportieren von Abfragen
+
 Nachdem Sie eine Abfrage erstellt haben, können Sie die Abfrage oder die Ergebnisse speichern und mit anderen teilen. 
 
 ### <a name="save-queries"></a>Speichern von Abfragen
+
 So speichern Sie eine Abfrage:
 
 1. Wählen Sie in der oberen Leiste **Speichern** aus.

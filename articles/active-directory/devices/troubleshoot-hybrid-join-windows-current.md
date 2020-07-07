@@ -132,7 +132,7 @@ Das Feld „Fehlerphase“ bezeichnet die Phase, in der der Einbindungsfehlers a
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 304, 305, 307.
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -207,7 +207,7 @@ Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nac
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 201
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Fehlerursachen:
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode, Serverfehlercode und Serverfehlermeldung zu finden.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 305
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -327,7 +327,7 @@ Das Feld „Registrierungstyp“ gibt die Art der durchgeführten Einbindung an.
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 204
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/4.png)

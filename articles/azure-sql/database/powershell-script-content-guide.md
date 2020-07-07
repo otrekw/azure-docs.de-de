@@ -2,7 +2,7 @@
 title: Azure PowerShell-Skriptbeispiele
 description: Mithilfe von Azure PowerShell-Skriptbeispielen können Sie Azure SQL-Datenbank-Ressourcen und Ressourcen verwalteter Azure SQL-Instanzen erstellen und verwalten.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718545"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987308"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell-Beispiele für Azure SQL-Datenbank und verwaltete Azure SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für die
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure SQL-Datenbank.
 
-| |  |
+|Link|BESCHREIBUNG|
 |---|---|
 |**Erstellen und Konfigurieren von einzelnen Datenbanken und Pools für elastische Datenbanken**||
 | [Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel auf Serverebene](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript erstellt eine einzelne Datenbank und konfiguriert eine IP-Firewallregel auf Serverebene. |
@@ -64,7 +64,7 @@ Erfahren Sie mehr über die [Azure PowerShell-API für einzelne Datenbanken](sin
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für verwaltete Azure SQL-Instanzen.
 
-| |  |
+|Link|BESCHREIBUNG|
 |---|---|
 |**Erstellen und Konfigurieren von verwalteten Instanzen**||
 | [Erstellen und Verwalten einer verwalteten Instanz](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Dieses PowerShell-Skript zeigt Ihnen, wie Sie mithilfe von Azure PowerShell eine verwaltete Instanz erstellen und verwalten. |

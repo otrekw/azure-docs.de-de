@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556658"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -86,7 +86,7 @@ In dieser Phase planen Sie die Migration Ihrer SAP-Workload zur Azure-Plattform.
     - [SAP HANA-Installation](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Festlegen einer regelmäßigen Überprüfung von Entwurf und Bereitstellung zwischen Ihnen als Kunde, dem Systemintegrator, Microsoft und anderen beteiligten Parteien.
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>Pilotphase (dringend empfohlen)
  
 Sie können einen Pilotversuch vor oder während der Projektplanung und -vorbereitung ausführen. Sie können die Pilotphase außerdem verwenden, um Ansätze und Entwürfe aus der Planungs- und Vorbereitungsphase zu testen. Und Sie können die Pilotphase erweitern, um sie zu einem echten Proof of Concept zu machen.
@@ -213,7 +213,7 @@ In dieser Phase stellen Sie in der Regel Entwicklungssysteme, Komponententestsys
 14. Optimieren und verfeinern Sie den rollenbasierten Zugriff, die Berechtigungen und die Prozesse Ihres Teams in Azure, um eine sichere Trennung der Aufgaben zu erreichen. Vergewissern Sie sich im gleichen Zug, dass alle Teams ihre Aufgaben in der Azure-Infrastruktur verrichten können.
 15. Überprüfen, testen und dokumentieren Sie die Verfahren für Hochverfügbarkeit und Notfallwiederherstellung, damit Ihre Mitarbeiter diese Aufgaben ausführen können. Identifizieren Sie Mängel, und übernehmen Sie neue Azure-Funktionen in Ihre Bereitstellungen
 
- 
+
 ## <a name="production-preparation-phase"></a>Vorbereitungsphase für die Produktion 
 Sammeln Sie in dieser Phase alle Ihre Erkenntnisse aus den Nicht-Produktionsbereitstellungen, und wenden Sie sie auf künftige Produktionsbereitstellungen an. Außerdem müssen Sie den Prozess der Datenübertragung zwischen dem aktuellen Hostingstandort und Azure vorbereiten.
 
