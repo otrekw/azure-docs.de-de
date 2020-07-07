@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 53a9cd33f7bd2223be1c9f199b7a6d10d876c322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082933"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs auf dedizierten Hosts über das Portal
@@ -26,7 +26,7 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 1. Wählen Sie auf der Seite **Neu** unter **Beliebt** die Option **Windows Server 2016 Datacenter** aus.
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann *myDedicatedHostsRG* als **Ressourcengruppe** aus. 
-1. Geben Sie unter **Instanzdetails***myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus.
+1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus.
 1. Wählen Sie unter **Verfügbarkeitsoptionen** die Option **Verfügbarkeitszone** aus, und wählen Sie in der Dropdownliste *1* aus.
 1. Wählen Sie für die Größe **Größe ändern** aus. Wählen Sie in der Liste der verfügbaren Größen eine der Esv3-Serie aus, z. B. **Standard E2s v3**. Möglicherweise müssen Sie den Filter löschen, um alle verfügbaren Größen anzuzeigen.
 1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie *azureuser* an sowie ein Kennwort. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
