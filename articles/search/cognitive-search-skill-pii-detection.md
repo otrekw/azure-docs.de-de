@@ -7,13 +7,13 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 1/27/2020
-ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080749"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>Die kognitive Qualifikation „PII-Erkennung“
 
@@ -25,7 +25,7 @@ Die Qualifikation **PII-Erkennung** extrahiert persönlich identifizierbare Info
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -40,25 +40,25 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| defaultLanguageCode |    Sprachcode des Eingabetexts. Derzeit wird nur `en` unterstützt. |
-| minimumPrecision | Ein Wert zwischen 0,0 und 1,0. Wenn die Zuverlässigkeitsbewertung (in der `piiEntities`-Ausgabe) unter dem festgelegten `minimumPrecision`-Wert liegt, wird die Entität nicht zurückgegeben oder maskiert. Der Standard ist 0,0. |
-| maskingMode | Ein Parameter, der verschiedene Methoden zum Maskieren der erkannten PII im Eingabetext bereitstellt. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Dies bedeutet, dass keine Maskierung erfolgt und die `maskedText`-Ausgabe nicht zurückgegeben wird. </li><li> `redact`: Mit dieser Option werden die erkannten Entitäten aus dem Eingabetext entfernt und nicht durch andere Inhalte ersetzt. Beachten Sie, dass sich der Offset in der `piiEntities`-Ausgabe in diesem Fall auf den ursprünglichen Text und nicht auf den maskierten Text bezieht. </li><li> `replace`: Mit dieser Option werden die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen ersetzt.  Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> |
-| maskingCharacter | Das Zeichen, das zur Maskierung des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgenden Optionen werden unterstützt: `*` (Standard), `#`, `X`. Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. |
+| `defaultLanguageCode` |    Sprachcode des Eingabetexts. Derzeit wird nur `en` unterstützt. |
+| `minimumPrecision` | Ein Wert zwischen 0,0 und 1,0. Wenn die Zuverlässigkeitsbewertung (in der `piiEntities`-Ausgabe) unter dem festgelegten `minimumPrecision`-Wert liegt, wird die Entität nicht zurückgegeben oder maskiert. Der Standard ist 0,0. |
+| `maskingMode` | Ein Parameter, der verschiedene Methoden zum Maskieren der erkannten PII im Eingabetext bereitstellt. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Dies bedeutet, dass keine Maskierung erfolgt und die `maskedText`-Ausgabe nicht zurückgegeben wird. </li><li> `redact`: Mit dieser Option werden die erkannten Entitäten aus dem Eingabetext entfernt und nicht durch andere Inhalte ersetzt. Beachten Sie, dass sich der Offset in der `piiEntities`-Ausgabe in diesem Fall auf den ursprünglichen Text und nicht auf den maskierten Text bezieht. </li><li> `replace`: Mit dieser Option werden die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen ersetzt.  Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> |
+| `maskingCharacter` | Das Zeichen, das zur Maskierung des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgenden Optionen werden unterstützt: `*` (Standard), `#`, `X`. Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| languageCode    | Optional. Der Standardwert ist `en`.  |
-| text          | Der zu analysierende Text          |
+| `languageCode`    | Optional. Der Standardwert ist `en`.  |
+| `text`          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
 | Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| piiEntities | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>Text (die tatsächlich extrahierten PII)</li> <li>type</li><li>subType</li><li>Bewertung (ein höherer Wert bedeutet, dass es sich mit höherer Wahrscheinlichkeit um eine echte Entität handelt)</li><li>Offset (in den Eingabetext)</li><li>length</li></ul> </br> [Mögliche Typen und Untertypen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | Ist `maskingMode` auf einen anderen Wert als `none` festgelegt, ist diese Ausgabe ist das Zeichenfolgenergebnis der für den Eingabetext durchgeführten Maskierung, wie durch den gewählten `maskingMode` beschrieben.  Ist `maskingMode` auf `none` festgelegt, ist diese Ausgabe nicht vorhanden. |
+| `piiEntities` | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>Text (die tatsächlich extrahierten PII)</li> <li>type</li><li>subType</li><li>Bewertung (ein höherer Wert bedeutet, dass es sich mit höherer Wahrscheinlichkeit um eine echte Entität handelt)</li><li>Offset (in den Eingabetext)</li><li>length</li></ul> </br> [Mögliche Typen und Untertypen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | Ist `maskingMode` auf einen anderen Wert als `none` festgelegt, ist diese Ausgabe ist das Zeichenfolgenergebnis der für den Eingabetext durchgeführten Maskierung, wie durch den gewählten `maskingMode` beschrieben.  Ist `maskingMode` auf `none` festgelegt, ist diese Ausgabe nicht vorhanden. |
 
 ##    <a name="sample-definition"></a>Beispieldefinition
 

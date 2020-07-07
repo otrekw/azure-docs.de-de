@@ -4,15 +4,15 @@ description: In diesem Artikel finden Sie Links zu Artikeln über die Problembeh
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2018
 ms.author: cherylmc
-ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984425"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>Beheben von Problemen beim VPN Gateway
 

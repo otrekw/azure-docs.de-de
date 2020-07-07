@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80088870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201411"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Application Insights-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -47,7 +47,7 @@ Das folgende Beispiel zeigt das allgemeine technische Application Insights-Prof
 
 Das Element **InputClaims** enthält eine Liste mit Ansprüchen, die an Application Insights gesendet werden sollen. Der Name Ihres Anspruchs kann auch einem von Ihnen bevorzugten Namen für die Anzeige in Application Insights zugeordnet werden. Im folgenden Beispiel wird das Senden von Telemetriedaten an Application Insights gezeigt. Die Eigenschaften eines Ereignisses werden mit der Syntax `{property:NAME}` hinzugefügt, wobei „NAME“ die Eigenschaft ist, die dem Ereignis hinzugefügt wird. „DefaultValue“ kann ein statischer Wert oder ein Wert sein, der von einem der unterstützten [Anspruchskonfliktlöser](claim-resolver-overview.md) aufgelöst wird.
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />

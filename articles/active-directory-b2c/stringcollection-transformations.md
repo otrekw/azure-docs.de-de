@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203247"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformationen von StringCollection-Ansprüchen
 
@@ -38,7 +38,7 @@ Verwenden Sie diese Anspruchstransformation, um eine Zeichenfolge zu einer neuen
 
 Die folgende Anspruchstransformation fügt den Anspruchstyp **email** zu **otherMails** hinzu.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -70,7 +70,7 @@ Fügt einen Zeichenfolgenparameter zu einem neuen stringCollection-Anspruch mit 
 
 Verwenden Sie diese Anspruchstransformation, um einen Zeichenfolgenwert zu einer neuen oder einer vorhandenen Zeichenfolgensammlung hinzuzufügen. Im folgenden Beispiel wird eine konstante E-Mail-Adresse (admin@contoso.com) zum Anspruch **otherMails** hinzugefügt.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -104,7 +104,7 @@ Ruft das erste Element aus der angegebenen Zeichenfolgensammlung ab.
 
 Im folgenden Beispiel wird der Anspruch **otherMails** gelesen, und das erste Element wird im Anspruch **email** zurückgegeben.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -136,7 +136,7 @@ Im folgenden Beispiel wird der Anspruch **otherMails** gelesen, und das erste El
 
 Im folgenden Beispiel wird überprüft, ob der stringCollection-Anspruchstyp `roles` den Wert **admin** enthält.
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -172,7 +172,7 @@ Im folgenden Beispiel wird überprüft, ob der stringCollection-Anspruchstyp `ro
 
 Im folgenden Beispiel wird überprüft, ob der stringCollection-Anspruchstyp `roles` den Wert des Anspruchstyps `role` enthält.
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

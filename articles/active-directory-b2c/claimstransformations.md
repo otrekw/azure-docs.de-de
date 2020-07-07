@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202958"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -121,7 +121,7 @@ Wenn die Typen des Eingabeanspruchs und des Ausgabeanspruchs übereinstimmen (St
 
 Sie können beispielsweise die neueste Version Ihrer Nutzungsbedingungen speichern, denen der Benutzer zugestimmt hat. Wenn Sie die Nutzungsbedingungen aktualisieren, können Sie den Benutzer dazu auffordern, der neuen Version zuzustimmen. Im folgenden Beispiel vergleicht die Anspruchstransformation **HasTOSVersionChanged** den Wert des Anspruchs **TOSVersion** mit dem Wert des Anspruchs **LastTOSAcceptedVersion**. Daraufhin wird der boolesche Anspruch **TOSVersionChanged** zurückgegeben.
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">

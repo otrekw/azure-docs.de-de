@@ -4,15 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie einen verwalteten privaten 
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193888"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Erstellen eines verwalteten privaten Endpunkts zu Ihrer Datenquelle (Vorschau)
 

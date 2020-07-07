@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201174"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -26,7 +26,7 @@ Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden
 
 Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mit einem **DataType** von `string`.
 
-```XML
+```xml
 <ClaimType Id="correlationId">
   <DisplayName>correlationId</DisplayName>
   <DataType>string</DataType>
@@ -36,7 +36,7 @@ Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mi
 
 Ordnen Sie im technischen Profil den Anspruchskonfliktlöser dem Anspruchstyp zu. Azure AD B2C füllt den Wert des Anspruchskonfliktlösers `{Context:CorrelationId}` in den Anspruch `correlationId` auf, und sende den Anspruch an den technische Profil.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
@@ -157,7 +157,7 @@ In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie 
 
 Das folgende Beispiel zeigt ein technisches RESTful-Profil mit diesem Szenario:
 
-```XML
+```xml
 <TechnicalProfile Id="REST">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -187,7 +187,7 @@ Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhalts
 
 Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
 
-```XML
+```xml
 <UserJourneyBehaviors>
   <ContentDefinitionParameters>
     <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
@@ -207,7 +207,7 @@ Als Resultat sendet Azure AD B2C die oben genannten Parameter an die HTML-Inhalt
 
 In einer [ContentDefinition](contentdefinitions.md) `LoadUri` können Sie Anspruchskonfliktlöser senden, um Inhalt von verschiedenen Speicherorten basierend auf den verwendeten Parametern abzurufen.
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
@@ -218,7 +218,7 @@ In einer [ContentDefinition](contentdefinitions.md) `LoadUri` können Sie Anspru
 
 Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblicke in Benutzerverhalten gewinnen. Im technischen Profil „Application Insights“ senden Sie Eingabeansprüche, die in Azure Application Insights persistent gespeichert werden. Weitere Informationen finden Sie unter [Nachverfolgen des Benutzerverhaltens in Azure AD B2C-Journeys mithilfe von Application Insights](analytics-with-application-insights.md). Im folgende Beispiel wird die Richtlinien-ID, die Korrelations-ID, die Sprache und die Client-ID an Azure Application Insights gesendet.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureInsights-Common">
   <DisplayName>Alternate Email</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -236,7 +236,7 @@ Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblick
 
 In einem technischen Profil der Richtlinie für die [vertrauende Seite](relyingparty.md) können Sie die Mandanten-ID oder die Korrelations-ID an die Anwendung der vertrauenden Seite innerhalb des JWT senden.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <TechnicalProfile Id="PolicyProfile">

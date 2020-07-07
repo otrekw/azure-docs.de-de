@@ -3,12 +3,12 @@ title: Netzwerkmuster für Azure Service Fabric
 description: In diesem Thema werden häufige Netzwerkmuster für Service Fabric sowie die Vorgehensweise zum Erstellen eines Clusters mithilfe der Netzwerkfeatures von Azure beschrieben.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75466291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106617"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -171,7 +171,7 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie [hier](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie [hier](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet).
 
 
 <a id="staticpublicip"></a>

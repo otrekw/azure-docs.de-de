@@ -4,16 +4,16 @@ description: Es wird beschrieben, wie Sie die Lastenausgleichsmethode für eine 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204340"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
 
@@ -33,15 +33,15 @@ Die Lastenausgleichsmethode „Breiter Ansatz“ ist die Standardkonfiguration f
 Führen Sie das folgende PowerShell-Cmdlet aus, um einen Hostpool zum Durchführen der Lastenausgleichsmethode „Breiter Ansatz“ zu konfigurieren, ohne das maximale Sitzungslimit anzupassen:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-Führen Sie anschließend das folgende Cmdlet aus, um sicherzustellen, dass Sie die breitenorientierte Lastenausgleichsmethode festgelegt haben: 
+Führen Sie anschließend das folgende Cmdlet aus, um sicherzustellen, dass Sie die breitenorientierte Lastenausgleichsmethode festgelegt haben:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Bei der Lastenausgleichsmethode „Tiefer Ansatz“ werden neue Benutzersitzunge
 Führen Sie das folgende PowerShell-Cmdlet aus, um einen Hostpool für die Durchführung der Lastenausgleichsmethode „Tiefer Ansatz“ zu konfigurieren:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 Um sicherzustellen, dass die Einstellung aktualisiert wurde, führen Sie dieses Cmdlet aus:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +77,8 @@ Sie können Lastenausgleich auch mit dem Azure-Portal konfigurieren.
 
 So konfigurieren Sie Lastenausgleich:
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an. 
-2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option unter „Dienste“ aus. 
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option unter „Dienste“ aus.
 3. Wählen Sie auf der Seite „Windows Virtual Desktop“ die Option **Hostpools** aus.
 4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
 5. Wählen Sie **Eigenschaften** aus.

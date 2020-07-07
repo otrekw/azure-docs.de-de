@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202219"
 ---
 # <a name="general-claims-transformations"></a>Transformationen allgemeiner Ansprüche
 
@@ -35,7 +35,7 @@ Kopiert den Wert eines Anspruchs in einen anderen. Beide Ansprüche müssen dens
 
 Verwenden Sie diese Anspruchstransformation, um einen Wert von einer Zeichenfolge oder einem numerischen Anspruch in einen anderen Anspruch zu kopieren. Im folgenden Beispiel wird der Wert des externalEmail-Anspruchs in einen email-Anspruch kopiert.
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -64,7 +64,7 @@ Verwenden Sie diese Anspruchstransformation, um einen Wert von einer Zeichenfolg
 
 Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruch vorhanden ist oder einen beliebigen Wert enthält. Der Rückgabewert ist ein boolescher Wert, der angibt, ob der Anspruch vorhanden ist. Im folgenden Beispiel wird geprüft, ob die E-Mail-Adresse vorhanden ist.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -93,7 +93,7 @@ Hash des angegebenen Nur-Texts, der Salt und einen geheimen Schlüssel verwendet
 | InputParameter | randomizerSecret | Zeichenfolge | Verweist auf einen vorhandenen Azure AD B2C-**Richtlinienschlüssel**. Gehen Sie wie folgt vor, um einen neuen Richtlinienschlüssel zu erstellen: Wählen Sie in Ihrem Azure AD B2C-Mandanten unter **Verwalten** die Option **Identity Experience Framework** aus. Wählen Sie **Richtlinienschlüssel** aus, um die in Ihrem Mandanten verfügbaren Schlüssel anzuzeigen. Wählen Sie **Hinzufügen**. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus. Geben Sie einen Namen an (das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt). Geben Sie im Textfeld **Geheimnis** einen geheimen Schlüssel ein, der verwendet werden soll, z. B. „1234567890“. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus. Klicken Sie auf **Erstellen**. |
 | OutputClaim | hash | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Der im Eingabeanspruch `plaintext` konfigurierte Anspruch. |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

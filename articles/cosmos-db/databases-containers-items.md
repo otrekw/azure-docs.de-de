@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114757"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Nach der Erstellung eines [Azure Cosmos DB-Kontos](account-overview.md) unter Ih
 
 In der folgenden Abbildung ist die Hierarchie der verschiedenen Entitäten in einem Azure Cosmos DB-Konto dargestellt:
 
-![Entitäten in einem Azure Cosmos-Konto](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entitäten in einem Azure Cosmos-Konto" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos-Datenbanken
 
@@ -85,15 +85,15 @@ Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaft
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar | Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_ts | Vom System generiert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein | Nein | Nein | Nein |
+|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
+|\_ts | Vom System generiert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein | Nein | Nein | Nein |
+|\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein | Nein | Nein | Nein |
 |id | Vom Benutzer konfigurierbar | Benutzerdefinierter eindeutiger Name des Containers | Ja | Ja | Ja | Ja | Ja |
-|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern | Ja | Nein  | Nein  | Nein  | Ja |
-|timeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein  | Nein  | Nein  | Ja |
-|changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie unter [Änderungsfeed](change-feed.md). | Ja | Nein  | Nein  | Nein  | Ja |
-|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Stellt die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md). | Ja | Nein  | Nein  | Nein  | Ja |
+|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern | Ja | Nein | Nein | Nein | Ja |
+|timeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein | Nein | Nein | Ja |
+|changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie unter [Änderungsfeed](change-feed.md). | Ja | Nein | Nein | Nein | Ja |
+|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Stellt die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md). | Ja | Nein | Nein | Nein | Ja |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Vorgänge in einem Azure Cosmos-Container
 
@@ -121,10 +121,10 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar| Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_ts | Vom System generiert | Zeitstempel der letzten Aktualisierung des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
-|\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein | Nein | Nein | Nein |
+|\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
+|\_ts | Vom System generiert | Zeitstempel der letzten Aktualisierung des Elements | Ja | Nein | Nein | Nein | Nein |
+|\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein | Nein | Nein | Nein |
 |id | Sowohl als auch | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. | Ja | Ja | Ja | Ja | Ja |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (einschließlich JSON, BSON und CQL) dargestellt werden | Ja | Ja | Ja | Ja | Ja |
 
@@ -137,7 +137,7 @@ Azure Cosmos-Elemente unterstützen die folgenden Vorgänge. Sie können für di
 
 | Vorgang | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Einfügen, Ersetzen, Löschen, Upsert, Lesen | Nein  | Ja | Ja | Ja | Ja | Ja |
+| Einfügen, Ersetzen, Löschen, Upsert, Lesen | Nein | Ja | Ja | Ja | Ja | Ja |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203383"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
 
@@ -24,7 +24,7 @@ ms.locfileid: "78183753"
 
 In Azure Active Directory B2C (Azure AD B2C) werden Identitäten von Social Media-Konten in einem `userIdentities`-Attribut eines Anspruchstyps **alternativeSecurityIdCollection** gespeichert. Jedes Element in der **alternativeSecurityIdCollection** gibt den Aussteller (Name des Identitätsanbieters, z.B. „facebook.com“), und `issuerUserId` an, eine eindeutige Benutzer-ID für den Aussteller.
 
-```JSON
+```json
 "userIdentities": [{
     "issuer": "google.com",
     "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"
@@ -49,7 +49,7 @@ Erstellt eine JSON-Darstellung der alternativeSecurityId-Eigenschaft des Benutze
 
 Verwenden Sie diese Anspruchstransformation zum Generieren des Anspruchstyps `alternativeSecurityId`. Sie wird von allen technischen Profilen für Social Media-Identitätsanbieter wie z.B. `Facebook-OAUTH` verwendet. Die folgende Anspruchstransformation empfängt die ID des Social Media-Kontos des Benutzers und den Namen des Identitätsanbieters. Die Ausgabe dieses technischen Profils ist eine Zeichenfolge im JSON-Format, die in Azure AD-Verzeichnisdiensten verwendet werden kann.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
@@ -86,7 +86,7 @@ Das folgende Beispiel verknüpft eine neue Social Media-Identität mit einem vor
 1. Rufen Sie die Anspruchstransformation **AddItemToAlternativeSecurityIdCollection** auf, um den **AlternativeSecurityId2**-Anspruch dem vorhandenen **AlternativeSecurityIds**-Anspruch hinzuzufügen.
 1. Behalten Sie den **alternativeSecurityIds**-Anspruch im Benutzerkonto bei.
 
-```XML
+```xml
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="AlternativeSecurityId2" TransformationClaimType="item" />
@@ -117,7 +117,7 @@ Gibt eine Liste mit den Ausstellern aus dem **alternativeSecurityIdCollection**-
 
 Die folgende Anspruchstransformation liest den **alternativeSecurityIds**-Anspruch des Benutzers und extrahiert die Liste der Identitätsanbieternamen, die diesem Konto zugeordnet sind. Verwenden Sie die ausgegebene **identityProvidersCollection**, um dem Benutzer die Liste der Identitätsanbieter, die dem Konto zugeordnet sind, anzuzeigen. Oder filtern Sie auf der Auswahlseite für Identitätsanbieter die Liste der Identitätsanbieter basierend auf dem ausgegebenen **identityProvidersCollection**-Anspruch. Dann kann der Benutzer eine neue Social Media-Identität auswählen, die noch nicht mit dem Konto verknüpft ist.
 
-```XML
+```xml
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="alternativeSecurityIds" TransformationClaimType="alternativeSecurityIdCollection" />
@@ -149,7 +149,7 @@ Das folgende Beispiel hebt die Verknüpfung der Social Media-Identität mit eine
 3. Rufen Sie ein technisches Profil für eine Anspruchstransformation auf, das die Anspruchstransformation **RemoveAlternativeSecurityIdByIdentityProvider** aufruft, die die ausgewählte Social Media-Identität anhand des Identitätsanbieternamens entfernt.
 4. Behalten Sie den **alternativeSecurityIds**-Anspruch im Benutzerkonto bei.
 
-```XML
+```xml
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
     <InputClaims>
         <InputClaim ClaimTypeReferenceId="secondIdentityProvider" TransformationClaimType="identityProvider" />

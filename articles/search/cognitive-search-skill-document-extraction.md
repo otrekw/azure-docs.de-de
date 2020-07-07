@@ -6,14 +6,14 @@ manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76837730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080867"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
 
@@ -25,7 +25,8 @@ Die Qualifikation **Dokumentextrahierung** extrahiert Inhalt aus einer Datei inn
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase bei der Indizierung an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/) beschrieben.
+
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
 
@@ -51,7 +52,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Eingabename     | BESCHREIBUNG |
 |--------------------|-------------|
-| file_data | Die Datei, aus der Inhalt extrahiert werden soll. |
+| `file_data` | Die Datei, aus der Inhalt extrahiert werden soll. |
 
 Die Eingabe „file_data“ muss ein Objekt sein, das wie folgt definiert wurde:
 
@@ -74,8 +75,8 @@ Dieses Dateiverweisobjekt kann auf eine von drei Arten generiert werden:
 
 | Ausgabename    | BESCHREIBUNG |
 |--------------|-------------|
-| Inhalt | Der Textinhalt des Dokuments. |
-| normalized_images | Wenn `imageAction` auf einen anderen Wert als `none` festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Weitere Informationen zum Ausgabeformat der einzelnen Bilder finden Sie in der [Dokumentation für die Bildextraktion](cognitive-search-concept-image-scenarios.md). |
+| `content` | Der Textinhalt des Dokuments. |
+| `normalized_images`   | Wenn `imageAction` auf einen anderen Wert als `none` festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Weitere Informationen zum Ausgabeformat der einzelnen Bilder finden Sie in der [Dokumentation für die Bildextraktion](cognitive-search-concept-image-scenarios.md). |
 
 ##  <a name="sample-definition"></a>Beispieldefinition
 

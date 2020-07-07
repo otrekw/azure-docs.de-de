@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78397789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201360"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -23,7 +23,7 @@ ms.locfileid: "78397789"
 
 Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. Im Anspruchsschema deklarieren Sie Ihre Ansprüche. Bei einem Anspruch kann es sich u.a. um einen Vornamen, Nachnamen, Anzeigenamen, eine Telefonnummer handeln. Das ClaimsSchema-Element enthält eine Liste von **ClaimType**-Elementen. Das **ClaimType**-Element enthält das **Id**-Attribut, bei dem es sich um den Anspruchsnamen handelt.
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="Id">
@@ -97,7 +97,7 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Identity Experience Frameworks mit einem SAML2-Identitätsanbieter oder einer Anwendung der vertrauenden Seite `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` zugeordnet. Unter Verwendung der Werte „OpenIdConnect“ und „OAuth2“ wird der Anspruch `family_name` zugeordnet.
 
-```XML
+```xml
 <ClaimType Id="surname">
   <DisplayName>Surname</DisplayName>
   <DataType>string</DataType>
@@ -111,7 +111,7 @@ Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Iden
 
 Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` anstelle des Anspruchstypnamens **surname** aus.
 
-```JSON
+```json
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   "auth_time": 1535013501,
@@ -132,7 +132,7 @@ Das **Mask**-Element enthält die folgenden Attribute:
 
 Im folgenden Beispiel wird ein **PhoneNumber**-Anspruch mit der Maske `Simple` konfiguriert:
 
-```XML
+```xml
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
@@ -147,7 +147,7 @@ Das Identity Experience Framework rendert die Telefonnummer, wobei die ersten se
 
 Im folgenden Beispiel wird ein **AlternateEmail**-Anspruch mit der Maske `Regex` konfiguriert:
 
-```XML
+```xml
 <ClaimType Id="AlternateEmail">
   <DisplayName>Please verify the secondary email linked to your account</DisplayName>
   <DataType>string</DataType>
@@ -190,7 +190,7 @@ Das **Enumeration**-Element enthält die folgenden Attribute:
 
 Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardwert `New York` konfiguriert:
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
   <DataType>string</DataType>
@@ -218,7 +218,7 @@ Das **Pattern**-Element kann die folgenden Attribute enthalten:
 
 Im folgenden Beispiel wird ein **email**-Anspruch mit Eingabeüberprüfung mit regulärem Ausdruck und Hilfetext konfiguriert:
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -262,7 +262,7 @@ Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeilige
 
 ![Textfeld mit den im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/textbox.png)
 
-```XML
+```xml
 <ClaimType Id="displayName">
   <DisplayName>Display Name</DisplayName>
   <DataType>string</DataType>
@@ -277,7 +277,7 @@ Der Benutzereingabetyp **EmailBox** wird für die Bereitstellung eines einfachen
 
 ![E-Mail-Feld mit im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/emailbox.png)
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -295,7 +295,7 @@ Der Benutzereingabetyp **Password** wird für die Aufzeichnung eines vom Benutze
 
 ![Verwenden des Anspruchstyps mit Kennwort](./media/claimsschema/password.png)
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -310,7 +310,7 @@ Der Benutzereingabetyp **DateTimeDropdown** wird für die Bereitstellung von Dro
 
 ![Verwenden des Anspruchstyps mit „datetimedropdown“](./media/claimsschema/datetimedropdown.png)
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date Of Birth</DisplayName>
   <DataType>date</DataType>
@@ -325,7 +325,7 @@ Der Benutzereingabetyp **RadioSingleSelect** wird für die Bereitstellung einer 
 
 ![Verwenden des Anspruchstyps mit „radiosingleselect“](./media/claimsschema/radiosingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="color">
   <DisplayName>Preferred color</DisplayName>
   <DataType>string</DataType>
@@ -344,7 +344,7 @@ Der Benutzereingabetyp **DropdownSingleSelect** wird für die Bereitstellung ein
 
 ![Verwenden des Anspruchstyps mit „dropdownsingleselect“](./media/claimsschema/dropdownsingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>City where you work</DisplayName>
   <DataType>string</DataType>
@@ -363,7 +363,7 @@ Der Benutzereingabetyp **CheckboxMultiSelect** wird für die Bereitstellung eine
 
 ![Verwenden des Anspruchstyps mit „checkboxmultiselect“](./media/claimsschema/checkboxmultiselect.png)
 
-```XML
+```xml
 <ClaimType Id="languages">
   <DisplayName>Languages you speak</DisplayName>
   <DataType>string</DataType>
@@ -382,7 +382,7 @@ Der Benutzereingabetyp **Readonly** wird für die Bereitstellung eines schreibge
 
 ![Verwenden des Anspruchstyps mit „readonly“](./media/claimsschema/readonly.png)
 
-```XML
+```xml
 <ClaimType Id="membershipNumber">
   <DisplayName>Membership number</DisplayName>
   <DataType>string</DataType>
@@ -398,7 +398,7 @@ Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds ve
 
 ![Verwenden des Anspruchstyps mit „paragraph“](./media/claimsschema/paragraph.png)
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>

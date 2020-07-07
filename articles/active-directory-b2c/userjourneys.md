@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203162"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -106,7 +106,7 @@ Das **Precondition**-Element enthält die folgenden Elemente:
 
 Die folgenden Voraussetzungen überprüfen, ob der objectId-Wert des Benutzers vorhanden ist. Der Benutzer hat in der User Journey die Anmeldung mit einem lokalen Konto ausgewählt. Überspringen Sie diesen Orchestrierungsschritt, wenn der objectID-Wert vorhanden ist.
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -123,7 +123,7 @@ Die folgenden Voraussetzungen überprüfen, ob der objectId-Wert des Benutzers v
 
 Die folgenden Voraussetzungen überprüfen, ob der Benutzer sich mit einem Social Media-Konto angemeldet hat. Es wird versucht, das Benutzerkonto im Verzeichnis zu finden. Überspringen Sie diesen Orchestrierungsschritt, wenn sich der Benutzer mit einem lokalen Konto anmeldet oder registriert.
 
-```XML
+```xml
 <OrchestrationStep Order="3" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
@@ -140,7 +140,7 @@ Die folgenden Voraussetzungen überprüfen, ob der Benutzer sich mit einem Socia
 
 Mit einem Preconditions-Element können mehrere Voraussetzungen überprüft werden. Im folgenden Beispiel wird überprüft, ob die Werte „objectId“ und „email“ vorhanden sind. Wenn die erste Bedingung TRUE lautet, springt die User Journey zum nächsten Orchestrierungsschritt.
 
-```XML
+```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
   <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -185,7 +185,7 @@ Das **ClaimsProviderSelection**-Element enthält die folgenden Attribute:
 
 Im folgenden Orchestrierungsschritt kann der Benutzer auswählen, ob er sich über Facebook, LinkedIn, Twitter, Google oder ein lokales Konto anmelden möchte. Wenn der Benutzer einen der Social Media-Identitätsanbieter auswählt, wird der zweite Orchestrierungsschritt mit dem ausgewählten Anspruchsaustausch ausgeführt, der im `TargetClaimsExchangeId`-Attribut angegeben wurde. Der zweite Orchestrierungsschritt leitet den Benutzer an den Social Media-Identitätsanbieter weiter, um den Anmeldevorgang abzuschließen. Wenn der Benutzer sich dazu entscheidet, sich mit einem lokalen Konto anzumelden, bleibt Azure AD B2C beim gleichen Orchestrierungsschritt (die gleiche Registrierungs- oder Anmeldeseite) und überspringt den zweiten Orchestrierungsschritt.
 
-```XML
+```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
     <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />

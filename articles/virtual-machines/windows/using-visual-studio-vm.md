@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85105999"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
@@ -104,7 +104,7 @@ Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines
 > [!NOTE]
 > Für das Speichern der Images können weiterhin gewisse Kosten anfassen, diese inkrementellen Kosten fallen jedoch im Vergleich zu den Gemeinkosten für die Neuerstellung eines virtuellen Computers von Grund auf – für jedes Teammitglied, der einen benötigt – wahrscheinlich nicht ins Gewicht. Beispielsweise kostet es wenige Euro, ein Image von 127 GB zu erstellen und einen Monat lang zu speichern, das von Ihrem gesamten Team wiederverwendet werden kann. Diese Kosten sind jedoch im Vergleich zu den Stunden, die jeder Mitarbeiter für das Ausbauen und Überprüfen einer ordnungsgemäß konfigurierten Entwicklungsumgebung für den eigenen Gebrauch investiert, geringfügig.
 
-Darüber hinaus müssen Ihre Entwicklungsaufgaben oder Technologien möglicherweise weiter skaliert werden, etwa in Form von Varianten von Entwicklungskonfigurationen oder der Konfiguration mehrerer Computer. Mit Azure DevTest Labs können Sie _Rezepte_ erstellen, welche die Erstellung eines für Ihre Zwecke optimierten Images („Golden Image“) automatisieren. Außerdem können Sie mit DevTest Labs Richtlinien für die ausgeführten virtuellen Computer Ihres Teams verwalten. [Verwenden von Azure DevTest Labs für Entwickler](/azure/devtest-lab/devtest-lab-developer-lab) ist die beste Quelle für weitere Informationen zu DevTest Labs.
+Darüber hinaus müssen Ihre Entwicklungsaufgaben oder Technologien möglicherweise weiter skaliert werden, etwa in Form von Varianten von Entwicklungskonfigurationen oder der Konfiguration mehrerer Computer. Mit Azure DevTest Labs können Sie _Rezepte_ erstellen, welche die Erstellung eines für Ihre Zwecke optimierten Images („Golden Image“) automatisieren. Außerdem können Sie mit DevTest Labs Richtlinien für die ausgeführten virtuellen Computer Ihres Teams verwalten. [Verwenden von Azure DevTest Labs für Entwickler](../../devtest-labs/devtest-lab-developer-lab.md) ist die beste Quelle für weitere Informationen zu DevTest Labs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun, da Sie sich mit vorkonfigurierten Visual Studio-Images beschäftigt haben, besteht der nächste Schritt im Erstellen eines neuen virtuellen Computers:

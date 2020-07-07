@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203808"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -81,7 +81,7 @@ Mit der Methode „IsLengthRange“ wird überprüft, ob die Länge eines Zeiche
 
 Das folgende Beispiel zeigt eine „IsLengthRange“-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
 
-```XML
+```xml
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
   <Parameters>
     <Parameter Id="Minimum">8</Parameter>
@@ -100,7 +100,7 @@ Mit der Methode „MatchesRegex“ wird überprüft, ob ein Zeichenfolgen-Anspru
 
 Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `RegularExpression`, der einen regulären Ausdruck angibt:
 
-```XML
+```xml
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
@@ -118,7 +118,7 @@ Mit der Methode „IncludesCharacters“ wird überprüft, ob ein Zeichenfolgen-
 
 Das folgende Beispiel zeigt eine `IncludesCharacters`-Methode mit dem Parameter `CharacterSet`, der den Zeichensatz angibt:
 
-```XML
+```xml
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
@@ -137,7 +137,7 @@ Mit der Methode „IsDateRange“ wird überprüft, ob ein Datumsanspruchswert i
 
 Das folgende Beispiel zeigt eine `IsDateRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Datumsbereich im Format `yyyy-mm-dd` und `Today` angeben:
 
-```XML
+```xml
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
   <Parameters>
     <Parameter Id="Minimum">1970-01-01</Parameter>
@@ -152,7 +152,7 @@ Während mit dem „Predicates“-Element die Überprüfung anhand eines Anspruc
 
 Das **PredicateValidations**-Element muss direkt nach dem **Predicates**-Element im [BuildingBlocks](buildingblocks.md)-Element aufgeführt werden.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="">
     <PredicateGroups>
@@ -239,7 +239,7 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
 - **AllowedAADCharacters** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennwort keine ungültigen Zeichen enthält.
 - **DisallowedWhitespace** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennzeichen mit einem Leerzeichen beginnt oder endet.
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
@@ -297,7 +297,7 @@ Nachdem Sie die grundlegenden Überprüfungen definiert haben, können Sie sie k
 - **StrongPassword** überprüft die Elemente „DisallowedWhitespace“, „AllowedAADCharacters“ und „IsLengthBetween8And64“. Die letzte `CharacterClasses`-Gruppe führt ein zusätzliche Reihe von „Predicate“-Elementen aus, wobei `MatchAtLeast` auf 3 festgelegt ist. Das Benutzerkennwort muss aus 8 bis 16 Zeichen bestehen, wobei drei der Zeichen den folgenden Elementen entsprechen müssen: „Kleinbuchstaben“, „Großbuchstaben“, „Zahl“ oder „Sonderzeichen“.
 - **CustomPassword** überprüft nur die Elemente „DisallowedWhitespace“ und „AllowedAADCharacters“. Der Benutzer kann somit ein beliebiges Kennwort mit einer beliebigen Länge eingeben, solange die Zeichen gültig sind.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="SimplePassword">
     <PredicateGroups>
@@ -367,7 +367,7 @@ Nachdem Sie die grundlegenden Überprüfungen definiert haben, können Sie sie k
 
 Fügen Sie in Ihrem Anspruchstyp das **PredicateValidationReference**-Element hinzu, und geben Sie den Bezeichner als eine der Prädikatüberprüfungen an wie etwa „SimplePassword“, „StrongPassword“ oder „CustomPassword“.
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -386,7 +386,7 @@ Das folgende Beispiel zeigt, wie die Elemente angeordnet sind, wenn Azure AD B2C
 
 Mit den Elementen **Predicates** und **PredicateValidations** können Sie die minimalen und maximalen Datumswerte von **UserInputType** mithilfe von `DateTimeDropdown` festlegen. Erstellen Sie hierzu ein **Predicate**-Element mit der `IsDateRange`-Methode, und geben Sie die minimalen und maximalen Parameter an.
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
@@ -399,7 +399,7 @@ Mit den Elementen **Predicates** und **PredicateValidations** können Sie die mi
 
 Fügen Sie ein **PredicateValidation**-Element mit einem Verweis auf das `DateRange`-Prädikat hinzu.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="CustomDateRange">
     <PredicateGroups>
@@ -415,7 +415,7 @@ Fügen Sie ein **PredicateValidation**-Element mit einem Verweis auf das `DateRa
 
 Fügen Sie in Ihrem Anspruchstyp ein **PredicateValidationReference**-Element hinzu, und geben Sie den Bezeichner als `CustomDateRange` an.
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>
   <DataType>date</DataType>
