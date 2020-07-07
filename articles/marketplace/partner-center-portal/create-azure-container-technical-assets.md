@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700986"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958598"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält technische Ressourcen und Empfehlungen, die Ihnen helfen
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
+Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](../../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
 
@@ -43,7 +43,7 @@ Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung be
 
 Sie sollten Ihrer Entwicklungsumgebung diese Tools hinzufügen:
 
-- [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ Machen Sie sich mit den verfügbaren Tools auf der Seite [Azure-Entwicklertools]
 
 Weitere Informationen finden Sie in folgenden Tutorials:
 
-- [Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](../../container-registry/container-registry-tutorial-quick-task.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen Sie Ihr Containerangebot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Erstellen Sie Ihr Containerangebot](create-azure-container-offer.md).

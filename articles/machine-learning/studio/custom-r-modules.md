@@ -5,17 +5,17 @@ description: In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes R-M
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208430"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957323"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio (klassisch)
 
@@ -39,53 +39,56 @@ In diesem Beispiel wird veranschaulicht, wie die erforderlichen Dateien für ein
 ## <a name="the-source-file"></a>Die Quelldatei
 Stellen Sie sich z.B. ein Modul mit dem Namen **Custom Add Rows** vor, das die Standardimplementierung des Moduls **Add Rows** ändert, das zum Verketten von Zeilen (Vorkommen) aus zwei Datasets (Datenrahmen) verwendet wird. Das Standardmodul **Add Rows** hängt die Zeilen des zweiten Eingabedatasets mithilfe des `rbind`-Algorithmus an das erste Eingabedataset an. Die benutzerdefinierte `CustomAddRows` -Funktion akzeptiert ebenfalls zwei Datasets, aber auch einen booleschen Swap-Parameter als zusätzliche Eingabe. Wenn der Swap-Parameter **FALSE**ist, wird das gleiche Dataset zurückgegeben wie bei der Standard-Implementierung. Ist der Swap-Parameter hingegen **TRUE**, werden stattdessen Zeilen des ersten Eingabedatasets an das zweite Dataset angehängt. Die Datei „CustomAddRows.R“, welche die Implementierung der `CustomAddRows` -R-Funktion enthält, die vom Modul **Custom Add Rows** verfügbar gemacht wird, enthält den folgenden R-Code:
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+{
+    if (swap)
     {
-        if (swap)
-        {
-            return (rbind(dataset2, dataset1));
-        }
-        else
-        {
-            return (rbind(dataset1, dataset2));
-        } 
+        return (rbind(dataset2, dataset1));
+    }
+    else
+    {
+        return (rbind(dataset1, dataset2));
     } 
+} 
+```
 
 ### <a name="the-xml-definition-file"></a>Die XML-Definitionsdatei
 Um diese `CustomAddRows`-Funktion als Azure Machine Learning Studio-Modul (klassisch) offenzulegen, muss eine XML-Datei erstellt werden, um anzugeben, wie das Modul **Custom Add Rows** aussehen und sich verhalten soll. 
 
-    <!-- Defined a module using an R Script -->
-    <Module name="Custom Add Rows">
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
+```xml
+<!-- Defined a module using an R Script -->
+<Module name="Custom Add Rows">
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
 
-    <!-- Specify the base language, script file and R function to use for this module. -->        
-        <Language name="R" 
-         sourceFile="CustomAddRows.R" 
-         entryPoint="CustomAddRows" />  
+<!-- Specify the base language, script file and R function to use for this module. -->        
+    <Language name="R" 
+        sourceFile="CustomAddRows.R" 
+        entryPoint="CustomAddRows" />  
 
-    <!-- Define module input and output ports -->
-    <!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
-        <Ports>
-            <Input id="dataset1" name="Dataset 1" type="DataTable">
-                <Description>First input dataset</Description>
-            </Input>
-            <Input id="dataset2" name="Dataset 2" type="DataTable">
-                <Description>Second input dataset</Description>
-            </Input>
-            <Output id="dataset" name="Dataset" type="DataTable">
-                <Description>The combined dataset</Description>
-            </Output>
-        </Ports>
+<!-- Define module input and output ports -->
+<!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
+    <Ports>
+        <Input id="dataset1" name="Dataset 1" type="DataTable">
+            <Description>First input dataset</Description>
+        </Input>
+        <Input id="dataset2" name="Dataset 2" type="DataTable">
+            <Description>Second input dataset</Description>
+        </Input>
+        <Output id="dataset" name="Dataset" type="DataTable">
+            <Description>The combined dataset</Description>
+        </Output>
+    </Ports>
 
-    <!-- Define module parameters -->
-        <Arguments>
-            <Arg id="swap" name="Swap" type="bool" >
-                <Description>Swap input datasets.</Description>
-            </Arg>
-        </Arguments>
-    </Module>
-
+<!-- Define module parameters -->
+    <Arguments>
+        <Arg id="swap" name="Swap" type="bool" >
+            <Description>Swap input datasets.</Description>
+        </Arg>
+    </Arguments>
+</Module>
+```
 
 Wichtig: Der Wert der **id**-Attribute der **Input**- und **Arg**-Elemente in der XML-Datei muss EXAKT mit den Funktionsparameternamen des R-Codes in der Datei „CustomAddRows.R“ übereinstimmen (im Beispiel: *dataset1*, *dataset2* und *swap*). Entsprechend muss der Wert des **entryPoint**-Attributs des **Language**-Elements EXAKT mit dem Namen der Funktion im R-Skript übereinstimmen: (*CustomAddRows* im Beispiel). 
 
@@ -104,10 +107,11 @@ Auf das Modul **Custom Add Rows** kann jetzt von Machine Learning-Experimenten a
 ### <a name="module-elements"></a>Modul-Elemente
 Das **Modul** -Element wird verwendet, um ein benutzerdefiniertes Modul in der XML-Datei zu definieren. Mehrere Module können in einer XML-Datei definiert werden, in der mehrere **Modul** -Elemente verwendet werden. Jedes Modul in Ihrem Arbeitsbereich muss einen eindeutigen Namen haben. Wenn Sie ein benutzerdefiniertes Modul mit dem Namen eines bereits vorhandenen benutzerdefinierten Moduls registrieren, wird das vorhandene Modul durch das neue ersetzt. Benutzerdefinierte Module können bei der Registrierung jedoch den gleichen Namen wie ein bereits vorhandenes (klassisches) Azure Machine Learning Studio-Modul haben. In diesem Fall werden sie in der Kategorie **Benutzerdefiniert** der Modulpalette angezeigt.
 
-    <Module name="Custom Add Rows" isDeterministic="false"> 
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another...</Description>/> 
-
+```xml
+<Module name="Custom Add Rows" isDeterministic="false"> 
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another...</Description>/> 
+```
 
 Innerhalb des **Module** -Elements können optional zwei zusätzliche Elemente angegeben werden:
 
@@ -127,8 +131,9 @@ Manche Funktionen sind nicht deterministisch. Hierzu zählen etwa „RAND“ ode
 ### <a name="language-definition"></a>Definition des "Language"-Elements
 Das **Sprachen** -Element in Ihrer XML-Definitionsdatei wird verwendet, um die Sprache des benutzerdefinierten Moduls anzugeben. R ist derzeit die einzige unterstützte Sprache. Der Wert des **SourceFile** -Attributs muss der Name der R-Datei sein, die die aufzurufende Funktion enthält, wenn das Modul ausgeführt wird. Diese Datei muss im Zip-Paket sein. Der Wert des **EntryPoint** -Attributs ist der Name der aufgerufenen Funktion und muss mit einer in der Quelldatei definierten gültigen Funktion übereinstimmen.
 
-    <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
-
+```xml
+<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
+```
 
 ### <a name="ports"></a>Ports
 Die Eingabe- und Ausgabeports für ein benutzerdefiniertes Modul sind in den untergeordneten Elementen des Abschnitts **Ports** der XML-Definitionsdatei angegeben. Die Reihenfolge dieser Elemente bestimmt das Layout (UX) für die Benutzer. Das erste untergeordnete **Input**- oder **Output**-Element, das im **Ports**-Element der XML-Datei aufgelistet wird, wird zum äußerst linken Eingabeport der Machine Learning UX.
@@ -143,18 +148,22 @@ Jeder Eingabe- und Ausgabeport kann optional über ein untergeordnetes **Descrip
 
 **DataTable:** Dieser Typ wird als data.frame an Ihre R-Funktion übergeben. Tatsächlich werden alle Typen (z.B. CSV-Dateien oder ARFF-Dateien), die von Machine Learning unterstützt werden und mit **DataTable** kompatibel sind, automatisch in eine data.frame konvertiert. 
 
-        <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
-            <Description>Input Dataset 1</Description>
-           </Input>
+```xml
+<Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
+    <Description>Input Dataset 1</Description>
+</Input>
+```
 
 Das**ID**-Attribut, das jedem **DataTable** Eingangsport zugeordnet ist, muss einen eindeutigen Wert haben, der mit seinem entsprechenden benannten Parameter in der R-Funktion übereinstimmen muss.
 Für optionale **DataTable**-Ports, die nicht als Eingabe in einem Experiment übergeben werden, wird der Wert **NULL** an die R-Funktion übergeben, und optionale ZIP-Ports werden ignoriert, wenn die Eingabe nicht verbunden ist. Das **isOptional**-Attribut ist für die Typen **DataTable** und **Zip** optional und standardmäßig *false*.
 
 **Zip:** Benutzerdefinierte Module können ZIP-Dateien als Eingabe akzeptieren. Diese Eingabe wird im R-Arbeitsverzeichnis Ihrer Funktion entpackt.
 
-        <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
-            <Description>Zip files to be extracted to the R working directory.</Description>
-           </Input>
+```xml
+<Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
+    <Description>Zip files to be extracted to the R working directory.</Description>
+</Input>
+```
 
 Bei benutzerdefinierten R-Modulen muss die ID eines ZIP-Ports keinen Parametern der R-Funktion entsprechen. Der Grund: Die ZIP-Datei wird automatisch in das R-Arbeitsverzeichnis extrahiert.
 
@@ -170,47 +179,54 @@ Bei benutzerdefinierten R-Modulen muss die ID eines ZIP-Ports keinen Parametern 
 ### <a name="output-elements"></a>Ausgabe-Elemente
 **Standardausgabeports:** Ausgabeports sind den Rückgabewerten Ihrer R-Funktion zugeordnet, die anschließend von nachfolgenden Modulen verwendet werden können. *DataTable* ist zurzeit der einzige unterstützte Standardtyp für Ausgabeports. (Unterstützung für *Learners* und *Transforms* ist in Kürze zu erwarten.) Eine *DataTable*-Ausgabe wird wie folgt definiert:
 
-    <Output id="dataset" name="Dataset" type="DataTable">
-        <Description>Combined dataset</Description>
-    </Output>
+```xml
+<Output id="dataset" name="Dataset" type="DataTable">
+    <Description>Combined dataset</Description>
+</Output>
+```
 
 Für Ausgaben in benutzerdefinierten R-Modulen muss der Wert des **ID** -Attributs mit nichts im R-Skript übereinstimmen, jedoch eindeutig sein. Für ein einzelne Modulausgabe muss der Rückgabewert der R-Funktion ein *data.frame*sein. Um mehr als ein Objekt eines unterstützten Datentyps auszugeben, müssen die entsprechende Ausgangs-Ports in der XML-Definitionsdatei angegeben und die Objekte als Liste zurückgegeben werden. Die Ausgangsobjekte werden den Ausgangsports von links nach rechts zugewiesen und entsprechen der Reihenfolge, in der die Objekte in der zurückgegebenen Liste angegeben sind.
 
 Wenn Sie also beispielsweise das Modul **Custom Add Rows** ändern möchten, um die beiden ursprünglichen Datasets *dataset1* und *dataset2* zusammen mit dem neu verknüpften Dataset namens *dataset* auszugeben (von links nach rechts als *dataset*, *dataset1*, *dataset2*), definieren Sie die Ausgabeports in der Datei „CustomAddRows.xml“ wie folgt:
 
-    <Ports> 
-        <Output id="dataset" name="Dataset Out" type="DataTable"> 
-            <Description>New Dataset</Description> 
-        </Output> 
-        <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
-            <Description>First Dataset</Description> 
-        </Output> 
-        <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
-            <Description>Second Dataset</Description> 
-        </Output> 
-        <Input id="dataset1" name="Dataset 1" type="DataTable"> 
-            <Description>First Input Table</Description>
-        </Input> 
-        <Input id="dataset2" name="Dataset 2" type="DataTable"> 
-            <Description>Second Input Table</Description> 
-        </Input> 
-    </Ports> 
-
+```xml
+<Ports> 
+    <Output id="dataset" name="Dataset Out" type="DataTable"> 
+        <Description>New Dataset</Description> 
+    </Output> 
+    <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
+        <Description>First Dataset</Description> 
+    </Output> 
+    <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
+        <Description>Second Dataset</Description> 
+    </Output> 
+    <Input id="dataset1" name="Dataset 1" type="DataTable"> 
+        <Description>First Input Table</Description>
+    </Input> 
+    <Input id="dataset2" name="Dataset 2" type="DataTable"> 
+        <Description>Second Input Table</Description> 
+    </Input> 
+</Ports> 
+```
 
 Geben Sie dann die Liste der Objekte in einer Liste in der richtigen Reihenfolge in „CustomAddRows.R“ zurück:
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
-        if (swap) { dataset <- rbind(dataset2, dataset1)) } 
-        else { dataset <- rbind(dataset1, dataset2)) 
-        } 
-    return (list(dataset, dataset1, dataset2)) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
+    if (swap) { dataset <- rbind(dataset2, dataset1)) } 
+    else { dataset <- rbind(dataset1, dataset2)) 
     } 
+    return (list(dataset, dataset1, dataset2)) 
+} 
+```
 
 **Visualisierungsausgabe:** Sie können auch einen Ausgabeport vom Typ *Visualization* angeben, der die Ausgabe des R-Grafikgeräts und die Konsolenausgabe anzeigt. Dieser Port ist nicht Teil der R-Funktionsausgabe und hat keinerlei Auswirkungen auf die Reihenfolge der anderen Ausgabeporttypen. Um den benutzerdefinierten Modulen einen Visualisierungsport hinzuzufügen, fügen Sie ein **Ausgabe**-Element mit einem *Visualisierungswert* für sein **Typen**-Attribut hinzu:
 
-    <Output id="deviceOutput" name="View Port" type="Visualization">
-      <Description>View the R console graphics device output.</Description>
-    </Output>
+```xml
+<Output id="deviceOutput" name="View Port" type="Visualization">
+    <Description>View the R console graphics device output.</Description>
+</Output>
+```
 
 **Ausgabe-Regeln:**
 
@@ -229,51 +245,56 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
 
 **int** – ein Parameter des Typs Ganzzahl (32 Bit).
 
-    <Arg id="intValue1" name="Int Param" type="int">
-        <Properties min="0" max="100" default="0" />
-        <Description>Integer Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="intValue1" name="Int Param" type="int">
+    <Properties min="0" max="100" default="0" />
+    <Description>Integer Parameter</Description>
+</Arg>
+```
 
 * *Optionale Eigenschaften*: **min**, **max**, **Standard** und **isOptional**
 
 **double** – ein Parameter des Typs "double".
 
-    <Arg id="doubleValue1" name="Double Param" type="double">
-        <Properties min="0.000" max="0.999" default="0.3" />
-        <Description>Double Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="doubleValue1" name="Double Param" type="double">
+    <Properties min="0.000" max="0.999" default="0.3" />
+    <Description>Double Parameter</Description>
+</Arg>
+```
 
 * *Optionale Eigenschaften*: **min**, **max**, **Standard** und **isOptional**
 
 **bool** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
 
-    <Arg id="boolValue1" name="Boolean Param" type="bool">
-        <Properties default="true" />
-        <Description>Boolean Parameter</Description>
-    </Arg>
-
-
+```xml
+<Arg id="boolValue1" name="Boolean Param" type="bool">
+    <Properties default="true" />
+    <Description>Boolean Parameter</Description>
+</Arg>
+```
 
 * *Optionale Eigenschaften*: **Standard** -false, wenn nicht festgelegt
 
 **string**: eine Standardzeichenfolge.
 
-    <Arg id="stringValue1" name="My string Param" type="string">
-        <Properties isOptional="true" />
-        <Description>String Parameter 1</Description>
-    </Arg>    
+```xml
+<Arg id="stringValue1" name="My string Param" type="string">
+    <Properties isOptional="true" />
+    <Description>String Parameter 1</Description>
+</Arg>    
+```
 
 * *Optionale Eigenschaften*: **Standard** und **isOptional**
 
 **ColumnPicker**: ein Spaltenauswahl-Parameter. Dieser Typ wird in der UX als Spaltenauswahl gerendert. Mit dem Element **Property** wird hier die ID des Ports angegeben, bei dem Spalten ausgewählt werden, wobei der Zielporttyp *DataTable* lauten muss. Das Ergebnis der Spaltenauswahl wird als Zeichenfolgenliste mit den Namen der ausgewählten Spalten an die R-Funktion übergeben. 
 
-        <Arg id="colset" name="Column set" type="ColumnPicker">      
-          <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
-          <Description>Column set</Description>
-        </Arg>
-
+```xml
+<Arg id="colset" name="Column set" type="ColumnPicker">      
+    <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
+    <Description>Column set</Description>
+</Arg>
+```
 
 * *Erforderliche Eigenschaften*: **portId**: entspricht der ID eines Eingabeelements des Typs *DataTable*.
 * *Optionale Eigenschaften*:
@@ -314,14 +335,16 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
 
 **DropDown**: Eine vom Benutzer angegebene aufgezählte (Dropdown-)Liste. Die Dropdownelemente werden innerhalb des **Eigenschaften**-Elements mithilfe eines **Item**-Elements angegeben. Die **ID** für die einzelnen **Item**-Elemente muss eindeutig und eine gültige R-Variable sein. Der Wert von **name** eines **Item**-Elements fungiert sowohl als angezeigter Text als auch als Wert, der an die R-Funktion übergeben wird.
 
-    <Arg id="color" name="Color" type="DropDown">
-      <Properties default="red">
+```xml
+<Arg id="color" name="Color" type="DropDown">
+    <Properties default="red">
         <Item id="red" name="Red Value"/>
         <Item id="green" name="Green Value"/>
         <Item id="blue" name="Blue Value"/>
-      </Properties>
-      <Description>Select a color.</Description>
-    </Arg>    
+    </Properties>
+    <Description>Select a color.</Description>
+</Arg>    
+```
 
 * *Optionale Eigenschaften*:
   * **Standard**: Der Wert für die Standardeigenschaft muss mit dem ID-Wert eines der **Item**-Elemente übereinstimmen.
@@ -336,25 +359,30 @@ Jede Datei in der ZIP-Datei des benutzerdefinierten Moduls ist während der Ausf
 
 Angenommen Sie möchten alle Zeilen mit NAs und alle doppelten Zeilen in einem DataSet entfernen, bevor Sie es an CustomAddRows ausgeben, und bereits eine R-Funktion geschrieben haben, die Folgendes in einer Datei „RemoveDupNARows.R“ ausführt:
 
-    RemoveDupNARows <- function(dataFrame) {
-        #Remove Duplicate Rows:
-        dataFrame <- unique(dataFrame)
-        #Remove Rows with NAs:
-        finalDataFrame <- dataFrame[complete.cases(dataFrame),]
-        return(finalDataFrame)
-    }
+```r
+RemoveDupNARows <- function(dataFrame) {
+    #Remove Duplicate Rows:
+    dataFrame <- unique(dataFrame)
+    #Remove Rows with NAs:
+    finalDataFrame <- dataFrame[complete.cases(dataFrame),]
+    return(finalDataFrame)
+}
+```
+
 Sie können die zusätzliche Datei "RemoveDupNARows.R" in der "CustomAddRows"-Funktion bereitstellen:
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
-        source("src/RemoveDupNARows.R")
-            if (swap) { 
-                dataset <- rbind(dataset2, dataset1))
-             } else { 
-                  dataset <- rbind(dataset1, dataset2)) 
-             } 
-        dataset <- removeDupNARows(dataset)
-        return (dataset)
-    }
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
+    source("src/RemoveDupNARows.R")
+        if (swap) { 
+            dataset <- rbind(dataset2, dataset1))
+        } else { 
+            dataset <- rbind(dataset1, dataset2)) 
+        } 
+    dataset <- removeDupNARows(dataset)
+    return (dataset)
+}
+```
 
 Laden Sie anschließend eine ZIP-Datei mit „CustomAddRows.R“, „CustomAddRows.xml“ und „RemoveDupNARows.R“ als benutzerdefiniertes R-Modul hoch.
 

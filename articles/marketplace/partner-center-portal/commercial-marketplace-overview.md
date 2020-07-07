@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724818"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954130"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das kommerzielle Marketplace-Portal in Partner Center
 
@@ -34,7 +34,7 @@ Vorhandene Herausgeber, die zuvor das Cloud-Partnerportal verwenden haben, finde
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbesserungen der Benutzeroberfläche für die Veröffentlichung und Angebotsverwaltung
 
-Mit dem Übergang zu Partner Center stehen neben den Verbesserungen der Benutzeroberfläche neue Funktionen für Herausgeber zur Verfügung.  Ausführliche Informationen hierzu finden Sie unter [Häufig gestellte Fragen zur Migration vom Cloud-Partnerportal zu Partner Center](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
+Mit dem Übergang zu Partner Center stehen neben den Verbesserungen der Benutzeroberfläche neue Funktionen für Herausgeber zur Verfügung.  Ausführliche Informationen hierzu finden Sie unter [Häufig gestellte Fragen zur Migration vom Cloud-Partnerportal zu Partner Center](../cloud-partner-portal-migration-faq.md).
 
 ### <a name="account-and-user-management-updates"></a>Aktualisierungen der Konto- und Benutzerverwaltung
 
@@ -50,10 +50,10 @@ Partner Center-Analysen bieten einen Einblick in die Leistung Ihrer Angebote und
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>Anzeigen der Roadmap und Teilnahme an Diskussionen
 
-Weitere Informationen zu aktuellen und zukünftigen Releases erhalten Sie unter [Roadmap für den kommerziellen Marketplace von Microsoft](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap), oder beteiligen Sie sich an Diskussionen in der [Microsoft Partner Community](https://www.microsoftpartnercommunity.com/).
+Weitere Informationen zu aktuellen und zukünftigen Releases erhalten Sie unter [Roadmap für den kommerziellen Marketplace von Microsoft](../marketplace-roadmap.md), oder beteiligen Sie sich an Diskussionen in der [Microsoft Partner Community](https://www.microsoftpartnercommunity.com/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Neue Microsoft-Partner, die ein Angebot in den Marketplaces veröffentlichen möchten, finden entsprechende Informationen unter [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
-- Bestehende Partner, die zuvor Angebote im Cloud-Partnerportal veröffentlicht haben, finden Informationen unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Neue Microsoft-Partner, die ein Angebot in den Marketplaces veröffentlichen möchten, finden entsprechende Informationen unter [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](create-account.md).
+- Bestehende Partner, die zuvor Angebote im Cloud-Partnerportal veröffentlicht haben, finden Informationen unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](manage-account.md).
 - Weitere Informationen zum Wechsel der Cloud-Marketplace-Verwaltung zu Partner Center finden Sie in diesem [Partner Community-Blogbeitrag](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), der auch ein Demovideo umfasst.

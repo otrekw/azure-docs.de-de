@@ -7,18 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982682"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958496"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
 In diesem Artikel werden die im kommerziellen Marketplace verfügbaren Angebotstypen beschrieben. Der *Angebotstyp* definiert die Angebotsstruktur einschließlich der Metadaten, Artefakte und sonstigen Inhalte, mit denen das Angebot im Marketplace präsentiert wird.
 
-Bevor Sie ein Angebot erstellen können, und nachdem Sie [sich für eine Veröffentlichungsoption entschieden haben](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), müssen Sie einen Angebotstyp auswählen, der zum Präsentieren Ihres Angebots verwendet wird. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft.
+Bevor Sie ein Angebot erstellen können, und nachdem Sie [sich für eine Veröffentlichungsoption entschieden haben](determine-your-listing-type.md), müssen Sie einen Angebotstyp auswählen, der zum Präsentieren Ihres Angebots verwendet wird. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft.
 
 Ein einzelner Angebotstyp kann auf verschiedene Weise konfiguriert werden, um unterschiedliche Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen.
 

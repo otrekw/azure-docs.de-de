@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834984"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958420"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für SQL-Pools in Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ PolyBase-Ladevorgänge können per CTAS oder INSERT INTO ausgeführt werden. CTA
 
 Wenn Sie bei der Verwendung von Gzip-Textdateien den Durchsatz maximieren möchten, teilen Sie sie in 60 oder mehr Dateien auf, um die Parallelität Ihres Ladevorgangs zu maximieren. Erwägen Sie das gleichzeitige Laden von Daten, um einen besseren Gesamtdurchsatz zu erzielen. Zusätzliche Informationen zu den für diesen Abschnitt relevanten Themen sind in den folgenden Artikeln enthalten:
 
-- [Laden von Daten](data-loading-overview.md)
+- [Laden von Daten](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Anleitung für die Verwendung von PolyBase](data-loading-best-practices.md)
 - [Lademuster und -strategien für den Azure SQL-Pool](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Laden von Daten mit Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

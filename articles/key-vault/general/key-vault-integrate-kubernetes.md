@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921572"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
@@ -280,27 +280,27 @@ kubectl apply -f podIdentityAndBinding.yaml
 Als Nächstes stellen Sie den Pod bereit. Der folgende Code ist die YAML-Datei für die Bereitstellung, die die Bindung der Pod-Identität aus dem vorangegangenen Schritt nutzt. Speichern Sie diese Datei als *podBindingDeployment.yaml*.
 
 ```yml
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-secrets-store-inline
-    labels:
+  name: nginx-secrets-store-inline
+  labels:
     aadpodidbinding: azure-pod-identity-binding-selector
 spec:
-    containers:
+  containers:
     - name: nginx
-        image: nginx
-        volumeMounts:
+      image: nginx
+      volumeMounts:
         - name: secrets-store-inline
-        mountPath: "/mnt/secrets-store"
-        readOnly: true
-    volumes:
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
     - name: secrets-store-inline
-        csi:
+      csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-            secretProviderClass: azure-kvname
+          secretProviderClass: azure-kvname
 ```
 
 Führen Sie den folgenden Befehl aus, um Ihren Pod bereitzustellen:
@@ -343,4 +343,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Um sicherzustellen, dass Ihr Schlüsseltresor wiederherstellbar ist:
 > [!div class="nextstepaction"]
-> [Aktivieren des vorläufigen Löschens](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [Aktivieren des vorläufigen Löschens](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
