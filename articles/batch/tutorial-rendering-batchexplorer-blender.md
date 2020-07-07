@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117079"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964803"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer
 
@@ -27,9 +27,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.
 
-Sie benötigen ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Sie benötigen ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](./quick-create-cli.md).
 
-Für die in diesem Tutorial angegebene VM-Größe und -Anzahl ist ein Kernkontingent mit niedriger Priorität von mindestens 50 Kernen erforderlich. Das Standardkontingent kann zwar verwendet werden, Sie benötigen dann aber eine kleinere VM-Größe, was bedeutet, dass das Rendern der Bilder länger dauert. Die Vorgehensweise zum Anfordern eines höheren Kernkontingents wird in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-quota-limit) ausführlich beschrieben.
+Für die in diesem Tutorial angegebene VM-Größe und -Anzahl ist ein Kernkontingent mit niedriger Priorität von mindestens 50 Kernen erforderlich. Das Standardkontingent kann zwar verwendet werden, Sie benötigen dann aber eine kleinere VM-Größe, was bedeutet, dass das Rendern der Bilder länger dauert. Die Vorgehensweise zum Anfordern eines höheren Kernkontingents wird in [diesem Artikel](./batch-quota-limit.md) ausführlich beschrieben.
 
 Abschließend muss [Batch Explorer](https://azure.github.io/BatchExplorer/) installiert werden. Dieses Hilfsprogramm ist für Windows, OSX und Linux verfügbar. Wenn [Blender](https://www.blender.org/download/) installiert ist, kann die Beispielmodelldatei angezeigt werden. Dies ist jedoch optional.
 
@@ -139,4 +139,4 @@ Wenn alle Aufgaben abgeschlossen sind, wird der Auftrag als abgeschlossen markie
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich im Abschnitt „Gallery“ (Katalog) die über Batch Explorer verfügbaren Renderinganwendungen an.
 * Für jede Anwendung stehen verschiedene Vorlagen zur Verfügung, und die Auswahl wird ständig erweitert.  Für Blender sind beispielsweise Vorlagen verfügbar, die ein einzelnes Bild in Kacheln unterteilen, sodass Teile eines Bilds parallel gerendert werden können.
-* Eine umfassende Beschreibung der Renderingfunktionen finden Sie in [diesen](https://docs.microsoft.com/azure/batch/batch-rendering-service) Artikeln.
+* Eine umfassende Beschreibung der Renderingfunktionen finden Sie in [diesen](./batch-rendering-service.md) Artikeln.

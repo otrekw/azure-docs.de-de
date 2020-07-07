@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61244228"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964752"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET 
 
@@ -408,9 +408,12 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 * Erstellen eines Codierungsauftrags.
 * Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 * Laden Sie die [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung, die die Codierungsvoreinstellung sowie zum Generieren von Miniaturansichten erforderliche Informationen enthält. Sie können diese [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung in einer Datei speichern und die Datei mithilfe des folgenden Codes laden.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
 * Geben Sie das zu codierende Asset an.
 * Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.

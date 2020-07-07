@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a5d430dd9da2016a41a9a0b6bf04212aca557cba
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834712"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963500"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -62,7 +62,6 @@ Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung mit 
 > Für auf dem Edgeknoten installierte benutzerdefinierte Komponenten stellt Microsoft wirtschaftlich angemessenen Support bereit. Dadurch werden unter Umständen bei Ihnen auftretende Probleme behoben. Alternativ erhalten Sie unter Umständen weitere Unterstützung über Communityressourcen. Im Anschluss finden Sie einige besonders aktive Websites, auf denen Sie Unterstützung von der Community erhalten:
 >
 > * [Frageseite von Microsoft Q&A (Fragen und Antworten) für HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html
-
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Bei Verwendung einer Apache-Technologie finden Sie hilfreiche Informationen ggf. auf den Apache-Projektwebsites unter [https://apache.org](https://apache.org), beispielsweise auf der Website für [Apache Hadoop](https://hadoop.apache.org/).
@@ -143,11 +142,15 @@ Der Edgeknoten wird als Anwendung im Azure-Portal angezeigt.  Im Portal erfahren
 
 2. Verwenden Sie nach dem Herstellen einer Verbindung mit dem Edgeknoten über SSH den folgenden Befehl, um die Hive-Konsole zu öffnen:
 
-        hive
+    ```console
+    hive
+    ```
 
 3. Führen Sie den folgenden Befehl aus, um Hive-Tabellen im Cluster anzuzeigen:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
 
 ## <a name="delete-an-edge-node"></a>Löschen eines Edgeknotens
 

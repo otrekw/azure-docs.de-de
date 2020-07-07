@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725872"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964667"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
@@ -124,6 +124,6 @@ Wiederholen Sie diese Schritte für jede virtuelle Festplatte in den SKUs, die S
 
 ## <a name="next-step"></a>Nächster Schritt
 
-Falls Sie Schwierigkeiten beim Erstellen eines SAS-URI haben, helfen Ihnen die Informationen unter [Allgemeine Probleme mit der SAS-URL](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues) weiter. Andernfalls speichern Sie den SAS-URI in einem sicheren Speicherort zur späteren Verwendung. Sie benötigen ihn zum Veröffentlichen Ihres VM-Angebots in Partner Center.
+Falls Sie Schwierigkeiten beim Erstellen eines SAS-URI haben, helfen Ihnen die Informationen unter [Allgemeine Probleme mit der SAS-URL](common-sas-uri-issues.md) weiter. Andernfalls speichern Sie den SAS-URI in einem sicheren Speicherort zur späteren Verwendung. Sie benötigen ihn zum Veröffentlichen Ihres VM-Angebots in Partner Center.
 
-* [Erstellen eines Angebots für virtuelle Azure-Computer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Erstellen eines Angebots für virtuelle Azure-Computer](azure-vm-create-offer.md)

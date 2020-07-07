@@ -3,12 +3,12 @@ title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779565"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965075"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -18,7 +18,7 @@ Entwickler können Batch als Plattformdienst verwenden, um SaaS-Anwendungen oder
 
 Es fallen keine zusätzlichen Gebühren für die Nutzung von Batch an. Sie zahlen nur für die genutzten zugrunde liegenden Ressourcen, z.B. virtuelle Computer, Speicher und Netzwerk.
 
-Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [High Performance Computing (HPC) on Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) (High Performance Computing (HPC) in Azure).
+Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/) (High Performance Computing (HPC) in Azure).
 
 ## <a name="run-parallel-workloads"></a>Ausführen von parallelen Workloads
 Batch funktioniert gut mit intrinsisch parallelen Workloads (auch als „hochgradig parallel“ bezeichnet). Bei intrinsisch parallelen Workloads können die Anwendungen unabhängig voneinander ausgeführt werden, und jede Instanz erledigt einen Teil der Arbeit. Wenn die Anwendungen ausgeführt werden, greifen sie ggf. auf einige gemeinsame Daten zu, aber sie kommunizieren nicht mit anderen Instanzen der Anwendung. Intrinsisch parallele Workloads können daher in großem Umfang ausgeführt werden. Dies richtet sich nach der Menge von Computeressourcen, die für die gleichzeitige Ausführung von Anwendungen verfügbar sind.
@@ -34,7 +34,7 @@ Hier sind einige Beispiele für intrinsisch parallele Workloads angegeben, die S
 * Datenerfassung-/verarbeitung und ETL-Vorgänge
 * Softwaretestausführung
 
-Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/linux/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/linux/sizes-gpu.md) VM-Größen.
+Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](/message-passing-interface/microsoft-mpi) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/linux/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/linux/sizes-gpu.md) VM-Größen.
 
 Hier sind einige Beispiele für eng gekoppelte Workloads angegeben:
 * FE-Analyse

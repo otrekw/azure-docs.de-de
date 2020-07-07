@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798148"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964208"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
-In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Webstorefronts im kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
+In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Webstorefronts im kommerziellen Marketplace](comparing-appsource-azure-marketplace.md), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
 
 Sie können neue oder bestehende Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis konfigurieren, sodass CSP-Partner Ihre Produkte verkaufen und gebündelte Lösungen für Kunden erstellen können.
 
@@ -191,7 +191,7 @@ Wenn Sie den CSP-Kanal abonniert haben, müssen Herausgeber im Cloud-Partnerport
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](marketplace-publishers-guide.md).
 
 Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-GTM-Diensten zu erhalten.
 

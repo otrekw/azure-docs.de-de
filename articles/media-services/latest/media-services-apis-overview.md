@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515067"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -41,7 +41,7 @@ Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter
 
 Wenn Sie eine Azure AD-App und ein Dienstprinzipal erstellen, muss sich die App in ihrem eigenen Mandanten befinden. Nachdem Sie die App erstellt haben, können Sie für die App den Zugriff auf das Media Services-Konto über die Rolle **Mitwirkender** oder **Besitzer** gewähren.
 
-Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-App verfügen, lesen Sie [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-App verfügen, lesen Sie [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chronologischer Reihenfolge dar:
 

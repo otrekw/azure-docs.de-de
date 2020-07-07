@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427390"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963885"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Bewährte Methoden zum Laden von Daten für Data Warehousing
 
@@ -144,6 +144,6 @@ Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu PolyBase und zum Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Designing Extract, Load, and Transform (ELT) for Azure SQL Data Warehouse](data-loading-overview.md) (ELT-Entwurf (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse).
+- Weitere Informationen zu PolyBase und zum Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Designing Extract, Load, and Transform (ELT) for Azure SQL Data Warehouse](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (ELT-Entwurf (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse).
 - Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Informationen zum Überwachen von Datenladevorgängen finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

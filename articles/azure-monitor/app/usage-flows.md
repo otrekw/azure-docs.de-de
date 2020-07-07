@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892443"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963427"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analysieren von Benutzernavigationsmustern mit Benutzerabläufen in Application Insights
 
-![Application Insights-Tool für Benutzerabläufe](./media/usage-flows/00001-flows.png)
+![Application Insights-Tool für Benutzerabläufe](./media/usage-flows/flows.png)
 
 Das Tool für Benutzerabläufe visualisiert die Navigation von Benutzern zwischen den Seiten und Features Ihrer Website. Dadurch liefert es beispielsweise Antworten auf folgende Fragen:
 
@@ -33,7 +33,7 @@ Das Tool für Benutzerabläufe startet bei einem Seitenaufruf, einem benutzerdef
 
 ## <a name="start-by-choosing-an-initial-event"></a>Starten durch Auswählen eines Ausgangsereignisses
 
-![Auswählen eines Ausgangsereignisses für Benutzerabläufe](./media/usage-flows/00002-flows-initial-event.png)
+![Auswählen eines Ausgangsereignisses für Benutzerabläufe](./media/usage-flows/initial-event.png)
 
 Wählen Sie zur Beantwortung von Fragen mit dem Tool für Benutzerabläufe einen Seitenaufruf, ein benutzerdefiniertes Ereignis oder eine Ausnahme als Ausgangspunkt für die Visualisierung aus:
 
@@ -58,7 +58,7 @@ Verwenden Sie die Dropdownmenüs **Previous steps** (Vorherige Schritte) und **N
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Wohin wechseln Besucher nach dem Besuch einer Seite oder nach der Verwendung eines Features, und worauf klicken sie?
 
-![Verwenden von Benutzerabläufen, um nachzuvollziehen, worauf Benutzer klicken](./media/usage-flows/00003-flows-one-step.png)
+![Verwenden von Benutzerabläufen, um nachzuvollziehen, worauf Benutzer klicken](./media/usage-flows/one-step.png)
 
 Wenn es sich bei Ihrem Ausgangsereignis um einen Seitenaufruf handelt, können Sie über die erste Spalte der Visualisierung (Schritt 1) schnell ermitteln, welche Aktion Benutzer direkt im Anschluss an den Seitenbesuch ausgeführt haben. Öffnen Sie Ihre Website in einem Fenster neben der Visualisierung von Benutzerabläufen. Vergleichen Sie Ihre Erwartungen hinsichtlich der Benutzerinteraktion mit der Liste von Ereignissen aus der Spalte „Step 1“ (Schritt 1). Es kommt immer wieder vor, dass ein Seitenelement, dem Ihr Team keine besondere Bedeutung beimisst, zu den meistgenutzten Elementen der Seite gehört. Dies kann ein guter Ausgangspunkt für die Optimierung des Websitedesigns sein.
 

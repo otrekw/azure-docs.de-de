@@ -3,15 +3,15 @@ title: Verwenden des .NET SDK für Microsoft Azure StorSimple Data Manager-Auftr
 description: Erfahren Sie, wie Sie das .NET SDK zum Ausführen von StorSimple Data Manager-Aufträgen verwenden.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76270727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514888"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Verwenden des .NET SDK zum Initiieren einer Datentransformation
 
