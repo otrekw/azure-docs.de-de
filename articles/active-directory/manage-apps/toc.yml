@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: Schnellstarts
   items:
-    - name: Anzeigen Ihrer Unternehmensanwendungen
+    - name: Anzeigen Ihrer Apps
       href: view-applications-portal.md
-    - name: Hinzufügen einer Cloud-App aus dem Katalog
+    - name: Hinzufügen einer App
       href: add-application-portal.md
+    - name: Konfigurieren einer App
+      href: add-application-portal-configure.md
+    - name: Einrichten des einmaligen Anmeldens
+      href: add-application-portal-setup-sso.md
+    - name: Löschen einer App
+      href: delete-application-portal.md
 - name: Tutorials
   items:
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"

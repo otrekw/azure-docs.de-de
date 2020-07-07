@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Fehler beim Löschen von klassischen Speicherressourcen
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 'VHD wird nicht unterstützt, wenn Sie einen virtuellen Computer in Azure erstellen.'
+      href: vhd-not-supported-vm-azure.md
     - name: Verwenden der geschachtelten Virtualisierung
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM-Leistungsprobleme

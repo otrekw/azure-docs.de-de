@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: Ausführen eines Befehls (exec)
           href: container-instances-exec.md
+        - name: Ausführen eines Setupcontainers (init)
+          href: container-instances-init-container.md
         - name: Verwenden einer verwalteten Identität (Vorschau)
           href: container-instances-managed-identity.md
         - name: Verwenden von GPU-Ressourcen (Vorschauversion)

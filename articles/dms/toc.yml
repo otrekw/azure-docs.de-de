@@ -7,10 +7,14 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Erstellen eines Diensts: Portal'
-      href: quickstart-create-data-migration-service-portal.md
-    - name: 'Erstellen eines Diensts im Hybridmodus: Portal'
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: Erstellen eines Diensts
+      items:
+        - name: Portal
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM-Vorlage
+          href: create-dms-resource-manager-template.md
+        - name: im Hybridmodus (Portal)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Konzepte
   items:
     - name: Voraussetzungen

@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: Konzepte
   items:
+    - name: Planen Ihrer Wissensdatenbank
+      href: Concepts/plan.md
     - name: Azure-Ressourcen
       href: Concepts/azure-resources.md
     - name: Zusammenarbeit mit anderen Benutzern
@@ -225,7 +227,7 @@
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: qna-maker-encryption-of-data-at-rest.md

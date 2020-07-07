@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: Neukonfigurieren von zustandsbehafteten Diensten
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Reliable Services-Lebenszyklus – C#'
+            - name: Reliable Services-Lebenszyklus – C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services-Lebenszyklus – Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: Hostingmodell
           href: service-fabric-hosting-model.md
+        - name: 'Weiterführende Themen zu Hosting: Aktivierungs- und Deaktivierungslebenszyklus'
+          href: service-fabric-hosting-lifecycle.md
         - name: Anwendungssicherheit
           href: service-fabric-application-and-service-security.md
         - name: Dienstzustand
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux-Containeranwendung
           href: service-fabric-get-started-containers-linux.md
-        - name: 'Reliable Services-Anwendung in C# unter Windows'
+        - name: Reliable Services-Anwendung in C# unter Windows
           href: service-fabric-reliable-services-quick-start.md
         - name: Reliable Services-Anwendung in Java unter Linux
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'Reliable Services-Anwendung in C# unter Linux'
+        - name: Reliable Services-Anwendung in C# unter Linux
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'Reliable Actors-Anwendung in C# unter Windows'
+        - name: Reliable Actors-Anwendung in C# unter Windows
           href: service-fabric-reliable-actors-get-started.md
         - name: Reliable Actors-Anwendung in Java unter Linux
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: Kommunizieren mit Reliable Services
                   href: service-fabric-reliable-services-communication.md
-                - name: 'Dienstremoting – C#'
+                - name: Dienstremoting – C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: Dienstremoting – Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: 'Sichere Kommunikation – C#'
+                - name: Sichere Kommunikation – C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: Sichere Kommunikation – Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: Erste Schritte mit VS Code
               href: service-fabric-get-started-vs-code.md
-            - name: 'Entwickeln von Service Fabric-C#-Anwendungen mit VS Code'
+            - name: Entwickeln von Service Fabric-C#-Anwendungen mit VS Code
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: Entwickeln von Service Fabric-Java-Anwendungen mit VS Code
               href: service-fabric-develop-java-applications-with-vs-code.md

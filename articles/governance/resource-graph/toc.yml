@@ -17,6 +17,9 @@
     - name: 'Ausführen Ihrer ersten Abfrage: Azure PowerShell'
       displayName: 'module, docker, Az.ResourceGraph'
       href: ./first-query-powershell.md
+    - name: 'Ausführen Ihrer ersten Abfrage: .NET'
+      displayName: 'core, auth, dotnet'
+      href: ./first-query-dotnet.md
     - name: 'Ausführen Ihrer ersten Abfrage: Go'
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
@@ -26,6 +29,9 @@
     - name: 'Ausführen Ihrer ersten Abfrage: Python'
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 'Ausführen Ihrer ersten Abfrage: REST'
+      displayName: 'armclient, postman'
+      href: ./first-query-rest-api.md
     - name: 'Erstellen einer freigegebenen Abfrage: Azure CLI'
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md

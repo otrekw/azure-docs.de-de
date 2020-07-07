@@ -43,8 +43,8 @@
       items:
         - name: Erstellen einer Azure-Supportanfrage
           href: supportability/how-to-create-azure-support-request.md
-        - name: Hochladen von Dateien für eine Supportanfrage
-          href: supportability/how-to-use-file-uploader.md
+        - name: Verwalten einer Azure-Supportanfrage
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Anfordern der Kontingenterhöhung
           items:
             - name: Erhöhen der vCPU-Grenzwerte für Compute

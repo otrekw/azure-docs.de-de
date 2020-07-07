@@ -571,7 +571,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Kompatibilität
+        - name: Compliance
           href: compliance.md
         - name: "Azure\_Policy-Unterstützung"
           href: policy.md
@@ -1005,7 +1005,7 @@
               href: performance-tips-async-java.md
             - name: Sync Java SDK v2
               href: performance-tips-java.md
-            - name: Async Java SDK v2
+            - name: 'Problembehandlung: Async Java SDK v2'
               href: troubleshoot-java-async-sdk.md
         - name: 'Leistungstest: Beispiel-App'
           href: performance-testing.md

@@ -49,7 +49,7 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: Extrahieren von Text (maschinelles Sehen – Lese-API)
+        - name: Extrahieren von Text (Lese-API)
           items:
             - name: C#
               href: QuickStarts/CSharp-hand-text.md
@@ -59,7 +59,7 @@
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
-        - name: Extrahieren von gedrucktem Text (OCR)
+        - name: Extrahieren von Text (OCR-API)
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
@@ -105,7 +105,7 @@
       href: concept-detecting-color-schemes.md
     - name: Intelligent zugeschnittene Miniaturbilder
       href: concept-generating-thumbnails.md
-    - name: Texterkennung
+    - name: Optische Zeichenerkennung (OCR)
       href: concept-recognizing-text.md
     - name: Erkennung von nicht jugendfreien Inhalten
       href: concept-detecting-adult-content.md
@@ -179,5 +179,5 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

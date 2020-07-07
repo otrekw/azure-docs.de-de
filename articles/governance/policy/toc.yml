@@ -99,6 +99,10 @@
     - name: Überwachen virtueller Computer mit der Gastkonfiguration
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Anleitungen
   items:
     - name: Azure Policy-Erweiterung für VS Code
