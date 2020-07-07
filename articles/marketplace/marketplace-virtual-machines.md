@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858309"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961539"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Leitfaden für die Veröffentlichung von Virtual Machine-Angeboten
 
@@ -54,7 +54,7 @@ Verwenden Sie den Angebotstyp *Virtueller Computer*, wenn Sie ein virtuelles Ger
 | Anforderung | Details |  
 |:--- |:--- | 
 | Abrechnung und Messung | Ihr virtueller Computer muss entweder die Abrechnung nach dem BYOL-Modell oder die monatliche nutzungsbasierte Bezahlung unterstützen. |  
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen zum Erstellen einer VHD finden Sie unter: <ul> <li>[Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (für Linux-VHDs)</li> <li>[Erstellen einer Azure-kompatiblen VHD](./partner-center-portal/azure-vm-create-offer.md) (für Windows-VHDs).</li> </ul> |  
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen zum Erstellen einer VHD finden Sie unter: <ul> <li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li> <li>[Erstellen einer Azure-kompatiblen VHD](./partner-center-portal/azure-vm-create-offer.md) (für Windows-VHDs).</li> </ul> |  
 
 >[!Note]
 >Die Option zur Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar. Weitere Informationen zum Vermarkten Ihres Angebots über Microsoft CSP-Partnerkanäle finden Sie unter [Cloud Solution Provider](./cloud-solution-providers.md).
