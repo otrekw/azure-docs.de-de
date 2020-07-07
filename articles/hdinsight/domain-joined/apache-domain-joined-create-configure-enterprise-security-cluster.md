@@ -357,21 +357,21 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Destination port range | 636 |
         | Protocol | Any |
         | Aktion | Allow |
-        | Priority | \<Gewünschte Zahl> |
-        | Name | Port_LDAP_636 |
+        | Priority | \<Desired number> |
+        | \<Gewünschte Zahl> | Name |
 
-    ![Dialogfeld „Eingangssicherheitsregel hinzufügen“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+    ![Port_LDAP_636](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
-**HDIFabrikamManagedIdentity** ist die benutzerseitig zugewiesene verwaltete Identität. Für die verwaltete Identität ist die Rolle „HDInsight-Domänendienste: Mitwirkender“ aktiviert, sodass damit Domänendienstvorgänge gelesen, erstellt, geändert und gelöscht werden können.
+Dialogfeld „Eingangssicherheitsregel hinzufügen“ **HDIFabrikamManagedIdentity** ist die benutzerseitig zugewiesene verwaltete Identität.
 
-![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
+![Für die verwaltete Identität ist die Rolle „HDInsight-Domänendienste: Mitwirkender“ aktiviert, sodass damit Domänendienstvorgänge gelesen, erstellt, geändert und gelöscht werden können.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
 
-## <a name="create-an-esp-enabled-hdinsight-cluster"></a>Erstellen eines HDInsight-Clusters mit aktiviertem Enterprise-Sicherheitspaket
+## <a name="create-an-esp-enabled-hdinsight-cluster"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 
-Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
+Erstellen eines HDInsight-Clusters mit aktiviertem Enterprise-Sicherheitspaket
 
+1. Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
 1. Erstellen Sie die neue Ressourcengruppe *HDIFabrikam-WestUS* am Standort **USA, Westen**.
-1. Erstellen Sie ein virtuelles Netzwerk, das den HDInsight-Cluster mit dem aktivierten Enterprise-Sicherheitspaket hostet.
 
     ```powershell
     $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS' -Location 'West US' -Name 'HDIFabrikam-HDIVNet' -AddressPrefix 10.1.0.0/16
@@ -379,7 +379,7 @@ Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Erstellen Sie eine Peerbeziehung zwischen dem virtuellen Netzwerk, das Azure AD DS hostet (`HDIFabrikam-AADDSVNET`), und dem virtuellen Netzwerk, das den HDInsight-Cluster mit dem aktivierten Enterprise-Sicherheitspaket hostet (`HDIFabrikam-HDIVNet`). Führen Sie mit dem folgenden PowerShell-Code das Peering dieser beiden virtuellen Netzwerke durch.
+1. Erstellen Sie ein virtuelles Netzwerk, das den HDInsight-Cluster mit dem aktivierten Enterprise-Sicherheitspaket hostet. Erstellen Sie eine Peerbeziehung zwischen dem virtuellen Netzwerk, das Azure AD DS hostet (`HDIFabrikam-AADDSVNET`), und dem virtuellen Netzwerk, das den HDInsight-Cluster mit dem aktivierten Enterprise-Sicherheitspaket hostet (`HDIFabrikam-HDIVNet`).
 
     ```powershell
     Add-AzVirtualNetworkPeering -Name 'HDIVNet-AADDSVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS')
@@ -387,43 +387,43 @@ Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
     Add-AzVirtualNetworkPeering -Name 'AADDSVNet-HDIVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS')
     ```
 
-1. Erstellen Sie ein neues Azure Data Lake Storage Gen2-Konto namens **Hdigen2store**. Konfigurieren Sie das Konto mit der benutzerseitig verwalteten Identität **HDIFabrikamManagedIdentity**. Weitere Informationen finden Sie unter [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md).
+1. Führen Sie mit dem folgenden PowerShell-Code das Peering dieser beiden virtuellen Netzwerke durch. Erstellen Sie ein neues Azure Data Lake Storage Gen2-Konto namens **Hdigen2store**. Konfigurieren Sie das Konto mit der benutzerseitig verwalteten Identität **HDIFabrikamManagedIdentity**.
 
-1. Richten Sie im virtuellen Netzwerk **HDIFabrikam-AADDSVNET** ein benutzerdefiniertes DNS ein.
+1. Weitere Informationen finden Sie unter [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md).
+    1. Richten Sie im virtuellen Netzwerk **HDIFabrikam-AADDSVNET** ein benutzerdefiniertes DNS ein.
     1. Navigieren Sie im Azure-Portal zu **Ressourcengruppen** > **OnPremADVRG** > **HDIFabrikam-AADDSVNET** > **DNS-Server**.
     1. Wählen Sie **Benutzerdefiniert** aus, und geben Sie *10.0.0.4* und *10.0.0.5* ein.
-    1. Wählen Sie **Speichern** aus.
 
-        ![Speichern benutzerdefinierter DNS-Einstellungen für ein virtuelles Netzwerk](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
+        ![Wählen Sie **Speichern** aus.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
-1. Erstellen Sie einen neuen HDInsight Spark-Cluster mit aktiviertem Enterprise-Sicherheitspaket.
-    1. Wählen Sie **Benutzerdefiniert (Größe, Einstellungen, Apps)** aus.
-    1. Geben Sie Details für **Grundlagen** (Abschnitt 1) ein. Der **Clustertyp** muss **Spark 2.3 (HDI 3.6)** lauten. Die **Ressourcengruppe** muss **HDIFabrikam-CentralUS** lauten.
+1. Speichern benutzerdefinierter DNS-Einstellungen für ein virtuelles Netzwerk
+    1. Erstellen Sie einen neuen HDInsight Spark-Cluster mit aktiviertem Enterprise-Sicherheitspaket.
+    1. Wählen Sie **Benutzerdefiniert (Größe, Einstellungen, Apps)** aus. Geben Sie Details für **Grundlagen** (Abschnitt 1) ein. Der **Clustertyp** muss **Spark 2.3 (HDI 3.6)** lauten.
 
-    1. Geben Sie für **Sicherheit + Netzwerkbetrieb** (Abschnitt 2) folgende Details ein:
-        * Wählen Sie unter **Enterprise-Sicherheitspaket** die Einstellung **Aktiviert** aus.
-        * Wählen Sie **Clusteradministratorbenutzer** und das Konto **HDIAdmin** aus, das Sie als lokalen Administratorbenutzer erstellt haben. Klicken Sie auf **Auswählen**.
-        * Wählen Sie **Clusterzugriffsgruppe** > **HDIUserGroup** aus. Jeder Benutzer, den Sie dieser Gruppe später hinzufügen, kann auf HDInsight-Cluster zugreifen.
+    1. Die **Ressourcengruppe** muss **HDIFabrikam-CentralUS** lauten.
+        * Geben Sie für **Sicherheit + Netzwerkbetrieb** (Abschnitt 2) folgende Details ein:
+        * Wählen Sie unter **Enterprise-Sicherheitspaket** die Einstellung **Aktiviert** aus. Wählen Sie **Clusteradministratorbenutzer** und das Konto **HDIAdmin** aus, das Sie als lokalen Administratorbenutzer erstellt haben.
+        * Klicken Sie auf **Auswählen**. Wählen Sie **Clusterzugriffsgruppe** > **HDIUserGroup** aus.
 
-            ![Auswählen der Clusterzugriffsgruppe „HDIUserGroup“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
+            ![Jeder Benutzer, den Sie dieser Gruppe später hinzufügen, kann auf HDInsight-Cluster zugreifen.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. Führen Sie die weiteren Schritte der Clusterkonfiguration aus, und überprüfen Sie die Details in der **Clusterübersicht**. Klicken Sie auf **Erstellen**.
+    1. Auswählen der Clusterzugriffsgruppe „HDIUserGroup“ Führen Sie die weiteren Schritte der Clusterkonfiguration aus, und überprüfen Sie die Details in der **Clusterübersicht**.
 
-1. Melden Sie sich bei der Ambari-Benutzeroberfläche für den neu erstellten Cluster unter `https://CLUSTERNAME.azurehdinsight.net` an. Verwenden Sie Ihren Administratorbenutzernamen `hdiadmin@hdifabrikam.com` und das zugehörige Kennwort.
+1. Klicken Sie auf **Erstellen**. Melden Sie sich bei der Ambari-Benutzeroberfläche für den neu erstellten Cluster unter `https://CLUSTERNAME.azurehdinsight.net` an.
 
-    ![Anmeldefenster der Apache Ambari-Benutzeroberfläche](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
+    ![Verwenden Sie Ihren Administratorbenutzernamen `hdiadmin@hdifabrikam.com` und das zugehörige Kennwort.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
-1. Wählen Sie im Cluster-Dashboard **Roles** (Rollen) aus.
-1. Geben Sie auf der Seite **Roles** (Rollen) unter **Assign roles to these** (Rollen zuweisen zu) neben der Rolle **Cluster Administrator** (Clusteradministrator) die Gruppe *hdiusergroup* ein. 
+1. Anmeldefenster der Apache Ambari-Benutzeroberfläche
+1. Wählen Sie im Cluster-Dashboard **Roles** (Rollen) aus. 
 
-    ![Zuweisen der Clusteradministratorrolle zu „hdiusergroup“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
+    ![Geben Sie auf der Seite **Roles** (Rollen) unter **Assign roles to these** (Rollen zuweisen zu) neben der Rolle **Cluster Administrator** (Clusteradministrator) die Gruppe *hdiusergroup* ein.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
 
-1. Öffnen Sie den Secure Shell (SSH)-Client, und melden Sie sich beim Cluster an. Verwenden Sie den **hdiuser**, den Sie in der lokalen Active Directory-Instanz erstellt haben.
+1. Zuweisen der Clusteradministratorrolle zu „hdiusergroup“ Öffnen Sie den Secure Shell (SSH)-Client, und melden Sie sich beim Cluster an.
 
-    ![Anmelden beim Cluster mithilfe des SSH-Clients](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
+    ![Verwenden Sie den **hdiuser**, den Sie in der lokalen Active Directory-Instanz erstellt haben.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
-Wenn Sie sich mit diesem Konto anmelden können, ist der Cluster mit dem Enterprise-Sicherheitspaket ordnungsgemäß für die Synchronisierung mit Ihrer lokalen Active Directory-Instanz konfiguriert.
+Anmelden beim Cluster mithilfe des SSH-Clients
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Wenn Sie sich mit diesem Konto anmelden können, ist der Cluster mit dem Enterprise-Sicherheitspaket ordnungsgemäß für die Synchronisierung mit Ihrer lokalen Active Directory-Instanz konfiguriert.
 
-Lesen Sie [Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](hdinsight-security-overview.md).
+Nächste Schritte

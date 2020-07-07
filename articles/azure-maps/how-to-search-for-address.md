@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335431"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
@@ -58,7 +58,7 @@ Wenn Sie über eine Gruppe von Adressen für die Geocodierung verfügen, können
 | Schlüssel | Wert | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
-| subscription-key | \<Ihr Azure Maps-Schlüssel\> | 
+| subscription-key | \<your Azure Maps key\> | 
 | Abfrage | 400 Broad St, Seattle, WA 98109 | 
 
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. 
@@ -108,7 +108,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
     | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
+    | subscription-key | \<your Azure Maps key\> |
     | Abfrage | pizza |
 
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
@@ -162,7 +162,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
     | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
+    | subscription-key | \<your Azure Maps key\> |
     | Abfrage | 47.591180,-122.332700 |
   
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
@@ -220,7 +220,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
     | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
+    | subscription-key | \<your Azure Maps key\> |
     | Abfrage | 47.591180,-122.332700 |
   
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
