@@ -3,12 +3,12 @@ title: 'Azure Batch: Taskstartereignis'
 description: Referenzinformationen zum Taskstartereignis in Batch. Dieses Ereignis wird einmal ausgegeben, nachdem ein Task vom Scheduler für den Start auf einem Computeknoten geplant wurde.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ed7b3014279fc87fbaae6f1c270f056e95073aaf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725787"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965092"
 ---
 # <a name="task-start-event"></a>Taskstartereignis
 
@@ -46,7 +46,7 @@ ms.locfileid: "83725787"
 |`taskType`|String|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist.|
 |`systemTaskVersion`|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
 |[`nodeInfo`](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Details finden Sie unter [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task).|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Details finden Sie unter [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task).|
 |[`constraints`](#constraints)|Komplexer Typ|Die Ausführungseinschränkungen, die für diesen Task gelten.|
 |[`executionInfo`](#executionInfo)|Komplexer Typ|Enthält Informationen zur Ausführung des Tasks.|
 

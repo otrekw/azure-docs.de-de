@@ -4,15 +4,15 @@ description: Konfigurieren von MPIO auf einem StorSimple-Gerät, das mit einem L
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511594"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.

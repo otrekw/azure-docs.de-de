@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ec46a1d2c7fca231b5cf6b045b634af50ee12a7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: fe3040bee56507fe40ce748d3e9e51b06eaa0213
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512892"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorheriges Release)
 
@@ -123,10 +123,10 @@ Sie können Ihre Dienstprinzipale mit der Azure CLI mit den [az ad sp](/cli/azur
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a><a name="bkmk_ADappRM"></a> Einrichten einer Azure AD-App und eines Dienstprinzipals über das Azure-Portal
 Im Artikel [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../../active-directory/develop/howto-create-service-principal-portal.md) finden Sie eine Anleitung, wie Sie eine Azure AD-Anwendung erstellen. Jeder unten aufgeführte Schritt führt Sie direkt zum entsprechenden Artikelabschnitt. 
 
-1. [Überprüfen Sie die erforderlichen Berechtigungen.](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [Erstellen Sie eine Azure Active Directory-Anwendung.](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [Überprüfen Sie die erforderlichen Berechtigungen.](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [Erstellen Sie eine Azure Active Directory-Anwendung.](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - Sie können einen beliebigen Namen und eine beliebige Anmelde-URL verwenden, wenn Sie die Anwendung erstellen.
-3. [Rufen Sie die Anwendungs-ID und den Authentifizierungsschlüssel ab.](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) 
+3. [Rufen Sie die Anwendungs-ID und den Authentifizierungsschlüssel ab.](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 
      - Der Authentifizierungsschlüssel ist der geheime Clientschlüssel und wird als „AadClientSecret“ für „Set-AzVMDiskEncryptionExtension“ verwendet. 
         - Der Authentifizierungsschlüssel wird von der Anwendung als Anmeldeinformation für die Anmeldung in Azure AD verwendet. Im Azure-Portal heißt dieses Geheimnis „Schlüssel“, hat jedoch keinen Bezug zu Schlüsseltresoren. Schützen Sie dieses Geheimnis entsprechend. 
      - Die Anwendungs-ID wird später als „AadClientId“ für „Set-AzVMDiskEncryptionExtension“ und als „ServicePrincipalName“ für „Set-AzKeyVaultAccessPolicy“ verwendet. 

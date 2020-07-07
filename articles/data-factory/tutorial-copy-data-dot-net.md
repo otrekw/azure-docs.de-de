@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253935"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513259"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -44,7 +44,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 * *Azure SQL-Datenbank*. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie in Azure SQL-Datenbank keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. In der exemplarischen Vorgehensweise in diesem Artikel wird Visual Studio 2019 verwendet.
 * *[Azure SDK für .NET](/dotnet/azure/dotnet-tools)*
-* *Azure Active Directory-Anwendung*. Falls Sie noch nicht über eine Azure Active Directory-Anwendung verfügen, lesen Sie den Abschnitt [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) des Artikels [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md). Kopieren Sie die folgenden Werte zur Verwendung in späteren Schritten: **Anwendungs-ID (Client)** , **Authentifizierungsschlüssel** und **Verzeichnis-ID (Mandant)** . Weisen Sie die Anwendung gemäß der Anleitung im gleichen Artikel der Rolle **Mitwirkender** zu.
+* *Azure Active Directory-Anwendung*. Falls Sie noch nicht über eine Azure Active Directory-Anwendung verfügen, lesen Sie den Abschnitt [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) des Artikels [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md). Kopieren Sie die folgenden Werte zur Verwendung in späteren Schritten: **Anwendungs-ID (Client)** , **Authentifizierungsschlüssel** und **Verzeichnis-ID (Mandant)** . Weisen Sie die Anwendung gemäß der Anleitung im gleichen Artikel der Rolle **Mitwirkender** zu.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Erstellen eines Blobs und einer SQL-Tabelle
 

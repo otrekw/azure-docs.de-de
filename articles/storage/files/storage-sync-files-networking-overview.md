@@ -3,16 +3,16 @@ title: Azure-Dateisynchronisierung – Überlegungen zum Netzwerkbetrieb | Micro
 description: Enthält eine Übersicht über die Netzwerkoptionen für die Azure-Dateisynchronisierung.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95fb967fa33a581096df65c3ed77e575aa3f6268
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512567"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure-Dateisynchronisierung – Überlegungen zum Netzwerkbetrieb
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:

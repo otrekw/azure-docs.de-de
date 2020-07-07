@@ -3,16 +3,16 @@ title: Migration eines lokalen NAS zur Azure-Dateisynchronisierung
 description: Erfahren Sie, wie Sie Dateien von einem lokalen NAS-Speicherort (Network Attached Storage) mit Azure-Dateisynchronisierung und Azure-Dateifreigaben zu einer Hybrid Cloud-Bereitstellung migrieren.
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510304"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrieren von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -124,7 +124,7 @@ Hintergrund:
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<Dateiname\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       Gibt den Status als UNICODE in die LOG-Datei aus (überschreibt vorhandenes Protokoll).

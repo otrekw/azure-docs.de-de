@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736105"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963919"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -125,7 +125,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Supportticket zu übermitteln:
 4. Wählen Sie unter „Wählen Sie ein Problem aus, das das Problem am besten beschreibt“ die Option **getaktete Abrechnung** aus.
 5. Durch Auswählen der Schaltfläche **Weiter** gelangen Sie zur Seite **Problemdetails**, wo Sie weitere Details zu Ihrem Problem eingeben können.
 
-Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

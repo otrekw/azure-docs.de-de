@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038891"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963936"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -91,12 +91,14 @@ Für die Zwecke dieses Tutorials nehmen wir an, dass Sie eine Linux-Distribution
 
 Mit den folgenden Schritten werden die erforderlichen Bibliotheken für SQL und ODBC für Ihre Distribution installiert:
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Starten Sie Visual Studio. Fügen Sie unter „Extras“ > „Optionen“ > „Plattformübergreifend“ > „Verbindungs-Manager“ eine Verbindung zum Linux-Feld hinzu:
 
@@ -109,11 +111,13 @@ Erstellen Sie nach dem Herstellen der Verbindung per SSH eine leere Projektvorla
 Anschließend können Sie eine [neue C-Quelldatei hinzufügen und diesen Inhalt einfügen](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Mithilfe von ODBC APIs SQLAllocHandle, SQLSetConnectAttr und SQLDriverConnect sollten Sie eine Verbindung mit Ihrer Datenbank initialisieren und einrichten können.
 Wie beim Windows-ODBC-Beispiel auch, müssen Sie den SQLDriverConnect-Aufruf durch die Details aus Ihren Parametern der Datenbank-Verbindungszeichenfolge ersetzen, die Sie zuvor aus dem Azure-Portal kopiert haben.
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 Der letzte Schritt vor dem Kompilieren ist das Hinzufügen von **odbc** als Bibliotheksabhängigkeit:
 

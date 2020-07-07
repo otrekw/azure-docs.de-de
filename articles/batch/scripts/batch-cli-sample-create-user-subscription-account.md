@@ -3,12 +3,12 @@ title: 'Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos – Benutzerabonn
 description: Dieses Skript erstellt ein Azure Batch-Konto im Modus „Benutzerabonnement“. Dieses Konto ordnet Computeknoten in Ihrem Abonnement zu.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 9f3919574dd7dcbe932c71dfcea2ac52ec906c6c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e589361da8442107f06a0933a1f1ac79a88945ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681889"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964070"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI-Beispiel: Erstellen eines Batch-Kontos im Modus „Benutzerabonnement“
 
@@ -38,8 +38,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az role assignment create](/cli/azure/role) | Erstellt eine neue Rollenzuweisung für einen Benutzer, eine Gruppe oder einen Dienstprinzipal. |
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-create) | Erstellt einen Schlüsseltresor. |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) | Aktualisiert die Sicherheitsrichtlinie des angegebenen Schlüsseltresors. |
+| [az keyvault create](/cli/azure/keyvault#az-keyvault-create) | Erstellt einen Schlüsseltresor. |
+| [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) | Aktualisiert die Sicherheitsrichtlinie des angegebenen Schlüsseltresors. |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Erstellt das Batch-Konto.  |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Authentifiziert das angegebene Batch-Konto zur weiteren CLI-Interaktion.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
