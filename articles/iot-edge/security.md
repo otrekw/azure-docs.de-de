@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 3212493963805de3c8845ec494d87fc92d72998a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76760112"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Sicherheitsstandards für Azure IoT Edge
@@ -34,7 +34,7 @@ Dieser Artikel bietet eine Übersicht über das IoT Edge-Sicherheitsframework. W
 
 Standards fördern eine einfache Überprüfbarkeit und Implementierung – zwei Eckpfeiler der Sicherheit. Eine Sicherheitslösung sollte zur Überprüfbarkeit beitragen, um Vertrauen aufzubauen, und sie darf kein Hindernis bei der Bereitstellung sein. Das Design des Frameworks für den Schutz von Azure IoT Edge basiert auf Sicherheitsprotokollen, die über lange Zeit getestet wurden und sich in der Branche bewährt haben, und bietet somit Vertrautheit und Wiederverwendbarkeit.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Wenn Sie eine IoT-Lösung bereitstellen, muss gewährleistet sein, dass nur vertrauenswürdige Akteure, Geräte und Module Zugriff auf Ihre Lösung haben. Die zertifikatsbasierte Authentifizierung ist der primäre Authentifizierungsmechanismus für die Azure IoT Edge-Plattform. Dieser Mechanismus wurde aus einer Reihe von Standards abgeleitet, die die Public Key Infrastructure (PKiX) der Internet Engineering Task Force (IETF) regeln.
 

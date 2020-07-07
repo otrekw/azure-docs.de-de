@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844512"
 ---
 # <a name="security-and-authentication"></a>Sicherheit und Authentifizierung
@@ -42,7 +42,7 @@ Standardmäßig ist nur HTTPS-Kommunikation zulässig. Sie können dieses Verhal
 | Mögliche Werte | BESCHREIBUNG |
 | ---------------- | ------------ |
 | Strict | Standard. Aktiviert nur HTTPS
-| Enabled | Aktiviert HTTP und HTTPS
+| Aktiviert | Aktiviert HTTP und HTTPS
 | Disabled | Aktivieren nur HTTP
 
 ## <a name="inbound-client-authentication"></a>Eingehende Clientauthentifizierung

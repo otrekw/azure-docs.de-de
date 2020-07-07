@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721777"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
@@ -89,14 +89,14 @@ Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Bei dieser Hive-Abfrage wird vorausgesetzt, dass *\<datetime field>* im datetime-Standardformat vorliegt.
+Bei dieser Hive-Abfrage wird vorausgesetzt, dass das *\<datetime field>* im Standardformat für „datetime“ vorliegt.
 
 Liegt ein "datetime"-Feld nicht im Standardformat vor, muss zunächst das "datetime"-Feld in einen Unix-Zeitstempel konvertierten werden, der dann in eine "datetime"-Zeichenfolge im Standardformat konvertiert wird. Wenn "datetime" das Standardformat aufweist, können Sie die eingebetteten "datetime"-UDFs anwenden, um Funktionen zu extrahieren.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Wenn *\<datetime field>* in dieser Abfrage das Muster *03/26/2015 12:04:39* hat, muss das ' *\<Muster von datetime field>'* als `'MM/dd/yyyy HH:mm:ss'` vorliegen. Zum Testen können Sie folgenden Code ausführen:
+Wenn in dieser Abfrage das *\<datetime field>* ein Muster wie *03/26/2015 12:04:39* aufweist, sollte das *\<pattern of the datetime field>'* wie folgt aussehen: `'MM/dd/yyyy HH:mm:ss'`. Zum Testen können Sie folgenden Code ausführen:
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
