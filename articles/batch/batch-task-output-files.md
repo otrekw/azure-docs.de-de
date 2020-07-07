@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verwendung der Batch-Dienst-API zur Bei
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726314"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965126"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -32,7 +32,7 @@ Wenn Ihr Szenario sich von den oben aufgeführten unterscheidet, müssen Sie mö
 
 ## <a name="create-a-container-in-azure-storage"></a>Erstellen eines Containers in Azure Storage
 
-Damit Sie die Taskausgabe in Azure Storage beibehalten können, müssen Sie einen Container als Ziel für Ihre Ausgabedateien erstellen. Erstellen Sie den Container vor Ausführung des Tasks, vorzugsweise vor Übermittlung Ihres Auftrags. Verwenden Sie die entsprechende Azure Storage-Clientbibliothek oder -SDK, um den Container zu erstellen. Weitere Informationen zu Azure Storage-APIs finden Sie in der [Azure Storage-Dokumentation](https://docs.microsoft.com/azure/storage/).
+Damit Sie die Taskausgabe in Azure Storage beibehalten können, müssen Sie einen Container als Ziel für Ihre Ausgabedateien erstellen. Erstellen Sie den Container vor Ausführung des Tasks, vorzugsweise vor Übermittlung Ihres Auftrags. Verwenden Sie die entsprechende Azure Storage-Clientbibliothek oder -SDK, um den Container zu erstellen. Weitere Informationen zu Azure Storage-APIs finden Sie in der [Azure Storage-Dokumentation](../storage/index.yml).
 
 Wenn Sie beispielsweise Ihre Anwendung in C# schreiben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Das folgende Beispiel zeigt das Erstellen eines Containers:
 
@@ -61,7 +61,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 ## <a name="specify-output-files-for-task-output"></a>Angeben von Ausgabedateien für die Taskausgabe
 
-Erstellen Sie zum Angeben von Ausgabedateien für einen Task eine Auflistung von [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile)-Objekten, und weisen Sie sie der Eigenschaft [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) zu, wenn Sie den Task erstellen.
+Erstellen Sie zum Angeben von Ausgabedateien für einen Task eine Auflistung von [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile)-Objekten, und weisen Sie sie der Eigenschaft [CloudTask.OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) zu, wenn Sie den Task erstellen.
 
 Im folgenden Codebeispiel für C# wird ein Task erstellt, der Zufallszahlen in eine Datei mit dem Namen `output.txt` schreibt. Das Beispiel erstellt eine Ausgabedatei für `output.txt`, die in den Container geschrieben werden soll. Außerdem erstellt das Beispiel Ausgabedateien für alle Protokolldateien, die mit dem Dateimuster `std*.txt` (_z.B._ , `stdout.txt` und `stderr.txt`) übereinstimmen. Die Container-URL benötigt die vorher für den Container erstellte SAS. Der Batch-Dienst verwendet die SAS für die Authentifizierung des Zugriffs auf den Container:
 
@@ -91,7 +91,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Angeben eines Dateimusters für den Abgleich
 
-Wenn Sie eine Ausgabedatei angeben, können Sie die Eigenschaft [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) verwenden, um ein Dateimuster für den Abgleich anzugeben. Das Dateimuster entspricht entweder keinen Dateien, einer einzelnen Datei oder einem Satz Dateien, die vom Task erstellt werden.
+Wenn Sie eine Ausgabedatei angeben, können Sie die Eigenschaft [OutputFile.FilePattern](/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) verwenden, um ein Dateimuster für den Abgleich anzugeben. Das Dateimuster entspricht entweder keinen Dateien, einer einzelnen Datei oder einem Satz Dateien, die vom Task erstellt werden.
 
 Die Eigenschaft **FilePattern** unterstützt Standardplatzhalter für das Dateisystem, z.B. `*` (für nicht-rekursive Übereinstimmungen) und `**` (für rekursive Übereinstimmungen). Im obigen Codebeispiel wird das Dateimuster beispielsweise so angegeben, dass es nicht-rekursiv mit `std*.txt` übereinstimmt:
 
@@ -103,19 +103,19 @@ Geben Sie zum Hochladen einer einzelnen Datei ein Dateimuster ohne Platzhalter a
 
 ### <a name="specify-an-upload-condition"></a>Angeben einer Upload-Bedingung
 
-Die Eigenschaft [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) ermöglicht das bedingte Hochladen von Ausgabedateien. Ein häufiges Szenario ist das Hochladen eines Satzes von Dateien, wenn der Task erfolgreich ausgeführt wird, und eines anderen Satzes von Dateien, wenn ein Fehler auftritt. Sie können z.B. ausführliche Protokolldateien nur hochladen, wenn der Task fehlschlägt und mit einem Exitcode ungleich 0 beendet wird. Ähnlich sollten Sie Ergebnisdateien nur bei Erfolg des Tasks hochladen, da diese Dateien fehlen können oder unvollständig sind, wenn der Task fehlschlägt.
+Die Eigenschaft [OutputFileUploadOptions.UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) ermöglicht das bedingte Hochladen von Ausgabedateien. Ein häufiges Szenario ist das Hochladen eines Satzes von Dateien, wenn der Task erfolgreich ausgeführt wird, und eines anderen Satzes von Dateien, wenn ein Fehler auftritt. Sie können z.B. ausführliche Protokolldateien nur hochladen, wenn der Task fehlschlägt und mit einem Exitcode ungleich 0 beendet wird. Ähnlich sollten Sie Ergebnisdateien nur bei Erfolg des Tasks hochladen, da diese Dateien fehlen können oder unvollständig sind, wenn der Task fehlschlägt.
 
 Im obigen Codebeispiel wird die Eigenschaft **UploadCondition** auf **TaskCompletion** festgelegt. Diese Einstellung gibt an, dass die Datei nach Abschluss des Tasks hochgeladen wird, unabhängig vom Wert des Exitcode.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Weitere Einstellungen finden Sie unter der [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition)-Enumeration.
+Weitere Einstellungen finden Sie unter der [OutputFileUploadCondition](/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition)-Enumeration.
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Dateien mit dem gleichen Namen unterscheiden
 
 Die Tasks in einem Auftrag erzeugen möglicherweise Dateien, die den gleichen Namen tragen. Beispielsweise werden `stdout.txt` und `stderr.txt` für jeden Task erstellt, der in einem Auftrag ausgeführt wird. Da jeder Task in seinem eigenen Kontext ausgeführt wird, stehen diese Dateien im Dateisystem des Knotens nicht in Konflikt. Wenn Sie allerdings Dateien aus mehreren Tasks in einen gemeinsamen Container hochladen, müssen Sie Dateien mit dem gleichen Namen unterscheiden.
 
-Die Eigenschaft [OutputFileBlobContainerDestination.Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) gibt den Zielblob oder das virtuelle Verzeichnis für Ausgabedateien an. Sie können die Eigenschaft **Path** verwenden, um den Blob oder das virtuelle Verzeichnis so zu benennen, dass Ausgabedateien mit dem gleichen Namen in Azure Storage einen eindeutigen Namen führen. Die Task-ID im Pfad zu verwenden ist eine gute Möglichkeit, um eindeutige Namen und problemlos identifizierbare Dateien sicherzustellen.
+Die Eigenschaft [OutputFileBlobContainerDestination.Path](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) gibt den Zielblob oder das virtuelle Verzeichnis für Ausgabedateien an. Sie können die Eigenschaft **Path** verwenden, um den Blob oder das virtuelle Verzeichnis so zu benennen, dass Ausgabedateien mit dem gleichen Namen in Azure Storage einen eindeutigen Namen führen. Die Task-ID im Pfad zu verwenden ist eine gute Möglichkeit, um eindeutige Namen und problemlos identifizierbare Dateien sicherzustellen.
 
 Wenn die Eigenschaft **FilePattern** auf einen Platzhalterausdruck festgelegt ist, werden alle Dateien, die mit dem Muster übereinstimmen, in das virtuelle Verzeichnis hochgeladen, das von der Eigenschaft **Path** angegeben wird. Wenn es sich beim Container z.B. um `mycontainer` handelt, die Task-ID `mytask` lautet und das Dateimuster `..\std*.txt` entspricht, ähneln die absoluten URIs der Ausgabedateien in Azure Storage folgendem:
 
@@ -139,7 +139,7 @@ Weitere Informationen zu virtuellen Verzeichnissen in Azure Storage finden Sie u
 
 ## <a name="diagnose-file-upload-errors"></a>Diagnostizieren von Fehlern beim Dateiupload
 
-Wenn beim Hochladen von Ausgabedateien in Azure Storage ein Fehler auftritt, wechselt der Task in den Status **Abgeschlossen**, und die Eigenschaft [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) wird festgelegt. Überprüfen Sie die Eigenschaft **FailureInformation**, um festzustellen, welcher Fehler aufgetreten ist. Hier sehen Sie z.B. einen Fehler, der beim Dateiupload auftritt, wenn der Container nicht gefunden werden kann:
+Wenn beim Hochladen von Ausgabedateien in Azure Storage ein Fehler auftritt, wechselt der Task in den Status **Abgeschlossen**, und die Eigenschaft [TaskExecutionInformation.FailureInformation](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) wird festgelegt. Überprüfen Sie die Eigenschaft **FailureInformation**, um festzustellen, welcher Fehler aufgetreten ist. Hier sehen Sie z.B. einen Fehler, der beim Dateiupload auftritt, wenn der Container nicht gefunden werden kann:
 
 ```
 Category: UserError
@@ -163,7 +163,7 @@ Wenn Sie in C# entwickeln, können Sie die Methoden verwenden, die in der [Bibli
 string containerName = job.OutputStorageContainerName();
 ```
 
-Sie können die Methode [CloudJobExtensions.GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) verwenden, um eine Shared Access Signature-URL (SAS) zurückzugeben, die zum Schreiben in den Container verwendet wird. Sie können diese SAS anschließend an den [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination)-Konstruktor übergeben.
+Sie können die Methode [CloudJobExtensions.GetOutputStorageContainerUrl](/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) verwenden, um eine Shared Access Signature-URL (SAS) zurückzugeben, die zum Schreiben in den Container verwendet wird. Sie können diese SAS anschließend an den [OutputFileBlobContainerDestination](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination)-Konstruktor übergeben.
 
 Wenn Sie in einer anderen Sprache als C# entwickeln, müssen Sie den Dateikonventionenstandard in Ihrer Anwendung selbst implementieren.
 

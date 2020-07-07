@@ -3,12 +3,12 @@ title: Fehlerbehandlung und -erkennung in Azure Batch
 description: Informieren Sie sich über die Fehlerbehandlung in Batch-Dienstworkflows aus der Perspektive der Entwicklung.
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 07b9d43ea9bdf21fe3188c4481e6dd0c86374607
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790827"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964276"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Fehlerbehandlung und -erkennung in Azure Batch
 
@@ -23,13 +23,13 @@ Allgemeine Arten von Fehlern:
 - Fehler in Zusammenhang mit der Drosselung, z. B. HTTP-Antworten mit dem Statuscode 429 oder 503 und dem Retry-After-Header.
 - 4xx-Fehler, beispielsweise AlreadyExists und InvalidOperation. Dies bedeutet, dass sich die Ressource nicht im richtigen Zustand für den Statusübergang befindet.
 
-Detaillierte Informationen zu bestimmten Fehlercodes z. B. für REST-API, Batch-Dienst und Auftragstasks bzw. -planung finden Sie unter [Status- und Fehlercodes für Batch](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes).
+Detaillierte Informationen zu bestimmten Fehlercodes z. B. für REST-API, Batch-Dienst und Auftragstasks bzw. -planung finden Sie unter [Status- und Fehlercodes für Batch](/rest/api/batchservice/batch-status-and-error-codes).
 
 ## <a name="application-failures"></a>Anwendungsfehler
 
 Während der Ausführung generiert eine Anwendung unter Umständen eine Diagnoseausgabe für die Problembehandlung. Wie bereits in [Dateien und Verzeichnisse](files-and-directories.md) erläutert, schreibt der Batch-Dienst eine Standardausgabe und eine Standardfehlerausgabe in die Dateien `stdout.txt` und `stderr.txt` im Taskverzeichnis auf dem Computeknoten.
 
-Diese Dateien können Sie über das Azure-Portal oder über ein Batch SDK herunterladen. So können Sie diese und andere Dateien beispielsweise mithilfe von [ComputeNode.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) und [CloudTask.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) in der Batch-Bibliothek für .NET zu Problembehandlungszwecken abrufen.
+Diese Dateien können Sie über das Azure-Portal oder über ein Batch SDK herunterladen. So können Sie diese und andere Dateien beispielsweise mithilfe von [ComputeNode.GetNodeFile](/dotnet/api/microsoft.azure.batch.computenode) und [CloudTask.GetNodeFile](/dotnet/api/microsoft.azure.batch.cloudtask) in der Batch-Bibliothek für .NET zu Problembehandlungszwecken abrufen.
 
 ## <a name="task-errors"></a>Taskfehler
 
@@ -73,10 +73,10 @@ Außerdem können zeitweilig Probleme auftreten, die dazu führen, dass ein Task
 
 ## <a name="connect-to-compute-nodes"></a>Herstellen einer Verbindung mit Computeknoten
 
-Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierzu können Sie auch die Batch-APIs verwenden – beispielsweise [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierzu können Sie auch die Batch-APIs verwenden – beispielsweise [Batch .NET](/dotnet/api/microsoft.azure.batch.computenode) oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
-> Um über RDP oder SSH eine Verbindung mit einem Knoten herzustellen, müssen Sie zuerst einen Benutzer auf dem Knoten erstellen. Zu diesem Zweck können Sie das Azure-Portal verwenden, über die Batch REST-API [einem Knoten ein Benutzerkonto hinzufügen](https://docs.microsoft.com/rest/api/batchservice/computenode/adduser), die Methode [ComputeNode.CreateComputeNodeUser](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) in Batch .NET aufrufen oder die Methode [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) im Batch Python-Modul aufrufen.
+> Um über RDP oder SSH eine Verbindung mit einem Knoten herzustellen, müssen Sie zuerst einen Benutzer auf dem Knoten erstellen. Zu diesem Zweck können Sie das Azure-Portal verwenden, über die Batch REST-API [einem Knoten ein Benutzerkonto hinzufügen](/rest/api/batchservice/computenode/adduser), die Methode [ComputeNode.CreateComputeNodeUser](/dotnet/api/microsoft.azure.batch.computenode) in Batch .NET aufrufen oder die Methode [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) im Batch Python-Modul aufrufen.
 
 Wenn Sie den RDP- oder SSH-Zugriff auf Computeknoten beschränken müssen, helfen Ihnen die Informationen unter [Configure or disable remote access to compute nodes in an Azure Batch pool](pool-endpoint-configuration.md) (Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool) weiter.
 
@@ -84,21 +84,21 @@ Wenn Sie den RDP- oder SSH-Zugriff auf Computeknoten beschränken müssen, helfe
 
 Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung oder der Dienst die Metadaten der fehlgeschlagenen Tasks prüfen, um einen fehlerhaften Knoten zu finden. Jeder Knoten in einem Pool erhält eine eindeutige ID, und der Knoten, auf dem ein Task ausgeführt wird, ist in den Metadaten des Tasks angegeben. Nachdem Sie einen „Problemknoten“ identifiziert haben, können Sie dafür verschiedene Aktionen durchführen:
 
-- **Neustarten des Knotens** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reboot) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reboot))
+- **Neustarten des Knotens** ([REST](/rest/api/batchservice/computenode/reboot) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reboot))
 
     Durch einen Neustart des Knotens können latente Probleme wie etwa hängende oder abgestürzte Prozesse behoben werden. Wenn Ihr Pool ein Starttask oder der Auftrag ein Auftragsvorbereitungstask nutzt, werden diese Tasks beim Neustart des Knotens ausgeführt.
-- **Reimaging des Knotens** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reimage))
+- **Reimaging des Knotens** ([REST](/rest/api/batchservice/computenode/reimage) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reimage))
 
     Dadurch wird das Betriebssystem auf dem Knoten neu installiert. Wie beim Neustart eines Knotens werden Start- und Auftragsvorbereitungstasks nach dem Reimaging des Knotens erneut ausgeführt.
-- **Entfernen des Knotens aus dem Pool** ([REST](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations))
+- **Entfernen des Knotens aus dem Pool** ([REST](/rest/api/batchservice/pool/removenodes) | [.NET](/dotnet/api/microsoft.azure.batch.pooloperations))
 
     Manchmal ist es erforderlich, den Knoten aus dem Pool vollständig zu entfernen.
-- **Deaktivieren der Taskplanung auf dem Knoten** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/disablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
+- **Deaktivieren der Taskplanung auf dem Knoten** ([REST](/rest/api/batchservice/computenode/disablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
 
-    Dadurch wird der Knoten offline geschaltet, sodass ihm keine weiteren Tasks mehr zugewiesen werden. Er wird aber weiterhin ausgeführt und verbleibt im Pool. So können Sie die Fehlerursache weiter untersuchen, ohne dass die Daten der fehlgeschlagenen Tasks verloren gehen und durch den Knoten weitere Fehler auftreten. Sie können beispielsweise die Taskplanung auf dem Knoten deaktivieren und sich per Remotezugriff anmelden, um die Ereignisprotokolle des Knotens zu prüfen oder andere Schritte zur Problembehandlung auszuführen. Nach Abschluss der Prüfung können Sie den Knoten wieder online schalten, indem Sie die Taskplanung ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/enablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) aktivieren oder eine andere der oben genannten Aktionen ausführen.
+    Dadurch wird der Knoten offline geschaltet, sodass ihm keine weiteren Tasks mehr zugewiesen werden. Er wird aber weiterhin ausgeführt und verbleibt im Pool. So können Sie die Fehlerursache weiter untersuchen, ohne dass die Daten der fehlgeschlagenen Tasks verloren gehen und durch den Knoten weitere Fehler auftreten. Sie können beispielsweise die Taskplanung auf dem Knoten deaktivieren und sich per Remotezugriff anmelden, um die Ereignisprotokolle des Knotens zu prüfen oder andere Schritte zur Problembehandlung auszuführen. Nach Abschluss der Prüfung können Sie den Knoten wieder online schalten, indem Sie die Taskplanung ([REST](/rest/api/batchservice/computenode/enablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) aktivieren oder eine andere der oben genannten Aktionen ausführen.
 
 > [!IMPORTANT]
-> Bei den oben beschriebenen Aktionen können Sie angeben, wie derzeit auf dem Knoten ausgeführte Tasks verarbeitet werden, wenn Sie die Aktion ausführen. Wenn Sie also etwa die Taskplanung auf einem Knoten mithilfe der Batch-Clientbibliothek für .NET deaktivieren, können Sie durch das Festlegen des Enumerationswerts [DisableComputeNodeSchedulingOption](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) angeben, ob ausgeführte Tasks **beendet**, für die Planung auf anderen Knoten **wieder in eine Warteschlange eingereiht** oder vor dem Ausführen der Aktion abgeschlossen werden sollen (**TaskCompletion**).
+> Bei den oben beschriebenen Aktionen können Sie angeben, wie derzeit auf dem Knoten ausgeführte Tasks verarbeitet werden, wenn Sie die Aktion ausführen. Wenn Sie also etwa die Taskplanung auf einem Knoten mithilfe der Batch-Clientbibliothek für .NET deaktivieren, können Sie durch das Festlegen des Enumerationswerts [DisableComputeNodeSchedulingOption](/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) angeben, ob ausgeführte Tasks **beendet**, für die Planung auf anderen Knoten **wieder in eine Warteschlange eingereiht** oder vor dem Ausführen der Aktion abgeschlossen werden sollen (**TaskCompletion**).
 
 ## <a name="retry-after-errors"></a>Retry-After-Fehler
 
@@ -110,4 +110,4 @@ Nach einem Fehler sollten Sie eine Zeit lang (mehrere Sekunden zwischen Wiederho
 
 - Erfahren Sie, wie Sie [nach Pool- und Knotenfehlern suchen](batch-pool-node-error-checking.md).
 - Erfahren Sie, wie Sie [nach Auftrags- und Taskfehlern suchen](batch-job-task-error-checking.md).
-- Sehen Sie sich die Liste der [Status- und Fehlercodes für Batch](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes) an.
+- Sehen Sie sich die Liste der [Status- und Fehlercodes für Batch](/rest/api/batchservice/batch-status-and-error-codes) an.

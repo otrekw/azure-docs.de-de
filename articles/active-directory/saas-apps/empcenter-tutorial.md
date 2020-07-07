@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ce7b4dab18954d26b411948a6a436b16317f4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6c8955eb62ca413460a45b8cddf46c43bcd80af
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158281"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Tutorial: Azure Active Directory-Integration mit EmpCenter
 
@@ -108,10 +108,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit EmpCente
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
     
-    | |
-    |--|
-    | `https://<subdomain>.EmpCenter.com/<instancename>` |
-    | `https://<subdomain>.workforcehosting.com/<instancename>` |
+    ```https
+    https://<subdomain>.EmpCenter.com/<instancename>
+    https://<subdomain>.workforcehosting.com/<instancename>
+    ```
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den EmpCenter-Client](https://www.workforcesoftware.com/services/customer-support/), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

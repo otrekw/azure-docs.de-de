@@ -3,21 +3,23 @@ title: Lokale Firewall- und -Proxyeinstellungen der Azure-Dateisynchronisierung 
 description: Lokale Netzwerkkonfiguration der Azure-Dateisynchronisierung
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 37c646e2f08745b2a12df41b6310fb5d3834998b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142553"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515281"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
 
 Dieser Artikel gibt einen Einblick in die speziellen Anforderungen und Optionen, die verfügbar sind, um Ihren Server erfolgreich und sicher mit der Azure-Dateisynchronisierung zu verbinden.
+
+Wir empfehlen Ihnen, vor dem Lesen dieses Leitfadens den Artikel [Azure-Dateisynchronisierung – Überlegungen zum Netzwerkbetrieb](storage-sync-files-networking-overview.md) zu lesen.
 
 ## <a name="overview"></a>Übersicht
 Die Azure-Dateisynchronisierung fungiert als Orchestrierungsdienst zwischen Ihrem Windows-Server, Ihrer Azure-Dateifreigabe und mehreren anderen Azure-Diensten, um Daten so zu synchronisieren, wie dies in Ihrer Synchronisierungsgruppe beschrieben ist. Damit die Azure-Dateisynchronisierung korrekt funktioniert, müssen Sie Ihre Server so konfigurieren, dass sie mit den folgenden Azure-Diensten kommunizieren:

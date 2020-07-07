@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 04bbfe3ee38c5ce37c36ab2f85467ce68e7335be
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 093d8cdd97f28a419788070e674d80aad595f46a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556312"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure CLI-Beispiele für Azure Cosmos DB: Cassandra-API
 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts (Azure-Befehlszeilenschnittstelle) für die Azure Cosmos DB-Cassandra-API. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Alle CLI-Skriptbeispiele für Azure Cosmos DB finden Sie im [GitHub-Repository zur Azure Cosmos DB-CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-| |  |
+|Aufgabe | BESCHREIBUNG |
 |---|---|
 | [Erstellen eines Kontos, eines Keyspace und einer Tabelle in Azure Cosmos](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, eines Keyspace und einer Tabelle in Azure Cosmos DB für die Cassandra-API |
 | [Ändern des Durchsatzes](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für einen Keyspace und eine Tabelle|

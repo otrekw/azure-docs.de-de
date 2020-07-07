@@ -3,12 +3,12 @@ title: Erstellen und Verwenden von Ressourcendateien
 description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723458"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964021"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > Für den Containerzugriff müssen Sie sowohl `Read`- als auch `List`-Berechtigungen haben, wohingegen Sie beim Blobzugriff nur `Read`-Berechtigungen benötigen.
 
-Nachdem die Berechtigungen konfiguriert sind, erstellen Sie das SAS-Token und formatieren Sie die SAS-URL für den Zugriff auf den Speichercontainer. Generieren Sie unter Verwendung der formatierten SAS-URL für den Speichercontainer eine Ressourcendatei mit [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
+Nachdem die Berechtigungen konfiguriert sind, erstellen Sie das SAS-Token und formatieren Sie die SAS-URL für den Zugriff auf den Speichercontainer. Generieren Sie unter Verwendung der formatierten SAS-URL für den Speichercontainer eine Ressourcendatei mit [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Wenn jede Aufgabe über viele für diese Aufgabe eindeutige Dateien verfügt, si
 
 Wenn mehrere hundert Ressourcendateien für eine Aufgabe angegeben sind, kann die Aufgabe von Batch abgelehnt werden, weil sie zu groß ist. Es ist am besten, Ihre Aufgaben klein zu halten, indem Sie die Anzahl der Ressourcendateien in der Aufgabe selbst minimieren.
 
-Wenn es keine Möglichkeit gibt, die Anzahl der Dateien zu minimieren, die Ihre Aufgabe benötigt, können Sie die Aufgabe optimieren, indem Sie eine einzelne Ressourcendatei erstellen, die auf einen Speichercontainer mit Ressourcendateien verweist. Legen Sie dazu Ihre Ressourcendateien in einen Azure Storage-Container und verwenden Sie die verschiedenen „Container“-[Methoden](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) für Ressourcendateien. Verwenden Sie die Optionen für das Blobpräfix, um Sammlungen von Dateien anzugeben, die für Ihre Aufgaben heruntergeladen werden sollen.
+Wenn es keine Möglichkeit gibt, die Anzahl der Dateien zu minimieren, die Ihre Aufgabe benötigt, können Sie die Aufgabe optimieren, indem Sie eine einzelne Ressourcendatei erstellen, die auf einen Speichercontainer mit Ressourcendateien verweist. Legen Sie dazu Ihre Ressourcendateien in einen Azure Storage-Container und verwenden Sie die verschiedenen „Container“-[Methoden](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) für Ressourcendateien. Verwenden Sie die Optionen für das Blobpräfix, um Sammlungen von Dateien anzugeben, die für Ihre Aufgaben heruntergeladen werden sollen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

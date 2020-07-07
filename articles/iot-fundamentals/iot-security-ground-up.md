@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: 7072e2c0bfa054a670ac3fb09590378d3ef055a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72789730"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Sicherheit im Internet der Dinge (IoT) von Anfang an

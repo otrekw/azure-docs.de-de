@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0af790c9424cdb049bcd1f22090337bde1815c4a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835477"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961930"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
 
@@ -72,7 +72,9 @@ Auf regulären Clustern können Sie nur ein einziges Benutzerkonto mit Hue haben
 
     Die Ausgabe dieses Befehls sieht in etwa wie folgt aus:
 
-        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```output
+    myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```
 
     Dies ist der Hostname des primären Hauptknotens, an dem sich die Hue-Website befindet.
 
@@ -115,7 +117,7 @@ Auf regulären Clustern können Sie nur ein einziges Benutzerkonto mit Hue haben
 
 1. Hue kann keine Apache Tez-Aufträge verarbeiten, wobei es sich um die aktuelle Standardeinstellung für Hive handelt. Wenn Sie MapReduce als Ausführungs-Engine für Hive verwenden möchten, müssen Sie das Skript so aktualisieren, dass der folgende Befehl im Skript verwendet wird:
 
-         set hive.execution.engine=mr;
+   `set hive.execution.engine=mr;`
 
 1. Bei Linux-Clustern können Sie Ihre Dienste auf dem primären Hauptknoten und Resource Manager auf dem sekundären Knoten ausführen. Dieses Szenario kann zu Fehlern führen (siehe unten), wenn mithilfe von Hue Details zu ausgeführten Aufträgen im Cluster angezeigt werden sollen. Nach Abschluss des Auftrags können Sie die Auftragsdetails jedoch anzeigen.
 

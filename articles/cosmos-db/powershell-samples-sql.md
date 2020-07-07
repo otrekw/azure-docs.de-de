@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fc4ec916e71f2fcfd3b411420879d42b2fa90f18
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126092"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563849"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: SQL-API (Core-API)
 
@@ -22,7 +22,7 @@ Weitere Cosmos DB-PowerShell-Beispiele für die SQL-API (Core-API) sowie die Do
 > [!NOTE]
 > In den Beispielen werden die [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb)-Verwaltungs-Cmdlets verwendet. Prüfen Sie regelmäßig auf Updates für `Az.CosmosDB`.
 
-| | |
+|Aufgabe | BESCHREIBUNG |
 |---|---|
 |[Konto, Datenbank und Container erstellen](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB |
 |[Container mit einem großen Partitionsschlüssel erstellen](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Containers mit einem großen Partitionsschlüssel |
