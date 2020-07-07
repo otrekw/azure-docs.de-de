@@ -18,7 +18,6 @@ ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
 ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "74186366"
@@ -177,7 +176,7 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
    ![Speicherkonto](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
 3. Klicken Sie auf **+ Dateifreigabe**.
-4. Geben Sie unter **Name***my-file-share* ein, und wählen Sie dann **OK** aus.
+4. Geben Sie unter **Name** *my-file-share* ein, und wählen Sie dann **OK** aus.
 5. Schließen Sie das Feld **Dateidienst**.
 
 ### <a name="restrict-network-access-to-a-subnet"></a>Einschränken des Netzwerkzugriffs auf ein Subnetz
@@ -279,7 +278,7 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Bestätigen, dass der Zugriff auf das Speicherkonto verweigert wird
 
-1. Geben Sie oben im Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen***myVmPublic** ein.
+1. Geben Sie oben im Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen* **myVmPublic** ein.
 2. Wenn **myVmPublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 3. Führen Sie in [Bestätigen des Zugriffs auf das Speicherkonto](#confirm-access-to-storage-account) für die VM *myVmPublic* die Schritte 1–6 aus.
 
