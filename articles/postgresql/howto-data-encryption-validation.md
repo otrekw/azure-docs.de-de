@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515968"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Überprüfen der Datenverschlüsselung für Azure Database for PostgreSQL
@@ -31,7 +31,7 @@ Dieser Artikel unterstützt Sie bei der Überprüfung, ob die Datenverschlüssel
     
         Um den Server erneut **Verfügbar** zu machen, können Sie den Schlüssel erneut überprüfen. 
     
-    * Legen Sie den Status des Schlüssels in Key Vault auf **Ja** fest.
+    * Legen Sie den Status des Schlüssels in Key Vault auf **Ja**fest.
     * Wählen Sie auf dem Server **Datenverschlüsselung** die Option **Schlüssel erneut überprüfen** aus.
     * Wenn die erneute Überprüfung des Schlüssels erfolgreich war, ändert sich der **Status** des Servers in **Verfügbar**.
 
@@ -51,7 +51,7 @@ Dieser Artikel unterstützt Sie bei der Überprüfung, ob die Datenverschlüssel
 
 ### <a name="azure-audit-reports"></a>Azure-Überwachungsberichte
 
-[Überwachungsberichte](https://servicetrust.microsoft.com) können ebenfalls überprüft werden, die Informationen zur Einhaltung von Datenschutzstandards und gesetzlichen Anforderungen bereitstellen.
+[Überwachungsberichte](https://servicetrust.microsoft.com), die Informationen zur Einhaltung von Datenschutzstandards und gesetzlichen Anforderungen bereitstellen, können ebenfalls überprüft werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
