@@ -5,15 +5,15 @@ description: Erfahren Sie mehr zur Architektur mit einem globalen Transitnetzwer
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856373"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -47,7 +47,7 @@ In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen
 
 Sie können ein virtuelles WAN erstellen, indem Sie einen einzelnen Virtual WAN-Hub in der Region erstellen, in der sich die meisten Spokes (Zweigstellen, VNets, Benutzer) befinden. Stellen Sie anschließend eine Verbindung der Spokes, die sich in einer anderen Region befinden, zum Hub her. Dies ist eine gute Möglichkeit, wenn der Fußabdruck eines Unternehmens größtenteils in einer Region mit wenigen Remote-Spokes liegt.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen (Vorschau)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen
 
 Der Cloudfußabdruck eines Unternehmens kann sich über mehrere Cloudregionen erstrecken. Diese Architektur ist optimal (in Bezug auf die Latenz) für den Cloudzugriff in einer Region geeignet, die möglichst nah am physischen Standort des Unternehmens und an den Benutzern liegt. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Transitnetzwerk ist die Möglichkeit regionsübergreifender Verbindungen zwischen allen Cloud- und lokalen Netzwerkendpunkten. Das bedeutet, dass der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, eine Zweigstelle oder ein VNet in einer anderen Region über eine Hub-zu-Hub-Konnektivität, die durch das [Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) ermöglicht wird, erreichen kann.
 

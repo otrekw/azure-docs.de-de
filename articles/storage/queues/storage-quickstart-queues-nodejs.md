@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e3953c56a9acf911c7dc2bbbd453b52b72f9bb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199783"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833237"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für JavaScript
 
@@ -158,7 +158,7 @@ Fügen Sie diesen Code in der `main`-Funktion hinzu:
 // connection string is stored in an environment variable on the machine
 // running the application called AZURE_STORAGE_CONNECTION_STRING. If the
 // environment variable is created after the application is launched in a
-// console or with Visual Studio, the shell or application needs to be 
+// console or with Visual Studio, the shell or application needs to be
 // closed and reloaded to take the environment variable into account.
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
@@ -348,7 +348,7 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von JavaScri
 Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Dokumentation zu Azure für JavaScript](https://docs.microsoft.com/azure/javascript/)
+> [Dokumentation zu Azure für JavaScript](https://docs.microsoft.com/azure/developer/javascript/)
 
 * Weitere Informationen finden Sie in der [Azure Storage Queue-Clientbibliothek für JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
 * Weitere Beispiel-Apps für Azure Queue Storage finden Sie bei den [

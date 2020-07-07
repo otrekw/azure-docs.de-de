@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1628cdfbfc23eae7db2aad1948a7fbd84e5035f
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71123567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850002"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -32,7 +32,9 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 1. Stellen Sie per SSH eine Verbindung mit dem Edgeknoten her.
 
-        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```
 
     Anweisungen zum Verwenden von SSH mit Azure HDInsight finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,13 +42,17 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
     - Für Microsoft ML Server 9.1:
 
-            cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
-            sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
+        sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```
 
     - Für Microsoft R Server 9.0:
 
-            cd /usr/lib64/microsoft-deployr/9.0.1
-            sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-deployr/9.0.1
+        sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```
 
 1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
@@ -82,19 +88,20 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
 
-    # Create these required folders for user 'rserve2' in local and hdfs:
+```r
+# Create these required folders for user 'rserve2' in local and hdfs:
 
-    hadoop fs -mkdir /user/RevoShare/rserve2
-    hadoop fs -chmod 777 /user/RevoShare/rserve2
+hadoop fs -mkdir /user/RevoShare/rserve2
+hadoop fs -chmod 777 /user/RevoShare/rserve2
 
-    mkdir /var/RevoShare/rserve2
-    chmod 777 /var/RevoShare/rserve2
+mkdir /var/RevoShare/rserve2
+chmod 777 /var/RevoShare/rserve2
 
 
-    # Next, create a new Spark compute context:
- 
-    rxSparkConnect(reset = TRUE)
+# Next, create a new Spark compute context:
 
+rxSparkConnect(reset = TRUE)
+```
 
 In dieser Phase ist die Konfiguration der Operationalisierung abgeschlossen. Nun können Sie das Paket `mrsdeploy` auf Ihrem RClient zum Herstellen einer Verbindung mit der Operationalisierung auf dem Edgeknoten verwenden und mit der Verwendung seiner Features wie [Remoteausführung](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) und [Webdienste](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) beginnen. Je nachdem, ob Ihr Cluster in einem virtuellen Netzwerk eingerichtet ist, müssen Sie über die SSH-Anmeldung ein Tunneling für die Portweiterleitung einrichten. Die Einrichtung dieses Tunnels wird in den folgenden Abschnitten erläutert.
 
@@ -102,15 +109,15 @@ In dieser Phase ist die Konfiguration der Operationalisierung abgeschlossen. Nun
 
 Stellen Sie sicher, dass Sie Datenverkehr über Port 12800 zum Edgeknoten zulassen. Auf diese Weise können Sie den Edgeknoten zum Herstellen der Verbindung mit dem Feature „Operationalisierung“ verwenden.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 Wenn über `remoteLogin()` keine Verbindung mit dem Edgeknoten hergestellt werden kann, Sie aber über SSH eine Verbindung mit dem Edgeknoten aufbauen können, müssen Sie überprüfen, ob die Regel zum Zulassen von Datenverkehr über Port 12800 ordnungsgemäß festgelegt wurde. Wenn das Problem weiterhin besteht, können Sie es umgehen, indem Sie über SSH das Tunneling der Portweiterleitung einrichten. Anweisungen finden Sie im folgenden Abschnitt:
 
@@ -118,19 +125,21 @@ Wenn über `remoteLogin()` keine Verbindung mit dem Edgeknoten hergestellt werde
 
 Wenn Ihr Cluster nicht im VNET eingerichtet wurde oder Sie Probleme mit der Konnektivität über das VNET haben, können Sie das Tunneling der SSH-Portweiterleitung nutzen:
 
-    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```bash
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
 
 Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom Port 12800 des lokalen Computers zum Port 12800 des Edgeknotens weitergeleitet. Stellen Sie sicher, dass Sie `127.0.0.1:12800` in der `remoteLogin()`-Methode verwenden. Hierdurch erfolgt eine Anmeldung bei der Operationalisierung des Edgeknotens über die Portweiterleitung.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://127.0.0.1:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 ## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Skalieren operationalisierter Serverknoten auf HDInsight-Workerknoten
 
@@ -164,7 +173,9 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Führen Sie das Verwaltungshilfsprogramm mit der entsprechenden DLL für Ihren ML Services-Cluster aus. Führen Sie für ML Server 9.1 die folgenden Schritte aus:
 
-        dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```bash
+    dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```
 
 1. Geben Sie **1** ein, um die Option **Configure ML Server for Operationalization** (ML Services für Operationalisierung konfigurieren) auszuwählen.
 
@@ -182,12 +193,14 @@ Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Serv
 
 1. Fügen Sie im Abschnitt „URIs“ die IP-Adress- und Portdetails des Workerknotens hinzu.
 
-       "Uris": {
-         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
-         "Values": [
-           "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
-         ]
-       }
+    ```json
+    "Uris": {
+        "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
+        "Values": [
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+        ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

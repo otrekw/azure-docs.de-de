@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: sample
+ms.topic: tutorial
 ms.date: 12/03/2019
-ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2133b68bf942cee87548783fb40d08c9bfe876ff
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851628"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK
 
@@ -255,7 +255,7 @@ Klicken Sie mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**. W�
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Abrufen einer Entität aus einer Partition
+## <a name="get-an-entity-from-a-partition"></a>Abrufen einer Entität aus einer Partition
 
 Sie können eine Entität von einer Partition abrufen, indem Sie die Retrieve-Methode der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) verwenden. Das folgende Codebeispiel ruft den Zeilenschlüssel des Partitionsschlüssels, die E-Mail-Adresse und die Telefonnummer einer Kundenentität ab. Dieses Beispiel druckt auch die Anforderungseinheiten aus, die für die Abfrage nach der Entität benötigt werden. Um eine Entität abzufragen, fügen Sie den folgenden Code an die Datei **SamplesUtils.cs** an: 
 

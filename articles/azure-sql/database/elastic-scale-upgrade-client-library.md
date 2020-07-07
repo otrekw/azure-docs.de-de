@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 8610342c1d01deceebaf1f4998dd04181e5ddc21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829498"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,6 +57,7 @@ Durch Ausführen dieser Schritte in dieser Reihenfolge wird sichergestellt, dass
 
 Erstellen Sie alternativ eine Visual Studio-Anwendung, die Ihren ShardMapManager öffnet, alle Shards durchläuft und die Aktualisierung der Metadaten durch Aufrufen der Methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) und [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) durchführt, wie im folgenden Beispiel gezeigt:
 
+```csharp
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
        (connStr, ShardMapManagerLoadPolicy.Lazy);
@@ -67,6 +68,7 @@ Erstellen Sie alternativ eine Visual Studio-Anwendung, die Ihren ShardMapManager
     {
        smm.UpgradeLocalStore(loc);
     }
+```
 
 Diese Techniken für die Metadatenaktualisierung können ohne Probleme mehrmals angewendet werden. Wenn beispielsweise eine ältere Clientversion versehentlich einen Shard erstellt, den Sie bereits aktualisiert haben, können Sie die Aktualisierung für alle Shards wiederholen, um sicherzustellen, dass die neueste Metadatenversion in der gesamten Infrastruktur vorhanden ist.
 

@@ -3,25 +3,25 @@ title: Problembehandlung von Anwendungsproxys | Microsoft-Dokumentation
 description: Behandelt die Problembehandlung von Azure AD-Anwendungsproxys.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848448"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 
@@ -39,13 +39,13 @@ Möglicherweise treten Probleme mit dem Rendern der Anwendung oder einer fehlerh
 
 Wenn Sie beispielsweise den Pfad `https://yourapp/app` veröffentlichen, die Anwendung aber Bilder in `https://yourapp/media` aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel lautet er `http://yourapp/`.
 
-Wenn Sie den Pfad so ändern, dass er referenzierten Inhalt enthält, Benutzer aber an einen Link tiefer im Pfad verwiesen werden sollen, helfen Ihnen die Informationen im folgenden Blogbeitrag weiter: [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)(Festlegen des richtigen Links für Anwendungsproxy-Anwendungen im Azure AD-Zugriffsbereich und Office 365-Startprogramm).
-
 ## <a name="connector-errors"></a>Connectorfehler
 
 Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, haben Sie zwei Möglichkeiten, um den Grund dafür anzuzeigen. Sehen Sie entweder im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft\AadApplicationProxy\Connector\Admin** nach, oder führen Sie den folgenden Windows PowerShell-Befehl aus:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Sobald Sie den Connectorfehler im Ereignisprotokoll gefunden haben, beheben Sie das Problem anhand dieser Tabelle mit häufig auftretenden Fehlern:
 

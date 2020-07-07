@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807705"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -318,7 +318,7 @@ Mit [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adres
 * Weitere Informationen zur Erfassung von IP-Adressen und Geolocation-Daten in Application Insights finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](https://apmtips.com/blog/2016/07/05/client-ip-address/)
+Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](https://apmtips.com/posts/2016-07-05-client-ip-address/)
 
 Sie können [mit Power BI](app/export-power-bi.md ) die Anforderungstelemetriedaten auf einer Karte anzeigen.
 
@@ -367,7 +367,7 @@ Verwenden Sie eine einzelne Ressource für alle Komponenten oder Rollen in einem
 ### <a name="what-are-the-user-and-session-counts"></a>Was sind Benutzer- und Sitzungszähler?
 
 * Das JavaScript-SDK legt im Webclient ein Benutzercookie zum Identifizieren wiederkehrender Benutzer und ein Sitzungscookie zum Gruppieren von Aktivitäten fest.
-* Wenn kein clientseitiges Skript vorhanden ist, können Sie [Cookies auf dem Server festlegen](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Wenn kein clientseitiges Skript vorhanden ist, können Sie [Cookies auf dem Server festlegen](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Wenn ein realer Benutzer Ihre Website in verschiedenen Browsern, beim InPrivate- oder Inkognito-Browsing oder auf unterschiedlichen Computern verwendet, wird er mehrmals gezählt.
 * Um einen angemeldeten Benutzer auf verschiedenen Computern und in verschiedenen Browsern zu identifizieren, fügen Sie einen Aufruf von [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) hinzu.
 

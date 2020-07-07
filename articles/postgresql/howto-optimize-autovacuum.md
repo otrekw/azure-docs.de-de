@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848199"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Autovacuum auf einem Azure Database for PostgreSQL-Einzelserver
 In diesem Artikel wird beschrieben, wie Sie Autovacuum auf einem Azure Database for PostgreSQL-Server effizient optimieren können.
@@ -47,7 +47,7 @@ Nachfolgend finden Sie einige Autovacuum-Konfigurationsparameter, die Sie basier
 Parameter|BESCHREIBUNG|Standardwert
 ---|---|---
 autovacuum_vacuum_threshold|Gibt die minimale Anzahl von aktualisierten oder gelöschten Tupeln vor dem Auslösen eines Vacuum-Vorgangs in einer Tabelle an. Der Standardwert ist 50 Tupel. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|50
-autovacuum_vacuum_scale_factor|Gibt einen Anteil der Tabellengröße an, der „autovacuum_vacuum_threshold“ zur Entscheidung über die Auslösung eines Vacuum-Vorgangs hinzugefügt wird. Der Standardwert ist 0,2 (20% der Tabellengröße). Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|5 %
+autovacuum_vacuum_scale_factor|Gibt einen Anteil der Tabellengröße an, der „autovacuum_vacuum_threshold“ zur Entscheidung über die Auslösung eines Vacuum-Vorgangs hinzugefügt wird. Der Standardwert ist 0,2 (20% der Tabellengröße). Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|0.2
 autovacuum_vacuum_cost_limit|Gibt den Kostengrenzwert an, der bei automatischen Vacuum-Vorgängen verwendet wird. Wenn –1 angegeben ist (der Standard), wird der normale vacuum_cost_limit-Wert verwendet. Falls mehr als ein Worker vorhanden ist, wird der Wert zwischen den ausgeführten Autovacuum-Workern proportional aufgeteilt. Die Summe der Grenzwerte für die einzelnen Worker überschreitet nicht den Wert dieser Variable. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|-1
 autovacuum_vacuum_cost_delay|Gibt den Kostenverzögerungswert an, der bei automatischen Vacuum-Vorgängen verwendet wird. Wenn –1 angegeben ist, wird der normale vacuum_cost_delay-Wert verwendet. Der Standardwert sind 20 Millisekunden. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|20 ms
 autovacuum_nap_time|Gibt die minimale Verzögerung zwischen Autovacuum-Ausführungen in einer bestimmten Datenbank an. In jeder Runde untersucht der Daemon die Datenbank und gibt nach Bedarf VACUUM- und ANALYZE-Befehle für Tabellen in dieser Datenbank aus. Die Verzögerung wird in Sekunden gemessen, und der Standardwert ist 1 Minute. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest.|15 s

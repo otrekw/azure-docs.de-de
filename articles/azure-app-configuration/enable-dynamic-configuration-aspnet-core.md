@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348855"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856527"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App
 
@@ -310,11 +310,16 @@ Ein *Sentinel-Schlüssel* ist ein spezieller Schlüssel, mit dem signalisiert wi
 
 1. Führen Sie den folgenden Befehl in der Befehlsshell aus, um die App mithilfe der .NET Core-CLI zu erstellen:
 
+```console
         dotnet build
+```
 
 1. Führen Sie nach erfolgreicher Erstellung den folgenden Befehl aus, um die Web-App lokal auszuführen:
 
+```console
         dotnet run
+```
+
 1. Öffnen Sie ein Browserfenster, und navigieren Sie zu der URL, die in der `dotnet run`-Ausgabe angezeigt wird.
 
     ![Lokales Starten der Schnellstart-App](./media/quickstarts/aspnet-core-app-launch-local-before.png)

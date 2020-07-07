@@ -3,18 +3,18 @@ title: Erstellen und Klonen eines Jupyter-Notebooks – Azure Notebooks (Vorscha
 description: Azure Notebooks-Projekte (Vorschau) verwalten eine Sammlung von Notebooks und verwandten Dateien, die Sie neu erstellen oder aus einer anderen Quelle klonen können.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831283"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Erstellen und Klonen von Projekten in Azure Notebooks (Vorschau)
 
-Azure Notebooks organisiert Ihre Jupyter-Notebooks und verwandten Dateien in logischen Gruppen, die als *Projekte* bezeichnet werden. Sie erstellen ein Projekt zunächst als Container, anschließend erstellen oder klonen Sie ein oder mehrere Notebooks innerhalb eines Ordners zusammen mit anderen Projektdateien. (Dieser Vorgang wird im [Tutorial](tutorial-create-run-jupyter-notebook.md) vorgeführt.)
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks organisiert Ihre Jupyter-Notebooks und verwandten Dateien in logischen Gruppen, die als *Projekte* bezeichnet werden. Sie erstellen ein Projekt zunächst als Container, anschließend erstellen oder klonen Sie ein oder mehrere Notebooks innerhalb eines Ordners zusammen mit anderen Projektdateien. (Dieser Vorgang wird im [Tutorial](tutorial-create-run-jupyter-notebook.md) vorgeführt.)
 
 Ein Projekt verwaltet außerdem Metadaten und andere Konfigurationseinstellungen, die den Server betreffen, auf dem die Notizbücher ausgeführt werden, einschließlich benutzerdefinierter Einrichtungsschritte und Paketinstallation. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](configure-manage-azure-notebooks-projects.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e05389e0510b5029fa2672bbd6b781e06ba10fd2
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849669"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
 
@@ -64,16 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
 
-    |Option |BESCHREIBUNG |
-    |---|---|
-    |D 9876|Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.|
-    |C|Komprimiert alle Daten, da der Webdatenverkehr hauptsächlich aus Text besteht.|
-    |2|Erzwingt für SSH, dass nur Protokollversion 2 verwendet wird.|
-    |q|Stiller Modus.|
-    |T|Deaktiviert die Pseudo-TTY-Zuordnung, da lediglich ein Port weitergeleitet wird.|
-    |n|Verhindert das Lesen von STDIN, da lediglich ein Port weitergeleitet wird.|
-    |N|Verhindert das Ausführen von Remotebefehlen, da lediglich ein Port weitergeleitet wird.|
-    |f|Erzwingt die Ausführung im Hintergrund.|
+|Option |BESCHREIBUNG |
+|---|---|
+|D 9876|Der lokale Port, der den Datenverkehr durch den Tunnel weiterleitet.|
+|C|Komprimiert alle Daten, da der Webdatenverkehr hauptsächlich aus Text besteht.|
+|2|Erzwingt für SSH, dass nur Protokollversion 2 verwendet wird.|
+|q|Stiller Modus.|
+|T|Deaktiviert die Pseudo-TTY-Zuordnung, da lediglich ein Port weitergeleitet wird.|
+|n|Verhindert das Lesen von STDIN, da lediglich ein Port weitergeleitet wird.|
+|N|Verhindert das Ausführen von Remotebefehlen, da lediglich ein Port weitergeleitet wird.|
+|f|Erzwingt die Ausführung im Hintergrund.|
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.
 

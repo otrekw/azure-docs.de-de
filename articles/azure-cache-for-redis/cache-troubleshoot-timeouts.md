@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833756"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problembehandlung bei Timeouts bei Azure Cache for Redis
 
@@ -32,7 +32,9 @@ Azure Cache for Redis aktualisiert regelmäßig im Rahmen der bereitgestellten v
 
 StackExchange.Redis verwendet für synchrone Vorgänge eine Konfigurationseinstellung mit dem Namen `synctimeout` mit einem Standardwert von 1000 ms. Wenn ein synchroner Aufruf nicht innerhalb dieses Zeitraums abgeschlossen wird, löst der StackExchange.Redis-Client einen Timeoutfehler ähnlich dem folgenden Beispiel aus:
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die mögliche Lösung des Problems ermitteln können. In der folgenden Tabelle finden Sie Details zu den Metriken in der Fehlermeldung.
 
@@ -73,7 +75,10 @@ Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
     Es wird dringend empfohlen, den Cache und den Client in der gleichen Azure-Region anzusiedeln. Wenn Ihr Szenario regionsübergreifende Aufrufe beinhaltet, sollten Sie das `synctimeout`-Intervall auf einen höheren Wert als die standardmäßigen 1.000 ms festlegen. Nehmen Sie zu diesem Zweck eine `synctimeout`-Eigenschaft in die Verbindungszeichenfolge auf. Das folgende Beispiel zeigt einen Codeausschnitt aus einer Verbindungszeichenfolge für StackExchange.Redis, bereitgestellt von Azure Cache for Redis, mit einem `synctimeout` von 2000 ms.
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. Verwenden Sie immer die neueste Version des [NuGet-Pakets für StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/). Es werden ständig Fehler im Code behoben, um ihn widerstandsfähiger gegen Timeouts zu machen. Das Nutzen der neuesten Version ist also wichtig.
 1. Wenn Ihre Anforderungen durch Bandbreiteneinschränkungen auf dem Server oder dem Client eingeschränkt sind, dauert deren Ausführung länger, und es können Timeouts auftreten. Um festzustellen, ob ein Timeout durch die Netzwerkbandbreite auf dem Server verursacht wird, lesen Sie [Serverseitige Bandbreitenbegrenzung](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Um festzustellen, ob ein Timeout durch die Netzwerkbandbreite auf dem Client verursacht wird, lesen Sie [Clientseitige Bandbreitenbegrenzung](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
 1. Werden Sie durch die CPU auf dem Server oder auf dem Client behindert?
@@ -82,7 +87,7 @@ Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
    - Überprüfen Sie, ob Sie durch die CPU auf dem Server behindert werden, indem Sie die [Cacheleistungsmetrik](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) der CPU überwachen. Wenn Anforderungen eingehen, während Redis durch die CPU behindert wird, können für diese Anforderungen Timeouts auftreten. Sie können Abhilfe schaffen, indem Sie die Last auf mehrere Shards in einem Premium-Cache verteilen. Alternativ können Sie ein Upgrade zu einer größer dimensionierten CPU durchführen oder in einen höheren Tarif wechseln. Weitere Informationen finden Sie unter [Serverseitige Bandbreitenbegrenzung](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
 1. Dauert die Verarbeitung von Befehlen auf dem Server lange? Wenn die Verarbeitung und Ausführung von Befehlen auf dem Redis-Server lange dauert, kann dies zu Timeouts führen. Weitere Informationen zu Befehlen mit langer Ausführungsdauer finden Sie unter [Befehle mit langer Ausführungsdauer](cache-troubleshoot-server.md#long-running-commands). Sie können mithilfe des redis-cli-Clients eine Verbindung mit Ihrer Azure Cache for Redis-Instanz herstellen oder die [Redis-Konsole](cache-configure.md#redis-console) verwenden. Führen Sie dann den Befehl [SLOWLOG](https://redis.io/commands/slowlog) aus, um festzustellen, ob Anforderungen langsamer als erwartet sind. Der Redis-Server und StackExchange.Redis sind für viele kleine Anforderungen optimiert, nicht für wenige große. Durch eine Aufteilung Ihrer Daten in kleinere Blöcke können Sie u.U. Verbesserungen erzielen.
 
-    Informationen zum Herstellen einer Verbindung mit dem TLS-/SSL-Endpunkt Ihres Caches mithilfe von „redis-cli“ und „stunnel“ finden Sie im Blogbeitrag [Ankündigung des ASP.NET-Sitzungszustandsanbieters für Redis (Vorschauversion)](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+    Informationen zum Herstellen einer Verbindung mit dem TLS-/SSL-Endpunkt Ihres Caches mithilfe von „redis-cli“ und „stunnel“ finden Sie im Blogbeitrag [Ankündigung des ASP.NET-Sitzungszustandsanbieters für Redis (Vorschauversion)](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 1. Eine hohe Auslastung des Redis-Servers kann zu Timeouts führen. Sie können die Serverauslastung überwachen, indem Sie die [Cacheleistungsmetrik](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Redis Server Load` überwachen. Eine Serverauslastung von 100 (Maximalwert) bedeutet, dass der Redis-Server mit der Verarbeitung von Anforderungen voll ausgelastet war und keine Leerlaufzeiten aufgetreten sind. Um festzustellen, ob bestimmte Anforderungen die gesamte Serverkapazität in Anspruch nehmen, führen Sie den Befehl „SlowLog“ aus, wie im vorherigen Absatz beschrieben. Weitere Informationen finden Sie unter „Hohe CPU-Auslastung/hohe Serverauslastung“.
 1. Gab es ein anderes Ereignis auf der Clientseite, das ein Netzwerkflackern verursacht haben könnte? Allgemeine Ereignisse umfassen: zentrales Hoch- oder Herunterskalieren der Anzahl von Clientinstanzen, Bereitstellen einer neuen Version des Clients oder Aktivieren der Autoskalierung. Bei unseren Tests haben wir festgestellt, dass Autoskalierung oder zentrales Hoch- oder Herunterskalieren bei ausgehenden Netzwerkverbindungen zu Unterbrechungen von einigen Sekunden verursachen kann. Der StackExchange.Redis-Code ist unempfindlich gegen solche Ereignisse und stellt die Verbindung anschließend wieder her. Beim Wiederherstellen der Verbindung kann für Anforderungen, die sich in der Warteschlange befinden, ein Timeout auftreten.
 1. Gab es vor mehreren kleineren Anforderungen eine große Anforderung an den Cache, für die ein Timeout auftrat? Der Parameter `qs` in der Fehlermeldung teilt Ihnen mit, wie viele Anforderungen vom Client an den Server gesendet wurden, für die aber bisher keine Antwort verarbeitet wurde. Dieser Wert kann fortlaufend wachsen, weil StackExchange.Redis eine einzige TCP-Verbindung nutzt und zu einem Zeitpunkt jeweils immer nur eine Antwort lesen kann. Obwohl es beim ersten Vorgang zu einem Timeout gekommen ist, wird das Senden von weiteren Daten an den oder vom Server dadurch nicht unterbrochen. Andere Anforderungen werden blockiert, bis die umfangreiche Anforderung fertig gestellt ist. Hierbei kann es zu Timeouts kommen. Als mögliche Lösung können Sie die Wahrscheinlichkeit von Timeouts verringern. Stellen Sie zu diesem Zweck sicher, dass Ihr Cache für Ihre Workload groß genug ist, und teilen Sie große Werte in kleinere Blöcke auf. Eine weitere Lösung besteht darin, in Ihrem Client einen Pool von `ConnectionMultiplexer`-Objekten zu verwenden und beim Senden einer neuen Anforderung den am wenigsten ausgelasteten `ConnectionMultiplexer` zu verwenden. Durch das Laden über mehrere Verbindungsobjekte können Sie verhindern, dass ein einzelnes Timeout weitere Timeouts für andere Anforderungen nach sich zieht.

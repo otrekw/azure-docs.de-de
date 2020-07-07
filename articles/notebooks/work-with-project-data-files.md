@@ -3,18 +3,18 @@ title: Importieren und Exportieren von Daten mit Projekten in Azure Notebooks (V
 description: Erfahren Sie, wie Sie Daten aus externen Quellen in ein Azure Notebooks-Projekt (Vorschauversion) einbringen und Daten aus einem Projekt exportieren.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834113"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Arbeiten mit Datendateien in Azure Notebooks-Projekten (Vorschauversion)
 
-Daten bilden den zentralen Bestandteil vieler Jupyter-Notebooks, insbesondere von Notebooks, die für Data Science verwendet werden. Mit Azure Notebooks können Sie Daten auf einfache Weise aus einer Vielzahl von Quellen in ein Projekt importieren und diese Daten dann aus Notebooks heraus verwenden. Ferner können Sie Notebooks Daten generieren lassen, die im Projekt gespeichert werden und die Sie dann zur Verwendung an anderer Stelle herunterladen können.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Daten bilden den zentralen Bestandteil vieler Jupyter-Notebooks, insbesondere von Notebooks, die für Data Science verwendet werden. Mit Azure Notebooks können Sie Daten auf einfache Weise aus einer Vielzahl von Quellen in ein Projekt importieren und diese Daten dann aus Notebooks heraus verwenden. Ferner können Sie Notebooks Daten generieren lassen, die im Projekt gespeichert werden und die Sie dann zur Verwendung an anderer Stelle herunterladen können.
 
 Das Menü **Daten** innerhalb eines ausgeführten Notebooks stellt außerdem Befehle zum **Hochladen** und **Herunterladen** bereit, die sowohl für Dateien im Projekt als auch für temporäre Dateien in der aktuellen Notebooksitzung verwendet werden können.
 

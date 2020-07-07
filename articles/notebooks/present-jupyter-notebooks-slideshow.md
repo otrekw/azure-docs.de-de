@@ -3,18 +3,18 @@ title: Präsentieren eines Jupyter Notebooks als Bildschirmpräsentation auf Azu
 description: Erfahren Sie, wie Sie Zellen für den Präsentationsmodus in einem Jupyter Notebook konfigurieren und die Präsentation anschließend mithilfe der RISE-Erweiterung vorführen.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe337361436ecfc8eabf2855ad633b891db69d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834045"
 ---
 # <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Ausführen einer Notebook-Präsentation in Azure Notebooks (Vorschauversion)
 
-Azure Notebooks ist mit der Jupyter/IPython-Präsentationserweiterung (RISE) vorkonfiguriert, die Ihnen die direkte Vorführung eines Notebooks als Bildschirmpräsentation ermöglicht. Bei einer Bildschirmpräsentation werden die Zellen normalerweise jeweils einzeln in einem Schriftgrad angezeigt, der für die Vorführung auf großen Bildschirmen geeignet ist, wobei die Ausführung des Codes trotzdem möglich bleibt, so dass kein Wechsel auf einen separaten Democomputer erforderlich ist.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks ist mit der Jupyter/IPython-Präsentationserweiterung (RISE) vorkonfiguriert, die Ihnen die direkte Vorführung eines Notebooks als Bildschirmpräsentation ermöglicht. Bei einer Bildschirmpräsentation werden die Zellen normalerweise jeweils einzeln in einem Schriftgrad angezeigt, der für die Vorführung auf großen Bildschirmen geeignet ist, wobei die Ausführung des Codes trotzdem möglich bleibt, so dass kein Wechsel auf einen separaten Democomputer erforderlich ist.
 
 Die folgende Abbildung zeigt die Notebook-Standardansicht, in der Markdown und Codezellen zusammen zu sehen sind:
 

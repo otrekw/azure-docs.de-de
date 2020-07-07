@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80297211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849414"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -92,7 +92,7 @@ Verwenden Sie zum Herunterladen des Zertifikats das Azure-Portal.
 
 1. Melden Sie sich beim Azure-Portal an.
 2. Navigieren Sie zu Ihrem Data Box-Auftrag und dann zu **Allgemein > Gerätedetails**.
-3. Wechseln Sie unter **Geräteanmeldeinformationen** zu **API-Zugriff auf Gerät**. Klicken Sie auf **Download**. Bei dieser Aktion wird eine Zertifikatdatei im Format **\<Name Ihrer Bestellung>.cer** heruntergeladen. **Speichern** Sie diese Datei. Sie installieren dieses Zertifikat auf dem Client- oder Hostcomputer, den Sie für die Verbindung mit dem Gerät verwenden werden.
+3. Wechseln Sie unter **Geräteanmeldeinformationen** zu **API-Zugriff auf Gerät**. Klicken Sie auf **Download**. Mit dieser Aktion wird eine Zertifikatdatei ( **\<your order name>.cer**) heruntergeladen. **Speichern** Sie diese Datei. Sie installieren dieses Zertifikat auf dem Client- oder Hostcomputer, den Sie für die Verbindung mit dem Gerät verwenden werden.
 
     ![Herunterladen des Zertifikats im Azure-Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -197,16 +197,19 @@ Mit AzCopy können Sie unter Windows oder Linux alle Dateien in einem Ordner in 
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Ersetzen Sie `<key>` durch Ihren Kontoschlüssel. Wechseln Sie im Azure-Portal zu Ihrem Speicherkonto, um Ihren Kontoschlüssel abzurufen. Navigieren Sie zu **Einstellungen > Zugriffsschlüssel**, wählen Sie einen Schlüssel aus, und fügen Sie ihn in den AzCopy-Befehl ein.
 
@@ -221,16 +224,21 @@ Verwenden Sie AzCopy, um Dateien basierend auf dem Zeitpunkt der letzten Änderu
 Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sind, können Sie beide Parameter – `--exclude-older` und `--exclude-newer` (Linux) oder `/XO` und `/XN` (Windows) – im AzCopy-Befehl angeben. AzCopy lädt nur die aktualisierten Daten basierend auf dem Zeitstempel hoch.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Wenn während des Vorgangs zum Herstellen einer Verbindung oder des Kopiervorgangs Fehler auftreten, lesen Sie [Behandeln von Problemen bei Data Box-Blobspeicher](data-box-troubleshoot-rest.md).
 

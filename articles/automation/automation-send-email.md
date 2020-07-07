@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1fa270907c96cb341f6ce2cbaeb91dfa323c4431
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855215"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Senden einer E-Mail aus einem Runbook
 
@@ -67,8 +67,8 @@ Weitere Möglichkeiten zum Erstellen einer Azure Key Vault-Instanz und zum Speic
 
 Um Azure Key Vault innerhalb eines Runbooks zu verwenden, müssen Sie die folgenden Module in Ihr Automation-Konto importieren:
 
-    * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
-    * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Anweisungen finden Sie unter [Importieren von Az-Modulen](shared-resources/modules.md#import-az-modules).
 

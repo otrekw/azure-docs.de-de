@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851254"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API
 
@@ -82,8 +82,10 @@ Die ursprüngliche Antwort sieht in etwa wie folgt aus:
 
 7. Ändern Sie Ihren **\<outbound>** -Code, sodass er folgendermaßen aussieht:
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![Richtlinien](./media/transform-api/set-policy.png)
 
@@ -129,31 +131,35 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 6.  Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
 7.  Ändern Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>** -Element) folgendermaßen ab:
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>Testen der Transformationen
 
 Zu diesem Zeitpunkt sieht Ihre Richtlinie in etwa wie folgt aus, wenn Sie den Code im Code-Editor betrachten:
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen getestet, die Sie in diesem Artikel festgelegt haben.
 

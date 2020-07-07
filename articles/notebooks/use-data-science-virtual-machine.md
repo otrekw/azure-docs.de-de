@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830304"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Verwenden von Azure Data Science VMs
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Standardmäßig werden Projekte auf der Ebene **Free Compute** ausgeführt, die auf 4 GB Speicher und 1 GB Daten beschränkt ist, um Missbrauch zu verhindern. Sie können diese Einschränkungen umgehen, indem Sie eine anderen virtuellen Computer verwenden, den Sie in einem Azure-Abonnement bereitgestellt haben. Aus diesem Grund ist die beste Wahl eine Azure Data Science Virtual Machine (DSVM), die das Image **Data Science Virtual Machine for Linux (Ubuntu)** verwendet. So eine DSVM ist bereits vorkonfiguriert mit allem, was Sie für Azure Notebooks benötigen, und wird automatisch in der Dropdownliste **Ausführen** in Azure Notebooks angezeigt.
 
 > [!Note]
 > Azure Notebooks wird nur auf DSVMs unterstützt, die mit dem Ubuntu Linux-Image erstellt wurden. Es besteht keine Unterstützung unter Windows 2012-, Windows 2016- oder Linux CentOS-Images.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Erstellen einer DSVM-Instanz
 
