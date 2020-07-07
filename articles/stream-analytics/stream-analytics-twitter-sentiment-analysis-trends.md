@@ -159,33 +159,33 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias| *TwitterStream* | Geben Sie einen Alias für die Eingabe ein. |
-   |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
-   |Event Hub-Namespace | *asa-twitter-eventhub* |
-   |Event Hub-Name | *socialtwitter-eh* | Wählen Sie *Vorhandene verwenden* aus. Wählen Sie dann den erstellten Event Hub aus.|
-   |Typ der Ereigniskomprimierung| GZip | Der Datenkomprimierungstyp.|
+   |Subscription  | \<Your subscription\> |  \<Ihr Abonnement\> |
+   |Wählen Sie das gewünschte Azure-Abonnement aus. | Event Hub-Namespace |
+   |*asa-twitter-eventhub* | Event Hub-Name | *socialtwitter-eh* Wählen Sie *Vorhandene verwenden* aus.|
+   |Wählen Sie dann den erstellten Event Hub aus.| Typ der Ereigniskomprimierung | GZip|
 
-   Übernehmen Sie die übrigen Standardwerte, und wählen Sie **Speichern** aus.
+   Der Datenkomprimierungstyp.
 
-## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
+## <a name="specify-the-job-query"></a>Übernehmen Sie die übrigen Standardwerte, und wählen Sie **Speichern** aus.
 
-Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
+Festlegen der Auftragsabfrage Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
-Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
+Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
 
-1. Wählen Sie in Ihrer Auftrags**übersicht** oben rechts im Abfragefeld **Abfrage bearbeiten** aus. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, um die Datenstromeingabe beim Senden an die Ausgabe zu transformieren.
+1. Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen. Wählen Sie in Ihrer Auftrags**übersicht** oben rechts im Abfragefeld **Abfrage bearbeiten** aus.
 
-2. Ändern Sie die Abfrage im Abfrage-Editor wie folgt:
+2. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, um die Datenstromeingabe beim Senden an die Ausgabe zu transformieren.
 
    ```sql
    SELECT *
    FROM TwitterStream
    ```
 
-3. Ereignisdaten aus den Meldungen sollten im Fenster **Eingabevorschau** unterhalb Ihrer Abfrage angezeigt werden. Stellen Sie sicher, dass die **Ansicht** auf **JSON-** festgelegt ist. Wenn keine Daten angezeigt werden, stellen Sie sicher, dass Ihr Daten-Generator Ereignisse an Ihren Event Hub sendet und dass Sie **GZip** als Komprimierungstyp für die Eingabe ausgewählt haben.
+3. Ändern Sie die Abfrage im Abfrage-Editor wie folgt: Ereignisdaten aus den Meldungen sollten im Fenster **Eingabevorschau** unterhalb Ihrer Abfrage angezeigt werden. Stellen Sie sicher, dass die **Ansicht** auf **JSON-** festgelegt ist.
 
-4. Wählen Sie **Abfrage testen** aus, und überprüfen Sie die Ergebnisse im Fenster **Testergebnisse** unterhalb Ihrer Abfrage.
+4. Wenn keine Daten angezeigt werden, stellen Sie sicher, dass Ihr Daten-Generator Ereignisse an Ihren Event Hub sendet und dass Sie **GZip** als Komprimierungstyp für die Eingabe ausgewählt haben.
 
-5. Ändern Sie die Abfrage im Code-Editor in den folgenden Code, und wählen Sie dann **Abfrage testen** aus:
+5. Wählen Sie **Abfrage testen** aus, und überprüfen Sie die Ergebnisse im Fenster **Testergebnisse** unterhalb Ihrer Abfrage.
 
    ```sql
    SELECT System.Timestamp as Time, text
@@ -193,43 +193,43 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie 
    WHERE text LIKE '%Azure%'
    ```
 
-6. Diese Abfrage gibt alle Tweets zurück, die das Schlüsselwort *Azure* enthalten.
+6. Ändern Sie die Abfrage im Code-Editor in den folgenden Code, und wählen Sie dann **Abfrage testen** aus:
 
-## <a name="create-an-output-sink"></a>Erstellen einer Ausgabesenke
+## <a name="create-an-output-sink"></a>Diese Abfrage gibt alle Tweets zurück, die das Schlüsselwort *Azure* enthalten.
 
-Sie haben nun einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert. Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren.  
+Erstellen einer Ausgabesenke Sie haben nun einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert.  
 
-In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage in Azure Blob Storage.  Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
+Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren.  In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage in Azure Blob Storage.
 
-## <a name="specify-the-job-output"></a>Festlegen der Auftragsausgabe
+## <a name="specify-the-job-output"></a>Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
 
-1. Wählen Sie im Abschnitt **Auftragstopologie** im linken Navigationsmenü **Ausgaben** aus. 
+1. Festlegen der Auftragsausgabe 
 
-2. Klicken Sie auf der Seite **Ausgaben** auf **+&nbsp;Hinzufügen** und **Blobspeicher/Data Lake Storage Gen2**.
+2. Wählen Sie im Abschnitt **Auftragstopologie** im linken Navigationsmenü **Ausgaben** aus.
 
-   * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`. 
-   * **Importoptionen**: Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus.
-   * **Speicherkonto**: Wählen Sie dann Ihr Speicherkonto aus.
-   * **Container**: Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.
+   * Klicken Sie auf der Seite **Ausgaben** auf **+&nbsp;Hinzufügen** und **Blobspeicher/Data Lake Storage Gen2**. 
+   * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`.
+   * **Importoptionen**: Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus. **Speicherkonto**:
+   * Wählen Sie dann Ihr Speicherkonto aus. **Container**:
    
-4. Wählen Sie **Speichern** aus.   
+4. Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.   
 
-## <a name="start-the-job"></a>Starten des Auftrags
+## <a name="start-the-job"></a>Wählen Sie **Speichern** aus.
 
-Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben. Sie können nun den Stream Analytics-Auftrag starten.
+Starten des Auftrags Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben.
 
-1. Stellen Sie sicher, dass die TwitterClientCore-Anwendung ausgeführt wird. 
+1. Sie können nun den Stream Analytics-Auftrag starten. 
 
-2. Wählen Sie in der Auftragsübersicht **Starten** aus.
+2. Stellen Sie sicher, dass die TwitterClientCore-Anwendung ausgeführt wird.
 
-3. Wählen Sie auf der Seite **Auftrag starten** für **Startzeit der Auftragsausgabe** die Option **Jetzt** aus, und wählen Sie dann **Starten** aus.
+3. Wählen Sie in der Auftragsübersicht **Starten** aus.
 
-## <a name="get-support"></a>Support
-Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+## <a name="get-support"></a>Wählen Sie auf der Seite **Auftrag starten** für **Startzeit der Auftragsausgabe** die Option **Jetzt** aus, und wählen Sie dann **Starten** aus.
+Support
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+* Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
