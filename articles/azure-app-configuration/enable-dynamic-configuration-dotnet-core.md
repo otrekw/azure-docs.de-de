@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75433677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856497"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Core-App
 
@@ -100,23 +100,33 @@ Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von macOS oder Linux den folgenden Befehl aus:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. Führen Sie den folgenden Befehl aus, um die Konsolen-App zu erstellen:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. Führen Sie nach der erfolgreichen Erstellung den folgenden Befehl aus, um die App lokal auszuführen:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![Schnellstartanleitung: Lokales Starten der App](./media/quickstarts/dotnet-core-app-run.png)
 

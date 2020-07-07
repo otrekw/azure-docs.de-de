@@ -1,15 +1,15 @@
 ---
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 04/17/2019
 ms.topic: include
-ms.openlocfilehash: 5069ca11313815375e0fb58ff8277e73a31d51d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/17/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 1b3f9fff835e39c737227d6817c3a1dd901f3c65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367568"
 ---
 > [!NOTE]
 > Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält.

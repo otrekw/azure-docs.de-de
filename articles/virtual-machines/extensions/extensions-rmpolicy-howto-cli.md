@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f9713c0ce2df2533a49086c6c4a95aeaa24c48e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919822"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
@@ -87,7 +87,6 @@ Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in die Datei ein.
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }

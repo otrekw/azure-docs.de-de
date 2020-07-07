@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 995f45160985ed2693c32155232892b4077ae173
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851781"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -264,11 +264,15 @@ Werte, die als Parameter an das Skript übergeben wurden, sollten mit einfache A
 
 Eine Umgebungsvariable wird mit folgender Anweisung festgelegt:
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
 Dabei ist VARIABLENNAME der Name der Variable. Verwenden Sie `$VARIABLENAME`, um auf die Variable zuzugreifen. Verwenden Sie beispielsweise folgende Anweisung, um einen Wert, der von einem Positionsparameter bereitgestellt wird, als Umgebungsvariable mit dem Namen „PASSWORD“ zuzuweisen:
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
 Für den anschließenden Zugriff auf die Informationen kann dann `$PASSWORD` verwendet werden.
 
@@ -352,7 +356,9 @@ Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebu
 
 *Lösung:* Speichern Sie die Datei entweder im ASCII-Format oder im UTF-8-Format ohne Bytereihenfolge-Marke. In einem Linux- oder UNIX-System können Sie auch mit dem folgenden Befehl eine Datei ohne Bytereihenfolge-Marke (BOM) erstellen:
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
 Ersetzen Sie `INFILE` durch die Datei ohne BOM. Für `OUTFILE` sollte ein neuer Dateiname eingegeben werden. Die Datei enthält dann das Skript ohne BOM.
 
