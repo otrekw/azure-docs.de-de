@@ -14,10 +14,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77615083"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
@@ -257,7 +257,7 @@ Führen Sie den Befehl *crm_mon* aus, um sicherzustellen, dass **beide** Knoten 
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://\<Knoten-IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://\<node IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurieren von Clustereigenschaften und -ressourcen 
 In diesem Abschnitt werden die Schritte zum Konfigurieren von Clusterressourcen beschrieben.
@@ -322,7 +322,7 @@ crm configure load update crm-vip.txt
 Beim Ausführen des Befehls *crm_mon* werden die zwei Ressourcen dort angezeigt.
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Darüber hinaus können Sie den Status unter *https://\<IP-Adresse des Knotens:7630/cib/live/state* sehen.
+Darüber hinaus können Sie den Status unter *https://\<node IP address>:7630/cib/live/state* sehen.
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
