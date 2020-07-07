@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154422"
 ---
 # <a name="web-api"></a>Web-API
@@ -28,7 +28,7 @@ ms.locfileid: "80154422"
 Web-API-Apps sind Webanwendungen, die Ressourcen von einer Web-API abrufen müssen. In diesem Szenario kann die Webanwendung für die Authentifizierung und den Aufruf der Web-API zwei Identitätstypen verwenden:
 
 - **Anwendungsidentität:** In diesem Szenario werden OAuth 2.0-Clientanmeldeinformationen verwendet, um die Anwendung zu authentifizieren und auf die Web-API zuzugreifen. Da die Web-API bei Verwendung einer Anwendungsidentität keine Informationen zum Benutzer erhält, kann sie nur erkennen, dass sie von der Webanwendung aufgerufen wird. Wenn die Anwendung Informationen zum Benutzer erhält, werden diese über das Anwendungsprotokoll gesendet und nicht von Azure AD signiert. Die Web-API vertraut darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet.
-- **Delegierte Benutzeridentität:** Dieses Szenario lässt sich auf zwei Arten realisieren – mit OpenID Connect oder mit der Gewährung über einen OAuth 2.0-Autorisierungscode und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
+- **Delegierte Benutzeridentität:** Dieses Szenario lässt sich auf zwei Arten realisieren: mit OpenID Connect oder mit der Gewährung über einen OAuth 2.0-Autorisierungscode und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
 
 Die Anwendungsidentität und die delegierte Benutzeridentität werden im folgenden Ablauf veranschaulicht. Der Hauptunterschied zwischen den beiden Typen besteht darin, dass bei der delegierten Benutzeridentität zuerst ein Autorisierungscode abgerufen werden muss, damit sich der Benutzer anmelden und auf die Web-API zugreifen kann.
 
