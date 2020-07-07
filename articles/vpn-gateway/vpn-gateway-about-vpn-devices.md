@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343148"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -141,7 +141,7 @@ Für die folgenden Tabellen gilt:
 | IKE-Version                   |IKEv1          |IKEv1 und IKEv2                              |
 | Verschlüsselung und Hashalgorithmen |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
 | SA-Gültigkeitsdauer (Zeit)            |3\.600 Sekunden  |27.000 Sekunden                               |
-| SA-Gültigkeitsdauer (Bytes)           |102.400.000 KB | -                                           |
+| SA-Gültigkeitsdauer (Bytes)           |102.400.000 KB |102.400.000 KB                               |
 | Perfect Forward Secrecy (PFS) |Nein             |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |Nicht unterstützt  |Unterstützt                                    |
 

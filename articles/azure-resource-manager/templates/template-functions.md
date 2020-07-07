@@ -3,12 +3,12 @@ title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a15e7dfdf01a99cd23b216fafcfb44320a716d16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84331405"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
@@ -18,21 +18,21 @@ Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerd
 
 Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Einige Funktionen können nicht in allen Bereichen verwendet werden. Diese sind in den folgenden Listen aufgeführt.
 
-<a id="array" aria-hidden="true" />
-<a id="concatarray" aria-hidden="true" />
-<a id="contains" aria-hidden="true" />
-<a id="createarray" aria-hidden="true" />
-<a id="empty" aria-hidden="true" />
-<a id="first" aria-hidden="true" />
-<a id="intersection" aria-hidden="true" />
-<a id="last" aria-hidden="true" />
-<a id="length" aria-hidden="true" />
-<a id="min" aria-hidden="true" />
-<a id="max" aria-hidden="true" />
-<a id="range" aria-hidden="true" />
-<a id="skip" aria-hidden="true" />
-<a id="take" aria-hidden="true" />
-<a id="union" aria-hidden="true" />
+<a id="array" aria-hidden="true"></a>
+<a id="concatarray" aria-hidden="true"></a>
+<a id="contains" aria-hidden="true"></a>
+<a id="createarray" aria-hidden="true"></a>
+<a id="empty" aria-hidden="true"></a>
+<a id="first" aria-hidden="true"></a>
+<a id="intersection" aria-hidden="true"></a>
+<a id="last" aria-hidden="true"></a>
+<a id="length" aria-hidden="true"></a>
+<a id="min" aria-hidden="true"></a>
+<a id="max" aria-hidden="true"></a>
+<a id="range" aria-hidden="true"></a>
+<a id="skip" aria-hidden="true"></a>
+<a id="take" aria-hidden="true"></a>
+<a id="union" aria-hidden="true"></a>
 
 ## <a name="array-functions"></a>Arrayfunktionen
 
@@ -54,12 +54,12 @@ Der Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Array
 * [take](template-functions-array.md#take)
 * [union](template-functions-array.md#union)
 
-<a id="coalesce" aria-hidden="true" />
-<a id="equals" aria-hidden="true" />
-<a id="less" aria-hidden="true" />
-<a id="lessorequals" aria-hidden="true" />
-<a id="greater" aria-hidden="true" />
-<a id="greaterorequals" aria-hidden="true" />
+<a id="coalesce" aria-hidden="true"></a>
+<a id="equals" aria-hidden="true"></a>
+<a id="less" aria-hidden="true"></a>
+<a id="lessorequals" aria-hidden="true"></a>
+<a id="greater" aria-hidden="true"></a>
+<a id="greaterorequals" aria-hidden="true"></a>
 
 ## <a name="comparison-functions"></a>Vergleichsfunktionen
 
@@ -72,9 +72,9 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 * [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
-<a id="deployment" aria-hidden="true" />
-<a id="parameters" aria-hidden="true" />
-<a id="variables" aria-hidden="true" />
+<a id="deployment" aria-hidden="true"></a>
+<a id="parameters" aria-hidden="true"></a>
+<a id="variables" aria-hidden="true"></a>
 
 ## <a name="date-functions"></a>Datumsfunktionen
 
@@ -92,11 +92,11 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten au
 * [parameters](template-functions-deployment.md#parameters)
 * [variables](template-functions-deployment.md#variables)
 
-<a id="and" aria-hidden="true" />
-<a id="bool" aria-hidden="true" />
-<a id="if" aria-hidden="true" />
-<a id="not" aria-hidden="true" />
-<a id="or" aria-hidden="true" />
+<a id="and" aria-hidden="true"></a>
+<a id="bool" aria-hidden="true"></a>
+<a id="if" aria-hidden="true"></a>
+<a id="not" aria-hidden="true"></a>
+<a id="or" aria-hidden="true"></a>
 
 ## <a name="logical-functions"></a>Logische Funktionen
 
@@ -108,16 +108,16 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit log
 * [not](template-functions-logical.md#not)
 * [or](template-functions-logical.md#or)
 
-<a id="add" aria-hidden="true" />
-<a id="copyindex" aria-hidden="true" />
-<a id="div" aria-hidden="true" />
-<a id="float" aria-hidden="true" />
-<a id="int" aria-hidden="true" />
-<a id="minint" aria-hidden="true" />
-<a id="maxint" aria-hidden="true" />
-<a id="mod" aria-hidden="true" />
-<a id="mul" aria-hidden="true" />
-<a id="sub" aria-hidden="true" />
+<a id="add" aria-hidden="true"></a>
+<a id="copyindex" aria-hidden="true"></a>
+<a id="div" aria-hidden="true"></a>
+<a id="float" aria-hidden="true"></a>
+<a id="int" aria-hidden="true"></a>
+<a id="minint" aria-hidden="true"></a>
+<a id="maxint" aria-hidden="true"></a>
+<a id="mod" aria-hidden="true"></a>
+<a id="mul" aria-hidden="true"></a>
+<a id="sub" aria-hidden="true"></a>
 
 ## <a name="numeric-functions"></a>Numerische Funktionen
 
@@ -134,7 +134,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 * [mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
 
-<a id="json" aria-hidden="true" />
+<a id="json" aria-hidden="true"></a>
 
 ## <a name="object-functions"></a>Objektfunktionen
 
@@ -147,16 +147,16 @@ Der Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Objek
 * [length](template-functions-object.md#length)
 * [union](template-functions-object.md#union)
 
-<a id="extensionResourceId" aria-hidden="true" />
-<a id="listkeys" aria-hidden="true" />
-<a id="list" aria-hidden="true" />
-<a id="providers" aria-hidden="true" />
-<a id="reference" aria-hidden="true" />
-<a id="resourcegroup" aria-hidden="true" />
-<a id="resourceid" aria-hidden="true" />
-<a id="subscription" aria-hidden="true" />
-<a id="subscriptionResourceId" aria-hidden="true" />
-<a id="tenantResourceId" aria-hidden="true" />
+<a id="extensionResourceId" aria-hidden="true"></a>
+<a id="listkeys" aria-hidden="true"></a>
+<a id="list" aria-hidden="true"></a>
+<a id="providers" aria-hidden="true"></a>
+<a id="reference" aria-hidden="true"></a>
+<a id="resourcegroup" aria-hidden="true"></a>
+<a id="resourceid" aria-hidden="true"></a>
+<a id="subscription" aria-hidden="true"></a>
+<a id="subscriptionResourceId" aria-hidden="true"></a>
+<a id="tenantResourceId" aria-hidden="true"></a>
 
 ## <a name="resource-functions"></a>Ressourcenfunktionen
 
@@ -175,36 +175,36 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
-<a id="base64" aria-hidden="true" />
-<a id="base64tojson" aria-hidden="true" />
-<a id="base64tostring" aria-hidden="true" />
-<a id="concat" aria-hidden="true" />
-<a id="containsstring" aria-hidden="true" />
-<a id="datauri" aria-hidden="true" />
-<a id="datauritostring" aria-hidden="true" />
-<a id="emptystring" aria-hidden="true" />
-<a id="endswith" aria-hidden="true" />
-<a id="firststring" aria-hidden="true" />
-<a id="guid" aria-hidden="true" />
-<a id="indexof" aria-hidden="true" />
-<a id="laststring" aria-hidden="true" />
-<a id="lastindexof" aria-hidden="true" />
-<a id="lengthstring" aria-hidden="true" />
-<a id="padleft" aria-hidden="true" />
-<a id="replace" aria-hidden="true" />
-<a id="skipstring" aria-hidden="true" />
-<a id="split" aria-hidden="true" />
-<a id="startswith" aria-hidden="true" />
-<a id="string" aria-hidden="true" />
-<a id="substring" aria-hidden="true" />
-<a id="takestring" aria-hidden="true" />
-<a id="tolower" aria-hidden="true" />
-<a id="toupper" aria-hidden="true" />
-<a id="trim" aria-hidden="true" />
-<a id="uniquestring" aria-hidden="true" />
-<a id="uri" aria-hidden="true" />
-<a id="uricomponent" aria-hidden="true" />
-<a id="uricomponenttostring" aria-hidden="true" />
+<a id="base64" aria-hidden="true"></a>
+<a id="base64tojson" aria-hidden="true"></a>
+<a id="base64tostring" aria-hidden="true"></a>
+<a id="concat" aria-hidden="true"></a>
+<a id="containsstring" aria-hidden="true"></a>
+<a id="datauri" aria-hidden="true"></a>
+<a id="datauritostring" aria-hidden="true"></a>
+<a id="emptystring" aria-hidden="true"></a>
+<a id="endswith" aria-hidden="true"></a>
+<a id="firststring" aria-hidden="true"></a>
+<a id="guid" aria-hidden="true"></a>
+<a id="indexof" aria-hidden="true"></a>
+<a id="laststring" aria-hidden="true"></a>
+<a id="lastindexof" aria-hidden="true"></a>
+<a id="lengthstring" aria-hidden="true"></a>
+<a id="padleft" aria-hidden="true"></a>
+<a id="replace" aria-hidden="true"></a>
+<a id="skipstring" aria-hidden="true"></a>
+<a id="split" aria-hidden="true"></a>
+<a id="startswith" aria-hidden="true"></a>
+<a id="string" aria-hidden="true"></a>
+<a id="substring" aria-hidden="true"></a>
+<a id="takestring" aria-hidden="true"></a>
+<a id="tolower" aria-hidden="true"></a>
+<a id="toupper" aria-hidden="true"></a>
+<a id="trim" aria-hidden="true"></a>
+<a id="uniquestring" aria-hidden="true"></a>
+<a id="uri" aria-hidden="true"></a>
+<a id="uricomponent" aria-hidden="true"></a>
+<a id="uricomponenttostring" aria-hidden="true"></a>
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
 

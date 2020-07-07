@@ -3,21 +3,21 @@ title: Vergleichen der Datenbank-Engine-Features von SQL-Datenbank und SQL Manag
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: In diesem Artikel werden die Datenbank-Engine-Features von Azure SQL-Datenbank und Azure SQL Managed Instance verglichen.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 05/10/2019
-ms.openlocfilehash: a4a78dfd1fd88dfc6b212f0c50716bf3293a7ccd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 06/25/2020
+ms.openlocfilehash: e48a027af70ec9d002ddcfbb2ee36ded4ca7875a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221353"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983518"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -128,7 +128,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | Sicherungsaufbewahrung | Ja. Standardmäßig 7 Tage, maximal 35 Tage. | Ja. Standardmäßig 7 Tage, maximal 35 Tage. |
 | [Data Migration Service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Ja | Ja |
 | Dateisystemzugriff | Nein. Verwenden Sie [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. | Nein. Verwenden Sie [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. |
-| [Geowiederherstellung](recovery-using-backups.md#geo-restore) | Ja – alle Dienstebenen außer Hyperscale | Ja – alle Dienstebenen außer Hyperscale |
+| [Geowiederherstellung](recovery-using-backups.md#geo-restore) | Ja | Ja |
 | [Hyperscale-Architektur](service-tier-hyperscale.md) | Ja | Nein |
 | [Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen](long-term-retention-overview.md) | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. | Bisher nicht. Verwenden Sie [manuelle Sicherungen](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup) mit `COPY_ONLY` als vorübergehende Problemumgehung. |
 | Anhalten/Fortsetzen | Ja, im [serverlosen Modell](serverless-tier-overview.md) | Nein |

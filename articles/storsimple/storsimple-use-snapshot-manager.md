@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75933975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513733"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Verwenden der Benutzeroberfläche des StorSimple Snapshot Managers zum Verwalten von Sicherungsaufträgen und Sicherungskatalog
 
@@ -107,7 +107,7 @@ Die folgende Tabelle enthält eine alphabetische Liste aller StorSimple Snapshot
 > 
 > 
 
-| Action | Navigation | BESCHREIBUNG |
+| Aktion | Navigation | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Authenticate |Klicken Sie auf den Knoten **Geräte**, und klicken Sie dann im **Ergebnisbereich** mit der rechten Maustaste auf ein Gerät. |Klicken Sie auf **Authentifizieren** , um das für das Gerät konfigurierte Kennwort einzugeben. |
 | Klon |Erweitern Sie nacheinander **Sicherungskatalog** und **Cloudmomentaufnahmen**, klicken Sie auf eine datierte Sicherung, und wählen Sie dann ein Volume im **Ergebnisbereich** aus. |Klicken Sie auf **Klonen** , um eine Kopie einer Cloudmomentaufnahme zu erstellen und in einem von Ihnen festgelegten Verzeichnis zu speichern. |
@@ -337,7 +337,7 @@ Der StorSimple Snapshot Manager bietet eine Reihe von Features zur Barrierefreih
 ### <a name="keyboard-navigation-keys"></a>Tastaturnavigationstasten
 In der folgenden Tabelle werden die Tasten beschrieben, mit denen Sie auf der Benutzeroberfläche des StorSimple Snapshot Managers navigieren können. 
 
-| Navigationstaste | Action |
+| Navigationstaste | Aktion |
 |:--- |:--- |
 | NACH-UNTEN-TASTE |Verwenden Sie die NACH-UNTEN-TASTE, um vertikal zum nächsten Element in einem Menü oder Bereich zu wechseln. |
 | EINGABETASTE |Drücken Sie die EINGABETASTE, um eine Aktion abzuschließen und dann mit dem nächsten Schritt fortzufahren. Sie können z.B. die EINGABETASTE drücken, um **Weiter**, **OK** oder **Erstellen** auszuwählen und anschließend mit dem nächsten Schritt in einem Assistenten fortzufahren. |
@@ -428,7 +428,7 @@ In den folgenden Tabellen werden die Tastenkombinationen für die einzelnen Knot
 | V |Öffnet das Menü **Ansicht** . |
 | W |Öffnet eine neue StorSimple Snapshot Manager-Konsole mit Fokus auf dem Knoten **Volumegruppen** . |
 | F |Aktualisiert die StorSimple Snapshot Manager-Konsole. |
-| L |Öffnet die Seite **Liste exportieren**. |
+| L |Öffnet die Seite **Liste exportieren** . |
 | H |Öffnet die Onlinehilfe. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Tastenkombinationen für den Knoten "Sicherungskatalog"

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie das Verwaltungstool für Windows Virtual Desk
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9aea1f56b742d87df769a3206f15024afdf87b3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513398"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Bereitstellen eines Verwaltungstools mit PowerShell
 
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie das Bereitstellungstool mithilfe von PowerSh
 
 ## <a name="important-considerations"></a>Wichtige Hinweise
 
-Das Verwaltungstool muss für jedes Abonnement des Azure Active Directory-Mandanten (Azure AD) separat bereitgestellt werden. Das Tool unterstützt keine Azure AD Business-to-Business (B2B)-Szenarien. 
+Das Verwaltungstool muss für jedes Abonnement des Azure Active Directory-Mandanten (Azure AD) separat bereitgestellt werden. Das Tool unterstützt keine Azure AD Business-to-Business (B2B)-Szenarien.
 
 Dieses Verwaltungstool ist ein Beispiel. Microsoft stellt wichtige Sicherheits- und Qualitätsupdates zur Verfügung. [Der Quellcode steht auf GitHub zur Verfügung](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Egal, ob Sie ein Kunde oder Partner sind, sollten Sie das Tool an Ihre geschäftlichen Anforderungen anpassen.
 
@@ -40,7 +40,7 @@ Die folgenden Browser sind mit dem Verwaltungstool kompatibel:
 Bevor Sie das Verwaltungstool bereitstellen, benötigen Sie einen Azure Active Directory (Azure AD)-Benutzer, um eine App-Registrierung zu erstellen und die Verwaltungsbenutzeroberfläche bereitzustellen. Für diesen Benutzer gilt Folgendes:
 
 - Er muss über die Berechtigung zum Erstellen von Ressourcen in Ihrem Azure-Abonnement verfügen.
-- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) befolgen.
+- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) befolgen.
 
 Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Windows Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
 
@@ -93,7 +93,7 @@ Nachdem Sie die Registrierung der Azure AD-App abgeschlossen haben, können Sie 
 ## <a name="deploy-the-management-tool"></a>Bereitstellen des Verwaltungstools
 
 Führen Sie die folgenden PowerShell-Befehle aus, um das Verwaltungstool bereitzustellen und es dem soeben erstellten Dienstprinzipal zuzuordnen:
-     
+
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -120,7 +120,7 @@ Führen Sie die folgenden PowerShell-Befehle aus, um die URL der Web-App abzuruf
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
 Nachdem Sie nun einen Umleitungs-URI hinzugefügt haben, müssen Sie als nächstes die API-URL aktualisieren, damit eine Interaktion des Verwaltungstools mit dem API-Back-End-Dienst möglich ist.
@@ -143,11 +143,11 @@ So überprüfen Sie die Konfiguration der Azure AD Anwendung und erteilen Sie di
 2. Suchen Sie in der Suchleiste am oberen Rand des Azure-Portals nach **App-Registrierungen**, und wählen Sie das Element unter **Dienste** aus.
 3. Wählen Sie **Alle Anwendungen** aus, und suchen Sie den eindeutigen App-Namen, den Sie für das PowerShell-Skript in [Erstellen einer Azure Active Directory-App-Registrierung](#create-an-azure-active-directory-app-registration) eingegeben haben.
 4. Wählen Sie im Bereich auf der linken Seite des Browsers **Authentifizierung** aus, und stellen Sie sicher, dass der Umleitungs-URI mit der Web-App-URL für das Verwaltungstool übereinstimmt (siehe folgende Abbildung).
-   
+
    [ ![Die Authentifizierungsseite mit dem eingegebenen Umleitungs-URI](../media/management-ui-redirect-uri-inline.png) ](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
 5. Wählen Sie im linken Bereich **API-Berechtigungen** aus, um zu bestätigen, dass Berechtigungen hinzugefügt wurden. Wählen Sie als globaler Administrator die Schaltfläche **Einwilligung des Administrators erteilen für `tenantname`** aus, und befolgen Sie die Anweisungen im Dialogfeld, um die Administratoreinwilligung für Ihre Organisation anzugeben.
-    
+
     [ ![Die Seite „API-Berechtigungen“](../media/management-ui-permissions-inline.png) ](../media/management-ui-permissions-expanded.png#lightbox)
 
 Sie können das Verwaltungstool jetzt verwenden.
@@ -158,13 +158,13 @@ Nachdem Sie das Verwaltungstool eingerichtet haben, können Sie es jederzeit und
 
 1. Öffnen Sie die URL der Web-App in einem Webbrowser. Wenn Sie die URL vergessen haben, können Sie sich bei Azure anmelden, den App Dienst suchen, den Sie für das Verwaltungstool bereitgestellt haben, und dann die URL auswählen.
 2. Melden Sie sich mit Ihren Windows Virtual Desktop-Anmeldeinformationen an.
-   
+
    > [!NOTE]
    > Wenn Sie beim Konfigurieren des Verwaltungstools keine Administratoreinwilligung erteilt haben, muss jeder Benutzer, der sich anmeldet, eigens einwilligen, um das Tool zu verwenden.
 
 3. Wählen Sie bei der Aufforderung zum Auswählen einer Mandantengruppe in der Dropdownliste den Eintrag **Standardmandantengruppe** aus.
 4. Wenn Sie eine **Standardmandantengruppe** auswählen, sollte links im Fenster ein Menü angezeigt werden. Suchen Sie in diesem Menü nach dem Namen Ihrer Mandantengruppe, und wählen Sie sie aus.
-   
+
    > [!NOTE]
    > Wenn Sie eine benutzerdefinierte Mandantengruppe festgelegt haben, geben Sie den Namen manuell ein, anstatt eine Auswahl in der Dropdownliste zu treffen.
 

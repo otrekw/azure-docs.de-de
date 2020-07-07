@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322089"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Auswählen von Transformationen im Zuordnungsdatenfluss
 
@@ -38,6 +38,9 @@ Feste Zuordnungen können verwendet werden, um eine Unterspalte einer hierarchis
 ![Hierarchische Zuordnung](media/data-flow/select-hierarchy.png "Hierarchische Zuordnung")
 
 ## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
 
 Wenn Sie viele Spalten auf einmal zuordnen oder abweichende Spalten nachgeschaltet weitergeben möchten, verwenden Sie die regelbasierte Zuordnung, um Ihre Zuordnungen mithilfe von Spaltenmustern zu definieren. Gleichen Sie basierend auf den Werten `name`, `type`, `stream` und `position` von Spalten ab. Es kann eine beliebige Kombination aus festen und regelbasierten Zuordnungen verwendet werden. Standardmäßig werden alle Projektionen mit mehr als 50 Spalten auf eine regelbasierte Zuordnung festgelegt, die einen Abgleich auf Übereinstimmung für jede Spalte vornimmt und den eingegebenen Namen ausgibt. 
 

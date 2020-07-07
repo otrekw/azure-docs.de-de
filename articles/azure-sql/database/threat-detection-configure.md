@@ -10,19 +10,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321545"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Konfigurieren von Advanced Threat Protection für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [Advanced Threat Protection](threat-detection-overview.md) für Azure SQL-Datenbank erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen. Mithilfe von Advanced Threat Protection können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Advanced Threat Protection-Warnungen](threat-detection-overview.md#alerts).
 
-Sie können sich über [E-Mail-Benachrichtigungen](threat-detection-overview.md#explore-detection-of-a-suspicious-event) oder im [Azure-Portal](threat-detection-overview.md#explore-alerts-in-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
+Sie können sich über [E-Mail-Benachrichtigungen](threat-detection-overview.md#explore-detection-of-a-suspicious-event) oder im [Azure-Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
 [Advanced Threat Protection](threat-detection-overview.md) ist Teil des [Advanced Data Security](advanced-data-security.md)-Angebots. Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf Advanced Threat Protection und die Verwaltung erfolgen über das zentrale SQL Advanced Data Security-Portal.
 

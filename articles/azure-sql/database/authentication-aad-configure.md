@@ -3,7 +3,7 @@ title: Konfigurieren der Azure Active Directory-Authentifizierung
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung nach der Konfiguration von Azure AD eine Verbindung mit SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics herstellen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310902"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984899"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 

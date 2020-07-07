@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190721"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984010"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von REST und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -140,7 +140,7 @@ Ein [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/creat
 1. Verwenden Sie **POST** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. Kopieren Sie im **Anforderungstext** die folgende JSON-Definition, und ersetzen Sie dabei `connectionString` durch die tatsächliche Verbindung Ihres Speicherkontos. 
@@ -161,7 +161,7 @@ Ein [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/creat
     ```
 1. Senden Sie die Anforderung. Daraufhin sollte zur Bestätigung der erfolgreichen Ausführung ein Statuscode vom Typ 201 angezeigt werden. 
 
-Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion der Anforderung: `api-version=2019-05-06` sollte im Endpunkt vorhanden sein, `api-key` sollte im Header hinter `Content-Type` vorhanden sein, und sein Wert muss für einen Suchdienst gültig sein. Vergewissern Sie sich ggf. mithilfe eines JSON-Onlinevalidierungstools, dass die Syntax des JSON-Dokuments korrekt ist. 
+Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion der Anforderung: `api-version=2020-06-30` sollte im Endpunkt vorhanden sein, `api-key` sollte im Header hinter `Content-Type` vorhanden sein, und sein Wert muss für einen Suchdienst gültig sein. Vergewissern Sie sich ggf. mithilfe eines JSON-Onlinevalidierungstools, dass die Syntax des JSON-Dokuments korrekt ist. 
 
 ### <a name="step-2-create-a-skillset"></a>Schritt 2: Erstellen eines Skillsets
 
@@ -170,7 +170,7 @@ Bei einem [Skillset-Objekt](https://docs.microsoft.com/rest/api/searchservice/cr
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts.
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
 1. Kopieren Sie im **Anforderungstext** die folgende JSON-Definition. Dieses Skillset umfasst die folgenden integrierten Qualifikationen:
@@ -255,7 +255,7 @@ Ein [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) stel
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um Ihren Index zu benennen.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
 1. Kopieren Sie im **Anforderungstext** die folgende JSON-Definition. Das Feld `content` dient zum Speichern des eigentlichen Dokuments. Zusätzliche Felder für `languageCode`, `keyPhrases` und `organizations` stellen neue Informationen (Felder und Werte) dar, die durch das Skillset erstellt werden.
@@ -339,7 +339,7 @@ Ein [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um Ihren Indexer zu benennen.
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. Kopieren Sie im **Anforderungstext** die folgende JSON-Definition. Beachten Sie die Feldzuordnungselemente. Diese Zuordnungen sind wichtig, da Sie den Datenfluss definieren. 
@@ -432,7 +432,7 @@ Indizierung und Anreicherung beginnen, sobald Sie die Anforderung für die Index
 1. Verwenden Sie **GET** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um Ihren Indexer zu benennen.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. Ermitteln Sie anhand der Antwort, ob der Indexer ausgeführt wird, oder sehen Sie sich Fehler- und Warnungsinformationen an.  
@@ -451,7 +451,7 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
 1. Verwenden Sie **GET** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um nach Instanzen eines Begriffs oder Ausdrucks zu suchen und das Feld `content` sowie eine Anzahl der übereinstimmenden Dokumente zurückzugeben.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    In den Ergebnissen dieser Abfrage werden Dokumentinhalte zurückgegeben. Dabei handelt es sich um das gleiche Ergebnis, das Sie erhalten, wenn Sie den Blobindexer ohne die Pipeline der kognitiven Suche verwenden. Dieses Feld ist zwar durchsuchbar, kann aber nicht für Facetten, Filter oder AutoVervollständigen verwendet werden.
@@ -461,7 +461,7 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
 1. Geben Sie bei der zweiten Abfrage einige der neuen Felder zurück, die von der Pipeline erstellt wurden („persons“, „organizations“, „locations“, „languageCode“). „keyPhrases“ lassen wir der Einfachheit halber weg. Wenn Sie diese Werte sehen möchten, können Sie sie aber mit einschließen.
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    Die Felder in der Anweisung „$select“ enthalten neue Informationen, die auf der Grundlage der Cognitive Services-Funktionen für die Verarbeitung natürlicher Sprache erstellt wurden. Erwartungsgemäß sind die Ergebnisse nicht ganz frei von Störungen, und es gibt gewisse Abweichungen zwischen Dokumenten, aber in vielen Fällen liefern die analytischen Modelle präzise Ergebnisse.
 
@@ -472,7 +472,7 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
 1. Fügen Sie zur Veranschaulichung des Nutzens dieser Felder einen Facettenparameter hinzu, um eine Aggregation übereinstimmender Dokumente nach Standort zurückzugeben.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    In diesem Beispiel gibt es zwei oder drei Übereinstimmungen für jeden Standort.
@@ -483,7 +483,7 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
 1. Wenden Sie in diesem letzten Beispiel einen Filter auf die Organisationsauflistung an, um zwei Übereinstimmungen für NASDAQ-basierte Filterkriterien zurückzugeben.
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 Diese Abfragen veranschaulichen einige der Verwendungsmöglichkeiten von Abfragesyntax und Filtern für neue Felder, die von Cognitive Search erstellt werden. Weitere Abfragebeispiele finden Sie unter [Beispiele](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) im Artikel „Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)“, unter [Erstellen einer einfachen Abfrage in Azure Search](search-query-simple-examples.md) sowie unter [Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)](search-query-lucene-examples.md).
@@ -501,7 +501,7 @@ Sie können das Portal verwenden, um Indizes, Indexer, Datenquellen und Qualifik
 Alternativ können Sie **DELETE** verwenden und URLs für jedes Objekt angeben. Der folgende Befehl löscht einen Indexer:
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 Nach erfolgreichem Löschen wird der Statuscode 204 zurückgegeben.

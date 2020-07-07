@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343019"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.
@@ -27,7 +27,7 @@ Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Information
 ## <a name="usage"></a>Verwendung
 Die an einen Benutzer von den POP-Servern gesendete Antwort enthält die `X-EC-Debug`-Header nur, wenn die folgenden Bedingungen erfüllt sind:
 
-- Das Feature [Debug Cache Response Headers](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) wurde für die Regel-Engine für die angegebene Anforderung aktiviert.
+- Das Feature [Debug Cache Response Headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) wurde für die Regel-Engine für die angegebene Anforderung aktiviert.
 - Die angegebene Anforderung definiert den Satz der Debugcache-Antwortheader, die in die Antwort einbezogen werden.
 
 ## <a name="requesting-debug-cache-information"></a>Anfordern von Debugcacheinformationen

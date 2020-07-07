@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339364"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Zurückgeben oder Ersetzen Ihres Azure Stack Edge-Geräts
 
@@ -22,6 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Sta
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
+>
 > * Löschen der Daten von den Datenträgern des Geräts
 > * Öffnen eines Supporttickets zur Rückgabe Ihres Geräts
 > * Packen des Geräts und Planen einer Abholung

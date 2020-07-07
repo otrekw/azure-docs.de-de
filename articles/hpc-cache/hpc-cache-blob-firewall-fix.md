@@ -3,15 +3,15 @@ title: Umgehen von Speicherfirewalleinstellungen
 description: Eine Firewalleinstellung für ein Speicherkontonetzwerk kann zu Fehlern beim Erstellen eines Azure-Blobspeicherziels in Azure HPC Cache führen. Dieser Artikel bietet eine Problemumgehung für die Einschränkung, bis eine Softwarekorrektur vorhanden ist.
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.author: rohogue
-ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e57e5d101e35c55dbaa39615dfe48511a8b87c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513827"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>Umgehen der Firewalleinstellungen für Blobspeicherkonten
 

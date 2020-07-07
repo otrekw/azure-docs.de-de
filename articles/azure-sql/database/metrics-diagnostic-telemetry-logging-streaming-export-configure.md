@@ -2,7 +2,7 @@
 title: Konfigurieren des Streamingexports von Metriken und Ressourcenprotokollen
 description: Erfahren Sie, wie Sie den Streamingexport von Metriken und Ressourcenprotokollen – einschließlich intelligenter Diagnoseanalysen aus Azure SQL-Datenbank und Azure SQL Managed Instance – als Ziel Ihrer Wahl konfigurieren, um Informationen zu Ressourcennutzung und Statistiken zur Abfrageausführung zu speichern.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 87a30544378936f8408f187f6b9ad67edb8dce12
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1a7a45433c2db71cbfaf16ab7107f233f1dd0eb9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117754"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985515"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
