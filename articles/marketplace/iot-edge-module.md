@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657958"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963375"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-Module
 
@@ -30,7 +30,7 @@ Dank der Einführung der [IoT Edge-Module im Azure Marketplace](https://azuremar
 
 ## <a name="what-is-an-iot-edge-module"></a>Was ist ein IoT Edge-Modul?
 
-Azure IoT Edge ermöglicht Ihnen die Bereitstellung und Verwaltung von Geschäftslogik im Edge in Form von Modulen. Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. Weitere Informationen zu IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
+Azure IoT Edge ermöglicht Ihnen die Bereitstellung und Verwaltung von Geschäftslogik im Edge in Form von Modulen. Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. Weitere Informationen zu IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](../iot-edge/iot-edge-modules.md).
 
 **Was ist der Unterschied zwischen Container-Angebotstyp und einem IoT Edge-Modul-Angebotstyp?**
 
@@ -40,7 +40,7 @@ Beim IoT Edge-Modul-Angebotstyp handelt es sich um einen speziellen Containertyp
 
 **Auswählen der passenden Storefront**
 
-IoT Edge-Module werden nur im Azure Marketplace veröffentlicht, in AppSource sind sie nicht verfügbar.  Weitere Informationen zu den Unterschieden und Zielgruppen der jeweiligen Storefronts finden Sie unter [Bestimmung Ihrer Veröffentlichungsoption](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
+IoT Edge-Module werden nur im Azure Marketplace veröffentlicht, in AppSource sind sie nicht verfügbar.  Weitere Informationen zu den Unterschieden und Zielgruppen der jeweiligen Storefronts finden Sie unter [Bestimmung Ihrer Veröffentlichungsoption](determine-your-listing-type.md).
  
 **Abrechnungsoptionen**
 
@@ -48,7 +48,7 @@ Derzeit unterstützt der Marketplace **kostenlose** und an eigene Lizenzen gebun
  
 **Veröffentlichungsoptionen**
 
-Für IoT Edge-Module sollten Sie jedenfalls die Veröffentlichungsoption **Transact** auswählen.  Weitere Informationen zu Veröffentlichungsoptionen finden Sie unter [Auswählen einer Veröffentlichungsoption](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).  
+Für IoT Edge-Module sollten Sie jedenfalls die Veröffentlichungsoption **Transact** auswählen.  Weitere Informationen zu Veröffentlichungsoptionen finden Sie unter [Auswählen einer Veröffentlichungsoption](determine-your-listing-type.md).  
 
 ## <a name="eligibility-criteria"></a>Wer kann IoT Edge-Module erwerben?
 
@@ -58,7 +58,7 @@ Für IoT Edge-Modul-Angebote gelten die Bestimmungen der Microsoft Azure Marketp
 
 Wenn Sie ein IoT Edge-Modul im Azure Marketplace veröffentlichen möchten, müssen Sie folgende Voraussetzungen erfüllen:
 
-- Sie benötigen Zugriff auf Partner Center. Weitere Informationen hierzu finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+- Sie benötigen Zugriff auf Partner Center. Weitere Informationen hierzu finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](marketplace-publishers-guide.md).
 - Sie müssen Ihr IoT Edge-Modul in einer Azure Container Registry hosten. 
 - Sie müssen unter anderem folgende Metadaten Ihres IoT Edge-Moduls bereithalten: 
     - Titel

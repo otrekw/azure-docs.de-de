@@ -4,12 +4,12 @@ description: Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoress
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220346"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960723"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
  
@@ -70,7 +70,7 @@ So konfigurieren Sie eine Metrikwarnung im Azure-Portal
 
 Weitere Informationen zum Erstellen von Metrikwarnungen finden Sie unter [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](../azure-monitor/platform/alerts-metric-overview.md) und [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md).
 
-Sie können auch mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/) von Azure Monitor eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Wenn Sie auftrags-, task- oder poolspezifische Informationen in Ihre Warnungen einschließen möchten, lesen Sie die Informationen zu Suchabfragen unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md).
+Sie können auch mithilfe der [REST-API](/rest/api/monitor/) von Azure Monitor eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Wenn Sie auftrags-, task- oder poolspezifische Informationen in Ihre Warnungen einschließen möchten, lesen Sie die Informationen zu Suchabfragen unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Batch-Diagnose
 

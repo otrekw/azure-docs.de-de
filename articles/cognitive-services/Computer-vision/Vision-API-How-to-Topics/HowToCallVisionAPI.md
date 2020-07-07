@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983464"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957901"
 ---
 # <a name="call-the-computer-vision-api"></a>Aufrufen der Maschinelles Sehen-API
 
@@ -254,4 +254,4 @@ Diese Fehler sind identisch mit den Fehlern in „vision.analyze“ mit dem zus�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um die REST-API zu verwenden, wechseln Sie zur [Referenz für die Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44).
+Um die REST-API zu verwenden, wechseln Sie zur [Referenz für die Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b).

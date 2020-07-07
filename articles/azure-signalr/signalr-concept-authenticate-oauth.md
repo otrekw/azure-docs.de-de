@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194600"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961794"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service-Authentifizierung
 
@@ -67,8 +67,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 4. Sobald die Registrierung der neuen OAuth-App abgeschlossen ist, fügen Sie *Client-ID* und *Geheimer Clientschlüssel* mit den folgenden Befehlen zum Secret Manager hinzu. Ersetzen Sie *Your_GitHub_Client_Id* und *Your_GitHub_Client_Secret* durch die Werte für Ihre OAuth-App.
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>Implementieren des OAuth-Flows
 
@@ -76,9 +78,11 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 1. Fügen Sie einen Verweis auf das neueste *Microsoft.AspNetCore.Authentication.Cookies*- und *AspNet.Security.OAuth.GitHub*-Paket hinzu, und stellen Sie alle Pakete wieder her.
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. Öffnen Sie *Startup.cs*, und fügen Sie `using`-Anweisungen für die folgenden Namespaces hinzu:
 
@@ -345,19 +349,25 @@ In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hu
 
 2. Führen Sie den folgenden Befehl in der Befehlsshell aus, um die App per .NET Core-CLI zu erstellen:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Führen Sie nach dem erfolgreichen Abschluss des Buildvorgangs den folgenden Befehl aus, um die Web-App lokal auszuführen:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Standardmäßig wird die App lokal auf Port 5000 gehostet:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. Öffnen Sie ein Browserfenster, und navigieren Sie zu `http://localhost:5000`. Klicken Sie oben auf den Link **hier**, um sich bei GitHub anzumelden.
 

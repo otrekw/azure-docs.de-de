@@ -1,14 +1,14 @@
 ---
 title: Sicherer Zugriff auf Key Vault mit Batch
 description: Erfahren Sie, wie Sie mit Azure Batch programmgesteuert auf Ihre Anmeldeinformationen aus Key Vault zugreifen können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ea248dd51ae6786b0e987dc31ca83b29277cd16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117453"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961505"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Sicherer Zugriff auf Key Vault mit Batch
 
@@ -37,7 +37,7 @@ Als nächstes verwenden Sie das Tool `makecert`, um selbstsignierte Zertifikatsd
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch erfordert eine `.pfx`-Datei. Verwenden Sie das Tool [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx), um die von `makecert` erstellten `.cer`- und `.pvk`-Dateien in eine einzelne `.pfx`-Datei zu konvertieren.
+Batch erfordert eine `.pfx`-Datei. Verwenden Sie das Tool [pvk2pfx](/windows-hardware/drivers/devtest/pvk2pfx), um die von `makecert` erstellten `.cer`- und `.pvk`-Dateien in eine einzelne `.pfx`-Datei zu konvertieren.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po

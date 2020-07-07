@@ -272,13 +272,13 @@
     - name: Batch-Feedback
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten): Batch"
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: HPC unter Azure
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Preisrechner

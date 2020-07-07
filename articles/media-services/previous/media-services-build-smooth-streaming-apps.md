@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69016793"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960366"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung  
 
@@ -151,15 +151,24 @@ In dieser XAML-Datei sind den Steuerelementen einige Ereignishandler zugeordnet.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Anfang der Datei die folgende using-Anweisung hinzu:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. Fügen Sie am Anfang der **MainPage** -Klasse das folgende Datenmember hinzu:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. Fügen Sie am Ende des **MainPage** -Konstruktors die beiden folgenden Zeilen hinzu:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. Fügen Sie am Ende der **MainPage**-Klasse den folgenden Code ein:
    ```csharp
          # region UI Button Click Events

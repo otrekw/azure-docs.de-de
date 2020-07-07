@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657860"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958173"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Herausgeberleitfaden für den kommerziellen Marketplace
 
 Dieser Herausgeberleitfaden soll neuen und vorhandenen Herausgebern Anleitungen zum Auflisten von Anwendungen und Diensten in den Storefronts des kommerziellen Marketplace, in [Azure Marketplace](https://azuremarketplace.microsoft.com) und [Microsoft AppSource](https://appsource.microsoft.com) bieten, um ihr Geschäft im Rahmen der Partnerschaft mit Microsoft auszubauen.
 
 >[!Note]
->Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+>Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](comparing-appsource-azure-marketplace.md).
 
 In diesem Leitfaden werden die folgenden Themen behandelt: 
 *   Definition und Funktionsweise des Marketplace 
@@ -62,7 +62,7 @@ Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angeb
 
 *   Co-Selling: Beginnen oder beschleunigen Sie Ihren Vertriebsprozess mit Microsoft über den Marketplace. Zugriff auf Programme und Support zur Förderung des gemeinsamen Vertriebs mit Microsoft-Teams.
 
-Nachdem Sie Ihre Lösung an den Marketplace [übermittelt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) haben, kontaktiert Sie unser Onboardingteam, um Sie bei der Veröffentlichung zu unterstützen.  Weitere Informationen finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Nachdem Sie Ihre Lösung an den Marketplace [übermittelt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) haben, kontaktiert Sie unser Onboardingteam, um Sie bei der Veröffentlichung zu unterstützen.  Weitere Informationen finden Sie unter [Erstellen eines Partner Center-Kontos](partner-center-portal/create-account.md).
 
 Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 

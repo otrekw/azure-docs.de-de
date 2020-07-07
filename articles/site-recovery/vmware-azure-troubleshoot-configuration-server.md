@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504319"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -193,7 +193,7 @@ Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active 
 Um das Problem zu beheben, melden Sie sich beim Azure-Portal an, und führen Sie einen der folgenden Schritte aus:
 
 - Fordern Sie die Rolle „Anwendungsentwickler“ in AAD an. Weitere Informationen zur Rolle des Anwendungsentwicklers finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Prozessserver/Masterziel können nicht mit dem Konfigurationsserver kommunizieren 
 
