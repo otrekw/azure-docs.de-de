@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Cognitive Search
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Cognitive Search. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 69938da071a756fe68c750f7f9c4e8825f0a369d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: a5d33b9305446bd2db059c90939a860286a42afe
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887823"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318544"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Integrierte Azure Policy-Definitionen für Azure Cognitive Search
 

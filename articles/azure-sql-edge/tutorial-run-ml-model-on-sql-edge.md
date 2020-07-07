@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 02850b8780e70d402cff2b8fd301c2f79cd6c55e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235063"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318640"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>Bereitstellen eines ML-Modells in Azure SQL Edge mithilfe von ONNX 
 
@@ -32,7 +32,7 @@ Im dritten Teil dieses dreiteiligen Tutorials zum Vorhersagen von Eisenerzverunr
    |_Feld_|_Wert_|
    |-------|-------|
    |Verbindungstyp| Microsoft SQL Server|
-   |Serve|Öffentliche IP-Adresse in der VM, die für diese Demo erstellt wurde|
+   |Server|Öffentliche IP-Adresse in der VM, die für diese Demo erstellt wurde|
    |Username|sa|
    |Kennwort|Das starke Kennwort, das bei der Erstellung der Azure SQL Edge-Instanz verwendet wurde|
    |Datenbank|Standard|
