@@ -3,7 +3,7 @@ title: Azure CLI-Skriptbeispiele
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure CLI-Skriptbeispiele zum Erstellen und Verwalten von Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251514"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982766"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen 
  
@@ -35,7 +35,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen zum Verwalten von Einzel- und Pooldatenbanken in Azure SQL-Datenbank. 
 
-| | |
+|Bereich|BESCHREIBUNG|
 |---|---|
 |**Erstellen von Datenbanken in Azure SQL-Datenbank**||
 | [Create a single SQL database and configure a firewall rule using PowerShell](scripts/create-and-configure-database-cli.md) (Erstellen einer einzelnen SQL-Datenbank und Konfigurieren einer Firewallregel mit PowerShell) | Erstellt eine Azure SQL-Datenbank-Instanz und konfiguriert eine Firewallregel auf Serverebene. |
@@ -63,7 +63,7 @@ Erfahren Sie mehr über die [Azure CLI-API für Einzeldatenbanken](single-databa
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für verwaltete Azure SQL-Instanzen.
 
-| | |
+|Bereich|BESCHREIBUNG|
 |---|---|
 | **Erstellen einer verwalteten SQL-Instanz**||
 | [Erstellen einer verwalteten SQL-Instanz](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Erstellt eine verwaltete SQL-Instanz. |
