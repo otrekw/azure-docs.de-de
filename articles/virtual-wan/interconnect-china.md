@@ -9,7 +9,6 @@ ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747613"
@@ -44,9 +43,9 @@ Abhängig vom Anbieter und Ihren Anforderungen müssen Sie nun einen der folgend
 * Softwaredefiniertes WAN (SDWAN)
 * Dedizierter Internetzugang
 
-Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
+Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking (Beijing) oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
 
-Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking, Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
+Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking (Beijing), Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
 
 Abhängig vom Anbieter können Sie unterschiedliche Dienstangebote erhalten. In der folgenden Tabelle finden Sie ein Beispiel für Anbieter und dem jeweils angebotenen Dienst, basierend auf den Informationen zum Zeitpunkt, zu dem dieser Artikel verfasst wurde.
 

@@ -14,7 +14,6 @@ ms.date: 03/18/2020
 ms.author: janutter
 ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860051"
@@ -103,7 +102,7 @@ In dieser Schnellstartanleitung erfahren Sie anhand eines Codebeispiels, wie in 
 >|Enter_the_Tenant_Info_Here| Legen Sie eine der folgenden Optionen fest: Wenn Ihre Anwendung *Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die Verzeichnis-ID (Mandant) oder den Mandantennamen (z. B. **contoso.microsoft.com**). Wenn Ihre Anwendung *Konten in einem beliebigen Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch **Organisationen**. Wenn Ihre Anwendung *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten* unterstützt, ersetzen Sie diesen Wert durch **common**. Wenn Sie die Unterstützung *ausschließlich auf persönliche Microsoft-Konten* beschränken möchten, ersetzen Sie diesen Wert durch **consumers**. |
 >|Enter_the_Redirect_Uri_Here|Ersetzen Sie diesen Wert durch **http://localhost:4200** .|
 >|cacheLocation  | (Optional) Legen Sie den Browserspeicher für den Authentifizierungsstatus fest. Der Standardwert lautet **sessionStorage**.   |
->|storeAuthStateInCookie  | (Optional) Identifizieren Sie die Bibliothek, in der der Authentifizierungsanforderungsstatus gespeichert wird. Dieser Status ist für die Überprüfung der Authentifizierungsflows in den Browsercookies erforderlich. Dieses Cookie wird für Internet Explorer und Edge festgelegt, um diese beiden Browser zu unterstützen. Weitere Informationen finden Sie im Artikel zu [bekannten Problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
+>|storeAuthStateInCookie  | (Optional) Identifizieren Sie die Bibliothek, in der der Authentifizierungsanforderungsstatus gespeichert wird. Dieser Status ist für die Überprüfung der Authentifizierungsflows in den Browsercookies erforderlich. Dieses Cookie wird für Internet Explorer und Microsoft Edge festgelegt, um diese beiden Browser zu unterstützen. Weitere Informationen finden Sie im Artikel zu [bekannten Problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
 > > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 
