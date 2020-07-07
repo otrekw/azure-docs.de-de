@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfcba442a0f9e93b5a5f2adbfa4368353b981f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b282f8e592ffa6b5c8cb36b2f3b2276bdeb0f58
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187244"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799138"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hootsuite
 
@@ -90,10 +90,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
 
-    | |
-    |--|
-    | `https://hootsuite.com/member/sso-complete` |
-    | `https://hootsuite.com/sso/<ORG_ID>` |
+    ```http
+    https://hootsuite.com/member/sso-complete
+    https://hootsuite.com/sso/<ORG_ID>
+    ```
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 

@@ -3,12 +3,12 @@ title: 'Azure Batch: Poolerstellungsereignis'
 description: Referenz zum Batch-Poolerstellungsereignis, das nach dem Erstellen eines Pools ausgegeben wird. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724036"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962491"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
@@ -53,7 +53,7 @@ ms.locfileid: "83724036"
 |-------------|----------|-----------|
 |`id`|String|Die ID des Pools.|
 |`displayName`|String|Der Anzeigename des Pools.|
-|`vmSize`|String|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) oder [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
+|`vmSize`|String|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) oder [Größen für virtuelle Computer](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
 |`imageType`|String|Die Bereitstellungsmethode für das Image. Die Werte `virtualMachineConfiguration` oder `cloudServiceConfiguration` werden unterstützt.|
 |[`cloudServiceConfiguration`](#bk_csconf)|Komplexer Typ|Die Clouddienstkonfiguration des Pools.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Komplexer Typ|Die VM-Konfiguration des Pools.|
@@ -71,8 +71,8 @@ ms.locfileid: "83724036"
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
-|`osFamily`|String|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|`targetOSVersion`|String|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\*** , der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|`osFamily`|String|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
+|`targetOSVersion`|String|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\*** , der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 

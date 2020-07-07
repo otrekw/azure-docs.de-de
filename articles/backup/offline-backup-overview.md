@@ -3,12 +3,12 @@ title: Übersicht über die Offlinesicherung
 description: Erfahren Sie mehr über die Komponenten der Offlinesicherung. Dazu zählen Offlinesicherungen basierend auf Azure Data Box und Offlinesicherungen basierend auf dem Azure Import/Export-Dienst.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628348"
 ---
 # <a name="overview-of-offline-backup"></a>Übersicht über die Offlinesicherung
 
@@ -60,7 +60,7 @@ Hier finden Sie einen Überblick über die Architektur:
 
 Informationen zur Verwendung einer auf dem Azure Import/Export-Dienst basierenden Offlinesicherung mit dem MARS-Agent finden Sie unter [Offlinesicherungsworkflow in Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Wenn Sie die Offlinesicherung mit MABS oder DPM-A verwenden möchten, finden Sie weitere Informationen unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Wenn Sie die Offlinesicherung mit MABS oder DPM-A verwenden möchten, finden Sie weitere Informationen unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
 
 ## <a name="offline-backup-support-summary"></a>Zusammenfassung der Unterstützung für die Offlinesicherung
 
@@ -83,4 +83,4 @@ In der folgenden Tabelle werden die beiden verfügbaren Optionen verglichen, sod
 
 - [Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md)
-- [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export.md)
