@@ -1,18 +1,18 @@
 ---
 title: 'Azure-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten verwalteter Anwendungen – Azure Marketplace'
 description: In diesem Artikel werden die Anforderungen für das Veröffentlichen einer verwalteten Anwendung im Azure Marketplace beschrieben.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
 ms.date: 04/22/2020
-ms.author: dsindona
-ms.openlocfilehash: a4b788749e6178c49010b153fb5caae35b79abf9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963579"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119819"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Leitfaden für die Veröffentlichung von verwalteten Azure-Anwendungen
 

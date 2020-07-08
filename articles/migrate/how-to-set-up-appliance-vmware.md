@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538255"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112815"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -47,7 +47,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen [Einstellungen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) entsprechen.
+3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen [Einstellungen](./tutorial-assess-vmware.md#verify-security) entsprechen.
 
 
 
@@ -115,7 +115,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
-Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) zu erforderlichen Zugriffsberechtigungen.
+Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](./migrate-support-matrix-vmware.md) zu erforderlichen Zugriffsberechtigungen.
 
 > [!NOTE]
 > Diese Eingabe ist optional und wird benötigt, um die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent zu aktivieren.

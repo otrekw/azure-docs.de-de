@@ -1,18 +1,14 @@
 ---
 title: Azure App Configuration als Event Grid-Quelle
 description: In diesem Artikel wird beschrieben, wie Azure App Configuration als Event Grid-Ereignisquelle verwendet wird. Er enthält das Schema sowie Links zu Tutorials und Artikeln mit Vorgehensweisen.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116997"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure App Configuration als Event Grid-Quelle
 In diesem Artikel werden die Eigenschaften und das Schema für Azure App Configuration-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure App Configuration als Ereignisquelle verwenden.

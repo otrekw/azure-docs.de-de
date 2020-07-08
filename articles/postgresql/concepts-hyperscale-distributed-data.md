@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7757fdb4953640597a805c3d74a9e1ef08ef2c07
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224754"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114498"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Verteilte Daten in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -55,7 +55,7 @@ Die Metadatentabelle `pg_dist_shard` auf dem Koordinatorknoten enthält eine Zei
 
 ```sql
 SELECT * from pg_dist_shard;
- logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue 
+ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
 ---------------+---------+--------------+---------------+---------------
  github_events |  102026 | t            | 268435456     | 402653183
  github_events |  102027 | t            | 402653184     | 536870911
@@ -84,11 +84,14 @@ JOIN pg_dist_node node
 WHERE shardid = 102027;
 ```
 
-    ┌─────────┬───────────┬──────────┐
-    │ shardid │ nodename  │ nodeport │
-    ├─────────┼───────────┼──────────┤
-    │  102027 │ localhost │     5433 │
-    └─────────┴───────────┴──────────┘
+```output
+┌─────────┬───────────┬──────────┐
+│ shardid │ nodename  │ nodeport │
+├─────────┼───────────┼──────────┤
+│  102027 │ localhost │     5433 │
+└─────────┴───────────┴──────────┘
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Erfahren Sie mehr über das [Auswählen einer Verteilungsspalte](concepts-hyperscale-choose-distribution-column.md) für verteilte Tabellen.

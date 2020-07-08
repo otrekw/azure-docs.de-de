@@ -1,19 +1,14 @@
 ---
 title: Azure Container Registry als Event Grid-Quelle
 description: In diesem Artikel werden die Eigenschaften beschrieben, die mit Azure Event Grid für Container Registry-Ereignisse bereitgestellt werden.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393359"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113716"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid-Quelle
 

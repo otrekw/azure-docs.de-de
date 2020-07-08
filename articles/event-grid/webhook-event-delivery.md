@@ -1,19 +1,14 @@
 ---
 title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: cf298156fe7a347799afced8bb065cb3a02bc49a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558434"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118952"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.

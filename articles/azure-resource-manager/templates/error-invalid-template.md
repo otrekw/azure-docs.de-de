@@ -3,12 +3,12 @@ title: Fehler wegen ungültiger Vorlage
 description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen beim Bereitstellen von Azure Resource Manager-Vorlagen behoben werden.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324061"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118884"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -48,7 +48,7 @@ Solche Fehler können sehr leicht passieren, da Vorlagenausdrücke recht kompliz
 
 Wenn Sie nicht die passende Syntax bereitstellen, erzeugt die Vorlage einen Wert, der nicht Ihrer Absicht entspricht.
 
-Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (z.B. [Visual Studio](create-visual-studio-deployment-project.md) oder [Visual Studio Code](use-vs-code-to-create-template.md)).
+Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (z.B. [Visual Studio](create-visual-studio-deployment-project.md) oder [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)).
 
 <a id="incorrect-segment-lengths"></a>
 

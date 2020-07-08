@@ -1,18 +1,14 @@
 ---
 title: Von Azure Event Grid unterstützte Metriken
 description: In diesem Artikel sind Azure Monitor-Metriken aufgeführt, die vom Azure Event Grid-Dienst unterstützt werden.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 643df2f4cc6347e0fd56f9124b68f1888ab85e26
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: 3b22beafc9f88d2d95b25fd7ad2f2308a4df9097
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116419"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Von Azure Event Grid unterstützte Metriken
 Dieser Artikel enthält Listen von Event Grid-Metriken, die nach Namespaces kategorisiert sind. 

@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie Autovacuum auf einem Az
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116352"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Autovacuum auf einem Azure Database for PostgreSQL-Einzelserver
 In diesem Artikel wird beschrieben, wie Sie Autovacuum auf einem Azure Database for PostgreSQL-Server effizient optimieren können.
@@ -22,20 +22,25 @@ PostgreSQL verwendet für eine bessere Datenbankparallelität MVCC (Multiversion
 Ein Vacuum-Auftrag kann manuell oder automatisch ausgelöst werden. Wenn in der Datenbank viele Aktualisierungs- oder Löschvorgänge stattfinden, sind viele inaktive Tupel vorhanden. Wenn sich die Datenbank im Leerlauf befindet, sind weniger inaktive Tupel vorhanden. Bei einer starken Auslastung der Datenbank müssen häufiger Vacuum-Aufträge ausgeführt werden. Das *manuelle* Ausführen von Vacuum-Aufträgen ist daher unpraktisch.
 
 Autovacuum kann so konfiguriert werden und profitiert von einer Optimierung. Die Standardwerte, mit denen PostgreSQL ausgeliefert wird, sollen sicherstellen, dass das Produkt auf allen Arten von Geräten ausgeführt werden kann. Dies schließt Raspberry Pi-Geräte ein. Die idealen Konfigurationswerte sind von verschiedenen Faktoren abhängig:
+
 - Gesamtanzahl der Ressourcen, z.B. SKU und Speichergröße
 - Ressourcennutzung
 - Merkmale der einzelnen Objekte
 
 ## <a name="autovacuum-benefits"></a>Vorteile von Autovacuum
+
 Wenn Sie Vacuum nicht hin und wieder ausführen, können sich inaktive Tupel ansammeln und zu Problemen führen:
+
 - Datenüberfrachtung – größere Datenbanken und Tabellen
 - Größere suboptimale Indizes
 - Steigende E/A
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Überwachen der Überfrachtung mit Autovacuum-Abfragen
 Die folgende Beispielabfrage ist dazu konzipiert, die Anzahl inaktiver und aktiver Tupel in einer Tabelle mit dem Namen „XYZ“ zu identifizieren:
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>Autovacuum-Konfigurationen
 Die Konfigurationsparameter zur Steuerung von Autovacuum werden durch zwei zentrale Fragen beeinflusst:
@@ -56,6 +61,7 @@ autovacuum_max_workers|Gibt die maximale Anzahl von Autovacuum-Prozessen (mit Au
 Um die Einstellungen für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter. 
 
 ## <a name="autovacuum-cost"></a>Autovacuum-Kosten
+
 Nachfolgend sind die „Kosten“ für das Ausführen eines Vakuum-Vorgangs angegeben:
 
 - Die Datenseiten, für die Vacuum ausgeführt wird, werden gesperrt.
@@ -64,6 +70,7 @@ Nachfolgend sind die „Kosten“ für das Ausführen eines Vakuum-Vorgangs ange
 Deshalb sollte Vacuum weder zu häufig noch zu selten ausgeführt werden. Die Vacuum-Ausführung muss sich an die Workload anpassen. Aufgrund der jeweiligen Vor- und Nachteile wird empfohlen, alle Autovacuum-Parameteränderungen zu überprüfen.
 
 ## <a name="autovacuum-start-trigger"></a>Autovacuum-Startauslöser
+
 Autovacuum wird ausgelöst, wenn die Anzahl der inaktiven Tupel „autovacuum_vacuum_threshold“ + „autovacuum_vacuum_scale_factor“ * „reltuples“ überschreitet. Hierbei steht „reltuples“ für eine Konstante.
 
 Die Bereinigung durch Autovacuum muss die Datenbankauslastung berücksichtigen. Andernfalls kann es vorkommen, dass nicht mehr genügend Speicher vorhanden ist und es bei Abfragen zu einer allgemeinen Verlangsamung kommt. Über die Zeit betrachtet sollte die Rate, mit der Tupel durch Vacuum gelöscht werden, mit der Rate übereinstimmen, mit der inaktive Tupel erstellt werden.
@@ -91,7 +98,9 @@ Der Parameter „autovacuum_max_workers“ legt die maximale Anzahl von Autovacu
 Mit PostgreSQL können Sie diese Parameter auf Tabellenebene oder Instanzebene festlegen. In Azure Database for PostgreSQL können diese Parameter derzeit nur auf Tabellenebene festgelegt werden.
 
 ## <a name="optimize-autovacuum-per-table"></a>Optimieren von Autovacuum pro Tabelle
+
 Alle oben genannten Konfigurationsparameter können pro Tabelle konfiguriert werden. Hier sehen Sie ein Beispiel:
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Autovacuum ist ein synchroner Prozess pro Tabelle. Je größer der Anteil an inaktiven Tupeln in einer Tabelle ist, desto höher sind die „Kosten“ für Autovacuum. Sie können Tabellen mit einer hohen Rate an Aktualisierungs- und Löschvorgängen in mehrere Tabellen aufteilen. Das Aufteilen von Tabellen trägt dazu bei, Autovacuum-Vorgänge parallel auszuführen und die „Kosten“ zum Ausführen von Autovacuum-Vorgängen für eine Tabelle zu verringern. Sie können auch die Anzahl der parallelen Autovacuum-Worker erhöhen, um sicherzustellen, dass Worker großzügig geplant werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur Verwendung und Optimierung von Autovacuum finden Sie in der folgenden PostgreSQL-Dokumentation:
 
- - [Kapitel 18, Serverkonfiguration](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [Kapitel 24, Routineaufgaben bei der Datenbankwartung](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [Kapitel 18, Serverkonfiguration](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [Kapitel 24, Routineaufgaben bei der Datenbankwartung](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

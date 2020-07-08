@@ -3,12 +3,12 @@ title: Erstellen und Verwalten von Azure Migrate-Projekten
 description: Suchen, erstellen, verwalten und löschen Sie Projekte in Azure Migrate.
 ms.topic: how-to
 ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113427"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Erstellen und Verwalten von Azure Migrate-Projekten
 
@@ -83,7 +83,7 @@ Beachten Sie dabei Folgendes:
        
     - Wenn Sie das Azure Migrate-Projekt bereits gelöscht haben, wählen Sie **Ressourcengruppen** im linken Bereich des Azure-Portals aus, und suchen Sie den Arbeitsbereich.
        
-2. [Befolgen Sie die Anweisungen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace), um den Arbeitsbereich zu löschen.
+2. [Befolgen Sie die Anweisungen](../azure-monitor/platform/delete-workspace.md), um den Arbeitsbereich zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

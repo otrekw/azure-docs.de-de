@@ -4,14 +4,14 @@ description: In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wieder
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118850"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrieren der MariaDB-Datenbank auf Azure Database for MariaDB durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Ihrer Instanz von Azure Database for MariaDB beschrieben.

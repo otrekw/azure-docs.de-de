@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie die automatische Speich
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: ac32908fe20424b812487365ccbfd70d74a06b54
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8519d7e66ae57b00a96adc60cf09c953c6ee7114
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039421"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120023"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Automatische Speichervergrößerung für einen Azure Database for MariaDB-Server mithilfe von PowerShell
 

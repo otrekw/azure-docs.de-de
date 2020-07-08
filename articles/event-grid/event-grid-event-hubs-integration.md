@@ -1,19 +1,14 @@
 ---
 title: 'Tutorial: Senden von Event Hubs-Daten an Data Warehouse – Event Grid'
 description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu einem SQL Data Warehouse migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.'
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.author: spelluru
-ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/07/2020
+ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117558"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
 Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einem SQL Data Warehouse verwenden.

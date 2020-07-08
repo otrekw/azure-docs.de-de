@@ -1,18 +1,14 @@
 ---
 title: Notfallwiederherstellung für benutzerdefinierte Themen in Azure Event Grid
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer Region Fehler für den Event Grid-Dienst auftreten.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557794"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115079"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.

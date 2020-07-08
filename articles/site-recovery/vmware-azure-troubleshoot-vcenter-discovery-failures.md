@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 269ae7059ff3d2c5b130604435735525d6022d3d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74091252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113308"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problembehandlung von vCenter Server-Ermittlungsfehlern
 
@@ -24,12 +24,14 @@ In Versionen vor 9.20 trennt vCenter die Verbindung, wenn ein nicht-numerischer 
 
 Dieses Problem wird durch die Fehler-ID 95126 identifiziert.
 
-    ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
-    System.FormatException: Input string was not in a correct format.
-       at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-       at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-       at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
-    
+```output
+ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
+System.FormatException: Input string was not in a correct format.
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+    at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
+```
+
 So lösen Sie das Problem:
 
 - Identifizieren Sie den virtuellen Computer, und legen Sie den Wert auf einen numerischen Wert fest (VM Edit-Einstellungen in vCenter).

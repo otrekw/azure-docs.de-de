@@ -1,18 +1,14 @@
 ---
 title: Onboarding als Azure Event Grid-Partner
 description: In diesem Artikel wird das Onboarding als Azure Event Grid-Partnerthementyp beschrieben. Informieren Sie sich über das Ressourcenmodell und den Veröffentlichungsablauf für Partnerthemen.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560328"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116113"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als Azure Event Grid-Partner
 

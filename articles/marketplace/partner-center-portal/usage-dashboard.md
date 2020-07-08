@@ -1,18 +1,16 @@
 ---
 title: Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 description: Erfahren Sie, wie Sie auf Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote zugreifen. Navigieren Sie zum Dashboard „Nutzung“ im Partner Center unter „Kommerzieller Marketplace“.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120669"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 

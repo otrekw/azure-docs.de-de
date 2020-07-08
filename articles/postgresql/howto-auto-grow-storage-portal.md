@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie das automatische Vergr�
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24ca9d84e8e05b2ffe093dc54963c1ac39464105
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74769233"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119615"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatische Speichervergrößerung über das Azure-Portal in Azure Database for PostgreSQL – Einzelserver
 In diesem Artikel wird beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for PostgreSQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.
