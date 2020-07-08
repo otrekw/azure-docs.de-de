@@ -3,25 +3,25 @@ title: Einmaliges Anmelden mit Anwendungsproxy | Microsoft Docs
 description: Erläutert das Bereitstellen von einmaligem Anmelden mit Azure AD-Anwendungsproxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317537"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -119,8 +119,6 @@ So aktivieren Sie SPNEGO:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
-
 Nicht-Windows-Apps verwenden normalerweise Benutzernamen oder Namen von SAM-Konten statt E-Mail-Adressen von Domänen. Wenn diese Situation auf Ihre Anwendungen zutrifft, müssen Sie das Feld „Delegierte Identität für Anmeldung“ konfigurieren, um Ihre Cloudidentitäten mit Ihren Anwendungsidentitäten zu verbinden. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy
@@ -159,5 +157,3 @@ In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwen
 * [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
 
-
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](https://blogs.technet.com/b/applicationproxyblog/)

@@ -1,18 +1,14 @@
 ---
 title: Integrieren von Azure Relay in den Azure Private Link-Dienst
 description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-Dienst integrieren.
-services: service-bus-relay
-author: spelluru
-ms.author: spelluru
-ms.date: 05/13/2020
-ms.service: service-bus-relay
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317323"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrieren von Azure Relay in Azure Private Link (Vorschau)
 Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link? (Vorschau)](../private-link/private-link-overview.md).

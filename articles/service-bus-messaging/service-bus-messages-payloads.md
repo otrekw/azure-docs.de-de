@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus-Nachrichten, -Nutzlasten und -Serialisierung | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Nachrichten, Nutzlasten, Nachrichtenrouting und Serialisierung.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341673"
 ---
 # <a name="messages-payloads-and-serialization"></a>Nachrichten, Nutzlasten und Serialisierung
 
@@ -67,7 +57,7 @@ Eine Teilmenge der zuvor beschriebenen Brokereigenschaften, insbesondere [To](/d
 - **Einfache Anforderung/Antwort**: Ein Herausgeber sendet eine Nachricht in eine Warteschlange und erwartet eine Antwort vom Empfänger der Nachricht. Um die Antwort zu empfangen, besitzt der Herausgeber eine Warteschlange, in die die Antworten zugestellt werden sollen. Die Adresse dieser Warteschlange wird in der **ReplyTo**-Eigenschaft der ausgehenden Nachricht ausgedrückt. Wenn der Empfänger antwortet, kopiert er die **MessageId** der verarbeiteten Nachricht in die **CorrelationId**-Eigenschaft der Antwortnachricht und übermittelt die Nachricht an das von der **ReplyTo**-Eigenschaft angegebene Ziel. Je nach Anwendungskontext kann eine Nachricht mehrere Antworten erhalten.
 - **Multicastanforderung/-antwort**: Als Variation des vorherigen Musters sendet ein Herausgeber die Nachricht an ein Thema, und mehrere Abonnenten erhalten die Berechtigung, die Nachricht zu nutzen. Jeder der Abonnenten kann in der zuvor beschriebenen Weise antworten. Dieses Muster wird in Ermittlungs- oder Anwesenheitsüberprüfungsszenarien verwendet, wobei sich der Befragte normalerweise mit einer Benutzereigenschaft oder innerhalb der Nutzlast identifiziert. Wenn **ReplyTo** auf ein Thema verweist, können solche Ermittlungsantworten an eine Zielgruppe verteilt werden.
 - **Multiplexing**: Diese Sitzungsfunktion ermöglicht das Multiplexing von Streams verwandter Nachrichten über eine einzelne Warteschlange oder ein Abonnement. Jede Sitzung (oder Gruppe) verwandter Nachrichten, die durch übereinstimmende **SessionId**-Werte identifiziert werden, wird an einen bestimmten Empfänger geleitet wird, während der Empfänger die Sitzung gesperrt hält. Weitere Informationen zu den Details der Sitzungen finden Sie [hier](message-sessions.md).
-- **Multiplexanforderung/-Antwort**: Diese Sitzungsfunktion ermöglicht Multiplexantworten, sodass mehrere Herausgeber eine Antwortwarteschlange gemeinsam nutzen können. Durch Festlegen von **ReplyToSessionId** kann der Herausgeber die Consumer anweisen, diesen Wert in die **SessionId**-Eigenschaft der Antwortnachricht zu kopieren. Die Veröffentlichungswarteschlange bzw. das Veröffentlichungsthema muss nicht sitzungsabhängig sein. Beim Senden der Nachricht kann der Herausgeber dann gezielt darauf warten, dass eine Sitzung mit der angegebenen **SessionId** in die Warteschlange aufgenommen wird, indem er einen Sitzungsempfänger bedingt akzeptiert. 
+- **Multiplexanforderung/-antwort**: Diese Sitzungsfunktion ermöglicht Multiplexantworten, sodass mehrere Herausgeber eine Antwortwarteschlange gemeinsam nutzen können. Durch Festlegen von **ReplyToSessionId** kann der Herausgeber die Consumer anweisen, diesen Wert in die **SessionId**-Eigenschaft der Antwortnachricht zu kopieren. Die Veröffentlichungswarteschlange bzw. das Veröffentlichungsthema muss nicht sitzungsabhängig sein. Beim Senden der Nachricht kann der Herausgeber dann gezielt darauf warten, dass eine Sitzung mit der angegebenen **SessionId** in die Warteschlange aufgenommen wird, indem er einen Sitzungsempfänger bedingt akzeptiert. 
 
 Das Routing innerhalb eines Service Bus-Namespaces kann mithilfe von Ketten für die automatische Weiterleitung und Regeln für Themenabonnements implementiert werden. Das Namespaces übergreifende Routing kann [mithilfe von Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) realisiert werden. Wie in der vorigen Liste angegeben, ist die **To**-Eigenschaft für die künftige Nutzung reserviert und kann künftig ggf. vom Broker mit einer speziell aktivierten Funktion interpretiert werden. Anwendungen, die das Routing implementieren möchten, sollten dies auf der Grundlage von Benutzereigenschaften tun und sich nicht auf die **To**-Eigenschaft stützen, was jedoch jetzt keine Kompatibilitätsprobleme verursachen würde.
 

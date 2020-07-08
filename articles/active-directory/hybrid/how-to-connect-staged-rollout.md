@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357850"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
@@ -82,8 +82,6 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 
 - Wenn Sie zum ersten Mal eine Sicherheitsgruppe für den gestaffelten Rollout hinzufügen, besteht eine Einschränkung auf 200 Benutzer, um ein UX-Timeout zu vermeiden. Nachdem Sie die Gruppe hinzugefügt haben, können Sie ihr nach Bedarf weitere Benutzer hinzufügen.
 
->[!NOTE]
-> Da Mandantenendpunkte keine Anmeldehinweise senden, werden Sie für ein gestaffeltes Rollout nicht unterstützt. 
 
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
 

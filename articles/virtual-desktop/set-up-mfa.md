@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten,
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361148"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -47,8 +47,9 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff
    - Wählen Sie **Fertig**aus.
 6. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
    - Wählen Sie **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07), dann **Auswählen** und anschließend **Fertig** aus.
-   
-     ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps sind rot hervorgehoben.](media/cloud-apps-enterprise.png)
+
+     > [!div class="mx-imgBorder"]
+     > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.

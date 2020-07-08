@@ -1,7 +1,7 @@
 ---
 title: Übersicht zur Dokumentation der Microsoft-Sicherheitscodeanalyse
 description: Dieser Artikel bietet eine Übersicht über die Erweiterung „Microsoft-Sicherheitscodeanalyse“.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74851467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361318"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informationen zur Microsoft-Sicherheitscodeanalyse
 
@@ -70,10 +70,6 @@ BinSkim ist ein einfacher PE-Scanner (Portable Executable, portierbar ausführba
 ### <a name="credential-scanner"></a>Credential Scanner
 
 Kennwörter und andere Geheimnisse, die im Quellcode gespeichert sind, stellen ein erhebliches Problem dar. Credential Scanner ist ein proprietäres statisches Analysetool, mit dem das Problem behoben werden kann. Das Tool erkennt Anmeldeinformationen, Geheimnisse, Zertifikate und andere vertrauliche Inhalte im Quellcode und in der Buildausgabe.
-
-### <a name="microsoft-security-risk-detection"></a>Microsoft Security Risk Detection
-
-Microsoft Security Risk Detection (MSRD) ist ein cloudbasierter Fuzzing-Dienst. Er identifiziert ausnutzbare Sicherheitsfehler in der Software. Dieser Dienst erfordert ein separates Abonnement und eine separate Aktivierung. Weitere Informationen finden Sie im [MSRD Developer Center](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Roslyn Analyzers
 

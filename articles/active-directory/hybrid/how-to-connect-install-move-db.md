@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77019280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358955"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Verschieben einer Azure AD Connect-Datenbank von SQL Server Express zu SQL Server 
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um die Azure AD Connect-Datenbank auf ei
 8. Wenn die Datenbank angefügt wurde, wechseln Sie zurück zum Azure AD Connect-Server, und installieren Sie Azure AD Connect.
 9. Sobald die MSI-Installation abgeschlossen ist, wird der Azure AD Connect-Assistent mit dem Setup im Express-Modus gestartet. Schließen Sie den Bildschirm durch Klicken auf das Symbol „Beenden“.
    ![Willkommen](./media/how-to-connect-install-move-db/db1.png)
-10. Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner „\<Laufwerk>\Programme\Microsoft Azure AD Connect“. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
+10. Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner \<drive>\Programme\Microsoft Azure AD Connect. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
     ![Willkommen](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ Führen Sie die folgenden Schritte aus, um die Azure AD Connect-Datenbank auf ei
 14. Auf dem Bildschirm **Verzeichnisse verbinden** wird die für die Verzeichnissynchronisierung konfigurierte vorhandene AD-Gesamtstruktur mit einem roten Kreuzsymbol aufgelistet. Zum Synchronisieren der Änderungen von einer lokalen AD-Gesamtstruktur ist ein AD DS-Konto erforderlich. Der Azure AD Connect-Assistent kann nicht die Anmeldeinformationen des in der ADSync-Datenbank gespeicherten AD DS-Kontos abrufen, da die Anmeldeinformationen verschlüsselt sind und nur von der vorherigen Azure AD Connect-Serverinstanz entschlüsselt werden können. Klicken Sie auf **Anmeldeinformationen ändern**, um das AD DS-Konto für die AD-Gesamtstruktur anzugeben.
     ![Verzeichnisse](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. Im Popupdialogfeld können Sie entweder (i) eine Enterprise-Administratoranmeldeinfo eingeben und Azure AD Connect das AD DS-Konto für Sie erstellen lassen, oder (ii) das AD DS-Konto selbst erstellen und Azure AD Connect die Anmeldeinformationen angeben. Nachdem Sie eine Option ausgewählt und die erforderlichen Anmeldeinformationen angeben haben, klicken Sie auf **OK**, um das Popupdialogfeld zu schließen.
     ![Willkommen](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. Sobald die Anmeldeinformationen bereitgestellt sind, wird das rote Kreuzsymbol durch ein grünes Häkchensymbol ersetzt. Klicken Sie auf **Weiter**.
     ![Willkommen](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. Klicken Sie auf dem Bildschirm **Bereit zur Konfiguration** auf **Installieren**.
     ![Willkommen](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. Nachdem die Installation abgeschlossen ist, wird die Azure AD Connect-Serverinstanz automatisch für den Stagingmodus aktiviert. Sie sollten die Serverkonfiguration und ausstehenden Exporte vor dem Deaktivieren des Stagingmodus auf unerwartete Änderungen überprüfen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
