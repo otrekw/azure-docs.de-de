@@ -10,17 +10,17 @@ ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: ''
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82158aeae614112c47a2288ceb867b382c6a159a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609208"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Verwendung verwalteter Identitäten für Azure-Ressourcen zusammen mit virtuellen Azure-Computern
 
@@ -92,4 +92,4 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 Informationen zu den ersten Schritten mit der Funktion für verwaltete Identitäten für Azure-Ressourcen finden Sie in den folgenden Schnellstartanleitungen:
 
 * [Use a Windows VM system-assigned managed identity to access Resource Manager](tutorial-windows-vm-access-arm.md) (Verwenden der systemseitig zugewiesenen verwalteten Identität einer Windows-VM für den Zugriff auf Resource Manager)
-* [Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Resource Manager](tutorial-linux-vm-access-arm.md) how-managed-identities-work-vm
+* [Use a Linux VM system-assigned managed identity to access Resource Manager](tutorial-linux-vm-access-arm.md) (Verwenden der systemseitig zugewiesenen verwalteten Identität einer Linux-VM für den Zugriff auf Resource Manager)
