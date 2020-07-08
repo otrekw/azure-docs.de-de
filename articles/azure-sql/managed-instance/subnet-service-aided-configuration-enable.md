@@ -2,7 +2,7 @@
 title: Aktivieren der dienstgestützten Subnetzkonfiguration für Azure SQL Managed Instance
 description: Aktivieren der dienstgestützten Subnetzkonfiguration für Azure SQL Managed Instance
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: c8531af9e8d43dfe1279306cea57a93cf89ded90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b88740c71db6ae56621410ef41975a4616ff8ecd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711373"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Aktivieren der dienstgestützten Subnetzkonfiguration für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Automatisch konfigurierte Netzwerksicherheitsgruppen und Routingtabellenregeln s
 Die dienstgestützte Konfiguration wird automatisch aktiviert, wenn Sie die [Subnetzdelegierung](../../virtual-network/subnet-delegation-overview.md) für den Ressourcenanbieter `Microsoft.Sql/managedInstances` aktivieren.
 
 > [!IMPORTANT] 
-> Wenn Sie die Subnetzdelegierung wieder deaktivieren möchten, müssen zuerst alle virtuellen Cluster aus dem Subnetz entfernt werden. Weitere Informationen zum Löschen virtueller Cluster finden Sie in [diesem Artikel](virtual-cluster-delete.md#delete-virtual-cluster-from-the-azure-portal).
+> Wenn Sie die Subnetzdelegierung wieder deaktivieren möchten, müssen zuerst alle virtuellen Cluster aus dem Subnetz entfernt werden. Weitere Informationen zum Löschen virtueller Cluster finden Sie in [diesem Artikel](virtual-cluster-delete.md#delete-a-virtual-cluster-from-the-azure-portal).
 
 > [!NOTE] 
 > Da die dienstgestützte Subnetzkonfiguration für die Einhaltung der SLA erforderlich ist, können verwaltete Instanzen ab dem 1. Mai 2020 nicht mehr in Subnetzen ohne Delegierung an den Ressourcenanbieter für verwaltete Instanzen bereitgestellt werden. Am 1. Juli 2020 werden alle Subnetze mit verwalteten Instanzen automatisch an den Ressourcenanbieter für verwaltete Instanzen delegiert. 

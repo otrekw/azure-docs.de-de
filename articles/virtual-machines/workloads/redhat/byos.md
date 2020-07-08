@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694381"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -96,7 +96,7 @@ In den folgenden Anweisungen wird der erste Bereitstellungsprozess für eine RHE
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,13 +108,16 @@ In den folgenden Anweisungen wird der erste Bereitstellungsprozess für eine RHE
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
 1. Stellen Sie Ihre VM bereit, indem Sie den gleichen Befehl wie im vorherigen Beispiel ausführen, aber ohne das Argument `--validate`.
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
 1. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her, und überprüfen Sie, ob Sie ein nicht berechtigtes Image haben. Führen Sie für diesen Schritt `sudo yum repolist` aus. Verwenden Sie für RHEL 8 `sudo dnf repolist`. In der Ausgabe werden Sie aufgefordert, den virtuellen Computer mithilfe des Abonnement-Managers bei Red Hat zu registrieren.
@@ -135,7 +138,7 @@ Das folgende Skript ist ein Beispiel. Ersetzen Sie Ressourcengruppe, Speicherort
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location

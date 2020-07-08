@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710268"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.

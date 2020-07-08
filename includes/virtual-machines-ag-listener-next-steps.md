@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 70b7a869c8b8147f978987b99b4918f573da6d0f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014814"
 ---
 Zusätzlich zum automatischen Verbinden von Clients mit dem primären Replikat kann ein Listener verwendet werden, um schreibgeschützte Workloads an sekundäre Replikate umzuleiten. Auf diese Weise kann die Leistung und Skalierbarkeit Ihrer Lösung insgesamt verbessern. Weitere Informationen finden Sie unter [Use ReadIntent Routing with Azure AlwaysOn Availability Group Listener](https://go.microsoft.com/fwlink/?LinkId=522515) (Verwenden von ReadIntent-Routing mit Azure AlwaysOn-Verfügbarkeitsgruppenlistener).

@@ -4,11 +4,11 @@ description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspu
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84693055"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 

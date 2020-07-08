@@ -4,16 +4,16 @@ description: Konfiguration von ExpressRoute- und Site-to-Site-VPN-Verbindungen, 
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 5a7ac1b6a9f75655f7e07cc8af89b676ec611421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52105cf351a45a233a5fb96c9ac8df689c575527
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736287"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]

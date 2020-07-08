@@ -3,7 +3,7 @@ title: Konfigurieren von Advanced Threat Protection
 titleSuffix: Azure SQL Managed Instance
 description: Advanced Threat Protection identifiziert anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank in Azure SQL Managed Instance hinweisen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,19 +12,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ceb6285448df2a5d87dfa87ab249c99bf22c9928
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686323"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Konfigurieren von Advanced Threat Protection in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 [Advanced Threat Protection](../database/threat-detection-overview.md) für eine [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder sie missbräuchlich zu verwenden. Mithilfe von Advanced Threat Protection können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Advanced Threat Protection-Warnungen](../database/threat-detection-overview.md#alerts).
 
-Sie können sich über [E-Mail-Benachrichtigungen](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) oder im [Azure-Portal](../database/threat-detection-overview.md#explore-alerts-in-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
+Sie können sich über [E-Mail-Benachrichtigungen](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) oder im [Azure-Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
 [Advanced Threat Protection](../database/threat-detection-overview.md) ist Teil des Pakets [Advanced Data Security](../database/advanced-data-security.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf Advanced Threat Protection und dessen Verwaltung sind über das zentrale SQL ADS-Portal möglich.
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/17/2020
-ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736565"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
@@ -155,7 +155,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist.  Sie müssen auf die Ausführung der Pipeline warten, wenn sie (etwa nach einer Stunde) automatisch ausgelöst wird. Klicken Sie während der Ausführung auf den Link auf dem Pipelinenamen **DeltaCopyFromBlobPipeline**, um Details zur Aktivitätsausführung aufzurufen oder die Pipeline erneut auszuführen. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
 11. Da die Pipeline nur eine Aktivität (Copy-Aktivität) enthält, wird nur ein Eintrag angezeigt. Passen Sie die Breite der Spalten **Quelle** und **Ziel** bei Bedarf an, um weitere Details aufzurufen. Ihnen wird angezeigt, dass die Quelldatei (file1.txt) mit demselben Dateinamen von *source/2020/03/17/03/* nach *destination/2020/03/17/03/* kopiert wurde. 
 
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)

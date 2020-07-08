@@ -4,15 +4,15 @@ description: In diesem Artikel erhalten Sie Informationen zum Verwenden einer Vo
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711475"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Region mit dem Azure-Portal
 

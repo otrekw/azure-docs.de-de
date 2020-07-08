@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711492"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Reservieren eines Präfix für öffentliche IPv6-Adressen
 IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azure mit IPv6- und IPv4-Konnektivität sowohl innerhalb eines virtuellen Netzwerks als auch für das Internet (in ein- und ausgehender Richtung) bereitzustellen. Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren. In diesem Artikel wird beschrieben, wie Sie öffentliche IPv6-Adressen und -Adressbereiche mithilfe von Azure PowerShell und der Azure CLI erstellen.

@@ -5,17 +5,17 @@ description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algor
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: eeca7a51c1ff22f845b45f50f9fccee4b60f3221
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711203"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)
 

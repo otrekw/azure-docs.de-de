@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbi
 services: expressroute
 author: anzaman
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75d9ae2fc788bbeb769aaf412c77dfacec9d04c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738123"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Zurücksetzen einer fehlerhaften ExpressRoute-Verbindung
 

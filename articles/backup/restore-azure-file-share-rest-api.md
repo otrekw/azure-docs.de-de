@@ -4,11 +4,11 @@ description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigab
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710574"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 

@@ -2,7 +2,7 @@
 title: 'Azure SQL Managed Instance: Langfristige Sicherungsaufbewahrung (PowerShell)'
 description: Erfahren Sie, wie Sie mithilfe von PowerShell automatisierte Sicherungen in separaten Azure Blob Storage-Containern für Azure SQL Managed Instance speichern und wiederherstellen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -10,19 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 04/29/2020
-ms.openlocfilehash: 385a7594de48f1bcf04d79d0dcd9dfb521d4ff08
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b628ca7f676c3eab80e11da124f4d6aa7ebd52a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708789"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Verwalten der langfristigen Sicherungsaufbewahrung für Azure SQL Managed Instance (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In Azure SQL Managed Instance können Sie eine Richtlinie für die [langfristige Sicherungsaufbewahrung](../database/long-term-retention-overview.md#managed-instance-support) (Long-Term Retention, LTR) als Previewfunktion der eingeschränkten Public Preview konfigurieren. Dies ermöglicht Ihnen, Datenbanksicherungen automatisch bis zu 10 Jahre in separaten Azure Blob Storage-Containern beizubehalten. Sie können dann mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
+In Azure SQL Managed Instance können Sie eine Richtlinie für die [langfristige Sicherungsaufbewahrung](../database/long-term-retention-overview.md#sql-managed-instance-support) (Long-Term Retention, LTR) als Previewfunktion der eingeschränkten Public Preview konfigurieren. Dies ermöglicht Ihnen, Datenbanksicherungen automatisch bis zu 10 Jahre in separaten Azure Blob Storage-Containern beizubehalten. Sie können dann mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
 
    > [!IMPORTANT]
    > Die Langzeitaufbewahrung für verwaltete Instanzen befindet sich derzeit in der eingeschränkten Vorschauphase und ist fallbasiert für EA- und CSP-Abonnements verfügbar. Wenn Sie eine Registrierung anfordern möchten, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/). Wählen Sie bei „Issuetyp“ die Option „Technisches Problem“, bei „Dienst“ die Option „Verwaltete SQL-Datenbank-Instanz“ und bei „Problemtyp“ die Option **Sicherung, Wiederherstellung und Geschäftskontinuität/Langfristige Sicherungsaufbewahrung** aus. Geben Sie in Ihrer Anforderung an, dass Sie für die eingeschränkte Public Preview der LTR für eine verwaltete Instanz registriert werden möchten.

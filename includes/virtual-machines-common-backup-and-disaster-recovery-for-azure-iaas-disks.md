@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84124392"
 ---
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.

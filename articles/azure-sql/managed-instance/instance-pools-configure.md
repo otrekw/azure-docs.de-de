@@ -3,7 +3,7 @@ title: Bereitstellen von SQL Managed Instance in einem Instanzpool
 titleSuffix: Azure SQL Managed Instance
 description: In diesem Artikel wird beschrieben, wie Sie Pools für Azure SQL Managed Instance erstellen und verwalten (Vorschau).
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708804"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Bereitstellen von Azure SQL Managed Instance in einem Instanzpool
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,7 +54,7 @@ Verfügbare [PowerShell-Befehle](https://docs.microsoft.com/powershell/module/az
 
 Zur Verwendung von PowerShell [installieren Sie die neueste Version von PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell), und befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Verwenden Sie für Vorgänge für Instanzen innerhalb von Pools sowie für Einzelinstanzen die [Standardbefehle für verwaltete Instanzen](api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances). Wenn diese Befehle für eine Instanz in einem Pool verwendet werden, muss allerdings der *Name des Instanzenpools* angegeben werden.
+Verwenden Sie für Vorgänge für Instanzen innerhalb von Pools sowie für Einzelinstanzen die [Standardbefehle für verwaltete Instanzen](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances). Wenn diese Befehle für eine Instanz in einem Pool verwendet werden, muss allerdings der *Name des Instanzenpools* angegeben werden.
 
 ## <a name="deployment-process"></a>Bereitstellungsprozess
 
