@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac1129db05c7b492e209478446f69fe48ea9fffd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834423"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111115"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -249,9 +249,11 @@ Um die Erfassungs-Stichprobenerstellung festzulegen, navigieren Sie zum Bereich 
 
 Verwenden Sie eine [Analytics-Abfrage](analytics.md), um den tatsächlichen Prozentsatz der Stichprobenerstellung unabhängig davon zu ermitteln, wo er angewendet wird. Die Abfrage sieht folgendermaßen aus:
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h)
-    | render areachart
+```kusto
+requests | where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h)
+| render areachart
+```
 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt. Diese entspricht 1 + Anzahl der vorherigen verworfenen Datensätze.
 

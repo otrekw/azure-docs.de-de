@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monit
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618989"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112339"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -196,23 +196,26 @@ Unterdrückung hat in einem Bereich immer Vorrang.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn ich eine Ressource verwende, die von zwei separaten Aktionsregeln überwacht wird? Erhalte ich dann eine oder zwei Benachrichtigungen? Beispielsweise **VM2** im folgenden Szenario:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 Für jede Warnung zu „VM1“ und „VM3“ wird die Aktionsgruppe „AG1“ ein Mal ausgelöst. Für jede Warnung zu **VM2** wird die Aktionsgruppe „AG1“ zwei Mal ausgelöst (Aktionen werden von Aktionsregeln nicht dedupliziert). 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn ich eine Ressource in zwei separaten Aktionsregeln überwachen lasse, von denen eine eine Aktion ausführt und die andere unterdrückt wird? Beispielsweise **VM2** im folgenden Szenario:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 Für jede Warnung zu „VM1“ wird die Aktionsgruppe „AG1“ ein Mal ausgelöst. Aktionen und Benachrichtigungen für jede Warnung zu „VM2“ und „VM3“ werden unterdrückt. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Was geschieht, wenn ich eine Warnungsregel und eine Aktionsregel für dieselbe Ressource definiert habe, die unterschiedliche Aktionsgruppen aufrufen? Beispielsweise **VM1** im folgenden Szenario:
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 Für jede Warnung zu „VM1“ wird die Aktionsgruppe „AG1“ ein Mal ausgelöst. Wird Warnungsregel „rule1“ ausgelöst, wird zusätzlich auch „AG2“ ausgelöst. In Aktionsregeln definierte Aktionsgruppen und Warnungsregeln arbeiten unabhängig voneinander, und es erfolgt keine Deduplizierung. 
 
 ## <a name="next-steps"></a>Nächste Schritte

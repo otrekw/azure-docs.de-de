@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103992"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -40,9 +40,10 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
     >[!NOTE]
     >Von Azure Arc für Server (Vorschauversion) werden nur folgende Regionen unterstützt:
+    >- EastUS
     >- WestUS2
     >- Europa, Westen
-    >- WestAsia
+    >- SoutheastAsia
     >
     >Überprüfen Sie weitere Überlegungen bei der Auswahl einer Region [hier](overview.md#supported-regions) im Übersichtsartikel.
 
@@ -66,7 +67,7 @@ Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie da
 
 Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in diesem Artikel beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt.
 
-Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
 Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die Hilfe- und Kurzübersichtsoption anzuzeigen. 
 

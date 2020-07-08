@@ -3,15 +3,13 @@ title: Einrichten von Auszahlungskonten und Steuerformularen – kommerzieller M
 Description: Erfahren Sie hier, wie Sie Ihr Auszahlungskonto einrichten und die erforderlichen Steuerformulare ausfüllen müssen, um auf dem kommerziellen Marketplace Geld aus Angebotsverkäufen zu erhalten.
 ms.date: 12/10/2019
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 493043c43cf8dbac94bd33a907c91291fc51bf6c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738284"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109126"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Einrichten von Auszahlungskonten und Steuerformularen
 

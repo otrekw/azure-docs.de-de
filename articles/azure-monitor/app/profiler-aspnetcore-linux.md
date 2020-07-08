@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111064"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler
 
@@ -35,17 +35,17 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 
 1. Erstellen Sie eine ASP.NET Core-MVC-Webanwendung:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Ändern Sie das Arbeitsverzeichnis in den Stammordner des Projekts.
 
 1. Fügen Sie das NuGet-Paket hinzu, um die Profiler-Ablaufverfolgungen zu erfassen:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Aktivieren Sie Application Insights in der Datei „Program.cs“:
 
@@ -55,7 +55,7 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Aktivieren Sie den Profiler in der Datei „Program.cs“:
 
     ```csharp
@@ -69,24 +69,24 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 1. Fügen Sie im Abschnitt **HomeController.cs** eine Codezeile zur Verzögerung um ein paar Sekunden nach dem Zufallsprinzip hinzu:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Speichern Sie die Änderungen, und committen Sie sie an das lokale Repository:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>Erstellen der Linux-Web-App zum Hosten Ihres Projekts
@@ -112,7 +112,7 @@ Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](https://docs.micr
 
 1. Navigieren Sie im Eingabeaufforderungsfenster zum Stammordner für Ihr Projekt. Fügen Sie ein Git-Remote-Repository hinzu, sodass es auf das Repository auf App Service weist:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -121,13 +121,13 @@ Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](https://docs.micr
 
 2. Stellen Sie das Projekt durch Pushen der Änderungen in Azure bereit:
 
-    ```
+    ```console
     git push azure master
     ```
 
-Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
+    Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -144,8 +144,7 @@ Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Hinzufügen von Application Insights zum Überwachen Ihrer Web-Apps
@@ -154,9 +153,7 @@ Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
 
 2. Kopieren Sie den Wert **iKey** der Application Insights-Ressource, und legen Sie die folgenden Einstellungen in Ihren Web-Apps fest:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Wenn die App-Einstellungen geändert werden, wird die Website automatisch neu gestartet. Sobald die neuen Einstellungen angewendet werden, wird der Profiler sofort für zwei Minuten ausgeführt. Anschließend wird der Profiler einmal pro Stunde für zwei Minuten ausgeführt.
 

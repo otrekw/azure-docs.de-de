@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cbff2cbed37a4cff91116596f1c20dc3d170cae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513481"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105182"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -95,15 +95,15 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
 5. Verwenden der Option `PrepImport` zum Kopieren und Vorbereiten von Daten auf dem Datenträger. Führen Sie für die erste Kopiersitzung zum Kopieren von Verzeichnissen und/oder Dateien mit einer neuen Kopiersitzung folgenden Befehl aus:
 
-       ```
-       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-       ```
+    ```cmd
+    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+    ```
 
    Ein Importbeispiel ist nachfolgend dargestellt.
 
-       ```
-       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-       ```
+    ```cmd
+    .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+    ```
 
 6. Für jede Ausführung der Befehlszeile wird eine Journaldatei mit dem von Ihnen angegebenen Namen mit Parameter `/j:` erstellt. Jedes Laufwerk, das Sie vorbereiten, hat eine Journaldatei, die hochgeladen werden muss, wenn Sie den Importauftrag erstellen. Laufwerke ohne Journaldateien werden nicht verarbeitet.
 
@@ -180,30 +180,30 @@ Um **weitere Laufwerke hinzuzufügen**, erstellen Sie eine neue Driveset-Datei, 
 
 Geben Sie für nachfolgende Kopiersitzungen mit anderen Laufwerken als den in der Datei *InitialDriveset.csv* angegebenen eine neue Driveset-*CSV*-Datei an, und legen Sie sie als Wert für den Parameter `AdditionalDriveSet` fest. Verwenden Sie den **gleichen Journaldateinamen**, und geben Sie eine **neue Sitzungs-ID** an. Das Format der AdditionalDriveset-CSV-Datei ist mit dem InitialDriveSet-Format identisch.
 
-    ```
-    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
+```
 
 Ein Importbeispiel ist nachfolgend dargestellt.
 
-    ```
-    WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
+```
 
 
 Um demselben Driveset zusätzliche Daten hinzuzufügen, verwenden Sie den PrepImport-Befehl für die nachfolgenden Kopiersitzungen, um zusätzliche Dateien/Verzeichnisse zu kopieren.
 
 Geben Sie für nachfolgende Kopiersitzungen für Kopiervorgänge auf dieselben in der Datei *InitialDriveset.csv* angegebenen Festplatten den **gleichen Journaldateinamen** und eine **neue Sitzungs-ID** an. Es ist nicht erforderlich, den Speicherkontoschlüssel anzugeben.
 
-    ```
-    WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
-    ```
+```cmd
+WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
+```
 
 Ein Importbeispiel ist nachfolgend dargestellt.
 
-    ```
-    WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

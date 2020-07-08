@@ -1,18 +1,16 @@
 ---
 title: Häufig gestellte Fragen zur SaaS-Fulfillment-API – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie mehr über einige der Integrationsanforderungen für den kommerziellen Microsoft-Marketplace, damit Azure-Kunden SaaS-Angebote abonnieren können.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963749"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109245"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Häufig gestellte Fragen zu SaaS-Fulfillment-APIs
 

@@ -3,16 +3,16 @@ title: Hinzufügen von Migrationstools in Azure Migrate
 description: Hinzufügen von Migrationstools in Azure Migrate
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195820"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109806"
 ---
 # <a name="add-migration-tools"></a>Hinzufügen von Migrationstools
 
-In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.md) Migrationstools hinzufügen.
+In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](./migrate-services-overview.md) Migrationstools hinzufügen.
 
 - Wenn Sie ein Migrationstool hinzufügen möchten und noch kein Azure Migrate-Projekt angelegt haben, befolgen Sie die Anweisungen in diesem [Artikel](how-to-add-tool-first-time.md).
 - Wenn Sie für die Migration ein ISV-Tool hinzugefügt haben, [befolgen Sie die Schritte](prepare-isv-movere.md) zur Vorbereitung auf die Arbeit mit dem Tool.

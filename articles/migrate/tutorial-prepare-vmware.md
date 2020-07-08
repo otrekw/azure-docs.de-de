@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie virtuelle VMware-Computer auf die Bewert
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771188"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109574"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -64,7 +64,7 @@ Ihr Azure-Konto benötigt Berechtigungen für die Erstellung von Azure AD-Apps,
 Gehen Sie wie folgt vor, um dem Konto Berechtigungen zu erteilen:
 
 1. Vergewissern Sie sich, dass Sie ein Mandantenadministrator/globaler Administrator sind. Navigieren Sie anschließend zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen**.
-2. Legen Sie **App-Registrierungen** auf **Ja** fest. Dies ist eine Standardeinstellung, die nicht vertraulich ist. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+2. Legen Sie **App-Registrierungen** auf **Ja** fest. Dies ist eine Standardeinstellung, die nicht vertraulich ist. [Weitere Informationen](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
 
     ![Azure AD-Berechtigungen](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ Gehen Sie wie folgt vor, um dem Konto Berechtigungen zu erteilen:
 
 #### <a name="method-2-assign-application-developer-role"></a>Methode 2: Zuweisen der Rolle „Anwendungsentwickler“
 
-Als Alternative kann der Mandantenadministrator/globale Administrator einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Hier finden Sie weitere Informationen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) zum Zuweisen von Rollen.
+Als Alternative kann der Mandantenadministrator/globale Administrator einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Hier finden Sie weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) zum Zuweisen von Rollen.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Zuweisen von Berechtigungen für die Key Vault-Erstellung
 

@@ -1,18 +1,18 @@
 ---
 title: Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 description: Hier erfahren Sie, wie Sie das Onboarding für das Business Applications-ISV-Connect-Programm durchführen.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 7/12/2019
-ms.author: dsindona
-ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fe518cf5b01bbefd5b596b10dff27d0e3ecfcfcc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964888"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104946"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 

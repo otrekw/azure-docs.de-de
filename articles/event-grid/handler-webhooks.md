@@ -1,18 +1,14 @@
 ---
 title: Webhooks als Ereignishandler für Azure Event Grid-Ereignisse
 description: Hier wird beschrieben, wie Sie Webhooks als Ereignishandler für Azure Event Grid-Ereignisse verwenden können. Azure Automation-Runbooks und Logik-Apps werden über Webhooks als Ereignishandler unterstützt.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: d29cf1819d844a8ba5446feeeb725307523fce1b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/07/2020
+ms.openlocfilehash: 3dc75b15c55c82b6164e77f0ac93a87bced94a64
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105607"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Webhooks, Automation-Runbooks, Logik-Apps als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. Sie können aber auch einen beliebigen WebHook für die Behandlung von Ereignissen verwenden. Der WebHook muss zum Behandeln von Ereignissen nicht in Azure gehostet werden. Event Grid unterstützt nur HTTPS-Webhook-Endpunkte.

@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648093"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103907"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -46,7 +46,7 @@ Der Agent kann auf verschiedene Arten aktualisiert werden, um Ihren Verwaltungsp
 > * Zum Upgraden des Agent sind *Administratorberechtigungen* erforderlich.
 > * Laden Sie für das manuelle Upgrade zunächst das Installer-Paket herunter, und kopieren Sie es in einen Ordner auf dem Zielserver, oder verwenden Sie einen freigegebenen Netzwerkordner. 
 
-Wenn Sie mit den Befehlszeilenoptionen für Windows Installer-Pakete nicht vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Wenn Sie mit den Befehlszeilenoptionen für Windows Installer-Pakete nicht vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>So aktualisieren Sie mit dem Setup-Assistenten
 

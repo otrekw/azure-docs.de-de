@@ -1,18 +1,14 @@
 ---
 title: Azure-Funktion als Ereignishandler für Azure Event Grid-Ereignisse
 description: Beschreibt, wie Sie Azure-Funktionen als Ereignishandler für Event Grid-Ereignisse verwenden können.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 0152a9fc11562744f83ab9d20466a3dcc8e2e6e0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/07/2020
+ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105760"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-Funktion als Ereignishandler für Event Grid-Ereignisse
 

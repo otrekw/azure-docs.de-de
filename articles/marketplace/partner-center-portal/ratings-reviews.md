@@ -1,18 +1,16 @@
 ---
 title: Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
 description: Erfahren Sie, wie Sie auf eine konsolidierte Ansicht des Kundenfeedbacks zu Ihren Angeboten in Microsoft AppSource und im Azure Marketplace zugreifen können.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792920"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109228"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
 

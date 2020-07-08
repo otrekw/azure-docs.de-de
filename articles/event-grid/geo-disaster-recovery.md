@@ -1,18 +1,14 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Event Grid | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Azure Event Grid die georedundante Notfallwiederherstellung automatisch unterstützt.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66307567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105845"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Serverseitige georedundante Notfallwiederherstellung in Azure Event Grid
 Event Grid verfügt jetzt über eine automatische georedundante Notfallwiederherstellung (GeoDR) für Metadaten – nicht nur für neue, sondern auch für alle vorhandenen Domänen, Themen und Ereignisabonnements. Wenn eine vollständige Azure-Region ausfällt, hat Event Grid bereits alle ereignisbezogenen Infrastrukturmetadaten in ein Regionspaar synchronisiert. Neue Ereignisse werden übertragen, ohne dass Sie eingreifen müssen. 

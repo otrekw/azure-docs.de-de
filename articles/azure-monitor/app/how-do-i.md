@@ -3,12 +3,12 @@ title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: Häufig gestellte Fragen in Application Insights
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701940"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110231"
 ---
 # <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
@@ -33,17 +33,23 @@ Angenommen, Sie möchten eine E-Mail erhalten, wenn ein bestimmtes Ereignis eint
 
 Warnungen können für [benutzerdefinierte Metriken](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), jedoch nicht für benutzerdefinierte Ereignisse eingerichtet werden. Mithilfe von Code können Sie eine Metrik erhöhen, wenn das Ereignis eintritt:
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 oder:
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 Da Warnungen zwei Zustände aufweisen, müssen Sie einen niedrigen Wert senden, wenn das Ende der Warnung erreicht ist:
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 Erstellen Sie ein Diagramm im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) , um Ihre Warnung anzuzeigen:
 
@@ -131,9 +137,9 @@ So können Sie die Sammlung und Übermittlung von Telemetriedaten aus dem Server
 ### <a name="aspnet-classic-applications"></a>Klassische ASP.NET-Anwendungen
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>Andere Anwendungen

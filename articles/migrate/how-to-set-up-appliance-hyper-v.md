@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für Hyper-V
 description: Erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten, um virtuelle Hyper-V-Computer zu bewerten und zu migrieren.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 56b034709309a3afe9d18df7af9ababc74a24cee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538289"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109704"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Einrichten einer Appliance für Hyper-V-VMs
 
@@ -50,7 +50,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 2. Führen Sie den folgenden Befehl aus, um den Hash für die VHD zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  Für die Applianceversion 2.19.11.12 muss der generierte Hash den folgenden [Einstellungen](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) entsprechen.
+3.  Für die Applianceversion 2.19.11.12 muss der generierte Hash den folgenden [Einstellungen](./tutorial-assess-hyper-v.md#verify-security) entsprechen.
 
 
 
