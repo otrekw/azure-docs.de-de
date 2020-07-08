@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84634998"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box
 
@@ -103,7 +103,7 @@ Das Konfigurieren eines kundenseitig verwalteten Schlüssels für Azure Data Box
 
 Wenn Ihnen Fehler im Zusammenhang mit dem kundenseitig verwalteten Schlüssel angezeigt werden, verwenden Sie zur Problembehandlung die folgende Tabelle.
 
-| Fehlercode| Fehlermeldung| Details|
+| Fehlercode| Fehlerdetails| Wiederherstellbar?|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Der Hauptschlüssel konnte nicht abgerufen werden, weil der kundenseitig verwaltete Schlüssel deaktiviert ist.| Ja, durch Aktivieren der Schlüsselversion.|
 | SsemUserErrorEncryptionKeyExpired| Der Hauptschlüssel konnte nicht abgerufen werden, weil der kundenseitig verwaltete Schlüssel abgelaufen ist.| Ja, durch Aktivieren der Schlüsselversion.|
