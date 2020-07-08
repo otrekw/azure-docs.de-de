@@ -1,18 +1,16 @@
 ---
 title: Grundlegendes zur Architektur in Azure Lab Services | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu den grundlegenden Ressourcen, die von Lab Services verwendet werden, sowie zur grundlegenden Architektur eines Labs.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: overview
-ms.date: 5/10/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 06085a9a5f1d329e96ae5a9a9c77c8e20cdccac5
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899425"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445643"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Grundlegendes zur Architektur in Azure Lab Services
 

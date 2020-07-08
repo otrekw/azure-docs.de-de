@@ -1,21 +1,14 @@
 ---
 title: 'Schnellstart: Senden und Empfangen von Ereignissen unter Verwendung von Go: Azure Event Hubs'
 description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Go-Anwendung, die Ereignisse aus Azure Event Hubs sendet.'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: kamalb
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73720592"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320351"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Go
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).

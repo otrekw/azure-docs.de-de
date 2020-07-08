@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206392"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480438"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL On-Demand (Vorschauversion) in Azure Synapse Analytics 
 
@@ -89,21 +89,21 @@ SQL On-Demand verfügt über keinen lokalen Speicher, und es werden nur Metadat
 
 SQL On-Demand erweitert die vorhandene Funktion [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) mit folgenden Funktionen, um reibungslose Abfragen für Daten zu ermöglichen, die sich in Dateien im Data Lake befinden:
 
-[Abfragen mehrerer Dateien oder Ordner](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Abfragen mehrerer Dateien oder Ordner](query-data-storage.md#query-multiple-files-or-folders)
 
-[Parquet-Dateiformat](develop-storage-files-overview.md#parquet-file-format)
+[Parquet-Dateiformat](query-data-storage.md#query-parquet-files)
 
-[Zusätzliche Optionen für die Verwendung von durch Trennzeichen getrenntem Text (Feldabschlusszeichen, Zeilenabschlusszeichen, Escapezeichen)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Zusätzliche Optionen für die Verwendung von durch Trennzeichen getrenntem Text (Feldabschlusszeichen, Zeilenabschlusszeichen, Escapezeichen)](query-data-storage.md#query-csv-files)
 
-[Lesen einer ausgewählten Teilmenge von Spalten](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Lesen einer ausgewählten Teilmenge von Spalten](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[Schemarückschluss](develop-storage-files-overview.md#schema-inference)
+[Schemarückschluss](query-data-storage.md#schema-inference)
 
-[filename-Funktion](develop-storage-files-overview.md#filename-function)
+[filename-Funktion](query-data-storage.md#filename-function)
 
-[filepath-Funktion](develop-storage-files-overview.md#filepath-function)
+[filepath-Funktion](query-data-storage.md#filepath-function)
 
-[Verwenden von komplexen Typen und geschachtelten oder wiederholten Datenstrukturen](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Verwenden von komplexen Typen und geschachtelten oder wiederholten Datenstrukturen](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Sicherheit
 

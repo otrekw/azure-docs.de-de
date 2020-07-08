@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c68c813c9c9ecdcb7c7b75102940aa1f1a57b4f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77121634"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562180"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Postman mit REST-APIs
 > [!div class="op_single_selector"]
@@ -57,9 +57,9 @@ Verwenden Sie in diesem Abschnitt das Webtool Ihrer Wahl, um Verbindungen mit Az
 
 Bei beiden Tools müssen Sie einen Befehl auswählen (GET, POST, PUT usw.) und einen URL-Endpunkt angeben. Für bestimmte Aufgaben muss im Text der Anforderung auch JSON-Code angegeben werden. Setzen Sie für den Namen des Suchdiensts (YOUR-SEARCH-SERVICE-NAME) einen gültigen Wert ein. Fügen `$select=name` Sie hinzu, um nur den Namen des jeweiligen Index zurückzugeben. 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name
 
-Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben und wird für die aktuelle Version als `?api-version=2019-05-06` angegeben. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
+Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben und wird für die aktuelle Version als `?api-version=2020-06-30` angegeben. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
 
 Der Anforderungsheader setzt sich aus dem Inhaltstyp (content-type) sowie dem API-Schlüssel (api-key) für die Authentifizierung bei Azure Cognitive Search zusammen. Ersetzen Sie den Administrator-API-Schlüssel (YOUR-AZURE-SEARCH-ADMIN-API-KEY) durch einen gültigen Wert. 
 
@@ -80,7 +80,7 @@ Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **PUT**.
 
-2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
+2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30`.
 
 3. Geben Sie im Text der Anforderung die Indexdefinition an (den kopierbereiten Code finden Sie unten).
 
@@ -134,7 +134,7 @@ Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **POST**.
 
-2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
+2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30`.
 
 3. Geben Sie die JSON-Dokumente im Text der Anforderung an (kopierbereiten Code finden Sie unten).
 
@@ -247,7 +247,7 @@ Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **GET**.
 
-2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
+2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30`.
 
 3. Klicken Sie auf **Send**.
 
@@ -262,24 +262,24 @@ Ersetzen Sie die aktuelle URL durch die folgenden URLs, und klicken Sie jedes Ma
 ```
 # Query example 1 - Search on restaurant and wifi
 # Return only the HotelName, Description, and Tags fields
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2020-06-30
 
 # Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2020-06-30
 
 # Query example 3 - Take the top two results, and show only HotelName and Category in the results
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2020-06-30
 
 # Query example 4 - Sort by a specific field (Address/City) in ascending order
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2020-06-30
 ```
 
 ## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
 Sie können auch [Statistik abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) verwenden, um die Anzahl der Dokumente und die Indexgröße abzufragen: 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30
 ```
 
 Wenn Sie Ihrer URL `/stats` hinzufügen, werden Indexinformationen zurückgegeben. In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.

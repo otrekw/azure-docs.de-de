@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 1bc18788019c3ec97e06e3b01e823a0ba53541b8
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734755"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341785"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -44,7 +44,7 @@ Mit Load Balancer Standard können Sie Ihre Anwendungen skalieren und hochverfü
 
 Im Anschluss finden Sie einige Schlüsselszenarien für Load Balancer Standard:
 
-- Vornehmen eines Lastausgleichs für **[internen](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** und **[externen](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** Datenverkehr auf virtuellen Azure-Computern
+- Vornehmen eines Lastausgleichs für **[internen](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** und **[externen](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** Datenverkehr auf virtuellen Azure-Computern
 
 - Erhöhen der Verfügbarkeit durch Verteilung von Ressourcen **[innerhalb](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** von und **[zwischen](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** Zonen
 

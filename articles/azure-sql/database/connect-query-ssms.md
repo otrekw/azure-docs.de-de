@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253612"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368072"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden von SSMS zum Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance und Ausführen von Abfragen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -155,7 +155,7 @@ Führen Sie diesen [INSERT](/sql/t-sql/statements/insert-transact-sql/)-Transact
 
 ### <a name="update-data"></a>Aktualisieren von Daten
 
-Führen Sie diesen [UPDATE](/sql/t-sql/statements/update-transact-sql)-Transact-SQL-Code aus, um Ihr neues Produkt zu ändern.
+Führen Sie diesen [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15)-Transact-SQL-Code aus, um Ihr neues Produkt zu ändern.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese, die den neuen, zuvor erstellten Datensatz zurückgibt:
 
