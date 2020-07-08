@@ -3,12 +3,12 @@ title: 'Analysieren von Livevideos mithilfe eines eigenen Modells: Azure'
 description: In diesem Schnellstart wenden Sie maschinelles Sehen an, um den Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816682"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027663"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Schnellstart: Analysieren von Livevideos mithilfe eines eigenen Modells
 
@@ -190,7 +190,7 @@ In den folgenden Meldungen werden vom Live Video Analytics-Modul die Anwendungse
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis
 
-Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle, eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live55“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp ist `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`.
+Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp ist `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

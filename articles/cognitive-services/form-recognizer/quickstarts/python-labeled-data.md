@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563101"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028091"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python
 
@@ -30,7 +30,7 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 - Einen Satz mit mindestens sechs Formularen desselben Typs. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
 > [!NOTE]
-> In dieser Schnellstartanleitung werden Remotedokumente verwendet, auf die über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync).
+> In dieser Schnellstartanleitung werden Remotedokumente verwendet, auf die über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -65,8 +65,8 @@ All diese Dateien müssen sich im selben Unterordner befinden und das folgende F
 
 Sie benötigen OCR-Ausgabedateien, damit der Dienst die entsprechenden Eingabedateien für das Training mit Beschriftungen berücksichtigen kann. Um OCR-Ergebnisse für ein bestimmtes Quellformular abzurufen, gehen Sie folgendermaßen vor:
 
-1. Rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API im Layoutcontainer für den Lesevorgang auf, und verwenden Sie dabei die Eingabedatei als Teil des Anforderungstexts. Speichern Sie die ID, die sich im **Operation-Location**-Header der Antwort befindet.
-1. Rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** -API auf, und verwenden Sie dabei die Vorgangs-ID aus dem vorherigen Schritt.
+1. Rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** -API im Layoutcontainer für den Lesevorgang auf, und verwenden Sie dabei die Eingabedatei als Teil des Anforderungstexts. Speichern Sie die ID, die sich im **Operation-Location**-Header der Antwort befindet.
+1. Rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** -API auf, und verwenden Sie dabei die Vorgangs-ID aus dem vorherigen Schritt.
 1. Rufen Sie die Antwort ab, und schreiben Sie den Inhalt in eine Datei. Für jedes Quellformular muss die entsprechende OCR-Datei den ursprünglichen Dateinamen mit dem Anhang `.ocr.json` aufweisen. Die OCR-JSON-Ausgabe muss im folgenden Format vorliegen. Ein vollständiges Beispiel finden Sie in der [OCR-Beispieldatei](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json). 
 
     ```json
@@ -197,7 +197,7 @@ Für jedes Quellformular muss die entsprechende Beschriftungsdatei den ursprüng
 
 ## <a name="train-a-model-using-labeled-data"></a>Trainieren eines Modells mit beschrifteten Daten
 
-Um ein Modell mit beschrifteten Daten zu trainieren, rufen Sie die **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** -API auf, indem Sie den folgenden Python-Code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
+Um ein Modell mit beschrifteten Daten zu trainieren, rufen Sie die **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API auf, indem Sie den folgenden Python-Code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch die Endpunkt-URL für Ihre Formularerkennungsressource.
 1. Ersetzen Sie `<SAS URL>` mit der Shared Access Signature-URL (SAS) des Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
@@ -561,4 +561,4 @@ Uns ist bewusst, dass ein solches Szenario von großer Bedeutung für unsere Kun
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie die Formularerkennungs-REST-API zusammen mit Python verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. Lesen Sie als Nächstes die API-Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
-> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
