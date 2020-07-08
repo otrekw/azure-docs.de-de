@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472995"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054490"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Tutorial: Veröffentlichen von verwalteten Azure-Anwendungen im Marketplace
 
@@ -172,6 +172,6 @@ Nachdem Sie alle Abschnitte ausgefüllt haben, wählen Sie **Veröffentlichen**,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Unter [Veröffentlichen eines Azure-Anwendungsangebots](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md) erfahren Sie, wie es nach dem Klicken auf **Veröffentlichen** weitergeht.
+* Unter [Veröffentlichen eines Azure-Anwendungsangebots](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) erfahren Sie, wie es nach dem Klicken auf **Veröffentlichen** weitergeht.
 * Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Anwendungen](overview.md).
 * Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](publish-service-catalog-app.md).

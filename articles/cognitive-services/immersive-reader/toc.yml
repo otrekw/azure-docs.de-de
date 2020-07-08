@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: Tutorials
   items:
+    - name: Starten des plastischen Readers (Android)
+      href: tutorial-android.md
+    - name: Starten des plastischen Readers (iOS)
+      href: tutorial-ios.md
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
     - name: Verwenden mehrerer Ressourcen für den plastischen Reader
