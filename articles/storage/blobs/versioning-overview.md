@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433593"
 ---
 # <a name="blob-versioning-preview"></a>Blobversionsverwaltung (Vorschau)
 
@@ -178,8 +177,8 @@ In der folgenden Tabelle wird gezeigt, welche RBAC-Aktionen das Löschen eines B
 
 | BESCHREIBUNG | Vorgang des Blob-Diensts | Erforderliche RBAC-Datenaktion | Unterstützung für integrierte RBAC-Rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Löschen der aktuellen Version des Blobs | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete/actionDeleting** | Mitwirkender an Storage-Blobdaten |
-| Löschen einer Version | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/** | Besitzer von Speicherblobdaten |
+| Löschen der aktuellen Version des Blobs | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | Mitwirkender an Storage-Blobdaten |
+| Löschen einer Version | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | Besitzer von Speicherblobdaten |
 
 ### <a name="shared-access-signature-sas-parameters"></a>SAS-Parameter (Shared Access Signature)
 
