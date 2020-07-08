@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354459"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045092"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Verwenden des CI/CD-NuGet-Pakets von Azure Stream Analytics für die Integration und Entwicklung 
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD NuGet-Pakets einrichten.
@@ -34,13 +34,17 @@ Wie bei der standardmäßigen Visual Studio MSBuild-Benutzeroberfläche können 
 
 Wenn ein Stream Analytics Visual Studio-Projekt erfolgreich erstellt wurde, generiert es die folgenden beiden Azure Resource Manager-Vorlagendateien im Ordner **bin/[Debug/Retail]/Deploy**: 
 
-*  Resource Manager-Vorlagendatei
+* Resource Manager-Vorlagendatei
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager-Parameterdatei
-
-       [ProjectName].JobTemplate.parameters.json   
+* Resource Manager-Parameterdatei
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
 Die Standardparameter in der „parameters.json“-Datei werden aus den Einstellungen im Visual Studio-Projekt entnommen. Wenn Sie die Bereitstellung in einer anderen Umgebung ausführen möchten, ersetzen Sie die Parameter entsprechend.
 

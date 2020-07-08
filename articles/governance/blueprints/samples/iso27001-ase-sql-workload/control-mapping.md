@@ -3,12 +3,12 @@ title: 'Steuerungen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Steuerelementzuordnung des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ zu Azure Policy und RBAC.'
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6311d5090c884c70bded7fcf754bc968a5b47b32
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 518c6b86ac658273d428a328b433b35d667d7056
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918604"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044752"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
@@ -28,7 +28,7 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 Klassifizierung von Informationen
 
-Mithilfe des [SQL-Sicherheitsrisikobewertungsdiensts](/azure/sql-database/sql-vulnerability-assessment) von Azure können Sie sensible Daten finden, die in Ihren Datenbanken gespeichert sind, und erhalten Empfehlungen zur Klassifizierung dieser Daten. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, um zu überwachen, dass während der Überprüfung der SQL-Sicherheitsrisikobewertung identifizierte Sicherheitslücken geschlossen werden.
+Mithilfe des [SQL-Sicherheitsrisikobewertungsdiensts](../../../../azure-sql/database/sql-vulnerability-assessment.md) von Azure können Sie sensible Daten finden, die in Ihren Datenbanken gespeichert sind, und erhalten Empfehlungen zur Klassifizierung dieser Daten. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, um zu überwachen, dass während der Überprüfung der SQL-Sicherheitsrisikobewertung identifizierte Sicherheitslücken geschlossen werden.
 
 - \[Vorschau\]: Ergebnisse der SQL-Sicherheitsrisikobewertung in Azure Security Center überwachen
 

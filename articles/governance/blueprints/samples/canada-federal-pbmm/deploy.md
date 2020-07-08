@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „Canada Federal PBMM“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Canada Federal PBMM“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: f9234b3ff44d3536380e19cb685ca4e3bbd9b0a5
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 5cbca772212f361fb7020dbfbdca20ca236c1ff0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005693"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045007"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Bereitstellen des Blaupausenbeispiels „Canada Federal PBMM“
 
@@ -98,7 +98,7 @@ Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Richtlinienzuweisung |Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich |Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: `[]` |
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Richtlinienzuweisung |Log Analytics-Arbeitsbereich für virtuelle Windows-Computer |Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[Vorschau\]: Canada Federal PBMM-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |ID des Log Analytics-Arbeitsbereichs, für den die VMs konfiguriert werden sollen |Dies ist die ID (GUID) des Log Analytics-Arbeitsbereichs, für den die virtuellen Computer konfiguriert werden sollen. |
-|\[Vorschau\]: Canada Federal PBMM-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[Vorschau\]: Canada Federal PBMM-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas). |
 |\[Vorschau\]: Canada Federal PBMM-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Gruppe „Administratoren“ |Gruppe. Beispiel: `Administrator; myUser1; myUser2` |
 |\[Vorschau\]: Canada Federal PBMM-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste der Benutzer, die in der Gruppe der Windows-VM-Administratoren enthalten sein sollen |Eine durch Semikolon getrennte Liste von Mitgliedern, die in der Gruppe der lokalen Administratoren enthalten sein sollen. Beispiel: `Administrator; myUser1; myUser2` |
 |Bereitstellen von Advanced Threat Protection für Speicherkonten |Richtlinienzuweisung |Wirkung |Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md). |

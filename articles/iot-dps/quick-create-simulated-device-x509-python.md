@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: 44f1a2cd3336eeae87878c333fb05d2e6b1f88e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 92e224448d26c24c073bd81b7f9e001fa8a09898
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77605390"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044684"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Python-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -87,15 +87,17 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
 3. Geben Sie im Ausgabefenster `i` für die individuelle Registrierung ein, wenn die Aufforderung angezeigt wird. Im Ausgabefenster wird ein lokal generiertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. 
     
-    Kopieren Sie das erste Zertifikat in die Zwischenablage. Beginnen Sie mit dem ersten Vorkommen von:
+    ```output
+    Copy the first certificate to clipboard. Begin with the first occurrence of:
     
         -----BEGIN CERTIFICATE----- 
         
-    Beenden Sie den Kopiervorgang nach dem ersten Vorkommen von:
+    End you copying after the first occurrence of:
     
         -----END CERTIFICATE-----
         
-    Achten Sie darauf, auch diese beiden Zeilen einzuschließen. 
+    Make sure to include both of those lines as well.
+    ``` 
 
     ![Anwendung „dice_device_enrollment“](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  

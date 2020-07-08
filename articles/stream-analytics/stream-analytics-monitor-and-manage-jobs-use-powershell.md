@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 58908b690464396f716801338cb22514ae4b5a66
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831261"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044344"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Überwachen und Verwalten von Stream Analytics-Aufträgen mit PowerShell-Cmdlets
 Erfahren Sie, wie Sie Stream Analytics-Ressourcen mit Azure PowerShell-Cmdlets und -Skripts, die grundlegende Stream Analytics-Aufgaben ausführen, überwachen und verwalten.

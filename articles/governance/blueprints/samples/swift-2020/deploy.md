@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 971b69dcc5c64d7e51e9237e09ee8474551ac43a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657050"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044259"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „SWIFT CSP-CSCF v2020“
 
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|\[Vorschau\]: SWIFT CSP-CSCF v2020-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Vorschau\]: SWIFT CSP-CSCF v2020-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Vorschau\]: SWIFT CSP-CSCF v2020-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|IDs der verbundenen Arbeitsbereiche|Eine durch Semikolons getrennte Liste der Arbeitsbereichs-IDs, mit denen der Log Analytics-Agent verbunden werden soll|
 |\[Vorschau\]: SWIFT CSP-CSCF v2020-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Liste der Benutzer, die in der Gruppe der Windows-VM-Administratoren enthalten sein sollen|Eine durch Semikolon getrennte Liste von Mitgliedern, die in der Gruppe der lokalen Administratoren enthalten sein sollen. Beispiel: Administrator; myUser1; myUser2|
 |\[Vorschau\]: SWIFT CSP-CSCF v2020-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Domänenname (FQDN)|Der vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN), mit dem die virtuellen Windows-Computer verknüpft werden sollen|

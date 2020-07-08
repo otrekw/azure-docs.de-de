@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Integrierte Sicherheitskontrollen
       href: load-balancer-security-controls.md
+    - name: Back-End-Pool-Verwaltung
+      href: backend-pool-management.md
 - name: Anleitung
   items:
     - name: VM-Skalierungsgruppen

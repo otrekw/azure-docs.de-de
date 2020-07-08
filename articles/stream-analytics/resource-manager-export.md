@@ -5,14 +5,14 @@ services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78968940"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043528"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Exportieren einer Azure Resource Manager-Vorlage für einen Azure Stream Analytics-Auftrag
 

@@ -3,12 +3,12 @@ title: Bereitstellen des IRS 1075-Blaupausenbeispiels
 description: Bereitstellungsschritte für das Blaupausenbeispiel „IRS 1075 (Rev.11-2016)“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7faf1042f695ac43b2fa22d2685149426cb1ed80
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59e9194e3f7839ce0826717e2f8fcef35de7decb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653101"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044769"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Bereitstellen des IRS 1075-Blaupausenbeispiels
 
@@ -94,7 +94,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
 |Überwachen von IRS 1075 (Rev.11-2016)-Steuerungen und Bereitstellen spezifischer VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen|Richtlinienzuweisung|ID des Log Analytics-Arbeitsbereichs, für den die VMs konfiguriert werden sollen|Dies ist die ID (GUID) des Log Analytics-Arbeitsbereichs, für den die virtuellen Computer konfiguriert werden sollen.|
-|Überwachen von IRS 1075 (Rev.11-2016)-Steuerungen und Bereitstellen spezifischer VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|Überwachen von IRS 1075 (Rev.11-2016)-Steuerungen und Bereitstellen spezifischer VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |Überwachen von IRS 1075 (Rev.11-2016)-Steuerungen und Bereitstellen spezifischer VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen|Richtlinienzuweisung|Liste der Benutzer, die aus der Windows-VM-Administratorengruppe ausgeschlossen werden sollen|Eine durch Semikolon getrennte Liste von Mitgliedern, die aus der Gruppe der lokalen Administratoren ausgeschlossen werden sollen. Beispiel: Administrator; myUser1; myUser2|
 |Überwachen von IRS 1075 (Rev.11-2016)-Steuerungen und Bereitstellen spezifischer VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen|Richtlinienzuweisung|Liste der Benutzer, die in der Gruppe der Windows-VM-Administratoren enthalten sein sollen|Eine durch Semikolon getrennte Liste von Mitgliedern, die in der Gruppe der lokalen Administratoren enthalten sein sollen. Beispiel: Administrator; myUser1; myUser2|
 |Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen|Richtlinienzuweisung|Log Analytics-Arbeitsbereich für Linux-VM-Skalierungsgruppen (VMSS)|Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, müssen Sie der Prinzipal-ID der Richtlinienzuweisung Berechtigungen vom Typ „Log Analytics-Mitwirkender“ (oder ähnliche Berechtigungen) erteilen.|
