@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388883"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -85,7 +85,7 @@ Mithilfe von benutzerdefinierten Azure AD B2C-Richtlinien können Sie einen Para
 
 Um Abfragezeichenfolgeparameter zu senden, fügen Sie in der [Richtlinie für die vertrauende Seite](relyingparty.md) ein `ContentDefinitionParameters`-Element hinzu, wie unten gezeigt.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -101,7 +101,7 @@ Um Abfragezeichenfolgeparameter zu senden, fügen Sie in der [Richtlinie für di
 
 Ändern Sie in der Inhaltsdefinition den Wert `LoadUri` in `https://<app_name>.azurewebsites.net/home/unified`. Ihre benutzerdefinierte Richtlinie `ContentDefinition` sollte wie der folgende Codeausschnitt aussehen:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,7 +118,7 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 Inhalt kann anhand der verwendeten Parameter von unterschiedlichen Quellen abgerufen werden. Richten Sie in Ihrem CORS-fähigen Endpunkt eine Ordnerstruktur zum Hosten von Inhalten ein. Sie können den Inhalt beispielsweise in der folgenden Struktur organisieren. Stammverzeichnis *Ordner/Ordner pro Sprache/Ihre HTML-Dateien*. Beispielsweise könnte Ihr benutzerdefinierter Seiten-URI wie folgt aussehen:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...

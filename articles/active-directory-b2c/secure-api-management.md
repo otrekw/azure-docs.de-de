@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385415"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -171,7 +171,7 @@ Nachdem Sie sich das Zugriffstoken und den APIM-Abonnementschlüssel notiert hab
 
 1. Wählen Sie in Postman die Schaltfläche **Send** (Senden) aus, um die Anforderung auszuführen. Wenn Sie alles korrekt konfiguriert haben, wird Ihnen eine JSON-Antwort mit einer Sammlung von Konferenzsprechern angezeigt werden (hier abgeschnitten):
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ Nachdem Sie nun eine erfolgreiche Anforderung durchgeführt haben, testen Sie de
 
 1. Wählen Sie die Schaltfläche **Send** (Senden) aus, um die Anforderung auszuführen. Bei einem ungültigen Token ist das erwartete Ergebnis der nicht autorisierte Statuscode `401`:
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ Wenn Ihnen der Statuscode `401` angezeigt wird, haben Sie überprüft, dass nur 
 
 Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit Ihre API Tokens für mehrere Apps akzeptieren kann, fügen Sie die entsprechenden App-Kennungen dem Element `<audiences>` in der APIM-Eingangsrichtlinie zu.
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit
 
 Wenn Sie mehrere Tokenaussteller unterstützen möchten, fügen Sie deren Endpunkt-URIs zum `<issuers>`-Element in der eingehenden APIM-Richtlinie hinzu.
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ Gehen Sie wie folgt vor, um eine gestaffelte Migration durchzuführen:
 
 Die folgende eingehende APIM-Beispielrichtlinie zeigt, wie Token akzeptiert werden, die sowohl von b2clogin.com als auch von login.microsoftonline.com ausgestellt wurden. Außerdem unterstützt sie API-Anforderungen von zwei Anwendungen.
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

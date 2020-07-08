@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389189"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aktivieren von „Angemeldet bleiben“ in Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ Um das Kontrollkästchen KMSI zur Registrierungs-und Anmeldeseite hinzuzufügen,
 1. Suchen Sie das ClaimsProviders-Element. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie dem ClaimsProviders-Element die folgenden Anspruchsanbieter hinzu:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -82,7 +82,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 1. Fügen Sie dem Knoten `<RelyingParty>` einen untergeordneten Knoten `<UserJourneyBehaviors>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="User journey Id" />` angeordnet werden. Beispiel: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
 1. Fügen Sie den folgenden Knoten als untergeordnetes Element des `<UserJourneyBehaviors>`-Elements hinzu.
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -100,7 +100,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 
 Es wird empfohlen, den Wert von „SessionExpiryInSeconds“ auf einen kurzen Zeitraum (1200 Sekunden) und den Wert von „KeepAliveInDays“ auf einen relativ langen Zeitraum (30 Tage) festzulegen. Dies ist im folgenden Beispiel dargestellt:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>

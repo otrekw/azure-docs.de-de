@@ -4,15 +4,15 @@ description: Erfahren Sie, wie die SQL-Abfrageleistung von Azure Cosmos DB-Anfor
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392130"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -131,7 +131,7 @@ Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 | `x-ms-documentdb-query-metrics` | Die Abfragestatistik für die Ausführung. Dies ist eine durch Trennzeichen getrennte Zeichenfolge, die Statistiken zum Zeitaufwand in den verschiedenen Phasen der Abfrageausführung enthält. Dieser Wert wird zurückgegeben, wenn `x-ms-documentdb-populatequerymetrics` auf `True` festgelegt ist. | 
 | `x-ms-request-charge` | Die Anzahl der von der Abfrage genutzten [Anforderungseinheiten](request-units.md). | 
 
-Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+Weitere Informationen über die REST-API-Anforderungsheader und -Optionen finden Sie unter [Abfragen von Ressourcen mithilfe der REST-API](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Bewährte Methoden für die Abfrageleistung
 Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfrageleistung von Azure Cosmos DB auswirken. Die einzelnen Themen in diesem Artikel werden im Detail erläutert.

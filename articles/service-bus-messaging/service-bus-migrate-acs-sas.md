@@ -1,23 +1,14 @@
 ---
 title: 'Azure Service Bus: Migrieren zur Shared Access Signature-Autorisierung'
 description: Erfahren Sie, wie Sie vom Azure Active Directory Access Control Service zur SAS-Autorisierung (Shared Access Signature) migrieren.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340117"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus: Migrieren von Azure Active Directory Access Control Service zur SAS-Autorisierung
 

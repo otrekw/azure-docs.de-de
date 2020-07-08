@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8939d4546657b049b61eb31c08844dac07c67ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389087"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalisieren der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Dieser Artikel veranschaulicht, wie Sie mehrere Gebietsschemas oder Sprachen in 
 1. Fügen Sie das `Localization`-Element mit den unterstützten Sprachen hinzu: Englisch (Standard) und Spanisch.  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ Sie konfigurieren die lokalisierten Ressourcenelemente für die Inhaltsdefinitio
 > [!NOTE]
 > Im folgenden Beispiel haben wir das Doppelkreuzsymbol (`#`) am Anfang aller Zeilen hinzugefügt, sodass Sie die lokalisierten Bezeichnungen einfacher auf dem Bildschirm finden können.
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ Fügen Sie den gesamten Inhalt des ContentDefinitions-Elements ein, das Sie als 
 
 Im folgenden Beispiel werden der Registrierungs- oder Anmeldeseite sowie der Registrierungsseite für das lokale Konto benutzerdefinierte Zeichenfolgen für Englisch („en“) und Spanisch („es“) hinzugefügt. Die **LocalizedResourcesReferenceId** für jede **LocalizedResourcesReference** ist mit ihrem Gebietsschema identisch, es kann aber jede beliebige Zeichenfolge als Bezeichner verwendet werden. Sie verweisen für jede Sprach- und Seitenkombination auf die entsprechenden **LocalizedResources**, die Sie zuvor erstellt haben.
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">

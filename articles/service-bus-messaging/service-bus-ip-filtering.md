@@ -1,22 +1,14 @@
 ---
 title: Konfigurieren von IP-Firewallregeln für Azure Service Bus
 description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2020
-ms.author: aschhab
-ms.openlocfilehash: fdd3540248c5210e2f6fc47f439641c007a793d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341445"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Konfigurieren von IP-Firewallregeln für Azure Service Bus
 Standardmäßig kann über das Internet auf Service Bus-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -56,7 +48,7 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
     3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. 
 
         > [!WARNING]
-        > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und keine IP-Adresse oder keinen IP-Adressbereich angeben, lässt der Dienst Datenverkehr aus allen Netzwerken zu. 
+        > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und weder eine IP-Adresse noch einen IP-Adressenbereich angeben, lässt der Dienst Datenverkehr aus allen Netzwerken zu. 
 
         ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Klicken Sie auf der Symbolleiste auf **Speichern**, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.

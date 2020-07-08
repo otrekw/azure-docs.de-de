@@ -6,18 +6,18 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383936"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -102,7 +102,7 @@ Sehen Sie sich anschließend den Abschnitt „PowerShell-Skript“ weiter unten 
 
 Wenn Sie Azure AD B2C-Überwachungsprotokollereignisse über die API herunterladen möchten, filtern Sie die Protokolle nach der Kategorie `B2C`. Verwenden Sie zum Filtern nach Kategorie den Abfragezeichenfolgenparameter `filter`, wenn Sie den Endpunkt der Azure AD-Berichterstellungs-API aufrufen.
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 Nachfolgend sehen Sie die JSON-Darstellung des Beispielsaktivitätsereignisses, das weiter oben in diesem Artikel erörtert wurde:
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",

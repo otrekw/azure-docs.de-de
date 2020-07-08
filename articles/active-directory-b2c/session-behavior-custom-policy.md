@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82943650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385262"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen
 
 Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforderlich, dass Sie im [RelyingParty](relyingparty.md)-Element ein **UserJourneyBehaviors**-Element hinzufügen.  Das **UserJourneyBehaviors**-Element muss unmittelbar nach **DefaultUserJourney** eingefügt werden. Das **UserJourneyBehavors**-Element sollte wie in folgendem Beispiel aussehen:
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -60,7 +60,7 @@ Wenn Sie den Benutzer zum Azure AD B2C-Abmeldeendpunkt (für OAuth2- und SAML-Pr
 Um das einmalige Abmelden zu unterstützen, müssen die technischen Profile des Tokenausstellers für JWT und SAML Folgendes angeben:
 
 - Protokollname, z. B. `<Protocol Name="OpenIdConnect" />`
-- Verweis auf das technische Profil für die Sitzung, z. B. `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />`.
+- Verweis auf das technische Profil für die Sitzung, z. B. `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />`.
 
 Das folgende Beispiel veranschaulicht die JWT- und SAML-Tokenaussteller mit einmaligem Abmelden:
 
@@ -74,7 +74,7 @@ Das folgende Beispiel veranschaulicht die JWT- und SAML-Tokenaussteller mit einm
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->

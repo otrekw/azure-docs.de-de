@@ -3,24 +3,24 @@ title: Problem beim Anmelden bei einer lokalen App über den Azure AD-Anwendungs
 description: Beheben von verbreiteten Problemen, wenn Sie sich nicht über den Azure AD-Anwendungsproxy bei einer in Azure AD integrierten lokalen Anwendung anmelden können
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74232326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367715"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Probleme beim Anmelden bei einer lokalen Anwendung über den Azure AD-Anwendungsproxy
 
@@ -36,7 +36,7 @@ Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Pro
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Bei meiner Anwendung tritt ein Konnektivitätsproblem auf.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
-  * [Ich weiß nicht, welche Ports ich für die Anwendung öffnen muss.](application-proxy-connectivity-ports-how-to.md)
+  * [Ich weiß nicht, welche Ports ich für die Anwendung öffnen muss.](application-proxy-add-on-premises-application.md)
   * [Ein Problem ist aufgetreten, weil es für meine Anwendung keinen funktionierenden Connector in einer Connectorgruppe gab.](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Beim Konfigurieren des Azure AD-Anwendungsproxys im Verwaltungsportal treten Probleme auf.

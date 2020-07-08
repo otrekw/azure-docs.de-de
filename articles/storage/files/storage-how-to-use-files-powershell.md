@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77598543"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340829"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Bei einem Speicherkonto handelt es sich um einen gemeinsam genutzten Pool mit Speicherplatz, den Sie zum Bereitstellen von Azure-Dateifreigaben verwenden können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze des Speicherkontos erreicht ist. In diesem Beispiel wird ein Speicherkonto vom Typ „Allgemein v2“ (General Purpose version 2, GPv2) erstellt, in dem Standard-Azure-Dateifreigaben sowie andere Speicherressourcen wie Blobs oder Warteschlangen auf einem Festplattenlaufwerk (Hard-Disk Drive, HDD) gespeichert werden können. Azure Files unterstützt auch SSDs (Solid State Drives). Premium-Azure-Dateifreigaben können in FileStorage-Speicherkonten erstellt werden.
 
-In diesem Beispiel wird mithilfe des Cmdlets [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) ein Speicherkonto erstellt. Das Speicherkonto wird mit dem Namen *mystorageaccount\<Zufallszahl>* versehen, und ein Verweis auf das Speicherkonto wird in der Variablen **$storageAcct** gespeichert. Da Speicherkontonamen eindeutig sein müssen, sollten Sie `Get-Random` verwenden, um zu diesem Zweck eine Zahl an den Namen anzufügen. 
+In diesem Beispiel wird mithilfe des Cmdlets [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) ein Speicherkonto erstellt. Das Speicherkonto wird mit dem Namen *mystorageaccount\<random number>* versehen, und ein Verweis auf das Speicherkonto wird in der Variablen **$storageAcct** gespeichert. Da Speicherkontonamen eindeutig sein müssen, sollten Sie `Get-Random` verwenden, um zu diesem Zweck eine Zahl an den Namen anzufügen. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -55,7 +55,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 > [!Note]  
-> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Speicherkonten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, müssen Sie den Parameter `-EnableLargeFileShare` entfernen.
+> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Speicherkonten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, entfernen Sie den Parameter `-EnableLargeFileShare`.
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das Cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
@@ -199,7 +199,7 @@ Sie können eine Freigabemomentaufnahme für eine Freigabe erstellen, indem Sie 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
-$snapshot = $share.Snapshot()
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>Durchsuchen von Freigabemomentaufnahmen

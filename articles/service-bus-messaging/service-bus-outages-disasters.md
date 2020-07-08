@@ -1,20 +1,14 @@
 ---
 title: Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen
 description: Dieser Artikel stellt Verfahren vor, die Anwendungen vor einem potenziellen Azure Service Bus-Ausfall schützen können.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 56e3737b992664f031189c9ac243101eef922731
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/23/2020
+ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339657"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 

@@ -4,41 +4,38 @@ description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwen
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338028"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 
-Mit der Funktion für Livedaten (Vorschau) in Azure Monitor für Container können Sie Metriken zum Knoten- und Podstatus in einem Cluster in Echtzeit visualisieren. Hierbei wird der direkte Zugriff auf die Befehle `kubectl top nodes`, `kubectl get pods –all-namespaces` und `kubectl get nodes` emuliert, um die Daten abzurufen, zu analysieren und in Leistungsdiagrammen zu visualisieren, die in diesen Einblicken enthalten sind. 
+Mit der Funktion für Livedaten (Vorschau) in Azure Monitor für Container können Sie Metriken zum Knoten- und Podstatus in einem Cluster in Echtzeit visualisieren. Hierbei wird der direkte Zugriff auf die Befehle `kubectl top nodes`, `kubectl get pods –all-namespaces` und `kubectl get nodes` emuliert, um die Daten abzurufen, zu analysieren und in Leistungsdiagrammen zu visualisieren, die in diesen Einblicken enthalten sind.
 
-Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwendung dieser Funktion zu verstehen.  
-
->[!NOTE]
->Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden mit dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert. 
+Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwendung dieser Funktion zu verstehen.
 
 >[!NOTE]
->Diese Funktion steht in allen Azure-Regionen zur Verfügung, einschließlich Azure China. In Azure US Government ist sie derzeit nicht verfügbar.
+>Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden mit dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert.
 
 Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vorschau) finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Funktionsweise 
+## <a name="how-it-works"></a>Funktionsweise
 
-Informationen zum Direktzugriff auf die Kubernetes-API über die Funktion für Livedaten (Vorschau) sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
+Informationen zum Direktzugriff auf die Kubernetes-API über die Funktion für Livedaten (Vorschau) sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Diese Funktion führt standardmäßig alle fünf Sekunden einen Abrufvorgang für die Metrikendpunkte (einschließlich `/api/v1/nodes`, `/apis/metrics.k8s.io/v1beta1/nodes`und `/api/v1/pods`) aus. Diese Daten werden in Ihrem Browser zwischengespeichert und in den vier Leistungsdiagrammen dargestellt, die in Azure Monitor für Container bei Auswahl von **Live schalten (Vorschau)** auf der Registerkarte **Cluster** enthalten sind. Jeder nachfolgende Abruf wird in einem rollierenden Fünf-Minuten-Visualisierungsfenster dargestellt. 
+Diese Funktion führt standardmäßig alle fünf Sekunden einen Abrufvorgang für die Metrikendpunkte (einschließlich `/api/v1/nodes`, `/apis/metrics.k8s.io/v1beta1/nodes`und `/api/v1/pods`) aus. Diese Daten werden in Ihrem Browser zwischengespeichert und in den vier Leistungsdiagrammen dargestellt, die in Azure Monitor für Container bei Auswahl von **Live schalten (Vorschau)** auf der Registerkarte **Cluster** enthalten sind. Jeder nachfolgende Abruf wird in einem rollierenden Fünf-Minuten-Visualisierungsfenster dargestellt.
 
 ![Option „Live schalten“ in der Ansicht „Cluster“](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-Das Abrufintervall wird mithilfe des Dropdownmenüs **Intervall festlegen** konfiguriert, in dem Sie den Abruf neuer Daten auf alle 1, 5, 15 oder 30 Sekunden festlegen können. 
+Das Abrufintervall wird mithilfe des Dropdownmenüs **Intervall festlegen** konfiguriert, in dem Sie den Abruf neuer Daten auf alle 1, 5, 15 oder 30 Sekunden festlegen können.
 
 ![Dropdownmenü für Abrufintervall unter „Live schalten“](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->Es wird empfohlen, das Abrufintervall bei der Problembehandlung für kurze Zeit auf eine Sekunde festzulegen. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken. Anschließend legen Sie wieder ein längeres Abrufintervall fest. 
+>Es wird empfohlen, das Abrufintervall bei der Problembehandlung für kurze Zeit auf eine Sekunde festzulegen. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken. Anschließend legen Sie wieder ein längeres Abrufintervall fest.
 
 >[!IMPORTANT]
 >Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während dieser Sitzung erfassten Informationen werden sofort gelöscht, wenn Sie den Browser schließen oder die Funktion verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls dauerhaft gelöscht.
@@ -47,9 +44,9 @@ Diese Diagramme können nicht an das letzte Azure-Dashboard angeheftet werden, d
 
 ## <a name="metrics-captured"></a>Erfasste Metriken
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>Knoten-CPU-Auslastung in % / Knotenspeicherauslastung in % 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>Knoten-CPU-Auslastung in % / Knotenspeicherauslastung in %
 
-Diese beiden Leistungsdiagramme bilden eine Entsprechung des Aufrufs von `kubectl top nodes` ab. Dabei werden die Ergebnisse der Spalten **CPU%** und **MEMORY%** im jeweiligen Diagramm erfasst. 
+Diese beiden Leistungsdiagramme bilden eine Entsprechung des Aufrufs von `kubectl top nodes` ab. Dabei werden die Ergebnisse der Spalten **CPU%** und **MEMORY%** im jeweiligen Diagramm erfasst.
 
 ![Beispielergebnisse für „kubectl top nodes“](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -81,7 +78,7 @@ Dieses Leistungsdiagramm bildet eine Entsprechung des Aufrufs von `kubectl get p
 ![Diagramm zur Knotenpodanzahl](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Statusnamen, die von `kubectl` interpretiert werden, stimmen im Diagramm möglicherweise nicht exakt überein. 
+>Statusnamen, die von `kubectl` interpretiert werden, stimmen im Diagramm möglicherweise nicht exakt überein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

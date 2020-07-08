@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385381"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definieren von Anspruchstransformationen von Telefonnummern in Azure AD B2C
 
@@ -37,7 +37,7 @@ Konvertiert einen `phoneNumber`-Datentyp in einen `string`-Datentyp.
 
 In diesem Beispiel wird der „cellPhoneNumber“-Anspruch mit dem Werttyp `phoneNumber` in einen „cellPhone“-Anspruch mit dem Werttyp `string` konvertiert.
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ Die Anspruchstransformation **ConvertStringToPhoneNumberClaim** wird immer über
 
 Mit dieser Anspruchstransformation können Sie sicherstellen, dass der bereitgestellte Zeichenfolgenanspruch eine gültige Telefonnummer ist. Ist dies nicht der Fall, wird eine Fehlermeldung ausgelöst. Im folgenden Beispiel wird überprüft, ob der ClaimType **phoneString** tatsächlich eine gültige Telefonnummer ist, dann wird die Telefonnummer im Azure AD B2C-Standardformat zurückgegeben. Andernfalls wird eine Fehlermeldung ausgelöst.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ Mit dieser Anspruchstransformation können Sie sicherstellen, dass der bereitges
 
 Das selbstbestätigte technische Profil, das das technische Validierungsprofil aufruft, das diese Anspruchstransformation enthält, kann die Fehlermeldung definieren.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ Mit dieser Anspruchstransformation können Sie eine vollständige Telefonnummer 
 
 Im folgenden Beispiel wird versucht, die Telefonnummer in die nationale Rufnummer und den Länder-/Regionscode aufzuteilen. Wenn die Telefonnummer gültig ist, wird die Telefonnummer von der nationalen Rufnummer überschrieben. Wenn die Telefonnummer ungültig ist, wird keine Ausnahme ausgelöst, und die Telefonnummer weist weiterhin den ursprünglichen Wert auf.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ Im folgenden Beispiel wird versucht, die Telefonnummer in die nationale Rufnumme
 
 Das selbstbestätigte technische Profil, das das technische Validierungsprofil aufruft, das diese Anspruchstransformation enthält, kann die Fehlermeldung definieren.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>
