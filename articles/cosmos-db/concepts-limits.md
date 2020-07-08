@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391841"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -117,7 +117,7 @@ Mit Ausnahme von Längeneinschränkungen bei Partitionsschlüssel- und ID-Werten
 
 ## <a name="per-request-limits"></a>Grenzwerte pro Anforderung
 
-Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](https://docs.microsoft.com/rest/api/cosmos-db/) für Ressourcen wie Container, Elemente und Datenbanken. Außerdem werden [transaktionale Batchanforderungen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) für mehrere Elemente mit demselben Partitionsschlüssel in einem Container unterstützt.
+Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](/rest/api/cosmos-db/) für Ressourcen wie Container, Elemente und Datenbanken. Außerdem werden [transaktionale Batchanforderungen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) für mehrere Elemente mit demselben Partitionsschlüssel in einem Container unterstützt.
 
 | Resource | Standardlimit |
 | --- | --- |

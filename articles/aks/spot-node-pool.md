@@ -2,17 +2,15 @@
 title: 'Vorschau: Hinzufügen eines Spot-Knotenpools zu einem Azure Kubernetes Service-Cluster (AKS)'
 description: Erfahren Sie, wie Sie einen Spot-Knotenpool zu einem Azure Kubernetes Service-Cluster (AKS) hinzufügen.
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77622043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374609"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Vorschau: Hinzufügen eines Spot-Knotenpools zu einem Azure Kubernetes Service-Cluster (AKS)
 
@@ -28,7 +26,7 @@ Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Az
 
 Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -43,9 +41,6 @@ Wenn Sie einen Cluster für die Verwendung eines Spot-Knotenpools erstellen, mus
 ### <a name="register-spotpoolpreview-preview-feature"></a>Registrieren der Previewfunktion „spotpoolpreview“
 
 Um einen AKS-Cluster zu erstellen, der einen Spot-Knotenpool verwendet, müssen Sie das Featureflag *spotpoolpreview* in Ihrem Abonnement aktivieren. Dieses Feature stellt beim Konfigurieren eines Clusters die neuesten Diensterweiterungen bereit.
-
-> [!CAUTION]
-> Wenn Sie ein Feature für ein Abonnement registrieren, können Sie die Registrierung dieses Features momentan nicht mehr aufheben. Nachdem Sie einige Vorschaufeatures aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Vorschaufeatures für Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Vorschaufeatures zu testen und Feedback zu sammeln.
 
 Registrieren Sie das Featureflag *spotpoolpreview* mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 

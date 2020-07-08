@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362090"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -107,36 +107,6 @@ Folgende Optionen sind verfügbar:
   - **Version**: Die Buildtaskversion in Azure DevOps. Diese Option wird selten verwendet.
 
 Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Credential Scanner](yaml-configuration.md#credential-scanner-task).
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection (MSRD)-Task
-
-> [!NOTE]
-> Vor Verwendung des MSRD-Tasks müssen Sie ein Konto mit dem MSRD (Microsoft Security Risk Detection)-Dienst erstellen und konfigurieren. Dieser Dienst erfordert einen separaten Onboardingprozess. Im Gegensatz zu den meisten anderen Tasks in dieser Erweiterung erfordert dieser Task ein separates Abonnement mit MSRD.
->
-> Anleitungen dazu finden Sie unter [Microsoft-Sicherheitsrisikoerkennung](https://aka.ms/msrddocs) und [Microsoft-Sicherheitsrisikoerkennung: Vorgehensweise](https://docs.microsoft.com/security-risk-detection/how-to/).
-
-Details zum Konfigurieren dieses Tasks finden Sie in der folgenden Liste. Um Hilfe zu einem Benutzeroberflächenelement zu erhalten, können Sie darauf zeigen.
-
-   - **Azure DevOps-Dienstendpunktname für MSRD**: Ihre integrierte MSRD-Instanz-URL und Ihr REST-API-Zugriffstoken werden von einem generischen Typ des Azure DevOps-Dienstendpunkts gespeichert. Wenn Sie einen solchen Endpunkt erstellt haben, können Sie ihn hier angeben. Wählen Sie andernfalls den Link **Manage** (Verwalten) aus, um einen neuen Dienstendpunkt für diesen MSRD-Task zu erstellen und zu konfigurieren.
-   - **Account ID (Konto-ID)** : Eine GUID, die aus der URL des MSRD-Kontos abgerufen werden kann.
-   - **URLs to Binaries (URLs für Binärdateien)** : Eine durch Semikolons getrennte Liste öffentlich verfügbarer URLs. Der Fuzzingcomputer verwendet diese URLs, um die Binärdateien herunterzuladen.
-   - **URLs of the Seed Files (URLs der Seeddateien)** : Eine durch Semikolons getrennte Liste öffentlich verfügbarer URLs. Der Fuzzingcomputer verwendet diese URLs, um die Seeds herunterzuladen. Dieser Wert ist optional, wenn die Seeddateien zusammen mit den Binärdateien heruntergeladen werden.
-   - **OS Platform Type (Typ der Betriebssystemplattform)** : Die Betriebssystemplattform der Computer, auf denen der Fuzzingauftrag ausgeführt wird. Verfügbare Werte sind **Windows** und **Linux**.
-   - **Windows Edition/Linux Edition**: Die Betriebssystemedition der Computer, auf denen der Fuzzingauftrag ausgeführt wird. Sie können den Standardwert überschreiben, wenn Ihre Computer eine andere Betriebssystemedition aufweisen.
-   - **Package Installation Script (Paketinstallationsskript)** : Ihr Skript, das auf einem Testcomputer ausgeführt werden soll. Mit diesem Skript werden das Testzielprogramm und dessen Abhängigkeiten installiert, bevor der Fuzzingauftrag übermittelt wird.
-   - **Job Submission Parameters (Parameter für die Auftragsübermittlung)** :
-       - **Seed Directory (Seedverzeichnis)** : Der Pfad zum Verzeichnis auf dem Fuzzingcomputer, in dem die Seeds enthalten sind.
-       - **Seed Extension (Seederweiterung)** : Die Dateinamenerweiterung der Seeds.
-       - **Test Driver Executable (Ausführbare Testtreiberdatei)** : Der Pfad zur ausführbaren Zieldatei auf dem Fuzzingcomputer.
-       - **Test Driver Executable Architecture (Architektur der ausführbaren Testtreiberdatei)** : Die Architektur der ausführbaren Zieldatei. Verfügbare Werte sind **x86** und **amd64**.
-       - **Test Driver Arguments (Testtreiberargumente)** : Die Befehlszeilenargumente, die an die ausführbare Testdatei übergeben werden. Das Argument "%testfile%" wird (einschließlich der Anführungszeichen) automatisch durch den vollständigen Pfad zur Zieldatei ersetzt. Diese Datei wird vom Testtreiber analysiert und ist erforderlich.
-       - **Test Driver Process Exits Upon Test Completion (Testtreiberprozess wird nach Abschluss des Tests beendet)** : Aktivieren Sie dieses Kontrollkästchen, wenn der Testtreiber nach Abschluss beendet werden soll. Deaktivieren Sie es, wenn das Beenden des Testtreibers erzwungen werden muss.
-       - **Maximum Duration (in seconds) (Maximale Dauer (in Sekunden))** : Eine sinnvolle Schätzung der maximal erwarteten Zeit, die das Zielprogramm zum Analysieren einer Eingabedatei benötigt. Je genauer diese Schätzung ist, desto effizienter wird die Fuzzing-App ausgeführt.
-       - **Test Driver Can Be Run Repeatedly (Testtreiber kann wiederholt ausgeführt werden)** : Aktivieren Sie dieses Kontrollkästchen, wenn der Testtreiber unabhängig von einem beständigen oder gemeinsamen globalen Zustand wiederholt ausgeführt werden kann.
-       - **Test Driver Can Be Renamed (Testtreiber kann umbenannt werden)** : Aktivieren Sie dieses Kontrollkästchen, wenn die ausführbare Datei des Testtreibers umbenannt werden kann und trotzdem weiterhin ordnungsgemäß funktioniert.
-       - **The Fuzzing Application Runs as a Single OS Process (Die Fuzzinganwendung wird als einzelner Betriebssystemprozess ausgeführt)** : Aktivieren Sie dieses Kontrollkästchen, wenn der Testtreiber unter einem einzelnen Betriebssystemprozess ausgeführt wird. Deaktivieren Sie es, wenn der Testtreiber zusätzliche Prozesse erzeugt.
-
-Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Microsoft Security Risk Detection](yaml-configuration.md#microsoft-security-risk-detection-task).
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers-Task
 

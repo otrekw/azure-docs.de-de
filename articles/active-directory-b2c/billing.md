@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386061"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Im Folgenden wird erläutert, wie Sie für eine vorhandene Azure AD B2C-Ressourc
 
 Die MAU-basierte Messung wird aktiviert, sobald Sie als Abonnement-/Ressourcenbesitzer die Änderung bestätigen. Ihre monatliche Rechnung enthält die Authentifizierungseinheiten, die bis zur Änderung abgerechnet wurden, und die neuen Einheiten der MAU-Abrechnung ab dem Änderungszeitpunkt.
 
-Benutzer werden im Übergangsmonat nicht doppelt gezählt. Eindeutige aktive Benutzer, die sich vor der Änderung authentifizieren, werden in einem Kalendermonat nach dem Tarif „Pro Authentifizierung“ abgerechnet. Diese Benutzer werden im übrigen Abrechnungszeitraum des Abonnements nicht in die MAU-Berechnung einbezogen. Beispiel: 
+Benutzer werden im Übergangsmonat nicht doppelt gezählt. Eindeutige aktive Benutzer, die sich vor der Änderung authentifizieren, werden in einem Kalendermonat nach dem Tarif „Pro Authentifizierung“ abgerechnet. Diese Benutzer werden im übrigen Abrechnungszeitraum des Abonnements nicht in die MAU-Berechnung einbezogen. Beispiel:
 
 * Der B2C-Mandanten von Contoso hat 1.000 Benutzer. 250 Benutzer sind in jedem Monat aktiv. Der Abonnementadministrator ändert am 10. Tag des Monats die Abrechnung „Pro Authentifizierung“ in die MAU-Abrechnung (basierend auf den monatlich aktiven Benutzern).
 * Die Abrechnung vom 1. bis 10. des Monats erfolgt nach dem Modell „Pro Authentifizierung“.

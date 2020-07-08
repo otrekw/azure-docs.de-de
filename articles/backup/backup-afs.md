@@ -3,14 +3,14 @@ title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391151"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Sichern von Azure-Dateifreigaben in einem Recovery Services-Tresor
+# <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) sichern.
 
@@ -26,27 +26,6 @@ In diesem Artikel lernen Sie Folgendes:
 * Stellen Sie sicher, dass sich die Dateifreigabe in einem der [unterstützten Speicherkontotypen](azure-file-share-support-matrix.md) befindet.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>Ändern der Speicherreplikation
-
-Tresore verwenden standardmäßig den [georedundanten Speicher (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
-
-* Wenn der Tresor Ihr Hauptmechanismus für Sicherungen ist, empfehlen wir die Verwendung von GRS.
-* Sie können [Lokal redundanter Speicher (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) als kostengünstigere Option verwenden.
-
-So ändern Sie den Speicherreplikationstyp
-
-1. Wählen Sie im neuen Tresor im Abschnitt **Einstellungen** auf **Eigenschaften**.
-
-1. Wählen Sie auf dem Blatt **Eigenschaften** unter **Sicherungskonfiguration** die Option **Aktualisieren** aus.
-
-1. Wählen Sie den Speicherreplikationstyp und dann **Speichern** aus.
-
-    ![Aktualisieren der Sicherungskonfiguration](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> Sie können den Speichertyp für die Replikation nicht mehr ändern, nachdem der Tresor eingerichtet wurde und Sicherungselemente enthält. Dazu müssen Sie den Tresor neu erstellen.
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Ermitteln der Dateifreigaben und Konfigurieren der Sicherung
 
@@ -97,7 +76,7 @@ So ändern Sie den Speicherreplikationstyp
 
       1. Um eine neue Sicherungsrichtlinie für Ihre Dateifreigabe zu erstellen, klicken Sie im Abschnitt **Sicherungsrichtlinie** auf den Linktext unter der Dropdownliste.<br>
 
-         ![Eine neue Richtlinie erstellen.](./media/backup-afs/create-new-policy.png)
+         ![Erstellen Sie eine neue Richtlinie.](./media/backup-afs/create-new-policy.png)
 
       1. Der Kontextbereich **Sicherungsrichtlinie** wird auf der rechten Seite geöffnet. Geben Sie einen Richtliniennamen in das Textfeld ein, und wählen Sie den Aufbewahrungszeitraum entsprechend Ihren Anforderungen. Nur die Aufbewahrungsoption „Täglich“ ist standardmäßig aktiviert. Wenn Sie eine wöchentliche, monatliche oder jährliche Aufbewahrung wünschen, aktivieren Sie das entsprechende Kontrollkästchen, und geben Sie die gewünschte Aufbewahrungsdauer an.
 

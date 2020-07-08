@@ -2,23 +2,23 @@
 title: Planen einer Azure Active Directory-Bereitstellung für einmaliges Anmelden
 description: Leitfaden zum Planen, Bereitstellen und Verwalten von SSO in Ihrer Organisation.
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 06/10/2020
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374440"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -194,8 +194,6 @@ Verwenden Sie die folgenden Phasen, um Ihre Lösung zu planen und in Ihrem Unter
    Wenn Sie Ihre Anwendung nicht finden können, lesen Sie die [Dokumentation zur benutzerdefinierten Anwendung](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Diese führt Sie schrittweise durch das Hinzufügen einer Anwendung, die nicht im Azure AD-Katalog enthalten ist.
 
    Optional können Sie im SAML-Token ausgestellte Ansprüche für die Unternehmensanwendung gemäß den Anleitungen in der [Dokumentation von Microsoft](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) verwenden. Stellen Sie sicher, dass diese Werte dem entsprechen, was Sie in der SAML-Antwort für Ihre Anwendung erwarten. Wenn während der Konfiguration Probleme auftreten, verwenden Sie unsere Leitfäden unter [Debuggen der SSO-Integration](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging).
-
-Benutzerdefiniertes Onboarding ist ein Feature der Azure AD-Lizenzen Premium P1 oder P2.
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>Bereitstellen von SSO-Änderungskommunikation für Endbenutzer
 
