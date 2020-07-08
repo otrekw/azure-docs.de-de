@@ -278,7 +278,9 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Bedarfsgesteuertes Sichern einer Partition
               href: service-fabric-backup-restore-service-ondemand-backup.md
-        - name: 'Initialisierer: CodePackages'
+            - name: Anzeigen und Bearbeiten der Sicherung einer zuverlässigen Sammlung offline
+              href: backup-explorer.md
+        - name: Initialisierer-CodePackages
           href: initializer-codepackages.md
         - name: RunToCompletion
           href: run-to-completion.md
