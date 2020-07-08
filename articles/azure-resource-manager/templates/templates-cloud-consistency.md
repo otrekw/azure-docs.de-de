@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156105"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055238"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Entwickeln von ARM-Vorlagen für Cloudkonsistenz
 
@@ -133,7 +133,7 @@ In der gesamten Vorlage werden Links generiert, indem der Basis-URI (aus dem `_a
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -301,7 +301,7 @@ Aus diesem Grund wurde im Ressourcen-Manager das Konzept der API-Profile in Vorl
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -342,7 +342,7 @@ Eine API-Profilversion fungiert als Alias für eine einzelne API-Version pro Res
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -384,7 +384,7 @@ Das API-Profil ist kein Pflichtelement einer Vorlage. Selbst wenn Sie das Elemen
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -574,7 +574,7 @@ Die gleichen Änderungen gelten auch für [Datenträger](../../virtual-machines/
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Sicherstellen der Verfügbarkeit von VM-Erweiterungen in Azure Stack
 
-Ein weiterer Aspekt bei der cloudübergreifenden Konsistenz ist die Verwendung von [VM-Erweiterungen](../../virtual-machines/windows/extensions-features.md) zur Konfiguration der Ressourcen innerhalb einer VM. In Azure Stack sind nicht alle VM-Erweiterungen verfügbar. In einer Vorlage können die Ressourcen für die VM-Erweiterung angegeben werden, wodurch Abhängigkeiten und Bedingungen innerhalb der Vorlage erzeugt werden.
+Ein weiterer Aspekt bei der cloudübergreifenden Konsistenz ist die Verwendung von [VM-Erweiterungen](../../virtual-machines/extensions/features-windows.md) zur Konfiguration der Ressourcen innerhalb einer VM. In Azure Stack sind nicht alle VM-Erweiterungen verfügbar. In einer Vorlage können die Ressourcen für die VM-Erweiterung angegeben werden, wodurch Abhängigkeiten und Bedingungen innerhalb der Vorlage erzeugt werden.
 
 Wenn Sie beispielsweise eine VM mit Microsoft SQL Server konfigurieren möchten, kann die VM-Erweiterung SQL Server im Rahmen der Vorlagenbereitstellung konfigurieren. Berücksichtigen Sie, was passiert, wenn die Bereitstellungsvorlage auch einen Anwendungsserver enthält, der so konfiguriert ist, dass er eine Datenbank in der VM erstellt, in der SQL Server ausgeführt wird. Neben der Verwendung einer VM-Erweiterung auch für die Anwendungsserver können Sie die Abhängigkeit des Anwendungsservers von der erfolgreichen Rückgabe der VM-Erweiterungsressource „SQL Server“ konfigurieren. Dieser Ansatz stellt sicher, dass die VM, in der SQL Server ausgeführt wird, konfiguriert und verfügbar ist, wenn der Anwendungsserver angewiesen wird, die Datenbank zu erstellen.
 

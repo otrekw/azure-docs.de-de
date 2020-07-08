@@ -3,12 +3,12 @@ title: LUIS-Glossar
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681613"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056377"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -38,11 +38,11 @@ Bei der Erstellung handelt es sich um die Fähigkeit zum Erstellen, Verwalten un
 
 ### <a name="authoring-key"></a>Erstellungsschlüssel
 
-Der [Erstellungsschlüssel](luis-concept-keys.md) wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits).
+Der [Erstellungsschlüssel](luis-how-to-azure-subscription.md) wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits).
 
 ### <a name="authoring-resource"></a>Erstellungsressource
 
-Ihre LUIS-[Erstellungsressource](luis-concept-keys.md#azure-resources-for-luis) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
+Ihre LUIS-[Erstellungsressource](luis-how-to-azure-subscription.md#azure-resources-for-luis) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
 
 Die Erstellungsressource weist die Azure-Art `LUIS-Authoring` auf.
 
@@ -234,7 +234,7 @@ Eine Vorhersage ist eine REST-Anforderung an den Azure LUIS-Vorhersagedienst, de
 
 ### <a name="prediction-key"></a>Vorhersageschlüssel
 
-Der [Vorhersageschlüssel](luis-concept-keys.md) (früher als Abonnementschlüssel bezeichnet) ist der Schlüssel, der mit dem LUIS-Dienst verbunden ist, den Sie in Azure erstellt haben und der Ihre Verwendung des Vorhersageendpunkts autorisiert.
+Der [Vorhersageschlüssel](luis-how-to-azure-subscription.md) (früher als Abonnementschlüssel bezeichnet) ist der Schlüssel, der mit dem LUIS-Dienst verbunden ist, den Sie in Azure erstellt haben und der Ihre Verwendung des Vorhersageendpunkts autorisiert.
 
 Dieser Schlüssel ist nicht der Erstellungsschlüssel. Wenn Sie einen Vorhersageendpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie können Ihren aktuellen Vorhersageschlüssel innerhalb der Endpunkt-URL unten auf der Azure-Ressourcenseite der LUIS-Website anzeigen. Es ist der Wert des Name-Wert-Paars „subscription-key“.
 

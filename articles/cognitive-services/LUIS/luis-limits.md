@@ -3,12 +3,12 @@ title: Grenzwerte – LUIS
 description: Dieser Artikel behandelt die bekannten Einschränkungen von Azure Cognitive Services Language Understanding (LUIS). LUIS weist Begrenzungen in mehreren Bereichen auf. Modellbegrenzungen steuern Absichten, Entitäten und Features in LUIS. Kontingentgrenzen basierend auf dem Schlüsseltyp. Tastenkombinationen steuern die LUIS-Website.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976981"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055340"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Begrenzungen für das LUIS-Modell und die Schlüssel
 LUIS weist Begrenzungen in mehreren Bereichen auf. Der erste ist die [Modellbegrenzung](#model-limits), die Absichten, Entitäten und Features in LUIS steuert. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich von Begrenzungen umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
@@ -68,7 +68,7 @@ Verwenden Sie die folgenden Zeichen in den folgenden Namen.
 
 ## <a name="resource-usage-and-limits"></a>Ressourcennutzung und Limits
 
-Language Understanding verfügt über separate Ressourcen, einen Typ für die Erstellung und einen Typ für die Abfrage des Vorhersageendpunkts. Weitere Informationen zu den Unterschieden zwischen Schlüsseltypen finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-concept-keys.md).
+Language Understanding verfügt über separate Ressourcen, einen Typ für die Erstellung und einen Typ für die Abfrage des Vorhersageendpunkts. Weitere Informationen zu den Unterschieden zwischen Schlüsseltypen finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-how-to-azure-subscription.md).
 
 <a name="key-limits"></a>
 

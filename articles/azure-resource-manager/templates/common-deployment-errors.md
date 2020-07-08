@@ -3,13 +3,13 @@ title: Beheben von häufigen Bereitstellungsfehlern
 description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: e1b7a318f73a513d699de97f0973ece9b6481b93
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/25/2020
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84230630"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055663"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -25,7 +25,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Beachten Sie die Einschränkungen bei der Namensgebung für Speicherkonten. | [Resolve errors for storage account names](error-storage-account-name.md) (Beheben von Fehlern für Namen von Speicherkonten) |
 | AccountPropertyCannotBeSet | Überprüfen Sie die verfügbaren Speicherkontoeigenschaften. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Im Cluster oder in der Region sind keine Ressourcen verfügbar, oder die angeforderte Größe des virtuellen Computers kann nicht unterstützt werden. Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt, oder fordern Sie eine andere Größe für den virtuellen Computer an. | [Bereitstellungs- und Zuteilungsprobleme bei Linux](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md) und [Bereitstellungs- und Zuteilungsprobleme bei Windows](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) und [Problembehandlung bei Zuordnungsfehlern](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | Im Cluster oder in der Region sind keine Ressourcen verfügbar, oder die angeforderte Größe des virtuellen Computers kann nicht unterstützt werden. Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt, oder fordern Sie eine andere Größe für den virtuellen Computer an. | [Bereitstellungs- und Zuteilungsprobleme bei Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md) und [Bereitstellungs- und Zuteilungsprobleme bei Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) und [Problembehandlung bei Zuordnungsfehlern](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Warten Sie, bis der gleichzeitige Vorgang abgeschlossen ist. | |
 | AuthorizationFailed | Ihr Konto oder Dienstprinzipal verfügt nicht über ausreichende Zugriffsberechtigungen zum Durchführen der Bereitstellung. Überprüfen Sie die Rolle, zu der Ihr Konto gehört, sowie deren Zugriffsberechtigungen für den Bereitstellungsumfang.<br><br>Unter Umständen wird dieser Fehler angezeigt, wenn ein erforderlicher Ressourcenanbieter nicht registriert ist. | [Rollenbasierte Access Control in Azure](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lösen von Registrierungsfehlern](error-register-resource-provider.md) |
 | BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-location.md) |
@@ -114,7 +114,7 @@ Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mi
 Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mit Azure CLI anzuzeigen:
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 Wählen Sie im Portal die Benachrichtigung aus.
@@ -172,7 +172,7 @@ Derzeit unterstützt Azure CLI das Aktivieren der Debugprotokollierung nicht, Si
 Untersuchen Sie die Bereitstellungsvorgänge mit folgendem Befehl:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 Überprüfen Sie den Anforderungsinhalt mit folgendem Befehl:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 Überprüfen Sie den Antwortinhalt mit folgendem Befehl:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -223,7 +223,7 @@ Mitunter ist die einfachste Möglichkeit für die Behandlung von Problemen bei I
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "storageName": {
