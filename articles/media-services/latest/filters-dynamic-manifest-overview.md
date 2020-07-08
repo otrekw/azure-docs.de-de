@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705201"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtern von Manifesten mithilfe von Dynamic Packager
 
@@ -36,7 +36,7 @@ Diese Fähigkeit, verschiedene Filter in Ihrem Datenstrom angeben zu können, bi
 
 ## <a name="overview-of-manifests"></a>Übersicht über Manifeste
 
-Azure Media Services unterstützt die Protokolle HLS, MPEG DASH und Smooth Streaming. Als Teil der [dynamischen Paketerstellung](dynamic-packaging-overview.md) werden die Streamingclientmanifeste (HLS Master Playlist, DASH Media Presentation Description (MPD) und Smooth Streaming) basierend auf dem Formatselektor in der URL dynamisch generiert. Weitere Informationen finden Sie in den Übermittlungsprotokollen unter [Allgemeiner On-Demand-Workflow](dynamic-packaging-overview.md#delivery-protocols).
+Azure Media Services unterstützt die Protokolle HLS, MPEG DASH und Smooth Streaming. Als Teil der [dynamischen Paketerstellung](dynamic-packaging-overview.md) werden die Streamingclientmanifeste (HLS Master Playlist, DASH Media Presentation Description (MPD) und Smooth Streaming) basierend auf dem Formatselektor in der URL dynamisch generiert. Weitere Informationen finden Sie in den Übermittlungsprotokollen unter [Allgemeiner On-Demand-Workflow](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery).
 
 ### <a name="get-and-examine-manifest-files"></a>Abrufen und Untersuchen von Manifestdateien
 

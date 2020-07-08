@@ -1,18 +1,18 @@
 ---
 title: 'HBv2-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der HBv2-Serie
-services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 730065333fde7431b7018ef0a6e614e12727d7ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673852"
 ---
 # <a name="hbv2-series"></a>HBv2-Serie
 

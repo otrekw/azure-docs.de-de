@@ -1,19 +1,17 @@
 ---
 title: Verschieben von Ressourcen, die einer Wartungskonfiguration zugeordnet sind, in eine andere Region
 description: Erfahren Sie, wie Ressourcen, die einer VM-Wartungskonfiguration zugeordnet sind, in eine andere Azure-Region verschoben werden.
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676890"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Verschieben von Ressourcen in einer Wartungssteuerungskonfiguration in eine andere Region
 

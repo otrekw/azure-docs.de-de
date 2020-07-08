@@ -5,15 +5,15 @@ description: Erstellen oder Ändern einer Instanz für Direct Peering mit PowerS
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81680782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700296"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>Erstellen oder Ändern einer Instanz für Direct Peering mit PowerShell
 

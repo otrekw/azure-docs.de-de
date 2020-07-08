@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678170"
 ---
 # <a name="export-your-application"></a>Exportieren Ihrer Anwendung
 
@@ -59,7 +59,6 @@ Die folgenden Elemente sind nicht enthalten, wenn Sie eine Anwendungsvorlage ers
 
 - Geräte
 - Benutzer
-- Auftragsdefinitionen
 - Definitionen für den kontinuierlichen Datenexport
 
 Diese Elemente müssen allen von einer Anwendungsvorlage erstellten Anwendungen manuell hinzugefügt werden.
