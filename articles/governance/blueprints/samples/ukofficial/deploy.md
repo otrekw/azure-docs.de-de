@@ -3,12 +3,12 @@ title: Bereitstellen der Blaupausenbeispiele für UK OFFICIAL und UK NHS
 description: Bereitstellungsschritte für die Blaupausenbeispiele für UK OFFICIAL und UK NHS, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 7fa78eab463c9a3202b2ec08e1952e275e51b20d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 2ac2d17c08b3f585f86d1b2d339c3c7cf52844ce
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005589"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037170"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Bereitstellung der UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|Blaupauseninitiative für UK OFFICIAL oder UK NHS|Richtlinienzuweisung |Ressourcentyp zur Überprüfung von Diagnoseprotokollen (Richtlinie: Blaupauseninitiative für UK OFFICIAL oder UK NHS) |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist.  Zulässige Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
+|Blaupauseninitiative für UK OFFICIAL oder UK NHS|Richtlinienzuweisung |Ressourcentyp zur Überprüfung von Diagnoseprotokollen (Richtlinie: Blaupauseninitiative für UK OFFICIAL oder UK NHS) |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist.  Zulässige Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md). |
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs |Richtlinienzuweisung |Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem zum Hinzufügen zum Bereich (Richtlinie: \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs) |(Optional) Der Standardwert lautet _none_ (Keine). Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Richtlinienzuweisung |Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich (Richtlinie: \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs) |(Optional) Der Standardwert lautet _none_ (Keine). Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
