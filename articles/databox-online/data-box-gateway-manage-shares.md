@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339194"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079145"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Verwalten von Freigaben auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal 
 
@@ -92,23 +92,23 @@ Mithilfe des Aktualisierungsfeatures können Sie den Inhalt einer lokalen Freiga
 
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 
-1.   Navigieren Sie im Azure-Portal zu **Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
+1. Navigieren Sie im Azure-Portal zu **Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
 
-    ![Auswählen der Freigabe](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Auswählen der Freigabe](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   Klicken Sie auf **Aktualisieren**. 
+2. Klicken Sie auf **Aktualisieren**. 
 
-    ![Klicken auf „Aktualisieren“](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![Klicken auf „Aktualisieren“](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Daraufhin wird ein Auftrag gestartet, um den Inhalt der lokalen Freigabe zu aktualisieren. 
+3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Daraufhin wird ein Auftrag gestartet, um den Inhalt der lokalen Freigabe zu aktualisieren. 
 
-    ![Bestätigen der Aktualisierung](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![Bestätigen der Aktualisierung](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   Während der Ausführung des Aktualisierungsvorgangs ist die Aktualisierungsoption im Kontextmenü ausgegraut. Klicken Sie auf die Auftragsbenachrichtigung, um den Status des Aktualisierungsauftrags anzuzeigen.
 
-5.   Die Dauer des Aktualisierungsvorgangs hängt davon ab, wie viele Dateien sich im Azure-Container und auf dem Gerät befinden. Nach erfolgreichem Abschluss der Aktualisierung wird der Zeitstempel der Freigabe aktualisiert. Der Zeitstempel wird auch aktualisiert, wenn der Vorgang nur teilweise erfolgreich war. 
+5. Die Dauer des Aktualisierungsvorgangs hängt davon ab, wie viele Dateien sich im Azure-Container und auf dem Gerät befinden. Nach erfolgreichem Abschluss der Aktualisierung wird der Zeitstempel der Freigabe aktualisiert. Der Zeitstempel wird auch aktualisiert, wenn der Vorgang nur teilweise erfolgreich war. 
 
-    ![Aktualisierter Zeitstempel](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![Aktualisierter Zeitstempel](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Im Falle eines Fehlers wird eine Warnung ausgelöst. Die Warnung enthält Informationen zur Ursache sowie Empfehlungen für die Problembehebung. Darüber hinaus enthält die Warnung einen Link zu einer Datei mit einer vollständigen Zusammenfassung der Fehler für die Dateien, die nicht aktualisiert oder gelöscht werden konnten.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918239"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078628"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Remotedesktopverbindung mit einer VM nicht möglich, weil die Netzwerkschnittstelle deaktiviert ist
 
@@ -40,21 +40,29 @@ Verwenden Sie zum Aktivieren der Schnittstelle für die VM die serielle Konsole,
 ). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](#reset-network-interface) weiter.
 2. Überprüfen Sie den Status der Netzwerkschnittstelle:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Notieren Sie sich den Namen der deaktivierten Netzwerkschnittstelle.
 
 3. Aktivieren Sie die Netzwerkschnittstelle:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Überprüfen Sie den Status der Netzwerkschnittstelle erneut, um sicherzustellen, dass sie aktiviert ist.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Sie müssen die VM an diesem Punkt nicht neu starten. Die VM ist jetzt wieder erreichbar.
 
