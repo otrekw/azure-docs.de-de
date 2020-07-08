@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9a6fab9b98029eeefdd4649b0949a1a61da8b0c1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84792131"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -75,7 +75,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Azure Storage|[Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Datenverschlüsselung in Azure Data Lake Store](../../data-lake-store/data-lake-store-encryption.md) mit von Kunden verwalteten Schlüsseln.|
 |Azure Databricks|[Ein schneller, einfacher und kollaborativer Analysedienst auf Basis von Apache Spark](../../azure-databricks/what-is-azure-databricks.md)|
-|Azure API Management|[Verwenden der verwalteten Dienstidentität für den Zugriff auf andere Ressourcen](../../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure API Management|[Verwenden der verwalteten Dienstidentität für den Zugriff auf andere Ressourcen](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Abrufen von Anmeldeinformationen für den Datenspeicher in Key Vault aus Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure-Servicebus|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|

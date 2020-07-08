@@ -4,16 +4,16 @@ description: Vorgehensweise zum Aktivieren des IPsec-Transportmodus zwischen Win
 services: expressroute
 author: fabferri
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74022005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737256"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurieren des IPsec-Transportmodus für privates ExpressRoute-Peering
 

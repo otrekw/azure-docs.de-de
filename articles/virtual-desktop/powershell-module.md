@@ -4,23 +4,23 @@ description: Installieren und Einrichten des PowerShell-Moduls für Windows Virt
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9224b361adff8bfc53ca2f31dccb2519591dc7e5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 67276f7dedccc20fb768e717c237d04aa4b4a1cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212750"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Einrichten des PowerShell-Moduls für Windows Virtual Desktop
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager.
 >
-> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Das PowerShell-Modul für Windows Virtual Desktop ist in das Azure PowerShell-Modul integriert. In diesem Artikel erfahren Sie, wie Sie das PowerShell-Modul so einrichten, dass Sie Cmdlets für Windows Virtual Desktop ausführen können.

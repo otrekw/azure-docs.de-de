@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a90b37b197e25a8db79a87761d94dfded53acf50
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76934573"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323211"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -51,7 +51,7 @@ Wenn Sie die Clientbibliothek verwenden, können Sie den Wert für `detectionMod
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Hinzufügen eines Gesichts zu einem Person-Objekt mit einem angegebenen Modell
@@ -63,7 +63,7 @@ Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -81,7 +81,7 @@ Mit diesem Code wird ein **PersonGroup**-Objekt mit der ID `mypersongroupid` ers
 Sie können auch ein Erkennungsmodell angeben, wenn Sie ein Gesicht einem vorhandenen **FaceList**-Objekt hinzufügen. Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");

@@ -5,15 +5,15 @@ description: Erfahren Sie, wie Sie ein selbstsigniertes Azure Application Gatewa
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: a0e930116447ded51616651751bba7482b638ca1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806755"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 

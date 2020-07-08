@@ -2,22 +2,22 @@
 title: Endbenutzerumgebungen für Anwendungen – Azure Active Directory
 description: Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763396"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 

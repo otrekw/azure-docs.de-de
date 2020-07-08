@@ -1,23 +1,14 @@
 ---
 title: 'Ausgleichen der Partitionsauslastung über mehrere Instanzen hinweg: Azure Event Hubs | Microsoft-Dokumentation'
 description: Beschreibt, wie Sie die Partitionsauslastung über mehrere Instanzen Ihrer Anwendung hinweg mithilfe eines Ereignisprozessors und des Azure Event Hubs SDK ausgleichen können.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/28/2020
-ms.author: shvija
-ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314991"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren.

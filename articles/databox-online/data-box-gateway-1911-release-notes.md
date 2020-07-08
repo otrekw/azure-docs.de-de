@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: v-grpr
-ms.openlocfilehash: 526f0ae21ac0c49d8c5fd984b09b7a2252afb606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c22ba44c3d567d363b1fec702fecb81ca203a48b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322470"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Versionshinweise zu Azure Stack Edge und Azure Data Box Gateway in Release 1911
 
@@ -39,5 +39,5 @@ Für dieses Release werden keine neuen Probleme aufgeführt. Alle in den Version
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorbereiten der Bereitstellung von Azure Stack Edge](data-box-edge-deploy-prep.md)
+- [Vorbereiten der Bereitstellung von Azure Stack Edge](azure-stack-edge-deploy-prep.md)
 - [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

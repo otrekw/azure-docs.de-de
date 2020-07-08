@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945391"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -105,9 +105,9 @@ Installieren Sie die Diagnoseerweiterung für einen einzelnen virtuellen Windows
 Ausführliche Informationen zum Konfigurieren der Telegraf-Agents auf virtuellen Linux-Computern finden Sie unter [Installieren und Konfigurieren von Telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf). Die Menüoption **Diagnoseeinstellung** ist für Linux verfügbar. Sie ermöglicht jedoch nur, Daten an den Azure-Speicher zu senden.
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>Sammeln von Plattformmetriken und Aktivitätsprotokoll
-Sie können die Plattformmetriken und das Aktivitätsprotokoll anzeigen, die für jeden VM-Host im Azure-Portal gesammelt wurden. Erfassen Sie diese Daten in demselben Log Analytics-Arbeitsbereich wie Azure Monitor für VMs, um Sie mit den anderen Überwachungsdaten zu analysieren, die für den virtuellen Computer gesammelt wurden. Diese Sammlung wird mit einer [Diagnoseeinstellung](../platform/diagnostic-settings.md) konfiguriert. Erfassen Sie das Aktivitätsprotokoll mit einer [Diagnoseeinstellung für das Abonnement](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal).
+Sie können die Plattformmetriken und das Aktivitätsprotokoll anzeigen, die für jeden VM-Host im Azure-Portal gesammelt wurden. Erfassen Sie diese Daten in demselben Log Analytics-Arbeitsbereich wie Azure Monitor für VMs, um Sie mit den anderen Überwachungsdaten zu analysieren, die für den virtuellen Computer gesammelt wurden. Diese Sammlung wird mit einer [Diagnoseeinstellung](../platform/diagnostic-settings.md) konfiguriert. Erfassen Sie das Aktivitätsprotokoll mit einer [Diagnoseeinstellung für das Abonnement](../platform/diagnostic-settings.md#create-in-azure-portal).
 
-Sammeln Sie Plattformmetriken mit einer Diagnoseeinstellung für den virtuellen Computer. Im Gegensatz zu anderen Azure-Ressourcen können Sie keine Diagnoseeinstellung für einen virtuellen Computer im Azure-Portal erstellen, sondern müssen [eine andere Methode](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell) verwenden. Die folgenden Beispiele veranschaulichen, wie Sie mithilfe von PowerShell und CLI Metriken für einen virtuellen Computer erfassen.
+Sammeln Sie Plattformmetriken mit einer Diagnoseeinstellung für den virtuellen Computer. Im Gegensatz zu anderen Azure-Ressourcen können Sie keine Diagnoseeinstellung für einen virtuellen Computer im Azure-Portal erstellen, sondern müssen [eine andere Methode](../platform/diagnostic-settings.md#create-using-powershell) verwenden. Die folgenden Beispiele veranschaulichen, wie Sie mithilfe von PowerShell und CLI Metriken für einen virtuellen Computer erfassen.
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"

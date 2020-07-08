@@ -2,14 +2,14 @@
 title: Konfigurieren der Firewall der Azure Blockchain Workbench-Datenbank
 description: In diesem Artikel erfahren Sie, wie Sie die Firewall der Datenbank der Azure Blockchain Workbench (Vorschauversion) so konfigurieren, dass externe Clients und Anwendungen eine Verbindung herstellen können.
 ms.date: 09/09/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc7a1dc7e4a083ef8f5f7650f29ed1430b32e88b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74326003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214195"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurieren der Firewall der Datenbank von Azure Blockchain Workbench
 

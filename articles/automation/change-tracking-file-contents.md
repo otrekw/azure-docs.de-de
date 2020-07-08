@@ -3,14 +3,14 @@ title: Verwalten von Änderungsnachverfolgung und Bestand in Azure Automation
 description: In diesem Artikel wird beschrieben, wie Sie Änderungsnachverfolgung und Bestand verwenden, um Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung nachzuverfolgen.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 07/03/2018
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781190"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
@@ -143,7 +143,7 @@ Sie können verschiedene Suchvorgänge in den Azure Monitor-Protokollen für Än
 
 |Abfrage  |BESCHREIBUNG  |
 |---------|---------|
-|`ConfigurationData`<br>&#124; `where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zeigt die aktuellen Bestandsdatensätze für Microsoft-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden. Die Ergebnisse werden auf den aktuellen Datensatz für den angegebenen Softwarenamen und Computer beschränkt.    |
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zeigt die aktuellen Bestandsdatensätze für Microsoft-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden. Die Ergebnisse werden auf den aktuellen Datensatz für den angegebenen Softwarenamen und Computer beschränkt.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Zeigt Änderungsdatensätze für entfernte Software an.|
 
 ## <a name="create-alerts-on-changes"></a>Warnungen bei Änderungen erstellen

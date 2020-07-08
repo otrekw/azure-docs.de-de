@@ -3,27 +3,28 @@ title: 'Anwendungsverwaltung: Bewährte Methoden und Empfehlungen | Microsoft-Do
 description: Hier finden Sie bewährte Methoden und Empfehlungen für das Verwalten von Anwendungen in Azure Active Directory. Erfahren Sie mehr über die automatische Bereitstellung und Veröffentlichung von lokalen Apps mit dem Anwendungsproxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74085190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760268"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
+
 Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten von Anwendungen in Azure Active Directory (Azure AD), die Verwendung der automatischen Bereitstellung und das Veröffentlichen von lokalen Apps mit dem Anwendungsproxy.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Empfehlungen für Cloud-Apps und einmaliges Anmelden

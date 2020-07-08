@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730141"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 
@@ -150,7 +150,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
 
 10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. Die Anwendung wechselt zur Registerkarte **Überwachen**. Dort wird der Status der Pipeline angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **PIPELINENAME**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen.
 
-    ![Aktualisieren der Liste und Anzeigen von Details zur Aktivitätsausführung](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Aktualisieren der Liste und Anzeigen von Details zur Aktivitätsausführung](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. Da die Pipeline nur eine Aktivität (die Kopieraktivität) enthält, wird nur ein Eintrag angezeigt. Wenn Sie Details zum Kopiervorgang anzeigen möchten, wählen Sie in der Spalte **AKTIVITÄTSNAME** den Link **Details** (das Brillensymbol) aus. Einzelheiten zu den Eigenschaften finden Sie in der [Übersicht zur Kopieraktivität](copy-activity-overview.md).
 
@@ -165,8 +165,6 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen für das Tutorial vor:
     ![Erstellen von „file1.txt“ und Hochladen in den Quellcontainer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. Wenn Sie zur Ansicht **Pipelineausführungen** zurückkehren möchten, wählen Sie **Alle Pipelineausführungen** aus, und warten Sie, bis dieselbe Pipeline erneut automatisch ausgelöst wird.  
-
-    ![Auswählen aller Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
 14. Wenn die zweite Pipelineausführung abgeschlossen ist, führen Sie die zuvor genannten Schritte aus, um die Details zur Aktivitätsausführung zu überprüfen.  
 

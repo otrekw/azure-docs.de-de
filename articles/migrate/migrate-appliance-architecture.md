@@ -2,13 +2,13 @@
 title: Architektur der Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 06/09/2020
+ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770899"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -51,8 +51,8 @@ Beim Einrichten der Appliance registrieren Sie die Appliance bei Azure Migrate, 
 **Aktion** | **Details** | **Berechtigungen**
 --- | --- | ---
 **Registrieren von Ressourcenanbietern** | Diese Ressourcenanbieter werden in dem Abonnement registriert, das Sie während der Applianceeinrichtung auswählen: Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault.<br/><br/> Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. | Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.
-**Erstellen einer Azure AD-App für die Kommunikation** | Azure Migrate erstellt eine Azure AD-App (Azure Active Directory) für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure.<br/><br/> Diese App verfügt nicht über Berechtigungen zum Durchführen von Azure Resource Manager-Aufrufen oder über RBAC-Zugriff auf Ressourcen. | Sie benötigen [diese Berechtigungen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), damit Azure Migrate die App erstellen kann.
-**Erstellen einer Azure AD-App für den Schlüsseltresor** | Diese App wird nur für die Migration von VMware-VMs zu Azure ohne Agent erstellt.<br/><br/> Sie wird ausschließlich für den Zugriff auf den im Abonnement des Benutzers erstellten Schlüsseltresor für die Migration ohne Agent verwendet.<br/><br/> Sie verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten erstellte Instanz), wenn die Ermittlung von der Appliance initiiert wird. | Sie benötigen [diese Berechtigungen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), damit Azure Migrate die App erstellen kann.
+**Erstellen einer Azure AD-App für die Kommunikation** | Azure Migrate erstellt eine Azure AD-App (Azure Active Directory) für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure.<br/><br/> Diese App verfügt nicht über Berechtigungen zum Durchführen von Azure Resource Manager-Aufrufen oder über RBAC-Zugriff auf Ressourcen. | Sie benötigen [diese Berechtigungen](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps), damit Azure Migrate die App erstellen kann.
+**Erstellen einer Azure AD-App für den Schlüsseltresor** | Diese App wird nur für die Migration von VMware-VMs zu Azure ohne Agent erstellt.<br/><br/> Sie wird ausschließlich für den Zugriff auf den im Abonnement des Benutzers erstellten Schlüsseltresor für die Migration ohne Agent verwendet.<br/><br/> Sie verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten erstellte Instanz), wenn die Ermittlung von der Appliance initiiert wird. | Sie benötigen [diese Berechtigungen](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault), damit Azure Migrate die App erstellen kann.
 
 
 

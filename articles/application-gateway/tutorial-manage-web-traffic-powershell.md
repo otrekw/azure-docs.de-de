@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie unter Verwendung von Azure PowerShell ein Anw
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb45f4a19cf36fe291ffe7299a46a44a245fbb8f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68359926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806191"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure PowerShell
 

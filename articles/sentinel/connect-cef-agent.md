@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298989"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Schritt 1: Bereitstellen der Protokollweiterleitung
 
@@ -75,7 +75,7 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
 
         Inhalt der Datei `security-config-omsagent.conf`:
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **Neustarten des Syslog-Daemons**

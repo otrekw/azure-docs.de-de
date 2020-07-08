@@ -2,23 +2,23 @@
 title: Azure Active Directory-Anwendungsproxy und Tableau | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie mithilfe des Azure Active Directory-Anwendungsproxys (Azure AD) Remotezugriff für Ihre Tableau-Bereitstellung zur Verfügung gestellt werden kann.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65783849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764501"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
 

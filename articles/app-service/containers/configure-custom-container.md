@@ -3,12 +3,12 @@ title: Konfigurieren eines benutzerdefinierten Linux-Containers
 description: Erfahren Sie, wie Sie einen benutzerdefinierten Linux-Container in Azure App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905798"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service
 
@@ -92,7 +92,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 ## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="configure-multi-container-apps"></a>Konfigurieren von Apps mit mehreren Containern
 

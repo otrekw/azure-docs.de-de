@@ -3,17 +3,17 @@ title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – Azure 
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid. Senden Sie die Ereignisse an einen Webhook. Verarbeiten Sie die Ereignisse in einer Webanwendung.
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6cf929af951a6bbd498d13cd514b8cae8e353f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809137"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 

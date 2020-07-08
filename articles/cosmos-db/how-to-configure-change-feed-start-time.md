@@ -3,15 +3,15 @@ title: Konfigurieren der Startzeit des Änderungsfeedprozessors – Azure Cosmos
 description: Hier erfahren Sie, wie Sie den Änderungsfeedprozessor so konfigurieren, dass er an einem bestimmten Datum und zu einer bestimmten Uhrzeit mit dem Lesen von Daten beginnt.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d9af1b8cbda3f0fa2ff4650fef4602f7812f79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261714"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Konfigurieren der Startzeit des Änderungsfeedprozessors
 

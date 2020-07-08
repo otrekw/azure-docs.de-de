@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie einen Bastion-Host erstelle
 services: bastion
 author: mialdrid
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
-ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e7f80bb7f9be2e01aa24090d7305b1a5d882da04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255513"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Erstellen eines Azure Bastion-Hosts über die Azure CLI
 
@@ -39,7 +39,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
 2. Erstellen Sie eine öffentliche IP-Adresse für Azure Bastion. Die öffentliche IP-Adresse ist die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über den Port 443). Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen.
 
    ```azurecli-interactive
-   az network public-ip create -g MyResourceGroup -n MyIp
+   az network public-ip create -g MyResourceGroup -n MyIp --sku Standard
    ```
 
 3. Erstellen Sie eine neue Azure Bastion-Ressource im AzureBastionSubnet des virtuellen Netzwerks. Die Erstellung und Bereitstellung der Bastion-Ressource dauert etwa fünf Minuten.

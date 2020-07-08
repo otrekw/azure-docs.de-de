@@ -3,12 +3,12 @@ title: Überwachen von Java-Anwendungen an einem beliebigen Standort – Azure M
 description: Überwachen Sie die Anwendungsleistung für Java-Anwendungen in einer beliebigen Umgebung – ohne Code und ohne App-Instrumentierung. Ermitteln Sie die Grundursache für Probleme mithilfe einer verteilten Ablaufverfolgung und einer Anwendungsübersicht.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319685"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurationsoptionen: Eigenständige Java-Agents für Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.0 Preview eine Konfigurationsdatei mit dem Namen `ApplicationInsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.0-PREVIEW.4.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.0 Preview eine Konfigurationsdatei mit dem Namen `ApplicationInsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.0-PREVIEW.5.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configurationFile`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.0-PREVIEW.4.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.0-PREVIEW.5.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 

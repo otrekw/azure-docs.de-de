@@ -1,21 +1,14 @@
 ---
 title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/02/2019
-ms.author: shvija
-ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 06/23/2020
+ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320582"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -97,9 +90,9 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
 2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 

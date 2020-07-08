@@ -1,26 +1,14 @@
 ---
 title: Automatisches Hochskalieren von Durchsatzeinheiten – Azure Event Hubs | Microsoft-Dokumentation
 description: Aktivieren der automatischen Vergrößerung in einem Namespace zur automatischen Hochskalierung der Durchsatzeinheiten
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72264476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322555"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisches Hochskalieren von Azure Event Hub-Durchsatzeinheiten
 Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:

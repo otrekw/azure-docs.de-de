@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mit PowerShell schnell einen Kubernetes-
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207947"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit PowerShell
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstellt wurde:
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -119,7 +119,7 @@ kubectl get nodes
 
 Die folgende Beispielausgabe zeigt alle Knoten im Cluster. Vergewissern Sie sich, dass alle Knoten den Status **Bereit** haben:
 
-```Output
+```plaintext
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
 aksnpwin987654                      Ready    agent   108s   v1.16.7
@@ -187,7 +187,7 @@ kubectl apply -f sample.yaml
 
 In der folgende Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
 
-```Output
+```plaintext
 deployment.apps/sample created
 service/sample created
 ```
@@ -205,14 +205,14 @@ kubectl get service sample --watch
 
 Die externe IP-Adresse **EXTERNAL-IP** für den **Beispieldienst** wird zunächst als **ausstehend** angezeigt.
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Sobald die externe IP-Adresse (**EXTERNAL-IP**) von pending (**ausstehend**) in eine tatsächliche öffentliche IP-Adresse geändert wurde, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
-```Output
+```plaintext
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

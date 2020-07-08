@@ -2,16 +2,16 @@
 title: Migrieren von Couchbase zu Azure Cosmos DB-SQL-API
 description: Schrittweise Anleitung zum Migrieren von Couchbase zu Azure Cosmos DB-SQL-API
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f7c0cb893f65688145811cbd2a0280c2d232d7a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261918"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrieren von Couchbase zu Azure Cosmos DB-SQL-API
 

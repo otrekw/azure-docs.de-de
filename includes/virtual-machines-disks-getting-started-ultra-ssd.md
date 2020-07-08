@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4468025f6389d31269d9e587fca25390f19bdbbc
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 269cc52f1e96a6864de55f729fe39a5f609d35c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84902761"
 ---
 Azure Ultra-Datenträger bieten hohen Durchsatz, einen hohen IOPS-Wert und einen Datenträgerspeicher mit durchgängig geringer Latenz für virtuelle Azure IaaS-Computer (VMs). Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Ein Hauptvorteil von Ultra-Datenträgern ist die Möglichkeit zum dynamischen Ändern der SSD-Leistung zusammen mit Ihren Workloads, ohne dass Sie Ihre VMs neu starten müssen. Ultra-Datenträger eignen sich für datenintensive Workloads wie SAP HANA, führende Datenbanksysteme und Workloads mit vielen Transaktionen.
 
@@ -30,11 +30,11 @@ Sie müssen ermitteln, in welcher Verfügbarkeitszone Sie sich befinden, um Ultr
 #### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
 ```azurecli
-subscription = "<yourSubID>"
+subscription="<yourSubID>"
 # example value is southeastasia
-region = "<yourLocation>"
+region="<yourLocation>"
 # example value is Standard_E64s_v3
-vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -65,10 +65,10 @@ Nachdem Sie nun wissen, in welcher Zone die Bereitstellung erfolgen muss, führe
 Die in der Region „USA, Westen“ bereitgestellten Disk Ultra-Datenträger müssen vorerst ohne Redundanzoptionen bereitgestellt werden. Jedoch befindet sich möglicherweise nicht jede Datenträgergröße, die Disk Ultra-Datenträger unterstützt, in dieser Region. Sie können einen der folgenden Codeausschnitte verwenden, um zu bestimmen, welche in der Region „USA, Westen“ Disk Ultra-Datenträger unterstützen. Stellen Sie sicher, dass Sie zuerst die Werte `vmSize` und `subscription` ersetzen:
 
 ```azurecli
-subscription = "<yourSubID>"
-region = "westus"
+subscription="<yourSubID>"
+region="westus"
 # example value is Standard_E64s_v3
-vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -244,10 +244,10 @@ az disk create `
 Alternativ können Sie, wenn sich Ihre vorhandene VM in einer Region/Verfügbarkeitszone befindet, in der Ultra-Datenträger verwendet werden können, Ultra-Datenträger verwenden, ohne eine neue VM erstellen zu müssen.
 
 ```azurecli
-rgName = "<yourResourceGroupName>"
-vmName = "<yourVMName>"
-diskName = "<yourDiskName>"
-subscriptionId = "<yourSubscriptionID>"
+rgName="<yourResourceGroupName>"
+vmName="<yourVMName>"
+diskName="<yourDiskName>"
+subscriptionId="<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

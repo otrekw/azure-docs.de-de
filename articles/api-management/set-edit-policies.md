@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70071702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205746"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 
@@ -41,7 +41,7 @@ Führen Sie zum Festlegen oder Bearbeiten einer Richtlinie die folgenden Schritt
 7. Wählen Sie das Symbol **</>** (Codeeditor) im Abschnitt **Eingehende Verarbeitung** oder **Ausgehende Verarbeitung**.
 8. Fügen Sie den gewünschten Richtliniencode in einen der entsprechenden Blöcke ein.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />

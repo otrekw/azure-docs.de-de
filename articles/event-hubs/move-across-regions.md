@@ -1,20 +1,14 @@
 ---
 title: Verschieben eines Azure Event Hubs-Namespace in eine andere Region | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Event Hubs-Namespace aus der aktuellen Region in eine andere verschieben.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312963"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Verschieben eines Azure Event Hubs-Namespace in eine andere Region
 Es gibt verschiedene Szenarien, in denen Sie Ihren vorhandenen Azure Event Hubs-Namespace aus einer Region in eine andere verschieben möchten. Beispielsweise könnte es sein, dass Sie für Testzwecke einen Namespace mit derselben Konfiguration erstellen möchten. Möglicherweise möchten Sie im Rahmen der [Planung der Notfallwiederherstellung](event-hubs-geo-dr.md#setup-and-failover-flow) auch einen sekundären Namespace in einer anderen Region einrichten.

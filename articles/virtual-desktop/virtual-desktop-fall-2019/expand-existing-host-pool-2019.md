@@ -4,16 +4,16 @@ description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostp
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214280"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -57,12 +57,12 @@ So stellen Sie die Azure Resource Manager-Vorlage erneut bereit, um einen Hostpo
      - Wenn Sie den ursprünglichen Hostpool mithilfe des Azure Marketplace-Angebots erstellt haben, wählen Sie die Bereitstellung aus, die mit **rds.wvd-provision-host-pool** beginnt.
      - Wenn Sie den ursprünglichen Hostpool mithilfe der Azure Resource Manager-Vorlage in GitHub erstellt haben, wählen Sie die Bereitstellung namens **Microsoft.Template** aus.
 6. Wählen Sie **Erneut bereitstellen** aus.
-     
+
      >[!NOTE]
      >Wenn die Vorlage bei Auswahl von **Erneut bereitstellen** nicht automatisch erneut bereitgestellt wird, klicken Sie im linken Bereich Ihres Browsers auf **Vorlage** und wählen **Bereitstellen** aus.
 
 7. Wählen Sie die Ressourcengruppe aus, die die aktuellen Sitzungshost-VMs im vorhandenen Hostpool enthält.
-     
+
      >[!NOTE]
      >Wenn Sie in einer Fehlermeldung aufgefordert werden, eine andere Ressourcengruppe auszuwählen, obwohl die von Ihnen eingegebene Gruppe richtig ist, wählen Sie zunächst eine andere Ressourcengruppe und danach die ursprüngliche Ressourcengruppe aus.
 
@@ -96,7 +96,7 @@ Alle Werte in diesem Abschnitt müssen den Informationen entsprechen, die Sie be
 Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben, mit Ausnahme der Gesamtzahl von VMs. Die Anzahl von VMs, die Sie hier eingeben, entspricht der Anzahl von VMs in Ihrem erweiterten Hostpool:
 
 1. Wählen Sie die VM-Größe aus, die den vorhandenen Sitzungshost-VMs entspricht.
-    
+
     >[!NOTE]
     >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
 

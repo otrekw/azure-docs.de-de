@@ -1,23 +1,14 @@
 ---
 title: Migrieren zu Azure Event Hubs für Apache Kafka
 description: In diesem Artikel wird erläutert, wie Consumer und Producer, die unterschiedliche Protokolle verwenden (AMQP, Apache Kafka und HTTPS), über Azure Event Hubs Ereignisse austauschen können.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/23/2020
+ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322742"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrieren zu Azure Event Hubs für Apache Kafka-Ökosysteme
 Azure Event Hubs macht einen Apache Kafka-Endpunkt verfügbar, der es Ihnen ermöglicht, eine Verbindung mit Event Hubs herzustellen, indem Sie das Kafka-Protokoll verwenden. Durch minimale Änderungen an Ihrer vorhandenen Kafka-Anwendung können Sie eine Verbindung mit Azure Event Hubs herstellen und die Vorteile des Azure-Ökosystems nutzen. Event Hubs für Kafka unterstützt [Apache Kafka, Version 1.0](https://kafka.apache.org/10/documentation.html) und höher.

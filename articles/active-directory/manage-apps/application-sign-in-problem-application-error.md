@@ -3,25 +3,25 @@ title: Anzeige einer Fehlermeldung auf der App-Seite nach der Anmeldung | Micros
 description: Beheben von Problemen mit der Azure AD-Anmeldung, wenn die App eine Fehlermeldung zurückgibt
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759537"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 

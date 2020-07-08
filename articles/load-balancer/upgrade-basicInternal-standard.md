@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie eine interne Azure Load B
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809330"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Aktualisieren einer internen Azure Load Balancer-Instanz: keine ausgehende Verbindung erforderlich
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/skus#skus).

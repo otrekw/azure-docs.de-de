@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie für den internen Azure Loa
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809364"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgraden einer internen Azure Load Balancer-Instanz: Ausgehende Verbindung erforderlich
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/skus#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.

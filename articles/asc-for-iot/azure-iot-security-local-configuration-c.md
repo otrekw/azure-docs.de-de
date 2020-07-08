@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206936"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Grundlegendes zur Datei „LocalConfiguration.json“ – C-Agent
 
@@ -55,7 +55,7 @@ Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfigur
 
 ## <a name="security-agent-configurations-code-example"></a>Codebeispiel für Sicherheits-Agent-Konfigurationen
 
-```JSON
+```json
 {
     "Configuration" : {
         "AgentId" : "b97faf0a-0f57-471f-9dab-46a8e1764946",

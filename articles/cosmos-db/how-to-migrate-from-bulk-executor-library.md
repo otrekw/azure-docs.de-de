@@ -3,15 +3,15 @@ title: Migrieren von der Bulk Executor-Bibliothek zur Unterstützung von Massenv
 description: Erfahren Sie, wie Sie Ihre Anwendung von der Verwendung der Bulk Executor-Bibliothek zur Unterstützung von Massenvorgängen des Azure Cosmos DB SDK V3 migrieren.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261425"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrieren von der Bulk Executor-Bibliothek zur Unterstützung von Massenvorgängen im .NET SDK V3 von Azure Cosmos DB
 

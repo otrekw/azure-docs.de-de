@@ -3,15 +3,15 @@ title: Skalieren von Azure Cosmos DB nach einem Zeitplan mithilfe von Azure Fun
 description: Erfahren Sie, wie Sie bei Änderungen am Durchsatz in Azure Cosmos DB mithilfe von PowerShell und Azure Functions eine Skalierung durchführen.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 68ba40ea212c061fa5c8bbddc47ea0dfc6d8caa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262479"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Skalieren des Azure Cosmos DB-Durchsatzes mithilfe von Azure Functions-Triggern
 

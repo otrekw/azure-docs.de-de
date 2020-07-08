@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie Geräte über das Azure-Portal verwalten
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79474d85d9b2349c79aeff0c33ffed9afad690fb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253153"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -143,7 +143,7 @@ Sie haben zwei Optionen, um ein Gerät zu löschen:
    - Entfernt alle Details, die an das Gerät angefügt wurden, z.B. BitLocker-Schlüssel für Windows-Geräte  
    - Stellt eine Aktivität dar, die nicht rückgängig gemacht werden kann, und wird nur empfohlen, wenn das Löschen notwendig ist
 
-Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde. Informieren Sie sich über das [Verwalten veralteter Geräte](device-management-azure-portal.md), bevor Sie Geräte löschen.
+Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde. Informieren Sie sich über das [Verwalten veralteter Geräte](manage-stale-devices.md), bevor Sie Geräte löschen.
 
 ### <a name="view-or-copy-device-id"></a>Anzeigen oder Kopieren einer Geräte-ID
 

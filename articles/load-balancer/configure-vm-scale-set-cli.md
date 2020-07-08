@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie eine VM-Skalierungsgruppe mit einer vorhanden
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: a7f44a21dd404c556d6f3d8444fa70583cd71c57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2d734e5242ff2a250d332de78cfa3b7f017a3fff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809461"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Konfigurieren einer VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz mithilfe der Azure CLI
 

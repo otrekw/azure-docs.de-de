@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783043"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Verwenden der Application Health-Erweiterung mit VM-Skalierungsgruppen
 Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind. Sie können die Integritätserweiterung auch verwenden, um die Anwendungsintegrität jeder Instanz in Ihrer Skalierungsgruppe zu überwachen und Instanzreparaturen mit [automatischen Instanzreparaturen](virtual-machine-scale-sets-automatic-instance-repairs.md) durchzuführen.
@@ -173,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 Die Protokolle erfassen auch in regelmäßigen Abständen den Integritätsstatus der Anwendung.

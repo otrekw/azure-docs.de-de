@@ -5,17 +5,17 @@ description: Hier erfahren Sie, wie Sie mit der Azure CLI eine SAS für die Benu
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bad97f9bc9eaa3aad02dfcb5e82d2171e93f2dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809027"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI
 

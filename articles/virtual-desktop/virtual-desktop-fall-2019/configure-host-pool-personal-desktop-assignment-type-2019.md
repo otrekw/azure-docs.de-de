@@ -4,16 +4,16 @@ description: Konfigurieren des Zuweisungstyps für einen Windows Virtual Desktop
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204862"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
@@ -31,7 +31,7 @@ Die automatische Zuweisung ist der Standardzuweisungstyp für neue Hostpools mit
 
 Um Benutzer automatisch zuzuweisen, weisen Sie sie zunächst dem Hostpool mit persönlichen Desktops zu, damit sie den Desktop in ihrem Feed sehen können. Wenn ein zugewiesener Benutzer den Desktop in seinem Feed startet, beansprucht er einen verfügbaren Sitzungshost, wenn er nicht bereits eine Verbindung mit dem Hostpool hergestellt hat, wodurch der Zuweisungsvorgang abgeschlossen wird.
 
-Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/). 
+Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/).
 
 > [!NOTE]
 > Stellen Sie sicher, dass Version 1.0.1534.2001 oder höher des Windows Virtual Desktop-PowerShell-Moduls installiert ist, bevor Sie diese Anweisungen ausführen.

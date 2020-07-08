@@ -1,20 +1,14 @@
 ---
 title: Authentifizieren einer verwalteten Identität mit Azure Active Directory
 description: Dieser Artikel enthält Informationen zur Authentifizierung einer verwalteten Identität mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 4e9bfb9c4649732ac5afc80dfb0a522ff9f333be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318095"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.

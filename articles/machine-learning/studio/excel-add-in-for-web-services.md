@@ -5,17 +5,17 @@ description: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste dir
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211322"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-Add-In für (klassische) Azure Machine Learning Studio-Webdienste
 
@@ -83,4 +83,4 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 ## <a name="sharing-your-workbook"></a>Freigeben Ihrer Arbeitsmappe
 Wenn Sie Ihre Arbeitsmappe speichern, werden auch die API/der Primärschlüssel der hinzugefügten Webdienste gespeichert. Das bedeutet, dass Sie die Arbeitsmappe nur für Personen freigeben sollten, denen Sie vertrauen.
 
-Im nachstehenden Kommentarabschnitt oder in unserem [Forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409) können Sie Fragen stellen.
+Im nachstehenden Kommentarabschnitt oder in unserem [Forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) können Sie Fragen stellen.
