@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254071"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Verwenden von Azure Stream Analytics-Aufträgen mit SQL Edge
 
@@ -52,7 +52,7 @@ Azure SQL Edge enthält eine native Implementierung der Stream Analytics-Runtim
     |Feld      | BESCHREIBUNG |
     |---------------|-------------|
     |Ausgabealias | Name des Ausgabealias.|
-    |Datenbank | Name der SQL-Datenbank. Dies muss ein gültiger Name einer Datenbank in der SQL Edge-Instanz sein.|
+    |Datenbank | Der Name der Datenbank. Dies muss ein gültiger Name einer Datenbank in der SQL Edge-Instanz sein.|
     |Servername | Name (oder IP-Adresse) und Portnummer für die SQL Server-Instanz. Bei einer SQL Edge-Bereitstellung können Sie **tcp:.,1433** für den Servernamen verwenden.|
     |Username | SQL-Anmeldekonto, das über Datenleser- und Datenschreiberzugriff auf die zuvor angegebene Datenbank verfügt.|
     |Kennwort | Kennwort für das zuvor angegebene SQL-Anmeldekonto.|
