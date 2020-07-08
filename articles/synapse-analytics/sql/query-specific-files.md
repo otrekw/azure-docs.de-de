@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478415"
 ---
 # <a name="using-file-metadata-in-queries"></a>Verwenden von Dateimetadaten in Abfragen
 
@@ -22,7 +22,7 @@ Der SQL On-Demand-Abfragedienst kann mehrere Dateien und Ordner behandeln, wie i
 
 Gelegentlich müssen Sie möglicherweise wissen, welche Datei- oder Ordnerquelle mit einer bestimmten Zeile im Resultset korreliert.
 
-Sie können die Funktionen `filepath` und `filename` verwenden, um Dateinamen und/oder den Pfad im Resultset zurückzugeben. Oder Sie können sie verwenden, um Daten anhand des Dateinamens und/oder des Ordnerpfades zu filtern. Diese Funktionen werden in den Syntaxabschnitten zur [Dateinamenfunktion](develop-storage-files-overview.md#filename-function) und zur [Dateipfadfunktion](develop-storage-files-overview.md#filepath-function) beschrieben. Nachfolgend finden Sie kurze Beschreibungen zusammen mit Beispielen.
+Sie können die Funktionen `filepath` und `filename` verwenden, um Dateinamen und/oder den Pfad im Resultset zurückzugeben. Oder Sie können sie verwenden, um Daten anhand des Dateinamens und/oder des Ordnerpfades zu filtern. Diese Funktionen werden in den Syntaxabschnitten zur [Dateinamenfunktion](query-data-storage.md#filename-function) und zur [Dateipfadfunktion](query-data-storage.md#filepath-function) beschrieben. Nachfolgend finden Sie kurze Beschreibungen zusammen mit Beispielen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

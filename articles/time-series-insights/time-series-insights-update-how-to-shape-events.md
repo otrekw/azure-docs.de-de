@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650922"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036983"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -33,7 +33,7 @@ Allgemeine bewährte Methoden:
 Für die beste Abfrageleistung befolgen Sie die folgenden Faustregeln:
 
 * Senden Sie keine unnötigen Eigenschaften. Die Abrechnung von Time Series Insights Preview erfolgt nach Nutzung. Es wird empfohlen, nur die Daten, die Sie abfragen möchten, zu speichern und zu verarbeiten.
-* Verwenden Sie Instanzenfelder für statische Daten. Diese Vorgehensweise hilft dabei, das Senden von statischen Daten über das Netzwerk zu vermeiden. Instanzenfelder, eine Komponente das Zeitreihenmodells, funktionieren wie Verweisdaten im Time Series Insights-Dienst, der allgemein verfügbar ist. Weitere Informationen zu Instanzenfeldern finden Sie unter [Zeitreihenmodell](./time-series-insights-update-tsm.md).
+* Verwenden Sie Instanzenfelder für statische Daten. Diese Vorgehensweise hilft dabei, das Senden von statischen Daten über das Netzwerk zu vermeiden. Instanzenfelder, eine Komponente das Zeitreihenmodells, funktionieren wie Verweisdaten im Time Series Insights-Dienst, der allgemein verfügbar ist. Weitere Informationen zu Instanzenfeldern finden Sie unter [Zeitreihenmodell](./concepts-model-overview.md).
 * Teilen Sie Dimensionseigenschaften zwischen zwei oder mehr Ereignissen. Diese Vorgehensweise hilft Ihnen dabei, Daten effizienter über das Netzwerk zu senden.
 * Verwenden Sie keine tiefe Arrayschachtelung. Time Series Insights Preview unterstützt bis zu zwei Ebenen für geschachtelte Arrays, die Objekte enthalten. Time Series Insights Preview sorgt für flache Arrays in Nachrichten, indem eine Aufteilung in mehrere Ereignisse mit Eigenschaft-Wert-Paaren durchgeführt wird.
 * Wenn nur wenige Messwerte für viele oder alle Ereignisse vorhanden sind, ist es besser, diese Messwerte als separate Eigenschaften innerhalb desselben Objekts zu senden. Durch das separate Senden wird die Anzahl von Ereignissen verringert und die Abfrageleistung möglicherweise gesteigert, weil weniger Ereignisse verarbeitet werden müssen.
@@ -95,7 +95,7 @@ Es wird eine einzelne Azure IoT Hub-Nachricht gesendet, bei der das äußere Arr
 
 **Wesentliche Punkte:**
 
-* Der JSON-Beispielcode enthält ein äußeres Array, das [Zeitreiheninstanzdaten](./time-series-insights-update-tsm.md#time-series-model-instances) verwendet, um die Effizienz der Nachricht zu erhöhen. Obwohl sich die Gerätemetadaten der Zeitreiheninstanzen wahrscheinlich nicht ändern, bieten sie häufig nützliche Eigenschaften für die Datenanalyse.
+* Der JSON-Beispielcode enthält ein äußeres Array, das [Zeitreiheninstanzdaten](./concepts-model-overview.md#time-series-model-instances) verwendet, um die Effizienz der Nachricht zu erhöhen. Obwohl sich die Gerätemetadaten der Zeitreiheninstanzen wahrscheinlich nicht ändern, bieten sie häufig nützliche Eigenschaften für die Datenanalyse.
 
 * Der JSON-Code kombiniert zwei oder mehr Nachrichten (eine von jedem Gerät) zu einer einzelnen Nutzlast und spart so im Lauf der Zeit Bandbreite.
 
@@ -106,7 +106,7 @@ Es wird eine einzelne Azure IoT Hub-Nachricht gesendet, bei der das äußere Arr
 
 #### <a name="time-series-instance"></a>Zeitreiheninstanz 
 
-Im Folgenden finden Sie ausführlichere Informationen zum Verwenden von [Zeitreiheninstanzen](./time-series-insights-update-tsm.md#time-series-model-instances) zum optimalen Strukturieren Ihrer JSON-Nutzlasten. 
+Im Folgenden finden Sie ausführlichere Informationen zum Verwenden von [Zeitreiheninstanzen](./concepts-model-overview.md#time-series-model-instances) zum optimalen Strukturieren Ihrer JSON-Nutzlasten. 
 
 > [!NOTE]
 > Die [Zeitreihen-IDs](./time-series-insights-update-how-to-id.md) unten sind *Geräte-IDs*.

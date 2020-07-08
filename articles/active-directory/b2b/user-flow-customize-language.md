@@ -6,23 +6,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed56acc9276177951919a3bc63c8a1dc3876e1c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551144"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Sprachanpassung in Azure Active Directory (Vorschau)
-|     |
-| --- |
-| Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit der Sprachanpassung in Azure Active Directory (Azure AD) kann Ihr Benutzerflow verschiedene Sprachen abdecken, um die Anforderungen Ihrer Benutzer zu erfüllen. Microsoft stellt Übersetzungen für [36 Sprachen](#supported-languages) bereit. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie die Attributnamen auf der Attributerfassungsseite anpassen.
 

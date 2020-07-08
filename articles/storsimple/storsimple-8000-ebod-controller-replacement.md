@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228210"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564242"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Austauschen des EBOD-Controllers eines StorSimple-Geräts
 
@@ -35,7 +35,7 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 * Der EBOD-Controller kann bei laufendem Betrieb ausgebaut bzw. ausgetauscht werden. Bauen Sie ein fehlerhaftes Modul erst aus, wenn ein Austauschmodul verfügbar ist. Sobald Sie den Austauschvorgang eingeleitet haben, muss dieser binnen 10 Minuten abgeschlossen werden.
 
 > [!IMPORTANT]
-> Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](storsimple-safety.md#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-safety.md) vertraut machen.
+> Bevor Sie versuchen, StorSimple-Komponenten auszubauen oder auszutauschen, sollten Sie sich mit den [Konventionen für Sicherheitssymbole](storsimple-8000-safety.md#safety-icon-conventions) und anderen [Sicherheitsvorkehrungen](storsimple-8000-safety.md) vertraut machen.
 
 ## <a name="remove-an-ebod-controller"></a>Ausbauen eines EBOD-Controllers
 Bevor Sie das fehlerhafte EBOD-Controllermodul in Ihrem StorSimple-Gerät austauschen, stellen Sie sicher, dass das andere EBOD-Controllermodul aktiv ist und ausgeführt wird. Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie das EBOD-Controllermodul ausgebaut wird.

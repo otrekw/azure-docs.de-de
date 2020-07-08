@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557884"
 ---
 # <a name="monitor-runbook-output"></a>Überwachen der Runbookausgabe
 
@@ -88,7 +88,7 @@ Nachfolgend finden Sie Beispiele für Ausgabedatentypen:
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>Deklarieren des Ausgabedatentyps in einem Workflow
 
-Ein Workflow gibt den Datentyp seiner Ausgabe mit dem [OutputType-Attribut](https://technet.microsoft.com/library/hh847785.aspx) an. Dieses Attribut hat zur Laufzeit keinerlei Auswirkung, gibt Ihnen zur Entwurfszeit aber einen Hinweis auf die erwartete Ausgabe des Runbooks. Mit der Weiterentwicklung des Toolsets für Runbooks wird die Deklaration der Ausgabedatentypen zur Entwurfszeit zunehmend an Bedeutung gewinnen. Daher empfiehlt es sich, diese Deklaration in alle von Ihnen erstellten Runbooks einzuschließen.
+Ein Workflow gibt den Datentyp seiner Ausgabe mit dem [OutputType-Attribut](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute) an. Dieses Attribut hat zur Laufzeit keinerlei Auswirkung, gibt Ihnen zur Entwurfszeit aber einen Hinweis auf die erwartete Ausgabe des Runbooks. Mit der Weiterentwicklung des Toolsets für Runbooks wird die Deklaration der Ausgabedatentypen zur Entwurfszeit zunehmend an Bedeutung gewinnen. Daher empfiehlt es sich, diese Deklaration in alle von Ihnen erstellten Runbooks einzuschließen.
 
 Das folgende Beispielrunbook gibt ein Zeichenfolgenobjekt aus und enthält eine Deklaration des Ausgabetyps. Wenn Ihr Runbook ein Array eines bestimmten Typs ausgibt, sollten Sie trotzdem den Typ angeben und kein Array des Typs.
 

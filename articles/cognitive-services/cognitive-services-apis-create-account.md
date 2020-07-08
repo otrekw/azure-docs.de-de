@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 33200f8807ad28ac160bb377b1107548f4e42d51
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590807"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611389"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -25,24 +25,24 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/).
+* Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Erstellen einer neuen Azure Cognitive Services-Ressource
 
 1. Dient zum Erstellen einer Ressource.
 
     #### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
-    
+
     Die Ressource für mehrere Dienste wird im Portal **Cognitive Services** benannt. [Erstellen Sie eine Cognitive Services-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
-    
+
     Zu diesem Zeitpunkt ermöglicht die Ressource für mehrere Dienste den Zugriff auf die folgenden Cognitive Services:
-    
+
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | Maschinelles Sehen  | Content Moderator                                    | Gesicht               | Language Understanding (LUIS) | Textanalyse   |
     | Übersetzer  | Bing-Suche v7 <br>(Web, Bild, Neuigkeiten, Video, Visual) | Benutzerdefinierte Bing-Suche | Bing-Entitätssuche            | Bing-Vorschlagssuche |
     | Bing-Rechtschreibprüfung |                                                      |                    |                               |                  |
-    
+
     #### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
     Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cognitive Services zu erstellen:

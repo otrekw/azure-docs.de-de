@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476273"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Bewährte Methoden für SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -52,7 +52,7 @@ Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Pushen von Platzhaltern auf niedrigere Ebenen im Pfad
 
-Sie können Platzhalter in Ihrem Pfad verwenden, um [mehrere Dateien und Ordner](develop-storage-files-overview.md#query-multiple-files-or-folders) abzufragen. SQL On-Demand listet Dateien in Ihrem Speicherkonto auf und beginnt dabei beim ersten *. Dabei kommt die Storage-API zum Einsatz. Dateien, die nicht mit dem angegebenen Pfad übereinstimmen, werden dabei ausgeschlossen. Das Verringern der ursprünglichen Liste mit Dateien kann die Leistung verbessern, wenn viele Dateien vorhanden sind, die mit dem angegebenen Pfad bis zum ersten Platzhalter übereinstimmen.
+Sie können Platzhalter in Ihrem Pfad verwenden, um [mehrere Dateien und Ordner](query-data-storage.md#query-multiple-files-or-folders) abzufragen. SQL On-Demand listet Dateien in Ihrem Speicherkonto auf und beginnt dabei beim ersten *. Dabei kommt die Storage-API zum Einsatz. Dateien, die nicht mit dem angegebenen Pfad übereinstimmen, werden dabei ausgeschlossen. Das Verringern der ursprünglichen Liste mit Dateien kann die Leistung verbessern, wenn viele Dateien vorhanden sind, die mit dem angegebenen Pfad bis zum ersten Platzhalter übereinstimmen.
 
 ## <a name="use-appropriate-data-types"></a>Verwenden geeigneter Datentypen
 
@@ -113,7 +113,7 @@ FROM
 
 Daten sind oft in Partitionen organisiert. Sie können SQL On-Demand anweisen, bestimmte Ordner und Dateien abzufragen. Dies reduziert die Anzahl der Dateien und die Datenmenge, die die Abfrage zum Lesen und Verarbeiten benötigt. Ein weiterer Vorteil ist, dass Sie bessere Leistungen erzielen.
 
-Im Artikel [Verwenden von Dateimetadaten in Abfragen](query-specific-files.md) finden Sie Beispiele für das Abfragen bestimmter Dateien sowie weitere Informationen zu [Dateiname](develop-storage-files-overview.md#filename-function) und [Dateipfad](develop-storage-files-overview.md#filepath-function).
+Im Artikel [Verwenden von Dateimetadaten in Abfragen](query-specific-files.md) finden Sie Beispiele für das Abfragen bestimmter Dateien sowie weitere Informationen zu [Dateiname](query-data-storage.md#filename-function) und [Dateipfad](query-data-storage.md#filepath-function).
 
 > [!TIP]
 > Wandeln Sie das Ergebnis der Dateipfad- und Dateinamefunktionen immer in einen geeigneten Datentyp um. Achten Sie, wenn Sie Zeichendatentypen verwenden, unbedingt auf die Verwendung der richtigen Länge.

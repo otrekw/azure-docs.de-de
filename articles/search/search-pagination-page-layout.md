@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561582"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -28,7 +28,7 @@ Ein Suchdokument kann zwar aus einer Vielzahl von Feldern bestehen. In der Regel
 Besonders gut eignen sich Felder, die Dokumente vergleichen und zwischen Dokumenten unterscheiden und so genügend Informationen liefern, um den Benutzer zu einer Antwort durch Klicken einzuladen. Auf einer E-Commerce-Website kann dies ein Produktname, eine Beschreibung, eine Marke, eine Farbe, eine Größe, ein Preis oder eine Bewertung sein. Bei dem integrierten Beispiel „hotels-sample-index“ können dies die Felder im folgenden Beispiel sein:
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -103,11 +103,11 @@ Die Formatierung wird auf Abfragen kompletter Begriffe angewendet. Der Formatier
 Im folgenden Beispiel sind die Begriffe „sandy“, „sand“, „beaches“ und „beach“ im Beschreibungsfeld zur Markierung mit Tags versehen. Bei Abfragen, die eine Abfrageerweiterung in der Engine auslösen, wie z. B. Fuzzy- und Platzhaltersuche, wird die Treffermarkierung nur begrenzt unterstützt.
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"

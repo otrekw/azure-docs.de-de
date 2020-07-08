@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 94ef9b9754527bbb36ef1028f80e957da8c631dd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549580"
 ---
 # <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
@@ -144,7 +144,7 @@ Virtual Network NAT und die NAT-Gatewayressource sind in allen [Regionen](https:
 
 Support für NAT ist über die üblichen Kanäle verfügbar.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Wir möchten wissen, wie wir den Dienst verbessern können. Unter [UserVoice für NAT](https://aka.ms/natuservoice) können Sie Vorschläge zu den nächsten Entwicklungsschritten machen und darüber abstimmen.
 

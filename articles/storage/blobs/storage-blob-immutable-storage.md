@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561037"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -22,7 +22,7 @@ Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unt
 
 Informationen zum Festlegen und Aufheben einer Aufbewahrung für juristische Zwecke sowie zum Erstellen einer zeitbasierten Aufbewahrungsrichtlinie über das Azure-Portal, per PowerShell oder mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](storage-blob-immutability-policies-manage.md).
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Informationen zu unveränderlichem Blobspeicher
 

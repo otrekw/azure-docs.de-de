@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562482"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
 
@@ -34,7 +34,7 @@ Im weiteren Verlauf dieses Artikels geht es um Abfragen und Clientcode. Zum Vera
 Die Elemente einer Anforderung beinhalten eine der APIs für die Suche während der Eingabe, eine partielle Abfrage und eine Vorschlagsfunktion. Im folgenden Skript werden die Komponenten einer Anforderung veranschaulicht, wobei die AutoVervollständigen-REST-API als Beispiel verwendet wird.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

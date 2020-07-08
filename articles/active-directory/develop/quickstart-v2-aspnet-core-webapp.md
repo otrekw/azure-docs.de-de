@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456809"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554143"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
@@ -145,7 +145,7 @@ Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen der cook
 
 Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Die Anmeldung erfolgt dann über den Microsoft Identity Platform-Endpunkt.
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | ClientId  | Die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung |
 > | Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise lautet er <https://login.microsoftonline.com/{tenant}/v2.0> für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228014"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037289"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 
@@ -55,13 +55,13 @@ In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erst
 
 ## <a name="add-a-time-series-insights-instance"></a>Hinzufügen einer Time Series Insights-Instanz
 
-Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetriedaten kontextbezogene Daten hinzuzufügen. Die Daten werden zum Zeitpunkt der Abfrage mithilfe einer **Time Series-ID** verknüpft. Die **Time Series-ID** für das Windenergieanlagen-Beispielprojekt, das wir später in diesem Artikel verwenden, ist `id`. Weitere Informationen zu Time Series Insights-Instanzen und der **Time Series-ID** finden Sie unter [Zeitreihenmodelle](./time-series-insights-update-tsm.md).
+Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetriedaten kontextbezogene Daten hinzuzufügen. Die Daten werden zum Zeitpunkt der Abfrage mithilfe einer **Time Series-ID** verknüpft. Die **Time Series-ID** für das Windenergieanlagen-Beispielprojekt, das wir später in diesem Artikel verwenden, ist `id`. Weitere Informationen zu Time Series Insights-Instanzen und der **Time Series-ID** finden Sie unter [Zeitreihenmodelle](./concepts-model-overview.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Erstellen einer Time Series Insights-Ereignisquelle
 
 1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie die Schritte aus, um [eine Ereignisquelle zu erstellen](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Legen Sie einen Wert für `timeSeriesId` fest. Weitere Informationen zur **Time Series-ID** finden Sie unter [Zeitreihenmodelle](./time-series-insights-update-tsm.md).
+1. Legen Sie einen Wert für `timeSeriesId` fest. Weitere Informationen zur **Time Series-ID** finden Sie unter [Zeitreihenmodelle](./concepts-model-overview.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Übertragen von Ereignissen mittels Push in das Windenergieanlagen-Beispiel
 

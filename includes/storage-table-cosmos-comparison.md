@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: 93bb0a853199b8b1fc38b8cc903af0a434cab034
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6cf6cc781a9fd5353f458c2317b51a47df779e4d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67178630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85942352"
 ---
 Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur Azure Cosmos DB-Tabellen-API folgende Vorteile:
 
-| | Azure-Tabellenspeicher | Azure Cosmos DB-Tabellen-API |
+|Funktion | Azure-Tabellenspeicher | Azure Cosmos DB-Tabellen-API |
 | --- | --- | --- |
 | Latency | Schnell, aber keine Obergrenzen für die Wartezeit. | Wartezeit im einstelligen Millisekundenbereich für Lese- und Schreibvorgänge, unterstützt durch weniger als 10 ms Wartezeit bei Lese- und weniger als 15 ms Wartezeit bei Schreibvorgängen im 99. Perzentil, bei beliebiger Skalierung weltweit. |
 | Throughput | Variables Durchsatzmodell. Tabellen verfügen über eine maximale Skalierbarkeit von 20.000 Vorgängen/s. | Hochgradig skalierbar mit einem [dedizierten reservierten Durchsatz pro Tabelle](../articles/cosmos-db/request-units.md), der durch SLAs abgedeckt ist. Konten haben keine Obergrenze für den Durchsatz und unterstützen pro Tabelle mehr als 10 Millionen Vorgänge/s. |

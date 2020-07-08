@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563124"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indizieren von Tabellen aus Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -26,7 +26,7 @@ Sie können einen Azure Table Storage-Indexer mithilfe der folgenden Ressourcen 
 
 * [Azure portal](https://ms.portal.azure.com)
 * [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
-* [.NET SDK](https://aka.ms/search-sdk) für die kognitive Azure-Suche
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
 
 Hier wird der Ablauf unter Verwendung der REST-API veranschaulicht. 
 
@@ -49,7 +49,7 @@ Für die Tabellenindizierung muss die Datenquelle über die folgenden Eigenschaf
 
 So erstellen Sie eine Datenquelle
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstruk
 
 So erstellen Sie einen Index
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen 
 
 Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -135,7 +135,7 @@ Wenn Sie für einen Tabellenindexer die Ausführung nach einem Zeitplan einricht
 
 Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, können Sie eine Strategie für vorläufiges löschen verwenden. Anstatt eine Zeile zu löschen, fügen Sie eine Eigenschaft hinzu, um anzugeben, dass sie gelöscht ist, und richten Sie eine Richtlinie zur Erkennung einer vorläufigen Löschung für die Datenquelle ein. Bei der folgenden Richtlinie wird eine Zeile beispielsweise als gelöscht angesehen, wenn sie über die `IsDeleted`-Eigenschaft mit dem Wert `"true"` verfügt:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

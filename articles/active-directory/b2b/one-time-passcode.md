@@ -4,7 +4,7 @@ description: Verwenden der Einmalkennung per E-Mail zum Authentifizieren von B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
@@ -12,19 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551300"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)
 
-|     |
-| --- |
-| Die Einmalkennung (One-time passcode, OTP) per E-Mail ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Die Einmalkennung (One-time passcode, OTP) per E-Mail ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel wird das Aktivieren der Authentifizierung mit Einmalkennung per E-Mail für B2B-Gastbenutzer beschrieben. Mit dem Feature „Einmalkennung per E-Mail“ werden B2B-Gastbenutzer authentifiziert, wenn sie über andere Wege (z. B. über Azure AD, ein Microsoft-Konto (MSA) oder den Verbund mit Google) nicht authentifiziert werden können. Bei der Authentifizierung mit Einmalkennung ist es nicht erforderlich, ein Microsoft-Konto zu erstellen. Wenn der Gastbenutzer eine Einladung einlöst oder auf eine freigegebene Ressource zugreift, kann er einen temporären Code anfordern, der an seine E-Mail-Adresse gesendet wird. Anschließend gibt er diesen Code ein, um den Anmeldevorgang fortzusetzen.
 

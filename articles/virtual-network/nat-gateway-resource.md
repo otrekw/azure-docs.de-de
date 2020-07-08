@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549637"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -202,7 +202,7 @@ Wenn Sie Endpunkte für eingehenden Datenverkehr benötigen, haben Sie zwei Opti
 | Option | Muster | Beispiel | Vorteil | Nachteil |
 |---|---|---|---|---|
 | (1) | Führen Sie die **Ausrichtung** der Endpunkte für eingehenden Datenverkehr mit den jeweiligen **Zonenstapeln** durch, die Sie für ausgehenden Datenverkehr erstellen. | Erstellen Sie eine Load Balancer Standard-Instanz mit Zonen-Front-End. | Gleiches Integritätsmodell und gleicher Fehlermodus für ein- und ausgehenden Datenverkehr. Einfacherer Betrieb. | Einzelne IP-Adressen pro Zone müssen ggf. durch einen gemeinsamen DNS-Namen maskiert werden. |
-|  (2) | Führen Sie die **Überlagerung** der Zonenstapel mit einem **zonenübergreifenden** Endpunkt für eingehenden Datenverkehr durch. | Erstellen Sie eine Load Balancer Standard-Instanz mit zonenredundantem Front-End. | Nur eine IP-Adresse für den Endpunkt für eingehenden Datenverkehr. | Unterschiede bei Integritätsmodell und Fehlermodus für ein- und ausgehenden Datenverkehr.  Komplexerer Betrieb. |
+| (2) | Führen Sie die **Überlagerung** der Zonenstapel mit einem **zonenübergreifenden** Endpunkt für eingehenden Datenverkehr durch. | Erstellen Sie eine Load Balancer Standard-Instanz mit zonenredundantem Front-End. | Nur eine IP-Adresse für den Endpunkt für eingehenden Datenverkehr. | Unterschiede bei Integritätsmodell und Fehlermodus für ein- und ausgehenden Datenverkehr.  Komplexerer Betrieb. |
 
 >[!NOTE]
 > Für ein NAT-Gateway mit Zonenisolation müssen die IP-Adressen mit der Zone des NAT-Gateways übereinstimmen. NAT-Gatewayressourcen mit IP-Adressen aus einer anderen Zone oder ohne Zone sind nicht zulässig.
@@ -325,8 +325,7 @@ Ein SNAT-Port ist für eine IP-Zieladresse und den entsprechenden Zielport nach 
 - Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
 - NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 
-
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Wir möchten wissen, wie wir den Dienst verbessern können. Fehlt eine Funktion? Unter [UserVoice für NAT](https://aka.ms/natuservoice) können Sie uns Ihre Wünsche zukommen lassen.
 

@@ -11,18 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551329"
 ---
 # <a name="self-service-sign-up-preview"></a>Self-Service-Registrierung (Vorschauversion)
-|     |
-| --- |
-| Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn Sie eine Anwendung für externe Benutzer freigeben, wissen Sie möglicherweise nicht immer im Voraus, wer Zugriff auf die Anwendung benötigt. Statt Einladungen direkt an Einzelpersonen zu senden, können Sie es externen Benutzern ermöglichen, sich selbst für bestimmte Anwendungen zu registrieren, indem Sie die Self-Service-Registrierung aktivieren. Sie können eine personalisierte Registrierungsumgebung erstellen, indem Sie den Benutzerflow für die Self-Service-Registrierung anpassen. Beispielsweise können Sie Optionen für die Registrierung bei Azure AD oder Social Media-Identitätsanbietern bereitstellen und während des Registrierungsvorgangs Informationen zu dem Benutzer sammeln.
 

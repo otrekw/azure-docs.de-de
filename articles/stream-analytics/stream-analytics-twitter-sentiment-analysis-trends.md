@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834763"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040774"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -159,33 +159,33 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias| *TwitterStream* | Geben Sie einen Alias für die Eingabe ein. |
-   |Subscription  | \<Your subscription\> |  \<Ihr Abonnement\> |
-   |Wählen Sie das gewünschte Azure-Abonnement aus. | Event Hub-Namespace |
-   |*asa-twitter-eventhub* | Event Hub-Name | *socialtwitter-eh* Wählen Sie *Vorhandene verwenden* aus.|
-   |Wählen Sie dann den erstellten Event Hub aus.| Typ der Ereigniskomprimierung | GZip|
+   |Subscription  | \<Your subscription\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Event Hub-Namespace | *asa-twitter-eventhub* |
+   |Event Hub-Name | *socialtwitter-eh* | Wählen Sie *Vorhandene verwenden* aus. Wählen Sie dann den erstellten Event Hub aus.|
+   |Typ der Ereigniskomprimierung| GZip | Der Datenkomprimierungstyp.|
 
-   Der Datenkomprimierungstyp.
+   Übernehmen Sie die übrigen Standardwerte, und wählen Sie **Speichern** aus.
 
-## <a name="specify-the-job-query"></a>Übernehmen Sie die übrigen Standardwerte, und wählen Sie **Speichern** aus.
+## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
 
-Festlegen der Auftragsabfrage Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
+Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
 
-Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
+Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
 
-1. Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen. Wählen Sie in Ihrer Auftrags**übersicht** oben rechts im Abfragefeld **Abfrage bearbeiten** aus.
+1. Wählen Sie in Ihrer Auftrags**übersicht** oben rechts im Abfragefeld **Abfrage bearbeiten** aus. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, um die Datenstromeingabe beim Senden an die Ausgabe zu transformieren.
 
-2. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, um die Datenstromeingabe beim Senden an die Ausgabe zu transformieren.
+2. Ändern Sie die Abfrage im Abfrage-Editor wie folgt:
 
    ```sql
    SELECT *
    FROM TwitterStream
    ```
 
-3. Ändern Sie die Abfrage im Abfrage-Editor wie folgt: Ereignisdaten aus den Meldungen sollten im Fenster **Eingabevorschau** unterhalb Ihrer Abfrage angezeigt werden. Stellen Sie sicher, dass die **Ansicht** auf **JSON-** festgelegt ist.
+3. Ereignisdaten aus den Meldungen sollten im Fenster **Eingabevorschau** unterhalb Ihrer Abfrage angezeigt werden. Stellen Sie sicher, dass die **Ansicht** auf **JSON-** festgelegt ist. Wenn keine Daten angezeigt werden, stellen Sie sicher, dass Ihr Daten-Generator Ereignisse an Ihren Event Hub sendet und dass Sie **GZip** als Komprimierungstyp für die Eingabe ausgewählt haben.
 
-4. Wenn keine Daten angezeigt werden, stellen Sie sicher, dass Ihr Daten-Generator Ereignisse an Ihren Event Hub sendet und dass Sie **GZip** als Komprimierungstyp für die Eingabe ausgewählt haben.
+4. Wählen Sie **Abfrage testen** aus, und überprüfen Sie die Ergebnisse im Fenster **Testergebnisse** unterhalb Ihrer Abfrage.
 
-5. Wählen Sie **Abfrage testen** aus, und überprüfen Sie die Ergebnisse im Fenster **Testergebnisse** unterhalb Ihrer Abfrage.
+5. Ändern Sie die Abfrage im Code-Editor in den folgenden Code, und wählen Sie dann **Abfrage testen** aus:
 
    ```sql
    SELECT System.Timestamp as Time, text
@@ -193,43 +193,43 @@ Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen �
    WHERE text LIKE '%Azure%'
    ```
 
-6. Ändern Sie die Abfrage im Code-Editor in den folgenden Code, und wählen Sie dann **Abfrage testen** aus:
+6. Diese Abfrage gibt alle Tweets zurück, die das Schlüsselwort *Azure* enthalten.
 
-## <a name="create-an-output-sink"></a>Diese Abfrage gibt alle Tweets zurück, die das Schlüsselwort *Azure* enthalten.
+## <a name="create-an-output-sink"></a>Erstellen einer Ausgabesenke
 
-Erstellen einer Ausgabesenke Sie haben nun einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert.  
+Sie haben nun einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert. Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren.  
 
-Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren.  In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage in Azure Blob Storage.
+In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage in Azure Blob Storage.  Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
 
-## <a name="specify-the-job-output"></a>Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
+## <a name="specify-the-job-output"></a>Festlegen der Auftragsausgabe
 
-1. Festlegen der Auftragsausgabe 
+1. Wählen Sie im Abschnitt **Auftragstopologie** im linken Navigationsmenü **Ausgaben** aus. 
 
-2. Wählen Sie im Abschnitt **Auftragstopologie** im linken Navigationsmenü **Ausgaben** aus.
+2. Klicken Sie auf der Seite **Ausgaben** auf **+&nbsp;Hinzufügen** und **Blobspeicher/Data Lake Storage Gen2**.
 
-   * Klicken Sie auf der Seite **Ausgaben** auf **+&nbsp;Hinzufügen** und **Blobspeicher/Data Lake Storage Gen2**. 
-   * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`.
-   * **Importoptionen**: Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus. **Speicherkonto**:
-   * Wählen Sie dann Ihr Speicherkonto aus. **Container**:
+   * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`. 
+   * **Importoptionen**: Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus.
+   * **Speicherkonto**: Wählen Sie dann Ihr Speicherkonto aus.
+   * **Container**: Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.
    
-4. Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.   
+4. Wählen Sie **Speichern** aus.   
 
-## <a name="start-the-job"></a>Wählen Sie **Speichern** aus.
+## <a name="start-the-job"></a>Starten des Auftrags
 
-Starten des Auftrags Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben.
+Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben. Sie können nun den Stream Analytics-Auftrag starten.
 
-1. Sie können nun den Stream Analytics-Auftrag starten. 
+1. Stellen Sie sicher, dass die TwitterClientCore-Anwendung ausgeführt wird. 
 
-2. Stellen Sie sicher, dass die TwitterClientCore-Anwendung ausgeführt wird.
+2. Wählen Sie in der Auftragsübersicht **Starten** aus.
 
-3. Wählen Sie in der Auftragsübersicht **Starten** aus.
+3. Wählen Sie auf der Seite **Auftrag starten** für **Startzeit der Auftragsausgabe** die Option **Jetzt** aus, und wählen Sie dann **Starten** aus.
 
-## <a name="get-support"></a>Wählen Sie auf der Seite **Auftrag starten** für **Startzeit der Auftragsausgabe** die Option **Jetzt** aus, und wählen Sie dann **Starten** aus.
-Support
+## <a name="get-support"></a>Support
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
-* Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

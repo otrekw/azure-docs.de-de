@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: d0c705ffba84b9d34f8bc3d6e4c06d4bdb90fa21
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322820"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554015"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -110,7 +110,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > [!div renderon="docs"]
 >
 > Hierbei gilt:
-> - *\<Enter_the_Application_Id_Here>* ist die **ID der Anwendung (des Clients)** für die von Ihnen registrierte Anwendung.
+> - *\<Enter_the_Application_Id_Here>* ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 > - *\<Enter_the_Cloud_Instance_Id_Here>* ist die Instanz der Azure-Cloud. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud einfach *https://login.microsoftonline.com* ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
 > - *\<Enter_the_Tenant_info_here>* wird auf eine der folgenden Optionen festgelegt:
 >    - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (beispielsweise *contoso.microsoft.com*).
@@ -204,7 +204,7 @@ Im Schnellstartcode wird auch veranschaulicht, wie Sie die MSAL-Bibliothek initi
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > |`clientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung.|
 > |`authority`    | (Optional:) Die Autoritäts-URL zur Unterstützung von Kontotypen, wie im Konfigurationsabschnitt oben beschrieben. Die Standardautorität lautet `https://login.microsoftonline.com/common`. |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes`   | (Optional:) Enthält Bereiche, die bei der Anmeldung für die Benutzereinwilligung angefordert werden. Beispiel: `[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`). |
 
@@ -262,7 +262,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes`   | Enthält Bereiche, die für die Rückgabe im Zugriffstoken für die API angefordert werden. Beispiel: `[ "mail.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`).|
 

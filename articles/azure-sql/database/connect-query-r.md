@@ -14,12 +14,12 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7bfc00566ef24fb6d6851a7cdee402598fe15951
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052617"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042508"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Schnellstart: Verwenden von R mit Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank zum Abfragen einer Datenbank 
 
@@ -85,4 +85,3 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 - [Entwerfen Ihrer ersten Datenbank in Azure SQL-Datenbank](design-first-database-tutorial.md)
 - [Machine Learning Services (mit R) in Azure SQL-Datenbank](machine-learning-services-overview.md)
 - [Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)](r-script-create-quickstart.md)
-- [Schreiben erweiterter R-Funktionen in Azure SQL-Datenbank mit Machine Learning Services (Vorschauversion)](machine-learning-services-functions.md)
