@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights (Vorschauversion)
       items:
-        - name: Planen der Umgebung
-          href: time-series-insights-update-plan.md
-        - name: Datenspeicher und -eingang
-          href: time-series-insights-update-storage-ingress.md
         - name: Anwendungsfälle
           href: time-series-insights-update-use-cases.md
+        - name: Planen der Umgebung
+          href: time-series-insights-update-plan.md
+        - name: Übersicht über die Datenerfassung
+          href: concepts-ingestion-overview.md
+        - name: Unterstützte Datentypen
+          href: concepts-supported-data-types.md
+        - name: Ereignisquellen der Streamingerfassung
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON-Vereinfachungs- und -Escaperegeln
+          href: concepts-json-flattening-escaping-rules.md
+        - name: Durchsatzlimits für eingehendes Streaming
+          href: concepts-streaming-throughput-limitations.md
+        - name: Storage
+          href: concepts-storage.md
         - name: Time Series-Modell
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: Time Series-Abfrage
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: Visualisieren von Daten in der Explorer Preview
           href: time-series-insights-update-explorer.md
         - name: Entwickeln
