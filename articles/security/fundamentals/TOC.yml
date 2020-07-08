@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: Verbleibende DNS- und Subdomainübernahme
       href: subdomain-takeover.md
-    - name: DDoS Protection-Sicherheitsbaseline
-      href: ddos-protection-security-baseline.md
     - name: Sichere Hybrid-Netzwerkarchitektur
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS-Sicherheit

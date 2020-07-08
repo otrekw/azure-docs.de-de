@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474644"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057618"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
-Als Azure-Kunde mit einem [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) können Sie einem anderen Benutzer oder Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen, die Ihrem Konto in Rechnung gestellt werden. In diesem Artikel erfahren Sie, wie Sie [rollenbasierte Zugriffssteuerung (RBAC)](../../active-directory/role-based-access-control-configure.md) verwenden können, um anderen Benutzern das Erstellen von Abonnements zu ermöglichen, und wie Sie die Erstellung von Abonnements überwachen können. Sie müssen für das Konto, das Sie freigeben möchten, über die Rolle „Besitzer“ verfügen.
+Als Azure-Kunde mit einem [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) können Sie einem anderen Benutzer oder Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen, die Ihrem Konto in Rechnung gestellt werden. In diesem Artikel erfahren Sie, wie Sie [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md) verwenden können, um anderen Benutzern das Erstellen von Abonnements zu ermöglichen, und wie Sie die Erstellung von Abonnements überwachen können. Sie müssen für das Konto, das Sie freigeben möchten, über die Rolle „Besitzer“ verfügen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -158,7 +158,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    Führen Sie den folgenden [New-AzRoleAssignment](../../active-directory/role-based-access-control-manage-access-powershell.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `ObjectId`-Wert, den Sie im ersten Schritt erfasst haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
+    Führen Sie den folgenden [New-AzRoleAssignment](../../role-based-access-control/role-assignments-powershell.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `ObjectId`-Wert, den Sie im ersten Schritt erfasst haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +166,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-2)
 
-    Führen Sie den folgenden [az role assignment create](../../active-directory/role-based-access-control-manage-access-azure-cli.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `name`-Wert, den Sie im ersten Schritt kopiert haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
+    Führen Sie den folgenden [az role assignment create](../../role-based-access-control/role-assignments-cli.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `name`-Wert, den Sie im ersten Schritt kopiert haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -180,7 +180,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
 Verwenden Sie zum Nachverfolgen der über diese API erstellten Abonnements die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs). Zurzeit ist es nicht möglich, PowerShell, die CLI oder das Azure-Portal zum Nachverfolgen der Abonnementerstellung zu verwenden.
 
-1. Als Mandantenadministrator des Azure AD-Mandanten [erhöhen Sie die Zugriffsrechte](../../active-directory/role-based-access-control-tenant-admin-access.md), und weisen Sie dann dem überwachenden Benutzer eine Leserrolle über den Bereich `/providers/microsoft.insights/eventtypes/management` zu.
+1. Als Mandantenadministrator des Azure AD-Mandanten [erhöhen Sie die Zugriffsrechte](../../role-based-access-control/elevate-access-global-admin.md), und weisen Sie dann dem überwachenden Benutzer eine Leserrolle über den Bereich `/providers/microsoft.insights/eventtypes/management` zu.
 1. Rufen Sie als überwachender Benutzer die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs) auf, um Aktivitäten zum Erstellen von Abonnements anzuzeigen. Beispiel:
 
     ```

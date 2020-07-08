@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie über IntelliJ IDEA Ihre erste Azure Res
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153351"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057448"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Erstellen und Bereitstellen von Resource Manager-Vorlagen über IntelliJ IDEA
 
@@ -86,4 +86,4 @@ In diesem Artikel geht es in erster Linie um die Bereitstellung einer vorhandene
 > [Tutorials für Anfänger](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [Azure für Java-Cloudentwickler](https://docs.microsoft.com/azure/java)
+> [Azure für Java-Cloudentwickler](/azure/java)
