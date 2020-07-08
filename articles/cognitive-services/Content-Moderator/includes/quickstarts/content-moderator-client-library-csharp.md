@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 24319fe80130c1ac116c8423e1d82a5bc08b4b20
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3245b4d0ce164acd8fcd367597dcbddc9436c782
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124548"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965896"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Content Moderator-Clientbibliothek für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Content Moderator gehört zu Cognitive Services und überprüft Text-, Bild- und Videoinhalte auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material. Gefundenes Material dieser Art wird mithilfe von Flags entsprechend gekennzeichnet. Mit Flags versehene Inhalte können dann von Ihrer App angemessen behandelt werden, um Vorgaben zu erfüllen oder für Benutzer die vorgesehene Umgebung bereitzustellen.
 
@@ -160,7 +160,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Übergeben Sie Ihre Eingabe- und Ausgabedateien im folgenden Methodenaufruf an die `Main`-Methode. Sie definieren diese Methode in einem späteren Schritt.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>Definieren der Hilfsklasse
 

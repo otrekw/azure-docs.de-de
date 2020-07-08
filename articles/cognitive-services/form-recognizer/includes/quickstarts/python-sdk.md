@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 811daf9b1bf5bf26419385517a67cd22cb8346e6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e5debf66b91ebd73bb4a4972a907ef7a283f0044
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570136"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965904"
 ---
 [Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Paket (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
@@ -82,9 +82,9 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 Hier authentifizieren Sie zwei Clientobjekte mithilfe der oben definierten Abonnementvariablen. Sie verwenden ein **AzureKeyCredential**-Objekt, damit Sie bei Bedarf den API-Schlüssel aktualisieren können, ohne neue Clientobjekte zu erstellen.
 
 ```python
-form_recognizer_client = FormRecognizerClient(endpoint=self.endpoint, credential=AzureKeyCredential(self.key))
+form_recognizer_client = FormRecognizerClient(endpoint=endpoint, credential=AzureKeyCredential(key))
 
-form_training_client = FormTrainingClient(self.endpoint, AzureKeyCredential(self.key))
+form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ```
 
 ## <a name="define-variables"></a>Definieren von Variablen
@@ -231,7 +231,7 @@ Trainieren Sie benutzerdefinierte Modelle, sodass alle Felder und Werte in Ihren
 Im folgenden Code wird der Trainingsclient mit der **begin_training**-Funktion verwendet, um ein Modell für eine bestimmte Gruppe von Dokumenten zu trainieren.
 
 ```python
-poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=False)
+poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
 model = poller.result()
 ```
 
@@ -262,7 +262,7 @@ Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsd
 > Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **begin_training**-Funktion mit dem auf `true` festgelegten Parameter *use_training_labels* aufrufen.
 
 ```python
-poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=True)
+poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
 model = poller.result()
 ```
 
