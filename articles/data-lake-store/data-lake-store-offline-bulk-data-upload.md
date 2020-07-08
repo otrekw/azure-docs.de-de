@@ -3,15 +3,15 @@ title: Hochladen großer Datasets in Azure Data Lake Storage Gen1 – Offlinemet
 description: Verwenden des Import/Export-Diensts zum Kopieren von Daten aus Azure Blob Storage in Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855674"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Verwenden des Azure Import/Export-Diensts zum Kopieren von Daten in Data Lake Storage Gen1 im Offlinemodus
 
@@ -31,17 +31,16 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 Vor der Verwendung des Import/Export-Diensts muss die zu übertragende Datendatei **in Kopien mit einer Größe von weniger als 200GB aufgeteilt** werden. Das Importtool kann nicht für Dateien mit einer Größe von mehr als 200GB ausgeführt werden. In diesem Artikel teilen wir die Datei in Abschnitte von jeweils 100 GB auf. Hierfür können Sie [Cygwin](https://cygwin.com/install.html) verwenden. Cygwin unterstützt Linux-Befehle. Führen in diesem Fall den folgenden Befehl aus:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 Mit dem Splitvorgang werden Dateien mit den folgenden Namen erstellt.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB.tsv-part-aa*
+* *319GB.tsv-part-ab*
+* *319GB.tsv-part-ac*
+* *319GB.tsv-part-ad*
 
 ## <a name="get-disks-ready-with-data"></a>Vorbereiten von Festplatten mit Daten
 
