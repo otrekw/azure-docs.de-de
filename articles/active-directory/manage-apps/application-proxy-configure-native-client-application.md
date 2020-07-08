@@ -3,25 +3,25 @@ title: Veröffentlichen nativer Client-Apps – Azure AD | Microsoft-Dokumentati
 description: Erläutert, wie Sie es systemeigenen Client-Apps ermöglichen, mit einem Azure AD-Anwendungsproxyconnector zu kommunizieren und so einen sicheren Remotezugriff auf lokale Anwendungen bereitzustellen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764807"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen
 
@@ -113,10 +113,10 @@ Die erforderlichen Informationen im Beispielcode sind wie folgt im Azure AD-Por
 
 | Erforderliche Informationen | Suchpfad im Azure AD-Portal |
 | --- | --- |
-| \<Mandanten-ID> | **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** |
-| \<App-ID der nativen App> | **Anwendungs Registrierung** > *Ihre native Anwendung* > **Übersicht** > **Anwendungs-ID** |
-| \<Bereich> | **Anwendungsregistrierung** > *Ihre native Anwendung* > **API-Berechtigungen** > Klicken Sie auf die Berechtigungs-API (user_impersonation) > Ein Bereich mit der Überschrift **user_impersonation** wird auf der rechten Seite angezeigt. > Der Bereich ist die URL im Bearbeitungsfeld.
-| \<Proxy-App-URL> | Die externe URL und der Pfad zur API.
+| \<Tenant ID> | **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** |
+| \<App ID of the Native app> | **Anwendungs Registrierung** > *Ihre native Anwendung* > **Übersicht** > **Anwendungs-ID** |
+| \<Scope> | **Anwendungsregistrierung** > *Ihre native Anwendung* > **API-Berechtigungen** > Klicken Sie auf die Berechtigungs-API (user_impersonation) > Ein Bereich mit der Überschrift **user_impersonation** wird auf der rechten Seite angezeigt. > Der Bereich ist die URL im Bearbeitungsfeld.
+| \<Proxy App Url> | Die externe URL und der Pfad zur API.
 
 Nachdem Sie den MSAL-Code mit diesen Parametern bearbeitet haben, können sich Ihre Benutzer bei nativen Client-Apps authentifizieren, auch wenn sie sich außerhalb des Unternehmensnetzwerks befinden.
 
