@@ -3,16 +3,16 @@ title: Hinzufügen von Bewertungstools in Azure Migrate
 description: Hier erfahren Sie, wie Sie Bewertungstools in Azure Migrate hinzufügen.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122114"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
-In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.md) Bewertungstools hinzufügen. 
+In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](./migrate-services-overview.md) Bewertungstools hinzufügen. 
 
 - Wenn Sie ein Bewertungstool hinzufügen möchten und noch nicht über ein Azure Migrate-Projekt verfügen, hilft Ihnen [dieser Artikel](how-to-add-tool-first-time.md) weiter.
 - Wenn Sie für die Bewertung ein ISV-Tool oder Movere hinzugefügt haben, [befolgen Sie die Schritte](prepare-isv-movere.md) zur Vorbereitung auf die Arbeit mit dem Tool.

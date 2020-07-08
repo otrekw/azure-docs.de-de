@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie mit PowerShell Lesereplikate in Azure Da
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 5/26/2020
-ms.openlocfilehash: 4854518d77ca3eb0c978a0ca3462535e17ad3fcd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: 2e8d250d20126198b3f267b44af98bed811ad8dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041091"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121179"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe von PowerShell
 
@@ -40,6 +40,9 @@ Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cm
 > Das Feature für Lesereplikate ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
+
+> [!IMPORTANT]
+> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 

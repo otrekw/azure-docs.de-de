@@ -1,17 +1,15 @@
 ---
 title: Zahlungserhalt im kommerziellen Marketplace von Microsoft
 description: Hier erfahren Sie, wie Sie die Zahlungen für Ihre Einnahmen im kommerziellen Marketplace von Microsoft erhalten.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 604d5c93ca87831b1feb76095da694b4be402ad9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849024"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121689"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Zahlungserhalt im kommerziellen Marketplace
 
@@ -27,21 +25,6 @@ Wenn Sie sich für ein [Entwicklerkonto registrieren](https://go.microsoft.com/f
 Die Gebühren sind offiziell in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) definiert. Schauen Sie sich stets das Dokument an, wenn Fragen auftreten.
 
 Die Store-Gebühr wird auf alle Angebotsverkäufe (einschließlich Add-Ons) angewendet, die vom kommerziellen Marketplace gesammelt werden.
-
-## <a name="price-tiers"></a>Preisstufen
-
-Durch die ausgewählten Preisstufen wird der Verkaufspreis in allen Ländern/Regionen festgelegt, in denen Sie Ihr Angebot vertreiben möchten. Sie können auch zusätzliche Preisfeatures nutzen, wie z.B. die Auswahl unterschiedlicher Preise für verschiedene Märkte.
-
-Sie können Ihre App kostenlos anbieten oder einen Preis auswählen, den Kunden für den Erwerb Ihres Angebots bezahlen müssen. Die Preisstufen beginnen bei 0,99 USD und erhöhen sich dann in weiteren Schritten (1,09 USD, 1,19 USD usw.). Die Schrittweite zwischen den Preisstufen erhöht sich bei zunehmendem Preis.
-
-> [!NOTE] 
-> Diese Preisstufen gelten auch für alle Add-Ons, die in Ihrem Angebot enthalten sind.
-
-Jede Preisstufe hat in allen Währungen, die vom Store angeboten werden, einen entsprechenden Wert. Wir verwenden diese Werte, damit Sie Ihr Angebot weltweit in einem vergleichbaren Preisbereich verkaufen können. Aufgrund von Wechselkursänderungen kann der genaue Umsatz jedoch geringfügig von einer Währung zur anderen abweichen.
-
-Sie haben auch die Möglichkeit, einen Freiform-Preis Ihrer Wahl in der lokalen Währung eines bestimmten Markts einzugeben. Wenn Sie dies tun, wird der Preis nicht angepasst (auch nicht bei Wechselkursänderungen). Dazu müssen Sie ein Update mit einem neuen Preis übermitteln. 
-
-Berücksichtigen Sie, dass der von Ihnen ausgewählte Preis möglicherweise Verkaufs- oder Mehrwertsteuer enthält, die Ihre Kunden bezahlen müssen. Ausführliche Informationen finden Sie unter [Steuerdetails für kostenpflichtige Angebote](tax-details-paid-transactions.md).
 
 ## <a name="payout-reporting"></a>Zahlungsberichte
 

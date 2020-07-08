@@ -1,18 +1,18 @@
 ---
 title: Private Angebote im kommerziellen Microsoft-Marketplace
 description: Hier finden Sie Informationen zu privaten Angeboten im kommerziellen Microsoft-Marketplace für Herausgeber von Apps und Diensten.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/19/2020
-ms.author: dsindona
-ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: b558cbc53ba09a86f7277df0ee5d45a9bdac56e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121009"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Private Angebote im kommerziellen Microsoft-Marketplace
 
