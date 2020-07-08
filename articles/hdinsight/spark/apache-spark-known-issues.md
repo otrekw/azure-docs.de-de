@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084641"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekannte Probleme bei Apache Spark-Clustern unter HDInsight
 
@@ -30,13 +30,17 @@ Gehen Sie wie folgt vor, um das Problem zu umgehen:
 
 2. Führen Sie den folgenden Befehl aus, um die Anwendungs-IDs der interaktiven Aufträge zu ermitteln, die über Livy gestartet wurden.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     Die Standardauftragsnamen entsprechen Livy, wenn die Aufträge mit einer interaktiven Livy-Sitzung ohne ausdrücklich angegebene Namen gestartet wurden. Für die Livy-Sitzung, die durch [Jupyter Notebook](https://jupyter.org/) gestartet wurde, beginnt der Name des Auftrags mit `remotesparkmagics_*`.
 
 3. Führen Sie den folgenden Befehl aus, um die Beendigung dieser Aufträge zu erzwingen.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Neue Aufträge werden gestartet.
 
