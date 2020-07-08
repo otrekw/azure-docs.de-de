@@ -5,16 +5,16 @@ description: Auswahl des optimalen Parametersatzes für einen Algorithmus mit Ve
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 90d35dc55cfc971ad8f77f0f2a76075d371b29fb
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a99c1d71ed7e718d4d47ba55573a16466f62de5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687768"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)
 
