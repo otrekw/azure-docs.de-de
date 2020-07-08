@@ -4,14 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie mithilfe von verwalteten Id
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 01a27a9c98c1c429cdc381ba0c1e9ef4186c9e7a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102292"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Herstellen einer Verbindung zu Azure Database for PostgreSQL mithilfe von verwalteten Identitäten
 
@@ -33,13 +33,13 @@ In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Id
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität für Ihre VM
 
-Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) eine Identität in Ihrem Abonnement. Sie können hierfür dieselbe Ressourcengruppe verwenden, in der Ihre VM ausgeführt wird, oder auch eine andere.
+Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) eine Identität in Ihrem Abonnement. Sie können dazu dieselbe Ressourcengruppe verwenden, in der Ihre VM ausgeführt wird, oder auch eine andere.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-In den folgenden Schritten konfigurieren Sie die Identität. Verwenden Sie den Befehl [az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show), um die Ressourcen-ID und die Client-ID der Identität in Variablen zu speichern.
+In den folgenden Schritten werden Sie die Identität konfigurieren. Verwenden Sie den Befehl [az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show), um die Ressourcen- und die Client-ID der Identität in Variablen zu speichern.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -82,9 +82,9 @@ Dieses Token wird abgerufen, indem eine HTTP-Anforderung an `http://169.254.169.
 * `resource` = `https://ossrdbms-aad.database.windows.net`
 * `client_id` = `CLIENT_ID` (die Sie zuvor abgerufen haben)
 
-Es wird ein JSON-Ergebnis zurückgegeben, in dem das Feld `access_token` enthalten ist. Dieser lange Textwert ist das Zugriffstoken der verwalteten Identität, das Sie bei der Verbindungsherstellung mit der Datenbank als Kennwort verwenden sollten.
+Es wird ein JSON-Ergebnis zurückgegeben, das ein `access_token`-Feld enthält. Dieser lange Textwert ist das Zugriffstoken der verwalteten Identität, das bei der Verbindungsherstellung zur Datenbank als Kennwort verwenden werden soll.
 
-Zu Testzwecken können Sie die folgenden Befehle in Ihrer Shell ausführen. Beachten Sie, dass die Clients für `curl`, `jq` und `psql` installiert sein müssen.
+Zu Testzwecken können Sie die folgenden Befehle in Ihrer Shell ausführen. Beachten Sie, dass der `curl`-, `jq`- und der `psql`-Client installiert sein müssen.
 
 ```bash
 # Retrieve the access token
@@ -94,7 +94,7 @@ export PGPASSWORD=`curl -s 'http://169.254.169.254/metadata/identity/oauth2/toke
 psql -h SERVER --user USER@SERVER DBNAME
 ```
 
-Sie haben nun eine Verbindung mit der Datenbank hergestellt, die Sie zuvor konfiguriert haben.
+Sie haben nun eine Verbindung zur Datenbank hergestellt, die Sie zuvor konfiguriert haben.
 
 ## <a name="connecting-using-managed-identity-in-c"></a>Herstellen einer Verbindung mithilfe einer verwalteten Identität in C#
 
@@ -185,7 +185,7 @@ namespace Driver
 }
 ```
 
-Wenn Sie diesen Befehl ausführen, erhalten Sie in etwa die folgende Ausgabe:
+Wenn Sie diesen Befehl ausführen, wird eine Ausgabe wie die folgende zurückgegeben:
 
 ```
 Getting access token from Azure Instance Metadata service...
