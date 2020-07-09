@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/27/2020
-ms.openlocfilehash: 6faae80c78fe07d33579cc3fb7c76ce668969992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b1eb164d367aa968b599c6d3e92c48fd94b0098
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80369271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118706"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit der Azure CLI
 
