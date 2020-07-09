@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478970"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132487"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -35,8 +35,8 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | Gebietsschema des Betriebssystems | Englisch (USA)|
 | VMware vSphere PowerCLI-Version | Nicht erforderlich|
 | Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
-| Gruppenrichtlinien| Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
+| Gruppenrichtlinien| Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> - Aktivieren der Einstellung [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) |
 | Art der IP-Adresse | statischen |
 | Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
@@ -267,7 +267,7 @@ Aktualisieren Sie den Server wie folgt:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers (PowerShell)
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
+1. [Installieren](/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zerti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die Tutorials zum Einrichten der Notfallwiederherstellung von [physischen Servern](tutorial-physical-to-azure.md) in Azure an.
-
+Sehen Sie sich die Tutorials zum Einrichten der Notfallwiederherstellung von [physischen Servern](./physical-azure-disaster-recovery.md) in Azure an.

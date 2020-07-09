@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131980"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problembehandlung des Prozessservers
 
@@ -96,7 +96,7 @@ Wenn kein Heartbeat vom Prozessserver (Fehlercode 806) vorhanden ist, führen Si
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Schritt 4: Überprüfen der Zeitsynchronisierung auf dem Quellcomputer
 
-Stellen Sie sicher, dass das Systemdatum und die -uhrzeit für den replizierten Computer synchron sind. [Weitere Informationen](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Stellen Sie sicher, dass das Systemdatum und die -uhrzeit für den replizierten Computer synchron sind. [Weitere Informationen](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Schritt 5: Überprüfen der Antivirensoftware auf dem Quellcomputer
 
@@ -105,7 +105,7 @@ Stellen Sie sicher, dass keine Antivirensoftware auf dem replizierten Computer S
 ## <a name="step-6-check-connectivity-from-source-machine"></a>Schritt 6: Überprüfen der Konnektivität vom Quellcomputer
 
 
-1. Installieren Sie den [Telnet-Client](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) auf dem Quellcomputer, wenn dies noch nicht geschehen ist. Verwenden Sie nicht Ping.
+1. Installieren Sie den [Telnet-Client](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) auf dem Quellcomputer, wenn dies noch nicht geschehen ist. Verwenden Sie nicht Ping.
 2. Pingen Sie den Prozessserver vom Quellcomputer am HTTPS-Port mit Telnet. Standardmäßig ist 9443 der HTTPS-Port für Replikationsdatenverkehr.
 
     `telnet <process server IP address> <port>`
@@ -246,7 +246,7 @@ Erhöhen Sie die Bandbreite zwischen dem Prozessserver und Azure, und überprüf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) veröffentlichen. 
+Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](/answers/topics/azure-site-recovery.html) veröffentlichen. 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

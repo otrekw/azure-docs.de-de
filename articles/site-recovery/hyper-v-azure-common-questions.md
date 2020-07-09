@@ -3,12 +3,12 @@ title: Allgemeine Fragen zur Hyper-V-Notfallwiederherstellung mit Azure Site Rec
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195261"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132659"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -32,17 +32,17 @@ Normalerweise treten erhöhte Transaktionskosten bei GPv2-Speicherkonten auf, da
 
 Was Sie für Hyper-V-Hostserver benötigen, richtet sich nach dem Bereitstellungsszenario. Sehen Sie sich die Voraussetzungen für Hyper-V an:
 
-* [Replizieren von Hyper-V-VMs (ohne VMM) in Azure](site-recovery-hyper-v-site-to-azure.md)
-* [Replizieren von Hyper-V-VMs (mit VMM) in Azure](site-recovery-vmm-to-azure.md)
-* [Replizieren von Hyper-V-VMs in ein sekundäres Rechenzentrum](site-recovery-vmm-to-vmm.md)
-* Wenn Sie die Replikation an einem sekundären Rechenzentrum durchführen, helfen Ihnen die Informationen unter [Unterstützte Gastbetriebssysteme für Hyper-V-VMs](https://technet.microsoft.com/library/mt126277.aspx)weiter.
-* Wenn Sie in Azure replizieren, unterstützt Site Recovery alle Gastbetriebssysteme, die [von Azure unterstützt werden](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
+* [Replizieren von Hyper-V-VMs (ohne VMM) in Azure](./hyper-v-azure-tutorial.md)
+* [Replizieren von Hyper-V-VMs (mit VMM) in Azure](./hyper-v-vmm-disaster-recovery.md)
+* [Replizieren von Hyper-V-VMs in ein sekundäres Rechenzentrum](./hyper-v-vmm-disaster-recovery.md)
+* Wenn Sie die Replikation an einem sekundären Rechenzentrum durchführen, helfen Ihnen die Informationen unter [Unterstützte Gastbetriebssysteme für Hyper-V-VMs](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11))weiter.
+* Wenn Sie in Azure replizieren, unterstützt Site Recovery alle Gastbetriebssysteme, die [von Azure unterstützt werden](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10)).
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Kann ich virtuelle Computer schützen, wenn Hyper-V auf einem Clientbetriebssystem ausgeführt wird?
-Nein. VMs müssen sich auf einem Hyper-V-Hostserver befinden, der auf einem unterstützten Windows-Servercomputer ausgeführt wird. Wenn Sie einen Clientcomputer schützen müssen, können Sie diesen als physischen Computer in [Azure](site-recovery-vmware-to-azure.md) oder in einem [sekundären Rechenzentrum](site-recovery-vmware-to-vmware.md) replizieren.
+Nein. VMs müssen sich auf einem Hyper-V-Hostserver befinden, der auf einem unterstützten Windows-Servercomputer ausgeführt wird. Wenn Sie einen Clientcomputer schützen müssen, können Sie diesen als physischen Computer in [Azure](./vmware-azure-tutorial.md) oder in einem [sekundären Rechenzentrum](./vmware-physical-secondary-disaster-recovery.md) replizieren.
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Müssen Hyper-V-Hosts sich in VMM-Clouds befinden?
-Wenn Sie die Replikation in einem sekundären Rechenzentrum durchführen möchten, müssen Hyper-V-VMs auf Hyper-V-Hostservern in einer VMM-Cloud angeordnet sein. Falls Sie in Azure replizieren möchten, können Sie virtuelle Computer mit oder ohne VMM-Clouds replizieren. [Weitere Informationen](tutorial-hyper-v-to-azure.md) zur Hyper-V-Replikation in Azure.
+Wenn Sie die Replikation in einem sekundären Rechenzentrum durchführen möchten, müssen Hyper-V-VMs auf Hyper-V-Hostservern in einer VMM-Cloud angeordnet sein. Falls Sie in Azure replizieren möchten, können Sie virtuelle Computer mit oder ohne VMM-Clouds replizieren. [Weitere Informationen](./hyper-v-azure-tutorial.md) zur Hyper-V-Replikation in Azure.
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Kann ich virtuelle Hyper-V-Computer der 2. Generation in Azure replizieren?
@@ -71,7 +71,7 @@ Site Recovery ist nach ISO 27001:2013, 27018, HIPAA und DPA zertifiziert und dur
 Ja. Wenn Sie einen Tresor in einer Region erstellen, stellen wir sicher, dass alle von Site Recovery verwendeten Metadaten innerhalb der geografischen Begrenzung der Region bleiben.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
-Ja, sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung in Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) wird unterstützt.
+Ja, sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung in Azure](../storage/common/storage-service-encryption.md) wird unterstützt.
 
 
 ## <a name="deployment"></a>Bereitstellung

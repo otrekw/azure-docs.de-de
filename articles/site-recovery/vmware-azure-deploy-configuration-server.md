@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704436"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132149"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -39,7 +39,7 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
 1. Der Benutzer muss über die Rolle „Anwendungsentwickler“ verfügen, um eine Anwendung erstellen zu können.
     - Zur Überprüfung melden Sie sich beim Azure-Portal an.</br>
     - Navigieren Sie zu **Azure Active Directory** > **Rollen und Administratoren**.</br>
-    - Vergewissern Sie sich, dass dem Benutzer die Rolle „Anwendungsentwickler“ zugewiesen ist. Falls nicht, verwenden Sie einen Benutzer mit dieser Berechtigung, oder bitten Sie den [Administrator, die Berechtigung zu aktivieren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Vergewissern Sie sich, dass dem Benutzer die Rolle „Anwendungsentwickler“ zugewiesen ist. Falls nicht, verwenden Sie einen Benutzer mit dieser Berechtigung, oder bitten Sie den [Administrator, die Berechtigung zu aktivieren](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Wenn die Rolle „Anwendungsentwickler“ nicht zugewiesen werden kann, stellen Sie sicher, dass das Flag **Benutzer können Anwendungen registrieren** auf **true** festgelegt ist, damit der Benutzer eine Identität erstellen kann. So aktivieren Sie diese Berechtigungen
     - Melden Sie sich beim Azure-Portal an.
@@ -49,7 +49,7 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory-Verbunddienste (AD FS) *werden nicht unterstützt*. Verwenden Sie ein Konto, das mit [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) verwaltet wird.
+> Active Directory-Verbunddienste (AD FS) *werden nicht unterstützt*. Verwenden Sie ein Konto, das mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) verwaltet wird.
 
 ## <a name="download-the-template"></a>Herunterladen der Vorlage
 
