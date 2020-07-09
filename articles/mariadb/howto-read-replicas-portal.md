@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie im Portal Lesereplikate
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: fc435194975c0b043e74a47632d6e38f12d04c2a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025083"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121196"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe des Azure-Portals
 
@@ -25,6 +25,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for Mari
 > Das Feature für Lesereplikate ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
+
+> [!IMPORTANT]
+> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
