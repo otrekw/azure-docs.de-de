@@ -3,12 +3,12 @@ title: Replizieren virtueller Azure Stack-Computer in Azure mit Azure Site Recov
 description: Hier erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für virtuelle Azure Stack-Computer mit dem Azure Site Recovery-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478517"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131612"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -262,7 +262,7 @@ Bevor Sie ein Testfailover ausführen, überprüfen Sie die Computereigenschafte
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
 3. Unter **Compute und Netzwerk** ändern Sie Einstellungen nach Bedarf.
 
-    - Sie können den Namen des virtuellen Azure-Computers, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](/azure/virtual-machines/windows/tutorial-availability-sets) und Einstellungen verwalteter Datenträger ändern.
+    - Sie können den Namen des virtuellen Azure-Computers, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und Einstellungen verwalteter Datenträger ändern.
     - Sie können auch Netzwerkeinstellungen anzeigen und ändern. Dazu gehören das Netzwerk/Subnetz, mit dem der virtuelle Azure-Computer nach dem Failover verbunden wird, und die IP-Adresse, die dem virtuellen Computer zugewiesen wird.
 1. Unter **Datenträger** finden Sie Informationen über das Betriebssystem und die Datenträger auf dem virtuellen Computer.
 

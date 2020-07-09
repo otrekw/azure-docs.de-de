@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6fad8995d409c14008b8345e9e576b2403c799
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101534"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131687"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager
 
@@ -30,14 +30,14 @@ Sie müssen folgende Schritte ausführen, um einen virtuellen Computer mit WinRM
 ## <a name="step-1-create-a-key-vault"></a>Schritt 1: Erstellen eines Schlüsseltresors
 Sie können den folgenden Befehl verwenden, um den Schlüsseltresor zu erstellen.
 
-```
+```azurepowershell
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
 ## <a name="step-2-create-a-self-signed-certificate"></a>Schritt 2: Erstellen eines selbstsignierten Zertifikats
 Sie können mit diesem PowerShell-Skript ein selbstsigniertes Zertifikat erstellen.
 
-```
+```azurepowershell
 $certificateName = "somename"
 
 $thumbprint = (New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
@@ -52,7 +52,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 ## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Schritt 3: Hochladen eines selbstsignierten Zertifikats in den Schlüsseltresor
 Vor dem Hochladen des Zertifikats in den in Schritt 1 erstellten Schlüsseltresor muss es in ein Format konvertiert werden, das für den Microsoft.Compute-Ressourcenanbieter verständlich ist. Dies können Sie mit dem unten stehenden PowerShell-Skript tun.
 
-```
+```azurepowershell
 $fileName = "<Path to the .pfx file>"
 $fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
@@ -81,66 +81,76 @@ Der Microsoft.Compute-Ressourcenanbieter benötigt bei der Bereitstellung des vi
 #### <a name="templates"></a>Vorlagen
 Sie erhalten den Link zur URL in der Vorlage mit folgendem Code:
 
-    "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
+```json
+"certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
+```
 
 #### <a name="powershell"></a>PowerShell
 Sie erhalten diese URL durch den folgenden PowerShell-Befehl:
 
-    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+```azurepowershell
+$secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+```
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Schritt 5: Verweisen auf die URL für selbstsignierte Zertifikate beim Erstellen eines virtuellen Computers
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-Vorlagen
 Beim Erstellen eines virtuellen Computers mittels Vorlagen wird im Abschnitt mit dem geheimen Schlüssel und im Abschnitt „winRM“ wie folgt auf das Zertifikat verwiesen:
 
-    "osProfile": {
-          ...
-          "secrets": [
+```json
+"osProfile": {
+      ...
+      "secrets": [
+        {
+          "sourceVault": {
+            "id": "<resource id of the Key Vault containing the secret>"
+          },
+          "vaultCertificates": [
             {
-              "sourceVault": {
-                "id": "<resource id of the Key Vault containing the secret>"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateUrl": "<URL for the certificate you got in Step 4>",
-                  "certificateStore": "<Name of the certificate store on the VM>"
-                }
-              ]
+              "certificateUrl": "<URL for the certificate you got in Step 4>",
+              "certificateStore": "<Name of the certificate store on the VM>"
             }
-          ],
-          "windowsConfiguration": {
-            ...
-            "winRM": {
-              "listeners": [
-                {
-                  "protocol": "http"
-                },
-                {
-                  "protocol": "https",
-                  "certificateUrl": "<URL for the certificate you got in Step 4>"
-                }
-              ]
+          ]
+        }
+      ],
+      "windowsConfiguration": {
+        ...
+        "winRM": {
+          "listeners": [
+            {
+              "protocol": "http"
             },
-            ...
-          }
+            {
+              "protocol": "https",
+              "certificateUrl": "<URL for the certificate you got in Step 4>"
+            }
+          ]
         },
+        ...
+      }
+    },
+```
 
 Eine Vorlage zum oben genannten Beispiel finden Sie unter [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
 Den Quellcode für diese Vorlage finden Sie auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
-    $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
-    $credential = Get-Credential
-    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -ProvisionVMAgent -WinRMCertificateUrl $secretURL
-    $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
-    $CertificateStore = "My"
-    $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+```azurepowershell
+$vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
+$credential = Get-Credential
+$secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+$vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -ProvisionVMAgent -WinRMCertificateUrl $secretURL
+$sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
+$CertificateStore = "My"
+$vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+```
 
 ## <a name="step-6-connecting-to-the-vm"></a>Schritt 6: Herstellen einer Verbindung mit dem virtuellen Computer
 Bevor Sie eine Verbindung mit dem virtuellen Computer herstellen können, müssen Sie sicherstellen, dass Ihr Computer für die WinRM-Remoteverwaltung konfiguriert ist. Starten Sie PowerShell als Administrator, und führen Sie den folgenden Befehl aus, um zu überprüfen, ob das Setup abgeschlossen ist.
 
-    Enable-PSRemoting -Force
+```azurepowershell
+Enable-PSRemoting -Force
+```
 
 > [!NOTE]
 > Wenn die oben genannte Methode nicht funktioniert, müssen Sie sicherstellen, dass der WinRM-Dienst ausgeführt wird. Verwenden Sie dazu `Get-Service WinRM`
@@ -149,4 +159,6 @@ Bevor Sie eine Verbindung mit dem virtuellen Computer herstellen können, müsse
 
 Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verbindung mit dem virtuellen Computer erstellen:
 
-    Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
+```azurepowershell
+Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
+```

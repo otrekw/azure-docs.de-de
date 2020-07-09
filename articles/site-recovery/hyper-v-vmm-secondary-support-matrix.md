@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74132967"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131169"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -36,8 +36,8 @@ In der folgenden Tabelle werden die unterstützten Betriebssysteme für mit Site
 
 **Windows-Version** | **Hyper-V (mit VMM)**
 --- | ---
-Windows Server 2016 | Alle [von Hyper-V unterstützten](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) Gastbetriebssysteme unter Windows Server 2016 
-Windows Server 2012 R2 | Alle [von Hyper-V unterstützten](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) Gastbetriebssysteme unter Windows Server 2012 R2
+Windows Server 2016 | Alle [von Hyper-V unterstützten](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) Gastbetriebssysteme unter Windows Server 2016 
+Windows Server 2012 R2 | Alle [von Hyper-V unterstützten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) Gastbetriebssysteme unter Windows Server 2012 R2
 
 ## <a name="linux-machine-storage"></a>Speicher eines Linux-Computers
 
@@ -114,5 +114,4 @@ Der Anbieter koordiniert die Kommunikation zwischen VMM-Servern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](tutorial-vmm-to-vmm.md)
-
+[Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](./hyper-v-vmm-disaster-recovery.md)

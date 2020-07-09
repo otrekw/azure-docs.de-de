@@ -222,12 +222,6 @@
         - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: Beispiele
-  items:
-    - name: Azure-Schnellstartvorlagen
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Vorlagenbeispiele
-      href: template-samples.md
 - name: Konzepte
   items:
     - name: Bewährte Methoden für Vorlagen
@@ -299,16 +293,6 @@
             - name: Ausgaben
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Verwenden von Erstellungstools
-      items:
-        - name: VS-Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: Aktualisieren des VS-Bereitstellungsskripts auf das Az-Modul
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: Entdecken von Vorlageneigenschaften
       items:
         - name: Exportieren der Vorlage
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: Sichern einer Vorlage mit einem SAS-Token
           href: secure-template-with-sas-token.md
+        - name: Anzeigen des Bereitstellungsverlaufs
+          href: deployment-history.md
     - name: Bereichsbezogene Bereitstellungen
       items:
         - name: Subscription
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: 'Bereitstellen: GitHub Actions'
           href: deploy-github-actions.md
-    - name: Anzeigen des Bereitstellungsverlaufs
-      href: deployment-history.md
+    - name: Verwenden von Erstellungstools
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: Aktualisieren des VS-Bereitstellungsskripts auf das Az-Modul
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Behandeln von Bereitstellungsproblemen
       items:
         - name: Behandeln von Bereitstellungsfehlern
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Ressourcen
   items:
+    - name: Azure-Schnellstartvorlagen
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Preisrechner

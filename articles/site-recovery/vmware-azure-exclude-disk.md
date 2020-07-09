@@ -6,12 +6,12 @@ manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129877"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Ausschließen von Datenträgern von der Replikation virtueller VMware-Computer zu Azure
 
@@ -42,7 +42,7 @@ Führen Sie vor dem Ausschließen von Datenträgern aus der Replikation folgende
 
 ## <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 
-1. Überprüfen Sie beim [Aktivieren der Replikation](site-recovery-hyper-v-site-to-azure.md) für eine VMware-VM nach Auswahl der zu replizierenden virtuellen Computer auf der Seite **Replikation aktivieren** > **Eigenschaften** > **Eigenschaften konfigurieren** die Spalte **Datenträger für Replikation**. Standardmäßig sind alle Datenträger für die Replikation ausgewählt.
+1. Überprüfen Sie beim [Aktivieren der Replikation](./hyper-v-azure-tutorial.md) für eine VMware-VM nach Auswahl der zu replizierenden virtuellen Computer auf der Seite **Replikation aktivieren** > **Eigenschaften** > **Eigenschaften konfigurieren** die Spalte **Datenträger für Replikation**. Standardmäßig sind alle Datenträger für die Replikation ausgewählt.
 2. Wenn Sie einen bestimmten Datenträger nicht replizieren möchten, können Sie in **Datenträger replizieren** die Datenträger abwählen, die Sie ausschließen möchten. 
 
     ![Ausschließen von Datenträgern von der Replikation](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71056819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130671"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs
 
@@ -81,11 +81,15 @@ Sie können eine der folgenden Methoden verwenden, um zu überprüfen, ob die VM
 
 **Windows-VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux-VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - Führen Sie den **telnet**-Befehl auf dem virtuellen Computer selbst aus, um den Port zu testen. Wenn bei dem Test ein Fehler auftritt, ist die Anwendung oder der Dienst nicht zum Lauschen auf diesem Port konfiguriert.
 

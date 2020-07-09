@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Codes der Bundesstaaten
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Veröffentlichungsstatus
-      href: ./partner-center-portal/publishing-status.md
+    - name: Überprüfen und veröffentlichen
+      href: review-publish-offer.md
     - name: Aktualisieren vorhandener Angebote
       href: ./partner-center-portal/update-existing-offer.md
     - name: Aktivieren von Vorteilen

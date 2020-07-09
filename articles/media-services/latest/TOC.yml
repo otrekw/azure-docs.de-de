@@ -1,7 +1,5 @@
 - name: Dokumentation zu Media Services
   href: ./index.yml
-- name: Zur Dokumentation zu Live Video Analytics in IoT Edge wechseln
-  href: ../live-video-analytics-edge/overview.md
 - name: Übersicht
   items:
     - name: Informationen zu Media Services

@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048612"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130223"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Einrichten der Notfallwiederherstellung von Hyper-V-VMs in einen sekundären Standort mithilfe von PowerShell (Resource Manager)
 
@@ -23,9 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie die Schritte für die Replikation vo
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Überprüfen Sie [Architektur und Komponenten des Szenarios](hyper-v-vmm-architecture.md).
-- Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md) für alle Komponenten.
-- Stellen Sie sicher, dass die Virtual Machine Manager-Server und Hyper-V-Hosts den [Anforderungen für die Unterstützung](site-recovery-support-matrix-to-sec-site.md) entsprechen.
-- Überprüfen Sie, ob die VMs, die Sie replizieren möchten, die Anforderungen für die [Unterstützung replizierter Computer](site-recovery-support-matrix-to-sec-site.md) erfüllen.
+- Überprüfen Sie die [Supportanforderungen](./vmware-physical-secondary-support-matrix.md) für alle Komponenten.
+- Stellen Sie sicher, dass die Virtual Machine Manager-Server und Hyper-V-Hosts den [Anforderungen für die Unterstützung](./vmware-physical-secondary-support-matrix.md) entsprechen.
+- Überprüfen Sie, ob die VMs, die Sie replizieren möchten, die Anforderungen für die [Unterstützung replizierter Computer](./vmware-physical-secondary-support-matrix.md) erfüllen.
 
 ## <a name="prepare-for-network-mapping"></a>Bereiten Sie sich auf die Netzwerkzuordnung vor
 
@@ -37,10 +37,10 @@ Die [Netzwerkzuordnung](hyper-v-vmm-network-mapping.md) ist die Zuordnung zwisch
 
 Bereiten Sie Virtual Machine Manager wie folgt vor:
 
-- Stellen Sie sicher, dass [logische Virtual Machine Manager-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-logical) auf den Virtual Machine Manager-Quell- und -Zielservern vorhanden sind:
+- Stellen Sie sicher, dass [logische Virtual Machine Manager-Netzwerke](/system-center/vmm/network-logical) auf den Virtual Machine Manager-Quell- und -Zielservern vorhanden sind:
   - Das logische Netzwerk auf dem Quellserver sollte der Quellcloud zugeordnet sein, in der sich Hyper-V-Hosts befinden.
   - Das logische Netzwerk auf dem Zielserver sollte der Zielcloud zugeordnet werden.
-- Stellen Sie sicher, dass [VM-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-virtual) auf den Virtual Machine Manager-Quell- und -Zielservern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
+- Stellen Sie sicher, dass [VM-Netzwerke](/system-center/vmm/network-virtual) auf den Virtual Machine Manager-Quell- und -Zielservern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
 - Stellen Sie die Verbindung der virtuellen Computer auf den Hyper-V-Quellhosts mit dem VM-Quellnetzwerk her.
 
 ## <a name="prepare-for-powershell"></a>Vorbereiten von PowerShell

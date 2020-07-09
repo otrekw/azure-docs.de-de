@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129922"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -106,9 +106,9 @@ Führen Sie zum Aktivieren der Replikation die folgenden Schritte aus:
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Fenster „Compute- und Netzwerkeigenschaften“":::
 
    - **Name des virtuellen Azure-Computers**: Ändern Sie ggf. den Namen, damit er den Azure-Anforderungen entspricht.
-   - **Größe oder Typ des virtuellen Zielcomputers**: Die Standard-VM-Größe wird basierend auf einigen Parametern ausgewählt, zu denen Anzahl der Datenträger, NIC-Anzahl, Anzahl der CPU-Kerne, Arbeitsspeicher und verfügbare VM-Rollengrößen in der Azure-Zielregion zählen. Azure Site Recovery wählt die erste verfügbare VM-Größe aus, die alle Kriterien erfüllt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Die VM-Datenträgergröße basiert auch auf der Größe des Quelldatenträgers. Diese kann nur nach einem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](/azure/virtual-machines/windows/disk-scalability-targets).
-   - **Ressourcengruppe**: Sie können eine [Ressourcengruppe](/azure/azure-resource-manager/management/overview#resource-groups) auswählen, der ein virtueller Computer nach einem Failover angehören soll. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den virtuellen Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des virtuellen Computers nicht mehr.
-   - **Verfügbarkeitsgruppe**: Sie können eine [Verfügbarkeitsgruppe](/azure/virtual-machines/windows/tutorial-availability-sets) auswählen, wenn der virtuelle Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Bei Auswahl einer Verfügbarkeitsgruppe sollten Sie Folgendes beachten:
+   - **Größe oder Typ des virtuellen Zielcomputers**: Die Standard-VM-Größe wird basierend auf einigen Parametern ausgewählt, zu denen Anzahl der Datenträger, NIC-Anzahl, Anzahl der CPU-Kerne, Arbeitsspeicher und verfügbare VM-Rollengrößen in der Azure-Zielregion zählen. Azure Site Recovery wählt die erste verfügbare VM-Größe aus, die alle Kriterien erfüllt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Die VM-Datenträgergröße basiert auch auf der Größe des Quelldatenträgers. Diese kann nur nach einem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../virtual-machines/windows/disk-scalability-targets.md).
+   - **Ressourcengruppe**: Sie können eine [Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups) auswählen, der ein virtueller Computer nach einem Failover angehören soll. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den virtuellen Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des virtuellen Computers nicht mehr.
+   - **Verfügbarkeitsgruppe**: Sie können eine [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) auswählen, wenn der virtuelle Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Bei Auswahl einer Verfügbarkeitsgruppe sollten Sie Folgendes beachten:
      - Es werden nur Verfügbarkeitsgruppen aufgelistet, die der angegebenen Ressourcengruppe angehören.
      - Virtuelle Computer in unterschiedlichen virtuellen Netzwerken können nicht der gleichen Verfügbarkeitsgruppe angehören.
      - Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer gleicher Größe angehören.
