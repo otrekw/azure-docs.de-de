@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: ead7361ba48a9a1b646310d3a47850545fff3ade
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a7b2e2b14c6358d0dd9a6f8934e88c0fa89c8bd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833807"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -111,8 +111,8 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
 | Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. JSON, CSV, Avro und Parquet werden unterstützt. |
-|Minimale Zeilen (nur Parquet)|Die minimale Zeilenanzahl pro Batch. Für Parquet erstellt jeder Batch eine neue Datei. Der aktuelle Standardwert beträgt 2.000 Zeilen und der zulässige Höchstwert 10.000 Zeilen.|
-|Maximale Zeit (nur Parquet)|Die maximale Wartezeit pro Batch. Nach Ablauf dieser Zeit wird der Batch auch dann in die Ausgabe geschrieben, wenn die Anforderung der Mindestanzahl von Zeilen nicht erfüllt ist. Der aktuelle Standardwert beträgt 1 Minute und der zulässige Höchstwert 2 Stunden. Wenn Ihre Blobausgabe eine Pfadmusterhäufigkeit aufweist, kann die Wartezeit nicht über dem Partitionszeitbereich liegen.|
+|Mindestanzahl von Zeilen |Die minimale Zeilenanzahl pro Batch. Für Parquet erstellt jeder Batch eine neue Datei. Der aktuelle Standardwert beträgt 2.000 Zeilen und der zulässige Höchstwert 10.000 Zeilen.|
+|Maximaler Zeitraum |Die maximale Wartezeit pro Batch. Nach Ablauf dieser Zeit wird der Batch auch dann in die Ausgabe geschrieben, wenn die Anforderung der Mindestanzahl von Zeilen nicht erfüllt ist. Der aktuelle Standardwert beträgt 1 Minute und der zulässige Höchstwert 2 Stunden. Wenn Ihre Blobausgabe eine Pfadmusterhäufigkeit aufweist, kann die Wartezeit nicht über dem Partitionszeitbereich liegen.|
 | Codieren    | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | Trennzeichen   | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der CSV-Daten. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Format      | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. Wenn Sie **Separate Zeile** auswählen, wird der JSON-Code objektweise gelesen. Der gesamte Inhalt an sich wäre kein gültiger JSON-Code. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |

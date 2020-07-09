@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Bereitstellen von Azure IoT Edge-Workloads
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: d82c93783d80060bc3443131191b7cec32dc4878
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680774"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103975"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Bereitstellen von Azure IoT Edge-Workloads (Vorschauversion)
 
@@ -25,7 +25,7 @@ Azure Arc und Azure IoT Edge ergänzen sich in ihren Funktionen sehr gut. Azure
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
-* [Registrieren eines IoT Edge-Geräts](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device) und [Bereitstellen des Moduls für den simulierten Temperatursensor](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module). Notieren Sie unbedingt die Verbindungszeichenfolge des Geräts.
+* [Registrieren eines IoT Edge-Geräts](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) und [Bereitstellen des Moduls für den simulierten Temperatursensor](../../iot-edge/quickstart-linux.md#deploy-a-module). Notieren Sie unbedingt die Verbindungszeichenfolge des Geräts.
 
 * Verwenden Sie die [IoT Edge-Unterstützung für Kubernetes](https://aka.ms/edgek8sdoc), um die Bereitstellung über den Flux-Operator von Azure Arc auszuführen.
 

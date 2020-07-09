@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: troubleshooting
+ms.date: 06/18/2020
+ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127751"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044514"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
 
@@ -59,23 +59,23 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
 Sie sollten unbedingt Ressourcenprotokolle aktivieren und an Azure Monitor-Protokolle senden. Sie sind standardmäßig **deaktiviert**. Um sie zu aktivieren, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
+1.  Falls Sie noch nicht über einen Arbeitsbereich verfügen, [erstellen Sie einen Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Es wird empfohlen, dass sich Ihr Log Analytics-Arbeitsbereich in derselben Region befindet, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird.
+
+2.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
 
     ![Blattnavigation zu Ressourcenprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Erstellen Sie einen **Namen** in **Diagnoseeinstellungen**, und aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**. Fügen Sie dann einen bereits vorhandenen **Log Analytics-Arbeitsbereich** hinzu, oder erstellen Sie einen neuen. Aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **LOG** und **AllMetrics** unter **METRIK**. Klicken Sie auf **Speichern**. Es wird empfohlen, einen Log Analytics-Arbeitsbereich in derselben Azure-Region zu verwenden, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird, um zusätzliche Kosten zu vermeiden.
+2.  Geben Sie einen **Namen** in **Diagnoseeinstellungen: Name** ein, und aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **log** sowie **AllMetrics** unter **metric**. Aktivieren Sie dann **An Log Analytics senden**, und wählen Sie Ihren Arbeitsbereich aus. Klicken Sie auf **Speichern**.
 
-    ![Einstellungen für Ressourcenprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Einstellungen für Ressourcenprotokolle](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Ressourcenprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Wenn Sie Ressourcenprotokolle für Ihren Auftrag anzeigen möchten, wählen Sie die Option **Protokolle** im Abschnitt **Überwachung** aus.
 
    ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics bietet vordefinierte Abfragen, mit denen Sie problemlos nach den für Sie interessanten Protokollen suchen können. Die drei Kategorien sind **Allgemein**, **Eingabedatenfehler** und **Ausgabedatenfehler**. Wenn Sie z. B. eine Zusammenfassung aller Fehler ihres Auftrags in den letzten 7 Tagen anzeigen möchten, können Sie das **Ausführen** der entsprechenden vordefinierten Abfrage auswählen. 
+4. Stream Analytics bietet vordefinierte Abfragen, mit denen Sie problemlos nach den für Sie interessanten Protokollen suchen können. Sie können alle vordefinierten Abfragen im linken Bereich auswählen und dann **Ausführen** auswählen. Ihnen werden die Abfrageergebnisse im unteren Bereich angezeigt. 
 
-   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![Ergebnisse von Protokollen](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Ressourcenprotokollkategorien
 
