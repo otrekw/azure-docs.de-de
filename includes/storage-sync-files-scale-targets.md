@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74795679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466860"
 ---
 | Resource | Ziel | Harte Grenze |
 |----------|--------------|------------|
-| Speichersynchronisierungsdienste pro Region | 20 Speichersynchronisierungsdienste | Ja |
-| Synchronisierungsgruppen pro Speichersynchronisierungsdienst | 100 Synchronisierungsgruppen | Ja |
+| Speichersynchronisierungsdienste pro Region | 100 Speichersynchronisierungsdienste | Ja |
+| Synchronisierungsgruppen pro Speichersynchronisierungsdienst | 200 Synchronisierungsgruppen | Ja |
 | Registrierte Server pro Speichersynchronisierungsdienst | 99 Server | Ja |
 | Cloudendpunkte pro Synchronisierungsgruppe | 1 Cloudendpunkt | Ja |
 | Serverendpunkte pro Synchronisierungsgruppe | 50 Serverendpunkte | Nein |

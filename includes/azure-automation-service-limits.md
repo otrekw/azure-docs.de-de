@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: automation
-author: georgewallace
+author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 12/13/2018
-ms.author: gwallace
+ms.date: 06/29/2020
+ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570163"
 ---
 #### <a name="process-automation"></a>Prozessautomatisierung
 
@@ -22,7 +22,7 @@ ms.locfileid: "80334584"
 | Maximale Anzahl von neuen Aufträgen, die alle 30 Sekunden pro Azure Automation-Konto (nicht geplante Aufträge) übermittelt werden können |100 |Wenn dieser Grenzwert erreicht wird, treten bei nachfolgenden Anforderungen zum Erstellen eines Auftrags Fehler auf. Der Client empfängt eine Fehlerantwort.|
 | Maximale Anzahl gleichzeitig ausgeführter Aufträge pro Automation-Konto (nicht geplante Aufträge) |200 |Wenn dieser Grenzwert erreicht wird, treten bei nachfolgenden Anforderungen zum Erstellen eines Auftrags Fehler auf. Der Client empfängt eine Fehlerantwort.|
 | Maximale Speichergröße der Auftragsmetadaten für einen fortlaufenden Zeitraum von 30 Tagen | 10 GB (etwa 4 Millionen Aufträge)|Wenn dieser Grenzwert erreicht wird, treten bei nachfolgenden Anforderungen zum Erstellen eines Auftrags Fehler auf. |
-| Maximale Größe von Auftragsdatenströmen|1 MB|Ein einzelner Datenstrom darf nicht größer als 1 MB sein.|
+| Maximale Größe von Auftragsdatenströmen|1 MiB|Ein einzelner Datenstrom darf nicht größer als 1 MB sein.|
 | Maximale Anzahl von Modulen, die alle 30 Sekunden pro Automation-Konto importiert werden können |5 ||
 | Maximale Größe eines Moduls |100 MB ||
 | Auftragsausführungszeit – Free-Tarif |500 Minuten pro Abonnement pro Kalendermonat ||
@@ -33,9 +33,9 @@ ms.locfileid: "80334584"
 | Maximale Anzahl von Automation-Konten in einem Abonnement |Keine Begrenzung ||
 | Maximale Anzahl von Hybrid Worker-Gruppen pro Automation-Konto|4\.000||
 |Maximale Anzahl gleichzeitiger Aufträge, die auf einem einzelnen Hybrid Runbook Worker ausgeführt werden können|50 ||
-| Maximale Größe der Runbookauftragsparameter   | 512 KBit||
+| Maximale Größe der Runbookauftragsparameter   | 512 Kilobytes||
 | Maximale Anzahl von Runbookparametern   | 50|Sie können einen JSON- oder XML-Zeichenfolge an einen Parameter übergeben und ihn mit dem Runbook analysieren, wenn Sie das Limit von 50 Parametern erreichen.|
-| Maximale Größe für Webhooknutzlast |  512 KBit|
+| Maximale Größe für Webhooknutzlast |  512 Kilobytes|
 | Maximale Anzahl von Tagen, die Auftragsdaten aufbewahrt werden|30 Tage|
 | Maximale Größe des PowerShell-Workflowstatus |5 MB| Gilt für PowerShell-Workflow-Runbooks, wenn Prüfpunkte für Workflows eingerichtet werden.|
 

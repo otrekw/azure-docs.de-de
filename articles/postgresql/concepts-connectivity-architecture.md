@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f140aa905916524eca66e764f08b699de26be650
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 2ac15317fe45573805ff7f6395884f7cb101fec3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112832"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -41,7 +41,7 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | China, Norden | 139.219.15.17    |
 | China, Norden 2 | 40.73.50.0     |
 | Asien, Osten | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| East US | 40.121.158.30, 191.238.6.43  |
+| East US | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113   |
 | USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1  |
 | Frankreich, Süden | 40.79.177.0     |

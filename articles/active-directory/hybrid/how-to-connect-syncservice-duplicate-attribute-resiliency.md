@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356881"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und SMTP-**ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
@@ -40,7 +40,7 @@ Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzuste
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Verhalten mit Resilienz bei doppelten Attributen
 Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-_**\<Originalpräfix>+\<4-stelligeZahl>\@\<AnfangsdomäneMandant>.onmicrosoft.com**_ .
+_**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_.
 
 Der Prozess für die Resilienz von Attributen verarbeitet nur UPN- und SMTP-**ProxyAddress**-Werte.
 
@@ -137,7 +137,7 @@ Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAdd
 ## <a name="resolving-conflicts"></a>Beheben von Konflikten
 Zur Behandlung von Fehlern aufgrund von doppelten Attributen werden die gleichen Strategien und Vorgehensweisen verwendet wie zuvor. Der einzige Unterschied besteht darin, dass für den Mandanten automatisch dienstseitig die Timer-Aufgabe ausgeführt wird, um dem entsprechenden Objekt nach Behebung des Konflikts das betreffende Attribut hinzuzufügen.
 
-Der folgende Artikel beschäftigt sich mit verschiedenen Strategien zur Problembehandlung und -behebung: [Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisierung in Office 365](https://support.microsoft.com/kb/2647098).
+Der folgende Artikel beschäftigt sich mit verschiedenen Strategien zur Problembehandlung und -behebung: [Duplizierte oder ungültige Attribute verhindern die Verzeichnissynchronisierung in Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Bekannte Probleme
 Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträchtigungen. Einige sind kosmetischer Natur, andere führen dazu, dass das in Konflikt stehende Attribut nicht isoliert und stattdessen ein Standardfehler wie*vor der Resilienz*bei doppelten Attributen ausgelöst wird, und wieder ein anderer bewirkt, dass bei bestimmten Fehlern zusätzliche manuelle Korrekturen erforderlich sind.
