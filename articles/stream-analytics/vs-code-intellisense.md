@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393960"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037255"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-Tools für Visual Studio Code
 
@@ -34,13 +34,12 @@ Sie können IntelliSense in allen Editor-Fenstern auslösen, indem Sie ein Zeich
 
 IntelliSense für Stream Analytics-Tools für VS Code verfügt über verschiedene Arten von Vervollständigungen, z. B. Sprachservervorschläge, Codeausschnitte und einfache Textvervollständigungen auf Wortbasis.
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Completion     |  type       |
+| ----- | ------- |
 | Keywords | `keyword`
 | Functions | `build-in function`, `user defined function`  |
 | Datasetname| `input`, `output`, `intermediate result set`|
 | Name der Datasetspalte|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>Namensvervollständigung
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209261"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042355"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Funktionsabdeckung für Azure PaaS-Ressourcen<a name="paas-services"></a>
 
@@ -36,7 +36,7 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Azure Container Registry|-|-|✔|
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
-|Azure Data Lake Store|✔|-|-|
+|Azure Data Lake Storage|✔|-|-|
 |Azure Database for MySQL*|✔|✔|-|
 |Azure Database for PostgreSQL*|✔|✔|-|
 |Azure Event Hubs-Namespace|✔|-|-|
@@ -45,7 +45,8 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL-Datenbanken|✔|✔|✔|
+|Azure SQL-Datenbank|✔|✔|✔|
+|Verwaltete Azure SQL-Instanz|✔|✔|✔|
 |Azure Service Bus-Namespace|✔|-|-|
 |Azure Service Fabric-Konto|✔|-|-|
 |Azure Storage-Konten|✔|-|-|

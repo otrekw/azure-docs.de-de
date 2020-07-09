@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100878"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028218"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Leitfaden haben Sie erfahren, wie Sie die Kopier-API zum Sichern Ihrer benutzerdefinierten Modelle in einer sekundären Formularerkennungsressource verwenden. Sehen Sie sich als Nächstes die API-Referenzdokumentation an, um sich über weitere Möglichkeiten bei Verwendung der Formularerkennung zu informieren.
-* [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+* [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

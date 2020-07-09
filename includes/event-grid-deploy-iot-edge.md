@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844586"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050228"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Bereitstellen von Event Grid in einem IoT Edge-Modul
 
@@ -49,23 +49,23 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Optionen für Containererstellung**:
 
-    ```json
-        {
-          "Env": [
-            "inbound__clientAuth:clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
-          ],
-          "HostConfig": {
-            "PortBindings": {
-              "4438/tcp": [
-                {
-                  "HostPort": "4438"
-                }
-              ]
+```json
+    {
+      "Env": [
+        "inbound__clientAuth:clientCert__enabled=false",
+        "outbound__webhook__httpsOnly=false"
+      ],
+      "HostConfig": {
+        "PortBindings": {
+          "4438/tcp": [
+            {
+              "HostPort": "4438"
             }
-          }
+          ]
         }
-    ```
+      }
+    }
+```
 
  1. Klicken Sie unten auf der Seite auf **Speichern**.
  1. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
