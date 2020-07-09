@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: e055f2d7b98df9357ecdee5e044305e35935682e
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7826df83506083e2db1bdb011704cb0fef628801
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378448"
 ---
 Der Funktionstrigger kann verwendet werden, um auf ein Ereignis zu reagieren, das an einen Event Hub-Datenstrom gesendet wird. Sie benötigen Lesezugriff auf den zugrunde liegenden Event Hub, um den Trigger einzurichten. Beim Auslösen der Funktion wird die an die Funktion übergebene Nachricht als Zeichenfolge eingegeben.
 
@@ -353,9 +353,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die das Ereigniselement im Funktionscode darstellt. |
 |**path** |**EventHubName** | Nur Functions 1.x. Der Name des Event Hubs. Wenn der Event Hub-Name auch in der Verbindungszeichenfolge enthalten ist, setzt dieser Wert diese Eigenschaft zur Laufzeit außer Kraft. |
-|**eventHubName** |**EventHubName** | Functions 2.x und höher Der Name des Event Hubs. Wenn der Event Hub-Name auch in der Verbindungszeichenfolge enthalten ist, setzt dieser Wert diese Eigenschaft zur Laufzeit außer Kraft. Auf den Wert kann über %eventHubName% in den App-Einstellungen verwiesen werden. |
+|**eventHubName** |**EventHubName** | Functions 2.x und höher Der Name des Event Hubs. Wenn der Event Hub-Name auch in der Verbindungszeichenfolge enthalten ist, setzt dieser Wert diese Eigenschaft zur Laufzeit außer Kraft. Darauf kann über [App-Einstellungen](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) `%eventHubName%` verwiesen werden. |
 |**consumerGroup** |**ConsumerGroup** | Eine optionale Eigenschaft, die zum Festlegen der [Consumergruppe](../articles/event-hubs/event-hubs-features.md#event-consumers) verwendet wird, mit der Ereignisse im Hub abonniert werden. Wird sie nicht angegeben, wird die Consumergruppe `$Default` verwendet. |
-|**cardinality** | – | Für JavaScript. Legen Sie hierfür `many` fest, um Batchverarbeitung zu aktivieren.  Wenn diese Eigenschaft nicht angegeben oder auf `one` festgelegt ist, wird eine einzelne Nachricht an die Funktion übergeben. |
+|**cardinality** | – | Wird für alle Sprachen außer C# verwendet. Legen Sie hierfür `many` fest, um Batchverarbeitung zu aktivieren.  Wenn diese Eigenschaft nicht angegeben oder auf `one` festgelegt ist, wird eine einzelne Nachricht an die Funktion übergeben.<br><br>In C# wird diese Eigenschaft automatisch zugewiesen, wenn der Auslöser ein Array für den Typ aufweist.|
 |**connection** |**Connection** | Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace des Event Hubs enthält. Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den [Namespace](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]

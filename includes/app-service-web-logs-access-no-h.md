@@ -8,28 +8,30 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67178567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905866"
 ---
-Sie können auf die Konsolenprotokolle zugreifen, die aus dem Container generiert werden. Aktivieren Sie zuerst die Containerprotokollierung, indem Sie in Cloud Shell den folgenden Befehl ausführen:
+Aktivieren Sie die Diagnoseprotokollierung, indem Sie den folgenden Befehl in [Cloud Shell](https://shell.azure.com)ausführen, um auf die Konsolenprotokolle zuzugreifen, die innerhalb des Anwendungscodes in App Service generiert wurden:
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-Führen Sie den folgenden Befehl aus, um den Protokolldatenstrom anzuzeigen, nachdem die Containerprotokollierung aktiviert wurde:
+Mögliche Werte für `--level` sind `Error`, `Warning` `Info` oder `Verbose`. Jede nachfolgende Ebene enthält die vorherige Ebene. Beispiel: `Error` enthält nur Fehlermeldungen, und `Verbose` enthält alle Meldungen.
+
+Führen Sie den folgenden Befehl aus, um den Protokolldatenstrom anzuzeigen, nachdem die Diagnoseprotokollierung aktiviert wurde:
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --resource-group <resource-group-name> --name <app-name>
 ```
 
 Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
 
 > [!NOTE]
-> Sie können die Protokolldateien auch im Browsen unter `https://<app-name>.scm.azurewebsites.net/api/logs/docker` untersuchen.
+> Sie können die Protokolldateien auch im Browser unter `https://<app-name>.scm.azurewebsites.net/api/logs/docker` untersuchen.
 
 Um das Protokollstreaming jederzeit zu beenden, geben Sie `Ctrl`+`C` ein.
