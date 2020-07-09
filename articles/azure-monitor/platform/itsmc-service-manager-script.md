@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549649"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts
 
@@ -21,7 +21,7 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Position
+- Standort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.
@@ -314,6 +314,8 @@ Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
-}```
-## Next steps
-[Configure the Hybrid connection](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+}
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+[Konfigurieren der Hybridverbindung](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).

@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 34ae87859b20895598611d25eb069fd05c24d262
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: fbe74b62352babf7a1fdd93bf19a6e1475e3f032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553579"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Klicken Sie zum Testen der Anmeldung mit dem impliziten Fluss auf <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Nach der Anmeldung sollte der Browser mit einem `id_token` in der Adressleiste zu `https://localhost/myapp/` umgeleitet werden.
 >
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | required | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -231,7 +231,7 @@ Die OpenID Connect `end_session_endpoint` ermöglicht Ihrer App das Senden einer
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` |required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | empfohlen | Die URL, zu der der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Dieser Wert muss einem der Umleitung-URIs entsprechen, die für die Anwendung registriert sind. Wenn keine Angabe erfolgt, wird dem Benutzer vom Microsoft Identity Platform-Endpunkt eine allgemeine Meldung angezeigt. |

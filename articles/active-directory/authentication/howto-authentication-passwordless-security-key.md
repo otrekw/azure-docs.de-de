@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550417"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -24,10 +24,8 @@ Sicherheitsschlüssel bieten Unternehmen, die aktuell Kennwörter verwenden und 
 
 In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheitsschlüsseln basierenden kennwortlosen Authentifizierung. Am Ende dieses Artikels können Sie sich mit Ihrem Azure AD-Konto mithilfe eines FIDO2-Sicherheitsschlüssels bei webbasierten Anwendungen anmelden.
 
-|     |
-| --- |
-| FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c698b9381755f81303dc3adfa9422b82500bb208
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551704"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
 
@@ -52,7 +52,7 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required |Gibt den angeforderten Gewährungstyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
 | client_id |required |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory**, auf **App-Registrierungen** und auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |
@@ -73,7 +73,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
 | client_id |required |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory**, auf **App-Registrierungen** und auf die Anwendung. Die Client-ID (client_id) ist die *Anwendungs-ID*. |

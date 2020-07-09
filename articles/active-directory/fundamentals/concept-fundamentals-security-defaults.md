@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554531"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -92,7 +92,7 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authent
 > [!WARNING]
 > Stellen Sie vor dem Aktivieren von Sicherheitsstandards sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).
 
-- [Einrichten eines Multifunktionsgeräts oder einer -anwendung zum Senden von E-Mails mit Office 365 und Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Einrichten eines Multifunktionsgeräts oder einer -anwendung zum Senden von E-Mails mit Office 365 und Microsoft 365](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>Schützen privilegierter Aktionen
 
@@ -122,7 +122,7 @@ Nachfolgend werden zusätzliche Aspekte im Zusammenhang mit der Bereitstellung v
 
 Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für mehrstufige Authentifizierung und deren Nutzung **unter alleiniger Verwendung der Microsoft Authenticator-App mit Benachrichtigungen**. Der bedingte Zugriff ermöglicht die Verwendung und Aktivierung einer beliebigen Authentifizierungsmethode, für die sich der Administrator entscheidet.
 
-|   | Standardwerte für die Sicherheit | Bedingter Zugriff |
+| Methode | Standardwerte für die Sicherheit | Bedingter Zugriff |
 | --- | --- | --- |
 | Benachrichtigung über mobile App | X | X |
 | Prüfcode aus mobiler App oder Hardwaretoken | X** | X |

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482512"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Bewährte Methoden für die Entwicklung für Synapse SQL
 In diesem Artikel werden Anleitungen und bewährte Methoden für die Entwicklung Ihrer Data Warehouse-Lösung beschrieben. 
@@ -106,7 +106,7 @@ Da qualitativ hochwertige Columnstore-Segmente wichtig sind, ist es eine gute Id
 Da Columnstore-Tabellen Daten generell erst dann in ein komprimiertes Columnstore-Segment übertragen, wenn eine Tabelle mehr als eine Million Zeilen hat und jede SQL-Pool-Tabelle in 60 Tabellen partitioniert ist, empfiehlt sich Folgendes: Columnstore-Tabellen stellen für eine Abfrage nur dann einen Vorteil dar, wenn die Tabelle mehr als 60 Millionen Zeilen hat.  
 
 > [!TIP]
-> Bei Tabellen mit weniger als 60 Millionen Zeilen ist ein Columnstore-Index möglicherweise nicht die optimale Lösung.  
+> Bei Tabellen mit weniger als 60 Millionen Zeilen ist ein Columnstore-Index möglicherweise nicht die optimale Lösung.  
 
 Wenn Sie Ihre Daten partitionieren, können Sie auch darauf achten, dass jede Partition 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Falls eine Tabelle 100 Partitionen hat, muss sie mindestens 6 Milliarden Zeilen enthalten, um von einem gruppierten Columnstore zu profitieren (60 Verteilungen *100 Partitionen* 1 Million Zeilen).  
 
@@ -150,7 +150,7 @@ Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
 Daten sind oft in Partitionen organisiert. Sie können SQL On-Demand anweisen, bestimmte Ordner und Dateien abzufragen. Dies reduziert die Anzahl der Dateien und die Datenmenge, die die Abfrage zum Lesen und Verarbeiten benötigt. 
 
-Folglich erzielen Sie eine bessere Leistung. Weitere Informationen finden Sie unter [Dateinamen](develop-storage-files-overview.md#filename-function)- und [Dateipfad](develop-storage-files-overview.md#filepath-function)-Funktionen und in den Beispielen für das [Abfragen bestimmter Dateien](query-specific-files.md).
+Folglich erzielen Sie eine bessere Leistung. Weitere Informationen finden Sie unter [Dateinamen](query-data-storage.md#filename-function)- und [Dateipfad](query-data-storage.md#filepath-function)-Funktionen und in den Beispielen für das [Abfragen bestimmter Dateien](query-specific-files.md).
 
 Wenn Ihre gespeicherten Daten nicht partitioniert sind, sollten Sie eine Partitionierung in Erwägung ziehen, damit Sie diese Funktionen verwenden können, um Abfragen zu optimieren, die auf diese Dateien ausgerichtet sind.
 
