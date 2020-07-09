@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5ff6e0ffd4040393a040dc67a511aab47887f6e1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171054"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186264"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie mit einem virtuellen Azure-Computer 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
+* [Automation-Konto](./index.yml) zum Verwalten von Computern.
 * Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

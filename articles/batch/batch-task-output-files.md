@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verwendung der Batch-Dienst-API zur Bei
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143505"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Generieren einer Shared Access Signature für den Container
 
-Generieren Sie nach der Erstellung des Containers eine Shared Access Signature (SAS) mit Schreibzugriff auf den Container. Eine SAS bietet delegierten Zugriff auf den Container. Die SAS gewährt den Zugriff mit angegebenen Berechtigungen und über ein angegebenes Zeitintervall. Der Batch-Dienst benötigt eine SAS mit Schreibberechtigungen, um die Taskausgabe in den Container schreiben zu können. Weitere Informationen zu SAS finden Sie unter [Verwenden von Shared Access Signatures\(SAS\) in Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Generieren Sie nach der Erstellung des Containers eine Shared Access Signature (SAS) mit Schreibzugriff auf den Container. Eine SAS bietet delegierten Zugriff auf den Container. Die SAS gewährt den Zugriff mit angegebenen Berechtigungen und über ein angegebenes Zeitintervall. Der Batch-Dienst benötigt eine SAS mit Schreibberechtigungen, um die Taskausgabe in den Container schreiben zu können. Weitere Informationen zu SAS finden Sie unter [Verwenden von Shared Access Signatures\(SAS\) in Azure Storage](../storage/common/storage-sas-overview.md).
 
 Wenn Sie mithilfe der Azure Storage-APIs eine SAS abrufen, gibt die API eine SAS-Tokenzeichenfolge zurück. Diese Tokenzeichenfolge enthält alle Parameter der SAS, darunter die Berechtigungen und den Intervallzeitraum der SAS-Gültigkeit. Sie müssen die SAS-Tokenzeichenfolge an den Ressourcen-URI anfügen, um die SAS für den Zugriff auf einen Container in Azure Storage zu verwenden. Der Ressourcen-URI und das angefügte SAS-Token ermöglichen den authentifizierten Zugriff auf Azure Storage.
 

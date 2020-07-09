@@ -3,12 +3,12 @@ title: Sicherheitskontrollen
 description: Erfahren Sie mehr über die Sicherheitskontrollen, die im Azure Backup-Dienst verwendet werden. Diese Kontrollen helfen dem Dienst, Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 0e3f5ce942ea8aef9bf5eb98883ae1e72a7ab239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d8fd98467e975c6151d09779ab450810ea32c6e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172139"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165565"
 ---
 # <a name="security-controls-for-azure-backup"></a>Sicherheitskontrollen für Azure Backup
 
@@ -19,7 +19,7 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitskontrollen 
 ## <a name="network"></a>Netzwerk
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation
-|---|---|--|
+|---|---|--|--|
 | Unterstützung des Dienstendpunkts| Nein |  |  |
 | Unterstützung der VNet-Einschleusung| Nein |  |  |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | Die Tunnelerzwingung wird für VM-Sicherungen unterstützt. Die Tunnelerzwingung wird für Workloads in virtuellen Computern nicht unterstützt. |  |
@@ -27,23 +27,23 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitskontrollen 
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
 
-| Sicherheitskontrolle | Ja/Nein | Notizen| | Dokumentation
-|---|---|--|
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation
+|---|---|--|--|
 | Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Log Analytics wird über Ressourcenprotokolle unterstützt. Weitere Informationen finden Sie unter [Überwachen von Azure Backup-geschützten Workloads mit Log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
 | Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Alle vom Kunden über das Azure-Portal ausgelösten Aktionen werden in Aktivitätsprotokollen protokolliert. |  |
 | Protokollierung und Überwachung auf Datenebene| Nein | Die Azure Backup-Datenebene kann nicht direkt aufgerufen werden.  |  |
 
 ## <a name="identity"></a>Identity
 
-| Sicherheitskontrolle | Ja/Nein | Notizen| | Dokumentation
-|---|---|--|
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation
+|---|---|--|--|
 | Authentifizierung| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |  |
 | Authorization| Ja | Vom Kunden erstellte und integrierte RBAC-Rollen werden verwendet. Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](/azure/backup/backup-rbac-rs-vault). |  |
 
 ## <a name="data-protection"></a>Schutz von Daten
 
-| Sicherheitskontrolle | Ja/Nein | Notizen | | Dokumentation
-|---|---|--|
+| Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation
+|---|---|--|--|
 | Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Verwenden der Speicherdienstverschlüsselung für Speicherkonten |  |
 | Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein |  |  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| Nein |  |  |
@@ -52,8 +52,8 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitskontrollen 
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 
-| Sicherheitskontrolle | Ja/Nein | Notizen| | Dokumentation
-|---|---|--|
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation
+|---|---|--|--|
 | Unterstützung der Konfigurationsverwaltung (Versionsverwaltung der Konfiguration usw.)| Ja|  |  |
 
 ## <a name="next-steps"></a>Nächste Schritte

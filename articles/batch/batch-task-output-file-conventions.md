@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Azure Batch-Dateikonventionenbibliothek f
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965194"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147166"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -55,7 +55,7 @@ Um Ausgabedaten in Azure Storage mithilfe der Dateikonventionenbibliothek beizub
 
 Um Auftrags- und Taskausgabedateien mit der Dateikonventionenbibliothek beizubehalten, erstellen Sie einen Container in Azure Storage, und speichern Sie die Ausgabe für den Container. Verwenden der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage) in Ihrem Taskcode zum Hochladen der Taskausgabe auf den Container.
 
-Weitere Informationen zum Arbeiten mit Containern und Blobs in Azure Storage finden Sie unter [Erste Schritte mit Azure Blob Storage in .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Weitere Informationen zum Arbeiten mit Containern und Blobs in Azure Storage finden Sie unter [Erste Schritte mit Azure Blob Storage in .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 > [!WARNING]
 > Alle Auftrags-und Taskausgaben, die mit der Bibliothek beibehalten werden, werden im gleichen Container gespeichert. Wenn eine große Anzahl von Tasks gleichzeitig versucht, Dateien zu speichern, werden ggf. die Drosselungslimits von Azure Storage erzwungen. Weitere Informationen zu Drosselungslimits finden Sie in der [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../storage/blobs/storage-performance-checklist.md).

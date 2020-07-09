@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828932"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187335"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Verwenden der Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -55,7 +56,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
 5. Nach dem Klicken auf **OK** ist die Integration der Quellcodeverwaltung für Ihr Automation-Konto konfiguriert und sollte mit Ihren GitHub-Informationen aktualisiert werden. Sie können jetzt auf diesen Teil klicken, um den gesamten Verlauf Ihrer Synchronisierungsaufträge für die Quellcodeverwaltung anzuzeigen.  
 
     ![Werte für die aktuelle Konfiguration der Quellcodeverwaltung](media/source-control-integration-legacy/automation-RepoValues.png)
-6. Nach dem Einrichten der Quellcodeverwaltung werden zwei [Variablenobjekte](automation-variables.md) in Ihrem Azure Automation-Konto erstellt. Darüber hinaus wird eine autorisierte Anwendung zu Ihrem GitHub-Konto hinzugefügt.
+6. Nach dem Einrichten der Quellcodeverwaltung werden zwei [Variablenobjekte](./shared-resources/variables.md) in Ihrem Azure Automation-Konto erstellt. Darüber hinaus wird eine autorisierte Anwendung zu Ihrem GitHub-Konto hinzugefügt.
 
    * Die Variable **Microsoft.Azure.Automation.SourceControl.Connection** enthält die Werte der Verbindungszeichenfolge (wie unten dargestellt).  
 
@@ -83,7 +84,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
 
 Durch Einchecken des Runbooks können Sie die Änderungen, die Sie an einem Runbook in Azure Automation vorgenommen haben, in das Quellcodeverwaltungs-Repository übertragen. Mit den folgenden Schritten können Sie ein Runbook einchecken:
 
-1. In Ihrem Automation-Konto können Sie [ein neues Textrunbook erstellen](automation-first-runbook-textual.md) oder [ein vorhandenes Textrunbook bearbeiten](automation-edit-textual-runbook.md). Dieses Runbook kann ein PowerShell-Workflow oder eines PowerShell-Skript-Runbook sein.  
+1. In Ihrem Automation-Konto können Sie [ein neues Textrunbook erstellen](./learn/automation-tutorial-runbook-textual.md) oder [ein vorhandenes Textrunbook bearbeiten](automation-edit-textual-runbook.md). Dieses Runbook kann ein PowerShell-Workflow oder eines PowerShell-Skript-Runbook sein.  
 2. Speichern Sie Ihr Runbook nach dem Bearbeiten, und klicken Sie auf der Seite „Bearbeiten“ auf **Einchecken**.  
 
     ![Fenster mit der Schaltfläche zum Anmelden bei GitHub](media/source-control-integration-legacy/automation-CheckinButton.png)

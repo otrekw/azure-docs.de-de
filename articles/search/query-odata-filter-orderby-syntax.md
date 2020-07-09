@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153875"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165208"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
 
@@ -83,7 +83,9 @@ Die Bedeutung eines Feldpfads variiert je nach Kontext. In Filtern verweist ein 
 
 Betrachten Sie den Feldpfad `Address/City`. In einem Filter verweist dieser auf eine einzelne Stadt im aktuellen Dokument, z. B. „San Francisco“. Im Gegensatz dazu verweist `Rooms/Type` auf das untergeordnete Feld `Type` für viele Zimmer (z. B. „standard“ für das erste Zimmer, „deluxe“ für das zweite Zimmer usw.). Da `Rooms/Type` nicht auf eine *Einzelinstanz* des untergeordneten Felds `Type` verweist, ist eine direkte Verwendung in einem Filter nicht möglich. Um stattdessen nach dem Zimmertyp zu filtern, verwenden Sie einen [Lambdaausdruck](search-query-odata-collection-operators.md) mit einer Bereichsvariable, wie im Folgenden gezeigt:
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 In diesem Beispiel ist die Bereichsvariable `room` im Feldpfad `room/Type` enthalten. Auf diese Weise verweist `room/Type` auf den Typ des aktuellen Zimmers im aktuellen Dokument. Dies ist eine einzelne Instanz des untergeordneten Felds `Type` und kann damit direkt im Filter verwendet werden.
 

@@ -3,12 +3,12 @@ title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965075"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142792"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -34,7 +34,7 @@ Hier sind einige Beispiele für intrinsisch parallele Workloads angegeben, die S
 * Datenerfassung-/verarbeitung und ETL-Vorgänge
 * Softwaretestausführung
 
-Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](/message-passing-interface/microsoft-mpi) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/linux/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/linux/sizes-gpu.md) VM-Größen.
+Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](/message-passing-interface/microsoft-mpi) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/sizes-gpu.md) VM-Größen.
 
 Hier sind einige Beispiele für eng gekoppelte Workloads angegeben:
 * FE-Analyse
@@ -83,4 +83,3 @@ Steigen Sie mit einer der folgenden Schnellstartanleitungen in Azure Batch ein:
 * [Ausführen Ihres ersten Batch-Auftrags mit dem Azure-Portal](quick-create-portal.md)
 * [Ausführen Ihres ersten Batch-Auftrags mit der .NET-API](quick-run-dotnet.md)
 * [Ausführen Ihres ersten Batch-Auftrags mit der Python-API](quick-run-python.md)
-

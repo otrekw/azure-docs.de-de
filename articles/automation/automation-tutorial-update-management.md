@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204887"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185788"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -206,7 +206,7 @@ Wenn die Updatebereitstellung abgeschlossen ist, erhalten Sie die Warnung, die S
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Bereichskonfigurationen finden Sie unter [Einschränken des Bereitstellungsbereichs für die Updateverwaltung](automation-scope-configurations-update-management.md).
-* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md) weitere Informationen.
+* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../azure-monitor/log-query/log-query-overview.md) weitere Informationen.
 * Wenn Sie mit den Bereitstellungen fertig sind, fahren Sie mit [Aufheben der Verknüpfung eines Arbeitsbereichs mit einem Automation-Konto für die Updateverwaltung](automation-unlink-workspace-update-management.md) fort.
 * Informationen zum Löschen Ihrer VMs aus der Updateverwaltung finden Sie unter [Entfernen von VMs aus der Updateverwaltung](automation-remove-vms-from-update-management.md).
 * Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](troubleshoot/update-management.md).

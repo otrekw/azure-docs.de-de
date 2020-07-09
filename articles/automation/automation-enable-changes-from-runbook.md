@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171088"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186281"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie das Feature [Änderungsnachverfolgung un
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
+* [Automation-Konto](./index.yml) zum Verwalten von Computern.
 * Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand 
@@ -51,7 +51,7 @@ Wenn „Änderungsnachverfolgung und Bestand“ aktiviert ist, können Sie einen
 
 ## <a name="install-and-update-modules"></a>Installieren und Aktualisieren von Modulen
 
-Führen Sie ein Update auf die neuesten Azure-Module durch, und importieren Sie das Modul [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0), damit „Änderungsnachverfolgung und Bestand“ erfolgreich für Ihren virtuellen Computer aktiviert werden kann.
+Führen Sie ein Update auf die neuesten Azure-Module durch, und importieren Sie das Modul [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0), damit „Änderungsnachverfolgung und Bestand“ erfolgreich für Ihren virtuellen Computer aktiviert werden kann.
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. 
 2. Klicken Sie auf **Azure-Module aktualisieren**, um die Azure-Module auf die neueste Version zu aktualisieren. 

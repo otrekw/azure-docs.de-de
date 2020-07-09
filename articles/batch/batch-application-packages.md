@@ -4,12 +4,12 @@ description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zu
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955029"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147224"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -57,7 +57,7 @@ Sie können Anwendungspakete auf Pool- und Aufgabenebene angeben. Wenn Sie im ei
 ### <a name="benefits-of-application-packages"></a>Vorteile von Anwendungspaketen
 Anwendungspakete können sowohl den Code in Ihrer Batch-Lösung vereinfachen als auch den Verwaltungsaufwand für die Anwendungen verringern, die Ihre Tasks ausführen.
 
-Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzelner, auf dem Knoten zu installierender Ressourcendateien angeben. Sie müssen nicht manuell mehrere Versionen der Anwendungsdateien in Azure Storage oder auf Ihren Knoten verwalten. Und Sie müssen sich auch keine Gedanken über das Generieren von [SAS-URLs](../storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Zugriff auf die Dateien in Ihrem Speicherkonto machen. Batch funktioniert im Hintergrund mit Azure Storage zum speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
+Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzelner, auf dem Knoten zu installierender Ressourcendateien angeben. Sie müssen nicht manuell mehrere Versionen der Anwendungsdateien in Azure Storage oder auf Ihren Knoten verwalten. Und Sie müssen sich auch keine Gedanken über das Generieren von [SAS-URLs](../storage/common/storage-sas-overview.md) für den Zugriff auf die Dateien in Ihrem Speicherkonto machen. Batch funktioniert im Hintergrund mit Azure Storage zum speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
 
 > [!NOTE] 
 > Die Gesamtgröße einer Startaufgabe darf einschließlich Ressourcendateien und Umgebungsvariablen höchstens 32768 Zeichen betragen. Wenn Ihre Startaufgabe diesen Grenzwert überschreitet, stellt die Verwendung von Anwendungspaketen eine weitere Option dar. Sie können auch ein ZIP-Archiv mit Ihren Ressourcendateien erstellen, diesen als Blob in Azure Storage hochladen und sie dann über die Befehlszeile Ihrer Startaufgabe entzippen. 

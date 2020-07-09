@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146134"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzysuche zum Korrigieren von Rechtschreibfehlern und Tippfehlern
 
@@ -86,37 +86,49 @@ Angenommen, die folgende Zeichenfolge ist in einem `"Description"`-Feld eines Su
 
 Beginnen Sie mit einer Fuzzysuche nach „special“, und fügen Sie die Trefferhervorhebung für das Feld „Description“ hinzu:
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 In der Antwort wird auf „special“ als Überstimmung eine Formatierung angewendet, weil Sie die Trefferhervorhebung hinzugefügt haben.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Führen Sie die Abfrage erneut aus, und schreiben Sie „special“ falsch, indem Sie mehrere Buchstaben weglassen („pe“):
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 Bisher keine Änderung in der Antwort. Bei einer Distanz von 2 durch das Weglassen von zwei Zeichen („pe“) in „special“ wird weiterhin eine Übereinstimmung für den Begriff angezeigt.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Ändern Sie den Suchbegriff in einer weiteren Abfrage so ab, dass Sie das letzte Zeichen löschen („scal“ anstelle von „special“). Damit wurden drei Löschungen vorgenommen:
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 Beachten Sie, dass weiterhin dieselbe Antwort zurückgegeben wird, aber anstelle eines Treffers für „special“ lautet der Treffer jetzt „SQL“.
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 Dieses erweiterte Beispiel soll verdeutlichen, dass die Trefferhervorhebung bei mehrdeutigen Ergebnissen zu mehr Klarheit führen kann. In allen Fällen wird dasselbe Dokument zurückgegeben. Hätten Sie sich bei der Überprüfung der Übereinstimmung auf die Dokument-IDs verlassen, hätten Sie vielleicht den Wechsel von „special“ zu „SQL“ nicht bemerkt.
 

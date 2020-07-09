@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715629"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187148"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Troubleshooting für „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -99,7 +99,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
 
 Sehen Sie sich die folgende Liste mit möglichen Lösungen an:
 
-* Überprüfen Sie, ob der Zeitplan für „VMs außerhalb der Geschäftszeiten starten/beenden“ ordnungsgemäß konfiguriert wurde. Informationen zum Konfigurieren eines Zeitplans finden Sie unter [Zeitpläne](../automation-schedules.md).
+* Überprüfen Sie, ob der Zeitplan für „VMs außerhalb der Geschäftszeiten starten/beenden“ ordnungsgemäß konfiguriert wurde. Informationen zum Konfigurieren eines Zeitplans finden Sie unter [Zeitpläne](../shared-resources/schedules.md).
 
 * Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#job-statuses) auf Fehler. Suchen Sie nach Aufträgen von einem der folgenden Runbooks:
 

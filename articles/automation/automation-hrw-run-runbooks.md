@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ea32b2e393a13f1725ff7a83f4b4f2191b59ddb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835307"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186213"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
 
@@ -22,7 +22,7 @@ Wenn Sie ein Runbook zur Ausführung auf einem Hybrid Runbook Worker erstellen, 
 
 Azure Automation behandelt Aufträge in Hybrid Runbook Workern etwas anders als Aufträge, die in Azure-Sandboxes ausgeführt werden. Bei einem zeitintensiven Runbook müssen Sie sicherstellen, dass das Runbook auch nach einem möglichen Neustart stabil läuft. Ausführliche Informationen zum Auftragsverhalten finden Sie unter [Hybrid Runbook Worker-Aufträge](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-Denken Sie daran, dass Aufträge für Hybrid Runbook Worker unter Windows unter dem lokalen Konto **System** oder unter Linux unter dem Konto **nxautomation** ausgeführt werden. Stellen Sie unter Linux sicher, dass das Konto **nxautomation** Zugriff auf den Speicherort der Runbookmodule hat. Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie „AllUsers“ für den Parameter `Scope` angeben, um sicherzustellen, dass das Konto **nxautomation** Zugriff hat. Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
+Denken Sie daran, dass Aufträge für Hybrid Runbook Worker unter Windows unter dem lokalen Konto **System** oder unter Linux unter dem Konto **nxautomation** ausgeführt werden. Stellen Sie unter Linux sicher, dass das Konto **nxautomation** Zugriff auf den Speicherort der Runbookmodule hat. Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie „AllUsers“ für den Parameter `Scope` angeben, um sicherzustellen, dass das Konto **nxautomation** Zugriff hat. Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
 ## <a name="set-up-runbook-permissions"></a>Einrichten von Runbookberechtigungen
 
@@ -34,7 +34,7 @@ Definieren Sie Berechtigungen für Ihr Runbook, um die Ausführung im Hybrid Run
 
 ## <a name="use-runbook-authentication-to-local-resources"></a>Verwenden der Runbookauthentifizierung bei lokalen Ressourcen
 
-Wenn Sie ein Runbook vorbereiten, das sich selbst bei Ressourcen authentifiziert, verwenden Sie in Ihrem Runbook die Objekte für [Anmeldeinformationen](automation-credentials.md) und [Zertifikat](automation-certificates.md). Es gibt verschiedene Cmdlets, mit denen Sie Anmeldeinformationen angeben können, damit sich das Runbook bei verschiedenen Ressourcen authentifizieren kann. Das folgende Beispiel zeigt einen Teil eines Runbooks, mit dem ein Computer neu gestartet wird. Es werden Anmeldeinformationen aus einem Anmeldeinformationsobjekt und der Name des Computers aus einem Variablenobjekt abgerufen. Anschließend werden diese Werte im Cmdlet `Restart-Computer` eingesetzt.
+Wenn Sie ein Runbook vorbereiten, das sich selbst bei Ressourcen authentifiziert, verwenden Sie in Ihrem Runbook die Objekte für [Anmeldeinformationen](./shared-resources/credentials.md) und [Zertifikat](./shared-resources/certificates.md). Es gibt verschiedene Cmdlets, mit denen Sie Anmeldeinformationen angeben können, damit sich das Runbook bei verschiedenen Ressourcen authentifizieren kann. Das folgende Beispiel zeigt einen Teil eines Runbooks, mit dem ein Computer neu gestartet wird. Es werden Anmeldeinformationen aus einem Anmeldeinformationsobjekt und der Name des Computers aus einem Variablenobjekt abgerufen. Anschließend werden diese Werte im Cmdlet `Restart-Computer` eingesetzt.
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um eine verwaltete Identität für Azure
 2. Konfigurieren Sie verwaltete Identitäten für Azure-Ressourcen auf der VM. Weitere Informationen finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
 3. Gewähren Sie der VM Zugriff auf eine Ressourcengruppe in Resource Manager. Weitere Informationen finden Sie unter [Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
 4. Installieren Sie den Hybrid Runbook Worker auf dem virtuellen Computer. Weitere Informationen finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](automation-windows-hrw-install.md) bzw. unter [Bereitstellen eines Linux-Hybrid Runbook Workers](automation-linux-hrw-install.md).
-5. Aktualisieren Sie das Runbook so, dass das Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) mit dem Parameter `Identity` zur Authentifizierung bei Azure-Ressourcen verwendet wird. Diese Konfiguration reduziert die Notwendigkeit, ein ausführendes Konto zu verwenden und die zugehörige Kontoverwaltung durchzuführen.
+5. Aktualisieren Sie das Runbook so, dass das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) mit dem Parameter `Identity` zur Authentifizierung bei Azure-Ressourcen verwendet wird. Diese Konfiguration reduziert die Notwendigkeit, ein ausführendes Konto zu verwenden und die zugehörige Kontoverwaltung durchzuführen.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um eine verwaltete Identität für Azure
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Verwenden der Runbookauthentifizierung mit ausführendem Konto
 
-Um zu vermeiden, dass Ihre Runbooks ihre eigene Authentifizierung bei lokalen Ressourcen bereitstellen müssen, können Sie für eine Hybrid Runbook Worker-Gruppe ein ausführendes Konto angeben. Dazu müssen Sie ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen definieren. Zu diesen Ressourcen gehören Zertifikatsspeicher und alle Runbooks, die unter diesen Anmeldeinformationen auf einem Hybrid Runbook Worker in der Gruppe ausgeführt werden.
+Um zu vermeiden, dass Ihre Runbooks ihre eigene Authentifizierung bei lokalen Ressourcen bereitstellen müssen, können Sie für eine Hybrid Runbook Worker-Gruppe ein ausführendes Konto angeben. Dazu müssen Sie ein [Anmeldeinformationsobjekt](./shared-resources/credentials.md) mit Zugriff auf lokale Ressourcen definieren. Zu diesen Ressourcen gehören Zertifikatsspeicher und alle Runbooks, die unter diesen Anmeldeinformationen auf einem Hybrid Runbook Worker in der Gruppe ausgeführt werden.
 
 Der Benutzername für die Anmeldeinformationen muss eines der folgenden Formate haben:
 
@@ -84,7 +84,7 @@ Der Benutzername für die Anmeldeinformationen muss eines der folgenden Formate 
 
 Gehen Sie wie folgt vor, um ein ausführendes Konto für eine Hybrid Runbook Worker-Gruppe anzugeben:
 
-1. Erstellen Sie ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen.
+1. Erstellen Sie ein [Anmeldeinformationsobjekt](./shared-resources/credentials.md) mit Zugriff auf lokale Ressourcen.
 2. Wählen Sie im Azure-Portal das Automation-Konto aus.
 3. Wählen Sie **Hybrid Worker-Gruppen** und dann eine bestimmte Gruppe aus.
 4. Wählen Sie **Alle Einstellungen** gefolgt von **Einstellungen für Hybrid Worker-Gruppe** aus.
@@ -299,7 +299,7 @@ Unter [Starten eines Runbooks in Azure Automation](start-runbooks.md) werden die
 
 Wenn Sie ein Runbook im Azure-Portal starten, wird die Option **Ausführen auf** angezeigt, für die Sie entweder **Azure** oder **Hybrid Worker** auswählen können. Bei Auswahl von **Hybrid Worker** können Sie anschließend in einer Dropdownliste die gewünschte Hybrid Runbook Worker-Gruppe wählen.
 
-Wenn Sie ein Runbook mit PowerShell starten, verwenden Sie das Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) mit dem Parameter `RunOn`. Das folgende Beispiel verwendet Windows PowerShell, um ein Runbook namens **Test-Runbook** in einer Hybrid Runbook Worker-Gruppe namens MyHybridGroup zu starten.
+Wenn Sie ein Runbook mit PowerShell starten, verwenden Sie das Cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) mit dem Parameter `RunOn`. Das folgende Beispiel verwendet Windows PowerShell, um ein Runbook namens **Test-Runbook** in einer Hybrid Runbook Worker-Gruppe namens MyHybridGroup zu starten.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
@@ -308,5 +308,5 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -2,13 +2,13 @@
 title: Einrichten des Bereitschaftstests in einer Containerinstanz
 description: Erfahren Sie, wie Sie einen Test konfigurieren, um sicherzustellen, dass Container in Azure Container Instances Anforderungen nur erhalten, wenn sie bereit sind.
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935680"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169662"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurieren von Bereitschaftstests
 
@@ -26,7 +26,7 @@ Azure Container Instances unterstützt auch [Livetests](container-instances-live
 Erstellen Sie beispielsweise eine `readiness-probe.yaml`-Datei mit dem folgenden Codeausschnitt, der einen Bereitschaftstest beinhaltet. Diese Datei definiert eine Containergruppe, die aus einem Container mit einer kleinen Web-App besteht. Die App wird aus dem öffentlichen `mcr.microsoft.com/azuredocs/aci-helloworld`-Image bereitgestellt. Diese containerisierte App wird auch in dem Schnellstart [Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle](container-instances-quickstart.md) und anderen veranschaulicht.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

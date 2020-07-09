@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830122"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185839"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Verschlüsselung sicherer Ressourcen in Azure Automation
 
@@ -52,12 +52,12 @@ Vor dem Aktivieren kundenseitig verwalteter Schlüssel für ein Automation-Konto
 
  - Der kundenseitig verwaltete Schlüssel muss in einem Azure Key Vault gespeichert sein. 
  - Aktivieren Sie die beiden Eigenschaften **Vorläufiges Löschen** und **Nicht bereinigen** im Schlüsseltresor. Diese Funktionen sind erforderlich, um die Wiederherstellung von Schlüsseln im Falle einer versehentlichen Löschung zu ermöglichen.
- - Für die Azure Automation-Verschlüsselung werden nur RSA-Schlüssel unterstützt. Weitere Informationen zu Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+ - Für die Azure Automation-Verschlüsselung werden nur RSA-Schlüssel unterstützt. Weitere Informationen zu Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../key-vault/general/about-keys-secrets-certificates.md).
 - Das Automation-Konto und der Schlüsseltresor können sich in verschiedenen Abonnements befinden, müssen aber im selben Azure Active Directory-Mandanten sein.
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>Zuweisung einer Identität zum Automation-Konto
 
-Wenn Sie kundenseitig verwaltete Schlüssel mit einem Automation-Konto verwenden möchten, muss sich Ihr Automation-Konto bei dem Schlüsseltresor authentifizieren, der kundenseitig verwaltete Schlüssel speichert. Azure Automation verwendet systemseitig zugewiesene verwaltete Identitäten, um das Konto bei Azure Key Vault zu authentifizieren. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Wenn Sie kundenseitig verwaltete Schlüssel mit einem Automation-Konto verwenden möchten, muss sich Ihr Automation-Konto bei dem Schlüsseltresor authentifizieren, der kundenseitig verwaltete Schlüssel speichert. Azure Automation verwendet systemseitig zugewiesene verwaltete Identitäten, um das Konto bei Azure Key Vault zu authentifizieren. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 Konfigurieren einer systemseitig zugewiesenen verwalteten Identität mit dem folgenden REST-API-Aufruf für das Automation-Konto:
 
@@ -185,7 +185,7 @@ Durch Rotieren des Schlüssels wird keine Neuverschlüsselung sicherer Ressource
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>Widerrufen des Zugriffs auf einen kundenseitig verwalteten Schlüssel
 
-Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) oder [Azure Key Vault – CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle sicheren Ressourcen im Automation-Konto wirksam blockiert, da Azure Automation keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
+Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](/powershell/module/az.keyvault/) oder [Azure Key Vault – CLI](/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle sicheren Ressourcen im Automation-Konto wirksam blockiert, da Azure Automation keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,14 +2,14 @@
 title: Bereitstellen einer Containergruppe in einem virtuellen Azure-Netzwerk
 description: Erfahren Sie, wie Sie eine Containergruppe in einem neuen oder vorhandenen virtuellen Azure-Netzwerk mithilfe der Azure-Befehlszeilenschnittstelle (CLI) bereitstellen.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c5a0e15b2e65be45e7f77e401b912ef7b784519b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583643"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169594"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -142,7 +142,7 @@ Beispielausgabe:
 Sobald Sie über die ID des Netzwerkprofils verfügen, kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine neue Datei namens *vnet-deploy-aci.yaml* ein. Ersetzen Sie unter `networkProfile` den `id`-Wert durch die ID, die Sie gerade abgerufen haben, und speichern Sie die Datei. Dieser YAML-Code erstellt eine Containergruppe mit dem Namen *appcontaineryaml* in Ihrem virtuellen Netzwerk.
 
 ```YAML
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml
 properties:

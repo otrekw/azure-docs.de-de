@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781190"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185601"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
@@ -79,10 +79,10 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 
 ## <a name="track-file-contents"></a>Dateiinhalt nachverfolgen
 
-Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei vor und nach einer verfolgten Änderung einzusehen. Die Funktion speichert den Dateiinhalt nach jeder Änderung in einem [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Im Folgenden finden Sie einige Regeln, die beim Nachverfolgen von Dateiinhalten einzuhalten sind:
+Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei vor und nach einer verfolgten Änderung einzusehen. Die Funktion speichert den Dateiinhalt nach jeder Änderung in einem [Speicherkonto](../storage/common/storage-account-overview.md). Im Folgenden finden Sie einige Regeln, die beim Nachverfolgen von Dateiinhalten einzuhalten sind:
 
 * Für die Speicherung von Dateiinhalten ist ein Standardspeicherkonto unter Verwendung des Ressourcen-Manager-Bereitstellungsmodells erforderlich. 
-* Verwenden Sie keine Speicherkonten mit Premium- oder klassischem Bereitstellungsmodell. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
+* Verwenden Sie keine Speicherkonten mit Premium- oder klassischem Bereitstellungsmodell. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md).
 * Sie können das Speicherkonto nur mit einem einzigen Automation-Konto verbinden.
 * [Änderungsnachverfolgung und Bestand](change-tracking.md) muss in Ihrem Automation-Konto aktiviert sein.
 
@@ -170,7 +170,7 @@ Lassen Sie uns anhand dieses Beispiels die Schritte zum Erstellen von Warnungen 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu Bereichskonfigurationen finden Sie unter [Arbeiten mit Bereichskonfigurationen für „Änderungsnachverfolgung und Bestand“](automation-scope-configurations-change-tracking.md).
-* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md) weitere Informationen.
+* Wenn Sie Protokolle durchsuchen müssen, die in Ihrem Log Analytics Arbeitsbereich gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../azure-monitor/log-query/log-query-overview.md) weitere Informationen.
 * Wenn Sie mit den Bereitstellungen fertig sind, fahren Sie mit [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto](automation-unlink-workspace-change-tracking.md) fort.
 * Informationen zum Löschen Ihrer VMs aus „Änderungsnachverfolgung und Bestand“ finden Sie unter [Entfernen von VMs aus Änderungsnachverfolgung und Bestand](automation-remove-vms-from-change-tracking.md).
 * Informationen zum Behandeln von Problemen bei diesem Feature finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

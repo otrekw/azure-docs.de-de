@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295440"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166364"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST
 
@@ -137,8 +137,10 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API
 
     Alternativ können Sie auf den Link **Bulk Edit** (Massenbearbeitung) im rechten Bereich des Postman-Fensters klicken und den folgenden Code einfügen.
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. Wechseln Sie zur Registerkarte **Body** (Anforderungskörper).
 7. Geben Sie die Informationen für den Anforderungskörper mithilfe der Schlüssel/Wert-Daten ein (ersetzen Sie die Werte für Client-ID und Geheimnis). 
@@ -147,10 +149,12 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API
 
     Alternativ können Sie auf den Link **Bulk Edit** (Massenbearbeitung) im rechten Bereich des Postman-Fensters klicken und den folgenden Anforderungskörper einfügen (ersetzen Sie die Werte für Client-ID und Geheimnis):
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. Klicken Sie auf **Senden**.
 
@@ -180,11 +184,13 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Ass
 5. Klicken Sie im rechten Bereich des Postman-Fensters auf **Bulk Edit** (Massenbearbeitung).
 6. Fügen Sie folgenden Header ein:
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. Klicken Sie auf **Senden**.
 

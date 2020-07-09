@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830581"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185652"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Nachverfolgen von aktualisierten Dateien mit einem Watchertask
 
@@ -20,7 +20,7 @@ Azure Automation verwendet einen Watchertask für eine Überwachung auf Ereignis
 > Watchertasks werden in Azure China 21Vianet nicht unterstützt.
 
 > [!IMPORTANT]
-> Seit Mai 2020 ist die Verwendung von Azure Logic Apps die unterstützte Methode zum Überwachen auf Ereignisse, zum Planen von wiederkehrenden Aufgaben und zum Auslösen von Aktionen. Informationen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
+> Seit Mai 2020 ist die Verwendung von Azure Logic Apps die unterstützte Methode zum Überwachen auf Ereignisse, zum Planen von wiederkehrenden Aufgaben und zum Auslösen von Aktionen. Informationen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines Watchertasks, mit dem Sie überwachen können, ob einem Verzeichnis eine neue Datei hinzugefügt wird. Folgendes wird vermittelt:
 
@@ -37,7 +37,7 @@ Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines Watchertasks, 
 Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](automation-offering-get-started.md), um die Watcher- und Aktionsrunbooks und den Watchertask aufzunehmen.
+* [Automation-Konto](./index.yml), um die Watcher- und Aktionsrunbooks und den Watchertask aufzunehmen.
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), in dem der Watchertask ausgeführt wird.
 * PowerShell-Runbooks. PowerShell-Workflow-Runbooks werden von Watchertasks nicht unterstützt.
 
@@ -61,7 +61,7 @@ Sie können dieses Runbook auch mithilfe der folgenden Schritte über das Portal
 
 ## <a name="create-an-automation-variable"></a>Erstellen einer Automation-Variable
 
-Eine [Automation-Variable](automation-variables.md) wird verwendet, um die Zeitstempel zu speichern, die das vorhergehende Runbook aus jeder Datei liest und speichert.
+Eine [Automation-Variable](./shared-resources/variables.md) wird verwendet, um die Zeitstempel zu speichern, die das vorhergehende Runbook aus jeder Datei liest und speichert.
 
 1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Variablen** aus, und klicken Sie dann auf **+Variable hinzufügen**.
 1. Geben Sie als Namen „Watch-NewFileTimestamp“ ein.
