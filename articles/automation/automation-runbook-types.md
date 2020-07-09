@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185924"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -68,15 +68,15 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Erfordern Kenntnisse zu PowerShell-Skripts
 * Können keine [parallele Verarbeitung](automation-powershell-workflow.md#use-parallel-processing) zum gleichzeitigen Ausführen mehrerer Aktionen nutzen
 * Können keine [Prüfpunkte](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) zum Fortsetzen des Runbooks bei einem Fehler nutzen
-* Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
+* Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
 Im Folgenden sind aktuell bekannte Probleme mit PowerShell-Runbooks aufgeführt:
 
-* PowerShell-Runbooks können keine unverschlüsselten [Variablenobjekte](automation-variables.md) mit einem NULL-Wert abrufen.
+* PowerShell-Runbooks können keine unverschlüsselten [Variablenobjekte](./shared-resources/variables.md) mit einem NULL-Wert abrufen.
 * PowerShell-Runbooks können kein Variablenobjekt abrufen, dessen Name `*~*` enthält.
-* Der Vorgang [Get-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) in einer Schleife in einem PowerShell-Runbook kann nach etwa 80 Iterationen zum Absturz führen.
+* Der Vorgang [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) in einer Schleife in einem PowerShell-Runbook kann nach etwa 80 Iterationen zum Absturz führen.
 * Ein PowerShell-Runbook kann einen Fehler verursachen, wenn es versucht, eine große Datenmenge auf einmal in den Ausgabestream zu schreiben. Sie können dieses Problem in der Regel vermeiden, indem Sie nur die für die Arbeit mit großen Objekten benötigten Informationen in die Runbookausgabe einfügen. Anstatt `Get-Process` ohne Einschränkungen zu verwenden, können Sie z. B. nur die erforderlichen Parameter in die Cmdlet-Ausgabe einfügen wie bei `Get-Process | Select ProcessName, CPU`.
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-Workflow-Runbooks

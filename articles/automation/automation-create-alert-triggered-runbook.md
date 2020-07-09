@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837109"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186604"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -45,7 +45,7 @@ Wie im vorherigen Abschnitt beschrieben, weist jeder Typ von Warnung ein anderes
 
 In diesem Beispiel wird eine Warnung von einem virtuellen Computer verwendet. Es ruft die VM-Daten aus der Nutzlast ab und verwendet diese Informationen dann, um den virtuellen Computer zu beenden. Die Verbindung muss in dem Automation-Konto eingerichtet sein, unter dem das Runbook ausgeführt wird. Wenn Warnungen zum Auslösen von Runbooks verwendet werden, muss unbedingt der Status der Warnung im ausgelösten Runbook überprüft werden. Das Runbook wird bei jeder Zustandsänderung der Warnung ausgelöst. Warnungen verfügen über mehrere Zustände, deren beiden häufigsten „Aktiviert“ und „Aufgelöst“ sind. Prüfen Sie in Ihrer Runbooklogik auf diesen Zustand, um sicherzustellen, dass Ihr Runbook nur einmal ausgeführt wird. Das Beispiel in diesem Artikel zeigt, wie Sie die Suche auf Warnungen mit dem Zustand „Aktiviert“ einschränken.
 
-Das Runbook verwendet das [ausführende Konto](automation-create-runas-account.md) für die Verbindungsressource `AzureRunAsConnection` für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen.
+Das Runbook verwendet das [ausführende Konto](./manage-runas-account.md) für die Verbindungsressource `AzureRunAsConnection` für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen.
 
 Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Stop-AzureVmInResponsetoVMAlert** zu erstellen. Sie können das PowerShell-Skript ändern und mit vielen verschiedenen Ressourcen nutzen.
 
@@ -192,7 +192,7 @@ Warnungen verwenden Aktionsgruppen, die Sammlungen von Aktionen sind, die von de
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Starten eines Runbooks mithilfe eines Webhook finden Sie unter [Starten eines Runbooks mit einem Webhook](automation-webhooks.md).
-* Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
+* Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](./start-runbooks.md).
 * Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Informationen zum Erstellen von Near Real-Time Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

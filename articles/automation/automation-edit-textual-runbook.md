@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836837"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186349"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 
@@ -57,7 +57,7 @@ Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funkt
 1. Platzieren Sie den Cursor im Canvassteuerelement des Text-Editors an der Position, an der Sie den Code für das untergeordnete Runbook einfügen möchten.
 2. Erweitern Sie im Bibliotheksteuerelement den Knoten **Objekte** .
 3. Erweitern Sie den Knoten für den gewünschten Objekttyp.
-4. Klicken Sie mit der rechten Maustaste auf den Namen des einzufügenden Objekts, und wählen Sie **Zur Canvas hinzufügen** aus. Wählen Sie für [Variablenobjekte](automation-variables.md) entweder **„Variable abrufen“ zum Zeichenbereich hinzufügen** oder **„Variable festlegen“ zum Zeichenbereich hinzufügen** aus. Dies ist abhängig davon, ob Sie die Variable abrufen oder festlegen möchten.
+4. Klicken Sie mit der rechten Maustaste auf den Namen des einzufügenden Objekts, und wählen Sie **Zur Canvas hinzufügen** aus. Wählen Sie für [Variablenobjekte](./shared-resources/variables.md) entweder **„Variable abrufen“ zum Zeichenbereich hinzufügen** oder **„Variable festlegen“ zum Zeichenbereich hinzufügen** aus. Dies ist abhängig davon, ob Sie die Variable abrufen oder festlegen möchten.
 5. Beachten Sie, dass der Code für das Objekt in das Runbook eingefügt wird.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Bearbeiten eines Azure Automation-Runbooks mit Windows PowerShell
@@ -96,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Verwalten von Runbooks in Azure Automation](manage-runbooks.md)
 * [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
 * [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
-* [Zertifikate](automation-certificates.md):
+* [Zertifikate](./shared-resources/certificates.md):
 * [Verbindungen](automation-connections.md).
-* [Anmeldeinformationen:](automation-credentials.md)
-* [Zeitpläne:](automation-schedules.md)
-* [Variablen:](automation-variables.md)
-* [PowerShell-Cmdlet-Referenz](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [Anmeldeinformationen:](./shared-resources/credentials.md)
+* [Zeitpläne:](./shared-resources/schedules.md)
+* [Variablen:](./shared-resources/variables.md)
+* [PowerShell-Cmdlet-Referenz](/powershell/module/az.automation/?view=azps-3.7.0#automation)

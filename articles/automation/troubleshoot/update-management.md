@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801885"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183153"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -53,7 +53,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 ### <a name="issue"></a>Problem
 
-Alte Updates werden im Automation-Konto als fehlend angezeigt, selbst wenn sie bereits ersetzt wurden. Ein ersetztes Update ist ein Update, das nicht installiert werden muss, da ein späteres Update verfügbar ist, welches dasselbe Sicherheitsrisiko korrigiert. Die Updateverwaltung ignoriert das ersetzte Update und macht es nicht zugunsten des ersetzenden Updates anwendbar. Informationen zu einem verwandten Problem finden Sie unter [Update ist ersetzt](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+Alte Updates werden im Automation-Konto als fehlend angezeigt, selbst wenn sie bereits ersetzt wurden. Ein ersetztes Update ist ein Update, das nicht installiert werden muss, da ein späteres Update verfügbar ist, welches dasselbe Sicherheitsrisiko korrigiert. Die Updateverwaltung ignoriert das ersetzte Update und macht es nicht zugunsten des ersetzenden Updates anwendbar. Informationen zu einem verwandten Problem finden Sie unter [Update ist ersetzt](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
 
 ### <a name="cause"></a>Ursache
 
@@ -156,7 +156,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um den Automation-Ressou
 
 4. Überprüfen Sie in der Liste der Ressourcenanbieter, ob der Ressourcenanbieter Microsoft.Automation registriert ist.
 
-5. Wenn dieser nicht aufgeführt ist, registrieren Sie den Anbieter Microsoft.Automation mithilfe der Schritte unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+5. Wenn dieser nicht aufgeführt ist, registrieren Sie den Anbieter Microsoft.Automation mithilfe der Schritte unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Szenario: Bei einem geplanten Update mit einem dynamischen Zeitplan wurden einige Computer ausgelassen.
 
@@ -178,7 +178,7 @@ Das Problem kann eine der folgenden Ursachen haben:
 
 Wenn Ihr Abonnement nicht für den Automation-Ressourcenanbieter konfiguriert ist, können Sie keine Informationen zu Computern in diesem Abonnement abfragen oder abrufen. Führen Sie die folgenden Schritte aus, um die Registrierung für das Abonnement zu überprüfen.
 
-1. Rufen Sie im [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) die Azure-Liste der Dienste.
+1. Rufen Sie im [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) die Azure-Liste der Dienste.
 
 2. Wählen Sie **Alle Dienste** und anschließend in der Gruppe „Allgemeiner Dienst“ die Option **Abonnements** aus. 
 
@@ -188,7 +188,7 @@ Wenn Ihr Abonnement nicht für den Automation-Ressourcenanbieter konfiguriert is
 
 5. Überprüfen Sie, ob der Ressourcenanbieter Microsoft.Automation registriert ist.
 
-6. Wenn dieser nicht aufgeführt ist, registrieren Sie den Anbieter Microsoft.Automation mithilfe der Schritte unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+6. Wenn dieser nicht aufgeführt ist, registrieren Sie den Anbieter Microsoft.Automation mithilfe der Schritte unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Computer sind bei Ausführung des Zeitplans nicht verfügbar oder nicht ordnungsgemäß markiert
 
@@ -196,9 +196,9 @@ Führen Sie das folgende Verfahren aus, wenn Ihr Abonnement für den Automation-
 
 1. Öffnen Sie im Azure-Portal das Automation-Konto, und wählen Sie **Updateverwaltung** aus.
 
-2. Bestimmen Sie anhand des Verlaufs der [Updateverwaltung](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) den genauen Zeitpunkt, zu dem die Updatebereitstellung ausgeführt wurde. 
+2. Bestimmen Sie anhand des Verlaufs der [Updateverwaltung](../manage-update-multi.md#view-results-of-an-update-deployment) den genauen Zeitpunkt, zu dem die Updatebereitstellung ausgeführt wurde. 
 
-3. Verwenden Sie für Computer, die mutmaßlich von der Updateverwaltung ausgelassen wurden, Azure Resource Graph (ARG), um [Computeränderungen zu bestimmen](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details). 
+3. Verwenden Sie für Computer, die mutmaßlich von der Updateverwaltung ausgelassen wurden, Azure Resource Graph (ARG), um [Computeränderungen zu bestimmen](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details). 
 
 4. Suchen Sie über einen längeren Zeitraum (z. B. einen Tag) vor dem Ausführen der Updatebereitstellung nach Änderungen.
 
@@ -226,13 +226,13 @@ Mögliche Ursachen für dieses Problem:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Inkorrekter Zugriff auf ausgewählte Bereiche
 
-Im Azure-Portal werden nur Computer angezeigt, für die Sie in einem bestimmten Bereich über Schreibzugriff verfügen. Wenn Sie nicht über den entsprechenden Zugriff für einen Bereich verfügen, informieren Sie sich unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Im Azure-Portal werden nur Computer angezeigt, für die Sie in einem bestimmten Bereich über Schreibzugriff verfügen. Wenn Sie nicht über den entsprechenden Zugriff für einen Bereich verfügen, informieren Sie sich unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>Die ARG-Abfrage gibt nicht die erwarteten Computer zurück.
 
 Führen Sie die Schritte unten aus, um festzustellen, ob Ihre Abfragen ordnungsgemäß funktionieren.
 
-1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine ARG-Abfrage aus, die wie unten veranschaulicht formatiert ist. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
+1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine ARG-Abfrage aus, die wie unten veranschaulicht formatiert ist. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](../automation-update-management-groups.md). 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -267,7 +267,7 @@ Computer werden in Ergebnissen einer ARG-Abfrage aufgeführt, sie sind jedoch ni
 
 4. Überprüfen Sie, ob der Hybrid Worker für diesen Computer vorhanden ist.
 
-5. Wenn der Computer nicht als Hybrid Worker eingerichtet ist, nehmen Sie mithilfe der Anweisungen unter [Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) die erforderlichen Anpassungen vor.
+5. Wenn der Computer nicht als Hybrid Worker eingerichtet ist, nehmen Sie mithilfe der Anweisungen unter [Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) die erforderlichen Anpassungen vor.
 
 6. Legen Sie den Computer als Mitglied der Hybrid Runbook Worker-Gruppe fest.
 
@@ -343,7 +343,7 @@ Dieser Fehler tritt bei der Erstellung einer Updatebereitstellung auf, bei der A
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) mit dem `ForUpdateConfiguration`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
+Verwenden Sie die folgende Problemumgehung, um die Planung durchzuführen. Sie können das Cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) mit dem `ForUpdateConfiguration`-Parameter verwenden, um einen Zeitplan zu erstellen. Verwenden Sie dann das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0), und übergeben Sie die Computer im anderen Mandanten an den Parameter `NonAzureComputer`. Dies wird anhand des folgenden Beispiels veranschaulicht:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -421,7 +421,7 @@ Der `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU`-Re
 
 Für Updateverwaltungsclients sollten Sie diesen Schlüssel auf „3“ festlegen: `auto download but do not auto install`.
 
-Weitere Informationen finden Sie unter [Automatische Updates konfigurieren](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
+Weitere Informationen finden Sie unter [Automatische Updates konfigurieren](/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Szenario: Computer ist bereits bei einem anderen Konto registriert.
 
@@ -575,9 +575,9 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der Da
 
 ### <a name="machines-dont-install-updates"></a>Computer installieren keine Updates.
 
-Versuchen Sie, Updates direkt auf dem Computer auszuführen. Wenn der Computer die Updates nicht anwenden kann, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) an.
+Versuchen Sie, Updates direkt auf dem Computer auszuführen. Wenn der Computer die Updates nicht anwenden kann, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](#hresult) an.
 
-Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen einer VM für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources) ausführen.
+Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen einer VM für die Updateverwaltung](../automation-remove-vms-from-update-management.md) ausführen.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als verfügbar angezeigt.
 
@@ -593,11 +593,11 @@ Wenn Updates in WSUS nicht genehmigt sind, werden sie nicht installiert. Sie kö
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Updates werden als installiert angezeigt, ich kann sie aber nicht auf meinem Computer finden.
 
-Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Sie unter [Update wird ersetzt](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in der Anleitung für die Windows Update-Problembehandlung.
+Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Sie unter [Update wird ersetzt](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in der Anleitung für die Windows Update-Problembehandlung.
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Installieren von Updates durch Klassifizierung unter Linux
 
-Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2) dokumentiert.
+Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese Einschränkungen sind auf der [Übersichtsseite für die Updateverwaltung](../automation-update-management.md#linux) dokumentiert.
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 fehlt dauerhaft.
 

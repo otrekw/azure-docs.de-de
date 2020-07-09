@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836752"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185999"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrieren von Orchestrator zu Azure Automation (Betaversion)
 
-Runbooks in [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren. [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte. Zusätzlich zur Konvertierung der Runbooks selbst müssen Sie die Integrationspakete mit den von Runbooks verwendeten Aktivitäten mithilfe von Windows PowerShell-Cmdlets in Integrationsmodule konvertieren. 
+Runbooks in [System Center 2012 – Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren. [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte. Zusätzlich zur Konvertierung der Runbooks selbst müssen Sie die Integrationspakete mit den von Runbooks verwendeten Aktivitäten mithilfe von Windows PowerShell-Cmdlets in Integrationsmodule konvertieren. 
 
-[Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA) dient wie Orchestrator zum Speichern und Ausführen von Runbooks in Ihrem lokalen Rechenzentrum und führt dieselben Integrationsmodule aus wie Azure Automation. Der Runbook Converter konvertiert Orchestrator-Runbooks in grafische Runbooks, die nicht in SMA unterstützt werden. Sie können in SMA dennoch das Modul mit Standardaktivitäten und die System Center Orchestrator-Integrationsmodule installieren, müssen jedoch Ihre [Runbooks manuell umschreiben](https://technet.microsoft.com/library/dn469262.aspx).
+[Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)) (SMA) dient wie Orchestrator zum Speichern und Ausführen von Runbooks in Ihrem lokalen Rechenzentrum und führt dieselben Integrationsmodule aus wie Azure Automation. Der Runbook Converter konvertiert Orchestrator-Runbooks in grafische Runbooks, die nicht in SMA unterstützt werden. Sie können in SMA dennoch das Modul mit Standardaktivitäten und die System Center Orchestrator-Integrationsmodule installieren, müssen jedoch Ihre [Runbooks manuell umschreiben](/system-center/sma/authoring-automation-runbooks).
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>Herunterladen des Orchestrator-Migrationstoolkits
 
@@ -24,28 +24,28 @@ Der erste Schritt bei der Migration ist das Herunterladen des [System Center Orc
 
 ## <a name="import-the-standard-activities-module"></a>Importieren des Moduls mit Standardaktivitäten
 
-Importieren Sie das [Modul mit Standardaktivitäten](https://docs.microsoft.com/system-center/orchestrator/standard-activities?view=sc-orch-2019) in Azure Automation. Dieses umfasst konvertierte Versionen der standardmäßigen Orchestrator-Aktivitäten, die von konvertierten grafischen Runbooks verwendet werden können.
+Importieren Sie das [Modul mit Standardaktivitäten](/system-center/orchestrator/standard-activities?view=sc-orch-2019) in Azure Automation. Dieses umfasst konvertierte Versionen der standardmäßigen Orchestrator-Aktivitäten, die von konvertierten grafischen Runbooks verwendet werden können.
 
 ## <a name="import-orchestrator-integration-modules"></a>Importieren von Orchestrator-Integrationsmodulen
 
-Microsoft stellt [Integrationspakete](https://technet.microsoft.com/library/hh295851.aspx) zum Erstellen von Runbooks zur Automatisierung von System Center-Komponenten und anderen Produkten bereit. Einige diese Integrationspakete basieren derzeit auf dem OIT, können derzeit jedoch aufgrund von bekannten Problemen nicht in Integrationsmodule konvertiert werden. Importieren Sie für die von Ihren Runbooks verwendeten Integrationspakete, die auf System Center zugreifen, die [System Center Orchestrator-Integrationsmodule](https://www.microsoft.com/download/details.aspx?id=49555) in Azure Automation. Dieses Paket enthält konvertierte Versionen dieser Integrationspakete, die in Azure Automation und Service Management Automation importiert werden können.  
+Microsoft stellt [Integrationspakete](/previous-versions/system-center/packs/hh295851(v=technet.10)) zum Erstellen von Runbooks zur Automatisierung von System Center-Komponenten und anderen Produkten bereit. Einige diese Integrationspakete basieren derzeit auf dem OIT, können derzeit jedoch aufgrund von bekannten Problemen nicht in Integrationsmodule konvertiert werden. Importieren Sie für die von Ihren Runbooks verwendeten Integrationspakete, die auf System Center zugreifen, die [System Center Orchestrator-Integrationsmodule](https://www.microsoft.com/download/details.aspx?id=49555) in Azure Automation. Dieses Paket enthält konvertierte Versionen dieser Integrationspakete, die in Azure Automation und Service Management Automation importiert werden können.  
 
 ## <a name="convert-integration-packs"></a>Konvertieren von Integrationspaketen
 
-Konvertieren Sie mit dem [Integration Pack Converter](https://docs.microsoft.com/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) beliebige, mit dem [OIT (Orchestrator Integration Toolkit)](https://technet.microsoft.com/library/hh855853.aspx) erstellte Integrationspakete in Integrationsmodule, die auf PowerShell basieren und in Azure Automation oder Service Management Automation importiert werden können. Wenn Sie den Integration Pack Converter ausführen, wird ein Assistent gestartet, der Ihnen die Auswahl einer Integrationspaketdatei (.oip) ermöglicht. Der Assistent listet anschließend die im Integrationspaket enthaltenen Aktivitäten auf, und Sie können die zu migrierenden Aktivitäten auswählen. Wenn Sie den Assistenten abschließen, wird ein Integrationsmodul erstellt, dass ein entsprechendes Cmdlet für jede Aktivität im ursprünglichen Integrationspaket enthält.
+Konvertieren Sie mit dem [Integration Pack Converter](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) beliebige, mit dem [OIT (Orchestrator Integration Toolkit)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) erstellte Integrationspakete in Integrationsmodule, die auf PowerShell basieren und in Azure Automation oder Service Management Automation importiert werden können. Wenn Sie den Integration Pack Converter ausführen, wird ein Assistent gestartet, der Ihnen die Auswahl einer Integrationspaketdatei (.oip) ermöglicht. Der Assistent listet anschließend die im Integrationspaket enthaltenen Aktivitäten auf, und Sie können die zu migrierenden Aktivitäten auswählen. Wenn Sie den Assistenten abschließen, wird ein Integrationsmodul erstellt, dass ein entsprechendes Cmdlet für jede Aktivität im ursprünglichen Integrationspaket enthält.
 
 > [!NOTE]
 > Sie können mit dem Integration Pack Converter keine Integrationspakete konvertieren, die nicht mit dem OIT erstellt wurden. Einige von Microsoft bereitgestellte Integrationspakete können derzeit nicht mit diesem Tool konvertiert werden. Konvertierte Versionen dieser Integrationspakete stehen zum Download bereit, sodass sie in Azure Automation oder in Service Management Automation installiert werden können.
 
 ### <a name="parameters"></a>Parameter
 
-Alle Eigenschaften einer Aktivität im Integrationspaket werden in Parameter des zugehörigen Cmdlets im Integrationsmodul konvertiert.  Windows PowerShell-Cmdlets enthalten einen Satz [allgemeiner Parameter](https://technet.microsoft.com/library/hh847884.aspx) , die für alle Cmdlets verwendet werden können. Beispielsweise können über den Parameter "-Verbose" detaillierte Informationen zur Verwendung eines Cmdlets ausgegeben werden.  Die Cmdlets dürfen keinen Parameter aufweisen, die denselben Namen verwenden wie ein allgemeiner Parameter. Wenn eine Aktivität über eine Eigenschaft mit demselben Namen wie ein allgemeiner Parameter verfügt, fordert der Assistent Sie auf, einen anderen Namen für den Parameter anzugeben.
+Alle Eigenschaften einer Aktivität im Integrationspaket werden in Parameter des zugehörigen Cmdlets im Integrationsmodul konvertiert.  Windows PowerShell-Cmdlets enthalten einen Satz [allgemeiner Parameter](/powershell/module/microsoft.powershell.core/about/about_commonparameters) , die für alle Cmdlets verwendet werden können. Beispielsweise können über den Parameter "-Verbose" detaillierte Informationen zur Verwendung eines Cmdlets ausgegeben werden.  Die Cmdlets dürfen keinen Parameter aufweisen, die denselben Namen verwenden wie ein allgemeiner Parameter. Wenn eine Aktivität über eine Eigenschaft mit demselben Namen wie ein allgemeiner Parameter verfügt, fordert der Assistent Sie auf, einen anderen Namen für den Parameter anzugeben.
 
 ### <a name="monitor-activities"></a>Überwachen von Aktivitäten
 
-Runbooks für die Überwachung beginnen in Orchestrator mit einer [Überwachungsaktivität](https://technet.microsoft.com/library/hh403827.aspx) und werden fortlaufend ausgeführt, bis ein bestimmtes Ereignis ausgelöst wird. Azure Automation bietet keine Unterstützung für Runbooks zur Überwachung, deshalb werden im Integrationspaket enthaltene Überwachungsaktivitäten nicht konvertiert. Stattdessen wird im Integrationsmodul ein Platzhalter-Cmdlet für die Überwachungsaktivität erstellt.  Dieses Cmdlet hat keine Funktionalität, ermöglicht aber die Installation von konvertierten Runbooks, die die Überwachungsaktivität verwenden. Dieses Runbook kann nicht in Azure Automation ausgeführt, jedoch zur Änderung installiert werden.
+Runbooks für die Überwachung beginnen in Orchestrator mit einer [Überwachungsaktivität](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) und werden fortlaufend ausgeführt, bis ein bestimmtes Ereignis ausgelöst wird. Azure Automation bietet keine Unterstützung für Runbooks zur Überwachung, deshalb werden im Integrationspaket enthaltene Überwachungsaktivitäten nicht konvertiert. Stattdessen wird im Integrationsmodul ein Platzhalter-Cmdlet für die Überwachungsaktivität erstellt.  Dieses Cmdlet hat keine Funktionalität, ermöglicht aber die Installation von konvertierten Runbooks, die die Überwachungsaktivität verwenden. Dieses Runbook kann nicht in Azure Automation ausgeführt, jedoch zur Änderung installiert werden.
 
-Orchestrator umfasst einen Satz an [Standardaktivitäten](https://technet.microsoft.com/library/hh403832.aspx) , die nicht in einem Integrationspaket enthalten sind, aber von vielen Runbooks verwendet werden.  Das Modul mit Standardaktivitäten ist ein Integrationsmodul das eine Cmdlet-Entsprechung für jede dieser Aktivitäten umfasst. Sie müssen dieses Integrationsmodul in Azure Automation installieren, bevor Sie konvertierte Runbooks importieren, die eine Standardaktivität verwenden.
+Orchestrator umfasst einen Satz an [Standardaktivitäten](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)) , die nicht in einem Integrationspaket enthalten sind, aber von vielen Runbooks verwendet werden.  Das Modul mit Standardaktivitäten ist ein Integrationsmodul das eine Cmdlet-Entsprechung für jede dieser Aktivitäten umfasst. Sie müssen dieses Integrationsmodul in Azure Automation installieren, bevor Sie konvertierte Runbooks importieren, die eine Standardaktivität verwenden.
 
 Zusätzlich zur Unterstützung von konvertierten Runbooks können die Cmdlets im Modul mit Standardaktivitäten von einem Benutzer mit Orchestrator-Erfahrung dazu verwendet werden, neue Runbooks in Azure Automation zu erstellen. Wenngleich die Funktionalität aller Standardaktivitäten mithilfe von Cmdlets ausgeführt werden kann, weicht die Funktionsweise möglicherweise ab. Die Cmdlets im konvertierten Modul mit Standardaktivitäten arbeiten in gleicher Weise wie die entsprechenden Aktivitäten und verwenden dieselben Parameter. Dies kann Ihnen bei der Umstellung auf Azure Automation-Runbooks helfen.
 
@@ -100,7 +100,7 @@ Der Runbook Converter konvertiert jede Aktivität im Orchestrator-Runbook in ein
 
 Alle Orchestrator-Aktivitäten im Modul mit Standardaktivitäten werden konvertiert. Es gibt einige Orchestrator-Standardaktivitäten, die sich jedoch nicht in diesem Modul befinden und die nicht konvertiert werden. `Send Platform Event` verfügt beispielsweise über kein Azure Automation-Äquivalent, da das Ereignis Orchestrator-spezifisch ist.
 
-[Überwachungsaktivitäten](https://technet.microsoft.com/library/hh403827.aspx) werden nicht konvertiert, da für sie kein Äquivalent in Azure Automation vorhanden ist. Die Ausnahmen sind Überwachungsaktivitäten in konvertierten Integrationspaketen, die in die Platzhalteraktivität konvertiert werden.
+[Überwachungsaktivitäten](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) werden nicht konvertiert, da für sie kein Äquivalent in Azure Automation vorhanden ist. Die Ausnahmen sind Überwachungsaktivitäten in konvertierten Integrationspaketen, die in die Platzhalteraktivität konvertiert werden.
 
 Jede Aktivität aus einem konvertierten Integrationspaket wird konvertiert, wenn Sie den Pfad zum Integrationsmodul mit dem `modules`-Parameter angeben. Für System Center-Integrationspakete können Sie die System Center Orchestrator-Integrationsmodule verwenden.
 
@@ -118,7 +118,7 @@ Der Grund für die Nutzung dieser Strategie ist eine optimale Spiegelung der Fun
 
 ### <a name="invoke-runbook-activity"></a>Aufrufen einer Runbookaktivität
 
-Runbooks in Orchestrator starten andere Runbooks mit der Aktivität `Invoke Runbook`. Wenn das konvertierte Runbook diese Aktivität enthält und die Option `Wait for completion` festgelegt ist, wird dafür eine Runbookaktivität im konvertierten Runbook erstellt.  Wenn die Option `Wait for completion` nicht festgelegt ist, wird eine Workflowskriptaktivität erstellt, die [Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) verwendet, um das Runbook zu starten. Nachdem Sie das konvertierte Runbook in Azure Automation importiert haben, müssen Sie diese Aktivität mit den in der Aktivität angegebenen Angaben ändern.
+Runbooks in Orchestrator starten andere Runbooks mit der Aktivität `Invoke Runbook`. Wenn das konvertierte Runbook diese Aktivität enthält und die Option `Wait for completion` festgelegt ist, wird dafür eine Runbookaktivität im konvertierten Runbook erstellt.  Wenn die Option `Wait for completion` nicht festgelegt ist, wird eine Workflowskriptaktivität erstellt, die [Start-AzureAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) verwendet, um das Runbook zu starten. Nachdem Sie das konvertierte Runbook in Azure Automation importiert haben, müssen Sie diese Aktivität mit den in der Aktivität angegebenen Angaben ändern.
 
 ## <a name="create-orchestrator-assets"></a>Erstellen von Orchestrator-Objekten
 
@@ -130,8 +130,8 @@ Orchestrator speichert Runbooks auf einem Datenbankserver und führt sie auf Run
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-* Informationen zu Orchestrator finden Sie unter [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
-* Erfahren Sie mehr über das Automatisieren der Verwaltung von Diensten in [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx).
-* Details zu Orchestrator-Aktivitäten finden Sie unter [Orchestrator – Standardaktivitäten](https://technet.microsoft.com/library/hh403832.aspx).
+* Informationen zu Orchestrator finden Sie unter [System Center 2012 – Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)).
+* Erfahren Sie mehr über das Automatisieren der Verwaltung von Diensten in [Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)).
+* Details zu Orchestrator-Aktivitäten finden Sie unter [Orchestrator – Standardaktivitäten](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)).
 * Informationen zum Abrufen des Orchestrator Migration Toolkit finden Sie unter [Herunterladen des System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323).
 * Eine Übersicht über den Azure Automation Hybrid Runbook Worker finden Sie unter [Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).

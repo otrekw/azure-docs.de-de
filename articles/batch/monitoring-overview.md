@@ -3,26 +3,26 @@ title: Überwachen von Azure Batch
 description: Hier finden Sie Informationen zu Azure-Überwachungsdiensten, Metriken Diagnoseprotokollen und weiteren Überwachungsfeatures für Azure Batch.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723526"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144946"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
 Azure und der Batch-Dienst bieten verschiedene Dienste, Tools und APIs zur Überwachung von Batch-Lösungen. Dieser Übersichtsartikel hilft Ihnen bei der Wahl eines geeigneten Überwachungskonzepts für Ihre Anforderungen.
 
-Eine Übersicht über die verfügbaren Azure-Komponenten und -Dienste zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../monitoring-and-diagnostics/monitoring-overview.md).
+Eine Übersicht über die verfügbaren Azure-Komponenten und -Dienste zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../azure-monitor/overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Überwachung auf Abonnementebene
 
-Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) Betriebsereignisdaten in [verschiedenen Kategorien](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log) gesammelt.
+Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) Betriebsereignisdaten in [verschiedenen Kategorien](../azure-monitor/platform/activity-log.md#view-the-activity-log) gesammelt.
 
 Speziell für Batch-Konten werden Ereignisse im Zusammenhang mit der Kontoerstellung/-löschung und der Schlüsselverwaltung erfasst.
 
-Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsprotokoll abgerufen werden. Klicken Sie auf **Alle Dienste** > **Aktivitätsprotokoll**. Alternativ können Ereignisse über die Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell-Cmdlets oder unter Verwendung der Azure Monitor-REST-API abgefragt werden. Sie können das Aktivitätsprotokoll auch exportieren oder [Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md) konfigurieren.
+Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsprotokoll abgerufen werden. Klicken Sie auf **Alle Dienste** > **Aktivitätsprotokoll**. Alternativ können Ereignisse über die Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell-Cmdlets oder unter Verwendung der Azure Monitor-REST-API abgefragt werden. Sie können das Aktivitätsprotokoll auch exportieren oder [Aktivitätsprotokollwarnungen](../azure-monitor/platform/alerts-activity-log.md) konfigurieren.
 
 ## <a name="batch-account-level-monitoring"></a>Überwachung auf Batch-Kontoebene
 

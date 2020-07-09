@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830768"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185703"
 ---
 # <a name="query-update-management-logs"></a>Abfragen von Protokollen der Updateverwaltung
 
@@ -194,7 +194,7 @@ Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen,
 1. Öffnen Sie in der Systemsteuerung **Microsoft Monitoring Agent**. Auf der Registerkarte **Azure Log Analytics** zeigt der Agent die folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to Log Analytics.** (Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit Log Analytics hergestellt.)
 2. Öffnen Sie das Windows-Ereignisprotokoll. Navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und der Ereignis-ID 5002 aus der Quelle **Service Connector**. Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration ausgeführt wurden.
 
-Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../log-analytics/log-analytics-agent-linux.md).
+Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../azure-monitor/learn/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie die Updateverwaltung aktivieren, aktualisieren Sie die Berechtigungen für `proxy.conf`, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie dazu die folgenden Befehle aus:
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
+* Ausführliche Informationen zu Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 * Hilfe zu Warnungen finden Sie unter [Konfigurieren von Warnungen](automation-tutorial-update-management.md#configure-alerts).

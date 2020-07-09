@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204071"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186128"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Aktivieren der Updateverwaltung über ein Runbook
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie mit einem Runbook das Feature [Updat
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
+* [Automation-Konto](./index.yml) zum Verwalten von Computern.
 * Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
@@ -50,7 +50,7 @@ Wenn die Updateverwaltung aktiviert ist, können Sie eine Azure-VM hinzufügen, 
 
 ## <a name="install-and-update-modules"></a>Installieren und Aktualisieren von Modulen
 
-Für ein erfolgreiches Aktivieren der Updateverwaltung für Ihre VMs müssen Sie das Update auf die aktuellen Azure-Module durchführen und das Modul [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) importieren.
+Für ein erfolgreiches Aktivieren der Updateverwaltung für Ihre VMs müssen Sie das Update auf die aktuellen Azure-Module durchführen und das Modul [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) importieren.
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. 
 2. Klicken Sie auf **Azure-Module aktualisieren**, um die Azure-Module auf die neueste Version zu aktualisieren. 

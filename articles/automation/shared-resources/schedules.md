@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744972"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187352"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Verwalten von Zeitplänen in Azure Automation
 
@@ -32,13 +32,13 @@ Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrz
 
 | Cmdlets | BESCHREIBUNG |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Ruft einen Zeitplan ab. |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Ruft geplante Runbooks ab. |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Erstellt einen neuen Zeitplan. |
-| [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Ordnet ein Runbook einem Zeitplan zu. |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Entfernt einen Zeitplan. |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Legt die Eigenschaften für einen vorhandenen Zeitplan fest. |
-| [Unregister-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hebt die Zuordnung eines Runbook zu einem Zeitplan auf. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Ruft einen Zeitplan ab. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Ruft geplante Runbooks ab. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Erstellt einen neuen Zeitplan. |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Ordnet ein Runbook einem Zeitplan zu. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Entfernt einen Zeitplan. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Legt die Eigenschaften für einen vorhandenen Zeitplan fest. |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hebt die Zuordnung eines Runbook zu einem Zeitplan auf. |
 
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
 
@@ -65,7 +65,7 @@ Sie können im Azure-Portal oder mit PowerShell einen neuen Zeitplan für Runboo
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Erstellen eines neuen Zeitplans mit PowerShell
 
-Verwenden Sie das Cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0), um Zeitpläne zu erstellen. Geben Sie die Startzeit für den Zeitplan und die Häufigkeit der Ausführung an. Die folgenden Beispiele zeigen, wie Sie verschiedene Zeitplanszenarien erstellen können.
+Verwenden Sie das Cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0), um Zeitpläne zu erstellen. Geben Sie die Startzeit für den Zeitplan und die Häufigkeit der Ausführung an. Die folgenden Beispiele zeigen, wie Sie verschiedene Zeitplanszenarien erstellen können.
 
 #### <a name="create-a-one-time-schedule"></a>Erstellen eines einmaligen Zeitplans
 
@@ -128,7 +128,7 @@ Ein Runbook kann mit mehreren Zeitplänen verknüpft werden, und mit einem Zeitp
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Verknüpfen eines Zeitplans mit einem Runbook mithilfe von PowerShell
 
-Verwenden Sie das Cmdlet [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0), um einen Zeitplan zu verknüpfen. Sie können Werte für die Runbookparameter im Parameter "Parameters" angeben. Weitere Informationen zum Angeben von Parameterwerten finden Sie unter [Starten eines Runbooks in Azure Automation](../automation-starting-a-runbook.md).
+Verwenden Sie das Cmdlet [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0), um einen Zeitplan zu verknüpfen. Sie können Werte für die Runbookparameter im Parameter "Parameters" angeben. Weitere Informationen zum Angeben von Parameterwerten finden Sie unter [Starten eines Runbooks in Azure Automation](../start-runbooks.md).
 Das folgende Beispiel verdeutlicht, wie Sie einen Zeitplan mit einem Runbook verknüpfen, indem Sie ein Azure Resource Manager-Cmdlet mit Parametern verwenden.
 
 ```azurepowershell-interactive
@@ -164,7 +164,7 @@ Wenn Sie einen Zeitplan deaktivieren, werden sämtliche damit verknüpfte Runboo
 
 ### <a name="disable-a-schedule-with-powershell"></a>Deaktivieren eines Zeitplans mithilfe von PowerShell
 
-Verwenden Sie das Cmdlet [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0), um die Eigenschaften eines vorhandenen Zeitplans zu ändern. Geben Sie zum Deaktivieren des Zeitplans „False“ für den Parameter `IsEnabled` an.
+Verwenden Sie das Cmdlet [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0), um die Eigenschaften eines vorhandenen Zeitplans zu ändern. Geben Sie zum Deaktivieren des Zeitplans „False“ für den Parameter `IsEnabled` an.
 
 Das folgende Beispiel verdeutlicht, wie Sie einen Zeitplan für ein Runbook mithilfe eines Azure Resource Manager-Cmdlets deaktivieren.
 

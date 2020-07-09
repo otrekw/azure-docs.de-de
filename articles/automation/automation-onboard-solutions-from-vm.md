@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a1fe48b8bc776faf98f71eb882720e8180a2c573
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204904"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186026"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Aktivieren der Updateverwaltung über einen virtuellen Azure-Computer
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie mit einem virtuellen Azure-Computer 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
+* [Automation-Konto](./index.yml) zum Verwalten von Computern.
 * Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

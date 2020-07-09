@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113224"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146023"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-Vergleichsoperatoren in der kognitiven Azure-Suche: `eq`, `ne`, `gt`, `lt`, `ge` und `le`
 
@@ -136,23 +136,33 @@ Zeichenfolgen können in Filtern mit den Operatoren `eq` und `ne` verglichen wer
 
 Abgleichen von Dokumenten, bei denen das `Rating`-Feld zwischen 3 und 5 (einschließlich) liegt:
 
-    Rating ge 3 and Rating le 5
+```text
+Rating ge 3 and Rating le 5
+```
 
 Abgleichen von Dokumenten, bei denen das `Location`-Feld weniger als 2 Kilometer vom angegebenen Breitengrad und Längengrad entfernt ist:
 
-    geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```text
+geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```
 
 Abgleichen von Dokumenten, bei denen das Feld `LastRenovationDate` größer oder gleich dem 1. Januar 2015, 24 Uhr UTC ist:
 
-    LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```text
+LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```
 
 Abgleichen von Dokumenten, bei denen das `Details/Sku`-Feld nicht `null` ist:
 
-    Details/Sku ne null
+```text
+Details/Sku ne null
+```
 
 Abgleichen von Dokumenten für Hotels, in denen mindestens ein Raum den Typ „Deluxe Room“ (Luxuszimmer) aufweist, wobei die Zeichenfolge des `Rooms/Type`-Felds genau mit dem Filter übereinstimmt:
 
-    Rooms/any(room: room/Type eq 'Deluxe Room')
+```text
+Rooms/any(room: room/Type eq 'Deluxe Room')
+```
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

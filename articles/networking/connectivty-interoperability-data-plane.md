@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80518263"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169203"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperabilität in Azure: Analyse der Datenebene
 
@@ -29,13 +29,15 @@ Bei der Datenebenenanalyse wird der Pfad untersucht, den Pakete in einer Topolog
 
 Beim VNET-Peering (virtuelles Netzwerk) wird die Funktionalität der Netzwerkbrücke zwischen den beiden VNETs emuliert, die per Peering verbunden sind. Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Spoke-VNET:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.11.30.4
+  1     2 ms     1 ms     1 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Spoke-VNET aus der Perspektive von Azure Network Watcher:
 
@@ -46,15 +48,17 @@ Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Spoke
 
 Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Branch-VNET:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms     1 ms     1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     2 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms     1 ms     1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     2 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway in Azure zum VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET. Die IP-Adresse des VPN-Gateways des Branch-VNET ist im Hub-VNET nicht angekündigt. Der dritte Hop ist die VM im Branch-VNET.
 
@@ -70,16 +74,18 @@ Die folgende Abbildung zeigt die Rasteransicht in Network Watcher für dieselbe 
 
 Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM am lokalen Standort 1:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     2 ms     2 ms     2 ms  10.2.30.10
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     2 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der Azure ExpressRoute-Gateway-Tunnelendpunkt zu einem Microsoft Enterprise Edge-Router (MSEE). Die zweite und der dritte Hop sind der CE-Router (kundenseitiger Edge) und die LAN-IP-Adressen des lokalen Standorts 1. Diese IP-Adressen sind im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
 
@@ -88,16 +94,18 @@ In dieser Traceroute-Ausgabe ist der erste Hop der Azure ExpressRoute-Gateway-Tu
 
 Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM am lokalen Standort 2:
 
-    C:\Users\rb>tracert 10.1.31.10
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    76 ms    75 ms    75 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
+  1    76 ms    75 ms    75 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt zu einem MSEE. Der zweite und dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 2. Diese IP-Adressen sind im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
 
@@ -105,15 +113,17 @@ In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-En
 
 Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Remote-VNET:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    69 ms  10.17.30.4
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt zu einem MSEE. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
 
@@ -125,27 +135,31 @@ Für das Spoke-VNET wird dieselbe Netzwerkansicht wie im Hub-VNET genutzt. Über
 
 Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Hub-VNET:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet"></a>Pfad zum Branch-VNET
 
 Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Branch-VNET:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms    <1 ms    <1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET. Die IP-Adresse des VPN-Gateways des Branch-VNET ist im Hub-/Spoke-VNET nicht angekündigt. Der dritte Hop ist die VM im Branch-VNET.
 
@@ -153,16 +167,18 @@ In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Hub-VNET. Der
 
 Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM am lokalen Standort 1:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+  1    24 ms     2 ms     3 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     3 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Die zweite und der dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 1. Diese IP-Adressen sind im Hub-/Spoke-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
 
@@ -170,17 +186,18 @@ In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-En
 
 Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM am lokalen Standort 2:
 
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    C:\Users\rb>tracert 10.1.31.10
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+  1    76 ms    75 ms    76 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-      1    76 ms    75 ms    76 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
-
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Der zweite und dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 2. Diese IP-Adressen sind in den Hub-/Spoke-VNETs nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
 
@@ -188,15 +205,17 @@ In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-En
 
 Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Remote-VNET:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.10.30.133
-      2     *        *        *     Request timed out.
-      3    71 ms    70 ms    70 ms  10.17.30.4
+  1     2 ms     1 ms     1 ms  10.10.30.133
+  2     *        *        *     Request timed out.
+  3    71 ms    70 ms    70 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-/Spoke-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
 
@@ -206,15 +225,17 @@ In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-En
 
 Die Traceroute-Ausgabe vom Branch-VNET zu einer VM im Hub-VNET:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist die VM im Hub-VNET.
 
@@ -222,15 +243,17 @@ In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. 
 
 Die Traceroute-Ausgabe vom Branch-VNET zu einer VM im Spoke-VNET:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     1 ms    <1 ms     1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     2 ms  10.11.30.4
+  1     1 ms    <1 ms     1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist die VM im Spoke-VNET.
 
@@ -238,17 +261,19 @@ In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. 
 
 Die Traceroute-Ausgabe vom Branch-VNET zu einer VM am lokalen Standort 1:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.2.30.125
-      4     *        *        *     Request timed out.
-      5     3 ms     3 ms     3 ms  10.2.30.10
+  1     1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.2.30.125
+  4     *        *        *     Request timed out.
+  5     3 ms     3 ms     3 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist der Beendigungspunkt des VPN-Tunnels auf dem primären CE-Router. Der vierte Hop ist eine interne IP-Adresse des lokalen Standorts 1. Diese LAN-IP-Adresse ist außerhalb des CE-Routers nicht angekündigt. Der fünfte Hop ist die Ziel-VM am lokalen Standort 1.
 
@@ -256,27 +281,29 @@ In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. 
 
 Wie für die Steuerebenenanalyse beschrieben, besteht gemäß Netzwerkkonfiguration für das Branch-VNET keine Sichtbarkeit für den lokalen Standort 2 oder das Remote-VNET. Dies wird durch die folgenden Ping-Ergebnisse bestätigt: 
 
-    C:\Users\rb>ping 10.1.31.10
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Pinging 10.1.31.10 with 32 bytes of data:
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-    C:\Users\rb>ping 10.17.30.4
+C:\Users\rb>ping 10.17.30.4
 
-    Pinging 10.17.30.4 with 32 bytes of data:
+Pinging 10.17.30.4 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.17.30.4:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.17.30.4:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ## <a name="data-path-from-on-premises-location-1"></a>Datenpfad vom lokalen Standort 1
 
@@ -284,17 +311,19 @@ Wie für die Steuerebenenanalyse beschrieben, besteht gemäß Netzwerkkonfigurat
 
 Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Hub-VNET:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     2 ms     2 ms     2 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     2 ms     2 ms     2 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In dieser Traceroute-Ausgabe sind die ersten beiden Hops Teil des lokalen Netzwerks. Der dritte Hop ist die primäre MSEE-Schnittstelle für den CE-Router. Der vierte Hop ist das ExpressRoute-Gateway des Hub-VNET. Der IP-Adressbereich des ExpressRoute-Gateways des Hub-VNET wird im lokalen Netzwerk nicht angekündigt. Der fünfte Hop ist die Ziel-VM.
 
@@ -306,15 +335,17 @@ Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen de
 
 Wie weiter oben erläutert, wird für die Testeinrichtung ein Site-to-Site-VPN als Reserveverbindung für ExpressRoute zwischen dem lokalen Standort 1 und dem Hub-VNET genutzt. Zum Testen des Datenpfads in umgekehrter Richtung lösen wir einen ExpressRoute-Verbindungsausfall zwischen dem primären CE-Router am lokalen Standort 1 und dem zugehörigen MSEE aus. Um den ExpressRoute-Verbindungsausfall herbeizuführen, fahren Sie die für die MSEE-Instanz bestimmte CE-Schnittstelle herunter:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen der VM am lokalen Standort 1 und der VM im Hub-VNET per Site-to-Site-VPN-Verbindung, wenn keine ExpressRoute-Konnektivität vorhanden ist:
 
@@ -326,17 +357,19 @@ Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Spoke-VNET:
 
 Wir stellen jetzt die primäre ExpressRoute-Verbindung wieder her, um die Datenpfadanalyse für das Spoke-VNET durchzuführen:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     3 ms     2 ms     2 ms  10.11.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     3 ms     2 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Stellen Sie die primäre ExpressRoute 1-Verbindung für den Rest der Datenpfadanalyse her.
 
@@ -344,46 +377,52 @@ Stellen Sie die primäre ExpressRoute 1-Verbindung für den Rest der Datenpfadan
 
 Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Branch-VNET:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
 
 Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemäß Netzwerkkonfiguration für den lokalen Standort 1 keine Sichtbarkeit für den lokalen Standort 2. Dies wird durch die folgenden Ping-Ergebnisse bestätigt: 
 
-    C:\Users\rb>ping 10.1.31.10
-    
-    Pinging 10.1.31.10 with 32 bytes of data:
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Request timed out.
-    ...
-    Request timed out.
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Request timed out.
+...
+Request timed out.
+
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ### <a name="path-to-the-remote-vnet"></a>Pfad zum Remote-VNET
 
 Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Remote-VNET:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2     2 ms     5 ms     7 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5    69 ms    70 ms    69 ms  10.17.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2     2 ms     5 ms     7 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5    69 ms    70 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ## <a name="data-path-from-on-premises-location-2"></a>Datenpfad vom lokalen Standort 2
 
@@ -391,32 +430,36 @@ Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Remote-VNET:
 
 Die Traceroute-Ausgabe vom lokalen Standort 2 zu einer VM im Hub-VNET:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.4
-      3    <1 ms    <1 ms    <1 ms  192.168.31.22
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.4
+  3    <1 ms    <1 ms    <1 ms  192.168.31.22
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
 
 Die Traceroute-Ausgabe vom lokalen Standort 2 zu einer VM im Spoke-VNET:
 
-    C:\Windows\system32>tracert 10.11.30.4
+```console
+C:\Windows\system32>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
-      1    <1 ms    <1 ms     1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.0
-      3    <1 ms    <1 ms    <1 ms  192.168.31.18
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.11.30.4
+Tracing route to 10.11.30.4 over a maximum of 30 hops
+  1    <1 ms    <1 ms     1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.0
+  3    <1 ms    <1 ms    <1 ms  192.168.31.18
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Pfad zum Branch-VNET, zum lokalen Standort 1 und zum Remote-VNET
 
@@ -428,29 +471,33 @@ Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemä�
 
 Die Traceroute-Ausgabe vom Remote-VNET zu einer VM im Hub-VNET:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    65 ms    65 ms    65 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    68 ms  10.10.30.4
+  1    65 ms    65 ms    65 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    68 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
 
 Die Traceroute-Ausgabe vom Remote-VNET zu einer VM im Spoke-VNET:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    71 ms    69 ms    69 ms  10.11.30.4
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    71 ms    69 ms    69 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Pfad zum Branch-VNET und zum lokalen Standort 2
 
@@ -460,17 +507,18 @@ Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemä�
 
 Die Traceroute-Ausgabe vom Remote-VNET zu einer VM am lokalen Standort 1:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    69 ms    69 ms    69 ms  10.2.30.10
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    69 ms    69 ms    69 ms  10.2.30.10
 
-    Trace complete.
-
+Trace complete.
+```
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Gemeinsame ExpressRoute- und Site-to-Site-VPN-Konnektivität
 

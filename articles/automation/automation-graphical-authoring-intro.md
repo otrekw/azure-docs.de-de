@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849755"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186332"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -61,7 +61,7 @@ Wählen Sie eine Aktivität auf der Canvas aus, um ihre Eigenschaften und Parame
 
 Ein Parametersatz definiert die erforderlichen und optionalen Parameter, die Werte für ein bestimmtes Cmdlet akzeptieren. Alle Cmdlets müssen über mindestens einen Parametersatz verfügen, einige enthalten mehrere Sätze. Wenn ein Cmdlet mehrere Parametersätze aufweist, können Sie Parameter erst konfigurieren, nachdem Sie den zu verwendenden Parametersatz ausgewählt haben. Sie ändern den durch eine Aktivität verwendeten Parametersatz, indem Sie **Parametersatz** auswählen und einen anderen Satz angeben. In diesem Fall gehen alle bereits konfigurierten Parameterwerte verloren.
 
-Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
+Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
 
 ![Parametersatz](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -264,11 +264,11 @@ Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle def
 
 ## <a name="handle-runbook-output"></a>Verarbeiten von Runbookausgaben
 
-Die grafische Erstellung speichert Daten, die von einer Aktivität ohne ausgehende Verknüpfung erstellt werden, in der [Ausgabe des Runbooks](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). Die Ausgabe wird mit dem Runbookauftrag gespeichert und steht einem übergeordneten Runbook zur Verfügung, wenn das Runbook als untergeordnetes Runbook verwendet wird.
+Die grafische Erstellung speichert Daten, die von einer Aktivität ohne ausgehende Verknüpfung erstellt werden, in der [Ausgabe des Runbooks](./automation-runbook-output-and-messages.md). Die Ausgabe wird mit dem Runbookauftrag gespeichert und steht einem übergeordneten Runbook zur Verfügung, wenn das Runbook als untergeordnetes Runbook verwendet wird.
 
 ## <a name="work-with-powershell-expressions"></a>Arbeiten mit PowerShell-Ausdrücken
 
-Einer der Vorteile der grafischen Erstellung ist, dass Sie ein Runbook erstellen können, wenn Sie nur über wenig PowerShell-Kenntnisse verfügen. Derzeit benötigen Sie aber einige PowerShell-Kenntnisse, um bestimmte [Parameterwerte](#use-activities) einzufügen und [Verknüpfungsbedingungen](#use-links-for-workflow) festzulegen. Dieser Abschnitt enthält eine kurze Einführung in PowerShell-Ausdrücke. Alle Details von PowerShell sind unter [Skripterstellung mit Windows PowerShell](https://docs.microsoft.com/powershell/scripting/overview)verfügbar.
+Einer der Vorteile der grafischen Erstellung ist, dass Sie ein Runbook erstellen können, wenn Sie nur über wenig PowerShell-Kenntnisse verfügen. Derzeit benötigen Sie aber einige PowerShell-Kenntnisse, um bestimmte [Parameterwerte](#use-activities) einzufügen und [Verknüpfungsbedingungen](#use-links-for-workflow) festzulegen. Dieser Abschnitt enthält eine kurze Einführung in PowerShell-Ausdrücke. Alle Details von PowerShell sind unter [Skripterstellung mit Windows PowerShell](/powershell/scripting/overview)verfügbar.
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Verwenden eines PowerShell-Ausdrucks als Datenquelle
 
@@ -323,7 +323,7 @@ Das Runbook kann die Ausgabe einer Aktivität in einen komplexeren Ausdruck wie 
 
 ### <a name="compare-values"></a>Vergleichen von Werten
 
-Verwenden Sie [Vergleichsoperatoren](https://technet.microsoft.com/library/hh847759.aspx) , um Werte zu vergleichen, oder bestimmen Sie, ob ein Wert mit einem bestimmten Muster übereinstimmt. Bei einem Vergleich wird entweder der Wert „True“ oder „False“ zurückgegeben.
+Verwenden Sie [Vergleichsoperatoren](/powershell/module/microsoft.powershell.core/about/about_comparison_operators) , um Werte zu vergleichen, oder bestimmen Sie, ob ein Wert mit einem bestimmten Muster übereinstimmt. Bei einem Vergleich wird entweder der Wert „True“ oder „False“ zurückgegeben.
 
 Mit der folgenden Bedingung wird beispielsweise bestimmt, ob der virtuelle Computer einer Aktivität mit dem Namen `Get-AzureVM` derzeit beendet ist.
 
@@ -337,7 +337,7 @@ Die folgende Bedingung bestimmt, ob sich derselbe virtuelle Computer in einem an
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](https://technet.microsoft.com/library/hh847789.aspx) wie `-and` oder `-or` verknüpfen. Mit der folgenden Bedingung wird beispielsweise überprüft, ob sich der virtuelle Computer aus dem vorherigen Beispiel im Zustand „Beendet“ oder „Wird beendet“ befindet.
+Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](/powershell/module/microsoft.powershell.core/about/about_logical_operators) wie `-and` oder `-or` verknüpfen. Mit der folgenden Bedingung wird beispielsweise überprüft, ob sich der virtuelle Computer aus dem vorherigen Beispiel im Zustand „Beendet“ oder „Wird beendet“ befindet.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -345,7 +345,7 @@ Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](
 
 ### <a name="use-hashtables"></a>Verwenden von Hashtabellen
 
-[Hashtabellen](https://technet.microsoft.com/library/hh847780.aspx) sind Name-Wert-Paare, die zum Zurückgeben einer Gruppe von Werten hilfreich sind. Es kann auch vorkommen, dass eine Hashtabelle als Wörterbuch bezeichnet wird. Eigenschaften für bestimmte Aktivitäten erwarten anstelle eines einfachen Werts eine Hashtabelle.
+[Hashtabellen](/powershell/module/microsoft.powershell.core/about/about_hash_tables) sind Name-Wert-Paare, die zum Zurückgeben einer Gruppe von Werten hilfreich sind. Es kann auch vorkommen, dass eine Hashtabelle als Wörterbuch bezeichnet wird. Eigenschaften für bestimmte Aktivitäten erwarten anstelle eines einfachen Werts eine Hashtabelle.
 
 Erstellen Sie eine Hashtabelle mit der folgenden Syntax. Sie kann eine beliebige Anzahl von Einträgen enthalten, die aber jeweils durch einen Namen und einen Wert definiert sind.
 
@@ -373,7 +373,7 @@ Im folgenden Beispiel wird die Ausgabe einer Aktivität mit dem Namen `Get Twitt
 
 ## <a name="authenticate-to-azure-resources"></a>Authentifizieren bei Azure-Ressourcen
 
-Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](automation-create-runas-account.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt `AzureRunAsConnection` hinzufügen, das das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) verwendet. Sie können auch das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
+Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](./manage-runas-account.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt `AzureRunAsConnection` hinzufügen, das das PowerShell-Cmdlet [Get-AutomationConnection](/system-center/sma/manage-global-assets) verwendet. Sie können auch das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
 
 ![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -390,7 +390,7 @@ Die nächste Aktivität (`Connect-AzAccount`) fügt das authentifizierte ausfüh
 
 Für die Parameterfelder **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt. Andernfalls kann beim Ausführen des Runbooks keine Authentifizierung erfolgen. Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
 
-Einige Abonnenten erstellen ein Automation-Konto mithilfe eines [Azure AD-Benutzerkontos](automation-create-aduser-account.md) zum Verwalten der klassischen Azure-Bereitstellung oder für Azure Resource Manager-Ressourcen. Um die Abwärtskompatibilität für diese Abonnenten aufrechtzuerhalten, ist der in Ihrem Runbook zu verwendende Authentifizierungsmechanismus das Cmdlet `Add-AzureAccount` mit einem [Anmeldeinformationenobjekt](automation-credentials.md). Das Objekt stellt einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto dar.
+Einige Abonnenten erstellen ein Automation-Konto mithilfe eines [Azure AD-Benutzerkontos](./shared-resources/credentials.md) zum Verwalten der klassischen Azure-Bereitstellung oder für Azure Resource Manager-Ressourcen. Um die Abwärtskompatibilität für diese Abonnenten aufrechtzuerhalten, ist der in Ihrem Runbook zu verwendende Authentifizierungsmechanismus das Cmdlet `Add-AzureAccount` mit einem [Anmeldeinformationenobjekt](./shared-resources/credentials.md). Das Objekt stellt einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto dar.
 
 Sie können diese Funktionalität für Ihr grafisches Runbook aktivieren, indem Sie der Canvas ein Anmeldeinformationenobjekt, gefolgt von einer `Add-AzureAccount`-Aktivität hinzufügen, die das Anmeldeinformationenobjekt als Eingabe verwendet. Siehe folgendes Beispiel.
 
@@ -435,4 +435,4 @@ Sie haben die Möglichkeit, ein Runbook auf die veröffentlichte Version zurück
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Tutorial: Erstellen eines grafischen Runbooks](learn/automation-tutorial-runbook-graphical.md).
 * Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 * Informationen, wie Sie sich mithilfe des ausführenden Automation-Kontos authentifizieren, finden Sie unter [Ausführendes Konto](automation-security-overview.md#run-as-account).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

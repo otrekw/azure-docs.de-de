@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9448b7df8855f7cf2883f6cf8bd7f2ce465038cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1efb1f93910f311ad5df898152d71158003244
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563561"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146845"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
 
@@ -149,6 +149,7 @@ Dieser Schritt umfasst die Bereitstellung der Datenquellen-Verbindungsinformatio
 
 Geben Sie gültige Werte für die Platzhalter von Dienstnamen, Administratorschlüssel, Speicherkonto und Kontoschlüssel an.
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -159,6 +160,7 @@ Geben Sie gültige Werte für die Platzhalter von Dienstnamen, Administratorschl
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - Erstellen eines Zielsuchindex 
 
@@ -168,6 +170,7 @@ Der Index speichert durchsuchbaren Inhalt in der kognitiven Azure-Suche. Stellen
 
 Im Anschluss sehen Sie ein Beispiel für die Anforderung [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index). Der Index verfügt über ein durchsuchbares `content`-Feld, in dem der aus den Blobs extrahierten Text gespeichert wird:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -179,12 +182,14 @@ Im Anschluss sehen Sie ein Beispiel für die Anforderung [Index erstellen](https
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - Konfigurieren und Ausführen des Indexers
 
 Wie bei einem Index und einer Datenquelle handelt es sich auch beim Indexer um ein benanntes Objekt, das Sie erstellen und in einem Dienst der kognitiven Azure-Suche wiederverwenden. Eine vollständige Anforderung zum Erstellen eines Indexers kann beispielsweise wie folgt aussehen:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -196,6 +201,7 @@ Wie bei einem Index und einer Datenquelle handelt es sich auch beim Indexer um e
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
+```
 
 Die Indexerkonfiguration befindet sich im Text der Anforderung. Sie erfordert eine Datenquelle und einen leeren Zielindex, der bereits in der kognitiven Azure-Suche vorhanden ist. 
 
@@ -212,6 +218,7 @@ Dieser Abschnitt enthält eine Zusammenfassung aller Anforderungen, die zum Erst
 
 Alle Indexer erfordern ein Datenquellenobjekt, das Informationen zur Verbindung mit vorhandenen Daten bereitstellt. 
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -222,12 +229,13 @@ Alle Indexer erfordern ein Datenquellenobjekt, das Informationen zur Verbindung 
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }  
-
+```
 
 ### <a name="index-request"></a>Indexanforderung
 
 Alle Indexer erfordern einen Zielindex, der die Daten empfängt. Der Text der Anforderung definiert das aus Feldern bestehende Indexschema, das das gewünschte Verhalten in einem durchsuchbaren Index unterstützen soll. Dieser Index sollte leer sein, wenn Sie den Indexer ausführen. 
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -239,7 +247,7 @@ Alle Indexer erfordern einen Zielindex, der die Daten empfängt. Der Text der An
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
-
+```
 
 ### <a name="indexer-request"></a>Indexeranforderung
 
@@ -247,6 +255,7 @@ Diese Anforderung zeigt einen vollständig angegebenen Indexer. Er enthält Feld
 
 Das Erstellen des Indexers in der kognitiven Azure-Suche löst einen Datenimport aus. Er wird sofort ausgeführt, und anschließend nach einem Zeitplan, wenn Sie einen angegeben haben.
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
@@ -263,7 +272,7 @@ Das Erstellen des Indexers in der kognitiven Azure-Suche löst einen Datenimport
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
         ]
     }
-
+```
 
 <a name="json-indexer-dotnet"></a>
 
@@ -302,6 +311,7 @@ Innerhalb der Indexerdefinition können Sie optional [Feldzuordnungen](search-in
 
 Standardmäßig analysiert der [Blobindexer der kognitiven Azure-Suche](search-howto-indexing-azure-blob-storage.md) JSON-Blobs als einzelnen Textblock. Häufig möchten Sie die Struktur Ihrer JSON-Dokumente beibehalten. Angenommen, Sie verwenden in Azure Blob Storage das folgende JSON-Dokument:
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -309,6 +319,7 @@ Standardmäßig analysiert der [Blobindexer der kognitiven Azure-Suche](search-h
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 Der Blobindexer löst das JSON-Dokument in ein einzelnes Dokument der kognitiven Azure-Suche auf. Der Indexer lädt einen Index, indem die Elemente „text“, „datePublished“ und „tags“ aus der Quelle mit Zielindexfeldern abgeglichen werden, die den gleichen Namen und Typ aufweisen.
 
@@ -320,14 +331,17 @@ Wie schon erwähnt, sind Feldzuordnungen nicht erforderlich. Bei einem Index mit
 
 Alternativ können Sie auch die JSON-Arrayoption verwenden. Diese Option ist nützlich, wenn Blobs ein *Array wohlgeformter JSON-Objekte* enthalten und jedes Element ein separates Dokument der kognitiven Azure-Suche werden soll. Bei dem folgenden JSON-Blob können Sie beispielsweise den Index der kognitiven Azure-Suche mit drei separaten Dokumenten auffüllen, die jeweils die Felder „id“ und „text“ enthalten.  
 
+```text
     [
         { "id" : "1", "text" : "example 1" },
         { "id" : "2", "text" : "example 2" },
         { "id" : "3", "text" : "example 3" }
     ]
+```
 
 Für ein JSON-Array sollte die Indexerdefinition dem folgenden Beispiel ähneln. Beachten Sie, dass der parsingMode-Parameter den `jsonArray`-Parser angibt. Die einzigen beiden arrayspezifischen Anforderungen zum Indizieren von JSON-Blobs sind die Angabe des richtigen Parsers und die Eingabe der richtigen Daten.
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -339,6 +353,7 @@ Für ein JSON-Array sollte die Indexerdefinition dem folgenden Beispiel ähneln.
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
     }
+```
 
 Beachten Sie auch hierbei wieder, dass die Feldzuordnungen ausgelassen werden können. Angenommen, Sie verfügen über einen Index mit den gleichnamigen Feldern „id“ und „text“, dann kann der Blobindexer die richtige Zuordnung ohne explizite Feldzuordnungsliste ableiten.
 
@@ -347,6 +362,7 @@ Beachten Sie auch hierbei wieder, dass die Feldzuordnungen ausgelassen werden k�
 ## <a name="parse-nested-arrays"></a>Analysieren geschachtelter Arrays
 Damit JSON-Arrays geschachtelte Elemente enthalten, können Sie eine `documentRoot` angeben, um eine Struktur mit mehreren Ebenen anzugeben. Angenommen, Ihre Blobs sehen folgendermaßen aus:
 
+```http
     {
         "level1" : {
             "level2" : [
@@ -356,25 +372,31 @@ Damit JSON-Arrays geschachtelte Elemente enthalten, können Sie eine `documentRo
             ]
         }
     }
+```
 
 Verwenden Sie diese Konfiguration, um das in der `level2`-Eigenschaft enthaltene Array zu indizieren:
 
+```http
     {
         "name" : "my-json-array-indexer",
         ... other indexer properties
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
+```
 
 ## <a name="parse-blobs-separated-by-newlines"></a>Analysieren von Blobs, die durch einen Zeilenvorschub getrennt sind
 
 Wenn das Blob mehrere JSON-Entitäten enthält, die durch einen Zeilenvorschub getrennt sind, und jedes Element ein separates Dokument der kognitiven Azure-Suche werden soll, können Sie die JSON-Zeilen-Option auswählen. Beispielsweise können Sie bei dem folgenden Blob (in dem drei verschiedene JSON-Entitäten vorliegen) den Index der kognitiven Azure-Suche mit drei separaten Dokumenten auffüllen, die jeweils die Felder „id“ und „text“ enthalten.
 
-    { "id" : "1", "text" : "example 1" }
-    { "id" : "2", "text" : "example 2" }
-    { "id" : "3", "text" : "example 3" }
+```text
+{ "id" : "1", "text" : "example 1" }
+{ "id" : "2", "text" : "example 2" }
+{ "id" : "3", "text" : "example 3" }
+```
 
 Für JSON-Zeilen sollte die Indexerdefinition dem folgenden Beispiel ähneln. Beachten Sie, dass der parsingMode-Parameter den `jsonLines`-Parser angibt. 
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -386,6 +408,7 @@ Für JSON-Zeilen sollte die Indexerdefinition dem folgenden Beispiel ähneln. Be
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
+```
 
 Beachten Sie auch hierbei wieder, dass die Feldzuordnungen ähnlich wie beim `jsonArray`-Analysemodus ausgelassen werden können.
 
@@ -397,6 +420,7 @@ Derzeit können in der kognitiven Azure-Suche nicht alle JSON-Dokumente direkt i
 
 Wir verwenden wieder unser JSON-Beispieldokument:
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -404,20 +428,25 @@ Wir verwenden wieder unser JSON-Beispieldokument:
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ `Edm.String`, `date` vom Typ `Edm.DateTimeOffset` und `tags` vom Typ `Collection(Edm.String)`. Beachten Sie die Abweichung zwischen „datePublished“ in der Quelle und dem Feld `date` im Index. Um das JSON-Objekt in der gewünschten Form zuzuordnen, verwenden Sie die folgenden Feldzuordnungen:
 
+```http
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
         { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
+```
 
 Die Quellenfeldnamen in den Zuordnungen werden mit der [JSON-Zeiger](https://tools.ietf.org/html/rfc6901) -Notation angegeben. Sie beginnen mit einem Schrägstrich, um auf das Stammverzeichnis des JSON-Dokuments zu verweisen, und wählen dann mittels eines schrägstrichgetrennten Weiterleitungspfads den Pfad zur gewünschten Eigenschaft (auf beliebiger Schachtelungsebene) aus.
 
 Sie können auch mit einem nullbasierten Index auf einzelne Arrayelemente verweisen. Um z. B. das erste Element des Arrays „tags“ aus dem obigen Beispiel auszuwählen, verwenden Sie eine Feldzuordnung wie folgt:
 
+```http
     { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
+```
 
 > [!NOTE]
 > Wenn ein Quellfeldname in einer Feldzuordnung auf eine Eigenschaft verweist, die nicht in JSON vorhanden ist, wird die Zuordnung ohne Fehler übersprungen. Dies geschieht, damit Dokumente mit einem anderen Schema unterstützt werden können (ein häufiger Anwendungsfall). Da keine Überprüfung erfolgt, müssen Sie darauf achten, Tippfehler in Ihrer Feldzuordnungspezifikation zu vermeiden.

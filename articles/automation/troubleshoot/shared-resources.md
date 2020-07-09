@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187165"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Behandeln von Problemen bei freigegebenen Ressourcen
 
@@ -33,7 +33,7 @@ Da das Importieren von PowerShell-Modulen ein komplexer Prozess mit vielen Schri
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu beheben, müssen Sie das Modul, das hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
+Um dieses Problem zu beheben, müssen Sie das Modul, das hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +70,7 @@ Es folgen häufige Ursachen, warum ein Modul nicht erfolgreich in Azure Automati
 * Die Struktur stimmt nicht mit der Struktur überein, die für Automation erforderlich ist.
 * Das Modul hängt von einem anderen Modul ab, das für Ihr Automation-Konto nicht bereitgestellt wurde.
 * Für das Modul fehlen die Abhängigkeiten im Ordner.
-* Das Cmdlet [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) wird zum Hochladen des Moduls verwendet, und Sie haben nicht den vollständigen Speicherpfad angegeben oder das Modul nicht mit einer öffentlich zugänglichen URL geladen.
+* Das Cmdlet [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) wird zum Hochladen des Moduls verwendet, und Sie haben nicht den vollständigen Speicherpfad angegeben oder das Modul nicht mit einer öffentlich zugänglichen URL geladen.
 
 #### <a name="resolution"></a>Lösung
 

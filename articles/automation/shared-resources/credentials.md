@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744992"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187403"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Verwalten von Anmeldeinformationen in Azure Automation
 
-Ein Automation-Anmeldeinformationsobjekt enthält ein Objekt, das Sicherheitsanmeldeinformationen wie beispielsweise einen Benutzernamen und ein Kennwort umfasst. Runbooks und DSC-Konfigurationen verwenden Cmdlets, die ein [PSCredential-](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)-Objekt für die Authentifizierung akzeptieren. Alternativ können sie den Benutzernamen und das Kennwort des `PSCredential`-Objekts extrahieren, um diese einer Anwendung oder einem Dienst bereitzustellen, die eine Authentifizierung erfordern. 
+Ein Automation-Anmeldeinformationsobjekt enthält ein Objekt, das Sicherheitsanmeldeinformationen wie beispielsweise einen Benutzernamen und ein Kennwort umfasst. Runbooks und DSC-Konfigurationen verwenden Cmdlets, die ein [PSCredential-](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)-Objekt für die Authentifizierung akzeptieren. Alternativ können sie den Benutzernamen und das Kennwort des `PSCredential`-Objekts extrahieren, um diese einer Anwendung oder einem Dienst bereitzustellen, die eine Authentifizierung erfordern. 
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Azure Automation speichert den Schlüssel im vom System verwalteten Schlüsseltresor. Vor dem Speichern einer sicheren Ressource lädt Azure Automation den Schlüssel aus dem Schlüsseltresor und verwendet ihn dann zum Verschlüsseln der Ressource. 
@@ -31,7 +31,7 @@ Ein Automation-Anmeldeinformationsobjekt enthält ein Objekt, das Sicherheitsanm
 
 | Cmdlet | BESCHREIBUNG |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Ruft ein [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps)-Objekt ab, das Metadaten über die Anmeldeinformationen enthält. Das Cmdlet ruft nicht das `PSCredential`-Objekt selbst ab.  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Ruft ein [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps)-Objekt ab, das Metadaten über die Anmeldeinformationen enthält. Das Cmdlet ruft nicht das `PSCredential`-Objekt selbst ab.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Erstellt ein neues Anmeldeinformationsobjekt. |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Entfernt ein Anmeldeinformationsobjekt. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Legt die Eigenschaften für ein vorhandenes Anmeldeinformationsobjekt fest. |
@@ -43,8 +43,8 @@ Die Cmdlets in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformat
 | Cmdlet | BESCHREIBUNG |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Ruft ein `PSCredential`-Objekt zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. In den meisten Fällen sollten Sie dieses [interne Cmdlet](modules.md#internal-cmdlets) anstelle des `Get-AzAutomationCredential`-Cmdlets verwenden, da dieses nur Anmeldeinformationen abruft. Es ist in der Regel nicht hilfreich, diese Informationen an ein anderes Cmdlet zu übergeben. |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Ruft Anmeldeinformationen mit einer Abfrage von Benutzername und Kennwort ab. Dieses Cmdlet ist Teil des Standardmoduls von Microsoft.PowerShell.Security. Weitere Informationen finden Sie unter [Standardmodule](modules.md#default-modules).|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Erstellt ein Anmeldeinformationsobjekt. Dieses Cmdlet ist Teil des Azure-Standardmoduls. Weitere Informationen finden Sie unter [Standardmodule](modules.md#default-modules).|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Ruft Anmeldeinformationen mit einer Abfrage von Benutzername und Kennwort ab. Dieses Cmdlet ist Teil des Standardmoduls von Microsoft.PowerShell.Security. Weitere Informationen finden Sie unter [Standardmodule](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Erstellt ein Anmeldeinformationsobjekt. Dieses Cmdlet ist Teil des Azure-Standardmoduls. Weitere Informationen finden Sie unter [Standardmodule](modules.md#default-modules).|
 
 Zum Abrufen von `PSCredential`-Objekten in Ihrem Code müssen Sie das `Orchestrator.AssetManagement.Cmdlets`-Modul importieren. Weitere Informationen finden Sie unter [Verwalten von Modulen in Azure Automation](modules.md).
 
@@ -104,7 +104,7 @@ Ein Runbook oder eine DSC-Konfiguration ruft Anmeldeinformationsobjekte mit dem 
 > [!NOTE]
 > Das `Get-AzAutomationCredential`-Cmdlet ruft kein `PSCredential`-Objekt ab, das für die Authentifizierung verwendet werden kann. Es bietet lediglich Informationen zu den Anmeldeinformationen. Wenn Sie ein Anmeldeinformationsobjekt in einem Runbook verwenden müssen, müssen Sie dieses mithilfe von `Get-AutomationPSCredential` als `PSCredential`-Objekt abrufen.
 
-Alternativ können Sie die Methode [GetNetworkCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) verwenden, um ein [NetworkCredential](/dotnet/api/system.net.networkcredential)-Objekt abzurufen, das eine unsichere Version des Kennworts darstellt.
+Alternativ können Sie die Methode [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) verwenden, um ein [NetworkCredential](/dotnet/api/system.net.networkcredential)-Objekt abzurufen, das eine unsichere Version des Kennworts darstellt.
 
 ### <a name="textual-runbook-example"></a>Beispiel für ein Textrunbook
 

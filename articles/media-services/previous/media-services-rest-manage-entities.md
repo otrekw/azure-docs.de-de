@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f18885634503cc65a5bf78d93bd84afd018956bd
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712410"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170801"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST  
 
@@ -49,73 +49,83 @@ Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Enti
 
 Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
 
-    POST https://media.windows.net/API/AccessPolicies HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
-    Content-Length: 74
-    Expect: 100-continue
+```console
+POST https://media.windows.net/API/AccessPolicies HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
+Content-Length: 74
+Expect: 100-continue
 
-    {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
+{"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
+```
 
 ## <a name="querying-entities"></a>Abfragen von Entitäten
 Das Abfragen und Auflisten von Entitäten ist unkompliziert und umfasst nur die HTTP-Anforderung GET und optional OData-Vorgänge.
 Im folgenden Beispiel wird eine Liste aller MediaProcessor-Entitäten abgerufen.
 
-    GET https://media.windows.net/API/MediaProcessors HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+GET https://media.windows.net/API/MediaProcessors HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
+```
 
 Sie können auch eine bestimmte Entität oder alle Entitätenmengen im Zusammenhang mit einer bestimmten Entität abrufen, wie in den folgenden Beispielen:
 
-    GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c') HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c') HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
 
-    GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c')/TaskTemplates HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c')/TaskTemplates HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
+```
 
 Im folgenden Beispiel wird nur die State-Eigenschaft aller Aufträge zurückgegeben.
 
-    GET https://media.windows.net/API/Jobs?$select=State HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+GET https://media.windows.net/API/Jobs?$select=State HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
+```
 
 Das folgende Beispiel gibt alle JobTemplates mit dem Namen „SampleTemplate“ zurück.
 
-    GET https://media.windows.net/API/JobTemplates?$filter=startswith(Name,%20'SampleTemplate') HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+GET https://media.windows.net/API/JobTemplates?$filter=startswith(Name,%20'SampleTemplate') HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
+```
 
 > [!NOTE]
 > Der $expand-Vorgang wird in Media Services nicht unterstützt, ebenso wie die in den LINQ-Informationen (WCF Data Services) beschriebenen LINQ-Methoden.
@@ -127,47 +137,53 @@ Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleich
 
 Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der ersten 2000 Aufträge und Abrufen der nächsten 1000 Aufträge verwenden.  
 
-    GET https://media.windows.net/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN>
-    Host: media.windows.net
+```console
+GET https://media.windows.net/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN>
+Host: media.windows.net
+```
 
 ## <a name="updating-entities"></a>Aktualisieren von Entitäten
 Abhängig vom Typ und dem Status der Entität können Sie Eigenschaften für diese Entität über die HTTP-Anforderungen PATCH, PUT oder MERGE aktualisieren. Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
 
 Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für eine Asset-Entität aktualisiert wird.
 
-    MERGE https://media.windows.net/API/Assets('nb:cid:UUID:80782407-3f87-4e60-a43e-5e4454232f60') HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN>
-    Host: media.windows.net
-    Content-Length: 21
-    Expect: 100-continue
+```console
+MERGE https://media.windows.net/API/Assets('nb:cid:UUID:80782407-3f87-4e60-a43e-5e4454232f60') HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN>
+Host: media.windows.net
+Content-Length: 21
+Expect: 100-continue
 
-    {"Name" : "NewName" }
+{"Name" : "NewName" }
+```
 
 ## <a name="deleting-entities"></a>Löschen von Entitäten
 Entitäten können in Media Services mithilfe der HTTP-Anforderung DELETE gelöscht werden. Abhängig von der Entität kann die Reihenfolge, in der Sie Entitäten löschen, wichtig sein. Für Entitäten wie Medienobjekte müssen Sie z. B. alle Locators widerrufen (oder löschen), die auf ein bestimmtes Medienobjekt verweisen, bevor das Medienobjekt gelöscht wird.
 
 Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem eine Datei in den BLOB-Speicher hochgeladen wurde.
 
-    DELETE https://media.windows.net/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN>
-    Host: media.windows.net
-    Content-Length: 0
+```console
+DELETE https://media.windows.net/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN>
+Host: media.windows.net
+Content-Length: 0
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

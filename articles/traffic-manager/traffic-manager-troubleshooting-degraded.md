@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704062"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183442"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
@@ -56,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 Beispielausgabe:
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 Wie Sie sehen, haben wir eine Umleitungsantwort erhalten. Wie bereits erwähnt, gelten alle Statuscodes außer „200“ als Fehler. Somit ändert Traffic Manager den Endpunktstatus in „Offline“. Sie können dieses Problem beheben, indem Sie die Konfiguration der Website überprüfen, um sicherzustellen, dass vom Testpfad der richtige Statuscode zurückgegeben wird. Konfigurieren Sie den Traffic Manager-Test so, dass er auf einen Pfad verweist, der eine Antwort „200“ zurückgibt.
 

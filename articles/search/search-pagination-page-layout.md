@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561582"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146174"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -55,20 +55,26 @@ Es ist nicht sicher, dass die Ergebnisse von paginierten Abfragen stabil sind, w
  
 Mit dem folgenden Beispiel werden möglicherweise Duplikate zurückgegeben. Stellen Sie sich einen Index mit vier Dokumenten vor:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 Stellen Sie sich nun vor, es sollen immer je zwei Ergebnisse nach Bewertung sortiert zurückgegeben werden. Sie würden die folgende Abfrage ausführen, um die erste Seite mit Ergebnissen abzurufen: `$top=2&$skip=0&$orderby=rating desc`. Damit werden die folgenden Ergebnisse erzeugt:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 Stellen Sie sich nun vor, dass bei dem Dienst zwischen den Abfragen `{ "id": "5", "rating": 4 }` als fünftes Dokument in den Index aufgenommen wird.  Kurze Zeit später führen Sie eine Abfrage aus, um die zweite Seite abzurufen: `$top=2&$skip=2&$orderby=rating desc`. Damit werden die folgenden Ergebnisse abgerufen:
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 Wie Sie sehen, wurde Dokument 2 zweimal abgerufen. Der Grund dafür ist, dass das neue Dokument 5 einen größeren Wert für die Bewertung aufweist, sodass es in der Reihenfolge vor Dokument 2 kommt und daher auf der ersten Seite landet. Dieses Verhalten ist zwar möglicherweise unerwartet, jedoch typisch für das Verhalten eines Suchmoduls.
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681010"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187199"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
 
@@ -58,7 +58,7 @@ Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereign
 
 #### <a name="issue"></a>Problem
 
-Der Hybrid Runbook Worker empfängt das Ereignis 15011, das darauf hinweist, dass ein Abfrageergebnis nicht gültig ist. Die folgende Fehlermeldung wird angezeigt, wenn der Worker versucht, eine Verbindung mit dem [SignalR-Server](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1) zu öffnen.
+Der Hybrid Runbook Worker empfängt das Ereignis 15011, das darauf hinweist, dass ein Abfrageergebnis nicht gültig ist. Die folgende Fehlermeldung wird angezeigt, wenn der Worker versucht, eine Verbindung mit dem [SignalR-Server](/aspnet/core/signalr/introduction?view=aspnetcore-3.1) zu öffnen.
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -238,7 +238,7 @@ Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-outpu
 
 #### <a name="issue"></a>Problem
 
-Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Office 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
+Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Office 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
 
 Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle bieten keine Informationen zum Proxy.
 
@@ -248,9 +248,9 @@ Die Verbindung mit den Active Directory-Verbunddiensten (AD FS) auf dem Server 
 
 #### <a name="resolution"></a>Lösung
 
-Sie können das Problem für die Orchestrator-Sandbox beheben, indem Sie Ihr Skript migrieren, sodass die Azure Active Directory-Module anstelle des MSOnline-Moduls für PowerShell-Cmdlets verwendet werden. Weitere Informationen finden Sie unter [Migrieren von Orchestrator zu Azure Automation (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+Sie können das Problem für die Orchestrator-Sandbox beheben, indem Sie Ihr Skript migrieren, sodass die Azure Active Directory-Module anstelle des MSOnline-Moduls für PowerShell-Cmdlets verwendet werden. Weitere Informationen finden Sie unter [Migrieren von Orchestrator zu Azure Automation (Beta)](../automation-orchestrator-migration.md).
 
-Wenn Sie die Cmdlets des MSOnline-Moduls weiterhin verwenden möchten, ändern Sie das Skript so, dass [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwendet wird. Geben Sie Werte für die Parameter `ComputerName` und `Credential` an. 
+Wenn Sie die Cmdlets des MSOnline-Moduls weiterhin verwenden möchten, ändern Sie das Skript so, dass [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwendet wird. Geben Sie Werte für die Parameter `ComputerName` und `Credential` an. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

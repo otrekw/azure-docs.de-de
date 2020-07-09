@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171940"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
 
@@ -284,10 +284,12 @@ Bei einem facettenbasierten Drilldownvorgang sollen in der Regel nur Dokumente e
 
 Facettenergebnisse sind Dokumente in den Suchergebnissen, die einem Facettenbegriff entsprechen. Im folgenden Beispiel weisen 254 Elemente der Suchergebnisse für *cloud computing* auch den Inhaltstyp *interne Spezifikation* auf. Die Elemente schließen sich nicht zwingend gegenseitig aus. Erfüllt ein Element die Kriterien beider Filter, wird es in jedem Filter gezählt. Diese Duplizierung ist möglich, wenn die Facette auf Feldern vom Typ `Collection(Edm.String)` basiert, die häufig zur Implementierung von Dokumententags verwendet werden.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 Allgemein gilt: Wenn die Facettenergebnisse ständig zu umfangreich ausfallen, empfiehlt es sich, weitere Filter hinzuzufügen, um den Benutzern mehr Optionen zum Eingrenzen der Suche zu geben.
 
@@ -345,7 +347,7 @@ Bei numerischen Daten können Sie eine Werteliste verwenden.  Sehen Sie sich die
 
 Verwenden Sie zum Angeben eines Facettenbereichs wie im vorhergehenden Screenshot eine Werteliste:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 Jeder Bereich wird mit „0“ als Ausgangspunkt und einem Wert aus der Liste als Endpunkt erstellt und anschließend um den vorherigen Bereich gekürzt, um eigenständige Intervalle zu erhalten. Dies wird im Rahmen der Facettennavigation von der kognitiven Azure-Suche durchgeführt. Sie müssen keinen Code schreiben, um die einzelnen Intervalle zu strukturieren.
 

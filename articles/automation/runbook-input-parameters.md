@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 13691fe05ca42af3a9d5b09ea36eb58bcdf1df08
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830037"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187471"
 ---
 # <a name="configure-runbook-input-parameters"></a>Konfigurieren von Runbookeingabeparametern
 
@@ -70,12 +70,12 @@ In diesem Fall können Sie den folgenden Wert an den Parameter übergeben.
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurieren von Eingabeparametern in grafischen Runbooks
 
-Um die Konfiguration von Eingabeparametern für ein grafisches Runbook zu illustrieren, erstellen wir ein grafisches Runbook, das Details zu virtuellen Computern – entweder eines einzelnen oder aller virtuellen Computer innerhalb einer Ressourcengruppe – ausgibt. Details finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md).
+Um die Konfiguration von Eingabeparametern für ein grafisches Runbook zu illustrieren, erstellen wir ein grafisches Runbook, das Details zu virtuellen Computern – entweder eines einzelnen oder aller virtuellen Computer innerhalb einer Ressourcengruppe – ausgibt. Details finden Sie unter [Mein erstes grafisches Runbook](./learn/automation-tutorial-runbook-graphical.md).
 
 Ein grafisches Runbook verwendet diese wesentlichen Runbook-Aktivitäten:
 
 * Konfiguration des ausführenden Azure-Kontos für die Authentifizierung bei Azure. 
-* Definition eines [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0)-Cmdlets, um VM-Eigenschaften abzurufen.
+* Definition eines [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0)-Cmdlets, um VM-Eigenschaften abzurufen.
 * Verwenden Sie die Aktivität [Write-Output](/powershell/module/microsoft.powershell.utility/write-output), um die Namen der virtuellen Computer auszugeben. 
 
 Die Aktivität `Get-AzVM` definiert zwei Eingaben: den VM-Namen und den Namen der Ressourcengruppe. Da diese Namen bei jedem Start des Runbooks unterschiedlich sein können, müssen Sie Ihrem Runbook Eingabeparameter hinzufügen, um diese Eingaben zu akzeptieren. Siehe [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
@@ -112,7 +112,7 @@ Führen Sie zum Konfigurieren der Eingabeparameter diese Schritte aus.
 
 Im Gegensatz zu PowerShell, PowerShell-Workflow und grafischen Runbooks akzeptieren Python-Runbooks keine benannten Parameter. Der Runbook-Editor analysiert alle Eingabeparameter als Array von Argumentwerten. Sie können auf das Array zugreifen, indem Sie das `sys`-Modul in Ihr Python-Skript importieren und dann das `sys.argv`-Array verwenden. Wichtig: Das erste Element des Arrays (`sys.argv[0]`) ist der Name des Skripts. Somit ist `sys.argv[1]` der erste eigentliche Eingabeparameter.
 
-Ein Beispiel für die Verwendung von Eingabeparametern in einem Python-Runbook finden Sie unter [Mein erstes Python-Runbook in Azure Automation](automation-first-runbook-textual-python2.md).
+Ein Beispiel für die Verwendung von Eingabeparametern in einem Python-Runbook finden Sie unter [Mein erstes Python-Runbook in Azure Automation](./learn/automation-tutorial-runbook-textual-python2.md).
 
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>Eingabeparametern in Runbooks Werte zuweisen
 
@@ -140,8 +140,7 @@ In der Bezeichnung unterhalb des Eingabefelds können Sie die Eigenschaften sehe
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Starten eines veröffentlichten Runbooks mit PowerShell-Cmdlets und Zuweisen von Parametern
 
-* **Azure Resource Manager-Cmdlets**: Sie können ein Automation-Runbook, das in einer Ressourcengruppe erstellt wurde, mit [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
-) starten.
+* **Azure Resource Manager-Cmdlets**: Sie können ein Automation-Runbook, das in einer Ressourcengruppe erstellt wurde, mit [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0) starten.
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -249,13 +248,13 @@ Wenn der Auftrag erfolgreich erstellt wurde, erhalten Sie als Antwort den HTTP-S
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Testen eines Runbooks und Zuweisen von Parametern
 
-Wenn Sie zum [Testen der Entwurfsversion Ihres Runbooks](automation-testing-runbook.md) die Testoption verwenden, wird die Seite „Test“ geöffnet. Verwenden Sie diese Seite, um Werte für die Parameter zu konfigurieren, die Sie erstellt haben.
+Wenn Sie zum [Testen der Entwurfsversion Ihres Runbooks](./manage-runbooks.md) die Testoption verwenden, wird die Seite „Test“ geöffnet. Verwenden Sie diese Seite, um Werte für die Parameter zu konfigurieren, die Sie erstellt haben.
 
 ![Testen und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
 ### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Verknüpfen eines Zeitplans mit einem Runbook und Zuweisen von Parametern
 
-Sie können einen [Zeitplan mit Ihrem Runbook verknüpfen](automation-schedules.md) , damit Ihr Runbook zu einem bestimmten Zeitpunkt startet. Beim Erstellen des Zeitplans weisen Sie Eingabeparameter zu, und das Runbook verwendet diese Werte, wenn es vom Zeitplan gestartet wird. Sie können den Zeitplan erst speichern, wenn alle erforderlichen Parameterwerte bereitgestellt sind.
+Sie können einen [Zeitplan mit Ihrem Runbook verknüpfen](./shared-resources/schedules.md) , damit Ihr Runbook zu einem bestimmten Zeitpunkt startet. Beim Erstellen des Zeitplans weisen Sie Eingabeparameter zu, und das Runbook verwendet diese Werte, wenn es vom Zeitplan gestartet wird. Sie können den Zeitplan erst speichern, wenn alle erforderlichen Parameterwerte bereitgestellt sind.
 
 ![Planen und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
@@ -273,7 +272,7 @@ Wenn Sie einen Webhook verwenden, um ein Runbook auszuführen, wird der vordefin
 
 Es kann hilfreich sein, Daten, die Sie an ein Runbook übergeben möchten, in einer JSON-Datei zu speichern. Sie können z. B. eine JSON-Datei erstellen, die alle Parameter enthält, die an ein Runbook übergeben werden sollen. Zu diesem Zweck müssen Sie den JSON-Code in eine Zeichenfolge und diese dann in ein PowerShell-Objekt konvertieren, bevor Sie es anschließend an das Runbook übergeben.
 
-Dieser Abschnitt verwendet ein Beispiel, bei dem ein PowerShell-Skript[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) aufruft, um ein PowerShell-Runbook zu starten, mit dem der Inhalt der JSON-Datei an das Runbook übergeben wird. Das PowerShell-Runbook startet einen virtuellen Azure-Computer, indem die Parameter für den virtuellen Computer aus dem JSON-Objekt abgerufen werden.
+Dieser Abschnitt verwendet ein Beispiel, bei dem ein PowerShell-Skript[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) aufruft, um ein PowerShell-Runbook zu starten, mit dem der Inhalt der JSON-Datei an das Runbook übergeben wird. Das PowerShell-Runbook startet einen virtuellen Azure-Computer, indem die Parameter für den virtuellen Computer aus dem JSON-Objekt abgerufen werden.
 
 ### <a name="create-the-json-file"></a>Erstellen der JSON-Datei
 
@@ -288,7 +287,7 @@ Geben Sie den folgenden Code in eine Textdatei ein, und speichern Sie diese als 
 
 ### <a name="create-the-runbook"></a>Erstellen des Runbooks
 
-Erstellen Sie ein neues PowerShell-Runbook mit dem Namen **Test-Json** in Azure Automation. Siehe [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md).
+Erstellen Sie ein neues PowerShell-Runbook mit dem Namen **Test-Json** in Azure Automation. Siehe [Mein erstes PowerShell-Runbook](./learn/automation-tutorial-runbook-textual-powershell.md).
 
 Damit die JSON-Daten akzeptiert werden, muss das Runbook ein Objekt als Eingabeparameter annehmen. Das Runbook kann dann die in der JSON-Datei definierten Eigenschaften verwenden.
 

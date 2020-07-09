@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 25a306b3281079e8476a67ee70c2ca2cfffdd30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830938"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185737"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Verwenden dynamischer Gruppen mit der Updateverwaltung
 
@@ -21,7 +21,7 @@ Die Updateverwaltung ermöglicht Ihnen, eine dynamische Gruppe von Azure-VMs ode
 
 Sie können dynamische Gruppen für Azure- oder Nicht-Azure-Computer im Azure-Portal über die **Updateverwaltung** definieren. Weitere Informationen finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md).
 
-Eine dynamische Gruppe wird mit einer Abfrage definiert, die von Azure Automation zur Bereitstellungszeit ausgewertet wird. Auch wenn bei einer Abfrage für eine dynamische Gruppe eine große Zahl von Computern abgerufen wird, kann Azure Automation jeweils nur maximal 1.000 Computer verarbeiten. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management). 
+Eine dynamische Gruppe wird mit einer Abfrage definiert, die von Azure Automation zur Bereitstellungszeit ausgewertet wird. Auch wenn bei einer Abfrage für eine dynamische Gruppe eine große Zahl von Computern abgerufen wird, kann Azure Automation jeweils nur maximal 1.000 Computer verarbeiten. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#update-management). 
 
 > [!NOTE]
 > Falls Sie damit rechnen, dass mehr als 1.000 Computer aktualisiert werden müssen, empfehlen wir Ihnen, die Updates auf mehrere Aktualisierungszeitpläne aufzuteilen. 

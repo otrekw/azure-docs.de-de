@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b39fbdf19703d8b4b2f8683577701dcb23900616
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836956"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186434"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
@@ -26,8 +26,8 @@ Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne di
 
 Um die Beispiele in diesem Artikel ausführen zu können, ist Folgendes erforderlich:
 
-- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
-- Eine Azure Resource Manager-VM (nicht klassisch), die ein [unterstütztes Betriebssystem](automation-dsc-overview.md#operating-system-requirements) ausführt. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](./manage-runas-account.md)(Ausführendes Azure-Konto).
+- Eine Azure Resource Manager-VM (nicht klassisch), die ein [unterstütztes Betriebssystem](automation-dsc-overview.md#operating-system-requirements) ausführt. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="create-a-dsc-configuration"></a>Erstellen einer DSC-Konfiguration
 
@@ -237,4 +237,4 @@ Wenn ein Knoten nicht mehr von State Configuration verwaltet werden soll, könne
 - Informationen zum Aktivieren des Features für virtuelle Computer in Ihrer Umgebung finden Sie unter [Aktivieren von Azure Automation State Configuration](automation-dsc-onboarding.md).
 - Eine Einführung in PowerShell DSC finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

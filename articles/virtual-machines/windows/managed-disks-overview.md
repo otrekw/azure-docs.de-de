@@ -3,16 +3,16 @@ title: Übersicht über Azure Disk Storage
 description: Enthält eine Übersicht über verwaltete Azure-Datenträger, mit denen bei Verwendung von Azure-VMs die Speicherkonten für Sie verwaltet werden.
 author: roygara
 ms.service: virtual-machines
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4b3a66ce00582a3ef05e77f65acdc46fbde8ce72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13237011e160d0190475eadb3f9d20f0d731df60
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82148082"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146625"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 

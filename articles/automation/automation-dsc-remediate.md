@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836854"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186366"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Korrigieren nicht konformer Azure Automation State Configuration-Server
 
@@ -25,7 +25,7 @@ Dieses Dokument enthält Beispielskripts für dieses Feature, die genutzt werden
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Korrigieren von Abweichungen virtueller Windows-Computer mit PowerShell
 
-Abweichungen bei virtuellen Windows-Computern können mithilfe des Befehlsfeatures `Run` korrigiert werden. Weitere Informationen finden Sie unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](/azure/virtual-machines/windows/run-command).
+Abweichungen bei virtuellen Windows-Computern können mithilfe des Befehlsfeatures `Run` korrigiert werden. Weitere Informationen finden Sie unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../virtual-machines/windows/run-command.md).
 
 Verwenden Sie das Cmdlet [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration), um zu erzwingen, dass ein Azure Automation State Configuration-Knoten die aktuelle Konfiguration herunterlädt und anwendet.
 
@@ -43,5 +43,5 @@ Für Hybridknoten kann die Korrektur von Abweichungen mithilfe der Python-Skript
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).

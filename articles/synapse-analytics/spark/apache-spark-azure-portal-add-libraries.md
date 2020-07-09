@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cf78a2f7d909fb260c5ff99f80c9d1482f2cd08b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027306"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145906"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hinzufügen und Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -35,7 +35,7 @@ Wenn eine Spark-Instanz gestartet wird, wird eine neue virtuelle Umgebung erstel
 
 ### <a name="requirements-format"></a>Anforderungsformat
 
-Der folgende Codeausschnitt zeigt das Format für die Anforderungsdatei. Der Name des PyPi-Pakets wird zusammen mit einer exakten Version aufgeführt. Diese Datei hält das Format ein, das in der Referenzdokumentation zu [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) beschrieben wird. Dieses Beispiel verwendet eine bestimmte Version. Sie können in dieser Datei auch Versionen als „nicht größer als“ oder „kleiner als“ angeben.
+Der folgende Codeausschnitt zeigt das Format für die Anforderungsdatei. Der Name des PyPi-Pakets wird zusammen mit einer exakten Version aufgeführt. Diese Datei hält das Format ein, das in der Referenzdokumentation zu [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) beschrieben wird. Dieses Beispiel verwendet eine bestimmte Version. 
 
 ```
 absl-py==0.7.0

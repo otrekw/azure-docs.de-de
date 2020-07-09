@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827895"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183169"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurieren von Computern mit einem gewünschten Status
 
@@ -27,8 +27,8 @@ Für dieses Tutorial verwenden wir eine einfache [DSC-Konfiguration](/powershell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
-- Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](./manage-runas-account.md)(Ausführendes Azure-Konto).
+- Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md).
 - Azure PowerShell-Modul, Version 3.6 oder höher. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
 - Erfahrung mit DSC (Desired State Configuration, Konfiguration des gewünschten Zustands). Weitere Informationen zu DSC finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
 
@@ -36,13 +36,13 @@ Für dieses Tutorial verwenden wir eine einfache [DSC-Konfiguration](/powershell
 
 Azure Automation State Configuration unterstützt die Verwendung von [Teilkonfigurationen](/powershell/scripting/dsc/pull-server/partialconfigs). In diesem Szenario ist DSC so konfiguriert, dass mehrere Konfigurationen unabhängig voneinander verwaltet werden können, wobei jede Konfiguration von Azure Automation abgerufen wird. Einem Knoten kann aber nur eine Konfiguration mittels Automation-Konto zugewiesen werden. Dies bedeutet, dass Sie bei Verwendung von zwei Konfigurationen für einen Knoten zwei Automation-Kontos benötigen.
 
-Ausführliche Informationen zum Registrieren einer Teilkonfiguration aus einem Pulldienst finden Sie in der Dokumentation zu [Teilkonfigurationen](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+Ausführliche Informationen zum Registrieren einer Teilkonfiguration aus einem Pulldienst finden Sie in der Dokumentation zu [Teilkonfigurationen](/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
 
 Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```powershell
 Connect-AzAccount
@@ -68,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > In komplexeren Szenarien, in denen mehrere Module importiert werden müssen, die DSC-Ressourcen bereitstellen, müssen Sie sicherstellen, dass jedes Modul über eine eindeutige Zeile vom Typ `Import-DscResource` in Ihrer Konfiguration verfügt.
 
-Rufen Sie das Cmdlet [Import-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) auf, um die Konfiguration in Ihr Automation-Konto hochzuladen.
+Rufen Sie das Cmdlet [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) auf, um die Konfiguration in Ihr Automation-Konto hochzuladen.
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +78,7 @@ Rufen Sie das Cmdlet [Import-AzAutomationDscConfiguration](https://docs.microsof
 
 Eine DSC-Konfiguration muss in eine Knotenkonfiguration kompiliert werden, bevor sie einem Knoten zugewiesen werden kann. Weitere Informationen finden Sie unter [DSC-Konfigurationen](/powershell/scripting/dsc/configurations/configurations).
 
-Rufen Sie das Cmdlet [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) auf, um die `TestConfig`-Konfiguration in eine Knotenkonfiguration namens `TestConfig.WebServer` in Ihrem Automation-Konto zu kompilieren.
+Rufen Sie das Cmdlet [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) auf, um die `TestConfig`-Konfiguration in eine Knotenkonfiguration namens `TestConfig.WebServer` in Ihrem Automation-Konto zu kompilieren.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 Mit Azure Automation State Configuration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Thema wird das Registrieren von ausschließlich Azure Resource Manager-VMs behandelt. Informationen zum Registrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
 
-Rufen Sie das Cmdlet [Register-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) auf, um Ihren virtuellen Computer bei der Azure Automation State Configuration als verwalteten Knoten zu registrieren. 
+Rufen Sie das Cmdlet [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) auf, um Ihren virtuellen Computer bei der Azure Automation State Configuration als verwalteten Knoten zu registrieren. 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +125,7 @@ Damit wird dem registrierten DSC-Knoten `DscVm` die Knotenkonfiguration namens `
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Überprüfen des Konformitätsstatus eines verwalteten Knotens
 
-Sie können Berichte zum Compliancestatus eines verwalteten Knotens abrufen, indem Sie das Cmdlet [Get-AzAutomationDscNodeReport](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) verwenden.
+Sie können Berichte zum Compliancestatus eines verwalteten Knotens abrufen, indem Sie das Cmdlet [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) verwenden.
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,7 +146,7 @@ Wenn Sie den Knoten aus dem Dienst entfernen möchten, können Sie dazu entweder
 > [!NOTE]
 > Durch das Aufheben der Registrierung eines Knotens beim Dienst werden die Einstellungen des lokalen Konfigurations-Managers lediglich so festgelegt, dass der Knoten keine Verbindung mehr mit dem Dienst herstellt.
 > Dies hat keine Auswirkung auf die Konfiguration, die derzeit auf den Knoten angewendet wird.
-> Zum Entfernen der aktuellen Konfiguration verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1), oder löschen Sie die lokale Konfigurationsdatei (dies ist für Linux-Knoten die einzige Option).
+> Zum Entfernen der aktuellen Konfiguration verwenden Sie [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1), oder löschen Sie die lokale Konfigurationsdatei (dies ist für Linux-Knoten die einzige Option).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -157,7 +157,7 @@ Klicken Sie in der daraufhin geöffneten Knotenansicht auf **Registrierung aufhe
 
 ### <a name="powershell"></a>PowerShell
 
-Zum Aufheben der Registrierung eines Knotens beim Azure Automation State Configuration-Dienst mithilfe von PowerShell befolgen Sie die Anweisungen in der Dokumentation für das Cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Zum Aufheben der Registrierung eines Knotens beim Azure Automation State Configuration-Dienst mithilfe von PowerShell befolgen Sie die Anweisungen in der Dokumentation für das Cmdlet [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -166,5 +166,4 @@ Zum Aufheben der Registrierung eines Knotens beim Azure Automation State Configu
 - Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145284"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Verwalten der Parallelität in der kognitiven Azure-Suche
 
@@ -46,7 +46,7 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Beispielcode aus dem [DotNetETagsExplainer-Programm](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +173,7 @@ Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem 
 
 Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang die Objektversion überprüft, eine Ausnahme ausgelöst, wenn der Vorgang fehlschlägt, und der Vorgang dann (bis zu drei Mal) wiederholt, wobei zunächst der Index vom Server abgerufen wird, um die aktuelle Version zu erhalten.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +204,7 @@ Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang 
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

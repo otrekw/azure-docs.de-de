@@ -3,12 +3,12 @@ title: Erstellen und Klonen eines Jupyter-Notebooks – Azure Notebooks (Vorscha
 description: Azure Notebooks-Projekte (Vorschau) verwalten eine Sammlung von Notebooks und verwandten Dateien, die Sie neu erstellen oder aus einer anderen Quelle klonen können.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831283"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181494"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Erstellen und Klonen von Projekten in Azure Notebooks (Vorschau)
 
@@ -68,13 +68,33 @@ Wenn Sie den Befehl **+ Neues Projekt** verwenden, zeigt Azure Notebooks ein Pop
 
 Die folgenden reservierten Wörter können nicht allein als Projekt-IDs verwendet werden. Sie können jedoch als Teil längerer Projekt-IDs verwendet werden.
 
-| | | | | | |
-| --- | --- | --- | --- | --- | --- |
-| about | account | administration | api | blog | classroom |
-| Inhalt | Dashboard | explore | faq | help | html |
-| home | Import | Bibliothek | management | new | Notebook |
-| notebooks | pdf | preview | Preise | profile | search |
-| status | support | test | | | |
+- about
+- account
+- administration
+- api
+- blog
+- classroom
+- Inhalt
+- Dashboard
+- explore
+- faq
+- help
+- html
+- home
+- Import
+- Bibliothek
+- management
+- new
+- Notebook
+- notebooks
+- pdf
+- preview
+- Preise
+- profile
+- search
+- status
+- support
+- test
 
 Wenn Sie versuchen, eines dieser Wörter als Projekt-ID zu verwenden, wird in den Popups **Neues Projekt erstellen** und **Projekteinstellungen** „Bibliotheks-ID ist ein reservierter Bezeichner“ angezeigt.
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382526"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170393"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -26,12 +26,12 @@ Beispielvorlagen finden Sie unter:
 
 Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 
-| Resource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Eine Funktions-App                                                                     | Erforderlich    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Ein [Azure Storage](../storage/index.yml)-Konto                                   | Erforderlich    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Komponente | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
-| [Hostingplan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Resource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Eine Funktions-App                                                                     | Erforderlich    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
+| Ein [Azure Storage](../storage/index.yml)-Konto                                   | Erforderlich    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Komponente | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |
+| [Hostingplan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup> Ein Hostingplan ist nur erforderlich, wenn Sie Ihre Funktions-App im Rahmen eines [Premium-Plans](./functions-premium-plan.md) oder [App Service-Plans](../app-service/overview-hosting-plans.md) ausführen.
 

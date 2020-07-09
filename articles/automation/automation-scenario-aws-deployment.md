@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855307"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185941"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Bereitstellen eines virtuellen Amazon Web Services-Computers mit einem Runbook
 
@@ -101,7 +101,6 @@ Vergewissern Sie sich, dass das AWS-PowerShell-Modul in Azure Automation importi
  
 * Informationen zu unterstützten Runbooks finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 * Informationen zur Arbeit mit Runbooks finden Sie unter [Verwalten eines Runbooks in Azure Automation](manage-runbooks.md).
-* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
 * Informationen zur Skriptunterstützung finden Sie in der [Ankündigung der nativen PowerShell-Skriptunterstützung in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

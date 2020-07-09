@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343165"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144402"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im LUIS-Portal oder mithilfe der LUIS-Erstellungs-[APIs](developer-reference-resource.md) erstellen.
@@ -45,7 +45,7 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 ## <a name="create-new-app-in-luis"></a>Erstellen einer neuen App in LUIS
 
-1. Wählen Sie auf der Seite **Meine Apps** Ihr **Abonnement** und die **Erstellungsressource** aus, und klicken Sie dann auf **+ Erstellen**. Wenn Sie einen Schlüssel für die kostenlose Testversion verwenden, erfahren Sie, wie Sie [eine Erstellungsressource erstellen können](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. Wählen Sie auf der Seite **Meine Apps** Ihr **Abonnement** und die **Erstellungsressource** aus, und klicken Sie dann auf **+ Erstellen**. 
 
 > [!div class="mx-imgBorder"]
 > ![Liste der LUIS-Apps](./media/create-app-in-portal.png)
